@@ -4096,26 +4096,11 @@
         <version>${stax-api-version}</version>
       </dependency>
       <dependency>
-        <groupId>com.sun.xml.bind</groupId>
-        <artifactId>jaxb-impl</artifactId>
-        <version>${jaxb-version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>javax.jws</groupId>
-            <artifactId>jsr181-api</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>com.sun.xml.bind</groupId>
-        <artifactId>jaxb-core</artifactId>
-        <version>${jaxb-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.sun.xml.bind</groupId>
+        <groupId>org.glassfish.jaxb</groupId>
         <artifactId>jaxb-jxc</artifactId>
-        <version>${jaxb-version}</version>
+        <version>${jaxb-runtime-version}</version>
       </dependency>
+
       <dependency>
         <groupId>com.sun.xml.parsers</groupId>
         <artifactId>jaxp-ri</artifactId>
@@ -5072,14 +5057,14 @@
           <version>${maven-antrun-plugin-version}</version>
           <dependencies>
             <dependency>
-              <groupId>com.sun.xml.bind</groupId>
-              <artifactId>jaxb-impl</artifactId>
-              <version>${jaxb-version}</version>
+              <groupId>org.glassfish.jaxb</groupId>
+              <artifactId>jaxb-runtime</artifactId>
+              <version>${jaxb-runtime-version}</version>
             </dependency>
             <dependency>
-              <groupId>com.sun.xml.bind</groupId>
+              <groupId>org.glassfish.jaxb</groupId>
               <artifactId>jaxb-jxc</artifactId>
-              <version>${jaxb-version}</version>
+              <version>${jaxb-runtime-version}</version>
             </dependency>
             <dependency>
               <groupId>ant-contrib</groupId>
@@ -5722,23 +5707,6 @@
           </plugin>
         </plugins>
       </build>
-    </profile>
-
-    <profile>
-      <id>jdk1.8</id>
-      <activation>
-        <jdk>1.8</jdk>
-      </activation>
-      <dependencies>
-        <dependency>
-          <groupId>com.sun.xml.bind</groupId>
-          <artifactId>jaxb-core</artifactId>
-        </dependency>
-        <dependency>
-          <groupId>com.sun.xml.bind</groupId>
-          <artifactId>jaxb-impl</artifactId>
-        </dependency>
-      </dependencies>
     </profile>
 
     <profile>

@@ -121,27 +121,6 @@
         <version>0.4.9</version>
       </dependency>
       <dependency>
-        <groupId>com.sun.xml.bind</groupId>
-        <artifactId>jaxb-core</artifactId>
-        <version>2.3.0</version>
-      </dependency>
-      <dependency>
-        <groupId>com.sun.xml.bind</groupId>
-        <artifactId>jaxb-impl</artifactId>
-        <version>2.3.0</version>
-        <exclusions>
-          <exclusion>
-            <groupId>javax.jws</groupId>
-            <artifactId>jsr181-api</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>com.sun.xml.bind</groupId>
-        <artifactId>jaxb-jxc</artifactId>
-        <version>2.3.0</version>
-      </dependency>
-      <dependency>
         <groupId>com.sun.xml.parsers</groupId>
         <artifactId>jaxp-ri</artifactId>
         <version>1.4.5</version>
@@ -3509,6 +3488,11 @@
             <artifactId>stax-api</artifactId>
           </exclusion>
         </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-jxc</artifactId>
+        <version>2.3.1</version>
       </dependency>
       <dependency>
         <groupId>org.jdom</groupId>

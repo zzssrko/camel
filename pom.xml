@@ -60,6 +60,7 @@
     <!-- eclipse plugin need the jaxb in this pom.xml file -->
     <!-- Make sure to keep JAXB version up to date in parent/pom.xml in the bottom of the file -->
     <jaxb-version>2.3.0</jaxb-version>
+    <jaxb-runtime-version>2.3.1</jaxb-runtime-version>
     <errorprone-version>2.5</errorprone-version>
     <mycila-license-version>3.0</mycila-license-version>
     <gmavenplus-plugin-version>1.6.2</gmavenplus-plugin-version>
@@ -505,19 +506,14 @@
               <artifactId>maven-antrun-plugin</artifactId>
               <dependencies>
                 <dependency>
-                  <groupId>com.sun.xml.bind</groupId>
-                  <artifactId>jaxb-core</artifactId>
-                  <version>${jaxb-version}</version>
+                  <groupId>org.glassfish.jaxb</groupId>
+                  <artifactId>jaxb-runtime</artifactId>
+                  <version>${jaxb-runtime-version}</version>
                 </dependency>
                 <dependency>
-                  <groupId>com.sun.xml.bind</groupId>
-                  <artifactId>jaxb-impl</artifactId>
-                  <version>${jaxb-version}</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.sun.xml.bind</groupId>
+                  <groupId>org.glassfish.jaxb</groupId>
                   <artifactId>jaxb-jxc</artifactId>
-                  <version>${jaxb-version}</version>
+                  <version>${jaxb-runtime-version}</version>
                 </dependency>
                 <dependency>
                   <groupId>xerces</groupId>
