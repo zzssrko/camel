@@ -53,6 +53,7 @@
       <version>${project.version}</version>
     </dependency>
 
+    <!-- see above, targeting MVEL with Java 10+ support -->
     <dependency>
       <groupId>org.mvel</groupId>
       <artifactId>mvel2</artifactId>
