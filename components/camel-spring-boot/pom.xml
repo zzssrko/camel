@@ -70,6 +70,13 @@
       <artifactId>camel-spring</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>${jaxb-runtime-version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
     <!-- Optional Spring web support -->
     <dependency>
       <groupId>org.springframework</groupId>
