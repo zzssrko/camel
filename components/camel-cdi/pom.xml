@@ -90,6 +90,12 @@
       <version>${annotation-api-version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>${jaxb-version}</version>
+    </dependency>
+
     <!-- DeltaSpike is only used to provide Main support thus optional -->
     <dependency>
       <groupId>org.apache.deltaspike.cdictrl</groupId>
@@ -193,6 +199,13 @@
       <groupId>org.jboss.shrinkwrap.descriptors</groupId>
       <artifactId>shrinkwrap-descriptors-depchain</artifactId>
       <type>pom</type>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>${jaxb-runtime-version}</version>
       <scope>test</scope>
     </dependency>
 
