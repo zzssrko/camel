@@ -25,6 +25,8 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
+import org.jboss.forge.roaster.model.util.Strings;
+
 public class JavaClass {
 
     ClassLoader classLoader;
@@ -38,6 +40,7 @@ public class JavaClass {
     List<Field> fields = new ArrayList<>();
     List<Method> methods = new ArrayList<>();
     List<JavaClass> nested = new ArrayList<>();
+    List<String> values = new ArrayList<>();
     Javadoc javadoc = new Javadoc();
     boolean isStatic;
     boolean isPublic = true;
@@ -57,6 +60,14 @@ public class JavaClass {
         this.parent = parent;
     }
 
+    protected ClassLoader getClassLoader() {
+        if (classLoader == null && parent != null) {
+            return parent.getClassLoader();
+        } else {
+            return classLoader;
+        }
+    }
+
     public JavaClass setStatic(boolean aStatic) {
         isStatic = aStatic;
         return this;
@@ -72,6 +83,9 @@ public class JavaClass {
         return this;
     }
 
+    public String getPackage() {
+        return packageName;
+    }
     public JavaClass setPackage(String packageName) {
         this.packageName = packageName;
         return this;
@@ -121,7 +135,7 @@ public class JavaClass {
 
     public Annotation addAnnotation(String type) {
         try {
-            Class<?> cl = classLoader.loadClass(type);
+            Class<?> cl = getClassLoader().loadClass(type);
             return addAnnotation(cl);
         } catch (ClassNotFoundException e) {
             throw new IllegalArgumentException("Unable to parse type", e);
@@ -139,9 +153,9 @@ public class JavaClass {
 
     public Property addProperty(String type, String name) {
         try {
-            return addProperty(GenericType.parse(type, classLoader), name);
+            return addProperty(GenericType.parse(type, getClassLoader()), name);
         } catch (ClassNotFoundException e) {
-            throw new IllegalArgumentException("Unable to parse type", e);
+            throw new IllegalArgumentException("Unable to parse type " + type + " for property " + name, e);
         }
     }
 
@@ -171,6 +185,10 @@ public class JavaClass {
         JavaClass clazz = new JavaClass(this);
         nested.add(clazz);
         return clazz;
+    }
+
+    public void addValue(String value) {
+        values.add(value);
     }
 
     public boolean isClass() {
@@ -235,6 +253,21 @@ public class JavaClass {
     private void printClass(boolean innerClassesLast, StringBuilder sb, String indent) {
         printJavadoc(sb, indent, javadoc);
         printAnnotations(sb, indent, annotations);
+
+        if (isEnum) {
+            sb.append(indent)
+                .append(isPublic ? "public " : "")
+                .append(isStatic ? "static " : "")
+                .append("enum ").append(name).append(" {\n")
+                .append(indent)
+                .append("    ")
+                .append(Strings.join(values, ", "))
+                .append(";\n")
+                .append(indent)
+                .append("}");
+            return;
+
+        }
 
         StringBuilder sb2 = new StringBuilder();
         sb2.append(indent);
