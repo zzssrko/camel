@@ -182,7 +182,7 @@ public class ServiceNowEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * The date format used for Json serialization/deserialization. The
          * option is a java.lang.String type.
@@ -219,7 +219,7 @@ public class ServiceNowEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * The time format used for Json serialization/deserialization. The
          * option is a java.lang.String type.
@@ -486,11 +486,11 @@ public class ServiceNowEndpoint {
             this.apiVersion = apiVersion;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -543,11 +543,11 @@ public class ServiceNowEndpoint {
             this.retrieveTargetRecordOnImport = retrieveTargetRecordOnImport;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 

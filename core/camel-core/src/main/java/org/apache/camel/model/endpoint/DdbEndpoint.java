@@ -43,7 +43,7 @@ public class DdbEndpoint {
          * Determines whether or not strong consistency should be enforced when
          * data is read. The option is a boolean type.
          */
-        private boolean consistentRead;
+        private Boolean consistentRead;
         /**
          * Attribute name when creating table. The option is a java.lang.String
          * type.
@@ -89,13 +89,13 @@ public class DdbEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
@@ -121,11 +121,11 @@ public class DdbEndpoint {
             this.amazonDDBClient = amazonDDBClient;
         }
 
-        public boolean getConsistentRead() {
+        public Boolean getConsistentRead() {
             return consistentRead;
         }
 
-        public void setConsistentRead(boolean consistentRead) {
+        public void setConsistentRead(Boolean consistentRead) {
             this.consistentRead = consistentRead;
         }
 
@@ -193,19 +193,19 @@ public class DdbEndpoint {
             this.writeCapacity = writeCapacity;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 

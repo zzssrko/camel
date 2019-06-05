@@ -44,7 +44,7 @@ public class EjbEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * If enabled, Camel will cache the result of the first Registry
          * look-up. Cache can be enabled if the bean in the Registry is defined
@@ -61,7 +61,7 @@ public class EjbEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getBeanName() {
             return beanName;
@@ -79,11 +79,11 @@ public class EjbEndpoint {
             this.method = method;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -103,11 +103,11 @@ public class EjbEndpoint {
             this.parameters = parameters;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

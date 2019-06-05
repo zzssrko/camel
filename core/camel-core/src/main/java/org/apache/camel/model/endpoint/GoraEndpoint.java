@@ -52,7 +52,7 @@ public class GoraEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Hadoop Configuration. The option is a
          * org.apache.hadoop.conf.Configuration type.
@@ -63,7 +63,7 @@ public class GoraEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getName() {
             return name;
@@ -97,11 +97,11 @@ public class GoraEndpoint {
             this.valueClass = valueClass;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -113,11 +113,11 @@ public class GoraEndpoint {
             this.hadoopConfiguration = hadoopConfiguration;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -132,11 +132,11 @@ public class GoraEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Number of concurrent consumers. The option is a int type.
          */
-        private int concurrentConsumers;
+        private Integer concurrentConsumers;
         /**
          * The End Key. The option is a java.lang.Object type.
          */
@@ -144,7 +144,7 @@ public class GoraEndpoint {
         /**
          * The End Time. The option is a long type.
          */
-        private long endTime;
+        private Long endTime;
         /**
          * The Fields. The option is a com.google.common.base.Strings type.
          */
@@ -160,7 +160,7 @@ public class GoraEndpoint {
         /**
          * The Limit. The option is a long type.
          */
-        private long limit;
+        private Long limit;
         /**
          * The Start Key. The option is a java.lang.Object type.
          */
@@ -168,19 +168,19 @@ public class GoraEndpoint {
         /**
          * The Start Time. The option is a long type.
          */
-        private long startTime;
+        private Long startTime;
         /**
          * The Time Range From. The option is a long type.
          */
-        private long timeRangeFrom;
+        private Long timeRangeFrom;
         /**
          * The Time Range To. The option is a long type.
          */
-        private long timeRangeTo;
+        private Long timeRangeTo;
         /**
          * The Timestamp. The option is a long type.
          */
-        private long timestamp;
+        private Long timestamp;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -195,19 +195,19 @@ public class GoraEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public int getConcurrentConsumers() {
+        public Integer getConcurrentConsumers() {
             return concurrentConsumers;
         }
 
-        public void setConcurrentConsumers(int concurrentConsumers) {
+        public void setConcurrentConsumers(Integer concurrentConsumers) {
             this.concurrentConsumers = concurrentConsumers;
         }
 
@@ -219,11 +219,11 @@ public class GoraEndpoint {
             this.endKey = endKey;
         }
 
-        public long getEndTime() {
+        public Long getEndTime() {
             return endTime;
         }
 
-        public void setEndTime(long endTime) {
+        public void setEndTime(Long endTime) {
             this.endTime = endTime;
         }
 
@@ -251,11 +251,11 @@ public class GoraEndpoint {
             this.keyRangeTo = keyRangeTo;
         }
 
-        public long getLimit() {
+        public Long getLimit() {
             return limit;
         }
 
-        public void setLimit(long limit) {
+        public void setLimit(Long limit) {
             this.limit = limit;
         }
 
@@ -267,35 +267,35 @@ public class GoraEndpoint {
             this.startKey = startKey;
         }
 
-        public long getStartTime() {
+        public Long getStartTime() {
             return startTime;
         }
 
-        public void setStartTime(long startTime) {
+        public void setStartTime(Long startTime) {
             this.startTime = startTime;
         }
 
-        public long getTimeRangeFrom() {
+        public Long getTimeRangeFrom() {
             return timeRangeFrom;
         }
 
-        public void setTimeRangeFrom(long timeRangeFrom) {
+        public void setTimeRangeFrom(Long timeRangeFrom) {
             this.timeRangeFrom = timeRangeFrom;
         }
 
-        public long getTimeRangeTo() {
+        public Long getTimeRangeTo() {
             return timeRangeTo;
         }
 
-        public void setTimeRangeTo(long timeRangeTo) {
+        public void setTimeRangeTo(Long timeRangeTo) {
             this.timeRangeTo = timeRangeTo;
         }
 
-        public long getTimestamp() {
+        public Long getTimestamp() {
             return timestamp;
         }
 
-        public void setTimestamp(long timestamp) {
+        public void setTimestamp(Long timestamp) {
             this.timestamp = timestamp;
         }
 
@@ -320,13 +320,13 @@ public class GoraEndpoint {
         /**
          * Flush on every operation. The option is a boolean type.
          */
-        private boolean flushOnEveryOperation;
+        private Boolean flushOnEveryOperation;
 
-        public boolean getFlushOnEveryOperation() {
+        public Boolean getFlushOnEveryOperation() {
             return flushOnEveryOperation;
         }
 
-        public void setFlushOnEveryOperation(boolean flushOnEveryOperation) {
+        public void setFlushOnEveryOperation(Boolean flushOnEveryOperation) {
             this.flushOnEveryOperation = flushOnEveryOperation;
         }
     }

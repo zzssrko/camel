@@ -42,7 +42,7 @@ public class AtmosEndpoint {
         /**
          * Atmos SSL validation. The option is a boolean type.
          */
-        private boolean enableSslValidation;
+        private Boolean enableSslValidation;
         /**
          * Atmos client fullTokenId. The option is a java.lang.String type.
          */
@@ -77,13 +77,13 @@ public class AtmosEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getName() {
             return name;
@@ -101,11 +101,11 @@ public class AtmosEndpoint {
             this.operation = operation;
         }
 
-        public boolean getEnableSslValidation() {
+        public Boolean getEnableSslValidation() {
             return enableSslValidation;
         }
 
-        public void setEnableSslValidation(boolean enableSslValidation) {
+        public void setEnableSslValidation(Boolean enableSslValidation) {
             this.enableSslValidation = enableSslValidation;
         }
 
@@ -165,19 +165,19 @@ public class AtmosEndpoint {
             this.uri = uri;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -192,7 +192,7 @@ public class AtmosEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -207,11 +207,11 @@ public class AtmosEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

@@ -98,13 +98,13 @@ public class CoAPEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public URI getUri() {
             return uri;
@@ -178,19 +178,19 @@ public class CoAPEndpoint {
             this.trustedRpkStore = trustedRpkStore;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -205,7 +205,7 @@ public class CoAPEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Comma separated list of methods that the CoAP consumer will bind to.
          * The default is to bind to all methods (DELETE, GET, POST, PUT). The
@@ -226,11 +226,11 @@ public class CoAPEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

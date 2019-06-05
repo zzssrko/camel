@@ -62,32 +62,32 @@ public class JCacheEndpoint {
          * Whether management gathering is enabled. The option is a boolean
          * type.
          */
-        private boolean managementEnabled;
+        private Boolean managementEnabled;
         /**
          * If read-through caching should be used. The option is a boolean type.
          */
-        private boolean readThrough;
+        private Boolean readThrough;
         /**
          * Whether statistics gathering is enabled. The option is a boolean
          * type.
          */
-        private boolean statisticsEnabled;
+        private Boolean statisticsEnabled;
         /**
          * If cache should use store-by-value or store-by-reference semantics.
          * The option is a boolean type.
          */
-        private boolean storeByValue;
+        private Boolean storeByValue;
         /**
          * If write-through caching should be used. The option is a boolean
          * type.
          */
-        private boolean writeThrough;
+        private Boolean writeThrough;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * The CacheLoader factory. The option is a
          * javax.cache.configuration.Factory<javax.cache.integration.CacheLoader> type.
@@ -102,7 +102,7 @@ public class JCacheEndpoint {
          * Configure if a cache need to be created if it does exist or can't be
          * pre-configured. The option is a boolean type.
          */
-        private boolean createCacheIfNotExists;
+        private Boolean createCacheIfNotExists;
         /**
          * The ExpiryPolicy factory. The option is a
          * javax.cache.configuration.Factory<javax.cache.expiry.ExpiryPolicy>
@@ -113,7 +113,7 @@ public class JCacheEndpoint {
          * Configure if a camel-cache should try to find implementations of
          * jcache api in runtimes like OSGi. The option is a boolean type.
          */
-        private boolean lookupProviders;
+        private Boolean lookupProviders;
 
         public String getCacheName() {
             return cacheName;
@@ -156,51 +156,51 @@ public class JCacheEndpoint {
             this.configurationUri = configurationUri;
         }
 
-        public boolean getManagementEnabled() {
+        public Boolean getManagementEnabled() {
             return managementEnabled;
         }
 
-        public void setManagementEnabled(boolean managementEnabled) {
+        public void setManagementEnabled(Boolean managementEnabled) {
             this.managementEnabled = managementEnabled;
         }
 
-        public boolean getReadThrough() {
+        public Boolean getReadThrough() {
             return readThrough;
         }
 
-        public void setReadThrough(boolean readThrough) {
+        public void setReadThrough(Boolean readThrough) {
             this.readThrough = readThrough;
         }
 
-        public boolean getStatisticsEnabled() {
+        public Boolean getStatisticsEnabled() {
             return statisticsEnabled;
         }
 
-        public void setStatisticsEnabled(boolean statisticsEnabled) {
+        public void setStatisticsEnabled(Boolean statisticsEnabled) {
             this.statisticsEnabled = statisticsEnabled;
         }
 
-        public boolean getStoreByValue() {
+        public Boolean getStoreByValue() {
             return storeByValue;
         }
 
-        public void setStoreByValue(boolean storeByValue) {
+        public void setStoreByValue(Boolean storeByValue) {
             this.storeByValue = storeByValue;
         }
 
-        public boolean getWriteThrough() {
+        public Boolean getWriteThrough() {
             return writeThrough;
         }
 
-        public void setWriteThrough(boolean writeThrough) {
+        public void setWriteThrough(Boolean writeThrough) {
             this.writeThrough = writeThrough;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -220,11 +220,11 @@ public class JCacheEndpoint {
             this.cacheWriterFactory = cacheWriterFactory;
         }
 
-        public boolean getCreateCacheIfNotExists() {
+        public Boolean getCreateCacheIfNotExists() {
             return createCacheIfNotExists;
         }
 
-        public void setCreateCacheIfNotExists(boolean createCacheIfNotExists) {
+        public void setCreateCacheIfNotExists(Boolean createCacheIfNotExists) {
             this.createCacheIfNotExists = createCacheIfNotExists;
         }
 
@@ -236,11 +236,11 @@ public class JCacheEndpoint {
             this.expiryPolicyFactory = expiryPolicyFactory;
         }
 
-        public boolean getLookupProviders() {
+        public Boolean getLookupProviders() {
             return lookupProviders;
         }
 
-        public void setLookupProviders(boolean lookupProviders) {
+        public void setLookupProviders(Boolean lookupProviders) {
             this.lookupProviders = lookupProviders;
         }
     }
@@ -255,7 +255,7 @@ public class JCacheEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Events a consumer should filter. If using filteredEvents option, then
          * eventFilters one will be ignored. The option is a
@@ -266,12 +266,12 @@ public class JCacheEndpoint {
          * if the old value is required for events. The option is a boolean
          * type.
          */
-        private boolean oldValueRequired;
+        private Boolean oldValueRequired;
         /**
          * if the event listener should block the thread causing the event. The
          * option is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * The CacheEntryEventFilter. If using eventFilters option, then
          * filteredEvents one will be ignored. The option is a
@@ -292,11 +292,11 @@ public class JCacheEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -308,19 +308,19 @@ public class JCacheEndpoint {
             this.filteredEvents = filteredEvents;
         }
 
-        public boolean getOldValueRequired() {
+        public Boolean getOldValueRequired() {
             return oldValueRequired;
         }
 
-        public void setOldValueRequired(boolean oldValueRequired) {
+        public void setOldValueRequired(Boolean oldValueRequired) {
             this.oldValueRequired = oldValueRequired;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 

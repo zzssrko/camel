@@ -59,7 +59,7 @@ public class SparkEndpoint {
          * would need manually to reset the reader index on the Spark raw
          * stream. The option is a boolean type.
          */
-        private boolean disableStreamCache;
+        private Boolean disableStreamCache;
         /**
          * If this option is enabled, then during binding from Spark to Camel
          * Message then the headers will be mapped as well (eg added as header
@@ -69,7 +69,7 @@ public class SparkEndpoint {
          * method getRequest() that returns the Spark HTTP request instance. The
          * option is a boolean type.
          */
-        private boolean mapHeaders;
+        private Boolean mapHeaders;
         /**
          * If enabled and an Exchange failed processing on the consumer side,
          * and if the caused Exception was send back serialized in the response
@@ -78,25 +78,25 @@ public class SparkEndpoint {
          * deserialize the incoming data from the request to Java and that can
          * be a potential security risk. The option is a boolean type.
          */
-        private boolean transferException;
+        private Boolean transferException;
         /**
          * If this option is enabled, then during binding from Spark to Camel
          * Message then the header values will be URL decoded (eg %20 will be a
          * space character.). The option is a boolean type.
          */
-        private boolean urlDecodeHeaders;
+        private Boolean urlDecodeHeaders;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Whether or not the consumer should try to find a target consumer by
          * matching the URI prefix if no exact match is found. The option is a
          * boolean type.
          */
-        private boolean matchOnUriPrefix;
+        private Boolean matchOnUriPrefix;
         /**
          * To use a custom SparkBinding to map to/from Camel message. The option
          * is a org.apache.camel.component.sparkrest.SparkBinding type.
@@ -107,7 +107,7 @@ public class SparkEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getVerb() {
             return verb;
@@ -133,51 +133,51 @@ public class SparkEndpoint {
             this.accept = accept;
         }
 
-        public boolean getDisableStreamCache() {
+        public Boolean getDisableStreamCache() {
             return disableStreamCache;
         }
 
-        public void setDisableStreamCache(boolean disableStreamCache) {
+        public void setDisableStreamCache(Boolean disableStreamCache) {
             this.disableStreamCache = disableStreamCache;
         }
 
-        public boolean getMapHeaders() {
+        public Boolean getMapHeaders() {
             return mapHeaders;
         }
 
-        public void setMapHeaders(boolean mapHeaders) {
+        public void setMapHeaders(Boolean mapHeaders) {
             this.mapHeaders = mapHeaders;
         }
 
-        public boolean getTransferException() {
+        public Boolean getTransferException() {
             return transferException;
         }
 
-        public void setTransferException(boolean transferException) {
+        public void setTransferException(Boolean transferException) {
             this.transferException = transferException;
         }
 
-        public boolean getUrlDecodeHeaders() {
+        public Boolean getUrlDecodeHeaders() {
             return urlDecodeHeaders;
         }
 
-        public void setUrlDecodeHeaders(boolean urlDecodeHeaders) {
+        public void setUrlDecodeHeaders(Boolean urlDecodeHeaders) {
             this.urlDecodeHeaders = urlDecodeHeaders;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getMatchOnUriPrefix() {
+        public Boolean getMatchOnUriPrefix() {
             return matchOnUriPrefix;
         }
 
-        public void setMatchOnUriPrefix(boolean matchOnUriPrefix) {
+        public void setMatchOnUriPrefix(Boolean matchOnUriPrefix) {
             this.matchOnUriPrefix = matchOnUriPrefix;
         }
 
@@ -189,11 +189,11 @@ public class SparkEndpoint {
             this.sparkBinding = sparkBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -208,7 +208,7 @@ public class SparkEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -223,11 +223,11 @@ public class SparkEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

@@ -51,7 +51,7 @@ public class ServletEndpoint {
          * response stream as-is as the message body. The option is a boolean
          * type.
          */
-        private boolean disableStreamCache;
+        private Boolean disableStreamCache;
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
@@ -69,7 +69,7 @@ public class ServletEndpoint {
          * and set the content-length header on the response. The option is a
          * boolean type.
          */
-        private boolean chunked;
+        private Boolean chunked;
         /**
          * If enabled and an Exchange failed processing on the consumer side,
          * and if the caused Exception was send back serialized in the response
@@ -81,43 +81,43 @@ public class ServletEndpoint {
          * data from the request to Java and that can be a potential security
          * risk. The option is a boolean type.
          */
-        private boolean transferException;
+        private Boolean transferException;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * If this option is true then IN exchange Body of the exchange will be
          * mapped to HTTP body. Setting this to false will avoid the HTTP
          * mapping. The option is a boolean type.
          */
-        private boolean mapHttpMessageBody;
+        private Boolean mapHttpMessageBody;
         /**
          * If this option is true then IN exchange Form Encoded body of the
          * exchange will be mapped to HTTP. Setting this to false will avoid the
          * HTTP Form Encoded body mapping. The option is a boolean type.
          */
-        private boolean mapHttpMessageFormUrlEncodedBody;
+        private Boolean mapHttpMessageFormUrlEncodedBody;
         /**
          * If this option is true then IN exchange Headers of the exchange will
          * be mapped to HTTP headers. Setting this to false will avoid the HTTP
          * Headers mapping. The option is a boolean type.
          */
-        private boolean mapHttpMessageHeaders;
+        private Boolean mapHttpMessageHeaders;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
-        public boolean getDisableStreamCache() {
+        public Boolean getDisableStreamCache() {
             return disableStreamCache;
         }
 
-        public void setDisableStreamCache(boolean disableStreamCache) {
+        public void setDisableStreamCache(Boolean disableStreamCache) {
             this.disableStreamCache = disableStreamCache;
         }
 
@@ -138,60 +138,60 @@ public class ServletEndpoint {
             this.httpBinding = httpBinding;
         }
 
-        public boolean getChunked() {
+        public Boolean getChunked() {
             return chunked;
         }
 
-        public void setChunked(boolean chunked) {
+        public void setChunked(Boolean chunked) {
             this.chunked = chunked;
         }
 
-        public boolean getTransferException() {
+        public Boolean getTransferException() {
             return transferException;
         }
 
-        public void setTransferException(boolean transferException) {
+        public void setTransferException(Boolean transferException) {
             this.transferException = transferException;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getMapHttpMessageBody() {
+        public Boolean getMapHttpMessageBody() {
             return mapHttpMessageBody;
         }
 
-        public void setMapHttpMessageBody(boolean mapHttpMessageBody) {
+        public void setMapHttpMessageBody(Boolean mapHttpMessageBody) {
             this.mapHttpMessageBody = mapHttpMessageBody;
         }
 
-        public boolean getMapHttpMessageFormUrlEncodedBody() {
+        public Boolean getMapHttpMessageFormUrlEncodedBody() {
             return mapHttpMessageFormUrlEncodedBody;
         }
 
         public void setMapHttpMessageFormUrlEncodedBody(
-                boolean mapHttpMessageFormUrlEncodedBody) {
+                Boolean mapHttpMessageFormUrlEncodedBody) {
             this.mapHttpMessageFormUrlEncodedBody = mapHttpMessageFormUrlEncodedBody;
         }
 
-        public boolean getMapHttpMessageHeaders() {
+        public Boolean getMapHttpMessageHeaders() {
             return mapHttpMessageHeaders;
         }
 
-        public void setMapHttpMessageHeaders(boolean mapHttpMessageHeaders) {
+        public void setMapHttpMessageHeaders(Boolean mapHttpMessageHeaders) {
             this.mapHttpMessageHeaders = mapHttpMessageHeaders;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -205,7 +205,7 @@ public class ServletEndpoint {
          * Configure the consumer to work in async mode. The option is a boolean
          * type.
          */
-        private boolean async;
+        private Boolean async;
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -215,7 +215,7 @@ public class ServletEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Used to only allow consuming if the HttpMethod matches, such as
          * GET/POST/PUT etc. Multiple methods can be specified separated by
@@ -227,7 +227,7 @@ public class ServletEndpoint {
          * matching the URI prefix if no exact match is found. The option is a
          * boolean type.
          */
-        private boolean matchOnUriPrefix;
+        private Boolean matchOnUriPrefix;
         /**
          * To use a custom buffer size on the javax.servlet.ServletResponse. The
          * option is a java.lang.Integer type.
@@ -245,14 +245,14 @@ public class ServletEndpoint {
          * off by default as this may require servlet specific configuration to
          * enable this when using Servlet's. The option is a boolean type.
          */
-        private boolean attachmentMultipartBinding;
+        private Boolean attachmentMultipartBinding;
         /**
          * Whether to eager check whether the HTTP requests has content if the
          * content-length header is 0 or not present. This can be turned on in
          * case HTTP clients do not send streamed data. The option is a boolean
          * type.
          */
-        private boolean eagerCheckContentAvailable;
+        private Boolean eagerCheckContentAvailable;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -276,12 +276,12 @@ public class ServletEndpoint {
          * Specifies whether to enable HTTP OPTIONS for this Servlet consumer.
          * By default OPTIONS is turned off. The option is a boolean type.
          */
-        private boolean optionsEnabled;
+        private Boolean optionsEnabled;
         /**
          * Specifies whether to enable HTTP TRACE for this Servlet consumer. By
          * default TRACE is turned off. The option is a boolean type.
          */
-        private boolean traceEnabled;
+        private Boolean traceEnabled;
 
         public String getContextPath() {
             return contextPath;
@@ -291,19 +291,19 @@ public class ServletEndpoint {
             this.contextPath = contextPath;
         }
 
-        public boolean getAsync() {
+        public Boolean getAsync() {
             return async;
         }
 
-        public void setAsync(boolean async) {
+        public void setAsync(Boolean async) {
             this.async = async;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -315,11 +315,11 @@ public class ServletEndpoint {
             this.httpMethodRestrict = httpMethodRestrict;
         }
 
-        public boolean getMatchOnUriPrefix() {
+        public Boolean getMatchOnUriPrefix() {
             return matchOnUriPrefix;
         }
 
-        public void setMatchOnUriPrefix(boolean matchOnUriPrefix) {
+        public void setMatchOnUriPrefix(Boolean matchOnUriPrefix) {
             this.matchOnUriPrefix = matchOnUriPrefix;
         }
 
@@ -339,21 +339,21 @@ public class ServletEndpoint {
             this.servletName = servletName;
         }
 
-        public boolean getAttachmentMultipartBinding() {
+        public Boolean getAttachmentMultipartBinding() {
             return attachmentMultipartBinding;
         }
 
         public void setAttachmentMultipartBinding(
-                boolean attachmentMultipartBinding) {
+                Boolean attachmentMultipartBinding) {
             this.attachmentMultipartBinding = attachmentMultipartBinding;
         }
 
-        public boolean getEagerCheckContentAvailable() {
+        public Boolean getEagerCheckContentAvailable() {
             return eagerCheckContentAvailable;
         }
 
         public void setEagerCheckContentAvailable(
-                boolean eagerCheckContentAvailable) {
+                Boolean eagerCheckContentAvailable) {
             this.eagerCheckContentAvailable = eagerCheckContentAvailable;
         }
 
@@ -381,19 +381,19 @@ public class ServletEndpoint {
             this.fileNameExtWhitelist = fileNameExtWhitelist;
         }
 
-        public boolean getOptionsEnabled() {
+        public Boolean getOptionsEnabled() {
             return optionsEnabled;
         }
 
-        public void setOptionsEnabled(boolean optionsEnabled) {
+        public void setOptionsEnabled(Boolean optionsEnabled) {
             this.optionsEnabled = optionsEnabled;
         }
 
-        public boolean getTraceEnabled() {
+        public Boolean getTraceEnabled() {
             return traceEnabled;
         }
 
-        public void setTraceEnabled(boolean traceEnabled) {
+        public void setTraceEnabled(Boolean traceEnabled) {
             this.traceEnabled = traceEnabled;
         }
     }

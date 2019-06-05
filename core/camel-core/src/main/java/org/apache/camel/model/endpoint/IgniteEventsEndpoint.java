@@ -40,24 +40,24 @@ public class IgniteEventsEndpoint {
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option is a boolean type.
          */
-        private boolean propagateIncomingBodyIfNoReturnValue;
+        private Boolean propagateIncomingBodyIfNoReturnValue;
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
-        private boolean treatCollectionsAsCacheObjects;
+        private Boolean treatCollectionsAsCacheObjects;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getEndpointId() {
             return endpointId;
@@ -67,37 +67,37 @@ public class IgniteEventsEndpoint {
             this.endpointId = endpointId;
         }
 
-        public boolean getPropagateIncomingBodyIfNoReturnValue() {
+        public Boolean getPropagateIncomingBodyIfNoReturnValue() {
             return propagateIncomingBodyIfNoReturnValue;
         }
 
         public void setPropagateIncomingBodyIfNoReturnValue(
-                boolean propagateIncomingBodyIfNoReturnValue) {
+                Boolean propagateIncomingBodyIfNoReturnValue) {
             this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
         }
 
-        public boolean getTreatCollectionsAsCacheObjects() {
+        public Boolean getTreatCollectionsAsCacheObjects() {
             return treatCollectionsAsCacheObjects;
         }
 
         public void setTreatCollectionsAsCacheObjects(
-                boolean treatCollectionsAsCacheObjects) {
+                Boolean treatCollectionsAsCacheObjects) {
             this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -112,7 +112,7 @@ public class IgniteEventsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * The cluster group expression. The option is a
          * org.apache.camel.component.ignite.ClusterGroupExpression type.
@@ -138,11 +138,11 @@ public class IgniteEventsEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

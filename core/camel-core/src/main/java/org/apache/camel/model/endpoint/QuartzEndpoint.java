@@ -53,12 +53,12 @@ public class QuartzEndpoint {
          * camel Uri. Just ensure the names match. Notice you cannot have both
          * deleteJob and pauseJob set to true. The option is a boolean type.
          */
-        private boolean deleteJob;
+        private Boolean deleteJob;
         /**
          * Whether or not the job should remain stored after it is orphaned (no
          * triggers point to it). The option is a boolean type.
          */
-        private boolean durableJob;
+        private Boolean durableJob;
         /**
          * If set to true, then the trigger automatically pauses when route
          * stop. Else if set to false, it will remain in scheduler. When set to
@@ -66,25 +66,25 @@ public class QuartzEndpoint {
          * camel Uri. Just ensure the names match. Notice you cannot have both
          * deleteJob and pauseJob set to true. The option is a boolean type.
          */
-        private boolean pauseJob;
+        private Boolean pauseJob;
         /**
          * Instructs the scheduler whether or not the job should be re-executed
          * if a 'recovery' or 'fail-over' situation is encountered. The option
          * is a boolean type.
          */
-        private boolean recoverableJob;
+        private Boolean recoverableJob;
         /**
          * Uses a Quartz PersistJobDataAfterExecution and
          * DisallowConcurrentExecution instead of the default job. The option is
          * a boolean type.
          */
-        private boolean stateful;
+        private Boolean stateful;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Specifies a custom calendar to avoid specific range of date. The
          * option is a org.quartz.Calendar type.
@@ -99,13 +99,13 @@ public class QuartzEndpoint {
          * Whether the job name should be prefixed with endpoint id. The option
          * is a boolean type.
          */
-        private boolean prefixJobNameWithEndpointId;
+        private Boolean prefixJobNameWithEndpointId;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * To configure additional options on the trigger. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
@@ -117,28 +117,28 @@ public class QuartzEndpoint {
          * CamelContext management name which could be changed during the deploy
          * time. The option is a boolean type.
          */
-        private boolean usingFixedCamelContextName;
+        private Boolean usingFixedCamelContextName;
         /**
          * Whether or not the scheduler should be auto started. The option is a
          * boolean type.
          */
-        private boolean autoStartScheduler;
+        private Boolean autoStartScheduler;
         /**
          * If it is true will fire the trigger when the route is start when
          * using SimpleTrigger. The option is a boolean type.
          */
-        private boolean fireNow;
+        private Boolean fireNow;
         /**
          * Seconds to wait before starting the quartz scheduler. The option is a
          * int type.
          */
-        private int startDelayedSeconds;
+        private Integer startDelayedSeconds;
         /**
          * In case of scheduler has already started, we want the trigger start
          * slightly after current time to ensure endpoint is fully started
          * before the job kicks in. The option is a long type.
          */
-        private long triggerStartDelay;
+        private Long triggerStartDelay;
 
         public String getGroupName() {
             return groupName;
@@ -164,51 +164,51 @@ public class QuartzEndpoint {
             this.cron = cron;
         }
 
-        public boolean getDeleteJob() {
+        public Boolean getDeleteJob() {
             return deleteJob;
         }
 
-        public void setDeleteJob(boolean deleteJob) {
+        public void setDeleteJob(Boolean deleteJob) {
             this.deleteJob = deleteJob;
         }
 
-        public boolean getDurableJob() {
+        public Boolean getDurableJob() {
             return durableJob;
         }
 
-        public void setDurableJob(boolean durableJob) {
+        public void setDurableJob(Boolean durableJob) {
             this.durableJob = durableJob;
         }
 
-        public boolean getPauseJob() {
+        public Boolean getPauseJob() {
             return pauseJob;
         }
 
-        public void setPauseJob(boolean pauseJob) {
+        public void setPauseJob(Boolean pauseJob) {
             this.pauseJob = pauseJob;
         }
 
-        public boolean getRecoverableJob() {
+        public Boolean getRecoverableJob() {
             return recoverableJob;
         }
 
-        public void setRecoverableJob(boolean recoverableJob) {
+        public void setRecoverableJob(Boolean recoverableJob) {
             this.recoverableJob = recoverableJob;
         }
 
-        public boolean getStateful() {
+        public Boolean getStateful() {
             return stateful;
         }
 
-        public void setStateful(boolean stateful) {
+        public void setStateful(Boolean stateful) {
             this.stateful = stateful;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -228,20 +228,20 @@ public class QuartzEndpoint {
             this.jobParameters = jobParameters;
         }
 
-        public boolean getPrefixJobNameWithEndpointId() {
+        public Boolean getPrefixJobNameWithEndpointId() {
             return prefixJobNameWithEndpointId;
         }
 
         public void setPrefixJobNameWithEndpointId(
-                boolean prefixJobNameWithEndpointId) {
+                Boolean prefixJobNameWithEndpointId) {
             this.prefixJobNameWithEndpointId = prefixJobNameWithEndpointId;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -253,44 +253,44 @@ public class QuartzEndpoint {
             this.triggerParameters = triggerParameters;
         }
 
-        public boolean getUsingFixedCamelContextName() {
+        public Boolean getUsingFixedCamelContextName() {
             return usingFixedCamelContextName;
         }
 
         public void setUsingFixedCamelContextName(
-                boolean usingFixedCamelContextName) {
+                Boolean usingFixedCamelContextName) {
             this.usingFixedCamelContextName = usingFixedCamelContextName;
         }
 
-        public boolean getAutoStartScheduler() {
+        public Boolean getAutoStartScheduler() {
             return autoStartScheduler;
         }
 
-        public void setAutoStartScheduler(boolean autoStartScheduler) {
+        public void setAutoStartScheduler(Boolean autoStartScheduler) {
             this.autoStartScheduler = autoStartScheduler;
         }
 
-        public boolean getFireNow() {
+        public Boolean getFireNow() {
             return fireNow;
         }
 
-        public void setFireNow(boolean fireNow) {
+        public void setFireNow(Boolean fireNow) {
             this.fireNow = fireNow;
         }
 
-        public int getStartDelayedSeconds() {
+        public Integer getStartDelayedSeconds() {
             return startDelayedSeconds;
         }
 
-        public void setStartDelayedSeconds(int startDelayedSeconds) {
+        public void setStartDelayedSeconds(Integer startDelayedSeconds) {
             this.startDelayedSeconds = startDelayedSeconds;
         }
 
-        public long getTriggerStartDelay() {
+        public Long getTriggerStartDelay() {
             return triggerStartDelay;
         }
 
-        public void setTriggerStartDelay(long triggerStartDelay) {
+        public void setTriggerStartDelay(Long triggerStartDelay) {
             this.triggerStartDelay = triggerStartDelay;
         }
     }
@@ -305,7 +305,7 @@ public class QuartzEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -320,11 +320,11 @@ public class QuartzEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

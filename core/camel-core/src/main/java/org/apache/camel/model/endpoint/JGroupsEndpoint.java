@@ -46,13 +46,13 @@ public class JGroupsEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getClusterName() {
             return clusterName;
@@ -70,19 +70,19 @@ public class JGroupsEndpoint {
             this.channelProperties = channelProperties;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -97,14 +97,14 @@ public class JGroupsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * If set to true, the consumer endpoint will receive org.jgroups.View
          * messages as well (not only org.jgroups.Message instances). By default
          * only regular messages are consumed by the endpoint. The option is a
          * boolean type.
          */
-        private boolean enableViewMessages;
+        private Boolean enableViewMessages;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -119,19 +119,19 @@ public class JGroupsEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getEnableViewMessages() {
+        public Boolean getEnableViewMessages() {
             return enableViewMessages;
         }
 
-        public void setEnableViewMessages(boolean enableViewMessages) {
+        public void setEnableViewMessages(Boolean enableViewMessages) {
             this.enableViewMessages = enableViewMessages;
         }
 

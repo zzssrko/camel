@@ -58,7 +58,7 @@ public class Web3jEndpoint {
          * If true it returns the full transaction objects, if false only the
          * hashes of the transactions. The option is a boolean type.
          */
-        private boolean fullTransactionObjects;
+        private Boolean fullTransactionObjects;
         /**
          * The maximum gas allowed in this block. The option is a
          * java.math.BigInteger type.
@@ -72,7 +72,7 @@ public class Web3jEndpoint {
         /**
          * If true, this will support Quorum API. The option is a boolean type.
          */
-        private boolean quorumAPI;
+        private Boolean quorumAPI;
         /**
          * The address the transaction is directed to. The option is a
          * java.lang.String type.
@@ -100,13 +100,13 @@ public class Web3jEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getNodeAddress() {
             return nodeAddress;
@@ -140,11 +140,11 @@ public class Web3jEndpoint {
             this.fromBlock = fromBlock;
         }
 
-        public boolean getFullTransactionObjects() {
+        public Boolean getFullTransactionObjects() {
             return fullTransactionObjects;
         }
 
-        public void setFullTransactionObjects(boolean fullTransactionObjects) {
+        public void setFullTransactionObjects(Boolean fullTransactionObjects) {
             this.fullTransactionObjects = fullTransactionObjects;
         }
 
@@ -164,11 +164,11 @@ public class Web3jEndpoint {
             this.privateFor = privateFor;
         }
 
-        public boolean getQuorumAPI() {
+        public Boolean getQuorumAPI() {
             return quorumAPI;
         }
 
-        public void setQuorumAPI(boolean quorumAPI) {
+        public void setQuorumAPI(Boolean quorumAPI) {
             this.quorumAPI = quorumAPI;
         }
 
@@ -204,19 +204,19 @@ public class Web3jEndpoint {
             this.web3j = web3j;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -231,7 +231,7 @@ public class Web3jEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -246,11 +246,11 @@ public class Web3jEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

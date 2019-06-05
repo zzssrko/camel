@@ -64,13 +64,13 @@ public class CryptoCmsEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Sets the password of the private keys. It is assumed that all private
          * keys in the keystore have the same password. If not set then it is
@@ -78,7 +78,7 @@ public class CryptoCmsEndpoint {
          * keystore password given in the KeyStoreParameters. The option is a
          * char[] type.
          */
-        private char[] password;
+        private Character[] password;
         /**
          * If true then the CMS message is base 64 encoded and must be decoded
          * during the processing. Default value is false. The option is a
@@ -117,7 +117,7 @@ public class CryptoCmsEndpoint {
          * Camellia/CBC/PKCS5Padding also the key lengths 192 and 256 are
          * possible. The option is a int type.
          */
-        private int secretKeyLength;
+        private Integer secretKeyLength;
         /**
          * Provider of the generator for the unprotected attributes. The default
          * value is null which means no unprotected attribute is added to the
@@ -193,27 +193,27 @@ public class CryptoCmsEndpoint {
             this.keyStoreParameters = keyStoreParameters;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public char[] getPassword() {
+        public Character[] getPassword() {
             return password;
         }
 
-        public void setPassword(char[] password) {
+        public void setPassword(Character[] password) {
             this.password = password;
         }
 
@@ -251,11 +251,11 @@ public class CryptoCmsEndpoint {
             this.recipient = recipient;
         }
 
-        public int getSecretKeyLength() {
+        public Integer getSecretKeyLength() {
             return secretKeyLength;
         }
 
-        public void setSecretKeyLength(int secretKeyLength) {
+        public void setSecretKeyLength(Integer secretKeyLength) {
             this.secretKeyLength = secretKeyLength;
         }
 

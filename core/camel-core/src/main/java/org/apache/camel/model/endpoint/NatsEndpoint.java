@@ -44,62 +44,62 @@ public class NatsEndpoint {
          * Timeout for connection attempts. (in milliseconds). The option is a
          * int type.
          */
-        private int connectionTimeout;
+        private Integer connectionTimeout;
         /**
          * Define if we want to flush connection or not. The option is a boolean
          * type.
          */
-        private boolean flushConnection;
+        private Boolean flushConnection;
         /**
          * Set the flush timeout (in milliseconds). The option is a int type.
          */
-        private int flushTimeout;
+        private Integer flushTimeout;
         /**
          * maximum number of pings have not received a response allowed by the
          * client. The option is a int type.
          */
-        private int maxPingsOut;
+        private Integer maxPingsOut;
         /**
          * Max reconnection attempts. The option is a int type.
          */
-        private int maxReconnectAttempts;
+        private Integer maxReconnectAttempts;
         /**
          * Turn off echo. If supported by the gnatsd version you are connecting
          * to this flag will prevent the server from echoing messages back to
          * the connection if it has subscriptions on the subject being published
          * to. The option is a boolean type.
          */
-        private boolean noEcho;
+        private Boolean noEcho;
         /**
          * Whether or not randomizing the order of servers for the connection
          * attempts. The option is a boolean type.
          */
-        private boolean noRandomizeServers;
+        private Boolean noRandomizeServers;
         /**
          * Whether or not running in pedantic mode (this affects performace).
          * The option is a boolean type.
          */
-        private boolean pedantic;
+        private Boolean pedantic;
         /**
          * Ping interval to be aware if connection is still alive (in
          * milliseconds). The option is a int type.
          */
-        private int pingInterval;
+        private Integer pingInterval;
         /**
          * Whether or not using reconnection feature. The option is a boolean
          * type.
          */
-        private boolean reconnect;
+        private Boolean reconnect;
         /**
          * Waiting time before attempts reconnection (in milliseconds). The
          * option is a int type.
          */
-        private int reconnectTimeWait;
+        private Integer reconnectTimeWait;
         /**
          * Interval to clean up cancelled/timed out requests. The option is a
          * int type.
          */
-        private int requestCleanupInterval;
+        private Integer requestCleanupInterval;
         /**
          * The name of topic we want to use. The option is a java.lang.String
          * type.
@@ -108,24 +108,24 @@ public class NatsEndpoint {
         /**
          * Whether or not running in verbose mode. The option is a boolean type.
          */
-        private boolean verbose;
+        private Boolean verbose;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Set secure option indicating TLS is required. The option is a boolean
          * type.
          */
-        private boolean secure;
+        private Boolean secure;
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
@@ -148,99 +148,99 @@ public class NatsEndpoint {
             this.connection = connection;
         }
 
-        public int getConnectionTimeout() {
+        public Integer getConnectionTimeout() {
             return connectionTimeout;
         }
 
-        public void setConnectionTimeout(int connectionTimeout) {
+        public void setConnectionTimeout(Integer connectionTimeout) {
             this.connectionTimeout = connectionTimeout;
         }
 
-        public boolean getFlushConnection() {
+        public Boolean getFlushConnection() {
             return flushConnection;
         }
 
-        public void setFlushConnection(boolean flushConnection) {
+        public void setFlushConnection(Boolean flushConnection) {
             this.flushConnection = flushConnection;
         }
 
-        public int getFlushTimeout() {
+        public Integer getFlushTimeout() {
             return flushTimeout;
         }
 
-        public void setFlushTimeout(int flushTimeout) {
+        public void setFlushTimeout(Integer flushTimeout) {
             this.flushTimeout = flushTimeout;
         }
 
-        public int getMaxPingsOut() {
+        public Integer getMaxPingsOut() {
             return maxPingsOut;
         }
 
-        public void setMaxPingsOut(int maxPingsOut) {
+        public void setMaxPingsOut(Integer maxPingsOut) {
             this.maxPingsOut = maxPingsOut;
         }
 
-        public int getMaxReconnectAttempts() {
+        public Integer getMaxReconnectAttempts() {
             return maxReconnectAttempts;
         }
 
-        public void setMaxReconnectAttempts(int maxReconnectAttempts) {
+        public void setMaxReconnectAttempts(Integer maxReconnectAttempts) {
             this.maxReconnectAttempts = maxReconnectAttempts;
         }
 
-        public boolean getNoEcho() {
+        public Boolean getNoEcho() {
             return noEcho;
         }
 
-        public void setNoEcho(boolean noEcho) {
+        public void setNoEcho(Boolean noEcho) {
             this.noEcho = noEcho;
         }
 
-        public boolean getNoRandomizeServers() {
+        public Boolean getNoRandomizeServers() {
             return noRandomizeServers;
         }
 
-        public void setNoRandomizeServers(boolean noRandomizeServers) {
+        public void setNoRandomizeServers(Boolean noRandomizeServers) {
             this.noRandomizeServers = noRandomizeServers;
         }
 
-        public boolean getPedantic() {
+        public Boolean getPedantic() {
             return pedantic;
         }
 
-        public void setPedantic(boolean pedantic) {
+        public void setPedantic(Boolean pedantic) {
             this.pedantic = pedantic;
         }
 
-        public int getPingInterval() {
+        public Integer getPingInterval() {
             return pingInterval;
         }
 
-        public void setPingInterval(int pingInterval) {
+        public void setPingInterval(Integer pingInterval) {
             this.pingInterval = pingInterval;
         }
 
-        public boolean getReconnect() {
+        public Boolean getReconnect() {
             return reconnect;
         }
 
-        public void setReconnect(boolean reconnect) {
+        public void setReconnect(Boolean reconnect) {
             this.reconnect = reconnect;
         }
 
-        public int getReconnectTimeWait() {
+        public Integer getReconnectTimeWait() {
             return reconnectTimeWait;
         }
 
-        public void setReconnectTimeWait(int reconnectTimeWait) {
+        public void setReconnectTimeWait(Integer reconnectTimeWait) {
             this.reconnectTimeWait = reconnectTimeWait;
         }
 
-        public int getRequestCleanupInterval() {
+        public Integer getRequestCleanupInterval() {
             return requestCleanupInterval;
         }
 
-        public void setRequestCleanupInterval(int requestCleanupInterval) {
+        public void setRequestCleanupInterval(Integer requestCleanupInterval) {
             this.requestCleanupInterval = requestCleanupInterval;
         }
 
@@ -252,35 +252,35 @@ public class NatsEndpoint {
             this.topic = topic;
         }
 
-        public boolean getVerbose() {
+        public Boolean getVerbose() {
             return verbose;
         }
 
-        public void setVerbose(boolean verbose) {
+        public void setVerbose(Boolean verbose) {
             this.verbose = verbose;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getSecure() {
+        public Boolean getSecure() {
             return secure;
         }
 
-        public void setSecure(boolean secure) {
+        public void setSecure(Boolean secure) {
             this.secure = secure;
         }
 
@@ -303,7 +303,7 @@ public class NatsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Stop receiving messages from a topic we are subscribing to after
          * maxMessages. The option is a java.lang.String type.
@@ -312,7 +312,7 @@ public class NatsEndpoint {
         /**
          * Consumer pool size. The option is a int type.
          */
-        private int poolSize;
+        private Integer poolSize;
         /**
          * The Queue name if we are using nats for a queue configuration. The
          * option is a java.lang.String type.
@@ -332,11 +332,11 @@ public class NatsEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -348,11 +348,11 @@ public class NatsEndpoint {
             this.maxMessages = maxMessages;
         }
 
-        public int getPoolSize() {
+        public Integer getPoolSize() {
             return poolSize;
         }
 
-        public void setPoolSize(int poolSize) {
+        public void setPoolSize(Integer poolSize) {
             this.poolSize = poolSize;
         }
 

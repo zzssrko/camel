@@ -46,18 +46,18 @@ public class SmppEndpoint {
          * tries to reconnect to the SMSC, after the connection was lost. The
          * option is a long type.
          */
-        private long initialReconnectDelay;
+        private Long initialReconnectDelay;
         /**
          * Defines the maximum number of attempts to reconnect to the SMSC, if
          * SMSC returns a negative bind response. The option is a int type.
          */
-        private int maxReconnect;
+        private Integer maxReconnect;
         /**
          * Defines the interval in milliseconds between the reconnect attempts,
          * if the connection to the SMSC was lost and the previous was not
          * succeed. The option is a long type.
          */
-        private long reconnectDelay;
+        private Long reconnectDelay;
         /**
          * You can specify a policy for handling long messages: ALLOW - the
          * default, long messages are split to 140 bytes per message TRUNCATE -
@@ -81,7 +81,7 @@ public class SmppEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Defines the interval in milliseconds between the confidence checks.
          * The confidence check is used to test the communication path between
@@ -99,7 +99,7 @@ public class SmppEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Defines the maximum period of inactivity allowed after a transaction,
          * after which an SMPP entity may assume that the session is no longer
@@ -112,7 +112,7 @@ public class SmppEndpoint {
          * section 5.2.19. 0: SMSC Default Alphabet 4: 8 bit Alphabet 8: UCS2
          * Alphabet. The option is a byte type.
          */
-        private byte alphabet;
+        private Byte alphabet;
         /**
          * Defines the data coding according the SMPP 3.4 specification, section
          * 5.2.19. Example data encodings are: 0: SMSC Default Alphabet 3: Latin
@@ -120,7 +120,7 @@ public class SmppEndpoint {
          * (ISO/IEC-10646) 13: Extended Kanji JIS(X 0212-1990). The option is a
          * byte type.
          */
-        private byte dataCoding;
+        private Byte dataCoding;
         /**
          * Defines the encoding scheme of the short message user data. Only for
          * SubmitSm, ReplaceSm and SubmitMulti. The option is a java.lang.String
@@ -171,7 +171,7 @@ public class SmppEndpoint {
          * Whether using SSL with the smpps protocol. The option is a boolean
          * type.
          */
-        private boolean usingSSL;
+        private Boolean usingSSL;
 
         public String getHost() {
             return host;
@@ -189,27 +189,27 @@ public class SmppEndpoint {
             this.port = port;
         }
 
-        public long getInitialReconnectDelay() {
+        public Long getInitialReconnectDelay() {
             return initialReconnectDelay;
         }
 
-        public void setInitialReconnectDelay(long initialReconnectDelay) {
+        public void setInitialReconnectDelay(Long initialReconnectDelay) {
             this.initialReconnectDelay = initialReconnectDelay;
         }
 
-        public int getMaxReconnect() {
+        public Integer getMaxReconnect() {
             return maxReconnect;
         }
 
-        public void setMaxReconnect(int maxReconnect) {
+        public void setMaxReconnect(Integer maxReconnect) {
             this.maxReconnect = maxReconnect;
         }
 
-        public long getReconnectDelay() {
+        public Long getReconnectDelay() {
             return reconnectDelay;
         }
 
-        public void setReconnectDelay(long reconnectDelay) {
+        public void setReconnectDelay(Long reconnectDelay) {
             this.reconnectDelay = reconnectDelay;
         }
 
@@ -229,11 +229,11 @@ public class SmppEndpoint {
             this.systemType = systemType;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -253,11 +253,11 @@ public class SmppEndpoint {
             this.sessionStateListener = sessionStateListener;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -269,19 +269,19 @@ public class SmppEndpoint {
             this.transactionTimer = transactionTimer;
         }
 
-        public byte getAlphabet() {
+        public Byte getAlphabet() {
             return alphabet;
         }
 
-        public void setAlphabet(byte alphabet) {
+        public void setAlphabet(Byte alphabet) {
             this.alphabet = alphabet;
         }
 
-        public byte getDataCoding() {
+        public Byte getDataCoding() {
             return dataCoding;
         }
 
-        public void setDataCoding(byte dataCoding) {
+        public void setDataCoding(Byte dataCoding) {
             this.dataCoding = dataCoding;
         }
 
@@ -349,11 +349,11 @@ public class SmppEndpoint {
             this.systemId = systemId;
         }
 
-        public boolean getUsingSSL() {
+        public Boolean getUsingSSL() {
             return usingSSL;
         }
 
-        public void setUsingSSL(boolean usingSSL) {
+        public void setUsingSSL(Boolean usingSSL) {
             this.usingSSL = usingSSL;
         }
     }
@@ -375,7 +375,7 @@ public class SmppEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -398,11 +398,11 @@ public class SmppEndpoint {
             this.addressRange = addressRange;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -439,7 +439,7 @@ public class SmppEndpoint {
          * National 9: Private 10: ERMES 13: Internet (IP) 18: WAP Client Id (to
          * be defined by WAP Forum). The option is a byte type.
          */
-        private byte destAddrNpi;
+        private Byte destAddrNpi;
         /**
          * Defines the type of number (TON) to be used in the SME destination
          * address parameters. Only for SubmitSm, SubmitMulti, CancelSm and
@@ -447,7 +447,7 @@ public class SmppEndpoint {
          * International 2: National 3: Network Specific 4: Subscriber Number 5:
          * Alphanumeric 6: Abbreviated. The option is a byte type.
          */
-        private byte destAddrTon;
+        private Byte destAddrTon;
         /**
          * Sessions can be lazily created to avoid exceptions, if the SMSC is
          * not available when the Camel producer is started. Camel will check
@@ -455,7 +455,7 @@ public class SmppEndpoint {
          * the first exchange. If they are present, Camel will use these data to
          * connect to the SMSC. The option is a boolean type.
          */
-        private boolean lazySessionCreation;
+        private Boolean lazySessionCreation;
         /**
          * Defines the numeric plan indicator (NPI) to be used in the SME. The
          * following NPI values are defined: 0: Unknown 1: ISDN (E163/E164) 2:
@@ -463,18 +463,18 @@ public class SmppEndpoint {
          * Private 10: ERMES 13: Internet (IP) 18: WAP Client Id (to be defined
          * by WAP Forum). The option is a byte type.
          */
-        private byte numberingPlanIndicator;
+        private Byte numberingPlanIndicator;
         /**
          * Allows the originating SME to assign a priority level to the short
          * message. Only for SubmitSm and SubmitMulti. Four Priority Levels are
          * supported: 0: Level 0 (lowest) priority 1: Level 1 priority 2: Level
          * 2 priority 3: Level 3 (highest) priority. The option is a byte type.
          */
-        private byte priorityFlag;
+        private Byte priorityFlag;
         /**
          * The protocol id. The option is a byte type.
          */
-        private byte protocolId;
+        private Byte protocolId;
         /**
          * Is used to request an SMSC delivery receipt and/or SME originated
          * acknowledgements. The following values are defined: 0: No SMSC
@@ -483,7 +483,7 @@ public class SmppEndpoint {
          * receipt requested where the final delivery outcome is delivery
          * failure. The option is a byte type.
          */
-        private byte registeredDelivery;
+        private Byte registeredDelivery;
         /**
          * Used to request the SMSC to replace a previously submitted message,
          * that is still pending delivery. The SMSC will replace an existing
@@ -492,7 +492,7 @@ public class SmppEndpoint {
          * replace if present flag values are defined: 0: Don't replace 1:
          * Replace. The option is a byte type.
          */
-        private byte replaceIfPresentFlag;
+        private Byte replaceIfPresentFlag;
         /**
          * The service type parameter can be used to indicate the SMS
          * Application service associated with the message. The following
@@ -515,21 +515,21 @@ public class SmppEndpoint {
          * (IP) 18: WAP Client Id (to be defined by WAP Forum). The option is a
          * byte type.
          */
-        private byte sourceAddrNpi;
+        private Byte sourceAddrNpi;
         /**
          * Defines the type of number (TON) to be used in the SME originator
          * address parameters. The following TON values are defined: 0: Unknown
          * 1: International 2: National 3: Network Specific 4: Subscriber Number
          * 5: Alphanumeric 6: Abbreviated. The option is a byte type.
          */
-        private byte sourceAddrTon;
+        private Byte sourceAddrTon;
         /**
          * Defines the type of number (TON) to be used in the SME. The following
          * TON values are defined: 0: Unknown 1: International 2: National 3:
          * Network Specific 4: Subscriber Number 5: Alphanumeric 6: Abbreviated.
          * The option is a byte type.
          */
-        private byte typeOfNumber;
+        private Byte typeOfNumber;
 
         public String getDestAddr() {
             return destAddr;
@@ -539,67 +539,67 @@ public class SmppEndpoint {
             this.destAddr = destAddr;
         }
 
-        public byte getDestAddrNpi() {
+        public Byte getDestAddrNpi() {
             return destAddrNpi;
         }
 
-        public void setDestAddrNpi(byte destAddrNpi) {
+        public void setDestAddrNpi(Byte destAddrNpi) {
             this.destAddrNpi = destAddrNpi;
         }
 
-        public byte getDestAddrTon() {
+        public Byte getDestAddrTon() {
             return destAddrTon;
         }
 
-        public void setDestAddrTon(byte destAddrTon) {
+        public void setDestAddrTon(Byte destAddrTon) {
             this.destAddrTon = destAddrTon;
         }
 
-        public boolean getLazySessionCreation() {
+        public Boolean getLazySessionCreation() {
             return lazySessionCreation;
         }
 
-        public void setLazySessionCreation(boolean lazySessionCreation) {
+        public void setLazySessionCreation(Boolean lazySessionCreation) {
             this.lazySessionCreation = lazySessionCreation;
         }
 
-        public byte getNumberingPlanIndicator() {
+        public Byte getNumberingPlanIndicator() {
             return numberingPlanIndicator;
         }
 
-        public void setNumberingPlanIndicator(byte numberingPlanIndicator) {
+        public void setNumberingPlanIndicator(Byte numberingPlanIndicator) {
             this.numberingPlanIndicator = numberingPlanIndicator;
         }
 
-        public byte getPriorityFlag() {
+        public Byte getPriorityFlag() {
             return priorityFlag;
         }
 
-        public void setPriorityFlag(byte priorityFlag) {
+        public void setPriorityFlag(Byte priorityFlag) {
             this.priorityFlag = priorityFlag;
         }
 
-        public byte getProtocolId() {
+        public Byte getProtocolId() {
             return protocolId;
         }
 
-        public void setProtocolId(byte protocolId) {
+        public void setProtocolId(Byte protocolId) {
             this.protocolId = protocolId;
         }
 
-        public byte getRegisteredDelivery() {
+        public Byte getRegisteredDelivery() {
             return registeredDelivery;
         }
 
-        public void setRegisteredDelivery(byte registeredDelivery) {
+        public void setRegisteredDelivery(Byte registeredDelivery) {
             this.registeredDelivery = registeredDelivery;
         }
 
-        public byte getReplaceIfPresentFlag() {
+        public Byte getReplaceIfPresentFlag() {
             return replaceIfPresentFlag;
         }
 
-        public void setReplaceIfPresentFlag(byte replaceIfPresentFlag) {
+        public void setReplaceIfPresentFlag(Byte replaceIfPresentFlag) {
             this.replaceIfPresentFlag = replaceIfPresentFlag;
         }
 
@@ -619,27 +619,27 @@ public class SmppEndpoint {
             this.sourceAddr = sourceAddr;
         }
 
-        public byte getSourceAddrNpi() {
+        public Byte getSourceAddrNpi() {
             return sourceAddrNpi;
         }
 
-        public void setSourceAddrNpi(byte sourceAddrNpi) {
+        public void setSourceAddrNpi(Byte sourceAddrNpi) {
             this.sourceAddrNpi = sourceAddrNpi;
         }
 
-        public byte getSourceAddrTon() {
+        public Byte getSourceAddrTon() {
             return sourceAddrTon;
         }
 
-        public void setSourceAddrTon(byte sourceAddrTon) {
+        public void setSourceAddrTon(Byte sourceAddrTon) {
             this.sourceAddrTon = sourceAddrTon;
         }
 
-        public byte getTypeOfNumber() {
+        public Byte getTypeOfNumber() {
             return typeOfNumber;
         }
 
-        public void setTypeOfNumber(byte typeOfNumber) {
+        public void setTypeOfNumber(Byte typeOfNumber) {
             this.typeOfNumber = typeOfNumber;
         }
     }

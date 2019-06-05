@@ -37,7 +37,7 @@ public class FlinkEndpoint {
          * Indicates if results should be collected or counted. The option is a
          * boolean type.
          */
-        private boolean collect;
+        private Boolean collect;
         /**
          * DataSet to compute against. The option is a
          * org.apache.flink.api.java.DataSet type.
@@ -63,13 +63,13 @@ public class FlinkEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public EndpointType getEndpointType() {
             return endpointType;
@@ -79,11 +79,11 @@ public class FlinkEndpoint {
             this.endpointType = endpointType;
         }
 
-        public boolean getCollect() {
+        public Boolean getCollect() {
             return collect;
         }
 
-        public void setCollect(boolean collect) {
+        public void setCollect(Boolean collect) {
             this.collect = collect;
         }
 
@@ -119,19 +119,19 @@ public class FlinkEndpoint {
             this.dataStreamCallback = dataStreamCallback;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

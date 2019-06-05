@@ -59,7 +59,7 @@ public class WebsocketEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Set the buffer size of the websocketServlet, which is also the max
          * frame byte size (default 8192). The option is a java.lang.Integer
@@ -89,7 +89,7 @@ public class WebsocketEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * The CORS allowed origins. Use to allow all. The option is a
          * java.lang.String type.
@@ -98,7 +98,7 @@ public class WebsocketEndpoint {
         /**
          * Whether to enable CORS. The option is a boolean type.
          */
-        private boolean crossOriginFilterOn;
+        private Boolean crossOriginFilterOn;
         /**
          * Context path for filtering CORS. The option is a java.lang.String
          * type.
@@ -109,7 +109,7 @@ public class WebsocketEndpoint {
          * endpoint. See Jetty JMX support for more details. The option is a
          * boolean type.
          */
-        private boolean enableJmx;
+        private Boolean enableJmx;
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
@@ -148,11 +148,11 @@ public class WebsocketEndpoint {
             this.maxBinaryMessageSize = maxBinaryMessageSize;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -188,11 +188,11 @@ public class WebsocketEndpoint {
             this.minVersion = minVersion;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -204,11 +204,11 @@ public class WebsocketEndpoint {
             this.allowedOrigins = allowedOrigins;
         }
 
-        public boolean getCrossOriginFilterOn() {
+        public Boolean getCrossOriginFilterOn() {
             return crossOriginFilterOn;
         }
 
-        public void setCrossOriginFilterOn(boolean crossOriginFilterOn) {
+        public void setCrossOriginFilterOn(Boolean crossOriginFilterOn) {
             this.crossOriginFilterOn = crossOriginFilterOn;
         }
 
@@ -220,11 +220,11 @@ public class WebsocketEndpoint {
             this.filterPath = filterPath;
         }
 
-        public boolean getEnableJmx() {
+        public Boolean getEnableJmx() {
             return enableJmx;
         }
 
-        public void setEnableJmx(boolean enableJmx) {
+        public void setEnableJmx(Boolean enableJmx) {
             this.enableJmx = enableJmx;
         }
 
@@ -247,12 +247,12 @@ public class WebsocketEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Whether to enable session support which enables HttpSession for each
          * http request. The option is a boolean type.
          */
-        private boolean sessionSupport;
+        private Boolean sessionSupport;
         /**
          * Set a resource path for static resources (such as .html files etc).
          * The resources can be loaded from classpath, if you prefix with
@@ -277,19 +277,19 @@ public class WebsocketEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getSessionSupport() {
+        public Boolean getSessionSupport() {
             return sessionSupport;
         }
 
-        public void setSessionSupport(boolean sessionSupport) {
+        public void setSessionSupport(Boolean sessionSupport) {
             this.sessionSupport = sessionSupport;
         }
 

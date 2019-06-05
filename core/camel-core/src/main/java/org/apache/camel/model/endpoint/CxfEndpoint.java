@@ -67,7 +67,7 @@ public class CxfEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use a custom configured CXF Bus. The option is a
          * org.apache.cxf.Bus type.
@@ -78,7 +78,7 @@ public class CxfEndpoint {
          * be used in CxfConsumer by default when the CXF server is using Jetty
          * or Servlet transport. The option is a long type.
          */
-        private long continuationTimeout;
+        private Long continuationTimeout;
         /**
          * To use a custom CxfBinding to control the binding between Camel
          * Message and CXF Message. The option is a
@@ -98,7 +98,7 @@ public class CxfEndpoint {
          * Will set the default bus when CXF endpoint create a bus by itself.
          * The option is a boolean type.
          */
-        private boolean defaultBus;
+        private Boolean defaultBus;
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
@@ -110,12 +110,12 @@ public class CxfEndpoint {
          * headers between Camel and CXF becomes more consistent and similar.
          * For more details see CAMEL-6393. The option is a boolean type.
          */
-        private boolean mergeProtocolHeaders;
+        private Boolean mergeProtocolHeaders;
         /**
          * To enable MTOM (attachments). This requires to use POJO or PAYLOAD
          * data format mode. The option is a boolean type.
          */
-        private boolean mtomEnabled;
+        private Boolean mtomEnabled;
         /**
          * To set additional CXF options using the key/value pairs from the Map.
          * For example to turn on stacktraces in SOAP faults,
@@ -127,29 +127,29 @@ public class CxfEndpoint {
          * Sets whether SOAP message validation should be disabled. The option
          * is a boolean type.
          */
-        private boolean skipPayloadMessagePartCheck;
+        private Boolean skipPayloadMessagePartCheck;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * This option enables CXF Logging Feature which writes inbound and
          * outbound SOAP messages to log. The option is a boolean type.
          */
-        private boolean loggingFeatureEnabled;
+        private Boolean loggingFeatureEnabled;
         /**
          * To limit the total size of number of bytes the logger will output
          * when logging feature has been enabled and -1 for no limit. The option
          * is a int type.
          */
-        private int loggingSizeLimit;
+        private Integer loggingSizeLimit;
         /**
          * This option controls whether the PhaseInterceptorChain skips logging
          * the Fault that it catches. The option is a boolean type.
          */
-        private boolean skipFaultLogging;
+        private Boolean skipFaultLogging;
         /**
          * This option is used to set the basic authentication information of
          * password for the CXF client. The option is a java.lang.String type.
@@ -234,11 +234,11 @@ public class CxfEndpoint {
             this.allowStreaming = allowStreaming;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -250,11 +250,11 @@ public class CxfEndpoint {
             this.bus = bus;
         }
 
-        public long getContinuationTimeout() {
+        public Long getContinuationTimeout() {
             return continuationTimeout;
         }
 
-        public void setContinuationTimeout(long continuationTimeout) {
+        public void setContinuationTimeout(Long continuationTimeout) {
             this.continuationTimeout = continuationTimeout;
         }
 
@@ -274,11 +274,11 @@ public class CxfEndpoint {
             this.cxfEndpointConfigurer = cxfEndpointConfigurer;
         }
 
-        public boolean getDefaultBus() {
+        public Boolean getDefaultBus() {
             return defaultBus;
         }
 
-        public void setDefaultBus(boolean defaultBus) {
+        public void setDefaultBus(Boolean defaultBus) {
             this.defaultBus = defaultBus;
         }
 
@@ -291,19 +291,19 @@ public class CxfEndpoint {
             this.headerFilterStrategy = headerFilterStrategy;
         }
 
-        public boolean getMergeProtocolHeaders() {
+        public Boolean getMergeProtocolHeaders() {
             return mergeProtocolHeaders;
         }
 
-        public void setMergeProtocolHeaders(boolean mergeProtocolHeaders) {
+        public void setMergeProtocolHeaders(Boolean mergeProtocolHeaders) {
             this.mergeProtocolHeaders = mergeProtocolHeaders;
         }
 
-        public boolean getMtomEnabled() {
+        public Boolean getMtomEnabled() {
             return mtomEnabled;
         }
 
-        public void setMtomEnabled(boolean mtomEnabled) {
+        public void setMtomEnabled(Boolean mtomEnabled) {
             this.mtomEnabled = mtomEnabled;
         }
 
@@ -315,44 +315,44 @@ public class CxfEndpoint {
             this.properties = properties;
         }
 
-        public boolean getSkipPayloadMessagePartCheck() {
+        public Boolean getSkipPayloadMessagePartCheck() {
             return skipPayloadMessagePartCheck;
         }
 
         public void setSkipPayloadMessagePartCheck(
-                boolean skipPayloadMessagePartCheck) {
+                Boolean skipPayloadMessagePartCheck) {
             this.skipPayloadMessagePartCheck = skipPayloadMessagePartCheck;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getLoggingFeatureEnabled() {
+        public Boolean getLoggingFeatureEnabled() {
             return loggingFeatureEnabled;
         }
 
-        public void setLoggingFeatureEnabled(boolean loggingFeatureEnabled) {
+        public void setLoggingFeatureEnabled(Boolean loggingFeatureEnabled) {
             this.loggingFeatureEnabled = loggingFeatureEnabled;
         }
 
-        public int getLoggingSizeLimit() {
+        public Integer getLoggingSizeLimit() {
             return loggingSizeLimit;
         }
 
-        public void setLoggingSizeLimit(int loggingSizeLimit) {
+        public void setLoggingSizeLimit(Integer loggingSizeLimit) {
             this.loggingSizeLimit = loggingSizeLimit;
         }
 
-        public boolean getSkipFaultLogging() {
+        public Boolean getSkipFaultLogging() {
             return skipFaultLogging;
         }
 
-        public void setSkipFaultLogging(boolean skipFaultLogging) {
+        public void setSkipFaultLogging(Boolean skipFaultLogging) {
             this.skipFaultLogging = skipFaultLogging;
         }
 
@@ -431,7 +431,7 @@ public class CxfEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -446,11 +446,11 @@ public class CxfEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -505,7 +505,7 @@ public class CxfEndpoint {
          * Which kind of operation that CXF endpoint producer will invoke. The
          * option is a boolean type.
          */
-        private boolean wrapped;
+        private Boolean wrapped;
 
         public Object getCookieHandler() {
             return cookieHandler;
@@ -548,11 +548,11 @@ public class CxfEndpoint {
             this.sslContextParameters = sslContextParameters;
         }
 
-        public boolean getWrapped() {
+        public Boolean getWrapped() {
             return wrapped;
         }
 
-        public void setWrapped(boolean wrapped) {
+        public void setWrapped(Boolean wrapped) {
             this.wrapped = wrapped;
         }
     }

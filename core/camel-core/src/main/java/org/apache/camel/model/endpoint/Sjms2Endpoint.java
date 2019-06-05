@@ -64,18 +64,18 @@ public class Sjms2Endpoint {
          * messages; You can then restart the route to retry. The option is a
          * boolean type.
          */
-        private boolean asyncStartListener;
+        private Boolean asyncStartListener;
         /**
          * Whether to stop the consumer message listener asynchronously, when
          * stopping a route. The option is a boolean type.
          */
-        private boolean asyncStopListener;
+        private Boolean asyncStopListener;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * The maximum number of connections available to this endpoint. The
          * option is a java.lang.Integer type.
@@ -118,7 +118,7 @@ public class Sjms2Endpoint {
          * headerFilterStrategy then this option does not apply. The option is a
          * boolean type.
          */
-        private boolean includeAllJMSXProperties;
+        private Boolean includeAllJMSXProperties;
         /**
          * Pluggable strategy for encoding and decoding JMS keys so they can be
          * compliant with the JMS specification. Camel provides two
@@ -138,7 +138,7 @@ public class Sjms2Endpoint {
          * See section about how mapping works below for more details. The
          * option is a boolean type.
          */
-        private boolean mapJmsMessage;
+        private Boolean mapJmsMessage;
         /**
          * To use the given MessageCreatedStrategy which are invoked when Camel
          * creates new instances of javax.jms.Message objects when Camel is
@@ -157,7 +157,7 @@ public class Sjms2Endpoint {
          * If you need transaction against multiple JMS providers, use jms
          * component to leverage XA transaction. The option is a boolean type.
          */
-        private boolean sharedJMSSession;
+        private Boolean sharedJMSSession;
 
         public String getDestinationType() {
             return destinationType;
@@ -184,27 +184,27 @@ public class Sjms2Endpoint {
             this.acknowledgementMode = acknowledgementMode;
         }
 
-        public boolean getAsyncStartListener() {
+        public Boolean getAsyncStartListener() {
             return asyncStartListener;
         }
 
-        public void setAsyncStartListener(boolean asyncStartListener) {
+        public void setAsyncStartListener(Boolean asyncStartListener) {
             this.asyncStartListener = asyncStartListener;
         }
 
-        public boolean getAsyncStopListener() {
+        public Boolean getAsyncStopListener() {
             return asyncStopListener;
         }
 
-        public void setAsyncStopListener(boolean asyncStopListener) {
+        public void setAsyncStopListener(Boolean asyncStopListener) {
             this.asyncStopListener = asyncStopListener;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -258,11 +258,11 @@ public class Sjms2Endpoint {
             this.headerFilterStrategy = headerFilterStrategy;
         }
 
-        public boolean getIncludeAllJMSXProperties() {
+        public Boolean getIncludeAllJMSXProperties() {
             return includeAllJMSXProperties;
         }
 
-        public void setIncludeAllJMSXProperties(boolean includeAllJMSXProperties) {
+        public void setIncludeAllJMSXProperties(Boolean includeAllJMSXProperties) {
             this.includeAllJMSXProperties = includeAllJMSXProperties;
         }
 
@@ -274,11 +274,11 @@ public class Sjms2Endpoint {
             this.jmsKeyFormatStrategy = jmsKeyFormatStrategy;
         }
 
-        public boolean getMapJmsMessage() {
+        public Boolean getMapJmsMessage() {
             return mapJmsMessage;
         }
 
-        public void setMapJmsMessage(boolean mapJmsMessage) {
+        public void setMapJmsMessage(Boolean mapJmsMessage) {
             this.mapJmsMessage = mapJmsMessage;
         }
 
@@ -299,11 +299,11 @@ public class Sjms2Endpoint {
             this.transactionCommitStrategy = transactionCommitStrategy;
         }
 
-        public boolean getSharedJMSSession() {
+        public Boolean getSharedJMSSession() {
             return sharedJMSSession;
         }
 
-        public void setSharedJMSSession(boolean sharedJMSSession) {
+        public void setSharedJMSSession(Boolean sharedJMSSession) {
             this.sharedJMSSession = sharedJMSSession;
         }
     }
@@ -312,11 +312,11 @@ public class Sjms2Endpoint {
         /**
          * Sets topic consumer to durable. The option is a boolean type.
          */
-        private boolean durable;
+        private Boolean durable;
         /**
          * Sets the consumer to shared. The option is a boolean type.
          */
-        private boolean shared;
+        private Boolean shared;
         /**
          * Sets the subscription Id, required for durable or shared topics. The
          * option is a java.lang.String type.
@@ -331,12 +331,12 @@ public class Sjms2Endpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Sets the number of consumer listeners used for this endpoint. The
          * option is a int type.
          */
-        private int consumerCount;
+        private Integer consumerCount;
         /**
          * Sets the durable subscription Id required for durable topics. The
          * option is a java.lang.String type.
@@ -347,7 +347,7 @@ public class Sjms2Endpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -376,36 +376,36 @@ public class Sjms2Endpoint {
          * Allows to control whether stacktraces should be logged or not, by the
          * default errorHandler. The option is a boolean type.
          */
-        private boolean errorHandlerLogStackTrace;
+        private Boolean errorHandlerLogStackTrace;
         /**
          * Specifies whether to use transacted mode. The option is a boolean
          * type.
          */
-        private boolean transacted;
+        private Boolean transacted;
         /**
          * If transacted sets the number of messages to process before
          * committing a transaction. The option is a int type.
          */
-        private int transactionBatchCount;
+        private Integer transactionBatchCount;
         /**
          * Sets timeout (in millis) for batch transactions, the value should be
          * 1000 or higher. The option is a long type.
          */
-        private long transactionBatchTimeout;
+        private Long transactionBatchTimeout;
 
-        public boolean getDurable() {
+        public Boolean getDurable() {
             return durable;
         }
 
-        public void setDurable(boolean durable) {
+        public void setDurable(Boolean durable) {
             this.durable = durable;
         }
 
-        public boolean getShared() {
+        public Boolean getShared() {
             return shared;
         }
 
-        public void setShared(boolean shared) {
+        public void setShared(Boolean shared) {
             this.shared = shared;
         }
 
@@ -417,19 +417,19 @@ public class Sjms2Endpoint {
             this.subscriptionId = subscriptionId;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public int getConsumerCount() {
+        public Integer getConsumerCount() {
             return consumerCount;
         }
 
-        public void setConsumerCount(int consumerCount) {
+        public void setConsumerCount(Integer consumerCount) {
             this.consumerCount = consumerCount;
         }
 
@@ -441,11 +441,11 @@ public class Sjms2Endpoint {
             this.durableSubscriptionId = durableSubscriptionId;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -482,36 +482,36 @@ public class Sjms2Endpoint {
             this.errorHandlerLoggingLevel = errorHandlerLoggingLevel;
         }
 
-        public boolean getErrorHandlerLogStackTrace() {
+        public Boolean getErrorHandlerLogStackTrace() {
             return errorHandlerLogStackTrace;
         }
 
         public void setErrorHandlerLogStackTrace(
-                boolean errorHandlerLogStackTrace) {
+                Boolean errorHandlerLogStackTrace) {
             this.errorHandlerLogStackTrace = errorHandlerLogStackTrace;
         }
 
-        public boolean getTransacted() {
+        public Boolean getTransacted() {
             return transacted;
         }
 
-        public void setTransacted(boolean transacted) {
+        public void setTransacted(Boolean transacted) {
             this.transacted = transacted;
         }
 
-        public int getTransactionBatchCount() {
+        public Integer getTransactionBatchCount() {
             return transactionBatchCount;
         }
 
-        public void setTransactionBatchCount(int transactionBatchCount) {
+        public void setTransactionBatchCount(Integer transactionBatchCount) {
             this.transactionBatchCount = transactionBatchCount;
         }
 
-        public long getTransactionBatchTimeout() {
+        public Long getTransactionBatchTimeout() {
             return transactionBatchTimeout;
         }
 
-        public void setTransactionBatchTimeout(long transactionBatchTimeout) {
+        public void setTransactionBatchTimeout(Long transactionBatchTimeout) {
             this.transactionBatchTimeout = transactionBatchTimeout;
         }
     }
@@ -528,33 +528,33 @@ public class Sjms2Endpoint {
          * Flag used to enable/disable message persistence. The option is a
          * boolean type.
          */
-        private boolean persistent;
+        private Boolean persistent;
         /**
          * Sets the number of producers used for this endpoint. The option is a
          * int type.
          */
-        private int producerCount;
+        private Integer producerCount;
         /**
          * Flag used to adjust the Time To Live value of produced messages. The
          * option is a long type.
          */
-        private long ttl;
+        private Long ttl;
         /**
          * Whether to allow sending messages with no body. If this option is
          * false and the message body is null, then an JMSException is thrown.
          * The option is a boolean type.
          */
-        private boolean allowNullBody;
+        private Boolean allowNullBody;
         /**
          * Whether to prefill the producer connection pool on startup, or create
          * connections lazy when needed. The option is a boolean type.
          */
-        private boolean prefillPool;
+        private Boolean prefillPool;
         /**
          * Sets the amount of time we should wait before timing out a InOut
          * response. The option is a long type.
          */
-        private long responseTimeOut;
+        private Long responseTimeOut;
 
         public String getNamedReplyTo() {
             return namedReplyTo;
@@ -564,51 +564,51 @@ public class Sjms2Endpoint {
             this.namedReplyTo = namedReplyTo;
         }
 
-        public boolean getPersistent() {
+        public Boolean getPersistent() {
             return persistent;
         }
 
-        public void setPersistent(boolean persistent) {
+        public void setPersistent(Boolean persistent) {
             this.persistent = persistent;
         }
 
-        public int getProducerCount() {
+        public Integer getProducerCount() {
             return producerCount;
         }
 
-        public void setProducerCount(int producerCount) {
+        public void setProducerCount(Integer producerCount) {
             this.producerCount = producerCount;
         }
 
-        public long getTtl() {
+        public Long getTtl() {
             return ttl;
         }
 
-        public void setTtl(long ttl) {
+        public void setTtl(Long ttl) {
             this.ttl = ttl;
         }
 
-        public boolean getAllowNullBody() {
+        public Boolean getAllowNullBody() {
             return allowNullBody;
         }
 
-        public void setAllowNullBody(boolean allowNullBody) {
+        public void setAllowNullBody(Boolean allowNullBody) {
             this.allowNullBody = allowNullBody;
         }
 
-        public boolean getPrefillPool() {
+        public Boolean getPrefillPool() {
             return prefillPool;
         }
 
-        public void setPrefillPool(boolean prefillPool) {
+        public void setPrefillPool(Boolean prefillPool) {
             this.prefillPool = prefillPool;
         }
 
-        public long getResponseTimeOut() {
+        public Long getResponseTimeOut() {
             return responseTimeOut;
         }
 
-        public void setResponseTimeOut(long responseTimeOut) {
+        public void setResponseTimeOut(Long responseTimeOut) {
             this.responseTimeOut = responseTimeOut;
         }
     }

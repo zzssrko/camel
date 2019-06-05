@@ -65,7 +65,7 @@ public class OpenshiftBuildConfigsEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Connection timeout in milliseconds to use when making requests to the
          * Kubernetes API server. The option is a java.lang.Integer type.
@@ -76,7 +76,7 @@ public class OpenshiftBuildConfigsEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * The CA Cert Data. The option is a java.lang.String type.
          */
@@ -178,11 +178,11 @@ public class OpenshiftBuildConfigsEndpoint {
             this.portProtocol = portProtocol;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -194,11 +194,11 @@ public class OpenshiftBuildConfigsEndpoint {
             this.connectionTimeout = connectionTimeout;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 

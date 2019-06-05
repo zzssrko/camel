@@ -45,13 +45,13 @@ public class OptaPlannerEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getConfigFile() {
             return configFile;
@@ -69,19 +69,19 @@ public class OptaPlannerEndpoint {
             this.solverId = solverId;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -96,7 +96,7 @@ public class OptaPlannerEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -111,11 +111,11 @@ public class OptaPlannerEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -141,26 +141,26 @@ public class OptaPlannerEndpoint {
          * Specifies to perform operations in async mode. The option is a
          * boolean type.
          */
-        private boolean async;
+        private Boolean async;
         /**
          * Specifies the thread pool size to use when async is true. The option
          * is a int type.
          */
-        private int threadPoolSize;
+        private Integer threadPoolSize;
 
-        public boolean getAsync() {
+        public Boolean getAsync() {
             return async;
         }
 
-        public void setAsync(boolean async) {
+        public void setAsync(Boolean async) {
             this.async = async;
         }
 
-        public int getThreadPoolSize() {
+        public Integer getThreadPoolSize() {
             return threadPoolSize;
         }
 
-        public void setThreadPoolSize(int threadPoolSize) {
+        public void setThreadPoolSize(Integer threadPoolSize) {
             this.threadPoolSize = threadPoolSize;
         }
     }

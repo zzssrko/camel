@@ -40,7 +40,7 @@ public class JettyHttpEndpoint9 {
          * and set the content-length header on the response. The option is a
          * boolean type.
          */
-        private boolean chunked;
+        private Boolean chunked;
         /**
          * Determines whether or not the raw input stream from Servlet is cached
          * or not (Camel will read the stream into a in memory/overflow to file,
@@ -60,14 +60,14 @@ public class JettyHttpEndpoint9 {
          * response stream as-is as the message body. The option is a boolean
          * type.
          */
-        private boolean disableStreamCache;
+        private Boolean disableStreamCache;
         /**
          * Whether Jetty org.eclipse.jetty.servlets.MultiPartFilter is enabled
          * or not. You should set this value to false when bridging endpoints,
          * to ensure multipart requests is proxied/bridged as well. The option
          * is a boolean type.
          */
-        private boolean enableMultipartFilter;
+        private Boolean enableMultipartFilter;
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
@@ -85,7 +85,7 @@ public class JettyHttpEndpoint9 {
          * data from the request to Java and that can be a potential security
          * risk. The option is a boolean type.
          */
-        private boolean transferException;
+        private Boolean transferException;
         /**
          * To use a custom HttpBinding to control the mapping between Camel
          * message and HttpClient. The option is a
@@ -97,58 +97,58 @@ public class JettyHttpEndpoint9 {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * If this option is true then IN exchange Body of the exchange will be
          * mapped to HTTP body. Setting this to false will avoid the HTTP
          * mapping. The option is a boolean type.
          */
-        private boolean mapHttpMessageBody;
+        private Boolean mapHttpMessageBody;
         /**
          * If this option is true then IN exchange Form Encoded body of the
          * exchange will be mapped to HTTP. Setting this to false will avoid the
          * HTTP Form Encoded body mapping. The option is a boolean type.
          */
-        private boolean mapHttpMessageFormUrlEncodedBody;
+        private Boolean mapHttpMessageFormUrlEncodedBody;
         /**
          * If this option is true then IN exchange Headers of the exchange will
          * be mapped to HTTP headers. Setting this to false will avoid the HTTP
          * Headers mapping. The option is a boolean type.
          */
-        private boolean mapHttpMessageHeaders;
+        private Boolean mapHttpMessageHeaders;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         private Object sslContextParameters;
 
-        public boolean getChunked() {
+        public Boolean getChunked() {
             return chunked;
         }
 
-        public void setChunked(boolean chunked) {
+        public void setChunked(Boolean chunked) {
             this.chunked = chunked;
         }
 
-        public boolean getDisableStreamCache() {
+        public Boolean getDisableStreamCache() {
             return disableStreamCache;
         }
 
-        public void setDisableStreamCache(boolean disableStreamCache) {
+        public void setDisableStreamCache(Boolean disableStreamCache) {
             this.disableStreamCache = disableStreamCache;
         }
 
-        public boolean getEnableMultipartFilter() {
+        public Boolean getEnableMultipartFilter() {
             return enableMultipartFilter;
         }
 
-        public void setEnableMultipartFilter(boolean enableMultipartFilter) {
+        public void setEnableMultipartFilter(Boolean enableMultipartFilter) {
             this.enableMultipartFilter = enableMultipartFilter;
         }
 
@@ -161,11 +161,11 @@ public class JettyHttpEndpoint9 {
             this.headerFilterStrategy = headerFilterStrategy;
         }
 
-        public boolean getTransferException() {
+        public Boolean getTransferException() {
             return transferException;
         }
 
-        public void setTransferException(boolean transferException) {
+        public void setTransferException(Boolean transferException) {
             this.transferException = transferException;
         }
 
@@ -177,44 +177,44 @@ public class JettyHttpEndpoint9 {
             this.httpBinding = httpBinding;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getMapHttpMessageBody() {
+        public Boolean getMapHttpMessageBody() {
             return mapHttpMessageBody;
         }
 
-        public void setMapHttpMessageBody(boolean mapHttpMessageBody) {
+        public void setMapHttpMessageBody(Boolean mapHttpMessageBody) {
             this.mapHttpMessageBody = mapHttpMessageBody;
         }
 
-        public boolean getMapHttpMessageFormUrlEncodedBody() {
+        public Boolean getMapHttpMessageFormUrlEncodedBody() {
             return mapHttpMessageFormUrlEncodedBody;
         }
 
         public void setMapHttpMessageFormUrlEncodedBody(
-                boolean mapHttpMessageFormUrlEncodedBody) {
+                Boolean mapHttpMessageFormUrlEncodedBody) {
             this.mapHttpMessageFormUrlEncodedBody = mapHttpMessageFormUrlEncodedBody;
         }
 
-        public boolean getMapHttpMessageHeaders() {
+        public Boolean getMapHttpMessageHeaders() {
             return mapHttpMessageHeaders;
         }
 
-        public void setMapHttpMessageHeaders(boolean mapHttpMessageHeaders) {
+        public void setMapHttpMessageHeaders(Boolean mapHttpMessageHeaders) {
             this.mapHttpMessageHeaders = mapHttpMessageHeaders;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -232,7 +232,7 @@ public class JettyHttpEndpoint9 {
          * Configure the consumer to work in async mode. The option is a boolean
          * type.
          */
-        private boolean async;
+        private Boolean async;
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -242,7 +242,7 @@ public class JettyHttpEndpoint9 {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Allows to set a timeout in millis when using Jetty as consumer
          * (server). By default Jetty uses 30000. You can use a value of = 0 to
@@ -256,13 +256,13 @@ public class JettyHttpEndpoint9 {
          * If the option is true, Jetty server will setup the CrossOriginFilter
          * which supports the CORS out of box. The option is a boolean type.
          */
-        private boolean enableCORS;
+        private Boolean enableCORS;
         /**
          * If this option is true, Jetty JMX support will be enabled for this
          * endpoint. See Jetty JMX support for more details. The option is a
          * boolean type.
          */
-        private boolean enableJmx;
+        private Boolean enableJmx;
         /**
          * Used to only allow consuming if the HttpMethod matches, such as
          * GET/POST/PUT etc. Multiple methods can be specified separated by
@@ -274,7 +274,7 @@ public class JettyHttpEndpoint9 {
          * matching the URI prefix if no exact match is found. The option is a
          * boolean type.
          */
-        private boolean matchOnUriPrefix;
+        private Boolean matchOnUriPrefix;
         /**
          * To use a custom buffer size on the javax.servlet.ServletResponse. The
          * option is a java.lang.Integer type.
@@ -286,7 +286,7 @@ public class JettyHttpEndpoint9 {
          * other camel-jetty endpoint is share the same port, otherwise this
          * option may not work as expected. The option is a boolean type.
          */
-        private boolean sendDateHeader;
+        private Boolean sendDateHeader;
         /**
          * If the option is true, jetty will send the server header with the
          * jetty version information to the client which sends the request. NOTE
@@ -294,24 +294,24 @@ public class JettyHttpEndpoint9 {
          * the same port, otherwise this option may not work as expected. The
          * option is a boolean type.
          */
-        private boolean sendServerVersion;
+        private Boolean sendServerVersion;
         /**
          * Specifies whether to enable the session manager on the server side of
          * Jetty. The option is a boolean type.
          */
-        private boolean sessionSupport;
+        private Boolean sessionSupport;
         /**
          * Whether or not to use Jetty continuations for the Jetty Server. The
          * option is a java.lang.Boolean type.
          */
-        private boolean useContinuation;
+        private Boolean useContinuation;
         /**
          * Whether to eager check whether the HTTP requests has content if the
          * content-length header is 0 or not present. This can be turned on in
          * case HTTP clients do not send streamed data. The option is a boolean
          * type.
          */
-        private boolean eagerCheckContentAvailable;
+        private Boolean eagerCheckContentAvailable;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -372,26 +372,26 @@ public class JettyHttpEndpoint9 {
          * Specifies whether to enable HTTP OPTIONS for this Servlet consumer.
          * By default OPTIONS is turned off. The option is a boolean type.
          */
-        private boolean optionsEnabled;
+        private Boolean optionsEnabled;
         /**
          * Specifies whether to enable HTTP TRACE for this Servlet consumer. By
          * default TRACE is turned off. The option is a boolean type.
          */
-        private boolean traceEnabled;
+        private Boolean traceEnabled;
 
-        public boolean getAsync() {
+        public Boolean getAsync() {
             return async;
         }
 
-        public void setAsync(boolean async) {
+        public void setAsync(Boolean async) {
             this.async = async;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -403,19 +403,19 @@ public class JettyHttpEndpoint9 {
             this.continuationTimeout = continuationTimeout;
         }
 
-        public boolean getEnableCORS() {
+        public Boolean getEnableCORS() {
             return enableCORS;
         }
 
-        public void setEnableCORS(boolean enableCORS) {
+        public void setEnableCORS(Boolean enableCORS) {
             this.enableCORS = enableCORS;
         }
 
-        public boolean getEnableJmx() {
+        public Boolean getEnableJmx() {
             return enableJmx;
         }
 
-        public void setEnableJmx(boolean enableJmx) {
+        public void setEnableJmx(Boolean enableJmx) {
             this.enableJmx = enableJmx;
         }
 
@@ -427,11 +427,11 @@ public class JettyHttpEndpoint9 {
             this.httpMethodRestrict = httpMethodRestrict;
         }
 
-        public boolean getMatchOnUriPrefix() {
+        public Boolean getMatchOnUriPrefix() {
             return matchOnUriPrefix;
         }
 
-        public void setMatchOnUriPrefix(boolean matchOnUriPrefix) {
+        public void setMatchOnUriPrefix(Boolean matchOnUriPrefix) {
             this.matchOnUriPrefix = matchOnUriPrefix;
         }
 
@@ -443,44 +443,44 @@ public class JettyHttpEndpoint9 {
             this.responseBufferSize = responseBufferSize;
         }
 
-        public boolean getSendDateHeader() {
+        public Boolean getSendDateHeader() {
             return sendDateHeader;
         }
 
-        public void setSendDateHeader(boolean sendDateHeader) {
+        public void setSendDateHeader(Boolean sendDateHeader) {
             this.sendDateHeader = sendDateHeader;
         }
 
-        public boolean getSendServerVersion() {
+        public Boolean getSendServerVersion() {
             return sendServerVersion;
         }
 
-        public void setSendServerVersion(boolean sendServerVersion) {
+        public void setSendServerVersion(Boolean sendServerVersion) {
             this.sendServerVersion = sendServerVersion;
         }
 
-        public boolean getSessionSupport() {
+        public Boolean getSessionSupport() {
             return sessionSupport;
         }
 
-        public void setSessionSupport(boolean sessionSupport) {
+        public void setSessionSupport(Boolean sessionSupport) {
             this.sessionSupport = sessionSupport;
         }
 
-        public boolean getUseContinuation() {
+        public Boolean getUseContinuation() {
             return useContinuation;
         }
 
-        public void setUseContinuation(boolean useContinuation) {
+        public void setUseContinuation(Boolean useContinuation) {
             this.useContinuation = useContinuation;
         }
 
-        public boolean getEagerCheckContentAvailable() {
+        public Boolean getEagerCheckContentAvailable() {
             return eagerCheckContentAvailable;
         }
 
         public void setEagerCheckContentAvailable(
-                boolean eagerCheckContentAvailable) {
+                Boolean eagerCheckContentAvailable) {
             this.eagerCheckContentAvailable = eagerCheckContentAvailable;
         }
 
@@ -553,19 +553,19 @@ public class JettyHttpEndpoint9 {
             this.multipartFilterRef = multipartFilterRef;
         }
 
-        public boolean getOptionsEnabled() {
+        public Boolean getOptionsEnabled() {
             return optionsEnabled;
         }
 
-        public void setOptionsEnabled(boolean optionsEnabled) {
+        public void setOptionsEnabled(Boolean optionsEnabled) {
             this.optionsEnabled = optionsEnabled;
         }
 
-        public boolean getTraceEnabled() {
+        public Boolean getTraceEnabled() {
             return traceEnabled;
         }
 
-        public void setTraceEnabled(boolean traceEnabled) {
+        public void setTraceEnabled(Boolean traceEnabled) {
             this.traceEnabled = traceEnabled;
         }
     }
@@ -582,13 +582,13 @@ public class JettyHttpEndpoint9 {
          * option throwExceptionOnFailure to be false to let the HttpProducer
          * send all the fault response back. The option is a boolean type.
          */
-        private boolean bridgeEndpoint;
+        private Boolean bridgeEndpoint;
         /**
          * Specifies whether a Connection Close header must be added to HTTP
          * Request. By default connectionClose is false. The option is a boolean
          * type.
          */
-        private boolean connectionClose;
+        private Boolean connectionClose;
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
@@ -600,7 +600,7 @@ public class JettyHttpEndpoint9 {
          * allows to only include the headers from the HTTP response (not
          * propagating IN headers). The option is a boolean type.
          */
-        private boolean copyHeaders;
+        private Boolean copyHeaders;
         /**
          * To set a value for maximum number of threads in HttpClient thread
          * pool. This setting override any setting configured on component
@@ -627,7 +627,7 @@ public class JettyHttpEndpoint9 {
          * If this option is true, The http producer won't read response body
          * and cache the input stream. The option is a boolean type.
          */
-        private boolean ignoreResponseBody;
+        private Boolean ignoreResponseBody;
         /**
          * If the option is true, HttpProducer will set the Host header to the
          * value contained in the current exchange Host header, useful in
@@ -637,14 +637,14 @@ public class JettyHttpEndpoint9 {
          * generate accurate URL's for a proxied service. The option is a
          * boolean type.
          */
-        private boolean preserveHostHeader;
+        private Boolean preserveHostHeader;
         /**
          * Option to disable throwing the HttpOperationFailedException in case
          * of failed responses from the remote server. This allows you to get
          * all responses regardless of the HTTP status code. The option is a
          * boolean type.
          */
-        private boolean throwExceptionOnFailure;
+        private Boolean throwExceptionOnFailure;
         /**
          * Sets a shared HttpClient to use for all producers created by this
          * endpoint. By default each producer will use a new http client, and
@@ -721,19 +721,19 @@ public class JettyHttpEndpoint9 {
             this.httpUri = httpUri;
         }
 
-        public boolean getBridgeEndpoint() {
+        public Boolean getBridgeEndpoint() {
             return bridgeEndpoint;
         }
 
-        public void setBridgeEndpoint(boolean bridgeEndpoint) {
+        public void setBridgeEndpoint(Boolean bridgeEndpoint) {
             this.bridgeEndpoint = bridgeEndpoint;
         }
 
-        public boolean getConnectionClose() {
+        public Boolean getConnectionClose() {
             return connectionClose;
         }
 
-        public void setConnectionClose(boolean connectionClose) {
+        public void setConnectionClose(Boolean connectionClose) {
             this.connectionClose = connectionClose;
         }
 
@@ -745,11 +745,11 @@ public class JettyHttpEndpoint9 {
             this.cookieHandler = cookieHandler;
         }
 
-        public boolean getCopyHeaders() {
+        public Boolean getCopyHeaders() {
             return copyHeaders;
         }
 
-        public void setCopyHeaders(boolean copyHeaders) {
+        public void setCopyHeaders(Boolean copyHeaders) {
             this.copyHeaders = copyHeaders;
         }
 
@@ -777,27 +777,27 @@ public class JettyHttpEndpoint9 {
             this.httpMethod = httpMethod;
         }
 
-        public boolean getIgnoreResponseBody() {
+        public Boolean getIgnoreResponseBody() {
             return ignoreResponseBody;
         }
 
-        public void setIgnoreResponseBody(boolean ignoreResponseBody) {
+        public void setIgnoreResponseBody(Boolean ignoreResponseBody) {
             this.ignoreResponseBody = ignoreResponseBody;
         }
 
-        public boolean getPreserveHostHeader() {
+        public Boolean getPreserveHostHeader() {
             return preserveHostHeader;
         }
 
-        public void setPreserveHostHeader(boolean preserveHostHeader) {
+        public void setPreserveHostHeader(Boolean preserveHostHeader) {
             this.preserveHostHeader = preserveHostHeader;
         }
 
-        public boolean getThrowExceptionOnFailure() {
+        public Boolean getThrowExceptionOnFailure() {
             return throwExceptionOnFailure;
         }
 
-        public void setThrowExceptionOnFailure(boolean throwExceptionOnFailure) {
+        public void setThrowExceptionOnFailure(Boolean throwExceptionOnFailure) {
             this.throwExceptionOnFailure = throwExceptionOnFailure;
         }
 

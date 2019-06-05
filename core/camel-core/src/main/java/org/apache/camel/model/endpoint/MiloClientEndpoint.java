@@ -45,7 +45,7 @@ public class MiloClientEndpoint {
         /**
          * Default await setting for writes. The option is a boolean type.
          */
-        private boolean defaultAwaitWrites;
+        private Boolean defaultAwaitWrites;
         /**
          * A suffix for endpoint URI when discovering. The option is a
          * java.lang.String type.
@@ -75,13 +75,13 @@ public class MiloClientEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * A set of allowed security policy URIs. Default is to accept all and
          * use the highest. The option is a java.lang.String type.
@@ -136,7 +136,7 @@ public class MiloClientEndpoint {
          * Override the server reported endpoint host with the host from the
          * endpoint URI. The option is a boolean type.
          */
-        private boolean overrideHost;
+        private Boolean overrideHost;
         /**
          * The product URI. The option is a java.lang.String type.
          */
@@ -170,11 +170,11 @@ public class MiloClientEndpoint {
             this.clientId = clientId;
         }
 
-        public boolean getDefaultAwaitWrites() {
+        public Boolean getDefaultAwaitWrites() {
             return defaultAwaitWrites;
         }
 
-        public void setDefaultAwaitWrites(boolean defaultAwaitWrites) {
+        public void setDefaultAwaitWrites(Boolean defaultAwaitWrites) {
             this.defaultAwaitWrites = defaultAwaitWrites;
         }
 
@@ -218,19 +218,19 @@ public class MiloClientEndpoint {
             this.samplingInterval = samplingInterval;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -323,11 +323,11 @@ public class MiloClientEndpoint {
             this.maxResponseMessageSize = maxResponseMessageSize;
         }
 
-        public boolean getOverrideHost() {
+        public Boolean getOverrideHost() {
             return overrideHost;
         }
 
-        public void setOverrideHost(boolean overrideHost) {
+        public void setOverrideHost(Boolean overrideHost) {
             this.overrideHost = overrideHost;
         }
 
@@ -374,7 +374,7 @@ public class MiloClientEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -389,11 +389,11 @@ public class MiloClientEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

@@ -38,7 +38,7 @@ public class SpringBatchEndpoint {
          * Explicitly defines if the jobName should be taken from the headers
          * instead of the URI. The option is a boolean type.
          */
-        private boolean jobFromHeader;
+        private Boolean jobFromHeader;
         /**
          * Explicitly specifies a JobLauncher to be used. The option is a
          * org.springframework.batch.core.launch.JobLauncher type.
@@ -54,13 +54,13 @@ public class SpringBatchEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getJobName() {
             return jobName;
@@ -70,11 +70,11 @@ public class SpringBatchEndpoint {
             this.jobName = jobName;
         }
 
-        public boolean getJobFromHeader() {
+        public Boolean getJobFromHeader() {
             return jobFromHeader;
         }
 
-        public void setJobFromHeader(boolean jobFromHeader) {
+        public void setJobFromHeader(Boolean jobFromHeader) {
             this.jobFromHeader = jobFromHeader;
         }
 
@@ -94,19 +94,19 @@ public class SpringBatchEndpoint {
             this.jobRegistry = jobRegistry;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

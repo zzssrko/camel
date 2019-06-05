@@ -46,7 +46,7 @@ public class PubNubEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Reference to a Pubnub client in the registry. The option is a
          * com.pubnub.api.PubNub type.
@@ -57,7 +57,7 @@ public class PubNubEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * If Access Manager is utilized, client will use this authKey in all
          * restricted requests. The option is a java.lang.String type.
@@ -81,7 +81,7 @@ public class PubNubEndpoint {
         /**
          * Use SSL for secure transmission. The option is a boolean type.
          */
-        private boolean secure;
+        private Boolean secure;
         /**
          * The subscribe key obtained from your PubNub account. Required when
          * subscribing to channels or listening for presence events. The option
@@ -105,11 +105,11 @@ public class PubNubEndpoint {
             this.uuid = uuid;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -121,11 +121,11 @@ public class PubNubEndpoint {
             this.pubnub = pubnub;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -161,11 +161,11 @@ public class PubNubEndpoint {
             this.secretKey = secretKey;
         }
 
-        public boolean getSecure() {
+        public Boolean getSecure() {
             return secure;
         }
 
-        public void setSecure(boolean secure) {
+        public void setSecure(Boolean secure) {
             this.secure = secure;
         }
 
@@ -188,12 +188,12 @@ public class PubNubEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Also subscribe to related presence information. The option is a
          * boolean type.
          */
-        private boolean withPresence;
+        private Boolean withPresence;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -208,19 +208,19 @@ public class PubNubEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getWithPresence() {
+        public Boolean getWithPresence() {
             return withPresence;
         }
 
-        public void setWithPresence(boolean withPresence) {
+        public void setWithPresence(Boolean withPresence) {
             this.withPresence = withPresence;
         }
 

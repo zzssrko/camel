@@ -55,7 +55,7 @@ public class BlobServiceEndpoint {
          * Close the stream after read or keep it open, default is true. The
          * option is a boolean type.
          */
-        private boolean closeStreamAfterRead;
+        private Boolean closeStreamAfterRead;
         /**
          * Set the storage credentials, required in most cases. The option is a
          * com.microsoft.azure.storage.StorageCredentials type.
@@ -76,24 +76,24 @@ public class BlobServiceEndpoint {
          * property is enabled then the credentials do not have to be set. The
          * option is a boolean type.
          */
-        private boolean publicForRead;
+        private Boolean publicForRead;
         /**
          * Set the minimum read size in bytes when reading the blob content. The
          * option is a int type.
          */
-        private int streamReadSize;
+        private Integer streamReadSize;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getContainerOrBlobUri() {
             return containerOrBlobUri;
@@ -127,11 +127,11 @@ public class BlobServiceEndpoint {
             this.blobType = blobType;
         }
 
-        public boolean getCloseStreamAfterRead() {
+        public Boolean getCloseStreamAfterRead() {
             return closeStreamAfterRead;
         }
 
-        public void setCloseStreamAfterRead(boolean closeStreamAfterRead) {
+        public void setCloseStreamAfterRead(Boolean closeStreamAfterRead) {
             this.closeStreamAfterRead = closeStreamAfterRead;
         }
 
@@ -159,35 +159,35 @@ public class BlobServiceEndpoint {
             this.fileDir = fileDir;
         }
 
-        public boolean getPublicForRead() {
+        public Boolean getPublicForRead() {
             return publicForRead;
         }
 
-        public void setPublicForRead(boolean publicForRead) {
+        public void setPublicForRead(Boolean publicForRead) {
             this.publicForRead = publicForRead;
         }
 
-        public int getStreamReadSize() {
+        public Integer getStreamReadSize() {
             return streamReadSize;
         }
 
-        public void setStreamReadSize(int streamReadSize) {
+        public void setStreamReadSize(Integer streamReadSize) {
             this.streamReadSize = streamReadSize;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -202,7 +202,7 @@ public class BlobServiceEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -217,11 +217,11 @@ public class BlobServiceEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -257,7 +257,7 @@ public class BlobServiceEndpoint {
          * Close the stream after write or keep it open, default is true. The
          * option is a boolean type.
          */
-        private boolean closeStreamAfterWrite;
+        private Boolean closeStreamAfterWrite;
         /**
          * Blob service operation hint to the producer. The option is a
          * org.apache.camel.component.azure.blob.BlobServiceOperations type.
@@ -267,12 +267,12 @@ public class BlobServiceEndpoint {
          * Set the size of the buffer for writing block and page blocks. The
          * option is a int type.
          */
-        private int streamWriteSize;
+        private Integer streamWriteSize;
         /**
          * Specify if the flat or hierarchical blob listing should be used. The
          * option is a boolean type.
          */
-        private boolean useFlatListing;
+        private Boolean useFlatListing;
 
         public Map<String, String> getBlobMetadata() {
             return blobMetadata;
@@ -290,11 +290,11 @@ public class BlobServiceEndpoint {
             this.blobPrefix = blobPrefix;
         }
 
-        public boolean getCloseStreamAfterWrite() {
+        public Boolean getCloseStreamAfterWrite() {
             return closeStreamAfterWrite;
         }
 
-        public void setCloseStreamAfterWrite(boolean closeStreamAfterWrite) {
+        public void setCloseStreamAfterWrite(Boolean closeStreamAfterWrite) {
             this.closeStreamAfterWrite = closeStreamAfterWrite;
         }
 
@@ -306,19 +306,19 @@ public class BlobServiceEndpoint {
             this.operation = operation;
         }
 
-        public int getStreamWriteSize() {
+        public Integer getStreamWriteSize() {
             return streamWriteSize;
         }
 
-        public void setStreamWriteSize(int streamWriteSize) {
+        public void setStreamWriteSize(Integer streamWriteSize) {
             this.streamWriteSize = streamWriteSize;
         }
 
-        public boolean getUseFlatListing() {
+        public Boolean getUseFlatListing() {
             return useFlatListing;
         }
 
-        public void setUseFlatListing(boolean useFlatListing) {
+        public void setUseFlatListing(Boolean useFlatListing) {
             this.useFlatListing = useFlatListing;
         }
     }

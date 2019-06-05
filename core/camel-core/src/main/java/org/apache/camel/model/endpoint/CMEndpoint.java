@@ -46,7 +46,7 @@ public class CMEndpoint {
          * is a
          * (@javax.validation.constraints.Min(1L),@javax.validation.constraints.Max(8L) :: int) type.
          */
-        private int defaultMaxNumberOfParts;
+        private Integer defaultMaxNumberOfParts;
         /**
          * The unique token to use. The option is a
          * (@javax.validation.constraints.NotNull :: java.lang.String) type.
@@ -56,19 +56,19 @@ public class CMEndpoint {
          * Whether to test the connection to the SMS Gateway on startup. The
          * option is a boolean type.
          */
-        private boolean testConnectionOnStartup;
+        private Boolean testConnectionOnStartup;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getHost() {
             return host;
@@ -86,11 +86,11 @@ public class CMEndpoint {
             this.defaultFrom = defaultFrom;
         }
 
-        public int getDefaultMaxNumberOfParts() {
+        public Integer getDefaultMaxNumberOfParts() {
             return defaultMaxNumberOfParts;
         }
 
-        public void setDefaultMaxNumberOfParts(int defaultMaxNumberOfParts) {
+        public void setDefaultMaxNumberOfParts(Integer defaultMaxNumberOfParts) {
             this.defaultMaxNumberOfParts = defaultMaxNumberOfParts;
         }
 
@@ -102,27 +102,27 @@ public class CMEndpoint {
             this.productToken = productToken;
         }
 
-        public boolean getTestConnectionOnStartup() {
+        public Boolean getTestConnectionOnStartup() {
             return testConnectionOnStartup;
         }
 
-        public void setTestConnectionOnStartup(boolean testConnectionOnStartup) {
+        public void setTestConnectionOnStartup(Boolean testConnectionOnStartup) {
             this.testConnectionOnStartup = testConnectionOnStartup;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

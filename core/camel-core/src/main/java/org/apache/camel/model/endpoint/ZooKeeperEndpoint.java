@@ -44,29 +44,29 @@ public class ZooKeeperEndpoint {
          * Not in use. The option is a boolean type.
          */
         @Deprecated
-        private boolean awaitExistence;
+        private Boolean awaitExistence;
         /**
          * Whether the children of the node should be listed. The option is a
          * boolean type.
          */
-        private boolean listChildren;
+        private Boolean listChildren;
         /**
          * The time interval to wait on connection before timing out. The option
          * is a int type.
          */
-        private int timeout;
+        private Integer timeout;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getServerUrls() {
             return serverUrls;
@@ -85,44 +85,44 @@ public class ZooKeeperEndpoint {
         }
 
         @Deprecated
-        public boolean getAwaitExistence() {
+        public Boolean getAwaitExistence() {
             return awaitExistence;
         }
 
         @Deprecated
-        public void setAwaitExistence(boolean awaitExistence) {
+        public void setAwaitExistence(Boolean awaitExistence) {
             this.awaitExistence = awaitExistence;
         }
 
-        public boolean getListChildren() {
+        public Boolean getListChildren() {
             return listChildren;
         }
 
-        public void setListChildren(boolean listChildren) {
+        public void setListChildren(Boolean listChildren) {
             this.listChildren = listChildren;
         }
 
-        public int getTimeout() {
+        public Integer getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(int timeout) {
+        public void setTimeout(Integer timeout) {
             this.timeout = timeout;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -132,7 +132,7 @@ public class ZooKeeperEndpoint {
          * The time interval to backoff for after an error before retrying. The
          * option is a long type.
          */
-        private long backoff;
+        private Long backoff;
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -142,17 +142,17 @@ public class ZooKeeperEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Should changes to the znode be 'watched' and repeatedly processed.
          * The option is a boolean type.
          */
-        private boolean repeat;
+        private Boolean repeat;
         /**
          * Upon the delete of a znode, should an empty message be send to the
          * consumer. The option is a boolean type.
          */
-        private boolean sendEmptyMessageOnDelete;
+        private Boolean sendEmptyMessageOnDelete;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -167,35 +167,35 @@ public class ZooKeeperEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public long getBackoff() {
+        public Long getBackoff() {
             return backoff;
         }
 
-        public void setBackoff(long backoff) {
+        public void setBackoff(Long backoff) {
             this.backoff = backoff;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getRepeat() {
+        public Boolean getRepeat() {
             return repeat;
         }
 
-        public void setRepeat(boolean repeat) {
+        public void setRepeat(Boolean repeat) {
             this.repeat = repeat;
         }
 
-        public boolean getSendEmptyMessageOnDelete() {
+        public Boolean getSendEmptyMessageOnDelete() {
             return sendEmptyMessageOnDelete;
         }
 
-        public void setSendEmptyMessageOnDelete(boolean sendEmptyMessageOnDelete) {
+        public void setSendEmptyMessageOnDelete(Boolean sendEmptyMessageOnDelete) {
             this.sendEmptyMessageOnDelete = sendEmptyMessageOnDelete;
         }
 
@@ -221,18 +221,18 @@ public class ZooKeeperEndpoint {
          * Should the endpoint create the node if it does not currently exist.
          * The option is a boolean type.
          */
-        private boolean create;
+        private Boolean create;
         /**
          * The create mode that should be used for the newly created node. The
          * option is a java.lang.String type.
          */
         private String createMode;
 
-        public boolean getCreate() {
+        public Boolean getCreate() {
             return create;
         }
 
-        public void setCreate(boolean create) {
+        public void setCreate(Boolean create) {
             this.create = create;
         }
 

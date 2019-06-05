@@ -49,13 +49,13 @@ public class TwitterDirectMessageEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * The http proxy host which can be used for the camel-twitter. Can also
          * be configured on the TwitterComponent level instead. The option is a
@@ -109,19 +109,19 @@ public class TwitterDirectMessageEndpoint {
             this.user = user;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -202,13 +202,13 @@ public class TwitterDirectMessageEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private boolean sendEmptyMessageWhenIdle;
+        private Boolean sendEmptyMessageWhenIdle;
         /**
          * Endpoint type to use. Only streaming supports event type. The option
          * is a org.apache.camel.component.twitter.data.EndpointType type.
@@ -239,7 +239,7 @@ public class TwitterDirectMessageEndpoint {
          * Used for enabling full text from twitter (eg receive tweets that
          * contains more than 140 characters). The option is a boolean type.
          */
-        private boolean extendedMode;
+        private Boolean extendedMode;
         /**
          * Used by the non-stream geography search to search by latitude. You
          * need to configure all the following options: longitude, latitude,
@@ -288,7 +288,7 @@ public class TwitterDirectMessageEndpoint {
          * stored in memory only, and based on last tweet id. The option is a
          * boolean type.
          */
-        private boolean filterOld;
+        private Boolean filterOld;
         /**
          * The lang string ISO_639-1 which will be used for searching. The
          * option is a java.lang.String type.
@@ -304,7 +304,7 @@ public class TwitterDirectMessageEndpoint {
          * useful when the camel route is restarted after a long running. The
          * option is a long type.
          */
-        private long sinceId;
+        private Long sinceId;
         /**
          * To filter by user ids for streaming/filter. Multiple values can be
          * separated by comma. The option is a java.lang.String type.
@@ -315,12 +315,12 @@ public class TwitterDirectMessageEndpoint {
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private int backoffErrorThreshold;
+        private Integer backoffErrorThreshold;
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private int backoffIdleThreshold;
+        private Integer backoffIdleThreshold;
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -329,23 +329,23 @@ public class TwitterDirectMessageEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private int backoffMultiplier;
+        private Integer backoffMultiplier;
         /**
          * Milliseconds before the next poll. The option is a long type.
          */
-        private long delay;
+        private Long delay;
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private boolean greedy;
+        private Boolean greedy;
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long initialDelay;
+        private Long initialDelay;
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
@@ -375,7 +375,7 @@ public class TwitterDirectMessageEndpoint {
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private boolean startScheduler;
+        private Boolean startScheduler;
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
@@ -386,26 +386,26 @@ public class TwitterDirectMessageEndpoint {
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private boolean useFixedDelay;
+        private Boolean useFixedDelay;
         /**
          * Sorts by id, so the oldest are first, and newest last. The option is
          * a boolean type.
          */
-        private boolean sortById;
+        private Boolean sortById;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getSendEmptyMessageWhenIdle() {
+        public Boolean getSendEmptyMessageWhenIdle() {
             return sendEmptyMessageWhenIdle;
         }
 
-        public void setSendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
+        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
             this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
         }
 
@@ -441,11 +441,11 @@ public class TwitterDirectMessageEndpoint {
             this.exchangePattern = exchangePattern;
         }
 
-        public boolean getExtendedMode() {
+        public Boolean getExtendedMode() {
             return extendedMode;
         }
 
-        public void setExtendedMode(boolean extendedMode) {
+        public void setExtendedMode(Boolean extendedMode) {
             this.extendedMode = extendedMode;
         }
 
@@ -505,11 +505,11 @@ public class TwitterDirectMessageEndpoint {
             this.count = count;
         }
 
-        public boolean getFilterOld() {
+        public Boolean getFilterOld() {
             return filterOld;
         }
 
-        public void setFilterOld(boolean filterOld) {
+        public void setFilterOld(Boolean filterOld) {
             this.filterOld = filterOld;
         }
 
@@ -529,11 +529,11 @@ public class TwitterDirectMessageEndpoint {
             this.numberOfPages = numberOfPages;
         }
 
-        public long getSinceId() {
+        public Long getSinceId() {
             return sinceId;
         }
 
-        public void setSinceId(long sinceId) {
+        public void setSinceId(Long sinceId) {
             this.sinceId = sinceId;
         }
 
@@ -545,51 +545,51 @@ public class TwitterDirectMessageEndpoint {
             this.userIds = userIds;
         }
 
-        public int getBackoffErrorThreshold() {
+        public Integer getBackoffErrorThreshold() {
             return backoffErrorThreshold;
         }
 
-        public void setBackoffErrorThreshold(int backoffErrorThreshold) {
+        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
             this.backoffErrorThreshold = backoffErrorThreshold;
         }
 
-        public int getBackoffIdleThreshold() {
+        public Integer getBackoffIdleThreshold() {
             return backoffIdleThreshold;
         }
 
-        public void setBackoffIdleThreshold(int backoffIdleThreshold) {
+        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
             this.backoffIdleThreshold = backoffIdleThreshold;
         }
 
-        public int getBackoffMultiplier() {
+        public Integer getBackoffMultiplier() {
             return backoffMultiplier;
         }
 
-        public void setBackoffMultiplier(int backoffMultiplier) {
+        public void setBackoffMultiplier(Integer backoffMultiplier) {
             this.backoffMultiplier = backoffMultiplier;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
 
-        public boolean getGreedy() {
+        public Boolean getGreedy() {
             return greedy;
         }
 
-        public void setGreedy(boolean greedy) {
+        public void setGreedy(Boolean greedy) {
             this.greedy = greedy;
         }
 
-        public long getInitialDelay() {
+        public Long getInitialDelay() {
             return initialDelay;
         }
 
-        public void setInitialDelay(long initialDelay) {
+        public void setInitialDelay(Long initialDelay) {
             this.initialDelay = initialDelay;
         }
 
@@ -627,11 +627,11 @@ public class TwitterDirectMessageEndpoint {
             this.schedulerProperties = schedulerProperties;
         }
 
-        public boolean getStartScheduler() {
+        public Boolean getStartScheduler() {
             return startScheduler;
         }
 
-        public void setStartScheduler(boolean startScheduler) {
+        public void setStartScheduler(Boolean startScheduler) {
             this.startScheduler = startScheduler;
         }
 
@@ -643,19 +643,19 @@ public class TwitterDirectMessageEndpoint {
             this.timeUnit = timeUnit;
         }
 
-        public boolean getUseFixedDelay() {
+        public Boolean getUseFixedDelay() {
             return useFixedDelay;
         }
 
-        public void setUseFixedDelay(boolean useFixedDelay) {
+        public void setUseFixedDelay(Boolean useFixedDelay) {
             this.useFixedDelay = useFixedDelay;
         }
 
-        public boolean getSortById() {
+        public Boolean getSortById() {
             return sortById;
         }
 
-        public void setSortById(boolean sortById) {
+        public void setSortById(Boolean sortById) {
             this.sortById = sortById;
         }
     }

@@ -47,7 +47,7 @@ public class SnsEndpoint {
         /**
          * Setting the autocreation of the topic. The option is a boolean type.
          */
-        private boolean autoCreateTopic;
+        private Boolean autoCreateTopic;
         /**
          * To use a custom HeaderFilterStrategy to map headers to/from Camel.
          * The option is a org.apache.camel.spi.HeaderFilterStrategy type.
@@ -90,7 +90,7 @@ public class SnsEndpoint {
          * Define if Server Side Encryption is enabled or not on the topic. The
          * option is a boolean type.
          */
-        private boolean serverSideEncryptionEnabled;
+        private Boolean serverSideEncryptionEnabled;
         /**
          * The subject which is used if the message header 'CamelAwsSnsSubject'
          * is not present. The option is a java.lang.String type.
@@ -100,19 +100,19 @@ public class SnsEndpoint {
          * Define if the subscription between SNS Topic and SQS must be done or
          * not. The option is a boolean type.
          */
-        private boolean subscribeSNStoSQS;
+        private Boolean subscribeSNStoSQS;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
@@ -146,11 +146,11 @@ public class SnsEndpoint {
             this.amazonSQSClient = amazonSQSClient;
         }
 
-        public boolean getAutoCreateTopic() {
+        public Boolean getAutoCreateTopic() {
             return autoCreateTopic;
         }
 
-        public void setAutoCreateTopic(boolean autoCreateTopic) {
+        public void setAutoCreateTopic(Boolean autoCreateTopic) {
             this.autoCreateTopic = autoCreateTopic;
         }
 
@@ -219,12 +219,12 @@ public class SnsEndpoint {
             this.region = region;
         }
 
-        public boolean getServerSideEncryptionEnabled() {
+        public Boolean getServerSideEncryptionEnabled() {
             return serverSideEncryptionEnabled;
         }
 
         public void setServerSideEncryptionEnabled(
-                boolean serverSideEncryptionEnabled) {
+                Boolean serverSideEncryptionEnabled) {
             this.serverSideEncryptionEnabled = serverSideEncryptionEnabled;
         }
 
@@ -236,27 +236,27 @@ public class SnsEndpoint {
             this.subject = subject;
         }
 
-        public boolean getSubscribeSNStoSQS() {
+        public Boolean getSubscribeSNStoSQS() {
             return subscribeSNStoSQS;
         }
 
-        public void setSubscribeSNStoSQS(boolean subscribeSNStoSQS) {
+        public void setSubscribeSNStoSQS(Boolean subscribeSNStoSQS) {
             this.subscribeSNStoSQS = subscribeSNStoSQS;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 

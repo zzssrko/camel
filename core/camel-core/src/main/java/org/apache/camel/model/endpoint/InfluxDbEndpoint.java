@@ -38,7 +38,7 @@ public class InfluxDbEndpoint {
          * Define if this operation is a batch operation or not. The option is a
          * boolean type.
          */
-        private boolean batch;
+        private Boolean batch;
         /**
          * The name of the database where the time series will be stored. The
          * option is a java.lang.String type.
@@ -64,13 +64,13 @@ public class InfluxDbEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getConnectionBean() {
             return connectionBean;
@@ -80,11 +80,11 @@ public class InfluxDbEndpoint {
             this.connectionBean = connectionBean;
         }
 
-        public boolean getBatch() {
+        public Boolean getBatch() {
             return batch;
         }
 
-        public void setBatch(boolean batch) {
+        public void setBatch(Boolean batch) {
             this.batch = batch;
         }
 
@@ -120,19 +120,19 @@ public class InfluxDbEndpoint {
             this.retentionPolicy = retentionPolicy;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

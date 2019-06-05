@@ -40,13 +40,13 @@ public class DirectEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getName() {
             return name;
@@ -56,19 +56,19 @@ public class DirectEndpoint {
             this.name = name;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -83,7 +83,7 @@ public class DirectEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -98,11 +98,11 @@ public class DirectEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -129,40 +129,40 @@ public class DirectEndpoint {
          * consumer, then we can tell the producer to block and wait for the
          * consumer to become active. The option is a boolean type.
          */
-        private boolean block;
+        private Boolean block;
         /**
          * Whether the producer should fail by throwing an exception, when
          * sending to a DIRECT endpoint with no active consumers. The option is
          * a boolean type.
          */
-        private boolean failIfNoConsumers;
+        private Boolean failIfNoConsumers;
         /**
          * The timeout value to use if block is enabled. The option is a long
          * type.
          */
-        private long timeout;
+        private Long timeout;
 
-        public boolean getBlock() {
+        public Boolean getBlock() {
             return block;
         }
 
-        public void setBlock(boolean block) {
+        public void setBlock(Boolean block) {
             this.block = block;
         }
 
-        public boolean getFailIfNoConsumers() {
+        public Boolean getFailIfNoConsumers() {
             return failIfNoConsumers;
         }
 
-        public void setFailIfNoConsumers(boolean failIfNoConsumers) {
+        public void setFailIfNoConsumers(Boolean failIfNoConsumers) {
             this.failIfNoConsumers = failIfNoConsumers;
         }
 
-        public long getTimeout() {
+        public Long getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(long timeout) {
+        public void setTimeout(Long timeout) {
             this.timeout = timeout;
         }
     }

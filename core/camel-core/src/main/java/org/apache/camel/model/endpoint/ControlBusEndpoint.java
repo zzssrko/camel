@@ -61,7 +61,7 @@ public class ControlBusEndpoint {
          * the Exchange. This is only possible if executing tasks synchronously.
          * The option is a boolean type.
          */
-        private boolean async;
+        private Boolean async;
         /**
          * Logging level used for logging when task is done, or if any
          * exceptions occurred during processing the task. The option is a
@@ -72,7 +72,7 @@ public class ControlBusEndpoint {
          * The delay in millis to use when restarting a route. The option is a
          * int type.
          */
-        private int restartDelay;
+        private Integer restartDelay;
         /**
          * To specify a route by its id. The special keyword current indicates
          * the current route. The option is a java.lang.String type.
@@ -83,13 +83,13 @@ public class ControlBusEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getCommand() {
             return command;
@@ -115,11 +115,11 @@ public class ControlBusEndpoint {
             this.action = action;
         }
 
-        public boolean getAsync() {
+        public Boolean getAsync() {
             return async;
         }
 
-        public void setAsync(boolean async) {
+        public void setAsync(Boolean async) {
             this.async = async;
         }
 
@@ -131,11 +131,11 @@ public class ControlBusEndpoint {
             this.loggingLevel = loggingLevel;
         }
 
-        public int getRestartDelay() {
+        public Integer getRestartDelay() {
             return restartDelay;
         }
 
-        public void setRestartDelay(int restartDelay) {
+        public void setRestartDelay(Integer restartDelay) {
             this.restartDelay = restartDelay;
         }
 
@@ -147,19 +147,19 @@ public class ControlBusEndpoint {
             this.routeId = routeId;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

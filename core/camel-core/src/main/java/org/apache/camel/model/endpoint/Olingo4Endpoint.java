@@ -45,7 +45,7 @@ public class Olingo4Endpoint {
          * HTTP connection creation timeout in milliseconds, defaults to 30,000
          * (30 seconds). The option is a int type.
          */
-        private int connectTimeout;
+        private Integer connectTimeout;
         /**
          * Content-Type header value can be used to specify JSON or XML message
          * format, defaults to application/json;charset=utf-8. The option is a
@@ -56,7 +56,7 @@ public class Olingo4Endpoint {
          * Set this to true to filter out results that have already been
          * communicated by this component. The option is a boolean type.
          */
-        private boolean filterAlreadySeen;
+        private Boolean filterAlreadySeen;
         /**
          * Custom HTTP async client builder for more complex HTTP client
          * configuration, overrides connectionTimeout, socketTimeout, proxy and
@@ -100,7 +100,7 @@ public class Olingo4Endpoint {
          * HTTP request timeout in milliseconds, defaults to 30,000 (30
          * seconds). The option is a int type.
          */
-        private int socketTimeout;
+        private Integer socketTimeout;
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
@@ -111,13 +111,13 @@ public class Olingo4Endpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public Olingo4ApiName getApiName() {
             return apiName;
@@ -135,11 +135,11 @@ public class Olingo4Endpoint {
             this.methodName = methodName;
         }
 
-        public int getConnectTimeout() {
+        public Integer getConnectTimeout() {
             return connectTimeout;
         }
 
-        public void setConnectTimeout(int connectTimeout) {
+        public void setConnectTimeout(Integer connectTimeout) {
             this.connectTimeout = connectTimeout;
         }
 
@@ -151,11 +151,11 @@ public class Olingo4Endpoint {
             this.contentType = contentType;
         }
 
-        public boolean getFilterAlreadySeen() {
+        public Boolean getFilterAlreadySeen() {
             return filterAlreadySeen;
         }
 
-        public void setFilterAlreadySeen(boolean filterAlreadySeen) {
+        public void setFilterAlreadySeen(Boolean filterAlreadySeen) {
             this.filterAlreadySeen = filterAlreadySeen;
         }
 
@@ -207,11 +207,11 @@ public class Olingo4Endpoint {
             this.serviceUri = serviceUri;
         }
 
-        public int getSocketTimeout() {
+        public Integer getSocketTimeout() {
             return socketTimeout;
         }
 
-        public void setSocketTimeout(int socketTimeout) {
+        public void setSocketTimeout(Integer socketTimeout) {
             this.socketTimeout = socketTimeout;
         }
 
@@ -223,19 +223,19 @@ public class Olingo4Endpoint {
             this.sslContextParameters = sslContextParameters;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -250,7 +250,7 @@ public class Olingo4Endpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -265,11 +265,11 @@ public class Olingo4Endpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

@@ -38,7 +38,7 @@ public class CometdEndpoint {
         /**
          * Host port number. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * The channelName represents a topic that can be subscribed to by the
          * Camel endpoints. The option is a java.lang.String type.
@@ -61,7 +61,7 @@ public class CometdEndpoint {
          * If true, the server will support for cross-domain filtering. The
          * option is a boolean type.
          */
-        private boolean crossOriginFilterOn;
+        private Boolean crossOriginFilterOn;
         /**
          * The filterPath will be used by the CrossOriginFilter, if the
          * crosssOriginFilterOn is true. The option is a java.lang.String type.
@@ -71,46 +71,46 @@ public class CometdEndpoint {
          * The client side poll timeout in milliseconds. How long a client will
          * wait between reconnects. The option is a int type.
          */
-        private int interval;
+        private Integer interval;
         /**
          * If true, the server will accept JSON wrapped in a comment and will
          * generate JSON wrapped in a comment. This is a defence against Ajax
          * Hijacking. The option is a boolean type.
          */
-        private boolean jsonCommented;
+        private Boolean jsonCommented;
         /**
          * Logging level. 0=none, 1=info, 2=debug. The option is a int type.
          */
-        private int logLevel;
+        private Integer logLevel;
         /**
          * The max client side poll timeout in milliseconds. A client will be
          * removed if a connection is not received in this time. The option is a
          * int type.
          */
-        private int maxInterval;
+        private Integer maxInterval;
         /**
          * The client side poll timeout, if multiple connections are detected
          * from the same browser. The option is a int type.
          */
-        private int multiFrameInterval;
+        private Integer multiFrameInterval;
         /**
          * The server side poll timeout in milliseconds. This is how long the
          * server will hold a reconnect request before responding. The option is
          * a int type.
          */
-        private int timeout;
+        private Integer timeout;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getHost() {
             return host;
@@ -120,11 +120,11 @@ public class CometdEndpoint {
             this.host = host;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
@@ -152,11 +152,11 @@ public class CometdEndpoint {
             this.baseResource = baseResource;
         }
 
-        public boolean getCrossOriginFilterOn() {
+        public Boolean getCrossOriginFilterOn() {
             return crossOriginFilterOn;
         }
 
-        public void setCrossOriginFilterOn(boolean crossOriginFilterOn) {
+        public void setCrossOriginFilterOn(Boolean crossOriginFilterOn) {
             this.crossOriginFilterOn = crossOriginFilterOn;
         }
 
@@ -168,67 +168,67 @@ public class CometdEndpoint {
             this.filterPath = filterPath;
         }
 
-        public int getInterval() {
+        public Integer getInterval() {
             return interval;
         }
 
-        public void setInterval(int interval) {
+        public void setInterval(Integer interval) {
             this.interval = interval;
         }
 
-        public boolean getJsonCommented() {
+        public Boolean getJsonCommented() {
             return jsonCommented;
         }
 
-        public void setJsonCommented(boolean jsonCommented) {
+        public void setJsonCommented(Boolean jsonCommented) {
             this.jsonCommented = jsonCommented;
         }
 
-        public int getLogLevel() {
+        public Integer getLogLevel() {
             return logLevel;
         }
 
-        public void setLogLevel(int logLevel) {
+        public void setLogLevel(Integer logLevel) {
             this.logLevel = logLevel;
         }
 
-        public int getMaxInterval() {
+        public Integer getMaxInterval() {
             return maxInterval;
         }
 
-        public void setMaxInterval(int maxInterval) {
+        public void setMaxInterval(Integer maxInterval) {
             this.maxInterval = maxInterval;
         }
 
-        public int getMultiFrameInterval() {
+        public Integer getMultiFrameInterval() {
             return multiFrameInterval;
         }
 
-        public void setMultiFrameInterval(int multiFrameInterval) {
+        public void setMultiFrameInterval(Integer multiFrameInterval) {
             this.multiFrameInterval = multiFrameInterval;
         }
 
-        public int getTimeout() {
+        public Integer getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(int timeout) {
+        public void setTimeout(Integer timeout) {
             this.timeout = timeout;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -243,13 +243,13 @@ public class CometdEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Whether to include the server session headers in the Camel message
          * when creating a Camel Message for incoming requests. The option is a
          * boolean type.
          */
-        private boolean sessionHeadersEnabled;
+        private Boolean sessionHeadersEnabled;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -264,19 +264,19 @@ public class CometdEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getSessionHeadersEnabled() {
+        public Boolean getSessionHeadersEnabled() {
             return sessionHeadersEnabled;
         }
 
-        public void setSessionHeadersEnabled(boolean sessionHeadersEnabled) {
+        public void setSessionHeadersEnabled(Boolean sessionHeadersEnabled) {
             this.sessionHeadersEnabled = sessionHeadersEnabled;
         }
 
@@ -304,13 +304,13 @@ public class CometdEndpoint {
          * swept by default by CometD, and therefore you can run out of memory.
          * The option is a boolean type.
          */
-        private boolean disconnectLocalSession;
+        private Boolean disconnectLocalSession;
 
-        public boolean getDisconnectLocalSession() {
+        public Boolean getDisconnectLocalSession() {
             return disconnectLocalSession;
         }
 
-        public void setDisconnectLocalSession(boolean disconnectLocalSession) {
+        public void setDisconnectLocalSession(Boolean disconnectLocalSession) {
             this.disconnectLocalSession = disconnectLocalSession;
         }
     }

@@ -48,7 +48,7 @@ public class CouchbaseEndpoint {
         /**
          * The port number to use. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * The bucket to use. The option is a java.lang.String type.
          */
@@ -66,49 +66,49 @@ public class CouchbaseEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Define the max delay during a reconnection. The option is a long
          * type.
          */
-        private long maxReconnectDelay;
+        private Long maxReconnectDelay;
         /**
          * Define the observation polling interval. The option is a long type.
          */
-        private long obsPollInterval;
+        private Long obsPollInterval;
         /**
          * Define the observation timeout. The option is a long type.
          */
-        private long obsTimeout;
+        private Long obsTimeout;
         /**
          * Define the max time an operation can be in queue blocked. The option
          * is a long type.
          */
-        private long opQueueMaxBlockTime;
+        private Long opQueueMaxBlockTime;
         /**
          * Define the operation timeout. The option is a long type.
          */
-        private long opTimeOut;
+        private Long opTimeOut;
         /**
          * Define the buffer size. The option is a int type.
          */
-        private int readBufferSize;
+        private Integer readBufferSize;
         /**
          * Define if we want to use optimization or not where possible. The
          * option is a boolean type.
          */
-        private boolean shouldOptimize;
+        private Boolean shouldOptimize;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Define the threshold for throwing a timeout Exception. The option is
          * a int type.
          */
-        private int timeoutExceptionThreshold;
+        private Integer timeoutExceptionThreshold;
         /**
          * The password to use. The option is a java.lang.String type.
          */
@@ -134,11 +134,11 @@ public class CouchbaseEndpoint {
             this.hostname = hostname;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
@@ -166,83 +166,84 @@ public class CouchbaseEndpoint {
             this.additionalHosts = additionalHosts;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public long getMaxReconnectDelay() {
+        public Long getMaxReconnectDelay() {
             return maxReconnectDelay;
         }
 
-        public void setMaxReconnectDelay(long maxReconnectDelay) {
+        public void setMaxReconnectDelay(Long maxReconnectDelay) {
             this.maxReconnectDelay = maxReconnectDelay;
         }
 
-        public long getObsPollInterval() {
+        public Long getObsPollInterval() {
             return obsPollInterval;
         }
 
-        public void setObsPollInterval(long obsPollInterval) {
+        public void setObsPollInterval(Long obsPollInterval) {
             this.obsPollInterval = obsPollInterval;
         }
 
-        public long getObsTimeout() {
+        public Long getObsTimeout() {
             return obsTimeout;
         }
 
-        public void setObsTimeout(long obsTimeout) {
+        public void setObsTimeout(Long obsTimeout) {
             this.obsTimeout = obsTimeout;
         }
 
-        public long getOpQueueMaxBlockTime() {
+        public Long getOpQueueMaxBlockTime() {
             return opQueueMaxBlockTime;
         }
 
-        public void setOpQueueMaxBlockTime(long opQueueMaxBlockTime) {
+        public void setOpQueueMaxBlockTime(Long opQueueMaxBlockTime) {
             this.opQueueMaxBlockTime = opQueueMaxBlockTime;
         }
 
-        public long getOpTimeOut() {
+        public Long getOpTimeOut() {
             return opTimeOut;
         }
 
-        public void setOpTimeOut(long opTimeOut) {
+        public void setOpTimeOut(Long opTimeOut) {
             this.opTimeOut = opTimeOut;
         }
 
-        public int getReadBufferSize() {
+        public Integer getReadBufferSize() {
             return readBufferSize;
         }
 
-        public void setReadBufferSize(int readBufferSize) {
+        public void setReadBufferSize(Integer readBufferSize) {
             this.readBufferSize = readBufferSize;
         }
 
-        public boolean getShouldOptimize() {
+        public Boolean getShouldOptimize() {
             return shouldOptimize;
         }
 
-        public void setShouldOptimize(boolean shouldOptimize) {
+        public void setShouldOptimize(Boolean shouldOptimize) {
             this.shouldOptimize = shouldOptimize;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public int getTimeoutExceptionThreshold() {
+        public Integer getTimeoutExceptionThreshold() {
             return timeoutExceptionThreshold;
         }
 
-        public void setTimeoutExceptionThreshold(int timeoutExceptionThreshold) {
+        public void setTimeoutExceptionThreshold(
+                Integer timeoutExceptionThreshold) {
             this.timeoutExceptionThreshold = timeoutExceptionThreshold;
         }
 
@@ -273,7 +274,7 @@ public class CouchbaseEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Define the consumer Processed strategy to use. The option is a
          * java.lang.String type.
@@ -283,7 +284,7 @@ public class CouchbaseEndpoint {
          * Define if this operation is descending or not. The option is a
          * boolean type.
          */
-        private boolean descending;
+        private Boolean descending;
         /**
          * The design document name to use. The option is a java.lang.String
          * type.
@@ -292,7 +293,7 @@ public class CouchbaseEndpoint {
         /**
          * The output limit to use. The option is a int type.
          */
-        private int limit;
+        private Integer limit;
         /**
          * Define a range for the end key. The option is a java.lang.String
          * type.
@@ -308,11 +309,11 @@ public class CouchbaseEndpoint {
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private boolean sendEmptyMessageWhenIdle;
+        private Boolean sendEmptyMessageWhenIdle;
         /**
          * Define the skip to use. The option is a int type.
          */
-        private int skip;
+        private Integer skip;
         /**
          * The view name to use. The option is a java.lang.String type.
          */
@@ -343,12 +344,12 @@ public class CouchbaseEndpoint {
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private int backoffErrorThreshold;
+        private Integer backoffErrorThreshold;
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private int backoffIdleThreshold;
+        private Integer backoffIdleThreshold;
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -357,25 +358,25 @@ public class CouchbaseEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private int backoffMultiplier;
+        private Integer backoffMultiplier;
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long delay;
+        private Long delay;
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private boolean greedy;
+        private Boolean greedy;
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long initialDelay;
+        private Long initialDelay;
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
@@ -405,7 +406,7 @@ public class CouchbaseEndpoint {
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private boolean startScheduler;
+        private Boolean startScheduler;
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
@@ -416,13 +417,13 @@ public class CouchbaseEndpoint {
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private boolean useFixedDelay;
+        private Boolean useFixedDelay;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -435,11 +436,11 @@ public class CouchbaseEndpoint {
             this.consumerProcessedStrategy = consumerProcessedStrategy;
         }
 
-        public boolean getDescending() {
+        public Boolean getDescending() {
             return descending;
         }
 
-        public void setDescending(boolean descending) {
+        public void setDescending(Boolean descending) {
             this.descending = descending;
         }
 
@@ -451,11 +452,11 @@ public class CouchbaseEndpoint {
             this.designDocumentName = designDocumentName;
         }
 
-        public int getLimit() {
+        public Integer getLimit() {
             return limit;
         }
 
-        public void setLimit(int limit) {
+        public void setLimit(Integer limit) {
             this.limit = limit;
         }
 
@@ -475,19 +476,19 @@ public class CouchbaseEndpoint {
             this.rangeStartKey = rangeStartKey;
         }
 
-        public boolean getSendEmptyMessageWhenIdle() {
+        public Boolean getSendEmptyMessageWhenIdle() {
             return sendEmptyMessageWhenIdle;
         }
 
-        public void setSendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
+        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
             this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
         }
 
-        public int getSkip() {
+        public Integer getSkip() {
             return skip;
         }
 
-        public void setSkip(int skip) {
+        public void setSkip(Integer skip) {
             this.skip = skip;
         }
 
@@ -523,51 +524,51 @@ public class CouchbaseEndpoint {
             this.pollStrategy = pollStrategy;
         }
 
-        public int getBackoffErrorThreshold() {
+        public Integer getBackoffErrorThreshold() {
             return backoffErrorThreshold;
         }
 
-        public void setBackoffErrorThreshold(int backoffErrorThreshold) {
+        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
             this.backoffErrorThreshold = backoffErrorThreshold;
         }
 
-        public int getBackoffIdleThreshold() {
+        public Integer getBackoffIdleThreshold() {
             return backoffIdleThreshold;
         }
 
-        public void setBackoffIdleThreshold(int backoffIdleThreshold) {
+        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
             this.backoffIdleThreshold = backoffIdleThreshold;
         }
 
-        public int getBackoffMultiplier() {
+        public Integer getBackoffMultiplier() {
             return backoffMultiplier;
         }
 
-        public void setBackoffMultiplier(int backoffMultiplier) {
+        public void setBackoffMultiplier(Integer backoffMultiplier) {
             this.backoffMultiplier = backoffMultiplier;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
 
-        public boolean getGreedy() {
+        public Boolean getGreedy() {
             return greedy;
         }
 
-        public void setGreedy(boolean greedy) {
+        public void setGreedy(Boolean greedy) {
             this.greedy = greedy;
         }
 
-        public long getInitialDelay() {
+        public Long getInitialDelay() {
             return initialDelay;
         }
 
-        public void setInitialDelay(long initialDelay) {
+        public void setInitialDelay(Long initialDelay) {
             this.initialDelay = initialDelay;
         }
 
@@ -605,11 +606,11 @@ public class CouchbaseEndpoint {
             this.schedulerProperties = schedulerProperties;
         }
 
-        public boolean getStartScheduler() {
+        public Boolean getStartScheduler() {
             return startScheduler;
         }
 
-        public void setStartScheduler(boolean startScheduler) {
+        public void setStartScheduler(Boolean startScheduler) {
             this.startScheduler = startScheduler;
         }
 
@@ -621,11 +622,11 @@ public class CouchbaseEndpoint {
             this.timeUnit = timeUnit;
         }
 
-        public boolean getUseFixedDelay() {
+        public Boolean getUseFixedDelay() {
             return useFixedDelay;
         }
 
-        public void setUseFixedDelay(boolean useFixedDelay) {
+        public void setUseFixedDelay(Boolean useFixedDelay) {
             this.useFixedDelay = useFixedDelay;
         }
     }
@@ -635,7 +636,7 @@ public class CouchbaseEndpoint {
          * Define if we want an autostart Id when we are doing an insert
          * operation. The option is a boolean type.
          */
-        private boolean autoStartIdForInserts;
+        private Boolean autoStartIdForInserts;
         /**
          * The operation to do. The option is a java.lang.String type.
          */
@@ -643,31 +644,31 @@ public class CouchbaseEndpoint {
         /**
          * Where to persist the data. The option is a int type.
          */
-        private int persistTo;
+        private Integer persistTo;
         /**
          * Define the number of retry attempts. The option is a int type.
          */
-        private int producerRetryAttempts;
+        private Integer producerRetryAttempts;
         /**
          * Define the retry pause between different attempts. The option is a
          * int type.
          */
-        private int producerRetryPause;
+        private Integer producerRetryPause;
         /**
          * Where to replicate the data. The option is a int type.
          */
-        private int replicateTo;
+        private Integer replicateTo;
         /**
          * Define the starting Id where we are doing an insert operation. The
          * option is a long type.
          */
-        private long startingIdForInsertsFrom;
+        private Long startingIdForInsertsFrom;
 
-        public boolean getAutoStartIdForInserts() {
+        public Boolean getAutoStartIdForInserts() {
             return autoStartIdForInserts;
         }
 
-        public void setAutoStartIdForInserts(boolean autoStartIdForInserts) {
+        public void setAutoStartIdForInserts(Boolean autoStartIdForInserts) {
             this.autoStartIdForInserts = autoStartIdForInserts;
         }
 
@@ -679,43 +680,43 @@ public class CouchbaseEndpoint {
             this.operation = operation;
         }
 
-        public int getPersistTo() {
+        public Integer getPersistTo() {
             return persistTo;
         }
 
-        public void setPersistTo(int persistTo) {
+        public void setPersistTo(Integer persistTo) {
             this.persistTo = persistTo;
         }
 
-        public int getProducerRetryAttempts() {
+        public Integer getProducerRetryAttempts() {
             return producerRetryAttempts;
         }
 
-        public void setProducerRetryAttempts(int producerRetryAttempts) {
+        public void setProducerRetryAttempts(Integer producerRetryAttempts) {
             this.producerRetryAttempts = producerRetryAttempts;
         }
 
-        public int getProducerRetryPause() {
+        public Integer getProducerRetryPause() {
             return producerRetryPause;
         }
 
-        public void setProducerRetryPause(int producerRetryPause) {
+        public void setProducerRetryPause(Integer producerRetryPause) {
             this.producerRetryPause = producerRetryPause;
         }
 
-        public int getReplicateTo() {
+        public Integer getReplicateTo() {
             return replicateTo;
         }
 
-        public void setReplicateTo(int replicateTo) {
+        public void setReplicateTo(Integer replicateTo) {
             this.replicateTo = replicateTo;
         }
 
-        public long getStartingIdForInsertsFrom() {
+        public Long getStartingIdForInsertsFrom() {
             return startingIdForInsertsFrom;
         }
 
-        public void setStartingIdForInsertsFrom(long startingIdForInsertsFrom) {
+        public void setStartingIdForInsertsFrom(Long startingIdForInsertsFrom) {
             this.startingIdForInsertsFrom = startingIdForInsertsFrom;
         }
     }

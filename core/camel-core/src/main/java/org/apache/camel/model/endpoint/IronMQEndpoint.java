@@ -59,7 +59,7 @@ public class IronMQEndpoint {
          * with a header list, and a message body. Useful when Camel is both
          * consumer and producer. The option is a boolean type.
          */
-        private boolean preserveHeaders;
+        private Boolean preserveHeaders;
         /**
          * IronMQ projectId. The option is a java.lang.String type.
          */
@@ -73,13 +73,13 @@ public class IronMQEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getQueueName() {
             return queueName;
@@ -105,11 +105,11 @@ public class IronMQEndpoint {
             this.ironMQCloud = ironMQCloud;
         }
 
-        public boolean getPreserveHeaders() {
+        public Boolean getPreserveHeaders() {
             return preserveHeaders;
         }
 
-        public void setPreserveHeaders(boolean preserveHeaders) {
+        public void setPreserveHeaders(Boolean preserveHeaders) {
             this.preserveHeaders = preserveHeaders;
         }
 
@@ -129,19 +129,19 @@ public class IronMQEndpoint {
             this.token = token;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -154,7 +154,7 @@ public class IronMQEndpoint {
          * is idempotent when processing exchanges. The option is a boolean
          * type.
          */
-        private boolean batchDelete;
+        private Boolean batchDelete;
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -164,33 +164,33 @@ public class IronMQEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * The number of concurrent consumers. The option is a int type.
          */
-        private int concurrentConsumers;
+        private Integer concurrentConsumers;
         /**
          * Number of messages to poll pr. call. Maximum is 100. The option is a
          * int type.
          */
-        private int maxMessagesPerPoll;
+        private Integer maxMessagesPerPoll;
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private boolean sendEmptyMessageWhenIdle;
+        private Boolean sendEmptyMessageWhenIdle;
         /**
          * After timeout (in seconds), item will be placed back onto the queue.
          * The option is a int type.
          */
-        private int timeout;
+        private Integer timeout;
         /**
          * Time in seconds to wait for a message to become available. This
          * enables long polling. Default is 0 (does not wait), maximum is 30.
          * The option is a int type.
          */
-        private int wait;
+        private Integer wait;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -217,12 +217,12 @@ public class IronMQEndpoint {
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private int backoffErrorThreshold;
+        private Integer backoffErrorThreshold;
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private int backoffIdleThreshold;
+        private Integer backoffIdleThreshold;
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -231,25 +231,25 @@ public class IronMQEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private int backoffMultiplier;
+        private Integer backoffMultiplier;
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long delay;
+        private Long delay;
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private boolean greedy;
+        private Boolean greedy;
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long initialDelay;
+        private Long initialDelay;
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
@@ -279,7 +279,7 @@ public class IronMQEndpoint {
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private boolean startScheduler;
+        private Boolean startScheduler;
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
@@ -290,61 +290,61 @@ public class IronMQEndpoint {
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private boolean useFixedDelay;
+        private Boolean useFixedDelay;
 
-        public boolean getBatchDelete() {
+        public Boolean getBatchDelete() {
             return batchDelete;
         }
 
-        public void setBatchDelete(boolean batchDelete) {
+        public void setBatchDelete(Boolean batchDelete) {
             this.batchDelete = batchDelete;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public int getConcurrentConsumers() {
+        public Integer getConcurrentConsumers() {
             return concurrentConsumers;
         }
 
-        public void setConcurrentConsumers(int concurrentConsumers) {
+        public void setConcurrentConsumers(Integer concurrentConsumers) {
             this.concurrentConsumers = concurrentConsumers;
         }
 
-        public int getMaxMessagesPerPoll() {
+        public Integer getMaxMessagesPerPoll() {
             return maxMessagesPerPoll;
         }
 
-        public void setMaxMessagesPerPoll(int maxMessagesPerPoll) {
+        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
             this.maxMessagesPerPoll = maxMessagesPerPoll;
         }
 
-        public boolean getSendEmptyMessageWhenIdle() {
+        public Boolean getSendEmptyMessageWhenIdle() {
             return sendEmptyMessageWhenIdle;
         }
 
-        public void setSendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
+        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
             this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
         }
 
-        public int getTimeout() {
+        public Integer getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(int timeout) {
+        public void setTimeout(Integer timeout) {
             this.timeout = timeout;
         }
 
-        public int getWait() {
+        public Integer getWait() {
             return wait;
         }
 
-        public void setWait(int wait) {
+        public void setWait(Integer wait) {
             this.wait = wait;
         }
 
@@ -372,51 +372,51 @@ public class IronMQEndpoint {
             this.pollStrategy = pollStrategy;
         }
 
-        public int getBackoffErrorThreshold() {
+        public Integer getBackoffErrorThreshold() {
             return backoffErrorThreshold;
         }
 
-        public void setBackoffErrorThreshold(int backoffErrorThreshold) {
+        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
             this.backoffErrorThreshold = backoffErrorThreshold;
         }
 
-        public int getBackoffIdleThreshold() {
+        public Integer getBackoffIdleThreshold() {
             return backoffIdleThreshold;
         }
 
-        public void setBackoffIdleThreshold(int backoffIdleThreshold) {
+        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
             this.backoffIdleThreshold = backoffIdleThreshold;
         }
 
-        public int getBackoffMultiplier() {
+        public Integer getBackoffMultiplier() {
             return backoffMultiplier;
         }
 
-        public void setBackoffMultiplier(int backoffMultiplier) {
+        public void setBackoffMultiplier(Integer backoffMultiplier) {
             this.backoffMultiplier = backoffMultiplier;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
 
-        public boolean getGreedy() {
+        public Boolean getGreedy() {
             return greedy;
         }
 
-        public void setGreedy(boolean greedy) {
+        public void setGreedy(Boolean greedy) {
             this.greedy = greedy;
         }
 
-        public long getInitialDelay() {
+        public Long getInitialDelay() {
             return initialDelay;
         }
 
-        public void setInitialDelay(long initialDelay) {
+        public void setInitialDelay(Long initialDelay) {
             this.initialDelay = initialDelay;
         }
 
@@ -454,11 +454,11 @@ public class IronMQEndpoint {
             this.schedulerProperties = schedulerProperties;
         }
 
-        public boolean getStartScheduler() {
+        public Boolean getStartScheduler() {
             return startScheduler;
         }
 
-        public void setStartScheduler(boolean startScheduler) {
+        public void setStartScheduler(Boolean startScheduler) {
             this.startScheduler = startScheduler;
         }
 
@@ -470,11 +470,11 @@ public class IronMQEndpoint {
             this.timeUnit = timeUnit;
         }
 
-        public boolean getUseFixedDelay() {
+        public Boolean getUseFixedDelay() {
             return useFixedDelay;
         }
 
-        public void setUseFixedDelay(boolean useFixedDelay) {
+        public void setUseFixedDelay(Boolean useFixedDelay) {
             this.useFixedDelay = useFixedDelay;
         }
     }
@@ -484,13 +484,13 @@ public class IronMQEndpoint {
          * The item will not be available on the queue until this many seconds
          * have passed. Default is 0 seconds. The option is a int type.
          */
-        private int visibilityDelay;
+        private Integer visibilityDelay;
 
-        public int getVisibilityDelay() {
+        public Integer getVisibilityDelay() {
             return visibilityDelay;
         }
 
-        public void setVisibilityDelay(int visibilityDelay) {
+        public void setVisibilityDelay(Integer visibilityDelay) {
             this.visibilityDelay = visibilityDelay;
         }
     }

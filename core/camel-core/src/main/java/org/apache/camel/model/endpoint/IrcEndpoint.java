@@ -40,23 +40,23 @@ public class IrcEndpoint {
          * default port of either 6667, 6668 or 6669 is used. The option is a
          * int type.
          */
-        private int port;
+        private Integer port;
         /**
          * Whether to auto re-join when being kicked. The option is a boolean
          * type.
          */
-        private boolean autoRejoin;
+        private Boolean autoRejoin;
         /**
          * Delay in milliseconds before sending commands after the connection is
          * established. The option is a long type.
          */
-        private long commandTimeout;
+        private Long commandTimeout;
         /**
          * Sends NAMES command to channel after joining it. onReply has to be
          * true in order to process the result which will have the header value
          * irc.num = '353'. The option is a boolean type.
          */
-        private boolean namesOnJoin;
+        private Boolean namesOnJoin;
         /**
          * The nickname used in chat. The option is a java.lang.String type.
          */
@@ -65,7 +65,7 @@ public class IrcEndpoint {
          * Use persistent messages. The option is a boolean type.
          */
         @Deprecated
-        private boolean persistent;
+        private Boolean persistent;
         /**
          * The IRC user's actual name. The option is a java.lang.String type.
          */
@@ -75,55 +75,55 @@ public class IrcEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Whether or not the server supports color codes. The option is a
          * boolean type.
          */
-        private boolean colors;
+        private Boolean colors;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Handle user join events. The option is a boolean type.
          */
-        private boolean onJoin;
+        private Boolean onJoin;
         /**
          * Handle kick events. The option is a boolean type.
          */
-        private boolean onKick;
+        private Boolean onKick;
         /**
          * Handle mode change events. The option is a boolean type.
          */
-        private boolean onMode;
+        private Boolean onMode;
         /**
          * Handle nickname change events. The option is a boolean type.
          */
-        private boolean onNick;
+        private Boolean onNick;
         /**
          * Handle user part events. The option is a boolean type.
          */
-        private boolean onPart;
+        private Boolean onPart;
         /**
          * Handle private message events. The option is a boolean type.
          */
-        private boolean onPrivmsg;
+        private Boolean onPrivmsg;
         /**
          * Handle user quit events. The option is a boolean type.
          */
-        private boolean onQuit;
+        private Boolean onQuit;
         /**
          * Whether or not to handle general responses to commands or
          * informational messages. The option is a boolean type.
          */
-        private boolean onReply;
+        private Boolean onReply;
         /**
          * Handle topic change events. The option is a boolean type.
          */
-        private boolean onTopic;
+        private Boolean onTopic;
         /**
          * Your IRC server nickname password. The option is a java.lang.String
          * type.
@@ -160,35 +160,35 @@ public class IrcEndpoint {
             this.hostname = hostname;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
-        public boolean getAutoRejoin() {
+        public Boolean getAutoRejoin() {
             return autoRejoin;
         }
 
-        public void setAutoRejoin(boolean autoRejoin) {
+        public void setAutoRejoin(Boolean autoRejoin) {
             this.autoRejoin = autoRejoin;
         }
 
-        public long getCommandTimeout() {
+        public Long getCommandTimeout() {
             return commandTimeout;
         }
 
-        public void setCommandTimeout(long commandTimeout) {
+        public void setCommandTimeout(Long commandTimeout) {
             this.commandTimeout = commandTimeout;
         }
 
-        public boolean getNamesOnJoin() {
+        public Boolean getNamesOnJoin() {
             return namesOnJoin;
         }
 
-        public void setNamesOnJoin(boolean namesOnJoin) {
+        public void setNamesOnJoin(Boolean namesOnJoin) {
             this.namesOnJoin = namesOnJoin;
         }
 
@@ -201,12 +201,12 @@ public class IrcEndpoint {
         }
 
         @Deprecated
-        public boolean getPersistent() {
+        public Boolean getPersistent() {
             return persistent;
         }
 
         @Deprecated
-        public void setPersistent(boolean persistent) {
+        public void setPersistent(Boolean persistent) {
             this.persistent = persistent;
         }
 
@@ -218,99 +218,99 @@ public class IrcEndpoint {
             this.realname = realname;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getColors() {
+        public Boolean getColors() {
             return colors;
         }
 
-        public void setColors(boolean colors) {
+        public void setColors(Boolean colors) {
             this.colors = colors;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getOnJoin() {
+        public Boolean getOnJoin() {
             return onJoin;
         }
 
-        public void setOnJoin(boolean onJoin) {
+        public void setOnJoin(Boolean onJoin) {
             this.onJoin = onJoin;
         }
 
-        public boolean getOnKick() {
+        public Boolean getOnKick() {
             return onKick;
         }
 
-        public void setOnKick(boolean onKick) {
+        public void setOnKick(Boolean onKick) {
             this.onKick = onKick;
         }
 
-        public boolean getOnMode() {
+        public Boolean getOnMode() {
             return onMode;
         }
 
-        public void setOnMode(boolean onMode) {
+        public void setOnMode(Boolean onMode) {
             this.onMode = onMode;
         }
 
-        public boolean getOnNick() {
+        public Boolean getOnNick() {
             return onNick;
         }
 
-        public void setOnNick(boolean onNick) {
+        public void setOnNick(Boolean onNick) {
             this.onNick = onNick;
         }
 
-        public boolean getOnPart() {
+        public Boolean getOnPart() {
             return onPart;
         }
 
-        public void setOnPart(boolean onPart) {
+        public void setOnPart(Boolean onPart) {
             this.onPart = onPart;
         }
 
-        public boolean getOnPrivmsg() {
+        public Boolean getOnPrivmsg() {
             return onPrivmsg;
         }
 
-        public void setOnPrivmsg(boolean onPrivmsg) {
+        public void setOnPrivmsg(Boolean onPrivmsg) {
             this.onPrivmsg = onPrivmsg;
         }
 
-        public boolean getOnQuit() {
+        public Boolean getOnQuit() {
             return onQuit;
         }
 
-        public void setOnQuit(boolean onQuit) {
+        public void setOnQuit(Boolean onQuit) {
             this.onQuit = onQuit;
         }
 
-        public boolean getOnReply() {
+        public Boolean getOnReply() {
             return onReply;
         }
 
-        public void setOnReply(boolean onReply) {
+        public void setOnReply(Boolean onReply) {
             this.onReply = onReply;
         }
 
-        public boolean getOnTopic() {
+        public Boolean getOnTopic() {
             return onTopic;
         }
 
-        public void setOnTopic(boolean onTopic) {
+        public void setOnTopic(Boolean onTopic) {
             this.onTopic = onTopic;
         }
 
@@ -365,7 +365,7 @@ public class IrcEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -380,11 +380,11 @@ public class IrcEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

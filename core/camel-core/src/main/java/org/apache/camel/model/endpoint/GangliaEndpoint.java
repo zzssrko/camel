@@ -36,13 +36,13 @@ public class GangliaEndpoint {
         /**
          * Port for Ganglia server. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * Minumum time in seconds before Ganglia will purge the metric value if
          * it expires. Set to 0 and the value will remain in Ganglia
          * indefinitely until a gmond agent restart. The option is a int type.
          */
-        private int dmax;
+        private Integer dmax;
         /**
          * The group that the metric belongs to. The option is a
          * java.lang.String type.
@@ -78,12 +78,12 @@ public class GangliaEndpoint {
          * After this, Ganglia considers the value to have expired. The option
          * is a int type.
          */
-        private int tmax;
+        private Integer tmax;
         /**
          * If using multicast, set the TTL of the packets. The option is a int
          * type.
          */
-        private int ttl;
+        private Integer ttl;
         /**
          * The type of value. The option is a
          * info.ganglia.gmetric4j.gmetric.GMetricType type.
@@ -100,19 +100,19 @@ public class GangliaEndpoint {
          * Use the wire format of Ganglia 3.1.0 and later versions. Set this to
          * false to use Ganglia 3.0.x or earlier. The option is a boolean type.
          */
-        private boolean wireFormat31x;
+        private Boolean wireFormat31x;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getHost() {
             return host;
@@ -122,19 +122,19 @@ public class GangliaEndpoint {
             this.host = host;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
-        public int getDmax() {
+        public Integer getDmax() {
             return dmax;
         }
 
-        public void setDmax(int dmax) {
+        public void setDmax(Integer dmax) {
             this.dmax = dmax;
         }
 
@@ -186,19 +186,19 @@ public class GangliaEndpoint {
             this.spoofHostname = spoofHostname;
         }
 
-        public int getTmax() {
+        public Integer getTmax() {
             return tmax;
         }
 
-        public void setTmax(int tmax) {
+        public void setTmax(Integer tmax) {
             this.tmax = tmax;
         }
 
-        public int getTtl() {
+        public Integer getTtl() {
             return ttl;
         }
 
-        public void setTtl(int ttl) {
+        public void setTtl(Integer ttl) {
             this.ttl = ttl;
         }
 
@@ -218,27 +218,27 @@ public class GangliaEndpoint {
             this.units = units;
         }
 
-        public boolean getWireFormat31x() {
+        public Boolean getWireFormat31x() {
             return wireFormat31x;
         }
 
-        public void setWireFormat31x(boolean wireFormat31x) {
+        public void setWireFormat31x(Boolean wireFormat31x) {
             this.wireFormat31x = wireFormat31x;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

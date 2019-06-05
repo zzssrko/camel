@@ -55,7 +55,7 @@ public class SalesforceEndpoint {
          * Backoff interval increment for Streaming connection restart attempts
          * for failures beyond CometD auto-reconnect. The option is a long type.
          */
-        private long backoffIncrement;
+        private Long backoffIncrement;
         /**
          * Bulk API Batch ID. The option is a java.lang.String type.
          */
@@ -111,7 +111,7 @@ public class SalesforceEndpoint {
          * Maximum backoff interval for Streaming connection restart attempts
          * for failures beyond CometD auto-reconnect. The option is a long type.
          */
-        private long maxBackoff;
+        private Long maxBackoff;
         /**
          * Sets the behaviour of 404 not found status received from Salesforce
          * API. Should the body be set to NULL NotFoundBehaviour#NULL or should
@@ -163,7 +163,7 @@ public class SalesforceEndpoint {
          * depending on format), instead of DTOs, false by default. The option
          * is a boolean type.
          */
-        private boolean rawPayload;
+        private Boolean rawPayload;
         /**
          * Salesforce1 Analytics report Id. The option is a java.lang.String
          * type.
@@ -183,7 +183,7 @@ public class SalesforceEndpoint {
          * values. This affects only JSON data format. The option is a boolean
          * type.
          */
-        private boolean serializeNulls;
+        private Boolean serializeNulls;
         /**
          * SObject blob field name. The option is a java.lang.String type.
          */
@@ -228,19 +228,19 @@ public class SalesforceEndpoint {
          * Whether to update an existing Push Topic when using the Streaming
          * API, defaults to false. The option is a boolean type.
          */
-        private boolean updateTopic;
+        private Boolean updateTopic;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getApexMethod() {
             return apexMethod;
@@ -274,11 +274,11 @@ public class SalesforceEndpoint {
             this.apiVersion = apiVersion;
         }
 
-        public long getBackoffIncrement() {
+        public Long getBackoffIncrement() {
             return backoffIncrement;
         }
 
-        public void setBackoffIncrement(long backoffIncrement) {
+        public void setBackoffIncrement(Long backoffIncrement) {
             this.backoffIncrement = backoffIncrement;
         }
 
@@ -362,11 +362,11 @@ public class SalesforceEndpoint {
             this.limit = limit;
         }
 
-        public long getMaxBackoff() {
+        public Long getMaxBackoff() {
             return maxBackoff;
         }
 
-        public void setMaxBackoff(long maxBackoff) {
+        public void setMaxBackoff(Long maxBackoff) {
             this.maxBackoff = maxBackoff;
         }
 
@@ -436,11 +436,11 @@ public class SalesforceEndpoint {
             this.objectMapper = objectMapper;
         }
 
-        public boolean getRawPayload() {
+        public Boolean getRawPayload() {
             return rawPayload;
         }
 
-        public void setRawPayload(boolean rawPayload) {
+        public void setRawPayload(Boolean rawPayload) {
             this.rawPayload = rawPayload;
         }
 
@@ -468,11 +468,11 @@ public class SalesforceEndpoint {
             this.resultId = resultId;
         }
 
-        public boolean getSerializeNulls() {
+        public Boolean getSerializeNulls() {
             return serializeNulls;
         }
 
-        public void setSerializeNulls(boolean serializeNulls) {
+        public void setSerializeNulls(Boolean serializeNulls) {
             this.serializeNulls = serializeNulls;
         }
 
@@ -548,27 +548,27 @@ public class SalesforceEndpoint {
             this.sObjectSearch = sObjectSearch;
         }
 
-        public boolean getUpdateTopic() {
+        public Boolean getUpdateTopic() {
             return updateTopic;
         }
 
-        public void setUpdateTopic(boolean updateTopic) {
+        public void setUpdateTopic(Boolean updateTopic) {
             this.updateTopic = updateTopic;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -588,7 +588,7 @@ public class SalesforceEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * The replayId value to use when subscribing. The option is a
          * java.lang.Long type.
@@ -616,11 +616,11 @@ public class SalesforceEndpoint {
             this.topicName = topicName;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

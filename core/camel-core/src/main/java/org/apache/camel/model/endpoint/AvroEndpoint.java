@@ -38,7 +38,7 @@ public class AvroEndpoint {
         /**
          * Port number to use. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * Hostname to use. The option is a java.lang.String type.
          */
@@ -66,13 +66,13 @@ public class AvroEndpoint {
          * only with protocol parameter because for protocolClassName protocol
          * type will be auto detected. The option is a boolean type.
          */
-        private boolean reflectionProtocol;
+        private Boolean reflectionProtocol;
         /**
          * If true, consumer parameter won't be wrapped into array. Will fail if
          * protocol specifies more then 1 parameter for the message. The option
          * is a boolean type.
          */
-        private boolean singleParameter;
+        private Boolean singleParameter;
         /**
          * Authority to use (username and password). The option is a
          * java.lang.String type.
@@ -83,13 +83,13 @@ public class AvroEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public AvroTransport getTransport() {
             return transport;
@@ -99,11 +99,11 @@ public class AvroEndpoint {
             this.transport = transport;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
@@ -147,19 +147,19 @@ public class AvroEndpoint {
             this.protocolLocation = protocolLocation;
         }
 
-        public boolean getReflectionProtocol() {
+        public Boolean getReflectionProtocol() {
             return reflectionProtocol;
         }
 
-        public void setReflectionProtocol(boolean reflectionProtocol) {
+        public void setReflectionProtocol(Boolean reflectionProtocol) {
             this.reflectionProtocol = reflectionProtocol;
         }
 
-        public boolean getSingleParameter() {
+        public Boolean getSingleParameter() {
             return singleParameter;
         }
 
-        public void setSingleParameter(boolean singleParameter) {
+        public void setSingleParameter(Boolean singleParameter) {
             this.singleParameter = singleParameter;
         }
 
@@ -171,19 +171,19 @@ public class AvroEndpoint {
             this.uriAuthority = uriAuthority;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -198,7 +198,7 @@ public class AvroEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -213,11 +213,11 @@ public class AvroEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

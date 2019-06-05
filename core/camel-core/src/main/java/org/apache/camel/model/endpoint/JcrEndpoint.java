@@ -46,14 +46,14 @@ public class JcrEndpoint {
          * absPath or within its subgraph are received. The option is a boolean
          * type.
          */
-        private boolean deep;
+        private Boolean deep;
         /**
          * eventTypes (a combination of one or more event types encoded as a bit
          * mask value such as javax.jcr.observation.Event.NODE_ADDED,
          * javax.jcr.observation.Event.NODE_REMOVED, etc.). The option is a int
          * type.
          */
-        private int eventTypes;
+        private Integer eventTypes;
         /**
          * When a comma separated nodeTypeName list string is set, only events
          * whose associated parent node has one of the node types (or a subtype
@@ -66,7 +66,7 @@ public class JcrEndpoint {
          * which the listener was registered are ignored. Otherwise, they are
          * not ignored. The option is a boolean type.
          */
-        private boolean noLocal;
+        private Boolean noLocal;
         /**
          * Password for login. The option is a java.lang.String type.
          */
@@ -75,12 +75,12 @@ public class JcrEndpoint {
          * Interval in milliseconds to wait before each session live checking
          * The default value is 60000 ms. The option is a long type.
          */
-        private long sessionLiveCheckInterval;
+        private Long sessionLiveCheckInterval;
         /**
          * Interval in milliseconds to wait before the first session live
          * checking. The default value is 3000 ms. The option is a long type.
          */
-        private long sessionLiveCheckIntervalOnStart;
+        private Long sessionLiveCheckIntervalOnStart;
         /**
          * Username for login. The option is a java.lang.String type.
          */
@@ -102,13 +102,13 @@ public class JcrEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getHost() {
             return host;
@@ -126,19 +126,19 @@ public class JcrEndpoint {
             this.base = base;
         }
 
-        public boolean getDeep() {
+        public Boolean getDeep() {
             return deep;
         }
 
-        public void setDeep(boolean deep) {
+        public void setDeep(Boolean deep) {
             this.deep = deep;
         }
 
-        public int getEventTypes() {
+        public Integer getEventTypes() {
             return eventTypes;
         }
 
-        public void setEventTypes(int eventTypes) {
+        public void setEventTypes(Integer eventTypes) {
             this.eventTypes = eventTypes;
         }
 
@@ -150,11 +150,11 @@ public class JcrEndpoint {
             this.nodeTypeNames = nodeTypeNames;
         }
 
-        public boolean getNoLocal() {
+        public Boolean getNoLocal() {
             return noLocal;
         }
 
-        public void setNoLocal(boolean noLocal) {
+        public void setNoLocal(Boolean noLocal) {
             this.noLocal = noLocal;
         }
 
@@ -166,20 +166,20 @@ public class JcrEndpoint {
             this.password = password;
         }
 
-        public long getSessionLiveCheckInterval() {
+        public Long getSessionLiveCheckInterval() {
             return sessionLiveCheckInterval;
         }
 
-        public void setSessionLiveCheckInterval(long sessionLiveCheckInterval) {
+        public void setSessionLiveCheckInterval(Long sessionLiveCheckInterval) {
             this.sessionLiveCheckInterval = sessionLiveCheckInterval;
         }
 
-        public long getSessionLiveCheckIntervalOnStart() {
+        public Long getSessionLiveCheckIntervalOnStart() {
             return sessionLiveCheckIntervalOnStart;
         }
 
         public void setSessionLiveCheckIntervalOnStart(
-                long sessionLiveCheckIntervalOnStart) {
+                Long sessionLiveCheckIntervalOnStart) {
             this.sessionLiveCheckIntervalOnStart = sessionLiveCheckIntervalOnStart;
         }
 
@@ -207,19 +207,19 @@ public class JcrEndpoint {
             this.workspaceName = workspaceName;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -234,7 +234,7 @@ public class JcrEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -249,11 +249,11 @@ public class JcrEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

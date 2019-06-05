@@ -45,7 +45,7 @@ public class RestletEndpoint {
         /**
          * The port number of the restlet service. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * The resource pattern such as /customer/{id}. The option is a
          * java.lang.String type.
@@ -62,7 +62,7 @@ public class RestletEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
@@ -108,11 +108,11 @@ public class RestletEndpoint {
             this.host = host;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
@@ -132,11 +132,11 @@ public class RestletEndpoint {
             this.restletMethod = restletMethod;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -192,7 +192,7 @@ public class RestletEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Specify one or more methods separated by commas (e.g.
          * restletMethods=post,put) to be serviced by a restlet consumer
@@ -215,7 +215,7 @@ public class RestletEndpoint {
          * support reading the stream multiple times. The option is a boolean
          * type.
          */
-        private boolean disableStreamCache;
+        private Boolean disableStreamCache;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -230,11 +230,11 @@ public class RestletEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -246,11 +246,11 @@ public class RestletEndpoint {
             this.restletMethods = restletMethods;
         }
 
-        public boolean getDisableStreamCache() {
+        public Boolean getDisableStreamCache() {
             return disableStreamCache;
         }
 
-        public void setDisableStreamCache(boolean disableStreamCache) {
+        public void setDisableStreamCache(Boolean disableStreamCache) {
             this.disableStreamCache = disableStreamCache;
         }
 
@@ -276,7 +276,7 @@ public class RestletEndpoint {
          * The Client will give up connection if the connection is timeout, 0
          * for unlimited wait. The option is a int type.
          */
-        private int connectTimeout;
+        private Integer connectTimeout;
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
@@ -286,13 +286,13 @@ public class RestletEndpoint {
          * The Client socket receive timeout, 0 for unlimited wait. The option
          * is a int type.
          */
-        private int socketTimeout;
+        private Integer socketTimeout;
         /**
          * Whether to throw exception on a producer failure. If this option is
          * false then the http status code is set as a message header which can
          * be checked if it has an error value. The option is a boolean type.
          */
-        private boolean throwExceptionOnFailure;
+        private Boolean throwExceptionOnFailure;
         /**
          * Whether to auto close the stream representation as response from
          * calling a REST service using the restlet producer. If the response is
@@ -303,7 +303,7 @@ public class RestletEndpoint {
          * route, you may need to not auto close the stream. The option is a
          * boolean type.
          */
-        private boolean autoCloseStream;
+        private Boolean autoCloseStream;
         /**
          * Whether to support stream representation as response from calling a
          * REST service using the restlet producer. If the response is streaming
@@ -314,13 +314,13 @@ public class RestletEndpoint {
          * However if you need to read the stream outside a Camel route, you may
          * need to not auto close the stream. The option is a boolean type.
          */
-        private boolean streamRepresentation;
+        private Boolean streamRepresentation;
 
-        public int getConnectTimeout() {
+        public Integer getConnectTimeout() {
             return connectTimeout;
         }
 
-        public void setConnectTimeout(int connectTimeout) {
+        public void setConnectTimeout(Integer connectTimeout) {
             this.connectTimeout = connectTimeout;
         }
 
@@ -332,35 +332,35 @@ public class RestletEndpoint {
             this.cookieHandler = cookieHandler;
         }
 
-        public int getSocketTimeout() {
+        public Integer getSocketTimeout() {
             return socketTimeout;
         }
 
-        public void setSocketTimeout(int socketTimeout) {
+        public void setSocketTimeout(Integer socketTimeout) {
             this.socketTimeout = socketTimeout;
         }
 
-        public boolean getThrowExceptionOnFailure() {
+        public Boolean getThrowExceptionOnFailure() {
             return throwExceptionOnFailure;
         }
 
-        public void setThrowExceptionOnFailure(boolean throwExceptionOnFailure) {
+        public void setThrowExceptionOnFailure(Boolean throwExceptionOnFailure) {
             this.throwExceptionOnFailure = throwExceptionOnFailure;
         }
 
-        public boolean getAutoCloseStream() {
+        public Boolean getAutoCloseStream() {
             return autoCloseStream;
         }
 
-        public void setAutoCloseStream(boolean autoCloseStream) {
+        public void setAutoCloseStream(Boolean autoCloseStream) {
             this.autoCloseStream = autoCloseStream;
         }
 
-        public boolean getStreamRepresentation() {
+        public Boolean getStreamRepresentation() {
             return streamRepresentation;
         }
 
-        public void setStreamRepresentation(boolean streamRepresentation) {
+        public void setStreamRepresentation(Boolean streamRepresentation) {
             this.streamRepresentation = streamRepresentation;
         }
     }

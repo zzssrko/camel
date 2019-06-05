@@ -58,7 +58,7 @@ public class DockerEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * The fully qualified class name of the DockerCmdExecFactory
          * implementation to use. The option is a java.lang.String type.
@@ -67,11 +67,11 @@ public class DockerEndpoint {
         /**
          * Whether to follow redirect filter. The option is a boolean type.
          */
-        private boolean followRedirectFilter;
+        private Boolean followRedirectFilter;
         /**
          * Whether to use logging filter. The option is a boolean type.
          */
-        private boolean loggingFilter;
+        private Boolean loggingFilter;
         /**
          * Maximum route connections. The option is a java.lang.Integer type.
          */
@@ -88,13 +88,13 @@ public class DockerEndpoint {
         /**
          * Socket connection mode. The option is a boolean type.
          */
-        private boolean socket;
+        private Boolean socket;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Location containing the SSL certificate chain. The option is a
          * java.lang.String type.
@@ -107,11 +107,11 @@ public class DockerEndpoint {
         /**
          * Use HTTPS communication. The option is a boolean type.
          */
-        private boolean secure;
+        private Boolean secure;
         /**
          * Check TLS. The option is a boolean type.
          */
-        private boolean tlsVerify;
+        private Boolean tlsVerify;
         /**
          * User name to authenticate with. The option is a java.lang.String
          * type.
@@ -158,11 +158,11 @@ public class DockerEndpoint {
             this.requestTimeout = requestTimeout;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -174,19 +174,19 @@ public class DockerEndpoint {
             this.cmdExecFactory = cmdExecFactory;
         }
 
-        public boolean getFollowRedirectFilter() {
+        public Boolean getFollowRedirectFilter() {
             return followRedirectFilter;
         }
 
-        public void setFollowRedirectFilter(boolean followRedirectFilter) {
+        public void setFollowRedirectFilter(Boolean followRedirectFilter) {
             this.followRedirectFilter = followRedirectFilter;
         }
 
-        public boolean getLoggingFilter() {
+        public Boolean getLoggingFilter() {
             return loggingFilter;
         }
 
-        public void setLoggingFilter(boolean loggingFilter) {
+        public void setLoggingFilter(Boolean loggingFilter) {
             this.loggingFilter = loggingFilter;
         }
 
@@ -214,19 +214,19 @@ public class DockerEndpoint {
             this.serverAddress = serverAddress;
         }
 
-        public boolean getSocket() {
+        public Boolean getSocket() {
             return socket;
         }
 
-        public void setSocket(boolean socket) {
+        public void setSocket(Boolean socket) {
             this.socket = socket;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -246,19 +246,19 @@ public class DockerEndpoint {
             this.password = password;
         }
 
-        public boolean getSecure() {
+        public Boolean getSecure() {
             return secure;
         }
 
-        public void setSecure(boolean secure) {
+        public void setSecure(Boolean secure) {
             this.secure = secure;
         }
 
-        public boolean getTlsVerify() {
+        public Boolean getTlsVerify() {
             return tlsVerify;
         }
 
-        public void setTlsVerify(boolean tlsVerify) {
+        public void setTlsVerify(Boolean tlsVerify) {
             this.tlsVerify = tlsVerify;
         }
 
@@ -281,7 +281,7 @@ public class DockerEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -296,11 +296,11 @@ public class DockerEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

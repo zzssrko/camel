@@ -43,13 +43,13 @@ public class SpringWebserviceEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
@@ -64,19 +64,19 @@ public class SpringWebserviceEndpoint {
             this.messageFilter = messageFilter;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -123,7 +123,7 @@ public class SpringWebserviceEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Spring org.springframework.ws.server.endpoint.MessageEndpoint for
          * dispatching messages received by Spring-WS to a Camel endpoint, to
@@ -181,11 +181,11 @@ public class SpringWebserviceEndpoint {
             this.lookupKey = lookupKey;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -245,7 +245,7 @@ public class SpringWebserviceEndpoint {
          * true, allows the modified soap attachments to be overwritten in
          * in/out message attachments. The option is a boolean type.
          */
-        private boolean allowResponseAttachmentOverride;
+        private Boolean allowResponseAttachmentOverride;
         /**
          * Option to override soap response header in in/out exchange with
          * header info from the actual service layer. If the invoked service
@@ -253,7 +253,7 @@ public class SpringWebserviceEndpoint {
          * allows the modified soap header to be overwritten in in/out message
          * headers. The option is a boolean type.
          */
-        private boolean allowResponseHeaderOverride;
+        private Boolean allowResponseHeaderOverride;
         /**
          * Signifies the value for the faultAction response WS-Addressing Fault
          * Action header that is provided by the method. The option is a
@@ -316,7 +316,7 @@ public class SpringWebserviceEndpoint {
          * HttpComponentsMessageSender.setReadTimeout(). The option is a int
          * type.
          */
-        private int timeout;
+        private Integer timeout;
         /**
          * Option to provide a custom WebServiceTemplate. This allows for full
          * control over client-side web services handling; like adding a custom
@@ -341,21 +341,21 @@ public class SpringWebserviceEndpoint {
             this.webServiceEndpointUri = webServiceEndpointUri;
         }
 
-        public boolean getAllowResponseAttachmentOverride() {
+        public Boolean getAllowResponseAttachmentOverride() {
             return allowResponseAttachmentOverride;
         }
 
         public void setAllowResponseAttachmentOverride(
-                boolean allowResponseAttachmentOverride) {
+                Boolean allowResponseAttachmentOverride) {
             this.allowResponseAttachmentOverride = allowResponseAttachmentOverride;
         }
 
-        public boolean getAllowResponseHeaderOverride() {
+        public Boolean getAllowResponseHeaderOverride() {
             return allowResponseHeaderOverride;
         }
 
         public void setAllowResponseHeaderOverride(
-                boolean allowResponseHeaderOverride) {
+                Boolean allowResponseHeaderOverride) {
             this.allowResponseHeaderOverride = allowResponseHeaderOverride;
         }
 
@@ -423,11 +423,11 @@ public class SpringWebserviceEndpoint {
             this.soapAction = soapAction;
         }
 
-        public int getTimeout() {
+        public Integer getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(int timeout) {
+        public void setTimeout(Integer timeout) {
             this.timeout = timeout;
         }
 

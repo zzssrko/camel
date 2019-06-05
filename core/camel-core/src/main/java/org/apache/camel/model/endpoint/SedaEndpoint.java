@@ -42,13 +42,13 @@ public class SedaEndpoint {
          * it can hold). Will by default use the defaultSize set on the SEDA
          * component. The option is a int type.
          */
-        private int size;
+        private Integer size;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Define the queue instance which will be used by the endpoint. This
          * option is only for rare use-cases where you want to use a custom
@@ -61,7 +61,7 @@ public class SedaEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getName() {
             return name;
@@ -71,19 +71,19 @@ public class SedaEndpoint {
             this.name = name;
         }
 
-        public int getSize() {
+        public Integer getSize() {
             return size;
         }
 
-        public void setSize(int size) {
+        public void setSize(Integer size) {
             this.size = size;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -95,11 +95,11 @@ public class SedaEndpoint {
             this.queue = queue;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -114,12 +114,12 @@ public class SedaEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Number of concurrent threads processing exchanges. The option is a
          * int type.
          */
-        private int concurrentConsumers;
+        private Integer concurrentConsumers;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -139,7 +139,7 @@ public class SedaEndpoint {
          * configured with a greater number. You can disable that check by
          * turning this option off. The option is a boolean type.
          */
-        private boolean limitConcurrentConsumers;
+        private Boolean limitConcurrentConsumers;
         /**
          * Specifies whether multiple consumers are allowed. If enabled, you can
          * use SEDA for Publish-Subscribe messaging. That is, you can send a
@@ -147,34 +147,34 @@ public class SedaEndpoint {
          * the message. When enabled, this option should be specified on every
          * consumer endpoint. The option is a boolean type.
          */
-        private boolean multipleConsumers;
+        private Boolean multipleConsumers;
         /**
          * The timeout used when polling. When a timeout occurs, the consumer
          * can check whether it is allowed to continue running. Setting a lower
          * value allows the consumer to react more quickly upon shutdown. The
          * option is a int type.
          */
-        private int pollTimeout;
+        private Integer pollTimeout;
         /**
          * Whether to purge the task queue when stopping the consumer/route.
          * This allows to stop faster, as any pending messages on the queue is
          * discarded. The option is a boolean type.
          */
-        private boolean purgeWhenStopping;
+        private Boolean purgeWhenStopping;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public int getConcurrentConsumers() {
+        public Integer getConcurrentConsumers() {
             return concurrentConsumers;
         }
 
-        public void setConcurrentConsumers(int concurrentConsumers) {
+        public void setConcurrentConsumers(Integer concurrentConsumers) {
             this.concurrentConsumers = concurrentConsumers;
         }
 
@@ -194,35 +194,35 @@ public class SedaEndpoint {
             this.exchangePattern = exchangePattern;
         }
 
-        public boolean getLimitConcurrentConsumers() {
+        public Boolean getLimitConcurrentConsumers() {
             return limitConcurrentConsumers;
         }
 
-        public void setLimitConcurrentConsumers(boolean limitConcurrentConsumers) {
+        public void setLimitConcurrentConsumers(Boolean limitConcurrentConsumers) {
             this.limitConcurrentConsumers = limitConcurrentConsumers;
         }
 
-        public boolean getMultipleConsumers() {
+        public Boolean getMultipleConsumers() {
             return multipleConsumers;
         }
 
-        public void setMultipleConsumers(boolean multipleConsumers) {
+        public void setMultipleConsumers(Boolean multipleConsumers) {
             this.multipleConsumers = multipleConsumers;
         }
 
-        public int getPollTimeout() {
+        public Integer getPollTimeout() {
             return pollTimeout;
         }
 
-        public void setPollTimeout(int pollTimeout) {
+        public void setPollTimeout(Integer pollTimeout) {
             this.pollTimeout = pollTimeout;
         }
 
-        public boolean getPurgeWhenStopping() {
+        public Boolean getPurgeWhenStopping() {
             return purgeWhenStopping;
         }
 
-        public void setPurgeWhenStopping(boolean purgeWhenStopping) {
+        public void setPurgeWhenStopping(Boolean purgeWhenStopping) {
             this.purgeWhenStopping = purgeWhenStopping;
         }
     }
@@ -235,7 +235,7 @@ public class SedaEndpoint {
          * this option, the calling thread will instead block and wait until the
          * message can be accepted. The option is a boolean type.
          */
-        private boolean blockWhenFull;
+        private Boolean blockWhenFull;
         /**
          * Whether the producer should discard the message (do not add the
          * message to the queue), when sending to a queue with no active
@@ -243,26 +243,26 @@ public class SedaEndpoint {
          * failIfNoConsumers can be enabled at the same time. The option is a
          * boolean type.
          */
-        private boolean discardIfNoConsumers;
+        private Boolean discardIfNoConsumers;
         /**
          * Whether the producer should fail by throwing an exception, when
          * sending to a queue with no active consumers. Only one of the options
          * discardIfNoConsumers and failIfNoConsumers can be enabled at the same
          * time. The option is a boolean type.
          */
-        private boolean failIfNoConsumers;
+        private Boolean failIfNoConsumers;
         /**
          * offerTimeout (in milliseconds) can be added to the block case when
          * queue is full. You can disable timeout by using 0 or a negative
          * value. The option is a long type.
          */
-        private long offerTimeout;
+        private Long offerTimeout;
         /**
          * Timeout (in milliseconds) before a SEDA producer will stop waiting
          * for an asynchronous task to complete. You can disable timeout by
          * using 0 or a negative value. The option is a long type.
          */
-        private long timeout;
+        private Long timeout;
         /**
          * Option to specify whether the caller should wait for the async task
          * to complete or not before continuing. The following three options are
@@ -274,43 +274,43 @@ public class SedaEndpoint {
          */
         private WaitForTaskToComplete waitForTaskToComplete;
 
-        public boolean getBlockWhenFull() {
+        public Boolean getBlockWhenFull() {
             return blockWhenFull;
         }
 
-        public void setBlockWhenFull(boolean blockWhenFull) {
+        public void setBlockWhenFull(Boolean blockWhenFull) {
             this.blockWhenFull = blockWhenFull;
         }
 
-        public boolean getDiscardIfNoConsumers() {
+        public Boolean getDiscardIfNoConsumers() {
             return discardIfNoConsumers;
         }
 
-        public void setDiscardIfNoConsumers(boolean discardIfNoConsumers) {
+        public void setDiscardIfNoConsumers(Boolean discardIfNoConsumers) {
             this.discardIfNoConsumers = discardIfNoConsumers;
         }
 
-        public boolean getFailIfNoConsumers() {
+        public Boolean getFailIfNoConsumers() {
             return failIfNoConsumers;
         }
 
-        public void setFailIfNoConsumers(boolean failIfNoConsumers) {
+        public void setFailIfNoConsumers(Boolean failIfNoConsumers) {
             this.failIfNoConsumers = failIfNoConsumers;
         }
 
-        public long getOfferTimeout() {
+        public Long getOfferTimeout() {
             return offerTimeout;
         }
 
-        public void setOfferTimeout(long offerTimeout) {
+        public void setOfferTimeout(Long offerTimeout) {
             this.offerTimeout = offerTimeout;
         }
 
-        public long getTimeout() {
+        public Long getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(long timeout) {
+        public void setTimeout(Long timeout) {
             this.timeout = timeout;
         }
 

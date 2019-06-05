@@ -50,7 +50,7 @@ public class RabbitMQEndpoint {
          * If it is true, the exchange will be deleted when it is no longer in
          * use. The option is a boolean type.
          */
-        private boolean autoDelete;
+        private Boolean autoDelete;
         /**
          * To use a custom RabbitMQ connection factory. When this option is set,
          * all connection options (connectionTimeout, requestedChannelMax...)
@@ -83,12 +83,12 @@ public class RabbitMQEndpoint {
          * bind them together. If the option is false, camel won't declare the
          * exchange and queue name on the server. The option is a boolean type.
          */
-        private boolean declare;
+        private Boolean declare;
         /**
          * If we are declaring a durable exchange (the exchange will survive a
          * server restart). The option is a boolean type.
          */
-        private boolean durable;
+        private Boolean durable;
         /**
          * The exchange type such as direct or topic. The option is a
          * java.lang.String type.
@@ -99,7 +99,7 @@ public class RabbitMQEndpoint {
          * are deleted when that connection closes. The option is a boolean
          * type.
          */
-        private boolean exclusive;
+        private Boolean exclusive;
         /**
          * The hostname of the running rabbitmq instance or cluster. The option
          * is a java.lang.String type.
@@ -109,12 +109,12 @@ public class RabbitMQEndpoint {
          * Passive queues depend on the queue already to be available at
          * RabbitMQ. The option is a boolean type.
          */
-        private boolean passive;
+        private Boolean passive;
         /**
          * Port number for the host with the running rabbitmq instance or
          * cluster. Default value is 5672. The option is a int type.
          */
-        private int portNumber;
+        private Integer portNumber;
         /**
          * The queue to receive messages from. The option is a java.lang.String
          * type.
@@ -130,18 +130,18 @@ public class RabbitMQEndpoint {
          * This can be used if we need to declare the queue but not the
          * exchange. The option is a boolean type.
          */
-        private boolean skipExchangeDeclare;
+        private Boolean skipExchangeDeclare;
         /**
          * If true the queue will not be bound to the exchange after declaring
          * it. The option is a boolean type.
          */
-        private boolean skipQueueBind;
+        private Boolean skipQueueBind;
         /**
          * If true the producer will not declare and bind a queue. This can be
          * used for directing messages via an existing routing key. The option
          * is a boolean type.
          */
-        private boolean skipQueueDeclare;
+        private Boolean skipQueueDeclare;
         /**
          * The vhost for the channel. The option is a java.lang.String type.
          */
@@ -166,7 +166,7 @@ public class RabbitMQEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Connection client properties (client info used in negotiating with
          * the server). The option is a
@@ -176,7 +176,7 @@ public class RabbitMQEndpoint {
         /**
          * Connection timeout. The option is a int type.
          */
-        private int connectionTimeout;
+        private Integer connectionTimeout;
         /**
          * Network recovery interval in milliseconds (interval used when
          * recovering from network failure). The option is a java.lang.Integer
@@ -187,33 +187,33 @@ public class RabbitMQEndpoint {
          * Connection requested channel max (max number of channels offered).
          * The option is a int type.
          */
-        private int requestedChannelMax;
+        private Integer requestedChannelMax;
         /**
          * Connection requested frame max (max size of frame offered). The
          * option is a int type.
          */
-        private int requestedFrameMax;
+        private Integer requestedFrameMax;
         /**
          * Connection requested heartbeat (heart-beat in seconds offered). The
          * option is a int type.
          */
-        private int requestedHeartbeat;
+        private Integer requestedHeartbeat;
         /**
          * Set timeout for waiting for a reply when using the InOut Exchange
          * Pattern (in milliseconds). The option is a long type.
          */
-        private long requestTimeout;
+        private Long requestTimeout;
         /**
          * Set requestTimeoutCheckerInterval for inOut exchange. The option is a
          * long type.
          */
-        private long requestTimeoutCheckerInterval;
+        private Long requestTimeoutCheckerInterval;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Enables connection topology recovery (should topology recovery be
          * performed). The option is a java.lang.Boolean type.
@@ -223,7 +223,7 @@ public class RabbitMQEndpoint {
          * When true and an inOut Exchange failed on the consumer side send the
          * caused Exception back in the response. The option is a boolean type.
          */
-        private boolean transferException;
+        private Boolean transferException;
         /**
          * Password for authenticated access. The option is a java.lang.String
          * type.
@@ -261,11 +261,11 @@ public class RabbitMQEndpoint {
             this.addresses = addresses;
         }
 
-        public boolean getAutoDelete() {
+        public Boolean getAutoDelete() {
             return autoDelete;
         }
 
-        public void setAutoDelete(boolean autoDelete) {
+        public void setAutoDelete(Boolean autoDelete) {
             this.autoDelete = autoDelete;
         }
 
@@ -309,19 +309,19 @@ public class RabbitMQEndpoint {
             this.deadLetterRoutingKey = deadLetterRoutingKey;
         }
 
-        public boolean getDeclare() {
+        public Boolean getDeclare() {
             return declare;
         }
 
-        public void setDeclare(boolean declare) {
+        public void setDeclare(Boolean declare) {
             this.declare = declare;
         }
 
-        public boolean getDurable() {
+        public Boolean getDurable() {
             return durable;
         }
 
-        public void setDurable(boolean durable) {
+        public void setDurable(Boolean durable) {
             this.durable = durable;
         }
 
@@ -333,11 +333,11 @@ public class RabbitMQEndpoint {
             this.exchangeType = exchangeType;
         }
 
-        public boolean getExclusive() {
+        public Boolean getExclusive() {
             return exclusive;
         }
 
-        public void setExclusive(boolean exclusive) {
+        public void setExclusive(Boolean exclusive) {
             this.exclusive = exclusive;
         }
 
@@ -349,19 +349,19 @@ public class RabbitMQEndpoint {
             this.hostname = hostname;
         }
 
-        public boolean getPassive() {
+        public Boolean getPassive() {
             return passive;
         }
 
-        public void setPassive(boolean passive) {
+        public void setPassive(Boolean passive) {
             this.passive = passive;
         }
 
-        public int getPortNumber() {
+        public Integer getPortNumber() {
             return portNumber;
         }
 
-        public void setPortNumber(int portNumber) {
+        public void setPortNumber(Integer portNumber) {
             this.portNumber = portNumber;
         }
 
@@ -381,27 +381,27 @@ public class RabbitMQEndpoint {
             this.routingKey = routingKey;
         }
 
-        public boolean getSkipExchangeDeclare() {
+        public Boolean getSkipExchangeDeclare() {
             return skipExchangeDeclare;
         }
 
-        public void setSkipExchangeDeclare(boolean skipExchangeDeclare) {
+        public void setSkipExchangeDeclare(Boolean skipExchangeDeclare) {
             this.skipExchangeDeclare = skipExchangeDeclare;
         }
 
-        public boolean getSkipQueueBind() {
+        public Boolean getSkipQueueBind() {
             return skipQueueBind;
         }
 
-        public void setSkipQueueBind(boolean skipQueueBind) {
+        public void setSkipQueueBind(Boolean skipQueueBind) {
             this.skipQueueBind = skipQueueBind;
         }
 
-        public boolean getSkipQueueDeclare() {
+        public Boolean getSkipQueueDeclare() {
             return skipQueueDeclare;
         }
 
-        public void setSkipQueueDeclare(boolean skipQueueDeclare) {
+        public void setSkipQueueDeclare(Boolean skipQueueDeclare) {
             this.skipQueueDeclare = skipQueueDeclare;
         }
 
@@ -429,11 +429,11 @@ public class RabbitMQEndpoint {
             this.automaticRecoveryEnabled = automaticRecoveryEnabled;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -445,11 +445,11 @@ public class RabbitMQEndpoint {
             this.clientProperties = clientProperties;
         }
 
-        public int getConnectionTimeout() {
+        public Integer getConnectionTimeout() {
             return connectionTimeout;
         }
 
-        public void setConnectionTimeout(int connectionTimeout) {
+        public void setConnectionTimeout(Integer connectionTimeout) {
             this.connectionTimeout = connectionTimeout;
         }
 
@@ -461,52 +461,52 @@ public class RabbitMQEndpoint {
             this.networkRecoveryInterval = networkRecoveryInterval;
         }
 
-        public int getRequestedChannelMax() {
+        public Integer getRequestedChannelMax() {
             return requestedChannelMax;
         }
 
-        public void setRequestedChannelMax(int requestedChannelMax) {
+        public void setRequestedChannelMax(Integer requestedChannelMax) {
             this.requestedChannelMax = requestedChannelMax;
         }
 
-        public int getRequestedFrameMax() {
+        public Integer getRequestedFrameMax() {
             return requestedFrameMax;
         }
 
-        public void setRequestedFrameMax(int requestedFrameMax) {
+        public void setRequestedFrameMax(Integer requestedFrameMax) {
             this.requestedFrameMax = requestedFrameMax;
         }
 
-        public int getRequestedHeartbeat() {
+        public Integer getRequestedHeartbeat() {
             return requestedHeartbeat;
         }
 
-        public void setRequestedHeartbeat(int requestedHeartbeat) {
+        public void setRequestedHeartbeat(Integer requestedHeartbeat) {
             this.requestedHeartbeat = requestedHeartbeat;
         }
 
-        public long getRequestTimeout() {
+        public Long getRequestTimeout() {
             return requestTimeout;
         }
 
-        public void setRequestTimeout(long requestTimeout) {
+        public void setRequestTimeout(Long requestTimeout) {
             this.requestTimeout = requestTimeout;
         }
 
-        public long getRequestTimeoutCheckerInterval() {
+        public Long getRequestTimeoutCheckerInterval() {
             return requestTimeoutCheckerInterval;
         }
 
         public void setRequestTimeoutCheckerInterval(
-                long requestTimeoutCheckerInterval) {
+                Long requestTimeoutCheckerInterval) {
             this.requestTimeoutCheckerInterval = requestTimeoutCheckerInterval;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -518,11 +518,11 @@ public class RabbitMQEndpoint {
             this.topologyRecoveryEnabled = topologyRecoveryEnabled;
         }
 
-        public boolean getTransferException() {
+        public Boolean getTransferException() {
             return transferException;
         }
 
-        public void setTransferException(boolean transferException) {
+        public void setTransferException(Boolean transferException) {
             this.transferException = transferException;
         }
 
@@ -564,7 +564,7 @@ public class RabbitMQEndpoint {
          * If messages should be auto acknowledged. The option is a boolean
          * type.
          */
-        private boolean autoAck;
+        private Boolean autoAck;
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -574,47 +574,47 @@ public class RabbitMQEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Number of concurrent consumers when consuming from broker. (eg
          * similar as to the same option for the JMS component). The option is a
          * int type.
          */
-        private int concurrentConsumers;
+        private Integer concurrentConsumers;
         /**
          * Request exclusive access to the queue (meaning only this consumer can
          * access the queue). This is useful when you want a long-lived shared
          * queue to be temporarily accessible by just one consumer. The option
          * is a boolean type.
          */
-        private boolean exclusiveConsumer;
+        private Boolean exclusiveConsumer;
         /**
          * The maximum number of messages that the server will deliver, 0 if
          * unlimited. You need to specify the option of prefetchSize,
          * prefetchCount, prefetchGlobal at the same time. The option is a int
          * type.
          */
-        private int prefetchCount;
+        private Integer prefetchCount;
         /**
          * Enables the quality of service on the RabbitMQConsumer side. You need
          * to specify the option of prefetchSize, prefetchCount, prefetchGlobal
          * at the same time. The option is a boolean type.
          */
-        private boolean prefetchEnabled;
+        private Boolean prefetchEnabled;
         /**
          * If the settings should be applied to the entire channel rather than
          * each consumer You need to specify the option of prefetchSize,
          * prefetchCount, prefetchGlobal at the same time. The option is a
          * boolean type.
          */
-        private boolean prefetchGlobal;
+        private Boolean prefetchGlobal;
         /**
          * The maximum amount of content (measured in octets) that the server
          * will deliver, 0 if unlimited. You need to specify the option of
          * prefetchSize, prefetchCount, prefetchGlobal at the same time. The
          * option is a int type.
          */
-        private int prefetchSize;
+        private Integer prefetchSize;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -633,69 +633,69 @@ public class RabbitMQEndpoint {
          * threads. This setting allows you to set that number of threads. The
          * option is a int type.
          */
-        private int threadPoolSize;
+        private Integer threadPoolSize;
 
-        public boolean getAutoAck() {
+        public Boolean getAutoAck() {
             return autoAck;
         }
 
-        public void setAutoAck(boolean autoAck) {
+        public void setAutoAck(Boolean autoAck) {
             this.autoAck = autoAck;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public int getConcurrentConsumers() {
+        public Integer getConcurrentConsumers() {
             return concurrentConsumers;
         }
 
-        public void setConcurrentConsumers(int concurrentConsumers) {
+        public void setConcurrentConsumers(Integer concurrentConsumers) {
             this.concurrentConsumers = concurrentConsumers;
         }
 
-        public boolean getExclusiveConsumer() {
+        public Boolean getExclusiveConsumer() {
             return exclusiveConsumer;
         }
 
-        public void setExclusiveConsumer(boolean exclusiveConsumer) {
+        public void setExclusiveConsumer(Boolean exclusiveConsumer) {
             this.exclusiveConsumer = exclusiveConsumer;
         }
 
-        public int getPrefetchCount() {
+        public Integer getPrefetchCount() {
             return prefetchCount;
         }
 
-        public void setPrefetchCount(int prefetchCount) {
+        public void setPrefetchCount(Integer prefetchCount) {
             this.prefetchCount = prefetchCount;
         }
 
-        public boolean getPrefetchEnabled() {
+        public Boolean getPrefetchEnabled() {
             return prefetchEnabled;
         }
 
-        public void setPrefetchEnabled(boolean prefetchEnabled) {
+        public void setPrefetchEnabled(Boolean prefetchEnabled) {
             this.prefetchEnabled = prefetchEnabled;
         }
 
-        public boolean getPrefetchGlobal() {
+        public Boolean getPrefetchGlobal() {
             return prefetchGlobal;
         }
 
-        public void setPrefetchGlobal(boolean prefetchGlobal) {
+        public void setPrefetchGlobal(Boolean prefetchGlobal) {
             this.prefetchGlobal = prefetchGlobal;
         }
 
-        public int getPrefetchSize() {
+        public Integer getPrefetchSize() {
             return prefetchSize;
         }
 
-        public void setPrefetchSize(int prefetchSize) {
+        public void setPrefetchSize(Integer prefetchSize) {
             this.prefetchSize = prefetchSize;
         }
 
@@ -715,11 +715,11 @@ public class RabbitMQEndpoint {
             this.exchangePattern = exchangePattern;
         }
 
-        public int getThreadPoolSize() {
+        public Integer getThreadPoolSize() {
             return threadPoolSize;
         }
 
-        public void setThreadPoolSize(int threadPoolSize) {
+        public void setThreadPoolSize(Integer threadPoolSize) {
             this.threadPoolSize = threadPoolSize;
         }
     }
@@ -728,23 +728,23 @@ public class RabbitMQEndpoint {
         /**
          * Allow pass null values to header. The option is a boolean type.
          */
-        private boolean allowNullHeaders;
+        private Boolean allowNullHeaders;
         /**
          * If the bridgeEndpoint is true, the producer will ignore the message
          * header of rabbitmq.EXCHANGE_NAME and rabbitmq.ROUTING_KEY. The option
          * is a boolean type.
          */
-        private boolean bridgeEndpoint;
+        private Boolean bridgeEndpoint;
         /**
          * Get maximum number of opened channel in pool. The option is a int
          * type.
          */
-        private int channelPoolMaxSize;
+        private Integer channelPoolMaxSize;
         /**
          * Set the maximum number of milliseconds to wait for a channel from the
          * pool. The option is a long type.
          */
-        private long channelPoolMaxWait;
+        private Long channelPoolMaxWait;
         /**
          * When true, an exception will be thrown when the message cannot be
          * delivered (basic.return) and the message is marked as mandatory.
@@ -752,7 +752,7 @@ public class RabbitMQEndpoint {
          * also publisher acknowledgements - When will messages be confirmed.
          * The option is a boolean type.
          */
-        private boolean guaranteedDeliveries;
+        private Boolean guaranteedDeliveries;
         /**
          * This flag tells the server how to react if the message cannot be
          * routed to a queue consumer immediately. If this flag is set, the
@@ -762,7 +762,7 @@ public class RabbitMQEndpoint {
          * rabbitmq.IMMEDIATE it will override this option. The option is a
          * boolean type.
          */
-        private boolean immediate;
+        private Boolean immediate;
         /**
          * This flag tells the server how to react if the message cannot be
          * routed to a queue. If this flag is set, the server will return an
@@ -771,89 +771,89 @@ public class RabbitMQEndpoint {
          * rabbitmq.MANDATORY it will override this option. The option is a
          * boolean type.
          */
-        private boolean mandatory;
+        private Boolean mandatory;
         /**
          * When true, the message will be published with publisher
          * acknowledgements turned on. The option is a boolean type.
          */
-        private boolean publisherAcknowledgements;
+        private Boolean publisherAcknowledgements;
         /**
          * The amount of time in milliseconds to wait for a basic.ack response
          * from RabbitMQ server. The option is a long type.
          */
-        private long publisherAcknowledgementsTimeout;
+        private Long publisherAcknowledgementsTimeout;
 
-        public boolean getAllowNullHeaders() {
+        public Boolean getAllowNullHeaders() {
             return allowNullHeaders;
         }
 
-        public void setAllowNullHeaders(boolean allowNullHeaders) {
+        public void setAllowNullHeaders(Boolean allowNullHeaders) {
             this.allowNullHeaders = allowNullHeaders;
         }
 
-        public boolean getBridgeEndpoint() {
+        public Boolean getBridgeEndpoint() {
             return bridgeEndpoint;
         }
 
-        public void setBridgeEndpoint(boolean bridgeEndpoint) {
+        public void setBridgeEndpoint(Boolean bridgeEndpoint) {
             this.bridgeEndpoint = bridgeEndpoint;
         }
 
-        public int getChannelPoolMaxSize() {
+        public Integer getChannelPoolMaxSize() {
             return channelPoolMaxSize;
         }
 
-        public void setChannelPoolMaxSize(int channelPoolMaxSize) {
+        public void setChannelPoolMaxSize(Integer channelPoolMaxSize) {
             this.channelPoolMaxSize = channelPoolMaxSize;
         }
 
-        public long getChannelPoolMaxWait() {
+        public Long getChannelPoolMaxWait() {
             return channelPoolMaxWait;
         }
 
-        public void setChannelPoolMaxWait(long channelPoolMaxWait) {
+        public void setChannelPoolMaxWait(Long channelPoolMaxWait) {
             this.channelPoolMaxWait = channelPoolMaxWait;
         }
 
-        public boolean getGuaranteedDeliveries() {
+        public Boolean getGuaranteedDeliveries() {
             return guaranteedDeliveries;
         }
 
-        public void setGuaranteedDeliveries(boolean guaranteedDeliveries) {
+        public void setGuaranteedDeliveries(Boolean guaranteedDeliveries) {
             this.guaranteedDeliveries = guaranteedDeliveries;
         }
 
-        public boolean getImmediate() {
+        public Boolean getImmediate() {
             return immediate;
         }
 
-        public void setImmediate(boolean immediate) {
+        public void setImmediate(Boolean immediate) {
             this.immediate = immediate;
         }
 
-        public boolean getMandatory() {
+        public Boolean getMandatory() {
             return mandatory;
         }
 
-        public void setMandatory(boolean mandatory) {
+        public void setMandatory(Boolean mandatory) {
             this.mandatory = mandatory;
         }
 
-        public boolean getPublisherAcknowledgements() {
+        public Boolean getPublisherAcknowledgements() {
             return publisherAcknowledgements;
         }
 
         public void setPublisherAcknowledgements(
-                boolean publisherAcknowledgements) {
+                Boolean publisherAcknowledgements) {
             this.publisherAcknowledgements = publisherAcknowledgements;
         }
 
-        public long getPublisherAcknowledgementsTimeout() {
+        public Long getPublisherAcknowledgementsTimeout() {
             return publisherAcknowledgementsTimeout;
         }
 
         public void setPublisherAcknowledgementsTimeout(
-                long publisherAcknowledgementsTimeout) {
+                Long publisherAcknowledgementsTimeout) {
             this.publisherAcknowledgementsTimeout = publisherAcknowledgementsTimeout;
         }
     }

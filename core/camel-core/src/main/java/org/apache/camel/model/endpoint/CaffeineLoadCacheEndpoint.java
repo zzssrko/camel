@@ -39,13 +39,13 @@ public class CaffeineLoadCacheEndpoint {
          * Configure if a cache need to be created if it does exist or can't be
          * pre-configured. The option is a boolean type.
          */
-        private boolean createCacheIfNotExist;
+        private Boolean createCacheIfNotExist;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * The cache key type, default java.lang.Object. The option is a
          * java.lang.String type.
@@ -56,7 +56,7 @@ public class CaffeineLoadCacheEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * The cache value type, default java.lang.Object. The option is a
          * java.lang.String type.
@@ -71,19 +71,19 @@ public class CaffeineLoadCacheEndpoint {
             this.cacheName = cacheName;
         }
 
-        public boolean getCreateCacheIfNotExist() {
+        public Boolean getCreateCacheIfNotExist() {
             return createCacheIfNotExist;
         }
 
-        public void setCreateCacheIfNotExist(boolean createCacheIfNotExist) {
+        public void setCreateCacheIfNotExist(Boolean createCacheIfNotExist) {
             this.createCacheIfNotExist = createCacheIfNotExist;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -95,11 +95,11 @@ public class CaffeineLoadCacheEndpoint {
             this.keyType = keyType;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -124,7 +124,7 @@ public class CaffeineLoadCacheEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -139,11 +139,11 @@ public class CaffeineLoadCacheEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -192,16 +192,16 @@ public class CaffeineLoadCacheEndpoint {
          * Set the expire After Access Time in case of time based Eviction (in
          * seconds). The option is a int type.
          */
-        private int expireAfterAccessTime;
+        private Integer expireAfterAccessTime;
         /**
          * Set the expire After Access Write in case of time based Eviction (in
          * seconds). The option is a int type.
          */
-        private int expireAfterWriteTime;
+        private Integer expireAfterWriteTime;
         /**
          * Set the initial Capacity for the cache. The option is a int type.
          */
-        private int initialCapacity;
+        private Integer initialCapacity;
         /**
          * To configure the default action key. If a key is set in the message
          * header, then the key from the header takes precedence. The option is
@@ -211,7 +211,7 @@ public class CaffeineLoadCacheEndpoint {
         /**
          * Set the maximum size for the cache. The option is a int type.
          */
-        private int maximumSize;
+        private Integer maximumSize;
         /**
          * Set a specific removal Listener for the cache. The option is a
          * com.github.benmanes.caffeine.cache.RemovalListener type.
@@ -225,7 +225,7 @@ public class CaffeineLoadCacheEndpoint {
         /**
          * To enable stats on the cache. The option is a boolean type.
          */
-        private boolean statsEnabled;
+        private Boolean statsEnabled;
 
         public String getAction() {
             return action;
@@ -259,27 +259,27 @@ public class CaffeineLoadCacheEndpoint {
             this.evictionType = evictionType;
         }
 
-        public int getExpireAfterAccessTime() {
+        public Integer getExpireAfterAccessTime() {
             return expireAfterAccessTime;
         }
 
-        public void setExpireAfterAccessTime(int expireAfterAccessTime) {
+        public void setExpireAfterAccessTime(Integer expireAfterAccessTime) {
             this.expireAfterAccessTime = expireAfterAccessTime;
         }
 
-        public int getExpireAfterWriteTime() {
+        public Integer getExpireAfterWriteTime() {
             return expireAfterWriteTime;
         }
 
-        public void setExpireAfterWriteTime(int expireAfterWriteTime) {
+        public void setExpireAfterWriteTime(Integer expireAfterWriteTime) {
             this.expireAfterWriteTime = expireAfterWriteTime;
         }
 
-        public int getInitialCapacity() {
+        public Integer getInitialCapacity() {
             return initialCapacity;
         }
 
-        public void setInitialCapacity(int initialCapacity) {
+        public void setInitialCapacity(Integer initialCapacity) {
             this.initialCapacity = initialCapacity;
         }
 
@@ -291,11 +291,11 @@ public class CaffeineLoadCacheEndpoint {
             this.key = key;
         }
 
-        public int getMaximumSize() {
+        public Integer getMaximumSize() {
             return maximumSize;
         }
 
-        public void setMaximumSize(int maximumSize) {
+        public void setMaximumSize(Integer maximumSize) {
             this.maximumSize = maximumSize;
         }
 
@@ -315,11 +315,11 @@ public class CaffeineLoadCacheEndpoint {
             this.statsCounter = statsCounter;
         }
 
-        public boolean getStatsEnabled() {
+        public Boolean getStatsEnabled() {
             return statsEnabled;
         }
 
-        public void setStatsEnabled(boolean statsEnabled) {
+        public void setStatsEnabled(Boolean statsEnabled) {
             this.statsEnabled = statsEnabled;
         }
     }

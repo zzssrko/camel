@@ -47,7 +47,7 @@ public class JMXEndpoint {
          * The frequency to poll the bean to check the monitor (monitor types
          * only). The option is a long type.
          */
-        private long granularityPeriod;
+        private Long granularityPeriod;
         /**
          * The type of monitor to create. One of string, gauge, counter (monitor
          * types only). The option is a java.lang.String type.
@@ -74,7 +74,7 @@ public class JMXEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use a custom shared thread pool for the consumers. By default each
          * consume has their own thread-pool to process and route notifications.
@@ -103,7 +103,7 @@ public class JMXEndpoint {
          * establishment of the initial connection or attempt to reconnect a
          * lost connection. The option is a int type.
          */
-        private int reconnectDelay;
+        private Integer reconnectDelay;
         /**
          * If true the consumer will attempt to reconnect to the JMX server when
          * any connection failure occurs. The consumer will attempt to
@@ -111,13 +111,13 @@ public class JMXEndpoint {
          * connection is made-- where 'x' is the configured reconnectionDelay.
          * The option is a boolean type.
          */
-        private boolean reconnectOnConnectionFailure;
+        private Boolean reconnectOnConnectionFailure;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * If true the consumer will throw an exception if unable to establish
          * the JMX connection upon startup. If false, the consumer will attempt
@@ -125,39 +125,39 @@ public class JMXEndpoint {
          * connection is made -- where 'x' is the configured reconnectionDelay.
          * The option is a boolean type.
          */
-        private boolean testConnectionOnStartup;
+        private Boolean testConnectionOnStartup;
         /**
          * Initial threshold for the monitor. The value must exceed this before
          * notifications are fired (counter monitor only). The option is a int
          * type.
          */
-        private int initThreshold;
+        private Integer initThreshold;
         /**
          * The value at which the counter is reset to zero (counter monitor
          * only). The option is a int type.
          */
-        private int modulus;
+        private Integer modulus;
         /**
          * The amount to increment the threshold after it's been exceeded
          * (counter monitor only). The option is a int type.
          */
-        private int offset;
+        private Integer offset;
         /**
          * If true, then the value reported in the notification is the
          * difference from the threshold as opposed to the value itself (counter
          * and gauge monitor only). The option is a boolean type.
          */
-        private boolean differenceMode;
+        private Boolean differenceMode;
         /**
          * If true, the gauge will fire a notification when the high threshold
          * is exceeded (gauge monitor only). The option is a boolean type.
          */
-        private boolean notifyHigh;
+        private Boolean notifyHigh;
         /**
          * If true, the gauge will fire a notification when the low threshold is
          * exceeded (gauge monitor only). The option is a boolean type.
          */
-        private boolean notifyLow;
+        private Boolean notifyLow;
         /**
          * Value for the gauge's high threshold (gauge monitor only). The option
          * is a java.lang.Double type.
@@ -195,11 +195,11 @@ public class JMXEndpoint {
             this.format = format;
         }
 
-        public long getGranularityPeriod() {
+        public Long getGranularityPeriod() {
             return granularityPeriod;
         }
 
-        public void setGranularityPeriod(long granularityPeriod) {
+        public void setGranularityPeriod(Long granularityPeriod) {
             this.granularityPeriod = granularityPeriod;
         }
 
@@ -235,11 +235,11 @@ public class JMXEndpoint {
             this.observedAttribute = observedAttribute;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -275,84 +275,84 @@ public class JMXEndpoint {
             this.objectProperties = objectProperties;
         }
 
-        public int getReconnectDelay() {
+        public Integer getReconnectDelay() {
             return reconnectDelay;
         }
 
-        public void setReconnectDelay(int reconnectDelay) {
+        public void setReconnectDelay(Integer reconnectDelay) {
             this.reconnectDelay = reconnectDelay;
         }
 
-        public boolean getReconnectOnConnectionFailure() {
+        public Boolean getReconnectOnConnectionFailure() {
             return reconnectOnConnectionFailure;
         }
 
         public void setReconnectOnConnectionFailure(
-                boolean reconnectOnConnectionFailure) {
+                Boolean reconnectOnConnectionFailure) {
             this.reconnectOnConnectionFailure = reconnectOnConnectionFailure;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getTestConnectionOnStartup() {
+        public Boolean getTestConnectionOnStartup() {
             return testConnectionOnStartup;
         }
 
-        public void setTestConnectionOnStartup(boolean testConnectionOnStartup) {
+        public void setTestConnectionOnStartup(Boolean testConnectionOnStartup) {
             this.testConnectionOnStartup = testConnectionOnStartup;
         }
 
-        public int getInitThreshold() {
+        public Integer getInitThreshold() {
             return initThreshold;
         }
 
-        public void setInitThreshold(int initThreshold) {
+        public void setInitThreshold(Integer initThreshold) {
             this.initThreshold = initThreshold;
         }
 
-        public int getModulus() {
+        public Integer getModulus() {
             return modulus;
         }
 
-        public void setModulus(int modulus) {
+        public void setModulus(Integer modulus) {
             this.modulus = modulus;
         }
 
-        public int getOffset() {
+        public Integer getOffset() {
             return offset;
         }
 
-        public void setOffset(int offset) {
+        public void setOffset(Integer offset) {
             this.offset = offset;
         }
 
-        public boolean getDifferenceMode() {
+        public Boolean getDifferenceMode() {
             return differenceMode;
         }
 
-        public void setDifferenceMode(boolean differenceMode) {
+        public void setDifferenceMode(Boolean differenceMode) {
             this.differenceMode = differenceMode;
         }
 
-        public boolean getNotifyHigh() {
+        public Boolean getNotifyHigh() {
             return notifyHigh;
         }
 
-        public void setNotifyHigh(boolean notifyHigh) {
+        public void setNotifyHigh(Boolean notifyHigh) {
             this.notifyHigh = notifyHigh;
         }
 
-        public boolean getNotifyLow() {
+        public Boolean getNotifyLow() {
             return notifyLow;
         }
 
-        public void setNotifyLow(boolean notifyLow) {
+        public void setNotifyLow(Boolean notifyLow) {
             this.notifyLow = notifyLow;
         }
 
@@ -399,7 +399,7 @@ public class JMXEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -419,14 +419,14 @@ public class JMXEndpoint {
          * the consumer will notify match if observed attribute and string to
          * compare has been configured. The option is a boolean type.
          */
-        private boolean notifyDiffer;
+        private Boolean notifyDiffer;
         /**
          * If true, will fire a notification when the string attribute matches
          * the string to compare (string monitor or consumer). By default the
          * consumer will notify match if observed attribute and string to
          * compare has been configured. The option is a boolean type.
          */
-        private boolean notifyMatch;
+        private Boolean notifyMatch;
         /**
          * Value for attribute to compare (string monitor or consumer). By
          * default the consumer will notify match if observed attribute and
@@ -435,11 +435,11 @@ public class JMXEndpoint {
          */
         private String stringToCompare;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -459,19 +459,19 @@ public class JMXEndpoint {
             this.exchangePattern = exchangePattern;
         }
 
-        public boolean getNotifyDiffer() {
+        public Boolean getNotifyDiffer() {
             return notifyDiffer;
         }
 
-        public void setNotifyDiffer(boolean notifyDiffer) {
+        public void setNotifyDiffer(Boolean notifyDiffer) {
             this.notifyDiffer = notifyDiffer;
         }
 
-        public boolean getNotifyMatch() {
+        public Boolean getNotifyMatch() {
             return notifyMatch;
         }
 
-        public void setNotifyMatch(boolean notifyMatch) {
+        public void setNotifyMatch(Boolean notifyMatch) {
             this.notifyMatch = notifyMatch;
         }
 

@@ -50,7 +50,7 @@ public class HttpEndpoint {
          * response stream as-is as the message body. The option is a boolean
          * type.
          */
-        private boolean disableStreamCache;
+        private Boolean disableStreamCache;
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
@@ -68,7 +68,7 @@ public class HttpEndpoint {
          * and set the content-length header on the response. The option is a
          * boolean type.
          */
-        private boolean chunked;
+        private Boolean chunked;
         /**
          * If enabled and an Exchange failed processing on the consumer side,
          * and if the caused Exception was send back serialized in the response
@@ -80,13 +80,13 @@ public class HttpEndpoint {
          * data from the request to Java and that can be a potential security
          * risk. The option is a boolean type.
          */
-        private boolean transferException;
+        private Boolean transferException;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Provide access to the http client request parameters used on new
          * RequestConfig instances used by producers or consumers of this
@@ -104,7 +104,7 @@ public class HttpEndpoint {
          * The maximum number of connections per route. The option is a int
          * type.
          */
-        private int connectionsPerRoute;
+        private Integer connectionsPerRoute;
         /**
          * Sets a custom HttpClient to be used by the producer. The option is a
          * org.apache.http.client.HttpClient type.
@@ -132,34 +132,34 @@ public class HttpEndpoint {
          * mapped to HTTP body. Setting this to false will avoid the HTTP
          * mapping. The option is a boolean type.
          */
-        private boolean mapHttpMessageBody;
+        private Boolean mapHttpMessageBody;
         /**
          * If this option is true then IN exchange Form Encoded body of the
          * exchange will be mapped to HTTP. Setting this to false will avoid the
          * HTTP Form Encoded body mapping. The option is a boolean type.
          */
-        private boolean mapHttpMessageFormUrlEncodedBody;
+        private Boolean mapHttpMessageFormUrlEncodedBody;
         /**
          * If this option is true then IN exchange Headers of the exchange will
          * be mapped to HTTP headers. Setting this to false will avoid the HTTP
          * Headers mapping. The option is a boolean type.
          */
-        private boolean mapHttpMessageHeaders;
+        private Boolean mapHttpMessageHeaders;
         /**
          * The maximum number of connections. The option is a int type.
          */
-        private int maxTotalConnections;
+        private Integer maxTotalConnections;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * To use System Properties as fallback for configuration. The option is
          * a boolean type.
          */
-        private boolean useSystemProperties;
+        private Boolean useSystemProperties;
         /**
          * To configure security using SSLContextParameters. Important: Only one
          * instance of org.apache.camel.util.jsse.SSLContextParameters is
@@ -176,11 +176,11 @@ public class HttpEndpoint {
          */
         private Object x509HostnameVerifier;
 
-        public boolean getDisableStreamCache() {
+        public Boolean getDisableStreamCache() {
             return disableStreamCache;
         }
 
-        public void setDisableStreamCache(boolean disableStreamCache) {
+        public void setDisableStreamCache(Boolean disableStreamCache) {
             this.disableStreamCache = disableStreamCache;
         }
 
@@ -201,27 +201,27 @@ public class HttpEndpoint {
             this.httpBinding = httpBinding;
         }
 
-        public boolean getChunked() {
+        public Boolean getChunked() {
             return chunked;
         }
 
-        public void setChunked(boolean chunked) {
+        public void setChunked(Boolean chunked) {
             this.chunked = chunked;
         }
 
-        public boolean getTransferException() {
+        public Boolean getTransferException() {
             return transferException;
         }
 
-        public void setTransferException(boolean transferException) {
+        public void setTransferException(Boolean transferException) {
             this.transferException = transferException;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -241,11 +241,11 @@ public class HttpEndpoint {
             this.clientConnectionManager = clientConnectionManager;
         }
 
-        public int getConnectionsPerRoute() {
+        public Integer getConnectionsPerRoute() {
             return connectionsPerRoute;
         }
 
-        public void setConnectionsPerRoute(int connectionsPerRoute) {
+        public void setConnectionsPerRoute(Integer connectionsPerRoute) {
             this.connectionsPerRoute = connectionsPerRoute;
         }
 
@@ -281,52 +281,52 @@ public class HttpEndpoint {
             this.httpContext = httpContext;
         }
 
-        public boolean getMapHttpMessageBody() {
+        public Boolean getMapHttpMessageBody() {
             return mapHttpMessageBody;
         }
 
-        public void setMapHttpMessageBody(boolean mapHttpMessageBody) {
+        public void setMapHttpMessageBody(Boolean mapHttpMessageBody) {
             this.mapHttpMessageBody = mapHttpMessageBody;
         }
 
-        public boolean getMapHttpMessageFormUrlEncodedBody() {
+        public Boolean getMapHttpMessageFormUrlEncodedBody() {
             return mapHttpMessageFormUrlEncodedBody;
         }
 
         public void setMapHttpMessageFormUrlEncodedBody(
-                boolean mapHttpMessageFormUrlEncodedBody) {
+                Boolean mapHttpMessageFormUrlEncodedBody) {
             this.mapHttpMessageFormUrlEncodedBody = mapHttpMessageFormUrlEncodedBody;
         }
 
-        public boolean getMapHttpMessageHeaders() {
+        public Boolean getMapHttpMessageHeaders() {
             return mapHttpMessageHeaders;
         }
 
-        public void setMapHttpMessageHeaders(boolean mapHttpMessageHeaders) {
+        public void setMapHttpMessageHeaders(Boolean mapHttpMessageHeaders) {
             this.mapHttpMessageHeaders = mapHttpMessageHeaders;
         }
 
-        public int getMaxTotalConnections() {
+        public Integer getMaxTotalConnections() {
             return maxTotalConnections;
         }
 
-        public void setMaxTotalConnections(int maxTotalConnections) {
+        public void setMaxTotalConnections(Integer maxTotalConnections) {
             this.maxTotalConnections = maxTotalConnections;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getUseSystemProperties() {
+        public Boolean getUseSystemProperties() {
             return useSystemProperties;
         }
 
-        public void setUseSystemProperties(boolean useSystemProperties) {
+        public void setUseSystemProperties(Boolean useSystemProperties) {
             this.useSystemProperties = useSystemProperties;
         }
 
@@ -360,27 +360,27 @@ public class HttpEndpoint {
          * If this option is true, camel-http4 sends preemptive basic
          * authentication to the server. The option is a boolean type.
          */
-        private boolean authenticationPreemptive;
+        private Boolean authenticationPreemptive;
         /**
          * If the option is true, HttpProducer will ignore the Exchange.HTTP_URI
          * header, and use the endpoint's URI for request. You may also set the
          * option throwExceptionOnFailure to be false to let the HttpProducer
          * send all the fault response back. The option is a boolean type.
          */
-        private boolean bridgeEndpoint;
+        private Boolean bridgeEndpoint;
         /**
          * Whether to clear expired cookies before sending the HTTP request.
          * This ensures the cookies store does not keep growing by adding new
          * cookies which is newer removed when they are expired. The option is a
          * boolean type.
          */
-        private boolean clearExpiredCookies;
+        private Boolean clearExpiredCookies;
         /**
          * Specifies whether a Connection Close header must be added to HTTP
          * Request. By default connectionClose is false. The option is a boolean
          * type.
          */
-        private boolean connectionClose;
+        private Boolean connectionClose;
         /**
          * To use a custom CookieStore. By default the BasicCookieStore is used
          * which is an in-memory only cookie store. Notice if
@@ -398,14 +398,14 @@ public class HttpEndpoint {
          * allows to only include the headers from the HTTP response (not
          * propagating IN headers). The option is a boolean type.
          */
-        private boolean copyHeaders;
+        private Boolean copyHeaders;
         /**
          * Whether the HTTP DELETE should include the message body or not. By
          * default HTTP DELETE do not include any HTTP message. However in some
          * rare cases users may need to be able to include the message body. The
          * option is a boolean type.
          */
-        private boolean deleteWithBody;
+        private Boolean deleteWithBody;
         /**
          * Configure the HTTP method to use. The HttpMethod header cannot
          * override this option if set. The option is a
@@ -416,7 +416,7 @@ public class HttpEndpoint {
          * If this option is true, The http producer won't read response body
          * and cache the input stream. The option is a boolean type.
          */
-        private boolean ignoreResponseBody;
+        private Boolean ignoreResponseBody;
         /**
          * If the option is true, HttpProducer will set the Host header to the
          * value contained in the current exchange Host header, useful in
@@ -426,14 +426,14 @@ public class HttpEndpoint {
          * generate accurate URL's for a proxied service. The option is a
          * boolean type.
          */
-        private boolean preserveHostHeader;
+        private Boolean preserveHostHeader;
         /**
          * Option to disable throwing the HttpOperationFailedException in case
          * of failed responses from the remote server. This allows you to get
          * all responses regardless of the HTTP status code. The option is a
          * boolean type.
          */
-        private boolean throwExceptionOnFailure;
+        private Boolean throwExceptionOnFailure;
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
@@ -476,7 +476,7 @@ public class HttpEndpoint {
         /**
          * Proxy authentication port. The option is a int type.
          */
-        private int proxyAuthPort;
+        private Integer proxyAuthPort;
         /**
          * Proxy authentication scheme to use. The option is a java.lang.String
          * type.
@@ -493,7 +493,7 @@ public class HttpEndpoint {
         /**
          * Proxy port to use. The option is a int type.
          */
-        private int proxyPort;
+        private Integer proxyPort;
         /**
          * Authentication domain to use with NTML. The option is a
          * java.lang.String type.
@@ -531,35 +531,35 @@ public class HttpEndpoint {
             this.httpUri = httpUri;
         }
 
-        public boolean getAuthenticationPreemptive() {
+        public Boolean getAuthenticationPreemptive() {
             return authenticationPreemptive;
         }
 
-        public void setAuthenticationPreemptive(boolean authenticationPreemptive) {
+        public void setAuthenticationPreemptive(Boolean authenticationPreemptive) {
             this.authenticationPreemptive = authenticationPreemptive;
         }
 
-        public boolean getBridgeEndpoint() {
+        public Boolean getBridgeEndpoint() {
             return bridgeEndpoint;
         }
 
-        public void setBridgeEndpoint(boolean bridgeEndpoint) {
+        public void setBridgeEndpoint(Boolean bridgeEndpoint) {
             this.bridgeEndpoint = bridgeEndpoint;
         }
 
-        public boolean getClearExpiredCookies() {
+        public Boolean getClearExpiredCookies() {
             return clearExpiredCookies;
         }
 
-        public void setClearExpiredCookies(boolean clearExpiredCookies) {
+        public void setClearExpiredCookies(Boolean clearExpiredCookies) {
             this.clearExpiredCookies = clearExpiredCookies;
         }
 
-        public boolean getConnectionClose() {
+        public Boolean getConnectionClose() {
             return connectionClose;
         }
 
-        public void setConnectionClose(boolean connectionClose) {
+        public void setConnectionClose(Boolean connectionClose) {
             this.connectionClose = connectionClose;
         }
 
@@ -571,19 +571,19 @@ public class HttpEndpoint {
             this.cookieStore = cookieStore;
         }
 
-        public boolean getCopyHeaders() {
+        public Boolean getCopyHeaders() {
             return copyHeaders;
         }
 
-        public void setCopyHeaders(boolean copyHeaders) {
+        public void setCopyHeaders(Boolean copyHeaders) {
             this.copyHeaders = copyHeaders;
         }
 
-        public boolean getDeleteWithBody() {
+        public Boolean getDeleteWithBody() {
             return deleteWithBody;
         }
 
-        public void setDeleteWithBody(boolean deleteWithBody) {
+        public void setDeleteWithBody(Boolean deleteWithBody) {
             this.deleteWithBody = deleteWithBody;
         }
 
@@ -595,27 +595,27 @@ public class HttpEndpoint {
             this.httpMethod = httpMethod;
         }
 
-        public boolean getIgnoreResponseBody() {
+        public Boolean getIgnoreResponseBody() {
             return ignoreResponseBody;
         }
 
-        public void setIgnoreResponseBody(boolean ignoreResponseBody) {
+        public void setIgnoreResponseBody(Boolean ignoreResponseBody) {
             this.ignoreResponseBody = ignoreResponseBody;
         }
 
-        public boolean getPreserveHostHeader() {
+        public Boolean getPreserveHostHeader() {
             return preserveHostHeader;
         }
 
-        public void setPreserveHostHeader(boolean preserveHostHeader) {
+        public void setPreserveHostHeader(Boolean preserveHostHeader) {
             this.preserveHostHeader = preserveHostHeader;
         }
 
-        public boolean getThrowExceptionOnFailure() {
+        public Boolean getThrowExceptionOnFailure() {
             return throwExceptionOnFailure;
         }
 
-        public void setThrowExceptionOnFailure(boolean throwExceptionOnFailure) {
+        public void setThrowExceptionOnFailure(Boolean throwExceptionOnFailure) {
             this.throwExceptionOnFailure = throwExceptionOnFailure;
         }
 
@@ -677,11 +677,11 @@ public class HttpEndpoint {
             this.proxyAuthPassword = proxyAuthPassword;
         }
 
-        public int getProxyAuthPort() {
+        public Integer getProxyAuthPort() {
             return proxyAuthPort;
         }
 
-        public void setProxyAuthPort(int proxyAuthPort) {
+        public void setProxyAuthPort(Integer proxyAuthPort) {
             this.proxyAuthPort = proxyAuthPort;
         }
 
@@ -709,11 +709,11 @@ public class HttpEndpoint {
             this.proxyHost = proxyHost;
         }
 
-        public int getProxyPort() {
+        public Integer getProxyPort() {
             return proxyPort;
         }
 
-        public void setProxyPort(int proxyPort) {
+        public void setProxyPort(Integer proxyPort) {
             this.proxyPort = proxyPort;
         }
 

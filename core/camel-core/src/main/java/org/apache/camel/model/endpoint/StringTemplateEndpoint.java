@@ -41,27 +41,27 @@ public class StringTemplateEndpoint {
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
-        private boolean contentCache;
+        private Boolean contentCache;
         /**
          * The variable start delimiter. The option is a char type.
          */
-        private char delimiterStart;
+        private Character delimiterStart;
         /**
          * The variable end delimiter. The option is a char type.
          */
-        private char delimiterStop;
+        private Character delimiterStop;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getResourceUri() {
             return resourceUri;
@@ -71,43 +71,43 @@ public class StringTemplateEndpoint {
             this.resourceUri = resourceUri;
         }
 
-        public boolean getContentCache() {
+        public Boolean getContentCache() {
             return contentCache;
         }
 
-        public void setContentCache(boolean contentCache) {
+        public void setContentCache(Boolean contentCache) {
             this.contentCache = contentCache;
         }
 
-        public char getDelimiterStart() {
+        public Character getDelimiterStart() {
             return delimiterStart;
         }
 
-        public void setDelimiterStart(char delimiterStart) {
+        public void setDelimiterStart(Character delimiterStart) {
             this.delimiterStart = delimiterStart;
         }
 
-        public char getDelimiterStop() {
+        public Character getDelimiterStop() {
             return delimiterStop;
         }
 
-        public void setDelimiterStop(char delimiterStop) {
+        public void setDelimiterStop(Character delimiterStop) {
             this.delimiterStop = delimiterStop;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

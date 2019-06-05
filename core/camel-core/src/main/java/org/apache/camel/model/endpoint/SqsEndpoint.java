@@ -55,7 +55,7 @@ public class SqsEndpoint {
         /**
          * Setting the autocreation of the queue. The option is a boolean type.
          */
-        private boolean autoCreateQueue;
+        private Boolean autoCreateQueue;
         /**
          * To use a custom HeaderFilterStrategy to map headers to/from Camel.
          * The option is a org.apache.camel.spi.HeaderFilterStrategy type.
@@ -78,12 +78,12 @@ public class SqsEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Define if you want to apply delaySeconds option to the queue or on
          * single messages. The option is a boolean type.
          */
-        private boolean delayQueue;
+        private Boolean delayQueue;
         /**
          * To define the queueUrl explicitly. All other parameters, which would
          * influence the queueUrl, are ignored. This parameter is intended to be
@@ -96,7 +96,7 @@ public class SqsEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * To define a proxy host when instantiating the SQS client. The option
          * is a java.lang.String type.
@@ -165,11 +165,11 @@ public class SqsEndpoint {
             this.amazonSQSClient = amazonSQSClient;
         }
 
-        public boolean getAutoCreateQueue() {
+        public Boolean getAutoCreateQueue() {
             return autoCreateQueue;
         }
 
-        public void setAutoCreateQueue(boolean autoCreateQueue) {
+        public void setAutoCreateQueue(Boolean autoCreateQueue) {
             this.autoCreateQueue = autoCreateQueue;
         }
 
@@ -198,19 +198,19 @@ public class SqsEndpoint {
             this.region = region;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getDelayQueue() {
+        public Boolean getDelayQueue() {
             return delayQueue;
         }
 
-        public void setDelayQueue(boolean delayQueue) {
+        public void setDelayQueue(Boolean delayQueue) {
             this.delayQueue = delayQueue;
         }
 
@@ -222,11 +222,11 @@ public class SqsEndpoint {
             this.queueUrl = queueUrl;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -319,12 +319,12 @@ public class SqsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Allows you to use multiple threads to poll the sqs queue to increase
          * throughput. The option is a int type.
          */
-        private int concurrentConsumers;
+        private Integer concurrentConsumers;
         /**
          * The default visibility timeout (in seconds). The option is a
          * java.lang.Integer type.
@@ -334,21 +334,21 @@ public class SqsEndpoint {
          * Delete message from SQS after it has been read. The option is a
          * boolean type.
          */
-        private boolean deleteAfterRead;
+        private Boolean deleteAfterRead;
         /**
          * Whether or not to send the DeleteMessage to the SQS queue if an
          * exchange fails to get through a filter. If 'false' and exchange does
          * not make it through a Camel filter upstream in the route, then don't
          * send DeleteMessage. The option is a boolean type.
          */
-        private boolean deleteIfFiltered;
+        private Boolean deleteIfFiltered;
         /**
          * If enabled then a scheduled background task will keep extending the
          * message visibility on SQS. This is needed if it takes a long time to
          * process the message. If set to true defaultVisibilityTimeout must be
          * set. See details at Amazon docs. The option is a boolean type.
          */
-        private boolean extendMessageVisibility;
+        private Boolean extendMessageVisibility;
         /**
          * The length of time, in seconds, for which Amazon SQS can reuse a data
          * key to encrypt or decrypt messages before calling AWS KMS again. An
@@ -367,7 +367,7 @@ public class SqsEndpoint {
          * polling. Is default unlimited, but use 0 or negative number to
          * disable it as unlimited. The option is a int type.
          */
-        private int maxMessagesPerPoll;
+        private Integer maxMessagesPerPoll;
         /**
          * A list of message attribute names to receive when consuming. Multiple
          * names can be separated by comma. The option is a java.lang.String
@@ -379,12 +379,12 @@ public class SqsEndpoint {
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private boolean sendEmptyMessageWhenIdle;
+        private Boolean sendEmptyMessageWhenIdle;
         /**
          * Define if Server Side Encryption is enabled or not on the queue. The
          * option is a boolean type.
          */
-        private boolean serverSideEncryptionEnabled;
+        private Boolean serverSideEncryptionEnabled;
         /**
          * The duration (in seconds) that the received messages are hidden from
          * subsequent retrieve requests after being retrieved by a
@@ -427,12 +427,12 @@ public class SqsEndpoint {
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private int backoffErrorThreshold;
+        private Integer backoffErrorThreshold;
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private int backoffIdleThreshold;
+        private Integer backoffIdleThreshold;
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -441,25 +441,25 @@ public class SqsEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private int backoffMultiplier;
+        private Integer backoffMultiplier;
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long delay;
+        private Long delay;
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private boolean greedy;
+        private Boolean greedy;
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long initialDelay;
+        private Long initialDelay;
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
@@ -489,7 +489,7 @@ public class SqsEndpoint {
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private boolean startScheduler;
+        private Boolean startScheduler;
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
@@ -500,7 +500,7 @@ public class SqsEndpoint {
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private boolean useFixedDelay;
+        private Boolean useFixedDelay;
 
         public String getAttributeNames() {
             return attributeNames;
@@ -510,19 +510,19 @@ public class SqsEndpoint {
             this.attributeNames = attributeNames;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public int getConcurrentConsumers() {
+        public Integer getConcurrentConsumers() {
             return concurrentConsumers;
         }
 
-        public void setConcurrentConsumers(int concurrentConsumers) {
+        public void setConcurrentConsumers(Integer concurrentConsumers) {
             this.concurrentConsumers = concurrentConsumers;
         }
 
@@ -534,27 +534,27 @@ public class SqsEndpoint {
             this.defaultVisibilityTimeout = defaultVisibilityTimeout;
         }
 
-        public boolean getDeleteAfterRead() {
+        public Boolean getDeleteAfterRead() {
             return deleteAfterRead;
         }
 
-        public void setDeleteAfterRead(boolean deleteAfterRead) {
+        public void setDeleteAfterRead(Boolean deleteAfterRead) {
             this.deleteAfterRead = deleteAfterRead;
         }
 
-        public boolean getDeleteIfFiltered() {
+        public Boolean getDeleteIfFiltered() {
             return deleteIfFiltered;
         }
 
-        public void setDeleteIfFiltered(boolean deleteIfFiltered) {
+        public void setDeleteIfFiltered(Boolean deleteIfFiltered) {
             this.deleteIfFiltered = deleteIfFiltered;
         }
 
-        public boolean getExtendMessageVisibility() {
+        public Boolean getExtendMessageVisibility() {
             return extendMessageVisibility;
         }
 
-        public void setExtendMessageVisibility(boolean extendMessageVisibility) {
+        public void setExtendMessageVisibility(Boolean extendMessageVisibility) {
             this.extendMessageVisibility = extendMessageVisibility;
         }
 
@@ -575,11 +575,11 @@ public class SqsEndpoint {
             this.kmsMasterKeyId = kmsMasterKeyId;
         }
 
-        public int getMaxMessagesPerPoll() {
+        public Integer getMaxMessagesPerPoll() {
             return maxMessagesPerPoll;
         }
 
-        public void setMaxMessagesPerPoll(int maxMessagesPerPoll) {
+        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
             this.maxMessagesPerPoll = maxMessagesPerPoll;
         }
 
@@ -591,20 +591,20 @@ public class SqsEndpoint {
             this.messageAttributeNames = messageAttributeNames;
         }
 
-        public boolean getSendEmptyMessageWhenIdle() {
+        public Boolean getSendEmptyMessageWhenIdle() {
             return sendEmptyMessageWhenIdle;
         }
 
-        public void setSendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
+        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
             this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
         }
 
-        public boolean getServerSideEncryptionEnabled() {
+        public Boolean getServerSideEncryptionEnabled() {
             return serverSideEncryptionEnabled;
         }
 
         public void setServerSideEncryptionEnabled(
-                boolean serverSideEncryptionEnabled) {
+                Boolean serverSideEncryptionEnabled) {
             this.serverSideEncryptionEnabled = serverSideEncryptionEnabled;
         }
 
@@ -648,51 +648,51 @@ public class SqsEndpoint {
             this.pollStrategy = pollStrategy;
         }
 
-        public int getBackoffErrorThreshold() {
+        public Integer getBackoffErrorThreshold() {
             return backoffErrorThreshold;
         }
 
-        public void setBackoffErrorThreshold(int backoffErrorThreshold) {
+        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
             this.backoffErrorThreshold = backoffErrorThreshold;
         }
 
-        public int getBackoffIdleThreshold() {
+        public Integer getBackoffIdleThreshold() {
             return backoffIdleThreshold;
         }
 
-        public void setBackoffIdleThreshold(int backoffIdleThreshold) {
+        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
             this.backoffIdleThreshold = backoffIdleThreshold;
         }
 
-        public int getBackoffMultiplier() {
+        public Integer getBackoffMultiplier() {
             return backoffMultiplier;
         }
 
-        public void setBackoffMultiplier(int backoffMultiplier) {
+        public void setBackoffMultiplier(Integer backoffMultiplier) {
             this.backoffMultiplier = backoffMultiplier;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
 
-        public boolean getGreedy() {
+        public Boolean getGreedy() {
             return greedy;
         }
 
-        public void setGreedy(boolean greedy) {
+        public void setGreedy(Boolean greedy) {
             this.greedy = greedy;
         }
 
-        public long getInitialDelay() {
+        public Long getInitialDelay() {
             return initialDelay;
         }
 
-        public void setInitialDelay(long initialDelay) {
+        public void setInitialDelay(Long initialDelay) {
             this.initialDelay = initialDelay;
         }
 
@@ -730,11 +730,11 @@ public class SqsEndpoint {
             this.schedulerProperties = schedulerProperties;
         }
 
-        public boolean getStartScheduler() {
+        public Boolean getStartScheduler() {
             return startScheduler;
         }
 
-        public void setStartScheduler(boolean startScheduler) {
+        public void setStartScheduler(Boolean startScheduler) {
             this.startScheduler = startScheduler;
         }
 
@@ -746,11 +746,11 @@ public class SqsEndpoint {
             this.timeUnit = timeUnit;
         }
 
-        public boolean getUseFixedDelay() {
+        public Boolean getUseFixedDelay() {
             return useFixedDelay;
         }
 
-        public void setUseFixedDelay(boolean useFixedDelay) {
+        public void setUseFixedDelay(Boolean useFixedDelay) {
             this.useFixedDelay = useFixedDelay;
         }
     }

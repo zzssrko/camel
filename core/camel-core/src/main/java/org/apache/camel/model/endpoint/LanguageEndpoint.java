@@ -44,19 +44,19 @@ public class LanguageEndpoint {
          * script is read as text content (eg java.lang.String). The option is a
          * boolean type.
          */
-        private boolean binary;
+        private Boolean binary;
         /**
          * Whether to cache the compiled script and reuse Notice reusing the
          * script can cause side effects from processing one Camel
          * org.apache.camel.Exchange to the next org.apache.camel.Exchange. The
          * option is a boolean type.
          */
-        private boolean cacheScript;
+        private Boolean cacheScript;
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
-        private boolean contentCache;
+        private Boolean contentCache;
         /**
          * Sets the script to execute. The option is a java.lang.String type.
          */
@@ -65,19 +65,19 @@ public class LanguageEndpoint {
          * Whether or not the result of the script should be used as message
          * body. This options is default true. The option is a boolean type.
          */
-        private boolean transform;
+        private Boolean transform;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getLanguageName() {
             return languageName;
@@ -95,27 +95,27 @@ public class LanguageEndpoint {
             this.resourceUri = resourceUri;
         }
 
-        public boolean getBinary() {
+        public Boolean getBinary() {
             return binary;
         }
 
-        public void setBinary(boolean binary) {
+        public void setBinary(Boolean binary) {
             this.binary = binary;
         }
 
-        public boolean getCacheScript() {
+        public Boolean getCacheScript() {
             return cacheScript;
         }
 
-        public void setCacheScript(boolean cacheScript) {
+        public void setCacheScript(Boolean cacheScript) {
             this.cacheScript = cacheScript;
         }
 
-        public boolean getContentCache() {
+        public Boolean getContentCache() {
             return contentCache;
         }
 
-        public void setContentCache(boolean contentCache) {
+        public void setContentCache(Boolean contentCache) {
             this.contentCache = contentCache;
         }
 
@@ -127,27 +127,27 @@ public class LanguageEndpoint {
             this.script = script;
         }
 
-        public boolean getTransform() {
+        public Boolean getTransform() {
             return transform;
         }
 
-        public void setTransform(boolean transform) {
+        public void setTransform(Boolean transform) {
             this.transform = transform;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

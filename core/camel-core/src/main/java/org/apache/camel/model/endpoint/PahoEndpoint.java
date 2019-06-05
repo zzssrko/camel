@@ -39,7 +39,7 @@ public class PahoEndpoint {
          * Client will automatically attempt to reconnect to the server if the
          * connection is lost. The option is a boolean type.
          */
-        private boolean autoReconnect;
+        private Boolean autoReconnect;
         /**
          * The URL of the MQTT broker. The option is a java.lang.String type.
          */
@@ -71,16 +71,16 @@ public class PahoEndpoint {
         /**
          * Client quality of service level (0-2). The option is a int type.
          */
-        private int qos;
+        private Integer qos;
         /**
          * Define if you don't want to resolve the MQTT Connect Options from
          * registry. The option is a boolean type.
          */
-        private boolean resolveMqttConnectOptions;
+        private Boolean resolveMqttConnectOptions;
         /**
          * Retain option. The option is a boolean type.
          */
-        private boolean retained;
+        private Boolean retained;
         /**
          * Username to be used for authentication against the MQTT broker. The
          * option is a java.lang.String type.
@@ -91,13 +91,13 @@ public class PahoEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getTopic() {
             return topic;
@@ -107,11 +107,11 @@ public class PahoEndpoint {
             this.topic = topic;
         }
 
-        public boolean getAutoReconnect() {
+        public Boolean getAutoReconnect() {
             return autoReconnect;
         }
 
-        public void setAutoReconnect(boolean autoReconnect) {
+        public void setAutoReconnect(Boolean autoReconnect) {
             this.autoReconnect = autoReconnect;
         }
 
@@ -163,28 +163,28 @@ public class PahoEndpoint {
             this.persistence = persistence;
         }
 
-        public int getQos() {
+        public Integer getQos() {
             return qos;
         }
 
-        public void setQos(int qos) {
+        public void setQos(Integer qos) {
             this.qos = qos;
         }
 
-        public boolean getResolveMqttConnectOptions() {
+        public Boolean getResolveMqttConnectOptions() {
             return resolveMqttConnectOptions;
         }
 
         public void setResolveMqttConnectOptions(
-                boolean resolveMqttConnectOptions) {
+                Boolean resolveMqttConnectOptions) {
             this.resolveMqttConnectOptions = resolveMqttConnectOptions;
         }
 
-        public boolean getRetained() {
+        public Boolean getRetained() {
             return retained;
         }
 
-        public void setRetained(boolean retained) {
+        public void setRetained(Boolean retained) {
             this.retained = retained;
         }
 
@@ -196,19 +196,19 @@ public class PahoEndpoint {
             this.userName = userName;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -223,7 +223,7 @@ public class PahoEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -238,11 +238,11 @@ public class PahoEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

@@ -49,7 +49,7 @@ public class MongoDbEndpoint {
          * Create collection during initialisation if it doesn't exist. Default
          * is true. The option is a boolean type.
          */
-        private boolean createCollection;
+        private Boolean createCollection;
         /**
          * Sets the name of the MongoDB database to target. The option is a
          * java.lang.String type.
@@ -74,7 +74,7 @@ public class MongoDbEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * MongoDB tailable cursors will block until new data arrives. If no new
          * data is inserted, after some time the cursor will be automatically
@@ -84,7 +84,7 @@ public class MongoDbEndpoint {
          * fails, how long before the next attempt is made. Default value is
          * 1000ms. The option is a long type.
          */
-        private long cursorRegenerationDelay;
+        private Long cursorRegenerationDelay;
         /**
          * Sets whether this endpoint will attempt to dynamically resolve the
          * target database and collection from the incoming Exchange properties.
@@ -93,20 +93,20 @@ public class MongoDbEndpoint {
          * default to boost performance. Enabling it will take a minimal
          * performance hit. The option is a boolean type.
          */
-        private boolean dynamicity;
+        private Boolean dynamicity;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * In write operations, it determines whether instead of returning
          * WriteResult as the body of the OUT message, we transfer the IN
          * message to the OUT and attach the WriteResult as a header. The option
          * is a boolean type.
          */
-        private boolean writeResultAsHeader;
+        private Boolean writeResultAsHeader;
         /**
          * One tail tracking collection can host many trackers for several
          * tailable consumers. To keep them separate, each tracker should have
@@ -119,7 +119,7 @@ public class MongoDbEndpoint {
          * the system is up, the endpoint will recover the cursor from the point
          * where it last stopped slurping records. The option is a boolean type.
          */
-        private boolean persistentTailTracking;
+        private Boolean persistentTailTracking;
         /**
          * Collection where tail tracking information will be persisted. If not
          * specified, MongoDbTailTrackingConfig#DEFAULT_COLLECTION will be used
@@ -176,11 +176,11 @@ public class MongoDbEndpoint {
             this.collectionIndex = collectionIndex;
         }
 
-        public boolean getCreateCollection() {
+        public Boolean getCreateCollection() {
             return createCollection;
         }
 
-        public void setCreateCollection(boolean createCollection) {
+        public void setCreateCollection(Boolean createCollection) {
             this.createCollection = createCollection;
         }
 
@@ -208,43 +208,43 @@ public class MongoDbEndpoint {
             this.outputType = outputType;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public long getCursorRegenerationDelay() {
+        public Long getCursorRegenerationDelay() {
             return cursorRegenerationDelay;
         }
 
-        public void setCursorRegenerationDelay(long cursorRegenerationDelay) {
+        public void setCursorRegenerationDelay(Long cursorRegenerationDelay) {
             this.cursorRegenerationDelay = cursorRegenerationDelay;
         }
 
-        public boolean getDynamicity() {
+        public Boolean getDynamicity() {
             return dynamicity;
         }
 
-        public void setDynamicity(boolean dynamicity) {
+        public void setDynamicity(Boolean dynamicity) {
             this.dynamicity = dynamicity;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getWriteResultAsHeader() {
+        public Boolean getWriteResultAsHeader() {
             return writeResultAsHeader;
         }
 
-        public void setWriteResultAsHeader(boolean writeResultAsHeader) {
+        public void setWriteResultAsHeader(Boolean writeResultAsHeader) {
             this.writeResultAsHeader = writeResultAsHeader;
         }
 
@@ -256,11 +256,11 @@ public class MongoDbEndpoint {
             this.persistentId = persistentId;
         }
 
-        public boolean getPersistentTailTracking() {
+        public Boolean getPersistentTailTracking() {
             return persistentTailTracking;
         }
 
-        public void setPersistentTailTracking(boolean persistentTailTracking) {
+        public void setPersistentTailTracking(Boolean persistentTailTracking) {
             this.persistentTailTracking = persistentTailTracking;
         }
 
@@ -307,7 +307,7 @@ public class MongoDbEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -322,11 +322,11 @@ public class MongoDbEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

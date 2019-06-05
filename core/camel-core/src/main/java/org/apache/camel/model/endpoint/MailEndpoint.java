@@ -46,7 +46,7 @@ public class MailEndpoint {
         /**
          * The port number of the mail server. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * Sets additional java mail properties, that will append/override any
          * default properties that is set based on all the other options. This
@@ -73,7 +73,7 @@ public class MailEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets the binding used to convert from a Camel message to and from a
          * Mail message. The option is a
@@ -83,7 +83,7 @@ public class MailEndpoint {
         /**
          * The connection timeout in milliseconds. The option is a int type.
          */
-        private int connectionTimeout;
+        private Integer connectionTimeout;
         /**
          * The mail message content type. Use text/html for HTML mails. The
          * option is a java.lang.String type.
@@ -99,7 +99,7 @@ public class MailEndpoint {
          * framework logs the debug messages to System.out by default. The
          * option is a boolean type.
          */
-        private boolean debugMode;
+        private Boolean debugMode;
         /**
          * To use a custom org.apache.camel.spi.HeaderFilterStrategy to filter
          * headers. The option is a org.apache.camel.spi.HeaderFilterStrategy
@@ -113,7 +113,7 @@ public class MailEndpoint {
          * content-type and it relies on the platform default instead. The
          * option is a boolean type.
          */
-        private boolean ignoreUnsupportedCharset;
+        private Boolean ignoreUnsupportedCharset;
         /**
          * Option to let Camel ignore unsupported charset in the local JVM when
          * sending mails. If the charset is unsupported then charset=XXX (where
@@ -121,7 +121,7 @@ public class MailEndpoint {
          * content-type and it relies on the platform default instead. The
          * option is a boolean type.
          */
-        private boolean ignoreUriScheme;
+        private Boolean ignoreUriScheme;
         /**
          * Specifies the mail session that camel should use for all mail
          * interactions. Useful in scenarios where mail sessions are created and
@@ -135,18 +135,18 @@ public class MailEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Whether to use disposition inline or attachment. The option is a
          * boolean type.
          */
-        private boolean useInlineAttachments;
+        private Boolean useInlineAttachments;
         /**
          * To use a dummy security setting for trusting all certificates. Should
          * only be used for development mode, and not production. The option is
          * a boolean type.
          */
-        private boolean dummyTrustManager;
+        private Boolean dummyTrustManager;
         /**
          * The password for login. The option is a java.lang.String type.
          */
@@ -169,11 +169,11 @@ public class MailEndpoint {
             this.host = host;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
@@ -203,11 +203,11 @@ public class MailEndpoint {
             this.attachmentsContentTransferEncodingResolver = attachmentsContentTransferEncodingResolver;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -219,11 +219,11 @@ public class MailEndpoint {
             this.binding = binding;
         }
 
-        public int getConnectionTimeout() {
+        public Integer getConnectionTimeout() {
             return connectionTimeout;
         }
 
-        public void setConnectionTimeout(int connectionTimeout) {
+        public void setConnectionTimeout(Integer connectionTimeout) {
             this.connectionTimeout = connectionTimeout;
         }
 
@@ -243,11 +243,11 @@ public class MailEndpoint {
             this.contentTypeResolver = contentTypeResolver;
         }
 
-        public boolean getDebugMode() {
+        public Boolean getDebugMode() {
             return debugMode;
         }
 
-        public void setDebugMode(boolean debugMode) {
+        public void setDebugMode(Boolean debugMode) {
             this.debugMode = debugMode;
         }
 
@@ -260,19 +260,19 @@ public class MailEndpoint {
             this.headerFilterStrategy = headerFilterStrategy;
         }
 
-        public boolean getIgnoreUnsupportedCharset() {
+        public Boolean getIgnoreUnsupportedCharset() {
             return ignoreUnsupportedCharset;
         }
 
-        public void setIgnoreUnsupportedCharset(boolean ignoreUnsupportedCharset) {
+        public void setIgnoreUnsupportedCharset(Boolean ignoreUnsupportedCharset) {
             this.ignoreUnsupportedCharset = ignoreUnsupportedCharset;
         }
 
-        public boolean getIgnoreUriScheme() {
+        public Boolean getIgnoreUriScheme() {
             return ignoreUriScheme;
         }
 
-        public void setIgnoreUriScheme(boolean ignoreUriScheme) {
+        public void setIgnoreUriScheme(Boolean ignoreUriScheme) {
             this.ignoreUriScheme = ignoreUriScheme;
         }
 
@@ -284,27 +284,27 @@ public class MailEndpoint {
             this.session = session;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getUseInlineAttachments() {
+        public Boolean getUseInlineAttachments() {
             return useInlineAttachments;
         }
 
-        public void setUseInlineAttachments(boolean useInlineAttachments) {
+        public void setUseInlineAttachments(Boolean useInlineAttachments) {
             this.useInlineAttachments = useInlineAttachments;
         }
 
-        public boolean getDummyTrustManager() {
+        public Boolean getDummyTrustManager() {
             return dummyTrustManager;
         }
 
-        public void setDummyTrustManager(boolean dummyTrustManager) {
+        public void setDummyTrustManager(Boolean dummyTrustManager) {
             this.dummyTrustManager = dummyTrustManager;
         }
 
@@ -343,14 +343,14 @@ public class MailEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Whether the consumer should close the folder after polling. Setting
          * this option to false and having disconnect=false as well, then the
          * consumer keep the folder open between polls. The option is a boolean
          * type.
          */
-        private boolean closeFolder;
+        private Boolean closeFolder;
         /**
          * After processing a mail message, it can be copied to a mail folder
          * with the given name. You can override this configuration value, with
@@ -365,12 +365,12 @@ public class MailEndpoint {
          * option by setting a header with the key delete to determine if the
          * mail should be deleted or not. The option is a boolean type.
          */
-        private boolean delete;
+        private Boolean delete;
         /**
          * Whether the consumer should disconnect after polling. If enabled this
          * forces Camel to connect on each poll. The option is a boolean type.
          */
-        private boolean disconnect;
+        private Boolean disconnect;
         /**
          * If the mail consumer cannot retrieve a given mail message, then this
          * option allows to handle the caused exception by the consumer's error
@@ -380,7 +380,7 @@ public class MailEndpoint {
          * mails from the batch would be able to be routed by Camel. The option
          * is a boolean type.
          */
-        private boolean handleFailedMessage;
+        private Boolean handleFailedMessage;
         /**
          * Specifies the maximum number of messages to gather per poll. By
          * default, no maximum is set. Can be used to set a limit of e.g. 1000
@@ -388,12 +388,12 @@ public class MailEndpoint {
          * Set a value of 0 or negative to disable this option. The option is a
          * int type.
          */
-        private int maxMessagesPerPoll;
+        private Integer maxMessagesPerPoll;
         /**
          * This option enables transparent MIME decoding and unfolding for mail
          * headers. The option is a boolean type.
          */
-        private boolean mimeDecodeHeaders;
+        private Boolean mimeDecodeHeaders;
         /**
          * Will mark the javax.mail.Message as peeked before processing the mail
          * message. This applies to IMAPMessage messages types only. By using
@@ -401,13 +401,13 @@ public class MailEndpoint {
          * which allows us to rollback the mail message if there is an error
          * processing in Camel. The option is a boolean type.
          */
-        private boolean peek;
+        private Boolean peek;
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private boolean sendEmptyMessageWhenIdle;
+        private Boolean sendEmptyMessageWhenIdle;
         /**
          * If the mail consumer cannot retrieve a given mail message, then this
          * option allows to skip the message and move on to retrieve the next
@@ -415,11 +415,11 @@ public class MailEndpoint {
          * exception and no mails from the batch would be able to be routed by
          * Camel. The option is a boolean type.
          */
-        private boolean skipFailedMessage;
+        private Boolean skipFailedMessage;
         /**
          * Whether to limit by unseen mails only. The option is a boolean type.
          */
-        private boolean unseen;
+        private Boolean unseen;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -441,7 +441,7 @@ public class MailEndpoint {
          * special corner case, where Camel will not consume any messages at
          * all. The option is a int type.
          */
-        private int fetchSize;
+        private Integer fetchSize;
         /**
          * The folder to poll. The option is a java.lang.String type.
          */
@@ -461,7 +461,7 @@ public class MailEndpoint {
          * by calling exchange.getIn().getBody(javax.mail.Message.class). The
          * option is a boolean type.
          */
-        private boolean mapMailMessage;
+        private Boolean mapMailMessage;
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -496,7 +496,7 @@ public class MailEndpoint {
          * message id, for whatever reason you may have. The option is a boolean
          * type.
          */
-        private boolean idempotentRepositoryRemoveOnCommit;
+        private Boolean idempotentRepositoryRemoveOnCommit;
         /**
          * Refers to a javax.mail.search.SearchTerm which allows to filter mails
          * based on search criteria such as subject, body, from, sent after a
@@ -508,12 +508,12 @@ public class MailEndpoint {
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private int backoffErrorThreshold;
+        private Integer backoffErrorThreshold;
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private int backoffIdleThreshold;
+        private Integer backoffIdleThreshold;
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -522,23 +522,23 @@ public class MailEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private int backoffMultiplier;
+        private Integer backoffMultiplier;
         /**
          * Milliseconds before the next poll. The option is a long type.
          */
-        private long delay;
+        private Long delay;
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private boolean greedy;
+        private Boolean greedy;
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long initialDelay;
+        private Long initialDelay;
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
@@ -568,7 +568,7 @@ public class MailEndpoint {
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private boolean startScheduler;
+        private Boolean startScheduler;
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
@@ -579,7 +579,7 @@ public class MailEndpoint {
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private boolean useFixedDelay;
+        private Boolean useFixedDelay;
         /**
          * Sorting order for messages. Only natively supported for IMAP.
          * Emulated to some degree when using POP3 or when IMAP server does not
@@ -587,19 +587,19 @@ public class MailEndpoint {
          */
         private Object[] sortTerm;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getCloseFolder() {
+        public Boolean getCloseFolder() {
             return closeFolder;
         }
 
-        public void setCloseFolder(boolean closeFolder) {
+        public void setCloseFolder(Boolean closeFolder) {
             this.closeFolder = closeFolder;
         }
 
@@ -611,75 +611,75 @@ public class MailEndpoint {
             this.copyTo = copyTo;
         }
 
-        public boolean getDelete() {
+        public Boolean getDelete() {
             return delete;
         }
 
-        public void setDelete(boolean delete) {
+        public void setDelete(Boolean delete) {
             this.delete = delete;
         }
 
-        public boolean getDisconnect() {
+        public Boolean getDisconnect() {
             return disconnect;
         }
 
-        public void setDisconnect(boolean disconnect) {
+        public void setDisconnect(Boolean disconnect) {
             this.disconnect = disconnect;
         }
 
-        public boolean getHandleFailedMessage() {
+        public Boolean getHandleFailedMessage() {
             return handleFailedMessage;
         }
 
-        public void setHandleFailedMessage(boolean handleFailedMessage) {
+        public void setHandleFailedMessage(Boolean handleFailedMessage) {
             this.handleFailedMessage = handleFailedMessage;
         }
 
-        public int getMaxMessagesPerPoll() {
+        public Integer getMaxMessagesPerPoll() {
             return maxMessagesPerPoll;
         }
 
-        public void setMaxMessagesPerPoll(int maxMessagesPerPoll) {
+        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
             this.maxMessagesPerPoll = maxMessagesPerPoll;
         }
 
-        public boolean getMimeDecodeHeaders() {
+        public Boolean getMimeDecodeHeaders() {
             return mimeDecodeHeaders;
         }
 
-        public void setMimeDecodeHeaders(boolean mimeDecodeHeaders) {
+        public void setMimeDecodeHeaders(Boolean mimeDecodeHeaders) {
             this.mimeDecodeHeaders = mimeDecodeHeaders;
         }
 
-        public boolean getPeek() {
+        public Boolean getPeek() {
             return peek;
         }
 
-        public void setPeek(boolean peek) {
+        public void setPeek(Boolean peek) {
             this.peek = peek;
         }
 
-        public boolean getSendEmptyMessageWhenIdle() {
+        public Boolean getSendEmptyMessageWhenIdle() {
             return sendEmptyMessageWhenIdle;
         }
 
-        public void setSendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
+        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
             this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
         }
 
-        public boolean getSkipFailedMessage() {
+        public Boolean getSkipFailedMessage() {
             return skipFailedMessage;
         }
 
-        public void setSkipFailedMessage(boolean skipFailedMessage) {
+        public void setSkipFailedMessage(Boolean skipFailedMessage) {
             this.skipFailedMessage = skipFailedMessage;
         }
 
-        public boolean getUnseen() {
+        public Boolean getUnseen() {
             return unseen;
         }
 
-        public void setUnseen(boolean unseen) {
+        public void setUnseen(Boolean unseen) {
             this.unseen = unseen;
         }
 
@@ -699,11 +699,11 @@ public class MailEndpoint {
             this.exchangePattern = exchangePattern;
         }
 
-        public int getFetchSize() {
+        public Integer getFetchSize() {
             return fetchSize;
         }
 
-        public void setFetchSize(int fetchSize) {
+        public void setFetchSize(Integer fetchSize) {
             this.fetchSize = fetchSize;
         }
 
@@ -723,11 +723,11 @@ public class MailEndpoint {
             this.mailUidGenerator = mailUidGenerator;
         }
 
-        public boolean getMapMailMessage() {
+        public Boolean getMapMailMessage() {
             return mapMailMessage;
         }
 
-        public void setMapMailMessage(boolean mapMailMessage) {
+        public void setMapMailMessage(Boolean mapMailMessage) {
             this.mapMailMessage = mapMailMessage;
         }
 
@@ -756,12 +756,12 @@ public class MailEndpoint {
             this.idempotentRepository = idempotentRepository;
         }
 
-        public boolean getIdempotentRepositoryRemoveOnCommit() {
+        public Boolean getIdempotentRepositoryRemoveOnCommit() {
             return idempotentRepositoryRemoveOnCommit;
         }
 
         public void setIdempotentRepositoryRemoveOnCommit(
-                boolean idempotentRepositoryRemoveOnCommit) {
+                Boolean idempotentRepositoryRemoveOnCommit) {
             this.idempotentRepositoryRemoveOnCommit = idempotentRepositoryRemoveOnCommit;
         }
 
@@ -773,51 +773,51 @@ public class MailEndpoint {
             this.searchTerm = searchTerm;
         }
 
-        public int getBackoffErrorThreshold() {
+        public Integer getBackoffErrorThreshold() {
             return backoffErrorThreshold;
         }
 
-        public void setBackoffErrorThreshold(int backoffErrorThreshold) {
+        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
             this.backoffErrorThreshold = backoffErrorThreshold;
         }
 
-        public int getBackoffIdleThreshold() {
+        public Integer getBackoffIdleThreshold() {
             return backoffIdleThreshold;
         }
 
-        public void setBackoffIdleThreshold(int backoffIdleThreshold) {
+        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
             this.backoffIdleThreshold = backoffIdleThreshold;
         }
 
-        public int getBackoffMultiplier() {
+        public Integer getBackoffMultiplier() {
             return backoffMultiplier;
         }
 
-        public void setBackoffMultiplier(int backoffMultiplier) {
+        public void setBackoffMultiplier(Integer backoffMultiplier) {
             this.backoffMultiplier = backoffMultiplier;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
 
-        public boolean getGreedy() {
+        public Boolean getGreedy() {
             return greedy;
         }
 
-        public void setGreedy(boolean greedy) {
+        public void setGreedy(Boolean greedy) {
             this.greedy = greedy;
         }
 
-        public long getInitialDelay() {
+        public Long getInitialDelay() {
             return initialDelay;
         }
 
-        public void setInitialDelay(long initialDelay) {
+        public void setInitialDelay(Long initialDelay) {
             this.initialDelay = initialDelay;
         }
 
@@ -855,11 +855,11 @@ public class MailEndpoint {
             this.schedulerProperties = schedulerProperties;
         }
 
-        public boolean getStartScheduler() {
+        public Boolean getStartScheduler() {
             return startScheduler;
         }
 
-        public void setStartScheduler(boolean startScheduler) {
+        public void setStartScheduler(Boolean startScheduler) {
             this.startScheduler = startScheduler;
         }
 
@@ -871,11 +871,11 @@ public class MailEndpoint {
             this.timeUnit = timeUnit;
         }
 
-        public boolean getUseFixedDelay() {
+        public Boolean getUseFixedDelay() {
             return useFixedDelay;
         }
 
-        public void setUseFixedDelay(boolean useFixedDelay) {
+        public void setUseFixedDelay(Boolean useFixedDelay) {
             this.useFixedDelay = useFixedDelay;
         }
 

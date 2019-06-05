@@ -42,7 +42,7 @@ public class JoltEndpoint {
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
-        private boolean contentCache;
+        private Boolean contentCache;
         /**
          * Specifies if the input is hydrated JSON or a JSON String. The option
          * is a org.apache.camel.component.jolt.JoltInputOutputType type.
@@ -64,13 +64,13 @@ public class JoltEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getResourceUri() {
             return resourceUri;
@@ -80,11 +80,11 @@ public class JoltEndpoint {
             this.resourceUri = resourceUri;
         }
 
-        public boolean getContentCache() {
+        public Boolean getContentCache() {
             return contentCache;
         }
 
-        public void setContentCache(boolean contentCache) {
+        public void setContentCache(Boolean contentCache) {
             this.contentCache = contentCache;
         }
 
@@ -112,19 +112,19 @@ public class JoltEndpoint {
             this.transformDsl = transformDsl;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

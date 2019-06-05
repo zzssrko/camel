@@ -51,7 +51,7 @@ public class SjmsBatchEndpoint {
          * false and the message body is null, then an JMSException is thrown.
          * The option is a boolean type.
          */
-        private boolean allowNullBody;
+        private Boolean allowNullBody;
         /**
          * The completion interval in millis, which causes batches to be
          * completed in a scheduled fixed rate every interval. The batch may be
@@ -60,7 +60,7 @@ public class SjmsBatchEndpoint {
          * interval at the same time, only one can be configured. The option is
          * a int type.
          */
-        private int completionInterval;
+        private Integer completionInterval;
         /**
          * The completion predicate, which causes batches to be completed when
          * the predicate evaluates as true. The predicate can also be configured
@@ -74,7 +74,7 @@ public class SjmsBatchEndpoint {
          * The number of messages consumed at which the batch will be completed.
          * The option is a int type.
          */
-        private int completionSize;
+        private Integer completionSize;
         /**
          * The timeout in millis from receipt of the first first message when
          * the batch will be completed. The batch may be empty if the timeout
@@ -82,18 +82,18 @@ public class SjmsBatchEndpoint {
          * use both completion timeout and completion interval at the same time,
          * only one can be configured. The option is a int type.
          */
-        private int completionTimeout;
+        private Integer completionTimeout;
         /**
          * The number of JMS sessions to consume from. The option is a int type.
          */
-        private int consumerCount;
+        private Integer consumerCount;
         /**
          * Use eager completion checking which means that the
          * completionPredicate will use the incoming Exchange. As opposed to
          * without eager completion checking the completionPredicate will use
          * the aggregated Exchange. The option is a boolean type.
          */
-        private boolean eagerCheckCompletion;
+        private Boolean eagerCheckCompletion;
         /**
          * Whether to include all JMSXxxx properties when mapping from JMS to
          * Camel Message. Setting this to true will include properties such as
@@ -101,20 +101,20 @@ public class SjmsBatchEndpoint {
          * headerFilterStrategy then this option does not apply. The option is a
          * boolean type.
          */
-        private boolean includeAllJMSXProperties;
+        private Boolean includeAllJMSXProperties;
         /**
          * Specifies whether Camel should auto map the received JMS message to a
          * suited payload type, such as javax.jms.TextMessage to a String etc.
          * See section about how mapping works below for more details. The
          * option is a boolean type.
          */
-        private boolean mapJmsMessage;
+        private Boolean mapJmsMessage;
         /**
          * The duration in milliseconds of each poll for messages.
          * completionTimeOut will be used if it is shorter and a batch has
          * started. The option is a int type.
          */
-        private int pollDuration;
+        private Integer pollDuration;
         /**
          * If using completion timeout or interval, then the batch may be empty
          * if the timeout triggered and there was no messages in the batch. If
@@ -122,7 +122,7 @@ public class SjmsBatchEndpoint {
          * added to the batch so an empty message is routed. The option is a
          * boolean type.
          */
-        private boolean sendEmptyMessageWhenIdle;
+        private Boolean sendEmptyMessageWhenIdle;
         /**
          * Whether to startup the consumer message listener asynchronously, when
          * starting a route. For example if a JmsConsumer cannot get a
@@ -136,13 +136,13 @@ public class SjmsBatchEndpoint {
          * messages; You can then restart the route to retry. The option is a
          * boolean type.
          */
-        private boolean asyncStartListener;
+        private Boolean asyncStartListener;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
@@ -172,7 +172,7 @@ public class SjmsBatchEndpoint {
          * has before - that is it will bail out and the route will shut down if
          * it sees an IllegalStateException. The option is a int type.
          */
-        private int keepAliveDelay;
+        private Integer keepAliveDelay;
         /**
          * To use the given MessageCreatedStrategy which are invoked when Camel
          * creates new instances of javax.jms.Message objects when Camel is
@@ -185,13 +185,13 @@ public class SjmsBatchEndpoint {
          * connection is being refreshed, in milliseconds. The default is 5000
          * ms, that is, 5 seconds. The option is a int type.
          */
-        private int recoveryInterval;
+        private Integer recoveryInterval;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * If using the completionInterval option a background thread is created
          * to trigger the completion interval. Set this option to provide a
@@ -218,19 +218,19 @@ public class SjmsBatchEndpoint {
             this.aggregationStrategy = aggregationStrategy;
         }
 
-        public boolean getAllowNullBody() {
+        public Boolean getAllowNullBody() {
             return allowNullBody;
         }
 
-        public void setAllowNullBody(boolean allowNullBody) {
+        public void setAllowNullBody(Boolean allowNullBody) {
             this.allowNullBody = allowNullBody;
         }
 
-        public int getCompletionInterval() {
+        public Integer getCompletionInterval() {
             return completionInterval;
         }
 
-        public void setCompletionInterval(int completionInterval) {
+        public void setCompletionInterval(Integer completionInterval) {
             this.completionInterval = completionInterval;
         }
 
@@ -242,83 +242,83 @@ public class SjmsBatchEndpoint {
             this.completionPredicate = completionPredicate;
         }
 
-        public int getCompletionSize() {
+        public Integer getCompletionSize() {
             return completionSize;
         }
 
-        public void setCompletionSize(int completionSize) {
+        public void setCompletionSize(Integer completionSize) {
             this.completionSize = completionSize;
         }
 
-        public int getCompletionTimeout() {
+        public Integer getCompletionTimeout() {
             return completionTimeout;
         }
 
-        public void setCompletionTimeout(int completionTimeout) {
+        public void setCompletionTimeout(Integer completionTimeout) {
             this.completionTimeout = completionTimeout;
         }
 
-        public int getConsumerCount() {
+        public Integer getConsumerCount() {
             return consumerCount;
         }
 
-        public void setConsumerCount(int consumerCount) {
+        public void setConsumerCount(Integer consumerCount) {
             this.consumerCount = consumerCount;
         }
 
-        public boolean getEagerCheckCompletion() {
+        public Boolean getEagerCheckCompletion() {
             return eagerCheckCompletion;
         }
 
-        public void setEagerCheckCompletion(boolean eagerCheckCompletion) {
+        public void setEagerCheckCompletion(Boolean eagerCheckCompletion) {
             this.eagerCheckCompletion = eagerCheckCompletion;
         }
 
-        public boolean getIncludeAllJMSXProperties() {
+        public Boolean getIncludeAllJMSXProperties() {
             return includeAllJMSXProperties;
         }
 
-        public void setIncludeAllJMSXProperties(boolean includeAllJMSXProperties) {
+        public void setIncludeAllJMSXProperties(Boolean includeAllJMSXProperties) {
             this.includeAllJMSXProperties = includeAllJMSXProperties;
         }
 
-        public boolean getMapJmsMessage() {
+        public Boolean getMapJmsMessage() {
             return mapJmsMessage;
         }
 
-        public void setMapJmsMessage(boolean mapJmsMessage) {
+        public void setMapJmsMessage(Boolean mapJmsMessage) {
             this.mapJmsMessage = mapJmsMessage;
         }
 
-        public int getPollDuration() {
+        public Integer getPollDuration() {
             return pollDuration;
         }
 
-        public void setPollDuration(int pollDuration) {
+        public void setPollDuration(Integer pollDuration) {
             this.pollDuration = pollDuration;
         }
 
-        public boolean getSendEmptyMessageWhenIdle() {
+        public Boolean getSendEmptyMessageWhenIdle() {
             return sendEmptyMessageWhenIdle;
         }
 
-        public void setSendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
+        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
             this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
         }
 
-        public boolean getAsyncStartListener() {
+        public Boolean getAsyncStartListener() {
             return asyncStartListener;
         }
 
-        public void setAsyncStartListener(boolean asyncStartListener) {
+        public void setAsyncStartListener(Boolean asyncStartListener) {
             this.asyncStartListener = asyncStartListener;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -339,11 +339,11 @@ public class SjmsBatchEndpoint {
             this.jmsKeyFormatStrategy = jmsKeyFormatStrategy;
         }
 
-        public int getKeepAliveDelay() {
+        public Integer getKeepAliveDelay() {
             return keepAliveDelay;
         }
 
-        public void setKeepAliveDelay(int keepAliveDelay) {
+        public void setKeepAliveDelay(Integer keepAliveDelay) {
             this.keepAliveDelay = keepAliveDelay;
         }
 
@@ -355,19 +355,19 @@ public class SjmsBatchEndpoint {
             this.messageCreatedStrategy = messageCreatedStrategy;
         }
 
-        public int getRecoveryInterval() {
+        public Integer getRecoveryInterval() {
             return recoveryInterval;
         }
 
-        public void setRecoveryInterval(int recoveryInterval) {
+        public void setRecoveryInterval(Integer recoveryInterval) {
             this.recoveryInterval = recoveryInterval;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -391,7 +391,7 @@ public class SjmsBatchEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -406,11 +406,11 @@ public class SjmsBatchEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

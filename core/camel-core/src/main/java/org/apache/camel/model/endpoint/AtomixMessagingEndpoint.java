@@ -83,7 +83,7 @@ public class AtomixMessagingEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * The cluster wide default resource configuration. The option is a
          * java.util.Properties type.
@@ -100,7 +100,7 @@ public class AtomixMessagingEndpoint {
          * generated ID thus the local one is ignored. The option is a boolean
          * type.
          */
-        private boolean ephemeral;
+        private Boolean ephemeral;
         /**
          * The read consistency level. The option is a
          * io.atomix.resource.ReadConsistency type.
@@ -121,7 +121,7 @@ public class AtomixMessagingEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getResourceName() {
             return resourceName;
@@ -203,11 +203,11 @@ public class AtomixMessagingEndpoint {
             this.transport = transport;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -227,11 +227,11 @@ public class AtomixMessagingEndpoint {
             this.defaultResourceOptions = defaultResourceOptions;
         }
 
-        public boolean getEphemeral() {
+        public Boolean getEphemeral() {
             return ephemeral;
         }
 
-        public void setEphemeral(boolean ephemeral) {
+        public void setEphemeral(Boolean ephemeral) {
             this.ephemeral = ephemeral;
         }
 
@@ -259,11 +259,11 @@ public class AtomixMessagingEndpoint {
             this.resourceOptions = resourceOptions;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -278,7 +278,7 @@ public class AtomixMessagingEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -293,11 +293,11 @@ public class AtomixMessagingEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

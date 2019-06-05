@@ -64,13 +64,13 @@ public class GitEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getLocalPath() {
             return localPath;
@@ -128,19 +128,19 @@ public class GitEndpoint {
             this.username = username;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -155,7 +155,7 @@ public class GitEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * The consumer type. The option is a
          * org.apache.camel.component.git.consumer.GitType type.
@@ -175,11 +175,11 @@ public class GitEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -212,18 +212,18 @@ public class GitEndpoint {
         /**
          * The flag to manage empty git commits. The option is a boolean type.
          */
-        private boolean allowEmpty;
+        private Boolean allowEmpty;
         /**
          * The operation to do on the repository. The option is a
          * java.lang.String type.
          */
         private String operation;
 
-        public boolean getAllowEmpty() {
+        public Boolean getAllowEmpty() {
             return allowEmpty;
         }
 
-        public void setAllowEmpty(boolean allowEmpty) {
+        public void setAllowEmpty(Boolean allowEmpty) {
             this.allowEmpty = allowEmpty;
         }
 

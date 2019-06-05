@@ -35,7 +35,7 @@ public class PrinterEndpoint {
         /**
          * Port number of the printer. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * Name of the printer. The option is a java.lang.String type.
          */
@@ -43,7 +43,7 @@ public class PrinterEndpoint {
         /**
          * Number of copies to print. The option is a int type.
          */
-        private int copies;
+        private Integer copies;
         /**
          * Sets DocFlavor to use. The option is a javax.print.DocFlavor type.
          */
@@ -84,7 +84,7 @@ public class PrinterEndpoint {
          * etting this option to false prevents sending of the print data to the
          * printer. The option is a boolean type.
          */
-        private boolean sendToPrinter;
+        private Boolean sendToPrinter;
         /**
          * Sets one sided or two sided printing based on the
          * javax.print.attribute.standard.Sides API. The option is a
@@ -96,13 +96,13 @@ public class PrinterEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getHostname() {
             return hostname;
@@ -112,11 +112,11 @@ public class PrinterEndpoint {
             this.hostname = hostname;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
@@ -128,11 +128,11 @@ public class PrinterEndpoint {
             this.printername = printername;
         }
 
-        public int getCopies() {
+        public Integer getCopies() {
             return copies;
         }
 
-        public void setCopies(int copies) {
+        public void setCopies(Integer copies) {
             this.copies = copies;
         }
 
@@ -192,11 +192,11 @@ public class PrinterEndpoint {
             this.printerPrefix = printerPrefix;
         }
 
-        public boolean getSendToPrinter() {
+        public Boolean getSendToPrinter() {
             return sendToPrinter;
         }
 
-        public void setSendToPrinter(boolean sendToPrinter) {
+        public void setSendToPrinter(Boolean sendToPrinter) {
             this.sendToPrinter = sendToPrinter;
         }
 
@@ -208,19 +208,19 @@ public class PrinterEndpoint {
             this.sides = sides;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

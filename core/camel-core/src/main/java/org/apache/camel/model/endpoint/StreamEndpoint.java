@@ -60,7 +60,7 @@ public class StreamEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets a specified timeout value, in milliseconds, to be used when
          * opening a communications link to the resource referenced by this
@@ -69,7 +69,7 @@ public class StreamEndpoint {
          * of zero is interpreted as an infinite timeout. The option is a int
          * type.
          */
-        private int connectTimeout;
+        private Integer connectTimeout;
         /**
          * Optional http headers to use in request when using HTTP URL. The
          * option is a java.util.Map<java.lang.String,java.lang.Object> type.
@@ -83,13 +83,13 @@ public class StreamEndpoint {
          * java.net.SocketTimeoutException is raised. A timeout of zero is
          * interpreted as an infinite timeout. The option is a int type.
          */
-        private int readTimeout;
+        private Integer readTimeout;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getKind() {
             return kind;
@@ -123,19 +123,19 @@ public class StreamEndpoint {
             this.url = url;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public int getConnectTimeout() {
+        public Integer getConnectTimeout() {
             return connectTimeout;
         }
 
-        public void setConnectTimeout(int connectTimeout) {
+        public void setConnectTimeout(Integer connectTimeout) {
             this.connectTimeout = connectTimeout;
         }
 
@@ -147,19 +147,19 @@ public class StreamEndpoint {
             this.httpHeaders = httpHeaders;
         }
 
-        public int getReadTimeout() {
+        public Integer getReadTimeout() {
             return readTimeout;
         }
 
-        public void setReadTimeout(int readTimeout) {
+        public void setReadTimeout(Integer readTimeout) {
             this.readTimeout = readTimeout;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -174,19 +174,19 @@ public class StreamEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To use JVM file watcher to listen for file change events to support
          * re-loading files that may be overwritten, somewhat like tail --retry.
          * The option is a boolean type.
          */
-        private boolean fileWatcher;
+        private Boolean fileWatcher;
         /**
          * To group X number of lines in the consumer. For example to group 10
          * lines and therefore only spit out an Exchange with 10 lines, instead
          * of 1 Exchange per line. The option is a int type.
          */
-        private int groupLines;
+        private Integer groupLines;
         /**
          * Allows to use a custom GroupStrategy to control how to group lines.
          * The option is a org.apache.camel.component.stream.GroupStrategy type.
@@ -198,12 +198,12 @@ public class StreamEndpoint {
          * message prompts being written while other logging is done to the
          * system out. The option is a long type.
          */
-        private long initialPromptDelay;
+        private Long initialPromptDelay;
         /**
          * Optional delay in milliseconds before showing the message prompt. The
          * option is a long type.
          */
-        private long promptDelay;
+        private Long promptDelay;
         /**
          * Message prompt to use when reading from stream:in; for example, you
          * could set this to Enter a command:. The option is a java.lang.String
@@ -216,17 +216,17 @@ public class StreamEndpoint {
          * fileWatcher option, to make it work reliable. The option is a boolean
          * type.
          */
-        private boolean retry;
+        private Boolean retry;
         /**
          * To be used for continuously reading a stream such as the unix tail
          * command. The option is a boolean type.
          */
-        private boolean scanStream;
+        private Boolean scanStream;
         /**
          * Delay in milliseconds between read attempts when using scanStream.
          * The option is a long type.
          */
-        private long scanStreamDelay;
+        private Long scanStreamDelay;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -241,27 +241,27 @@ public class StreamEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getFileWatcher() {
+        public Boolean getFileWatcher() {
             return fileWatcher;
         }
 
-        public void setFileWatcher(boolean fileWatcher) {
+        public void setFileWatcher(Boolean fileWatcher) {
             this.fileWatcher = fileWatcher;
         }
 
-        public int getGroupLines() {
+        public Integer getGroupLines() {
             return groupLines;
         }
 
-        public void setGroupLines(int groupLines) {
+        public void setGroupLines(Integer groupLines) {
             this.groupLines = groupLines;
         }
 
@@ -273,19 +273,19 @@ public class StreamEndpoint {
             this.groupStrategy = groupStrategy;
         }
 
-        public long getInitialPromptDelay() {
+        public Long getInitialPromptDelay() {
             return initialPromptDelay;
         }
 
-        public void setInitialPromptDelay(long initialPromptDelay) {
+        public void setInitialPromptDelay(Long initialPromptDelay) {
             this.initialPromptDelay = initialPromptDelay;
         }
 
-        public long getPromptDelay() {
+        public Long getPromptDelay() {
             return promptDelay;
         }
 
-        public void setPromptDelay(long promptDelay) {
+        public void setPromptDelay(Long promptDelay) {
             this.promptDelay = promptDelay;
         }
 
@@ -297,27 +297,27 @@ public class StreamEndpoint {
             this.promptMessage = promptMessage;
         }
 
-        public boolean getRetry() {
+        public Boolean getRetry() {
             return retry;
         }
 
-        public void setRetry(boolean retry) {
+        public void setRetry(Boolean retry) {
             this.retry = retry;
         }
 
-        public boolean getScanStream() {
+        public Boolean getScanStream() {
             return scanStream;
         }
 
-        public void setScanStream(boolean scanStream) {
+        public void setScanStream(Boolean scanStream) {
             this.scanStream = scanStream;
         }
 
-        public long getScanStreamDelay() {
+        public Long getScanStreamDelay() {
             return scanStreamDelay;
         }
 
-        public void setScanStreamDelay(long scanStreamDelay) {
+        public void setScanStreamDelay(Long scanStreamDelay) {
             this.scanStreamDelay = scanStreamDelay;
         }
 
@@ -345,7 +345,7 @@ public class StreamEndpoint {
          * more messages are sent, the stream is reopened for another
          * autoCloseCount batch. The option is a int type.
          */
-        private int autoCloseCount;
+        private Integer autoCloseCount;
         /**
          * This option is used in combination with Splitter and streaming to the
          * same file. The idea is to keep the stream open and only close when
@@ -353,34 +353,34 @@ public class StreamEndpoint {
          * you only stream to the same file, and not 2 or more files. The option
          * is a boolean type.
          */
-        private boolean closeOnDone;
+        private Boolean closeOnDone;
         /**
          * Initial delay in milliseconds before producing the stream. The option
          * is a long type.
          */
-        private long delay;
+        private Long delay;
 
-        public int getAutoCloseCount() {
+        public Integer getAutoCloseCount() {
             return autoCloseCount;
         }
 
-        public void setAutoCloseCount(int autoCloseCount) {
+        public void setAutoCloseCount(Integer autoCloseCount) {
             this.autoCloseCount = autoCloseCount;
         }
 
-        public boolean getCloseOnDone() {
+        public Boolean getCloseOnDone() {
             return closeOnDone;
         }
 
-        public void setCloseOnDone(boolean closeOnDone) {
+        public void setCloseOnDone(Boolean closeOnDone) {
             this.closeOnDone = closeOnDone;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
     }

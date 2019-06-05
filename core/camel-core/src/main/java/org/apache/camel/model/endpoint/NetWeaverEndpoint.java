@@ -39,17 +39,17 @@ public class NetWeaverEndpoint {
          * storing that single entry value as the message body. The option is a
          * boolean type.
          */
-        private boolean flatternMap;
+        private Boolean flatternMap;
         /**
          * Whether to return data in JSON format. If this option is false, then
          * XML is returned in Atom format. The option is a boolean type.
          */
-        private boolean json;
+        private Boolean json;
         /**
          * To transform the JSON from a String to a Map in the message body. The
          * option is a boolean type.
          */
-        private boolean jsonAsMap;
+        private Boolean jsonAsMap;
         /**
          * Password for account. The option is a java.lang.String type.
          */
@@ -63,13 +63,13 @@ public class NetWeaverEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getUrl() {
             return url;
@@ -79,27 +79,27 @@ public class NetWeaverEndpoint {
             this.url = url;
         }
 
-        public boolean getFlatternMap() {
+        public Boolean getFlatternMap() {
             return flatternMap;
         }
 
-        public void setFlatternMap(boolean flatternMap) {
+        public void setFlatternMap(Boolean flatternMap) {
             this.flatternMap = flatternMap;
         }
 
-        public boolean getJson() {
+        public Boolean getJson() {
             return json;
         }
 
-        public void setJson(boolean json) {
+        public void setJson(Boolean json) {
             this.json = json;
         }
 
-        public boolean getJsonAsMap() {
+        public Boolean getJsonAsMap() {
             return jsonAsMap;
         }
 
-        public void setJsonAsMap(boolean jsonAsMap) {
+        public void setJsonAsMap(Boolean jsonAsMap) {
             this.jsonAsMap = jsonAsMap;
         }
 
@@ -119,19 +119,19 @@ public class NetWeaverEndpoint {
             this.username = username;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

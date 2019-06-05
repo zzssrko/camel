@@ -74,13 +74,13 @@ public class KafkaEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Sets interceptors for producer or consumers. Producer interceptors
          * have to be classes implementing
@@ -259,19 +259,19 @@ public class KafkaEndpoint {
             this.reconnectBackoffMaxMs = reconnectBackoffMaxMs;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -455,7 +455,7 @@ public class KafkaEndpoint {
          * API and perform manual offset commits via the Kafka consumer. The
          * option is a boolean type.
          */
-        private boolean allowManualCommit;
+        private Boolean allowManualCommit;
         /**
          * If true, periodically commit to ZooKeeper the offset of messages
          * already fetched by the consumer. This committed offset will be used
@@ -495,7 +495,7 @@ public class KafkaEndpoint {
          * Therefore its recommended to deal with that for example by using
          * Camel's error handler. The option is a boolean type.
          */
-        private boolean breakOnFirstError;
+        private Boolean breakOnFirstError;
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -505,7 +505,7 @@ public class KafkaEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Automatically check the CRC32 of the records consumed. This ensures
          * no on-the-wire or on-disk corruption to the messages occurred. This
@@ -525,12 +525,12 @@ public class KafkaEndpoint {
          * The number of consumers that connect to kafka server. The option is a
          * int type.
          */
-        private int consumersCount;
+        private Integer consumersCount;
         /**
          * Number of concurrent consumers on the consumer. The option is a int
          * type.
          */
-        private int consumerStreams;
+        private Integer consumerStreams;
         /**
          * The maximum amount of data the server should return for a fetch
          * request This is not an absolute maximum, if the first message in the
@@ -647,13 +647,13 @@ public class KafkaEndpoint {
          * only available in the Confluent Platform (not standard Apache Kafka).
          * The option is a boolean type.
          */
-        private boolean specificAvroReader;
+        private Boolean specificAvroReader;
         /**
          * Whether the topic is a pattern (regular expression). This can be used
          * to subscribe to dynamic number of topics matching the pattern. The
          * option is a boolean type.
          */
-        private boolean topicIsPattern;
+        private Boolean topicIsPattern;
         /**
          * Deserializer class for value that implements the Deserializer
          * interface. The option is a java.lang.String type.
@@ -673,11 +673,11 @@ public class KafkaEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getAllowManualCommit() {
+        public Boolean getAllowManualCommit() {
             return allowManualCommit;
         }
 
-        public void setAllowManualCommit(boolean allowManualCommit) {
+        public void setAllowManualCommit(Boolean allowManualCommit) {
             this.allowManualCommit = allowManualCommit;
         }
 
@@ -713,19 +713,19 @@ public class KafkaEndpoint {
             this.autoOffsetReset = autoOffsetReset;
         }
 
-        public boolean getBreakOnFirstError() {
+        public Boolean getBreakOnFirstError() {
             return breakOnFirstError;
         }
 
-        public void setBreakOnFirstError(boolean breakOnFirstError) {
+        public void setBreakOnFirstError(Boolean breakOnFirstError) {
             this.breakOnFirstError = breakOnFirstError;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -745,19 +745,19 @@ public class KafkaEndpoint {
             this.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
         }
 
-        public int getConsumersCount() {
+        public Integer getConsumersCount() {
             return consumersCount;
         }
 
-        public void setConsumersCount(int consumersCount) {
+        public void setConsumersCount(Integer consumersCount) {
             this.consumersCount = consumersCount;
         }
 
-        public int getConsumerStreams() {
+        public Integer getConsumerStreams() {
             return consumerStreams;
         }
 
-        public void setConsumerStreams(int consumerStreams) {
+        public void setConsumerStreams(Integer consumerStreams) {
             this.consumerStreams = consumerStreams;
         }
 
@@ -882,19 +882,19 @@ public class KafkaEndpoint {
             this.sessionTimeoutMs = sessionTimeoutMs;
         }
 
-        public boolean getSpecificAvroReader() {
+        public Boolean getSpecificAvroReader() {
             return specificAvroReader;
         }
 
-        public void setSpecificAvroReader(boolean specificAvroReader) {
+        public void setSpecificAvroReader(Boolean specificAvroReader) {
             this.specificAvroReader = specificAvroReader;
         }
 
-        public boolean getTopicIsPattern() {
+        public Boolean getTopicIsPattern() {
             return topicIsPattern;
         }
 
-        public void setTopicIsPattern(boolean topicIsPattern) {
+        public void setTopicIsPattern(Boolean topicIsPattern) {
             this.topicIsPattern = topicIsPattern;
         }
 
@@ -929,7 +929,7 @@ public class KafkaEndpoint {
          * KafkaConstants.TOPIC header setting of the inbound message. The
          * option is a boolean type.
          */
-        private boolean bridgeEndpoint;
+        private Boolean bridgeEndpoint;
         /**
          * The total bytes of memory the producer can use to buffer records
          * waiting to be sent to the server. If records are sent faster than
@@ -954,7 +954,7 @@ public class KafkaEndpoint {
          * the option bridgeEndpoint is set to true. The option is a boolean
          * type.
          */
-        private boolean circularTopicDetection;
+        private Boolean circularTopicDetection;
         /**
          * This parameter allows you to specify the compression codec for all
          * data generated by this producer. Valid values are none, gzip and
@@ -974,7 +974,7 @@ public class KafkaEndpoint {
          * to be set to 1 and retries cannot be zero and additionally acks must
          * be set to 'all'. The option is a boolean type.
          */
-        private boolean enableIdempotence;
+        private Boolean enableIdempotence;
         /**
          * Sets custom KafkaHeaderDeserializer for serialization camel headers
          * values to kafka headers values. The option is a
@@ -1119,7 +1119,7 @@ public class KafkaEndpoint {
          * RecordMetadata metadata's. The list is stored on a header with the
          * key KafkaConstants#KAFKA_RECORDMETA. The option is a boolean type.
          */
-        private boolean recordMetadata;
+        private Boolean recordMetadata;
         /**
          * The number of acknowledgments the producer requires the leader to
          * have received before considering a request complete. This controls
@@ -1225,11 +1225,11 @@ public class KafkaEndpoint {
          */
         private String sslTruststorePassword;
 
-        public boolean getBridgeEndpoint() {
+        public Boolean getBridgeEndpoint() {
             return bridgeEndpoint;
         }
 
-        public void setBridgeEndpoint(boolean bridgeEndpoint) {
+        public void setBridgeEndpoint(Boolean bridgeEndpoint) {
             this.bridgeEndpoint = bridgeEndpoint;
         }
 
@@ -1241,11 +1241,11 @@ public class KafkaEndpoint {
             this.bufferMemorySize = bufferMemorySize;
         }
 
-        public boolean getCircularTopicDetection() {
+        public Boolean getCircularTopicDetection() {
             return circularTopicDetection;
         }
 
-        public void setCircularTopicDetection(boolean circularTopicDetection) {
+        public void setCircularTopicDetection(Boolean circularTopicDetection) {
             this.circularTopicDetection = circularTopicDetection;
         }
 
@@ -1265,11 +1265,11 @@ public class KafkaEndpoint {
             this.connectionMaxIdleMs = connectionMaxIdleMs;
         }
 
-        public boolean getEnableIdempotence() {
+        public Boolean getEnableIdempotence() {
             return enableIdempotence;
         }
 
-        public void setEnableIdempotence(boolean enableIdempotence) {
+        public void setEnableIdempotence(Boolean enableIdempotence) {
             this.enableIdempotence = enableIdempotence;
         }
 
@@ -1410,11 +1410,11 @@ public class KafkaEndpoint {
             this.reconnectBackoffMs = reconnectBackoffMs;
         }
 
-        public boolean getRecordMetadata() {
+        public Boolean getRecordMetadata() {
             return recordMetadata;
         }
 
-        public void setRecordMetadata(boolean recordMetadata) {
+        public void setRecordMetadata(Boolean recordMetadata) {
             this.recordMetadata = recordMetadata;
         }
 

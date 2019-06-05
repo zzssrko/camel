@@ -46,7 +46,7 @@ public class FreemarkerEndpoint {
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
-        private boolean contentCache;
+        private Boolean contentCache;
         /**
          * Sets the encoding to be used for loading the template file. The
          * option is a java.lang.String type.
@@ -56,19 +56,19 @@ public class FreemarkerEndpoint {
          * Number of seconds the loaded template resource will remain in the
          * cache. The option is a int type.
          */
-        private int templateUpdateDelay;
+        private Integer templateUpdateDelay;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getResourceUri() {
             return resourceUri;
@@ -86,11 +86,11 @@ public class FreemarkerEndpoint {
             this.configuration = configuration;
         }
 
-        public boolean getContentCache() {
+        public Boolean getContentCache() {
             return contentCache;
         }
 
-        public void setContentCache(boolean contentCache) {
+        public void setContentCache(Boolean contentCache) {
             this.contentCache = contentCache;
         }
 
@@ -102,27 +102,27 @@ public class FreemarkerEndpoint {
             this.encoding = encoding;
         }
 
-        public int getTemplateUpdateDelay() {
+        public Integer getTemplateUpdateDelay() {
             return templateUpdateDelay;
         }
 
-        public void setTemplateUpdateDelay(int templateUpdateDelay) {
+        public void setTemplateUpdateDelay(Integer templateUpdateDelay) {
             this.templateUpdateDelay = templateUpdateDelay;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

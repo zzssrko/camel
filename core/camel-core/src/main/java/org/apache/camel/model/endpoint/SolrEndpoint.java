@@ -78,24 +78,24 @@ public class SolrEndpoint {
          * Set the queue size for the StreamingUpdateSolrServer. The option is a
          * int type.
          */
-        private int streamingQueueSize;
+        private Integer streamingQueueSize;
         /**
          * Set the number of threads for the StreamingUpdateSolrServer. The
          * option is a int type.
          */
-        private int streamingThreadCount;
+        private Integer streamingThreadCount;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Set the collection name which the solrCloud server could use. The
          * option is a java.lang.String type.
@@ -180,35 +180,35 @@ public class SolrEndpoint {
             this.soTimeout = soTimeout;
         }
 
-        public int getStreamingQueueSize() {
+        public Integer getStreamingQueueSize() {
             return streamingQueueSize;
         }
 
-        public void setStreamingQueueSize(int streamingQueueSize) {
+        public void setStreamingQueueSize(Integer streamingQueueSize) {
             this.streamingQueueSize = streamingQueueSize;
         }
 
-        public int getStreamingThreadCount() {
+        public Integer getStreamingThreadCount() {
             return streamingThreadCount;
         }
 
-        public void setStreamingThreadCount(int streamingThreadCount) {
+        public void setStreamingThreadCount(Integer streamingThreadCount) {
             this.streamingThreadCount = streamingThreadCount;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 

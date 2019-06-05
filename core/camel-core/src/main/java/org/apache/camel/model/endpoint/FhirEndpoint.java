@@ -57,11 +57,11 @@ public class FhirEndpoint {
         /**
          * Will log every requests and responses. The option is a boolean type.
          */
-        private boolean log;
+        private Boolean log;
         /**
          * Pretty print all request. The option is a boolean type.
          */
-        private boolean prettyPrint;
+        private Boolean prettyPrint;
         /**
          * The FHIR server base URL. The option is a java.lang.String type.
          */
@@ -71,12 +71,12 @@ public class FhirEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Compresses outgoing (POST/PUT) contents to the GZIP format. The
          * option is a boolean type.
          */
-        private boolean compress;
+        private Boolean compress;
         /**
          * How long to try and establish the initial TCP connection (in ms). The
          * option is a java.lang.Integer type.
@@ -87,7 +87,7 @@ public class FhirEndpoint {
          * children until the child list for the given type is actually
          * accessed. The option is a boolean type.
          */
-        private boolean deferModelScanning;
+        private Boolean deferModelScanning;
         /**
          * FhirContext is an expensive object to create. To avoid creating
          * multiple instances, it can be set directly. The option is a
@@ -97,7 +97,7 @@ public class FhirEndpoint {
         /**
          * Force conformance check. The option is a boolean type.
          */
-        private boolean forceConformanceCheck;
+        private Boolean forceConformanceCheck;
         /**
          * HTTP session cookie to add to every request. The option is a
          * java.lang.String type.
@@ -118,7 +118,7 @@ public class FhirEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * When should Camel validate the FHIR Server's conformance statement.
          * The option is a java.lang.String type.
@@ -195,19 +195,19 @@ public class FhirEndpoint {
             this.inBody = inBody;
         }
 
-        public boolean getLog() {
+        public Boolean getLog() {
             return log;
         }
 
-        public void setLog(boolean log) {
+        public void setLog(Boolean log) {
             this.log = log;
         }
 
-        public boolean getPrettyPrint() {
+        public Boolean getPrettyPrint() {
             return prettyPrint;
         }
 
-        public void setPrettyPrint(boolean prettyPrint) {
+        public void setPrettyPrint(Boolean prettyPrint) {
             this.prettyPrint = prettyPrint;
         }
 
@@ -219,19 +219,19 @@ public class FhirEndpoint {
             this.serverUrl = serverUrl;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getCompress() {
+        public Boolean getCompress() {
             return compress;
         }
 
-        public void setCompress(boolean compress) {
+        public void setCompress(Boolean compress) {
             this.compress = compress;
         }
 
@@ -243,11 +243,11 @@ public class FhirEndpoint {
             this.connectionTimeout = connectionTimeout;
         }
 
-        public boolean getDeferModelScanning() {
+        public Boolean getDeferModelScanning() {
             return deferModelScanning;
         }
 
-        public void setDeferModelScanning(boolean deferModelScanning) {
+        public void setDeferModelScanning(Boolean deferModelScanning) {
             this.deferModelScanning = deferModelScanning;
         }
 
@@ -259,11 +259,11 @@ public class FhirEndpoint {
             this.fhirContext = fhirContext;
         }
 
-        public boolean getForceConformanceCheck() {
+        public Boolean getForceConformanceCheck() {
             return forceConformanceCheck;
         }
 
-        public void setForceConformanceCheck(boolean forceConformanceCheck) {
+        public void setForceConformanceCheck(Boolean forceConformanceCheck) {
             this.forceConformanceCheck = forceConformanceCheck;
         }
 
@@ -291,11 +291,11 @@ public class FhirEndpoint {
             this.summary = summary;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -374,7 +374,7 @@ public class FhirEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -389,11 +389,11 @@ public class FhirEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

@@ -38,12 +38,12 @@ public class ValidatorEndpoint {
         /**
          * Whether to fail if no body exists. The option is a boolean type.
          */
-        private boolean failOnNullBody;
+        private Boolean failOnNullBody;
         /**
          * Whether to fail if no header exists when validating against a header.
          * The option is a boolean type.
          */
-        private boolean failOnNullHeader;
+        private Boolean failOnNullHeader;
         /**
          * To validate against a header instead of the message body. The option
          * is a java.lang.String type.
@@ -54,7 +54,7 @@ public class ValidatorEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use a custom
          * org.apache.camel.processor.validation.ValidatorErrorHandler. The
@@ -94,13 +94,13 @@ public class ValidatorEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Whether the Schema instance should be shared or not. This option is
          * introduced to work around a JDK 1.6.x bug. Xerces should not have
          * this issue. The option is a boolean type.
          */
-        private boolean useSharedSchema;
+        private Boolean useSharedSchema;
 
         public String getResourceUri() {
             return resourceUri;
@@ -110,19 +110,19 @@ public class ValidatorEndpoint {
             this.resourceUri = resourceUri;
         }
 
-        public boolean getFailOnNullBody() {
+        public Boolean getFailOnNullBody() {
             return failOnNullBody;
         }
 
-        public void setFailOnNullBody(boolean failOnNullBody) {
+        public void setFailOnNullBody(Boolean failOnNullBody) {
             this.failOnNullBody = failOnNullBody;
         }
 
-        public boolean getFailOnNullHeader() {
+        public Boolean getFailOnNullHeader() {
             return failOnNullHeader;
         }
 
-        public void setFailOnNullHeader(boolean failOnNullHeader) {
+        public void setFailOnNullHeader(Boolean failOnNullHeader) {
             this.failOnNullHeader = failOnNullHeader;
         }
 
@@ -134,11 +134,11 @@ public class ValidatorEndpoint {
             this.headerName = headerName;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -182,19 +182,19 @@ public class ValidatorEndpoint {
             this.schemaLanguage = schemaLanguage;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getUseSharedSchema() {
+        public Boolean getUseSharedSchema() {
             return useSharedSchema;
         }
 
-        public void setUseSharedSchema(boolean useSharedSchema) {
+        public void setUseSharedSchema(Boolean useSharedSchema) {
             this.useSharedSchema = useSharedSchema;
         }
     }

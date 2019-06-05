@@ -50,12 +50,12 @@ public class CxfRsEndpoint {
          * This option enables CXF Logging Feature which writes inbound and
          * outbound REST messages to log. The option is a boolean type.
          */
-        private boolean loggingFeatureEnabled;
+        private Boolean loggingFeatureEnabled;
         /**
          * To limit the total size of number of bytes the logger will output
          * when logging feature has been enabled. The option is a int type.
          */
-        private int loggingSizeLimit;
+        private Integer loggingSizeLimit;
         /**
          * This option is used to specify the model file which is useful for the
          * resource class without annotation. When using this option, then the
@@ -85,13 +85,13 @@ public class CxfRsEndpoint {
          * This option controls whether the PhaseInterceptorChain skips logging
          * the Fault that it catches. The option is a boolean type.
          */
-        private boolean skipFaultLogging;
+        private Boolean skipFaultLogging;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use a custom CxfBinding to control the binding between Camel
          * Message and CXF Message. The option is a
@@ -108,7 +108,7 @@ public class CxfRsEndpoint {
          * be used in CxfConsumer by default when the CXF server is using Jetty
          * or Servlet transport. The option is a long type.
          */
-        private long continuationTimeout;
+        private Long continuationTimeout;
         /**
          * This option could apply the implementation of
          * org.apache.camel.component.cxf.jaxrs.CxfRsEndpointConfigurer which
@@ -123,7 +123,7 @@ public class CxfRsEndpoint {
          * Will set the default bus when CXF endpoint create a bus by itself.
          * The option is a boolean type.
          */
-        private boolean defaultBus;
+        private Boolean defaultBus;
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
@@ -135,7 +135,7 @@ public class CxfRsEndpoint {
          * resource class instance and put the response object into the exchange
          * for further processing. The option is a boolean type.
          */
-        private boolean performInvocation;
+        private Boolean performInvocation;
         /**
          * When the option is true, JAXRS UriInfo, HttpHeaders, Request and
          * SecurityContext contexts will be available to custom CXFRS processors
@@ -143,13 +143,13 @@ public class CxfRsEndpoint {
          * analyze the current requests using JAX-RS API. The option is a
          * boolean type.
          */
-        private boolean propagateContexts;
+        private Boolean propagateContexts;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getBeanId() {
             return beanId;
@@ -175,19 +175,19 @@ public class CxfRsEndpoint {
             this.features = features;
         }
 
-        public boolean getLoggingFeatureEnabled() {
+        public Boolean getLoggingFeatureEnabled() {
             return loggingFeatureEnabled;
         }
 
-        public void setLoggingFeatureEnabled(boolean loggingFeatureEnabled) {
+        public void setLoggingFeatureEnabled(Boolean loggingFeatureEnabled) {
             this.loggingFeatureEnabled = loggingFeatureEnabled;
         }
 
-        public int getLoggingSizeLimit() {
+        public Integer getLoggingSizeLimit() {
             return loggingSizeLimit;
         }
 
-        public void setLoggingSizeLimit(int loggingSizeLimit) {
+        public void setLoggingSizeLimit(Integer loggingSizeLimit) {
             this.loggingSizeLimit = loggingSizeLimit;
         }
 
@@ -223,19 +223,19 @@ public class CxfRsEndpoint {
             this.schemaLocations = schemaLocations;
         }
 
-        public boolean getSkipFaultLogging() {
+        public Boolean getSkipFaultLogging() {
             return skipFaultLogging;
         }
 
-        public void setSkipFaultLogging(boolean skipFaultLogging) {
+        public void setSkipFaultLogging(Boolean skipFaultLogging) {
             this.skipFaultLogging = skipFaultLogging;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -255,11 +255,11 @@ public class CxfRsEndpoint {
             this.bus = bus;
         }
 
-        public long getContinuationTimeout() {
+        public Long getContinuationTimeout() {
             return continuationTimeout;
         }
 
-        public void setContinuationTimeout(long continuationTimeout) {
+        public void setContinuationTimeout(Long continuationTimeout) {
             this.continuationTimeout = continuationTimeout;
         }
 
@@ -271,11 +271,11 @@ public class CxfRsEndpoint {
             this.cxfRsEndpointConfigurer = cxfRsEndpointConfigurer;
         }
 
-        public boolean getDefaultBus() {
+        public Boolean getDefaultBus() {
             return defaultBus;
         }
 
-        public void setDefaultBus(boolean defaultBus) {
+        public void setDefaultBus(Boolean defaultBus) {
             this.defaultBus = defaultBus;
         }
 
@@ -288,27 +288,27 @@ public class CxfRsEndpoint {
             this.headerFilterStrategy = headerFilterStrategy;
         }
 
-        public boolean getPerformInvocation() {
+        public Boolean getPerformInvocation() {
             return performInvocation;
         }
 
-        public void setPerformInvocation(boolean performInvocation) {
+        public void setPerformInvocation(Boolean performInvocation) {
             this.performInvocation = performInvocation;
         }
 
-        public boolean getPropagateContexts() {
+        public Boolean getPropagateContexts() {
             return propagateContexts;
         }
 
-        public void setPropagateContexts(boolean propagateContexts) {
+        public void setPropagateContexts(Boolean propagateContexts) {
             this.propagateContexts = propagateContexts;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -342,7 +342,7 @@ public class CxfRsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * This option can override the endpointUrl that published from the WADL
          * which can be accessed with resource address url plus _wadl. The
@@ -377,11 +377,11 @@ public class CxfRsEndpoint {
             this.bindingStyle = bindingStyle;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -441,25 +441,25 @@ public class CxfRsEndpoint {
          * generate an Exception if the return code is larger than 207. The
          * option is a boolean type.
          */
-        private boolean throwExceptionOnFailure;
+        private Boolean throwExceptionOnFailure;
         /**
          * If it is true, the CxfRsProducer will use the HttpClientAPI to invoke
          * the service. If it is false, the CxfRsProducer will use the
          * ProxyClientAPI to invoke the service. The option is a boolean type.
          */
-        private boolean httpClientAPI;
+        private Boolean httpClientAPI;
         /**
          * This option is used to tell CxfRsProducer to ignore the message body
          * of the DELETE method when using HTTP API. The option is a boolean
          * type.
          */
-        private boolean ignoreDeleteMethodMessageBody;
+        private Boolean ignoreDeleteMethodMessageBody;
         /**
          * This option allows you to configure the maximum size of the cache.
          * The implementation caches CXF clients or ClientFactoryBean in
          * CxfProvider and CxfRsProvider. The option is a int type.
          */
-        private int maxClientCacheSize;
+        private Integer maxClientCacheSize;
 
         public Object getCookieHandler() {
             return cookieHandler;
@@ -485,36 +485,36 @@ public class CxfRsEndpoint {
             this.sslContextParameters = sslContextParameters;
         }
 
-        public boolean getThrowExceptionOnFailure() {
+        public Boolean getThrowExceptionOnFailure() {
             return throwExceptionOnFailure;
         }
 
-        public void setThrowExceptionOnFailure(boolean throwExceptionOnFailure) {
+        public void setThrowExceptionOnFailure(Boolean throwExceptionOnFailure) {
             this.throwExceptionOnFailure = throwExceptionOnFailure;
         }
 
-        public boolean getHttpClientAPI() {
+        public Boolean getHttpClientAPI() {
             return httpClientAPI;
         }
 
-        public void setHttpClientAPI(boolean httpClientAPI) {
+        public void setHttpClientAPI(Boolean httpClientAPI) {
             this.httpClientAPI = httpClientAPI;
         }
 
-        public boolean getIgnoreDeleteMethodMessageBody() {
+        public Boolean getIgnoreDeleteMethodMessageBody() {
             return ignoreDeleteMethodMessageBody;
         }
 
         public void setIgnoreDeleteMethodMessageBody(
-                boolean ignoreDeleteMethodMessageBody) {
+                Boolean ignoreDeleteMethodMessageBody) {
             this.ignoreDeleteMethodMessageBody = ignoreDeleteMethodMessageBody;
         }
 
-        public int getMaxClientCacheSize() {
+        public Integer getMaxClientCacheSize() {
             return maxClientCacheSize;
         }
 
-        public void setMaxClientCacheSize(int maxClientCacheSize) {
+        public void setMaxClientCacheSize(Integer maxClientCacheSize) {
             this.maxClientCacheSize = maxClientCacheSize;
         }
     }

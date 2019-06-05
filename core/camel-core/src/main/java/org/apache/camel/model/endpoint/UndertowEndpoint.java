@@ -44,7 +44,7 @@ public class UndertowEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
@@ -56,7 +56,7 @@ public class UndertowEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * To use a custom UndertowHttpBinding to control the mapping between
          * Camel message and undertow. The option is a
@@ -77,11 +77,11 @@ public class UndertowEndpoint {
             this.httpURI = httpURI;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -94,11 +94,11 @@ public class UndertowEndpoint {
             this.headerFilterStrategy = headerFilterStrategy;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -129,7 +129,7 @@ public class UndertowEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Used to only allow consuming if the HttpMethod matches, such as
          * GET/POST/PUT etc. Multiple methods can be specified separated by
@@ -146,7 +146,7 @@ public class UndertowEndpoint {
          * Specifies whether to enable HTTP OPTIONS for this Servlet consumer.
          * By default OPTIONS is turned off. The option is a boolean type.
          */
-        private boolean optionsEnabled;
+        private Boolean optionsEnabled;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -166,20 +166,20 @@ public class UndertowEndpoint {
          * UndertowConstants.EVENT_TYPE and EventType. The option is a boolean
          * type.
          */
-        private boolean fireWebSocketChannelEvents;
+        private Boolean fireWebSocketChannelEvents;
         /**
          * if true, text and binary messages coming through a WebSocket will be
          * wrapped as java.io.Reader and java.io.InputStream respectively before
          * they are passed to an Exchange; otherwise they will be passed as
          * String and byte respectively. The option is a boolean type.
          */
-        private boolean useStreaming;
+        private Boolean useStreaming;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -199,11 +199,11 @@ public class UndertowEndpoint {
             this.matchOnUriPrefix = matchOnUriPrefix;
         }
 
-        public boolean getOptionsEnabled() {
+        public Boolean getOptionsEnabled() {
             return optionsEnabled;
         }
 
-        public void setOptionsEnabled(boolean optionsEnabled) {
+        public void setOptionsEnabled(Boolean optionsEnabled) {
             this.optionsEnabled = optionsEnabled;
         }
 
@@ -223,20 +223,20 @@ public class UndertowEndpoint {
             this.exchangePattern = exchangePattern;
         }
 
-        public boolean getFireWebSocketChannelEvents() {
+        public Boolean getFireWebSocketChannelEvents() {
             return fireWebSocketChannelEvents;
         }
 
         public void setFireWebSocketChannelEvents(
-                boolean fireWebSocketChannelEvents) {
+                Boolean fireWebSocketChannelEvents) {
             this.fireWebSocketChannelEvents = fireWebSocketChannelEvents;
         }
 
-        public boolean getUseStreaming() {
+        public Boolean getUseStreaming() {
             return useStreaming;
         }
 
-        public void setUseStreaming(boolean useStreaming) {
+        public void setUseStreaming(Boolean useStreaming) {
             this.useStreaming = useStreaming;
         }
     }

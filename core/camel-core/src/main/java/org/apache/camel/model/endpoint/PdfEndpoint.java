@@ -41,23 +41,23 @@ public class PdfEndpoint {
         /**
          * Font size in pixels. The option is a float type.
          */
-        private float fontSize;
+        private Float fontSize;
         /**
          * Margin bottom in pixels. The option is a int type.
          */
-        private int marginBottom;
+        private Integer marginBottom;
         /**
          * Margin left in pixels. The option is a int type.
          */
-        private int marginLeft;
+        private Integer marginLeft;
         /**
          * Margin right in pixels. The option is a int type.
          */
-        private int marginRight;
+        private Integer marginRight;
         /**
          * Margin top in pixels. The option is a int type.
          */
-        private int marginTop;
+        private Integer marginTop;
         /**
          * Page size. The option is a
          * org.apache.pdfbox.pdmodel.common.PDRectangle type.
@@ -79,13 +79,13 @@ public class PdfEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public PdfOperation getOperation() {
             return operation;
@@ -103,43 +103,43 @@ public class PdfEndpoint {
             this.font = font;
         }
 
-        public float getFontSize() {
+        public Float getFontSize() {
             return fontSize;
         }
 
-        public void setFontSize(float fontSize) {
+        public void setFontSize(Float fontSize) {
             this.fontSize = fontSize;
         }
 
-        public int getMarginBottom() {
+        public Integer getMarginBottom() {
             return marginBottom;
         }
 
-        public void setMarginBottom(int marginBottom) {
+        public void setMarginBottom(Integer marginBottom) {
             this.marginBottom = marginBottom;
         }
 
-        public int getMarginLeft() {
+        public Integer getMarginLeft() {
             return marginLeft;
         }
 
-        public void setMarginLeft(int marginLeft) {
+        public void setMarginLeft(Integer marginLeft) {
             this.marginLeft = marginLeft;
         }
 
-        public int getMarginRight() {
+        public Integer getMarginRight() {
             return marginRight;
         }
 
-        public void setMarginRight(int marginRight) {
+        public void setMarginRight(Integer marginRight) {
             this.marginRight = marginRight;
         }
 
-        public int getMarginTop() {
+        public Integer getMarginTop() {
             return marginTop;
         }
 
-        public void setMarginTop(int marginTop) {
+        public void setMarginTop(Integer marginTop) {
             this.marginTop = marginTop;
         }
 
@@ -160,19 +160,19 @@ public class PdfEndpoint {
             this.textProcessingFactory = textProcessingFactory;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

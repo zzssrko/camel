@@ -57,7 +57,7 @@ public class LuceneEndpoint {
          * An integer value that limits the result set of the search operation.
          * The option is a int type.
          */
-        private int maxHits;
+        private Integer maxHits;
         /**
          * An optional directory containing files to be used to be analyzed and
          * added to the index at producer startup. The option is a java.io.File
@@ -69,13 +69,13 @@ public class LuceneEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getHost() {
             return host;
@@ -109,11 +109,11 @@ public class LuceneEndpoint {
             this.indexDir = indexDir;
         }
 
-        public int getMaxHits() {
+        public Integer getMaxHits() {
             return maxHits;
         }
 
-        public void setMaxHits(int maxHits) {
+        public void setMaxHits(Integer maxHits) {
             this.maxHits = maxHits;
         }
 
@@ -125,19 +125,19 @@ public class LuceneEndpoint {
             this.srcDir = srcDir;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

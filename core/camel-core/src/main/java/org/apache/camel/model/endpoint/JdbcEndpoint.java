@@ -42,7 +42,7 @@ public class JdbcEndpoint {
          * Whether to allow using named parameters in the queries. The option is
          * a boolean type.
          */
-        private boolean allowNamedParameters;
+        private Boolean allowNamedParameters;
         /**
          * Specify the full package and class name to use as conversion when
          * outputType=SelectOne or SelectList. The option is a java.lang.String
@@ -64,7 +64,7 @@ public class JdbcEndpoint {
          * The default maximum number of rows that can be read by a polling
          * query. The default value is 0. The option is a int type.
          */
-        private int readSize;
+        private Integer readSize;
         /**
          * Camel will set the autoCommit on the JDBC connection to be false,
          * commit the change after executed the statement and reset the
@@ -76,24 +76,24 @@ public class JdbcEndpoint {
          * transaction manager is in charge of committing this tx. The option is
          * a boolean type.
          */
-        private boolean resetAutoCommit;
+        private Boolean resetAutoCommit;
         /**
          * Whether transactions are in use. The option is a boolean type.
          */
-        private boolean transacted;
+        private Boolean transacted;
         /**
          * To read BLOB columns as bytes instead of string data. This may be
          * needed for certain databases such as Oracle where you must read BLOB
          * columns as bytes. The option is a boolean type.
          */
-        private boolean useGetBytesForBlob;
+        private Boolean useGetBytesForBlob;
         /**
          * Set this option to true to use the prepareStatementStrategy with
          * named parameters. This allows to define queries with named
          * placeholders, and use headers with the dynamic values for the query
          * placeholders. The option is a boolean type.
          */
-        private boolean useHeadersAsParameters;
+        private Boolean useHeadersAsParameters;
         /**
          * Sets whether to use JDBC 4 or JDBC 3.0 or older semantic when
          * retrieving column name. JDBC 4.0 uses columnLabel to get the column
@@ -103,13 +103,13 @@ public class JdbcEndpoint {
          * using this component This option is default true. The option is a
          * boolean type.
          */
-        private boolean useJDBC4ColumnNameAndLabelSemantics;
+        private Boolean useJDBC4ColumnNameAndLabelSemantics;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use a custom org.apache.camel.component.jdbc.BeanRowMapper when
          * using outputClass. The default implementation will lower case the row
@@ -131,7 +131,7 @@ public class JdbcEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getDataSourceName() {
             return dataSourceName;
@@ -141,11 +141,11 @@ public class JdbcEndpoint {
             this.dataSourceName = dataSourceName;
         }
 
-        public boolean getAllowNamedParameters() {
+        public Boolean getAllowNamedParameters() {
             return allowNamedParameters;
         }
 
-        public void setAllowNamedParameters(boolean allowNamedParameters) {
+        public void setAllowNamedParameters(Boolean allowNamedParameters) {
             this.allowNamedParameters = allowNamedParameters;
         }
 
@@ -173,60 +173,60 @@ public class JdbcEndpoint {
             this.parameters = parameters;
         }
 
-        public int getReadSize() {
+        public Integer getReadSize() {
             return readSize;
         }
 
-        public void setReadSize(int readSize) {
+        public void setReadSize(Integer readSize) {
             this.readSize = readSize;
         }
 
-        public boolean getResetAutoCommit() {
+        public Boolean getResetAutoCommit() {
             return resetAutoCommit;
         }
 
-        public void setResetAutoCommit(boolean resetAutoCommit) {
+        public void setResetAutoCommit(Boolean resetAutoCommit) {
             this.resetAutoCommit = resetAutoCommit;
         }
 
-        public boolean getTransacted() {
+        public Boolean getTransacted() {
             return transacted;
         }
 
-        public void setTransacted(boolean transacted) {
+        public void setTransacted(Boolean transacted) {
             this.transacted = transacted;
         }
 
-        public boolean getUseGetBytesForBlob() {
+        public Boolean getUseGetBytesForBlob() {
             return useGetBytesForBlob;
         }
 
-        public void setUseGetBytesForBlob(boolean useGetBytesForBlob) {
+        public void setUseGetBytesForBlob(Boolean useGetBytesForBlob) {
             this.useGetBytesForBlob = useGetBytesForBlob;
         }
 
-        public boolean getUseHeadersAsParameters() {
+        public Boolean getUseHeadersAsParameters() {
             return useHeadersAsParameters;
         }
 
-        public void setUseHeadersAsParameters(boolean useHeadersAsParameters) {
+        public void setUseHeadersAsParameters(Boolean useHeadersAsParameters) {
             this.useHeadersAsParameters = useHeadersAsParameters;
         }
 
-        public boolean getUseJDBC4ColumnNameAndLabelSemantics() {
+        public Boolean getUseJDBC4ColumnNameAndLabelSemantics() {
             return useJDBC4ColumnNameAndLabelSemantics;
         }
 
         public void setUseJDBC4ColumnNameAndLabelSemantics(
-                boolean useJDBC4ColumnNameAndLabelSemantics) {
+                Boolean useJDBC4ColumnNameAndLabelSemantics) {
             this.useJDBC4ColumnNameAndLabelSemantics = useJDBC4ColumnNameAndLabelSemantics;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -246,11 +246,11 @@ public class JdbcEndpoint {
             this.prepareStatementStrategy = prepareStatementStrategy;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

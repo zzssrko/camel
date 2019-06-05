@@ -45,57 +45,57 @@ public class Mina2Endpoint {
         /**
          * Port number. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * Whether or not to disconnect(close) from Mina session right after
          * use. Can be used for both consumer and producer. The option is a
          * boolean type.
          */
-        private boolean disconnect;
+        private Boolean disconnect;
         /**
          * You can enable the Apache MINA logging filter. Apache MINA uses slf4j
          * logging at INFO level to log all input and output. The option is a
          * boolean type.
          */
-        private boolean minaLogger;
+        private Boolean minaLogger;
         /**
          * Setting to set endpoint as one-way or request-response. The option is
          * a boolean type.
          */
-        private boolean sync;
+        private Boolean sync;
         /**
          * You can configure the timeout that specifies how long to wait for a
          * response from a remote server. The timeout unit is in milliseconds,
          * so 60000 is 60 seconds. The option is a long type.
          */
-        private long timeout;
+        private Long timeout;
         /**
          * Maximum amount of time it should take to send data to the MINA
          * session. Default is 10000 milliseconds. The option is a long type.
          */
-        private long writeTimeout;
+        private Long writeTimeout;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Number of worker threads in the worker pool for TCP and UDP. The
          * option is a int type.
          */
-        private int maximumPoolSize;
+        private Integer maximumPoolSize;
         /**
          * Whether to use ordered thread pool, to ensure events are processed
          * orderly on the same channel. The option is a boolean type.
          */
-        private boolean orderedThreadPoolExecutor;
+        private Boolean orderedThreadPoolExecutor;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Only used for TCP. You can transfer the exchange over the wire
          * instead of just the body. The following fields are transferred: In
@@ -104,7 +104,7 @@ public class Mina2Endpoint {
          * objects are serializable. Camel will exclude any non-serializable
          * objects and log it at WARN level. The option is a boolean type.
          */
-        private boolean transferExchange;
+        private Boolean transferExchange;
         /**
          * The mina component installs a default codec if both, codec is null
          * and textline is false. Setting allowDefaultCodec to false prevents
@@ -113,7 +113,7 @@ public class Mina2Endpoint {
          * another filter must be the first in the filter chain, like the SSL
          * filter. The option is a boolean type.
          */
-        private boolean allowDefaultCodec;
+        private Boolean allowDefaultCodec;
         /**
          * To use a custom minda codec implementation. The option is a
          * org.apache.mina.filter.codec.ProtocolCodecFactory type.
@@ -124,13 +124,13 @@ public class Mina2Endpoint {
          * default value of Mina itself is used which are 1024. The option is a
          * int type.
          */
-        private int decoderMaxLineLength;
+        private Integer decoderMaxLineLength;
         /**
          * To set the textline protocol encoder max line length. By default the
          * default value of Mina itself is used which are Integer.MAX_VALUE. The
          * option is a int type.
          */
-        private int encoderMaxLineLength;
+        private Integer encoderMaxLineLength;
         /**
          * You can configure the encoding (a charset name) to use for the TCP
          * textline codec and the UDP protocol. If not provided, Camel will use
@@ -148,7 +148,7 @@ public class Mina2Endpoint {
          * false, then Object Serialization is assumed over TCP. The option is a
          * boolean type.
          */
-        private boolean textline;
+        private Boolean textline;
         /**
          * Only used for TCP and if textline=true. Sets the text line delimiter
          * to use. If none provided, Camel will use DEFAULT. This delimiter is
@@ -159,7 +159,7 @@ public class Mina2Endpoint {
         /**
          * Whether to auto start SSL handshake. The option is a boolean type.
          */
-        private boolean autoStartTls;
+        private Boolean autoStartTls;
         /**
          * To configure SSL security. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
@@ -182,100 +182,100 @@ public class Mina2Endpoint {
             this.host = host;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
-        public boolean getDisconnect() {
+        public Boolean getDisconnect() {
             return disconnect;
         }
 
-        public void setDisconnect(boolean disconnect) {
+        public void setDisconnect(Boolean disconnect) {
             this.disconnect = disconnect;
         }
 
-        public boolean getMinaLogger() {
+        public Boolean getMinaLogger() {
             return minaLogger;
         }
 
-        public void setMinaLogger(boolean minaLogger) {
+        public void setMinaLogger(Boolean minaLogger) {
             this.minaLogger = minaLogger;
         }
 
-        public boolean getSync() {
+        public Boolean getSync() {
             return sync;
         }
 
-        public void setSync(boolean sync) {
+        public void setSync(Boolean sync) {
             this.sync = sync;
         }
 
-        public long getTimeout() {
+        public Long getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(long timeout) {
+        public void setTimeout(Long timeout) {
             this.timeout = timeout;
         }
 
-        public long getWriteTimeout() {
+        public Long getWriteTimeout() {
             return writeTimeout;
         }
 
-        public void setWriteTimeout(long writeTimeout) {
+        public void setWriteTimeout(Long writeTimeout) {
             this.writeTimeout = writeTimeout;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public int getMaximumPoolSize() {
+        public Integer getMaximumPoolSize() {
             return maximumPoolSize;
         }
 
-        public void setMaximumPoolSize(int maximumPoolSize) {
+        public void setMaximumPoolSize(Integer maximumPoolSize) {
             this.maximumPoolSize = maximumPoolSize;
         }
 
-        public boolean getOrderedThreadPoolExecutor() {
+        public Boolean getOrderedThreadPoolExecutor() {
             return orderedThreadPoolExecutor;
         }
 
         public void setOrderedThreadPoolExecutor(
-                boolean orderedThreadPoolExecutor) {
+                Boolean orderedThreadPoolExecutor) {
             this.orderedThreadPoolExecutor = orderedThreadPoolExecutor;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getTransferExchange() {
+        public Boolean getTransferExchange() {
             return transferExchange;
         }
 
-        public void setTransferExchange(boolean transferExchange) {
+        public void setTransferExchange(Boolean transferExchange) {
             this.transferExchange = transferExchange;
         }
 
-        public boolean getAllowDefaultCodec() {
+        public Boolean getAllowDefaultCodec() {
             return allowDefaultCodec;
         }
 
-        public void setAllowDefaultCodec(boolean allowDefaultCodec) {
+        public void setAllowDefaultCodec(Boolean allowDefaultCodec) {
             this.allowDefaultCodec = allowDefaultCodec;
         }
 
@@ -287,19 +287,19 @@ public class Mina2Endpoint {
             this.codec = codec;
         }
 
-        public int getDecoderMaxLineLength() {
+        public Integer getDecoderMaxLineLength() {
             return decoderMaxLineLength;
         }
 
-        public void setDecoderMaxLineLength(int decoderMaxLineLength) {
+        public void setDecoderMaxLineLength(Integer decoderMaxLineLength) {
             this.decoderMaxLineLength = decoderMaxLineLength;
         }
 
-        public int getEncoderMaxLineLength() {
+        public Integer getEncoderMaxLineLength() {
             return encoderMaxLineLength;
         }
 
-        public void setEncoderMaxLineLength(int encoderMaxLineLength) {
+        public void setEncoderMaxLineLength(Integer encoderMaxLineLength) {
             this.encoderMaxLineLength = encoderMaxLineLength;
         }
 
@@ -319,11 +319,11 @@ public class Mina2Endpoint {
             this.filters = filters;
         }
 
-        public boolean getTextline() {
+        public Boolean getTextline() {
             return textline;
         }
 
-        public void setTextline(boolean textline) {
+        public void setTextline(Boolean textline) {
             this.textline = textline;
         }
 
@@ -336,11 +336,11 @@ public class Mina2Endpoint {
             this.textlineDelimiter = textlineDelimiter;
         }
 
-        public boolean getAutoStartTls() {
+        public Boolean getAutoStartTls() {
             return autoStartTls;
         }
 
-        public void setAutoStartTls(boolean autoStartTls) {
+        public void setAutoStartTls(Boolean autoStartTls) {
             this.autoStartTls = autoStartTls;
         }
 
@@ -363,18 +363,18 @@ public class Mina2Endpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * If the clientMode is true, mina consumer will connect the address as
          * a TCP client. The option is a boolean type.
          */
-        private boolean clientMode;
+        private Boolean clientMode;
         /**
          * If sync is enabled then this option dictates MinaConsumer if it
          * should disconnect where there is no reply to send back. The option is
          * a boolean type.
          */
-        private boolean disconnectOnNoReply;
+        private Boolean disconnectOnNoReply;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -395,27 +395,27 @@ public class Mina2Endpoint {
          */
         private LoggingLevel noReplyLogLevel;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getClientMode() {
+        public Boolean getClientMode() {
             return clientMode;
         }
 
-        public void setClientMode(boolean clientMode) {
+        public void setClientMode(Boolean clientMode) {
             this.clientMode = clientMode;
         }
 
-        public boolean getDisconnectOnNoReply() {
+        public Boolean getDisconnectOnNoReply() {
             return disconnectOnNoReply;
         }
 
-        public void setDisconnectOnNoReply(boolean disconnectOnNoReply) {
+        public void setDisconnectOnNoReply(Boolean disconnectOnNoReply) {
             this.disconnectOnNoReply = disconnectOnNoReply;
         }
 
@@ -450,27 +450,27 @@ public class Mina2Endpoint {
          * false allows to pickup DNS changes in the network. The option is a
          * boolean type.
          */
-        private boolean cachedAddress;
+        private Boolean cachedAddress;
         /**
          * Sessions can be lazily created to avoid exceptions, if the remote
          * server is not up and running when the Camel producer is started. The
          * option is a boolean type.
          */
-        private boolean lazySessionCreation;
+        private Boolean lazySessionCreation;
 
-        public boolean getCachedAddress() {
+        public Boolean getCachedAddress() {
             return cachedAddress;
         }
 
-        public void setCachedAddress(boolean cachedAddress) {
+        public void setCachedAddress(Boolean cachedAddress) {
             this.cachedAddress = cachedAddress;
         }
 
-        public boolean getLazySessionCreation() {
+        public Boolean getLazySessionCreation() {
             return lazySessionCreation;
         }
 
-        public void setLazySessionCreation(boolean lazySessionCreation) {
+        public void setLazySessionCreation(Boolean lazySessionCreation) {
             this.lazySessionCreation = lazySessionCreation;
         }
     }

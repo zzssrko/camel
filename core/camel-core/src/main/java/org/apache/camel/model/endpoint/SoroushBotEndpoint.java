@@ -41,13 +41,13 @@ public class SoroushBotEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Automatically download SoroushMessage.fileUrl and
          * SoroushMessage.thumbnailUrl if exists for the message and store them
@@ -61,7 +61,7 @@ public class SoroushBotEndpoint {
          * dead without notifying the bot. this value should not be changed. The
          * option is a long type.
          */
-        private long reconnectIdleConnectionTimeout;
+        private Long reconnectIdleConnectionTimeout;
         /**
          * If true, when downloading an attached file, thumbnail will be
          * downloaded if provided in the message. Otherwise, only the file will
@@ -148,19 +148,19 @@ public class SoroushBotEndpoint {
             this.endpoint = endpoint;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -172,12 +172,12 @@ public class SoroushBotEndpoint {
             this.autoDownload = autoDownload;
         }
 
-        public long getReconnectIdleConnectionTimeout() {
+        public Long getReconnectIdleConnectionTimeout() {
             return reconnectIdleConnectionTimeout;
         }
 
         public void setReconnectIdleConnectionTimeout(
-                long reconnectIdleConnectionTimeout) {
+                Long reconnectIdleConnectionTimeout) {
             this.reconnectIdleConnectionTimeout = reconnectIdleConnectionTimeout;
         }
 
@@ -289,7 +289,7 @@ public class SoroushBotEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Number of Thread created by consumer in the route. if you use this
          * method for parallelism, it is guaranteed that messages from same user
@@ -323,11 +323,11 @@ public class SoroushBotEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

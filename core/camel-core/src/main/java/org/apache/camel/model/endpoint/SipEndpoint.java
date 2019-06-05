@@ -44,7 +44,7 @@ public class SipEndpoint {
          * connection creation. This is useful if the connection is used for
          * long running conversations. The option is a boolean type.
          */
-        private boolean cacheConnections;
+        private Boolean cacheConnections;
         /**
          * Setting for contentSubType can be set to any valid MimeSubType. The
          * option is a java.lang.String type.
@@ -76,7 +76,7 @@ public class SipEndpoint {
          * Port of the message originator. Mandatory setting unless a registry
          * based FromHeader is specified. The option is a int type.
          */
-        private int fromPort;
+        private Integer fromPort;
         /**
          * Username of the message originator. Mandatory setting unless a
          * registry based custom FromHeader is specified. The option is a
@@ -87,13 +87,13 @@ public class SipEndpoint {
          * The amount of time a message received at an endpoint is considered
          * valid. The option is a int type.
          */
-        private int msgExpiration;
+        private Integer msgExpiration;
         /**
          * Setting for specifying amount of time to wait for a Response and/or
          * Acknowledgement can be received from another SIP stack. The option is
          * a long type.
          */
-        private long receiveTimeoutMillis;
+        private Long receiveTimeoutMillis;
         /**
          * Name of the SIP Stack instance associated with an SIP Endpoint. The
          * option is a java.lang.String type.
@@ -108,7 +108,7 @@ public class SipEndpoint {
          * Portname of the message receiver. Mandatory setting unless a registry
          * based ToHeader is specified. The option is a int type.
          */
-        private int toPort;
+        private Integer toPort;
         /**
          * Username of the message receiver. Mandatory setting unless a registry
          * based custom ToHeader is specified. The option is a java.lang.String
@@ -130,7 +130,7 @@ public class SipEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * A custom Header object containing call details. Must implement the
          * type javax.sip.header.CallIdHeader. The option is a
@@ -195,7 +195,7 @@ public class SipEndpoint {
          * Setting for maximum allowed Message size in bytes. The option is a
          * int type.
          */
-        private int maxMessageSize;
+        private Integer maxMessageSize;
         /**
          * To use a custom MessageFactory. The option is a
          * javax.sip.message.MessageFactory type.
@@ -221,7 +221,7 @@ public class SipEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * A custom Header object containing message receiver settings. Must
          * implement the type javax.sip.header.ToHeader. The option is a
@@ -253,12 +253,12 @@ public class SipEndpoint {
         /**
          * Number of maximum proxy forwards. The option is a int type.
          */
-        private int maxForwards;
+        private Integer maxForwards;
         /**
          * This setting is used when requests are sent to the Presence Agent via
          * a proxy. The option is a boolean type.
          */
-        private boolean useRouterForAllUris;
+        private Boolean useRouterForAllUris;
 
         public URI getUri() {
             return uri;
@@ -268,11 +268,11 @@ public class SipEndpoint {
             this.uri = uri;
         }
 
-        public boolean getCacheConnections() {
+        public Boolean getCacheConnections() {
             return cacheConnections;
         }
 
-        public void setCacheConnections(boolean cacheConnections) {
+        public void setCacheConnections(Boolean cacheConnections) {
             this.cacheConnections = cacheConnections;
         }
 
@@ -316,11 +316,11 @@ public class SipEndpoint {
             this.fromHost = fromHost;
         }
 
-        public int getFromPort() {
+        public Integer getFromPort() {
             return fromPort;
         }
 
-        public void setFromPort(int fromPort) {
+        public void setFromPort(Integer fromPort) {
             this.fromPort = fromPort;
         }
 
@@ -332,19 +332,19 @@ public class SipEndpoint {
             this.fromUser = fromUser;
         }
 
-        public int getMsgExpiration() {
+        public Integer getMsgExpiration() {
             return msgExpiration;
         }
 
-        public void setMsgExpiration(int msgExpiration) {
+        public void setMsgExpiration(Integer msgExpiration) {
             this.msgExpiration = msgExpiration;
         }
 
-        public long getReceiveTimeoutMillis() {
+        public Long getReceiveTimeoutMillis() {
             return receiveTimeoutMillis;
         }
 
-        public void setReceiveTimeoutMillis(long receiveTimeoutMillis) {
+        public void setReceiveTimeoutMillis(Long receiveTimeoutMillis) {
             this.receiveTimeoutMillis = receiveTimeoutMillis;
         }
 
@@ -364,11 +364,11 @@ public class SipEndpoint {
             this.toHost = toHost;
         }
 
-        public int getToPort() {
+        public Integer getToPort() {
             return toPort;
         }
 
-        public void setToPort(int toPort) {
+        public void setToPort(Integer toPort) {
             this.toPort = toPort;
         }
 
@@ -396,11 +396,11 @@ public class SipEndpoint {
             this.addressFactory = addressFactory;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -484,11 +484,11 @@ public class SipEndpoint {
             this.maxForwardsHeader = maxForwardsHeader;
         }
 
-        public int getMaxMessageSize() {
+        public Integer getMaxMessageSize() {
             return maxMessageSize;
         }
 
-        public void setMaxMessageSize(int maxMessageSize) {
+        public void setMaxMessageSize(Integer maxMessageSize) {
             this.maxMessageSize = maxMessageSize;
         }
 
@@ -524,11 +524,11 @@ public class SipEndpoint {
             this.sipUri = sipUri;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -574,19 +574,19 @@ public class SipEndpoint {
             this.implementationTraceLevel = implementationTraceLevel;
         }
 
-        public int getMaxForwards() {
+        public Integer getMaxForwards() {
             return maxForwards;
         }
 
-        public void setMaxForwards(int maxForwards) {
+        public void setMaxForwards(Integer maxForwards) {
             this.maxForwards = maxForwards;
         }
 
-        public boolean getUseRouterForAllUris() {
+        public Boolean getUseRouterForAllUris() {
             return useRouterForAllUris;
         }
 
-        public void setUseRouterForAllUris(boolean useRouterForAllUris) {
+        public void setUseRouterForAllUris(Boolean useRouterForAllUris) {
             this.useRouterForAllUris = useRouterForAllUris;
         }
     }
@@ -601,20 +601,20 @@ public class SipEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * This setting is used to determine whether the kind of header
          * (FromHeader,ToHeader etc) that needs to be created for this endpoint.
          * The option is a boolean type.
          */
-        private boolean consumer;
+        private Boolean consumer;
         /**
          * This setting is used to distinguish between a Presence Agent & a
          * consumer. This is due to the fact that the SIP Camel component ships
          * with a basic Presence Agent (for testing purposes only). Consumers
          * have to set this flag to true. The option is a boolean type.
          */
-        private boolean presenceAgent;
+        private Boolean presenceAgent;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -629,27 +629,27 @@ public class SipEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getConsumer() {
+        public Boolean getConsumer() {
             return consumer;
         }
 
-        public void setConsumer(boolean consumer) {
+        public void setConsumer(Boolean consumer) {
             this.consumer = consumer;
         }
 
-        public boolean getPresenceAgent() {
+        public Boolean getPresenceAgent() {
             return presenceAgent;
         }
 
-        public void setPresenceAgent(boolean presenceAgent) {
+        public void setPresenceAgent(Boolean presenceAgent) {
             this.presenceAgent = presenceAgent;
         }
 

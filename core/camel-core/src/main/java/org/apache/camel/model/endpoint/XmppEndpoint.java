@@ -38,7 +38,7 @@ public class XmppEndpoint {
         /**
          * Port number for the chat server. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * JID (Jabber ID) of person to receive messages. room parameter has
          * precedence over participant. The option is a java.lang.String type.
@@ -47,7 +47,7 @@ public class XmppEndpoint {
         /**
          * Whether to login the user. The option is a boolean type.
          */
-        private boolean login;
+        private Boolean login;
         /**
          * Use nickname when joining room. If room is specified and nickname is
          * not, user will be used for the nickname. The option is a
@@ -58,7 +58,7 @@ public class XmppEndpoint {
          * Accept pubsub packets on input, default is false. The option is a
          * boolean type.
          */
-        private boolean pubsub;
+        private Boolean pubsub;
         /**
          * If this option is specified, the component will connect to MUC (Multi
          * User Chat). Usually, the domain name for MUC is different from the
@@ -85,12 +85,12 @@ public class XmppEndpoint {
          * connection is established. Default is true. The option is a boolean
          * type.
          */
-        private boolean testConnectionOnStartup;
+        private Boolean testConnectionOnStartup;
         /**
          * If true, an attempt to create an account will be made. Default is
          * false. The option is a boolean type.
          */
-        private boolean createAccount;
+        private Boolean createAccount;
         /**
          * XMPP resource. The default is Camel. The option is a java.lang.String
          * type.
@@ -101,7 +101,7 @@ public class XmppEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use an existing connection configuration. Currently
          * org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration is only
@@ -114,7 +114,7 @@ public class XmppEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
@@ -139,11 +139,11 @@ public class XmppEndpoint {
             this.host = host;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
@@ -155,11 +155,11 @@ public class XmppEndpoint {
             this.participant = participant;
         }
 
-        public boolean getLogin() {
+        public Boolean getLogin() {
             return login;
         }
 
-        public void setLogin(boolean login) {
+        public void setLogin(Boolean login) {
             this.login = login;
         }
 
@@ -171,11 +171,11 @@ public class XmppEndpoint {
             this.nickname = nickname;
         }
 
-        public boolean getPubsub() {
+        public Boolean getPubsub() {
             return pubsub;
         }
 
-        public void setPubsub(boolean pubsub) {
+        public void setPubsub(Boolean pubsub) {
             this.pubsub = pubsub;
         }
 
@@ -195,19 +195,19 @@ public class XmppEndpoint {
             this.serviceName = serviceName;
         }
 
-        public boolean getTestConnectionOnStartup() {
+        public Boolean getTestConnectionOnStartup() {
             return testConnectionOnStartup;
         }
 
-        public void setTestConnectionOnStartup(boolean testConnectionOnStartup) {
+        public void setTestConnectionOnStartup(Boolean testConnectionOnStartup) {
             this.testConnectionOnStartup = testConnectionOnStartup;
         }
 
-        public boolean getCreateAccount() {
+        public Boolean getCreateAccount() {
             return createAccount;
         }
 
-        public void setCreateAccount(boolean createAccount) {
+        public void setCreateAccount(Boolean createAccount) {
             this.createAccount = createAccount;
         }
 
@@ -219,11 +219,11 @@ public class XmppEndpoint {
             this.resource = resource;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -235,11 +235,11 @@ public class XmppEndpoint {
             this.connectionConfig = connectionConfig;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -279,7 +279,7 @@ public class XmppEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * The amount of time in seconds between polls (in seconds) to verify
          * the health of the XMPP connection, or between attempts to establish
@@ -287,13 +287,13 @@ public class XmppEndpoint {
          * connection if it has become inactive. Default is 10 seconds. The
          * option is a int type.
          */
-        private int connectionPollDelay;
+        private Integer connectionPollDelay;
         /**
          * Set a doc header on the IN message containing a Document form of the
          * incoming packet; default is true if presence or pubsub are true,
          * otherwise false. The option is a boolean type.
          */
-        private boolean doc;
+        private Boolean doc;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -308,27 +308,27 @@ public class XmppEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public int getConnectionPollDelay() {
+        public Integer getConnectionPollDelay() {
             return connectionPollDelay;
         }
 
-        public void setConnectionPollDelay(int connectionPollDelay) {
+        public void setConnectionPollDelay(Integer connectionPollDelay) {
             this.connectionPollDelay = connectionPollDelay;
         }
 
-        public boolean getDoc() {
+        public Boolean getDoc() {
             return doc;
         }
 
-        public void setDoc(boolean doc) {
+        public void setDoc(Boolean doc) {
             this.doc = doc;
         }
 

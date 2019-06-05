@@ -37,7 +37,7 @@ public class SchematronEndpoint {
          * Flag to abort the route and throw a schematron validation exception.
          * The option is a boolean type.
          */
-        private boolean abort;
+        private Boolean abort;
         /**
          * To use the given schematron rules instead of loading from the path.
          * The option is a javax.xml.transform.Templates type.
@@ -48,13 +48,13 @@ public class SchematronEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Set the URIResolver to be used for resolving schematron includes in
          * the rules file. The option is a javax.xml.transform.URIResolver type.
@@ -69,11 +69,11 @@ public class SchematronEndpoint {
             this.path = path;
         }
 
-        public boolean getAbort() {
+        public Boolean getAbort() {
             return abort;
         }
 
-        public void setAbort(boolean abort) {
+        public void setAbort(Boolean abort) {
             this.abort = abort;
         }
 
@@ -85,19 +85,19 @@ public class SchematronEndpoint {
             this.rules = rules;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 

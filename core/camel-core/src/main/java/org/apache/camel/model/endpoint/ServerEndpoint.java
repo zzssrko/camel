@@ -46,7 +46,7 @@ public class ServerEndpoint {
          * Filter out all requests which don't have the execute bit set. The
          * option is a boolean type.
          */
-        private boolean filterNonExecute;
+        private Boolean filterNonExecute;
         /**
          * Protocol options. The option is a ProtocolOptions type.
          */
@@ -56,17 +56,17 @@ public class ServerEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Parameter W - Acknowledgment window. The option is a short type.
          */
-        private short acknowledgeWindow;
+        private Short acknowledgeWindow;
         /**
          * The common ASDU address size. May be either SIZE_1 or SIZE_2. The
          * option is a org.eclipse.neoscada.protocol.iec60870.ASDUAddressType
@@ -90,32 +90,32 @@ public class ServerEndpoint {
          * Parameter K - Maximum number of un-acknowledged messages. The option
          * is a short type.
          */
-        private short maxUnacknowledged;
+        private Short maxUnacknowledged;
         /**
          * Timeout T1 in milliseconds. The option is a int type.
          */
-        private int timeout1;
+        private Integer timeout1;
         /**
          * Timeout T2 in milliseconds. The option is a int type.
          */
-        private int timeout2;
+        private Integer timeout2;
         /**
          * Timeout T3 in milliseconds. The option is a int type.
          */
-        private int timeout3;
+        private Integer timeout3;
         /**
          * Whether to include the source address. The option is a boolean type.
          */
-        private boolean causeSourceAddress;
+        private Boolean causeSourceAddress;
         /**
          * Whether background scan transmissions should be ignored. The option
          * is a boolean type.
          */
-        private boolean ignoreBackgroundScan;
+        private Boolean ignoreBackgroundScan;
         /**
          * Whether to ignore or respect DST. The option is a boolean type.
          */
-        private boolean ignoreDaylightSavingTime;
+        private Boolean ignoreDaylightSavingTime;
         /**
          * The timezone to use. May be any Java time zone string. The option is
          * a java.util.TimeZone type.
@@ -143,11 +143,11 @@ public class ServerEndpoint {
             this.dataModuleOptions = dataModuleOptions;
         }
 
-        public boolean getFilterNonExecute() {
+        public Boolean getFilterNonExecute() {
             return filterNonExecute;
         }
 
-        public void setFilterNonExecute(boolean filterNonExecute) {
+        public void setFilterNonExecute(Boolean filterNonExecute) {
             this.filterNonExecute = filterNonExecute;
         }
 
@@ -159,27 +159,27 @@ public class ServerEndpoint {
             this.protocolOptions = protocolOptions;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public short getAcknowledgeWindow() {
+        public Short getAcknowledgeWindow() {
             return acknowledgeWindow;
         }
 
-        public void setAcknowledgeWindow(short acknowledgeWindow) {
+        public void setAcknowledgeWindow(Short acknowledgeWindow) {
             this.acknowledgeWindow = acknowledgeWindow;
         }
 
@@ -209,59 +209,59 @@ public class ServerEndpoint {
             this.informationObjectAddressType = informationObjectAddressType;
         }
 
-        public short getMaxUnacknowledged() {
+        public Short getMaxUnacknowledged() {
             return maxUnacknowledged;
         }
 
-        public void setMaxUnacknowledged(short maxUnacknowledged) {
+        public void setMaxUnacknowledged(Short maxUnacknowledged) {
             this.maxUnacknowledged = maxUnacknowledged;
         }
 
-        public int getTimeout1() {
+        public Integer getTimeout1() {
             return timeout1;
         }
 
-        public void setTimeout1(int timeout1) {
+        public void setTimeout1(Integer timeout1) {
             this.timeout1 = timeout1;
         }
 
-        public int getTimeout2() {
+        public Integer getTimeout2() {
             return timeout2;
         }
 
-        public void setTimeout2(int timeout2) {
+        public void setTimeout2(Integer timeout2) {
             this.timeout2 = timeout2;
         }
 
-        public int getTimeout3() {
+        public Integer getTimeout3() {
             return timeout3;
         }
 
-        public void setTimeout3(int timeout3) {
+        public void setTimeout3(Integer timeout3) {
             this.timeout3 = timeout3;
         }
 
-        public boolean getCauseSourceAddress() {
+        public Boolean getCauseSourceAddress() {
             return causeSourceAddress;
         }
 
-        public void setCauseSourceAddress(boolean causeSourceAddress) {
+        public void setCauseSourceAddress(Boolean causeSourceAddress) {
             this.causeSourceAddress = causeSourceAddress;
         }
 
-        public boolean getIgnoreBackgroundScan() {
+        public Boolean getIgnoreBackgroundScan() {
             return ignoreBackgroundScan;
         }
 
-        public void setIgnoreBackgroundScan(boolean ignoreBackgroundScan) {
+        public void setIgnoreBackgroundScan(Boolean ignoreBackgroundScan) {
             this.ignoreBackgroundScan = ignoreBackgroundScan;
         }
 
-        public boolean getIgnoreDaylightSavingTime() {
+        public Boolean getIgnoreDaylightSavingTime() {
             return ignoreDaylightSavingTime;
         }
 
-        public void setIgnoreDaylightSavingTime(boolean ignoreDaylightSavingTime) {
+        public void setIgnoreDaylightSavingTime(Boolean ignoreDaylightSavingTime) {
             this.ignoreDaylightSavingTime = ignoreDaylightSavingTime;
         }
 
@@ -292,7 +292,7 @@ public class ServerEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -307,11 +307,11 @@ public class ServerEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

@@ -36,7 +36,7 @@ public class ScpEndpoint {
         /**
          * Port of the FTP server. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * The starting directory. The option is a java.lang.String type.
          */
@@ -47,7 +47,7 @@ public class ScpEndpoint {
          * server. If you have a consumer which you want to stop, then you need
          * to stop the consumer/route instead. The option is a boolean type.
          */
-        private boolean disconnect;
+        private Boolean disconnect;
         /**
          * Allows you to set chmod on the stored file. For example chmod=664.
          * The option is a java.lang.String type.
@@ -83,13 +83,13 @@ public class ScpEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets the connect timeout for waiting for a connection to be
          * established Used by both FTPClient and JSCH. The option is a int
          * type.
          */
-        private int connectTimeout;
+        private Integer connectTimeout;
         /**
          * Sets the so timeout FTP and FTPS Only for Camel 2.4. SFTP for Camel
          * 2.14.3/2.15.3/2.16 onwards. Is the SocketOptions.SO_TIMEOUT value in
@@ -97,18 +97,18 @@ public class ScpEndpoint {
          * hanged connection. On SFTP this option is set as timeout on the JSCH
          * Session instance. The option is a int type.
          */
-        private int soTimeout;
+        private Integer soTimeout;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Sets the data timeout for waiting for reply Used only by FTPClient.
          * The option is a int type.
          */
-        private int timeout;
+        private Integer timeout;
         /**
          * Sets the known_hosts file, so that the jsch endpoint can do host key
          * verification. You can prefix with classpath: to load the file from
@@ -135,7 +135,7 @@ public class ScpEndpoint {
          * Otherwise the file will have the priority. The option is a byte[]
          * type.
          */
-        private byte[] privateKeyBytes;
+        private Byte[] privateKeyBytes;
         /**
          * Set the private key file to that the endpoint can do private key
          * verification. You can prefix with classpath: to load the file from
@@ -157,7 +157,7 @@ public class ScpEndpoint {
          * file from System.getProperty(user.home) /.ssh/known_hosts. The option
          * is a boolean type.
          */
-        private boolean useUserKnownHostsFile;
+        private Boolean useUserKnownHostsFile;
         /**
          * Set a comma separated list of ciphers that will be used in order of
          * preference. Possible cipher names are defined by JCraft JSCH. Some
@@ -174,11 +174,11 @@ public class ScpEndpoint {
             this.host = host;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
@@ -190,11 +190,11 @@ public class ScpEndpoint {
             this.directoryName = directoryName;
         }
 
-        public boolean getDisconnect() {
+        public Boolean getDisconnect() {
             return disconnect;
         }
 
-        public void setDisconnect(boolean disconnect) {
+        public void setDisconnect(Boolean disconnect) {
             this.disconnect = disconnect;
         }
 
@@ -222,43 +222,43 @@ public class ScpEndpoint {
             this.strictHostKeyChecking = strictHostKeyChecking;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public int getConnectTimeout() {
+        public Integer getConnectTimeout() {
             return connectTimeout;
         }
 
-        public void setConnectTimeout(int connectTimeout) {
+        public void setConnectTimeout(Integer connectTimeout) {
             this.connectTimeout = connectTimeout;
         }
 
-        public int getSoTimeout() {
+        public Integer getSoTimeout() {
             return soTimeout;
         }
 
-        public void setSoTimeout(int soTimeout) {
+        public void setSoTimeout(Integer soTimeout) {
             this.soTimeout = soTimeout;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public int getTimeout() {
+        public Integer getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(int timeout) {
+        public void setTimeout(Integer timeout) {
             this.timeout = timeout;
         }
 
@@ -286,11 +286,11 @@ public class ScpEndpoint {
             this.preferredAuthentications = preferredAuthentications;
         }
 
-        public byte[] getPrivateKeyBytes() {
+        public Byte[] getPrivateKeyBytes() {
             return privateKeyBytes;
         }
 
-        public void setPrivateKeyBytes(byte[] privateKeyBytes) {
+        public void setPrivateKeyBytes(Byte[] privateKeyBytes) {
             this.privateKeyBytes = privateKeyBytes;
         }
 
@@ -318,11 +318,11 @@ public class ScpEndpoint {
             this.username = username;
         }
 
-        public boolean getUseUserKnownHostsFile() {
+        public Boolean getUseUserKnownHostsFile() {
             return useUserKnownHostsFile;
         }
 
-        public void setUseUserKnownHostsFile(boolean useUserKnownHostsFile) {
+        public void setUseUserKnownHostsFile(Boolean useUserKnownHostsFile) {
             this.useUserKnownHostsFile = useUserKnownHostsFile;
         }
 
@@ -348,7 +348,7 @@ public class ScpEndpoint {
          * CamelFileName header will be stripped for any leading paths. The
          * option is a boolean type.
          */
-        private boolean flatten;
+        private Boolean flatten;
         /**
          * Used for jailing (restricting) writing files to the starting
          * directory (and sub) only. This is enabled by default to not allow
@@ -357,7 +357,7 @@ public class ScpEndpoint {
          * directories outside the starting directory, such as parent or root
          * folders. The option is a boolean type.
          */
-        private boolean jailStartingDirectory;
+        private Boolean jailStartingDirectory;
         /**
          * Used to specify if a null body is allowed during file writing. If set
          * to true then an empty file will be created, when set to false, and
@@ -367,14 +367,14 @@ public class ScpEndpoint {
          * file will be truncated, and if set to append the file will remain
          * unchanged. The option is a boolean type.
          */
-        private boolean allowNullBody;
+        private Boolean allowNullBody;
         /**
          * Whether or not to disconnect from remote FTP server right after a
          * Batch upload is complete. disconnectOnBatchComplete will only
          * disconnect the current connection to the FTP server. The option is a
          * boolean type.
          */
-        private boolean disconnectOnBatchComplete;
+        private Boolean disconnectOnBatchComplete;
         /**
          * Strategy (Custom Strategy) used to move file with special naming
          * token to use when fileExist=Move is configured. By default, there is
@@ -385,36 +385,36 @@ public class ScpEndpoint {
          */
         private Object moveExistingFileStrategy;
 
-        public boolean getFlatten() {
+        public Boolean getFlatten() {
             return flatten;
         }
 
-        public void setFlatten(boolean flatten) {
+        public void setFlatten(Boolean flatten) {
             this.flatten = flatten;
         }
 
-        public boolean getJailStartingDirectory() {
+        public Boolean getJailStartingDirectory() {
             return jailStartingDirectory;
         }
 
-        public void setJailStartingDirectory(boolean jailStartingDirectory) {
+        public void setJailStartingDirectory(Boolean jailStartingDirectory) {
             this.jailStartingDirectory = jailStartingDirectory;
         }
 
-        public boolean getAllowNullBody() {
+        public Boolean getAllowNullBody() {
             return allowNullBody;
         }
 
-        public void setAllowNullBody(boolean allowNullBody) {
+        public void setAllowNullBody(Boolean allowNullBody) {
             this.allowNullBody = allowNullBody;
         }
 
-        public boolean getDisconnectOnBatchComplete() {
+        public Boolean getDisconnectOnBatchComplete() {
             return disconnectOnBatchComplete;
         }
 
         public void setDisconnectOnBatchComplete(
-                boolean disconnectOnBatchComplete) {
+                Boolean disconnectOnBatchComplete) {
             this.disconnectOnBatchComplete = disconnectOnBatchComplete;
         }
 

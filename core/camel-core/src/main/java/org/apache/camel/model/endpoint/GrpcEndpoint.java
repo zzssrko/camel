@@ -40,7 +40,7 @@ public class GrpcEndpoint {
         /**
          * The gRPC local or remote server port. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * Fully qualified service name from the protocol buffer descriptor file
          * (package dot service definition name). The option is a
@@ -50,24 +50,24 @@ public class GrpcEndpoint {
         /**
          * The HTTP/2 flow control window size (MiB). The option is a int type.
          */
-        private int flowControlWindow;
+        private Integer flowControlWindow;
         /**
          * The maximum message size allowed to be received/sent (MiB). The
          * option is a int type.
          */
-        private int maxMessageSize;
+        private Integer maxMessageSize;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Authentication method type in advance to the SSL/TLS negotiation. The
          * option is a org.apache.camel.component.grpc.GrpcAuthType type.
@@ -130,11 +130,11 @@ public class GrpcEndpoint {
             this.host = host;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
@@ -146,35 +146,35 @@ public class GrpcEndpoint {
             this.service = service;
         }
 
-        public int getFlowControlWindow() {
+        public Integer getFlowControlWindow() {
             return flowControlWindow;
         }
 
-        public void setFlowControlWindow(int flowControlWindow) {
+        public void setFlowControlWindow(Integer flowControlWindow) {
             this.flowControlWindow = flowControlWindow;
         }
 
-        public int getMaxMessageSize() {
+        public Integer getMaxMessageSize() {
             return maxMessageSize;
         }
 
-        public void setMaxMessageSize(int maxMessageSize) {
+        public void setMaxMessageSize(Integer maxMessageSize) {
             this.maxMessageSize = maxMessageSize;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -278,7 +278,7 @@ public class GrpcEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * This option specifies the top-level strategy for processing service
          * requests and responses in streaming mode. If an aggregation strategy
@@ -294,17 +294,17 @@ public class GrpcEndpoint {
          * Determines if onCompleted events should be pushed to the Camel route.
          * The option is a boolean type.
          */
-        private boolean forwardOnCompleted;
+        private Boolean forwardOnCompleted;
         /**
          * Determines if onError events should be pushed to the Camel route.
          * Exceptions will be set as message body. The option is a boolean type.
          */
-        private boolean forwardOnError;
+        private Boolean forwardOnError;
         /**
          * The maximum number of concurrent calls permitted for each incoming
          * server connection. The option is a int type.
          */
-        private int maxConcurrentCallsPerConnection;
+        private Integer maxConcurrentCallsPerConnection;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -319,11 +319,11 @@ public class GrpcEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -335,28 +335,28 @@ public class GrpcEndpoint {
             this.consumerStrategy = consumerStrategy;
         }
 
-        public boolean getForwardOnCompleted() {
+        public Boolean getForwardOnCompleted() {
             return forwardOnCompleted;
         }
 
-        public void setForwardOnCompleted(boolean forwardOnCompleted) {
+        public void setForwardOnCompleted(Boolean forwardOnCompleted) {
             this.forwardOnCompleted = forwardOnCompleted;
         }
 
-        public boolean getForwardOnError() {
+        public Boolean getForwardOnError() {
             return forwardOnError;
         }
 
-        public void setForwardOnError(boolean forwardOnError) {
+        public void setForwardOnError(Boolean forwardOnError) {
             this.forwardOnError = forwardOnError;
         }
 
-        public int getMaxConcurrentCallsPerConnection() {
+        public Integer getMaxConcurrentCallsPerConnection() {
             return maxConcurrentCallsPerConnection;
         }
 
         public void setMaxConcurrentCallsPerConnection(
-                int maxConcurrentCallsPerConnection) {
+                Integer maxConcurrentCallsPerConnection) {
             this.maxConcurrentCallsPerConnection = maxConcurrentCallsPerConnection;
         }
 

@@ -44,38 +44,38 @@ public class TimerEndpoint {
          * units, such as 60s (60 seconds), 5m30s (5 minutes and 30 seconds),
          * and 1h (1 hour). The option is a long type.
          */
-        private long delay;
+        private Long delay;
         /**
          * Events take place at approximately regular intervals, separated by
          * the specified period. The option is a boolean type.
          */
-        private boolean fixedRate;
+        private Boolean fixedRate;
         /**
          * If greater than 0, generate periodic events every period
          * milliseconds. The default value is 1000. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long period;
+        private Long period;
         /**
          * Specifies a maximum limit of number of fires. So if you set it to 1,
          * the timer will only fire once. If you set it to 5, it will only fire
          * five times. A value of zero or negative means fire forever. The
          * option is a long type.
          */
-        private long repeatCount;
+        private Long repeatCount;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Specifies whether or not the thread associated with the timer
          * endpoint runs as a daemon. The default value is true. The option is a
          * boolean type.
          */
-        private boolean daemon;
+        private Boolean daemon;
         /**
          * Allows you to specify a custom Date pattern to use for setting the
          * time option using URI syntax. The option is a java.lang.String type.
@@ -86,7 +86,7 @@ public class TimerEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * A java.util.Date the first event should be generated. If using the
          * URI, the pattern expected is: yyyy-MM-dd HH:mm:ss or
@@ -106,51 +106,51 @@ public class TimerEndpoint {
             this.timerName = timerName;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
 
-        public boolean getFixedRate() {
+        public Boolean getFixedRate() {
             return fixedRate;
         }
 
-        public void setFixedRate(boolean fixedRate) {
+        public void setFixedRate(Boolean fixedRate) {
             this.fixedRate = fixedRate;
         }
 
-        public long getPeriod() {
+        public Long getPeriod() {
             return period;
         }
 
-        public void setPeriod(long period) {
+        public void setPeriod(Long period) {
             this.period = period;
         }
 
-        public long getRepeatCount() {
+        public Long getRepeatCount() {
             return repeatCount;
         }
 
-        public void setRepeatCount(long repeatCount) {
+        public void setRepeatCount(Long repeatCount) {
             this.repeatCount = repeatCount;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getDaemon() {
+        public Boolean getDaemon() {
             return daemon;
         }
 
-        public void setDaemon(boolean daemon) {
+        public void setDaemon(Boolean daemon) {
             this.daemon = daemon;
         }
 
@@ -162,11 +162,11 @@ public class TimerEndpoint {
             this.pattern = pattern;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -197,7 +197,7 @@ public class TimerEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -212,11 +212,11 @@ public class TimerEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

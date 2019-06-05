@@ -38,16 +38,16 @@ public class CMISEndpoint {
         /**
          * Number of nodes to retrieve per page. The option is a int type.
          */
-        private int pageSize;
+        private Integer pageSize;
         /**
          * If set to true, the content of document node will be retrieved in
          * addition to the properties. The option is a boolean type.
          */
-        private boolean readContent;
+        private Boolean readContent;
         /**
          * Max number of nodes to read. The option is a int type.
          */
-        private int readCount;
+        private Integer readCount;
         /**
          * The Id of the repository to use. If not specified the first available
          * repository is used. The option is a java.lang.String type.
@@ -58,7 +58,7 @@ public class CMISEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use a custom CMISSessionFacadeFactory to create the
          * CMISSessionFacade instances. The option is a
@@ -70,7 +70,7 @@ public class CMISEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Password for the cmis repository. The option is a java.lang.String
          * type.
@@ -90,27 +90,27 @@ public class CMISEndpoint {
             this.cmsUrl = cmsUrl;
         }
 
-        public int getPageSize() {
+        public Integer getPageSize() {
             return pageSize;
         }
 
-        public void setPageSize(int pageSize) {
+        public void setPageSize(Integer pageSize) {
             this.pageSize = pageSize;
         }
 
-        public boolean getReadContent() {
+        public Boolean getReadContent() {
             return readContent;
         }
 
-        public void setReadContent(boolean readContent) {
+        public void setReadContent(Boolean readContent) {
             this.readContent = readContent;
         }
 
-        public int getReadCount() {
+        public Integer getReadCount() {
             return readCount;
         }
 
-        public void setReadCount(int readCount) {
+        public void setReadCount(Integer readCount) {
             this.readCount = readCount;
         }
 
@@ -122,11 +122,11 @@ public class CMISEndpoint {
             this.repositoryId = repositoryId;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -138,11 +138,11 @@ public class CMISEndpoint {
             this.sessionFacadeFactory = sessionFacadeFactory;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -173,7 +173,7 @@ public class CMISEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * The cmis query to execute against the repository. If not specified,
          * the consumer will retrieve every node from the content repository by
@@ -195,11 +195,11 @@ public class CMISEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -234,13 +234,13 @@ public class CMISEndpoint {
          * result, otherwise will create a node in the cmis repository. The
          * option is a boolean type.
          */
-        private boolean queryMode;
+        private Boolean queryMode;
 
-        public boolean getQueryMode() {
+        public Boolean getQueryMode() {
             return queryMode;
         }
 
-        public void setQueryMode(boolean queryMode) {
+        public void setQueryMode(Boolean queryMode) {
             this.queryMode = queryMode;
         }
     }

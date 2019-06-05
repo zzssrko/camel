@@ -89,13 +89,13 @@ public class HBaseEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getTableName() {
             return tableName;
@@ -162,19 +162,19 @@ public class HBaseEndpoint {
             this.userGroupInformation = userGroupInformation;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -189,13 +189,13 @@ public class HBaseEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Gets the maximum number of messages as a limit to poll at each
          * polling. Is default unlimited, but use 0 or negative number to
          * disable it as unlimited. The option is a int type.
          */
-        private int maxMessagesPerPoll;
+        private Integer maxMessagesPerPoll;
         /**
          * The HBase operation to perform. The option is a java.lang.String
          * type.
@@ -205,7 +205,7 @@ public class HBaseEndpoint {
          * If the option is true, Camel HBase Consumer will remove the rows
          * which it processes. The option is a boolean type.
          */
-        private boolean remove;
+        private Boolean remove;
         /**
          * To use a custom HBaseRemoveHandler that is executed when a row is to
          * be removed. The option is a
@@ -226,19 +226,19 @@ public class HBaseEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public int getMaxMessagesPerPoll() {
+        public Integer getMaxMessagesPerPoll() {
             return maxMessagesPerPoll;
         }
 
-        public void setMaxMessagesPerPoll(int maxMessagesPerPoll) {
+        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
             this.maxMessagesPerPoll = maxMessagesPerPoll;
         }
 
@@ -250,11 +250,11 @@ public class HBaseEndpoint {
             this.operation = operation;
         }
 
-        public boolean getRemove() {
+        public Boolean getRemove() {
             return remove;
         }
 
-        public void setRemove(boolean remove) {
+        public void setRemove(Boolean remove) {
             this.remove = remove;
         }
 
@@ -287,13 +287,13 @@ public class HBaseEndpoint {
         /**
          * The maximum number of rows to scan. The option is a int type.
          */
-        private int maxResults;
+        private Integer maxResults;
 
-        public int getMaxResults() {
+        public Integer getMaxResults() {
             return maxResults;
         }
 
-        public void setMaxResults(int maxResults) {
+        public void setMaxResults(Integer maxResults) {
             this.maxResults = maxResults;
         }
     }

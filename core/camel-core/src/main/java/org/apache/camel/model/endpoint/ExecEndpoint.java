@@ -63,13 +63,13 @@ public class ExecEndpoint {
          * terminated. If execution has not completed within the timeout, the
          * component will send a termination request. The option is a long type.
          */
-        private long timeout;
+        private Long timeout;
         /**
          * A boolean indicating that when stdout is empty, this component will
          * populate the Camel Message Body with stderr. This behavior is
          * disabled (false) by default. The option is a boolean type.
          */
-        private boolean useStderrOnEmptyStdout;
+        private Boolean useStderrOnEmptyStdout;
         /**
          * The directory in which the command should be executed. If null, the
          * working directory of the current process will be used. The option is
@@ -81,13 +81,13 @@ public class ExecEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getExecutable() {
             return executable;
@@ -129,19 +129,19 @@ public class ExecEndpoint {
             this.outFile = outFile;
         }
 
-        public long getTimeout() {
+        public Long getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(long timeout) {
+        public void setTimeout(Long timeout) {
             this.timeout = timeout;
         }
 
-        public boolean getUseStderrOnEmptyStdout() {
+        public Boolean getUseStderrOnEmptyStdout() {
             return useStderrOnEmptyStdout;
         }
 
-        public void setUseStderrOnEmptyStdout(boolean useStderrOnEmptyStdout) {
+        public void setUseStderrOnEmptyStdout(Boolean useStderrOnEmptyStdout) {
             this.useStderrOnEmptyStdout = useStderrOnEmptyStdout;
         }
 
@@ -153,19 +153,19 @@ public class ExecEndpoint {
             this.workingDir = workingDir;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

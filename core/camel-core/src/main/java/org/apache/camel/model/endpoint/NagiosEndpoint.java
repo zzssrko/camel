@@ -36,34 +36,34 @@ public class NagiosEndpoint {
         /**
          * The port number of the host. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * Connection timeout in millis. The option is a int type.
          */
-        private int connectionTimeout;
+        private Integer connectionTimeout;
         /**
          * Whether or not to use synchronous when sending a passive check.
          * Setting it to false will allow Camel to continue routing the message
          * and the passive check message will be send asynchronously. The option
          * is a boolean type.
          */
-        private boolean sendSync;
+        private Boolean sendSync;
         /**
          * Sending timeout in millis. The option is a int type.
          */
-        private int timeout;
+        private Integer timeout;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * To specify an encryption method. The option is a
          * com.googlecode.jsendnsca.encryption.Encryption type.
@@ -89,51 +89,51 @@ public class NagiosEndpoint {
             this.host = host;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
-        public int getConnectionTimeout() {
+        public Integer getConnectionTimeout() {
             return connectionTimeout;
         }
 
-        public void setConnectionTimeout(int connectionTimeout) {
+        public void setConnectionTimeout(Integer connectionTimeout) {
             this.connectionTimeout = connectionTimeout;
         }
 
-        public boolean getSendSync() {
+        public Boolean getSendSync() {
             return sendSync;
         }
 
-        public void setSendSync(boolean sendSync) {
+        public void setSendSync(Boolean sendSync) {
             this.sendSync = sendSync;
         }
 
-        public int getTimeout() {
+        public Integer getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(int timeout) {
+        public void setTimeout(Integer timeout) {
             this.timeout = timeout;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 

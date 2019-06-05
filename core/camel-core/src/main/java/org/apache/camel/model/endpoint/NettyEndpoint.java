@@ -48,23 +48,23 @@ public class NettyEndpoint {
         /**
          * The host port number. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * Whether or not to disconnect(close) from Netty Channel right after
          * use. Can be used for both consumer and producer. The option is a
          * boolean type.
          */
-        private boolean disconnect;
+        private Boolean disconnect;
         /**
          * Setting to ensure socket is not closed due to inactivity. The option
          * is a boolean type.
          */
-        private boolean keepAlive;
+        private Boolean keepAlive;
         /**
          * Setting to facilitate socket multiplexing. The option is a boolean
          * type.
          */
-        private boolean reuseAddress;
+        private Boolean reuseAddress;
         /**
          * This option allows producers and consumers (in client mode) to reuse
          * the same Netty Channel for the lifecycle of processing the Exchange.
@@ -77,30 +77,30 @@ public class NettyEndpoint {
          * channel during routing and use it as well. The option is a boolean
          * type.
          */
-        private boolean reuseChannel;
+        private Boolean reuseChannel;
         /**
          * Setting to set endpoint as one-way or request-response. The option is
          * a boolean type.
          */
-        private boolean sync;
+        private Boolean sync;
         /**
          * Setting to improve TCP protocol performance. The option is a boolean
          * type.
          */
-        private boolean tcpNoDelay;
+        private Boolean tcpNoDelay;
         /**
          * Only used for TCP when transferExchange is true. When set to true,
          * serializable objects in headers and properties will be added to the
          * exchange. Otherwise Camel will exclude any non-serializable objects
          * and log it at WARN level. The option is a boolean type.
          */
-        private boolean allowSerializedHeaders;
+        private Boolean allowSerializedHeaders;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use a custom configured NettyServerBootstrapConfiguration for
          * configuring this endpoint. The option is a
@@ -121,7 +121,7 @@ public class NettyEndpoint {
          * http://netty.io/wiki/native-transports.html. The option is a boolean
          * type.
          */
-        private boolean nativeTransport;
+        private Boolean nativeTransport;
         /**
          * Allows to configure additional netty options using option. as prefix.
          * For example option.child.keepAlive=false to set the netty option
@@ -134,23 +134,23 @@ public class NettyEndpoint {
          * The TCP/UDP buffer sizes to be used during inbound communication.
          * Size is bytes. The option is a int type.
          */
-        private int receiveBufferSize;
+        private Integer receiveBufferSize;
         /**
          * Configures the buffer size predictor. See details at Jetty
          * documentation and this mail thread. The option is a int type.
          */
-        private int receiveBufferSizePredictor;
+        private Integer receiveBufferSizePredictor;
         /**
          * The TCP/UDP buffer sizes to be used during outbound communication.
          * Size is bytes. The option is a int type.
          */
-        private int sendBufferSize;
+        private Integer sendBufferSize;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Only used for TCP. You can transfer the exchange over the wire
          * instead of just the body. The following fields are transferred: In
@@ -159,19 +159,19 @@ public class NettyEndpoint {
          * objects are serializable. Camel will exclude any non-serializable
          * objects and log it at WARN level. The option is a boolean type.
          */
-        private boolean transferExchange;
+        private Boolean transferExchange;
         /**
          * For UDP only. If enabled the using byte array codec instead of Java
          * serialization protocol. The option is a boolean type.
          */
-        private boolean udpByteArrayCodec;
+        private Boolean udpByteArrayCodec;
         /**
          * When netty works on nio mode, it uses default workerCount parameter
          * from Netty, which is cpu_core_threads x 2. User can use this
          * operation to override the default workerCount from Netty. The option
          * is a int type.
          */
-        private int workerCount;
+        private Integer workerCount;
         /**
          * To use a explicit EventLoopGroup as the boss thread pool. For example
          * to share a thread pool with multiple consumers or producers. By
@@ -186,12 +186,12 @@ public class NettyEndpoint {
          * prevents the netty component from installing a default codec as the
          * first element in the filter chain. The option is a boolean type.
          */
-        private boolean allowDefaultCodec;
+        private Boolean allowDefaultCodec;
         /**
          * Whether or not to auto append missing end delimiter when sending
          * using the textline codec. The option is a boolean type.
          */
-        private boolean autoAppendDelimiter;
+        private Boolean autoAppendDelimiter;
         /**
          * A custom ChannelHandler class that can be used to perform special
          * marshalling of inbound payloads. The option is a
@@ -203,7 +203,7 @@ public class NettyEndpoint {
          * The max line length to use for the textline codec. The option is a
          * int type.
          */
-        private int decoderMaxLineLength;
+        private Integer decoderMaxLineLength;
         /**
          * A list of decoders to be used. You can use a String which have values
          * separated by comma, and have the values be looked up in the Registry.
@@ -243,7 +243,7 @@ public class NettyEndpoint {
          * false, then Object Serialization is assumed over TCP. The option is a
          * boolean type.
          */
-        private boolean textline;
+        private Boolean textline;
         /**
          * Which protocols to enable when using SSL. The option is a
          * java.lang.String type.
@@ -280,14 +280,14 @@ public class NettyEndpoint {
          * Setting to specify whether SSL encryption is applied to this
          * endpoint. The option is a boolean type.
          */
-        private boolean ssl;
+        private Boolean ssl;
         /**
          * When enabled and in SSL mode, then the Netty consumer will enrich the
          * Camel Message with headers having information about the client
          * certificate such as subject name, issuer name, serial number, and the
          * valid date range. The option is a boolean type.
          */
-        private boolean sslClientCertHeaders;
+        private Boolean sslClientCertHeaders;
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
@@ -327,75 +327,75 @@ public class NettyEndpoint {
             this.host = host;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
-        public boolean getDisconnect() {
+        public Boolean getDisconnect() {
             return disconnect;
         }
 
-        public void setDisconnect(boolean disconnect) {
+        public void setDisconnect(Boolean disconnect) {
             this.disconnect = disconnect;
         }
 
-        public boolean getKeepAlive() {
+        public Boolean getKeepAlive() {
             return keepAlive;
         }
 
-        public void setKeepAlive(boolean keepAlive) {
+        public void setKeepAlive(Boolean keepAlive) {
             this.keepAlive = keepAlive;
         }
 
-        public boolean getReuseAddress() {
+        public Boolean getReuseAddress() {
             return reuseAddress;
         }
 
-        public void setReuseAddress(boolean reuseAddress) {
+        public void setReuseAddress(Boolean reuseAddress) {
             this.reuseAddress = reuseAddress;
         }
 
-        public boolean getReuseChannel() {
+        public Boolean getReuseChannel() {
             return reuseChannel;
         }
 
-        public void setReuseChannel(boolean reuseChannel) {
+        public void setReuseChannel(Boolean reuseChannel) {
             this.reuseChannel = reuseChannel;
         }
 
-        public boolean getSync() {
+        public Boolean getSync() {
             return sync;
         }
 
-        public void setSync(boolean sync) {
+        public void setSync(Boolean sync) {
             this.sync = sync;
         }
 
-        public boolean getTcpNoDelay() {
+        public Boolean getTcpNoDelay() {
             return tcpNoDelay;
         }
 
-        public void setTcpNoDelay(boolean tcpNoDelay) {
+        public void setTcpNoDelay(Boolean tcpNoDelay) {
             this.tcpNoDelay = tcpNoDelay;
         }
 
-        public boolean getAllowSerializedHeaders() {
+        public Boolean getAllowSerializedHeaders() {
             return allowSerializedHeaders;
         }
 
-        public void setAllowSerializedHeaders(boolean allowSerializedHeaders) {
+        public void setAllowSerializedHeaders(Boolean allowSerializedHeaders) {
             this.allowSerializedHeaders = allowSerializedHeaders;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -415,11 +415,11 @@ public class NettyEndpoint {
             this.channelGroup = channelGroup;
         }
 
-        public boolean getNativeTransport() {
+        public Boolean getNativeTransport() {
             return nativeTransport;
         }
 
-        public void setNativeTransport(boolean nativeTransport) {
+        public void setNativeTransport(Boolean nativeTransport) {
             this.nativeTransport = nativeTransport;
         }
 
@@ -431,59 +431,60 @@ public class NettyEndpoint {
             this.options = options;
         }
 
-        public int getReceiveBufferSize() {
+        public Integer getReceiveBufferSize() {
             return receiveBufferSize;
         }
 
-        public void setReceiveBufferSize(int receiveBufferSize) {
+        public void setReceiveBufferSize(Integer receiveBufferSize) {
             this.receiveBufferSize = receiveBufferSize;
         }
 
-        public int getReceiveBufferSizePredictor() {
+        public Integer getReceiveBufferSizePredictor() {
             return receiveBufferSizePredictor;
         }
 
-        public void setReceiveBufferSizePredictor(int receiveBufferSizePredictor) {
+        public void setReceiveBufferSizePredictor(
+                Integer receiveBufferSizePredictor) {
             this.receiveBufferSizePredictor = receiveBufferSizePredictor;
         }
 
-        public int getSendBufferSize() {
+        public Integer getSendBufferSize() {
             return sendBufferSize;
         }
 
-        public void setSendBufferSize(int sendBufferSize) {
+        public void setSendBufferSize(Integer sendBufferSize) {
             this.sendBufferSize = sendBufferSize;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getTransferExchange() {
+        public Boolean getTransferExchange() {
             return transferExchange;
         }
 
-        public void setTransferExchange(boolean transferExchange) {
+        public void setTransferExchange(Boolean transferExchange) {
             this.transferExchange = transferExchange;
         }
 
-        public boolean getUdpByteArrayCodec() {
+        public Boolean getUdpByteArrayCodec() {
             return udpByteArrayCodec;
         }
 
-        public void setUdpByteArrayCodec(boolean udpByteArrayCodec) {
+        public void setUdpByteArrayCodec(Boolean udpByteArrayCodec) {
             this.udpByteArrayCodec = udpByteArrayCodec;
         }
 
-        public int getWorkerCount() {
+        public Integer getWorkerCount() {
             return workerCount;
         }
 
-        public void setWorkerCount(int workerCount) {
+        public void setWorkerCount(Integer workerCount) {
             this.workerCount = workerCount;
         }
 
@@ -495,19 +496,19 @@ public class NettyEndpoint {
             this.workerGroup = workerGroup;
         }
 
-        public boolean getAllowDefaultCodec() {
+        public Boolean getAllowDefaultCodec() {
             return allowDefaultCodec;
         }
 
-        public void setAllowDefaultCodec(boolean allowDefaultCodec) {
+        public void setAllowDefaultCodec(Boolean allowDefaultCodec) {
             this.allowDefaultCodec = allowDefaultCodec;
         }
 
-        public boolean getAutoAppendDelimiter() {
+        public Boolean getAutoAppendDelimiter() {
             return autoAppendDelimiter;
         }
 
-        public void setAutoAppendDelimiter(boolean autoAppendDelimiter) {
+        public void setAutoAppendDelimiter(Boolean autoAppendDelimiter) {
             this.autoAppendDelimiter = autoAppendDelimiter;
         }
 
@@ -521,11 +522,11 @@ public class NettyEndpoint {
             this.decoder = decoder;
         }
 
-        public int getDecoderMaxLineLength() {
+        public Integer getDecoderMaxLineLength() {
             return decoderMaxLineLength;
         }
 
-        public void setDecoderMaxLineLength(int decoderMaxLineLength) {
+        public void setDecoderMaxLineLength(Integer decoderMaxLineLength) {
             this.decoderMaxLineLength = decoderMaxLineLength;
         }
 
@@ -571,11 +572,11 @@ public class NettyEndpoint {
             this.encoding = encoding;
         }
 
-        public boolean getTextline() {
+        public Boolean getTextline() {
             return textline;
         }
 
-        public void setTextline(boolean textline) {
+        public void setTextline(Boolean textline) {
             this.textline = textline;
         }
 
@@ -627,19 +628,19 @@ public class NettyEndpoint {
             this.securityProvider = securityProvider;
         }
 
-        public boolean getSsl() {
+        public Boolean getSsl() {
             return ssl;
         }
 
-        public void setSsl(boolean ssl) {
+        public void setSsl(Boolean ssl) {
             this.ssl = ssl;
         }
 
-        public boolean getSslClientCertHeaders() {
+        public Boolean getSslClientCertHeaders() {
             return sslClientCertHeaders;
         }
 
-        public void setSslClientCertHeaders(boolean sslClientCertHeaders) {
+        public void setSslClientCertHeaders(Boolean sslClientCertHeaders) {
             this.sslClientCertHeaders = sslClientCertHeaders;
         }
 
@@ -686,27 +687,27 @@ public class NettyEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Setting to choose Multicast over UDP. The option is a boolean type.
          */
-        private boolean broadcast;
+        private Boolean broadcast;
         /**
          * If the clientMode is true, netty consumer will connect the address as
          * a TCP client. The option is a boolean type.
          */
-        private boolean clientMode;
+        private Boolean clientMode;
         /**
          * Used only in clientMode in consumer, the consumer will attempt to
          * reconnect on disconnection if this is enabled. The option is a
          * boolean type.
          */
-        private boolean reconnect;
+        private Boolean reconnect;
         /**
          * Used if reconnect and clientMode is enabled. The interval in milli
          * seconds to attempt reconnection. The option is a int type.
          */
-        private int reconnectInterval;
+        private Integer reconnectInterval;
         /**
          * Allows to configure a backlog for netty consumer (server). Note the
          * backlog is just a best effort depending on the OS. Setting this
@@ -714,13 +715,13 @@ public class NettyEndpoint {
          * long the accept queue can be If this option is not configured, then
          * the backlog depends on OS setting. The option is a int type.
          */
-        private int backlog;
+        private Integer backlog;
         /**
          * When netty works on nio mode, it uses default bossCount parameter
          * from Netty, which is 1. User can use this operation to override the
          * default bossCount from Netty. The option is a int type.
          */
-        private int bossCount;
+        private Integer bossCount;
         /**
          * Set the BossGroup which could be used for handling the new connection
          * of the server side across the NettyEndpoint. The option is a
@@ -732,7 +733,7 @@ public class NettyEndpoint {
          * should disconnect where there is no reply to send back. The option is
          * a boolean type.
          */
-        private boolean disconnectOnNoReply;
+        private Boolean disconnectOnNoReply;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -787,66 +788,66 @@ public class NettyEndpoint {
          * Whether to use ordered thread pool, to ensure events are processed
          * orderly on the same channel. The option is a boolean type.
          */
-        private boolean usingExecutorService;
+        private Boolean usingExecutorService;
         /**
          * Configures whether the server needs client authentication when using
          * SSL. The option is a boolean type.
          */
-        private boolean needClientAuth;
+        private Boolean needClientAuth;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getBroadcast() {
+        public Boolean getBroadcast() {
             return broadcast;
         }
 
-        public void setBroadcast(boolean broadcast) {
+        public void setBroadcast(Boolean broadcast) {
             this.broadcast = broadcast;
         }
 
-        public boolean getClientMode() {
+        public Boolean getClientMode() {
             return clientMode;
         }
 
-        public void setClientMode(boolean clientMode) {
+        public void setClientMode(Boolean clientMode) {
             this.clientMode = clientMode;
         }
 
-        public boolean getReconnect() {
+        public Boolean getReconnect() {
             return reconnect;
         }
 
-        public void setReconnect(boolean reconnect) {
+        public void setReconnect(Boolean reconnect) {
             this.reconnect = reconnect;
         }
 
-        public int getReconnectInterval() {
+        public Integer getReconnectInterval() {
             return reconnectInterval;
         }
 
-        public void setReconnectInterval(int reconnectInterval) {
+        public void setReconnectInterval(Integer reconnectInterval) {
             this.reconnectInterval = reconnectInterval;
         }
 
-        public int getBacklog() {
+        public Integer getBacklog() {
             return backlog;
         }
 
-        public void setBacklog(int backlog) {
+        public void setBacklog(Integer backlog) {
             this.backlog = backlog;
         }
 
-        public int getBossCount() {
+        public Integer getBossCount() {
             return bossCount;
         }
 
-        public void setBossCount(int bossCount) {
+        public void setBossCount(Integer bossCount) {
             this.bossCount = bossCount;
         }
 
@@ -858,11 +859,11 @@ public class NettyEndpoint {
             this.bossGroup = bossGroup;
         }
 
-        public boolean getDisconnectOnNoReply() {
+        public Boolean getDisconnectOnNoReply() {
             return disconnectOnNoReply;
         }
 
-        public void setDisconnectOnNoReply(boolean disconnectOnNoReply) {
+        public void setDisconnectOnNoReply(Boolean disconnectOnNoReply) {
             this.disconnectOnNoReply = disconnectOnNoReply;
         }
 
@@ -933,19 +934,19 @@ public class NettyEndpoint {
             this.serverInitializerFactory = serverInitializerFactory;
         }
 
-        public boolean getUsingExecutorService() {
+        public Boolean getUsingExecutorService() {
             return usingExecutorService;
         }
 
-        public void setUsingExecutorService(boolean usingExecutorService) {
+        public void setUsingExecutorService(Boolean usingExecutorService) {
             this.usingExecutorService = usingExecutorService;
         }
 
-        public boolean getNeedClientAuth() {
+        public Boolean getNeedClientAuth() {
             return needClientAuth;
         }
 
-        public void setNeedClientAuth(boolean needClientAuth) {
+        public void setNeedClientAuth(Boolean needClientAuth) {
             this.needClientAuth = needClientAuth;
         }
     }
@@ -955,7 +956,7 @@ public class NettyEndpoint {
          * Time to wait for a socket connection to be available. Value is in
          * milliseconds. The option is a int type.
          */
-        private int connectTimeout;
+        private Integer connectTimeout;
         /**
          * Allows to use a timeout for the Netty producer when calling a remote
          * server. By default no timeout is in use. The value is in milli
@@ -963,7 +964,7 @@ public class NettyEndpoint {
          * Netty's ReadTimeoutHandler to trigger the timeout. The option is a
          * long type.
          */
-        private long requestTimeout;
+        private Long requestTimeout;
         /**
          * To use a custom ClientInitializerFactory. The option is a
          * org.apache.camel.component.netty4.ClientInitializerFactory type.
@@ -992,7 +993,7 @@ public class NettyEndpoint {
          * server is not up and running when the Camel producer is started. The
          * option is a boolean type.
          */
-        private boolean lazyChannelCreation;
+        private Boolean lazyChannelCreation;
         /**
          * Whether producer pool is enabled or not. Important: If you turn this
          * off then a single shared connection is used for the producer, also if
@@ -1007,56 +1008,56 @@ public class NettyEndpoint {
          * correlationManager option for more details. The option is a boolean
          * type.
          */
-        private boolean producerPoolEnabled;
+        private Boolean producerPoolEnabled;
         /**
          * Sets the cap on the number of objects that can be allocated by the
          * pool (checked out to clients, or idle awaiting checkout) at a given
          * time. Use a negative value for no limit. The option is a int type.
          */
-        private int producerPoolMaxActive;
+        private Integer producerPoolMaxActive;
         /**
          * Sets the cap on the number of idle instances in the pool. The option
          * is a int type.
          */
-        private int producerPoolMaxIdle;
+        private Integer producerPoolMaxIdle;
         /**
          * Sets the minimum amount of time (value in millis) an object may sit
          * idle in the pool before it is eligible for eviction by the idle
          * object evictor. The option is a long type.
          */
-        private long producerPoolMinEvictableIdle;
+        private Long producerPoolMinEvictableIdle;
         /**
          * Sets the minimum number of instances allowed in the producer pool
          * before the evictor thread (if active) spawns new objects. The option
          * is a int type.
          */
-        private int producerPoolMinIdle;
+        private Integer producerPoolMinIdle;
         /**
          * This option supports connection less udp sending which is a real fire
          * and forget. A connected udp send receive the PortUnreachableException
          * if no one is listen on the receiving port. The option is a boolean
          * type.
          */
-        private boolean udpConnectionlessSending;
+        private Boolean udpConnectionlessSending;
         /**
          * If the useByteBuf is true, netty producer will turn the message body
          * into ByteBuf before sending it out. The option is a boolean type.
          */
-        private boolean useByteBuf;
+        private Boolean useByteBuf;
 
-        public int getConnectTimeout() {
+        public Integer getConnectTimeout() {
             return connectTimeout;
         }
 
-        public void setConnectTimeout(int connectTimeout) {
+        public void setConnectTimeout(Integer connectTimeout) {
             this.connectTimeout = connectTimeout;
         }
 
-        public long getRequestTimeout() {
+        public Long getRequestTimeout() {
             return requestTimeout;
         }
 
-        public void setRequestTimeout(long requestTimeout) {
+        public void setRequestTimeout(Long requestTimeout) {
             this.requestTimeout = requestTimeout;
         }
 
@@ -1076,68 +1077,68 @@ public class NettyEndpoint {
             this.correlationManager = correlationManager;
         }
 
-        public boolean getLazyChannelCreation() {
+        public Boolean getLazyChannelCreation() {
             return lazyChannelCreation;
         }
 
-        public void setLazyChannelCreation(boolean lazyChannelCreation) {
+        public void setLazyChannelCreation(Boolean lazyChannelCreation) {
             this.lazyChannelCreation = lazyChannelCreation;
         }
 
-        public boolean getProducerPoolEnabled() {
+        public Boolean getProducerPoolEnabled() {
             return producerPoolEnabled;
         }
 
-        public void setProducerPoolEnabled(boolean producerPoolEnabled) {
+        public void setProducerPoolEnabled(Boolean producerPoolEnabled) {
             this.producerPoolEnabled = producerPoolEnabled;
         }
 
-        public int getProducerPoolMaxActive() {
+        public Integer getProducerPoolMaxActive() {
             return producerPoolMaxActive;
         }
 
-        public void setProducerPoolMaxActive(int producerPoolMaxActive) {
+        public void setProducerPoolMaxActive(Integer producerPoolMaxActive) {
             this.producerPoolMaxActive = producerPoolMaxActive;
         }
 
-        public int getProducerPoolMaxIdle() {
+        public Integer getProducerPoolMaxIdle() {
             return producerPoolMaxIdle;
         }
 
-        public void setProducerPoolMaxIdle(int producerPoolMaxIdle) {
+        public void setProducerPoolMaxIdle(Integer producerPoolMaxIdle) {
             this.producerPoolMaxIdle = producerPoolMaxIdle;
         }
 
-        public long getProducerPoolMinEvictableIdle() {
+        public Long getProducerPoolMinEvictableIdle() {
             return producerPoolMinEvictableIdle;
         }
 
         public void setProducerPoolMinEvictableIdle(
-                long producerPoolMinEvictableIdle) {
+                Long producerPoolMinEvictableIdle) {
             this.producerPoolMinEvictableIdle = producerPoolMinEvictableIdle;
         }
 
-        public int getProducerPoolMinIdle() {
+        public Integer getProducerPoolMinIdle() {
             return producerPoolMinIdle;
         }
 
-        public void setProducerPoolMinIdle(int producerPoolMinIdle) {
+        public void setProducerPoolMinIdle(Integer producerPoolMinIdle) {
             this.producerPoolMinIdle = producerPoolMinIdle;
         }
 
-        public boolean getUdpConnectionlessSending() {
+        public Boolean getUdpConnectionlessSending() {
             return udpConnectionlessSending;
         }
 
-        public void setUdpConnectionlessSending(boolean udpConnectionlessSending) {
+        public void setUdpConnectionlessSending(Boolean udpConnectionlessSending) {
             this.udpConnectionlessSending = udpConnectionlessSending;
         }
 
-        public boolean getUseByteBuf() {
+        public Boolean getUseByteBuf() {
             return useByteBuf;
         }
 
-        public void setUseByteBuf(boolean useByteBuf) {
+        public void setUseByteBuf(Boolean useByteBuf) {
             this.useByteBuf = useByteBuf;
         }
     }

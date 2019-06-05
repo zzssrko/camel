@@ -50,7 +50,7 @@ public class SftpEndpoint {
         /**
          * Port of the FTP server. The option is a int type.
          */
-        private int port;
+        private Integer port;
         /**
          * The starting directory. The option is a java.lang.String type.
          */
@@ -73,7 +73,7 @@ public class SftpEndpoint {
          * server. If you have a consumer which you want to stop, then you need
          * to stop the consumer/route instead. The option is a boolean type.
          */
-        private boolean disconnect;
+        private Boolean disconnect;
         /**
          * Producer: If provided, then Camel will write a 2nd done file when the
          * original file has been written. The done file will be empty. This
@@ -131,20 +131,20 @@ public class SftpEndpoint {
          * This can be used to speed up the process if the FTP server has a lot
          * of files. The option is a boolean type.
          */
-        private boolean fastExistsCheck;
+        private Boolean fastExistsCheck;
         /**
          * Automatically create missing directories in the file's pathname. For
          * the file consumer, that means creating the starting directory. For
          * the file producer, it means the directory the files should be written
          * to. The option is a boolean type.
          */
-        private boolean autoCreate;
+        private Boolean autoCreate;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Specifies the address of the local interface against which the
          * connection should bind. The option is a java.lang.String type.
@@ -153,7 +153,7 @@ public class SftpEndpoint {
         /**
          * Write buffer sized in bytes. The option is a int type.
          */
-        private int bufferSize;
+        private Integer bufferSize;
         /**
          * Specifies how many requests may be outstanding at any one time.
          * Increasing this value may slightly improve file transfer speed but
@@ -165,19 +165,19 @@ public class SftpEndpoint {
          * manually add the needed JSCH zlib JAR to the classpath for
          * compression support. The option is a int type.
          */
-        private int compression;
+        private Integer compression;
         /**
          * Sets the connect timeout for waiting for a connection to be
          * established Used by both FTPClient and JSCH. The option is a int
          * type.
          */
-        private int connectTimeout;
+        private Integer connectTimeout;
         /**
          * Specifies the maximum reconnect attempts Camel performs when it tries
          * to connect to the remote FTP server. Use 0 to disable this behavior.
          * The option is a int type.
          */
-        private int maximumReconnectAttempts;
+        private Integer maximumReconnectAttempts;
         /**
          * To use a custom configured com.jcraft.jsch.Proxy. This proxy is used
          * to consume/send messages from the target SFTP host. The option is a
@@ -188,17 +188,17 @@ public class SftpEndpoint {
          * Delay in millis Camel will wait before performing a reconnect
          * attempt. The option is a long type.
          */
-        private long reconnectDelay;
+        private Long reconnectDelay;
         /**
          * Allows you to set the serverAliveCountMax of the sftp session. The
          * option is a int type.
          */
-        private int serverAliveCountMax;
+        private Integer serverAliveCountMax;
         /**
          * Allows you to set the serverAliveInterval of the sftp session. The
          * option is a int type.
          */
-        private int serverAliveInterval;
+        private Integer serverAliveInterval;
         /**
          * Sets the so timeout FTP and FTPS Only for Camel 2.4. SFTP for Camel
          * 2.14.3/2.15.3/2.16 onwards. Is the SocketOptions.SO_TIMEOUT value in
@@ -206,7 +206,7 @@ public class SftpEndpoint {
          * hanged connection. On SFTP this option is set as timeout on the JSCH
          * Session instance. The option is a int type.
          */
-        private int soTimeout;
+        private Integer soTimeout;
         /**
          * Sets whether we should stepwise change directories while traversing
          * file structures when downloading files, or as well when uploading a
@@ -214,13 +214,13 @@ public class SftpEndpoint {
          * situation where you cannot change directory on the FTP server due
          * security reasons. The option is a boolean type.
          */
-        private boolean stepwise;
+        private Boolean stepwise;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Should an exception be thrown if connection failed (exhausted) By
          * default exception is not thrown and a WARN is logged. You can use
@@ -228,12 +228,12 @@ public class SftpEndpoint {
          * from the org.apache.camel.spi.PollingConsumerPollStrategy rollback
          * method. The option is a boolean type.
          */
-        private boolean throwExceptionOnConnectFailed;
+        private Boolean throwExceptionOnConnectFailed;
         /**
          * Sets the data timeout for waiting for reply Used only by FTPClient.
          * The option is a int type.
          */
-        private int timeout;
+        private Integer timeout;
         /**
          * Set a comma separated list of ciphers that will be used in order of
          * preference. Possible cipher names are defined by JCraft JSCH. Some
@@ -251,7 +251,7 @@ public class SftpEndpoint {
          * Sets the known_hosts from the byte array, so that the SFTP endpoint
          * can do host key verification. The option is a byte[] type.
          */
-        private byte[] knownHosts;
+        private Byte[] knownHosts;
         /**
          * Sets the known_hosts file, so that the SFTP endpoint can do host key
          * verification. The option is a java.lang.String type.
@@ -277,7 +277,7 @@ public class SftpEndpoint {
          * Set the private key as byte so that the SFTP endpoint can do private
          * key verification. The option is a byte[] type.
          */
-        private byte[] privateKey;
+        private Byte[] privateKey;
         /**
          * Set the private key file so that the SFTP endpoint can do private key
          * verification. The option is a java.lang.String type.
@@ -308,7 +308,7 @@ public class SftpEndpoint {
          * file from System.getProperty(user.home)/.ssh/known_hosts. The option
          * is a boolean type.
          */
-        private boolean useUserKnownHostsFile;
+        private Boolean useUserKnownHostsFile;
 
         public String getHost() {
             return host;
@@ -318,11 +318,11 @@ public class SftpEndpoint {
             this.host = host;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
@@ -342,11 +342,11 @@ public class SftpEndpoint {
             this.charset = charset;
         }
 
-        public boolean getDisconnect() {
+        public Boolean getDisconnect() {
             return disconnect;
         }
 
-        public void setDisconnect(boolean disconnect) {
+        public void setDisconnect(Boolean disconnect) {
             this.disconnect = disconnect;
         }
 
@@ -382,27 +382,27 @@ public class SftpEndpoint {
             this.separator = separator;
         }
 
-        public boolean getFastExistsCheck() {
+        public Boolean getFastExistsCheck() {
             return fastExistsCheck;
         }
 
-        public void setFastExistsCheck(boolean fastExistsCheck) {
+        public void setFastExistsCheck(Boolean fastExistsCheck) {
             this.fastExistsCheck = fastExistsCheck;
         }
 
-        public boolean getAutoCreate() {
+        public Boolean getAutoCreate() {
             return autoCreate;
         }
 
-        public void setAutoCreate(boolean autoCreate) {
+        public void setAutoCreate(Boolean autoCreate) {
             this.autoCreate = autoCreate;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -414,11 +414,11 @@ public class SftpEndpoint {
             this.bindAddress = bindAddress;
         }
 
-        public int getBufferSize() {
+        public Integer getBufferSize() {
             return bufferSize;
         }
 
-        public void setBufferSize(int bufferSize) {
+        public void setBufferSize(Integer bufferSize) {
             this.bufferSize = bufferSize;
         }
 
@@ -430,27 +430,27 @@ public class SftpEndpoint {
             this.bulkRequests = bulkRequests;
         }
 
-        public int getCompression() {
+        public Integer getCompression() {
             return compression;
         }
 
-        public void setCompression(int compression) {
+        public void setCompression(Integer compression) {
             this.compression = compression;
         }
 
-        public int getConnectTimeout() {
+        public Integer getConnectTimeout() {
             return connectTimeout;
         }
 
-        public void setConnectTimeout(int connectTimeout) {
+        public void setConnectTimeout(Integer connectTimeout) {
             this.connectTimeout = connectTimeout;
         }
 
-        public int getMaximumReconnectAttempts() {
+        public Integer getMaximumReconnectAttempts() {
             return maximumReconnectAttempts;
         }
 
-        public void setMaximumReconnectAttempts(int maximumReconnectAttempts) {
+        public void setMaximumReconnectAttempts(Integer maximumReconnectAttempts) {
             this.maximumReconnectAttempts = maximumReconnectAttempts;
         }
 
@@ -462,68 +462,68 @@ public class SftpEndpoint {
             this.proxy = proxy;
         }
 
-        public long getReconnectDelay() {
+        public Long getReconnectDelay() {
             return reconnectDelay;
         }
 
-        public void setReconnectDelay(long reconnectDelay) {
+        public void setReconnectDelay(Long reconnectDelay) {
             this.reconnectDelay = reconnectDelay;
         }
 
-        public int getServerAliveCountMax() {
+        public Integer getServerAliveCountMax() {
             return serverAliveCountMax;
         }
 
-        public void setServerAliveCountMax(int serverAliveCountMax) {
+        public void setServerAliveCountMax(Integer serverAliveCountMax) {
             this.serverAliveCountMax = serverAliveCountMax;
         }
 
-        public int getServerAliveInterval() {
+        public Integer getServerAliveInterval() {
             return serverAliveInterval;
         }
 
-        public void setServerAliveInterval(int serverAliveInterval) {
+        public void setServerAliveInterval(Integer serverAliveInterval) {
             this.serverAliveInterval = serverAliveInterval;
         }
 
-        public int getSoTimeout() {
+        public Integer getSoTimeout() {
             return soTimeout;
         }
 
-        public void setSoTimeout(int soTimeout) {
+        public void setSoTimeout(Integer soTimeout) {
             this.soTimeout = soTimeout;
         }
 
-        public boolean getStepwise() {
+        public Boolean getStepwise() {
             return stepwise;
         }
 
-        public void setStepwise(boolean stepwise) {
+        public void setStepwise(Boolean stepwise) {
             this.stepwise = stepwise;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getThrowExceptionOnConnectFailed() {
+        public Boolean getThrowExceptionOnConnectFailed() {
             return throwExceptionOnConnectFailed;
         }
 
         public void setThrowExceptionOnConnectFailed(
-                boolean throwExceptionOnConnectFailed) {
+                Boolean throwExceptionOnConnectFailed) {
             this.throwExceptionOnConnectFailed = throwExceptionOnConnectFailed;
         }
 
-        public int getTimeout() {
+        public Integer getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(int timeout) {
+        public void setTimeout(Integer timeout) {
             this.timeout = timeout;
         }
 
@@ -543,11 +543,11 @@ public class SftpEndpoint {
             this.keyPair = keyPair;
         }
 
-        public byte[] getKnownHosts() {
+        public Byte[] getKnownHosts() {
             return knownHosts;
         }
 
-        public void setKnownHosts(byte[] knownHosts) {
+        public void setKnownHosts(Byte[] knownHosts) {
             this.knownHosts = knownHosts;
         }
 
@@ -583,11 +583,11 @@ public class SftpEndpoint {
             this.preferredAuthentications = preferredAuthentications;
         }
 
-        public byte[] getPrivateKey() {
+        public Byte[] getPrivateKey() {
             return privateKey;
         }
 
-        public void setPrivateKey(byte[] privateKey) {
+        public void setPrivateKey(Byte[] privateKey) {
             this.privateKey = privateKey;
         }
 
@@ -631,11 +631,11 @@ public class SftpEndpoint {
             this.username = username;
         }
 
-        public boolean getUseUserKnownHostsFile() {
+        public Boolean getUseUserKnownHostsFile() {
             return useUserKnownHostsFile;
         }
 
-        public void setUseUserKnownHostsFile(boolean useUserKnownHostsFile) {
+        public void setUseUserKnownHostsFile(Boolean useUserKnownHostsFile) {
             this.useUserKnownHostsFile = useUserKnownHostsFile;
         }
     }
@@ -650,12 +650,12 @@ public class SftpEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * If true, the file will be deleted after it is processed successfully.
          * The option is a boolean type.
          */
-        private boolean delete;
+        private Boolean delete;
         /**
          * Sets the move failure expression based on Simple language. For
          * example, to move files into a .error subdirectory use: .error. Note:
@@ -670,7 +670,7 @@ public class SftpEndpoint {
          * Camel will set idempotent=true as well, to avoid consuming the same
          * files over and over again. The option is a boolean type.
          */
-        private boolean noop;
+        private Boolean noop;
         /**
          * Expression (such as File Language) used to dynamically set the
          * filename when moving it before processing. For example to move
@@ -686,18 +686,18 @@ public class SftpEndpoint {
          * starts to filter, and accept files to process by Camel. This option
          * is default=false meaning disabled. The option is a boolean type.
          */
-        private boolean preSort;
+        private Boolean preSort;
         /**
          * If a directory, will look for files in all the sub-directories as
          * well. The option is a boolean type.
          */
-        private boolean recursive;
+        private Boolean recursive;
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private boolean sendEmptyMessageWhenIdle;
+        private Boolean sendEmptyMessageWhenIdle;
         /**
          * Sets the download method to use when not using a local working
          * directory. If set to true, the remote files are streamed to the route
@@ -705,7 +705,7 @@ public class SftpEndpoint {
          * memory before being sent into the route. The option is a boolean
          * type.
          */
-        private boolean streamDownload;
+        private Boolean streamDownload;
         /**
          * Whether the FTP consumer should download the file. If this option is
          * set to false, then the message body will be null, but the consumer
@@ -713,7 +713,7 @@ public class SftpEndpoint {
          * such as file name, file size, etc. It's just that the file will not
          * be downloaded. The option is a boolean type.
          */
-        private boolean download;
+        private Boolean download;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -734,7 +734,7 @@ public class SftpEndpoint {
          * permission, then an exception is thrown. Setting this option to true
          * allows to ignore that instead. The option is a boolean type.
          */
-        private boolean ignoreFileNotFoundOrPermissionError;
+        private Boolean ignoreFileNotFoundOrPermissionError;
         /**
          * A pluggable in-progress repository
          * org.apache.camel.spi.IdempotentRepository. The in-progress repository
@@ -787,7 +787,7 @@ public class SftpEndpoint {
          * is only possible to retrieve when LIST command is in use. The option
          * is a boolean type.
          */
-        private boolean useList;
+        private Boolean useList;
         /**
          * Ant style filter exclusion. If both antInclude and antExclude are
          * used, antExclude takes precedence over antInclude. Multiple
@@ -798,7 +798,7 @@ public class SftpEndpoint {
         /**
          * Sets case sensitive flag on ant filter. The option is a boolean type.
          */
-        private boolean antFilterCaseSensitive;
+        private Boolean antFilterCaseSensitive;
         /**
          * Ant style filter inclusion. Multiple inclusions may be specified in
          * comma-delimited format. The option is a java.lang.String type.
@@ -813,7 +813,7 @@ public class SftpEndpoint {
          * all file details are in memory to perform the sorting. The option is
          * a boolean type.
          */
-        private boolean eagerMaxMessagesPerPoll;
+        private Boolean eagerMaxMessagesPerPoll;
         /**
          * Is used to exclude files, if filename matches the regex pattern
          * (matching is case in-senstive). Notice if you use symbols such as
@@ -876,7 +876,7 @@ public class SftpEndpoint {
          * The maximum depth to traverse when recursively processing a
          * directory. The option is a int type.
          */
-        private int maxDepth;
+        private Integer maxDepth;
         /**
          * To define a maximum messages to gather per poll. By default no
          * maximum is set. Can be used to set a limit of e.g. 1000 to avoid when
@@ -889,13 +889,13 @@ public class SftpEndpoint {
          * to scan all files first and then sort afterwards. The option is a int
          * type.
          */
-        private int maxMessagesPerPoll;
+        private Integer maxMessagesPerPoll;
         /**
          * The minimum depth to start processing when recursively processing a
          * directory. Using minDepth=1 means the base directory. Using
          * minDepth=2 means the first sub directory. The option is a int type.
          */
-        private int minDepth;
+        private Integer minDepth;
         /**
          * Expression (such as Simple Language) used to dynamically set the
          * filename when moving it after processing. To move files into a .done
@@ -963,7 +963,7 @@ public class SftpEndpoint {
          * amble time is allowed for the read lock process to try to grab the
          * lock before the timeout was hit. The option is a long type.
          */
-        private long readLockCheckInterval;
+        private Long readLockCheckInterval;
         /**
          * Whether or not read lock with marker files should upon startup delete
          * any orphan read lock files, which may have been left on the file
@@ -973,13 +973,13 @@ public class SftpEndpoint {
          * another node is concurrently reading files from the same shared
          * directory. The option is a boolean type.
          */
-        private boolean readLockDeleteOrphanLockFiles;
+        private Boolean readLockDeleteOrphanLockFiles;
         /**
          * Whether the delayed release task should be synchronous or
          * asynchronous. See more details at the readLockIdempotentReleaseDelay
          * option. The option is a boolean type.
          */
-        private boolean readLockIdempotentReleaseAsync;
+        private Boolean readLockIdempotentReleaseAsync;
         /**
          * The number of threads in the scheduled thread pool when using
          * asynchronous release tasks. Using a default of 1 core threads should
@@ -990,7 +990,7 @@ public class SftpEndpoint {
          * readLockIdempotentReleaseExecutorService option. See more details at
          * the readLockIdempotentReleaseDelay option. The option is a int type.
          */
-        private int readLockIdempotentReleaseAsyncPoolSize;
+        private Integer readLockIdempotentReleaseAsyncPoolSize;
         /**
          * Whether to delay the release task for a period of millis. This can be
          * used to delay the release tasks to expand the window when a file is
@@ -1001,7 +1001,7 @@ public class SftpEndpoint {
          * these situations. Note delaying is only needed if you have configured
          * readLockRemoveOnCommit to true. The option is a int type.
          */
-        private int readLockIdempotentReleaseDelay;
+        private Integer readLockIdempotentReleaseDelay;
         /**
          * To use a custom and shared thread pool for asynchronous release
          * tasks. See more details at the readLockIdempotentReleaseDelay option.
@@ -1025,7 +1025,7 @@ public class SftpEndpoint {
          * not want to write marker files to the file systems by the Camel
          * application. The option is a boolean type.
          */
-        private boolean readLockMarkerFile;
+        private Boolean readLockMarkerFile;
         /**
          * This option is applied only for readLock=changed. It allows to
          * specify a minimum age the file must be before attempting to acquire
@@ -1034,7 +1034,7 @@ public class SftpEndpoint {
          * as it will only attempt to acquire files which are at least that
          * given age. The option is a long type.
          */
-        private long readLockMinAge;
+        private Long readLockMinAge;
         /**
          * This option is applied only for readLock=changed. It allows you to
          * configure a minimum file length. By default Camel expects the file to
@@ -1042,7 +1042,7 @@ public class SftpEndpoint {
          * option to zero, to allow consuming zero-length files. The option is a
          * long type.
          */
-        private long readLockMinLength;
+        private Long readLockMinLength;
         /**
          * This option is applied only for readLock=idempotent. It allows to
          * specify whether to remove the file name entry from the idempotent
@@ -1055,7 +1055,7 @@ public class SftpEndpoint {
          * details at the readLockIdempotentReleaseDelay option. The option is a
          * boolean type.
          */
-        private boolean readLockRemoveOnCommit;
+        private Boolean readLockRemoveOnCommit;
         /**
          * This option is applied only for readLock=idempotent. It allows to
          * specify whether to remove the file name entry from the idempotent
@@ -1063,7 +1063,7 @@ public class SftpEndpoint {
          * this option is false, then the file name entry is confirmed (as if
          * the file did a commit). The option is a boolean type.
          */
-        private boolean readLockRemoveOnRollback;
+        private Boolean readLockRemoveOnRollback;
         /**
          * Optional timeout in millis for the read-lock, if supported by the
          * read-lock. If the read-lock could not be granted and the timeout
@@ -1078,18 +1078,18 @@ public class SftpEndpoint {
          * amble time is allowed for the read lock process to try to grab the
          * lock before the timeout was hit. The option is a long type.
          */
-        private long readLockTimeout;
+        private Long readLockTimeout;
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private int backoffErrorThreshold;
+        private Integer backoffErrorThreshold;
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private int backoffIdleThreshold;
+        private Integer backoffIdleThreshold;
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -1098,25 +1098,25 @@ public class SftpEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private int backoffMultiplier;
+        private Integer backoffMultiplier;
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long delay;
+        private Long delay;
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private boolean greedy;
+        private Boolean greedy;
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long initialDelay;
+        private Long initialDelay;
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
@@ -1146,7 +1146,7 @@ public class SftpEndpoint {
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private boolean startScheduler;
+        private Boolean startScheduler;
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
@@ -1157,12 +1157,12 @@ public class SftpEndpoint {
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private boolean useFixedDelay;
+        private Boolean useFixedDelay;
         /**
          * To shuffle the list of files (sort in random order). The option is a
          * boolean type.
          */
-        private boolean shuffle;
+        private Boolean shuffle;
         /**
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
@@ -1176,19 +1176,19 @@ public class SftpEndpoint {
          */
         private Comparator<Object> sorter;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getDelete() {
+        public Boolean getDelete() {
             return delete;
         }
 
-        public void setDelete(boolean delete) {
+        public void setDelete(Boolean delete) {
             this.delete = delete;
         }
 
@@ -1200,11 +1200,11 @@ public class SftpEndpoint {
             this.moveFailed = moveFailed;
         }
 
-        public boolean getNoop() {
+        public Boolean getNoop() {
             return noop;
         }
 
-        public void setNoop(boolean noop) {
+        public void setNoop(Boolean noop) {
             this.noop = noop;
         }
 
@@ -1216,43 +1216,43 @@ public class SftpEndpoint {
             this.preMove = preMove;
         }
 
-        public boolean getPreSort() {
+        public Boolean getPreSort() {
             return preSort;
         }
 
-        public void setPreSort(boolean preSort) {
+        public void setPreSort(Boolean preSort) {
             this.preSort = preSort;
         }
 
-        public boolean getRecursive() {
+        public Boolean getRecursive() {
             return recursive;
         }
 
-        public void setRecursive(boolean recursive) {
+        public void setRecursive(Boolean recursive) {
             this.recursive = recursive;
         }
 
-        public boolean getSendEmptyMessageWhenIdle() {
+        public Boolean getSendEmptyMessageWhenIdle() {
             return sendEmptyMessageWhenIdle;
         }
 
-        public void setSendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
+        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
             this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
         }
 
-        public boolean getStreamDownload() {
+        public Boolean getStreamDownload() {
             return streamDownload;
         }
 
-        public void setStreamDownload(boolean streamDownload) {
+        public void setStreamDownload(Boolean streamDownload) {
             this.streamDownload = streamDownload;
         }
 
-        public boolean getDownload() {
+        public Boolean getDownload() {
             return download;
         }
 
-        public void setDownload(boolean download) {
+        public void setDownload(Boolean download) {
             this.download = download;
         }
 
@@ -1272,12 +1272,12 @@ public class SftpEndpoint {
             this.exchangePattern = exchangePattern;
         }
 
-        public boolean getIgnoreFileNotFoundOrPermissionError() {
+        public Boolean getIgnoreFileNotFoundOrPermissionError() {
             return ignoreFileNotFoundOrPermissionError;
         }
 
         public void setIgnoreFileNotFoundOrPermissionError(
-                boolean ignoreFileNotFoundOrPermissionError) {
+                Boolean ignoreFileNotFoundOrPermissionError) {
             this.ignoreFileNotFoundOrPermissionError = ignoreFileNotFoundOrPermissionError;
         }
 
@@ -1323,11 +1323,11 @@ public class SftpEndpoint {
             this.processStrategy = processStrategy;
         }
 
-        public boolean getUseList() {
+        public Boolean getUseList() {
             return useList;
         }
 
-        public void setUseList(boolean useList) {
+        public void setUseList(Boolean useList) {
             this.useList = useList;
         }
 
@@ -1339,11 +1339,11 @@ public class SftpEndpoint {
             this.antExclude = antExclude;
         }
 
-        public boolean getAntFilterCaseSensitive() {
+        public Boolean getAntFilterCaseSensitive() {
             return antFilterCaseSensitive;
         }
 
-        public void setAntFilterCaseSensitive(boolean antFilterCaseSensitive) {
+        public void setAntFilterCaseSensitive(Boolean antFilterCaseSensitive) {
             this.antFilterCaseSensitive = antFilterCaseSensitive;
         }
 
@@ -1355,11 +1355,11 @@ public class SftpEndpoint {
             this.antInclude = antInclude;
         }
 
-        public boolean getEagerMaxMessagesPerPoll() {
+        public Boolean getEagerMaxMessagesPerPoll() {
             return eagerMaxMessagesPerPoll;
         }
 
-        public void setEagerMaxMessagesPerPoll(boolean eagerMaxMessagesPerPoll) {
+        public void setEagerMaxMessagesPerPoll(Boolean eagerMaxMessagesPerPoll) {
             this.eagerMaxMessagesPerPoll = eagerMaxMessagesPerPoll;
         }
 
@@ -1428,27 +1428,27 @@ public class SftpEndpoint {
             this.include = include;
         }
 
-        public int getMaxDepth() {
+        public Integer getMaxDepth() {
             return maxDepth;
         }
 
-        public void setMaxDepth(int maxDepth) {
+        public void setMaxDepth(Integer maxDepth) {
             this.maxDepth = maxDepth;
         }
 
-        public int getMaxMessagesPerPoll() {
+        public Integer getMaxMessagesPerPoll() {
             return maxMessagesPerPoll;
         }
 
-        public void setMaxMessagesPerPoll(int maxMessagesPerPoll) {
+        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
             this.maxMessagesPerPoll = maxMessagesPerPoll;
         }
 
-        public int getMinDepth() {
+        public Integer getMinDepth() {
             return minDepth;
         }
 
-        public void setMinDepth(int minDepth) {
+        public void setMinDepth(Integer minDepth) {
             this.minDepth = minDepth;
         }
 
@@ -1477,47 +1477,47 @@ public class SftpEndpoint {
             this.readLock = readLock;
         }
 
-        public long getReadLockCheckInterval() {
+        public Long getReadLockCheckInterval() {
             return readLockCheckInterval;
         }
 
-        public void setReadLockCheckInterval(long readLockCheckInterval) {
+        public void setReadLockCheckInterval(Long readLockCheckInterval) {
             this.readLockCheckInterval = readLockCheckInterval;
         }
 
-        public boolean getReadLockDeleteOrphanLockFiles() {
+        public Boolean getReadLockDeleteOrphanLockFiles() {
             return readLockDeleteOrphanLockFiles;
         }
 
         public void setReadLockDeleteOrphanLockFiles(
-                boolean readLockDeleteOrphanLockFiles) {
+                Boolean readLockDeleteOrphanLockFiles) {
             this.readLockDeleteOrphanLockFiles = readLockDeleteOrphanLockFiles;
         }
 
-        public boolean getReadLockIdempotentReleaseAsync() {
+        public Boolean getReadLockIdempotentReleaseAsync() {
             return readLockIdempotentReleaseAsync;
         }
 
         public void setReadLockIdempotentReleaseAsync(
-                boolean readLockIdempotentReleaseAsync) {
+                Boolean readLockIdempotentReleaseAsync) {
             this.readLockIdempotentReleaseAsync = readLockIdempotentReleaseAsync;
         }
 
-        public int getReadLockIdempotentReleaseAsyncPoolSize() {
+        public Integer getReadLockIdempotentReleaseAsyncPoolSize() {
             return readLockIdempotentReleaseAsyncPoolSize;
         }
 
         public void setReadLockIdempotentReleaseAsyncPoolSize(
-                int readLockIdempotentReleaseAsyncPoolSize) {
+                Integer readLockIdempotentReleaseAsyncPoolSize) {
             this.readLockIdempotentReleaseAsyncPoolSize = readLockIdempotentReleaseAsyncPoolSize;
         }
 
-        public int getReadLockIdempotentReleaseDelay() {
+        public Integer getReadLockIdempotentReleaseDelay() {
             return readLockIdempotentReleaseDelay;
         }
 
         public void setReadLockIdempotentReleaseDelay(
-                int readLockIdempotentReleaseDelay) {
+                Integer readLockIdempotentReleaseDelay) {
             this.readLockIdempotentReleaseDelay = readLockIdempotentReleaseDelay;
         }
 
@@ -1538,99 +1538,99 @@ public class SftpEndpoint {
             this.readLockLoggingLevel = readLockLoggingLevel;
         }
 
-        public boolean getReadLockMarkerFile() {
+        public Boolean getReadLockMarkerFile() {
             return readLockMarkerFile;
         }
 
-        public void setReadLockMarkerFile(boolean readLockMarkerFile) {
+        public void setReadLockMarkerFile(Boolean readLockMarkerFile) {
             this.readLockMarkerFile = readLockMarkerFile;
         }
 
-        public long getReadLockMinAge() {
+        public Long getReadLockMinAge() {
             return readLockMinAge;
         }
 
-        public void setReadLockMinAge(long readLockMinAge) {
+        public void setReadLockMinAge(Long readLockMinAge) {
             this.readLockMinAge = readLockMinAge;
         }
 
-        public long getReadLockMinLength() {
+        public Long getReadLockMinLength() {
             return readLockMinLength;
         }
 
-        public void setReadLockMinLength(long readLockMinLength) {
+        public void setReadLockMinLength(Long readLockMinLength) {
             this.readLockMinLength = readLockMinLength;
         }
 
-        public boolean getReadLockRemoveOnCommit() {
+        public Boolean getReadLockRemoveOnCommit() {
             return readLockRemoveOnCommit;
         }
 
-        public void setReadLockRemoveOnCommit(boolean readLockRemoveOnCommit) {
+        public void setReadLockRemoveOnCommit(Boolean readLockRemoveOnCommit) {
             this.readLockRemoveOnCommit = readLockRemoveOnCommit;
         }
 
-        public boolean getReadLockRemoveOnRollback() {
+        public Boolean getReadLockRemoveOnRollback() {
             return readLockRemoveOnRollback;
         }
 
-        public void setReadLockRemoveOnRollback(boolean readLockRemoveOnRollback) {
+        public void setReadLockRemoveOnRollback(Boolean readLockRemoveOnRollback) {
             this.readLockRemoveOnRollback = readLockRemoveOnRollback;
         }
 
-        public long getReadLockTimeout() {
+        public Long getReadLockTimeout() {
             return readLockTimeout;
         }
 
-        public void setReadLockTimeout(long readLockTimeout) {
+        public void setReadLockTimeout(Long readLockTimeout) {
             this.readLockTimeout = readLockTimeout;
         }
 
-        public int getBackoffErrorThreshold() {
+        public Integer getBackoffErrorThreshold() {
             return backoffErrorThreshold;
         }
 
-        public void setBackoffErrorThreshold(int backoffErrorThreshold) {
+        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
             this.backoffErrorThreshold = backoffErrorThreshold;
         }
 
-        public int getBackoffIdleThreshold() {
+        public Integer getBackoffIdleThreshold() {
             return backoffIdleThreshold;
         }
 
-        public void setBackoffIdleThreshold(int backoffIdleThreshold) {
+        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
             this.backoffIdleThreshold = backoffIdleThreshold;
         }
 
-        public int getBackoffMultiplier() {
+        public Integer getBackoffMultiplier() {
             return backoffMultiplier;
         }
 
-        public void setBackoffMultiplier(int backoffMultiplier) {
+        public void setBackoffMultiplier(Integer backoffMultiplier) {
             this.backoffMultiplier = backoffMultiplier;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
 
-        public boolean getGreedy() {
+        public Boolean getGreedy() {
             return greedy;
         }
 
-        public void setGreedy(boolean greedy) {
+        public void setGreedy(Boolean greedy) {
             this.greedy = greedy;
         }
 
-        public long getInitialDelay() {
+        public Long getInitialDelay() {
             return initialDelay;
         }
 
-        public void setInitialDelay(long initialDelay) {
+        public void setInitialDelay(Long initialDelay) {
             this.initialDelay = initialDelay;
         }
 
@@ -1668,11 +1668,11 @@ public class SftpEndpoint {
             this.schedulerProperties = schedulerProperties;
         }
 
-        public boolean getStartScheduler() {
+        public Boolean getStartScheduler() {
             return startScheduler;
         }
 
-        public void setStartScheduler(boolean startScheduler) {
+        public void setStartScheduler(Boolean startScheduler) {
             this.startScheduler = startScheduler;
         }
 
@@ -1684,19 +1684,19 @@ public class SftpEndpoint {
             this.timeUnit = timeUnit;
         }
 
-        public boolean getUseFixedDelay() {
+        public Boolean getUseFixedDelay() {
             return useFixedDelay;
         }
 
-        public void setUseFixedDelay(boolean useFixedDelay) {
+        public void setUseFixedDelay(Boolean useFixedDelay) {
             this.useFixedDelay = useFixedDelay;
         }
 
-        public boolean getShuffle() {
+        public Boolean getShuffle() {
             return shuffle;
         }
 
-        public void setShuffle(boolean shuffle) {
+        public void setShuffle(Boolean shuffle) {
             this.shuffle = shuffle;
         }
 
@@ -1746,7 +1746,7 @@ public class SftpEndpoint {
          * CamelFileName header will be stripped for any leading paths. The
          * option is a boolean type.
          */
-        private boolean flatten;
+        private Boolean flatten;
         /**
          * Used for jailing (restricting) writing files to the starting
          * directory (and sub) only. This is enabled by default to not allow
@@ -1755,7 +1755,7 @@ public class SftpEndpoint {
          * directories outside the starting directory, such as parent or root
          * folders. The option is a boolean type.
          */
-        private boolean jailStartingDirectory;
+        private Boolean jailStartingDirectory;
         /**
          * Expression (such as File Language) used to compute file name to use
          * when fileExist=Move is configured. To move files into a backup
@@ -1796,7 +1796,7 @@ public class SftpEndpoint {
          * file will be truncated, and if set to append the file will remain
          * unchanged. The option is a boolean type.
          */
-        private boolean allowNullBody;
+        private Boolean allowNullBody;
         /**
          * Allows you to set chmod on the stored file. For example chmod=640.
          * The option is a java.lang.String type.
@@ -1808,7 +1808,7 @@ public class SftpEndpoint {
          * disconnect the current connection to the FTP server. The option is a
          * boolean type.
          */
-        private boolean disconnectOnBatchComplete;
+        private Boolean disconnectOnBatchComplete;
         /**
          * Whether or not to eagerly delete any existing target file. This
          * option only applies when you use fileExists=Override and the
@@ -1824,7 +1824,7 @@ public class SftpEndpoint {
          * an existing file existed, if its true, then the existing file is
          * deleted before the move operation. The option is a boolean type.
          */
-        private boolean eagerDeleteTargetFile;
+        private Boolean eagerDeleteTargetFile;
         /**
          * Will keep the last modified timestamp from the source file (if any).
          * Will use the Exchange.FILE_LAST_MODIFIED header to located the
@@ -1834,7 +1834,7 @@ public class SftpEndpoint {
          * only applies to the file producer. You cannot use this option with
          * any of the ftp producers. The option is a boolean type.
          */
-        private boolean keepLastModified;
+        private Boolean keepLastModified;
         /**
          * Strategy (Custom Strategy) used to move file with special naming
          * token to use when fileExist=Move is configured. By default, there is
@@ -1851,7 +1851,7 @@ public class SftpEndpoint {
          * to be able to upload the file. However if this causes problems, you
          * can turn this option off. The option is a boolean type.
          */
-        private boolean sendNoop;
+        private Boolean sendNoop;
 
         public GenericFileExist getFileExist() {
             return fileExist;
@@ -1861,19 +1861,19 @@ public class SftpEndpoint {
             this.fileExist = fileExist;
         }
 
-        public boolean getFlatten() {
+        public Boolean getFlatten() {
             return flatten;
         }
 
-        public void setFlatten(boolean flatten) {
+        public void setFlatten(Boolean flatten) {
             this.flatten = flatten;
         }
 
-        public boolean getJailStartingDirectory() {
+        public Boolean getJailStartingDirectory() {
             return jailStartingDirectory;
         }
 
-        public void setJailStartingDirectory(boolean jailStartingDirectory) {
+        public void setJailStartingDirectory(Boolean jailStartingDirectory) {
             this.jailStartingDirectory = jailStartingDirectory;
         }
 
@@ -1901,11 +1901,11 @@ public class SftpEndpoint {
             this.tempPrefix = tempPrefix;
         }
 
-        public boolean getAllowNullBody() {
+        public Boolean getAllowNullBody() {
             return allowNullBody;
         }
 
-        public void setAllowNullBody(boolean allowNullBody) {
+        public void setAllowNullBody(Boolean allowNullBody) {
             this.allowNullBody = allowNullBody;
         }
 
@@ -1917,28 +1917,28 @@ public class SftpEndpoint {
             this.chmod = chmod;
         }
 
-        public boolean getDisconnectOnBatchComplete() {
+        public Boolean getDisconnectOnBatchComplete() {
             return disconnectOnBatchComplete;
         }
 
         public void setDisconnectOnBatchComplete(
-                boolean disconnectOnBatchComplete) {
+                Boolean disconnectOnBatchComplete) {
             this.disconnectOnBatchComplete = disconnectOnBatchComplete;
         }
 
-        public boolean getEagerDeleteTargetFile() {
+        public Boolean getEagerDeleteTargetFile() {
             return eagerDeleteTargetFile;
         }
 
-        public void setEagerDeleteTargetFile(boolean eagerDeleteTargetFile) {
+        public void setEagerDeleteTargetFile(Boolean eagerDeleteTargetFile) {
             this.eagerDeleteTargetFile = eagerDeleteTargetFile;
         }
 
-        public boolean getKeepLastModified() {
+        public Boolean getKeepLastModified() {
             return keepLastModified;
         }
 
-        public void setKeepLastModified(boolean keepLastModified) {
+        public void setKeepLastModified(Boolean keepLastModified) {
             this.keepLastModified = keepLastModified;
         }
 
@@ -1950,11 +1950,11 @@ public class SftpEndpoint {
             this.moveExistingFileStrategy = moveExistingFileStrategy;
         }
 
-        public boolean getSendNoop() {
+        public Boolean getSendNoop() {
             return sendNoop;
         }
 
-        public void setSendNoop(boolean sendNoop) {
+        public void setSendNoop(Boolean sendNoop) {
             this.sendNoop = sendNoop;
         }
     }

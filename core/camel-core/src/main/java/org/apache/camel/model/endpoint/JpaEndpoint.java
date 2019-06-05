@@ -49,12 +49,12 @@ public class JpaEndpoint {
          * can also be set globally on the JpaComponent, instead of having to
          * set it on all endpoints. The option is a boolean type.
          */
-        private boolean joinTransaction;
+        private Boolean joinTransaction;
         /**
          * Set the maximum number of results to retrieve on the Query. The
          * option is a int type.
          */
-        private int maximumResults;
+        private Integer maximumResults;
         /**
          * To use a named query. The option is a java.lang.String type.
          */
@@ -100,13 +100,13 @@ public class JpaEndpoint {
          * to false as this is not an EXTENDED EntityManager. The option is a
          * boolean type.
          */
-        private boolean sharedEntityManager;
+        private Boolean sharedEntityManager;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Additional properties for the entity manager to use. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
@@ -117,7 +117,7 @@ public class JpaEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public Class<Object> getEntityType() {
             return entityType;
@@ -127,19 +127,19 @@ public class JpaEndpoint {
             this.entityType = entityType;
         }
 
-        public boolean getJoinTransaction() {
+        public Boolean getJoinTransaction() {
             return joinTransaction;
         }
 
-        public void setJoinTransaction(boolean joinTransaction) {
+        public void setJoinTransaction(Boolean joinTransaction) {
             this.joinTransaction = joinTransaction;
         }
 
-        public int getMaximumResults() {
+        public Integer getMaximumResults() {
             return maximumResults;
         }
 
-        public void setMaximumResults(int maximumResults) {
+        public void setMaximumResults(Integer maximumResults) {
             this.maximumResults = maximumResults;
         }
 
@@ -191,19 +191,19 @@ public class JpaEndpoint {
             this.resultClass = resultClass;
         }
 
-        public boolean getSharedEntityManager() {
+        public Boolean getSharedEntityManager() {
             return sharedEntityManager;
         }
 
-        public void setSharedEntityManager(boolean sharedEntityManager) {
+        public void setSharedEntityManager(Boolean sharedEntityManager) {
             this.sharedEntityManager = sharedEntityManager;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -216,11 +216,11 @@ public class JpaEndpoint {
             this.entityManagerProperties = entityManagerProperties;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -235,18 +235,18 @@ public class JpaEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * If true, the entity is deleted after it is consumed; if false, the
          * entity is not deleted. The option is a boolean type.
          */
-        private boolean consumeDelete;
+        private Boolean consumeDelete;
         /**
          * Specifies whether or not to set an exclusive lock on each entity bean
          * while processing the results from polling. The option is a boolean
          * type.
          */
-        private boolean consumeLockEntity;
+        private Boolean consumeLockEntity;
         /**
          * To use a custom DeleteHandler to delete the row after the consumer is
          * done processing the exchange. The option is a
@@ -264,7 +264,7 @@ public class JpaEndpoint {
          * many thousands of messages when starting up the server. Set a value
          * of 0 or negative to disable. The option is a int type.
          */
-        private int maxMessagesPerPoll;
+        private Integer maxMessagesPerPoll;
         /**
          * To use a custom Pre-DeleteHandler to delete the row after the
          * consumer has read the entity. The option is a
@@ -276,12 +276,12 @@ public class JpaEndpoint {
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private boolean sendEmptyMessageWhenIdle;
+        private Boolean sendEmptyMessageWhenIdle;
         /**
          * To configure whether to use NOWAIT on lock and silently skip the
          * entity. The option is a boolean type.
          */
-        private boolean skipLockedEntity;
+        private Boolean skipLockedEntity;
         /**
          * Whether to run the consumer in transacted mode, by which all messages
          * will either commit or rollback, when the entire batch has been
@@ -289,7 +289,7 @@ public class JpaEndpoint {
          * previously successfully processed messages, and only rollback the
          * last failed message. The option is a boolean type.
          */
-        private boolean transacted;
+        private Boolean transacted;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -316,12 +316,12 @@ public class JpaEndpoint {
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private int backoffErrorThreshold;
+        private Integer backoffErrorThreshold;
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private int backoffIdleThreshold;
+        private Integer backoffIdleThreshold;
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -330,25 +330,25 @@ public class JpaEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private int backoffMultiplier;
+        private Integer backoffMultiplier;
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long delay;
+        private Long delay;
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private boolean greedy;
+        private Boolean greedy;
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long initialDelay;
+        private Long initialDelay;
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
@@ -378,7 +378,7 @@ public class JpaEndpoint {
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private boolean startScheduler;
+        private Boolean startScheduler;
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
@@ -389,29 +389,29 @@ public class JpaEndpoint {
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private boolean useFixedDelay;
+        private Boolean useFixedDelay;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getConsumeDelete() {
+        public Boolean getConsumeDelete() {
             return consumeDelete;
         }
 
-        public void setConsumeDelete(boolean consumeDelete) {
+        public void setConsumeDelete(Boolean consumeDelete) {
             this.consumeDelete = consumeDelete;
         }
 
-        public boolean getConsumeLockEntity() {
+        public Boolean getConsumeLockEntity() {
             return consumeLockEntity;
         }
 
-        public void setConsumeLockEntity(boolean consumeLockEntity) {
+        public void setConsumeLockEntity(Boolean consumeLockEntity) {
             this.consumeLockEntity = consumeLockEntity;
         }
 
@@ -431,11 +431,11 @@ public class JpaEndpoint {
             this.lockModeType = lockModeType;
         }
 
-        public int getMaxMessagesPerPoll() {
+        public Integer getMaxMessagesPerPoll() {
             return maxMessagesPerPoll;
         }
 
-        public void setMaxMessagesPerPoll(int maxMessagesPerPoll) {
+        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
             this.maxMessagesPerPoll = maxMessagesPerPoll;
         }
 
@@ -447,27 +447,27 @@ public class JpaEndpoint {
             this.preDeleteHandler = preDeleteHandler;
         }
 
-        public boolean getSendEmptyMessageWhenIdle() {
+        public Boolean getSendEmptyMessageWhenIdle() {
             return sendEmptyMessageWhenIdle;
         }
 
-        public void setSendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
+        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
             this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
         }
 
-        public boolean getSkipLockedEntity() {
+        public Boolean getSkipLockedEntity() {
             return skipLockedEntity;
         }
 
-        public void setSkipLockedEntity(boolean skipLockedEntity) {
+        public void setSkipLockedEntity(Boolean skipLockedEntity) {
             this.skipLockedEntity = skipLockedEntity;
         }
 
-        public boolean getTransacted() {
+        public Boolean getTransacted() {
             return transacted;
         }
 
-        public void setTransacted(boolean transacted) {
+        public void setTransacted(Boolean transacted) {
             this.transacted = transacted;
         }
 
@@ -495,51 +495,51 @@ public class JpaEndpoint {
             this.pollStrategy = pollStrategy;
         }
 
-        public int getBackoffErrorThreshold() {
+        public Integer getBackoffErrorThreshold() {
             return backoffErrorThreshold;
         }
 
-        public void setBackoffErrorThreshold(int backoffErrorThreshold) {
+        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
             this.backoffErrorThreshold = backoffErrorThreshold;
         }
 
-        public int getBackoffIdleThreshold() {
+        public Integer getBackoffIdleThreshold() {
             return backoffIdleThreshold;
         }
 
-        public void setBackoffIdleThreshold(int backoffIdleThreshold) {
+        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
             this.backoffIdleThreshold = backoffIdleThreshold;
         }
 
-        public int getBackoffMultiplier() {
+        public Integer getBackoffMultiplier() {
             return backoffMultiplier;
         }
 
-        public void setBackoffMultiplier(int backoffMultiplier) {
+        public void setBackoffMultiplier(Integer backoffMultiplier) {
             this.backoffMultiplier = backoffMultiplier;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
 
-        public boolean getGreedy() {
+        public Boolean getGreedy() {
             return greedy;
         }
 
-        public void setGreedy(boolean greedy) {
+        public void setGreedy(Boolean greedy) {
             this.greedy = greedy;
         }
 
-        public long getInitialDelay() {
+        public Long getInitialDelay() {
             return initialDelay;
         }
 
-        public void setInitialDelay(long initialDelay) {
+        public void setInitialDelay(Long initialDelay) {
             this.initialDelay = initialDelay;
         }
 
@@ -577,11 +577,11 @@ public class JpaEndpoint {
             this.schedulerProperties = schedulerProperties;
         }
 
-        public boolean getStartScheduler() {
+        public Boolean getStartScheduler() {
             return startScheduler;
         }
 
-        public void setStartScheduler(boolean startScheduler) {
+        public void setStartScheduler(Boolean startScheduler) {
             this.startScheduler = startScheduler;
         }
 
@@ -593,11 +593,11 @@ public class JpaEndpoint {
             this.timeUnit = timeUnit;
         }
 
-        public boolean getUseFixedDelay() {
+        public Boolean getUseFixedDelay() {
             return useFixedDelay;
         }
 
-        public void setUseFixedDelay(boolean useFixedDelay) {
+        public void setUseFixedDelay(Boolean useFixedDelay) {
             this.useFixedDelay = useFixedDelay;
         }
     }
@@ -607,12 +607,12 @@ public class JpaEndpoint {
          * Flushes the EntityManager after the entity bean has been persisted.
          * The option is a boolean type.
          */
-        private boolean flushOnSend;
+        private Boolean flushOnSend;
         /**
          * Indicates to use entityManager.remove(entity). The option is a
          * boolean type.
          */
-        private boolean remove;
+        private Boolean remove;
         /**
          * To configure whether to use executeUpdate() when producer executes a
          * query. When you use INSERT, UPDATE or DELETE statement as a named
@@ -626,7 +626,7 @@ public class JpaEndpoint {
          * on the component/endpoint. This allows end users to control which
          * entity manager will be in use. The option is a boolean type.
          */
-        private boolean usePassedInEntityManager;
+        private Boolean usePassedInEntityManager;
         /**
          * Indicates to use entityManager.persist(entity) instead of
          * entityManager.merge(entity). Note: entityManager.persist(entity)
@@ -634,21 +634,21 @@ public class JpaEndpoint {
          * execute an UPDATE instead of an INSERT query)!. The option is a
          * boolean type.
          */
-        private boolean usePersist;
+        private Boolean usePersist;
 
-        public boolean getFlushOnSend() {
+        public Boolean getFlushOnSend() {
             return flushOnSend;
         }
 
-        public void setFlushOnSend(boolean flushOnSend) {
+        public void setFlushOnSend(Boolean flushOnSend) {
             this.flushOnSend = flushOnSend;
         }
 
-        public boolean getRemove() {
+        public Boolean getRemove() {
             return remove;
         }
 
-        public void setRemove(boolean remove) {
+        public void setRemove(Boolean remove) {
             this.remove = remove;
         }
 
@@ -660,19 +660,19 @@ public class JpaEndpoint {
             this.useExecuteUpdate = useExecuteUpdate;
         }
 
-        public boolean getUsePassedInEntityManager() {
+        public Boolean getUsePassedInEntityManager() {
             return usePassedInEntityManager;
         }
 
-        public void setUsePassedInEntityManager(boolean usePassedInEntityManager) {
+        public void setUsePassedInEntityManager(Boolean usePassedInEntityManager) {
             this.usePassedInEntityManager = usePassedInEntityManager;
         }
 
-        public boolean getUsePersist() {
+        public Boolean getUsePersist() {
             return usePersist;
         }
 
-        public void setUsePersist(boolean usePersist) {
+        public void setUsePersist(Boolean usePersist) {
             this.usePersist = usePersist;
         }
     }

@@ -73,36 +73,36 @@ public class LogEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Limits the number of characters logged per line. The option is a int
          * type.
          */
-        private int maxChars;
+        private Integer maxChars;
         /**
          * If enabled then each information is outputted on a newline. The
          * option is a boolean type.
          */
-        private boolean multiline;
+        private Boolean multiline;
         /**
          * Quick option for turning all options on. (multiline, maxChars has to
          * be manually set if to be used). The option is a boolean type.
          */
-        private boolean showAll;
+        private Boolean showAll;
         /**
          * Show the message body. The option is a boolean type.
          */
-        private boolean showBody;
+        private Boolean showBody;
         /**
          * Show the body Java type. The option is a boolean type.
          */
-        private boolean showBodyType;
+        private Boolean showBodyType;
         /**
          * f the exchange has a caught exception, show the exception message (no
          * stack trace).A caught exception is stored as a property on the
@@ -110,49 +110,49 @@ public class LogEndpoint {
          * and for instance a doCatch can catch exceptions. The option is a
          * boolean type.
          */
-        private boolean showCaughtException;
+        private Boolean showCaughtException;
         /**
          * If the exchange has an exception, show the exception message (no
          * stacktrace). The option is a boolean type.
          */
-        private boolean showException;
+        private Boolean showException;
         /**
          * Show the unique exchange ID. The option is a boolean type.
          */
-        private boolean showExchangeId;
+        private Boolean showExchangeId;
         /**
          * Shows the Message Exchange Pattern (or MEP for short). The option is
          * a boolean type.
          */
-        private boolean showExchangePattern;
+        private Boolean showExchangePattern;
         /**
          * If enabled Camel will output files. The option is a boolean type.
          */
-        private boolean showFiles;
+        private Boolean showFiles;
         /**
          * If enabled Camel will on Future objects wait for it to complete to
          * obtain the payload to be logged. The option is a boolean type.
          */
-        private boolean showFuture;
+        private Boolean showFuture;
         /**
          * Show the message headers. The option is a boolean type.
          */
-        private boolean showHeaders;
+        private Boolean showHeaders;
         /**
          * If the exchange has an out message, show the out message. The option
          * is a boolean type.
          */
-        private boolean showOut;
+        private Boolean showOut;
         /**
          * Show the exchange properties. The option is a boolean type.
          */
-        private boolean showProperties;
+        private Boolean showProperties;
         /**
          * Show the stack trace, if an exchange has an exception. Only effective
          * if one of showAll, showException or showCaughtException are enabled.
          * The option is a boolean type.
          */
-        private boolean showStackTrace;
+        private Boolean showStackTrace;
         /**
          * Whether Camel should show stream bodies or not (eg such as
          * java.io.InputStream). Beware if you enable this option then you may
@@ -160,14 +160,14 @@ public class LogEndpoint {
          * already been read by this logger. To remedy this you will have to use
          * Stream Caching. The option is a boolean type.
          */
-        private boolean showStreams;
+        private Boolean showStreams;
         /**
          * Whether to skip line separators when logging the message body.This
          * allows to log the message body in one line, setting this option to
          * false will preserve any line separators from the body, which then
          * will log the body as is. The option is a boolean type.
          */
-        private boolean skipBodyLineSeparator;
+        private Boolean skipBodyLineSeparator;
         /**
          * Sets the outputs style to use. The option is a
          * org.apache.camel.support.processor.DefaultExchangeFormatter.OutputStyle type.
@@ -238,155 +238,155 @@ public class LogEndpoint {
             this.marker = marker;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public int getMaxChars() {
+        public Integer getMaxChars() {
             return maxChars;
         }
 
-        public void setMaxChars(int maxChars) {
+        public void setMaxChars(Integer maxChars) {
             this.maxChars = maxChars;
         }
 
-        public boolean getMultiline() {
+        public Boolean getMultiline() {
             return multiline;
         }
 
-        public void setMultiline(boolean multiline) {
+        public void setMultiline(Boolean multiline) {
             this.multiline = multiline;
         }
 
-        public boolean getShowAll() {
+        public Boolean getShowAll() {
             return showAll;
         }
 
-        public void setShowAll(boolean showAll) {
+        public void setShowAll(Boolean showAll) {
             this.showAll = showAll;
         }
 
-        public boolean getShowBody() {
+        public Boolean getShowBody() {
             return showBody;
         }
 
-        public void setShowBody(boolean showBody) {
+        public void setShowBody(Boolean showBody) {
             this.showBody = showBody;
         }
 
-        public boolean getShowBodyType() {
+        public Boolean getShowBodyType() {
             return showBodyType;
         }
 
-        public void setShowBodyType(boolean showBodyType) {
+        public void setShowBodyType(Boolean showBodyType) {
             this.showBodyType = showBodyType;
         }
 
-        public boolean getShowCaughtException() {
+        public Boolean getShowCaughtException() {
             return showCaughtException;
         }
 
-        public void setShowCaughtException(boolean showCaughtException) {
+        public void setShowCaughtException(Boolean showCaughtException) {
             this.showCaughtException = showCaughtException;
         }
 
-        public boolean getShowException() {
+        public Boolean getShowException() {
             return showException;
         }
 
-        public void setShowException(boolean showException) {
+        public void setShowException(Boolean showException) {
             this.showException = showException;
         }
 
-        public boolean getShowExchangeId() {
+        public Boolean getShowExchangeId() {
             return showExchangeId;
         }
 
-        public void setShowExchangeId(boolean showExchangeId) {
+        public void setShowExchangeId(Boolean showExchangeId) {
             this.showExchangeId = showExchangeId;
         }
 
-        public boolean getShowExchangePattern() {
+        public Boolean getShowExchangePattern() {
             return showExchangePattern;
         }
 
-        public void setShowExchangePattern(boolean showExchangePattern) {
+        public void setShowExchangePattern(Boolean showExchangePattern) {
             this.showExchangePattern = showExchangePattern;
         }
 
-        public boolean getShowFiles() {
+        public Boolean getShowFiles() {
             return showFiles;
         }
 
-        public void setShowFiles(boolean showFiles) {
+        public void setShowFiles(Boolean showFiles) {
             this.showFiles = showFiles;
         }
 
-        public boolean getShowFuture() {
+        public Boolean getShowFuture() {
             return showFuture;
         }
 
-        public void setShowFuture(boolean showFuture) {
+        public void setShowFuture(Boolean showFuture) {
             this.showFuture = showFuture;
         }
 
-        public boolean getShowHeaders() {
+        public Boolean getShowHeaders() {
             return showHeaders;
         }
 
-        public void setShowHeaders(boolean showHeaders) {
+        public void setShowHeaders(Boolean showHeaders) {
             this.showHeaders = showHeaders;
         }
 
-        public boolean getShowOut() {
+        public Boolean getShowOut() {
             return showOut;
         }
 
-        public void setShowOut(boolean showOut) {
+        public void setShowOut(Boolean showOut) {
             this.showOut = showOut;
         }
 
-        public boolean getShowProperties() {
+        public Boolean getShowProperties() {
             return showProperties;
         }
 
-        public void setShowProperties(boolean showProperties) {
+        public void setShowProperties(Boolean showProperties) {
             this.showProperties = showProperties;
         }
 
-        public boolean getShowStackTrace() {
+        public Boolean getShowStackTrace() {
             return showStackTrace;
         }
 
-        public void setShowStackTrace(boolean showStackTrace) {
+        public void setShowStackTrace(Boolean showStackTrace) {
             this.showStackTrace = showStackTrace;
         }
 
-        public boolean getShowStreams() {
+        public Boolean getShowStreams() {
             return showStreams;
         }
 
-        public void setShowStreams(boolean showStreams) {
+        public void setShowStreams(Boolean showStreams) {
             this.showStreams = showStreams;
         }
 
-        public boolean getSkipBodyLineSeparator() {
+        public Boolean getSkipBodyLineSeparator() {
             return skipBodyLineSeparator;
         }
 
-        public void setSkipBodyLineSeparator(boolean skipBodyLineSeparator) {
+        public void setSkipBodyLineSeparator(Boolean skipBodyLineSeparator) {
             this.skipBodyLineSeparator = skipBodyLineSeparator;
         }
 

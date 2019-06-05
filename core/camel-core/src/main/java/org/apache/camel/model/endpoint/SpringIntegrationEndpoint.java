@@ -43,19 +43,19 @@ public class SpringIntegrationEndpoint {
          * Spring Integration Message header or configured on the endpoint. The
          * option is a boolean type.
          */
-        private boolean inOut;
+        private Boolean inOut;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getDefaultChannel() {
             return defaultChannel;
@@ -65,27 +65,27 @@ public class SpringIntegrationEndpoint {
             this.defaultChannel = defaultChannel;
         }
 
-        public boolean getInOut() {
+        public Boolean getInOut() {
             return inOut;
         }
 
-        public void setInOut(boolean inOut) {
+        public void setInOut(Boolean inOut) {
             this.inOut = inOut;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -102,7 +102,7 @@ public class SpringIntegrationEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * The Spring integration input channel name that this endpoint wants to
          * consume from Spring integration. The option is a java.lang.String
@@ -123,11 +123,11 @@ public class SpringIntegrationEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

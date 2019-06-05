@@ -42,12 +42,12 @@ public class WsEndpoint {
          * throwExceptionOnFailure to be false to let the AhcProducer send all
          * the fault response back. The option is a boolean type.
          */
-        private boolean bridgeEndpoint;
+        private Boolean bridgeEndpoint;
         /**
          * The initial in-memory buffer size used when transferring data between
          * Camel and AHC Client. The option is a int type.
          */
-        private int bufferSize;
+        private Integer bufferSize;
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
@@ -60,7 +60,7 @@ public class WsEndpoint {
          * responses regardless of the HTTP status code. The option is a boolean
          * type.
          */
-        private boolean throwExceptionOnFailure;
+        private Boolean throwExceptionOnFailure;
         /**
          * If enabled and an Exchange failed processing on the consumer side,
          * and if the caused Exception was send back serialized in the response
@@ -73,13 +73,13 @@ public class WsEndpoint {
          * to Java and that can be a potential security risk. The option is a
          * boolean type.
          */
-        private boolean transferException;
+        private Boolean transferException;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To use a custom AhcBinding which allows to control how to bind
          * between AHC and Camel. The option is a
@@ -103,7 +103,7 @@ public class WsEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * To configure the AsyncHttpClientConfig Realm using the key/values
          * from the Map. The option is a
@@ -129,19 +129,19 @@ public class WsEndpoint {
             this.httpUri = httpUri;
         }
 
-        public boolean getBridgeEndpoint() {
+        public Boolean getBridgeEndpoint() {
             return bridgeEndpoint;
         }
 
-        public void setBridgeEndpoint(boolean bridgeEndpoint) {
+        public void setBridgeEndpoint(Boolean bridgeEndpoint) {
             this.bridgeEndpoint = bridgeEndpoint;
         }
 
-        public int getBufferSize() {
+        public Integer getBufferSize() {
             return bufferSize;
         }
 
-        public void setBufferSize(int bufferSize) {
+        public void setBufferSize(Integer bufferSize) {
             this.bufferSize = bufferSize;
         }
 
@@ -154,27 +154,27 @@ public class WsEndpoint {
             this.headerFilterStrategy = headerFilterStrategy;
         }
 
-        public boolean getThrowExceptionOnFailure() {
+        public Boolean getThrowExceptionOnFailure() {
             return throwExceptionOnFailure;
         }
 
-        public void setThrowExceptionOnFailure(boolean throwExceptionOnFailure) {
+        public void setThrowExceptionOnFailure(Boolean throwExceptionOnFailure) {
             this.throwExceptionOnFailure = throwExceptionOnFailure;
         }
 
-        public boolean getTransferException() {
+        public Boolean getTransferException() {
             return transferException;
         }
 
-        public void setTransferException(boolean transferException) {
+        public void setTransferException(Boolean transferException) {
             this.transferException = transferException;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -203,11 +203,11 @@ public class WsEndpoint {
             this.clientConfigOptions = clientConfigOptions;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -234,13 +234,13 @@ public class WsEndpoint {
          * Whether to send an message if the web-socket listener received an
          * error. The option is a boolean type.
          */
-        private boolean sendMessageOnError;
+        private Boolean sendMessageOnError;
 
-        public boolean getSendMessageOnError() {
+        public Boolean getSendMessageOnError() {
             return sendMessageOnError;
         }
 
-        public void setSendMessageOnError(boolean sendMessageOnError) {
+        public void setSendMessageOnError(Boolean sendMessageOnError) {
             this.sendMessageOnError = sendMessageOnError;
         }
     }
@@ -250,32 +250,32 @@ public class WsEndpoint {
          * To enable streaming to send data as multiple text fragments. The
          * option is a boolean type.
          */
-        private boolean useStreaming;
+        private Boolean useStreaming;
         /**
          * Define if the Connection Close header has to be added to HTTP
          * Request. This parameter is false by default. The option is a boolean
          * type.
          */
-        private boolean connectionClose;
+        private Boolean connectionClose;
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
          */
         private Object cookieHandler;
 
-        public boolean getUseStreaming() {
+        public Boolean getUseStreaming() {
             return useStreaming;
         }
 
-        public void setUseStreaming(boolean useStreaming) {
+        public void setUseStreaming(Boolean useStreaming) {
             this.useStreaming = useStreaming;
         }
 
-        public boolean getConnectionClose() {
+        public Boolean getConnectionClose() {
             return connectionClose;
         }
 
-        public void setConnectionClose(boolean connectionClose) {
+        public void setConnectionClose(Boolean connectionClose) {
             this.connectionClose = connectionClose;
         }
 

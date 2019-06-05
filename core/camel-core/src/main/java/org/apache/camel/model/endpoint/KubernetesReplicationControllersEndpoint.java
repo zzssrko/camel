@@ -68,7 +68,7 @@ public class KubernetesReplicationControllersEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Connection timeout in milliseconds to use when making requests to the
          * Kubernetes API server. The option is a java.lang.Integer type.
@@ -79,7 +79,7 @@ public class KubernetesReplicationControllersEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * The CA Cert Data. The option is a java.lang.String type.
          */
@@ -181,11 +181,11 @@ public class KubernetesReplicationControllersEndpoint {
             this.portProtocol = portProtocol;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -197,11 +197,11 @@ public class KubernetesReplicationControllersEndpoint {
             this.connectionTimeout = connectionTimeout;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -314,7 +314,7 @@ public class KubernetesReplicationControllersEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * The Consumer Label key when watching at some resources. The option is
          * a java.lang.String type.
@@ -332,7 +332,7 @@ public class KubernetesReplicationControllersEndpoint {
         /**
          * The Consumer pool size. The option is a int type.
          */
-        private int poolSize;
+        private Integer poolSize;
         /**
          * The Consumer Resource Name we would like to watch. The option is a
          * java.lang.String type.
@@ -352,11 +352,11 @@ public class KubernetesReplicationControllersEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -384,11 +384,11 @@ public class KubernetesReplicationControllersEndpoint {
             this.namespace = namespace;
         }
 
-        public int getPoolSize() {
+        public Integer getPoolSize() {
             return poolSize;
         }
 
-        public void setPoolSize(int poolSize) {
+        public void setPoolSize(Integer poolSize) {
             this.poolSize = poolSize;
         }
 

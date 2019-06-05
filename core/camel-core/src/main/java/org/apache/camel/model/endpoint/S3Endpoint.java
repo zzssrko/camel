@@ -50,12 +50,12 @@ public class S3Endpoint {
         /**
          * Setting the autocreation of the bucket. The option is a boolean type.
          */
-        private boolean autoCreateBucket;
+        private Boolean autoCreateBucket;
         /**
          * Whether or not the S3 client should use path style access. The option
          * is a boolean type.
          */
-        private boolean pathStyleAccess;
+        private Boolean pathStyleAccess;
         /**
          * The policy for this queue to set in the
          * com.amazonaws.services.s3.AmazonS3#setBucketPolicy() method. The
@@ -82,7 +82,7 @@ public class S3Endpoint {
          * instance or to expect static credentials to be passed in. The option
          * is a boolean type.
          */
-        private boolean useIAMCredentials;
+        private Boolean useIAMCredentials;
         /**
          * The encryption materials to use in case of Symmetric/Asymmetric
          * client usage. The option is a
@@ -93,44 +93,44 @@ public class S3Endpoint {
          * Define if encryption must be used or not. The option is a boolean
          * type.
          */
-        private boolean useEncryption;
+        private Boolean useEncryption;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Define if Accelerate Mode enabled is true or false. The option is a
          * boolean type.
          */
-        private boolean accelerateModeEnabled;
+        private Boolean accelerateModeEnabled;
         /**
          * Define if disabled Chunked Encoding is true or false. The option is a
          * boolean type.
          */
-        private boolean chunkedEncodingDisabled;
+        private Boolean chunkedEncodingDisabled;
         /**
          * Define if Dualstack enabled is true or false. The option is a boolean
          * type.
          */
-        private boolean dualstackEnabled;
+        private Boolean dualstackEnabled;
         /**
          * Define if Force Global Bucket Access enabled is true or false. The
          * option is a boolean type.
          */
-        private boolean forceGlobalBucketAccessEnabled;
+        private Boolean forceGlobalBucketAccessEnabled;
         /**
          * Define if Payload Signing enabled is true or false. The option is a
          * boolean type.
          */
-        private boolean payloadSigningEnabled;
+        private Boolean payloadSigningEnabled;
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
@@ -156,19 +156,19 @@ public class S3Endpoint {
             this.amazonS3Client = amazonS3Client;
         }
 
-        public boolean getAutoCreateBucket() {
+        public Boolean getAutoCreateBucket() {
             return autoCreateBucket;
         }
 
-        public void setAutoCreateBucket(boolean autoCreateBucket) {
+        public void setAutoCreateBucket(Boolean autoCreateBucket) {
             this.autoCreateBucket = autoCreateBucket;
         }
 
-        public boolean getPathStyleAccess() {
+        public Boolean getPathStyleAccess() {
             return pathStyleAccess;
         }
 
-        public void setPathStyleAccess(boolean pathStyleAccess) {
+        public void setPathStyleAccess(Boolean pathStyleAccess) {
             this.pathStyleAccess = pathStyleAccess;
         }
 
@@ -204,11 +204,11 @@ public class S3Endpoint {
             this.region = region;
         }
 
-        public boolean getUseIAMCredentials() {
+        public Boolean getUseIAMCredentials() {
             return useIAMCredentials;
         }
 
-        public void setUseIAMCredentials(boolean useIAMCredentials) {
+        public void setUseIAMCredentials(Boolean useIAMCredentials) {
             this.useIAMCredentials = useIAMCredentials;
         }
 
@@ -220,68 +220,68 @@ public class S3Endpoint {
             this.encryptionMaterials = encryptionMaterials;
         }
 
-        public boolean getUseEncryption() {
+        public Boolean getUseEncryption() {
             return useEncryption;
         }
 
-        public void setUseEncryption(boolean useEncryption) {
+        public void setUseEncryption(Boolean useEncryption) {
             this.useEncryption = useEncryption;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getAccelerateModeEnabled() {
+        public Boolean getAccelerateModeEnabled() {
             return accelerateModeEnabled;
         }
 
-        public void setAccelerateModeEnabled(boolean accelerateModeEnabled) {
+        public void setAccelerateModeEnabled(Boolean accelerateModeEnabled) {
             this.accelerateModeEnabled = accelerateModeEnabled;
         }
 
-        public boolean getChunkedEncodingDisabled() {
+        public Boolean getChunkedEncodingDisabled() {
             return chunkedEncodingDisabled;
         }
 
-        public void setChunkedEncodingDisabled(boolean chunkedEncodingDisabled) {
+        public void setChunkedEncodingDisabled(Boolean chunkedEncodingDisabled) {
             this.chunkedEncodingDisabled = chunkedEncodingDisabled;
         }
 
-        public boolean getDualstackEnabled() {
+        public Boolean getDualstackEnabled() {
             return dualstackEnabled;
         }
 
-        public void setDualstackEnabled(boolean dualstackEnabled) {
+        public void setDualstackEnabled(Boolean dualstackEnabled) {
             this.dualstackEnabled = dualstackEnabled;
         }
 
-        public boolean getForceGlobalBucketAccessEnabled() {
+        public Boolean getForceGlobalBucketAccessEnabled() {
             return forceGlobalBucketAccessEnabled;
         }
 
         public void setForceGlobalBucketAccessEnabled(
-                boolean forceGlobalBucketAccessEnabled) {
+                Boolean forceGlobalBucketAccessEnabled) {
             this.forceGlobalBucketAccessEnabled = forceGlobalBucketAccessEnabled;
         }
 
-        public boolean getPayloadSigningEnabled() {
+        public Boolean getPayloadSigningEnabled() {
             return payloadSigningEnabled;
         }
 
-        public void setPayloadSigningEnabled(boolean payloadSigningEnabled) {
+        public void setPayloadSigningEnabled(Boolean payloadSigningEnabled) {
             this.payloadSigningEnabled = payloadSigningEnabled;
         }
 
@@ -312,7 +312,7 @@ public class S3Endpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Delete objects from S3 after they have been retrieved. The delete is
          * only performed if the Exchange is committed. If a rollback occurs,
@@ -323,7 +323,7 @@ public class S3Endpoint {
          * S3Constants#KEY headers, or only the S3Constants#KEY header. The
          * option is a boolean type.
          */
-        private boolean deleteAfterRead;
+        private Boolean deleteAfterRead;
         /**
          * The delimiter which is used in the
          * com.amazonaws.services.s3.model.ListObjectsRequest to only consume
@@ -344,18 +344,18 @@ public class S3Endpoint {
          * the S3Object stream. Setting autocloseBody to true, will close the
          * S3Object stream automatically. The option is a boolean type.
          */
-        private boolean includeBody;
+        private Boolean includeBody;
         /**
          * Set the maxConnections parameter in the S3 client configuration. The
          * option is a int type.
          */
-        private int maxConnections;
+        private Integer maxConnections;
         /**
          * Gets the maximum number of messages as a limit to poll at each
          * polling. Is default unlimited, but use 0 or negative number to
          * disable it as unlimited. The option is a int type.
          */
-        private int maxMessagesPerPoll;
+        private Integer maxMessagesPerPoll;
         /**
          * The prefix which is used in the
          * com.amazonaws.services.s3.model.ListObjectsRequest to only consume
@@ -367,7 +367,7 @@ public class S3Endpoint {
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private boolean sendEmptyMessageWhenIdle;
+        private Boolean sendEmptyMessageWhenIdle;
         /**
          * If this option is true and includeBody is true, then the
          * S3Object.close() method will be called on exchange completion. This
@@ -377,7 +377,7 @@ public class S3Endpoint {
          * will close the S3Object stream automatically. The option is a boolean
          * type.
          */
-        private boolean autocloseBody;
+        private Boolean autocloseBody;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -404,12 +404,12 @@ public class S3Endpoint {
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private int backoffErrorThreshold;
+        private Integer backoffErrorThreshold;
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private int backoffIdleThreshold;
+        private Integer backoffIdleThreshold;
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -418,25 +418,25 @@ public class S3Endpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private int backoffMultiplier;
+        private Integer backoffMultiplier;
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long delay;
+        private Long delay;
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private boolean greedy;
+        private Boolean greedy;
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long initialDelay;
+        private Long initialDelay;
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
@@ -466,7 +466,7 @@ public class S3Endpoint {
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private boolean startScheduler;
+        private Boolean startScheduler;
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
@@ -477,21 +477,21 @@ public class S3Endpoint {
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private boolean useFixedDelay;
+        private Boolean useFixedDelay;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getDeleteAfterRead() {
+        public Boolean getDeleteAfterRead() {
             return deleteAfterRead;
         }
 
-        public void setDeleteAfterRead(boolean deleteAfterRead) {
+        public void setDeleteAfterRead(Boolean deleteAfterRead) {
             this.deleteAfterRead = deleteAfterRead;
         }
 
@@ -511,27 +511,27 @@ public class S3Endpoint {
             this.fileName = fileName;
         }
 
-        public boolean getIncludeBody() {
+        public Boolean getIncludeBody() {
             return includeBody;
         }
 
-        public void setIncludeBody(boolean includeBody) {
+        public void setIncludeBody(Boolean includeBody) {
             this.includeBody = includeBody;
         }
 
-        public int getMaxConnections() {
+        public Integer getMaxConnections() {
             return maxConnections;
         }
 
-        public void setMaxConnections(int maxConnections) {
+        public void setMaxConnections(Integer maxConnections) {
             this.maxConnections = maxConnections;
         }
 
-        public int getMaxMessagesPerPoll() {
+        public Integer getMaxMessagesPerPoll() {
             return maxMessagesPerPoll;
         }
 
-        public void setMaxMessagesPerPoll(int maxMessagesPerPoll) {
+        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
             this.maxMessagesPerPoll = maxMessagesPerPoll;
         }
 
@@ -543,19 +543,19 @@ public class S3Endpoint {
             this.prefix = prefix;
         }
 
-        public boolean getSendEmptyMessageWhenIdle() {
+        public Boolean getSendEmptyMessageWhenIdle() {
             return sendEmptyMessageWhenIdle;
         }
 
-        public void setSendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
+        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
             this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
         }
 
-        public boolean getAutocloseBody() {
+        public Boolean getAutocloseBody() {
             return autocloseBody;
         }
 
-        public void setAutocloseBody(boolean autocloseBody) {
+        public void setAutocloseBody(Boolean autocloseBody) {
             this.autocloseBody = autocloseBody;
         }
 
@@ -583,51 +583,51 @@ public class S3Endpoint {
             this.pollStrategy = pollStrategy;
         }
 
-        public int getBackoffErrorThreshold() {
+        public Integer getBackoffErrorThreshold() {
             return backoffErrorThreshold;
         }
 
-        public void setBackoffErrorThreshold(int backoffErrorThreshold) {
+        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
             this.backoffErrorThreshold = backoffErrorThreshold;
         }
 
-        public int getBackoffIdleThreshold() {
+        public Integer getBackoffIdleThreshold() {
             return backoffIdleThreshold;
         }
 
-        public void setBackoffIdleThreshold(int backoffIdleThreshold) {
+        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
             this.backoffIdleThreshold = backoffIdleThreshold;
         }
 
-        public int getBackoffMultiplier() {
+        public Integer getBackoffMultiplier() {
             return backoffMultiplier;
         }
 
-        public void setBackoffMultiplier(int backoffMultiplier) {
+        public void setBackoffMultiplier(Integer backoffMultiplier) {
             this.backoffMultiplier = backoffMultiplier;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
 
-        public boolean getGreedy() {
+        public Boolean getGreedy() {
             return greedy;
         }
 
-        public void setGreedy(boolean greedy) {
+        public void setGreedy(Boolean greedy) {
             this.greedy = greedy;
         }
 
-        public long getInitialDelay() {
+        public Long getInitialDelay() {
             return initialDelay;
         }
 
-        public void setInitialDelay(long initialDelay) {
+        public void setInitialDelay(Long initialDelay) {
             this.initialDelay = initialDelay;
         }
 
@@ -665,11 +665,11 @@ public class S3Endpoint {
             this.schedulerProperties = schedulerProperties;
         }
 
-        public boolean getStartScheduler() {
+        public Boolean getStartScheduler() {
             return startScheduler;
         }
 
-        public void setStartScheduler(boolean startScheduler) {
+        public void setStartScheduler(Boolean startScheduler) {
             this.startScheduler = startScheduler;
         }
 
@@ -681,11 +681,11 @@ public class S3Endpoint {
             this.timeUnit = timeUnit;
         }
 
-        public boolean getUseFixedDelay() {
+        public Boolean getUseFixedDelay() {
             return useFixedDelay;
         }
 
-        public void setUseFixedDelay(boolean useFixedDelay) {
+        public void setUseFixedDelay(Boolean useFixedDelay) {
             this.useFixedDelay = useFixedDelay;
         }
     }
@@ -695,13 +695,13 @@ public class S3Endpoint {
          * Delete file object after the S3 file has been uploaded. The option is
          * a boolean type.
          */
-        private boolean deleteAfterWrite;
+        private Boolean deleteAfterWrite;
         /**
          * If it is true, camel will upload the file with multi part format, the
          * part size is decided by the option of partSize. The option is a
          * boolean type.
          */
-        private boolean multiPartUpload;
+        private Boolean multiPartUpload;
         /**
          * The operation to do in case the user don't want to do only an upload.
          * The option is a org.apache.camel.component.aws.s3.S3Operations type.
@@ -711,7 +711,7 @@ public class S3Endpoint {
          * Setup the partSize which is used in multi part upload, the default
          * size is 25M. The option is a long type.
          */
-        private long partSize;
+        private Long partSize;
         /**
          * Sets the server-side encryption algorithm when encrypting the object
          * using AWS-managed keys. For example use AES256. The option is a
@@ -732,21 +732,21 @@ public class S3Endpoint {
         /**
          * Define if KMS must be used or not. The option is a boolean type.
          */
-        private boolean useAwsKMS;
+        private Boolean useAwsKMS;
 
-        public boolean getDeleteAfterWrite() {
+        public Boolean getDeleteAfterWrite() {
             return deleteAfterWrite;
         }
 
-        public void setDeleteAfterWrite(boolean deleteAfterWrite) {
+        public void setDeleteAfterWrite(Boolean deleteAfterWrite) {
             this.deleteAfterWrite = deleteAfterWrite;
         }
 
-        public boolean getMultiPartUpload() {
+        public Boolean getMultiPartUpload() {
             return multiPartUpload;
         }
 
-        public void setMultiPartUpload(boolean multiPartUpload) {
+        public void setMultiPartUpload(Boolean multiPartUpload) {
             this.multiPartUpload = multiPartUpload;
         }
 
@@ -758,11 +758,11 @@ public class S3Endpoint {
             this.operation = operation;
         }
 
-        public long getPartSize() {
+        public Long getPartSize() {
             return partSize;
         }
 
-        public void setPartSize(long partSize) {
+        public void setPartSize(Long partSize) {
             this.partSize = partSize;
         }
 
@@ -790,11 +790,11 @@ public class S3Endpoint {
             this.awsKMSKeyId = awsKMSKeyId;
         }
 
-        public boolean getUseAwsKMS() {
+        public Boolean getUseAwsKMS() {
             return useAwsKMS;
         }
 
-        public void setUseAwsKMS(boolean useAwsKMS) {
+        public void setUseAwsKMS(Boolean useAwsKMS) {
             this.useAwsKMS = useAwsKMS;
         }
     }

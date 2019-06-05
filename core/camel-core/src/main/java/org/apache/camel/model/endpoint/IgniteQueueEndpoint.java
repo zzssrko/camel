@@ -37,24 +37,24 @@ public class IgniteQueueEndpoint {
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option is a boolean type.
          */
-        private boolean propagateIncomingBodyIfNoReturnValue;
+        private Boolean propagateIncomingBodyIfNoReturnValue;
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
-        private boolean treatCollectionsAsCacheObjects;
+        private Boolean treatCollectionsAsCacheObjects;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getName() {
             return name;
@@ -64,37 +64,37 @@ public class IgniteQueueEndpoint {
             this.name = name;
         }
 
-        public boolean getPropagateIncomingBodyIfNoReturnValue() {
+        public Boolean getPropagateIncomingBodyIfNoReturnValue() {
             return propagateIncomingBodyIfNoReturnValue;
         }
 
         public void setPropagateIncomingBodyIfNoReturnValue(
-                boolean propagateIncomingBodyIfNoReturnValue) {
+                Boolean propagateIncomingBodyIfNoReturnValue) {
             this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
         }
 
-        public boolean getTreatCollectionsAsCacheObjects() {
+        public Boolean getTreatCollectionsAsCacheObjects() {
             return treatCollectionsAsCacheObjects;
         }
 
         public void setTreatCollectionsAsCacheObjects(
-                boolean treatCollectionsAsCacheObjects) {
+                Boolean treatCollectionsAsCacheObjects) {
             this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -106,7 +106,7 @@ public class IgniteQueueEndpoint {
         /**
          * The queue capacity. Default: non-bounded. The option is a int type.
          */
-        private int capacity;
+        private Integer capacity;
         /**
          * The collection configuration. Default: empty configuration. You can
          * also conveniently set inner properties by using configuration.xyz=123
@@ -129,11 +129,11 @@ public class IgniteQueueEndpoint {
          */
         private Long timeoutMillis;
 
-        public int getCapacity() {
+        public Integer getCapacity() {
             return capacity;
         }
 
-        public void setCapacity(int capacity) {
+        public void setCapacity(Integer capacity) {
             this.capacity = capacity;
         }
 

@@ -44,7 +44,7 @@ public class CouchDbEndpoint {
          * Port number for the running couchdb instance. The option is a int
          * type.
          */
-        private int port;
+        private Integer port;
         /**
          * Name of the database to use. The option is a java.lang.String type.
          */
@@ -53,19 +53,19 @@ public class CouchDbEndpoint {
          * Creates the database if it does not already exist. The option is a
          * boolean type.
          */
-        private boolean createDatabase;
+        private Boolean createDatabase;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Password for authenticated databases. The option is a
          * java.lang.String type.
@@ -93,11 +93,11 @@ public class CouchDbEndpoint {
             this.hostname = hostname;
         }
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
@@ -109,27 +109,27 @@ public class CouchDbEndpoint {
             this.database = database;
         }
 
-        public boolean getCreateDatabase() {
+        public Boolean getCreateDatabase() {
             return createDatabase;
         }
 
-        public void setCreateDatabase(boolean createDatabase) {
+        public void setCreateDatabase(Boolean createDatabase) {
             this.createDatabase = createDatabase;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -160,17 +160,17 @@ public class CouchDbEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Document deletes are published as events. The option is a boolean
          * type.
          */
-        private boolean deletes;
+        private Boolean deletes;
         /**
          * How often to send an empty message to keep socket alive in millis.
          * The option is a long type.
          */
-        private long heartbeat;
+        private Long heartbeat;
         /**
          * Start tracking changes immediately after the given update sequence.
          * The default, null, will start monitoring from the latest sequence.
@@ -188,7 +188,7 @@ public class CouchDbEndpoint {
          * Document inserts/updates are published as events. The option is a
          * boolean type.
          */
-        private boolean updates;
+        private Boolean updates;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -203,27 +203,27 @@ public class CouchDbEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public boolean getDeletes() {
+        public Boolean getDeletes() {
             return deletes;
         }
 
-        public void setDeletes(boolean deletes) {
+        public void setDeletes(Boolean deletes) {
             this.deletes = deletes;
         }
 
-        public long getHeartbeat() {
+        public Long getHeartbeat() {
             return heartbeat;
         }
 
-        public void setHeartbeat(long heartbeat) {
+        public void setHeartbeat(Long heartbeat) {
             this.heartbeat = heartbeat;
         }
 
@@ -243,11 +243,11 @@ public class CouchDbEndpoint {
             this.style = style;
         }
 
-        public boolean getUpdates() {
+        public Boolean getUpdates() {
             return updates;
         }
 
-        public void setUpdates(boolean updates) {
+        public void setUpdates(Boolean updates) {
             this.updates = updates;
         }
 

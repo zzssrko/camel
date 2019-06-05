@@ -44,19 +44,19 @@ public class DisruptorVmEndpoint {
          * size, then configure the size option on all of them, or the first
          * endpoint being created. The option is a int type.
          */
-        private int size;
+        private Integer size;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getName() {
             return name;
@@ -66,27 +66,27 @@ public class DisruptorVmEndpoint {
             this.name = name;
         }
 
-        public int getSize() {
+        public Integer getSize() {
             return size;
         }
 
-        public void setSize(int size) {
+        public void setSize(Integer size) {
             this.size = size;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -101,12 +101,12 @@ public class DisruptorVmEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Number of concurrent threads processing exchanges. The option is a
          * int type.
          */
-        private int concurrentConsumers;
+        private Integer concurrentConsumers;
         /**
          * Specifies whether multiple consumers are allowed. If enabled, you can
          * use Disruptor for Publish-Subscribe messaging. That is, you can send
@@ -114,7 +114,7 @@ public class DisruptorVmEndpoint {
          * message. When enabled, this option should be specified on every
          * consumer endpoint. The option is a boolean type.
          */
-        private boolean multipleConsumers;
+        private Boolean multipleConsumers;
         /**
          * Defines the strategy used by consumer threads to wait on new
          * exchanges to be published. The options allowed are:Blocking,
@@ -136,27 +136,27 @@ public class DisruptorVmEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public int getConcurrentConsumers() {
+        public Integer getConcurrentConsumers() {
             return concurrentConsumers;
         }
 
-        public void setConcurrentConsumers(int concurrentConsumers) {
+        public void setConcurrentConsumers(Integer concurrentConsumers) {
             this.concurrentConsumers = concurrentConsumers;
         }
 
-        public boolean getMultipleConsumers() {
+        public Boolean getMultipleConsumers() {
             return multipleConsumers;
         }
 
-        public void setMultipleConsumers(boolean multipleConsumers) {
+        public void setMultipleConsumers(Boolean multipleConsumers) {
             this.multipleConsumers = multipleConsumers;
         }
 
@@ -193,7 +193,7 @@ public class DisruptorVmEndpoint {
          * accepted. By disabling this option, an exception will be thrown
          * stating that the queue is full. The option is a boolean type.
          */
-        private boolean blockWhenFull;
+        private Boolean blockWhenFull;
         /**
          * Defines the producers allowed on the Disruptor. The options allowed
          * are: Multi to allow multiple producers and Single to enable certain
@@ -207,7 +207,7 @@ public class DisruptorVmEndpoint {
          * asynchronous task to complete. You can disable timeout by using 0 or
          * a negative value. The option is a long type.
          */
-        private long timeout;
+        private Long timeout;
         /**
          * Option to specify whether the caller should wait for the async task
          * to complete or not before continuing. The following three options are
@@ -218,11 +218,11 @@ public class DisruptorVmEndpoint {
          */
         private WaitForTaskToComplete waitForTaskToComplete;
 
-        public boolean getBlockWhenFull() {
+        public Boolean getBlockWhenFull() {
             return blockWhenFull;
         }
 
-        public void setBlockWhenFull(boolean blockWhenFull) {
+        public void setBlockWhenFull(Boolean blockWhenFull) {
             this.blockWhenFull = blockWhenFull;
         }
 
@@ -234,11 +234,11 @@ public class DisruptorVmEndpoint {
             this.producerType = producerType;
         }
 
-        public long getTimeout() {
+        public Long getTimeout() {
             return timeout;
         }
 
-        public void setTimeout(long timeout) {
+        public void setTimeout(Long timeout) {
             this.timeout = timeout;
         }
 

@@ -56,49 +56,49 @@ public class HazelcastSetEndpoint {
          * Define if the endpoint will use a reliable Topic struct or not. The
          * option is a boolean type.
          */
-        private boolean reliable;
+        private Boolean reliable;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * To use concurrent consumers polling from the SEDA queue. The option
          * is a int type.
          */
-        private int concurrentConsumers;
+        private Integer concurrentConsumers;
         /**
          * Milliseconds before consumer continues polling after an error has
          * occurred. The option is a int type.
          */
-        private int onErrorDelay;
+        private Integer onErrorDelay;
         /**
          * The timeout used when consuming from the SEDA queue. When a timeout
          * occurs, the consumer can check whether it is allowed to continue
          * running. Setting a lower value allows the consumer to react more
          * quickly upon shutdown. The option is a int type.
          */
-        private int pollTimeout;
+        private Integer pollTimeout;
         /**
          * If set to true then the consumer runs in transaction mode, where the
          * messages in the seda queue will only be removed if the transaction
          * commits, which happens when the processing is complete. The option is
          * a boolean type.
          */
-        private boolean transacted;
+        private Boolean transacted;
         /**
          * If set to true the whole Exchange will be transfered. If header or
          * body contains not serializable objects, they will be skipped. The
          * option is a boolean type.
          */
-        private boolean transferExchange;
+        private Boolean transferExchange;
 
         public String getCacheName() {
             return cacheName;
@@ -132,67 +132,67 @@ public class HazelcastSetEndpoint {
             this.hazelcastInstanceName = hazelcastInstanceName;
         }
 
-        public boolean getReliable() {
+        public Boolean getReliable() {
             return reliable;
         }
 
-        public void setReliable(boolean reliable) {
+        public void setReliable(Boolean reliable) {
             this.reliable = reliable;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public int getConcurrentConsumers() {
+        public Integer getConcurrentConsumers() {
             return concurrentConsumers;
         }
 
-        public void setConcurrentConsumers(int concurrentConsumers) {
+        public void setConcurrentConsumers(Integer concurrentConsumers) {
             this.concurrentConsumers = concurrentConsumers;
         }
 
-        public int getOnErrorDelay() {
+        public Integer getOnErrorDelay() {
             return onErrorDelay;
         }
 
-        public void setOnErrorDelay(int onErrorDelay) {
+        public void setOnErrorDelay(Integer onErrorDelay) {
             this.onErrorDelay = onErrorDelay;
         }
 
-        public int getPollTimeout() {
+        public Integer getPollTimeout() {
             return pollTimeout;
         }
 
-        public void setPollTimeout(int pollTimeout) {
+        public void setPollTimeout(Integer pollTimeout) {
             this.pollTimeout = pollTimeout;
         }
 
-        public boolean getTransacted() {
+        public Boolean getTransacted() {
             return transacted;
         }
 
-        public void setTransacted(boolean transacted) {
+        public void setTransacted(Boolean transacted) {
             this.transacted = transacted;
         }
 
-        public boolean getTransferExchange() {
+        public Boolean getTransferExchange() {
             return transferExchange;
         }
 
-        public void setTransferExchange(boolean transferExchange) {
+        public void setTransferExchange(Boolean transferExchange) {
             this.transferExchange = transferExchange;
         }
     }
@@ -207,17 +207,17 @@ public class HazelcastSetEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Define the polling timeout of the Queue consumer in Poll mode. The
          * option is a long type.
          */
-        private long pollingTimeout;
+        private Long pollingTimeout;
         /**
          * Define the Pool size for Queue Consumer Executor. The option is a int
          * type.
          */
-        private int poolSize;
+        private Integer poolSize;
         /**
          * Define the Queue Consumer mode: Listen or Poll. The option is a
          * org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode
@@ -238,27 +238,27 @@ public class HazelcastSetEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public long getPollingTimeout() {
+        public Long getPollingTimeout() {
             return pollingTimeout;
         }
 
-        public void setPollingTimeout(long pollingTimeout) {
+        public void setPollingTimeout(Long pollingTimeout) {
             this.pollingTimeout = pollingTimeout;
         }
 
-        public int getPoolSize() {
+        public Integer getPoolSize() {
             return poolSize;
         }
 
-        public void setPoolSize(int poolSize) {
+        public void setPoolSize(Integer poolSize) {
             this.poolSize = poolSize;
         }
 

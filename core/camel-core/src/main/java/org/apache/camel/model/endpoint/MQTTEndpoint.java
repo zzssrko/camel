@@ -49,13 +49,13 @@ public class MQTTEndpoint {
          * The default retain policy to be used on messages sent to the MQTT
          * broker. The option is a boolean type.
          */
-        private boolean byDefaultRetain;
+        private Boolean byDefaultRetain;
         /**
          * Set to false if you want the MQTT server to persist topic
          * subscriptions and ack positions across client sessions. Defaults to
          * true. The option is a boolean type.
          */
-        private boolean cleanSession;
+        private Boolean cleanSession;
         /**
          * Use to set the client Id of the session. This is what an MQTT server
          * uses to identify a session where setCleanSession(false); is being
@@ -70,17 +70,17 @@ public class MQTTEndpoint {
          * server. Set to -1 to use unlimited attempts. Defaults to -1. The
          * option is a long type.
          */
-        private long connectAttemptsMax;
+        private Long connectAttemptsMax;
         /**
          * Delay in seconds the Component will wait for a connection to be
          * established to the MQTT broker. The option is a int type.
          */
-        private int connectWaitInSeconds;
+        private Integer connectWaitInSeconds;
         /**
          * The number of seconds the Component will wait for a valid disconnect
          * on stop() from the MQTT broker. The option is a int type.
          */
-        private int disconnectWaitInSeconds;
+        private Integer disconnectWaitInSeconds;
         /**
          * A HawtDispatch dispatch queue is used to synchronize access to the
          * connection. If an explicit queue is not configured via the
@@ -103,7 +103,7 @@ public class MQTTEndpoint {
          * without having to wait for the long TCP/IP timeout. The option is a
          * short type.
          */
-        private short keepAlive;
+        private Short keepAlive;
         /**
          * The local InetAddress and port to use. The option is a java.net.URI
          * type.
@@ -115,13 +115,13 @@ public class MQTTEndpoint {
          * exceeded. Defaults to 0 which disables throttling. The option is a
          * int type.
          */
-        private int maxReadRate;
+        private Integer maxReadRate;
         /**
          * Sets the maximum bytes per second that this transport will send data
          * at. This setting throttles writes so that the rate is not exceeded.
          * Defaults to 0 which disables throttling. The option is a int type.
          */
-        private int maxWriteRate;
+        private Integer maxWriteRate;
         /**
          * The property name to look for on an Exchange for an individual
          * published message. If this is set (one of AtMostOnce, AtLeastOnce or
@@ -155,41 +155,41 @@ public class MQTTEndpoint {
          * Sets the size of the internal socket receive buffer. Defaults to
          * 65536 (64k). The option is a int type.
          */
-        private int receiveBufferSize;
+        private Integer receiveBufferSize;
         /**
          * The maximum number of reconnect attempts before an error is reported
          * back to the client after a server connection had previously been
          * established. Set to -1 to use unlimited attempts. Defaults to -1. The
          * option is a long type.
          */
-        private long reconnectAttemptsMax;
+        private Long reconnectAttemptsMax;
         /**
          * The Exponential backoff be used between reconnect attempts. Set to 1
          * to disable exponential backoff. Defaults to 2. The option is a double
          * type.
          */
-        private double reconnectBackOffMultiplier;
+        private Double reconnectBackOffMultiplier;
         /**
          * How long to wait in ms before the first reconnect attempt. Defaults
          * to 10. The option is a long type.
          */
-        private long reconnectDelay;
+        private Long reconnectDelay;
         /**
          * The maximum amount of time in ms to wait between reconnect attempts.
          * Defaults to 30,000. The option is a long type.
          */
-        private long reconnectDelayMax;
+        private Long reconnectDelayMax;
         /**
          * Sets the size of the internal socket send buffer. Defaults to 65536
          * (64k). The option is a int type.
          */
-        private int sendBufferSize;
+        private Integer sendBufferSize;
         /**
          * The maximum time the Component will wait for a receipt from the MQTT
          * broker to acknowledge a published message before throwing an
          * exception. The option is a int type.
          */
-        private int sendWaitInSeconds;
+        private Integer sendWaitInSeconds;
         /**
          * To configure security using SSLContext configuration. The option is a
          * javax.net.ssl.SSLContext type.
@@ -218,7 +218,7 @@ public class MQTTEndpoint {
          * packets sent from the transport. Defaults to 8 which means the
          * traffic should be optimized for throughput. The option is a int type.
          */
-        private int trafficClass;
+        private Integer trafficClass;
         /**
          * Set to 3.1.1 to use MQTT version 3.1.1. Otherwise defaults to the 3.1
          * protocol version. The option is a java.lang.String type.
@@ -250,13 +250,13 @@ public class MQTTEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getName() {
             return name;
@@ -274,19 +274,19 @@ public class MQTTEndpoint {
             this.blockingExecutor = blockingExecutor;
         }
 
-        public boolean getByDefaultRetain() {
+        public Boolean getByDefaultRetain() {
             return byDefaultRetain;
         }
 
-        public void setByDefaultRetain(boolean byDefaultRetain) {
+        public void setByDefaultRetain(Boolean byDefaultRetain) {
             this.byDefaultRetain = byDefaultRetain;
         }
 
-        public boolean getCleanSession() {
+        public Boolean getCleanSession() {
             return cleanSession;
         }
 
-        public void setCleanSession(boolean cleanSession) {
+        public void setCleanSession(Boolean cleanSession) {
             this.cleanSession = cleanSession;
         }
 
@@ -298,27 +298,27 @@ public class MQTTEndpoint {
             this.clientId = clientId;
         }
 
-        public long getConnectAttemptsMax() {
+        public Long getConnectAttemptsMax() {
             return connectAttemptsMax;
         }
 
-        public void setConnectAttemptsMax(long connectAttemptsMax) {
+        public void setConnectAttemptsMax(Long connectAttemptsMax) {
             this.connectAttemptsMax = connectAttemptsMax;
         }
 
-        public int getConnectWaitInSeconds() {
+        public Integer getConnectWaitInSeconds() {
             return connectWaitInSeconds;
         }
 
-        public void setConnectWaitInSeconds(int connectWaitInSeconds) {
+        public void setConnectWaitInSeconds(Integer connectWaitInSeconds) {
             this.connectWaitInSeconds = connectWaitInSeconds;
         }
 
-        public int getDisconnectWaitInSeconds() {
+        public Integer getDisconnectWaitInSeconds() {
             return disconnectWaitInSeconds;
         }
 
-        public void setDisconnectWaitInSeconds(int disconnectWaitInSeconds) {
+        public void setDisconnectWaitInSeconds(Integer disconnectWaitInSeconds) {
             this.disconnectWaitInSeconds = disconnectWaitInSeconds;
         }
 
@@ -338,11 +338,11 @@ public class MQTTEndpoint {
             this.host = host;
         }
 
-        public short getKeepAlive() {
+        public Short getKeepAlive() {
             return keepAlive;
         }
 
-        public void setKeepAlive(short keepAlive) {
+        public void setKeepAlive(Short keepAlive) {
             this.keepAlive = keepAlive;
         }
 
@@ -354,19 +354,19 @@ public class MQTTEndpoint {
             this.localAddress = localAddress;
         }
 
-        public int getMaxReadRate() {
+        public Integer getMaxReadRate() {
             return maxReadRate;
         }
 
-        public void setMaxReadRate(int maxReadRate) {
+        public void setMaxReadRate(Integer maxReadRate) {
             this.maxReadRate = maxReadRate;
         }
 
-        public int getMaxWriteRate() {
+        public Integer getMaxWriteRate() {
             return maxWriteRate;
         }
 
-        public void setMaxWriteRate(int maxWriteRate) {
+        public void setMaxWriteRate(Integer maxWriteRate) {
             this.maxWriteRate = maxWriteRate;
         }
 
@@ -410,60 +410,60 @@ public class MQTTEndpoint {
             this.qualityOfService = qualityOfService;
         }
 
-        public int getReceiveBufferSize() {
+        public Integer getReceiveBufferSize() {
             return receiveBufferSize;
         }
 
-        public void setReceiveBufferSize(int receiveBufferSize) {
+        public void setReceiveBufferSize(Integer receiveBufferSize) {
             this.receiveBufferSize = receiveBufferSize;
         }
 
-        public long getReconnectAttemptsMax() {
+        public Long getReconnectAttemptsMax() {
             return reconnectAttemptsMax;
         }
 
-        public void setReconnectAttemptsMax(long reconnectAttemptsMax) {
+        public void setReconnectAttemptsMax(Long reconnectAttemptsMax) {
             this.reconnectAttemptsMax = reconnectAttemptsMax;
         }
 
-        public double getReconnectBackOffMultiplier() {
+        public Double getReconnectBackOffMultiplier() {
             return reconnectBackOffMultiplier;
         }
 
         public void setReconnectBackOffMultiplier(
-                double reconnectBackOffMultiplier) {
+                Double reconnectBackOffMultiplier) {
             this.reconnectBackOffMultiplier = reconnectBackOffMultiplier;
         }
 
-        public long getReconnectDelay() {
+        public Long getReconnectDelay() {
             return reconnectDelay;
         }
 
-        public void setReconnectDelay(long reconnectDelay) {
+        public void setReconnectDelay(Long reconnectDelay) {
             this.reconnectDelay = reconnectDelay;
         }
 
-        public long getReconnectDelayMax() {
+        public Long getReconnectDelayMax() {
             return reconnectDelayMax;
         }
 
-        public void setReconnectDelayMax(long reconnectDelayMax) {
+        public void setReconnectDelayMax(Long reconnectDelayMax) {
             this.reconnectDelayMax = reconnectDelayMax;
         }
 
-        public int getSendBufferSize() {
+        public Integer getSendBufferSize() {
             return sendBufferSize;
         }
 
-        public void setSendBufferSize(int sendBufferSize) {
+        public void setSendBufferSize(Integer sendBufferSize) {
             this.sendBufferSize = sendBufferSize;
         }
 
-        public int getSendWaitInSeconds() {
+        public Integer getSendWaitInSeconds() {
             return sendWaitInSeconds;
         }
 
-        public void setSendWaitInSeconds(int sendWaitInSeconds) {
+        public void setSendWaitInSeconds(Integer sendWaitInSeconds) {
             this.sendWaitInSeconds = sendWaitInSeconds;
         }
 
@@ -493,11 +493,11 @@ public class MQTTEndpoint {
             this.subscribeTopicNames = subscribeTopicNames;
         }
 
-        public int getTrafficClass() {
+        public Integer getTrafficClass() {
             return trafficClass;
         }
 
-        public void setTrafficClass(int trafficClass) {
+        public void setTrafficClass(Integer trafficClass) {
             this.trafficClass = trafficClass;
         }
 
@@ -541,19 +541,19 @@ public class MQTTEndpoint {
             this.willTopic = willTopic;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -568,7 +568,7 @@ public class MQTTEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -583,11 +583,11 @@ public class MQTTEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -614,13 +614,13 @@ public class MQTTEndpoint {
          * server is not up and running when the Camel producer is started. The
          * option is a boolean type.
          */
-        private boolean lazySessionCreation;
+        private Boolean lazySessionCreation;
 
-        public boolean getLazySessionCreation() {
+        public Boolean getLazySessionCreation() {
             return lazySessionCreation;
         }
 
-        public void setLazySessionCreation(boolean lazySessionCreation) {
+        public void setLazySessionCreation(Boolean lazySessionCreation) {
             this.lazySessionCreation = lazySessionCreation;
         }
     }

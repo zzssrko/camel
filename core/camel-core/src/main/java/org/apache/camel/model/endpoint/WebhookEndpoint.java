@@ -41,7 +41,7 @@ public class WebhookEndpoint {
          * Automatically register the webhook at startup and unregister it on
          * shutdown. The option is a boolean type.
          */
-        private boolean webhookAutoRegister;
+        private Boolean webhookAutoRegister;
         /**
          * The first (base) path element where the webhook will be exposed. It's
          * a good practice to set it to a random string, so that it cannot be
@@ -69,13 +69,13 @@ public class WebhookEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getEndpointUri() {
             return endpointUri;
@@ -85,11 +85,11 @@ public class WebhookEndpoint {
             this.endpointUri = endpointUri;
         }
 
-        public boolean getWebhookAutoRegister() {
+        public Boolean getWebhookAutoRegister() {
             return webhookAutoRegister;
         }
 
-        public void setWebhookAutoRegister(boolean webhookAutoRegister) {
+        public void setWebhookAutoRegister(Boolean webhookAutoRegister) {
             this.webhookAutoRegister = webhookAutoRegister;
         }
 
@@ -125,19 +125,19 @@ public class WebhookEndpoint {
             this.webhookPath = webhookPath;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -152,7 +152,7 @@ public class WebhookEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -167,11 +167,11 @@ public class WebhookEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 

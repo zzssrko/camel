@@ -74,13 +74,13 @@ public class GridFsEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getConnectionBean() {
             return connectionBean;
@@ -130,19 +130,19 @@ public class GridFsEndpoint {
             this.writeConcernRef = writeConcernRef;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -157,12 +157,12 @@ public class GridFsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Sets the delay between polls within the Consumer. Default is 500ms.
          * The option is a long type.
          */
-        private long delay;
+        private Long delay;
         /**
          * If the QueryType uses a FileAttribute, this sets the name of the
          * attribute that is used. Default is camel-processed. The option is a
@@ -173,7 +173,7 @@ public class GridFsEndpoint {
          * Sets the initialDelay before the consumer will start polling. Default
          * is 1000ms. The option is a long type.
          */
-        private long initialDelay;
+        private Long initialDelay;
         /**
          * If the QueryType uses a persistent timestamp, this sets the name of
          * the collection within the DB to store the timestamp. The option is a
@@ -212,19 +212,19 @@ public class GridFsEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
 
@@ -236,11 +236,11 @@ public class GridFsEndpoint {
             this.fileAttributeName = fileAttributeName;
         }
 
-        public long getInitialDelay() {
+        public Long getInitialDelay() {
             return initialDelay;
         }
 
-        public void setInitialDelay(long initialDelay) {
+        public void setInitialDelay(Long initialDelay) {
             this.initialDelay = initialDelay;
         }
 

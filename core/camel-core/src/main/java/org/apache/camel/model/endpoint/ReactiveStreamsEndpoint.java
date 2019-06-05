@@ -40,13 +40,13 @@ public class ReactiveStreamsEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getStream() {
             return stream;
@@ -56,19 +56,19 @@ public class ReactiveStreamsEndpoint {
             this.stream = stream;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -83,12 +83,12 @@ public class ReactiveStreamsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Number of threads used to process exchanges in the Camel route. The
          * option is a int type.
          */
-        private int concurrentConsumers;
+        private Integer concurrentConsumers;
         /**
          * Set the low watermark of requested exchanges to the active
          * subscription as percentage of the maxInflightExchanges. When the
@@ -100,17 +100,17 @@ public class ReactiveStreamsEndpoint {
          * each time an exchange is processed (chatty). Any intermediate value
          * can be used. The option is a double type.
          */
-        private double exchangesRefillLowWatermark;
+        private Double exchangesRefillLowWatermark;
         /**
          * Determines if onComplete events should be pushed to the Camel route.
          * The option is a boolean type.
          */
-        private boolean forwardOnComplete;
+        private Boolean forwardOnComplete;
         /**
          * Determines if onError events should be pushed to the Camel route.
          * Exceptions will be set as message body. The option is a boolean type.
          */
-        private boolean forwardOnError;
+        private Boolean forwardOnError;
         /**
          * Maximum number of exchanges concurrently being processed by Camel.
          * This parameter controls backpressure on the stream. Setting a
@@ -132,44 +132,44 @@ public class ReactiveStreamsEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public int getConcurrentConsumers() {
+        public Integer getConcurrentConsumers() {
             return concurrentConsumers;
         }
 
-        public void setConcurrentConsumers(int concurrentConsumers) {
+        public void setConcurrentConsumers(Integer concurrentConsumers) {
             this.concurrentConsumers = concurrentConsumers;
         }
 
-        public double getExchangesRefillLowWatermark() {
+        public Double getExchangesRefillLowWatermark() {
             return exchangesRefillLowWatermark;
         }
 
         public void setExchangesRefillLowWatermark(
-                double exchangesRefillLowWatermark) {
+                Double exchangesRefillLowWatermark) {
             this.exchangesRefillLowWatermark = exchangesRefillLowWatermark;
         }
 
-        public boolean getForwardOnComplete() {
+        public Boolean getForwardOnComplete() {
             return forwardOnComplete;
         }
 
-        public void setForwardOnComplete(boolean forwardOnComplete) {
+        public void setForwardOnComplete(Boolean forwardOnComplete) {
             this.forwardOnComplete = forwardOnComplete;
         }
 
-        public boolean getForwardOnError() {
+        public Boolean getForwardOnError() {
             return forwardOnError;
         }
 
-        public void setForwardOnError(boolean forwardOnError) {
+        public void setForwardOnError(Boolean forwardOnError) {
             this.forwardOnError = forwardOnError;
         }
 

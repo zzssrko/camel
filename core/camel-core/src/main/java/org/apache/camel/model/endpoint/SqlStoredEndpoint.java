@@ -37,7 +37,7 @@ public class SqlStoredEndpoint {
         /**
          * Enables or disables batch mode. The option is a boolean type.
          */
-        private boolean batch;
+        private Boolean batch;
         /**
          * Sets the DataSource to use to communicate with the database. The
          * option is a javax.sql.DataSource type.
@@ -46,13 +46,13 @@ public class SqlStoredEndpoint {
         /**
          * Whether this call is for a function. The option is a boolean type.
          */
-        private boolean function;
+        private Boolean function;
         /**
          * If set, will ignore the results of the template and use the existing
          * IN message as the OUT message for the continuation of processing. The
          * option is a boolean type.
          */
-        private boolean noop;
+        private Boolean noop;
         /**
          * Store the template result in a header instead of the message body. By
          * default, outputHeader == null and the template result is stored in
@@ -67,19 +67,19 @@ public class SqlStoredEndpoint {
          * parameters. If this option is enabled then the template in the uri is
          * not used. The option is a boolean type.
          */
-        private boolean useMessageBodyForTemplate;
+        private Boolean useMessageBodyForTemplate;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getTemplate() {
             return template;
@@ -89,11 +89,11 @@ public class SqlStoredEndpoint {
             this.template = template;
         }
 
-        public boolean getBatch() {
+        public Boolean getBatch() {
             return batch;
         }
 
-        public void setBatch(boolean batch) {
+        public void setBatch(Boolean batch) {
             this.batch = batch;
         }
 
@@ -105,19 +105,19 @@ public class SqlStoredEndpoint {
             this.dataSource = dataSource;
         }
 
-        public boolean getFunction() {
+        public Boolean getFunction() {
             return function;
         }
 
-        public void setFunction(boolean function) {
+        public void setFunction(Boolean function) {
             this.function = function;
         }
 
-        public boolean getNoop() {
+        public Boolean getNoop() {
             return noop;
         }
 
-        public void setNoop(boolean noop) {
+        public void setNoop(Boolean noop) {
             this.noop = noop;
         }
 
@@ -129,28 +129,28 @@ public class SqlStoredEndpoint {
             this.outputHeader = outputHeader;
         }
 
-        public boolean getUseMessageBodyForTemplate() {
+        public Boolean getUseMessageBodyForTemplate() {
             return useMessageBodyForTemplate;
         }
 
         public void setUseMessageBodyForTemplate(
-                boolean useMessageBodyForTemplate) {
+                Boolean useMessageBodyForTemplate) {
             this.useMessageBodyForTemplate = useMessageBodyForTemplate;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

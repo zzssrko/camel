@@ -38,13 +38,13 @@ public class MockEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getName() {
             return name;
@@ -54,19 +54,19 @@ public class MockEndpoint {
             this.name = name;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -86,7 +86,7 @@ public class MockEndpoint {
          * method for. By default this period is disabled. The option is a long
          * type.
          */
-        private long assertPeriod;
+        private Long assertPeriod;
         /**
          * Specifies the expected number of message exchanges that should be
          * received by this endpoint. Beware: If you want to expect that 0
@@ -101,24 +101,24 @@ public class MockEndpoint {
          * this mock endpoint, then see also the setAssertPeriod(long) method
          * for further details. The option is a int type.
          */
-        private int expectedCount;
+        private Integer expectedCount;
         /**
          * A number that is used to turn on throughput logging based on groups
          * of the size. The option is a int type.
          */
-        private int reportGroup;
+        private Integer reportGroup;
         /**
          * Sets the minimum expected amount of time (in millis) the
          * assertIsSatisfied() will wait on a latch until it is satisfied. The
          * option is a long type.
          */
-        private long resultMinimumWaitTime;
+        private Long resultMinimumWaitTime;
         /**
          * Sets the maximum amount of time (in millis) the assertIsSatisfied()
          * will wait on a latch until it is satisfied. The option is a long
          * type.
          */
-        private long resultWaitTime;
+        private Long resultWaitTime;
         /**
          * Specifies to only retain the first n'th number of received Exchanges.
          * This is used when testing with big data, to reduce memory consumption
@@ -135,7 +135,7 @@ public class MockEndpoint {
          * both setRetainFirst(int) and setRetainLast(int) methods, to limit
          * both the first and last received. The option is a int type.
          */
-        private int retainFirst;
+        private Integer retainFirst;
         /**
          * Specifies to only retain the last n'th number of received Exchanges.
          * This is used when testing with big data, to reduce memory consumption
@@ -152,89 +152,89 @@ public class MockEndpoint {
          * setRetainFirst(int) and setRetainLast(int) methods, to limit both the
          * first and last received. The option is a int type.
          */
-        private int retainLast;
+        private Integer retainLast;
         /**
          * Allows a sleep to be specified to wait to check that this endpoint
          * really is empty when expectedMessageCount(int) is called with zero.
          * The option is a long type.
          */
-        private long sleepForEmptyTest;
+        private Long sleepForEmptyTest;
         /**
          * Sets whether to make a deep copy of the incoming Exchange when
          * received at this mock endpoint. Is by default true. The option is a
          * boolean type.
          */
-        private boolean copyOnExchange;
+        private Boolean copyOnExchange;
 
-        public long getAssertPeriod() {
+        public Long getAssertPeriod() {
             return assertPeriod;
         }
 
-        public void setAssertPeriod(long assertPeriod) {
+        public void setAssertPeriod(Long assertPeriod) {
             this.assertPeriod = assertPeriod;
         }
 
-        public int getExpectedCount() {
+        public Integer getExpectedCount() {
             return expectedCount;
         }
 
-        public void setExpectedCount(int expectedCount) {
+        public void setExpectedCount(Integer expectedCount) {
             this.expectedCount = expectedCount;
         }
 
-        public int getReportGroup() {
+        public Integer getReportGroup() {
             return reportGroup;
         }
 
-        public void setReportGroup(int reportGroup) {
+        public void setReportGroup(Integer reportGroup) {
             this.reportGroup = reportGroup;
         }
 
-        public long getResultMinimumWaitTime() {
+        public Long getResultMinimumWaitTime() {
             return resultMinimumWaitTime;
         }
 
-        public void setResultMinimumWaitTime(long resultMinimumWaitTime) {
+        public void setResultMinimumWaitTime(Long resultMinimumWaitTime) {
             this.resultMinimumWaitTime = resultMinimumWaitTime;
         }
 
-        public long getResultWaitTime() {
+        public Long getResultWaitTime() {
             return resultWaitTime;
         }
 
-        public void setResultWaitTime(long resultWaitTime) {
+        public void setResultWaitTime(Long resultWaitTime) {
             this.resultWaitTime = resultWaitTime;
         }
 
-        public int getRetainFirst() {
+        public Integer getRetainFirst() {
             return retainFirst;
         }
 
-        public void setRetainFirst(int retainFirst) {
+        public void setRetainFirst(Integer retainFirst) {
             this.retainFirst = retainFirst;
         }
 
-        public int getRetainLast() {
+        public Integer getRetainLast() {
             return retainLast;
         }
 
-        public void setRetainLast(int retainLast) {
+        public void setRetainLast(Integer retainLast) {
             this.retainLast = retainLast;
         }
 
-        public long getSleepForEmptyTest() {
+        public Long getSleepForEmptyTest() {
             return sleepForEmptyTest;
         }
 
-        public void setSleepForEmptyTest(long sleepForEmptyTest) {
+        public void setSleepForEmptyTest(Long sleepForEmptyTest) {
             this.sleepForEmptyTest = sleepForEmptyTest;
         }
 
-        public boolean getCopyOnExchange() {
+        public Boolean getCopyOnExchange() {
             return copyOnExchange;
         }
 
-        public void setCopyOnExchange(boolean copyOnExchange) {
+        public void setCopyOnExchange(Boolean copyOnExchange) {
             this.copyOnExchange = copyOnExchange;
         }
     }

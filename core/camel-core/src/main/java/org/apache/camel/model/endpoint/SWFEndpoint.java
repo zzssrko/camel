@@ -71,7 +71,7 @@ public class SWFEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * To configure the ClientConfiguration using the key/values from the
          * Map. The option is a java.util.Map<java.lang.String,java.lang.Object>
@@ -95,7 +95,7 @@ public class SWFEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
@@ -161,11 +161,11 @@ public class SWFEndpoint {
             this.version = version;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -195,11 +195,11 @@ public class SWFEndpoint {
             this.sWClientParameters = sWClientParameters;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -230,7 +230,7 @@ public class SWFEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -253,7 +253,7 @@ public class SWFEndpoint {
          * Maximum number of threads in work pool for activity. The option is a
          * int type.
          */
-        private int activityThreadPoolSize;
+        private Integer activityThreadPoolSize;
         /**
          * Activity execution options. The option is a
          * com.amazonaws.services.simpleworkflow.flow.worker.ActivityTypeExecutionOptions type.
@@ -275,11 +275,11 @@ public class SWFEndpoint {
          */
         private Object workflowTypeRegistrationOptions;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -307,11 +307,11 @@ public class SWFEndpoint {
             this.activityList = activityList;
         }
 
-        public int getActivityThreadPoolSize() {
+        public Integer getActivityThreadPoolSize() {
             return activityThreadPoolSize;
         }
 
-        public void setActivityThreadPoolSize(int activityThreadPoolSize) {
+        public void setActivityThreadPoolSize(Integer activityThreadPoolSize) {
             this.activityThreadPoolSize = activityThreadPoolSize;
         }
 

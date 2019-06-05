@@ -114,7 +114,7 @@ public class DigitalSignatureEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Set the size of the buffer used to read in the Exchange payload data.
          * The option is a java.lang.Integer type.
@@ -132,7 +132,7 @@ public class DigitalSignatureEndpoint {
          * at your extreme peril as vital private information such as Keys and
          * passwords may escape if unset. The option is a boolean type.
          */
-        private boolean clearHeaders;
+        private Boolean clearHeaders;
         /**
          * Sets the KeyStore that can contain keys and Certficates for use in
          * signing and verifying exchanges based on the given
@@ -159,12 +159,12 @@ public class DigitalSignatureEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Sets the password used to access an aliased PrivateKey in the
          * KeyStore. The option is a java.lang.String type.
          */
-        private char[] password;
+        private Character[] password;
 
         public CryptoOperation getCryptoOperation() {
             return cryptoOperation;
@@ -270,11 +270,11 @@ public class DigitalSignatureEndpoint {
             this.signatureHeaderName = signatureHeaderName;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -294,11 +294,11 @@ public class DigitalSignatureEndpoint {
             this.certificate = certificate;
         }
 
-        public boolean getClearHeaders() {
+        public Boolean getClearHeaders() {
             return clearHeaders;
         }
 
-        public void setClearHeaders(boolean clearHeaders) {
+        public void setClearHeaders(Boolean clearHeaders) {
             this.clearHeaders = clearHeaders;
         }
 
@@ -326,19 +326,19 @@ public class DigitalSignatureEndpoint {
             this.secureRandom = secureRandom;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public char[] getPassword() {
+        public Character[] getPassword() {
             return password;
         }
 
-        public void setPassword(char[] password) {
+        public void setPassword(Character[] password) {
             this.password = password;
         }
     }

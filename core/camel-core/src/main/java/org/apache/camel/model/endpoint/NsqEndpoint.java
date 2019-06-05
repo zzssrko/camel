@@ -50,18 +50,18 @@ public class NsqEndpoint {
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Set secure option indicating TLS is required. The option is a boolean
          * type.
          */
-        private boolean secure;
+        private Boolean secure;
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
@@ -92,27 +92,27 @@ public class NsqEndpoint {
             this.userAgent = userAgent;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
-        public boolean getSecure() {
+        public Boolean getSecure() {
             return secure;
         }
 
-        public void setSecure(boolean secure) {
+        public void setSecure(Boolean secure) {
             this.secure = secure;
         }
 
@@ -141,7 +141,7 @@ public class NsqEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * The name of channel we want to use. The option is a java.lang.String
          * type.
@@ -150,23 +150,23 @@ public class NsqEndpoint {
         /**
          * The lookup retry interval. The option is a long type.
          */
-        private long lookupInterval;
+        private Long lookupInterval;
         /**
          * The port of the nsqdlookupd server. The option is a int type.
          */
-        private int lookupServerPort;
+        private Integer lookupServerPort;
         /**
          * The NSQ message timeout for a consumer. The option is a long type.
          */
-        private long messageTimeout;
+        private Long messageTimeout;
         /**
          * Consumer pool size. The option is a int type.
          */
-        private int poolSize;
+        private Integer poolSize;
         /**
          * The requeue interval. The option is a long type.
          */
-        private long requeueInterval;
+        private Long requeueInterval;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -189,11 +189,11 @@ public class NsqEndpoint {
             this.autoFinish = autoFinish;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
@@ -205,43 +205,43 @@ public class NsqEndpoint {
             this.channel = channel;
         }
 
-        public long getLookupInterval() {
+        public Long getLookupInterval() {
             return lookupInterval;
         }
 
-        public void setLookupInterval(long lookupInterval) {
+        public void setLookupInterval(Long lookupInterval) {
             this.lookupInterval = lookupInterval;
         }
 
-        public int getLookupServerPort() {
+        public Integer getLookupServerPort() {
             return lookupServerPort;
         }
 
-        public void setLookupServerPort(int lookupServerPort) {
+        public void setLookupServerPort(Integer lookupServerPort) {
             this.lookupServerPort = lookupServerPort;
         }
 
-        public long getMessageTimeout() {
+        public Long getMessageTimeout() {
             return messageTimeout;
         }
 
-        public void setMessageTimeout(long messageTimeout) {
+        public void setMessageTimeout(Long messageTimeout) {
             this.messageTimeout = messageTimeout;
         }
 
-        public int getPoolSize() {
+        public Integer getPoolSize() {
             return poolSize;
         }
 
-        public void setPoolSize(int poolSize) {
+        public void setPoolSize(Integer poolSize) {
             this.poolSize = poolSize;
         }
 
-        public long getRequeueInterval() {
+        public Long getRequeueInterval() {
             return requeueInterval;
         }
 
-        public void setRequeueInterval(long requeueInterval) {
+        public void setRequeueInterval(Long requeueInterval) {
             this.requeueInterval = requeueInterval;
         }
 
@@ -266,13 +266,13 @@ public class NsqEndpoint {
         /**
          * The port of the nsqd server. The option is a int type.
          */
-        private int port;
+        private Integer port;
 
-        public int getPort() {
+        public Integer getPort() {
             return port;
         }
 
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
     }

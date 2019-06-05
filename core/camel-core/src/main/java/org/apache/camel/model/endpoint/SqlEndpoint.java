@@ -46,7 +46,7 @@ public class SqlEndpoint {
          * Whether to allow using named parameters in the queries. The option is
          * a boolean type.
          */
-        private boolean allowNamedParameters;
+        private Boolean allowNamedParameters;
         /**
          * Sets the DataSource to use to communicate with the database. The
          * option is a javax.sql.DataSource type.
@@ -93,7 +93,7 @@ public class SqlEndpoint {
          * Notice if you use named parameters, then a Map type is used instead.
          * The default value is comma. The option is a char type.
          */
-        private char separator;
+        private Character separator;
         /**
          * If enabled then the populateStatement method from
          * org.apache.camel.component.sql.SqlPrepareStatementStrategy is always
@@ -103,20 +103,20 @@ public class SqlEndpoint {
          * reading the message body/headers for SQL queries with no parameters.
          * The option is a boolean type.
          */
-        private boolean alwaysPopulateStatement;
+        private Boolean alwaysPopulateStatement;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * If set greater than zero, then Camel will use this count value of
          * parameters to replace instead of querying via JDBC metadata API. This
          * is useful if the JDBC vendor could not return correct parameters
          * count, then user may override instead. The option is a int type.
          */
-        private int parametersCount;
+        private Integer parametersCount;
         /**
          * Specifies a character that will be replaced to in SQL query. Notice,
          * that it is simple String.replaceAll() operation and no SQL parsing is
@@ -136,7 +136,7 @@ public class SqlEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
         /**
          * Configures the Spring JdbcTemplate with the key/values from the Map.
          * The option is a java.util.Map<java.lang.String,java.lang.Object>
@@ -148,7 +148,7 @@ public class SqlEndpoint {
          * characters with sign in the SQL queries. This option is default true.
          * The option is a boolean type.
          */
-        private boolean usePlaceholder;
+        private Boolean usePlaceholder;
 
         public String getQuery() {
             return query;
@@ -158,11 +158,11 @@ public class SqlEndpoint {
             this.query = query;
         }
 
-        public boolean getAllowNamedParameters() {
+        public Boolean getAllowNamedParameters() {
             return allowNamedParameters;
         }
 
-        public void setAllowNamedParameters(boolean allowNamedParameters) {
+        public void setAllowNamedParameters(Boolean allowNamedParameters) {
             this.allowNamedParameters = allowNamedParameters;
         }
 
@@ -208,35 +208,35 @@ public class SqlEndpoint {
             this.outputType = outputType;
         }
 
-        public char getSeparator() {
+        public Character getSeparator() {
             return separator;
         }
 
-        public void setSeparator(char separator) {
+        public void setSeparator(Character separator) {
             this.separator = separator;
         }
 
-        public boolean getAlwaysPopulateStatement() {
+        public Boolean getAlwaysPopulateStatement() {
             return alwaysPopulateStatement;
         }
 
-        public void setAlwaysPopulateStatement(boolean alwaysPopulateStatement) {
+        public void setAlwaysPopulateStatement(Boolean alwaysPopulateStatement) {
             this.alwaysPopulateStatement = alwaysPopulateStatement;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public int getParametersCount() {
+        public Integer getParametersCount() {
             return parametersCount;
         }
 
-        public void setParametersCount(int parametersCount) {
+        public void setParametersCount(Integer parametersCount) {
             this.parametersCount = parametersCount;
         }
 
@@ -256,11 +256,11 @@ public class SqlEndpoint {
             this.prepareStatementStrategy = prepareStatementStrategy;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
 
@@ -272,11 +272,11 @@ public class SqlEndpoint {
             this.templateOptions = templateOptions;
         }
 
-        public boolean getUsePlaceholder() {
+        public Boolean getUsePlaceholder() {
             return usePlaceholder;
         }
 
-        public void setUsePlaceholder(boolean usePlaceholder) {
+        public void setUsePlaceholder(Boolean usePlaceholder) {
             this.usePlaceholder = usePlaceholder;
         }
     }
@@ -286,7 +286,7 @@ public class SqlEndpoint {
          * Sets whether to break batch if onConsume failed. The option is a
          * boolean type.
          */
-        private boolean breakBatchOnConsumeFail;
+        private Boolean breakBatchOnConsumeFail;
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -296,17 +296,17 @@ public class SqlEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * Sets an expected update count to validate when using onConsume. The
          * option is a int type.
          */
-        private int expectedUpdateCount;
+        private Integer expectedUpdateCount;
         /**
          * Sets the maximum number of messages to poll. The option is a int
          * type.
          */
-        private int maxMessagesPerPoll;
+        private Integer maxMessagesPerPoll;
         /**
          * After processing each row then this query can be executed, if the
          * Exchange was processed successfully, for example to mark the row as
@@ -331,25 +331,25 @@ public class SqlEndpoint {
          * hop. Defaults to false. So the empty resultset will be filtered out.
          * The option is a boolean type.
          */
-        private boolean routeEmptyResultSet;
+        private Boolean routeEmptyResultSet;
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private boolean sendEmptyMessageWhenIdle;
+        private Boolean sendEmptyMessageWhenIdle;
         /**
          * Enables or disables transaction. If enabled then if processing an
          * exchange failed then the consumer break out processing any further
          * exchanges to cause a rollback eager. The option is a boolean type.
          */
-        private boolean transacted;
+        private Boolean transacted;
         /**
          * Sets how resultset should be delivered to route. Indicates delivery
          * as either a list or individual object. defaults to true. The option
          * is a boolean type.
          */
-        private boolean useIterator;
+        private Boolean useIterator;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -383,12 +383,12 @@ public class SqlEndpoint {
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private int backoffErrorThreshold;
+        private Integer backoffErrorThreshold;
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private int backoffIdleThreshold;
+        private Integer backoffIdleThreshold;
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -397,25 +397,25 @@ public class SqlEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private int backoffMultiplier;
+        private Integer backoffMultiplier;
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long delay;
+        private Long delay;
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private boolean greedy;
+        private Boolean greedy;
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private long initialDelay;
+        private Long initialDelay;
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
@@ -445,7 +445,7 @@ public class SqlEndpoint {
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private boolean startScheduler;
+        private Boolean startScheduler;
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
@@ -456,37 +456,37 @@ public class SqlEndpoint {
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private boolean useFixedDelay;
+        private Boolean useFixedDelay;
 
-        public boolean getBreakBatchOnConsumeFail() {
+        public Boolean getBreakBatchOnConsumeFail() {
             return breakBatchOnConsumeFail;
         }
 
-        public void setBreakBatchOnConsumeFail(boolean breakBatchOnConsumeFail) {
+        public void setBreakBatchOnConsumeFail(Boolean breakBatchOnConsumeFail) {
             this.breakBatchOnConsumeFail = breakBatchOnConsumeFail;
         }
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
-        public int getExpectedUpdateCount() {
+        public Integer getExpectedUpdateCount() {
             return expectedUpdateCount;
         }
 
-        public void setExpectedUpdateCount(int expectedUpdateCount) {
+        public void setExpectedUpdateCount(Integer expectedUpdateCount) {
             this.expectedUpdateCount = expectedUpdateCount;
         }
 
-        public int getMaxMessagesPerPoll() {
+        public Integer getMaxMessagesPerPoll() {
             return maxMessagesPerPoll;
         }
 
-        public void setMaxMessagesPerPoll(int maxMessagesPerPoll) {
+        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
             this.maxMessagesPerPoll = maxMessagesPerPoll;
         }
 
@@ -514,35 +514,35 @@ public class SqlEndpoint {
             this.onConsumeFailed = onConsumeFailed;
         }
 
-        public boolean getRouteEmptyResultSet() {
+        public Boolean getRouteEmptyResultSet() {
             return routeEmptyResultSet;
         }
 
-        public void setRouteEmptyResultSet(boolean routeEmptyResultSet) {
+        public void setRouteEmptyResultSet(Boolean routeEmptyResultSet) {
             this.routeEmptyResultSet = routeEmptyResultSet;
         }
 
-        public boolean getSendEmptyMessageWhenIdle() {
+        public Boolean getSendEmptyMessageWhenIdle() {
             return sendEmptyMessageWhenIdle;
         }
 
-        public void setSendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
+        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
             this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
         }
 
-        public boolean getTransacted() {
+        public Boolean getTransacted() {
             return transacted;
         }
 
-        public void setTransacted(boolean transacted) {
+        public void setTransacted(Boolean transacted) {
             this.transacted = transacted;
         }
 
-        public boolean getUseIterator() {
+        public Boolean getUseIterator() {
             return useIterator;
         }
 
-        public void setUseIterator(boolean useIterator) {
+        public void setUseIterator(Boolean useIterator) {
             this.useIterator = useIterator;
         }
 
@@ -578,51 +578,51 @@ public class SqlEndpoint {
             this.processingStrategy = processingStrategy;
         }
 
-        public int getBackoffErrorThreshold() {
+        public Integer getBackoffErrorThreshold() {
             return backoffErrorThreshold;
         }
 
-        public void setBackoffErrorThreshold(int backoffErrorThreshold) {
+        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
             this.backoffErrorThreshold = backoffErrorThreshold;
         }
 
-        public int getBackoffIdleThreshold() {
+        public Integer getBackoffIdleThreshold() {
             return backoffIdleThreshold;
         }
 
-        public void setBackoffIdleThreshold(int backoffIdleThreshold) {
+        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
             this.backoffIdleThreshold = backoffIdleThreshold;
         }
 
-        public int getBackoffMultiplier() {
+        public Integer getBackoffMultiplier() {
             return backoffMultiplier;
         }
 
-        public void setBackoffMultiplier(int backoffMultiplier) {
+        public void setBackoffMultiplier(Integer backoffMultiplier) {
             this.backoffMultiplier = backoffMultiplier;
         }
 
-        public long getDelay() {
+        public Long getDelay() {
             return delay;
         }
 
-        public void setDelay(long delay) {
+        public void setDelay(Long delay) {
             this.delay = delay;
         }
 
-        public boolean getGreedy() {
+        public Boolean getGreedy() {
             return greedy;
         }
 
-        public void setGreedy(boolean greedy) {
+        public void setGreedy(Boolean greedy) {
             this.greedy = greedy;
         }
 
-        public long getInitialDelay() {
+        public Long getInitialDelay() {
             return initialDelay;
         }
 
-        public void setInitialDelay(long initialDelay) {
+        public void setInitialDelay(Long initialDelay) {
             this.initialDelay = initialDelay;
         }
 
@@ -660,11 +660,11 @@ public class SqlEndpoint {
             this.schedulerProperties = schedulerProperties;
         }
 
-        public boolean getStartScheduler() {
+        public Boolean getStartScheduler() {
             return startScheduler;
         }
 
-        public void setStartScheduler(boolean startScheduler) {
+        public void setStartScheduler(Boolean startScheduler) {
             this.startScheduler = startScheduler;
         }
 
@@ -676,11 +676,11 @@ public class SqlEndpoint {
             this.timeUnit = timeUnit;
         }
 
-        public boolean getUseFixedDelay() {
+        public Boolean getUseFixedDelay() {
             return useFixedDelay;
         }
 
-        public void setUseFixedDelay(boolean useFixedDelay) {
+        public void setUseFixedDelay(Boolean useFixedDelay) {
             this.useFixedDelay = useFixedDelay;
         }
     }
@@ -689,41 +689,41 @@ public class SqlEndpoint {
         /**
          * Enables or disables batch mode. The option is a boolean type.
          */
-        private boolean batch;
+        private Boolean batch;
         /**
          * If set, will ignore the results of the SQL query and use the existing
          * IN message as the OUT message for the continuation of processing. The
          * option is a boolean type.
          */
-        private boolean noop;
+        private Boolean noop;
         /**
          * Whether to use the message body as the SQL and then headers for
          * parameters. If this option is enabled then the SQL in the uri is not
          * used. The option is a boolean type.
          */
-        private boolean useMessageBodyForSql;
+        private Boolean useMessageBodyForSql;
 
-        public boolean getBatch() {
+        public Boolean getBatch() {
             return batch;
         }
 
-        public void setBatch(boolean batch) {
+        public void setBatch(Boolean batch) {
             this.batch = batch;
         }
 
-        public boolean getNoop() {
+        public Boolean getNoop() {
             return noop;
         }
 
-        public void setNoop(boolean noop) {
+        public void setNoop(Boolean noop) {
             this.noop = noop;
         }
 
-        public boolean getUseMessageBodyForSql() {
+        public Boolean getUseMessageBodyForSql() {
             return useMessageBodyForSql;
         }
 
-        public void setUseMessageBodyForSql(boolean useMessageBodyForSql) {
+        public void setUseMessageBodyForSql(Boolean useMessageBodyForSql) {
             this.useMessageBodyForSql = useMessageBodyForSql;
         }
     }

@@ -37,16 +37,16 @@ public class ElasticsearchEndpoint {
          * The time in ms to wait before connection will timeout. The option is
          * a int type.
          */
-        private int connectionTimeout;
+        private Integer connectionTimeout;
         /**
          * Disconnect after it finish calling the producer. The option is a
          * boolean type.
          */
-        private boolean disconnect;
+        private Boolean disconnect;
         /**
          * Enable SSL. The option is a boolean type.
          */
-        private boolean enableSSL;
+        private Boolean enableSSL;
         /**
          * Comma separated list with ip:port formatted remote transport
          * addresses to use. The option is a java.lang.String type.
@@ -65,7 +65,7 @@ public class ElasticsearchEndpoint {
         /**
          * The time in ms before retry. The option is a int type.
          */
-        private int maxRetryTimeout;
+        private Integer maxRetryTimeout;
         /**
          * What operation to perform. The option is a
          * org.apache.camel.component.elasticsearch.ElasticsearchOperation type.
@@ -75,33 +75,33 @@ public class ElasticsearchEndpoint {
          * Time in ms during which elasticsearch will keep search context alive.
          * The option is a int type.
          */
-        private int scrollKeepAliveMs;
+        private Integer scrollKeepAliveMs;
         /**
          * The timeout in ms to wait before the socket will timeout. The option
          * is a int type.
          */
-        private int socketTimeout;
+        private Integer socketTimeout;
         /**
          * Enable scroll usage. The option is a boolean type.
          */
-        private boolean useScroll;
+        private Boolean useScroll;
         /**
          * Index creation waits for the write consistency number of shards to be
          * available. The option is a int type.
          */
-        private int waitForActiveShards;
+        private Integer waitForActiveShards;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getClusterName() {
             return clusterName;
@@ -111,27 +111,27 @@ public class ElasticsearchEndpoint {
             this.clusterName = clusterName;
         }
 
-        public int getConnectionTimeout() {
+        public Integer getConnectionTimeout() {
             return connectionTimeout;
         }
 
-        public void setConnectionTimeout(int connectionTimeout) {
+        public void setConnectionTimeout(Integer connectionTimeout) {
             this.connectionTimeout = connectionTimeout;
         }
 
-        public boolean getDisconnect() {
+        public Boolean getDisconnect() {
             return disconnect;
         }
 
-        public void setDisconnect(boolean disconnect) {
+        public void setDisconnect(Boolean disconnect) {
             this.disconnect = disconnect;
         }
 
-        public boolean getEnableSSL() {
+        public Boolean getEnableSSL() {
             return enableSSL;
         }
 
-        public void setEnableSSL(boolean enableSSL) {
+        public void setEnableSSL(Boolean enableSSL) {
             this.enableSSL = enableSSL;
         }
 
@@ -159,11 +159,11 @@ public class ElasticsearchEndpoint {
             this.indexType = indexType;
         }
 
-        public int getMaxRetryTimeout() {
+        public Integer getMaxRetryTimeout() {
             return maxRetryTimeout;
         }
 
-        public void setMaxRetryTimeout(int maxRetryTimeout) {
+        public void setMaxRetryTimeout(Integer maxRetryTimeout) {
             this.maxRetryTimeout = maxRetryTimeout;
         }
 
@@ -175,51 +175,51 @@ public class ElasticsearchEndpoint {
             this.operation = operation;
         }
 
-        public int getScrollKeepAliveMs() {
+        public Integer getScrollKeepAliveMs() {
             return scrollKeepAliveMs;
         }
 
-        public void setScrollKeepAliveMs(int scrollKeepAliveMs) {
+        public void setScrollKeepAliveMs(Integer scrollKeepAliveMs) {
             this.scrollKeepAliveMs = scrollKeepAliveMs;
         }
 
-        public int getSocketTimeout() {
+        public Integer getSocketTimeout() {
             return socketTimeout;
         }
 
-        public void setSocketTimeout(int socketTimeout) {
+        public void setSocketTimeout(Integer socketTimeout) {
             this.socketTimeout = socketTimeout;
         }
 
-        public boolean getUseScroll() {
+        public Boolean getUseScroll() {
             return useScroll;
         }
 
-        public void setUseScroll(boolean useScroll) {
+        public void setUseScroll(Boolean useScroll) {
             this.useScroll = useScroll;
         }
 
-        public int getWaitForActiveShards() {
+        public Integer getWaitForActiveShards() {
             return waitForActiveShards;
         }
 
-        public void setWaitForActiveShards(int waitForActiveShards) {
+        public void setWaitForActiveShards(Integer waitForActiveShards) {
             this.waitForActiveShards = waitForActiveShards;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }

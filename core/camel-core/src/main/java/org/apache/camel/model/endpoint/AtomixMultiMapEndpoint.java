@@ -74,13 +74,13 @@ public class AtomixMultiMapEndpoint {
         /**
          * The resource ttl. The option is a long type.
          */
-        private long ttl;
+        private Long ttl;
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private boolean basicPropertyBinding;
+        private Boolean basicPropertyBinding;
         /**
          * The cluster wide default resource configuration. The option is a
          * java.util.Properties type.
@@ -97,7 +97,7 @@ public class AtomixMultiMapEndpoint {
          * generated ID thus the local one is ignored. The option is a boolean
          * type.
          */
-        private boolean ephemeral;
+        private Boolean ephemeral;
         /**
          * The read consistency level. The option is a
          * io.atomix.resource.ReadConsistency type.
@@ -118,7 +118,7 @@ public class AtomixMultiMapEndpoint {
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private boolean synchronous;
+        private Boolean synchronous;
 
         public String getResourceName() {
             return resourceName;
@@ -184,19 +184,19 @@ public class AtomixMultiMapEndpoint {
             this.transport = transport;
         }
 
-        public long getTtl() {
+        public Long getTtl() {
             return ttl;
         }
 
-        public void setTtl(long ttl) {
+        public void setTtl(Long ttl) {
             this.ttl = ttl;
         }
 
-        public boolean getBasicPropertyBinding() {
+        public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
         }
 
-        public void setBasicPropertyBinding(boolean basicPropertyBinding) {
+        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
             this.basicPropertyBinding = basicPropertyBinding;
         }
 
@@ -216,11 +216,11 @@ public class AtomixMultiMapEndpoint {
             this.defaultResourceOptions = defaultResourceOptions;
         }
 
-        public boolean getEphemeral() {
+        public Boolean getEphemeral() {
             return ephemeral;
         }
 
-        public void setEphemeral(boolean ephemeral) {
+        public void setEphemeral(Boolean ephemeral) {
             this.ephemeral = ephemeral;
         }
 
@@ -248,11 +248,11 @@ public class AtomixMultiMapEndpoint {
             this.resourceOptions = resourceOptions;
         }
 
-        public boolean getSynchronous() {
+        public Boolean getSynchronous() {
             return synchronous;
         }
 
-        public void setSynchronous(boolean synchronous) {
+        public void setSynchronous(Boolean synchronous) {
             this.synchronous = synchronous;
         }
     }
@@ -267,7 +267,7 @@ public class AtomixMultiMapEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private boolean bridgeErrorHandler;
+        private Boolean bridgeErrorHandler;
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -282,11 +282,11 @@ public class AtomixMultiMapEndpoint {
          */
         private ExchangePattern exchangePattern;
 
-        public boolean getBridgeErrorHandler() {
+        public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
         }
 
-        public void setBridgeErrorHandler(boolean bridgeErrorHandler) {
+        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
             this.bridgeErrorHandler = bridgeErrorHandler;
         }
 
