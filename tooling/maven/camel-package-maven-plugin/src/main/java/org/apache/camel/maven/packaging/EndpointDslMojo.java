@@ -79,7 +79,6 @@ import static org.apache.camel.maven.packaging.PackageHelper.loadText;
 public class EndpointDslMojo extends AbstractMojo {
 
     private static final Map<String, String> PRIMITIVEMAP;
-    private static final Map<String, Class> PRIMITIVE_CLASSES = new HashMap<>();
 
     static {
         PRIMITIVEMAP = new HashMap<>();
@@ -92,16 +91,6 @@ public class EndpointDslMojo extends AbstractMojo {
         PRIMITIVEMAP.put("short", "java.lang.Short");
         PRIMITIVEMAP.put("double", "java.lang.Double");
         PRIMITIVEMAP.put("float", "java.lang.Float");
-
-        PRIMITIVE_CLASSES.put("int", int.class);
-        PRIMITIVE_CLASSES.put("short", short.class);
-        PRIMITIVE_CLASSES.put("long", long.class);
-        PRIMITIVE_CLASSES.put("byte", byte.class);
-        PRIMITIVE_CLASSES.put("char", char.class);
-        PRIMITIVE_CLASSES.put("float", float.class);
-        PRIMITIVE_CLASSES.put("double", double.class);
-        PRIMITIVE_CLASSES.put("boolean", boolean.class);
-        PRIMITIVE_CLASSES.put("void", void.class);
     }
 
     private static final String[] IGNORE_MODULES = {/* Non-standard -> */ };
@@ -333,7 +322,7 @@ public class EndpointDslMojo extends AbstractMojo {
     }
 
     static boolean isPrimitive(String type) {
-        return PRIMITIVE_CLASSES.containsKey(type);
+        return PRIMITIVEMAP.containsKey(type);
     }
 
     private Class<?> loadClass(String loadClassName) {
@@ -382,7 +371,7 @@ public class EndpointDslMojo extends AbstractMojo {
         }
         // Primitive
         if (isPrimitive(type)) {
-            return new GenericType(PRIMITIVE_CLASSES.get(type));
+            return new GenericType(loadClass(PRIMITIVEMAP.get(type)));
         }
         // Extends
         if (type.startsWith("? extends ")) {
