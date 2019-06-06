@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * Transforms the message using a MVEL template.
@@ -27,15 +28,12 @@ import javax.annotation.Generated;
 public class MvelEndpoint {
 
 
-    public static class MvelCommon<T extends EndpointConfiguration>
+    public static class MvelCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String resourceUri;
-        private Boolean contentCache;
-        private String encoding;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        MvelCommon(String path) {
+            super("mvel", path);
+        }
         /**
          * Path to the resource. You can prefix with: classpath, file, http,
          * ref, or bean. classpath, file and http loads the resource using these
@@ -45,92 +43,62 @@ public class MvelEndpoint {
          * bean:myBean.myMethod. The option is a java.lang.String type.
          */
         public T resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
+            this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
-
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
         public T contentCache(boolean contentCache) {
-            this.contentCache = contentCache;
+            this.properties.put("contentCache", contentCache);
             return (T) this;
         }
-
         /**
          * Character encoding of the resource content. The option is a
          * java.lang.String type.
          */
         public T encoding(String encoding) {
-            this.encoding = encoding;
+            this.properties.put("encoding", encoding);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getResourceUri() {
-            return resourceUri;
-        }
-
-        public void setResourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-        }
-
-        public Boolean getContentCache() {
-            return contentCache;
-        }
-
-        public void setContentCache(Boolean contentCache) {
-            this.contentCache = contentCache;
-        }
-
-        public String getEncoding() {
-            return encoding;
-        }
-
-        public void setEncoding(String encoding) {
-            this.encoding = encoding;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class MvelConsumer
+            extends
+                MvelCommon<MvelConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public MvelConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class MvelConsumer extends MvelCommon<MvelConsumer> {
-    }
-
-    public static class MvelProducer extends MvelCommon<MvelProducer> {
+    public static class MvelProducer
+            extends
+                MvelCommon<MvelProducer>
+            implements
+                EndpointDefinition.Producer {
+        public MvelProducer(String path) {
+            super(path);
+        }
     }
 }

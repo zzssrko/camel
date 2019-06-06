@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,96 +37,49 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class MyBatisEndpoint {
 
 
-    public static class MyBatisCommon<T extends EndpointConfiguration>
+    public static class MyBatisCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String statement;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        MyBatisCommon(String path) {
+            super("mybatis", path);
+        }
         /**
          * The statement name in the MyBatis XML mapping file which maps to the
          * query, insert, update or delete operation you wish to evaluate. The
          * option is a java.lang.String type.
          */
         public T statement(String statement) {
-            this.statement = statement;
+            this.properties.put("statement", statement);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getStatement() {
-            return statement;
-        }
-
-        public void setStatement(String statement) {
-            this.statement = statement;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class MyBatisConsumer
             extends
-                MyBatisCommon<MyBatisConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Integer maxMessagesPerPoll;
-        private String onConsume;
-        private Boolean routeEmptyResultSet;
-        private Boolean sendEmptyMessageWhenIdle;
-        private Boolean transacted;
-        private Boolean useIterator;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Object processingStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+                MyBatisCommon<MyBatisConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public MyBatisConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -136,10 +90,9 @@ public class MyBatisEndpoint {
          * ignored. The option is a boolean type.
          */
         public MyBatisConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (MyBatisConsumer) this;
         }
-
         /**
          * This option is intended to split results returned by the database
          * pool into the batches and deliver them in multiple exchanges. This
@@ -150,28 +103,25 @@ public class MyBatisEndpoint {
          * int type.
          */
         public MyBatisConsumer maxMessagesPerPoll(int maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
             return (MyBatisConsumer) this;
         }
-
         /**
          * Statement to run after data has been processed in the route. The
          * option is a java.lang.String type.
          */
         public MyBatisConsumer onConsume(String onConsume) {
-            this.onConsume = onConsume;
+            this.properties.put("onConsume", onConsume);
             return (MyBatisConsumer) this;
         }
-
         /**
          * Whether allow empty resultset to be routed to the next hop. The
          * option is a boolean type.
          */
         public MyBatisConsumer routeEmptyResultSet(boolean routeEmptyResultSet) {
-            this.routeEmptyResultSet = routeEmptyResultSet;
+            this.properties.put("routeEmptyResultSet", routeEmptyResultSet);
             return (MyBatisConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -179,29 +129,26 @@ public class MyBatisEndpoint {
          */
         public MyBatisConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (MyBatisConsumer) this;
         }
-
         /**
          * Enables or disables transaction. If enabled then if processing an
          * exchange failed then the consumer break out processing any further
          * exchanges to cause a rollback eager. The option is a boolean type.
          */
         public MyBatisConsumer transacted(boolean transacted) {
-            this.transacted = transacted;
+            this.properties.put("transacted", transacted);
             return (MyBatisConsumer) this;
         }
-
         /**
          * Process resultset individually or as a list. The option is a boolean
          * type.
          */
         public MyBatisConsumer useIterator(boolean useIterator) {
-            this.useIterator = useIterator;
+            this.properties.put("useIterator", useIterator);
             return (MyBatisConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -211,19 +158,17 @@ public class MyBatisEndpoint {
          */
         public MyBatisConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (MyBatisConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public MyBatisConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (MyBatisConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -233,38 +178,34 @@ public class MyBatisEndpoint {
          */
         public MyBatisConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (MyBatisConsumer) this;
         }
-
         /**
          * To use a custom MyBatisProcessingStrategy. The option is a
          * org.apache.camel.component.mybatis.MyBatisProcessingStrategy type.
          */
         public MyBatisConsumer processingStrategy(Object processingStrategy) {
-            this.processingStrategy = processingStrategy;
+            this.properties.put("processingStrategy", processingStrategy);
             return (MyBatisConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public MyBatisConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (MyBatisConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public MyBatisConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (MyBatisConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -274,50 +215,45 @@ public class MyBatisEndpoint {
          * configured. The option is a int type.
          */
         public MyBatisConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (MyBatisConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public MyBatisConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (MyBatisConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public MyBatisConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (MyBatisConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public MyBatisConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (MyBatisConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public MyBatisConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (MyBatisConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -326,10 +262,9 @@ public class MyBatisEndpoint {
          */
         public MyBatisConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (MyBatisConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
@@ -337,10 +272,9 @@ public class MyBatisEndpoint {
          */
         public MyBatisConsumer scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (MyBatisConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -348,241 +282,44 @@ public class MyBatisEndpoint {
          */
         public MyBatisConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (MyBatisConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public MyBatisConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (MyBatisConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public MyBatisConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (MyBatisConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public MyBatisConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (MyBatisConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Integer getMaxMessagesPerPoll() {
-            return maxMessagesPerPoll;
-        }
-
-        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
-        }
-
-        public String getOnConsume() {
-            return onConsume;
-        }
-
-        public void setOnConsume(String onConsume) {
-            this.onConsume = onConsume;
-        }
-
-        public Boolean getRouteEmptyResultSet() {
-            return routeEmptyResultSet;
-        }
-
-        public void setRouteEmptyResultSet(Boolean routeEmptyResultSet) {
-            this.routeEmptyResultSet = routeEmptyResultSet;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public Boolean getTransacted() {
-            return transacted;
-        }
-
-        public void setTransacted(Boolean transacted) {
-            this.transacted = transacted;
-        }
-
-        public Boolean getUseIterator() {
-            return useIterator;
-        }
-
-        public void setUseIterator(Boolean useIterator) {
-            this.useIterator = useIterator;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Object getProcessingStrategy() {
-            return processingStrategy;
-        }
-
-        public void setProcessingStrategy(Object processingStrategy) {
-            this.processingStrategy = processingStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
     public static class MyBatisProducer
             extends
-                MyBatisCommon<MyBatisProducer> {
-        private ExecutorType executorType;
-        private String inputHeader;
-        private String outputHeader;
-        private StatementType statementType;
-
+                MyBatisCommon<MyBatisProducer>
+            implements
+                EndpointDefinition.Producer {
+        public MyBatisProducer(String path) {
+            super(path);
+        }
         /**
          * The executor type to be used while executing statements. simple -
          * executor does nothing special. reuse - executor reuses prepared
@@ -590,10 +327,9 @@ public class MyBatisEndpoint {
          * The option is a org.apache.ibatis.session.ExecutorType type.
          */
         public MyBatisProducer executorType(ExecutorType executorType) {
-            this.executorType = executorType;
+            this.properties.put("executorType", executorType);
             return (MyBatisProducer) this;
         }
-
         /**
          * User the header value for input parameters instead of the message
          * body. By default, inputHeader == null and the input parameters are
@@ -602,10 +338,9 @@ public class MyBatisEndpoint {
          * the body. The option is a java.lang.String type.
          */
         public MyBatisProducer inputHeader(String inputHeader) {
-            this.inputHeader = inputHeader;
+            this.properties.put("inputHeader", inputHeader);
             return (MyBatisProducer) this;
         }
-
         /**
          * Store the query result in a header instead of the message body. By
          * default, outputHeader == null and the query result is stored in the
@@ -617,50 +352,17 @@ public class MyBatisEndpoint {
          * all the time. The option is a java.lang.String type.
          */
         public MyBatisProducer outputHeader(String outputHeader) {
-            this.outputHeader = outputHeader;
+            this.properties.put("outputHeader", outputHeader);
             return (MyBatisProducer) this;
         }
-
         /**
          * Mandatory to specify for the producer to control which kind of
          * operation to invoke. The option is a
          * org.apache.camel.component.mybatis.StatementType type.
          */
         public MyBatisProducer statementType(StatementType statementType) {
-            this.statementType = statementType;
+            this.properties.put("statementType", statementType);
             return (MyBatisProducer) this;
-        }
-
-        public ExecutorType getExecutorType() {
-            return executorType;
-        }
-
-        public void setExecutorType(ExecutorType executorType) {
-            this.executorType = executorType;
-        }
-
-        public String getInputHeader() {
-            return inputHeader;
-        }
-
-        public void setInputHeader(String inputHeader) {
-            this.inputHeader = inputHeader;
-        }
-
-        public String getOutputHeader() {
-            return outputHeader;
-        }
-
-        public void setOutputHeader(String outputHeader) {
-            this.outputHeader = outputHeader;
-        }
-
-        public StatementType getStatementType() {
-            return statementType;
-        }
-
-        public void setStatementType(StatementType statementType) {
-            this.statementType = statementType;
         }
     }
 

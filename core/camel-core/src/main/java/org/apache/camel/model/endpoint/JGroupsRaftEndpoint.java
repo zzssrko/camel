@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,75 +31,48 @@ import org.apache.camel.spi.ExceptionHandler;
 public class JGroupsRaftEndpoint {
 
 
-    public static class JGroupsRaftCommon<T extends EndpointConfiguration>
+    public static class JGroupsRaftCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String clusterName;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        JGroupsRaftCommon(String path) {
+            super("jgroups-raft", path);
+        }
         /**
          * The name of the JGroupsraft cluster the component should connect to.
          * The option is a java.lang.String type.
          */
         public T clusterName(String clusterName) {
-            this.clusterName = clusterName;
+            this.properties.put("clusterName", clusterName);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getClusterName() {
-            return clusterName;
-        }
-
-        public void setClusterName(String clusterName) {
-            this.clusterName = clusterName;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class JGroupsRaftConsumer
             extends
-                JGroupsRaftCommon<JGroupsRaftConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean enableRoleChangeEvents;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                JGroupsRaftCommon<JGroupsRaftConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public JGroupsRaftConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -109,10 +83,9 @@ public class JGroupsRaftEndpoint {
          * ignored. The option is a boolean type.
          */
         public JGroupsRaftConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (JGroupsRaftConsumer) this;
         }
-
         /**
          * If set to true, the consumer endpoint will receive roleChange event
          * as well (not just connecting and/or using the state machine). By
@@ -120,10 +93,9 @@ public class JGroupsRaftEndpoint {
          */
         public JGroupsRaftConsumer enableRoleChangeEvents(
                 boolean enableRoleChangeEvents) {
-            this.enableRoleChangeEvents = enableRoleChangeEvents;
+            this.properties.put("enableRoleChangeEvents", enableRoleChangeEvents);
             return (JGroupsRaftConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -133,55 +105,27 @@ public class JGroupsRaftEndpoint {
          */
         public JGroupsRaftConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (JGroupsRaftConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public JGroupsRaftConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (JGroupsRaftConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getEnableRoleChangeEvents() {
-            return enableRoleChangeEvents;
-        }
-
-        public void setEnableRoleChangeEvents(Boolean enableRoleChangeEvents) {
-            this.enableRoleChangeEvents = enableRoleChangeEvents;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class JGroupsRaftProducer
             extends
-                JGroupsRaftCommon<JGroupsRaftProducer> {
+                JGroupsRaftCommon<JGroupsRaftProducer>
+            implements
+                EndpointDefinition.Producer {
+        public JGroupsRaftProducer(String path) {
+            super(path);
+        }
     }
 }

@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,403 +37,185 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class S3Endpoint {
 
 
-    public static class S3Common<T extends EndpointConfiguration>
+    public static class S3Common<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String bucketNameOrArn;
-        private Object amazonS3Client;
-        private Boolean autoCreateBucket;
-        private Boolean pathStyleAccess;
-        private String policy;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String region;
-        private Boolean useIAMCredentials;
-        private Object encryptionMaterials;
-        private Boolean useEncryption;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private Boolean accelerateModeEnabled;
-        private Boolean chunkedEncodingDisabled;
-        private Boolean dualstackEnabled;
-        private Boolean forceGlobalBucketAccessEnabled;
-        private Boolean payloadSigningEnabled;
-        private String accessKey;
-        private String secretKey;
-
+                EndpointDefinition<T> {
+        S3Common(String path) {
+            super("aws-s3", path);
+        }
         /**
          * Bucket name or ARN. The option is a java.lang.String type.
          */
         public T bucketNameOrArn(String bucketNameOrArn) {
-            this.bucketNameOrArn = bucketNameOrArn;
+            this.properties.put("bucketNameOrArn", bucketNameOrArn);
             return (T) this;
         }
-
         /**
          * Reference to a com.amazonaws.services.s3.AmazonS3 in the
          * link:registry.htmlRegistry. The option is a
          * com.amazonaws.services.s3.AmazonS3 type.
          */
         public T amazonS3Client(Object amazonS3Client) {
-            this.amazonS3Client = amazonS3Client;
+            this.properties.put("amazonS3Client", amazonS3Client);
             return (T) this;
         }
-
         /**
          * Setting the autocreation of the bucket. The option is a boolean type.
          */
         public T autoCreateBucket(boolean autoCreateBucket) {
-            this.autoCreateBucket = autoCreateBucket;
+            this.properties.put("autoCreateBucket", autoCreateBucket);
             return (T) this;
         }
-
         /**
          * Whether or not the S3 client should use path style access. The option
          * is a boolean type.
          */
         public T pathStyleAccess(boolean pathStyleAccess) {
-            this.pathStyleAccess = pathStyleAccess;
+            this.properties.put("pathStyleAccess", pathStyleAccess);
             return (T) this;
         }
-
         /**
          * The policy for this queue to set in the
          * com.amazonaws.services.s3.AmazonS3#setBucketPolicy() method. The
          * option is a java.lang.String type.
          */
         public T policy(String policy) {
-            this.policy = policy;
+            this.properties.put("policy", policy);
             return (T) this;
         }
-
         /**
          * To define a proxy host when instantiating the SQS client. The option
          * is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * Specify a proxy port to be used inside the client definition. The
          * option is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
-
         /**
          * The region in which S3 client needs to work. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * Set whether the S3 client should expect to load credentials on an EC2
          * instance or to expect static credentials to be passed in. The option
          * is a boolean type.
          */
         public T useIAMCredentials(boolean useIAMCredentials) {
-            this.useIAMCredentials = useIAMCredentials;
+            this.properties.put("useIAMCredentials", useIAMCredentials);
             return (T) this;
         }
-
         /**
          * The encryption materials to use in case of Symmetric/Asymmetric
          * client usage. The option is a
          * com.amazonaws.services.s3.model.EncryptionMaterials type.
          */
         public T encryptionMaterials(Object encryptionMaterials) {
-            this.encryptionMaterials = encryptionMaterials;
+            this.properties.put("encryptionMaterials", encryptionMaterials);
             return (T) this;
         }
-
         /**
          * Define if encryption must be used or not. The option is a boolean
          * type.
          */
         public T useEncryption(boolean useEncryption) {
-            this.useEncryption = useEncryption;
+            this.properties.put("useEncryption", useEncryption);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Define if Accelerate Mode enabled is true or false. The option is a
          * boolean type.
          */
         public T accelerateModeEnabled(boolean accelerateModeEnabled) {
-            this.accelerateModeEnabled = accelerateModeEnabled;
+            this.properties.put("accelerateModeEnabled", accelerateModeEnabled);
             return (T) this;
         }
-
         /**
          * Define if disabled Chunked Encoding is true or false. The option is a
          * boolean type.
          */
         public T chunkedEncodingDisabled(boolean chunkedEncodingDisabled) {
-            this.chunkedEncodingDisabled = chunkedEncodingDisabled;
+            this.properties.put("chunkedEncodingDisabled", chunkedEncodingDisabled);
             return (T) this;
         }
-
         /**
          * Define if Dualstack enabled is true or false. The option is a boolean
          * type.
          */
         public T dualstackEnabled(boolean dualstackEnabled) {
-            this.dualstackEnabled = dualstackEnabled;
+            this.properties.put("dualstackEnabled", dualstackEnabled);
             return (T) this;
         }
-
         /**
          * Define if Force Global Bucket Access enabled is true or false. The
          * option is a boolean type.
          */
         public T forceGlobalBucketAccessEnabled(
                 boolean forceGlobalBucketAccessEnabled) {
-            this.forceGlobalBucketAccessEnabled = forceGlobalBucketAccessEnabled;
+            this.properties.put("forceGlobalBucketAccessEnabled", forceGlobalBucketAccessEnabled);
             return (T) this;
         }
-
         /**
          * Define if Payload Signing enabled is true or false. The option is a
          * boolean type.
          */
         public T payloadSigningEnabled(boolean payloadSigningEnabled) {
-            this.payloadSigningEnabled = payloadSigningEnabled;
+            this.properties.put("payloadSigningEnabled", payloadSigningEnabled);
             return (T) this;
         }
-
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public T accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (T) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public T secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (T) this;
-        }
-
-        public String getBucketNameOrArn() {
-            return bucketNameOrArn;
-        }
-
-        public void setBucketNameOrArn(String bucketNameOrArn) {
-            this.bucketNameOrArn = bucketNameOrArn;
-        }
-
-        public Object getAmazonS3Client() {
-            return amazonS3Client;
-        }
-
-        public void setAmazonS3Client(Object amazonS3Client) {
-            this.amazonS3Client = amazonS3Client;
-        }
-
-        public Boolean getAutoCreateBucket() {
-            return autoCreateBucket;
-        }
-
-        public void setAutoCreateBucket(Boolean autoCreateBucket) {
-            this.autoCreateBucket = autoCreateBucket;
-        }
-
-        public Boolean getPathStyleAccess() {
-            return pathStyleAccess;
-        }
-
-        public void setPathStyleAccess(Boolean pathStyleAccess) {
-            this.pathStyleAccess = pathStyleAccess;
-        }
-
-        public String getPolicy() {
-            return policy;
-        }
-
-        public void setPolicy(String policy) {
-            this.policy = policy;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public Boolean getUseIAMCredentials() {
-            return useIAMCredentials;
-        }
-
-        public void setUseIAMCredentials(Boolean useIAMCredentials) {
-            this.useIAMCredentials = useIAMCredentials;
-        }
-
-        public Object getEncryptionMaterials() {
-            return encryptionMaterials;
-        }
-
-        public void setEncryptionMaterials(Object encryptionMaterials) {
-            this.encryptionMaterials = encryptionMaterials;
-        }
-
-        public Boolean getUseEncryption() {
-            return useEncryption;
-        }
-
-        public void setUseEncryption(Boolean useEncryption) {
-            this.useEncryption = useEncryption;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Boolean getAccelerateModeEnabled() {
-            return accelerateModeEnabled;
-        }
-
-        public void setAccelerateModeEnabled(Boolean accelerateModeEnabled) {
-            this.accelerateModeEnabled = accelerateModeEnabled;
-        }
-
-        public Boolean getChunkedEncodingDisabled() {
-            return chunkedEncodingDisabled;
-        }
-
-        public void setChunkedEncodingDisabled(Boolean chunkedEncodingDisabled) {
-            this.chunkedEncodingDisabled = chunkedEncodingDisabled;
-        }
-
-        public Boolean getDualstackEnabled() {
-            return dualstackEnabled;
-        }
-
-        public void setDualstackEnabled(Boolean dualstackEnabled) {
-            this.dualstackEnabled = dualstackEnabled;
-        }
-
-        public Boolean getForceGlobalBucketAccessEnabled() {
-            return forceGlobalBucketAccessEnabled;
-        }
-
-        public void setForceGlobalBucketAccessEnabled(
-                Boolean forceGlobalBucketAccessEnabled) {
-            this.forceGlobalBucketAccessEnabled = forceGlobalBucketAccessEnabled;
-        }
-
-        public Boolean getPayloadSigningEnabled() {
-            return payloadSigningEnabled;
-        }
-
-        public void setPayloadSigningEnabled(Boolean payloadSigningEnabled) {
-            this.payloadSigningEnabled = payloadSigningEnabled;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
         }
     }
 
-    public static class S3Consumer extends S3Common<S3Consumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean deleteAfterRead;
-        private String delimiter;
-        private String fileName;
-        private Boolean includeBody;
-        private Integer maxConnections;
-        private Integer maxMessagesPerPoll;
-        private String prefix;
-        private Boolean sendEmptyMessageWhenIdle;
-        private Boolean autocloseBody;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+    public static class S3Consumer
+            extends
+                S3Common<S3Consumer>
+            implements
+                EndpointDefinition.Consumer {
+        public S3Consumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -443,10 +226,9 @@ public class S3Endpoint {
          * ignored. The option is a boolean type.
          */
         public S3Consumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (S3Consumer) this;
         }
-
         /**
          * Delete objects from S3 after they have been retrieved. The delete is
          * only performed if the Exchange is committed. If a rollback occurs,
@@ -458,29 +240,26 @@ public class S3Endpoint {
          * option is a boolean type.
          */
         public S3Consumer deleteAfterRead(boolean deleteAfterRead) {
-            this.deleteAfterRead = deleteAfterRead;
+            this.properties.put("deleteAfterRead", deleteAfterRead);
             return (S3Consumer) this;
         }
-
         /**
          * The delimiter which is used in the
          * com.amazonaws.services.s3.model.ListObjectsRequest to only consume
          * objects we are interested in. The option is a java.lang.String type.
          */
         public S3Consumer delimiter(String delimiter) {
-            this.delimiter = delimiter;
+            this.properties.put("delimiter", delimiter);
             return (S3Consumer) this;
         }
-
         /**
          * To get the object from the bucket with the given file name. The
          * option is a java.lang.String type.
          */
         public S3Consumer fileName(String fileName) {
-            this.fileName = fileName;
+            this.properties.put("fileName", fileName);
             return (S3Consumer) this;
         }
-
         /**
          * If it is true, the exchange body will be set to a stream to the
          * contents of the file. If false, the headers will be set with the S3
@@ -491,39 +270,35 @@ public class S3Endpoint {
          * S3Object stream automatically. The option is a boolean type.
          */
         public S3Consumer includeBody(boolean includeBody) {
-            this.includeBody = includeBody;
+            this.properties.put("includeBody", includeBody);
             return (S3Consumer) this;
         }
-
         /**
          * Set the maxConnections parameter in the S3 client configuration. The
          * option is a int type.
          */
         public S3Consumer maxConnections(int maxConnections) {
-            this.maxConnections = maxConnections;
+            this.properties.put("maxConnections", maxConnections);
             return (S3Consumer) this;
         }
-
         /**
          * Gets the maximum number of messages as a limit to poll at each
          * polling. Is default unlimited, but use 0 or negative number to
          * disable it as unlimited. The option is a int type.
          */
         public S3Consumer maxMessagesPerPoll(int maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
             return (S3Consumer) this;
         }
-
         /**
          * The prefix which is used in the
          * com.amazonaws.services.s3.model.ListObjectsRequest to only consume
          * objects we are interested in. The option is a java.lang.String type.
          */
         public S3Consumer prefix(String prefix) {
-            this.prefix = prefix;
+            this.properties.put("prefix", prefix);
             return (S3Consumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -531,10 +306,9 @@ public class S3Endpoint {
          */
         public S3Consumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (S3Consumer) this;
         }
-
         /**
          * If this option is true and includeBody is true, then the
          * S3Object.close() method will be called on exchange completion. This
@@ -545,10 +319,9 @@ public class S3Endpoint {
          * type.
          */
         public S3Consumer autocloseBody(boolean autocloseBody) {
-            this.autocloseBody = autocloseBody;
+            this.properties.put("autocloseBody", autocloseBody);
             return (S3Consumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -557,19 +330,17 @@ public class S3Endpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public S3Consumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (S3Consumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public S3Consumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (S3Consumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -578,29 +349,26 @@ public class S3Endpoint {
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
         public S3Consumer pollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (S3Consumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public S3Consumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (S3Consumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public S3Consumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (S3Consumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -610,50 +378,45 @@ public class S3Endpoint {
          * configured. The option is a int type.
          */
         public S3Consumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (S3Consumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public S3Consumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (S3Consumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public S3Consumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (S3Consumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public S3Consumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (S3Consumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public S3Consumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (S3Consumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -662,20 +425,18 @@ public class S3Endpoint {
          */
         public S3Consumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (S3Consumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public S3Consumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (S3Consumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -683,395 +444,109 @@ public class S3Endpoint {
          */
         public S3Consumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (S3Consumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public S3Consumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (S3Consumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public S3Consumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (S3Consumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public S3Consumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (S3Consumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getDeleteAfterRead() {
-            return deleteAfterRead;
-        }
-
-        public void setDeleteAfterRead(Boolean deleteAfterRead) {
-            this.deleteAfterRead = deleteAfterRead;
-        }
-
-        public String getDelimiter() {
-            return delimiter;
-        }
-
-        public void setDelimiter(String delimiter) {
-            this.delimiter = delimiter;
-        }
-
-        public String getFileName() {
-            return fileName;
-        }
-
-        public void setFileName(String fileName) {
-            this.fileName = fileName;
-        }
-
-        public Boolean getIncludeBody() {
-            return includeBody;
-        }
-
-        public void setIncludeBody(Boolean includeBody) {
-            this.includeBody = includeBody;
-        }
-
-        public Integer getMaxConnections() {
-            return maxConnections;
-        }
-
-        public void setMaxConnections(Integer maxConnections) {
-            this.maxConnections = maxConnections;
-        }
-
-        public Integer getMaxMessagesPerPoll() {
-            return maxMessagesPerPoll;
-        }
-
-        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
-        }
-
-        public String getPrefix() {
-            return prefix;
-        }
-
-        public void setPrefix(String prefix) {
-            this.prefix = prefix;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public Boolean getAutocloseBody() {
-            return autocloseBody;
-        }
-
-        public void setAutocloseBody(Boolean autocloseBody) {
-            this.autocloseBody = autocloseBody;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
-    public static class S3Producer extends S3Common<S3Producer> {
-        private Boolean deleteAfterWrite;
-        private Boolean multiPartUpload;
-        private S3Operations operation;
-        private Long partSize;
-        private String serverSideEncryption;
-        private String storageClass;
-        private String awsKMSKeyId;
-        private Boolean useAwsKMS;
-
+    public static class S3Producer
+            extends
+                S3Common<S3Producer>
+            implements
+                EndpointDefinition.Producer {
+        public S3Producer(String path) {
+            super(path);
+        }
         /**
          * Delete file object after the S3 file has been uploaded. The option is
          * a boolean type.
          */
         public S3Producer deleteAfterWrite(boolean deleteAfterWrite) {
-            this.deleteAfterWrite = deleteAfterWrite;
+            this.properties.put("deleteAfterWrite", deleteAfterWrite);
             return (S3Producer) this;
         }
-
         /**
          * If it is true, camel will upload the file with multi part format, the
          * part size is decided by the option of partSize. The option is a
          * boolean type.
          */
         public S3Producer multiPartUpload(boolean multiPartUpload) {
-            this.multiPartUpload = multiPartUpload;
+            this.properties.put("multiPartUpload", multiPartUpload);
             return (S3Producer) this;
         }
-
         /**
          * The operation to do in case the user don't want to do only an upload.
          * The option is a org.apache.camel.component.aws.s3.S3Operations type.
          */
         public S3Producer operation(S3Operations operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (S3Producer) this;
         }
-
         /**
          * Setup the partSize which is used in multi part upload, the default
          * size is 25M. The option is a long type.
          */
         public S3Producer partSize(long partSize) {
-            this.partSize = partSize;
+            this.properties.put("partSize", partSize);
             return (S3Producer) this;
         }
-
         /**
          * Sets the server-side encryption algorithm when encrypting the object
          * using AWS-managed keys. For example use AES256. The option is a
          * java.lang.String type.
          */
         public S3Producer serverSideEncryption(String serverSideEncryption) {
-            this.serverSideEncryption = serverSideEncryption;
+            this.properties.put("serverSideEncryption", serverSideEncryption);
             return (S3Producer) this;
         }
-
         /**
          * The storage class to set in the
          * com.amazonaws.services.s3.model.PutObjectRequest request. The option
          * is a java.lang.String type.
          */
         public S3Producer storageClass(String storageClass) {
-            this.storageClass = storageClass;
+            this.properties.put("storageClass", storageClass);
             return (S3Producer) this;
         }
-
         /**
          * Define the id of KMS key to use in case KMS is enabled. The option is
          * a java.lang.String type.
          */
         public S3Producer awsKMSKeyId(String awsKMSKeyId) {
-            this.awsKMSKeyId = awsKMSKeyId;
+            this.properties.put("awsKMSKeyId", awsKMSKeyId);
             return (S3Producer) this;
         }
-
         /**
          * Define if KMS must be used or not. The option is a boolean type.
          */
         public S3Producer useAwsKMS(boolean useAwsKMS) {
-            this.useAwsKMS = useAwsKMS;
+            this.properties.put("useAwsKMS", useAwsKMS);
             return (S3Producer) this;
-        }
-
-        public Boolean getDeleteAfterWrite() {
-            return deleteAfterWrite;
-        }
-
-        public void setDeleteAfterWrite(Boolean deleteAfterWrite) {
-            this.deleteAfterWrite = deleteAfterWrite;
-        }
-
-        public Boolean getMultiPartUpload() {
-            return multiPartUpload;
-        }
-
-        public void setMultiPartUpload(Boolean multiPartUpload) {
-            this.multiPartUpload = multiPartUpload;
-        }
-
-        public S3Operations getOperation() {
-            return operation;
-        }
-
-        public void setOperation(S3Operations operation) {
-            this.operation = operation;
-        }
-
-        public Long getPartSize() {
-            return partSize;
-        }
-
-        public void setPartSize(Long partSize) {
-            this.partSize = partSize;
-        }
-
-        public String getServerSideEncryption() {
-            return serverSideEncryption;
-        }
-
-        public void setServerSideEncryption(String serverSideEncryption) {
-            this.serverSideEncryption = serverSideEncryption;
-        }
-
-        public String getStorageClass() {
-            return storageClass;
-        }
-
-        public void setStorageClass(String storageClass) {
-            this.storageClass = storageClass;
-        }
-
-        public String getAwsKMSKeyId() {
-            return awsKMSKeyId;
-        }
-
-        public void setAwsKMSKeyId(String awsKMSKeyId) {
-            this.awsKMSKeyId = awsKMSKeyId;
-        }
-
-        public Boolean getUseAwsKMS() {
-            return useAwsKMS;
-        }
-
-        public void setUseAwsKMS(Boolean useAwsKMS) {
-            this.useAwsKMS = useAwsKMS;
         }
     }
 

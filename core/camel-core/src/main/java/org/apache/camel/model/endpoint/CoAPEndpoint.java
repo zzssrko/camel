@@ -21,6 +21,7 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -33,29 +34,19 @@ import org.apache.camel.spi.ExceptionHandler;
 public class CoAPEndpoint {
 
 
-    public static class CoAPCommon<T extends EndpointConfiguration>
+    public static class CoAPCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private URI uri;
-        private String alias;
-        private String cipherSuites;
-        private String clientAuthentication;
-        private PrivateKey privateKey;
-        private Object pskStore;
-        private PublicKey publicKey;
-        private Object sslContextParameters;
-        private Object trustedRpkStore;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        CoAPCommon(String path) {
+            super("coap", path);
+        }
         /**
          * The URI for the CoAP endpoint. The option is a java.net.URI type.
          */
         public T uri(URI uri) {
-            this.uri = uri;
+            this.properties.put("uri", uri);
             return (T) this;
         }
-
         /**
          * Sets the alias used to query the KeyStore for the private key and
          * certificate. This parameter is used when we are enabling TLS with
@@ -68,10 +59,9 @@ public class CoAPEndpoint {
          * type.
          */
         public T alias(String alias) {
-            this.alias = alias;
+            this.properties.put("alias", alias);
             return (T) this;
         }
-
         /**
          * Sets the cipherSuites String. This is a comma separated String of
          * ciphersuites to configure. If it is not specified, then it falls back
@@ -79,10 +69,9 @@ public class CoAPEndpoint {
          * option is a java.lang.String type.
          */
         public T cipherSuites(String cipherSuites) {
-            this.cipherSuites = cipherSuites;
+            this.properties.put("cipherSuites", cipherSuites);
             return (T) this;
         }
-
         /**
          * Sets the configuration options for server-side client-authentication
          * requirements. The value must be one of NONE, WANT, REQUIRE. If this
@@ -91,37 +80,33 @@ public class CoAPEndpoint {
          * value. The option is a java.lang.String type.
          */
         public T clientAuthentication(String clientAuthentication) {
-            this.clientAuthentication = clientAuthentication;
+            this.properties.put("clientAuthentication", clientAuthentication);
             return (T) this;
         }
-
         /**
          * Set the configured private key for use with Raw Public Key. The
          * option is a java.security.PrivateKey type.
          */
         public T privateKey(PrivateKey privateKey) {
-            this.privateKey = privateKey;
+            this.properties.put("privateKey", privateKey);
             return (T) this;
         }
-
         /**
          * Set the PskStore to use for pre-shared key. The option is a
          * org.eclipse.californium.scandium.dtls.pskstore.PskStore type.
          */
         public T pskStore(Object pskStore) {
-            this.pskStore = pskStore;
+            this.properties.put("pskStore", pskStore);
             return (T) this;
         }
-
         /**
          * Set the configured public key for use with Raw Public Key. The option
          * is a java.security.PublicKey type.
          */
         public T publicKey(PublicKey publicKey) {
-            this.publicKey = publicKey;
+            this.properties.put("publicKey", publicKey);
             return (T) this;
         }
-
         /**
          * Set the SSLContextParameters object for setting up TLS. This is
          * required for coapstcp, and for coaps when we are using certificates
@@ -129,135 +114,46 @@ public class CoAPEndpoint {
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
-
         /**
          * Set the TrustedRpkStore to use to determine trust in raw public keys.
          * The option is a
          * org.eclipse.californium.scandium.dtls.rpkstore.TrustedRpkStore type.
          */
         public T trustedRpkStore(Object trustedRpkStore) {
-            this.trustedRpkStore = trustedRpkStore;
+            this.properties.put("trustedRpkStore", trustedRpkStore);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public URI getUri() {
-            return uri;
-        }
-
-        public void setUri(URI uri) {
-            this.uri = uri;
-        }
-
-        public String getAlias() {
-            return alias;
-        }
-
-        public void setAlias(String alias) {
-            this.alias = alias;
-        }
-
-        public String getCipherSuites() {
-            return cipherSuites;
-        }
-
-        public void setCipherSuites(String cipherSuites) {
-            this.cipherSuites = cipherSuites;
-        }
-
-        public String getClientAuthentication() {
-            return clientAuthentication;
-        }
-
-        public void setClientAuthentication(String clientAuthentication) {
-            this.clientAuthentication = clientAuthentication;
-        }
-
-        public PrivateKey getPrivateKey() {
-            return privateKey;
-        }
-
-        public void setPrivateKey(PrivateKey privateKey) {
-            this.privateKey = privateKey;
-        }
-
-        public Object getPskStore() {
-            return pskStore;
-        }
-
-        public void setPskStore(Object pskStore) {
-            this.pskStore = pskStore;
-        }
-
-        public PublicKey getPublicKey() {
-            return publicKey;
-        }
-
-        public void setPublicKey(PublicKey publicKey) {
-            this.publicKey = publicKey;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
-        }
-
-        public Object getTrustedRpkStore() {
-            return trustedRpkStore;
-        }
-
-        public void setTrustedRpkStore(Object trustedRpkStore) {
-            this.trustedRpkStore = trustedRpkStore;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class CoAPConsumer extends CoAPCommon<CoAPConsumer> {
-        private Boolean bridgeErrorHandler;
-        private String coapMethodRestrict;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class CoAPConsumer
+            extends
+                CoAPCommon<CoAPConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public CoAPConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -268,20 +164,18 @@ public class CoAPEndpoint {
          * ignored. The option is a boolean type.
          */
         public CoAPConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (CoAPConsumer) this;
         }
-
         /**
          * Comma separated list of methods that the CoAP consumer will bind to.
          * The default is to bind to all methods (DELETE, GET, POST, PUT). The
          * option is a java.lang.String type.
          */
         public CoAPConsumer coapMethodRestrict(String coapMethodRestrict) {
-            this.coapMethodRestrict = coapMethodRestrict;
+            this.properties.put("coapMethodRestrict", coapMethodRestrict);
             return (CoAPConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -290,52 +184,26 @@ public class CoAPEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public CoAPConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (CoAPConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public CoAPConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (CoAPConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public String getCoapMethodRestrict() {
-            return coapMethodRestrict;
-        }
-
-        public void setCoapMethodRestrict(String coapMethodRestrict) {
-            this.coapMethodRestrict = coapMethodRestrict;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class CoAPProducer extends CoAPCommon<CoAPProducer> {
+    public static class CoAPProducer
+            extends
+                CoAPCommon<CoAPProducer>
+            implements
+                EndpointDefinition.Producer {
+        public CoAPProducer(String path) {
+            super(path);
+        }
     }
 }

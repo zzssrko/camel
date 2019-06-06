@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,304 +37,144 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class XQueryEndpoint {
 
 
-    public static class XQueryCommon<T extends EndpointConfiguration>
+    public static class XQueryCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String resourceUri;
-        private Boolean allowStAX;
-        private String headerName;
-        private Map<String, String> namespacePrefixes;
-        private ResultFormat resultsFormat;
-        private Class<Object> resultType;
-        private Boolean stripsAllWhiteSpace;
-        private Boolean basicPropertyBinding;
-        private Object configuration;
-        private Map<String, Object> configurationProperties;
-        private Object moduleURIResolver;
-        private Map<String, Object> parameters;
-        private Properties properties;
-        private Object staticQueryContext;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        XQueryCommon(String path) {
+            super("xquery", path);
+        }
         /**
          * The name of the template to load from classpath or file system. The
          * option is a java.lang.String type.
          */
         public T resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
+            this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
-
         /**
          * Whether to allow using StAX mode. The option is a boolean type.
          */
         public T allowStAX(boolean allowStAX) {
-            this.allowStAX = allowStAX;
+            this.properties.put("allowStAX", allowStAX);
             return (T) this;
         }
-
         /**
          * To use a Camel Message header as the input source instead of Message
          * body. The option is a java.lang.String type.
          */
         public T headerName(String headerName) {
-            this.headerName = headerName;
+            this.properties.put("headerName", headerName);
             return (T) this;
         }
-
         /**
          * Allows to control which namespace prefixes to use for a set of
          * namespace mappings. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
         public T namespacePrefixes(Map<String, String> namespacePrefixes) {
-            this.namespacePrefixes = namespacePrefixes;
+            this.properties.put("namespacePrefixes", namespacePrefixes);
             return (T) this;
         }
-
         /**
          * What output result to use. The option is a
          * org.apache.camel.component.xquery.ResultFormat type.
          */
         public T resultsFormat(ResultFormat resultsFormat) {
-            this.resultsFormat = resultsFormat;
+            this.properties.put("resultsFormat", resultsFormat);
             return (T) this;
         }
-
         /**
          * What output result to use defined as a class. The option is a
          * java.lang.Class<?> type.
          */
         public T resultType(Class<Object> resultType) {
-            this.resultType = resultType;
+            this.properties.put("resultType", resultType);
             return (T) this;
         }
-
         /**
          * Whether to strip all whitespaces. The option is a boolean type.
          */
         public T stripsAllWhiteSpace(boolean stripsAllWhiteSpace) {
-            this.stripsAllWhiteSpace = stripsAllWhiteSpace;
+            this.properties.put("stripsAllWhiteSpace", stripsAllWhiteSpace);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use a custom Saxon configuration. The option is a
          * net.sf.saxon.Configuration type.
          */
         public T configuration(Object configuration) {
-            this.configuration = configuration;
+            this.properties.put("configuration", configuration);
             return (T) this;
         }
-
         /**
          * To set custom Saxon configuration properties. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T configurationProperties(
                 Map<String, Object> configurationProperties) {
-            this.configurationProperties = configurationProperties;
+            this.properties.put("configurationProperties", configurationProperties);
             return (T) this;
         }
-
         /**
          * To use the custom ModuleURIResolver. The option is a
          * net.sf.saxon.lib.ModuleURIResolver type.
          */
         public T moduleURIResolver(Object moduleURIResolver) {
-            this.moduleURIResolver = moduleURIResolver;
+            this.properties.put("moduleURIResolver", moduleURIResolver);
             return (T) this;
         }
-
         /**
          * Additional parameters. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T parameters(Map<String, Object> parameters) {
-            this.parameters = parameters;
+            this.properties.put("parameters", parameters);
             return (T) this;
         }
-
         /**
          * Properties to configure the serialization parameters. The option is a
          * java.util.Properties type.
          */
         public T properties(Properties properties) {
-            this.properties = properties;
+            this.properties.put("properties", properties);
             return (T) this;
         }
-
         /**
          * To use a custom Saxon StaticQueryContext. The option is a
          * net.sf.saxon.query.StaticQueryContext type.
          */
         public T staticQueryContext(Object staticQueryContext) {
-            this.staticQueryContext = staticQueryContext;
+            this.properties.put("staticQueryContext", staticQueryContext);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getResourceUri() {
-            return resourceUri;
-        }
-
-        public void setResourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-        }
-
-        public Boolean getAllowStAX() {
-            return allowStAX;
-        }
-
-        public void setAllowStAX(Boolean allowStAX) {
-            this.allowStAX = allowStAX;
-        }
-
-        public String getHeaderName() {
-            return headerName;
-        }
-
-        public void setHeaderName(String headerName) {
-            this.headerName = headerName;
-        }
-
-        public Map<String, String> getNamespacePrefixes() {
-            return namespacePrefixes;
-        }
-
-        public void setNamespacePrefixes(Map<String, String> namespacePrefixes) {
-            this.namespacePrefixes = namespacePrefixes;
-        }
-
-        public ResultFormat getResultsFormat() {
-            return resultsFormat;
-        }
-
-        public void setResultsFormat(ResultFormat resultsFormat) {
-            this.resultsFormat = resultsFormat;
-        }
-
-        public Class<Object> getResultType() {
-            return resultType;
-        }
-
-        public void setResultType(Class<Object> resultType) {
-            this.resultType = resultType;
-        }
-
-        public Boolean getStripsAllWhiteSpace() {
-            return stripsAllWhiteSpace;
-        }
-
-        public void setStripsAllWhiteSpace(Boolean stripsAllWhiteSpace) {
-            this.stripsAllWhiteSpace = stripsAllWhiteSpace;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getConfiguration() {
-            return configuration;
-        }
-
-        public void setConfiguration(Object configuration) {
-            this.configuration = configuration;
-        }
-
-        public Map<String, Object> getConfigurationProperties() {
-            return configurationProperties;
-        }
-
-        public void setConfigurationProperties(
-                Map<String, Object> configurationProperties) {
-            this.configurationProperties = configurationProperties;
-        }
-
-        public Object getModuleURIResolver() {
-            return moduleURIResolver;
-        }
-
-        public void setModuleURIResolver(Object moduleURIResolver) {
-            this.moduleURIResolver = moduleURIResolver;
-        }
-
-        public Map<String, Object> getParameters() {
-            return parameters;
-        }
-
-        public void setParameters(Map<String, Object> parameters) {
-            this.parameters = parameters;
-        }
-
-        public Properties getProperties() {
-            return properties;
-        }
-
-        public void setProperties(Properties properties) {
-            this.properties = properties;
-        }
-
-        public Object getStaticQueryContext() {
-            return staticQueryContext;
-        }
-
-        public void setStaticQueryContext(Object staticQueryContext) {
-            this.staticQueryContext = staticQueryContext;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class XQueryConsumer extends XQueryCommon<XQueryConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean sendEmptyMessageWhenIdle;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+    public static class XQueryConsumer
+            extends
+                XQueryCommon<XQueryConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public XQueryConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -344,10 +185,9 @@ public class XQueryEndpoint {
          * ignored. The option is a boolean type.
          */
         public XQueryConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (XQueryConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -355,10 +195,9 @@ public class XQueryEndpoint {
          */
         public XQueryConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (XQueryConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -367,19 +206,17 @@ public class XQueryEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public XQueryConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (XQueryConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public XQueryConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (XQueryConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -389,29 +226,26 @@ public class XQueryEndpoint {
          */
         public XQueryConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (XQueryConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public XQueryConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (XQueryConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public XQueryConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (XQueryConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -421,50 +255,45 @@ public class XQueryEndpoint {
          * configured. The option is a int type.
          */
         public XQueryConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (XQueryConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public XQueryConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (XQueryConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public XQueryConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (XQueryConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public XQueryConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (XQueryConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public XQueryConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (XQueryConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -473,20 +302,18 @@ public class XQueryEndpoint {
          */
         public XQueryConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (XQueryConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public XQueryConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (XQueryConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -494,186 +321,44 @@ public class XQueryEndpoint {
          */
         public XQueryConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (XQueryConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public XQueryConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (XQueryConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public XQueryConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (XQueryConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public XQueryConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (XQueryConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
-    public static class XQueryProducer extends XQueryCommon<XQueryProducer> {
+    public static class XQueryProducer
+            extends
+                XQueryCommon<XQueryProducer>
+            implements
+                EndpointDefinition.Producer {
+        public XQueryProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum ResultFormat {

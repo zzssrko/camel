@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The spring-batch component allows to send messages to Spring Batch for
@@ -28,128 +29,81 @@ import javax.annotation.Generated;
 public class SpringBatchEndpoint {
 
 
-    public static class SpringBatchCommon<T extends EndpointConfiguration>
+    public static class SpringBatchCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String jobName;
-        private Boolean jobFromHeader;
-        private Object jobLauncher;
-        private Object jobRegistry;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        SpringBatchCommon(String path) {
+            super("spring-batch", path);
+        }
         /**
          * The name of the Spring Batch job located in the registry. The option
          * is a java.lang.String type.
          */
         public T jobName(String jobName) {
-            this.jobName = jobName;
+            this.properties.put("jobName", jobName);
             return (T) this;
         }
-
         /**
          * Explicitly defines if the jobName should be taken from the headers
          * instead of the URI. The option is a boolean type.
          */
         public T jobFromHeader(boolean jobFromHeader) {
-            this.jobFromHeader = jobFromHeader;
+            this.properties.put("jobFromHeader", jobFromHeader);
             return (T) this;
         }
-
         /**
          * Explicitly specifies a JobLauncher to be used. The option is a
          * org.springframework.batch.core.launch.JobLauncher type.
          */
         public T jobLauncher(Object jobLauncher) {
-            this.jobLauncher = jobLauncher;
+            this.properties.put("jobLauncher", jobLauncher);
             return (T) this;
         }
-
         /**
          * Explicitly specifies a JobRegistry to be used. The option is a
          * org.springframework.batch.core.configuration.JobRegistry type.
          */
         public T jobRegistry(Object jobRegistry) {
-            this.jobRegistry = jobRegistry;
+            this.properties.put("jobRegistry", jobRegistry);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getJobName() {
-            return jobName;
-        }
-
-        public void setJobName(String jobName) {
-            this.jobName = jobName;
-        }
-
-        public Boolean getJobFromHeader() {
-            return jobFromHeader;
-        }
-
-        public void setJobFromHeader(Boolean jobFromHeader) {
-            this.jobFromHeader = jobFromHeader;
-        }
-
-        public Object getJobLauncher() {
-            return jobLauncher;
-        }
-
-        public void setJobLauncher(Object jobLauncher) {
-            this.jobLauncher = jobLauncher;
-        }
-
-        public Object getJobRegistry() {
-            return jobRegistry;
-        }
-
-        public void setJobRegistry(Object jobRegistry) {
-            this.jobRegistry = jobRegistry;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class SpringBatchConsumer
             extends
-                SpringBatchCommon<SpringBatchConsumer> {
+                SpringBatchCommon<SpringBatchConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SpringBatchConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class SpringBatchProducer
             extends
-                SpringBatchCommon<SpringBatchProducer> {
+                SpringBatchCommon<SpringBatchProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SpringBatchProducer(String path) {
+            super(path);
+        }
     }
 }

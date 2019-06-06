@@ -20,6 +20,7 @@ import java.util.concurrent.BlockingQueue;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.WaitForTaskToComplete;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -32,43 +33,37 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SedaEndpoint {
 
 
-    public static class SedaCommon<T extends EndpointConfiguration>
+    public static class SedaCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private Integer size;
-        private Boolean basicPropertyBinding;
-        private BlockingQueue queue;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        SedaCommon(String path) {
+            super("seda", path);
+        }
         /**
          * Name of queue. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * The maximum capacity of the SEDA queue (i.e., the number of messages
          * it can hold). Will by default use the defaultSize set on the SEDA
          * component. The option is a int type.
          */
         public T size(int size) {
-            this.size = size;
+            this.properties.put("size", size);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Define the queue instance which will be used by the endpoint. This
          * option is only for rare use-cases where you want to use a custom
@@ -76,71 +71,28 @@ public class SedaEndpoint {
          * type.
          */
         public T queue(BlockingQueue queue) {
-            this.queue = queue;
+            this.properties.put("queue", queue);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Integer getSize() {
-            return size;
-        }
-
-        public void setSize(Integer size) {
-            this.size = size;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public BlockingQueue getQueue() {
-            return queue;
-        }
-
-        public void setQueue(BlockingQueue queue) {
-            this.queue = queue;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class SedaConsumer extends SedaCommon<SedaConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Integer concurrentConsumers;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private Boolean limitConcurrentConsumers;
-        private Boolean multipleConsumers;
-        private Integer pollTimeout;
-        private Boolean purgeWhenStopping;
-
+    public static class SedaConsumer
+            extends
+                SedaCommon<SedaConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SedaConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -151,19 +103,17 @@ public class SedaEndpoint {
          * ignored. The option is a boolean type.
          */
         public SedaConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SedaConsumer) this;
         }
-
         /**
          * Number of concurrent threads processing exchanges. The option is a
          * int type.
          */
         public SedaConsumer concurrentConsumers(int concurrentConsumers) {
-            this.concurrentConsumers = concurrentConsumers;
+            this.properties.put("concurrentConsumers", concurrentConsumers);
             return (SedaConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -172,19 +122,17 @@ public class SedaEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public SedaConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SedaConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SedaConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SedaConsumer) this;
         }
-
         /**
          * Whether to limit the number of concurrentConsumers to the maximum of
          * 500. By default, an exception will be thrown if an endpoint is
@@ -193,10 +141,9 @@ public class SedaEndpoint {
          */
         public SedaConsumer limitConcurrentConsumers(
                 boolean limitConcurrentConsumers) {
-            this.limitConcurrentConsumers = limitConcurrentConsumers;
+            this.properties.put("limitConcurrentConsumers", limitConcurrentConsumers);
             return (SedaConsumer) this;
         }
-
         /**
          * Specifies whether multiple consumers are allowed. If enabled, you can
          * use SEDA for Publish-Subscribe messaging. That is, you can send a
@@ -205,10 +152,9 @@ public class SedaEndpoint {
          * consumer endpoint. The option is a boolean type.
          */
         public SedaConsumer multipleConsumers(boolean multipleConsumers) {
-            this.multipleConsumers = multipleConsumers;
+            this.properties.put("multipleConsumers", multipleConsumers);
             return (SedaConsumer) this;
         }
-
         /**
          * The timeout used when polling. When a timeout occurs, the consumer
          * can check whether it is allowed to continue running. Setting a lower
@@ -216,93 +162,28 @@ public class SedaEndpoint {
          * option is a int type.
          */
         public SedaConsumer pollTimeout(int pollTimeout) {
-            this.pollTimeout = pollTimeout;
+            this.properties.put("pollTimeout", pollTimeout);
             return (SedaConsumer) this;
         }
-
         /**
          * Whether to purge the task queue when stopping the consumer/route.
          * This allows to stop faster, as any pending messages on the queue is
          * discarded. The option is a boolean type.
          */
         public SedaConsumer purgeWhenStopping(boolean purgeWhenStopping) {
-            this.purgeWhenStopping = purgeWhenStopping;
+            this.properties.put("purgeWhenStopping", purgeWhenStopping);
             return (SedaConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Integer getConcurrentConsumers() {
-            return concurrentConsumers;
-        }
-
-        public void setConcurrentConsumers(Integer concurrentConsumers) {
-            this.concurrentConsumers = concurrentConsumers;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public Boolean getLimitConcurrentConsumers() {
-            return limitConcurrentConsumers;
-        }
-
-        public void setLimitConcurrentConsumers(Boolean limitConcurrentConsumers) {
-            this.limitConcurrentConsumers = limitConcurrentConsumers;
-        }
-
-        public Boolean getMultipleConsumers() {
-            return multipleConsumers;
-        }
-
-        public void setMultipleConsumers(Boolean multipleConsumers) {
-            this.multipleConsumers = multipleConsumers;
-        }
-
-        public Integer getPollTimeout() {
-            return pollTimeout;
-        }
-
-        public void setPollTimeout(Integer pollTimeout) {
-            this.pollTimeout = pollTimeout;
-        }
-
-        public Boolean getPurgeWhenStopping() {
-            return purgeWhenStopping;
-        }
-
-        public void setPurgeWhenStopping(Boolean purgeWhenStopping) {
-            this.purgeWhenStopping = purgeWhenStopping;
         }
     }
 
-    public static class SedaProducer extends SedaCommon<SedaProducer> {
-        private Boolean blockWhenFull;
-        private Boolean discardIfNoConsumers;
-        private Boolean failIfNoConsumers;
-        private Long offerTimeout;
-        private Long timeout;
-        private WaitForTaskToComplete waitForTaskToComplete;
-
+    public static class SedaProducer
+            extends
+                SedaCommon<SedaProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SedaProducer(String path) {
+            super(path);
+        }
         /**
          * Whether a thread that sends messages to a full SEDA queue will block
          * until the queue's capacity is no longer exhausted. By default, an
@@ -311,10 +192,9 @@ public class SedaEndpoint {
          * message can be accepted. The option is a boolean type.
          */
         public SedaProducer blockWhenFull(boolean blockWhenFull) {
-            this.blockWhenFull = blockWhenFull;
+            this.properties.put("blockWhenFull", blockWhenFull);
             return (SedaProducer) this;
         }
-
         /**
          * Whether the producer should discard the message (do not add the
          * message to the queue), when sending to a queue with no active
@@ -323,10 +203,9 @@ public class SedaEndpoint {
          * boolean type.
          */
         public SedaProducer discardIfNoConsumers(boolean discardIfNoConsumers) {
-            this.discardIfNoConsumers = discardIfNoConsumers;
+            this.properties.put("discardIfNoConsumers", discardIfNoConsumers);
             return (SedaProducer) this;
         }
-
         /**
          * Whether the producer should fail by throwing an exception, when
          * sending to a queue with no active consumers. Only one of the options
@@ -334,30 +213,27 @@ public class SedaEndpoint {
          * time. The option is a boolean type.
          */
         public SedaProducer failIfNoConsumers(boolean failIfNoConsumers) {
-            this.failIfNoConsumers = failIfNoConsumers;
+            this.properties.put("failIfNoConsumers", failIfNoConsumers);
             return (SedaProducer) this;
         }
-
         /**
          * offerTimeout (in milliseconds) can be added to the block case when
          * queue is full. You can disable timeout by using 0 or a negative
          * value. The option is a long type.
          */
         public SedaProducer offerTimeout(long offerTimeout) {
-            this.offerTimeout = offerTimeout;
+            this.properties.put("offerTimeout", offerTimeout);
             return (SedaProducer) this;
         }
-
         /**
          * Timeout (in milliseconds) before a SEDA producer will stop waiting
          * for an asynchronous task to complete. You can disable timeout by
          * using 0 or a negative value. The option is a long type.
          */
         public SedaProducer timeout(long timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (SedaProducer) this;
         }
-
         /**
          * Option to specify whether the caller should wait for the async task
          * to complete or not before continuing. The following three options are
@@ -369,57 +245,8 @@ public class SedaEndpoint {
          */
         public SedaProducer waitForTaskToComplete(
                 WaitForTaskToComplete waitForTaskToComplete) {
-            this.waitForTaskToComplete = waitForTaskToComplete;
+            this.properties.put("waitForTaskToComplete", waitForTaskToComplete);
             return (SedaProducer) this;
-        }
-
-        public Boolean getBlockWhenFull() {
-            return blockWhenFull;
-        }
-
-        public void setBlockWhenFull(Boolean blockWhenFull) {
-            this.blockWhenFull = blockWhenFull;
-        }
-
-        public Boolean getDiscardIfNoConsumers() {
-            return discardIfNoConsumers;
-        }
-
-        public void setDiscardIfNoConsumers(Boolean discardIfNoConsumers) {
-            this.discardIfNoConsumers = discardIfNoConsumers;
-        }
-
-        public Boolean getFailIfNoConsumers() {
-            return failIfNoConsumers;
-        }
-
-        public void setFailIfNoConsumers(Boolean failIfNoConsumers) {
-            this.failIfNoConsumers = failIfNoConsumers;
-        }
-
-        public Long getOfferTimeout() {
-            return offerTimeout;
-        }
-
-        public void setOfferTimeout(Long offerTimeout) {
-            this.offerTimeout = offerTimeout;
-        }
-
-        public Long getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Long timeout) {
-            this.timeout = timeout;
-        }
-
-        public WaitForTaskToComplete getWaitForTaskToComplete() {
-            return waitForTaskToComplete;
-        }
-
-        public void setWaitForTaskToComplete(
-                WaitForTaskToComplete waitForTaskToComplete) {
-            this.waitForTaskToComplete = waitForTaskToComplete;
         }
     }
 }

@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The aws-iam is used for managing Amazon IAM
@@ -27,194 +28,111 @@ import javax.annotation.Generated;
 public class IAMEndpoint {
 
 
-    public static class IAMCommon<T extends EndpointConfiguration>
+    public static class IAMCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String label;
-        private String region;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        IAMCommon(String path) {
+            super("aws-iam", path);
+        }
         /**
          * Logical name. The option is a java.lang.String type.
          */
         public T label(String label) {
-            this.label = label;
+            this.properties.put("label", label);
             return (T) this;
         }
-
         /**
          * The region in which IAM client needs to work. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getLabel() {
-            return label;
-        }
-
-        public void setLabel(String label) {
-            this.label = label;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class IAMConsumer
+            extends
+                IAMCommon<IAMConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public IAMConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class IAMConsumer extends IAMCommon<IAMConsumer> {
-    }
-
-    public static class IAMProducer extends IAMCommon<IAMProducer> {
-        private String accessKey;
-        private Object iamClient;
-        private IAMOperations operation;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String secretKey;
-
+    public static class IAMProducer
+            extends
+                IAMCommon<IAMProducer>
+            implements
+                EndpointDefinition.Producer {
+        public IAMProducer(String path) {
+            super(path);
+        }
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public IAMProducer accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (IAMProducer) this;
         }
-
         /**
          * To use a existing configured AWS IAM as client. The option is a
          * com.amazonaws.services.identitymanagement.AmazonIdentityManagement
          * type.
          */
         public IAMProducer iamClient(Object iamClient) {
-            this.iamClient = iamClient;
+            this.properties.put("iamClient", iamClient);
             return (IAMProducer) this;
         }
-
         /**
          * The operation to perform. The option is a
          * org.apache.camel.component.aws.iam.IAMOperations type.
          */
         public IAMProducer operation(IAMOperations operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (IAMProducer) this;
         }
-
         /**
          * To define a proxy host when instantiating the IAM client. The option
          * is a java.lang.String type.
          */
         public IAMProducer proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (IAMProducer) this;
         }
-
         /**
          * To define a proxy port when instantiating the IAM client. The option
          * is a java.lang.Integer type.
          */
         public IAMProducer proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (IAMProducer) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public IAMProducer secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (IAMProducer) this;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public Object getIamClient() {
-            return iamClient;
-        }
-
-        public void setIamClient(Object iamClient) {
-            this.iamClient = iamClient;
-        }
-
-        public IAMOperations getOperation() {
-            return operation;
-        }
-
-        public void setOperation(IAMOperations operation) {
-            this.operation = operation;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
         }
     }
 

@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,217 +31,112 @@ import org.apache.camel.spi.ExceptionHandler;
 public class PubNubEndpoint {
 
 
-    public static class PubNubCommon<T extends EndpointConfiguration>
+    public static class PubNubCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String channel;
-        private String uuid;
-        private Boolean basicPropertyBinding;
-        private Object pubnub;
-        private Boolean synchronous;
-        private String authKey;
-        private String cipherKey;
-        private String publishKey;
-        private String secretKey;
-        private Boolean secure;
-        private String subscribeKey;
-
+                EndpointDefinition<T> {
+        PubNubCommon(String path) {
+            super("pubnub", path);
+        }
         /**
          * The channel used for subscribing/publishing events. The option is a
          * java.lang.String type.
          */
         public T channel(String channel) {
-            this.channel = channel;
+            this.properties.put("channel", channel);
             return (T) this;
         }
-
         /**
          * UUID to be used as a device identifier, a default UUID is generated
          * if not passed. The option is a java.lang.String type.
          */
         public T uuid(String uuid) {
-            this.uuid = uuid;
+            this.properties.put("uuid", uuid);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Reference to a Pubnub client in the registry. The option is a
          * com.pubnub.api.PubNub type.
          */
         public T pubnub(Object pubnub) {
-            this.pubnub = pubnub;
+            this.properties.put("pubnub", pubnub);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * If Access Manager is utilized, client will use this authKey in all
          * restricted requests. The option is a java.lang.String type.
          */
         public T authKey(String authKey) {
-            this.authKey = authKey;
+            this.properties.put("authKey", authKey);
             return (T) this;
         }
-
         /**
          * If cipher is passed, all communicatons to/from PubNub will be
          * encrypted. The option is a java.lang.String type.
          */
         public T cipherKey(String cipherKey) {
-            this.cipherKey = cipherKey;
+            this.properties.put("cipherKey", cipherKey);
             return (T) this;
         }
-
         /**
          * The publish key obtained from your PubNub account. Required when
          * publishing messages. The option is a java.lang.String type.
          */
         public T publishKey(String publishKey) {
-            this.publishKey = publishKey;
+            this.properties.put("publishKey", publishKey);
             return (T) this;
         }
-
         /**
          * The secret key used for message signing. The option is a
          * java.lang.String type.
          */
         public T secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (T) this;
         }
-
         /**
          * Use SSL for secure transmission. The option is a boolean type.
          */
         public T secure(boolean secure) {
-            this.secure = secure;
+            this.properties.put("secure", secure);
             return (T) this;
         }
-
         /**
          * The subscribe key obtained from your PubNub account. Required when
          * subscribing to channels or listening for presence events. The option
          * is a java.lang.String type.
          */
         public T subscribeKey(String subscribeKey) {
-            this.subscribeKey = subscribeKey;
+            this.properties.put("subscribeKey", subscribeKey);
             return (T) this;
-        }
-
-        public String getChannel() {
-            return channel;
-        }
-
-        public void setChannel(String channel) {
-            this.channel = channel;
-        }
-
-        public String getUuid() {
-            return uuid;
-        }
-
-        public void setUuid(String uuid) {
-            this.uuid = uuid;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getPubnub() {
-            return pubnub;
-        }
-
-        public void setPubnub(Object pubnub) {
-            this.pubnub = pubnub;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getAuthKey() {
-            return authKey;
-        }
-
-        public void setAuthKey(String authKey) {
-            this.authKey = authKey;
-        }
-
-        public String getCipherKey() {
-            return cipherKey;
-        }
-
-        public void setCipherKey(String cipherKey) {
-            this.cipherKey = cipherKey;
-        }
-
-        public String getPublishKey() {
-            return publishKey;
-        }
-
-        public void setPublishKey(String publishKey) {
-            this.publishKey = publishKey;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
-        }
-
-        public Boolean getSecure() {
-            return secure;
-        }
-
-        public void setSecure(Boolean secure) {
-            this.secure = secure;
-        }
-
-        public String getSubscribeKey() {
-            return subscribeKey;
-        }
-
-        public void setSubscribeKey(String subscribeKey) {
-            this.subscribeKey = subscribeKey;
         }
     }
 
-    public static class PubNubConsumer extends PubNubCommon<PubNubConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean withPresence;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class PubNubConsumer
+            extends
+                PubNubCommon<PubNubConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public PubNubConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -251,19 +147,17 @@ public class PubNubEndpoint {
          * ignored. The option is a boolean type.
          */
         public PubNubConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (PubNubConsumer) this;
         }
-
         /**
          * Also subscribe to related presence information. The option is a
          * boolean type.
          */
         public PubNubConsumer withPresence(boolean withPresence) {
-            this.withPresence = withPresence;
+            this.properties.put("withPresence", withPresence);
             return (PubNubConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -272,55 +166,27 @@ public class PubNubEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public PubNubConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (PubNubConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public PubNubConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (PubNubConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getWithPresence() {
-            return withPresence;
-        }
-
-        public void setWithPresence(Boolean withPresence) {
-            this.withPresence = withPresence;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class PubNubProducer extends PubNubCommon<PubNubProducer> {
-        private String operation;
-
+    public static class PubNubProducer
+            extends
+                PubNubCommon<PubNubProducer>
+            implements
+                EndpointDefinition.Producer {
+        public PubNubProducer(String path) {
+            super(path);
+        }
         /**
          * The operation to perform. PUBLISH: Default. Send a message to all
          * subscribers of a channel. FIRE: allows the client to send a message
@@ -337,16 +203,8 @@ public class PubNubEndpoint {
          * type.
          */
         public PubNubProducer operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (PubNubProducer) this;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
         }
     }
 }

@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * This component integrates with Apache Tika to extract content and metadata
@@ -28,53 +29,44 @@ import javax.annotation.Generated;
 public class TikaEndpoint {
 
 
-    public static class TikaCommon<T extends EndpointConfiguration>
+    public static class TikaCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private TikaOperation operation;
-        private Object tikaConfig;
-        private String tikaConfigUri;
-        private String tikaParseOutputEncoding;
-        private TikaParseOutputFormat tikaParseOutputFormat;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        TikaCommon(String path) {
+            super("tika", path);
+        }
         /**
          * Tika Operation. parse or detect. The option is a
          * org.apache.camel.component.tika.TikaOperation type.
          */
         public T operation(TikaOperation operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * Tika Config. The option is a org.apache.tika.config.TikaConfig type.
          */
         public T tikaConfig(Object tikaConfig) {
-            this.tikaConfig = tikaConfig;
+            this.properties.put("tikaConfig", tikaConfig);
             return (T) this;
         }
-
         /**
          * Tika Config Uri: The URI of tika-config.xml. The option is a
          * java.lang.String type.
          */
         public T tikaConfigUri(String tikaConfigUri) {
-            this.tikaConfigUri = tikaConfigUri;
+            this.properties.put("tikaConfigUri", tikaConfigUri);
             return (T) this;
         }
-
         /**
          * Tika Parse Output Encoding - Used to specify the character encoding
          * of the parsed output. Defaults to Charset.defaultCharset() . The
          * option is a java.lang.String type.
          */
         public T tikaParseOutputEncoding(String tikaParseOutputEncoding) {
-            this.tikaParseOutputEncoding = tikaParseOutputEncoding;
+            this.properties.put("tikaParseOutputEncoding", tikaParseOutputEncoding);
             return (T) this;
         }
-
         /**
          * Tika Output Format. Supported output formats. xml: Returns Parsed
          * Content as XML. html: Returns Parsed Content as HTML. text: Returns
@@ -84,92 +76,47 @@ public class TikaEndpoint {
          */
         public T tikaParseOutputFormat(
                 TikaParseOutputFormat tikaParseOutputFormat) {
-            this.tikaParseOutputFormat = tikaParseOutputFormat;
+            this.properties.put("tikaParseOutputFormat", tikaParseOutputFormat);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public TikaOperation getOperation() {
-            return operation;
-        }
-
-        public void setOperation(TikaOperation operation) {
-            this.operation = operation;
-        }
-
-        public Object getTikaConfig() {
-            return tikaConfig;
-        }
-
-        public void setTikaConfig(Object tikaConfig) {
-            this.tikaConfig = tikaConfig;
-        }
-
-        public String getTikaConfigUri() {
-            return tikaConfigUri;
-        }
-
-        public void setTikaConfigUri(String tikaConfigUri) {
-            this.tikaConfigUri = tikaConfigUri;
-        }
-
-        public String getTikaParseOutputEncoding() {
-            return tikaParseOutputEncoding;
-        }
-
-        public void setTikaParseOutputEncoding(String tikaParseOutputEncoding) {
-            this.tikaParseOutputEncoding = tikaParseOutputEncoding;
-        }
-
-        public TikaParseOutputFormat getTikaParseOutputFormat() {
-            return tikaParseOutputFormat;
-        }
-
-        public void setTikaParseOutputFormat(
-                TikaParseOutputFormat tikaParseOutputFormat) {
-            this.tikaParseOutputFormat = tikaParseOutputFormat;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class TikaConsumer
+            extends
+                TikaCommon<TikaConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public TikaConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class TikaConsumer extends TikaCommon<TikaConsumer> {
-    }
-
-    public static class TikaProducer extends TikaCommon<TikaProducer> {
+    public static class TikaProducer
+            extends
+                TikaCommon<TikaProducer>
+            implements
+                EndpointDefinition.Producer {
+        public TikaProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum TikaOperation {

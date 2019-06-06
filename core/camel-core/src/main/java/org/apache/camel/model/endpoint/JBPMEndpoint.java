@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -33,532 +34,248 @@ import org.apache.camel.spi.ExceptionHandler;
 public class JBPMEndpoint {
 
 
-    public static class JBPMCommon<T extends EndpointConfiguration>
+    public static class JBPMCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private URL connectionURL;
-        private String eventListenerType;
-        private Long attachmentId;
-        private Long contentId;
-        private String deploymentId;
-        private Boolean emitterSendItems;
-        private Object event;
-        private String eventType;
-        private String identifier;
-        private Integer maxNumber;
-        private Integer page;
-        private Integer pageSize;
-        private String processId;
-        private Long processInstanceId;
-        private String targetUserId;
-        private Object task;
-        private Long taskId;
-        private Integer timeout;
-        private String userId;
-        private Object value;
-        private Long workItemId;
-        private Boolean basicPropertyBinding;
-        private List<String> entities;
-        private Class[] extraJaxbClasses;
-        private Map<String, Object> parameters;
-        private Boolean synchronous;
-        private List<String> statuses;
-        private String password;
-        private String userName;
-
+                EndpointDefinition<T> {
+        JBPMCommon(String path) {
+            super("jbpm", path);
+        }
         /**
          * The URL to the jBPM server. The option is a java.net.URL type.
          */
         public T connectionURL(URL connectionURL) {
-            this.connectionURL = connectionURL;
+            this.properties.put("connectionURL", connectionURL);
             return (T) this;
         }
-
         /**
          * Sets the event listener type to attach to. The option is a
          * java.lang.String type.
          */
         public T eventListenerType(String eventListenerType) {
-            this.eventListenerType = eventListenerType;
+            this.properties.put("eventListenerType", eventListenerType);
             return (T) this;
         }
-
         /**
          * attachId to use when retrieving attachments. The option is a
          * java.lang.Long type.
          */
         public T attachmentId(Long attachmentId) {
-            this.attachmentId = attachmentId;
+            this.properties.put("attachmentId", attachmentId);
             return (T) this;
         }
-
         /**
          * contentId to use when retrieving attachments. The option is a
          * java.lang.Long type.
          */
         public T contentId(Long contentId) {
-            this.contentId = contentId;
+            this.properties.put("contentId", contentId);
             return (T) this;
         }
-
         /**
          * The id of the deployment. The option is a java.lang.String type.
          */
         public T deploymentId(String deploymentId) {
-            this.deploymentId = deploymentId;
+            this.properties.put("deploymentId", deploymentId);
             return (T) this;
         }
-
         /**
          * Sets if event produced by emitter should be sent as single items or
          * complete collection. The option is a java.lang.Boolean type.
          */
         public T emitterSendItems(Boolean emitterSendItems) {
-            this.emitterSendItems = emitterSendItems;
+            this.properties.put("emitterSendItems", emitterSendItems);
             return (T) this;
         }
-
         /**
          * the data associated with this event when signalEvent operation is
          * performed. The option is a java.lang.Object type.
          */
         public T event(Object event) {
-            this.event = event;
+            this.properties.put("event", event);
             return (T) this;
         }
-
         /**
          * the type of event to use when signalEvent operation is performed. The
          * option is a java.lang.String type.
          */
         public T eventType(String eventType) {
-            this.eventType = eventType;
+            this.properties.put("eventType", eventType);
             return (T) this;
         }
-
         /**
          * identifier the global identifier. The option is a java.lang.String
          * type.
          */
         public T identifier(String identifier) {
-            this.identifier = identifier;
+            this.properties.put("identifier", identifier);
             return (T) this;
         }
-
         /**
          * the maximum number of rules that should be fired. The option is a
          * java.lang.Integer type.
          */
         public T maxNumber(Integer maxNumber) {
-            this.maxNumber = maxNumber;
+            this.properties.put("maxNumber", maxNumber);
             return (T) this;
         }
-
         /**
          * The page to use when retrieving user tasks. The option is a
          * java.lang.Integer type.
          */
         public T page(Integer page) {
-            this.page = page;
+            this.properties.put("page", page);
             return (T) this;
         }
-
         /**
          * The page size to use when retrieving user tasks. The option is a
          * java.lang.Integer type.
          */
         public T pageSize(Integer pageSize) {
-            this.pageSize = pageSize;
+            this.properties.put("pageSize", pageSize);
             return (T) this;
         }
-
         /**
          * the id of the process that should be acted upon. The option is a
          * java.lang.String type.
          */
         public T processId(String processId) {
-            this.processId = processId;
+            this.properties.put("processId", processId);
             return (T) this;
         }
-
         /**
          * the id of the process instance. The option is a java.lang.Long type.
          */
         public T processInstanceId(Long processInstanceId) {
-            this.processInstanceId = processInstanceId;
+            this.properties.put("processInstanceId", processInstanceId);
             return (T) this;
         }
-
         /**
          * The targetUserId used when delegating a task. The option is a
          * java.lang.String type.
          */
         public T targetUserId(String targetUserId) {
-            this.targetUserId = targetUserId;
+            this.properties.put("targetUserId", targetUserId);
             return (T) this;
         }
-
         /**
          * The task instance to use with task operations. The option is a
          * org.kie.api.task.model.Task type.
          */
         public T task(Object task) {
-            this.task = task;
+            this.properties.put("task", task);
             return (T) this;
         }
-
         /**
          * the id of the task. The option is a java.lang.Long type.
          */
         public T taskId(Long taskId) {
-            this.taskId = taskId;
+            this.properties.put("taskId", taskId);
             return (T) this;
         }
-
         /**
          * A timeout value. The option is a java.lang.Integer type.
          */
         public T timeout(Integer timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (T) this;
         }
-
         /**
          * userId to use with task operations. The option is a java.lang.String
          * type.
          */
         public T userId(String userId) {
-            this.userId = userId;
+            this.properties.put("userId", userId);
             return (T) this;
         }
-
         /**
          * the value to assign to the global identifier. The option is a
          * java.lang.Object type.
          */
         public T value(Object value) {
-            this.value = value;
+            this.properties.put("value", value);
             return (T) this;
         }
-
         /**
          * the id of the work item. The option is a java.lang.Long type.
          */
         public T workItemId(Long workItemId) {
-            this.workItemId = workItemId;
+            this.properties.put("workItemId", workItemId);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * The potentialOwners when nominateTask operation is performed. The
          * option is a java.util.List<java.lang.String> type.
          */
         public T entities(List<String> entities) {
-            this.entities = entities;
+            this.properties.put("entities", entities);
             return (T) this;
         }
-
         /**
          * To load additional classes when working with XML. The option is a
          * java.lang.Class[] type.
          */
         public T extraJaxbClasses(Class[] extraJaxbClasses) {
-            this.extraJaxbClasses = extraJaxbClasses;
+            this.properties.put("extraJaxbClasses", extraJaxbClasses);
             return (T) this;
         }
-
         /**
          * the variables that should be set for various operations. The option
          * is a java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T parameters(Map<String, Object> parameters) {
-            this.parameters = parameters;
+            this.properties.put("parameters", parameters);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * The list of status to use when filtering tasks. The option is a
          * java.util.List<java.lang.String> type.
          */
         public T statuses(List<String> statuses) {
-            this.statuses = statuses;
+            this.properties.put("statuses", statuses);
             return (T) this;
         }
-
         /**
          * Password for authentication. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Username for authentication. The option is a java.lang.String type.
          */
         public T userName(String userName) {
-            this.userName = userName;
+            this.properties.put("userName", userName);
             return (T) this;
-        }
-
-        public URL getConnectionURL() {
-            return connectionURL;
-        }
-
-        public void setConnectionURL(URL connectionURL) {
-            this.connectionURL = connectionURL;
-        }
-
-        public String getEventListenerType() {
-            return eventListenerType;
-        }
-
-        public void setEventListenerType(String eventListenerType) {
-            this.eventListenerType = eventListenerType;
-        }
-
-        public Long getAttachmentId() {
-            return attachmentId;
-        }
-
-        public void setAttachmentId(Long attachmentId) {
-            this.attachmentId = attachmentId;
-        }
-
-        public Long getContentId() {
-            return contentId;
-        }
-
-        public void setContentId(Long contentId) {
-            this.contentId = contentId;
-        }
-
-        public String getDeploymentId() {
-            return deploymentId;
-        }
-
-        public void setDeploymentId(String deploymentId) {
-            this.deploymentId = deploymentId;
-        }
-
-        public Boolean getEmitterSendItems() {
-            return emitterSendItems;
-        }
-
-        public void setEmitterSendItems(Boolean emitterSendItems) {
-            this.emitterSendItems = emitterSendItems;
-        }
-
-        public Object getEvent() {
-            return event;
-        }
-
-        public void setEvent(Object event) {
-            this.event = event;
-        }
-
-        public String getEventType() {
-            return eventType;
-        }
-
-        public void setEventType(String eventType) {
-            this.eventType = eventType;
-        }
-
-        public String getIdentifier() {
-            return identifier;
-        }
-
-        public void setIdentifier(String identifier) {
-            this.identifier = identifier;
-        }
-
-        public Integer getMaxNumber() {
-            return maxNumber;
-        }
-
-        public void setMaxNumber(Integer maxNumber) {
-            this.maxNumber = maxNumber;
-        }
-
-        public Integer getPage() {
-            return page;
-        }
-
-        public void setPage(Integer page) {
-            this.page = page;
-        }
-
-        public Integer getPageSize() {
-            return pageSize;
-        }
-
-        public void setPageSize(Integer pageSize) {
-            this.pageSize = pageSize;
-        }
-
-        public String getProcessId() {
-            return processId;
-        }
-
-        public void setProcessId(String processId) {
-            this.processId = processId;
-        }
-
-        public Long getProcessInstanceId() {
-            return processInstanceId;
-        }
-
-        public void setProcessInstanceId(Long processInstanceId) {
-            this.processInstanceId = processInstanceId;
-        }
-
-        public String getTargetUserId() {
-            return targetUserId;
-        }
-
-        public void setTargetUserId(String targetUserId) {
-            this.targetUserId = targetUserId;
-        }
-
-        public Object getTask() {
-            return task;
-        }
-
-        public void setTask(Object task) {
-            this.task = task;
-        }
-
-        public Long getTaskId() {
-            return taskId;
-        }
-
-        public void setTaskId(Long taskId) {
-            this.taskId = taskId;
-        }
-
-        public Integer getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Integer timeout) {
-            this.timeout = timeout;
-        }
-
-        public String getUserId() {
-            return userId;
-        }
-
-        public void setUserId(String userId) {
-            this.userId = userId;
-        }
-
-        public Object getValue() {
-            return value;
-        }
-
-        public void setValue(Object value) {
-            this.value = value;
-        }
-
-        public Long getWorkItemId() {
-            return workItemId;
-        }
-
-        public void setWorkItemId(Long workItemId) {
-            this.workItemId = workItemId;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public List<String> getEntities() {
-            return entities;
-        }
-
-        public void setEntities(List<String> entities) {
-            this.entities = entities;
-        }
-
-        public Class[] getExtraJaxbClasses() {
-            return extraJaxbClasses;
-        }
-
-        public void setExtraJaxbClasses(Class[] extraJaxbClasses) {
-            this.extraJaxbClasses = extraJaxbClasses;
-        }
-
-        public Map<String, Object> getParameters() {
-            return parameters;
-        }
-
-        public void setParameters(Map<String, Object> parameters) {
-            this.parameters = parameters;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public List<String> getStatuses() {
-            return statuses;
-        }
-
-        public void setStatuses(List<String> statuses) {
-            this.statuses = statuses;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getUserName() {
-            return userName;
-        }
-
-        public void setUserName(String userName) {
-            this.userName = userName;
         }
     }
 
-    public static class JBPMConsumer extends JBPMCommon<JBPMConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class JBPMConsumer
+            extends
+                JBPMCommon<JBPMConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public JBPMConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -569,10 +286,9 @@ public class JBPMEndpoint {
          * ignored. The option is a boolean type.
          */
         public JBPMConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (JBPMConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -581,61 +297,33 @@ public class JBPMEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public JBPMConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (JBPMConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public JBPMConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (JBPMConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class JBPMProducer extends JBPMCommon<JBPMProducer> {
-        private String operation;
-
+    public static class JBPMProducer
+            extends
+                JBPMCommon<JBPMProducer>
+            implements
+                EndpointDefinition.Producer {
+        public JBPMProducer(String path) {
+            super(path);
+        }
         /**
          * The operation to perform. The option is a java.lang.String type.
          */
         public JBPMProducer operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (JBPMProducer) this;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
         }
     }
 }

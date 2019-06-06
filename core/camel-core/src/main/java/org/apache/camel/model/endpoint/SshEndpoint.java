@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,120 +37,97 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class SshEndpoint {
 
 
-    public static class SshCommon<T extends EndpointConfiguration>
+    public static class SshCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private Boolean failOnUnknownHost;
-        private String knownHostsResource;
-        private Long timeout;
-        private Boolean basicPropertyBinding;
-        private String channelType;
-        private String shellPrompt;
-        private Long sleepForShellPrompt;
-        private Boolean synchronous;
-        private String certResource;
-        private Object keyPairProvider;
-        private String keyType;
-        private String password;
-        private String username;
-
+                EndpointDefinition<T> {
+        SshCommon(String path) {
+            super("ssh", path);
+        }
         /**
          * Sets the hostname of the remote SSH server. The option is a
          * java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Sets the port number for the remote SSH server. The option is a int
          * type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Specifies whether a connection to an unknown host should fail or not.
          * This value is only checked when the property knownHosts is set. The
          * option is a boolean type.
          */
         public T failOnUnknownHost(boolean failOnUnknownHost) {
-            this.failOnUnknownHost = failOnUnknownHost;
+            this.properties.put("failOnUnknownHost", failOnUnknownHost);
             return (T) this;
         }
-
         /**
          * Sets the resource path for a known_hosts file. The option is a
          * java.lang.String type.
          */
         public T knownHostsResource(String knownHostsResource) {
-            this.knownHostsResource = knownHostsResource;
+            this.properties.put("knownHostsResource", knownHostsResource);
             return (T) this;
         }
-
         /**
          * Sets the timeout in milliseconds to wait in establishing the remote
          * SSH server connection. Defaults to 30000 milliseconds. The option is
          * a long type.
          */
         public T timeout(long timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets the channel type to pass to the Channel as part of command
          * execution. Defaults to exec. The option is a java.lang.String type.
          */
         public T channelType(String channelType) {
-            this.channelType = channelType;
+            this.properties.put("channelType", channelType);
             return (T) this;
         }
-
         /**
          * Sets the shellPrompt to be dropped when response is read after
          * command execution. The option is a java.lang.String type.
          */
         public T shellPrompt(String shellPrompt) {
-            this.shellPrompt = shellPrompt;
+            this.properties.put("shellPrompt", shellPrompt);
             return (T) this;
         }
-
         /**
          * Sets the sleep period in milliseconds to wait reading response from
          * shell prompt. Defaults to 100 milliseconds. The option is a long
          * type.
          */
         public T sleepForShellPrompt(long sleepForShellPrompt) {
-            this.sleepForShellPrompt = sleepForShellPrompt;
+            this.properties.put("sleepForShellPrompt", sleepForShellPrompt);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Sets the resource path of the certificate to use for Authentication.
          * Will use ResourceHelperKeyPairProvider to resolve file based
@@ -157,191 +135,54 @@ public class SshEndpoint {
          * java.lang.String type.
          */
         public T certResource(String certResource) {
-            this.certResource = certResource;
+            this.properties.put("certResource", certResource);
             return (T) this;
         }
-
         /**
          * Sets the KeyPairProvider reference to use when connecting using
          * Certificates to the remote SSH Server. The option is a
          * org.apache.sshd.common.keyprovider.KeyPairProvider type.
          */
         public T keyPairProvider(Object keyPairProvider) {
-            this.keyPairProvider = keyPairProvider;
+            this.properties.put("keyPairProvider", keyPairProvider);
             return (T) this;
         }
-
         /**
          * Sets the key type to pass to the KeyPairProvider as part of
          * authentication. KeyPairProvider.loadKey(...) will be passed this
          * value. Defaults to ssh-rsa. The option is a java.lang.String type.
          */
         public T keyType(String keyType) {
-            this.keyType = keyType;
+            this.properties.put("keyType", keyType);
             return (T) this;
         }
-
         /**
          * Sets the password to use in connecting to remote SSH server. Requires
          * keyPairProvider to be set to null. The option is a java.lang.String
          * type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Sets the username to use in logging into the remote SSH server. The
          * option is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public Boolean getFailOnUnknownHost() {
-            return failOnUnknownHost;
-        }
-
-        public void setFailOnUnknownHost(Boolean failOnUnknownHost) {
-            this.failOnUnknownHost = failOnUnknownHost;
-        }
-
-        public String getKnownHostsResource() {
-            return knownHostsResource;
-        }
-
-        public void setKnownHostsResource(String knownHostsResource) {
-            this.knownHostsResource = knownHostsResource;
-        }
-
-        public Long getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Long timeout) {
-            this.timeout = timeout;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public String getChannelType() {
-            return channelType;
-        }
-
-        public void setChannelType(String channelType) {
-            this.channelType = channelType;
-        }
-
-        public String getShellPrompt() {
-            return shellPrompt;
-        }
-
-        public void setShellPrompt(String shellPrompt) {
-            this.shellPrompt = shellPrompt;
-        }
-
-        public Long getSleepForShellPrompt() {
-            return sleepForShellPrompt;
-        }
-
-        public void setSleepForShellPrompt(Long sleepForShellPrompt) {
-            this.sleepForShellPrompt = sleepForShellPrompt;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getCertResource() {
-            return certResource;
-        }
-
-        public void setCertResource(String certResource) {
-            this.certResource = certResource;
-        }
-
-        public Object getKeyPairProvider() {
-            return keyPairProvider;
-        }
-
-        public void setKeyPairProvider(Object keyPairProvider) {
-            this.keyPairProvider = keyPairProvider;
-        }
-
-        public String getKeyType() {
-            return keyType;
-        }
-
-        public void setKeyType(String keyType) {
-            this.keyType = keyType;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
         }
     }
 
-    public static class SshConsumer extends SshCommon<SshConsumer> {
-        private Boolean bridgeErrorHandler;
-        private String pollCommand;
-        private Boolean sendEmptyMessageWhenIdle;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+    public static class SshConsumer
+            extends
+                SshCommon<SshConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SshConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -352,10 +193,9 @@ public class SshEndpoint {
          * ignored. The option is a boolean type.
          */
         public SshConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SshConsumer) this;
         }
-
         /**
          * Sets the command string to send to the remote SSH server during every
          * poll cycle. Only works with camel-ssh component being used as a
@@ -364,10 +204,9 @@ public class SshEndpoint {
          * java.lang.String type.
          */
         public SshConsumer pollCommand(String pollCommand) {
-            this.pollCommand = pollCommand;
+            this.properties.put("pollCommand", pollCommand);
             return (SshConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -375,10 +214,9 @@ public class SshEndpoint {
          */
         public SshConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (SshConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -387,19 +225,17 @@ public class SshEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public SshConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SshConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SshConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SshConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -408,29 +244,26 @@ public class SshEndpoint {
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
         public SshConsumer pollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (SshConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public SshConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (SshConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public SshConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (SshConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -440,50 +273,45 @@ public class SshEndpoint {
          * configured. The option is a int type.
          */
         public SshConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (SshConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public SshConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (SshConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public SshConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (SshConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public SshConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (SshConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public SshConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (SshConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -492,20 +320,18 @@ public class SshEndpoint {
          */
         public SshConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (SshConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public SshConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (SshConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -513,193 +339,43 @@ public class SshEndpoint {
          */
         public SshConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (SshConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public SshConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (SshConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public SshConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (SshConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public SshConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (SshConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public String getPollCommand() {
-            return pollCommand;
-        }
-
-        public void setPollCommand(String pollCommand) {
-            this.pollCommand = pollCommand;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
-    public static class SshProducer extends SshCommon<SshProducer> {
+    public static class SshProducer
+            extends
+                SshCommon<SshProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SshProducer(String path) {
+            super(path);
+        }
     }
 }

@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -35,105 +36,56 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class ApnsEndpoint {
 
 
-    public static class ApnsCommon<T extends EndpointConfiguration>
+    public static class ApnsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private String tokens;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        ApnsCommon(String path) {
+            super("apns", path);
+        }
         /**
          * Name of the endpoint. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * Configure this property in case you want to statically declare tokens
          * related to devices you want to notify. Tokens are separated by comma.
          * The option is a java.lang.String type.
          */
         public T tokens(String tokens) {
-            this.tokens = tokens;
+            this.properties.put("tokens", tokens);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getTokens() {
-            return tokens;
-        }
-
-        public void setTokens(String tokens) {
-            this.tokens = tokens;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class ApnsConsumer extends ApnsCommon<ApnsConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean sendEmptyMessageWhenIdle;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+    public static class ApnsConsumer
+            extends
+                ApnsCommon<ApnsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ApnsConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -144,10 +96,9 @@ public class ApnsEndpoint {
          * ignored. The option is a boolean type.
          */
         public ApnsConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (ApnsConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -155,10 +106,9 @@ public class ApnsEndpoint {
          */
         public ApnsConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (ApnsConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -167,19 +117,17 @@ public class ApnsEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public ApnsConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (ApnsConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public ApnsConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (ApnsConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -189,29 +137,26 @@ public class ApnsEndpoint {
          */
         public ApnsConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (ApnsConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public ApnsConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (ApnsConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public ApnsConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (ApnsConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -221,50 +166,45 @@ public class ApnsEndpoint {
          * configured. The option is a int type.
          */
         public ApnsConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (ApnsConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public ApnsConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (ApnsConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public ApnsConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (ApnsConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public ApnsConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (ApnsConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public ApnsConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (ApnsConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -273,20 +213,18 @@ public class ApnsEndpoint {
          */
         public ApnsConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (ApnsConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public ApnsConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (ApnsConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -294,185 +232,43 @@ public class ApnsEndpoint {
          */
         public ApnsConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (ApnsConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public ApnsConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (ApnsConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public ApnsConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (ApnsConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public ApnsConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (ApnsConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
-    public static class ApnsProducer extends ApnsCommon<ApnsProducer> {
+    public static class ApnsProducer
+            extends
+                ApnsCommon<ApnsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ApnsProducer(String path) {
+            super(path);
+        }
     }
 }

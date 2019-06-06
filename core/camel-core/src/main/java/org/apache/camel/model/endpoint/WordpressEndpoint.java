@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,236 +31,120 @@ import org.apache.camel.spi.ExceptionHandler;
 public class WordpressEndpoint {
 
 
-    public static class WordpressCommon<T extends EndpointConfiguration>
+    public static class WordpressCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String operation;
-        private String operationDetail;
-        private String apiVersion;
-        private Map<String, Object> criteria;
-        private Boolean force;
-        private Integer id;
-        private String password;
-        private Object searchCriteria;
-        private String url;
-        private String user;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        WordpressCommon(String path) {
+            super("wordpress", path);
+        }
         /**
          * The endpoint operation. The option is a java.lang.String type.
          */
         public T operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * The second part of an endpoint operation. Needed only when endpoint
          * semantic is not enough, like wordpress:post:delete. The option is a
          * java.lang.String type.
          */
         public T operationDetail(String operationDetail) {
-            this.operationDetail = operationDetail;
+            this.properties.put("operationDetail", operationDetail);
             return (T) this;
         }
-
         /**
          * The Wordpress REST API version. The option is a java.lang.String
          * type.
          */
         public T apiVersion(String apiVersion) {
-            this.apiVersion = apiVersion;
+            this.properties.put("apiVersion", apiVersion);
             return (T) this;
         }
-
         /**
          * The criteria to use with complex searches. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T criteria(Map<String, Object> criteria) {
-            this.criteria = criteria;
+            this.properties.put("criteria", criteria);
             return (T) this;
         }
-
         /**
          * Whether to bypass trash and force deletion. The option is a
          * java.lang.Boolean type.
          */
         public T force(Boolean force) {
-            this.force = force;
+            this.properties.put("force", force);
             return (T) this;
         }
-
         /**
          * The entity ID. Should be passed when the operation performed requires
          * a specific entity, e.g. deleting a post. The option is a
          * java.lang.Integer type.
          */
         public T id(Integer id) {
-            this.id = id;
+            this.properties.put("id", id);
             return (T) this;
         }
-
         /**
          * Password from authorized user. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Search criteria. The option is a
          * org.apache.camel.component.wordpress.api.model.SearchCriteria type.
          */
         public T searchCriteria(Object searchCriteria) {
-            this.searchCriteria = searchCriteria;
+            this.properties.put("searchCriteria", searchCriteria);
             return (T) this;
         }
-
         /**
          * The Wordpress API URL from your site, e.g.
          * http://myblog.com/wp-json/. The option is a java.lang.String type.
          */
         public T url(String url) {
-            this.url = url;
+            this.properties.put("url", url);
             return (T) this;
         }
-
         /**
          * Authorized user to perform writing operations. The option is a
          * java.lang.String type.
          */
         public T user(String user) {
-            this.user = user;
+            this.properties.put("user", user);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
-        }
-
-        public String getOperationDetail() {
-            return operationDetail;
-        }
-
-        public void setOperationDetail(String operationDetail) {
-            this.operationDetail = operationDetail;
-        }
-
-        public String getApiVersion() {
-            return apiVersion;
-        }
-
-        public void setApiVersion(String apiVersion) {
-            this.apiVersion = apiVersion;
-        }
-
-        public Map<String, Object> getCriteria() {
-            return criteria;
-        }
-
-        public void setCriteria(Map<String, Object> criteria) {
-            this.criteria = criteria;
-        }
-
-        public Boolean getForce() {
-            return force;
-        }
-
-        public void setForce(Boolean force) {
-            this.force = force;
-        }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public Object getSearchCriteria() {
-            return searchCriteria;
-        }
-
-        public void setSearchCriteria(Object searchCriteria) {
-            this.searchCriteria = searchCriteria;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        public String getUser() {
-            return user;
-        }
-
-        public void setUser(String user) {
-            this.user = user;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class WordpressConsumer
             extends
-                WordpressCommon<WordpressConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                WordpressCommon<WordpressConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public WordpressConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -270,10 +155,9 @@ public class WordpressEndpoint {
          * ignored. The option is a boolean type.
          */
         public WordpressConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (WordpressConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -283,46 +167,26 @@ public class WordpressEndpoint {
          */
         public WordpressConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (WordpressConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public WordpressConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (WordpressConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class WordpressProducer
             extends
-                WordpressCommon<WordpressProducer> {
+                WordpressCommon<WordpressProducer>
+            implements
+                EndpointDefinition.Producer {
+        public WordpressProducer(String path) {
+            super(path);
+        }
     }
 }

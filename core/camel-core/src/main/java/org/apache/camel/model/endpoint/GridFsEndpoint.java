@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,45 +30,36 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GridFsEndpoint {
 
 
-    public static class GridFsCommon<T extends EndpointConfiguration>
+    public static class GridFsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String connectionBean;
-        private String bucket;
-        private String database;
-        private Object readPreference;
-        private Object writeConcern;
-        private Object writeConcernRef;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        GridFsCommon(String path) {
+            super("mongodb-gridfs", path);
+        }
         /**
          * Name of com.mongodb.Mongo to use. The option is a java.lang.String
          * type.
          */
         public T connectionBean(String connectionBean) {
-            this.connectionBean = connectionBean;
+            this.properties.put("connectionBean", connectionBean);
             return (T) this;
         }
-
         /**
          * Sets the name of the GridFS bucket within the database. Default is
          * fs. The option is a java.lang.String type.
          */
         public T bucket(String bucket) {
-            this.bucket = bucket;
+            this.properties.put("bucket", bucket);
             return (T) this;
         }
-
         /**
          * Sets the name of the MongoDB database to target. The option is a
          * java.lang.String type.
          */
         public T database(String database) {
-            this.database = database;
+            this.properties.put("database", database);
             return (T) this;
         }
-
         /**
          * Sets a MongoDB ReadPreference on the Mongo connection. Read
          * preferences set directly on the connection will be overridden by this
@@ -77,10 +69,9 @@ public class GridFsEndpoint {
          * etc. The option is a com.mongodb.ReadPreference type.
          */
         public T readPreference(Object readPreference) {
-            this.readPreference = readPreference;
+            this.properties.put("readPreference", readPreference);
             return (T) this;
         }
-
         /**
          * Set the WriteConcern for write operations on MongoDB using the
          * standard ones. Resolved from the fields of the WriteConcern class by
@@ -88,10 +79,9 @@ public class GridFsEndpoint {
          * com.mongodb.WriteConcern type.
          */
         public T writeConcern(Object writeConcern) {
-            this.writeConcern = writeConcern;
+            this.properties.put("writeConcern", writeConcern);
             return (T) this;
         }
-
         /**
          * Set the WriteConcern for write operations on MongoDB, passing in the
          * bean ref to a custom WriteConcern which exists in the Registry. You
@@ -100,107 +90,37 @@ public class GridFsEndpoint {
          * a com.mongodb.WriteConcern type.
          */
         public T writeConcernRef(Object writeConcernRef) {
-            this.writeConcernRef = writeConcernRef;
+            this.properties.put("writeConcernRef", writeConcernRef);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getConnectionBean() {
-            return connectionBean;
-        }
-
-        public void setConnectionBean(String connectionBean) {
-            this.connectionBean = connectionBean;
-        }
-
-        public String getBucket() {
-            return bucket;
-        }
-
-        public void setBucket(String bucket) {
-            this.bucket = bucket;
-        }
-
-        public String getDatabase() {
-            return database;
-        }
-
-        public void setDatabase(String database) {
-            this.database = database;
-        }
-
-        public Object getReadPreference() {
-            return readPreference;
-        }
-
-        public void setReadPreference(Object readPreference) {
-            this.readPreference = readPreference;
-        }
-
-        public Object getWriteConcern() {
-            return writeConcern;
-        }
-
-        public void setWriteConcern(Object writeConcern) {
-            this.writeConcern = writeConcern;
-        }
-
-        public Object getWriteConcernRef() {
-            return writeConcernRef;
-        }
-
-        public void setWriteConcernRef(Object writeConcernRef) {
-            this.writeConcernRef = writeConcernRef;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class GridFsConsumer extends GridFsCommon<GridFsConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Long delay;
-        private String fileAttributeName;
-        private Long initialDelay;
-        private String persistentTSCollection;
-        private String persistentTSObject;
-        private String query;
-        private QueryStrategy queryStrategy;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class GridFsConsumer
+            extends
+                GridFsCommon<GridFsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GridFsConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -211,38 +131,34 @@ public class GridFsEndpoint {
          * ignored. The option is a boolean type.
          */
         public GridFsConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (GridFsConsumer) this;
         }
-
         /**
          * Sets the delay between polls within the Consumer. Default is 500ms.
          * The option is a long type.
          */
         public GridFsConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (GridFsConsumer) this;
         }
-
         /**
          * If the QueryType uses a FileAttribute, this sets the name of the
          * attribute that is used. Default is camel-processed. The option is a
          * java.lang.String type.
          */
         public GridFsConsumer fileAttributeName(String fileAttributeName) {
-            this.fileAttributeName = fileAttributeName;
+            this.properties.put("fileAttributeName", fileAttributeName);
             return (GridFsConsumer) this;
         }
-
         /**
          * Sets the initialDelay before the consumer will start polling. Default
          * is 1000ms. The option is a long type.
          */
         public GridFsConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (GridFsConsumer) this;
         }
-
         /**
          * If the QueryType uses a persistent timestamp, this sets the name of
          * the collection within the DB to store the timestamp. The option is a
@@ -250,40 +166,36 @@ public class GridFsEndpoint {
          */
         public GridFsConsumer persistentTSCollection(
                 String persistentTSCollection) {
-            this.persistentTSCollection = persistentTSCollection;
+            this.properties.put("persistentTSCollection", persistentTSCollection);
             return (GridFsConsumer) this;
         }
-
         /**
          * If the QueryType uses a persistent timestamp, this is the ID of the
          * object in the collection to store the timestamp. The option is a
          * java.lang.String type.
          */
         public GridFsConsumer persistentTSObject(String persistentTSObject) {
-            this.persistentTSObject = persistentTSObject;
+            this.properties.put("persistentTSObject", persistentTSObject);
             return (GridFsConsumer) this;
         }
-
         /**
          * Additional query parameters (in JSON) that are used to configure the
          * query used for finding files in the GridFsConsumer. The option is a
          * java.lang.String type.
          */
         public GridFsConsumer query(String query) {
-            this.query = query;
+            this.properties.put("query", query);
             return (GridFsConsumer) this;
         }
-
         /**
          * Sets the QueryStrategy that is used for polling for new files.
          * Default is Timestamp. The option is a
          * org.apache.camel.component.mongodb.gridfs.QueryStrategy type.
          */
         public GridFsConsumer queryStrategy(QueryStrategy queryStrategy) {
-            this.queryStrategy = queryStrategy;
+            this.properties.put("queryStrategy", queryStrategy);
             return (GridFsConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -292,118 +204,34 @@ public class GridFsEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public GridFsConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (GridFsConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GridFsConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (GridFsConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public String getFileAttributeName() {
-            return fileAttributeName;
-        }
-
-        public void setFileAttributeName(String fileAttributeName) {
-            this.fileAttributeName = fileAttributeName;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public String getPersistentTSCollection() {
-            return persistentTSCollection;
-        }
-
-        public void setPersistentTSCollection(String persistentTSCollection) {
-            this.persistentTSCollection = persistentTSCollection;
-        }
-
-        public String getPersistentTSObject() {
-            return persistentTSObject;
-        }
-
-        public void setPersistentTSObject(String persistentTSObject) {
-            this.persistentTSObject = persistentTSObject;
-        }
-
-        public String getQuery() {
-            return query;
-        }
-
-        public void setQuery(String query) {
-            this.query = query;
-        }
-
-        public QueryStrategy getQueryStrategy() {
-            return queryStrategy;
-        }
-
-        public void setQueryStrategy(QueryStrategy queryStrategy) {
-            this.queryStrategy = queryStrategy;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class GridFsProducer extends GridFsCommon<GridFsProducer> {
-        private String operation;
-
+    public static class GridFsProducer
+            extends
+                GridFsCommon<GridFsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GridFsProducer(String path) {
+            super(path);
+        }
         /**
          * Sets the operation this endpoint will execute against GridRS. The
          * option is a java.lang.String type.
          */
         public GridFsProducer operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (GridFsProducer) this;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
         }
     }
 

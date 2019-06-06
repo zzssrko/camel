@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,48 +31,36 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SparkEndpoint {
 
 
-    public static class SparkCommon<T extends EndpointConfiguration>
+    public static class SparkCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String verb;
-        private String path;
-        private String accept;
-        private Boolean disableStreamCache;
-        private Boolean mapHeaders;
-        private Boolean transferException;
-        private Boolean urlDecodeHeaders;
-        private Boolean basicPropertyBinding;
-        private Boolean matchOnUriPrefix;
-        private Object sparkBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        SparkCommon(String path) {
+            super("spark-rest", path);
+        }
         /**
          * get, post, put, patch, delete, head, trace, connect, or options. The
          * option is a java.lang.String type.
          */
         public T verb(String verb) {
-            this.verb = verb;
+            this.properties.put("verb", verb);
             return (T) this;
         }
-
         /**
          * The content path which support Spark syntax. The option is a
          * java.lang.String type.
          */
         public T path(String path) {
-            this.path = path;
+            this.properties.put("path", path);
             return (T) this;
         }
-
         /**
          * Accept type such as: 'text/xml', or 'application/json'. By default we
          * accept all kinds of types. The option is a java.lang.String type.
          */
         public T accept(String accept) {
-            this.accept = accept;
+            this.properties.put("accept", accept);
             return (T) this;
         }
-
         /**
          * Determines whether or not the raw input stream from Spark
          * HttpRequest#getContent() is cached or not (Camel will read the stream
@@ -86,10 +75,9 @@ public class SparkEndpoint {
          * stream. The option is a boolean type.
          */
         public T disableStreamCache(boolean disableStreamCache) {
-            this.disableStreamCache = disableStreamCache;
+            this.properties.put("disableStreamCache", disableStreamCache);
             return (T) this;
         }
-
         /**
          * If this option is enabled, then during binding from Spark to Camel
          * Message then the headers will be mapped as well (eg added as header
@@ -100,10 +88,9 @@ public class SparkEndpoint {
          * option is a boolean type.
          */
         public T mapHeaders(boolean mapHeaders) {
-            this.mapHeaders = mapHeaders;
+            this.properties.put("mapHeaders", mapHeaders);
             return (T) this;
         }
-
         /**
          * If enabled and an Exchange failed processing on the consumer side,
          * and if the caused Exception was send back serialized in the response
@@ -113,153 +100,63 @@ public class SparkEndpoint {
          * be a potential security risk. The option is a boolean type.
          */
         public T transferException(boolean transferException) {
-            this.transferException = transferException;
+            this.properties.put("transferException", transferException);
             return (T) this;
         }
-
         /**
          * If this option is enabled, then during binding from Spark to Camel
          * Message then the header values will be URL decoded (eg %20 will be a
          * space character.). The option is a boolean type.
          */
         public T urlDecodeHeaders(boolean urlDecodeHeaders) {
-            this.urlDecodeHeaders = urlDecodeHeaders;
+            this.properties.put("urlDecodeHeaders", urlDecodeHeaders);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Whether or not the consumer should try to find a target consumer by
          * matching the URI prefix if no exact match is found. The option is a
          * boolean type.
          */
         public T matchOnUriPrefix(boolean matchOnUriPrefix) {
-            this.matchOnUriPrefix = matchOnUriPrefix;
+            this.properties.put("matchOnUriPrefix", matchOnUriPrefix);
             return (T) this;
         }
-
         /**
          * To use a custom SparkBinding to map to/from Camel message. The option
          * is a org.apache.camel.component.sparkrest.SparkBinding type.
          */
         public T sparkBinding(Object sparkBinding) {
-            this.sparkBinding = sparkBinding;
+            this.properties.put("sparkBinding", sparkBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getVerb() {
-            return verb;
-        }
-
-        public void setVerb(String verb) {
-            this.verb = verb;
-        }
-
-        public String getPath() {
-            return path;
-        }
-
-        public void setPath(String path) {
-            this.path = path;
-        }
-
-        public String getAccept() {
-            return accept;
-        }
-
-        public void setAccept(String accept) {
-            this.accept = accept;
-        }
-
-        public Boolean getDisableStreamCache() {
-            return disableStreamCache;
-        }
-
-        public void setDisableStreamCache(Boolean disableStreamCache) {
-            this.disableStreamCache = disableStreamCache;
-        }
-
-        public Boolean getMapHeaders() {
-            return mapHeaders;
-        }
-
-        public void setMapHeaders(Boolean mapHeaders) {
-            this.mapHeaders = mapHeaders;
-        }
-
-        public Boolean getTransferException() {
-            return transferException;
-        }
-
-        public void setTransferException(Boolean transferException) {
-            this.transferException = transferException;
-        }
-
-        public Boolean getUrlDecodeHeaders() {
-            return urlDecodeHeaders;
-        }
-
-        public void setUrlDecodeHeaders(Boolean urlDecodeHeaders) {
-            this.urlDecodeHeaders = urlDecodeHeaders;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getMatchOnUriPrefix() {
-            return matchOnUriPrefix;
-        }
-
-        public void setMatchOnUriPrefix(Boolean matchOnUriPrefix) {
-            this.matchOnUriPrefix = matchOnUriPrefix;
-        }
-
-        public Object getSparkBinding() {
-            return sparkBinding;
-        }
-
-        public void setSparkBinding(Object sparkBinding) {
-            this.sparkBinding = sparkBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class SparkConsumer extends SparkCommon<SparkConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class SparkConsumer
+            extends
+                SparkCommon<SparkConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SparkConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -270,10 +167,9 @@ public class SparkEndpoint {
          * ignored. The option is a boolean type.
          */
         public SparkConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SparkConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -282,44 +178,26 @@ public class SparkEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public SparkConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SparkConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SparkConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SparkConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class SparkProducer extends SparkCommon<SparkProducer> {
+    public static class SparkProducer
+            extends
+                SparkCommon<SparkProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SparkProducer(String path) {
+            super(path);
+        }
     }
 }

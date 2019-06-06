@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,45 +30,35 @@ import org.apache.camel.spi.ExceptionHandler;
 public class RedisEndpoint {
 
 
-    public static class RedisCommon<T extends EndpointConfiguration>
+    public static class RedisCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private String channels;
-        private Command command;
-        private Object connectionFactory;
-        private Object redisTemplate;
-        private Object serializer;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        RedisCommon(String path) {
+            super("spring-redis", path);
+        }
         /**
          * The host where Redis server is running. The option is a
          * java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Redis server port number. The option is a java.lang.Integer type.
          */
         public T port(Integer port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * List of topic names or name patterns to subscribe to. Multiple names
          * can be separated by comma. The option is a java.lang.String type.
          */
         public T channels(String channels) {
-            this.channels = channels;
+            this.properties.put("channels", channels);
             return (T) this;
         }
-
         /**
          * Default command, which can be overridden by message header. Notice
          * the consumer only supports the following commands: PSUBSCRIBE and
@@ -75,10 +66,9 @@ public class RedisEndpoint {
          * type.
          */
         public T command(Command command) {
-            this.command = command;
+            this.properties.put("command", command);
             return (T) this;
         }
-
         /**
          * Reference to a pre-configured RedisConnectionFactory instance to use.
          * The option is a
@@ -86,128 +76,54 @@ public class RedisEndpoint {
          * type.
          */
         public T connectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
+            this.properties.put("connectionFactory", connectionFactory);
             return (T) this;
         }
-
         /**
          * Reference to a pre-configured RedisTemplate instance to use. The
          * option is a org.springframework.data.redis.core.RedisTemplate type.
          */
         public T redisTemplate(Object redisTemplate) {
-            this.redisTemplate = redisTemplate;
+            this.properties.put("redisTemplate", redisTemplate);
             return (T) this;
         }
-
         /**
          * Reference to a pre-configured RedisSerializer instance to use. The
          * option is a org.springframework.data.redis.serializer.RedisSerializer
          * type.
          */
         public T serializer(Object serializer) {
-            this.serializer = serializer;
+            this.properties.put("serializer", serializer);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getChannels() {
-            return channels;
-        }
-
-        public void setChannels(String channels) {
-            this.channels = channels;
-        }
-
-        public Command getCommand() {
-            return command;
-        }
-
-        public void setCommand(Command command) {
-            this.command = command;
-        }
-
-        public Object getConnectionFactory() {
-            return connectionFactory;
-        }
-
-        public void setConnectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
-        }
-
-        public Object getRedisTemplate() {
-            return redisTemplate;
-        }
-
-        public void setRedisTemplate(Object redisTemplate) {
-            this.redisTemplate = redisTemplate;
-        }
-
-        public Object getSerializer() {
-            return serializer;
-        }
-
-        public void setSerializer(Object serializer) {
-            this.serializer = serializer;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class RedisConsumer extends RedisCommon<RedisConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private Object listenerContainer;
-
+    public static class RedisConsumer
+            extends
+                RedisCommon<RedisConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public RedisConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -218,10 +134,9 @@ public class RedisEndpoint {
          * ignored. The option is a boolean type.
          */
         public RedisConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (RedisConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -230,19 +145,17 @@ public class RedisEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public RedisConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (RedisConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public RedisConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (RedisConsumer) this;
         }
-
         /**
          * Reference to a pre-configured RedisMessageListenerContainer instance
          * to use. The option is a
@@ -250,44 +163,19 @@ public class RedisEndpoint {
          * type.
          */
         public RedisConsumer listenerContainer(Object listenerContainer) {
-            this.listenerContainer = listenerContainer;
+            this.properties.put("listenerContainer", listenerContainer);
             return (RedisConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public Object getListenerContainer() {
-            return listenerContainer;
-        }
-
-        public void setListenerContainer(Object listenerContainer) {
-            this.listenerContainer = listenerContainer;
         }
     }
 
-    public static class RedisProducer extends RedisCommon<RedisProducer> {
+    public static class RedisProducer
+            extends
+                RedisCommon<RedisProducer>
+            implements
+                EndpointDefinition.Producer {
+        public RedisProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum Command {

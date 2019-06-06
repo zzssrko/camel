@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * Performs a query, insert, update or delete in a relational database using
@@ -28,98 +29,67 @@ import javax.annotation.Generated;
 public class MyBatisBeanEndpoint {
 
 
-    public static class MyBatisBeanCommon<T extends EndpointConfiguration>
+    public static class MyBatisBeanCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String beanName;
-        private String methodName;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        MyBatisBeanCommon(String path) {
+            super("mybatis-bean", path);
+        }
         /**
          * Name of the bean with the MyBatis annotations. This can either by a
          * type alias or a FQN class name. The option is a java.lang.String
          * type.
          */
         public T beanName(String beanName) {
-            this.beanName = beanName;
+            this.properties.put("beanName", beanName);
             return (T) this;
         }
-
         /**
          * Name of the method on the bean that has the SQL query to be executed.
          * The option is a java.lang.String type.
          */
         public T methodName(String methodName) {
-            this.methodName = methodName;
+            this.properties.put("methodName", methodName);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getBeanName() {
-            return beanName;
-        }
-
-        public void setBeanName(String beanName) {
-            this.beanName = beanName;
-        }
-
-        public String getMethodName() {
-            return methodName;
-        }
-
-        public void setMethodName(String methodName) {
-            this.methodName = methodName;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class MyBatisBeanConsumer
             extends
-                MyBatisBeanCommon<MyBatisBeanConsumer> {
+                MyBatisBeanCommon<MyBatisBeanConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public MyBatisBeanConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class MyBatisBeanProducer
             extends
-                MyBatisBeanCommon<MyBatisBeanProducer> {
-        private ExecutorType executorType;
-        private String inputHeader;
-        private String outputHeader;
-
+                MyBatisBeanCommon<MyBatisBeanProducer>
+            implements
+                EndpointDefinition.Producer {
+        public MyBatisBeanProducer(String path) {
+            super(path);
+        }
         /**
          * The executor type to be used while executing statements. simple -
          * executor does nothing special. reuse - executor reuses prepared
@@ -127,10 +97,9 @@ public class MyBatisBeanEndpoint {
          * The option is a org.apache.ibatis.session.ExecutorType type.
          */
         public MyBatisBeanProducer executorType(ExecutorType executorType) {
-            this.executorType = executorType;
+            this.properties.put("executorType", executorType);
             return (MyBatisBeanProducer) this;
         }
-
         /**
          * User the header value for input parameters instead of the message
          * body. By default, inputHeader == null and the input parameters are
@@ -139,10 +108,9 @@ public class MyBatisBeanEndpoint {
          * the body. The option is a java.lang.String type.
          */
         public MyBatisBeanProducer inputHeader(String inputHeader) {
-            this.inputHeader = inputHeader;
+            this.properties.put("inputHeader", inputHeader);
             return (MyBatisBeanProducer) this;
         }
-
         /**
          * Store the query result in a header instead of the message body. By
          * default, outputHeader == null and the query result is stored in the
@@ -154,32 +122,8 @@ public class MyBatisBeanEndpoint {
          * all the time. The option is a java.lang.String type.
          */
         public MyBatisBeanProducer outputHeader(String outputHeader) {
-            this.outputHeader = outputHeader;
+            this.properties.put("outputHeader", outputHeader);
             return (MyBatisBeanProducer) this;
-        }
-
-        public ExecutorType getExecutorType() {
-            return executorType;
-        }
-
-        public void setExecutorType(ExecutorType executorType) {
-            this.executorType = executorType;
-        }
-
-        public String getInputHeader() {
-            return inputHeader;
-        }
-
-        public void setInputHeader(String inputHeader) {
-            this.inputHeader = inputHeader;
-        }
-
-        public String getOutputHeader() {
-            return outputHeader;
-        }
-
-        public void setOutputHeader(String outputHeader) {
-            this.outputHeader = outputHeader;
         }
     }
 

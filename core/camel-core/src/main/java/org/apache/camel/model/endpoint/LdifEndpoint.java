@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The ldif component allows you to do updates on an LDAP server from a LDIF
@@ -28,13 +29,12 @@ import javax.annotation.Generated;
 public class LdifEndpoint {
 
 
-    public static class LdifCommon<T extends EndpointConfiguration>
+    public static class LdifCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String ldapConnectionName;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        LdifCommon(String path) {
+            super("ldif", path);
+        }
         /**
          * The name of the LdapConnection bean to pull from the registry. Note
          * that this must be of scope prototype to avoid it being shared among
@@ -42,58 +42,46 @@ public class LdifEndpoint {
          * java.lang.String type.
          */
         public T ldapConnectionName(String ldapConnectionName) {
-            this.ldapConnectionName = ldapConnectionName;
+            this.properties.put("ldapConnectionName", ldapConnectionName);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getLdapConnectionName() {
-            return ldapConnectionName;
-        }
-
-        public void setLdapConnectionName(String ldapConnectionName) {
-            this.ldapConnectionName = ldapConnectionName;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class LdifConsumer
+            extends
+                LdifCommon<LdifConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public LdifConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class LdifConsumer extends LdifCommon<LdifConsumer> {
-    }
-
-    public static class LdifProducer extends LdifCommon<LdifProducer> {
+    public static class LdifProducer
+            extends
+                LdifCommon<LdifProducer>
+            implements
+                EndpointDefinition.Producer {
+        public LdifProducer(String path) {
+            super(path);
+        }
     }
 }

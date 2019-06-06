@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,32 +37,20 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class JpaEndpoint {
 
 
-    public static class JpaCommon<T extends EndpointConfiguration>
+    public static class JpaCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private Class<Object> entityType;
-        private Boolean joinTransaction;
-        private Integer maximumResults;
-        private String namedQuery;
-        private String nativeQuery;
-        private Map<String, Object> parameters;
-        private String persistenceUnit;
-        private String query;
-        private Class<Object> resultClass;
-        private Boolean sharedEntityManager;
-        private Boolean basicPropertyBinding;
-        private Map<String, Object> entityManagerProperties;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        JpaCommon(String path) {
+            super("jpa", path);
+        }
         /**
          * The JPA annotated class to use as entity. The option is a
          * java.lang.Class<?> type.
          */
         public T entityType(Class<Object> entityType) {
-            this.entityType = entityType;
+            this.properties.put("entityType", entityType);
             return (T) this;
         }
-
         /**
          * The camel-jpa component will join transaction by default. You can use
          * this option to turn this off, for example if you use LOCAL_RESOURCE
@@ -70,37 +59,33 @@ public class JpaEndpoint {
          * set it on all endpoints. The option is a boolean type.
          */
         public T joinTransaction(boolean joinTransaction) {
-            this.joinTransaction = joinTransaction;
+            this.properties.put("joinTransaction", joinTransaction);
             return (T) this;
         }
-
         /**
          * Set the maximum number of results to retrieve on the Query. The
          * option is a int type.
          */
         public T maximumResults(int maximumResults) {
-            this.maximumResults = maximumResults;
+            this.properties.put("maximumResults", maximumResults);
             return (T) this;
         }
-
         /**
          * To use a named query. The option is a java.lang.String type.
          */
         public T namedQuery(String namedQuery) {
-            this.namedQuery = namedQuery;
+            this.properties.put("namedQuery", namedQuery);
             return (T) this;
         }
-
         /**
          * To use a custom native query. You may want to use the option
          * resultClass also when using native queries. The option is a
          * java.lang.String type.
          */
         public T nativeQuery(String nativeQuery) {
-            this.nativeQuery = nativeQuery;
+            this.properties.put("nativeQuery", nativeQuery);
             return (T) this;
         }
-
         /**
          * This key/value mapping is used for building the query parameters. It
          * is expected to be of the generic type java.util.Map where the keys
@@ -112,27 +97,24 @@ public class JpaEndpoint {
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T parameters(Map<String, Object> parameters) {
-            this.parameters = parameters;
+            this.properties.put("parameters", parameters);
             return (T) this;
         }
-
         /**
          * The JPA persistence unit used by default. The option is a
          * java.lang.String type.
          */
         public T persistenceUnit(String persistenceUnit) {
-            this.persistenceUnit = persistenceUnit;
+            this.properties.put("persistenceUnit", persistenceUnit);
             return (T) this;
         }
-
         /**
          * To use a custom query. The option is a java.lang.String type.
          */
         public T query(String query) {
-            this.query = query;
+            this.properties.put("query", query);
             return (T) this;
         }
-
         /**
          * Defines the type of the returned payload (we will call
          * entityManager.createNativeQuery(nativeQuery, resultClass) instead of
@@ -142,10 +124,9 @@ public class JpaEndpoint {
          * java.lang.Class<?> type.
          */
         public T resultClass(Class<Object> resultClass) {
-            this.resultClass = resultClass;
+            this.properties.put("resultClass", resultClass);
             return (T) this;
         }
-
         /**
          * Whether to use Spring's SharedEntityManager for the
          * consumer/producer. Note in most cases joinTransaction should be set
@@ -153,174 +134,46 @@ public class JpaEndpoint {
          * boolean type.
          */
         public T sharedEntityManager(boolean sharedEntityManager) {
-            this.sharedEntityManager = sharedEntityManager;
+            this.properties.put("sharedEntityManager", sharedEntityManager);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Additional properties for the entity manager to use. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T entityManagerProperties(
                 Map<String, Object> entityManagerProperties) {
-            this.entityManagerProperties = entityManagerProperties;
+            this.properties.put("entityManagerProperties", entityManagerProperties);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public Class<Object> getEntityType() {
-            return entityType;
-        }
-
-        public void setEntityType(Class<Object> entityType) {
-            this.entityType = entityType;
-        }
-
-        public Boolean getJoinTransaction() {
-            return joinTransaction;
-        }
-
-        public void setJoinTransaction(Boolean joinTransaction) {
-            this.joinTransaction = joinTransaction;
-        }
-
-        public Integer getMaximumResults() {
-            return maximumResults;
-        }
-
-        public void setMaximumResults(Integer maximumResults) {
-            this.maximumResults = maximumResults;
-        }
-
-        public String getNamedQuery() {
-            return namedQuery;
-        }
-
-        public void setNamedQuery(String namedQuery) {
-            this.namedQuery = namedQuery;
-        }
-
-        public String getNativeQuery() {
-            return nativeQuery;
-        }
-
-        public void setNativeQuery(String nativeQuery) {
-            this.nativeQuery = nativeQuery;
-        }
-
-        public Map<String, Object> getParameters() {
-            return parameters;
-        }
-
-        public void setParameters(Map<String, Object> parameters) {
-            this.parameters = parameters;
-        }
-
-        public String getPersistenceUnit() {
-            return persistenceUnit;
-        }
-
-        public void setPersistenceUnit(String persistenceUnit) {
-            this.persistenceUnit = persistenceUnit;
-        }
-
-        public String getQuery() {
-            return query;
-        }
-
-        public void setQuery(String query) {
-            this.query = query;
-        }
-
-        public Class<Object> getResultClass() {
-            return resultClass;
-        }
-
-        public void setResultClass(Class<Object> resultClass) {
-            this.resultClass = resultClass;
-        }
-
-        public Boolean getSharedEntityManager() {
-            return sharedEntityManager;
-        }
-
-        public void setSharedEntityManager(Boolean sharedEntityManager) {
-            this.sharedEntityManager = sharedEntityManager;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Map<String, Object> getEntityManagerProperties() {
-            return entityManagerProperties;
-        }
-
-        public void setEntityManagerProperties(
-                Map<String, Object> entityManagerProperties) {
-            this.entityManagerProperties = entityManagerProperties;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class JpaConsumer extends JpaCommon<JpaConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean consumeDelete;
-        private Boolean consumeLockEntity;
-        private Object deleteHandler;
-        private LockModeType lockModeType;
-        private Integer maxMessagesPerPoll;
-        private Object preDeleteHandler;
-        private Boolean sendEmptyMessageWhenIdle;
-        private Boolean skipLockedEntity;
-        private Boolean transacted;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+    public static class JpaConsumer
+            extends
+                JpaCommon<JpaConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public JpaConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -331,48 +184,43 @@ public class JpaEndpoint {
          * ignored. The option is a boolean type.
          */
         public JpaConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (JpaConsumer) this;
         }
-
         /**
          * If true, the entity is deleted after it is consumed; if false, the
          * entity is not deleted. The option is a boolean type.
          */
         public JpaConsumer consumeDelete(boolean consumeDelete) {
-            this.consumeDelete = consumeDelete;
+            this.properties.put("consumeDelete", consumeDelete);
             return (JpaConsumer) this;
         }
-
         /**
          * Specifies whether or not to set an exclusive lock on each entity bean
          * while processing the results from polling. The option is a boolean
          * type.
          */
         public JpaConsumer consumeLockEntity(boolean consumeLockEntity) {
-            this.consumeLockEntity = consumeLockEntity;
+            this.properties.put("consumeLockEntity", consumeLockEntity);
             return (JpaConsumer) this;
         }
-
         /**
          * To use a custom DeleteHandler to delete the row after the consumer is
          * done processing the exchange. The option is a
          * org.apache.camel.component.jpa.DeleteHandler<java.lang.Object> type.
          */
         public JpaConsumer deleteHandler(Object deleteHandler) {
-            this.deleteHandler = deleteHandler;
+            this.properties.put("deleteHandler", deleteHandler);
             return (JpaConsumer) this;
         }
-
         /**
          * To configure the lock mode on the consumer. The option is a
          * javax.persistence.LockModeType type.
          */
         public JpaConsumer lockModeType(LockModeType lockModeType) {
-            this.lockModeType = lockModeType;
+            this.properties.put("lockModeType", lockModeType);
             return (JpaConsumer) this;
         }
-
         /**
          * An integer value to define the maximum number of messages to gather
          * per poll. By default, no maximum is set. Can be used to avoid polling
@@ -380,20 +228,18 @@ public class JpaEndpoint {
          * of 0 or negative to disable. The option is a int type.
          */
         public JpaConsumer maxMessagesPerPoll(int maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
             return (JpaConsumer) this;
         }
-
         /**
          * To use a custom Pre-DeleteHandler to delete the row after the
          * consumer has read the entity. The option is a
          * org.apache.camel.component.jpa.DeleteHandler<java.lang.Object> type.
          */
         public JpaConsumer preDeleteHandler(Object preDeleteHandler) {
-            this.preDeleteHandler = preDeleteHandler;
+            this.properties.put("preDeleteHandler", preDeleteHandler);
             return (JpaConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -401,19 +247,17 @@ public class JpaEndpoint {
          */
         public JpaConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (JpaConsumer) this;
         }
-
         /**
          * To configure whether to use NOWAIT on lock and silently skip the
          * entity. The option is a boolean type.
          */
         public JpaConsumer skipLockedEntity(boolean skipLockedEntity) {
-            this.skipLockedEntity = skipLockedEntity;
+            this.properties.put("skipLockedEntity", skipLockedEntity);
             return (JpaConsumer) this;
         }
-
         /**
          * Whether to run the consumer in transacted mode, by which all messages
          * will either commit or rollback, when the entire batch has been
@@ -422,10 +266,9 @@ public class JpaEndpoint {
          * last failed message. The option is a boolean type.
          */
         public JpaConsumer transacted(boolean transacted) {
-            this.transacted = transacted;
+            this.properties.put("transacted", transacted);
             return (JpaConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -434,19 +277,17 @@ public class JpaEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public JpaConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (JpaConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public JpaConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (JpaConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -455,29 +296,26 @@ public class JpaEndpoint {
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
         public JpaConsumer pollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (JpaConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public JpaConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (JpaConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public JpaConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (JpaConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -487,50 +325,45 @@ public class JpaEndpoint {
          * configured. The option is a int type.
          */
         public JpaConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (JpaConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public JpaConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (JpaConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public JpaConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (JpaConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public JpaConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (JpaConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public JpaConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (JpaConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -539,20 +372,18 @@ public class JpaEndpoint {
          */
         public JpaConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (JpaConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public JpaConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (JpaConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -560,274 +391,60 @@ public class JpaEndpoint {
          */
         public JpaConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (JpaConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public JpaConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (JpaConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public JpaConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (JpaConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public JpaConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (JpaConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getConsumeDelete() {
-            return consumeDelete;
-        }
-
-        public void setConsumeDelete(Boolean consumeDelete) {
-            this.consumeDelete = consumeDelete;
-        }
-
-        public Boolean getConsumeLockEntity() {
-            return consumeLockEntity;
-        }
-
-        public void setConsumeLockEntity(Boolean consumeLockEntity) {
-            this.consumeLockEntity = consumeLockEntity;
-        }
-
-        public Object getDeleteHandler() {
-            return deleteHandler;
-        }
-
-        public void setDeleteHandler(Object deleteHandler) {
-            this.deleteHandler = deleteHandler;
-        }
-
-        public LockModeType getLockModeType() {
-            return lockModeType;
-        }
-
-        public void setLockModeType(LockModeType lockModeType) {
-            this.lockModeType = lockModeType;
-        }
-
-        public Integer getMaxMessagesPerPoll() {
-            return maxMessagesPerPoll;
-        }
-
-        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
-        }
-
-        public Object getPreDeleteHandler() {
-            return preDeleteHandler;
-        }
-
-        public void setPreDeleteHandler(Object preDeleteHandler) {
-            this.preDeleteHandler = preDeleteHandler;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public Boolean getSkipLockedEntity() {
-            return skipLockedEntity;
-        }
-
-        public void setSkipLockedEntity(Boolean skipLockedEntity) {
-            this.skipLockedEntity = skipLockedEntity;
-        }
-
-        public Boolean getTransacted() {
-            return transacted;
-        }
-
-        public void setTransacted(Boolean transacted) {
-            this.transacted = transacted;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
-    public static class JpaProducer extends JpaCommon<JpaProducer> {
-        private Boolean flushOnSend;
-        private Boolean remove;
-        private Boolean useExecuteUpdate;
-        private Boolean usePassedInEntityManager;
-        private Boolean usePersist;
-
+    public static class JpaProducer
+            extends
+                JpaCommon<JpaProducer>
+            implements
+                EndpointDefinition.Producer {
+        public JpaProducer(String path) {
+            super(path);
+        }
         /**
          * Flushes the EntityManager after the entity bean has been persisted.
          * The option is a boolean type.
          */
         public JpaProducer flushOnSend(boolean flushOnSend) {
-            this.flushOnSend = flushOnSend;
+            this.properties.put("flushOnSend", flushOnSend);
             return (JpaProducer) this;
         }
-
         /**
          * Indicates to use entityManager.remove(entity). The option is a
          * boolean type.
          */
         public JpaProducer remove(boolean remove) {
-            this.remove = remove;
+            this.properties.put("remove", remove);
             return (JpaProducer) this;
         }
-
         /**
          * To configure whether to use executeUpdate() when producer executes a
          * query. When you use INSERT, UPDATE or DELETE statement as a named
@@ -835,10 +452,9 @@ public class JpaEndpoint {
          * java.lang.Boolean type.
          */
         public JpaProducer useExecuteUpdate(Boolean useExecuteUpdate) {
-            this.useExecuteUpdate = useExecuteUpdate;
+            this.properties.put("useExecuteUpdate", useExecuteUpdate);
             return (JpaProducer) this;
         }
-
         /**
          * If set to true, then Camel will use the EntityManager from the header
          * JpaConstants.ENTITY_MANAGER instead of the configured entity manager
@@ -847,10 +463,9 @@ public class JpaEndpoint {
          */
         public JpaProducer usePassedInEntityManager(
                 boolean usePassedInEntityManager) {
-            this.usePassedInEntityManager = usePassedInEntityManager;
+            this.properties.put("usePassedInEntityManager", usePassedInEntityManager);
             return (JpaProducer) this;
         }
-
         /**
          * Indicates to use entityManager.persist(entity) instead of
          * entityManager.merge(entity). Note: entityManager.persist(entity)
@@ -859,48 +474,8 @@ public class JpaEndpoint {
          * boolean type.
          */
         public JpaProducer usePersist(boolean usePersist) {
-            this.usePersist = usePersist;
+            this.properties.put("usePersist", usePersist);
             return (JpaProducer) this;
-        }
-
-        public Boolean getFlushOnSend() {
-            return flushOnSend;
-        }
-
-        public void setFlushOnSend(Boolean flushOnSend) {
-            this.flushOnSend = flushOnSend;
-        }
-
-        public Boolean getRemove() {
-            return remove;
-        }
-
-        public void setRemove(Boolean remove) {
-            this.remove = remove;
-        }
-
-        public Boolean getUseExecuteUpdate() {
-            return useExecuteUpdate;
-        }
-
-        public void setUseExecuteUpdate(Boolean useExecuteUpdate) {
-            this.useExecuteUpdate = useExecuteUpdate;
-        }
-
-        public Boolean getUsePassedInEntityManager() {
-            return usePassedInEntityManager;
-        }
-
-        public void setUsePassedInEntityManager(Boolean usePassedInEntityManager) {
-            this.usePassedInEntityManager = usePassedInEntityManager;
-        }
-
-        public Boolean getUsePersist() {
-            return usePersist;
-        }
-
-        public void setUsePersist(Boolean usePersist) {
-            this.usePersist = usePersist;
         }
     }
 

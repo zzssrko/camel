@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * Google BigQuery data warehouse for analytics (using SQL queries).
@@ -27,109 +28,72 @@ import javax.annotation.Generated;
 public class GoogleBigQuerySQLEndpoint {
 
 
-    public static class GoogleBigQuerySQLCommon<T extends EndpointConfiguration>
+    public static class GoogleBigQuerySQLCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String projectId;
-        private String query;
-        private Object connectionFactory;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        GoogleBigQuerySQLCommon(String path) {
+            super("google-bigquery-sql", path);
+        }
         /**
          * Google Cloud Project Id. The option is a java.lang.String type.
          */
         public T projectId(String projectId) {
-            this.projectId = projectId;
+            this.properties.put("projectId", projectId);
             return (T) this;
         }
-
         /**
          * BigQuery standard SQL query. The option is a java.lang.String type.
          */
         public T query(String query) {
-            this.query = query;
+            this.properties.put("query", query);
             return (T) this;
         }
-
         /**
          * ConnectionFactory to obtain connection to Bigquery Service. If non
          * provided the default will be used. The option is a
          * org.apache.camel.component.google.bigquery.GoogleBigQueryConnectionFactory type.
          */
         public T connectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
+            this.properties.put("connectionFactory", connectionFactory);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getProjectId() {
-            return projectId;
-        }
-
-        public void setProjectId(String projectId) {
-            this.projectId = projectId;
-        }
-
-        public String getQuery() {
-            return query;
-        }
-
-        public void setQuery(String query) {
-            this.query = query;
-        }
-
-        public Object getConnectionFactory() {
-            return connectionFactory;
-        }
-
-        public void setConnectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class GoogleBigQuerySQLConsumer
             extends
-                GoogleBigQuerySQLCommon<GoogleBigQuerySQLConsumer> {
+                GoogleBigQuerySQLCommon<GoogleBigQuerySQLConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GoogleBigQuerySQLConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class GoogleBigQuerySQLProducer
             extends
-                GoogleBigQuerySQLCommon<GoogleBigQuerySQLProducer> {
+                GoogleBigQuerySQLCommon<GoogleBigQuerySQLProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GoogleBigQuerySQLProducer(String path) {
+            super(path);
+        }
     }
 }

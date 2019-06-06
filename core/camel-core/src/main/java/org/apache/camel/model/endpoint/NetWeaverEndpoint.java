@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The sap-netweaver component integrates with the SAP NetWeaver Gateway using
@@ -28,163 +29,96 @@ import javax.annotation.Generated;
 public class NetWeaverEndpoint {
 
 
-    public static class NetWeaverCommon<T extends EndpointConfiguration>
+    public static class NetWeaverCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String url;
-        private Boolean flatternMap;
-        private Boolean json;
-        private Boolean jsonAsMap;
-        private String password;
-        private String username;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        NetWeaverCommon(String path) {
+            super("sap-netweaver", path);
+        }
         /**
          * Url to the SAP net-weaver gateway server. The option is a
          * java.lang.String type.
          */
         public T url(String url) {
-            this.url = url;
+            this.properties.put("url", url);
             return (T) this;
         }
-
         /**
          * If the JSON Map contains only a single entry, then flattern by
          * storing that single entry value as the message body. The option is a
          * boolean type.
          */
         public T flatternMap(boolean flatternMap) {
-            this.flatternMap = flatternMap;
+            this.properties.put("flatternMap", flatternMap);
             return (T) this;
         }
-
         /**
          * Whether to return data in JSON format. If this option is false, then
          * XML is returned in Atom format. The option is a boolean type.
          */
         public T json(boolean json) {
-            this.json = json;
+            this.properties.put("json", json);
             return (T) this;
         }
-
         /**
          * To transform the JSON from a String to a Map in the message body. The
          * option is a boolean type.
          */
         public T jsonAsMap(boolean jsonAsMap) {
-            this.jsonAsMap = jsonAsMap;
+            this.properties.put("jsonAsMap", jsonAsMap);
             return (T) this;
         }
-
         /**
          * Password for account. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Username for account. The option is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        public Boolean getFlatternMap() {
-            return flatternMap;
-        }
-
-        public void setFlatternMap(Boolean flatternMap) {
-            this.flatternMap = flatternMap;
-        }
-
-        public Boolean getJson() {
-            return json;
-        }
-
-        public void setJson(Boolean json) {
-            this.json = json;
-        }
-
-        public Boolean getJsonAsMap() {
-            return jsonAsMap;
-        }
-
-        public void setJsonAsMap(Boolean jsonAsMap) {
-            this.jsonAsMap = jsonAsMap;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class NetWeaverConsumer
             extends
-                NetWeaverCommon<NetWeaverConsumer> {
+                NetWeaverCommon<NetWeaverConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public NetWeaverConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class NetWeaverProducer
             extends
-                NetWeaverCommon<NetWeaverProducer> {
+                NetWeaverCommon<NetWeaverProducer>
+            implements
+                EndpointDefinition.Producer {
+        public NetWeaverProducer(String path) {
+            super(path);
+        }
     }
 }

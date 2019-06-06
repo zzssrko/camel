@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.Expression;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * To copy files using the secure copy protocol (SCP).
@@ -28,55 +29,33 @@ import org.apache.camel.Expression;
 public class ScpEndpoint {
 
 
-    public static class ScpCommon<T extends EndpointConfiguration>
+    public static class ScpCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private String directoryName;
-        private Boolean disconnect;
-        private String chmod;
-        private Expression fileName;
-        private String strictHostKeyChecking;
-        private Boolean basicPropertyBinding;
-        private Integer connectTimeout;
-        private Integer soTimeout;
-        private Boolean synchronous;
-        private Integer timeout;
-        private String knownHostsFile;
-        private String password;
-        private String preferredAuthentications;
-        private Byte[] privateKeyBytes;
-        private String privateKeyFile;
-        private String privateKeyFilePassphrase;
-        private String username;
-        private Boolean useUserKnownHostsFile;
-        private String ciphers;
-
+                EndpointDefinition<T> {
+        ScpCommon(String path) {
+            super("scp", path);
+        }
         /**
          * Hostname of the FTP server. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Port of the FTP server. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * The starting directory. The option is a java.lang.String type.
          */
         public T directoryName(String directoryName) {
-            this.directoryName = directoryName;
+            this.properties.put("directoryName", directoryName);
             return (T) this;
         }
-
         /**
          * Whether or not to disconnect from remote FTP server right after use.
          * Disconnect will only disconnect the current connection to the FTP
@@ -84,19 +63,17 @@ public class ScpEndpoint {
          * to stop the consumer/route instead. The option is a boolean type.
          */
         public T disconnect(boolean disconnect) {
-            this.disconnect = disconnect;
+            this.properties.put("disconnect", disconnect);
             return (T) this;
         }
-
         /**
          * Allows you to set chmod on the stored file. For example chmod=664.
          * The option is a java.lang.String type.
          */
         public T chmod(String chmod) {
-            this.chmod = chmod;
+            this.properties.put("chmod", chmod);
             return (T) this;
         }
-
         /**
          * Use Expression such as File Language to dynamically set the filename.
          * For consumers, it's used as a filename filter. For producers, it's
@@ -117,39 +94,35 @@ public class ScpEndpoint {
          * java.lang.String type.
          */
         public T fileName(Expression fileName) {
-            this.fileName = fileName;
+            this.properties.put("fileName", fileName);
             return (T) this;
         }
-
         /**
          * Sets whether to use strict host key checking. Possible values are:
          * no, yes. The option is a java.lang.String type.
          */
         public T strictHostKeyChecking(String strictHostKeyChecking) {
-            this.strictHostKeyChecking = strictHostKeyChecking;
+            this.properties.put("strictHostKeyChecking", strictHostKeyChecking);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets the connect timeout for waiting for a connection to be
          * established Used by both FTPClient and JSCH. The option is a int
          * type.
          */
         public T connectTimeout(int connectTimeout) {
-            this.connectTimeout = connectTimeout;
+            this.properties.put("connectTimeout", connectTimeout);
             return (T) this;
         }
-
         /**
          * Sets the so timeout FTP and FTPS Only for Camel 2.4. SFTP for Camel
          * 2.14.3/2.15.3/2.16 onwards. Is the SocketOptions.SO_TIMEOUT value in
@@ -158,29 +131,26 @@ public class ScpEndpoint {
          * Session instance. The option is a int type.
          */
         public T soTimeout(int soTimeout) {
-            this.soTimeout = soTimeout;
+            this.properties.put("soTimeout", soTimeout);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Sets the data timeout for waiting for reply Used only by FTPClient.
          * The option is a int type.
          */
         public T timeout(int timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (T) this;
         }
-
         /**
          * Sets the known_hosts file, so that the jsch endpoint can do host key
          * verification. You can prefix with classpath: to load the file from
@@ -188,18 +158,16 @@ public class ScpEndpoint {
          * type.
          */
         public T knownHostsFile(String knownHostsFile) {
-            this.knownHostsFile = knownHostsFile;
+            this.properties.put("knownHostsFile", knownHostsFile);
             return (T) this;
         }
-
         /**
          * Password to use for login. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Set a comma separated list of authentications that will be used in
          * order of preference. Possible authentication methods are defined by
@@ -209,10 +177,9 @@ public class ScpEndpoint {
          * a java.lang.String type.
          */
         public T preferredAuthentications(String preferredAuthentications) {
-            this.preferredAuthentications = preferredAuthentications;
+            this.properties.put("preferredAuthentications", preferredAuthentications);
             return (T) this;
         }
-
         /**
          * Set the private key bytes to that the endpoint can do private key
          * verification. This must be used only if privateKeyFile wasn't set.
@@ -220,10 +187,9 @@ public class ScpEndpoint {
          * type.
          */
         public T privateKeyBytes(Byte[] privateKeyBytes) {
-            this.privateKeyBytes = privateKeyBytes;
+            this.properties.put("privateKeyBytes", privateKeyBytes);
             return (T) this;
         }
-
         /**
          * Set the private key file to that the endpoint can do private key
          * verification. You can prefix with classpath: to load the file from
@@ -231,37 +197,33 @@ public class ScpEndpoint {
          * type.
          */
         public T privateKeyFile(String privateKeyFile) {
-            this.privateKeyFile = privateKeyFile;
+            this.properties.put("privateKeyFile", privateKeyFile);
             return (T) this;
         }
-
         /**
          * Set the private key file passphrase to that the endpoint can do
          * private key verification. The option is a java.lang.String type.
          */
         public T privateKeyFilePassphrase(String privateKeyFilePassphrase) {
-            this.privateKeyFilePassphrase = privateKeyFilePassphrase;
+            this.properties.put("privateKeyFilePassphrase", privateKeyFilePassphrase);
             return (T) this;
         }
-
         /**
          * Username to use for login. The option is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
         }
-
         /**
          * If knownHostFile has not been explicit configured, then use the host
          * file from System.getProperty(user.home) /.ssh/known_hosts. The option
          * is a boolean type.
          */
         public T useUserKnownHostsFile(boolean useUserKnownHostsFile) {
-            this.useUserKnownHostsFile = useUserKnownHostsFile;
+            this.properties.put("useUserKnownHostsFile", useUserKnownHostsFile);
             return (T) this;
         }
-
         /**
          * Set a comma separated list of ciphers that will be used in order of
          * preference. Possible cipher names are defined by JCraft JSCH. Some
@@ -269,189 +231,29 @@ public class ScpEndpoint {
          * aes128-ctr,aes128-cbc,3des-ctr,3des-cbc,blowfish-cbc,aes192-cbc,aes256-cbc. If not specified the default list from JSCH will be used. The option is a java.lang.String type.
          */
         public T ciphers(String ciphers) {
-            this.ciphers = ciphers;
+            this.properties.put("ciphers", ciphers);
             return (T) this;
         }
+    }
 
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getDirectoryName() {
-            return directoryName;
-        }
-
-        public void setDirectoryName(String directoryName) {
-            this.directoryName = directoryName;
-        }
-
-        public Boolean getDisconnect() {
-            return disconnect;
-        }
-
-        public void setDisconnect(Boolean disconnect) {
-            this.disconnect = disconnect;
-        }
-
-        public String getChmod() {
-            return chmod;
-        }
-
-        public void setChmod(String chmod) {
-            this.chmod = chmod;
-        }
-
-        public Expression getFileName() {
-            return fileName;
-        }
-
-        public void setFileName(Expression fileName) {
-            this.fileName = fileName;
-        }
-
-        public String getStrictHostKeyChecking() {
-            return strictHostKeyChecking;
-        }
-
-        public void setStrictHostKeyChecking(String strictHostKeyChecking) {
-            this.strictHostKeyChecking = strictHostKeyChecking;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Integer getConnectTimeout() {
-            return connectTimeout;
-        }
-
-        public void setConnectTimeout(Integer connectTimeout) {
-            this.connectTimeout = connectTimeout;
-        }
-
-        public Integer getSoTimeout() {
-            return soTimeout;
-        }
-
-        public void setSoTimeout(Integer soTimeout) {
-            this.soTimeout = soTimeout;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Integer getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Integer timeout) {
-            this.timeout = timeout;
-        }
-
-        public String getKnownHostsFile() {
-            return knownHostsFile;
-        }
-
-        public void setKnownHostsFile(String knownHostsFile) {
-            this.knownHostsFile = knownHostsFile;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getPreferredAuthentications() {
-            return preferredAuthentications;
-        }
-
-        public void setPreferredAuthentications(String preferredAuthentications) {
-            this.preferredAuthentications = preferredAuthentications;
-        }
-
-        public Byte[] getPrivateKeyBytes() {
-            return privateKeyBytes;
-        }
-
-        public void setPrivateKeyBytes(Byte[] privateKeyBytes) {
-            this.privateKeyBytes = privateKeyBytes;
-        }
-
-        public String getPrivateKeyFile() {
-            return privateKeyFile;
-        }
-
-        public void setPrivateKeyFile(String privateKeyFile) {
-            this.privateKeyFile = privateKeyFile;
-        }
-
-        public String getPrivateKeyFilePassphrase() {
-            return privateKeyFilePassphrase;
-        }
-
-        public void setPrivateKeyFilePassphrase(String privateKeyFilePassphrase) {
-            this.privateKeyFilePassphrase = privateKeyFilePassphrase;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public Boolean getUseUserKnownHostsFile() {
-            return useUserKnownHostsFile;
-        }
-
-        public void setUseUserKnownHostsFile(Boolean useUserKnownHostsFile) {
-            this.useUserKnownHostsFile = useUserKnownHostsFile;
-        }
-
-        public String getCiphers() {
-            return ciphers;
-        }
-
-        public void setCiphers(String ciphers) {
-            this.ciphers = ciphers;
+    public static class ScpConsumer
+            extends
+                ScpCommon<ScpConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ScpConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class ScpConsumer extends ScpCommon<ScpConsumer> {
-    }
-
-    public static class ScpProducer extends ScpCommon<ScpProducer> {
-        private Boolean flatten;
-        private Boolean jailStartingDirectory;
-        private Boolean allowNullBody;
-        private Boolean disconnectOnBatchComplete;
-        private Object moveExistingFileStrategy;
-
+    public static class ScpProducer
+            extends
+                ScpCommon<ScpProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ScpProducer(String path) {
+            super(path);
+        }
         /**
          * Flatten is used to flatten the file name path to strip any leading
          * paths, so it's just the file name. This allows you to consume
@@ -462,10 +264,9 @@ public class ScpEndpoint {
          * option is a boolean type.
          */
         public ScpProducer flatten(boolean flatten) {
-            this.flatten = flatten;
+            this.properties.put("flatten", flatten);
             return (ScpProducer) this;
         }
-
         /**
          * Used for jailing (restricting) writing files to the starting
          * directory (and sub) only. This is enabled by default to not allow
@@ -475,10 +276,9 @@ public class ScpEndpoint {
          * folders. The option is a boolean type.
          */
         public ScpProducer jailStartingDirectory(boolean jailStartingDirectory) {
-            this.jailStartingDirectory = jailStartingDirectory;
+            this.properties.put("jailStartingDirectory", jailStartingDirectory);
             return (ScpProducer) this;
         }
-
         /**
          * Used to specify if a null body is allowed during file writing. If set
          * to true then an empty file will be created, when set to false, and
@@ -489,10 +289,9 @@ public class ScpEndpoint {
          * unchanged. The option is a boolean type.
          */
         public ScpProducer allowNullBody(boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
+            this.properties.put("allowNullBody", allowNullBody);
             return (ScpProducer) this;
         }
-
         /**
          * Whether or not to disconnect from remote FTP server right after a
          * Batch upload is complete. disconnectOnBatchComplete will only
@@ -501,10 +300,9 @@ public class ScpEndpoint {
          */
         public ScpProducer disconnectOnBatchComplete(
                 boolean disconnectOnBatchComplete) {
-            this.disconnectOnBatchComplete = disconnectOnBatchComplete;
+            this.properties.put("disconnectOnBatchComplete", disconnectOnBatchComplete);
             return (ScpProducer) this;
         }
-
         /**
          * Strategy (Custom Strategy) used to move file with special naming
          * token to use when fileExist=Move is configured. By default, there is
@@ -515,49 +313,8 @@ public class ScpEndpoint {
          */
         public ScpProducer moveExistingFileStrategy(
                 Object moveExistingFileStrategy) {
-            this.moveExistingFileStrategy = moveExistingFileStrategy;
+            this.properties.put("moveExistingFileStrategy", moveExistingFileStrategy);
             return (ScpProducer) this;
-        }
-
-        public Boolean getFlatten() {
-            return flatten;
-        }
-
-        public void setFlatten(Boolean flatten) {
-            this.flatten = flatten;
-        }
-
-        public Boolean getJailStartingDirectory() {
-            return jailStartingDirectory;
-        }
-
-        public void setJailStartingDirectory(Boolean jailStartingDirectory) {
-            this.jailStartingDirectory = jailStartingDirectory;
-        }
-
-        public Boolean getAllowNullBody() {
-            return allowNullBody;
-        }
-
-        public void setAllowNullBody(Boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
-        }
-
-        public Boolean getDisconnectOnBatchComplete() {
-            return disconnectOnBatchComplete;
-        }
-
-        public void setDisconnectOnBatchComplete(
-                Boolean disconnectOnBatchComplete) {
-            this.disconnectOnBatchComplete = disconnectOnBatchComplete;
-        }
-
-        public Object getMoveExistingFileStrategy() {
-            return moveExistingFileStrategy;
-        }
-
-        public void setMoveExistingFileStrategy(Object moveExistingFileStrategy) {
-            this.moveExistingFileStrategy = moveExistingFileStrategy;
         }
     }
 }

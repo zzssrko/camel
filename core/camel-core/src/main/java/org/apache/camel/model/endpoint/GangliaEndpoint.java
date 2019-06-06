@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The ganglia component is used for sending metrics to the Ganglia monitoring
@@ -28,134 +29,108 @@ import javax.annotation.Generated;
 public class GangliaEndpoint {
 
 
-    public static class GangliaCommon<T extends EndpointConfiguration>
+    public static class GangliaCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private Integer dmax;
-        private String groupName;
-        private String metricName;
-        private Object mode;
-        private String prefix;
-        private GMetricSlope slope;
-        private String spoofHostname;
-        private Integer tmax;
-        private Integer ttl;
-        private GMetricType type;
-        private String units;
-        private Boolean wireFormat31x;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        GangliaCommon(String path) {
+            super("ganglia", path);
+        }
         /**
          * Host name for Ganglia server. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Port for Ganglia server. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Minumum time in seconds before Ganglia will purge the metric value if
          * it expires. Set to 0 and the value will remain in Ganglia
          * indefinitely until a gmond agent restart. The option is a int type.
          */
         public T dmax(int dmax) {
-            this.dmax = dmax;
+            this.properties.put("dmax", dmax);
             return (T) this;
         }
-
         /**
          * The group that the metric belongs to. The option is a
          * java.lang.String type.
          */
         public T groupName(String groupName) {
-            this.groupName = groupName;
+            this.properties.put("groupName", groupName);
             return (T) this;
         }
-
         /**
          * The name to use for the metric. The option is a java.lang.String
          * type.
          */
         public T metricName(String metricName) {
-            this.metricName = metricName;
+            this.properties.put("metricName", metricName);
             return (T) this;
         }
-
         /**
          * Send the UDP metric packets using MULTICAST or UNICAST. The option is
          * a info.ganglia.gmetric4j.gmetric.GMetric.UDPAddressingMode type.
          */
         public T mode(Object mode) {
-            this.mode = mode;
+            this.properties.put("mode", mode);
             return (T) this;
         }
-
         /**
          * Prefix the metric name with this string and an underscore. The option
          * is a java.lang.String type.
          */
         public T prefix(String prefix) {
-            this.prefix = prefix;
+            this.properties.put("prefix", prefix);
             return (T) this;
         }
-
         /**
          * The slope. The option is a
          * info.ganglia.gmetric4j.gmetric.GMetricSlope type.
          */
         public T slope(GMetricSlope slope) {
-            this.slope = slope;
+            this.properties.put("slope", slope);
             return (T) this;
         }
-
         /**
          * Spoofing information IP:hostname. The option is a java.lang.String
          * type.
          */
         public T spoofHostname(String spoofHostname) {
-            this.spoofHostname = spoofHostname;
+            this.properties.put("spoofHostname", spoofHostname);
             return (T) this;
         }
-
         /**
          * Maximum time in seconds that the value can be considered current.
          * After this, Ganglia considers the value to have expired. The option
          * is a int type.
          */
         public T tmax(int tmax) {
-            this.tmax = tmax;
+            this.properties.put("tmax", tmax);
             return (T) this;
         }
-
         /**
          * If using multicast, set the TTL of the packets. The option is a int
          * type.
          */
         public T ttl(int ttl) {
-            this.ttl = ttl;
+            this.properties.put("ttl", ttl);
             return (T) this;
         }
-
         /**
          * The type of value. The option is a
          * info.ganglia.gmetric4j.gmetric.GMetricType type.
          */
         public T type(GMetricType type) {
-            this.type = type;
+            this.properties.put("type", type);
             return (T) this;
         }
-
         /**
          * Any unit of measurement that qualifies the metric, e.g. widgets,
          * litres, bytes. Do not include a prefix such as k (kilo) or m (milli),
@@ -163,176 +138,55 @@ public class GangliaEndpoint {
          * The option is a java.lang.String type.
          */
         public T units(String units) {
-            this.units = units;
+            this.properties.put("units", units);
             return (T) this;
         }
-
         /**
          * Use the wire format of Ganglia 3.1.0 and later versions. Set this to
          * false to use Ganglia 3.0.x or earlier. The option is a boolean type.
          */
         public T wireFormat31x(boolean wireFormat31x) {
-            this.wireFormat31x = wireFormat31x;
+            this.properties.put("wireFormat31x", wireFormat31x);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public Integer getDmax() {
-            return dmax;
-        }
-
-        public void setDmax(Integer dmax) {
-            this.dmax = dmax;
-        }
-
-        public String getGroupName() {
-            return groupName;
-        }
-
-        public void setGroupName(String groupName) {
-            this.groupName = groupName;
-        }
-
-        public String getMetricName() {
-            return metricName;
-        }
-
-        public void setMetricName(String metricName) {
-            this.metricName = metricName;
-        }
-
-        public Object getMode() {
-            return mode;
-        }
-
-        public void setMode(Object mode) {
-            this.mode = mode;
-        }
-
-        public String getPrefix() {
-            return prefix;
-        }
-
-        public void setPrefix(String prefix) {
-            this.prefix = prefix;
-        }
-
-        public GMetricSlope getSlope() {
-            return slope;
-        }
-
-        public void setSlope(GMetricSlope slope) {
-            this.slope = slope;
-        }
-
-        public String getSpoofHostname() {
-            return spoofHostname;
-        }
-
-        public void setSpoofHostname(String spoofHostname) {
-            this.spoofHostname = spoofHostname;
-        }
-
-        public Integer getTmax() {
-            return tmax;
-        }
-
-        public void setTmax(Integer tmax) {
-            this.tmax = tmax;
-        }
-
-        public Integer getTtl() {
-            return ttl;
-        }
-
-        public void setTtl(Integer ttl) {
-            this.ttl = ttl;
-        }
-
-        public GMetricType getType() {
-            return type;
-        }
-
-        public void setType(GMetricType type) {
-            this.type = type;
-        }
-
-        public String getUnits() {
-            return units;
-        }
-
-        public void setUnits(String units) {
-            this.units = units;
-        }
-
-        public Boolean getWireFormat31x() {
-            return wireFormat31x;
-        }
-
-        public void setWireFormat31x(Boolean wireFormat31x) {
-            this.wireFormat31x = wireFormat31x;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class GangliaConsumer
             extends
-                GangliaCommon<GangliaConsumer> {
+                GangliaCommon<GangliaConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GangliaConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class GangliaProducer
             extends
-                GangliaCommon<GangliaProducer> {
+                GangliaCommon<GangliaProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GangliaProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum GMetricSlope {

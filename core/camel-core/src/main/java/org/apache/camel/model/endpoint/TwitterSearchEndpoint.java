@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -35,252 +36,116 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class TwitterSearchEndpoint {
 
 
-    public static class TwitterSearchCommon<T extends EndpointConfiguration>
+    public static class TwitterSearchCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String keywords;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String httpProxyHost;
-        private String httpProxyPassword;
-        private Integer httpProxyPort;
-        private String httpProxyUser;
-        private String accessToken;
-        private String accessTokenSecret;
-        private String consumerKey;
-        private String consumerSecret;
-
+                EndpointDefinition<T> {
+        TwitterSearchCommon(String path) {
+            super("twitter-search", path);
+        }
         /**
          * The search keywords. Multiple values can be separated with comma. The
          * option is a java.lang.String type.
          */
         public T keywords(String keywords) {
-            this.keywords = keywords;
+            this.properties.put("keywords", keywords);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * The http proxy host which can be used for the camel-twitter. Can also
          * be configured on the TwitterComponent level instead. The option is a
          * java.lang.String type.
          */
         public T httpProxyHost(String httpProxyHost) {
-            this.httpProxyHost = httpProxyHost;
+            this.properties.put("httpProxyHost", httpProxyHost);
             return (T) this;
         }
-
         /**
          * The http proxy password which can be used for the camel-twitter. Can
          * also be configured on the TwitterComponent level instead. The option
          * is a java.lang.String type.
          */
         public T httpProxyPassword(String httpProxyPassword) {
-            this.httpProxyPassword = httpProxyPassword;
+            this.properties.put("httpProxyPassword", httpProxyPassword);
             return (T) this;
         }
-
         /**
          * The http proxy port which can be used for the camel-twitter. Can also
          * be configured on the TwitterComponent level instead. The option is a
          * java.lang.Integer type.
          */
         public T httpProxyPort(Integer httpProxyPort) {
-            this.httpProxyPort = httpProxyPort;
+            this.properties.put("httpProxyPort", httpProxyPort);
             return (T) this;
         }
-
         /**
          * The http proxy user which can be used for the camel-twitter. Can also
          * be configured on the TwitterComponent level instead. The option is a
          * java.lang.String type.
          */
         public T httpProxyUser(String httpProxyUser) {
-            this.httpProxyUser = httpProxyUser;
+            this.properties.put("httpProxyUser", httpProxyUser);
             return (T) this;
         }
-
         /**
          * The access token. Can also be configured on the TwitterComponent
          * level instead. The option is a java.lang.String type.
          */
         public T accessToken(String accessToken) {
-            this.accessToken = accessToken;
+            this.properties.put("accessToken", accessToken);
             return (T) this;
         }
-
         /**
          * The access secret. Can also be configured on the TwitterComponent
          * level instead. The option is a java.lang.String type.
          */
         public T accessTokenSecret(String accessTokenSecret) {
-            this.accessTokenSecret = accessTokenSecret;
+            this.properties.put("accessTokenSecret", accessTokenSecret);
             return (T) this;
         }
-
         /**
          * The consumer key. Can also be configured on the TwitterComponent
          * level instead. The option is a java.lang.String type.
          */
         public T consumerKey(String consumerKey) {
-            this.consumerKey = consumerKey;
+            this.properties.put("consumerKey", consumerKey);
             return (T) this;
         }
-
         /**
          * The consumer secret. Can also be configured on the TwitterComponent
          * level instead. The option is a java.lang.String type.
          */
         public T consumerSecret(String consumerSecret) {
-            this.consumerSecret = consumerSecret;
+            this.properties.put("consumerSecret", consumerSecret);
             return (T) this;
-        }
-
-        public String getKeywords() {
-            return keywords;
-        }
-
-        public void setKeywords(String keywords) {
-            this.keywords = keywords;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getHttpProxyHost() {
-            return httpProxyHost;
-        }
-
-        public void setHttpProxyHost(String httpProxyHost) {
-            this.httpProxyHost = httpProxyHost;
-        }
-
-        public String getHttpProxyPassword() {
-            return httpProxyPassword;
-        }
-
-        public void setHttpProxyPassword(String httpProxyPassword) {
-            this.httpProxyPassword = httpProxyPassword;
-        }
-
-        public Integer getHttpProxyPort() {
-            return httpProxyPort;
-        }
-
-        public void setHttpProxyPort(Integer httpProxyPort) {
-            this.httpProxyPort = httpProxyPort;
-        }
-
-        public String getHttpProxyUser() {
-            return httpProxyUser;
-        }
-
-        public void setHttpProxyUser(String httpProxyUser) {
-            this.httpProxyUser = httpProxyUser;
-        }
-
-        public String getAccessToken() {
-            return accessToken;
-        }
-
-        public void setAccessToken(String accessToken) {
-            this.accessToken = accessToken;
-        }
-
-        public String getAccessTokenSecret() {
-            return accessTokenSecret;
-        }
-
-        public void setAccessTokenSecret(String accessTokenSecret) {
-            this.accessTokenSecret = accessTokenSecret;
-        }
-
-        public String getConsumerKey() {
-            return consumerKey;
-        }
-
-        public void setConsumerKey(String consumerKey) {
-            this.consumerKey = consumerKey;
-        }
-
-        public String getConsumerSecret() {
-            return consumerSecret;
-        }
-
-        public void setConsumerSecret(String consumerSecret) {
-            this.consumerSecret = consumerSecret;
         }
     }
 
     public static class TwitterSearchConsumer
             extends
-                TwitterSearchCommon<TwitterSearchConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean sendEmptyMessageWhenIdle;
-        private EndpointType type;
-        private String distanceMetric;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private Boolean extendedMode;
-        private Double latitude;
-        private String locations;
-        private Double longitude;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Double radius;
-        private Object twitterStream;
-        private Integer count;
-        private Boolean filterOld;
-        private String lang;
-        private Integer numberOfPages;
-        private Long sinceId;
-        private String userIds;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-        private Boolean sortById;
-
+                TwitterSearchCommon<TwitterSearchConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public TwitterSearchConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -292,10 +157,9 @@ public class TwitterSearchEndpoint {
          */
         public TwitterSearchConsumer bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -303,19 +167,17 @@ public class TwitterSearchEndpoint {
          */
         public TwitterSearchConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Endpoint type to use. Only streaming supports event type. The option
          * is a org.apache.camel.component.twitter.data.EndpointType type.
          */
         public TwitterSearchConsumer type(EndpointType type) {
-            this.type = type;
+            this.properties.put("type", type);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Used by the non-stream geography search, to search by radius using
          * the configured metrics. The unit can either be mi for miles, or km
@@ -324,10 +186,9 @@ public class TwitterSearchEndpoint {
          * java.lang.String type.
          */
         public TwitterSearchConsumer distanceMetric(String distanceMetric) {
-            this.distanceMetric = distanceMetric;
+            this.properties.put("distanceMetric", distanceMetric);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -337,39 +198,35 @@ public class TwitterSearchEndpoint {
          */
         public TwitterSearchConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public TwitterSearchConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Used for enabling full text from twitter (eg receive tweets that
          * contains more than 140 characters). The option is a boolean type.
          */
         public TwitterSearchConsumer extendedMode(boolean extendedMode) {
-            this.extendedMode = extendedMode;
+            this.properties.put("extendedMode", extendedMode);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Used by the non-stream geography search to search by latitude. You
          * need to configure all the following options: longitude, latitude,
          * radius, and distanceMetric. The option is a java.lang.Double type.
          */
         public TwitterSearchConsumer latitude(Double latitude) {
-            this.latitude = latitude;
+            this.properties.put("latitude", latitude);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Bounding boxes, created by pairs of lat/lons. Can be used for
          * streaming/filter. A pair is defined as lat,lon. And multiple paris
@@ -377,20 +234,18 @@ public class TwitterSearchEndpoint {
          * type.
          */
         public TwitterSearchConsumer locations(String locations) {
-            this.locations = locations;
+            this.properties.put("locations", locations);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Used by the non-stream geography search to search by longitude. You
          * need to configure all the following options: longitude, latitude,
          * radius, and distanceMetric. The option is a java.lang.Double type.
          */
         public TwitterSearchConsumer longitude(Double longitude) {
-            this.longitude = longitude;
+            this.properties.put("longitude", longitude);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -400,85 +255,76 @@ public class TwitterSearchEndpoint {
          */
         public TwitterSearchConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Used by the non-stream geography search to search by radius. You need
          * to configure all the following options: longitude, latitude, radius,
          * and distanceMetric. The option is a java.lang.Double type.
          */
         public TwitterSearchConsumer radius(Double radius) {
-            this.radius = radius;
+            this.properties.put("radius", radius);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * To use a custom instance of TwitterStream. The option is a
          * twitter4j.TwitterStream type.
          */
         public TwitterSearchConsumer twitterStream(Object twitterStream) {
-            this.twitterStream = twitterStream;
+            this.properties.put("twitterStream", twitterStream);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Limiting number of results per page. The option is a
          * java.lang.Integer type.
          */
         public TwitterSearchConsumer count(Integer count) {
-            this.count = count;
+            this.properties.put("count", count);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Filter out old tweets, that has previously been polled. This state is
          * stored in memory only, and based on last tweet id. The option is a
          * boolean type.
          */
         public TwitterSearchConsumer filterOld(boolean filterOld) {
-            this.filterOld = filterOld;
+            this.properties.put("filterOld", filterOld);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * The lang string ISO_639-1 which will be used for searching. The
          * option is a java.lang.String type.
          */
         public TwitterSearchConsumer lang(String lang) {
-            this.lang = lang;
+            this.properties.put("lang", lang);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * The number of pages result which you want camel-twitter to consume.
          * The option is a java.lang.Integer type.
          */
         public TwitterSearchConsumer numberOfPages(Integer numberOfPages) {
-            this.numberOfPages = numberOfPages;
+            this.properties.put("numberOfPages", numberOfPages);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * The last tweet id which will be used for pulling the tweets. It is
          * useful when the camel route is restarted after a long running. The
          * option is a long type.
          */
         public TwitterSearchConsumer sinceId(long sinceId) {
-            this.sinceId = sinceId;
+            this.properties.put("sinceId", sinceId);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * To filter by user ids for streaming/filter. Multiple values can be
          * separated by comma. The option is a java.lang.String type.
          */
         public TwitterSearchConsumer userIds(String userIds) {
-            this.userIds = userIds;
+            this.properties.put("userIds", userIds);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
@@ -486,20 +332,18 @@ public class TwitterSearchEndpoint {
          */
         public TwitterSearchConsumer backoffErrorThreshold(
                 int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public TwitterSearchConsumer backoffIdleThreshold(
                 int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -509,38 +353,34 @@ public class TwitterSearchEndpoint {
          * configured. The option is a int type.
          */
         public TwitterSearchConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. The option is a long type.
          */
         public TwitterSearchConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public TwitterSearchConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public TwitterSearchConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
@@ -548,10 +388,9 @@ public class TwitterSearchEndpoint {
          */
         public TwitterSearchConsumer runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -560,10 +399,9 @@ public class TwitterSearchEndpoint {
          */
         public TwitterSearchConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
@@ -571,10 +409,9 @@ public class TwitterSearchEndpoint {
          */
         public TwitterSearchConsumer scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -582,317 +419,52 @@ public class TwitterSearchEndpoint {
          */
         public TwitterSearchConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public TwitterSearchConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public TwitterSearchConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public TwitterSearchConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (TwitterSearchConsumer) this;
         }
-
         /**
          * Sorts by id, so the oldest are first, and newest last. The option is
          * a boolean type.
          */
         public TwitterSearchConsumer sortById(boolean sortById) {
-            this.sortById = sortById;
+            this.properties.put("sortById", sortById);
             return (TwitterSearchConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public EndpointType getType() {
-            return type;
-        }
-
-        public void setType(EndpointType type) {
-            this.type = type;
-        }
-
-        public String getDistanceMetric() {
-            return distanceMetric;
-        }
-
-        public void setDistanceMetric(String distanceMetric) {
-            this.distanceMetric = distanceMetric;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public Boolean getExtendedMode() {
-            return extendedMode;
-        }
-
-        public void setExtendedMode(Boolean extendedMode) {
-            this.extendedMode = extendedMode;
-        }
-
-        public Double getLatitude() {
-            return latitude;
-        }
-
-        public void setLatitude(Double latitude) {
-            this.latitude = latitude;
-        }
-
-        public String getLocations() {
-            return locations;
-        }
-
-        public void setLocations(String locations) {
-            this.locations = locations;
-        }
-
-        public Double getLongitude() {
-            return longitude;
-        }
-
-        public void setLongitude(Double longitude) {
-            this.longitude = longitude;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Double getRadius() {
-            return radius;
-        }
-
-        public void setRadius(Double radius) {
-            this.radius = radius;
-        }
-
-        public Object getTwitterStream() {
-            return twitterStream;
-        }
-
-        public void setTwitterStream(Object twitterStream) {
-            this.twitterStream = twitterStream;
-        }
-
-        public Integer getCount() {
-            return count;
-        }
-
-        public void setCount(Integer count) {
-            this.count = count;
-        }
-
-        public Boolean getFilterOld() {
-            return filterOld;
-        }
-
-        public void setFilterOld(Boolean filterOld) {
-            this.filterOld = filterOld;
-        }
-
-        public String getLang() {
-            return lang;
-        }
-
-        public void setLang(String lang) {
-            this.lang = lang;
-        }
-
-        public Integer getNumberOfPages() {
-            return numberOfPages;
-        }
-
-        public void setNumberOfPages(Integer numberOfPages) {
-            this.numberOfPages = numberOfPages;
-        }
-
-        public Long getSinceId() {
-            return sinceId;
-        }
-
-        public void setSinceId(Long sinceId) {
-            this.sinceId = sinceId;
-        }
-
-        public String getUserIds() {
-            return userIds;
-        }
-
-        public void setUserIds(String userIds) {
-            this.userIds = userIds;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
-        }
-
-        public Boolean getSortById() {
-            return sortById;
-        }
-
-        public void setSortById(Boolean sortById) {
-            this.sortById = sortById;
         }
     }
 
     public static class TwitterSearchProducer
             extends
-                TwitterSearchCommon<TwitterSearchProducer> {
+                TwitterSearchCommon<TwitterSearchProducer>
+            implements
+                EndpointDefinition.Producer {
+        public TwitterSearchProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum EndpointType {

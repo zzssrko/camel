@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import java.util.Map;
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The jdbc component enables you to access databases through JDBC, where SQL
@@ -29,25 +30,12 @@ import javax.annotation.Generated;
 public class JdbcEndpoint {
 
 
-    public static class JdbcCommon<T extends EndpointConfiguration>
+    public static class JdbcCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String dataSourceName;
-        private Boolean allowNamedParameters;
-        private String outputClass;
-        private JdbcOutputType outputType;
-        private Map<String, Object> parameters;
-        private Integer readSize;
-        private Boolean resetAutoCommit;
-        private Boolean transacted;
-        private Boolean useGetBytesForBlob;
-        private Boolean useHeadersAsParameters;
-        private Boolean useJDBC4ColumnNameAndLabelSemantics;
-        private Boolean basicPropertyBinding;
-        private Object beanRowMapper;
-        private Object prepareStatementStrategy;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        JdbcCommon(String path) {
+            super("jdbc", path);
+        }
         /**
          * Name of DataSource to lookup in the Registry. If the name is
          * dataSource or default, then Camel will attempt to lookup a default
@@ -56,57 +44,51 @@ public class JdbcEndpoint {
          * a java.lang.String type.
          */
         public T dataSourceName(String dataSourceName) {
-            this.dataSourceName = dataSourceName;
+            this.properties.put("dataSourceName", dataSourceName);
             return (T) this;
         }
-
         /**
          * Whether to allow using named parameters in the queries. The option is
          * a boolean type.
          */
         public T allowNamedParameters(boolean allowNamedParameters) {
-            this.allowNamedParameters = allowNamedParameters;
+            this.properties.put("allowNamedParameters", allowNamedParameters);
             return (T) this;
         }
-
         /**
          * Specify the full package and class name to use as conversion when
          * outputType=SelectOne or SelectList. The option is a java.lang.String
          * type.
          */
         public T outputClass(String outputClass) {
-            this.outputClass = outputClass;
+            this.properties.put("outputClass", outputClass);
             return (T) this;
         }
-
         /**
          * Determines the output the producer should use. The option is a
          * org.apache.camel.component.jdbc.JdbcOutputType type.
          */
         public T outputType(JdbcOutputType outputType) {
-            this.outputType = outputType;
+            this.properties.put("outputType", outputType);
             return (T) this;
         }
-
         /**
          * Optional parameters to the java.sql.Statement. For example to set
          * maxRows, fetchSize etc. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T parameters(Map<String, Object> parameters) {
-            this.parameters = parameters;
+            this.properties.put("parameters", parameters);
             return (T) this;
         }
-
         /**
          * The default maximum number of rows that can be read by a polling
          * query. The default value is 0. The option is a int type.
          */
         public T readSize(int readSize) {
-            this.readSize = readSize;
+            this.properties.put("readSize", readSize);
             return (T) this;
         }
-
         /**
          * Camel will set the autoCommit on the JDBC connection to be false,
          * commit the change after executed the statement and reset the
@@ -119,28 +101,25 @@ public class JdbcEndpoint {
          * a boolean type.
          */
         public T resetAutoCommit(boolean resetAutoCommit) {
-            this.resetAutoCommit = resetAutoCommit;
+            this.properties.put("resetAutoCommit", resetAutoCommit);
             return (T) this;
         }
-
         /**
          * Whether transactions are in use. The option is a boolean type.
          */
         public T transacted(boolean transacted) {
-            this.transacted = transacted;
+            this.properties.put("transacted", transacted);
             return (T) this;
         }
-
         /**
          * To read BLOB columns as bytes instead of string data. This may be
          * needed for certain databases such as Oracle where you must read BLOB
          * columns as bytes. The option is a boolean type.
          */
         public T useGetBytesForBlob(boolean useGetBytesForBlob) {
-            this.useGetBytesForBlob = useGetBytesForBlob;
+            this.properties.put("useGetBytesForBlob", useGetBytesForBlob);
             return (T) this;
         }
-
         /**
          * Set this option to true to use the prepareStatementStrategy with
          * named parameters. This allows to define queries with named
@@ -148,10 +127,9 @@ public class JdbcEndpoint {
          * placeholders. The option is a boolean type.
          */
         public T useHeadersAsParameters(boolean useHeadersAsParameters) {
-            this.useHeadersAsParameters = useHeadersAsParameters;
+            this.properties.put("useHeadersAsParameters", useHeadersAsParameters);
             return (T) this;
         }
-
         /**
          * Sets whether to use JDBC 4 or JDBC 3.0 or older semantic when
          * retrieving column name. JDBC 4.0 uses columnLabel to get the column
@@ -163,20 +141,18 @@ public class JdbcEndpoint {
          */
         public T useJDBC4ColumnNameAndLabelSemantics(
                 boolean useJDBC4ColumnNameAndLabelSemantics) {
-            this.useJDBC4ColumnNameAndLabelSemantics = useJDBC4ColumnNameAndLabelSemantics;
+            this.properties.put("useJDBC4ColumnNameAndLabelSemantics", useJDBC4ColumnNameAndLabelSemantics);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use a custom org.apache.camel.component.jdbc.BeanRowMapper when
          * using outputClass. The default implementation will lower case the row
@@ -185,10 +161,9 @@ public class JdbcEndpoint {
          * org.apache.camel.component.jdbc.BeanRowMapper type.
          */
         public T beanRowMapper(Object beanRowMapper) {
-            this.beanRowMapper = beanRowMapper;
+            this.properties.put("beanRowMapper", beanRowMapper);
             return (T) this;
         }
-
         /**
          * Allows to plugin to use a custom
          * org.apache.camel.component.jdbc.JdbcPrepareStatementStrategy to
@@ -197,146 +172,38 @@ public class JdbcEndpoint {
          * type.
          */
         public T prepareStatementStrategy(Object prepareStatementStrategy) {
-            this.prepareStatementStrategy = prepareStatementStrategy;
+            this.properties.put("prepareStatementStrategy", prepareStatementStrategy);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getDataSourceName() {
-            return dataSourceName;
-        }
-
-        public void setDataSourceName(String dataSourceName) {
-            this.dataSourceName = dataSourceName;
-        }
-
-        public Boolean getAllowNamedParameters() {
-            return allowNamedParameters;
-        }
-
-        public void setAllowNamedParameters(Boolean allowNamedParameters) {
-            this.allowNamedParameters = allowNamedParameters;
-        }
-
-        public String getOutputClass() {
-            return outputClass;
-        }
-
-        public void setOutputClass(String outputClass) {
-            this.outputClass = outputClass;
-        }
-
-        public JdbcOutputType getOutputType() {
-            return outputType;
-        }
-
-        public void setOutputType(JdbcOutputType outputType) {
-            this.outputType = outputType;
-        }
-
-        public Map<String, Object> getParameters() {
-            return parameters;
-        }
-
-        public void setParameters(Map<String, Object> parameters) {
-            this.parameters = parameters;
-        }
-
-        public Integer getReadSize() {
-            return readSize;
-        }
-
-        public void setReadSize(Integer readSize) {
-            this.readSize = readSize;
-        }
-
-        public Boolean getResetAutoCommit() {
-            return resetAutoCommit;
-        }
-
-        public void setResetAutoCommit(Boolean resetAutoCommit) {
-            this.resetAutoCommit = resetAutoCommit;
-        }
-
-        public Boolean getTransacted() {
-            return transacted;
-        }
-
-        public void setTransacted(Boolean transacted) {
-            this.transacted = transacted;
-        }
-
-        public Boolean getUseGetBytesForBlob() {
-            return useGetBytesForBlob;
-        }
-
-        public void setUseGetBytesForBlob(Boolean useGetBytesForBlob) {
-            this.useGetBytesForBlob = useGetBytesForBlob;
-        }
-
-        public Boolean getUseHeadersAsParameters() {
-            return useHeadersAsParameters;
-        }
-
-        public void setUseHeadersAsParameters(Boolean useHeadersAsParameters) {
-            this.useHeadersAsParameters = useHeadersAsParameters;
-        }
-
-        public Boolean getUseJDBC4ColumnNameAndLabelSemantics() {
-            return useJDBC4ColumnNameAndLabelSemantics;
-        }
-
-        public void setUseJDBC4ColumnNameAndLabelSemantics(
-                Boolean useJDBC4ColumnNameAndLabelSemantics) {
-            this.useJDBC4ColumnNameAndLabelSemantics = useJDBC4ColumnNameAndLabelSemantics;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getBeanRowMapper() {
-            return beanRowMapper;
-        }
-
-        public void setBeanRowMapper(Object beanRowMapper) {
-            this.beanRowMapper = beanRowMapper;
-        }
-
-        public Object getPrepareStatementStrategy() {
-            return prepareStatementStrategy;
-        }
-
-        public void setPrepareStatementStrategy(Object prepareStatementStrategy) {
-            this.prepareStatementStrategy = prepareStatementStrategy;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class JdbcConsumer
+            extends
+                JdbcCommon<JdbcConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public JdbcConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class JdbcConsumer extends JdbcCommon<JdbcConsumer> {
-    }
-
-    public static class JdbcProducer extends JdbcCommon<JdbcProducer> {
+    public static class JdbcProducer
+            extends
+                JdbcCommon<JdbcProducer>
+            implements
+                EndpointDefinition.Producer {
+        public JdbcProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum JdbcOutputType {

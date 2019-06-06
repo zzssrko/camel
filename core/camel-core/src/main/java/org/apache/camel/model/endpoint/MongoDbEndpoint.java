@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,83 +30,61 @@ import org.apache.camel.spi.ExceptionHandler;
 public class MongoDbEndpoint {
 
 
-    public static class MongoDbCommon<T extends EndpointConfiguration>
+    public static class MongoDbCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String connectionBean;
-        private String collection;
-        private String collectionIndex;
-        private Boolean createCollection;
-        private String database;
-        private MongoDbOperation operation;
-        private MongoDbOutputType outputType;
-        private Boolean basicPropertyBinding;
-        private Long cursorRegenerationDelay;
-        private Boolean dynamicity;
-        private Boolean synchronous;
-        private Boolean writeResultAsHeader;
-        private String persistentId;
-        private Boolean persistentTailTracking;
-        private String tailTrackCollection;
-        private String tailTrackDb;
-        private String tailTrackField;
-        private String tailTrackIncreasingField;
-
+                EndpointDefinition<T> {
+        MongoDbCommon(String path) {
+            super("mongodb3", path);
+        }
         /**
          * Name of com.mongodb.Mongo to use. The option is a java.lang.String
          * type.
          */
         public T connectionBean(String connectionBean) {
-            this.connectionBean = connectionBean;
+            this.properties.put("connectionBean", connectionBean);
             return (T) this;
         }
-
         /**
          * Sets the name of the MongoDB collection to bind to this endpoint. The
          * option is a java.lang.String type.
          */
         public T collection(String collection) {
-            this.collection = collection;
+            this.properties.put("collection", collection);
             return (T) this;
         }
-
         /**
          * Sets the collection index (JSON FORMAT : { field1 : order1, field2 :
          * order2}). The option is a java.lang.String type.
          */
         public T collectionIndex(String collectionIndex) {
-            this.collectionIndex = collectionIndex;
+            this.properties.put("collectionIndex", collectionIndex);
             return (T) this;
         }
-
         /**
          * Create collection during initialisation if it doesn't exist. Default
          * is true. The option is a boolean type.
          */
         public T createCollection(boolean createCollection) {
-            this.createCollection = createCollection;
+            this.properties.put("createCollection", createCollection);
             return (T) this;
         }
-
         /**
          * Sets the name of the MongoDB database to target. The option is a
          * java.lang.String type.
          */
         public T database(String database) {
-            this.database = database;
+            this.properties.put("database", database);
             return (T) this;
         }
-
         /**
          * Sets the operation this endpoint will execute against MongoDB. For
          * possible values, see MongoDbOperation. The option is a
          * org.apache.camel.component.mongodb3.MongoDbOperation type.
          */
         public T operation(MongoDbOperation operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * Convert the output of the producer to the selected type :
          * DocumentList Document or MongoIterable. DocumentList or MongoIterable
@@ -114,20 +93,18 @@ public class MongoDbEndpoint {
          * org.apache.camel.component.mongodb3.MongoDbOutputType type.
          */
         public T outputType(MongoDbOutputType outputType) {
-            this.outputType = outputType;
+            this.properties.put("outputType", outputType);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * MongoDB tailable cursors will block until new data arrives. If no new
          * data is inserted, after some time the cursor will be automatically
@@ -138,10 +115,9 @@ public class MongoDbEndpoint {
          * 1000ms. The option is a long type.
          */
         public T cursorRegenerationDelay(long cursorRegenerationDelay) {
-            this.cursorRegenerationDelay = cursorRegenerationDelay;
+            this.properties.put("cursorRegenerationDelay", cursorRegenerationDelay);
             return (T) this;
         }
-
         /**
          * Sets whether this endpoint will attempt to dynamically resolve the
          * target database and collection from the incoming Exchange properties.
@@ -151,20 +127,18 @@ public class MongoDbEndpoint {
          * performance hit. The option is a boolean type.
          */
         public T dynamicity(boolean dynamicity) {
-            this.dynamicity = dynamicity;
+            this.properties.put("dynamicity", dynamicity);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * In write operations, it determines whether instead of returning
          * WriteResult as the body of the OUT message, we transfer the IN
@@ -172,20 +146,18 @@ public class MongoDbEndpoint {
          * is a boolean type.
          */
         public T writeResultAsHeader(boolean writeResultAsHeader) {
-            this.writeResultAsHeader = writeResultAsHeader;
+            this.properties.put("writeResultAsHeader", writeResultAsHeader);
             return (T) this;
         }
-
         /**
          * One tail tracking collection can host many trackers for several
          * tailable consumers. To keep them separate, each tracker should have
          * its own unique persistentId. The option is a java.lang.String type.
          */
         public T persistentId(String persistentId) {
-            this.persistentId = persistentId;
+            this.properties.put("persistentId", persistentId);
             return (T) this;
         }
-
         /**
          * Enable persistent tail tracking, which is a mechanism to keep track
          * of the last consumed message across system restarts. The next time
@@ -193,20 +165,18 @@ public class MongoDbEndpoint {
          * where it last stopped slurping records. The option is a boolean type.
          */
         public T persistentTailTracking(boolean persistentTailTracking) {
-            this.persistentTailTracking = persistentTailTracking;
+            this.properties.put("persistentTailTracking", persistentTailTracking);
             return (T) this;
         }
-
         /**
          * Collection where tail tracking information will be persisted. If not
          * specified, MongoDbTailTrackingConfig#DEFAULT_COLLECTION will be used
          * by default. The option is a java.lang.String type.
          */
         public T tailTrackCollection(String tailTrackCollection) {
-            this.tailTrackCollection = tailTrackCollection;
+            this.properties.put("tailTrackCollection", tailTrackCollection);
             return (T) this;
         }
-
         /**
          * Indicates what database the tail tracking mechanism will persist to.
          * If not specified, the current database will be picked by default.
@@ -215,20 +185,18 @@ public class MongoDbEndpoint {
          * The option is a java.lang.String type.
          */
         public T tailTrackDb(String tailTrackDb) {
-            this.tailTrackDb = tailTrackDb;
+            this.properties.put("tailTrackDb", tailTrackDb);
             return (T) this;
         }
-
         /**
          * Field where the last tracked value will be placed. If not specified,
          * MongoDbTailTrackingConfig#DEFAULT_FIELD will be used by default. The
          * option is a java.lang.String type.
          */
         public T tailTrackField(String tailTrackField) {
-            this.tailTrackField = tailTrackField;
+            this.properties.put("tailTrackField", tailTrackField);
             return (T) this;
         }
-
         /**
          * Correlation field in the incoming record which is of increasing
          * nature and will be used to position the tailing cursor every time it
@@ -240,162 +208,19 @@ public class MongoDbEndpoint {
          * java.lang.String type.
          */
         public T tailTrackIncreasingField(String tailTrackIncreasingField) {
-            this.tailTrackIncreasingField = tailTrackIncreasingField;
+            this.properties.put("tailTrackIncreasingField", tailTrackIncreasingField);
             return (T) this;
-        }
-
-        public String getConnectionBean() {
-            return connectionBean;
-        }
-
-        public void setConnectionBean(String connectionBean) {
-            this.connectionBean = connectionBean;
-        }
-
-        public String getCollection() {
-            return collection;
-        }
-
-        public void setCollection(String collection) {
-            this.collection = collection;
-        }
-
-        public String getCollectionIndex() {
-            return collectionIndex;
-        }
-
-        public void setCollectionIndex(String collectionIndex) {
-            this.collectionIndex = collectionIndex;
-        }
-
-        public Boolean getCreateCollection() {
-            return createCollection;
-        }
-
-        public void setCreateCollection(Boolean createCollection) {
-            this.createCollection = createCollection;
-        }
-
-        public String getDatabase() {
-            return database;
-        }
-
-        public void setDatabase(String database) {
-            this.database = database;
-        }
-
-        public MongoDbOperation getOperation() {
-            return operation;
-        }
-
-        public void setOperation(MongoDbOperation operation) {
-            this.operation = operation;
-        }
-
-        public MongoDbOutputType getOutputType() {
-            return outputType;
-        }
-
-        public void setOutputType(MongoDbOutputType outputType) {
-            this.outputType = outputType;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Long getCursorRegenerationDelay() {
-            return cursorRegenerationDelay;
-        }
-
-        public void setCursorRegenerationDelay(Long cursorRegenerationDelay) {
-            this.cursorRegenerationDelay = cursorRegenerationDelay;
-        }
-
-        public Boolean getDynamicity() {
-            return dynamicity;
-        }
-
-        public void setDynamicity(Boolean dynamicity) {
-            this.dynamicity = dynamicity;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Boolean getWriteResultAsHeader() {
-            return writeResultAsHeader;
-        }
-
-        public void setWriteResultAsHeader(Boolean writeResultAsHeader) {
-            this.writeResultAsHeader = writeResultAsHeader;
-        }
-
-        public String getPersistentId() {
-            return persistentId;
-        }
-
-        public void setPersistentId(String persistentId) {
-            this.persistentId = persistentId;
-        }
-
-        public Boolean getPersistentTailTracking() {
-            return persistentTailTracking;
-        }
-
-        public void setPersistentTailTracking(Boolean persistentTailTracking) {
-            this.persistentTailTracking = persistentTailTracking;
-        }
-
-        public String getTailTrackCollection() {
-            return tailTrackCollection;
-        }
-
-        public void setTailTrackCollection(String tailTrackCollection) {
-            this.tailTrackCollection = tailTrackCollection;
-        }
-
-        public String getTailTrackDb() {
-            return tailTrackDb;
-        }
-
-        public void setTailTrackDb(String tailTrackDb) {
-            this.tailTrackDb = tailTrackDb;
-        }
-
-        public String getTailTrackField() {
-            return tailTrackField;
-        }
-
-        public void setTailTrackField(String tailTrackField) {
-            this.tailTrackField = tailTrackField;
-        }
-
-        public String getTailTrackIncreasingField() {
-            return tailTrackIncreasingField;
-        }
-
-        public void setTailTrackIncreasingField(String tailTrackIncreasingField) {
-            this.tailTrackIncreasingField = tailTrackIncreasingField;
         }
     }
 
     public static class MongoDbConsumer
             extends
-                MongoDbCommon<MongoDbConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                MongoDbCommon<MongoDbConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public MongoDbConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -406,10 +231,9 @@ public class MongoDbEndpoint {
          * ignored. The option is a boolean type.
          */
         public MongoDbConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (MongoDbConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -419,47 +243,27 @@ public class MongoDbEndpoint {
          */
         public MongoDbConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (MongoDbConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public MongoDbConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (MongoDbConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class MongoDbProducer
             extends
-                MongoDbCommon<MongoDbProducer> {
+                MongoDbCommon<MongoDbProducer>
+            implements
+                EndpointDefinition.Producer {
+        public MongoDbProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum MongoDbOperation {

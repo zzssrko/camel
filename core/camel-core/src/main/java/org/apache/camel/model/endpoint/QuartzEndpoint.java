@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,56 +31,36 @@ import org.apache.camel.spi.ExceptionHandler;
 public class QuartzEndpoint {
 
 
-    public static class QuartzCommon<T extends EndpointConfiguration>
+    public static class QuartzCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String groupName;
-        private String triggerName;
-        private String cron;
-        private Boolean deleteJob;
-        private Boolean durableJob;
-        private Boolean pauseJob;
-        private Boolean recoverableJob;
-        private Boolean stateful;
-        private Boolean basicPropertyBinding;
-        private Object customCalendar;
-        private Map<String, Object> jobParameters;
-        private Boolean prefixJobNameWithEndpointId;
-        private Boolean synchronous;
-        private Map<String, Object> triggerParameters;
-        private Boolean usingFixedCamelContextName;
-        private Boolean autoStartScheduler;
-        private Boolean fireNow;
-        private Integer startDelayedSeconds;
-        private Long triggerStartDelay;
-
+                EndpointDefinition<T> {
+        QuartzCommon(String path) {
+            super("quartz2", path);
+        }
         /**
          * The quartz group name to use. The combination of group name and timer
          * name should be unique. The option is a java.lang.String type.
          */
         public T groupName(String groupName) {
-            this.groupName = groupName;
+            this.properties.put("groupName", groupName);
             return (T) this;
         }
-
         /**
          * The quartz timer name to use. The combination of group name and timer
          * name should be unique. The option is a java.lang.String type.
          */
         public T triggerName(String triggerName) {
-            this.triggerName = triggerName;
+            this.properties.put("triggerName", triggerName);
             return (T) this;
         }
-
         /**
          * Specifies a cron expression to define when to trigger. The option is
          * a java.lang.String type.
          */
         public T cron(String cron) {
-            this.cron = cron;
+            this.properties.put("cron", cron);
             return (T) this;
         }
-
         /**
          * If set to true, then the trigger automatically delete when route
          * stop. Else if set to false, it will remain in scheduler. When set to
@@ -88,19 +69,17 @@ public class QuartzEndpoint {
          * deleteJob and pauseJob set to true. The option is a boolean type.
          */
         public T deleteJob(boolean deleteJob) {
-            this.deleteJob = deleteJob;
+            this.properties.put("deleteJob", deleteJob);
             return (T) this;
         }
-
         /**
          * Whether or not the job should remain stored after it is orphaned (no
          * triggers point to it). The option is a boolean type.
          */
         public T durableJob(boolean durableJob) {
-            this.durableJob = durableJob;
+            this.properties.put("durableJob", durableJob);
             return (T) this;
         }
-
         /**
          * If set to true, then the trigger automatically pauses when route
          * stop. Else if set to false, it will remain in scheduler. When set to
@@ -109,86 +88,77 @@ public class QuartzEndpoint {
          * deleteJob and pauseJob set to true. The option is a boolean type.
          */
         public T pauseJob(boolean pauseJob) {
-            this.pauseJob = pauseJob;
+            this.properties.put("pauseJob", pauseJob);
             return (T) this;
         }
-
         /**
          * Instructs the scheduler whether or not the job should be re-executed
          * if a 'recovery' or 'fail-over' situation is encountered. The option
          * is a boolean type.
          */
         public T recoverableJob(boolean recoverableJob) {
-            this.recoverableJob = recoverableJob;
+            this.properties.put("recoverableJob", recoverableJob);
             return (T) this;
         }
-
         /**
          * Uses a Quartz PersistJobDataAfterExecution and
          * DisallowConcurrentExecution instead of the default job. The option is
          * a boolean type.
          */
         public T stateful(boolean stateful) {
-            this.stateful = stateful;
+            this.properties.put("stateful", stateful);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Specifies a custom calendar to avoid specific range of date. The
          * option is a org.quartz.Calendar type.
          */
         public T customCalendar(Object customCalendar) {
-            this.customCalendar = customCalendar;
+            this.properties.put("customCalendar", customCalendar);
             return (T) this;
         }
-
         /**
          * To configure additional options on the job. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T jobParameters(Map<String, Object> jobParameters) {
-            this.jobParameters = jobParameters;
+            this.properties.put("jobParameters", jobParameters);
             return (T) this;
         }
-
         /**
          * Whether the job name should be prefixed with endpoint id. The option
          * is a boolean type.
          */
         public T prefixJobNameWithEndpointId(boolean prefixJobNameWithEndpointId) {
-            this.prefixJobNameWithEndpointId = prefixJobNameWithEndpointId;
+            this.properties.put("prefixJobNameWithEndpointId", prefixJobNameWithEndpointId);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * To configure additional options on the trigger. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T triggerParameters(Map<String, Object> triggerParameters) {
-            this.triggerParameters = triggerParameters;
+            this.properties.put("triggerParameters", triggerParameters);
             return (T) this;
         }
-
         /**
          * If it is true, JobDataMap uses the CamelContext name directly to
          * reference the CamelContext, if it is false, JobDataMap uses use the
@@ -196,207 +166,52 @@ public class QuartzEndpoint {
          * time. The option is a boolean type.
          */
         public T usingFixedCamelContextName(boolean usingFixedCamelContextName) {
-            this.usingFixedCamelContextName = usingFixedCamelContextName;
+            this.properties.put("usingFixedCamelContextName", usingFixedCamelContextName);
             return (T) this;
         }
-
         /**
          * Whether or not the scheduler should be auto started. The option is a
          * boolean type.
          */
         public T autoStartScheduler(boolean autoStartScheduler) {
-            this.autoStartScheduler = autoStartScheduler;
+            this.properties.put("autoStartScheduler", autoStartScheduler);
             return (T) this;
         }
-
         /**
          * If it is true will fire the trigger when the route is start when
          * using SimpleTrigger. The option is a boolean type.
          */
         public T fireNow(boolean fireNow) {
-            this.fireNow = fireNow;
+            this.properties.put("fireNow", fireNow);
             return (T) this;
         }
-
         /**
          * Seconds to wait before starting the quartz scheduler. The option is a
          * int type.
          */
         public T startDelayedSeconds(int startDelayedSeconds) {
-            this.startDelayedSeconds = startDelayedSeconds;
+            this.properties.put("startDelayedSeconds", startDelayedSeconds);
             return (T) this;
         }
-
         /**
          * In case of scheduler has already started, we want the trigger start
          * slightly after current time to ensure endpoint is fully started
          * before the job kicks in. The option is a long type.
          */
         public T triggerStartDelay(long triggerStartDelay) {
-            this.triggerStartDelay = triggerStartDelay;
+            this.properties.put("triggerStartDelay", triggerStartDelay);
             return (T) this;
-        }
-
-        public String getGroupName() {
-            return groupName;
-        }
-
-        public void setGroupName(String groupName) {
-            this.groupName = groupName;
-        }
-
-        public String getTriggerName() {
-            return triggerName;
-        }
-
-        public void setTriggerName(String triggerName) {
-            this.triggerName = triggerName;
-        }
-
-        public String getCron() {
-            return cron;
-        }
-
-        public void setCron(String cron) {
-            this.cron = cron;
-        }
-
-        public Boolean getDeleteJob() {
-            return deleteJob;
-        }
-
-        public void setDeleteJob(Boolean deleteJob) {
-            this.deleteJob = deleteJob;
-        }
-
-        public Boolean getDurableJob() {
-            return durableJob;
-        }
-
-        public void setDurableJob(Boolean durableJob) {
-            this.durableJob = durableJob;
-        }
-
-        public Boolean getPauseJob() {
-            return pauseJob;
-        }
-
-        public void setPauseJob(Boolean pauseJob) {
-            this.pauseJob = pauseJob;
-        }
-
-        public Boolean getRecoverableJob() {
-            return recoverableJob;
-        }
-
-        public void setRecoverableJob(Boolean recoverableJob) {
-            this.recoverableJob = recoverableJob;
-        }
-
-        public Boolean getStateful() {
-            return stateful;
-        }
-
-        public void setStateful(Boolean stateful) {
-            this.stateful = stateful;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getCustomCalendar() {
-            return customCalendar;
-        }
-
-        public void setCustomCalendar(Object customCalendar) {
-            this.customCalendar = customCalendar;
-        }
-
-        public Map<String, Object> getJobParameters() {
-            return jobParameters;
-        }
-
-        public void setJobParameters(Map<String, Object> jobParameters) {
-            this.jobParameters = jobParameters;
-        }
-
-        public Boolean getPrefixJobNameWithEndpointId() {
-            return prefixJobNameWithEndpointId;
-        }
-
-        public void setPrefixJobNameWithEndpointId(
-                Boolean prefixJobNameWithEndpointId) {
-            this.prefixJobNameWithEndpointId = prefixJobNameWithEndpointId;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Map<String, Object> getTriggerParameters() {
-            return triggerParameters;
-        }
-
-        public void setTriggerParameters(Map<String, Object> triggerParameters) {
-            this.triggerParameters = triggerParameters;
-        }
-
-        public Boolean getUsingFixedCamelContextName() {
-            return usingFixedCamelContextName;
-        }
-
-        public void setUsingFixedCamelContextName(
-                Boolean usingFixedCamelContextName) {
-            this.usingFixedCamelContextName = usingFixedCamelContextName;
-        }
-
-        public Boolean getAutoStartScheduler() {
-            return autoStartScheduler;
-        }
-
-        public void setAutoStartScheduler(Boolean autoStartScheduler) {
-            this.autoStartScheduler = autoStartScheduler;
-        }
-
-        public Boolean getFireNow() {
-            return fireNow;
-        }
-
-        public void setFireNow(Boolean fireNow) {
-            this.fireNow = fireNow;
-        }
-
-        public Integer getStartDelayedSeconds() {
-            return startDelayedSeconds;
-        }
-
-        public void setStartDelayedSeconds(Integer startDelayedSeconds) {
-            this.startDelayedSeconds = startDelayedSeconds;
-        }
-
-        public Long getTriggerStartDelay() {
-            return triggerStartDelay;
-        }
-
-        public void setTriggerStartDelay(Long triggerStartDelay) {
-            this.triggerStartDelay = triggerStartDelay;
         }
     }
 
-    public static class QuartzConsumer extends QuartzCommon<QuartzConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class QuartzConsumer
+            extends
+                QuartzCommon<QuartzConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public QuartzConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -407,10 +222,9 @@ public class QuartzEndpoint {
          * ignored. The option is a boolean type.
          */
         public QuartzConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (QuartzConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -419,44 +233,26 @@ public class QuartzEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public QuartzConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (QuartzConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public QuartzConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (QuartzConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class QuartzProducer extends QuartzCommon<QuartzProducer> {
+    public static class QuartzProducer
+            extends
+                QuartzCommon<QuartzProducer>
+            implements
+                EndpointDefinition.Producer {
+        public QuartzProducer(String path) {
+            super(path);
+        }
     }
 }

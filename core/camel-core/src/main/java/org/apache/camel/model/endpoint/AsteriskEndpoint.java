@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,125 +30,69 @@ import org.apache.camel.spi.ExceptionHandler;
 public class AsteriskEndpoint {
 
 
-    public static class AsteriskCommon<T extends EndpointConfiguration>
+    public static class AsteriskCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private String hostname;
-        private String password;
-        private String username;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        AsteriskCommon(String path) {
+            super("asterisk", path);
+        }
         /**
          * Logical name. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * The hostname of the asterisk server. The option is a java.lang.String
          * type.
          */
         public T hostname(String hostname) {
-            this.hostname = hostname;
+            this.properties.put("hostname", hostname);
             return (T) this;
         }
-
         /**
          * Login password. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Login username. The option is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getHostname() {
-            return hostname;
-        }
-
-        public void setHostname(String hostname) {
-            this.hostname = hostname;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class AsteriskConsumer
             extends
-                AsteriskCommon<AsteriskConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                AsteriskCommon<AsteriskConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public AsteriskConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -158,10 +103,9 @@ public class AsteriskEndpoint {
          * ignored. The option is a boolean type.
          */
         public AsteriskConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (AsteriskConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -171,65 +115,35 @@ public class AsteriskEndpoint {
          */
         public AsteriskConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (AsteriskConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public AsteriskConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (AsteriskConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class AsteriskProducer
             extends
-                AsteriskCommon<AsteriskProducer> {
-        private AsteriskAction action;
-
+                AsteriskCommon<AsteriskProducer>
+            implements
+                EndpointDefinition.Producer {
+        public AsteriskProducer(String path) {
+            super(path);
+        }
         /**
          * What action to perform such as getting queue status, sip peers or
          * extension state. The option is a
          * org.apache.camel.component.asterisk.AsteriskAction type.
          */
         public AsteriskProducer action(AsteriskAction action) {
-            this.action = action;
+            this.properties.put("action", action);
             return (AsteriskProducer) this;
-        }
-
-        public AsteriskAction getAction() {
-            return action;
-        }
-
-        public void setAction(AsteriskAction action) {
-            this.action = action;
         }
     }
 

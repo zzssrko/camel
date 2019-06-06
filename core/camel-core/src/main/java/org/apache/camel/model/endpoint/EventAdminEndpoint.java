@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,92 +31,56 @@ import org.apache.camel.spi.ExceptionHandler;
 public class EventAdminEndpoint {
 
 
-    public static class EventAdminCommon<T extends EndpointConfiguration>
+    public static class EventAdminCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String topic;
-        private Boolean send;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        EventAdminCommon(String path) {
+            super("eventadmin", path);
+        }
         /**
          * Name of topic to listen or send to. The option is a java.lang.String
          * type.
          */
         public T topic(String topic) {
-            this.topic = topic;
+            this.properties.put("topic", topic);
             return (T) this;
         }
-
         /**
          * Whether to use 'send' or 'synchronous' deliver. Default false (async
          * delivery). The option is a boolean type.
          */
         public T send(boolean send) {
-            this.send = send;
+            this.properties.put("send", send);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getTopic() {
-            return topic;
-        }
-
-        public void setTopic(String topic) {
-            this.topic = topic;
-        }
-
-        public Boolean getSend() {
-            return send;
-        }
-
-        public void setSend(Boolean send) {
-            this.send = send;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class EventAdminConsumer
             extends
-                EventAdminCommon<EventAdminConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                EventAdminCommon<EventAdminConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public EventAdminConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -126,10 +91,9 @@ public class EventAdminEndpoint {
          * ignored. The option is a boolean type.
          */
         public EventAdminConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (EventAdminConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -139,47 +103,27 @@ public class EventAdminEndpoint {
          */
         public EventAdminConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (EventAdminConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public EventAdminConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (EventAdminConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class EventAdminProducer
             extends
-                EventAdminCommon<EventAdminProducer> {
+                EventAdminCommon<EventAdminProducer>
+            implements
+                EndpointDefinition.Producer {
+        public EventAdminProducer(String path) {
+            super(path);
+        }
     }
 }

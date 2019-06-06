@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The aws-mq is used for managing Amazon MQ instances.
@@ -27,194 +28,111 @@ import javax.annotation.Generated;
 public class MQEndpoint {
 
 
-    public static class MQCommon<T extends EndpointConfiguration>
+    public static class MQCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String label;
-        private String region;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        MQCommon(String path) {
+            super("aws-mq", path);
+        }
         /**
          * Logical name. The option is a java.lang.String type.
          */
         public T label(String label) {
-            this.label = label;
+            this.properties.put("label", label);
             return (T) this;
         }
-
         /**
          * The region in which MQ client needs to work. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getLabel() {
-            return label;
-        }
-
-        public void setLabel(String label) {
-            this.label = label;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class MQConsumer
+            extends
+                MQCommon<MQConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public MQConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class MQConsumer extends MQCommon<MQConsumer> {
-    }
-
-    public static class MQProducer extends MQCommon<MQProducer> {
-        private String accessKey;
-        private Object amazonMqClient;
-        private MQOperations operation;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String secretKey;
-
+    public static class MQProducer
+            extends
+                MQCommon<MQProducer>
+            implements
+                EndpointDefinition.Producer {
+        public MQProducer(String path) {
+            super(path);
+        }
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public MQProducer accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (MQProducer) this;
         }
-
         /**
          * To use a existing configured AmazonMQClient as client. The option is
          * a com.amazonaws.services.mq.AmazonMQ type.
          */
         public MQProducer amazonMqClient(Object amazonMqClient) {
-            this.amazonMqClient = amazonMqClient;
+            this.properties.put("amazonMqClient", amazonMqClient);
             return (MQProducer) this;
         }
-
         /**
          * The operation to perform. It can be
          * listBrokers,createBroker,deleteBroker. The option is a
          * org.apache.camel.component.aws.mq.MQOperations type.
          */
         public MQProducer operation(MQOperations operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (MQProducer) this;
         }
-
         /**
          * To define a proxy host when instantiating the MQ client. The option
          * is a java.lang.String type.
          */
         public MQProducer proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (MQProducer) this;
         }
-
         /**
          * To define a proxy port when instantiating the MQ client. The option
          * is a java.lang.Integer type.
          */
         public MQProducer proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (MQProducer) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public MQProducer secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (MQProducer) this;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public Object getAmazonMqClient() {
-            return amazonMqClient;
-        }
-
-        public void setAmazonMqClient(Object amazonMqClient) {
-            this.amazonMqClient = amazonMqClient;
-        }
-
-        public MQOperations getOperation() {
-            return operation;
-        }
-
-        public void setOperation(MQOperations operation) {
-            this.operation = operation;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
         }
     }
 

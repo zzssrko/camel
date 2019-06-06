@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -35,55 +36,33 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class HdfsEndpoint {
 
 
-    public static class HdfsCommon<T extends EndpointConfiguration>
+    public static class HdfsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String hostName;
-        private Integer port;
-        private String path;
-        private Boolean connectOnStartup;
-        private HdfsFileSystemType fileSystemType;
-        private HdfsFileType fileType;
-        private WritableType keyType;
-        private String owner;
-        private WritableType valueType;
-        private Boolean basicPropertyBinding;
-        private Long blockSize;
-        private Integer bufferSize;
-        private Integer checkIdleInterval;
-        private Integer chunkSize;
-        private HdfsCompressionCodec compressionCodec;
-        private Object compressionType;
-        private String openedSuffix;
-        private String readSuffix;
-        private Short replication;
-        private String splitStrategy;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        HdfsCommon(String path) {
+            super("hdfs", path);
+        }
         /**
          * HDFS host to use. The option is a java.lang.String type.
          */
         public T hostName(String hostName) {
-            this.hostName = hostName;
+            this.properties.put("hostName", hostName);
             return (T) this;
         }
-
         /**
          * HDFS port to use. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * The directory path to use. The option is a java.lang.String type.
          */
         public T path(String path) {
-            this.path = path;
+            this.properties.put("path", path);
             return (T) this;
         }
-
         /**
          * Whether to connect to the HDFS file system on starting the
          * producer/consumer. If false then the connection is created on-demand.
@@ -93,147 +72,131 @@ public class HdfsEndpoint {
          * block for up till 15 minutes. The option is a boolean type.
          */
         public T connectOnStartup(boolean connectOnStartup) {
-            this.connectOnStartup = connectOnStartup;
+            this.properties.put("connectOnStartup", connectOnStartup);
             return (T) this;
         }
-
         /**
          * Set to LOCAL to not use HDFS but local java.io.File instead. The
          * option is a org.apache.camel.component.hdfs2.HdfsFileSystemType type.
          */
         public T fileSystemType(HdfsFileSystemType fileSystemType) {
-            this.fileSystemType = fileSystemType;
+            this.properties.put("fileSystemType", fileSystemType);
             return (T) this;
         }
-
         /**
          * The file type to use. For more details see Hadoop HDFS documentation
          * about the various files types. The option is a
          * org.apache.camel.component.hdfs2.HdfsFileType type.
          */
         public T fileType(HdfsFileType fileType) {
-            this.fileType = fileType;
+            this.properties.put("fileType", fileType);
             return (T) this;
         }
-
         /**
          * The type for the key in case of sequence or map files. The option is
          * a org.apache.camel.component.hdfs2.WritableType type.
          */
         public T keyType(WritableType keyType) {
-            this.keyType = keyType;
+            this.properties.put("keyType", keyType);
             return (T) this;
         }
-
         /**
          * The file owner must match this owner for the consumer to pickup the
          * file. Otherwise the file is skipped. The option is a java.lang.String
          * type.
          */
         public T owner(String owner) {
-            this.owner = owner;
+            this.properties.put("owner", owner);
             return (T) this;
         }
-
         /**
          * The type for the key in case of sequence or map files. The option is
          * a org.apache.camel.component.hdfs2.WritableType type.
          */
         public T valueType(WritableType valueType) {
-            this.valueType = valueType;
+            this.properties.put("valueType", valueType);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * The size of the HDFS blocks. The option is a long type.
          */
         public T blockSize(long blockSize) {
-            this.blockSize = blockSize;
+            this.properties.put("blockSize", blockSize);
             return (T) this;
         }
-
         /**
          * The buffer size used by HDFS. The option is a int type.
          */
         public T bufferSize(int bufferSize) {
-            this.bufferSize = bufferSize;
+            this.properties.put("bufferSize", bufferSize);
             return (T) this;
         }
-
         /**
          * How often (time in millis) in to run the idle checker background
          * task. This option is only in use if the splitter strategy is IDLE.
          * The option is a int type.
          */
         public T checkIdleInterval(int checkIdleInterval) {
-            this.checkIdleInterval = checkIdleInterval;
+            this.properties.put("checkIdleInterval", checkIdleInterval);
             return (T) this;
         }
-
         /**
          * When reading a normal file, this is split into chunks producing a
          * message per chunk. The option is a int type.
          */
         public T chunkSize(int chunkSize) {
-            this.chunkSize = chunkSize;
+            this.properties.put("chunkSize", chunkSize);
             return (T) this;
         }
-
         /**
          * The compression codec to use. The option is a
          * org.apache.camel.component.hdfs2.HdfsCompressionCodec type.
          */
         public T compressionCodec(HdfsCompressionCodec compressionCodec) {
-            this.compressionCodec = compressionCodec;
+            this.properties.put("compressionCodec", compressionCodec);
             return (T) this;
         }
-
         /**
          * The compression type to use (is default not in use). The option is a
          * org.apache.hadoop.io.SequenceFile.CompressionType type.
          */
         public T compressionType(Object compressionType) {
-            this.compressionType = compressionType;
+            this.properties.put("compressionType", compressionType);
             return (T) this;
         }
-
         /**
          * When a file is opened for reading/writing the file is renamed with
          * this suffix to avoid to read it during the writing phase. The option
          * is a java.lang.String type.
          */
         public T openedSuffix(String openedSuffix) {
-            this.openedSuffix = openedSuffix;
+            this.properties.put("openedSuffix", openedSuffix);
             return (T) this;
         }
-
         /**
          * Once the file has been read is renamed with this suffix to avoid to
          * read it again. The option is a java.lang.String type.
          */
         public T readSuffix(String readSuffix) {
-            this.readSuffix = readSuffix;
+            this.properties.put("readSuffix", readSuffix);
             return (T) this;
         }
-
         /**
          * The HDFS replication factor. The option is a short type.
          */
         public T replication(short replication) {
-            this.replication = replication;
+            this.properties.put("replication", replication);
             return (T) this;
         }
-
         /**
          * In the current version of Hadoop opening a file in append mode is
          * disabled since it's not very reliable. So, for the moment, it's only
@@ -251,210 +214,28 @@ public class HdfsEndpoint {
          * the last value milliseconds. The option is a java.lang.String type.
          */
         public T splitStrategy(String splitStrategy) {
-            this.splitStrategy = splitStrategy;
+            this.properties.put("splitStrategy", splitStrategy);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getHostName() {
-            return hostName;
-        }
-
-        public void setHostName(String hostName) {
-            this.hostName = hostName;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getPath() {
-            return path;
-        }
-
-        public void setPath(String path) {
-            this.path = path;
-        }
-
-        public Boolean getConnectOnStartup() {
-            return connectOnStartup;
-        }
-
-        public void setConnectOnStartup(Boolean connectOnStartup) {
-            this.connectOnStartup = connectOnStartup;
-        }
-
-        public HdfsFileSystemType getFileSystemType() {
-            return fileSystemType;
-        }
-
-        public void setFileSystemType(HdfsFileSystemType fileSystemType) {
-            this.fileSystemType = fileSystemType;
-        }
-
-        public HdfsFileType getFileType() {
-            return fileType;
-        }
-
-        public void setFileType(HdfsFileType fileType) {
-            this.fileType = fileType;
-        }
-
-        public WritableType getKeyType() {
-            return keyType;
-        }
-
-        public void setKeyType(WritableType keyType) {
-            this.keyType = keyType;
-        }
-
-        public String getOwner() {
-            return owner;
-        }
-
-        public void setOwner(String owner) {
-            this.owner = owner;
-        }
-
-        public WritableType getValueType() {
-            return valueType;
-        }
-
-        public void setValueType(WritableType valueType) {
-            this.valueType = valueType;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Long getBlockSize() {
-            return blockSize;
-        }
-
-        public void setBlockSize(Long blockSize) {
-            this.blockSize = blockSize;
-        }
-
-        public Integer getBufferSize() {
-            return bufferSize;
-        }
-
-        public void setBufferSize(Integer bufferSize) {
-            this.bufferSize = bufferSize;
-        }
-
-        public Integer getCheckIdleInterval() {
-            return checkIdleInterval;
-        }
-
-        public void setCheckIdleInterval(Integer checkIdleInterval) {
-            this.checkIdleInterval = checkIdleInterval;
-        }
-
-        public Integer getChunkSize() {
-            return chunkSize;
-        }
-
-        public void setChunkSize(Integer chunkSize) {
-            this.chunkSize = chunkSize;
-        }
-
-        public HdfsCompressionCodec getCompressionCodec() {
-            return compressionCodec;
-        }
-
-        public void setCompressionCodec(HdfsCompressionCodec compressionCodec) {
-            this.compressionCodec = compressionCodec;
-        }
-
-        public Object getCompressionType() {
-            return compressionType;
-        }
-
-        public void setCompressionType(Object compressionType) {
-            this.compressionType = compressionType;
-        }
-
-        public String getOpenedSuffix() {
-            return openedSuffix;
-        }
-
-        public void setOpenedSuffix(String openedSuffix) {
-            this.openedSuffix = openedSuffix;
-        }
-
-        public String getReadSuffix() {
-            return readSuffix;
-        }
-
-        public void setReadSuffix(String readSuffix) {
-            this.readSuffix = readSuffix;
-        }
-
-        public Short getReplication() {
-            return replication;
-        }
-
-        public void setReplication(Short replication) {
-            this.replication = replication;
-        }
-
-        public String getSplitStrategy() {
-            return splitStrategy;
-        }
-
-        public void setSplitStrategy(String splitStrategy) {
-            this.splitStrategy = splitStrategy;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class HdfsConsumer extends HdfsCommon<HdfsConsumer> {
-        private Boolean bridgeErrorHandler;
-        private String pattern;
-        private Boolean sendEmptyMessageWhenIdle;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+    public static class HdfsConsumer
+            extends
+                HdfsCommon<HdfsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public HdfsConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -465,19 +246,17 @@ public class HdfsEndpoint {
          * ignored. The option is a boolean type.
          */
         public HdfsConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (HdfsConsumer) this;
         }
-
         /**
          * The pattern used for scanning the directory. The option is a
          * java.lang.String type.
          */
         public HdfsConsumer pattern(String pattern) {
-            this.pattern = pattern;
+            this.properties.put("pattern", pattern);
             return (HdfsConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -485,10 +264,9 @@ public class HdfsEndpoint {
          */
         public HdfsConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (HdfsConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -497,19 +275,17 @@ public class HdfsEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public HdfsConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (HdfsConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public HdfsConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (HdfsConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -519,29 +295,26 @@ public class HdfsEndpoint {
          */
         public HdfsConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (HdfsConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public HdfsConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (HdfsConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public HdfsConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (HdfsConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -551,50 +324,45 @@ public class HdfsEndpoint {
          * configured. The option is a int type.
          */
         public HdfsConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (HdfsConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public HdfsConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (HdfsConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public HdfsConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (HdfsConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public HdfsConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (HdfsConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public HdfsConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (HdfsConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -603,20 +371,18 @@ public class HdfsEndpoint {
          */
         public HdfsConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (HdfsConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public HdfsConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (HdfsConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -624,229 +390,59 @@ public class HdfsEndpoint {
          */
         public HdfsConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (HdfsConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public HdfsConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (HdfsConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public HdfsConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (HdfsConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public HdfsConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (HdfsConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public String getPattern() {
-            return pattern;
-        }
-
-        public void setPattern(String pattern) {
-            this.pattern = pattern;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
-    public static class HdfsProducer extends HdfsCommon<HdfsProducer> {
-        private Boolean append;
-        private Boolean overwrite;
-
+    public static class HdfsProducer
+            extends
+                HdfsCommon<HdfsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public HdfsProducer(String path) {
+            super(path);
+        }
         /**
          * Append to existing file. Notice that not all HDFS file systems
          * support the append option. The option is a boolean type.
          */
         public HdfsProducer append(boolean append) {
-            this.append = append;
+            this.properties.put("append", append);
             return (HdfsProducer) this;
         }
-
         /**
          * Whether to overwrite existing files with the same name. The option is
          * a boolean type.
          */
         public HdfsProducer overwrite(boolean overwrite) {
-            this.overwrite = overwrite;
+            this.properties.put("overwrite", overwrite);
             return (HdfsProducer) this;
-        }
-
-        public Boolean getAppend() {
-            return append;
-        }
-
-        public void setAppend(Boolean append) {
-            this.append = append;
-        }
-
-        public Boolean getOverwrite() {
-            return overwrite;
-        }
-
-        public void setOverwrite(Boolean overwrite) {
-            this.overwrite = overwrite;
         }
     }
 

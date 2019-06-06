@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The aws-kms is used for managing Amazon ECS
@@ -27,193 +28,110 @@ import javax.annotation.Generated;
 public class ECSEndpoint {
 
 
-    public static class ECSCommon<T extends EndpointConfiguration>
+    public static class ECSCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String label;
-        private String region;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        ECSCommon(String path) {
+            super("aws-ecs", path);
+        }
         /**
          * Logical name. The option is a java.lang.String type.
          */
         public T label(String label) {
-            this.label = label;
+            this.properties.put("label", label);
             return (T) this;
         }
-
         /**
          * The region in which ECS client needs to work. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getLabel() {
-            return label;
-        }
-
-        public void setLabel(String label) {
-            this.label = label;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class ECSConsumer
+            extends
+                ECSCommon<ECSConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ECSConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class ECSConsumer extends ECSCommon<ECSConsumer> {
-    }
-
-    public static class ECSProducer extends ECSCommon<ECSProducer> {
-        private String accessKey;
-        private Object ecsClient;
-        private ECSOperations operation;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String secretKey;
-
+    public static class ECSProducer
+            extends
+                ECSCommon<ECSProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ECSProducer(String path) {
+            super(path);
+        }
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public ECSProducer accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (ECSProducer) this;
         }
-
         /**
          * To use a existing configured AWS ECS as client. The option is a
          * com.amazonaws.services.ecs.AmazonECS type.
          */
         public ECSProducer ecsClient(Object ecsClient) {
-            this.ecsClient = ecsClient;
+            this.properties.put("ecsClient", ecsClient);
             return (ECSProducer) this;
         }
-
         /**
          * The operation to perform. The option is a
          * org.apache.camel.component.aws.ecs.ECSOperations type.
          */
         public ECSProducer operation(ECSOperations operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (ECSProducer) this;
         }
-
         /**
          * To define a proxy host when instantiating the ECS client. The option
          * is a java.lang.String type.
          */
         public ECSProducer proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (ECSProducer) this;
         }
-
         /**
          * To define a proxy port when instantiating the ECS client. The option
          * is a java.lang.Integer type.
          */
         public ECSProducer proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (ECSProducer) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public ECSProducer secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (ECSProducer) this;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public Object getEcsClient() {
-            return ecsClient;
-        }
-
-        public void setEcsClient(Object ecsClient) {
-            this.ecsClient = ecsClient;
-        }
-
-        public ECSOperations getOperation() {
-            return operation;
-        }
-
-        public void setOperation(ECSOperations operation) {
-            this.operation = operation;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
         }
     }
 

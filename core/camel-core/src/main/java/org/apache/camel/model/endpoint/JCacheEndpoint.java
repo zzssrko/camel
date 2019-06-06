@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Properties;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -32,311 +33,152 @@ import org.apache.camel.spi.ExceptionHandler;
 public class JCacheEndpoint {
 
 
-    public static class JCacheCommon<T extends EndpointConfiguration>
+    public static class JCacheCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String cacheName;
-        private Object cacheConfiguration;
-        private Properties cacheConfigurationProperties;
-        private String cachingProvider;
-        private String configurationUri;
-        private Boolean managementEnabled;
-        private Boolean readThrough;
-        private Boolean statisticsEnabled;
-        private Boolean storeByValue;
-        private Boolean writeThrough;
-        private Boolean basicPropertyBinding;
-        private Object cacheLoaderFactory;
-        private Object cacheWriterFactory;
-        private Boolean createCacheIfNotExists;
-        private Object expiryPolicyFactory;
-        private Boolean lookupProviders;
-
+                EndpointDefinition<T> {
+        JCacheCommon(String path) {
+            super("jcache", path);
+        }
         /**
          * The name of the cache. The option is a java.lang.String type.
          */
         public T cacheName(String cacheName) {
-            this.cacheName = cacheName;
+            this.properties.put("cacheName", cacheName);
             return (T) this;
         }
-
         /**
          * A Configuration for the Cache. The option is a
          * javax.cache.configuration.Configuration type.
          */
         public T cacheConfiguration(Object cacheConfiguration) {
-            this.cacheConfiguration = cacheConfiguration;
+            this.properties.put("cacheConfiguration", cacheConfiguration);
             return (T) this;
         }
-
         /**
          * The Properties for the javax.cache.spi.CachingProvider to create the
          * CacheManager. The option is a java.util.Properties type.
          */
         public T cacheConfigurationProperties(
                 Properties cacheConfigurationProperties) {
-            this.cacheConfigurationProperties = cacheConfigurationProperties;
+            this.properties.put("cacheConfigurationProperties", cacheConfigurationProperties);
             return (T) this;
         }
-
         /**
          * The fully qualified class name of the
          * javax.cache.spi.CachingProvider. The option is a java.lang.String
          * type.
          */
         public T cachingProvider(String cachingProvider) {
-            this.cachingProvider = cachingProvider;
+            this.properties.put("cachingProvider", cachingProvider);
             return (T) this;
         }
-
         /**
          * An implementation specific URI for the CacheManager. The option is a
          * java.lang.String type.
          */
         public T configurationUri(String configurationUri) {
-            this.configurationUri = configurationUri;
+            this.properties.put("configurationUri", configurationUri);
             return (T) this;
         }
-
         /**
          * Whether management gathering is enabled. The option is a boolean
          * type.
          */
         public T managementEnabled(boolean managementEnabled) {
-            this.managementEnabled = managementEnabled;
+            this.properties.put("managementEnabled", managementEnabled);
             return (T) this;
         }
-
         /**
          * If read-through caching should be used. The option is a boolean type.
          */
         public T readThrough(boolean readThrough) {
-            this.readThrough = readThrough;
+            this.properties.put("readThrough", readThrough);
             return (T) this;
         }
-
         /**
          * Whether statistics gathering is enabled. The option is a boolean
          * type.
          */
         public T statisticsEnabled(boolean statisticsEnabled) {
-            this.statisticsEnabled = statisticsEnabled;
+            this.properties.put("statisticsEnabled", statisticsEnabled);
             return (T) this;
         }
-
         /**
          * If cache should use store-by-value or store-by-reference semantics.
          * The option is a boolean type.
          */
         public T storeByValue(boolean storeByValue) {
-            this.storeByValue = storeByValue;
+            this.properties.put("storeByValue", storeByValue);
             return (T) this;
         }
-
         /**
          * If write-through caching should be used. The option is a boolean
          * type.
          */
         public T writeThrough(boolean writeThrough) {
-            this.writeThrough = writeThrough;
+            this.properties.put("writeThrough", writeThrough);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * The CacheLoader factory. The option is a
          * javax.cache.configuration.Factory<javax.cache.integration.CacheLoader> type.
          */
         public T cacheLoaderFactory(Object cacheLoaderFactory) {
-            this.cacheLoaderFactory = cacheLoaderFactory;
+            this.properties.put("cacheLoaderFactory", cacheLoaderFactory);
             return (T) this;
         }
-
         /**
          * The CacheWriter factory. The option is a
          * javax.cache.configuration.Factory<javax.cache.integration.CacheWriter> type.
          */
         public T cacheWriterFactory(Object cacheWriterFactory) {
-            this.cacheWriterFactory = cacheWriterFactory;
+            this.properties.put("cacheWriterFactory", cacheWriterFactory);
             return (T) this;
         }
-
         /**
          * Configure if a cache need to be created if it does exist or can't be
          * pre-configured. The option is a boolean type.
          */
         public T createCacheIfNotExists(boolean createCacheIfNotExists) {
-            this.createCacheIfNotExists = createCacheIfNotExists;
+            this.properties.put("createCacheIfNotExists", createCacheIfNotExists);
             return (T) this;
         }
-
         /**
          * The ExpiryPolicy factory. The option is a
          * javax.cache.configuration.Factory<javax.cache.expiry.ExpiryPolicy>
          * type.
          */
         public T expiryPolicyFactory(Object expiryPolicyFactory) {
-            this.expiryPolicyFactory = expiryPolicyFactory;
+            this.properties.put("expiryPolicyFactory", expiryPolicyFactory);
             return (T) this;
         }
-
         /**
          * Configure if a camel-cache should try to find implementations of
          * jcache api in runtimes like OSGi. The option is a boolean type.
          */
         public T lookupProviders(boolean lookupProviders) {
-            this.lookupProviders = lookupProviders;
+            this.properties.put("lookupProviders", lookupProviders);
             return (T) this;
-        }
-
-        public String getCacheName() {
-            return cacheName;
-        }
-
-        public void setCacheName(String cacheName) {
-            this.cacheName = cacheName;
-        }
-
-        public Object getCacheConfiguration() {
-            return cacheConfiguration;
-        }
-
-        public void setCacheConfiguration(Object cacheConfiguration) {
-            this.cacheConfiguration = cacheConfiguration;
-        }
-
-        public Properties getCacheConfigurationProperties() {
-            return cacheConfigurationProperties;
-        }
-
-        public void setCacheConfigurationProperties(
-                Properties cacheConfigurationProperties) {
-            this.cacheConfigurationProperties = cacheConfigurationProperties;
-        }
-
-        public String getCachingProvider() {
-            return cachingProvider;
-        }
-
-        public void setCachingProvider(String cachingProvider) {
-            this.cachingProvider = cachingProvider;
-        }
-
-        public String getConfigurationUri() {
-            return configurationUri;
-        }
-
-        public void setConfigurationUri(String configurationUri) {
-            this.configurationUri = configurationUri;
-        }
-
-        public Boolean getManagementEnabled() {
-            return managementEnabled;
-        }
-
-        public void setManagementEnabled(Boolean managementEnabled) {
-            this.managementEnabled = managementEnabled;
-        }
-
-        public Boolean getReadThrough() {
-            return readThrough;
-        }
-
-        public void setReadThrough(Boolean readThrough) {
-            this.readThrough = readThrough;
-        }
-
-        public Boolean getStatisticsEnabled() {
-            return statisticsEnabled;
-        }
-
-        public void setStatisticsEnabled(Boolean statisticsEnabled) {
-            this.statisticsEnabled = statisticsEnabled;
-        }
-
-        public Boolean getStoreByValue() {
-            return storeByValue;
-        }
-
-        public void setStoreByValue(Boolean storeByValue) {
-            this.storeByValue = storeByValue;
-        }
-
-        public Boolean getWriteThrough() {
-            return writeThrough;
-        }
-
-        public void setWriteThrough(Boolean writeThrough) {
-            this.writeThrough = writeThrough;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getCacheLoaderFactory() {
-            return cacheLoaderFactory;
-        }
-
-        public void setCacheLoaderFactory(Object cacheLoaderFactory) {
-            this.cacheLoaderFactory = cacheLoaderFactory;
-        }
-
-        public Object getCacheWriterFactory() {
-            return cacheWriterFactory;
-        }
-
-        public void setCacheWriterFactory(Object cacheWriterFactory) {
-            this.cacheWriterFactory = cacheWriterFactory;
-        }
-
-        public Boolean getCreateCacheIfNotExists() {
-            return createCacheIfNotExists;
-        }
-
-        public void setCreateCacheIfNotExists(Boolean createCacheIfNotExists) {
-            this.createCacheIfNotExists = createCacheIfNotExists;
-        }
-
-        public Object getExpiryPolicyFactory() {
-            return expiryPolicyFactory;
-        }
-
-        public void setExpiryPolicyFactory(Object expiryPolicyFactory) {
-            this.expiryPolicyFactory = expiryPolicyFactory;
-        }
-
-        public Boolean getLookupProviders() {
-            return lookupProviders;
-        }
-
-        public void setLookupProviders(Boolean lookupProviders) {
-            this.lookupProviders = lookupProviders;
         }
     }
 
-    public static class JCacheConsumer extends JCacheCommon<JCacheConsumer> {
-        private Boolean bridgeErrorHandler;
-        private List<EventType> filteredEvents;
-        private Boolean oldValueRequired;
-        private Boolean synchronous;
-        private List<Object> eventFilters;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class JCacheConsumer
+            extends
+                JCacheCommon<JCacheConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public JCacheConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -347,48 +189,43 @@ public class JCacheEndpoint {
          * ignored. The option is a boolean type.
          */
         public JCacheConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (JCacheConsumer) this;
         }
-
         /**
          * Events a consumer should filter. If using filteredEvents option, then
          * eventFilters one will be ignored. The option is a
          * java.util.List<javax.cache.event.EventType> type.
          */
         public JCacheConsumer filteredEvents(List<EventType> filteredEvents) {
-            this.filteredEvents = filteredEvents;
+            this.properties.put("filteredEvents", filteredEvents);
             return (JCacheConsumer) this;
         }
-
         /**
          * if the old value is required for events. The option is a boolean
          * type.
          */
         public JCacheConsumer oldValueRequired(boolean oldValueRequired) {
-            this.oldValueRequired = oldValueRequired;
+            this.properties.put("oldValueRequired", oldValueRequired);
             return (JCacheConsumer) this;
         }
-
         /**
          * if the event listener should block the thread causing the event. The
          * option is a boolean type.
          */
         public JCacheConsumer synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (JCacheConsumer) this;
         }
-
         /**
          * The CacheEntryEventFilter. If using eventFilters option, then
          * filteredEvents one will be ignored. The option is a
          * java.util.List<javax.cache.event.CacheEntryEventFilter> type.
          */
         public JCacheConsumer eventFilters(List<Object> eventFilters) {
-            this.eventFilters = eventFilters;
+            this.properties.put("eventFilters", eventFilters);
             return (JCacheConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -397,95 +234,35 @@ public class JCacheEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public JCacheConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (JCacheConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public JCacheConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (JCacheConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public List<EventType> getFilteredEvents() {
-            return filteredEvents;
-        }
-
-        public void setFilteredEvents(List<EventType> filteredEvents) {
-            this.filteredEvents = filteredEvents;
-        }
-
-        public Boolean getOldValueRequired() {
-            return oldValueRequired;
-        }
-
-        public void setOldValueRequired(Boolean oldValueRequired) {
-            this.oldValueRequired = oldValueRequired;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public List<Object> getEventFilters() {
-            return eventFilters;
-        }
-
-        public void setEventFilters(List<Object> eventFilters) {
-            this.eventFilters = eventFilters;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class JCacheProducer extends JCacheCommon<JCacheProducer> {
-        private String action;
-
+    public static class JCacheProducer
+            extends
+                JCacheCommon<JCacheProducer>
+            implements
+                EndpointDefinition.Producer {
+        public JCacheProducer(String path) {
+            super(path);
+        }
         /**
          * To configure using a cache operation by default. If an operation in
          * the message header, then the operation from the header takes
          * precedence. The option is a java.lang.String type.
          */
         public JCacheProducer action(String action) {
-            this.action = action;
+            this.properties.put("action", action);
             return (JCacheProducer) this;
-        }
-
-        public String getAction() {
-            return action;
-        }
-
-        public void setAction(String action) {
-            this.action = action;
         }
     }
 

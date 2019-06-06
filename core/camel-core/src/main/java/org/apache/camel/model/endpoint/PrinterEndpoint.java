@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The printer component is used for sending messages to printers as print jobs.
@@ -27,73 +28,54 @@ import javax.annotation.Generated;
 public class PrinterEndpoint {
 
 
-    public static class PrinterCommon<T extends EndpointConfiguration>
+    public static class PrinterCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String hostname;
-        private Integer port;
-        private String printername;
-        private Integer copies;
-        private Object docFlavor;
-        private String flavor;
-        private String mediaSize;
-        private String mediaTray;
-        private String mimeType;
-        private String orientation;
-        private String printerPrefix;
-        private Boolean sendToPrinter;
-        private String sides;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        PrinterCommon(String path) {
+            super("lpr", path);
+        }
         /**
          * Hostname of the printer. The option is a java.lang.String type.
          */
         public T hostname(String hostname) {
-            this.hostname = hostname;
+            this.properties.put("hostname", hostname);
             return (T) this;
         }
-
         /**
          * Port number of the printer. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Name of the printer. The option is a java.lang.String type.
          */
         public T printername(String printername) {
-            this.printername = printername;
+            this.properties.put("printername", printername);
             return (T) this;
         }
-
         /**
          * Number of copies to print. The option is a int type.
          */
         public T copies(int copies) {
-            this.copies = copies;
+            this.properties.put("copies", copies);
             return (T) this;
         }
-
         /**
          * Sets DocFlavor to use. The option is a javax.print.DocFlavor type.
          */
         public T docFlavor(Object docFlavor) {
-            this.docFlavor = docFlavor;
+            this.properties.put("docFlavor", docFlavor);
             return (T) this;
         }
-
         /**
          * Sets DocFlavor to use. The option is a java.lang.String type.
          */
         public T flavor(String flavor) {
-            this.flavor = flavor;
+            this.properties.put("flavor", flavor);
             return (T) this;
         }
-
         /**
          * Sets the stationary as defined by enumeration names in the
          * javax.print.attribute.standard.MediaSizeName API. The default setting
@@ -102,213 +84,95 @@ public class PrinterEndpoint {
          * a java.lang.String type.
          */
         public T mediaSize(String mediaSize) {
-            this.mediaSize = mediaSize;
+            this.properties.put("mediaSize", mediaSize);
             return (T) this;
         }
-
         /**
          * Sets MediaTray supported by the javax.print.DocFlavor API, for
          * example upper,middle etc. The option is a java.lang.String type.
          */
         public T mediaTray(String mediaTray) {
-            this.mediaTray = mediaTray;
+            this.properties.put("mediaTray", mediaTray);
             return (T) this;
         }
-
         /**
          * Sets mimeTypes supported by the javax.print.DocFlavor API. The option
          * is a java.lang.String type.
          */
         public T mimeType(String mimeType) {
-            this.mimeType = mimeType;
+            this.properties.put("mimeType", mimeType);
             return (T) this;
         }
-
         /**
          * Sets the page orientation. The option is a java.lang.String type.
          */
         public T orientation(String orientation) {
-            this.orientation = orientation;
+            this.properties.put("orientation", orientation);
             return (T) this;
         }
-
         /**
          * Sets the prefix name of the printer, it is useful when the printer
          * name does not start with //hostname/printer. The option is a
          * java.lang.String type.
          */
         public T printerPrefix(String printerPrefix) {
-            this.printerPrefix = printerPrefix;
+            this.properties.put("printerPrefix", printerPrefix);
             return (T) this;
         }
-
         /**
          * etting this option to false prevents sending of the print data to the
          * printer. The option is a boolean type.
          */
         public T sendToPrinter(boolean sendToPrinter) {
-            this.sendToPrinter = sendToPrinter;
+            this.properties.put("sendToPrinter", sendToPrinter);
             return (T) this;
         }
-
         /**
          * Sets one sided or two sided printing based on the
          * javax.print.attribute.standard.Sides API. The option is a
          * java.lang.String type.
          */
         public T sides(String sides) {
-            this.sides = sides;
+            this.properties.put("sides", sides);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getHostname() {
-            return hostname;
-        }
-
-        public void setHostname(String hostname) {
-            this.hostname = hostname;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getPrintername() {
-            return printername;
-        }
-
-        public void setPrintername(String printername) {
-            this.printername = printername;
-        }
-
-        public Integer getCopies() {
-            return copies;
-        }
-
-        public void setCopies(Integer copies) {
-            this.copies = copies;
-        }
-
-        public Object getDocFlavor() {
-            return docFlavor;
-        }
-
-        public void setDocFlavor(Object docFlavor) {
-            this.docFlavor = docFlavor;
-        }
-
-        public String getFlavor() {
-            return flavor;
-        }
-
-        public void setFlavor(String flavor) {
-            this.flavor = flavor;
-        }
-
-        public String getMediaSize() {
-            return mediaSize;
-        }
-
-        public void setMediaSize(String mediaSize) {
-            this.mediaSize = mediaSize;
-        }
-
-        public String getMediaTray() {
-            return mediaTray;
-        }
-
-        public void setMediaTray(String mediaTray) {
-            this.mediaTray = mediaTray;
-        }
-
-        public String getMimeType() {
-            return mimeType;
-        }
-
-        public void setMimeType(String mimeType) {
-            this.mimeType = mimeType;
-        }
-
-        public String getOrientation() {
-            return orientation;
-        }
-
-        public void setOrientation(String orientation) {
-            this.orientation = orientation;
-        }
-
-        public String getPrinterPrefix() {
-            return printerPrefix;
-        }
-
-        public void setPrinterPrefix(String printerPrefix) {
-            this.printerPrefix = printerPrefix;
-        }
-
-        public Boolean getSendToPrinter() {
-            return sendToPrinter;
-        }
-
-        public void setSendToPrinter(Boolean sendToPrinter) {
-            this.sendToPrinter = sendToPrinter;
-        }
-
-        public String getSides() {
-            return sides;
-        }
-
-        public void setSides(String sides) {
-            this.sides = sides;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class PrinterConsumer
             extends
-                PrinterCommon<PrinterConsumer> {
+                PrinterCommon<PrinterConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public PrinterConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class PrinterProducer
             extends
-                PrinterCommon<PrinterProducer> {
+                PrinterCommon<PrinterProducer>
+            implements
+                EndpointDefinition.Producer {
+        public PrinterProducer(String path) {
+            super(path);
+        }
     }
 }

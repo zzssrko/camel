@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The drill component gives you the ability to quering into apache drill
@@ -28,143 +29,90 @@ import javax.annotation.Generated;
 public class DrillEndpoint {
 
 
-    public static class DrillCommon<T extends EndpointConfiguration>
+    public static class DrillCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private String clusterId;
-        private String directory;
-        private DrillConnectionMode mode;
-        private Integer port;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        DrillCommon(String path) {
+            super("drill", path);
+        }
         /**
          * ZooKeeper host name or IP address. Use local instead of a host name
          * or IP address to connect to the local Drillbit. The option is a
          * java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Cluster ID
          * https://drill.apache.org/docs/using-the-jdbc-driver/#determining-the-cluster-id. The option is a java.lang.String type.
          */
         public T clusterId(String clusterId) {
-            this.clusterId = clusterId;
+            this.properties.put("clusterId", clusterId);
             return (T) this;
         }
-
         /**
          * Drill directory in ZooKeeper. The option is a java.lang.String type.
          */
         public T directory(String directory) {
-            this.directory = directory;
+            this.properties.put("directory", directory);
             return (T) this;
         }
-
         /**
          * Connection mode: zk: Zookeeper drillbit: Drillbit direct connection
          * https://drill.apache.org/docs/using-the-jdbc-driver/. The option is a
          * org.apache.camel.component.drill.DrillConnectionMode type.
          */
         public T mode(DrillConnectionMode mode) {
-            this.mode = mode;
+            this.properties.put("mode", mode);
             return (T) this;
         }
-
         /**
          * ZooKeeper port number. The option is a java.lang.Integer type.
          */
         public T port(Integer port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public String getClusterId() {
-            return clusterId;
-        }
-
-        public void setClusterId(String clusterId) {
-            this.clusterId = clusterId;
-        }
-
-        public String getDirectory() {
-            return directory;
-        }
-
-        public void setDirectory(String directory) {
-            this.directory = directory;
-        }
-
-        public DrillConnectionMode getMode() {
-            return mode;
-        }
-
-        public void setMode(DrillConnectionMode mode) {
-            this.mode = mode;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class DrillConsumer
+            extends
+                DrillCommon<DrillConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DrillConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class DrillConsumer extends DrillCommon<DrillConsumer> {
-    }
-
-    public static class DrillProducer extends DrillCommon<DrillProducer> {
+    public static class DrillProducer
+            extends
+                DrillCommon<DrillProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DrillProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum DrillConnectionMode {

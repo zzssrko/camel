@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.logging.Level;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,87 +32,68 @@ import org.apache.camel.spi.ExceptionHandler;
 public class BraintreeEndpoint {
 
 
-    public static class BraintreeCommon<T extends EndpointConfiguration>
+    public static class BraintreeCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private BraintreeApiName apiName;
-        private String methodName;
-        private String environment;
-        private String inBody;
-        private String merchantId;
-        private String privateKey;
-        private String publicKey;
-        private String accessToken;
-        private Boolean basicPropertyBinding;
-        private Integer httpReadTimeout;
-        private Boolean synchronous;
-        private Level httpLogLevel;
-        private String proxyHost;
-        private Integer proxyPort;
-
+                EndpointDefinition<T> {
+        BraintreeCommon(String path) {
+            super("braintree", path);
+        }
         /**
          * What kind of operation to perform. The option is a
          * org.apache.camel.component.braintree.internal.BraintreeApiName type.
          */
         public T apiName(BraintreeApiName apiName) {
-            this.apiName = apiName;
+            this.properties.put("apiName", apiName);
             return (T) this;
         }
-
         /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
         public T methodName(String methodName) {
-            this.methodName = methodName;
+            this.properties.put("methodName", methodName);
             return (T) this;
         }
-
         /**
          * The environment Either SANDBOX or PRODUCTION. The option is a
          * java.lang.String type.
          */
         public T environment(String environment) {
-            this.environment = environment;
+            this.properties.put("environment", environment);
             return (T) this;
         }
-
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
         public T inBody(String inBody) {
-            this.inBody = inBody;
+            this.properties.put("inBody", inBody);
             return (T) this;
         }
-
         /**
          * The merchant id provided by Braintree. The option is a
          * java.lang.String type.
          */
         public T merchantId(String merchantId) {
-            this.merchantId = merchantId;
+            this.properties.put("merchantId", merchantId);
             return (T) this;
         }
-
         /**
          * The private key provided by Braintree. The option is a
          * java.lang.String type.
          */
         public T privateKey(String privateKey) {
-            this.privateKey = privateKey;
+            this.properties.put("privateKey", privateKey);
             return (T) this;
         }
-
         /**
          * The public key provided by Braintree. The option is a
          * java.lang.String type.
          */
         public T publicKey(String publicKey) {
-            this.publicKey = publicKey;
+            this.properties.put("publicKey", publicKey);
             return (T) this;
         }
-
         /**
          * The access token granted by a merchant to another in order to process
          * transactions on their behalf. Used in place of environment, merchant
@@ -119,184 +101,67 @@ public class BraintreeEndpoint {
          * java.lang.String type.
          */
         public T accessToken(String accessToken) {
-            this.accessToken = accessToken;
+            this.properties.put("accessToken", accessToken);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Set read timeout for http calls. The option is a java.lang.Integer
          * type.
          */
         public T httpReadTimeout(Integer httpReadTimeout) {
-            this.httpReadTimeout = httpReadTimeout;
+            this.properties.put("httpReadTimeout", httpReadTimeout);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Set logging level for http calls, see java.util.logging.Level. The
          * option is a java.lang.String type.
          */
         public T httpLogLevel(Level httpLogLevel) {
-            this.httpLogLevel = httpLogLevel;
+            this.properties.put("httpLogLevel", httpLogLevel);
             return (T) this;
         }
-
         /**
          * The proxy host. The option is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * The proxy port. The option is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
-        }
-
-        public BraintreeApiName getApiName() {
-            return apiName;
-        }
-
-        public void setApiName(BraintreeApiName apiName) {
-            this.apiName = apiName;
-        }
-
-        public String getMethodName() {
-            return methodName;
-        }
-
-        public void setMethodName(String methodName) {
-            this.methodName = methodName;
-        }
-
-        public String getEnvironment() {
-            return environment;
-        }
-
-        public void setEnvironment(String environment) {
-            this.environment = environment;
-        }
-
-        public String getInBody() {
-            return inBody;
-        }
-
-        public void setInBody(String inBody) {
-            this.inBody = inBody;
-        }
-
-        public String getMerchantId() {
-            return merchantId;
-        }
-
-        public void setMerchantId(String merchantId) {
-            this.merchantId = merchantId;
-        }
-
-        public String getPrivateKey() {
-            return privateKey;
-        }
-
-        public void setPrivateKey(String privateKey) {
-            this.privateKey = privateKey;
-        }
-
-        public String getPublicKey() {
-            return publicKey;
-        }
-
-        public void setPublicKey(String publicKey) {
-            this.publicKey = publicKey;
-        }
-
-        public String getAccessToken() {
-            return accessToken;
-        }
-
-        public void setAccessToken(String accessToken) {
-            this.accessToken = accessToken;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Integer getHttpReadTimeout() {
-            return httpReadTimeout;
-        }
-
-        public void setHttpReadTimeout(Integer httpReadTimeout) {
-            this.httpReadTimeout = httpReadTimeout;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Level getHttpLogLevel() {
-            return httpLogLevel;
-        }
-
-        public void setHttpLogLevel(Level httpLogLevel) {
-            this.httpLogLevel = httpLogLevel;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
         }
     }
 
     public static class BraintreeConsumer
             extends
-                BraintreeCommon<BraintreeConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                BraintreeCommon<BraintreeConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public BraintreeConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -307,10 +172,9 @@ public class BraintreeEndpoint {
          * ignored. The option is a boolean type.
          */
         public BraintreeConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (BraintreeConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -320,47 +184,27 @@ public class BraintreeEndpoint {
          */
         public BraintreeConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (BraintreeConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public BraintreeConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (BraintreeConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class BraintreeProducer
             extends
-                BraintreeCommon<BraintreeProducer> {
+                BraintreeCommon<BraintreeProducer>
+            implements
+                EndpointDefinition.Producer {
+        public BraintreeProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum BraintreeApiName {

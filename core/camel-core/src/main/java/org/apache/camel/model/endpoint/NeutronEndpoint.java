@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The openstack-neutron component allows messages to be sent to an OpenStack
@@ -28,210 +29,113 @@ import javax.annotation.Generated;
 public class NeutronEndpoint {
 
 
-    public static class NeutronCommon<T extends EndpointConfiguration>
+    public static class NeutronCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private String apiVersion;
-        private Object config;
-        private String domain;
-        private String operation;
-        private String password;
-        private String project;
-        private String subsystem;
-        private String username;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        NeutronCommon(String path) {
+            super("openstack-neutron", path);
+        }
         /**
          * OpenStack host url. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * OpenStack API version. The option is a java.lang.String type.
          */
         public T apiVersion(String apiVersion) {
-            this.apiVersion = apiVersion;
+            this.properties.put("apiVersion", apiVersion);
             return (T) this;
         }
-
         /**
          * OpenStack configuration. The option is a
          * org.openstack4j.core.transport.Config type.
          */
         public T config(Object config) {
-            this.config = config;
+            this.properties.put("config", config);
             return (T) this;
         }
-
         /**
          * Authentication domain. The option is a java.lang.String type.
          */
         public T domain(String domain) {
-            this.domain = domain;
+            this.properties.put("domain", domain);
             return (T) this;
         }
-
         /**
          * The operation to do. The option is a java.lang.String type.
          */
         public T operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * OpenStack password. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * The project ID. The option is a java.lang.String type.
          */
         public T project(String project) {
-            this.project = project;
+            this.properties.put("project", project);
             return (T) this;
         }
-
         /**
          * OpenStack Neutron subsystem. The option is a java.lang.String type.
          */
         public T subsystem(String subsystem) {
-            this.subsystem = subsystem;
+            this.properties.put("subsystem", subsystem);
             return (T) this;
         }
-
         /**
          * OpenStack username. The option is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public String getApiVersion() {
-            return apiVersion;
-        }
-
-        public void setApiVersion(String apiVersion) {
-            this.apiVersion = apiVersion;
-        }
-
-        public Object getConfig() {
-            return config;
-        }
-
-        public void setConfig(Object config) {
-            this.config = config;
-        }
-
-        public String getDomain() {
-            return domain;
-        }
-
-        public void setDomain(String domain) {
-            this.domain = domain;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getProject() {
-            return project;
-        }
-
-        public void setProject(String project) {
-            this.project = project;
-        }
-
-        public String getSubsystem() {
-            return subsystem;
-        }
-
-        public void setSubsystem(String subsystem) {
-            this.subsystem = subsystem;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class NeutronConsumer
             extends
-                NeutronCommon<NeutronConsumer> {
+                NeutronCommon<NeutronConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public NeutronConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class NeutronProducer
             extends
-                NeutronCommon<NeutronProducer> {
+                NeutronCommon<NeutronProducer>
+            implements
+                EndpointDefinition.Producer {
+        public NeutronProducer(String path) {
+            super(path);
+        }
     }
 }

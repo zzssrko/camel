@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The DigitalOcean component allows you to manage Droplets and resources within
@@ -28,235 +29,128 @@ import javax.annotation.Generated;
 public class DigitalOceanEndpoint {
 
 
-    public static class DigitalOceanCommon<T extends EndpointConfiguration>
+    public static class DigitalOceanCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private DigitalOceanOperations operation;
-        private Integer page;
-        private Integer perPage;
-        private DigitalOceanResources resource;
-        private Boolean basicPropertyBinding;
-        private Object digitalOceanClient;
-        private Boolean synchronous;
-        private String httpProxyHost;
-        private String httpProxyPassword;
-        private Integer httpProxyPort;
-        private String httpProxyUser;
-        private String oAuthToken;
-
+                EndpointDefinition<T> {
+        DigitalOceanCommon(String path) {
+            super("digitalocean", path);
+        }
         /**
          * The operation to perform to the given resource. The option is a
          * org.apache.camel.component.digitalocean.constants.DigitalOceanOperations type.
          */
         public T operation(DigitalOceanOperations operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * Use for pagination. Force the page number. The option is a
          * java.lang.Integer type.
          */
         public T page(Integer page) {
-            this.page = page;
+            this.properties.put("page", page);
             return (T) this;
         }
-
         /**
          * Use for pagination. Set the number of item per request. The maximum
          * number of results per page is 200. The option is a java.lang.Integer
          * type.
          */
         public T perPage(Integer perPage) {
-            this.perPage = perPage;
+            this.properties.put("perPage", perPage);
             return (T) this;
         }
-
         /**
          * The DigitalOcean resource type on which perform the operation. The
          * option is a
          * org.apache.camel.component.digitalocean.constants.DigitalOceanResources type.
          */
         public T resource(DigitalOceanResources resource) {
-            this.resource = resource;
+            this.properties.put("resource", resource);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use a existing configured DigitalOceanClient as client. The option
          * is a com.myjeeva.digitalocean.impl.DigitalOceanClient type.
          */
         public T digitalOceanClient(Object digitalOceanClient) {
-            this.digitalOceanClient = digitalOceanClient;
+            this.properties.put("digitalOceanClient", digitalOceanClient);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Set a proxy host if needed. The option is a java.lang.String type.
          */
         public T httpProxyHost(String httpProxyHost) {
-            this.httpProxyHost = httpProxyHost;
+            this.properties.put("httpProxyHost", httpProxyHost);
             return (T) this;
         }
-
         /**
          * Set a proxy password if needed. The option is a java.lang.String
          * type.
          */
         public T httpProxyPassword(String httpProxyPassword) {
-            this.httpProxyPassword = httpProxyPassword;
+            this.properties.put("httpProxyPassword", httpProxyPassword);
             return (T) this;
         }
-
         /**
          * Set a proxy port if needed. The option is a java.lang.Integer type.
          */
         public T httpProxyPort(Integer httpProxyPort) {
-            this.httpProxyPort = httpProxyPort;
+            this.properties.put("httpProxyPort", httpProxyPort);
             return (T) this;
         }
-
         /**
          * Set a proxy host if needed. The option is a java.lang.String type.
          */
         public T httpProxyUser(String httpProxyUser) {
-            this.httpProxyUser = httpProxyUser;
+            this.properties.put("httpProxyUser", httpProxyUser);
             return (T) this;
         }
-
         /**
          * DigitalOcean OAuth Token. The option is a java.lang.String type.
          */
         public T oAuthToken(String oAuthToken) {
-            this.oAuthToken = oAuthToken;
+            this.properties.put("oAuthToken", oAuthToken);
             return (T) this;
-        }
-
-        public DigitalOceanOperations getOperation() {
-            return operation;
-        }
-
-        public void setOperation(DigitalOceanOperations operation) {
-            this.operation = operation;
-        }
-
-        public Integer getPage() {
-            return page;
-        }
-
-        public void setPage(Integer page) {
-            this.page = page;
-        }
-
-        public Integer getPerPage() {
-            return perPage;
-        }
-
-        public void setPerPage(Integer perPage) {
-            this.perPage = perPage;
-        }
-
-        public DigitalOceanResources getResource() {
-            return resource;
-        }
-
-        public void setResource(DigitalOceanResources resource) {
-            this.resource = resource;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getDigitalOceanClient() {
-            return digitalOceanClient;
-        }
-
-        public void setDigitalOceanClient(Object digitalOceanClient) {
-            this.digitalOceanClient = digitalOceanClient;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getHttpProxyHost() {
-            return httpProxyHost;
-        }
-
-        public void setHttpProxyHost(String httpProxyHost) {
-            this.httpProxyHost = httpProxyHost;
-        }
-
-        public String getHttpProxyPassword() {
-            return httpProxyPassword;
-        }
-
-        public void setHttpProxyPassword(String httpProxyPassword) {
-            this.httpProxyPassword = httpProxyPassword;
-        }
-
-        public Integer getHttpProxyPort() {
-            return httpProxyPort;
-        }
-
-        public void setHttpProxyPort(Integer httpProxyPort) {
-            this.httpProxyPort = httpProxyPort;
-        }
-
-        public String getHttpProxyUser() {
-            return httpProxyUser;
-        }
-
-        public void setHttpProxyUser(String httpProxyUser) {
-            this.httpProxyUser = httpProxyUser;
-        }
-
-        public String getOAuthToken() {
-            return oAuthToken;
-        }
-
-        public void setOAuthToken(String oAuthToken) {
-            this.oAuthToken = oAuthToken;
         }
     }
 
     public static class DigitalOceanConsumer
             extends
-                DigitalOceanCommon<DigitalOceanConsumer> {
+                DigitalOceanCommon<DigitalOceanConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DigitalOceanConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class DigitalOceanProducer
             extends
-                DigitalOceanCommon<DigitalOceanProducer> {
+                DigitalOceanCommon<DigitalOceanProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DigitalOceanProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum DigitalOceanOperations {

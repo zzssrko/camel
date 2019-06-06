@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,39 +37,20 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class ElsqlEndpoint {
 
 
-    public static class ElsqlCommon<T extends EndpointConfiguration>
+    public static class ElsqlCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String elsqlName;
-        private String resourceUri;
-        private Boolean allowNamedParameters;
-        private ElSqlDatabaseVendor databaseVendor;
-        private Object dataSource;
-        @Deprecated
-        private String dataSourceRef;
-        private String outputClass;
-        private String outputHeader;
-        private SqlOutputType outputType;
-        private Character separator;
-        private Boolean alwaysPopulateStatement;
-        private Boolean basicPropertyBinding;
-        private Object elSqlConfig;
-        private Integer parametersCount;
-        private String placeholder;
-        private Object prepareStatementStrategy;
-        private Boolean synchronous;
-        private Map<String, Object> templateOptions;
-        private Boolean usePlaceholder;
-
+                EndpointDefinition<T> {
+        ElsqlCommon(String path) {
+            super("elsql", path);
+        }
         /**
          * The name of the elsql to use (is NAMED in the elsql file). The option
          * is a java.lang.String type.
          */
         public T elsqlName(String elsqlName) {
-            this.elsqlName = elsqlName;
+            this.properties.put("elsqlName", elsqlName);
             return (T) this;
         }
-
         /**
          * The resource file which contains the elsql SQL statements to use. You
          * can specify multiple resources separated by comma. The resources are
@@ -78,37 +60,33 @@ public class ElsqlEndpoint {
          * a java.lang.String type.
          */
         public T resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
+            this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
-
         /**
          * Whether to allow using named parameters in the queries. The option is
          * a boolean type.
          */
         public T allowNamedParameters(boolean allowNamedParameters) {
-            this.allowNamedParameters = allowNamedParameters;
+            this.properties.put("allowNamedParameters", allowNamedParameters);
             return (T) this;
         }
-
         /**
          * To use a vendor specific com.opengamma.elsql.ElSqlConfig. The option
          * is a org.apache.camel.component.elsql.ElSqlDatabaseVendor type.
          */
         public T databaseVendor(ElSqlDatabaseVendor databaseVendor) {
-            this.databaseVendor = databaseVendor;
+            this.properties.put("databaseVendor", databaseVendor);
             return (T) this;
         }
-
         /**
          * Sets the DataSource to use to communicate with the database. The
          * option is a javax.sql.DataSource type.
          */
         public T dataSource(Object dataSource) {
-            this.dataSource = dataSource;
+            this.properties.put("dataSource", dataSource);
             return (T) this;
         }
-
         /**
          * Sets the reference to a DataSource to lookup from the registry, to
          * use for communicating with the database. The option is a
@@ -116,19 +94,17 @@ public class ElsqlEndpoint {
          */
         @Deprecated
         public T dataSourceRef(String dataSourceRef) {
-            this.dataSourceRef = dataSourceRef;
+            this.properties.put("dataSourceRef", dataSourceRef);
             return (T) this;
         }
-
         /**
          * Specify the full package and class name to use as conversion when
          * outputType=SelectOne. The option is a java.lang.String type.
          */
         public T outputClass(String outputClass) {
-            this.outputClass = outputClass;
+            this.properties.put("outputClass", outputClass);
             return (T) this;
         }
-
         /**
          * Store the query result in a header instead of the message body. By
          * default, outputHeader == null and the query result is stored in the
@@ -138,10 +114,9 @@ public class ElsqlEndpoint {
          * The option is a java.lang.String type.
          */
         public T outputHeader(String outputHeader) {
-            this.outputHeader = outputHeader;
+            this.properties.put("outputHeader", outputHeader);
             return (T) this;
         }
-
         /**
          * Make the output of consumer or producer to SelectList as List of Map,
          * or SelectOne as single Java object in the following way: a) If the
@@ -159,10 +134,9 @@ public class ElsqlEndpoint {
          * org.apache.camel.component.sql.SqlOutputType type.
          */
         public T outputType(SqlOutputType outputType) {
-            this.outputType = outputType;
+            this.properties.put("outputType", outputType);
             return (T) this;
         }
-
         /**
          * The separator to use when parameter values is taken from message body
          * (if the body is a String type), to be inserted at # placeholders.
@@ -170,10 +144,9 @@ public class ElsqlEndpoint {
          * The default value is comma. The option is a char type.
          */
         public T separator(char separator) {
-            this.separator = separator;
+            this.properties.put("separator", separator);
             return (T) this;
         }
-
         /**
          * If enabled then the populateStatement method from
          * org.apache.camel.component.sql.SqlPrepareStatementStrategy is always
@@ -184,30 +157,27 @@ public class ElsqlEndpoint {
          * The option is a boolean type.
          */
         public T alwaysPopulateStatement(boolean alwaysPopulateStatement) {
-            this.alwaysPopulateStatement = alwaysPopulateStatement;
+            this.properties.put("alwaysPopulateStatement", alwaysPopulateStatement);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use a specific configured ElSqlConfig. It may be better to use the
          * databaseVendor option instead. The option is a
          * com.opengamma.elsql.ElSqlConfig type.
          */
         public T elSqlConfig(Object elSqlConfig) {
-            this.elSqlConfig = elSqlConfig;
+            this.properties.put("elSqlConfig", elSqlConfig);
             return (T) this;
         }
-
         /**
          * If set greater than zero, then Camel will use this count value of
          * parameters to replace instead of querying via JDBC metadata API. This
@@ -215,10 +185,9 @@ public class ElsqlEndpoint {
          * count, then user may override instead. The option is a int type.
          */
         public T parametersCount(int parametersCount) {
-            this.parametersCount = parametersCount;
+            this.properties.put("parametersCount", parametersCount);
             return (T) this;
         }
-
         /**
          * Specifies a character that will be replaced to in SQL query. Notice,
          * that it is simple String.replaceAll() operation and no SQL parsing is
@@ -226,10 +195,9 @@ public class ElsqlEndpoint {
          * java.lang.String type.
          */
         public T placeholder(String placeholder) {
-            this.placeholder = placeholder;
+            this.properties.put("placeholder", placeholder);
             return (T) this;
         }
-
         /**
          * Allows to plugin to use a custom
          * org.apache.camel.component.sql.SqlPrepareStatementStrategy to control
@@ -237,235 +205,55 @@ public class ElsqlEndpoint {
          * org.apache.camel.component.sql.SqlPrepareStatementStrategy type.
          */
         public T prepareStatementStrategy(Object prepareStatementStrategy) {
-            this.prepareStatementStrategy = prepareStatementStrategy;
+            this.properties.put("prepareStatementStrategy", prepareStatementStrategy);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Configures the Spring JdbcTemplate with the key/values from the Map.
          * The option is a java.util.Map<java.lang.String,java.lang.Object>
          * type.
          */
         public T templateOptions(Map<String, Object> templateOptions) {
-            this.templateOptions = templateOptions;
+            this.properties.put("templateOptions", templateOptions);
             return (T) this;
         }
-
         /**
          * Sets whether to use placeholder and replace all placeholder
          * characters with sign in the SQL queries. The option is a boolean
          * type.
          */
         public T usePlaceholder(boolean usePlaceholder) {
-            this.usePlaceholder = usePlaceholder;
+            this.properties.put("usePlaceholder", usePlaceholder);
             return (T) this;
-        }
-
-        public String getElsqlName() {
-            return elsqlName;
-        }
-
-        public void setElsqlName(String elsqlName) {
-            this.elsqlName = elsqlName;
-        }
-
-        public String getResourceUri() {
-            return resourceUri;
-        }
-
-        public void setResourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-        }
-
-        public Boolean getAllowNamedParameters() {
-            return allowNamedParameters;
-        }
-
-        public void setAllowNamedParameters(Boolean allowNamedParameters) {
-            this.allowNamedParameters = allowNamedParameters;
-        }
-
-        public ElSqlDatabaseVendor getDatabaseVendor() {
-            return databaseVendor;
-        }
-
-        public void setDatabaseVendor(ElSqlDatabaseVendor databaseVendor) {
-            this.databaseVendor = databaseVendor;
-        }
-
-        public Object getDataSource() {
-            return dataSource;
-        }
-
-        public void setDataSource(Object dataSource) {
-            this.dataSource = dataSource;
-        }
-
-        @Deprecated
-        public String getDataSourceRef() {
-            return dataSourceRef;
-        }
-
-        @Deprecated
-        public void setDataSourceRef(String dataSourceRef) {
-            this.dataSourceRef = dataSourceRef;
-        }
-
-        public String getOutputClass() {
-            return outputClass;
-        }
-
-        public void setOutputClass(String outputClass) {
-            this.outputClass = outputClass;
-        }
-
-        public String getOutputHeader() {
-            return outputHeader;
-        }
-
-        public void setOutputHeader(String outputHeader) {
-            this.outputHeader = outputHeader;
-        }
-
-        public SqlOutputType getOutputType() {
-            return outputType;
-        }
-
-        public void setOutputType(SqlOutputType outputType) {
-            this.outputType = outputType;
-        }
-
-        public Character getSeparator() {
-            return separator;
-        }
-
-        public void setSeparator(Character separator) {
-            this.separator = separator;
-        }
-
-        public Boolean getAlwaysPopulateStatement() {
-            return alwaysPopulateStatement;
-        }
-
-        public void setAlwaysPopulateStatement(Boolean alwaysPopulateStatement) {
-            this.alwaysPopulateStatement = alwaysPopulateStatement;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getElSqlConfig() {
-            return elSqlConfig;
-        }
-
-        public void setElSqlConfig(Object elSqlConfig) {
-            this.elSqlConfig = elSqlConfig;
-        }
-
-        public Integer getParametersCount() {
-            return parametersCount;
-        }
-
-        public void setParametersCount(Integer parametersCount) {
-            this.parametersCount = parametersCount;
-        }
-
-        public String getPlaceholder() {
-            return placeholder;
-        }
-
-        public void setPlaceholder(String placeholder) {
-            this.placeholder = placeholder;
-        }
-
-        public Object getPrepareStatementStrategy() {
-            return prepareStatementStrategy;
-        }
-
-        public void setPrepareStatementStrategy(Object prepareStatementStrategy) {
-            this.prepareStatementStrategy = prepareStatementStrategy;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Map<String, Object> getTemplateOptions() {
-            return templateOptions;
-        }
-
-        public void setTemplateOptions(Map<String, Object> templateOptions) {
-            this.templateOptions = templateOptions;
-        }
-
-        public Boolean getUsePlaceholder() {
-            return usePlaceholder;
-        }
-
-        public void setUsePlaceholder(Boolean usePlaceholder) {
-            this.usePlaceholder = usePlaceholder;
         }
     }
 
-    public static class ElsqlConsumer extends ElsqlCommon<ElsqlConsumer> {
-        private Boolean breakBatchOnConsumeFail;
-        private Boolean bridgeErrorHandler;
-        private Integer expectedUpdateCount;
-        private Integer maxMessagesPerPoll;
-        private String onConsume;
-        private String onConsumeBatchComplete;
-        private String onConsumeFailed;
-        private Boolean routeEmptyResultSet;
-        private Boolean sendEmptyMessageWhenIdle;
-        private Boolean transacted;
-        private Boolean useIterator;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Object processingStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+    public static class ElsqlConsumer
+            extends
+                ElsqlCommon<ElsqlConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ElsqlConsumer(String path) {
+            super(path);
+        }
         /**
          * Sets whether to break batch if onConsume failed. The option is a
          * boolean type.
          */
         public ElsqlConsumer breakBatchOnConsumeFail(
                 boolean breakBatchOnConsumeFail) {
-            this.breakBatchOnConsumeFail = breakBatchOnConsumeFail;
+            this.properties.put("breakBatchOnConsumeFail", breakBatchOnConsumeFail);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -476,28 +264,25 @@ public class ElsqlEndpoint {
          * ignored. The option is a boolean type.
          */
         public ElsqlConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Sets an expected update count to validate when using onConsume. The
          * option is a int type.
          */
         public ElsqlConsumer expectedUpdateCount(int expectedUpdateCount) {
-            this.expectedUpdateCount = expectedUpdateCount;
+            this.properties.put("expectedUpdateCount", expectedUpdateCount);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Sets the maximum number of messages to poll. The option is a int
          * type.
          */
         public ElsqlConsumer maxMessagesPerPoll(int maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
             return (ElsqlConsumer) this;
         }
-
         /**
          * After processing each row then this query can be executed, if the
          * Exchange was processed successfully, for example to mark the row as
@@ -505,10 +290,9 @@ public class ElsqlEndpoint {
          * java.lang.String type.
          */
         public ElsqlConsumer onConsume(String onConsume) {
-            this.onConsume = onConsume;
+            this.properties.put("onConsume", onConsume);
             return (ElsqlConsumer) this;
         }
-
         /**
          * After processing the entire batch, this query can be executed to bulk
          * update rows etc. The query cannot have parameters. The option is a
@@ -516,30 +300,27 @@ public class ElsqlEndpoint {
          */
         public ElsqlConsumer onConsumeBatchComplete(
                 String onConsumeBatchComplete) {
-            this.onConsumeBatchComplete = onConsumeBatchComplete;
+            this.properties.put("onConsumeBatchComplete", onConsumeBatchComplete);
             return (ElsqlConsumer) this;
         }
-
         /**
          * After processing each row then this query can be executed, if the
          * Exchange failed, for example to mark the row as failed. The query can
          * have parameter. The option is a java.lang.String type.
          */
         public ElsqlConsumer onConsumeFailed(String onConsumeFailed) {
-            this.onConsumeFailed = onConsumeFailed;
+            this.properties.put("onConsumeFailed", onConsumeFailed);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Sets whether empty resultset should be allowed to be sent to the next
          * hop. Defaults to false. So the empty resultset will be filtered out.
          * The option is a boolean type.
          */
         public ElsqlConsumer routeEmptyResultSet(boolean routeEmptyResultSet) {
-            this.routeEmptyResultSet = routeEmptyResultSet;
+            this.properties.put("routeEmptyResultSet", routeEmptyResultSet);
             return (ElsqlConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -547,30 +328,27 @@ public class ElsqlEndpoint {
          */
         public ElsqlConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Enables or disables transaction. If enabled then if processing an
          * exchange failed then the consumerbreak out processing any further
          * exchanges to cause a rollback eager. The option is a boolean type.
          */
         public ElsqlConsumer transacted(boolean transacted) {
-            this.transacted = transacted;
+            this.properties.put("transacted", transacted);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Sets how resultset should be delivered to route. Indicates delivery
          * as either a list or individual object. defaults to true. The option
          * is a boolean type.
          */
         public ElsqlConsumer useIterator(boolean useIterator) {
-            this.useIterator = useIterator;
+            this.properties.put("useIterator", useIterator);
             return (ElsqlConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -579,19 +357,17 @@ public class ElsqlEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public ElsqlConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public ElsqlConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (ElsqlConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -601,10 +377,9 @@ public class ElsqlEndpoint {
          */
         public ElsqlConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Allows to plugin to use a custom
          * org.apache.camel.component.sql.SqlProcessingStrategy to execute
@@ -612,29 +387,26 @@ public class ElsqlEndpoint {
          * a org.apache.camel.component.sql.SqlProcessingStrategy type.
          */
         public ElsqlConsumer processingStrategy(Object processingStrategy) {
-            this.processingStrategy = processingStrategy;
+            this.properties.put("processingStrategy", processingStrategy);
             return (ElsqlConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public ElsqlConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (ElsqlConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public ElsqlConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (ElsqlConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -644,50 +416,45 @@ public class ElsqlEndpoint {
          * configured. The option is a int type.
          */
         public ElsqlConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public ElsqlConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (ElsqlConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public ElsqlConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public ElsqlConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (ElsqlConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public ElsqlConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -696,20 +463,18 @@ public class ElsqlEndpoint {
          */
         public ElsqlConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (ElsqlConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public ElsqlConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (ElsqlConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -717,320 +482,68 @@ public class ElsqlEndpoint {
          */
         public ElsqlConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public ElsqlConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public ElsqlConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (ElsqlConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public ElsqlConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (ElsqlConsumer) this;
-        }
-
-        public Boolean getBreakBatchOnConsumeFail() {
-            return breakBatchOnConsumeFail;
-        }
-
-        public void setBreakBatchOnConsumeFail(Boolean breakBatchOnConsumeFail) {
-            this.breakBatchOnConsumeFail = breakBatchOnConsumeFail;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Integer getExpectedUpdateCount() {
-            return expectedUpdateCount;
-        }
-
-        public void setExpectedUpdateCount(Integer expectedUpdateCount) {
-            this.expectedUpdateCount = expectedUpdateCount;
-        }
-
-        public Integer getMaxMessagesPerPoll() {
-            return maxMessagesPerPoll;
-        }
-
-        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
-        }
-
-        public String getOnConsume() {
-            return onConsume;
-        }
-
-        public void setOnConsume(String onConsume) {
-            this.onConsume = onConsume;
-        }
-
-        public String getOnConsumeBatchComplete() {
-            return onConsumeBatchComplete;
-        }
-
-        public void setOnConsumeBatchComplete(String onConsumeBatchComplete) {
-            this.onConsumeBatchComplete = onConsumeBatchComplete;
-        }
-
-        public String getOnConsumeFailed() {
-            return onConsumeFailed;
-        }
-
-        public void setOnConsumeFailed(String onConsumeFailed) {
-            this.onConsumeFailed = onConsumeFailed;
-        }
-
-        public Boolean getRouteEmptyResultSet() {
-            return routeEmptyResultSet;
-        }
-
-        public void setRouteEmptyResultSet(Boolean routeEmptyResultSet) {
-            this.routeEmptyResultSet = routeEmptyResultSet;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public Boolean getTransacted() {
-            return transacted;
-        }
-
-        public void setTransacted(Boolean transacted) {
-            this.transacted = transacted;
-        }
-
-        public Boolean getUseIterator() {
-            return useIterator;
-        }
-
-        public void setUseIterator(Boolean useIterator) {
-            this.useIterator = useIterator;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Object getProcessingStrategy() {
-            return processingStrategy;
-        }
-
-        public void setProcessingStrategy(Object processingStrategy) {
-            this.processingStrategy = processingStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
-    public static class ElsqlProducer extends ElsqlCommon<ElsqlProducer> {
-        private Boolean batch;
-        private Boolean noop;
-        private Boolean useMessageBodyForSql;
-
+    public static class ElsqlProducer
+            extends
+                ElsqlCommon<ElsqlProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ElsqlProducer(String path) {
+            super(path);
+        }
         /**
          * Enables or disables batch mode. The option is a boolean type.
          */
         public ElsqlProducer batch(boolean batch) {
-            this.batch = batch;
+            this.properties.put("batch", batch);
             return (ElsqlProducer) this;
         }
-
         /**
          * If set, will ignore the results of the SQL query and use the existing
          * IN message as the OUT message for the continuation of processing. The
          * option is a boolean type.
          */
         public ElsqlProducer noop(boolean noop) {
-            this.noop = noop;
+            this.properties.put("noop", noop);
             return (ElsqlProducer) this;
         }
-
         /**
          * Whether to use the message body as the SQL and then headers for
          * parameters. If this option is enabled then the SQL in the uri is not
          * used. The option is a boolean type.
          */
         public ElsqlProducer useMessageBodyForSql(boolean useMessageBodyForSql) {
-            this.useMessageBodyForSql = useMessageBodyForSql;
+            this.properties.put("useMessageBodyForSql", useMessageBodyForSql);
             return (ElsqlProducer) this;
-        }
-
-        public Boolean getBatch() {
-            return batch;
-        }
-
-        public void setBatch(Boolean batch) {
-            this.batch = batch;
-        }
-
-        public Boolean getNoop() {
-            return noop;
-        }
-
-        public void setNoop(Boolean noop) {
-            this.noop = noop;
-        }
-
-        public Boolean getUseMessageBodyForSql() {
-            return useMessageBodyForSql;
-        }
-
-        public void setUseMessageBodyForSql(Boolean useMessageBodyForSql) {
-            this.useMessageBodyForSql = useMessageBodyForSql;
         }
     }
 

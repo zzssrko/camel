@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,28 +32,19 @@ import org.apache.camel.spi.ExceptionHandler;
 public class HBaseEndpoint {
 
 
-    public static class HBaseCommon<T extends EndpointConfiguration>
+    public static class HBaseCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String tableName;
-        private Object cellMappingStrategyFactory;
-        private List<Object> filters;
-        private String mappingStrategyClassName;
-        private String mappingStrategyName;
-        private Map<String, Object> rowMapping;
-        private Object rowModel;
-        private Object userGroupInformation;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        HBaseCommon(String path) {
+            super("hbase", path);
+        }
         /**
          * The name of the table. The option is a java.lang.String type.
          */
         public T tableName(String tableName) {
-            this.tableName = tableName;
+            this.properties.put("tableName", tableName);
             return (T) this;
         }
-
         /**
          * To use a custom CellMappingStrategyFactory that is responsible for
          * mapping cells. The option is a
@@ -60,38 +52,34 @@ public class HBaseEndpoint {
          * type.
          */
         public T cellMappingStrategyFactory(Object cellMappingStrategyFactory) {
-            this.cellMappingStrategyFactory = cellMappingStrategyFactory;
+            this.properties.put("cellMappingStrategyFactory", cellMappingStrategyFactory);
             return (T) this;
         }
-
         /**
          * A list of filters to use. The option is a
          * java.util.List<org.apache.hadoop.hbase.filter.Filter> type.
          */
         public T filters(List<Object> filters) {
-            this.filters = filters;
+            this.properties.put("filters", filters);
             return (T) this;
         }
-
         /**
          * The class name of a custom mapping strategy implementation. The
          * option is a java.lang.String type.
          */
         public T mappingStrategyClassName(String mappingStrategyClassName) {
-            this.mappingStrategyClassName = mappingStrategyClassName;
+            this.properties.put("mappingStrategyClassName", mappingStrategyClassName);
             return (T) this;
         }
-
         /**
          * The strategy to use for mapping Camel messages to HBase columns.
          * Supported values: header, or body. The option is a java.lang.String
          * type.
          */
         public T mappingStrategyName(String mappingStrategyName) {
-            this.mappingStrategyName = mappingStrategyName;
+            this.properties.put("mappingStrategyName", mappingStrategyName);
             return (T) this;
         }
-
         /**
          * To map the key/values from the Map to a HBaseRow. The following keys
          * is supported: rowId - The id of the row. This has limited use as the
@@ -106,140 +94,54 @@ public class HBaseEndpoint {
          * option is a java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T rowMapping(Map<String, Object> rowMapping) {
-            this.rowMapping = rowMapping;
+            this.properties.put("rowMapping", rowMapping);
             return (T) this;
         }
-
         /**
          * An instance of org.apache.camel.component.hbase.model.HBaseRow which
          * describes how each row should be modeled. The option is a
          * org.apache.camel.component.hbase.model.HBaseRow type.
          */
         public T rowModel(Object rowModel) {
-            this.rowModel = rowModel;
+            this.properties.put("rowModel", rowModel);
             return (T) this;
         }
-
         /**
          * Defines privileges to communicate with HBase such as using kerberos.
          * The option is a org.apache.hadoop.security.UserGroupInformation type.
          */
         public T userGroupInformation(Object userGroupInformation) {
-            this.userGroupInformation = userGroupInformation;
+            this.properties.put("userGroupInformation", userGroupInformation);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getTableName() {
-            return tableName;
-        }
-
-        public void setTableName(String tableName) {
-            this.tableName = tableName;
-        }
-
-        public Object getCellMappingStrategyFactory() {
-            return cellMappingStrategyFactory;
-        }
-
-        public void setCellMappingStrategyFactory(
-                Object cellMappingStrategyFactory) {
-            this.cellMappingStrategyFactory = cellMappingStrategyFactory;
-        }
-
-        public List<Object> getFilters() {
-            return filters;
-        }
-
-        public void setFilters(List<Object> filters) {
-            this.filters = filters;
-        }
-
-        public String getMappingStrategyClassName() {
-            return mappingStrategyClassName;
-        }
-
-        public void setMappingStrategyClassName(String mappingStrategyClassName) {
-            this.mappingStrategyClassName = mappingStrategyClassName;
-        }
-
-        public String getMappingStrategyName() {
-            return mappingStrategyName;
-        }
-
-        public void setMappingStrategyName(String mappingStrategyName) {
-            this.mappingStrategyName = mappingStrategyName;
-        }
-
-        public Map<String, Object> getRowMapping() {
-            return rowMapping;
-        }
-
-        public void setRowMapping(Map<String, Object> rowMapping) {
-            this.rowMapping = rowMapping;
-        }
-
-        public Object getRowModel() {
-            return rowModel;
-        }
-
-        public void setRowModel(Object rowModel) {
-            this.rowModel = rowModel;
-        }
-
-        public Object getUserGroupInformation() {
-            return userGroupInformation;
-        }
-
-        public void setUserGroupInformation(Object userGroupInformation) {
-            this.userGroupInformation = userGroupInformation;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class HBaseConsumer extends HBaseCommon<HBaseConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Integer maxMessagesPerPoll;
-        private String operation;
-        private Boolean remove;
-        private Object removeHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class HBaseConsumer
+            extends
+                HBaseCommon<HBaseConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public HBaseConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -250,48 +152,43 @@ public class HBaseEndpoint {
          * ignored. The option is a boolean type.
          */
         public HBaseConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (HBaseConsumer) this;
         }
-
         /**
          * Gets the maximum number of messages as a limit to poll at each
          * polling. Is default unlimited, but use 0 or negative number to
          * disable it as unlimited. The option is a int type.
          */
         public HBaseConsumer maxMessagesPerPoll(int maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
             return (HBaseConsumer) this;
         }
-
         /**
          * The HBase operation to perform. The option is a java.lang.String
          * type.
          */
         public HBaseConsumer operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (HBaseConsumer) this;
         }
-
         /**
          * If the option is true, Camel HBase Consumer will remove the rows
          * which it processes. The option is a boolean type.
          */
         public HBaseConsumer remove(boolean remove) {
-            this.remove = remove;
+            this.properties.put("remove", remove);
             return (HBaseConsumer) this;
         }
-
         /**
          * To use a custom HBaseRemoveHandler that is executed when a row is to
          * be removed. The option is a
          * org.apache.camel.component.hbase.HBaseRemoveHandler type.
          */
         public HBaseConsumer removeHandler(Object removeHandler) {
-            this.removeHandler = removeHandler;
+            this.properties.put("removeHandler", removeHandler);
             return (HBaseConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -300,93 +197,33 @@ public class HBaseEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public HBaseConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (HBaseConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public HBaseConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (HBaseConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Integer getMaxMessagesPerPoll() {
-            return maxMessagesPerPoll;
-        }
-
-        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
-        }
-
-        public Boolean getRemove() {
-            return remove;
-        }
-
-        public void setRemove(Boolean remove) {
-            this.remove = remove;
-        }
-
-        public Object getRemoveHandler() {
-            return removeHandler;
-        }
-
-        public void setRemoveHandler(Object removeHandler) {
-            this.removeHandler = removeHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class HBaseProducer extends HBaseCommon<HBaseProducer> {
-        private Integer maxResults;
-
+    public static class HBaseProducer
+            extends
+                HBaseCommon<HBaseProducer>
+            implements
+                EndpointDefinition.Producer {
+        public HBaseProducer(String path) {
+            super(path);
+        }
         /**
          * The maximum number of rows to scan. The option is a int type.
          */
         public HBaseProducer maxResults(int maxResults) {
-            this.maxResults = maxResults;
+            this.properties.put("maxResults", maxResults);
             return (HBaseProducer) this;
-        }
-
-        public Integer getMaxResults() {
-            return maxResults;
-        }
-
-        public void setMaxResults(Integer maxResults) {
-            this.maxResults = maxResults;
         }
     }
 }

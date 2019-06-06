@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import java.util.Map;
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The class component is for invoking Java classes (Java beans) from Camel.
@@ -28,125 +29,82 @@ import javax.annotation.Generated;
 public class ClassEndpoint {
 
 
-    public static class ClassCommon<T extends EndpointConfiguration>
+    public static class ClassCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String beanName;
-        private String method;
-        private Boolean basicPropertyBinding;
-        private Boolean cache;
-        private Map<String, Object> parameters;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        ClassCommon(String path) {
+            super("class", path);
+        }
         /**
          * Sets the name of the bean to invoke. The option is a java.lang.String
          * type.
          */
         public T beanName(String beanName) {
-            this.beanName = beanName;
+            this.properties.put("beanName", beanName);
             return (T) this;
         }
-
         /**
          * Sets the name of the method to invoke on the bean. The option is a
          * java.lang.String type.
          */
         public T method(String method) {
-            this.method = method;
+            this.properties.put("method", method);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * If enabled, Camel will cache the result of the first Registry
          * look-up. Cache can be enabled if the bean in the Registry is defined
          * as a singleton scope. The option is a java.lang.Boolean type.
          */
         public T cache(Boolean cache) {
-            this.cache = cache;
+            this.properties.put("cache", cache);
             return (T) this;
         }
-
         /**
          * Used for configuring additional properties on the bean. The option is
          * a java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T parameters(Map<String, Object> parameters) {
-            this.parameters = parameters;
+            this.properties.put("parameters", parameters);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getBeanName() {
-            return beanName;
-        }
-
-        public void setBeanName(String beanName) {
-            this.beanName = beanName;
-        }
-
-        public String getMethod() {
-            return method;
-        }
-
-        public void setMethod(String method) {
-            this.method = method;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getCache() {
-            return cache;
-        }
-
-        public void setCache(Boolean cache) {
-            this.cache = cache;
-        }
-
-        public Map<String, Object> getParameters() {
-            return parameters;
-        }
-
-        public void setParameters(Map<String, Object> parameters) {
-            this.parameters = parameters;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class ClassConsumer
+            extends
+                ClassCommon<ClassConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ClassConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class ClassConsumer extends ClassCommon<ClassConsumer> {
-    }
-
-    public static class ClassProducer extends ClassCommon<ClassProducer> {
+    public static class ClassProducer
+            extends
+                ClassCommon<ClassProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ClassProducer(String path) {
+            super(path);
+        }
     }
 }

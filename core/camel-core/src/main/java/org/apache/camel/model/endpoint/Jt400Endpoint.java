@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,341 +37,161 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class Jt400Endpoint {
 
 
-    public static class Jt400Common<T extends EndpointConfiguration>
+    public static class Jt400Common<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String userID;
-        private String password;
-        private String systemName;
-        private String objectPath;
-        private Jt400Type type;
-        private Integer ccsid;
-        private Object format;
-        private Boolean guiAvailable;
-        private Boolean keyed;
-        private Integer[] outputFieldsIdxArray;
-        private Integer[] outputFieldsLengthArray;
-        private String searchKey;
-        private Object searchType;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String procedureName;
-        private Boolean secured;
-
+                EndpointDefinition<T> {
+        Jt400Common(String path) {
+            super("jt400", path);
+        }
         /**
          * Returns the ID of the AS/400 user. The option is a java.lang.String
          * type.
          */
         public T userID(String userID) {
-            this.userID = userID;
+            this.properties.put("userID", userID);
             return (T) this;
         }
-
         /**
          * Returns the password of the AS/400 user. The option is a
          * java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Returns the name of the AS/400 system. The option is a
          * java.lang.String type.
          */
         public T systemName(String systemName) {
-            this.systemName = systemName;
+            this.properties.put("systemName", systemName);
             return (T) this;
         }
-
         /**
          * Returns the fully qualified integrated file system path name of the
          * target object of this endpoint. The option is a java.lang.String
          * type.
          */
         public T objectPath(String objectPath) {
-            this.objectPath = objectPath;
+            this.properties.put("objectPath", objectPath);
             return (T) this;
         }
-
         /**
          * Whether to work with data queues or remote program call. The option
          * is a org.apache.camel.component.jt400.Jt400Type type.
          */
         public T type(Jt400Type type) {
-            this.type = type;
+            this.properties.put("type", type);
             return (T) this;
         }
-
         /**
          * Sets the CCSID to use for the connection with the AS/400 system. The
          * option is a int type.
          */
         public T ccsid(int ccsid) {
-            this.ccsid = ccsid;
+            this.properties.put("ccsid", ccsid);
             return (T) this;
         }
-
         /**
          * Sets the data format for sending messages. The option is a
          * org.apache.camel.component.jt400.Jt400Configuration.Format type.
          */
         public T format(Object format) {
-            this.format = format;
+            this.properties.put("format", format);
             return (T) this;
         }
-
         /**
          * Sets whether AS/400 prompting is enabled in the environment running
          * Camel. The option is a boolean type.
          */
         public T guiAvailable(boolean guiAvailable) {
-            this.guiAvailable = guiAvailable;
+            this.properties.put("guiAvailable", guiAvailable);
             return (T) this;
         }
-
         /**
          * Whether to use keyed or non-keyed data queues. The option is a
          * boolean type.
          */
         public T keyed(boolean keyed) {
-            this.keyed = keyed;
+            this.properties.put("keyed", keyed);
             return (T) this;
         }
-
         /**
          * Specifies which fields (program parameters) are output parameters.
          * The option is a java.lang.Integer[] type.
          */
         public T outputFieldsIdxArray(Integer[] outputFieldsIdxArray) {
-            this.outputFieldsIdxArray = outputFieldsIdxArray;
+            this.properties.put("outputFieldsIdxArray", outputFieldsIdxArray);
             return (T) this;
         }
-
         /**
          * Specifies the fields (program parameters) length as in the AS/400
          * program definition. The option is a java.lang.Integer[] type.
          */
         public T outputFieldsLengthArray(Integer[] outputFieldsLengthArray) {
-            this.outputFieldsLengthArray = outputFieldsLengthArray;
+            this.properties.put("outputFieldsLengthArray", outputFieldsLengthArray);
             return (T) this;
         }
-
         /**
          * Search key for keyed data queues. The option is a java.lang.String
          * type.
          */
         public T searchKey(String searchKey) {
-            this.searchKey = searchKey;
+            this.properties.put("searchKey", searchKey);
             return (T) this;
         }
-
         /**
          * Search type such as EQ for equal etc. The option is a
          * org.apache.camel.component.jt400.Jt400Configuration.SearchType type.
          */
         public T searchType(Object searchType) {
-            this.searchType = searchType;
+            this.properties.put("searchType", searchType);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Procedure name from a service program to call. The option is a
          * java.lang.String type.
          */
         public T procedureName(String procedureName) {
-            this.procedureName = procedureName;
+            this.properties.put("procedureName", procedureName);
             return (T) this;
         }
-
         /**
          * Whether connections to AS/400 are secured with SSL. The option is a
          * boolean type.
          */
         public T secured(boolean secured) {
-            this.secured = secured;
+            this.properties.put("secured", secured);
             return (T) this;
-        }
-
-        public String getUserID() {
-            return userID;
-        }
-
-        public void setUserID(String userID) {
-            this.userID = userID;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getSystemName() {
-            return systemName;
-        }
-
-        public void setSystemName(String systemName) {
-            this.systemName = systemName;
-        }
-
-        public String getObjectPath() {
-            return objectPath;
-        }
-
-        public void setObjectPath(String objectPath) {
-            this.objectPath = objectPath;
-        }
-
-        public Jt400Type getType() {
-            return type;
-        }
-
-        public void setType(Jt400Type type) {
-            this.type = type;
-        }
-
-        public Integer getCcsid() {
-            return ccsid;
-        }
-
-        public void setCcsid(Integer ccsid) {
-            this.ccsid = ccsid;
-        }
-
-        public Object getFormat() {
-            return format;
-        }
-
-        public void setFormat(Object format) {
-            this.format = format;
-        }
-
-        public Boolean getGuiAvailable() {
-            return guiAvailable;
-        }
-
-        public void setGuiAvailable(Boolean guiAvailable) {
-            this.guiAvailable = guiAvailable;
-        }
-
-        public Boolean getKeyed() {
-            return keyed;
-        }
-
-        public void setKeyed(Boolean keyed) {
-            this.keyed = keyed;
-        }
-
-        public Integer[] getOutputFieldsIdxArray() {
-            return outputFieldsIdxArray;
-        }
-
-        public void setOutputFieldsIdxArray(Integer[] outputFieldsIdxArray) {
-            this.outputFieldsIdxArray = outputFieldsIdxArray;
-        }
-
-        public Integer[] getOutputFieldsLengthArray() {
-            return outputFieldsLengthArray;
-        }
-
-        public void setOutputFieldsLengthArray(Integer[] outputFieldsLengthArray) {
-            this.outputFieldsLengthArray = outputFieldsLengthArray;
-        }
-
-        public String getSearchKey() {
-            return searchKey;
-        }
-
-        public void setSearchKey(String searchKey) {
-            this.searchKey = searchKey;
-        }
-
-        public Object getSearchType() {
-            return searchType;
-        }
-
-        public void setSearchType(Object searchType) {
-            this.searchType = searchType;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getProcedureName() {
-            return procedureName;
-        }
-
-        public void setProcedureName(String procedureName) {
-            this.procedureName = procedureName;
-        }
-
-        public Boolean getSecured() {
-            return secured;
-        }
-
-        public void setSecured(Boolean secured) {
-            this.secured = secured;
         }
     }
 
-    public static class Jt400Consumer extends Jt400Common<Jt400Consumer> {
-        private Boolean bridgeErrorHandler;
-        private Integer readTimeout;
-        private Boolean sendEmptyMessageWhenIdle;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+    public static class Jt400Consumer
+            extends
+                Jt400Common<Jt400Consumer>
+            implements
+                EndpointDefinition.Consumer {
+        public Jt400Consumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -381,19 +202,17 @@ public class Jt400Endpoint {
          * ignored. The option is a boolean type.
          */
         public Jt400Consumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (Jt400Consumer) this;
         }
-
         /**
          * Timeout in millis the consumer will wait while trying to read a new
          * message of the data queue. The option is a int type.
          */
         public Jt400Consumer readTimeout(int readTimeout) {
-            this.readTimeout = readTimeout;
+            this.properties.put("readTimeout", readTimeout);
             return (Jt400Consumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -401,10 +220,9 @@ public class Jt400Endpoint {
          */
         public Jt400Consumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (Jt400Consumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -413,19 +231,17 @@ public class Jt400Endpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public Jt400Consumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (Jt400Consumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public Jt400Consumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (Jt400Consumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -435,29 +251,26 @@ public class Jt400Endpoint {
          */
         public Jt400Consumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (Jt400Consumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public Jt400Consumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (Jt400Consumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public Jt400Consumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (Jt400Consumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -467,50 +280,45 @@ public class Jt400Endpoint {
          * configured. The option is a int type.
          */
         public Jt400Consumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (Jt400Consumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public Jt400Consumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (Jt400Consumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public Jt400Consumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (Jt400Consumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public Jt400Consumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (Jt400Consumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public Jt400Consumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (Jt400Consumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -519,20 +327,18 @@ public class Jt400Endpoint {
          */
         public Jt400Consumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (Jt400Consumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public Jt400Consumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (Jt400Consumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -540,194 +346,44 @@ public class Jt400Endpoint {
          */
         public Jt400Consumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (Jt400Consumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public Jt400Consumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (Jt400Consumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public Jt400Consumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (Jt400Consumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public Jt400Consumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (Jt400Consumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Integer getReadTimeout() {
-            return readTimeout;
-        }
-
-        public void setReadTimeout(Integer readTimeout) {
-            this.readTimeout = readTimeout;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
-    public static class Jt400Producer extends Jt400Common<Jt400Producer> {
+    public static class Jt400Producer
+            extends
+                Jt400Common<Jt400Producer>
+            implements
+                EndpointDefinition.Producer {
+        public Jt400Producer(String path) {
+            super(path);
+        }
     }
 
     public static enum Jt400Type {

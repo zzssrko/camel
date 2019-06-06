@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * To collect various metrics directly from Camel routes using the Micrometer
@@ -28,181 +29,104 @@ import javax.annotation.Generated;
 public class MicrometerEndpoint {
 
 
-    public static class MicrometerCommon<T extends EndpointConfiguration>
+    public static class MicrometerCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private Object metricsType;
-        private String metricsName;
-        private Iterable<Object> tags;
-        private String action;
-        private String decrement;
-        private String increment;
-        private String value;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        MicrometerCommon(String path) {
+            super("micrometer", path);
+        }
         /**
          * Type of metrics. The option is a
          * io.micrometer.core.instrument.Meter.Type type.
          */
         public T metricsType(Object metricsType) {
-            this.metricsType = metricsType;
+            this.properties.put("metricsType", metricsType);
             return (T) this;
         }
-
         /**
          * Name of metrics. The option is a java.lang.String type.
          */
         public T metricsName(String metricsName) {
-            this.metricsName = metricsName;
+            this.properties.put("metricsName", metricsName);
             return (T) this;
         }
-
         /**
          * Tags of metrics. The option is a
          * java.lang.Iterable<io.micrometer.core.instrument.Tag> type.
          */
         public T tags(Iterable<Object> tags) {
-            this.tags = tags;
+            this.properties.put("tags", tags);
             return (T) this;
         }
-
         /**
          * Action expression when using timer type. The option is a
          * java.lang.String type.
          */
         public T action(String action) {
-            this.action = action;
+            this.properties.put("action", action);
             return (T) this;
         }
-
         /**
          * Decrement value expression when using counter type. The option is a
          * java.lang.String type.
          */
         public T decrement(String decrement) {
-            this.decrement = decrement;
+            this.properties.put("decrement", decrement);
             return (T) this;
         }
-
         /**
          * Increment value expression when using counter type. The option is a
          * java.lang.String type.
          */
         public T increment(String increment) {
-            this.increment = increment;
+            this.properties.put("increment", increment);
             return (T) this;
         }
-
         /**
          * Value expression when using histogram type. The option is a
          * java.lang.String type.
          */
         public T value(String value) {
-            this.value = value;
+            this.properties.put("value", value);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public Object getMetricsType() {
-            return metricsType;
-        }
-
-        public void setMetricsType(Object metricsType) {
-            this.metricsType = metricsType;
-        }
-
-        public String getMetricsName() {
-            return metricsName;
-        }
-
-        public void setMetricsName(String metricsName) {
-            this.metricsName = metricsName;
-        }
-
-        public Iterable<Object> getTags() {
-            return tags;
-        }
-
-        public void setTags(Iterable<Object> tags) {
-            this.tags = tags;
-        }
-
-        public String getAction() {
-            return action;
-        }
-
-        public void setAction(String action) {
-            this.action = action;
-        }
-
-        public String getDecrement() {
-            return decrement;
-        }
-
-        public void setDecrement(String decrement) {
-            this.decrement = decrement;
-        }
-
-        public String getIncrement() {
-            return increment;
-        }
-
-        public void setIncrement(String increment) {
-            this.increment = increment;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class MicrometerConsumer
             extends
-                MicrometerCommon<MicrometerConsumer> {
+                MicrometerCommon<MicrometerConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public MicrometerConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class MicrometerProducer
             extends
-                MicrometerCommon<MicrometerProducer> {
+                MicrometerCommon<MicrometerProducer>
+            implements
+                EndpointDefinition.Producer {
+        public MicrometerProducer(String path) {
+            super(path);
+        }
     }
 }

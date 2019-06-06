@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,26 +37,20 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class BeanstalkEndpoint {
 
 
-    public static class BeanstalkCommon<T extends EndpointConfiguration>
+    public static class BeanstalkCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String connectionSettings;
-        private BeanstalkCommand command;
-        private Integer jobDelay;
-        private Long jobPriority;
-        private Integer jobTimeToRun;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        BeanstalkCommon(String path) {
+            super("beanstalk", path);
+        }
         /**
          * Connection settings host:port/tube. The option is a java.lang.String
          * type.
          */
         public T connectionSettings(String connectionSettings) {
-            this.connectionSettings = connectionSettings;
+            this.properties.put("connectionSettings", connectionSettings);
             return (T) this;
         }
-
         /**
          * put means to put the job into Beanstalk. Job body is specified in the
          * Camel message body. Job ID will be returned in beanstalk.jobId
@@ -67,148 +62,69 @@ public class BeanstalkEndpoint {
          * org.apache.camel.component.beanstalk.BeanstalkCommand type.
          */
         public T command(BeanstalkCommand command) {
-            this.command = command;
+            this.properties.put("command", command);
             return (T) this;
         }
-
         /**
          * Job delay in seconds. The option is a int type.
          */
         public T jobDelay(int jobDelay) {
-            this.jobDelay = jobDelay;
+            this.properties.put("jobDelay", jobDelay);
             return (T) this;
         }
-
         /**
          * Job priority. (0 is the highest, see Beanstalk protocol). The option
          * is a long type.
          */
         public T jobPriority(long jobPriority) {
-            this.jobPriority = jobPriority;
+            this.properties.put("jobPriority", jobPriority);
             return (T) this;
         }
-
         /**
          * Job time to run in seconds. (when 0, the beanstalkd daemon raises it
          * to 1 automatically, see Beanstalk protocol). The option is a int
          * type.
          */
         public T jobTimeToRun(int jobTimeToRun) {
-            this.jobTimeToRun = jobTimeToRun;
+            this.properties.put("jobTimeToRun", jobTimeToRun);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getConnectionSettings() {
-            return connectionSettings;
-        }
-
-        public void setConnectionSettings(String connectionSettings) {
-            this.connectionSettings = connectionSettings;
-        }
-
-        public BeanstalkCommand getCommand() {
-            return command;
-        }
-
-        public void setCommand(BeanstalkCommand command) {
-            this.command = command;
-        }
-
-        public Integer getJobDelay() {
-            return jobDelay;
-        }
-
-        public void setJobDelay(Integer jobDelay) {
-            this.jobDelay = jobDelay;
-        }
-
-        public Long getJobPriority() {
-            return jobPriority;
-        }
-
-        public void setJobPriority(Long jobPriority) {
-            this.jobPriority = jobPriority;
-        }
-
-        public Integer getJobTimeToRun() {
-            return jobTimeToRun;
-        }
-
-        public void setJobTimeToRun(Integer jobTimeToRun) {
-            this.jobTimeToRun = jobTimeToRun;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class BeanstalkConsumer
             extends
-                BeanstalkCommon<BeanstalkConsumer> {
-        private Boolean awaitJob;
-        private Boolean bridgeErrorHandler;
-        private BeanstalkCommand onFailure;
-        private Boolean sendEmptyMessageWhenIdle;
-        private Boolean useBlockIO;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+                BeanstalkCommon<BeanstalkConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public BeanstalkConsumer(String path) {
+            super(path);
+        }
         /**
          * Whether to wait for job to complete before ack the job from
          * beanstalk. The option is a boolean type.
          */
         public BeanstalkConsumer awaitJob(boolean awaitJob) {
-            this.awaitJob = awaitJob;
+            this.properties.put("awaitJob", awaitJob);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -219,19 +135,17 @@ public class BeanstalkEndpoint {
          * ignored. The option is a boolean type.
          */
         public BeanstalkConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * Command to use when processing failed. The option is a
          * org.apache.camel.component.beanstalk.BeanstalkCommand type.
          */
         public BeanstalkConsumer onFailure(BeanstalkCommand onFailure) {
-            this.onFailure = onFailure;
+            this.properties.put("onFailure", onFailure);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -239,18 +153,16 @@ public class BeanstalkEndpoint {
          */
         public BeanstalkConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * Whether to use blockIO. The option is a boolean type.
          */
         public BeanstalkConsumer useBlockIO(boolean useBlockIO) {
-            this.useBlockIO = useBlockIO;
+            this.properties.put("useBlockIO", useBlockIO);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -260,19 +172,17 @@ public class BeanstalkEndpoint {
          */
         public BeanstalkConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public BeanstalkConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -282,29 +192,26 @@ public class BeanstalkEndpoint {
          */
         public BeanstalkConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public BeanstalkConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public BeanstalkConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -314,50 +221,45 @@ public class BeanstalkEndpoint {
          * configured. The option is a int type.
          */
         public BeanstalkConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public BeanstalkConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public BeanstalkConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public BeanstalkConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public BeanstalkConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -366,10 +268,9 @@ public class BeanstalkEndpoint {
          */
         public BeanstalkConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
@@ -377,10 +278,9 @@ public class BeanstalkEndpoint {
          */
         public BeanstalkConsumer scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -388,212 +288,44 @@ public class BeanstalkEndpoint {
          */
         public BeanstalkConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public BeanstalkConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public BeanstalkConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (BeanstalkConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public BeanstalkConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (BeanstalkConsumer) this;
-        }
-
-        public Boolean getAwaitJob() {
-            return awaitJob;
-        }
-
-        public void setAwaitJob(Boolean awaitJob) {
-            this.awaitJob = awaitJob;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public BeanstalkCommand getOnFailure() {
-            return onFailure;
-        }
-
-        public void setOnFailure(BeanstalkCommand onFailure) {
-            this.onFailure = onFailure;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public Boolean getUseBlockIO() {
-            return useBlockIO;
-        }
-
-        public void setUseBlockIO(Boolean useBlockIO) {
-            this.useBlockIO = useBlockIO;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
     public static class BeanstalkProducer
             extends
-                BeanstalkCommon<BeanstalkProducer> {
+                BeanstalkCommon<BeanstalkProducer>
+            implements
+                EndpointDefinition.Producer {
+        public BeanstalkProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum BeanstalkCommand {

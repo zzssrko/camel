@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,111 +30,64 @@ import org.apache.camel.spi.ExceptionHandler;
 public class JcloudsEndpoint {
 
 
-    public static class JcloudsCommon<T extends EndpointConfiguration>
+    public static class JcloudsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private JcloudsCommand command;
-        private String providerId;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String container;
-
+                EndpointDefinition<T> {
+        JcloudsCommon(String path) {
+            super("jclouds", path);
+        }
         /**
          * What command to execute such as blobstore or compute. The option is a
          * org.apache.camel.component.jclouds.JcloudsCommand type.
          */
         public T command(JcloudsCommand command) {
-            this.command = command;
+            this.properties.put("command", command);
             return (T) this;
         }
-
         /**
          * The name of the cloud provider that provides the target service (e.g.
          * aws-s3 or aws_ec2). The option is a java.lang.String type.
          */
         public T providerId(String providerId) {
-            this.providerId = providerId;
+            this.properties.put("providerId", providerId);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * The name of the blob container. The option is a java.lang.String
          * type.
          */
         public T container(String container) {
-            this.container = container;
+            this.properties.put("container", container);
             return (T) this;
-        }
-
-        public JcloudsCommand getCommand() {
-            return command;
-        }
-
-        public void setCommand(JcloudsCommand command) {
-            this.command = command;
-        }
-
-        public String getProviderId() {
-            return providerId;
-        }
-
-        public void setProviderId(String providerId) {
-            this.providerId = providerId;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getContainer() {
-            return container;
-        }
-
-        public void setContainer(String container) {
-            this.container = container;
         }
     }
 
     public static class JcloudsConsumer
             extends
-                JcloudsCommon<JcloudsConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private String directory;
-
+                JcloudsCommon<JcloudsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public JcloudsConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -144,10 +98,9 @@ public class JcloudsEndpoint {
          * ignored. The option is a boolean type.
          */
         public JcloudsConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (JcloudsConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -157,225 +110,106 @@ public class JcloudsEndpoint {
          */
         public JcloudsConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (JcloudsConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public JcloudsConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (JcloudsConsumer) this;
         }
-
         /**
          * An optional directory name to use. The option is a java.lang.String
          * type.
          */
         public JcloudsConsumer directory(String directory) {
-            this.directory = directory;
+            this.properties.put("directory", directory);
             return (JcloudsConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public String getDirectory() {
-            return directory;
-        }
-
-        public void setDirectory(String directory) {
-            this.directory = directory;
         }
     }
 
     public static class JcloudsProducer
             extends
-                JcloudsCommon<JcloudsProducer> {
-        private String blobName;
-        private String group;
-        private String hardwareId;
-        private String imageId;
-        private String locationId;
-        private String nodeId;
-        private String nodeState;
-        private String operation;
-        private String user;
-
+                JcloudsCommon<JcloudsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public JcloudsProducer(String path) {
+            super(path);
+        }
         /**
          * The name of the blob. The option is a java.lang.String type.
          */
         public JcloudsProducer blobName(String blobName) {
-            this.blobName = blobName;
+            this.properties.put("blobName", blobName);
             return (JcloudsProducer) this;
         }
-
         /**
          * The group that will be assigned to the newly created node. Values
          * depend on the actual cloud provider. The option is a java.lang.String
          * type.
          */
         public JcloudsProducer group(String group) {
-            this.group = group;
+            this.properties.put("group", group);
             return (JcloudsProducer) this;
         }
-
         /**
          * The hardware that will be used for creating a node. Values depend on
          * the actual cloud provider. The option is a java.lang.String type.
          */
         public JcloudsProducer hardwareId(String hardwareId) {
-            this.hardwareId = hardwareId;
+            this.properties.put("hardwareId", hardwareId);
             return (JcloudsProducer) this;
         }
-
         /**
          * The imageId that will be used for creating a node. Values depend on
          * the actual cloud provider. The option is a java.lang.String type.
          */
         public JcloudsProducer imageId(String imageId) {
-            this.imageId = imageId;
+            this.properties.put("imageId", imageId);
             return (JcloudsProducer) this;
         }
-
         /**
          * The location that will be used for creating a node. Values depend on
          * the actual cloud provider. The option is a java.lang.String type.
          */
         public JcloudsProducer locationId(String locationId) {
-            this.locationId = locationId;
+            this.properties.put("locationId", locationId);
             return (JcloudsProducer) this;
         }
-
         /**
          * The id of the node that will run the script or destroyed. The option
          * is a java.lang.String type.
          */
         public JcloudsProducer nodeId(String nodeId) {
-            this.nodeId = nodeId;
+            this.properties.put("nodeId", nodeId);
             return (JcloudsProducer) this;
         }
-
         /**
          * To filter by node status to only select running nodes etc. The option
          * is a java.lang.String type.
          */
         public JcloudsProducer nodeState(String nodeState) {
-            this.nodeState = nodeState;
+            this.properties.put("nodeState", nodeState);
             return (JcloudsProducer) this;
         }
-
         /**
          * Specifies the type of operation that will be performed to the
          * blobstore. The option is a java.lang.String type.
          */
         public JcloudsProducer operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (JcloudsProducer) this;
         }
-
         /**
          * The user on the target node that will run the script. The option is a
          * java.lang.String type.
          */
         public JcloudsProducer user(String user) {
-            this.user = user;
+            this.properties.put("user", user);
             return (JcloudsProducer) this;
-        }
-
-        public String getBlobName() {
-            return blobName;
-        }
-
-        public void setBlobName(String blobName) {
-            this.blobName = blobName;
-        }
-
-        public String getGroup() {
-            return group;
-        }
-
-        public void setGroup(String group) {
-            this.group = group;
-        }
-
-        public String getHardwareId() {
-            return hardwareId;
-        }
-
-        public void setHardwareId(String hardwareId) {
-            this.hardwareId = hardwareId;
-        }
-
-        public String getImageId() {
-            return imageId;
-        }
-
-        public void setImageId(String imageId) {
-            this.imageId = imageId;
-        }
-
-        public String getLocationId() {
-            return locationId;
-        }
-
-        public void setLocationId(String locationId) {
-            this.locationId = locationId;
-        }
-
-        public String getNodeId() {
-            return nodeId;
-        }
-
-        public void setNodeId(String nodeId) {
-            this.nodeId = nodeId;
-        }
-
-        public String getNodeState() {
-            return nodeState;
-        }
-
-        public void setNodeState(String nodeState) {
-            this.nodeState = nodeState;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
-        }
-
-        public String getUser() {
-            return user;
-        }
-
-        public void setUser(String user) {
-            this.user = user;
         }
     }
 

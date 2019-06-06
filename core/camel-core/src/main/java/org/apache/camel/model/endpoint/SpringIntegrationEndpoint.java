@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,14 +30,12 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SpringIntegrationEndpoint {
 
 
-    public static class SpringIntegrationCommon<T extends EndpointConfiguration>
+    public static class SpringIntegrationCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String defaultChannel;
-        private Boolean inOut;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        SpringIntegrationCommon(String path) {
+            super("spring-integration", path);
+        }
         /**
          * The default channel name which is used by the Spring Integration
          * Spring context. It will equal to the inputChannel name for the Spring
@@ -44,10 +43,9 @@ public class SpringIntegrationEndpoint {
          * Integration provider. The option is a java.lang.String type.
          */
         public T defaultChannel(String defaultChannel) {
-            this.defaultChannel = defaultChannel;
+            this.properties.put("defaultChannel", defaultChannel);
             return (T) this;
         }
-
         /**
          * The exchange pattern that the Spring integration endpoint should use.
          * If inOut=true then a reply channel is expected, either from the
@@ -55,71 +53,37 @@ public class SpringIntegrationEndpoint {
          * option is a boolean type.
          */
         public T inOut(boolean inOut) {
-            this.inOut = inOut;
+            this.properties.put("inOut", inOut);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getDefaultChannel() {
-            return defaultChannel;
-        }
-
-        public void setDefaultChannel(String defaultChannel) {
-            this.defaultChannel = defaultChannel;
-        }
-
-        public Boolean getInOut() {
-            return inOut;
-        }
-
-        public void setInOut(Boolean inOut) {
-            this.inOut = inOut;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class SpringIntegrationConsumer
             extends
-                SpringIntegrationCommon<SpringIntegrationConsumer> {
-        private Boolean bridgeErrorHandler;
-        private String inputChannel;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                SpringIntegrationCommon<SpringIntegrationConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SpringIntegrationConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -131,20 +95,18 @@ public class SpringIntegrationEndpoint {
          */
         public SpringIntegrationConsumer bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SpringIntegrationConsumer) this;
         }
-
         /**
          * The Spring integration input channel name that this endpoint wants to
          * consume from Spring integration. The option is a java.lang.String
          * type.
          */
         public SpringIntegrationConsumer inputChannel(String inputChannel) {
-            this.inputChannel = inputChannel;
+            this.properties.put("inputChannel", inputChannel);
             return (SpringIntegrationConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -154,74 +116,36 @@ public class SpringIntegrationEndpoint {
          */
         public SpringIntegrationConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SpringIntegrationConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SpringIntegrationConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SpringIntegrationConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public String getInputChannel() {
-            return inputChannel;
-        }
-
-        public void setInputChannel(String inputChannel) {
-            this.inputChannel = inputChannel;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class SpringIntegrationProducer
             extends
-                SpringIntegrationCommon<SpringIntegrationProducer> {
-        private String outputChannel;
-
+                SpringIntegrationCommon<SpringIntegrationProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SpringIntegrationProducer(String path) {
+            super(path);
+        }
         /**
          * The Spring integration output channel name that is used to send
          * messages to Spring integration. The option is a java.lang.String
          * type.
          */
         public SpringIntegrationProducer outputChannel(String outputChannel) {
-            this.outputChannel = outputChannel;
+            this.properties.put("outputChannel", outputChannel);
             return (SpringIntegrationProducer) this;
-        }
-
-        public String getOutputChannel() {
-            return outputChannel;
-        }
-
-        public void setOutputChannel(String outputChannel) {
-            this.outputChannel = outputChannel;
         }
     }
 }

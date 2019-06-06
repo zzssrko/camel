@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The jolt component allows you to process a JSON messages using an JOLT
@@ -28,17 +29,12 @@ import javax.annotation.Generated;
 public class JoltEndpoint {
 
 
-    public static class JoltCommon<T extends EndpointConfiguration>
+    public static class JoltCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String resourceUri;
-        private Boolean contentCache;
-        private JoltInputOutputType inputType;
-        private JoltInputOutputType outputType;
-        private JoltTransformType transformDsl;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        JoltCommon(String path) {
+            super("jolt", path);
+        }
         /**
          * Path to the resource. You can prefix with: classpath, file, http,
          * ref, or bean. classpath, file and http loads the resource using these
@@ -48,128 +44,80 @@ public class JoltEndpoint {
          * bean:myBean.myMethod. The option is a java.lang.String type.
          */
         public T resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
+            this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
-
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
         public T contentCache(boolean contentCache) {
-            this.contentCache = contentCache;
+            this.properties.put("contentCache", contentCache);
             return (T) this;
         }
-
         /**
          * Specifies if the input is hydrated JSON or a JSON String. The option
          * is a org.apache.camel.component.jolt.JoltInputOutputType type.
          */
         public T inputType(JoltInputOutputType inputType) {
-            this.inputType = inputType;
+            this.properties.put("inputType", inputType);
             return (T) this;
         }
-
         /**
          * Specifies if the output should be hydrated JSON or a JSON String. The
          * option is a org.apache.camel.component.jolt.JoltInputOutputType type.
          */
         public T outputType(JoltInputOutputType outputType) {
-            this.outputType = outputType;
+            this.properties.put("outputType", outputType);
             return (T) this;
         }
-
         /**
          * Specifies the Transform DSL of the endpoint resource. If none is
          * specified Chainr will be used. The option is a
          * org.apache.camel.component.jolt.JoltTransformType type.
          */
         public T transformDsl(JoltTransformType transformDsl) {
-            this.transformDsl = transformDsl;
+            this.properties.put("transformDsl", transformDsl);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getResourceUri() {
-            return resourceUri;
-        }
-
-        public void setResourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-        }
-
-        public Boolean getContentCache() {
-            return contentCache;
-        }
-
-        public void setContentCache(Boolean contentCache) {
-            this.contentCache = contentCache;
-        }
-
-        public JoltInputOutputType getInputType() {
-            return inputType;
-        }
-
-        public void setInputType(JoltInputOutputType inputType) {
-            this.inputType = inputType;
-        }
-
-        public JoltInputOutputType getOutputType() {
-            return outputType;
-        }
-
-        public void setOutputType(JoltInputOutputType outputType) {
-            this.outputType = outputType;
-        }
-
-        public JoltTransformType getTransformDsl() {
-            return transformDsl;
-        }
-
-        public void setTransformDsl(JoltTransformType transformDsl) {
-            this.transformDsl = transformDsl;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class JoltConsumer
+            extends
+                JoltCommon<JoltConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public JoltConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class JoltConsumer extends JoltCommon<JoltConsumer> {
-    }
-
-    public static class JoltProducer extends JoltCommon<JoltProducer> {
+    public static class JoltProducer
+            extends
+                JoltCommon<JoltProducer>
+            implements
+                EndpointDefinition.Producer {
+        public JoltProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum JoltInputOutputType {

@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,108 +31,64 @@ import org.apache.camel.spi.ExceptionHandler;
 public class TwilioEndpoint {
 
 
-    public static class TwilioCommon<T extends EndpointConfiguration>
+    public static class TwilioCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private TwilioApiName apiName;
-        private String methodName;
-        private String inBody;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        TwilioCommon(String path) {
+            super("twilio", path);
+        }
         /**
          * What kind of operation to perform. The option is a
          * org.apache.camel.component.twilio.internal.TwilioApiName type.
          */
         public T apiName(TwilioApiName apiName) {
-            this.apiName = apiName;
+            this.properties.put("apiName", apiName);
             return (T) this;
         }
-
         /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
         public T methodName(String methodName) {
-            this.methodName = methodName;
+            this.properties.put("methodName", methodName);
             return (T) this;
         }
-
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
         public T inBody(String inBody) {
-            this.inBody = inBody;
+            this.properties.put("inBody", inBody);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public TwilioApiName getApiName() {
-            return apiName;
-        }
-
-        public void setApiName(TwilioApiName apiName) {
-            this.apiName = apiName;
-        }
-
-        public String getMethodName() {
-            return methodName;
-        }
-
-        public void setMethodName(String methodName) {
-            this.methodName = methodName;
-        }
-
-        public String getInBody() {
-            return inBody;
-        }
-
-        public void setInBody(String inBody) {
-            this.inBody = inBody;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class TwilioConsumer extends TwilioCommon<TwilioConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class TwilioConsumer
+            extends
+                TwilioCommon<TwilioConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public TwilioConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -142,10 +99,9 @@ public class TwilioEndpoint {
          * ignored. The option is a boolean type.
          */
         public TwilioConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (TwilioConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -154,45 +110,27 @@ public class TwilioEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public TwilioConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (TwilioConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public TwilioConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (TwilioConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class TwilioProducer extends TwilioCommon<TwilioProducer> {
+    public static class TwilioProducer
+            extends
+                TwilioCommon<TwilioProducer>
+            implements
+                EndpointDefinition.Producer {
+        public TwilioProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum TwilioApiName {

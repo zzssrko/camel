@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * Validates the payload of a message using the Schematron Library.
@@ -27,128 +28,81 @@ import javax.annotation.Generated;
 public class SchematronEndpoint {
 
 
-    public static class SchematronCommon<T extends EndpointConfiguration>
+    public static class SchematronCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String path;
-        private Boolean abort;
-        private Object rules;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private Object uriResolver;
-
+                EndpointDefinition<T> {
+        SchematronCommon(String path) {
+            super("schematron", path);
+        }
         /**
          * The path to the schematron rules file. Can either be in class path or
          * location in the file system. The option is a java.lang.String type.
          */
         public T path(String path) {
-            this.path = path;
+            this.properties.put("path", path);
             return (T) this;
         }
-
         /**
          * Flag to abort the route and throw a schematron validation exception.
          * The option is a boolean type.
          */
         public T abort(boolean abort) {
-            this.abort = abort;
+            this.properties.put("abort", abort);
             return (T) this;
         }
-
         /**
          * To use the given schematron rules instead of loading from the path.
          * The option is a javax.xml.transform.Templates type.
          */
         public T rules(Object rules) {
-            this.rules = rules;
+            this.properties.put("rules", rules);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Set the URIResolver to be used for resolving schematron includes in
          * the rules file. The option is a javax.xml.transform.URIResolver type.
          */
         public T uriResolver(Object uriResolver) {
-            this.uriResolver = uriResolver;
+            this.properties.put("uriResolver", uriResolver);
             return (T) this;
-        }
-
-        public String getPath() {
-            return path;
-        }
-
-        public void setPath(String path) {
-            this.path = path;
-        }
-
-        public Boolean getAbort() {
-            return abort;
-        }
-
-        public void setAbort(Boolean abort) {
-            this.abort = abort;
-        }
-
-        public Object getRules() {
-            return rules;
-        }
-
-        public void setRules(Object rules) {
-            this.rules = rules;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Object getUriResolver() {
-            return uriResolver;
-        }
-
-        public void setUriResolver(Object uriResolver) {
-            this.uriResolver = uriResolver;
         }
     }
 
     public static class SchematronConsumer
             extends
-                SchematronCommon<SchematronConsumer> {
+                SchematronCommon<SchematronConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SchematronConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class SchematronProducer
             extends
-                SchematronCommon<SchematronProducer> {
+                SchematronCommon<SchematronProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SchematronProducer(String path) {
+            super(path);
+        }
     }
 }

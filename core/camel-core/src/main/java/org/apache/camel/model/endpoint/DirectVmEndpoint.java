@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.HeaderFilterStrategy;
 
@@ -31,92 +32,56 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class DirectVmEndpoint {
 
 
-    public static class DirectVmCommon<T extends EndpointConfiguration>
+    public static class DirectVmCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private Boolean basicPropertyBinding;
-        private Boolean propagateProperties;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        DirectVmCommon(String path) {
+            super("direct-vm", path);
+        }
         /**
          * Name of direct-vm endpoint. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Whether to propagate or not properties from the producer side to the
          * consumer side, and vice versa. Default value: true. The option is a
          * boolean type.
          */
         public T propagateProperties(boolean propagateProperties) {
-            this.propagateProperties = propagateProperties;
+            this.properties.put("propagateProperties", propagateProperties);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getPropagateProperties() {
-            return propagateProperties;
-        }
-
-        public void setPropagateProperties(Boolean propagateProperties) {
-            this.propagateProperties = propagateProperties;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class DirectVmConsumer
             extends
-                DirectVmCommon<DirectVmConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                DirectVmCommon<DirectVmConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DirectVmConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -127,10 +92,9 @@ public class DirectVmEndpoint {
          * ignored. The option is a boolean type.
          */
         public DirectVmConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (DirectVmConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -140,81 +104,53 @@ public class DirectVmEndpoint {
          */
         public DirectVmConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (DirectVmConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public DirectVmConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (DirectVmConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class DirectVmProducer
             extends
-                DirectVmCommon<DirectVmProducer> {
-        private Boolean block;
-        private Boolean failIfNoConsumers;
-        private Long timeout;
-        private HeaderFilterStrategy headerFilterStrategy;
-
+                DirectVmCommon<DirectVmProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DirectVmProducer(String path) {
+            super(path);
+        }
         /**
          * If sending a message to a direct endpoint which has no active
          * consumer, then we can tell the producer to block and wait for the
          * consumer to become active. The option is a boolean type.
          */
         public DirectVmProducer block(boolean block) {
-            this.block = block;
+            this.properties.put("block", block);
             return (DirectVmProducer) this;
         }
-
         /**
          * Whether the producer should fail by throwing an exception, when
          * sending to a Direct-VM endpoint with no active consumers. The option
          * is a boolean type.
          */
         public DirectVmProducer failIfNoConsumers(boolean failIfNoConsumers) {
-            this.failIfNoConsumers = failIfNoConsumers;
+            this.properties.put("failIfNoConsumers", failIfNoConsumers);
             return (DirectVmProducer) this;
         }
-
         /**
          * The timeout value to use if block is enabled. The option is a long
          * type.
          */
         public DirectVmProducer timeout(long timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (DirectVmProducer) this;
         }
-
         /**
          * Sets a HeaderFilterStrategy that will only be applied on producer
          * endpoints (on both directions: request and response). Default value:
@@ -222,41 +158,8 @@ public class DirectVmEndpoint {
          */
         public DirectVmProducer headerFilterStrategy(
                 HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (DirectVmProducer) this;
-        }
-
-        public Boolean getBlock() {
-            return block;
-        }
-
-        public void setBlock(Boolean block) {
-            this.block = block;
-        }
-
-        public Boolean getFailIfNoConsumers() {
-            return failIfNoConsumers;
-        }
-
-        public void setFailIfNoConsumers(Boolean failIfNoConsumers) {
-            this.failIfNoConsumers = failIfNoConsumers;
-        }
-
-        public Long getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Long timeout) {
-            this.timeout = timeout;
-        }
-
-        public HeaderFilterStrategy getHeaderFilterStrategy() {
-            return headerFilterStrategy;
-        }
-
-        public void setHeaderFilterStrategy(
-                HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
         }
     }
 }

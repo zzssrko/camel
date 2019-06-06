@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The flink component can be used to send DataSet jobs to Apache Flink cluster.
@@ -27,161 +28,98 @@ import javax.annotation.Generated;
 public class FlinkEndpoint {
 
 
-    public static class FlinkCommon<T extends EndpointConfiguration>
+    public static class FlinkCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private EndpointType endpointType;
-        private Boolean collect;
-        private Object dataSet;
-        private Object dataSetCallback;
-        private Object dataStream;
-        private Object dataStreamCallback;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        FlinkCommon(String path) {
+            super("flink", path);
+        }
         /**
          * Type of the endpoint (dataset, datastream). The option is a
          * org.apache.camel.component.flink.EndpointType type.
          */
         public T endpointType(EndpointType endpointType) {
-            this.endpointType = endpointType;
+            this.properties.put("endpointType", endpointType);
             return (T) this;
         }
-
         /**
          * Indicates if results should be collected or counted. The option is a
          * boolean type.
          */
         public T collect(boolean collect) {
-            this.collect = collect;
+            this.properties.put("collect", collect);
             return (T) this;
         }
-
         /**
          * DataSet to compute against. The option is a
          * org.apache.flink.api.java.DataSet type.
          */
         public T dataSet(Object dataSet) {
-            this.dataSet = dataSet;
+            this.properties.put("dataSet", dataSet);
             return (T) this;
         }
-
         /**
          * Function performing action against a DataSet. The option is a
          * org.apache.camel.component.flink.DataSetCallback type.
          */
         public T dataSetCallback(Object dataSetCallback) {
-            this.dataSetCallback = dataSetCallback;
+            this.properties.put("dataSetCallback", dataSetCallback);
             return (T) this;
         }
-
         /**
          * DataStream to compute against. The option is a
          * org.apache.flink.streaming.api.datastream.DataStream type.
          */
         public T dataStream(Object dataStream) {
-            this.dataStream = dataStream;
+            this.properties.put("dataStream", dataStream);
             return (T) this;
         }
-
         /**
          * Function performing action against a DataStream. The option is a
          * org.apache.camel.component.flink.DataStreamCallback type.
          */
         public T dataStreamCallback(Object dataStreamCallback) {
-            this.dataStreamCallback = dataStreamCallback;
+            this.properties.put("dataStreamCallback", dataStreamCallback);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public EndpointType getEndpointType() {
-            return endpointType;
-        }
-
-        public void setEndpointType(EndpointType endpointType) {
-            this.endpointType = endpointType;
-        }
-
-        public Boolean getCollect() {
-            return collect;
-        }
-
-        public void setCollect(Boolean collect) {
-            this.collect = collect;
-        }
-
-        public Object getDataSet() {
-            return dataSet;
-        }
-
-        public void setDataSet(Object dataSet) {
-            this.dataSet = dataSet;
-        }
-
-        public Object getDataSetCallback() {
-            return dataSetCallback;
-        }
-
-        public void setDataSetCallback(Object dataSetCallback) {
-            this.dataSetCallback = dataSetCallback;
-        }
-
-        public Object getDataStream() {
-            return dataStream;
-        }
-
-        public void setDataStream(Object dataStream) {
-            this.dataStream = dataStream;
-        }
-
-        public Object getDataStreamCallback() {
-            return dataStreamCallback;
-        }
-
-        public void setDataStreamCallback(Object dataStreamCallback) {
-            this.dataStreamCallback = dataStreamCallback;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class FlinkConsumer
+            extends
+                FlinkCommon<FlinkConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public FlinkConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class FlinkConsumer extends FlinkCommon<FlinkConsumer> {
-    }
-
-    public static class FlinkProducer extends FlinkCommon<FlinkProducer> {
+    public static class FlinkProducer
+            extends
+                FlinkCommon<FlinkProducer>
+            implements
+                EndpointDefinition.Producer {
+        public FlinkProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum EndpointType {

@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * Represents a ChatScript endpoint.
@@ -27,145 +28,88 @@ import javax.annotation.Generated;
 public class ChatScriptEndpoint {
 
 
-    public static class ChatScriptCommon<T extends EndpointConfiguration>
+    public static class ChatScriptCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private String botName;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private Boolean resetchat;
-        private String chatUserName;
-
+                EndpointDefinition<T> {
+        ChatScriptCommon(String path) {
+            super("chatscript", path);
+        }
         /**
          * Hostname or IP of the server on which CS server is running. The
          * option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Port on which ChatScript is listening to. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Name of the Bot in CS to converse with. The option is a
          * java.lang.String type.
          */
         public T botName(String botName) {
-            this.botName = botName;
+            this.properties.put("botName", botName);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Issues :reset command to start a new conversation everytime. The
          * option is a boolean type.
          */
         public T resetchat(boolean resetchat) {
-            this.resetchat = resetchat;
+            this.properties.put("resetchat", resetchat);
             return (T) this;
         }
-
         /**
          * Username who initializes the CS conversation. To be set when chat is
          * initialized from camel route. The option is a java.lang.String type.
          */
         public T chatUserName(String chatUserName) {
-            this.chatUserName = chatUserName;
+            this.properties.put("chatUserName", chatUserName);
             return (T) this;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getBotName() {
-            return botName;
-        }
-
-        public void setBotName(String botName) {
-            this.botName = botName;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Boolean getResetchat() {
-            return resetchat;
-        }
-
-        public void setResetchat(Boolean resetchat) {
-            this.resetchat = resetchat;
-        }
-
-        public String getChatUserName() {
-            return chatUserName;
-        }
-
-        public void setChatUserName(String chatUserName) {
-            this.chatUserName = chatUserName;
         }
     }
 
     public static class ChatScriptConsumer
             extends
-                ChatScriptCommon<ChatScriptConsumer> {
+                ChatScriptCommon<ChatScriptConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ChatScriptConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class ChatScriptProducer
             extends
-                ChatScriptCommon<ChatScriptProducer> {
+                ChatScriptCommon<ChatScriptProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ChatScriptProducer(String path) {
+            super(path);
+        }
     }
 }

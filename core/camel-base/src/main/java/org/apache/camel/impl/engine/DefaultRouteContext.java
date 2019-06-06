@@ -24,11 +24,13 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.Component;
 import org.apache.camel.Endpoint;
 import org.apache.camel.ErrorHandlerFactory;
 import org.apache.camel.NamedNode;
 import org.apache.camel.NoSuchEndpointException;
 import org.apache.camel.Processor;
+import org.apache.camel.ResolveEndpointFailedException;
 import org.apache.camel.Route;
 import org.apache.camel.RuntimeCamelException;
 import org.apache.camel.ShutdownRoute;
@@ -142,6 +144,21 @@ public class DefaultRouteContext implements RouteContext {
         } else {
             return endpoint;
         }
+    }
+
+    public Endpoint resolveEndpoint(String scheme, String path, Map<String, Object> properties) {
+        Component component = camelContext.getComponent(scheme);
+        if (component != null) {
+            try {
+                Endpoint endpoint = component.createEndpoint(scheme + ":" + path, properties);
+                if (endpoint != null) {
+                    return endpoint;
+                }
+            } catch (Exception e) {
+                throw new ResolveEndpointFailedException(scheme + ":" + path, e);
+            }
+        }
+        throw new NoSuchEndpointException(scheme + ":" + path);
     }
 
     public <T> T lookup(String name, Class<T> type) {

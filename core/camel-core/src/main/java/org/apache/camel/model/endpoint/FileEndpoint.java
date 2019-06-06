@@ -27,6 +27,7 @@ import org.apache.camel.ExchangePattern;
 import org.apache.camel.Expression;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Predicate;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.IdempotentRepository;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
@@ -41,28 +42,19 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class FileEndpoint {
 
 
-    public static class FileCommon<T extends EndpointConfiguration>
+    public static class FileCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private File directoryName;
-        private String charset;
-        private String doneFileName;
-        private Expression fileName;
-        private Boolean autoCreate;
-        private Boolean basicPropertyBinding;
-        private Integer bufferSize;
-        private Boolean copyAndDeleteOnRenameFail;
-        private Boolean renameUsingCopy;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        FileCommon(String path) {
+            super("file", path);
+        }
         /**
          * The starting directory. The option is a java.io.File type.
          */
         public T directoryName(File directoryName) {
-            this.directoryName = directoryName;
+            this.properties.put("directoryName", directoryName);
             return (T) this;
         }
-
         /**
          * This option is used to specify the encoding of the file. You can use
          * this on the consumer, to specify the encodings of the files, which
@@ -75,10 +67,9 @@ public class FileEndpoint {
          * messages. The option is a java.lang.String type.
          */
         public T charset(String charset) {
-            this.charset = charset;
+            this.properties.put("charset", charset);
             return (T) this;
         }
-
         /**
          * Producer: If provided, then Camel will write a 2nd done file when the
          * original file has been written. The done file will be empty. This
@@ -93,10 +84,9 @@ public class FileEndpoint {
          * placeholders. The option is a java.lang.String type.
          */
         public T doneFileName(String doneFileName) {
-            this.doneFileName = doneFileName;
+            this.properties.put("doneFileName", doneFileName);
             return (T) this;
         }
-
         /**
          * Use Expression such as File Language to dynamically set the filename.
          * For consumers, it's used as a filename filter. For producers, it's
@@ -117,10 +107,9 @@ public class FileEndpoint {
          * java.lang.String type.
          */
         public T fileName(Expression fileName) {
-            this.fileName = fileName;
+            this.properties.put("fileName", fileName);
             return (T) this;
         }
-
         /**
          * Automatically create missing directories in the file's pathname. For
          * the file consumer, that means creating the starting directory. For
@@ -128,38 +117,34 @@ public class FileEndpoint {
          * to. The option is a boolean type.
          */
         public T autoCreate(boolean autoCreate) {
-            this.autoCreate = autoCreate;
+            this.properties.put("autoCreate", autoCreate);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Write buffer sized in bytes. The option is a int type.
          */
         public T bufferSize(int bufferSize) {
-            this.bufferSize = bufferSize;
+            this.properties.put("bufferSize", bufferSize);
             return (T) this;
         }
-
         /**
          * Whether to fallback and do a copy and delete file, in case the file
          * could not be renamed directly. This option is not available for the
          * FTP component. The option is a boolean type.
          */
         public T copyAndDeleteOnRenameFail(boolean copyAndDeleteOnRenameFail) {
-            this.copyAndDeleteOnRenameFail = copyAndDeleteOnRenameFail;
+            this.properties.put("copyAndDeleteOnRenameFail", copyAndDeleteOnRenameFail);
             return (T) this;
         }
-
         /**
          * Perform rename operations using a copy and delete strategy. This is
          * primarily used in environments where the regular rename operation is
@@ -169,171 +154,28 @@ public class FileEndpoint {
          * but only after additional delays. The option is a boolean type.
          */
         public T renameUsingCopy(boolean renameUsingCopy) {
-            this.renameUsingCopy = renameUsingCopy;
+            this.properties.put("renameUsingCopy", renameUsingCopy);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public File getDirectoryName() {
-            return directoryName;
-        }
-
-        public void setDirectoryName(File directoryName) {
-            this.directoryName = directoryName;
-        }
-
-        public String getCharset() {
-            return charset;
-        }
-
-        public void setCharset(String charset) {
-            this.charset = charset;
-        }
-
-        public String getDoneFileName() {
-            return doneFileName;
-        }
-
-        public void setDoneFileName(String doneFileName) {
-            this.doneFileName = doneFileName;
-        }
-
-        public Expression getFileName() {
-            return fileName;
-        }
-
-        public void setFileName(Expression fileName) {
-            this.fileName = fileName;
-        }
-
-        public Boolean getAutoCreate() {
-            return autoCreate;
-        }
-
-        public void setAutoCreate(Boolean autoCreate) {
-            this.autoCreate = autoCreate;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Integer getBufferSize() {
-            return bufferSize;
-        }
-
-        public void setBufferSize(Integer bufferSize) {
-            this.bufferSize = bufferSize;
-        }
-
-        public Boolean getCopyAndDeleteOnRenameFail() {
-            return copyAndDeleteOnRenameFail;
-        }
-
-        public void setCopyAndDeleteOnRenameFail(
-                Boolean copyAndDeleteOnRenameFail) {
-            this.copyAndDeleteOnRenameFail = copyAndDeleteOnRenameFail;
-        }
-
-        public Boolean getRenameUsingCopy() {
-            return renameUsingCopy;
-        }
-
-        public void setRenameUsingCopy(Boolean renameUsingCopy) {
-            this.renameUsingCopy = renameUsingCopy;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class FileConsumer extends FileCommon<FileConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean delete;
-        private Expression moveFailed;
-        private Boolean noop;
-        private Expression preMove;
-        private Boolean preSort;
-        private Boolean recursive;
-        private Boolean sendEmptyMessageWhenIdle;
-        private Boolean directoryMustExist;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private String extendedAttributes;
-        private IdempotentRepository inProgressRepository;
-        private String localWorkDirectory;
-        private ExceptionHandler onCompletionExceptionHandler;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Boolean probeContentType;
-        private Object processStrategy;
-        private Boolean startingDirectoryMustExist;
-        private Boolean startingDirectoryMustHaveAccess;
-        private String antExclude;
-        private Boolean antFilterCaseSensitive;
-        private String antInclude;
-        private Boolean eagerMaxMessagesPerPoll;
-        private String exclude;
-        private Object filter;
-        private Predicate filterDirectory;
-        private Predicate filterFile;
-        private Boolean idempotent;
-        private Expression idempotentKey;
-        private IdempotentRepository idempotentRepository;
-        private String include;
-        private Integer maxDepth;
-        private Integer maxMessagesPerPoll;
-        private Integer minDepth;
-        private Expression move;
-        private Object exclusiveReadLockStrategy;
-        private String readLock;
-        private Long readLockCheckInterval;
-        private Boolean readLockDeleteOrphanLockFiles;
-        private Boolean readLockIdempotentReleaseAsync;
-        private Integer readLockIdempotentReleaseAsyncPoolSize;
-        private Integer readLockIdempotentReleaseDelay;
-        private ScheduledExecutorService readLockIdempotentReleaseExecutorService;
-        private LoggingLevel readLockLoggingLevel;
-        private Boolean readLockMarkerFile;
-        private Long readLockMinAge;
-        private Long readLockMinLength;
-        private Boolean readLockRemoveOnCommit;
-        private Boolean readLockRemoveOnRollback;
-        private Long readLockTimeout;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-        private Boolean shuffle;
-        private Comparator<Exchange> sortBy;
-        private Comparator<Object> sorter;
-
+    public static class FileConsumer
+            extends
+                FileCommon<FileConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public FileConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -344,19 +186,17 @@ public class FileEndpoint {
          * ignored. The option is a boolean type.
          */
         public FileConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (FileConsumer) this;
         }
-
         /**
          * If true, the file will be deleted after it is processed successfully.
          * The option is a boolean type.
          */
         public FileConsumer delete(boolean delete) {
-            this.delete = delete;
+            this.properties.put("delete", delete);
             return (FileConsumer) this;
         }
-
         /**
          * Sets the move failure expression based on Simple language. For
          * example, to move files into a .error subdirectory use: .error. Note:
@@ -365,10 +205,9 @@ public class FileEndpoint {
          * java.lang.String type.
          */
         public FileConsumer moveFailed(Expression moveFailed) {
-            this.moveFailed = moveFailed;
+            this.properties.put("moveFailed", moveFailed);
             return (FileConsumer) this;
         }
-
         /**
          * If true, the file is not moved or deleted in any way. This option is
          * good for readonly data, or for ETL type requirements. If noop=true,
@@ -376,10 +215,9 @@ public class FileEndpoint {
          * files over and over again. The option is a boolean type.
          */
         public FileConsumer noop(boolean noop) {
-            this.noop = noop;
+            this.properties.put("noop", noop);
             return (FileConsumer) this;
         }
-
         /**
          * Expression (such as File Language) used to dynamically set the
          * filename when moving it before processing. For example to move
@@ -387,10 +225,9 @@ public class FileEndpoint {
          * The option is a java.lang.String type.
          */
         public FileConsumer preMove(Expression preMove) {
-            this.preMove = preMove;
+            this.properties.put("preMove", preMove);
             return (FileConsumer) this;
         }
-
         /**
          * When pre-sort is enabled then the consumer will sort the file and
          * directory names during polling, that was retrieved from the file
@@ -400,19 +237,17 @@ public class FileEndpoint {
          * is default=false meaning disabled. The option is a boolean type.
          */
         public FileConsumer preSort(boolean preSort) {
-            this.preSort = preSort;
+            this.properties.put("preSort", preSort);
             return (FileConsumer) this;
         }
-
         /**
          * If a directory, will look for files in all the sub-directories as
          * well. The option is a boolean type.
          */
         public FileConsumer recursive(boolean recursive) {
-            this.recursive = recursive;
+            this.properties.put("recursive", recursive);
             return (FileConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -420,20 +255,18 @@ public class FileEndpoint {
          */
         public FileConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (FileConsumer) this;
         }
-
         /**
          * Similar to the startingDirectoryMustExist option but this applies
          * during polling (after starting the consumer). The option is a boolean
          * type.
          */
         public FileConsumer directoryMustExist(boolean directoryMustExist) {
-            this.directoryMustExist = directoryMustExist;
+            this.properties.put("directoryMustExist", directoryMustExist);
             return (FileConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -442,19 +275,17 @@ public class FileEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public FileConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (FileConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public FileConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (FileConsumer) this;
         }
-
         /**
          * To define which file attributes of interest. Like
          * posix:permissions,posix:owner,basic:lastAccessTime, it supports basic
@@ -462,10 +293,9 @@ public class FileEndpoint {
          * java.lang.String type.
          */
         public FileConsumer extendedAttributes(String extendedAttributes) {
-            this.extendedAttributes = extendedAttributes;
+            this.properties.put("extendedAttributes", extendedAttributes);
             return (FileConsumer) this;
         }
-
         /**
          * A pluggable in-progress repository
          * org.apache.camel.spi.IdempotentRepository. The in-progress repository
@@ -475,10 +305,9 @@ public class FileEndpoint {
          */
         public FileConsumer inProgressRepository(
                 IdempotentRepository inProgressRepository) {
-            this.inProgressRepository = inProgressRepository;
+            this.properties.put("inProgressRepository", inProgressRepository);
             return (FileConsumer) this;
         }
-
         /**
          * When consuming, a local work directory can be used to store the
          * remote file content directly in local files, to avoid loading the
@@ -487,10 +316,9 @@ public class FileEndpoint {
          * java.lang.String type.
          */
         public FileConsumer localWorkDirectory(String localWorkDirectory) {
-            this.localWorkDirectory = localWorkDirectory;
+            this.properties.put("localWorkDirectory", localWorkDirectory);
             return (FileConsumer) this;
         }
-
         /**
          * To use a custom org.apache.camel.spi.ExceptionHandler to handle any
          * thrown exceptions that happens during the file on completion process
@@ -500,10 +328,9 @@ public class FileEndpoint {
          */
         public FileConsumer onCompletionExceptionHandler(
                 ExceptionHandler onCompletionExceptionHandler) {
-            this.onCompletionExceptionHandler = onCompletionExceptionHandler;
+            this.properties.put("onCompletionExceptionHandler", onCompletionExceptionHandler);
             return (FileConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -513,10 +340,9 @@ public class FileEndpoint {
          */
         public FileConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (FileConsumer) this;
         }
-
         /**
          * Whether to enable probing of the content type. If enable then the
          * consumer uses Files#probeContentType(java.nio.file.Path) to determine
@@ -525,10 +351,9 @@ public class FileEndpoint {
          * type.
          */
         public FileConsumer probeContentType(boolean probeContentType) {
-            this.probeContentType = probeContentType;
+            this.properties.put("probeContentType", probeContentType);
             return (FileConsumer) this;
         }
-
         /**
          * A pluggable
          * org.apache.camel.component.file.GenericFileProcessStrategy allowing
@@ -539,10 +364,9 @@ public class FileEndpoint {
          * org.apache.camel.component.file.GenericFileProcessStrategy<T> type.
          */
         public FileConsumer processStrategy(Object processStrategy) {
-            this.processStrategy = processStrategy;
+            this.properties.put("processStrategy", processStrategy);
             return (FileConsumer) this;
         }
-
         /**
          * Whether the starting directory must exist. Mind that the autoCreate
          * option is default enabled, which means the starting directory is
@@ -553,10 +377,9 @@ public class FileEndpoint {
          */
         public FileConsumer startingDirectoryMustExist(
                 boolean startingDirectoryMustExist) {
-            this.startingDirectoryMustExist = startingDirectoryMustExist;
+            this.properties.put("startingDirectoryMustExist", startingDirectoryMustExist);
             return (FileConsumer) this;
         }
-
         /**
          * Whether the starting directory has access permissions. Mind that the
          * startingDirectoryMustExist parameter must be set to true in order to
@@ -566,10 +389,9 @@ public class FileEndpoint {
          */
         public FileConsumer startingDirectoryMustHaveAccess(
                 boolean startingDirectoryMustHaveAccess) {
-            this.startingDirectoryMustHaveAccess = startingDirectoryMustHaveAccess;
+            this.properties.put("startingDirectoryMustHaveAccess", startingDirectoryMustHaveAccess);
             return (FileConsumer) this;
         }
-
         /**
          * Ant style filter exclusion. If both antInclude and antExclude are
          * used, antExclude takes precedence over antInclude. Multiple
@@ -577,28 +399,25 @@ public class FileEndpoint {
          * a java.lang.String type.
          */
         public FileConsumer antExclude(String antExclude) {
-            this.antExclude = antExclude;
+            this.properties.put("antExclude", antExclude);
             return (FileConsumer) this;
         }
-
         /**
          * Sets case sensitive flag on ant filter. The option is a boolean type.
          */
         public FileConsumer antFilterCaseSensitive(
                 boolean antFilterCaseSensitive) {
-            this.antFilterCaseSensitive = antFilterCaseSensitive;
+            this.properties.put("antFilterCaseSensitive", antFilterCaseSensitive);
             return (FileConsumer) this;
         }
-
         /**
          * Ant style filter inclusion. Multiple inclusions may be specified in
          * comma-delimited format. The option is a java.lang.String type.
          */
         public FileConsumer antInclude(String antInclude) {
-            this.antInclude = antInclude;
+            this.properties.put("antInclude", antInclude);
             return (FileConsumer) this;
         }
-
         /**
          * Allows for controlling whether the limit from maxMessagesPerPoll is
          * eager or not. If eager then the limit is during the scanning of
@@ -610,10 +429,9 @@ public class FileEndpoint {
          */
         public FileConsumer eagerMaxMessagesPerPoll(
                 boolean eagerMaxMessagesPerPoll) {
-            this.eagerMaxMessagesPerPoll = eagerMaxMessagesPerPoll;
+            this.properties.put("eagerMaxMessagesPerPoll", eagerMaxMessagesPerPoll);
             return (FileConsumer) this;
         }
-
         /**
          * Is used to exclude files, if filename matches the regex pattern
          * (matching is case in-senstive). Notice if you use symbols such as
@@ -622,10 +440,9 @@ public class FileEndpoint {
          * configuring endpoint uris. The option is a java.lang.String type.
          */
         public FileConsumer exclude(String exclude) {
-            this.exclude = exclude;
+            this.properties.put("exclude", exclude);
             return (FileConsumer) this;
         }
-
         /**
          * Pluggable filter as a
          * org.apache.camel.component.file.GenericFileFilter class. Will skip
@@ -633,30 +450,27 @@ public class FileEndpoint {
          * org.apache.camel.component.file.GenericFileFilter<T> type.
          */
         public FileConsumer filter(Object filter) {
-            this.filter = filter;
+            this.properties.put("filter", filter);
             return (FileConsumer) this;
         }
-
         /**
          * Filters the directory based on Simple language. For example to filter
          * on current date, you can use a simple date pattern such as
          * ${date:now:yyyMMdd}. The option is a java.lang.String type.
          */
         public FileConsumer filterDirectory(Predicate filterDirectory) {
-            this.filterDirectory = filterDirectory;
+            this.properties.put("filterDirectory", filterDirectory);
             return (FileConsumer) this;
         }
-
         /**
          * Filters the file based on Simple language. For example to filter on
          * file size, you can use ${file:size} 5000. The option is a
          * java.lang.String type.
          */
         public FileConsumer filterFile(Predicate filterFile) {
-            this.filterFile = filterFile;
+            this.properties.put("filterFile", filterFile);
             return (FileConsumer) this;
         }
-
         /**
          * Option to use the Idempotent Consumer EIP pattern to let Camel skip
          * already processed files. Will by default use a memory based LRUCache
@@ -665,10 +479,9 @@ public class FileEndpoint {
          * option is a java.lang.Boolean type.
          */
         public FileConsumer idempotent(Boolean idempotent) {
-            this.idempotent = idempotent;
+            this.properties.put("idempotent", idempotent);
             return (FileConsumer) this;
         }
-
         /**
          * To use a custom idempotent key. By default the absolute path of the
          * file is used. You can use the File Language, for example to use the
@@ -677,10 +490,9 @@ public class FileEndpoint {
          * java.lang.String type.
          */
         public FileConsumer idempotentKey(Expression idempotentKey) {
-            this.idempotentKey = idempotentKey;
+            this.properties.put("idempotentKey", idempotentKey);
             return (FileConsumer) this;
         }
-
         /**
          * A pluggable repository org.apache.camel.spi.IdempotentRepository
          * which by default use MemoryMessageIdRepository if none is specified
@@ -689,10 +501,9 @@ public class FileEndpoint {
          */
         public FileConsumer idempotentRepository(
                 IdempotentRepository idempotentRepository) {
-            this.idempotentRepository = idempotentRepository;
+            this.properties.put("idempotentRepository", idempotentRepository);
             return (FileConsumer) this;
         }
-
         /**
          * Is used to include files, if filename matches the regex pattern
          * (matching is case in-sensitive). Notice if you use symbols such as
@@ -701,19 +512,17 @@ public class FileEndpoint {
          * configuring endpoint uris. The option is a java.lang.String type.
          */
         public FileConsumer include(String include) {
-            this.include = include;
+            this.properties.put("include", include);
             return (FileConsumer) this;
         }
-
         /**
          * The maximum depth to traverse when recursively processing a
          * directory. The option is a int type.
          */
         public FileConsumer maxDepth(int maxDepth) {
-            this.maxDepth = maxDepth;
+            this.properties.put("maxDepth", maxDepth);
             return (FileConsumer) this;
         }
-
         /**
          * To define a maximum messages to gather per poll. By default no
          * maximum is set. Can be used to set a limit of e.g. 1000 to avoid when
@@ -727,30 +536,27 @@ public class FileEndpoint {
          * type.
          */
         public FileConsumer maxMessagesPerPoll(int maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
             return (FileConsumer) this;
         }
-
         /**
          * The minimum depth to start processing when recursively processing a
          * directory. Using minDepth=1 means the base directory. Using
          * minDepth=2 means the first sub directory. The option is a int type.
          */
         public FileConsumer minDepth(int minDepth) {
-            this.minDepth = minDepth;
+            this.properties.put("minDepth", minDepth);
             return (FileConsumer) this;
         }
-
         /**
          * Expression (such as Simple Language) used to dynamically set the
          * filename when moving it after processing. To move files into a .done
          * subdirectory just enter .done. The option is a java.lang.String type.
          */
         public FileConsumer move(Expression move) {
-            this.move = move;
+            this.properties.put("move", move);
             return (FileConsumer) this;
         }
-
         /**
          * Pluggable read-lock as a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy
@@ -759,10 +565,9 @@ public class FileEndpoint {
          */
         public FileConsumer exclusiveReadLockStrategy(
                 Object exclusiveReadLockStrategy) {
-            this.exclusiveReadLockStrategy = exclusiveReadLockStrategy;
+            this.properties.put("exclusiveReadLockStrategy", exclusiveReadLockStrategy);
             return (FileConsumer) this;
         }
-
         /**
          * Used by consumer, to only poll the files if it has exclusive
          * read-lock on the file (i.e. the file is not in-progress or being
@@ -804,10 +609,9 @@ public class FileEndpoint {
          * Infinispan. The option is a java.lang.String type.
          */
         public FileConsumer readLock(String readLock) {
-            this.readLock = readLock;
+            this.properties.put("readLock", readLock);
             return (FileConsumer) this;
         }
-
         /**
          * Interval in millis for the read-lock, if supported by the read lock.
          * This interval is used for sleeping between attempts to acquire the
@@ -822,10 +626,9 @@ public class FileEndpoint {
          * lock before the timeout was hit. The option is a long type.
          */
         public FileConsumer readLockCheckInterval(long readLockCheckInterval) {
-            this.readLockCheckInterval = readLockCheckInterval;
+            this.properties.put("readLockCheckInterval", readLockCheckInterval);
             return (FileConsumer) this;
         }
-
         /**
          * Whether or not read lock with marker files should upon startup delete
          * any orphan read lock files, which may have been left on the file
@@ -837,10 +640,9 @@ public class FileEndpoint {
          */
         public FileConsumer readLockDeleteOrphanLockFiles(
                 boolean readLockDeleteOrphanLockFiles) {
-            this.readLockDeleteOrphanLockFiles = readLockDeleteOrphanLockFiles;
+            this.properties.put("readLockDeleteOrphanLockFiles", readLockDeleteOrphanLockFiles);
             return (FileConsumer) this;
         }
-
         /**
          * Whether the delayed release task should be synchronous or
          * asynchronous. See more details at the readLockIdempotentReleaseDelay
@@ -848,10 +650,9 @@ public class FileEndpoint {
          */
         public FileConsumer readLockIdempotentReleaseAsync(
                 boolean readLockIdempotentReleaseAsync) {
-            this.readLockIdempotentReleaseAsync = readLockIdempotentReleaseAsync;
+            this.properties.put("readLockIdempotentReleaseAsync", readLockIdempotentReleaseAsync);
             return (FileConsumer) this;
         }
-
         /**
          * The number of threads in the scheduled thread pool when using
          * asynchronous release tasks. Using a default of 1 core threads should
@@ -864,10 +665,9 @@ public class FileEndpoint {
          */
         public FileConsumer readLockIdempotentReleaseAsyncPoolSize(
                 int readLockIdempotentReleaseAsyncPoolSize) {
-            this.readLockIdempotentReleaseAsyncPoolSize = readLockIdempotentReleaseAsyncPoolSize;
+            this.properties.put("readLockIdempotentReleaseAsyncPoolSize", readLockIdempotentReleaseAsyncPoolSize);
             return (FileConsumer) this;
         }
-
         /**
          * Whether to delay the release task for a period of millis. This can be
          * used to delay the release tasks to expand the window when a file is
@@ -880,10 +680,9 @@ public class FileEndpoint {
          */
         public FileConsumer readLockIdempotentReleaseDelay(
                 int readLockIdempotentReleaseDelay) {
-            this.readLockIdempotentReleaseDelay = readLockIdempotentReleaseDelay;
+            this.properties.put("readLockIdempotentReleaseDelay", readLockIdempotentReleaseDelay);
             return (FileConsumer) this;
         }
-
         /**
          * To use a custom and shared thread pool for asynchronous release
          * tasks. See more details at the readLockIdempotentReleaseDelay option.
@@ -891,10 +690,9 @@ public class FileEndpoint {
          */
         public FileConsumer readLockIdempotentReleaseExecutorService(
                 ScheduledExecutorService readLockIdempotentReleaseExecutorService) {
-            this.readLockIdempotentReleaseExecutorService = readLockIdempotentReleaseExecutorService;
+            this.properties.put("readLockIdempotentReleaseExecutorService", readLockIdempotentReleaseExecutorService);
             return (FileConsumer) this;
         }
-
         /**
          * Logging level used when a read lock could not be acquired. By default
          * a DEBUG is logged. You can change this level, for example to OFF to
@@ -905,10 +703,9 @@ public class FileEndpoint {
          */
         public FileConsumer readLockLoggingLevel(
                 LoggingLevel readLockLoggingLevel) {
-            this.readLockLoggingLevel = readLockLoggingLevel;
+            this.properties.put("readLockLoggingLevel", readLockLoggingLevel);
             return (FileConsumer) this;
         }
-
         /**
          * Whether to use marker file with the changed, rename, or exclusive
          * read lock types. By default a marker file is used as well to guard
@@ -918,10 +715,9 @@ public class FileEndpoint {
          * application. The option is a boolean type.
          */
         public FileConsumer readLockMarkerFile(boolean readLockMarkerFile) {
-            this.readLockMarkerFile = readLockMarkerFile;
+            this.properties.put("readLockMarkerFile", readLockMarkerFile);
             return (FileConsumer) this;
         }
-
         /**
          * This option is applied only for readLock=changed. It allows to
          * specify a minimum age the file must be before attempting to acquire
@@ -931,10 +727,9 @@ public class FileEndpoint {
          * given age. The option is a long type.
          */
         public FileConsumer readLockMinAge(long readLockMinAge) {
-            this.readLockMinAge = readLockMinAge;
+            this.properties.put("readLockMinAge", readLockMinAge);
             return (FileConsumer) this;
         }
-
         /**
          * This option is applied only for readLock=changed. It allows you to
          * configure a minimum file length. By default Camel expects the file to
@@ -943,10 +738,9 @@ public class FileEndpoint {
          * long type.
          */
         public FileConsumer readLockMinLength(long readLockMinLength) {
-            this.readLockMinLength = readLockMinLength;
+            this.properties.put("readLockMinLength", readLockMinLength);
             return (FileConsumer) this;
         }
-
         /**
          * This option is applied only for readLock=idempotent. It allows to
          * specify whether to remove the file name entry from the idempotent
@@ -961,10 +755,9 @@ public class FileEndpoint {
          */
         public FileConsumer readLockRemoveOnCommit(
                 boolean readLockRemoveOnCommit) {
-            this.readLockRemoveOnCommit = readLockRemoveOnCommit;
+            this.properties.put("readLockRemoveOnCommit", readLockRemoveOnCommit);
             return (FileConsumer) this;
         }
-
         /**
          * This option is applied only for readLock=idempotent. It allows to
          * specify whether to remove the file name entry from the idempotent
@@ -974,10 +767,9 @@ public class FileEndpoint {
          */
         public FileConsumer readLockRemoveOnRollback(
                 boolean readLockRemoveOnRollback) {
-            this.readLockRemoveOnRollback = readLockRemoveOnRollback;
+            this.properties.put("readLockRemoveOnRollback", readLockRemoveOnRollback);
             return (FileConsumer) this;
         }
-
         /**
          * Optional timeout in millis for the read-lock, if supported by the
          * read-lock. If the read-lock could not be granted and the timeout
@@ -993,29 +785,26 @@ public class FileEndpoint {
          * lock before the timeout was hit. The option is a long type.
          */
         public FileConsumer readLockTimeout(long readLockTimeout) {
-            this.readLockTimeout = readLockTimeout;
+            this.properties.put("readLockTimeout", readLockTimeout);
             return (FileConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public FileConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (FileConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public FileConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (FileConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -1025,50 +814,45 @@ public class FileEndpoint {
          * configured. The option is a int type.
          */
         public FileConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (FileConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public FileConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (FileConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public FileConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (FileConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public FileConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (FileConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public FileConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (FileConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -1077,20 +861,18 @@ public class FileEndpoint {
          */
         public FileConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (FileConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public FileConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (FileConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -1098,632 +880,70 @@ public class FileEndpoint {
          */
         public FileConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (FileConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public FileConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (FileConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public FileConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (FileConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public FileConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (FileConsumer) this;
         }
-
         /**
          * To shuffle the list of files (sort in random order). The option is a
          * boolean type.
          */
         public FileConsumer shuffle(boolean shuffle) {
-            this.shuffle = shuffle;
+            this.properties.put("shuffle", shuffle);
             return (FileConsumer) this;
         }
-
         /**
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
          * date. The option is a java.lang.String type.
          */
         public FileConsumer sortBy(Comparator<Exchange> sortBy) {
-            this.sortBy = sortBy;
+            this.properties.put("sortBy", sortBy);
             return (FileConsumer) this;
         }
-
         /**
          * Pluggable sorter as a java.util.Comparator class. The option is a
          * java.util.Comparator<org.apache.camel.component.file.GenericFile<T>>
          * type.
          */
         public FileConsumer sorter(Comparator<Object> sorter) {
-            this.sorter = sorter;
+            this.properties.put("sorter", sorter);
             return (FileConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getDelete() {
-            return delete;
-        }
-
-        public void setDelete(Boolean delete) {
-            this.delete = delete;
-        }
-
-        public Expression getMoveFailed() {
-            return moveFailed;
-        }
-
-        public void setMoveFailed(Expression moveFailed) {
-            this.moveFailed = moveFailed;
-        }
-
-        public Boolean getNoop() {
-            return noop;
-        }
-
-        public void setNoop(Boolean noop) {
-            this.noop = noop;
-        }
-
-        public Expression getPreMove() {
-            return preMove;
-        }
-
-        public void setPreMove(Expression preMove) {
-            this.preMove = preMove;
-        }
-
-        public Boolean getPreSort() {
-            return preSort;
-        }
-
-        public void setPreSort(Boolean preSort) {
-            this.preSort = preSort;
-        }
-
-        public Boolean getRecursive() {
-            return recursive;
-        }
-
-        public void setRecursive(Boolean recursive) {
-            this.recursive = recursive;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public Boolean getDirectoryMustExist() {
-            return directoryMustExist;
-        }
-
-        public void setDirectoryMustExist(Boolean directoryMustExist) {
-            this.directoryMustExist = directoryMustExist;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public String getExtendedAttributes() {
-            return extendedAttributes;
-        }
-
-        public void setExtendedAttributes(String extendedAttributes) {
-            this.extendedAttributes = extendedAttributes;
-        }
-
-        public IdempotentRepository getInProgressRepository() {
-            return inProgressRepository;
-        }
-
-        public void setInProgressRepository(
-                IdempotentRepository inProgressRepository) {
-            this.inProgressRepository = inProgressRepository;
-        }
-
-        public String getLocalWorkDirectory() {
-            return localWorkDirectory;
-        }
-
-        public void setLocalWorkDirectory(String localWorkDirectory) {
-            this.localWorkDirectory = localWorkDirectory;
-        }
-
-        public ExceptionHandler getOnCompletionExceptionHandler() {
-            return onCompletionExceptionHandler;
-        }
-
-        public void setOnCompletionExceptionHandler(
-                ExceptionHandler onCompletionExceptionHandler) {
-            this.onCompletionExceptionHandler = onCompletionExceptionHandler;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Boolean getProbeContentType() {
-            return probeContentType;
-        }
-
-        public void setProbeContentType(Boolean probeContentType) {
-            this.probeContentType = probeContentType;
-        }
-
-        public Object getProcessStrategy() {
-            return processStrategy;
-        }
-
-        public void setProcessStrategy(Object processStrategy) {
-            this.processStrategy = processStrategy;
-        }
-
-        public Boolean getStartingDirectoryMustExist() {
-            return startingDirectoryMustExist;
-        }
-
-        public void setStartingDirectoryMustExist(
-                Boolean startingDirectoryMustExist) {
-            this.startingDirectoryMustExist = startingDirectoryMustExist;
-        }
-
-        public Boolean getStartingDirectoryMustHaveAccess() {
-            return startingDirectoryMustHaveAccess;
-        }
-
-        public void setStartingDirectoryMustHaveAccess(
-                Boolean startingDirectoryMustHaveAccess) {
-            this.startingDirectoryMustHaveAccess = startingDirectoryMustHaveAccess;
-        }
-
-        public String getAntExclude() {
-            return antExclude;
-        }
-
-        public void setAntExclude(String antExclude) {
-            this.antExclude = antExclude;
-        }
-
-        public Boolean getAntFilterCaseSensitive() {
-            return antFilterCaseSensitive;
-        }
-
-        public void setAntFilterCaseSensitive(Boolean antFilterCaseSensitive) {
-            this.antFilterCaseSensitive = antFilterCaseSensitive;
-        }
-
-        public String getAntInclude() {
-            return antInclude;
-        }
-
-        public void setAntInclude(String antInclude) {
-            this.antInclude = antInclude;
-        }
-
-        public Boolean getEagerMaxMessagesPerPoll() {
-            return eagerMaxMessagesPerPoll;
-        }
-
-        public void setEagerMaxMessagesPerPoll(Boolean eagerMaxMessagesPerPoll) {
-            this.eagerMaxMessagesPerPoll = eagerMaxMessagesPerPoll;
-        }
-
-        public String getExclude() {
-            return exclude;
-        }
-
-        public void setExclude(String exclude) {
-            this.exclude = exclude;
-        }
-
-        public Object getFilter() {
-            return filter;
-        }
-
-        public void setFilter(Object filter) {
-            this.filter = filter;
-        }
-
-        public Predicate getFilterDirectory() {
-            return filterDirectory;
-        }
-
-        public void setFilterDirectory(Predicate filterDirectory) {
-            this.filterDirectory = filterDirectory;
-        }
-
-        public Predicate getFilterFile() {
-            return filterFile;
-        }
-
-        public void setFilterFile(Predicate filterFile) {
-            this.filterFile = filterFile;
-        }
-
-        public Boolean getIdempotent() {
-            return idempotent;
-        }
-
-        public void setIdempotent(Boolean idempotent) {
-            this.idempotent = idempotent;
-        }
-
-        public Expression getIdempotentKey() {
-            return idempotentKey;
-        }
-
-        public void setIdempotentKey(Expression idempotentKey) {
-            this.idempotentKey = idempotentKey;
-        }
-
-        public IdempotentRepository getIdempotentRepository() {
-            return idempotentRepository;
-        }
-
-        public void setIdempotentRepository(
-                IdempotentRepository idempotentRepository) {
-            this.idempotentRepository = idempotentRepository;
-        }
-
-        public String getInclude() {
-            return include;
-        }
-
-        public void setInclude(String include) {
-            this.include = include;
-        }
-
-        public Integer getMaxDepth() {
-            return maxDepth;
-        }
-
-        public void setMaxDepth(Integer maxDepth) {
-            this.maxDepth = maxDepth;
-        }
-
-        public Integer getMaxMessagesPerPoll() {
-            return maxMessagesPerPoll;
-        }
-
-        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
-        }
-
-        public Integer getMinDepth() {
-            return minDepth;
-        }
-
-        public void setMinDepth(Integer minDepth) {
-            this.minDepth = minDepth;
-        }
-
-        public Expression getMove() {
-            return move;
-        }
-
-        public void setMove(Expression move) {
-            this.move = move;
-        }
-
-        public Object getExclusiveReadLockStrategy() {
-            return exclusiveReadLockStrategy;
-        }
-
-        public void setExclusiveReadLockStrategy(
-                Object exclusiveReadLockStrategy) {
-            this.exclusiveReadLockStrategy = exclusiveReadLockStrategy;
-        }
-
-        public String getReadLock() {
-            return readLock;
-        }
-
-        public void setReadLock(String readLock) {
-            this.readLock = readLock;
-        }
-
-        public Long getReadLockCheckInterval() {
-            return readLockCheckInterval;
-        }
-
-        public void setReadLockCheckInterval(Long readLockCheckInterval) {
-            this.readLockCheckInterval = readLockCheckInterval;
-        }
-
-        public Boolean getReadLockDeleteOrphanLockFiles() {
-            return readLockDeleteOrphanLockFiles;
-        }
-
-        public void setReadLockDeleteOrphanLockFiles(
-                Boolean readLockDeleteOrphanLockFiles) {
-            this.readLockDeleteOrphanLockFiles = readLockDeleteOrphanLockFiles;
-        }
-
-        public Boolean getReadLockIdempotentReleaseAsync() {
-            return readLockIdempotentReleaseAsync;
-        }
-
-        public void setReadLockIdempotentReleaseAsync(
-                Boolean readLockIdempotentReleaseAsync) {
-            this.readLockIdempotentReleaseAsync = readLockIdempotentReleaseAsync;
-        }
-
-        public Integer getReadLockIdempotentReleaseAsyncPoolSize() {
-            return readLockIdempotentReleaseAsyncPoolSize;
-        }
-
-        public void setReadLockIdempotentReleaseAsyncPoolSize(
-                Integer readLockIdempotentReleaseAsyncPoolSize) {
-            this.readLockIdempotentReleaseAsyncPoolSize = readLockIdempotentReleaseAsyncPoolSize;
-        }
-
-        public Integer getReadLockIdempotentReleaseDelay() {
-            return readLockIdempotentReleaseDelay;
-        }
-
-        public void setReadLockIdempotentReleaseDelay(
-                Integer readLockIdempotentReleaseDelay) {
-            this.readLockIdempotentReleaseDelay = readLockIdempotentReleaseDelay;
-        }
-
-        public ScheduledExecutorService getReadLockIdempotentReleaseExecutorService() {
-            return readLockIdempotentReleaseExecutorService;
-        }
-
-        public void setReadLockIdempotentReleaseExecutorService(
-                ScheduledExecutorService readLockIdempotentReleaseExecutorService) {
-            this.readLockIdempotentReleaseExecutorService = readLockIdempotentReleaseExecutorService;
-        }
-
-        public LoggingLevel getReadLockLoggingLevel() {
-            return readLockLoggingLevel;
-        }
-
-        public void setReadLockLoggingLevel(LoggingLevel readLockLoggingLevel) {
-            this.readLockLoggingLevel = readLockLoggingLevel;
-        }
-
-        public Boolean getReadLockMarkerFile() {
-            return readLockMarkerFile;
-        }
-
-        public void setReadLockMarkerFile(Boolean readLockMarkerFile) {
-            this.readLockMarkerFile = readLockMarkerFile;
-        }
-
-        public Long getReadLockMinAge() {
-            return readLockMinAge;
-        }
-
-        public void setReadLockMinAge(Long readLockMinAge) {
-            this.readLockMinAge = readLockMinAge;
-        }
-
-        public Long getReadLockMinLength() {
-            return readLockMinLength;
-        }
-
-        public void setReadLockMinLength(Long readLockMinLength) {
-            this.readLockMinLength = readLockMinLength;
-        }
-
-        public Boolean getReadLockRemoveOnCommit() {
-            return readLockRemoveOnCommit;
-        }
-
-        public void setReadLockRemoveOnCommit(Boolean readLockRemoveOnCommit) {
-            this.readLockRemoveOnCommit = readLockRemoveOnCommit;
-        }
-
-        public Boolean getReadLockRemoveOnRollback() {
-            return readLockRemoveOnRollback;
-        }
-
-        public void setReadLockRemoveOnRollback(Boolean readLockRemoveOnRollback) {
-            this.readLockRemoveOnRollback = readLockRemoveOnRollback;
-        }
-
-        public Long getReadLockTimeout() {
-            return readLockTimeout;
-        }
-
-        public void setReadLockTimeout(Long readLockTimeout) {
-            this.readLockTimeout = readLockTimeout;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
-        }
-
-        public Boolean getShuffle() {
-            return shuffle;
-        }
-
-        public void setShuffle(Boolean shuffle) {
-            this.shuffle = shuffle;
-        }
-
-        public Comparator<Exchange> getSortBy() {
-            return sortBy;
-        }
-
-        public void setSortBy(Comparator<Exchange> sortBy) {
-            this.sortBy = sortBy;
-        }
-
-        public Comparator<Object> getSorter() {
-            return sorter;
-        }
-
-        public void setSorter(Comparator<Object> sorter) {
-            this.sorter = sorter;
         }
     }
 
-    public static class FileProducer extends FileCommon<FileProducer> {
-        private GenericFileExist fileExist;
-        private Boolean flatten;
-        private Boolean jailStartingDirectory;
-        private Expression moveExisting;
-        private Expression tempFileName;
-        private String tempPrefix;
-        private Boolean allowNullBody;
-        private String chmod;
-        private String chmodDirectory;
-        private Boolean eagerDeleteTargetFile;
-        private Boolean forceWrites;
-        private Boolean keepLastModified;
-        private Object moveExistingFileStrategy;
-
+    public static class FileProducer
+            extends
+                FileCommon<FileProducer>
+            implements
+                EndpointDefinition.Producer {
+        public FileProducer(String path) {
+            super(path);
+        }
         /**
          * What to do if a file already exists with the same name. Override,
          * which is the default, replaces the existing file. Append - adds
@@ -1743,10 +963,9 @@ public class FileEndpoint {
          * org.apache.camel.component.file.GenericFileExist type.
          */
         public FileProducer fileExist(GenericFileExist fileExist) {
-            this.fileExist = fileExist;
+            this.properties.put("fileExist", fileExist);
             return (FileProducer) this;
         }
-
         /**
          * Flatten is used to flatten the file name path to strip any leading
          * paths, so it's just the file name. This allows you to consume
@@ -1757,10 +976,9 @@ public class FileEndpoint {
          * option is a boolean type.
          */
         public FileProducer flatten(boolean flatten) {
-            this.flatten = flatten;
+            this.properties.put("flatten", flatten);
             return (FileProducer) this;
         }
-
         /**
          * Used for jailing (restricting) writing files to the starting
          * directory (and sub) only. This is enabled by default to not allow
@@ -1770,10 +988,9 @@ public class FileEndpoint {
          * folders. The option is a boolean type.
          */
         public FileProducer jailStartingDirectory(boolean jailStartingDirectory) {
-            this.jailStartingDirectory = jailStartingDirectory;
+            this.properties.put("jailStartingDirectory", jailStartingDirectory);
             return (FileProducer) this;
         }
-
         /**
          * Expression (such as File Language) used to compute file name to use
          * when fileExist=Move is configured. To move files into a backup
@@ -1786,10 +1003,9 @@ public class FileEndpoint {
          * java.lang.String type.
          */
         public FileProducer moveExisting(Expression moveExisting) {
-            this.moveExisting = moveExisting;
+            this.properties.put("moveExisting", moveExisting);
             return (FileProducer) this;
         }
-
         /**
          * The same as tempPrefix option but offering a more fine grained
          * control on the naming of the temporary filename as it uses the File
@@ -1800,10 +1016,9 @@ public class FileEndpoint {
          * dir. The option is a java.lang.String type.
          */
         public FileProducer tempFileName(Expression tempFileName) {
-            this.tempFileName = tempFileName;
+            this.properties.put("tempFileName", tempFileName);
             return (FileProducer) this;
         }
-
         /**
          * This option is used to write the file using a temporary name and
          * then, after the write is complete, rename it to the real name. Can be
@@ -1813,10 +1028,9 @@ public class FileEndpoint {
          * type.
          */
         public FileProducer tempPrefix(String tempPrefix) {
-            this.tempPrefix = tempPrefix;
+            this.properties.put("tempPrefix", tempPrefix);
             return (FileProducer) this;
         }
-
         /**
          * Used to specify if a null body is allowed during file writing. If set
          * to true then an empty file will be created, when set to false, and
@@ -1827,20 +1041,18 @@ public class FileEndpoint {
          * unchanged. The option is a boolean type.
          */
         public FileProducer allowNullBody(boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
+            this.properties.put("allowNullBody", allowNullBody);
             return (FileProducer) this;
         }
-
         /**
          * Specify the file permissions which is sent by the producer, the chmod
          * value must be between 000 and 777; If there is a leading digit like
          * in 0755 we will ignore it. The option is a java.lang.String type.
          */
         public FileProducer chmod(String chmod) {
-            this.chmod = chmod;
+            this.properties.put("chmod", chmod);
             return (FileProducer) this;
         }
-
         /**
          * Specify the directory permissions used when the producer creates
          * missing directories, the chmod value must be between 000 and 777; If
@@ -1848,10 +1060,9 @@ public class FileEndpoint {
          * is a java.lang.String type.
          */
         public FileProducer chmodDirectory(String chmodDirectory) {
-            this.chmodDirectory = chmodDirectory;
+            this.properties.put("chmodDirectory", chmodDirectory);
             return (FileProducer) this;
         }
-
         /**
          * Whether or not to eagerly delete any existing target file. This
          * option only applies when you use fileExists=Override and the
@@ -1868,10 +1079,9 @@ public class FileEndpoint {
          * deleted before the move operation. The option is a boolean type.
          */
         public FileProducer eagerDeleteTargetFile(boolean eagerDeleteTargetFile) {
-            this.eagerDeleteTargetFile = eagerDeleteTargetFile;
+            this.properties.put("eagerDeleteTargetFile", eagerDeleteTargetFile);
             return (FileProducer) this;
         }
-
         /**
          * Whether to force syncing writes to the file system. You can turn this
          * off if you do not want this level of guarantee, for example if
@@ -1879,10 +1089,9 @@ public class FileEndpoint {
          * performance. The option is a boolean type.
          */
         public FileProducer forceWrites(boolean forceWrites) {
-            this.forceWrites = forceWrites;
+            this.properties.put("forceWrites", forceWrites);
             return (FileProducer) this;
         }
-
         /**
          * Will keep the last modified timestamp from the source file (if any).
          * Will use the Exchange.FILE_LAST_MODIFIED header to located the
@@ -1893,10 +1102,9 @@ public class FileEndpoint {
          * any of the ftp producers. The option is a boolean type.
          */
         public FileProducer keepLastModified(boolean keepLastModified) {
-            this.keepLastModified = keepLastModified;
+            this.properties.put("keepLastModified", keepLastModified);
             return (FileProducer) this;
         }
-
         /**
          * Strategy (Custom Strategy) used to move file with special naming
          * token to use when fileExist=Move is configured. By default, there is
@@ -1907,112 +1115,8 @@ public class FileEndpoint {
          */
         public FileProducer moveExistingFileStrategy(
                 Object moveExistingFileStrategy) {
-            this.moveExistingFileStrategy = moveExistingFileStrategy;
+            this.properties.put("moveExistingFileStrategy", moveExistingFileStrategy);
             return (FileProducer) this;
-        }
-
-        public GenericFileExist getFileExist() {
-            return fileExist;
-        }
-
-        public void setFileExist(GenericFileExist fileExist) {
-            this.fileExist = fileExist;
-        }
-
-        public Boolean getFlatten() {
-            return flatten;
-        }
-
-        public void setFlatten(Boolean flatten) {
-            this.flatten = flatten;
-        }
-
-        public Boolean getJailStartingDirectory() {
-            return jailStartingDirectory;
-        }
-
-        public void setJailStartingDirectory(Boolean jailStartingDirectory) {
-            this.jailStartingDirectory = jailStartingDirectory;
-        }
-
-        public Expression getMoveExisting() {
-            return moveExisting;
-        }
-
-        public void setMoveExisting(Expression moveExisting) {
-            this.moveExisting = moveExisting;
-        }
-
-        public Expression getTempFileName() {
-            return tempFileName;
-        }
-
-        public void setTempFileName(Expression tempFileName) {
-            this.tempFileName = tempFileName;
-        }
-
-        public String getTempPrefix() {
-            return tempPrefix;
-        }
-
-        public void setTempPrefix(String tempPrefix) {
-            this.tempPrefix = tempPrefix;
-        }
-
-        public Boolean getAllowNullBody() {
-            return allowNullBody;
-        }
-
-        public void setAllowNullBody(Boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
-        }
-
-        public String getChmod() {
-            return chmod;
-        }
-
-        public void setChmod(String chmod) {
-            this.chmod = chmod;
-        }
-
-        public String getChmodDirectory() {
-            return chmodDirectory;
-        }
-
-        public void setChmodDirectory(String chmodDirectory) {
-            this.chmodDirectory = chmodDirectory;
-        }
-
-        public Boolean getEagerDeleteTargetFile() {
-            return eagerDeleteTargetFile;
-        }
-
-        public void setEagerDeleteTargetFile(Boolean eagerDeleteTargetFile) {
-            this.eagerDeleteTargetFile = eagerDeleteTargetFile;
-        }
-
-        public Boolean getForceWrites() {
-            return forceWrites;
-        }
-
-        public void setForceWrites(Boolean forceWrites) {
-            this.forceWrites = forceWrites;
-        }
-
-        public Boolean getKeepLastModified() {
-            return keepLastModified;
-        }
-
-        public void setKeepLastModified(Boolean keepLastModified) {
-            this.keepLastModified = keepLastModified;
-        }
-
-        public Object getMoveExistingFileStrategy() {
-            return moveExistingFileStrategy;
-        }
-
-        public void setMoveExistingFileStrategy(Object moveExistingFileStrategy) {
-            this.moveExistingFileStrategy = moveExistingFileStrategy;
         }
     }
 

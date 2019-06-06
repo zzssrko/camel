@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,160 +32,123 @@ import org.apache.camel.spi.ExceptionHandler;
 public class JMXEndpoint {
 
 
-    public static class JMXCommon<T extends EndpointConfiguration>
+    public static class JMXCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String serverURL;
-        private String format;
-        private Long granularityPeriod;
-        private String monitorType;
-        private String objectDomain;
-        private String objectName;
-        private String observedAttribute;
-        private Boolean basicPropertyBinding;
-        private ExecutorService executorService;
-        private Object handback;
-        private Object notificationFilter;
-        private Map<String, String> objectProperties;
-        private Integer reconnectDelay;
-        private Boolean reconnectOnConnectionFailure;
-        private Boolean synchronous;
-        private Boolean testConnectionOnStartup;
-        private Integer initThreshold;
-        private Integer modulus;
-        private Integer offset;
-        private Boolean differenceMode;
-        private Boolean notifyHigh;
-        private Boolean notifyLow;
-        private Double thresholdHigh;
-        private Double thresholdLow;
-        private String password;
-        private String user;
-
+                EndpointDefinition<T> {
+        JMXCommon(String path) {
+            super("jmx", path);
+        }
         /**
          * Server url comes from the remaining endpoint. Use platform to connect
          * to local JVM. The option is a java.lang.String type.
          */
         public T serverURL(String serverURL) {
-            this.serverURL = serverURL;
+            this.properties.put("serverURL", serverURL);
             return (T) this;
         }
-
         /**
          * Format for the message body. Either xml or raw. If xml, the
          * notification is serialized to xml. If raw, then the raw java object
          * is set as the body. The option is a java.lang.String type.
          */
         public T format(String format) {
-            this.format = format;
+            this.properties.put("format", format);
             return (T) this;
         }
-
         /**
          * The frequency to poll the bean to check the monitor (monitor types
          * only). The option is a long type.
          */
         public T granularityPeriod(long granularityPeriod) {
-            this.granularityPeriod = granularityPeriod;
+            this.properties.put("granularityPeriod", granularityPeriod);
             return (T) this;
         }
-
         /**
          * The type of monitor to create. One of string, gauge, counter (monitor
          * types only). The option is a java.lang.String type.
          */
         public T monitorType(String monitorType) {
-            this.monitorType = monitorType;
+            this.properties.put("monitorType", monitorType);
             return (T) this;
         }
-
         /**
          * The domain for the mbean you're connecting to. The option is a
          * java.lang.String type.
          */
         public T objectDomain(String objectDomain) {
-            this.objectDomain = objectDomain;
+            this.properties.put("objectDomain", objectDomain);
             return (T) this;
         }
-
         /**
          * The name key for the mbean you're connecting to. This value is
          * mutually exclusive with the object properties that get passed. The
          * option is a java.lang.String type.
          */
         public T objectName(String objectName) {
-            this.objectName = objectName;
+            this.properties.put("objectName", objectName);
             return (T) this;
         }
-
         /**
          * The attribute to observe for the monitor bean or consumer. The option
          * is a java.lang.String type.
          */
         public T observedAttribute(String observedAttribute) {
-            this.observedAttribute = observedAttribute;
+            this.properties.put("observedAttribute", observedAttribute);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use a custom shared thread pool for the consumers. By default each
          * consume has their own thread-pool to process and route notifications.
          * The option is a java.util.concurrent.ExecutorService type.
          */
         public T executorService(ExecutorService executorService) {
-            this.executorService = executorService;
+            this.properties.put("executorService", executorService);
             return (T) this;
         }
-
         /**
          * Value to handback to the listener when a notification is received.
          * This value will be put in the message header with the key
          * jmx.handback. The option is a java.lang.Object type.
          */
         public T handback(Object handback) {
-            this.handback = handback;
+            this.properties.put("handback", handback);
             return (T) this;
         }
-
         /**
          * Reference to a bean that implements the NotificationFilter. The
          * option is a javax.management.NotificationFilter type.
          */
         public T notificationFilter(Object notificationFilter) {
-            this.notificationFilter = notificationFilter;
+            this.properties.put("notificationFilter", notificationFilter);
             return (T) this;
         }
-
         /**
          * Properties for the object name. These values will be used if the
          * objectName param is not set. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
         public T objectProperties(Map<String, String> objectProperties) {
-            this.objectProperties = objectProperties;
+            this.properties.put("objectProperties", objectProperties);
             return (T) this;
         }
-
         /**
          * The number of seconds to wait before attempting to retry
          * establishment of the initial connection or attempt to reconnect a
          * lost connection. The option is a int type.
          */
         public T reconnectDelay(int reconnectDelay) {
-            this.reconnectDelay = reconnectDelay;
+            this.properties.put("reconnectDelay", reconnectDelay);
             return (T) this;
         }
-
         /**
          * If true the consumer will attempt to reconnect to the JMX server when
          * any connection failure occurs. The consumer will attempt to
@@ -194,20 +158,18 @@ public class JMXEndpoint {
          */
         public T reconnectOnConnectionFailure(
                 boolean reconnectOnConnectionFailure) {
-            this.reconnectOnConnectionFailure = reconnectOnConnectionFailure;
+            this.properties.put("reconnectOnConnectionFailure", reconnectOnConnectionFailure);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * If true the consumer will throw an exception if unable to establish
          * the JMX connection upon startup. If false, the consumer will attempt
@@ -216,320 +178,101 @@ public class JMXEndpoint {
          * The option is a boolean type.
          */
         public T testConnectionOnStartup(boolean testConnectionOnStartup) {
-            this.testConnectionOnStartup = testConnectionOnStartup;
+            this.properties.put("testConnectionOnStartup", testConnectionOnStartup);
             return (T) this;
         }
-
         /**
          * Initial threshold for the monitor. The value must exceed this before
          * notifications are fired (counter monitor only). The option is a int
          * type.
          */
         public T initThreshold(int initThreshold) {
-            this.initThreshold = initThreshold;
+            this.properties.put("initThreshold", initThreshold);
             return (T) this;
         }
-
         /**
          * The value at which the counter is reset to zero (counter monitor
          * only). The option is a int type.
          */
         public T modulus(int modulus) {
-            this.modulus = modulus;
+            this.properties.put("modulus", modulus);
             return (T) this;
         }
-
         /**
          * The amount to increment the threshold after it's been exceeded
          * (counter monitor only). The option is a int type.
          */
         public T offset(int offset) {
-            this.offset = offset;
+            this.properties.put("offset", offset);
             return (T) this;
         }
-
         /**
          * If true, then the value reported in the notification is the
          * difference from the threshold as opposed to the value itself (counter
          * and gauge monitor only). The option is a boolean type.
          */
         public T differenceMode(boolean differenceMode) {
-            this.differenceMode = differenceMode;
+            this.properties.put("differenceMode", differenceMode);
             return (T) this;
         }
-
         /**
          * If true, the gauge will fire a notification when the high threshold
          * is exceeded (gauge monitor only). The option is a boolean type.
          */
         public T notifyHigh(boolean notifyHigh) {
-            this.notifyHigh = notifyHigh;
+            this.properties.put("notifyHigh", notifyHigh);
             return (T) this;
         }
-
         /**
          * If true, the gauge will fire a notification when the low threshold is
          * exceeded (gauge monitor only). The option is a boolean type.
          */
         public T notifyLow(boolean notifyLow) {
-            this.notifyLow = notifyLow;
+            this.properties.put("notifyLow", notifyLow);
             return (T) this;
         }
-
         /**
          * Value for the gauge's high threshold (gauge monitor only). The option
          * is a java.lang.Double type.
          */
         public T thresholdHigh(Double thresholdHigh) {
-            this.thresholdHigh = thresholdHigh;
+            this.properties.put("thresholdHigh", thresholdHigh);
             return (T) this;
         }
-
         /**
          * Value for the gauge's low threshold (gauge monitor only). The option
          * is a java.lang.Double type.
          */
         public T thresholdLow(Double thresholdLow) {
-            this.thresholdLow = thresholdLow;
+            this.properties.put("thresholdLow", thresholdLow);
             return (T) this;
         }
-
         /**
          * Credentials for making a remote connection. The option is a
          * java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Credentials for making a remote connection. The option is a
          * java.lang.String type.
          */
         public T user(String user) {
-            this.user = user;
+            this.properties.put("user", user);
             return (T) this;
-        }
-
-        public String getServerURL() {
-            return serverURL;
-        }
-
-        public void setServerURL(String serverURL) {
-            this.serverURL = serverURL;
-        }
-
-        public String getFormat() {
-            return format;
-        }
-
-        public void setFormat(String format) {
-            this.format = format;
-        }
-
-        public Long getGranularityPeriod() {
-            return granularityPeriod;
-        }
-
-        public void setGranularityPeriod(Long granularityPeriod) {
-            this.granularityPeriod = granularityPeriod;
-        }
-
-        public String getMonitorType() {
-            return monitorType;
-        }
-
-        public void setMonitorType(String monitorType) {
-            this.monitorType = monitorType;
-        }
-
-        public String getObjectDomain() {
-            return objectDomain;
-        }
-
-        public void setObjectDomain(String objectDomain) {
-            this.objectDomain = objectDomain;
-        }
-
-        public String getObjectName() {
-            return objectName;
-        }
-
-        public void setObjectName(String objectName) {
-            this.objectName = objectName;
-        }
-
-        public String getObservedAttribute() {
-            return observedAttribute;
-        }
-
-        public void setObservedAttribute(String observedAttribute) {
-            this.observedAttribute = observedAttribute;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public ExecutorService getExecutorService() {
-            return executorService;
-        }
-
-        public void setExecutorService(ExecutorService executorService) {
-            this.executorService = executorService;
-        }
-
-        public Object getHandback() {
-            return handback;
-        }
-
-        public void setHandback(Object handback) {
-            this.handback = handback;
-        }
-
-        public Object getNotificationFilter() {
-            return notificationFilter;
-        }
-
-        public void setNotificationFilter(Object notificationFilter) {
-            this.notificationFilter = notificationFilter;
-        }
-
-        public Map<String, String> getObjectProperties() {
-            return objectProperties;
-        }
-
-        public void setObjectProperties(Map<String, String> objectProperties) {
-            this.objectProperties = objectProperties;
-        }
-
-        public Integer getReconnectDelay() {
-            return reconnectDelay;
-        }
-
-        public void setReconnectDelay(Integer reconnectDelay) {
-            this.reconnectDelay = reconnectDelay;
-        }
-
-        public Boolean getReconnectOnConnectionFailure() {
-            return reconnectOnConnectionFailure;
-        }
-
-        public void setReconnectOnConnectionFailure(
-                Boolean reconnectOnConnectionFailure) {
-            this.reconnectOnConnectionFailure = reconnectOnConnectionFailure;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Boolean getTestConnectionOnStartup() {
-            return testConnectionOnStartup;
-        }
-
-        public void setTestConnectionOnStartup(Boolean testConnectionOnStartup) {
-            this.testConnectionOnStartup = testConnectionOnStartup;
-        }
-
-        public Integer getInitThreshold() {
-            return initThreshold;
-        }
-
-        public void setInitThreshold(Integer initThreshold) {
-            this.initThreshold = initThreshold;
-        }
-
-        public Integer getModulus() {
-            return modulus;
-        }
-
-        public void setModulus(Integer modulus) {
-            this.modulus = modulus;
-        }
-
-        public Integer getOffset() {
-            return offset;
-        }
-
-        public void setOffset(Integer offset) {
-            this.offset = offset;
-        }
-
-        public Boolean getDifferenceMode() {
-            return differenceMode;
-        }
-
-        public void setDifferenceMode(Boolean differenceMode) {
-            this.differenceMode = differenceMode;
-        }
-
-        public Boolean getNotifyHigh() {
-            return notifyHigh;
-        }
-
-        public void setNotifyHigh(Boolean notifyHigh) {
-            this.notifyHigh = notifyHigh;
-        }
-
-        public Boolean getNotifyLow() {
-            return notifyLow;
-        }
-
-        public void setNotifyLow(Boolean notifyLow) {
-            this.notifyLow = notifyLow;
-        }
-
-        public Double getThresholdHigh() {
-            return thresholdHigh;
-        }
-
-        public void setThresholdHigh(Double thresholdHigh) {
-            this.thresholdHigh = thresholdHigh;
-        }
-
-        public Double getThresholdLow() {
-            return thresholdLow;
-        }
-
-        public void setThresholdLow(Double thresholdLow) {
-            this.thresholdLow = thresholdLow;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getUser() {
-            return user;
-        }
-
-        public void setUser(String user) {
-            this.user = user;
         }
     }
 
-    public static class JMXConsumer extends JMXCommon<JMXConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private Boolean notifyDiffer;
-        private Boolean notifyMatch;
-        private String stringToCompare;
-
+    public static class JMXConsumer
+            extends
+                JMXCommon<JMXConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public JMXConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -540,10 +283,9 @@ public class JMXEndpoint {
          * ignored. The option is a boolean type.
          */
         public JMXConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (JMXConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -552,19 +294,17 @@ public class JMXEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public JMXConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (JMXConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public JMXConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (JMXConsumer) this;
         }
-
         /**
          * If true, will fire a notification when the string attribute differs
          * from the string to compare (string monitor or consumer). By default
@@ -572,10 +312,9 @@ public class JMXEndpoint {
          * compare has been configured. The option is a boolean type.
          */
         public JMXConsumer notifyDiffer(boolean notifyDiffer) {
-            this.notifyDiffer = notifyDiffer;
+            this.properties.put("notifyDiffer", notifyDiffer);
             return (JMXConsumer) this;
         }
-
         /**
          * If true, will fire a notification when the string attribute matches
          * the string to compare (string monitor or consumer). By default the
@@ -583,10 +322,9 @@ public class JMXEndpoint {
          * compare has been configured. The option is a boolean type.
          */
         public JMXConsumer notifyMatch(boolean notifyMatch) {
-            this.notifyMatch = notifyMatch;
+            this.properties.put("notifyMatch", notifyMatch);
             return (JMXConsumer) this;
         }
-
         /**
          * Value for attribute to compare (string monitor or consumer). By
          * default the consumer will notify match if observed attribute and
@@ -594,59 +332,18 @@ public class JMXEndpoint {
          * java.lang.String type.
          */
         public JMXConsumer stringToCompare(String stringToCompare) {
-            this.stringToCompare = stringToCompare;
+            this.properties.put("stringToCompare", stringToCompare);
             return (JMXConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public Boolean getNotifyDiffer() {
-            return notifyDiffer;
-        }
-
-        public void setNotifyDiffer(Boolean notifyDiffer) {
-            this.notifyDiffer = notifyDiffer;
-        }
-
-        public Boolean getNotifyMatch() {
-            return notifyMatch;
-        }
-
-        public void setNotifyMatch(Boolean notifyMatch) {
-            this.notifyMatch = notifyMatch;
-        }
-
-        public String getStringToCompare() {
-            return stringToCompare;
-        }
-
-        public void setStringToCompare(String stringToCompare) {
-            this.stringToCompare = stringToCompare;
         }
     }
 
-    public static class JMXProducer extends JMXCommon<JMXProducer> {
+    public static class JMXProducer
+            extends
+                JMXCommon<JMXProducer>
+            implements
+                EndpointDefinition.Producer {
+        public JMXProducer(String path) {
+            super(path);
+        }
     }
 }

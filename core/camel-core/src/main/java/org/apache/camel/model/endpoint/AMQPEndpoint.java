@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.HeaderFilterStrategy;
 
@@ -31,73 +32,28 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class AMQPEndpoint {
 
 
-    public static class AMQPCommon<T extends EndpointConfiguration>
+    public static class AMQPCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String destinationType;
-        private String destinationName;
-        private String clientId;
-        private Object connectionFactory;
-        private Boolean disableReplyTo;
-        private String durableSubscriptionName;
-        private JmsMessageType jmsMessageType;
-        private Boolean testConnectionOnStartup;
-        private Boolean allowSerializedHeaders;
-        private Boolean asyncStartListener;
-        private Boolean asyncStopListener;
-        private Boolean basicPropertyBinding;
-        private Object destinationResolver;
-        private Object errorHandler;
-        private Object exceptionListener;
-        private HeaderFilterStrategy headerFilterStrategy;
-        private Integer idleConsumerLimit;
-        private Integer idleTaskExecutionLimit;
-        private Boolean includeAllJMSXProperties;
-        private Object jmsKeyFormatStrategy;
-        private Boolean mapJmsMessage;
-        private Integer maxMessagesPerTask;
-        private Object messageConverter;
-        private Object messageCreatedStrategy;
-        private Boolean messageIdEnabled;
-        private Object messageListenerContainerFactory;
-        private Boolean messageTimestampEnabled;
-        private Boolean pubSubNoLocal;
-        private Long receiveTimeout;
-        private Long recoveryInterval;
-        private Long requestTimeoutCheckerInterval;
-        private Boolean synchronous;
-        private Boolean transferException;
-        private Boolean transferExchange;
-        private Boolean transferFault;
-        private Boolean useMessageIDAsCorrelationID;
-        private Integer waitForProvisionCorrelationToBeUpdatedCounter;
-        private Long waitForProvisionCorrelationToBeUpdatedThreadSleepingTime;
-        private String password;
-        private String username;
-        private Boolean transacted;
-        private Boolean lazyCreateTransactionManager;
-        private Object transactionManager;
-        private String transactionName;
-        private Integer transactionTimeout;
-
+                EndpointDefinition<T> {
+        AMQPCommon(String path) {
+            super("amqp", path);
+        }
         /**
          * The kind of destination to use. The option is a java.lang.String
          * type.
          */
         public T destinationType(String destinationType) {
-            this.destinationType = destinationType;
+            this.properties.put("destinationType", destinationType);
             return (T) this;
         }
-
         /**
          * Name of the queue or topic to use as destination. The option is a
          * java.lang.String type.
          */
         public T destinationName(String destinationName) {
-            this.destinationName = destinationName;
+            this.properties.put("destinationName", destinationName);
             return (T) this;
         }
-
         /**
          * Sets the JMS client ID to use. Note that this value, if specified,
          * must be unique and can only be used by a single JMS connection
@@ -106,10 +62,9 @@ public class AMQPEndpoint {
          * Topics instead. The option is a java.lang.String type.
          */
         public T clientId(String clientId) {
-            this.clientId = clientId;
+            this.properties.put("clientId", clientId);
             return (T) this;
         }
-
         /**
          * Sets the default connection factory to be used if a connection
          * factory is not specified for either
@@ -118,10 +73,9 @@ public class AMQPEndpoint {
          * javax.jms.ConnectionFactory type.
          */
         public T connectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
+            this.properties.put("connectionFactory", connectionFactory);
             return (T) this;
         }
-
         /**
          * Specifies whether Camel ignores the JMSReplyTo header in messages. If
          * true, Camel does not send a reply back to the destination specified
@@ -134,20 +88,18 @@ public class AMQPEndpoint {
          * boolean type.
          */
         public T disableReplyTo(boolean disableReplyTo) {
-            this.disableReplyTo = disableReplyTo;
+            this.properties.put("disableReplyTo", disableReplyTo);
             return (T) this;
         }
-
         /**
          * The durable subscriber name for specifying durable topic
          * subscriptions. The clientId option must be configured as well. The
          * option is a java.lang.String type.
          */
         public T durableSubscriptionName(String durableSubscriptionName) {
-            this.durableSubscriptionName = durableSubscriptionName;
+            this.properties.put("durableSubscriptionName", durableSubscriptionName);
             return (T) this;
         }
-
         /**
          * Allows you to force the use of a specific javax.jms.Message
          * implementation for sending JMS messages. Possible values are: Bytes,
@@ -157,10 +109,9 @@ public class AMQPEndpoint {
          * org.apache.camel.component.jms.JmsMessageType type.
          */
         public T jmsMessageType(JmsMessageType jmsMessageType) {
-            this.jmsMessageType = jmsMessageType;
+            this.properties.put("jmsMessageType", jmsMessageType);
             return (T) this;
         }
-
         /**
          * Specifies whether to test the connection on startup. This ensures
          * that when Camel starts that all the JMS consumers have a valid
@@ -170,10 +121,9 @@ public class AMQPEndpoint {
          * The option is a boolean type.
          */
         public T testConnectionOnStartup(boolean testConnectionOnStartup) {
-            this.testConnectionOnStartup = testConnectionOnStartup;
+            this.properties.put("testConnectionOnStartup", testConnectionOnStartup);
             return (T) this;
         }
-
         /**
          * Controls whether or not to include serialized headers. Applies only
          * when isTransferExchange() is true. This requires that the objects are
@@ -181,10 +131,9 @@ public class AMQPEndpoint {
          * it at WARN level. The option is a boolean type.
          */
         public T allowSerializedHeaders(boolean allowSerializedHeaders) {
-            this.allowSerializedHeaders = allowSerializedHeaders;
+            this.properties.put("allowSerializedHeaders", allowSerializedHeaders);
             return (T) this;
         }
-
         /**
          * Whether to startup the JmsConsumer message listener asynchronously,
          * when starting a route. For example if a JmsConsumer cannot get a
@@ -199,29 +148,26 @@ public class AMQPEndpoint {
          * boolean type.
          */
         public T asyncStartListener(boolean asyncStartListener) {
-            this.asyncStartListener = asyncStartListener;
+            this.properties.put("asyncStartListener", asyncStartListener);
             return (T) this;
         }
-
         /**
          * Whether to stop the JmsConsumer message listener asynchronously, when
          * stopping a route. The option is a boolean type.
          */
         public T asyncStopListener(boolean asyncStopListener) {
-            this.asyncStopListener = asyncStopListener;
+            this.properties.put("asyncStopListener", asyncStopListener);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * A pluggable
          * org.springframework.jms.support.destination.DestinationResolver that
@@ -230,10 +176,9 @@ public class AMQPEndpoint {
          * org.springframework.jms.support.destination.DestinationResolver type.
          */
         public T destinationResolver(Object destinationResolver) {
-            this.destinationResolver = destinationResolver;
+            this.properties.put("destinationResolver", destinationResolver);
             return (T) this;
         }
-
         /**
          * Specifies a org.springframework.util.ErrorHandler to be invoked in
          * case of any uncaught exceptions thrown while processing a Message. By
@@ -245,39 +190,35 @@ public class AMQPEndpoint {
          * org.springframework.util.ErrorHandler type.
          */
         public T errorHandler(Object errorHandler) {
-            this.errorHandler = errorHandler;
+            this.properties.put("errorHandler", errorHandler);
             return (T) this;
         }
-
         /**
          * Specifies the JMS Exception Listener that is to be notified of any
          * underlying JMS exceptions. The option is a
          * javax.jms.ExceptionListener type.
          */
         public T exceptionListener(Object exceptionListener) {
-            this.exceptionListener = exceptionListener;
+            this.properties.put("exceptionListener", exceptionListener);
             return (T) this;
         }
-
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
-
         /**
          * Specify the limit for the number of consumers that are allowed to be
          * idle at any given time. The option is a int type.
          */
         public T idleConsumerLimit(int idleConsumerLimit) {
-            this.idleConsumerLimit = idleConsumerLimit;
+            this.properties.put("idleConsumerLimit", idleConsumerLimit);
             return (T) this;
         }
-
         /**
          * Specifies the limit for idle executions of a receive task, not having
          * received any message within its execution. If this limit is reached,
@@ -287,10 +228,9 @@ public class AMQPEndpoint {
          * is a int type.
          */
         public T idleTaskExecutionLimit(int idleTaskExecutionLimit) {
-            this.idleTaskExecutionLimit = idleTaskExecutionLimit;
+            this.properties.put("idleTaskExecutionLimit", idleTaskExecutionLimit);
             return (T) this;
         }
-
         /**
          * Whether to include all JMSXxxx properties when mapping from JMS to
          * Camel Message. Setting this to true will include properties such as
@@ -299,10 +239,9 @@ public class AMQPEndpoint {
          * boolean type.
          */
         public T includeAllJMSXProperties(boolean includeAllJMSXProperties) {
-            this.includeAllJMSXProperties = includeAllJMSXProperties;
+            this.properties.put("includeAllJMSXProperties", includeAllJMSXProperties);
             return (T) this;
         }
-
         /**
          * Pluggable strategy for encoding and decoding JMS keys so they can be
          * compliant with the JMS specification. Camel provides two
@@ -315,20 +254,18 @@ public class AMQPEndpoint {
          * using the # notation. The option is a java.lang.String type.
          */
         public T jmsKeyFormatStrategy(Object jmsKeyFormatStrategy) {
-            this.jmsKeyFormatStrategy = jmsKeyFormatStrategy;
+            this.properties.put("jmsKeyFormatStrategy", jmsKeyFormatStrategy);
             return (T) this;
         }
-
         /**
          * Specifies whether Camel should auto map the received JMS message to a
          * suited payload type, such as javax.jms.TextMessage to a String etc.
          * The option is a boolean type.
          */
         public T mapJmsMessage(boolean mapJmsMessage) {
-            this.mapJmsMessage = mapJmsMessage;
+            this.properties.put("mapJmsMessage", mapJmsMessage);
             return (T) this;
         }
-
         /**
          * The number of messages per task. -1 is unlimited. If you use a range
          * for concurrent consumers (eg min max), then this option can be used
@@ -336,10 +273,9 @@ public class AMQPEndpoint {
          * shrink when less work is required. The option is a int type.
          */
         public T maxMessagesPerTask(int maxMessagesPerTask) {
-            this.maxMessagesPerTask = maxMessagesPerTask;
+            this.properties.put("maxMessagesPerTask", maxMessagesPerTask);
             return (T) this;
         }
-
         /**
          * To use a custom Spring
          * org.springframework.jms.support.converter.MessageConverter so you can
@@ -347,10 +283,9 @@ public class AMQPEndpoint {
          * org.springframework.jms.support.converter.MessageConverter type.
          */
         public T messageConverter(Object messageConverter) {
-            this.messageConverter = messageConverter;
+            this.properties.put("messageConverter", messageConverter);
             return (T) this;
         }
-
         /**
          * To use the given MessageCreatedStrategy which are invoked when Camel
          * creates new instances of javax.jms.Message objects when Camel is
@@ -358,10 +293,9 @@ public class AMQPEndpoint {
          * org.apache.camel.component.jms.MessageCreatedStrategy type.
          */
         public T messageCreatedStrategy(Object messageCreatedStrategy) {
-            this.messageCreatedStrategy = messageCreatedStrategy;
+            this.properties.put("messageCreatedStrategy", messageCreatedStrategy);
             return (T) this;
         }
-
         /**
          * When sending, specifies whether message IDs should be added. This is
          * just an hint to the JMS Broker. If the JMS provider accepts this
@@ -370,10 +304,9 @@ public class AMQPEndpoint {
          * unique value. The option is a boolean type.
          */
         public T messageIdEnabled(boolean messageIdEnabled) {
-            this.messageIdEnabled = messageIdEnabled;
+            this.properties.put("messageIdEnabled", messageIdEnabled);
             return (T) this;
         }
-
         /**
          * Registry ID of the MessageListenerContainerFactory used to determine
          * what
@@ -384,10 +317,9 @@ public class AMQPEndpoint {
          */
         public T messageListenerContainerFactory(
                 Object messageListenerContainerFactory) {
-            this.messageListenerContainerFactory = messageListenerContainerFactory;
+            this.properties.put("messageListenerContainerFactory", messageListenerContainerFactory);
             return (T) this;
         }
-
         /**
          * Specifies whether timestamps should be enabled by default on sending
          * messages. This is just an hint to the JMS Broker. If the JMS provider
@@ -396,38 +328,34 @@ public class AMQPEndpoint {
          * its normal value. The option is a boolean type.
          */
         public T messageTimestampEnabled(boolean messageTimestampEnabled) {
-            this.messageTimestampEnabled = messageTimestampEnabled;
+            this.properties.put("messageTimestampEnabled", messageTimestampEnabled);
             return (T) this;
         }
-
         /**
          * Specifies whether to inhibit the delivery of messages published by
          * its own connection. The option is a boolean type.
          */
         public T pubSubNoLocal(boolean pubSubNoLocal) {
-            this.pubSubNoLocal = pubSubNoLocal;
+            this.properties.put("pubSubNoLocal", pubSubNoLocal);
             return (T) this;
         }
-
         /**
          * The timeout for receiving messages (in milliseconds). The option is a
          * long type.
          */
         public T receiveTimeout(long receiveTimeout) {
-            this.receiveTimeout = receiveTimeout;
+            this.properties.put("receiveTimeout", receiveTimeout);
             return (T) this;
         }
-
         /**
          * Specifies the interval between recovery attempts, i.e. when a
          * connection is being refreshed, in milliseconds. The default is 5000
          * ms, that is, 5 seconds. The option is a long type.
          */
         public T recoveryInterval(long recoveryInterval) {
-            this.recoveryInterval = recoveryInterval;
+            this.properties.put("recoveryInterval", recoveryInterval);
             return (T) this;
         }
-
         /**
          * Configures how often Camel should check for timed out Exchanges when
          * doing request/reply over JMS. By default Camel checks once per
@@ -437,20 +365,18 @@ public class AMQPEndpoint {
          */
         public T requestTimeoutCheckerInterval(
                 long requestTimeoutCheckerInterval) {
-            this.requestTimeoutCheckerInterval = requestTimeoutCheckerInterval;
+            this.properties.put("requestTimeoutCheckerInterval", requestTimeoutCheckerInterval);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * If enabled and you are using Request Reply messaging (InOut) and an
          * Exchange failed on the consumer side, then the caused Exception will
@@ -465,10 +391,9 @@ public class AMQPEndpoint {
          * The option is a boolean type.
          */
         public T transferException(boolean transferException) {
-            this.transferException = transferException;
+            this.properties.put("transferException", transferException);
             return (T) this;
         }
-
         /**
          * You can transfer the exchange over the wire instead of just the body
          * and headers. The following fields are transferred: In body, Out body,
@@ -480,10 +405,9 @@ public class AMQPEndpoint {
          * a regular payload. The option is a boolean type.
          */
         public T transferExchange(boolean transferExchange) {
-            this.transferExchange = transferExchange;
+            this.properties.put("transferExchange", transferExchange);
             return (T) this;
         }
-
         /**
          * If enabled and you are using Request Reply messaging (InOut) and an
          * Exchange failed with a SOAP fault (not exception) on the consumer
@@ -496,19 +420,17 @@ public class AMQPEndpoint {
          * based such as cxf or spring-ws. The option is a boolean type.
          */
         public T transferFault(boolean transferFault) {
-            this.transferFault = transferFault;
+            this.properties.put("transferFault", transferFault);
             return (T) this;
         }
-
         /**
          * Specifies whether JMSMessageID should always be used as
          * JMSCorrelationID for InOut messages. The option is a boolean type.
          */
         public T useMessageIDAsCorrelationID(boolean useMessageIDAsCorrelationID) {
-            this.useMessageIDAsCorrelationID = useMessageIDAsCorrelationID;
+            this.properties.put("useMessageIDAsCorrelationID", useMessageIDAsCorrelationID);
             return (T) this;
         }
-
         /**
          * Number of times to wait for provisional correlation id to be updated
          * to the actual correlation id when doing request/reply over JMS and
@@ -517,49 +439,44 @@ public class AMQPEndpoint {
          */
         public T waitForProvisionCorrelationToBeUpdatedCounter(
                 int waitForProvisionCorrelationToBeUpdatedCounter) {
-            this.waitForProvisionCorrelationToBeUpdatedCounter = waitForProvisionCorrelationToBeUpdatedCounter;
+            this.properties.put("waitForProvisionCorrelationToBeUpdatedCounter", waitForProvisionCorrelationToBeUpdatedCounter);
             return (T) this;
         }
-
         /**
          * Interval in millis to sleep each time while waiting for provisional
          * correlation id to be updated. The option is a long type.
          */
         public T waitForProvisionCorrelationToBeUpdatedThreadSleepingTime(
                 long waitForProvisionCorrelationToBeUpdatedThreadSleepingTime) {
-            this.waitForProvisionCorrelationToBeUpdatedThreadSleepingTime = waitForProvisionCorrelationToBeUpdatedThreadSleepingTime;
+            this.properties.put("waitForProvisionCorrelationToBeUpdatedThreadSleepingTime", waitForProvisionCorrelationToBeUpdatedThreadSleepingTime);
             return (T) this;
         }
-
         /**
          * Password to use with the ConnectionFactory. You can also configure
          * username/password directly on the ConnectionFactory. The option is a
          * java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Username to use with the ConnectionFactory. You can also configure
          * username/password directly on the ConnectionFactory. The option is a
          * java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
         }
-
         /**
          * Specifies whether to use transacted mode. The option is a boolean
          * type.
          */
         public T transacted(boolean transacted) {
-            this.transacted = transacted;
+            this.properties.put("transacted", transacted);
             return (T) this;
         }
-
         /**
          * If true, Camel will create a JmsTransactionManager, if there is no
          * transactionManager injected when option transacted=true. The option
@@ -567,433 +484,43 @@ public class AMQPEndpoint {
          */
         public T lazyCreateTransactionManager(
                 boolean lazyCreateTransactionManager) {
-            this.lazyCreateTransactionManager = lazyCreateTransactionManager;
+            this.properties.put("lazyCreateTransactionManager", lazyCreateTransactionManager);
             return (T) this;
         }
-
         /**
          * The Spring transaction manager to use. The option is a
          * org.springframework.transaction.PlatformTransactionManager type.
          */
         public T transactionManager(Object transactionManager) {
-            this.transactionManager = transactionManager;
+            this.properties.put("transactionManager", transactionManager);
             return (T) this;
         }
-
         /**
          * The name of the transaction to use. The option is a java.lang.String
          * type.
          */
         public T transactionName(String transactionName) {
-            this.transactionName = transactionName;
+            this.properties.put("transactionName", transactionName);
             return (T) this;
         }
-
         /**
          * The timeout value of the transaction (in seconds), if using
          * transacted mode. The option is a int type.
          */
         public T transactionTimeout(int transactionTimeout) {
-            this.transactionTimeout = transactionTimeout;
+            this.properties.put("transactionTimeout", transactionTimeout);
             return (T) this;
-        }
-
-        public String getDestinationType() {
-            return destinationType;
-        }
-
-        public void setDestinationType(String destinationType) {
-            this.destinationType = destinationType;
-        }
-
-        public String getDestinationName() {
-            return destinationName;
-        }
-
-        public void setDestinationName(String destinationName) {
-            this.destinationName = destinationName;
-        }
-
-        public String getClientId() {
-            return clientId;
-        }
-
-        public void setClientId(String clientId) {
-            this.clientId = clientId;
-        }
-
-        public Object getConnectionFactory() {
-            return connectionFactory;
-        }
-
-        public void setConnectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
-        }
-
-        public Boolean getDisableReplyTo() {
-            return disableReplyTo;
-        }
-
-        public void setDisableReplyTo(Boolean disableReplyTo) {
-            this.disableReplyTo = disableReplyTo;
-        }
-
-        public String getDurableSubscriptionName() {
-            return durableSubscriptionName;
-        }
-
-        public void setDurableSubscriptionName(String durableSubscriptionName) {
-            this.durableSubscriptionName = durableSubscriptionName;
-        }
-
-        public JmsMessageType getJmsMessageType() {
-            return jmsMessageType;
-        }
-
-        public void setJmsMessageType(JmsMessageType jmsMessageType) {
-            this.jmsMessageType = jmsMessageType;
-        }
-
-        public Boolean getTestConnectionOnStartup() {
-            return testConnectionOnStartup;
-        }
-
-        public void setTestConnectionOnStartup(Boolean testConnectionOnStartup) {
-            this.testConnectionOnStartup = testConnectionOnStartup;
-        }
-
-        public Boolean getAllowSerializedHeaders() {
-            return allowSerializedHeaders;
-        }
-
-        public void setAllowSerializedHeaders(Boolean allowSerializedHeaders) {
-            this.allowSerializedHeaders = allowSerializedHeaders;
-        }
-
-        public Boolean getAsyncStartListener() {
-            return asyncStartListener;
-        }
-
-        public void setAsyncStartListener(Boolean asyncStartListener) {
-            this.asyncStartListener = asyncStartListener;
-        }
-
-        public Boolean getAsyncStopListener() {
-            return asyncStopListener;
-        }
-
-        public void setAsyncStopListener(Boolean asyncStopListener) {
-            this.asyncStopListener = asyncStopListener;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getDestinationResolver() {
-            return destinationResolver;
-        }
-
-        public void setDestinationResolver(Object destinationResolver) {
-            this.destinationResolver = destinationResolver;
-        }
-
-        public Object getErrorHandler() {
-            return errorHandler;
-        }
-
-        public void setErrorHandler(Object errorHandler) {
-            this.errorHandler = errorHandler;
-        }
-
-        public Object getExceptionListener() {
-            return exceptionListener;
-        }
-
-        public void setExceptionListener(Object exceptionListener) {
-            this.exceptionListener = exceptionListener;
-        }
-
-        public HeaderFilterStrategy getHeaderFilterStrategy() {
-            return headerFilterStrategy;
-        }
-
-        public void setHeaderFilterStrategy(
-                HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
-        }
-
-        public Integer getIdleConsumerLimit() {
-            return idleConsumerLimit;
-        }
-
-        public void setIdleConsumerLimit(Integer idleConsumerLimit) {
-            this.idleConsumerLimit = idleConsumerLimit;
-        }
-
-        public Integer getIdleTaskExecutionLimit() {
-            return idleTaskExecutionLimit;
-        }
-
-        public void setIdleTaskExecutionLimit(Integer idleTaskExecutionLimit) {
-            this.idleTaskExecutionLimit = idleTaskExecutionLimit;
-        }
-
-        public Boolean getIncludeAllJMSXProperties() {
-            return includeAllJMSXProperties;
-        }
-
-        public void setIncludeAllJMSXProperties(Boolean includeAllJMSXProperties) {
-            this.includeAllJMSXProperties = includeAllJMSXProperties;
-        }
-
-        public Object getJmsKeyFormatStrategy() {
-            return jmsKeyFormatStrategy;
-        }
-
-        public void setJmsKeyFormatStrategy(Object jmsKeyFormatStrategy) {
-            this.jmsKeyFormatStrategy = jmsKeyFormatStrategy;
-        }
-
-        public Boolean getMapJmsMessage() {
-            return mapJmsMessage;
-        }
-
-        public void setMapJmsMessage(Boolean mapJmsMessage) {
-            this.mapJmsMessage = mapJmsMessage;
-        }
-
-        public Integer getMaxMessagesPerTask() {
-            return maxMessagesPerTask;
-        }
-
-        public void setMaxMessagesPerTask(Integer maxMessagesPerTask) {
-            this.maxMessagesPerTask = maxMessagesPerTask;
-        }
-
-        public Object getMessageConverter() {
-            return messageConverter;
-        }
-
-        public void setMessageConverter(Object messageConverter) {
-            this.messageConverter = messageConverter;
-        }
-
-        public Object getMessageCreatedStrategy() {
-            return messageCreatedStrategy;
-        }
-
-        public void setMessageCreatedStrategy(Object messageCreatedStrategy) {
-            this.messageCreatedStrategy = messageCreatedStrategy;
-        }
-
-        public Boolean getMessageIdEnabled() {
-            return messageIdEnabled;
-        }
-
-        public void setMessageIdEnabled(Boolean messageIdEnabled) {
-            this.messageIdEnabled = messageIdEnabled;
-        }
-
-        public Object getMessageListenerContainerFactory() {
-            return messageListenerContainerFactory;
-        }
-
-        public void setMessageListenerContainerFactory(
-                Object messageListenerContainerFactory) {
-            this.messageListenerContainerFactory = messageListenerContainerFactory;
-        }
-
-        public Boolean getMessageTimestampEnabled() {
-            return messageTimestampEnabled;
-        }
-
-        public void setMessageTimestampEnabled(Boolean messageTimestampEnabled) {
-            this.messageTimestampEnabled = messageTimestampEnabled;
-        }
-
-        public Boolean getPubSubNoLocal() {
-            return pubSubNoLocal;
-        }
-
-        public void setPubSubNoLocal(Boolean pubSubNoLocal) {
-            this.pubSubNoLocal = pubSubNoLocal;
-        }
-
-        public Long getReceiveTimeout() {
-            return receiveTimeout;
-        }
-
-        public void setReceiveTimeout(Long receiveTimeout) {
-            this.receiveTimeout = receiveTimeout;
-        }
-
-        public Long getRecoveryInterval() {
-            return recoveryInterval;
-        }
-
-        public void setRecoveryInterval(Long recoveryInterval) {
-            this.recoveryInterval = recoveryInterval;
-        }
-
-        public Long getRequestTimeoutCheckerInterval() {
-            return requestTimeoutCheckerInterval;
-        }
-
-        public void setRequestTimeoutCheckerInterval(
-                Long requestTimeoutCheckerInterval) {
-            this.requestTimeoutCheckerInterval = requestTimeoutCheckerInterval;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Boolean getTransferException() {
-            return transferException;
-        }
-
-        public void setTransferException(Boolean transferException) {
-            this.transferException = transferException;
-        }
-
-        public Boolean getTransferExchange() {
-            return transferExchange;
-        }
-
-        public void setTransferExchange(Boolean transferExchange) {
-            this.transferExchange = transferExchange;
-        }
-
-        public Boolean getTransferFault() {
-            return transferFault;
-        }
-
-        public void setTransferFault(Boolean transferFault) {
-            this.transferFault = transferFault;
-        }
-
-        public Boolean getUseMessageIDAsCorrelationID() {
-            return useMessageIDAsCorrelationID;
-        }
-
-        public void setUseMessageIDAsCorrelationID(
-                Boolean useMessageIDAsCorrelationID) {
-            this.useMessageIDAsCorrelationID = useMessageIDAsCorrelationID;
-        }
-
-        public Integer getWaitForProvisionCorrelationToBeUpdatedCounter() {
-            return waitForProvisionCorrelationToBeUpdatedCounter;
-        }
-
-        public void setWaitForProvisionCorrelationToBeUpdatedCounter(
-                Integer waitForProvisionCorrelationToBeUpdatedCounter) {
-            this.waitForProvisionCorrelationToBeUpdatedCounter = waitForProvisionCorrelationToBeUpdatedCounter;
-        }
-
-        public Long getWaitForProvisionCorrelationToBeUpdatedThreadSleepingTime() {
-            return waitForProvisionCorrelationToBeUpdatedThreadSleepingTime;
-        }
-
-        public void setWaitForProvisionCorrelationToBeUpdatedThreadSleepingTime(
-                Long waitForProvisionCorrelationToBeUpdatedThreadSleepingTime) {
-            this.waitForProvisionCorrelationToBeUpdatedThreadSleepingTime = waitForProvisionCorrelationToBeUpdatedThreadSleepingTime;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public Boolean getTransacted() {
-            return transacted;
-        }
-
-        public void setTransacted(Boolean transacted) {
-            this.transacted = transacted;
-        }
-
-        public Boolean getLazyCreateTransactionManager() {
-            return lazyCreateTransactionManager;
-        }
-
-        public void setLazyCreateTransactionManager(
-                Boolean lazyCreateTransactionManager) {
-            this.lazyCreateTransactionManager = lazyCreateTransactionManager;
-        }
-
-        public Object getTransactionManager() {
-            return transactionManager;
-        }
-
-        public void setTransactionManager(Object transactionManager) {
-            this.transactionManager = transactionManager;
-        }
-
-        public String getTransactionName() {
-            return transactionName;
-        }
-
-        public void setTransactionName(String transactionName) {
-            this.transactionName = transactionName;
-        }
-
-        public Integer getTransactionTimeout() {
-            return transactionTimeout;
-        }
-
-        public void setTransactionTimeout(Integer transactionTimeout) {
-            this.transactionTimeout = transactionTimeout;
         }
     }
 
-    public static class AMQPConsumer extends AMQPCommon<AMQPConsumer> {
-        private String acknowledgementModeName;
-        private Boolean asyncConsumer;
-        private Boolean autoStartup;
-        private Boolean bridgeErrorHandler;
-        private Integer cacheLevel;
-        private String cacheLevelName;
-        private Integer concurrentConsumers;
-        private Integer maxConcurrentConsumers;
-        private String replyTo;
-        private Boolean replyToDeliveryPersistent;
-        private String selector;
-        private Boolean subscriptionDurable;
-        private String subscriptionName;
-        private Boolean subscriptionShared;
-        private Boolean acceptMessagesWhileStopping;
-        private Boolean allowReplyManagerQuickStop;
-        private ConsumerType consumerType;
-        private DefaultTaskExecutorType defaultTaskExecutorType;
-        private Boolean eagerLoadingOfProperties;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private Boolean exposeListenerSession;
-        private Boolean replyToSameDestinationAllowed;
-        private Object taskExecutor;
-        private LoggingLevel errorHandlerLoggingLevel;
-        private Boolean errorHandlerLogStackTrace;
-
+    public static class AMQPConsumer
+            extends
+                AMQPCommon<AMQPConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public AMQPConsumer(String path) {
+            super(path);
+        }
         /**
          * The JMS acknowledgement name, which is one of: SESSION_TRANSACTED,
          * CLIENT_ACKNOWLEDGE, AUTO_ACKNOWLEDGE, DUPS_OK_ACKNOWLEDGE. The option
@@ -1001,10 +528,9 @@ public class AMQPEndpoint {
          */
         public AMQPConsumer acknowledgementModeName(
                 String acknowledgementModeName) {
-            this.acknowledgementModeName = acknowledgementModeName;
+            this.properties.put("acknowledgementModeName", acknowledgementModeName);
             return (AMQPConsumer) this;
         }
-
         /**
          * Whether the JmsConsumer processes the Exchange asynchronously. If
          * enabled then the JmsConsumer may pickup the next message from the JMS
@@ -1018,19 +544,17 @@ public class AMQPEndpoint {
          * async transactions). The option is a boolean type.
          */
         public AMQPConsumer asyncConsumer(boolean asyncConsumer) {
-            this.asyncConsumer = asyncConsumer;
+            this.properties.put("asyncConsumer", asyncConsumer);
             return (AMQPConsumer) this;
         }
-
         /**
          * Specifies whether the consumer container should auto-startup. The
          * option is a boolean type.
          */
         public AMQPConsumer autoStartup(boolean autoStartup) {
-            this.autoStartup = autoStartup;
+            this.properties.put("autoStartup", autoStartup);
             return (AMQPConsumer) this;
         }
-
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -1041,19 +565,17 @@ public class AMQPEndpoint {
          * ignored. The option is a boolean type.
          */
         public AMQPConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (AMQPConsumer) this;
         }
-
         /**
          * Sets the cache level by ID for the underlying JMS resources. See
          * cacheLevelName option for more details. The option is a int type.
          */
         public AMQPConsumer cacheLevel(int cacheLevel) {
-            this.cacheLevel = cacheLevel;
+            this.properties.put("cacheLevel", cacheLevel);
             return (AMQPConsumer) this;
         }
-
         /**
          * Sets the cache level by name for the underlying JMS resources.
          * Possible values are: CACHE_AUTO, CACHE_CONNECTION, CACHE_CONSUMER,
@@ -1062,10 +584,9 @@ public class AMQPEndpoint {
          * information. The option is a java.lang.String type.
          */
         public AMQPConsumer cacheLevelName(String cacheLevelName) {
-            this.cacheLevelName = cacheLevelName;
+            this.properties.put("cacheLevelName", cacheLevelName);
             return (AMQPConsumer) this;
         }
-
         /**
          * Specifies the default number of concurrent consumers when consuming
          * from JMS (not for request/reply over JMS). See also the
@@ -1075,10 +596,9 @@ public class AMQPEndpoint {
          * consumers on the reply message listener. The option is a int type.
          */
         public AMQPConsumer concurrentConsumers(int concurrentConsumers) {
-            this.concurrentConsumers = concurrentConsumers;
+            this.properties.put("concurrentConsumers", concurrentConsumers);
             return (AMQPConsumer) this;
         }
-
         /**
          * Specifies the maximum number of concurrent consumers when consuming
          * from JMS (not for request/reply over JMS). See also the
@@ -1088,38 +608,34 @@ public class AMQPEndpoint {
          * consumers on the reply message listener. The option is a int type.
          */
         public AMQPConsumer maxConcurrentConsumers(int maxConcurrentConsumers) {
-            this.maxConcurrentConsumers = maxConcurrentConsumers;
+            this.properties.put("maxConcurrentConsumers", maxConcurrentConsumers);
             return (AMQPConsumer) this;
         }
-
         /**
          * Provides an explicit ReplyTo destination, which overrides any
          * incoming value of Message.getJMSReplyTo(). The option is a
          * java.lang.String type.
          */
         public AMQPConsumer replyTo(String replyTo) {
-            this.replyTo = replyTo;
+            this.properties.put("replyTo", replyTo);
             return (AMQPConsumer) this;
         }
-
         /**
          * Specifies whether to use persistent delivery by default for replies.
          * The option is a boolean type.
          */
         public AMQPConsumer replyToDeliveryPersistent(
                 boolean replyToDeliveryPersistent) {
-            this.replyToDeliveryPersistent = replyToDeliveryPersistent;
+            this.properties.put("replyToDeliveryPersistent", replyToDeliveryPersistent);
             return (AMQPConsumer) this;
         }
-
         /**
          * Sets the JMS selector to use. The option is a java.lang.String type.
          */
         public AMQPConsumer selector(String selector) {
-            this.selector = selector;
+            this.properties.put("selector", selector);
             return (AMQPConsumer) this;
         }
-
         /**
          * Set whether to make the subscription durable. The durable
          * subscription name to be used can be specified through the
@@ -1131,10 +647,9 @@ public class AMQPEndpoint {
          * pubSubDomain flag as well. The option is a boolean type.
          */
         public AMQPConsumer subscriptionDurable(boolean subscriptionDurable) {
-            this.subscriptionDurable = subscriptionDurable;
+            this.properties.put("subscriptionDurable", subscriptionDurable);
             return (AMQPConsumer) this;
         }
-
         /**
          * Set the name of a subscription to create. To be applied in case of a
          * topic (pub-sub domain) with a shared or durable subscription. The
@@ -1146,10 +661,9 @@ public class AMQPEndpoint {
          * java.lang.String type.
          */
         public AMQPConsumer subscriptionName(String subscriptionName) {
-            this.subscriptionName = subscriptionName;
+            this.properties.put("subscriptionName", subscriptionName);
             return (AMQPConsumer) this;
         }
-
         /**
          * Set whether to make the subscription shared. The shared subscription
          * name to be used can be specified through the subscriptionName
@@ -1164,10 +678,9 @@ public class AMQPEndpoint {
          * broker. The option is a boolean type.
          */
         public AMQPConsumer subscriptionShared(boolean subscriptionShared) {
-            this.subscriptionShared = subscriptionShared;
+            this.properties.put("subscriptionShared", subscriptionShared);
             return (AMQPConsumer) this;
         }
-
         /**
          * Specifies whether the consumer accept messages while it is stopping.
          * You may consider enabling this option, if you start and stop JMS
@@ -1181,10 +694,9 @@ public class AMQPEndpoint {
          */
         public AMQPConsumer acceptMessagesWhileStopping(
                 boolean acceptMessagesWhileStopping) {
-            this.acceptMessagesWhileStopping = acceptMessagesWhileStopping;
+            this.properties.put("acceptMessagesWhileStopping", acceptMessagesWhileStopping);
             return (AMQPConsumer) this;
         }
-
         /**
          * Whether the DefaultMessageListenerContainer used in the reply
          * managers for request-reply messaging allow the
@@ -1197,10 +709,9 @@ public class AMQPEndpoint {
          */
         public AMQPConsumer allowReplyManagerQuickStop(
                 boolean allowReplyManagerQuickStop) {
-            this.allowReplyManagerQuickStop = allowReplyManagerQuickStop;
+            this.properties.put("allowReplyManagerQuickStop", allowReplyManagerQuickStop);
             return (AMQPConsumer) this;
         }
-
         /**
          * The consumer type to use, which can be one of: Simple, Default, or
          * Custom. The consumer type determines which Spring JMS listener to
@@ -1215,10 +726,9 @@ public class AMQPEndpoint {
          * type.
          */
         public AMQPConsumer consumerType(ConsumerType consumerType) {
-            this.consumerType = consumerType;
+            this.properties.put("consumerType", consumerType);
             return (AMQPConsumer) this;
         }
-
         /**
          * Specifies what default TaskExecutor type to use in the
          * DefaultMessageListenerContainer, for both consumer endpoints and the
@@ -1234,10 +744,9 @@ public class AMQPEndpoint {
          */
         public AMQPConsumer defaultTaskExecutorType(
                 DefaultTaskExecutorType defaultTaskExecutorType) {
-            this.defaultTaskExecutorType = defaultTaskExecutorType;
+            this.properties.put("defaultTaskExecutorType", defaultTaskExecutorType);
             return (AMQPConsumer) this;
         }
-
         /**
          * Enables eager loading of JMS properties and payload as soon as a
          * message is loaded which generally is inefficient as the JMS
@@ -1247,10 +756,9 @@ public class AMQPEndpoint {
          */
         public AMQPConsumer eagerLoadingOfProperties(
                 boolean eagerLoadingOfProperties) {
-            this.eagerLoadingOfProperties = eagerLoadingOfProperties;
+            this.properties.put("eagerLoadingOfProperties", eagerLoadingOfProperties);
             return (AMQPConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -1259,28 +767,25 @@ public class AMQPEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public AMQPConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (AMQPConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public AMQPConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (AMQPConsumer) this;
         }
-
         /**
          * Specifies whether the listener session should be exposed when
          * consuming messages. The option is a boolean type.
          */
         public AMQPConsumer exposeListenerSession(boolean exposeListenerSession) {
-            this.exposeListenerSession = exposeListenerSession;
+            this.properties.put("exposeListenerSession", exposeListenerSession);
             return (AMQPConsumer) this;
         }
-
         /**
          * Whether a JMS consumer is allowed to send a reply message to the same
          * destination that the consumer is using to consume from. This prevents
@@ -1289,19 +794,17 @@ public class AMQPEndpoint {
          */
         public AMQPConsumer replyToSameDestinationAllowed(
                 boolean replyToSameDestinationAllowed) {
-            this.replyToSameDestinationAllowed = replyToSameDestinationAllowed;
+            this.properties.put("replyToSameDestinationAllowed", replyToSameDestinationAllowed);
             return (AMQPConsumer) this;
         }
-
         /**
          * Allows you to specify a custom task executor for consuming messages.
          * The option is a org.springframework.core.task.TaskExecutor type.
          */
         public AMQPConsumer taskExecutor(Object taskExecutor) {
-            this.taskExecutor = taskExecutor;
+            this.properties.put("taskExecutor", taskExecutor);
             return (AMQPConsumer) this;
         }
-
         /**
          * Allows to configure the default errorHandler logging level for
          * logging uncaught exceptions. The option is a
@@ -1309,280 +812,45 @@ public class AMQPEndpoint {
          */
         public AMQPConsumer errorHandlerLoggingLevel(
                 LoggingLevel errorHandlerLoggingLevel) {
-            this.errorHandlerLoggingLevel = errorHandlerLoggingLevel;
+            this.properties.put("errorHandlerLoggingLevel", errorHandlerLoggingLevel);
             return (AMQPConsumer) this;
         }
-
         /**
          * Allows to control whether stacktraces should be logged or not, by the
          * default errorHandler. The option is a boolean type.
          */
         public AMQPConsumer errorHandlerLogStackTrace(
                 boolean errorHandlerLogStackTrace) {
-            this.errorHandlerLogStackTrace = errorHandlerLogStackTrace;
+            this.properties.put("errorHandlerLogStackTrace", errorHandlerLogStackTrace);
             return (AMQPConsumer) this;
-        }
-
-        public String getAcknowledgementModeName() {
-            return acknowledgementModeName;
-        }
-
-        public void setAcknowledgementModeName(String acknowledgementModeName) {
-            this.acknowledgementModeName = acknowledgementModeName;
-        }
-
-        public Boolean getAsyncConsumer() {
-            return asyncConsumer;
-        }
-
-        public void setAsyncConsumer(Boolean asyncConsumer) {
-            this.asyncConsumer = asyncConsumer;
-        }
-
-        public Boolean getAutoStartup() {
-            return autoStartup;
-        }
-
-        public void setAutoStartup(Boolean autoStartup) {
-            this.autoStartup = autoStartup;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Integer getCacheLevel() {
-            return cacheLevel;
-        }
-
-        public void setCacheLevel(Integer cacheLevel) {
-            this.cacheLevel = cacheLevel;
-        }
-
-        public String getCacheLevelName() {
-            return cacheLevelName;
-        }
-
-        public void setCacheLevelName(String cacheLevelName) {
-            this.cacheLevelName = cacheLevelName;
-        }
-
-        public Integer getConcurrentConsumers() {
-            return concurrentConsumers;
-        }
-
-        public void setConcurrentConsumers(Integer concurrentConsumers) {
-            this.concurrentConsumers = concurrentConsumers;
-        }
-
-        public Integer getMaxConcurrentConsumers() {
-            return maxConcurrentConsumers;
-        }
-
-        public void setMaxConcurrentConsumers(Integer maxConcurrentConsumers) {
-            this.maxConcurrentConsumers = maxConcurrentConsumers;
-        }
-
-        public String getReplyTo() {
-            return replyTo;
-        }
-
-        public void setReplyTo(String replyTo) {
-            this.replyTo = replyTo;
-        }
-
-        public Boolean getReplyToDeliveryPersistent() {
-            return replyToDeliveryPersistent;
-        }
-
-        public void setReplyToDeliveryPersistent(
-                Boolean replyToDeliveryPersistent) {
-            this.replyToDeliveryPersistent = replyToDeliveryPersistent;
-        }
-
-        public String getSelector() {
-            return selector;
-        }
-
-        public void setSelector(String selector) {
-            this.selector = selector;
-        }
-
-        public Boolean getSubscriptionDurable() {
-            return subscriptionDurable;
-        }
-
-        public void setSubscriptionDurable(Boolean subscriptionDurable) {
-            this.subscriptionDurable = subscriptionDurable;
-        }
-
-        public String getSubscriptionName() {
-            return subscriptionName;
-        }
-
-        public void setSubscriptionName(String subscriptionName) {
-            this.subscriptionName = subscriptionName;
-        }
-
-        public Boolean getSubscriptionShared() {
-            return subscriptionShared;
-        }
-
-        public void setSubscriptionShared(Boolean subscriptionShared) {
-            this.subscriptionShared = subscriptionShared;
-        }
-
-        public Boolean getAcceptMessagesWhileStopping() {
-            return acceptMessagesWhileStopping;
-        }
-
-        public void setAcceptMessagesWhileStopping(
-                Boolean acceptMessagesWhileStopping) {
-            this.acceptMessagesWhileStopping = acceptMessagesWhileStopping;
-        }
-
-        public Boolean getAllowReplyManagerQuickStop() {
-            return allowReplyManagerQuickStop;
-        }
-
-        public void setAllowReplyManagerQuickStop(
-                Boolean allowReplyManagerQuickStop) {
-            this.allowReplyManagerQuickStop = allowReplyManagerQuickStop;
-        }
-
-        public ConsumerType getConsumerType() {
-            return consumerType;
-        }
-
-        public void setConsumerType(ConsumerType consumerType) {
-            this.consumerType = consumerType;
-        }
-
-        public DefaultTaskExecutorType getDefaultTaskExecutorType() {
-            return defaultTaskExecutorType;
-        }
-
-        public void setDefaultTaskExecutorType(
-                DefaultTaskExecutorType defaultTaskExecutorType) {
-            this.defaultTaskExecutorType = defaultTaskExecutorType;
-        }
-
-        public Boolean getEagerLoadingOfProperties() {
-            return eagerLoadingOfProperties;
-        }
-
-        public void setEagerLoadingOfProperties(Boolean eagerLoadingOfProperties) {
-            this.eagerLoadingOfProperties = eagerLoadingOfProperties;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public Boolean getExposeListenerSession() {
-            return exposeListenerSession;
-        }
-
-        public void setExposeListenerSession(Boolean exposeListenerSession) {
-            this.exposeListenerSession = exposeListenerSession;
-        }
-
-        public Boolean getReplyToSameDestinationAllowed() {
-            return replyToSameDestinationAllowed;
-        }
-
-        public void setReplyToSameDestinationAllowed(
-                Boolean replyToSameDestinationAllowed) {
-            this.replyToSameDestinationAllowed = replyToSameDestinationAllowed;
-        }
-
-        public Object getTaskExecutor() {
-            return taskExecutor;
-        }
-
-        public void setTaskExecutor(Object taskExecutor) {
-            this.taskExecutor = taskExecutor;
-        }
-
-        public LoggingLevel getErrorHandlerLoggingLevel() {
-            return errorHandlerLoggingLevel;
-        }
-
-        public void setErrorHandlerLoggingLevel(
-                LoggingLevel errorHandlerLoggingLevel) {
-            this.errorHandlerLoggingLevel = errorHandlerLoggingLevel;
-        }
-
-        public Boolean getErrorHandlerLogStackTrace() {
-            return errorHandlerLogStackTrace;
-        }
-
-        public void setErrorHandlerLogStackTrace(
-                Boolean errorHandlerLogStackTrace) {
-            this.errorHandlerLogStackTrace = errorHandlerLogStackTrace;
         }
     }
 
-    public static class AMQPProducer extends AMQPCommon<AMQPProducer> {
-        private Integer deliveryMode;
-        private Boolean deliveryPersistent;
-        private Boolean explicitQosEnabled;
-        private Boolean formatDateHeadersToIso8601;
-        private Boolean preserveMessageQos;
-        private Integer priority;
-        private Integer replyToConcurrentConsumers;
-        private Integer replyToMaxConcurrentConsumers;
-        private Integer replyToOnTimeoutMaxConcurrentConsumers;
-        private String replyToOverride;
-        private ReplyToType replyToType;
-        private Long requestTimeout;
-        private Long timeToLive;
-        private String allowAdditionalHeaders;
-        private Boolean allowNullBody;
-        private Boolean alwaysCopyMessage;
-        private String correlationProperty;
-        private Boolean disableTimeToLive;
-        private Boolean forceSendOriginalMessage;
-        private Boolean includeSentJMSMessageID;
-        private String replyToCacheLevelName;
-        private String replyToDestinationSelectorName;
-        private Boolean streamMessageTypeEnabled;
-
+    public static class AMQPProducer
+            extends
+                AMQPCommon<AMQPProducer>
+            implements
+                EndpointDefinition.Producer {
+        public AMQPProducer(String path) {
+            super(path);
+        }
         /**
          * Specifies the delivery mode to be used. Possibles values are those
          * defined by javax.jms.DeliveryMode. NON_PERSISTENT = 1 and PERSISTENT
          * = 2. The option is a java.lang.Integer type.
          */
         public AMQPProducer deliveryMode(Integer deliveryMode) {
-            this.deliveryMode = deliveryMode;
+            this.properties.put("deliveryMode", deliveryMode);
             return (AMQPProducer) this;
         }
-
         /**
          * Specifies whether persistent delivery is used by default. The option
          * is a boolean type.
          */
         public AMQPProducer deliveryPersistent(boolean deliveryPersistent) {
-            this.deliveryPersistent = deliveryPersistent;
+            this.properties.put("deliveryPersistent", deliveryPersistent);
             return (AMQPProducer) this;
         }
-
         /**
          * Set if the deliveryMode, priority or timeToLive qualities of service
          * should be used when sending messages. This option is based on
@@ -1593,20 +861,18 @@ public class AMQPEndpoint {
          * The option is a java.lang.Boolean type.
          */
         public AMQPProducer explicitQosEnabled(Boolean explicitQosEnabled) {
-            this.explicitQosEnabled = explicitQosEnabled;
+            this.properties.put("explicitQosEnabled", explicitQosEnabled);
             return (AMQPProducer) this;
         }
-
         /**
          * Sets whether date headers should be formatted according to the ISO
          * 8601 standard. The option is a boolean type.
          */
         public AMQPProducer formatDateHeadersToIso8601(
                 boolean formatDateHeadersToIso8601) {
-            this.formatDateHeadersToIso8601 = formatDateHeadersToIso8601;
+            this.properties.put("formatDateHeadersToIso8601", formatDateHeadersToIso8601);
             return (AMQPProducer) this;
         }
-
         /**
          * Set to true, if you want to send message using the QoS settings
          * specified on the message, instead of the QoS settings on the JMS
@@ -1619,10 +885,9 @@ public class AMQPEndpoint {
          * values from the message header. The option is a boolean type.
          */
         public AMQPProducer preserveMessageQos(boolean preserveMessageQos) {
-            this.preserveMessageQos = preserveMessageQos;
+            this.properties.put("preserveMessageQos", preserveMessageQos);
             return (AMQPProducer) this;
         }
-
         /**
          * Values greater than 1 specify the message priority when sending
          * (where 0 is the lowest priority and 9 is the highest). The
@@ -1630,10 +895,9 @@ public class AMQPEndpoint {
          * option to have any effect. The option is a int type.
          */
         public AMQPProducer priority(int priority) {
-            this.priority = priority;
+            this.properties.put("priority", priority);
             return (AMQPProducer) this;
         }
-
         /**
          * Specifies the default number of concurrent consumers when doing
          * request/reply over JMS. See also the maxMessagesPerTask option to
@@ -1641,10 +905,9 @@ public class AMQPEndpoint {
          */
         public AMQPProducer replyToConcurrentConsumers(
                 int replyToConcurrentConsumers) {
-            this.replyToConcurrentConsumers = replyToConcurrentConsumers;
+            this.properties.put("replyToConcurrentConsumers", replyToConcurrentConsumers);
             return (AMQPProducer) this;
         }
-
         /**
          * Specifies the maximum number of concurrent consumers when using
          * request/reply over JMS. See also the maxMessagesPerTask option to
@@ -1652,10 +915,9 @@ public class AMQPEndpoint {
          */
         public AMQPProducer replyToMaxConcurrentConsumers(
                 int replyToMaxConcurrentConsumers) {
-            this.replyToMaxConcurrentConsumers = replyToMaxConcurrentConsumers;
+            this.properties.put("replyToMaxConcurrentConsumers", replyToMaxConcurrentConsumers);
             return (AMQPProducer) this;
         }
-
         /**
          * Specifies the maximum number of concurrent consumers for continue
          * routing when timeout occurred when using request/reply over JMS. The
@@ -1663,10 +925,9 @@ public class AMQPEndpoint {
          */
         public AMQPProducer replyToOnTimeoutMaxConcurrentConsumers(
                 int replyToOnTimeoutMaxConcurrentConsumers) {
-            this.replyToOnTimeoutMaxConcurrentConsumers = replyToOnTimeoutMaxConcurrentConsumers;
+            this.properties.put("replyToOnTimeoutMaxConcurrentConsumers", replyToOnTimeoutMaxConcurrentConsumers);
             return (AMQPProducer) this;
         }
-
         /**
          * Provides an explicit ReplyTo destination in the JMS message, which
          * overrides the setting of replyTo. It is useful if you want to forward
@@ -1674,10 +935,9 @@ public class AMQPEndpoint {
          * ReplyTo destination. The option is a java.lang.String type.
          */
         public AMQPProducer replyToOverride(String replyToOverride) {
-            this.replyToOverride = replyToOverride;
+            this.properties.put("replyToOverride", replyToOverride);
             return (AMQPProducer) this;
         }
-
         /**
          * Allows for explicitly specifying which kind of strategy to use for
          * replyTo queues when doing request/reply over JMS. Possible values
@@ -1691,10 +951,9 @@ public class AMQPEndpoint {
          * option is a org.apache.camel.component.jms.ReplyToType type.
          */
         public AMQPProducer replyToType(ReplyToType replyToType) {
-            this.replyToType = replyToType;
+            this.properties.put("replyToType", replyToType);
             return (AMQPProducer) this;
         }
-
         /**
          * The timeout for waiting for a reply when using the InOut Exchange
          * Pattern (in milliseconds). The default is 20 seconds. You can include
@@ -1704,19 +963,17 @@ public class AMQPEndpoint {
          * The option is a long type.
          */
         public AMQPProducer requestTimeout(long requestTimeout) {
-            this.requestTimeout = requestTimeout;
+            this.properties.put("requestTimeout", requestTimeout);
             return (AMQPProducer) this;
         }
-
         /**
          * When sending messages, specifies the time-to-live of the message (in
          * milliseconds). The option is a long type.
          */
         public AMQPProducer timeToLive(long timeToLive) {
-            this.timeToLive = timeToLive;
+            this.properties.put("timeToLive", timeToLive);
             return (AMQPProducer) this;
         }
-
         /**
          * This option is used to allow additional headers which may have values
          * that are invalid according to JMS specification. For example some
@@ -1727,20 +984,18 @@ public class AMQPEndpoint {
          * type.
          */
         public AMQPProducer allowAdditionalHeaders(String allowAdditionalHeaders) {
-            this.allowAdditionalHeaders = allowAdditionalHeaders;
+            this.properties.put("allowAdditionalHeaders", allowAdditionalHeaders);
             return (AMQPProducer) this;
         }
-
         /**
          * Whether to allow sending messages with no body. If this option is
          * false and the message body is null, then an JMSException is thrown.
          * The option is a boolean type.
          */
         public AMQPProducer allowNullBody(boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
+            this.properties.put("allowNullBody", allowNullBody);
             return (AMQPProducer) this;
         }
-
         /**
          * If true, Camel will always make a JMS message copy of the message
          * when it is passed to the producer for sending. Copying the message is
@@ -1750,10 +1005,9 @@ public class AMQPEndpoint {
          * replyToDestinationSelectorName is set). The option is a boolean type.
          */
         public AMQPProducer alwaysCopyMessage(boolean alwaysCopyMessage) {
-            this.alwaysCopyMessage = alwaysCopyMessage;
+            this.properties.put("alwaysCopyMessage", alwaysCopyMessage);
             return (AMQPProducer) this;
         }
-
         /**
          * Use this JMS property to correlate messages in InOut exchange pattern
          * (request-reply) instead of JMSCorrelationID property. This allows you
@@ -1764,10 +1018,9 @@ public class AMQPEndpoint {
          * name. The option is a java.lang.String type.
          */
         public AMQPProducer correlationProperty(String correlationProperty) {
-            this.correlationProperty = correlationProperty;
+            this.properties.put("correlationProperty", correlationProperty);
             return (AMQPProducer) this;
         }
-
         /**
          * Use this option to force disabling time to live. For example when you
          * do request/reply over JMS, then Camel will by default use the
@@ -1780,10 +1033,9 @@ public class AMQPEndpoint {
          * more details. The option is a boolean type.
          */
         public AMQPProducer disableTimeToLive(boolean disableTimeToLive) {
-            this.disableTimeToLive = disableTimeToLive;
+            this.properties.put("disableTimeToLive", disableTimeToLive);
             return (AMQPProducer) this;
         }
-
         /**
          * When using mapJmsMessage=false Camel will create a new JMS message to
          * send to a new JMS destination if you touch the headers (get or set)
@@ -1792,10 +1044,9 @@ public class AMQPEndpoint {
          */
         public AMQPProducer forceSendOriginalMessage(
                 boolean forceSendOriginalMessage) {
-            this.forceSendOriginalMessage = forceSendOriginalMessage;
+            this.properties.put("forceSendOriginalMessage", forceSendOriginalMessage);
             return (AMQPProducer) this;
         }
-
         /**
          * Only applicable when sending to JMS destination using InOnly (eg fire
          * and forget). Enabling this option will enrich the Camel Exchange with
@@ -1805,10 +1056,9 @@ public class AMQPEndpoint {
          */
         public AMQPProducer includeSentJMSMessageID(
                 boolean includeSentJMSMessageID) {
-            this.includeSentJMSMessageID = includeSentJMSMessageID;
+            this.properties.put("includeSentJMSMessageID", includeSentJMSMessageID);
             return (AMQPProducer) this;
         }
-
         /**
          * Sets the cache level by name for the reply consumer when doing
          * request/reply over JMS. This option only applies when using fixed
@@ -1822,10 +1072,9 @@ public class AMQPEndpoint {
          * java.lang.String type.
          */
         public AMQPProducer replyToCacheLevelName(String replyToCacheLevelName) {
-            this.replyToCacheLevelName = replyToCacheLevelName;
+            this.properties.put("replyToCacheLevelName", replyToCacheLevelName);
             return (AMQPProducer) this;
         }
-
         /**
          * Sets the JMS Selector using the fixed name to be used so you can
          * filter out your own replies from the others when using a shared queue
@@ -1834,10 +1083,9 @@ public class AMQPEndpoint {
          */
         public AMQPProducer replyToDestinationSelectorName(
                 String replyToDestinationSelectorName) {
-            this.replyToDestinationSelectorName = replyToDestinationSelectorName;
+            this.properties.put("replyToDestinationSelectorName", replyToDestinationSelectorName);
             return (AMQPProducer) this;
         }
-
         /**
          * Sets whether StreamMessage type is enabled or not. Message payloads
          * of streaming kind such as files, InputStream, etc will either by sent
@@ -1850,197 +1098,8 @@ public class AMQPEndpoint {
          */
         public AMQPProducer streamMessageTypeEnabled(
                 boolean streamMessageTypeEnabled) {
-            this.streamMessageTypeEnabled = streamMessageTypeEnabled;
+            this.properties.put("streamMessageTypeEnabled", streamMessageTypeEnabled);
             return (AMQPProducer) this;
-        }
-
-        public Integer getDeliveryMode() {
-            return deliveryMode;
-        }
-
-        public void setDeliveryMode(Integer deliveryMode) {
-            this.deliveryMode = deliveryMode;
-        }
-
-        public Boolean getDeliveryPersistent() {
-            return deliveryPersistent;
-        }
-
-        public void setDeliveryPersistent(Boolean deliveryPersistent) {
-            this.deliveryPersistent = deliveryPersistent;
-        }
-
-        public Boolean getExplicitQosEnabled() {
-            return explicitQosEnabled;
-        }
-
-        public void setExplicitQosEnabled(Boolean explicitQosEnabled) {
-            this.explicitQosEnabled = explicitQosEnabled;
-        }
-
-        public Boolean getFormatDateHeadersToIso8601() {
-            return formatDateHeadersToIso8601;
-        }
-
-        public void setFormatDateHeadersToIso8601(
-                Boolean formatDateHeadersToIso8601) {
-            this.formatDateHeadersToIso8601 = formatDateHeadersToIso8601;
-        }
-
-        public Boolean getPreserveMessageQos() {
-            return preserveMessageQos;
-        }
-
-        public void setPreserveMessageQos(Boolean preserveMessageQos) {
-            this.preserveMessageQos = preserveMessageQos;
-        }
-
-        public Integer getPriority() {
-            return priority;
-        }
-
-        public void setPriority(Integer priority) {
-            this.priority = priority;
-        }
-
-        public Integer getReplyToConcurrentConsumers() {
-            return replyToConcurrentConsumers;
-        }
-
-        public void setReplyToConcurrentConsumers(
-                Integer replyToConcurrentConsumers) {
-            this.replyToConcurrentConsumers = replyToConcurrentConsumers;
-        }
-
-        public Integer getReplyToMaxConcurrentConsumers() {
-            return replyToMaxConcurrentConsumers;
-        }
-
-        public void setReplyToMaxConcurrentConsumers(
-                Integer replyToMaxConcurrentConsumers) {
-            this.replyToMaxConcurrentConsumers = replyToMaxConcurrentConsumers;
-        }
-
-        public Integer getReplyToOnTimeoutMaxConcurrentConsumers() {
-            return replyToOnTimeoutMaxConcurrentConsumers;
-        }
-
-        public void setReplyToOnTimeoutMaxConcurrentConsumers(
-                Integer replyToOnTimeoutMaxConcurrentConsumers) {
-            this.replyToOnTimeoutMaxConcurrentConsumers = replyToOnTimeoutMaxConcurrentConsumers;
-        }
-
-        public String getReplyToOverride() {
-            return replyToOverride;
-        }
-
-        public void setReplyToOverride(String replyToOverride) {
-            this.replyToOverride = replyToOverride;
-        }
-
-        public ReplyToType getReplyToType() {
-            return replyToType;
-        }
-
-        public void setReplyToType(ReplyToType replyToType) {
-            this.replyToType = replyToType;
-        }
-
-        public Long getRequestTimeout() {
-            return requestTimeout;
-        }
-
-        public void setRequestTimeout(Long requestTimeout) {
-            this.requestTimeout = requestTimeout;
-        }
-
-        public Long getTimeToLive() {
-            return timeToLive;
-        }
-
-        public void setTimeToLive(Long timeToLive) {
-            this.timeToLive = timeToLive;
-        }
-
-        public String getAllowAdditionalHeaders() {
-            return allowAdditionalHeaders;
-        }
-
-        public void setAllowAdditionalHeaders(String allowAdditionalHeaders) {
-            this.allowAdditionalHeaders = allowAdditionalHeaders;
-        }
-
-        public Boolean getAllowNullBody() {
-            return allowNullBody;
-        }
-
-        public void setAllowNullBody(Boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
-        }
-
-        public Boolean getAlwaysCopyMessage() {
-            return alwaysCopyMessage;
-        }
-
-        public void setAlwaysCopyMessage(Boolean alwaysCopyMessage) {
-            this.alwaysCopyMessage = alwaysCopyMessage;
-        }
-
-        public String getCorrelationProperty() {
-            return correlationProperty;
-        }
-
-        public void setCorrelationProperty(String correlationProperty) {
-            this.correlationProperty = correlationProperty;
-        }
-
-        public Boolean getDisableTimeToLive() {
-            return disableTimeToLive;
-        }
-
-        public void setDisableTimeToLive(Boolean disableTimeToLive) {
-            this.disableTimeToLive = disableTimeToLive;
-        }
-
-        public Boolean getForceSendOriginalMessage() {
-            return forceSendOriginalMessage;
-        }
-
-        public void setForceSendOriginalMessage(Boolean forceSendOriginalMessage) {
-            this.forceSendOriginalMessage = forceSendOriginalMessage;
-        }
-
-        public Boolean getIncludeSentJMSMessageID() {
-            return includeSentJMSMessageID;
-        }
-
-        public void setIncludeSentJMSMessageID(Boolean includeSentJMSMessageID) {
-            this.includeSentJMSMessageID = includeSentJMSMessageID;
-        }
-
-        public String getReplyToCacheLevelName() {
-            return replyToCacheLevelName;
-        }
-
-        public void setReplyToCacheLevelName(String replyToCacheLevelName) {
-            this.replyToCacheLevelName = replyToCacheLevelName;
-        }
-
-        public String getReplyToDestinationSelectorName() {
-            return replyToDestinationSelectorName;
-        }
-
-        public void setReplyToDestinationSelectorName(
-                String replyToDestinationSelectorName) {
-            this.replyToDestinationSelectorName = replyToDestinationSelectorName;
-        }
-
-        public Boolean getStreamMessageTypeEnabled() {
-            return streamMessageTypeEnabled;
-        }
-
-        public void setStreamMessageTypeEnabled(Boolean streamMessageTypeEnabled) {
-            this.streamMessageTypeEnabled = streamMessageTypeEnabled;
         }
     }
 

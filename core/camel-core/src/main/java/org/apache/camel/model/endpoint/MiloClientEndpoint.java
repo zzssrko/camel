@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.Set;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -32,477 +33,220 @@ import org.apache.camel.spi.ExceptionHandler;
 public class MiloClientEndpoint {
 
 
-    public static class MiloClientCommon<T extends EndpointConfiguration>
+    public static class MiloClientCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String endpointUri;
-        private String clientId;
-        private Boolean defaultAwaitWrites;
-        private String discoveryEndpointSuffix;
-        private String discoveryEndpointUri;
-        private Object method;
-        private Object node;
-        private Double samplingInterval;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private Set<String> allowedSecurityPolicies;
-        private String applicationName;
-        private String applicationUri;
-        private Long channelLifetime;
-        private String keyAlias;
-        private String keyPassword;
-        private String keyStorePassword;
-        private String keyStoreType;
-        private URL keyStoreUrl;
-        private Long maxPendingPublishRequests;
-        private Long maxResponseMessageSize;
-        private Boolean overrideHost;
-        private String productUri;
-        private Long requestTimeout;
-        private String sessionName;
-        private Long sessionTimeout;
-
+                EndpointDefinition<T> {
+        MiloClientCommon(String path) {
+            super("milo-client", path);
+        }
         /**
          * The OPC UA server endpoint. The option is a java.lang.String type.
          */
         public T endpointUri(String endpointUri) {
-            this.endpointUri = endpointUri;
+            this.properties.put("endpointUri", endpointUri);
             return (T) this;
         }
-
         /**
          * A virtual client id to force the creation of a new connection
          * instance. The option is a java.lang.String type.
          */
         public T clientId(String clientId) {
-            this.clientId = clientId;
+            this.properties.put("clientId", clientId);
             return (T) this;
         }
-
         /**
          * Default await setting for writes. The option is a boolean type.
          */
         public T defaultAwaitWrites(boolean defaultAwaitWrites) {
-            this.defaultAwaitWrites = defaultAwaitWrites;
+            this.properties.put("defaultAwaitWrites", defaultAwaitWrites);
             return (T) this;
         }
-
         /**
          * A suffix for endpoint URI when discovering. The option is a
          * java.lang.String type.
          */
         public T discoveryEndpointSuffix(String discoveryEndpointSuffix) {
-            this.discoveryEndpointSuffix = discoveryEndpointSuffix;
+            this.properties.put("discoveryEndpointSuffix", discoveryEndpointSuffix);
             return (T) this;
         }
-
         /**
          * An alternative discovery URI. The option is a java.lang.String type.
          */
         public T discoveryEndpointUri(String discoveryEndpointUri) {
-            this.discoveryEndpointUri = discoveryEndpointUri;
+            this.properties.put("discoveryEndpointUri", discoveryEndpointUri);
             return (T) this;
         }
-
         /**
          * The method definition (see Method ID). The option is a
          * org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId type.
          */
         public T method(Object method) {
-            this.method = method;
+            this.properties.put("method", method);
             return (T) this;
         }
-
         /**
          * The node definition (see Node ID). The option is a
          * org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId type.
          */
         public T node(Object node) {
-            this.node = node;
+            this.properties.put("node", node);
             return (T) this;
         }
-
         /**
          * The sampling interval in milliseconds. The option is a
          * java.lang.Double type.
          */
         public T samplingInterval(Double samplingInterval) {
-            this.samplingInterval = samplingInterval;
+            this.properties.put("samplingInterval", samplingInterval);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * A set of allowed security policy URIs. Default is to accept all and
          * use the highest. The option is a java.lang.String type.
          */
         public T allowedSecurityPolicies(Set<String> allowedSecurityPolicies) {
-            this.allowedSecurityPolicies = allowedSecurityPolicies;
+            this.properties.put("allowedSecurityPolicies", allowedSecurityPolicies);
             return (T) this;
         }
-
         /**
          * The application name. The option is a java.lang.String type.
          */
         public T applicationName(String applicationName) {
-            this.applicationName = applicationName;
+            this.properties.put("applicationName", applicationName);
             return (T) this;
         }
-
         /**
          * The application URI. The option is a java.lang.String type.
          */
         public T applicationUri(String applicationUri) {
-            this.applicationUri = applicationUri;
+            this.properties.put("applicationUri", applicationUri);
             return (T) this;
         }
-
         /**
          * Channel lifetime in milliseconds. The option is a java.lang.Long
          * type.
          */
         public T channelLifetime(Long channelLifetime) {
-            this.channelLifetime = channelLifetime;
+            this.properties.put("channelLifetime", channelLifetime);
             return (T) this;
         }
-
         /**
          * The name of the key in the keystore file. The option is a
          * java.lang.String type.
          */
         public T keyAlias(String keyAlias) {
-            this.keyAlias = keyAlias;
+            this.properties.put("keyAlias", keyAlias);
             return (T) this;
         }
-
         /**
          * The key password. The option is a java.lang.String type.
          */
         public T keyPassword(String keyPassword) {
-            this.keyPassword = keyPassword;
+            this.properties.put("keyPassword", keyPassword);
             return (T) this;
         }
-
         /**
          * The keystore password. The option is a java.lang.String type.
          */
         public T keyStorePassword(String keyStorePassword) {
-            this.keyStorePassword = keyStorePassword;
+            this.properties.put("keyStorePassword", keyStorePassword);
             return (T) this;
         }
-
         /**
          * The key store type. The option is a java.lang.String type.
          */
         public T keyStoreType(String keyStoreType) {
-            this.keyStoreType = keyStoreType;
+            this.properties.put("keyStoreType", keyStoreType);
             return (T) this;
         }
-
         /**
          * The URL where the key should be loaded from. The option is a
          * java.net.URL type.
          */
         public T keyStoreUrl(URL keyStoreUrl) {
-            this.keyStoreUrl = keyStoreUrl;
+            this.properties.put("keyStoreUrl", keyStoreUrl);
             return (T) this;
         }
-
         /**
          * The maximum number of pending publish requests. The option is a
          * java.lang.Long type.
          */
         public T maxPendingPublishRequests(Long maxPendingPublishRequests) {
-            this.maxPendingPublishRequests = maxPendingPublishRequests;
+            this.properties.put("maxPendingPublishRequests", maxPendingPublishRequests);
             return (T) this;
         }
-
         /**
          * The maximum number of bytes a response message may have. The option
          * is a java.lang.Long type.
          */
         public T maxResponseMessageSize(Long maxResponseMessageSize) {
-            this.maxResponseMessageSize = maxResponseMessageSize;
+            this.properties.put("maxResponseMessageSize", maxResponseMessageSize);
             return (T) this;
         }
-
         /**
          * Override the server reported endpoint host with the host from the
          * endpoint URI. The option is a boolean type.
          */
         public T overrideHost(boolean overrideHost) {
-            this.overrideHost = overrideHost;
+            this.properties.put("overrideHost", overrideHost);
             return (T) this;
         }
-
         /**
          * The product URI. The option is a java.lang.String type.
          */
         public T productUri(String productUri) {
-            this.productUri = productUri;
+            this.properties.put("productUri", productUri);
             return (T) this;
         }
-
         /**
          * Request timeout in milliseconds. The option is a java.lang.Long type.
          */
         public T requestTimeout(Long requestTimeout) {
-            this.requestTimeout = requestTimeout;
+            this.properties.put("requestTimeout", requestTimeout);
             return (T) this;
         }
-
         /**
          * Session name. The option is a java.lang.String type.
          */
         public T sessionName(String sessionName) {
-            this.sessionName = sessionName;
+            this.properties.put("sessionName", sessionName);
             return (T) this;
         }
-
         /**
          * Session timeout in milliseconds. The option is a java.lang.Long type.
          */
         public T sessionTimeout(Long sessionTimeout) {
-            this.sessionTimeout = sessionTimeout;
+            this.properties.put("sessionTimeout", sessionTimeout);
             return (T) this;
-        }
-
-        public String getEndpointUri() {
-            return endpointUri;
-        }
-
-        public void setEndpointUri(String endpointUri) {
-            this.endpointUri = endpointUri;
-        }
-
-        public String getClientId() {
-            return clientId;
-        }
-
-        public void setClientId(String clientId) {
-            this.clientId = clientId;
-        }
-
-        public Boolean getDefaultAwaitWrites() {
-            return defaultAwaitWrites;
-        }
-
-        public void setDefaultAwaitWrites(Boolean defaultAwaitWrites) {
-            this.defaultAwaitWrites = defaultAwaitWrites;
-        }
-
-        public String getDiscoveryEndpointSuffix() {
-            return discoveryEndpointSuffix;
-        }
-
-        public void setDiscoveryEndpointSuffix(String discoveryEndpointSuffix) {
-            this.discoveryEndpointSuffix = discoveryEndpointSuffix;
-        }
-
-        public String getDiscoveryEndpointUri() {
-            return discoveryEndpointUri;
-        }
-
-        public void setDiscoveryEndpointUri(String discoveryEndpointUri) {
-            this.discoveryEndpointUri = discoveryEndpointUri;
-        }
-
-        public Object getMethod() {
-            return method;
-        }
-
-        public void setMethod(Object method) {
-            this.method = method;
-        }
-
-        public Object getNode() {
-            return node;
-        }
-
-        public void setNode(Object node) {
-            this.node = node;
-        }
-
-        public Double getSamplingInterval() {
-            return samplingInterval;
-        }
-
-        public void setSamplingInterval(Double samplingInterval) {
-            this.samplingInterval = samplingInterval;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Set<String> getAllowedSecurityPolicies() {
-            return allowedSecurityPolicies;
-        }
-
-        public void setAllowedSecurityPolicies(
-                Set<String> allowedSecurityPolicies) {
-            this.allowedSecurityPolicies = allowedSecurityPolicies;
-        }
-
-        public String getApplicationName() {
-            return applicationName;
-        }
-
-        public void setApplicationName(String applicationName) {
-            this.applicationName = applicationName;
-        }
-
-        public String getApplicationUri() {
-            return applicationUri;
-        }
-
-        public void setApplicationUri(String applicationUri) {
-            this.applicationUri = applicationUri;
-        }
-
-        public Long getChannelLifetime() {
-            return channelLifetime;
-        }
-
-        public void setChannelLifetime(Long channelLifetime) {
-            this.channelLifetime = channelLifetime;
-        }
-
-        public String getKeyAlias() {
-            return keyAlias;
-        }
-
-        public void setKeyAlias(String keyAlias) {
-            this.keyAlias = keyAlias;
-        }
-
-        public String getKeyPassword() {
-            return keyPassword;
-        }
-
-        public void setKeyPassword(String keyPassword) {
-            this.keyPassword = keyPassword;
-        }
-
-        public String getKeyStorePassword() {
-            return keyStorePassword;
-        }
-
-        public void setKeyStorePassword(String keyStorePassword) {
-            this.keyStorePassword = keyStorePassword;
-        }
-
-        public String getKeyStoreType() {
-            return keyStoreType;
-        }
-
-        public void setKeyStoreType(String keyStoreType) {
-            this.keyStoreType = keyStoreType;
-        }
-
-        public URL getKeyStoreUrl() {
-            return keyStoreUrl;
-        }
-
-        public void setKeyStoreUrl(URL keyStoreUrl) {
-            this.keyStoreUrl = keyStoreUrl;
-        }
-
-        public Long getMaxPendingPublishRequests() {
-            return maxPendingPublishRequests;
-        }
-
-        public void setMaxPendingPublishRequests(Long maxPendingPublishRequests) {
-            this.maxPendingPublishRequests = maxPendingPublishRequests;
-        }
-
-        public Long getMaxResponseMessageSize() {
-            return maxResponseMessageSize;
-        }
-
-        public void setMaxResponseMessageSize(Long maxResponseMessageSize) {
-            this.maxResponseMessageSize = maxResponseMessageSize;
-        }
-
-        public Boolean getOverrideHost() {
-            return overrideHost;
-        }
-
-        public void setOverrideHost(Boolean overrideHost) {
-            this.overrideHost = overrideHost;
-        }
-
-        public String getProductUri() {
-            return productUri;
-        }
-
-        public void setProductUri(String productUri) {
-            this.productUri = productUri;
-        }
-
-        public Long getRequestTimeout() {
-            return requestTimeout;
-        }
-
-        public void setRequestTimeout(Long requestTimeout) {
-            this.requestTimeout = requestTimeout;
-        }
-
-        public String getSessionName() {
-            return sessionName;
-        }
-
-        public void setSessionName(String sessionName) {
-            this.sessionName = sessionName;
-        }
-
-        public Long getSessionTimeout() {
-            return sessionTimeout;
-        }
-
-        public void setSessionTimeout(Long sessionTimeout) {
-            this.sessionTimeout = sessionTimeout;
         }
     }
 
     public static class MiloClientConsumer
             extends
-                MiloClientCommon<MiloClientConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                MiloClientCommon<MiloClientConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public MiloClientConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -513,10 +257,9 @@ public class MiloClientEndpoint {
          * ignored. The option is a boolean type.
          */
         public MiloClientConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (MiloClientConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -526,47 +269,27 @@ public class MiloClientEndpoint {
          */
         public MiloClientConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (MiloClientConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public MiloClientConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (MiloClientConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class MiloClientProducer
             extends
-                MiloClientCommon<MiloClientProducer> {
+                MiloClientCommon<MiloClientProducer>
+            implements
+                EndpointDefinition.Producer {
+        public MiloClientProducer(String path) {
+            super(path);
+        }
     }
 }

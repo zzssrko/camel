@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import java.net.URI;
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * An awesome REST endpoint backed by Swagger specifications.
@@ -28,65 +29,50 @@ import javax.annotation.Generated;
 public class RestSwaggerEndpoint {
 
 
-    public static class RestSwaggerCommon<T extends EndpointConfiguration>
+    public static class RestSwaggerCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        RestSwaggerCommon(String path) {
+            super("rest-swagger", path);
+        }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class RestSwaggerConsumer
             extends
-                RestSwaggerCommon<RestSwaggerConsumer> {
+                RestSwaggerCommon<RestSwaggerConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public RestSwaggerConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class RestSwaggerProducer
             extends
-                RestSwaggerCommon<RestSwaggerProducer> {
-        private URI specificationUri;
-        private String operationId;
-        private String basePath;
-        private String componentName;
-        private String consumes;
-        private String host;
-        private String produces;
-
+                RestSwaggerCommon<RestSwaggerProducer>
+            implements
+                EndpointDefinition.Producer {
+        public RestSwaggerProducer(String path) {
+            super(path);
+        }
         /**
          * Path to the Swagger specification file. The scheme, host base path
          * are taken from this specification, but these can be overridden with
@@ -104,29 +90,26 @@ public class RestSwaggerEndpoint {
          * UrlHandler. The option is a java.net.URI type.
          */
         public RestSwaggerProducer specificationUri(URI specificationUri) {
-            this.specificationUri = specificationUri;
+            this.properties.put("specificationUri", specificationUri);
             return (RestSwaggerProducer) this;
         }
-
         /**
          * ID of the operation from the Swagger specification. The option is a
          * java.lang.String type.
          */
         public RestSwaggerProducer operationId(String operationId) {
-            this.operationId = operationId;
+            this.properties.put("operationId", operationId);
             return (RestSwaggerProducer) this;
         }
-
         /**
          * API basePath, for example /v2. Default is unset, if set overrides the
          * value present in Swagger specification and in the component
          * configuration. The option is a java.lang.String type.
          */
         public RestSwaggerProducer basePath(String basePath) {
-            this.basePath = basePath;
+            this.properties.put("basePath", basePath);
             return (RestSwaggerProducer) this;
         }
-
         /**
          * Name of the Camel component that will perform the requests. The
          * compnent must be present in Camel registry and it must implement
@@ -136,10 +119,9 @@ public class RestSwaggerEndpoint {
          * java.lang.String type.
          */
         public RestSwaggerProducer componentName(String componentName) {
-            this.componentName = componentName;
+            this.properties.put("componentName", componentName);
             return (RestSwaggerProducer) this;
         }
-
         /**
          * What payload type this component capable of consuming. Could be one
          * type, like application/json or multiple types as application/json,
@@ -149,10 +131,9 @@ public class RestSwaggerEndpoint {
          * is a java.lang.String type.
          */
         public RestSwaggerProducer consumes(String consumes) {
-            this.consumes = consumes;
+            this.properties.put("consumes", consumes);
             return (RestSwaggerProducer) this;
         }
-
         /**
          * Scheme hostname and port to direct the HTTP requests to in the form
          * of https://hostname:port. Can be configured at the endpoint,
@@ -164,10 +145,9 @@ public class RestSwaggerEndpoint {
          * The option is a java.lang.String type.
          */
         public RestSwaggerProducer host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (RestSwaggerProducer) this;
         }
-
         /**
          * What payload type this component is producing. For example
          * application/json according to the RFC7231. This equates to the value
@@ -176,64 +156,8 @@ public class RestSwaggerEndpoint {
          * option is a java.lang.String type.
          */
         public RestSwaggerProducer produces(String produces) {
-            this.produces = produces;
+            this.properties.put("produces", produces);
             return (RestSwaggerProducer) this;
-        }
-
-        public URI getSpecificationUri() {
-            return specificationUri;
-        }
-
-        public void setSpecificationUri(URI specificationUri) {
-            this.specificationUri = specificationUri;
-        }
-
-        public String getOperationId() {
-            return operationId;
-        }
-
-        public void setOperationId(String operationId) {
-            this.operationId = operationId;
-        }
-
-        public String getBasePath() {
-            return basePath;
-        }
-
-        public void setBasePath(String basePath) {
-            this.basePath = basePath;
-        }
-
-        public String getComponentName() {
-            return componentName;
-        }
-
-        public void setComponentName(String componentName) {
-            this.componentName = componentName;
-        }
-
-        public String getConsumes() {
-            return consumes;
-        }
-
-        public void setConsumes(String consumes) {
-            this.consumes = consumes;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public String getProduces() {
-            return produces;
-        }
-
-        public void setProduces(String produces) {
-            this.produces = produces;
         }
     }
 }

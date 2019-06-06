@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,80 +31,54 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SmppEndpoint {
 
 
-    public static class SmppCommon<T extends EndpointConfiguration>
+    public static class SmppCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private Long initialReconnectDelay;
-        private Integer maxReconnect;
-        private Long reconnectDelay;
-        private SmppSplittingPolicy splittingPolicy;
-        private String systemType;
-        private Boolean basicPropertyBinding;
-        private Integer enquireLinkTimer;
-        private Object sessionStateListener;
-        private Boolean synchronous;
-        private Integer transactionTimer;
-        private Byte alphabet;
-        private Byte dataCoding;
-        private String encoding;
-        private String httpProxyHost;
-        private String httpProxyPassword;
-        private Integer httpProxyPort;
-        private String httpProxyUsername;
-        private Map<String, String> proxyHeaders;
-        private String password;
-        private String systemId;
-        private Boolean usingSSL;
-
+                EndpointDefinition<T> {
+        SmppCommon(String path) {
+            super("smpp", path);
+        }
         /**
          * Hostname for the SMSC server to use. The option is a java.lang.String
          * type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Port number for the SMSC server to use. The option is a
          * java.lang.Integer type.
          */
         public T port(Integer port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Defines the initial delay in milliseconds after the consumer/producer
          * tries to reconnect to the SMSC, after the connection was lost. The
          * option is a long type.
          */
         public T initialReconnectDelay(long initialReconnectDelay) {
-            this.initialReconnectDelay = initialReconnectDelay;
+            this.properties.put("initialReconnectDelay", initialReconnectDelay);
             return (T) this;
         }
-
         /**
          * Defines the maximum number of attempts to reconnect to the SMSC, if
          * SMSC returns a negative bind response. The option is a int type.
          */
         public T maxReconnect(int maxReconnect) {
-            this.maxReconnect = maxReconnect;
+            this.properties.put("maxReconnect", maxReconnect);
             return (T) this;
         }
-
         /**
          * Defines the interval in milliseconds between the reconnect attempts,
          * if the connection to the SMSC was lost and the previous was not
          * succeed. The option is a long type.
          */
         public T reconnectDelay(long reconnectDelay) {
-            this.reconnectDelay = reconnectDelay;
+            this.properties.put("reconnectDelay", reconnectDelay);
             return (T) this;
         }
-
         /**
          * You can specify a policy for handling long messages: ALLOW - the
          * default, long messages are split to 140 bytes per message TRUNCATE -
@@ -116,60 +91,54 @@ public class SmppEndpoint {
          * org.apache.camel.component.smpp.SmppSplittingPolicy type.
          */
         public T splittingPolicy(SmppSplittingPolicy splittingPolicy) {
-            this.splittingPolicy = splittingPolicy;
+            this.properties.put("splittingPolicy", splittingPolicy);
             return (T) this;
         }
-
         /**
          * This parameter is used to categorize the type of ESME (External Short
          * Message Entity) that is binding to the SMSC (max. 13 characters). The
          * option is a java.lang.String type.
          */
         public T systemType(String systemType) {
-            this.systemType = systemType;
+            this.properties.put("systemType", systemType);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Defines the interval in milliseconds between the confidence checks.
          * The confidence check is used to test the communication path between
          * an ESME and an SMSC. The option is a java.lang.Integer type.
          */
         public T enquireLinkTimer(Integer enquireLinkTimer) {
-            this.enquireLinkTimer = enquireLinkTimer;
+            this.properties.put("enquireLinkTimer", enquireLinkTimer);
             return (T) this;
         }
-
         /**
          * You can refer to a org.jsmpp.session.SessionStateListener in the
          * Registry to receive callbacks when the session state changed. The
          * option is a org.jsmpp.session.SessionStateListener type.
          */
         public T sessionStateListener(Object sessionStateListener) {
-            this.sessionStateListener = sessionStateListener;
+            this.properties.put("sessionStateListener", sessionStateListener);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Defines the maximum period of inactivity allowed after a transaction,
          * after which an SMPP entity may assume that the session is no longer
@@ -177,20 +146,18 @@ public class SmppEndpoint {
          * (i.e. SMSC or ESME). The option is a java.lang.Integer type.
          */
         public T transactionTimer(Integer transactionTimer) {
-            this.transactionTimer = transactionTimer;
+            this.properties.put("transactionTimer", transactionTimer);
             return (T) this;
         }
-
         /**
          * Defines encoding of data according the SMPP 3.4 specification,
          * section 5.2.19. 0: SMSC Default Alphabet 4: 8 bit Alphabet 8: UCS2
          * Alphabet. The option is a byte type.
          */
         public T alphabet(byte alphabet) {
-            this.alphabet = alphabet;
+            this.properties.put("alphabet", alphabet);
             return (T) this;
         }
-
         /**
          * Defines the data coding according the SMPP 3.4 specification, section
          * 5.2.19. Example data encodings are: 0: SMSC Default Alphabet 3: Latin
@@ -199,288 +166,97 @@ public class SmppEndpoint {
          * byte type.
          */
         public T dataCoding(byte dataCoding) {
-            this.dataCoding = dataCoding;
+            this.properties.put("dataCoding", dataCoding);
             return (T) this;
         }
-
         /**
          * Defines the encoding scheme of the short message user data. Only for
          * SubmitSm, ReplaceSm and SubmitMulti. The option is a java.lang.String
          * type.
          */
         public T encoding(String encoding) {
-            this.encoding = encoding;
+            this.properties.put("encoding", encoding);
             return (T) this;
         }
-
         /**
          * If you need to tunnel SMPP through a HTTP proxy, set this attribute
          * to the hostname or ip address of your HTTP proxy. The option is a
          * java.lang.String type.
          */
         public T httpProxyHost(String httpProxyHost) {
-            this.httpProxyHost = httpProxyHost;
+            this.properties.put("httpProxyHost", httpProxyHost);
             return (T) this;
         }
-
         /**
          * If your HTTP proxy requires basic authentication, set this attribute
          * to the password required for your HTTP proxy. The option is a
          * java.lang.String type.
          */
         public T httpProxyPassword(String httpProxyPassword) {
-            this.httpProxyPassword = httpProxyPassword;
+            this.properties.put("httpProxyPassword", httpProxyPassword);
             return (T) this;
         }
-
         /**
          * If you need to tunnel SMPP through a HTTP proxy, set this attribute
          * to the port of your HTTP proxy. The option is a java.lang.Integer
          * type.
          */
         public T httpProxyPort(Integer httpProxyPort) {
-            this.httpProxyPort = httpProxyPort;
+            this.properties.put("httpProxyPort", httpProxyPort);
             return (T) this;
         }
-
         /**
          * If your HTTP proxy requires basic authentication, set this attribute
          * to the username required for your HTTP proxy. The option is a
          * java.lang.String type.
          */
         public T httpProxyUsername(String httpProxyUsername) {
-            this.httpProxyUsername = httpProxyUsername;
+            this.properties.put("httpProxyUsername", httpProxyUsername);
             return (T) this;
         }
-
         /**
          * These headers will be passed to the proxy server while establishing
          * the connection. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
         public T proxyHeaders(Map<String, String> proxyHeaders) {
-            this.proxyHeaders = proxyHeaders;
+            this.properties.put("proxyHeaders", proxyHeaders);
             return (T) this;
         }
-
         /**
          * The password for connecting to SMSC server. The option is a
          * java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * The system id (username) for connecting to SMSC server. The option is
          * a java.lang.String type.
          */
         public T systemId(String systemId) {
-            this.systemId = systemId;
+            this.properties.put("systemId", systemId);
             return (T) this;
         }
-
         /**
          * Whether using SSL with the smpps protocol. The option is a boolean
          * type.
          */
         public T usingSSL(boolean usingSSL) {
-            this.usingSSL = usingSSL;
+            this.properties.put("usingSSL", usingSSL);
             return (T) this;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public Long getInitialReconnectDelay() {
-            return initialReconnectDelay;
-        }
-
-        public void setInitialReconnectDelay(Long initialReconnectDelay) {
-            this.initialReconnectDelay = initialReconnectDelay;
-        }
-
-        public Integer getMaxReconnect() {
-            return maxReconnect;
-        }
-
-        public void setMaxReconnect(Integer maxReconnect) {
-            this.maxReconnect = maxReconnect;
-        }
-
-        public Long getReconnectDelay() {
-            return reconnectDelay;
-        }
-
-        public void setReconnectDelay(Long reconnectDelay) {
-            this.reconnectDelay = reconnectDelay;
-        }
-
-        public SmppSplittingPolicy getSplittingPolicy() {
-            return splittingPolicy;
-        }
-
-        public void setSplittingPolicy(SmppSplittingPolicy splittingPolicy) {
-            this.splittingPolicy = splittingPolicy;
-        }
-
-        public String getSystemType() {
-            return systemType;
-        }
-
-        public void setSystemType(String systemType) {
-            this.systemType = systemType;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Integer getEnquireLinkTimer() {
-            return enquireLinkTimer;
-        }
-
-        public void setEnquireLinkTimer(Integer enquireLinkTimer) {
-            this.enquireLinkTimer = enquireLinkTimer;
-        }
-
-        public Object getSessionStateListener() {
-            return sessionStateListener;
-        }
-
-        public void setSessionStateListener(Object sessionStateListener) {
-            this.sessionStateListener = sessionStateListener;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Integer getTransactionTimer() {
-            return transactionTimer;
-        }
-
-        public void setTransactionTimer(Integer transactionTimer) {
-            this.transactionTimer = transactionTimer;
-        }
-
-        public Byte getAlphabet() {
-            return alphabet;
-        }
-
-        public void setAlphabet(Byte alphabet) {
-            this.alphabet = alphabet;
-        }
-
-        public Byte getDataCoding() {
-            return dataCoding;
-        }
-
-        public void setDataCoding(Byte dataCoding) {
-            this.dataCoding = dataCoding;
-        }
-
-        public String getEncoding() {
-            return encoding;
-        }
-
-        public void setEncoding(String encoding) {
-            this.encoding = encoding;
-        }
-
-        public String getHttpProxyHost() {
-            return httpProxyHost;
-        }
-
-        public void setHttpProxyHost(String httpProxyHost) {
-            this.httpProxyHost = httpProxyHost;
-        }
-
-        public String getHttpProxyPassword() {
-            return httpProxyPassword;
-        }
-
-        public void setHttpProxyPassword(String httpProxyPassword) {
-            this.httpProxyPassword = httpProxyPassword;
-        }
-
-        public Integer getHttpProxyPort() {
-            return httpProxyPort;
-        }
-
-        public void setHttpProxyPort(Integer httpProxyPort) {
-            this.httpProxyPort = httpProxyPort;
-        }
-
-        public String getHttpProxyUsername() {
-            return httpProxyUsername;
-        }
-
-        public void setHttpProxyUsername(String httpProxyUsername) {
-            this.httpProxyUsername = httpProxyUsername;
-        }
-
-        public Map<String, String> getProxyHeaders() {
-            return proxyHeaders;
-        }
-
-        public void setProxyHeaders(Map<String, String> proxyHeaders) {
-            this.proxyHeaders = proxyHeaders;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getSystemId() {
-            return systemId;
-        }
-
-        public void setSystemId(String systemId) {
-            this.systemId = systemId;
-        }
-
-        public Boolean getUsingSSL() {
-            return usingSSL;
-        }
-
-        public void setUsingSSL(Boolean usingSSL) {
-            this.usingSSL = usingSSL;
         }
     }
 
-    public static class SmppConsumer extends SmppCommon<SmppConsumer> {
-        private String addressRange;
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class SmppConsumer
+            extends
+                SmppCommon<SmppConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SmppConsumer(String path) {
+            super(path);
+        }
         /**
          * You can specify the address range for the SmppConsumer as defined in
          * section 5.2.7 of the SMPP 3.4 specification. The SmppConsumer will
@@ -488,10 +264,9 @@ public class SmppEndpoint {
          * IP address) within this range. The option is a java.lang.String type.
          */
         public SmppConsumer addressRange(String addressRange) {
-            this.addressRange = addressRange;
+            this.properties.put("addressRange", addressRange);
             return (SmppConsumer) this;
         }
-
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -502,10 +277,9 @@ public class SmppEndpoint {
          * ignored. The option is a boolean type.
          */
         public SmppConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SmppConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -514,68 +288,27 @@ public class SmppEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public SmppConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SmppConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SmppConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SmppConsumer) this;
-        }
-
-        public String getAddressRange() {
-            return addressRange;
-        }
-
-        public void setAddressRange(String addressRange) {
-            this.addressRange = addressRange;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class SmppProducer extends SmppCommon<SmppProducer> {
-        private String destAddr;
-        private Byte destAddrNpi;
-        private Byte destAddrTon;
-        private Boolean lazySessionCreation;
-        private Byte numberingPlanIndicator;
-        private Byte priorityFlag;
-        private Byte protocolId;
-        private Byte registeredDelivery;
-        private Byte replaceIfPresentFlag;
-        private String serviceType;
-        private String sourceAddr;
-        private Byte sourceAddrNpi;
-        private Byte sourceAddrTon;
-        private Byte typeOfNumber;
-
+    public static class SmppProducer
+            extends
+                SmppCommon<SmppProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SmppProducer(String path) {
+            super(path);
+        }
         /**
          * Defines the destination SME address. For mobile terminated messages,
          * this is the directory number of the recipient MS. Only for SubmitSm,
@@ -583,10 +316,9 @@ public class SmppEndpoint {
          * type.
          */
         public SmppProducer destAddr(String destAddr) {
-            this.destAddr = destAddr;
+            this.properties.put("destAddr", destAddr);
             return (SmppProducer) this;
         }
-
         /**
          * Defines the type of number (TON) to be used in the SME destination
          * address parameters. Only for SubmitSm, SubmitMulti, CancelSm and
@@ -596,10 +328,9 @@ public class SmppEndpoint {
          * be defined by WAP Forum). The option is a byte type.
          */
         public SmppProducer destAddrNpi(byte destAddrNpi) {
-            this.destAddrNpi = destAddrNpi;
+            this.properties.put("destAddrNpi", destAddrNpi);
             return (SmppProducer) this;
         }
-
         /**
          * Defines the type of number (TON) to be used in the SME destination
          * address parameters. Only for SubmitSm, SubmitMulti, CancelSm and
@@ -608,10 +339,9 @@ public class SmppEndpoint {
          * Alphanumeric 6: Abbreviated. The option is a byte type.
          */
         public SmppProducer destAddrTon(byte destAddrTon) {
-            this.destAddrTon = destAddrTon;
+            this.properties.put("destAddrTon", destAddrTon);
             return (SmppProducer) this;
         }
-
         /**
          * Sessions can be lazily created to avoid exceptions, if the SMSC is
          * not available when the Camel producer is started. Camel will check
@@ -620,10 +350,9 @@ public class SmppEndpoint {
          * connect to the SMSC. The option is a boolean type.
          */
         public SmppProducer lazySessionCreation(boolean lazySessionCreation) {
-            this.lazySessionCreation = lazySessionCreation;
+            this.properties.put("lazySessionCreation", lazySessionCreation);
             return (SmppProducer) this;
         }
-
         /**
          * Defines the numeric plan indicator (NPI) to be used in the SME. The
          * following NPI values are defined: 0: Unknown 1: ISDN (E163/E164) 2:
@@ -632,10 +361,9 @@ public class SmppEndpoint {
          * by WAP Forum). The option is a byte type.
          */
         public SmppProducer numberingPlanIndicator(byte numberingPlanIndicator) {
-            this.numberingPlanIndicator = numberingPlanIndicator;
+            this.properties.put("numberingPlanIndicator", numberingPlanIndicator);
             return (SmppProducer) this;
         }
-
         /**
          * Allows the originating SME to assign a priority level to the short
          * message. Only for SubmitSm and SubmitMulti. Four Priority Levels are
@@ -643,18 +371,16 @@ public class SmppEndpoint {
          * 2 priority 3: Level 3 (highest) priority. The option is a byte type.
          */
         public SmppProducer priorityFlag(byte priorityFlag) {
-            this.priorityFlag = priorityFlag;
+            this.properties.put("priorityFlag", priorityFlag);
             return (SmppProducer) this;
         }
-
         /**
          * The protocol id. The option is a byte type.
          */
         public SmppProducer protocolId(byte protocolId) {
-            this.protocolId = protocolId;
+            this.properties.put("protocolId", protocolId);
             return (SmppProducer) this;
         }
-
         /**
          * Is used to request an SMSC delivery receipt and/or SME originated
          * acknowledgements. The following values are defined: 0: No SMSC
@@ -664,10 +390,9 @@ public class SmppEndpoint {
          * failure. The option is a byte type.
          */
         public SmppProducer registeredDelivery(byte registeredDelivery) {
-            this.registeredDelivery = registeredDelivery;
+            this.properties.put("registeredDelivery", registeredDelivery);
             return (SmppProducer) this;
         }
-
         /**
          * Used to request the SMSC to replace a previously submitted message,
          * that is still pending delivery. The SMSC will replace an existing
@@ -677,10 +402,9 @@ public class SmppEndpoint {
          * Replace. The option is a byte type.
          */
         public SmppProducer replaceIfPresentFlag(byte replaceIfPresentFlag) {
-            this.replaceIfPresentFlag = replaceIfPresentFlag;
+            this.properties.put("replaceIfPresentFlag", replaceIfPresentFlag);
             return (SmppProducer) this;
         }
-
         /**
          * The service type parameter can be used to indicate the SMS
          * Application service associated with the message. The following
@@ -690,19 +414,17 @@ public class SmppEndpoint {
          * Services Data. The option is a java.lang.String type.
          */
         public SmppProducer serviceType(String serviceType) {
-            this.serviceType = serviceType;
+            this.properties.put("serviceType", serviceType);
             return (SmppProducer) this;
         }
-
         /**
          * Defines the address of SME (Short Message Entity) which originated
          * this message. The option is a java.lang.String type.
          */
         public SmppProducer sourceAddr(String sourceAddr) {
-            this.sourceAddr = sourceAddr;
+            this.properties.put("sourceAddr", sourceAddr);
             return (SmppProducer) this;
         }
-
         /**
          * Defines the numeric plan indicator (NPI) to be used in the SME
          * originator address parameters. The following NPI values are defined:
@@ -712,10 +434,9 @@ public class SmppEndpoint {
          * byte type.
          */
         public SmppProducer sourceAddrNpi(byte sourceAddrNpi) {
-            this.sourceAddrNpi = sourceAddrNpi;
+            this.properties.put("sourceAddrNpi", sourceAddrNpi);
             return (SmppProducer) this;
         }
-
         /**
          * Defines the type of number (TON) to be used in the SME originator
          * address parameters. The following TON values are defined: 0: Unknown
@@ -723,10 +444,9 @@ public class SmppEndpoint {
          * 5: Alphanumeric 6: Abbreviated. The option is a byte type.
          */
         public SmppProducer sourceAddrTon(byte sourceAddrTon) {
-            this.sourceAddrTon = sourceAddrTon;
+            this.properties.put("sourceAddrTon", sourceAddrTon);
             return (SmppProducer) this;
         }
-
         /**
          * Defines the type of number (TON) to be used in the SME. The following
          * TON values are defined: 0: Unknown 1: International 2: National 3:
@@ -734,120 +454,8 @@ public class SmppEndpoint {
          * The option is a byte type.
          */
         public SmppProducer typeOfNumber(byte typeOfNumber) {
-            this.typeOfNumber = typeOfNumber;
+            this.properties.put("typeOfNumber", typeOfNumber);
             return (SmppProducer) this;
-        }
-
-        public String getDestAddr() {
-            return destAddr;
-        }
-
-        public void setDestAddr(String destAddr) {
-            this.destAddr = destAddr;
-        }
-
-        public Byte getDestAddrNpi() {
-            return destAddrNpi;
-        }
-
-        public void setDestAddrNpi(Byte destAddrNpi) {
-            this.destAddrNpi = destAddrNpi;
-        }
-
-        public Byte getDestAddrTon() {
-            return destAddrTon;
-        }
-
-        public void setDestAddrTon(Byte destAddrTon) {
-            this.destAddrTon = destAddrTon;
-        }
-
-        public Boolean getLazySessionCreation() {
-            return lazySessionCreation;
-        }
-
-        public void setLazySessionCreation(Boolean lazySessionCreation) {
-            this.lazySessionCreation = lazySessionCreation;
-        }
-
-        public Byte getNumberingPlanIndicator() {
-            return numberingPlanIndicator;
-        }
-
-        public void setNumberingPlanIndicator(Byte numberingPlanIndicator) {
-            this.numberingPlanIndicator = numberingPlanIndicator;
-        }
-
-        public Byte getPriorityFlag() {
-            return priorityFlag;
-        }
-
-        public void setPriorityFlag(Byte priorityFlag) {
-            this.priorityFlag = priorityFlag;
-        }
-
-        public Byte getProtocolId() {
-            return protocolId;
-        }
-
-        public void setProtocolId(Byte protocolId) {
-            this.protocolId = protocolId;
-        }
-
-        public Byte getRegisteredDelivery() {
-            return registeredDelivery;
-        }
-
-        public void setRegisteredDelivery(Byte registeredDelivery) {
-            this.registeredDelivery = registeredDelivery;
-        }
-
-        public Byte getReplaceIfPresentFlag() {
-            return replaceIfPresentFlag;
-        }
-
-        public void setReplaceIfPresentFlag(Byte replaceIfPresentFlag) {
-            this.replaceIfPresentFlag = replaceIfPresentFlag;
-        }
-
-        public String getServiceType() {
-            return serviceType;
-        }
-
-        public void setServiceType(String serviceType) {
-            this.serviceType = serviceType;
-        }
-
-        public String getSourceAddr() {
-            return sourceAddr;
-        }
-
-        public void setSourceAddr(String sourceAddr) {
-            this.sourceAddr = sourceAddr;
-        }
-
-        public Byte getSourceAddrNpi() {
-            return sourceAddrNpi;
-        }
-
-        public void setSourceAddrNpi(Byte sourceAddrNpi) {
-            this.sourceAddrNpi = sourceAddrNpi;
-        }
-
-        public Byte getSourceAddrTon() {
-            return sourceAddrTon;
-        }
-
-        public void setSourceAddrTon(Byte sourceAddrTon) {
-            this.sourceAddrTon = sourceAddrTon;
-        }
-
-        public Byte getTypeOfNumber() {
-            return typeOfNumber;
-        }
-
-        public void setTypeOfNumber(Byte typeOfNumber) {
-            this.typeOfNumber = typeOfNumber;
         }
     }
 

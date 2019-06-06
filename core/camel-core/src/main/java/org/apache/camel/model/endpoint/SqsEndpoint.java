@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.HeaderFilterStrategy;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
@@ -37,112 +38,85 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class SqsEndpoint {
 
 
-    public static class SqsCommon<T extends EndpointConfiguration>
+    public static class SqsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String queueNameOrArn;
-        private String amazonAWSHost;
-        private Object amazonSQSClient;
-        private Boolean autoCreateQueue;
-        private HeaderFilterStrategy headerFilterStrategy;
-        private String queueOwnerAWSAccountId;
-        private String region;
-        private Boolean basicPropertyBinding;
-        private Boolean delayQueue;
-        private String queueUrl;
-        private Boolean synchronous;
-        private String proxyHost;
-        private Integer proxyPort;
-        private Integer maximumMessageSize;
-        private Integer messageRetentionPeriod;
-        private String policy;
-        private Integer receiveMessageWaitTimeSeconds;
-        private String redrivePolicy;
-        private String accessKey;
-        private String secretKey;
-
+                EndpointDefinition<T> {
+        SqsCommon(String path) {
+            super("aws-sqs", path);
+        }
         /**
          * Queue name or ARN. The option is a java.lang.String type.
          */
         public T queueNameOrArn(String queueNameOrArn) {
-            this.queueNameOrArn = queueNameOrArn;
+            this.properties.put("queueNameOrArn", queueNameOrArn);
             return (T) this;
         }
-
         /**
          * The hostname of the Amazon AWS cloud. The option is a
          * java.lang.String type.
          */
         public T amazonAWSHost(String amazonAWSHost) {
-            this.amazonAWSHost = amazonAWSHost;
+            this.properties.put("amazonAWSHost", amazonAWSHost);
             return (T) this;
         }
-
         /**
          * To use the AmazonSQS as client. The option is a
          * com.amazonaws.services.sqs.AmazonSQS type.
          */
         public T amazonSQSClient(Object amazonSQSClient) {
-            this.amazonSQSClient = amazonSQSClient;
+            this.properties.put("amazonSQSClient", amazonSQSClient);
             return (T) this;
         }
-
         /**
          * Setting the autocreation of the queue. The option is a boolean type.
          */
         public T autoCreateQueue(boolean autoCreateQueue) {
-            this.autoCreateQueue = autoCreateQueue;
+            this.properties.put("autoCreateQueue", autoCreateQueue);
             return (T) this;
         }
-
         /**
          * To use a custom HeaderFilterStrategy to map headers to/from Camel.
          * The option is a org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
-
         /**
          * Specify the queue owner aws account id when you need to connect the
          * queue with different account owner. The option is a java.lang.String
          * type.
          */
         public T queueOwnerAWSAccountId(String queueOwnerAWSAccountId) {
-            this.queueOwnerAWSAccountId = queueOwnerAWSAccountId;
+            this.properties.put("queueOwnerAWSAccountId", queueOwnerAWSAccountId);
             return (T) this;
         }
-
         /**
          * Specify the queue region which could be used with
          * queueOwnerAWSAccountId to build the service URL. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Define if you want to apply delaySeconds option to the queue or on
          * single messages. The option is a boolean type.
          */
         public T delayQueue(boolean delayQueue) {
-            this.delayQueue = delayQueue;
+            this.properties.put("delayQueue", delayQueue);
             return (T) this;
         }
-
         /**
          * To define the queueUrl explicitly. All other parameters, which would
          * influence the queueUrl, are ignored. This parameter is intended to be
@@ -150,64 +124,57 @@ public class SqsEndpoint {
          * purposes. The option is a java.lang.String type.
          */
         public T queueUrl(String queueUrl) {
-            this.queueUrl = queueUrl;
+            this.properties.put("queueUrl", queueUrl);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * To define a proxy host when instantiating the SQS client. The option
          * is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * To define a proxy port when instantiating the SQS client. The option
          * is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
-
         /**
          * The maximumMessageSize (in bytes) an SQS message can contain for this
          * queue. The option is a java.lang.Integer type.
          */
         public T maximumMessageSize(Integer maximumMessageSize) {
-            this.maximumMessageSize = maximumMessageSize;
+            this.properties.put("maximumMessageSize", maximumMessageSize);
             return (T) this;
         }
-
         /**
          * The messageRetentionPeriod (in seconds) a message will be retained by
          * SQS for this queue. The option is a java.lang.Integer type.
          */
         public T messageRetentionPeriod(Integer messageRetentionPeriod) {
-            this.messageRetentionPeriod = messageRetentionPeriod;
+            this.properties.put("messageRetentionPeriod", messageRetentionPeriod);
             return (T) this;
         }
-
         /**
          * The policy for this queue. The option is a java.lang.String type.
          */
         public T policy(String policy) {
-            this.policy = policy;
+            this.properties.put("policy", policy);
             return (T) this;
         }
-
         /**
          * If you do not specify WaitTimeSeconds in the request, the queue
          * attribute ReceiveMessageWaitTimeSeconds is used to determine how long
@@ -215,240 +182,49 @@ public class SqsEndpoint {
          */
         public T receiveMessageWaitTimeSeconds(
                 Integer receiveMessageWaitTimeSeconds) {
-            this.receiveMessageWaitTimeSeconds = receiveMessageWaitTimeSeconds;
+            this.properties.put("receiveMessageWaitTimeSeconds", receiveMessageWaitTimeSeconds);
             return (T) this;
         }
-
         /**
          * Specify the policy that send message to DeadLetter queue. See detail
          * at Amazon docs. The option is a java.lang.String type.
          */
         public T redrivePolicy(String redrivePolicy) {
-            this.redrivePolicy = redrivePolicy;
+            this.properties.put("redrivePolicy", redrivePolicy);
             return (T) this;
         }
-
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public T accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (T) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public T secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (T) this;
-        }
-
-        public String getQueueNameOrArn() {
-            return queueNameOrArn;
-        }
-
-        public void setQueueNameOrArn(String queueNameOrArn) {
-            this.queueNameOrArn = queueNameOrArn;
-        }
-
-        public String getAmazonAWSHost() {
-            return amazonAWSHost;
-        }
-
-        public void setAmazonAWSHost(String amazonAWSHost) {
-            this.amazonAWSHost = amazonAWSHost;
-        }
-
-        public Object getAmazonSQSClient() {
-            return amazonSQSClient;
-        }
-
-        public void setAmazonSQSClient(Object amazonSQSClient) {
-            this.amazonSQSClient = amazonSQSClient;
-        }
-
-        public Boolean getAutoCreateQueue() {
-            return autoCreateQueue;
-        }
-
-        public void setAutoCreateQueue(Boolean autoCreateQueue) {
-            this.autoCreateQueue = autoCreateQueue;
-        }
-
-        public HeaderFilterStrategy getHeaderFilterStrategy() {
-            return headerFilterStrategy;
-        }
-
-        public void setHeaderFilterStrategy(
-                HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
-        }
-
-        public String getQueueOwnerAWSAccountId() {
-            return queueOwnerAWSAccountId;
-        }
-
-        public void setQueueOwnerAWSAccountId(String queueOwnerAWSAccountId) {
-            this.queueOwnerAWSAccountId = queueOwnerAWSAccountId;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getDelayQueue() {
-            return delayQueue;
-        }
-
-        public void setDelayQueue(Boolean delayQueue) {
-            this.delayQueue = delayQueue;
-        }
-
-        public String getQueueUrl() {
-            return queueUrl;
-        }
-
-        public void setQueueUrl(String queueUrl) {
-            this.queueUrl = queueUrl;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public Integer getMaximumMessageSize() {
-            return maximumMessageSize;
-        }
-
-        public void setMaximumMessageSize(Integer maximumMessageSize) {
-            this.maximumMessageSize = maximumMessageSize;
-        }
-
-        public Integer getMessageRetentionPeriod() {
-            return messageRetentionPeriod;
-        }
-
-        public void setMessageRetentionPeriod(Integer messageRetentionPeriod) {
-            this.messageRetentionPeriod = messageRetentionPeriod;
-        }
-
-        public String getPolicy() {
-            return policy;
-        }
-
-        public void setPolicy(String policy) {
-            this.policy = policy;
-        }
-
-        public Integer getReceiveMessageWaitTimeSeconds() {
-            return receiveMessageWaitTimeSeconds;
-        }
-
-        public void setReceiveMessageWaitTimeSeconds(
-                Integer receiveMessageWaitTimeSeconds) {
-            this.receiveMessageWaitTimeSeconds = receiveMessageWaitTimeSeconds;
-        }
-
-        public String getRedrivePolicy() {
-            return redrivePolicy;
-        }
-
-        public void setRedrivePolicy(String redrivePolicy) {
-            this.redrivePolicy = redrivePolicy;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
         }
     }
 
-    public static class SqsConsumer extends SqsCommon<SqsConsumer> {
-        private String attributeNames;
-        private Boolean bridgeErrorHandler;
-        private Integer concurrentConsumers;
-        private Integer defaultVisibilityTimeout;
-        private Boolean deleteAfterRead;
-        private Boolean deleteIfFiltered;
-        private Boolean extendMessageVisibility;
-        private Integer kmsDataKeyReusePeriodSeconds;
-        private String kmsMasterKeyId;
-        private Integer maxMessagesPerPoll;
-        private String messageAttributeNames;
-        private Boolean sendEmptyMessageWhenIdle;
-        private Boolean serverSideEncryptionEnabled;
-        private Integer visibilityTimeout;
-        private Integer waitTimeSeconds;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+    public static class SqsConsumer
+            extends
+                SqsCommon<SqsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SqsConsumer(String path) {
+            super(path);
+        }
         /**
          * A list of attribute names to receive when consuming. Multiple names
          * can be separated by comma. The option is a java.lang.String type.
          */
         public SqsConsumer attributeNames(String attributeNames) {
-            this.attributeNames = attributeNames;
+            this.properties.put("attributeNames", attributeNames);
             return (SqsConsumer) this;
         }
-
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -459,38 +235,34 @@ public class SqsEndpoint {
          * ignored. The option is a boolean type.
          */
         public SqsConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SqsConsumer) this;
         }
-
         /**
          * Allows you to use multiple threads to poll the sqs queue to increase
          * throughput. The option is a int type.
          */
         public SqsConsumer concurrentConsumers(int concurrentConsumers) {
-            this.concurrentConsumers = concurrentConsumers;
+            this.properties.put("concurrentConsumers", concurrentConsumers);
             return (SqsConsumer) this;
         }
-
         /**
          * The default visibility timeout (in seconds). The option is a
          * java.lang.Integer type.
          */
         public SqsConsumer defaultVisibilityTimeout(
                 Integer defaultVisibilityTimeout) {
-            this.defaultVisibilityTimeout = defaultVisibilityTimeout;
+            this.properties.put("defaultVisibilityTimeout", defaultVisibilityTimeout);
             return (SqsConsumer) this;
         }
-
         /**
          * Delete message from SQS after it has been read. The option is a
          * boolean type.
          */
         public SqsConsumer deleteAfterRead(boolean deleteAfterRead) {
-            this.deleteAfterRead = deleteAfterRead;
+            this.properties.put("deleteAfterRead", deleteAfterRead);
             return (SqsConsumer) this;
         }
-
         /**
          * Whether or not to send the DeleteMessage to the SQS queue if an
          * exchange fails to get through a filter. If 'false' and exchange does
@@ -498,10 +270,9 @@ public class SqsEndpoint {
          * send DeleteMessage. The option is a boolean type.
          */
         public SqsConsumer deleteIfFiltered(boolean deleteIfFiltered) {
-            this.deleteIfFiltered = deleteIfFiltered;
+            this.properties.put("deleteIfFiltered", deleteIfFiltered);
             return (SqsConsumer) this;
         }
-
         /**
          * If enabled then a scheduled background task will keep extending the
          * message visibility on SQS. This is needed if it takes a long time to
@@ -510,10 +281,9 @@ public class SqsEndpoint {
          */
         public SqsConsumer extendMessageVisibility(
                 boolean extendMessageVisibility) {
-            this.extendMessageVisibility = extendMessageVisibility;
+            this.properties.put("extendMessageVisibility", extendMessageVisibility);
             return (SqsConsumer) this;
         }
-
         /**
          * The length of time, in seconds, for which Amazon SQS can reuse a data
          * key to encrypt or decrypt messages before calling AWS KMS again. An
@@ -523,39 +293,35 @@ public class SqsEndpoint {
          */
         public SqsConsumer kmsDataKeyReusePeriodSeconds(
                 Integer kmsDataKeyReusePeriodSeconds) {
-            this.kmsDataKeyReusePeriodSeconds = kmsDataKeyReusePeriodSeconds;
+            this.properties.put("kmsDataKeyReusePeriodSeconds", kmsDataKeyReusePeriodSeconds);
             return (SqsConsumer) this;
         }
-
         /**
          * The ID of an AWS-managed customer master key (CMK) for Amazon SQS or
          * a custom CMK. The option is a java.lang.String type.
          */
         public SqsConsumer kmsMasterKeyId(String kmsMasterKeyId) {
-            this.kmsMasterKeyId = kmsMasterKeyId;
+            this.properties.put("kmsMasterKeyId", kmsMasterKeyId);
             return (SqsConsumer) this;
         }
-
         /**
          * Gets the maximum number of messages as a limit to poll at each
          * polling. Is default unlimited, but use 0 or negative number to
          * disable it as unlimited. The option is a int type.
          */
         public SqsConsumer maxMessagesPerPoll(int maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
             return (SqsConsumer) this;
         }
-
         /**
          * A list of message attribute names to receive when consuming. Multiple
          * names can be separated by comma. The option is a java.lang.String
          * type.
          */
         public SqsConsumer messageAttributeNames(String messageAttributeNames) {
-            this.messageAttributeNames = messageAttributeNames;
+            this.properties.put("messageAttributeNames", messageAttributeNames);
             return (SqsConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -563,20 +329,18 @@ public class SqsEndpoint {
          */
         public SqsConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (SqsConsumer) this;
         }
-
         /**
          * Define if Server Side Encryption is enabled or not on the queue. The
          * option is a boolean type.
          */
         public SqsConsumer serverSideEncryptionEnabled(
                 boolean serverSideEncryptionEnabled) {
-            this.serverSideEncryptionEnabled = serverSideEncryptionEnabled;
+            this.properties.put("serverSideEncryptionEnabled", serverSideEncryptionEnabled);
             return (SqsConsumer) this;
         }
-
         /**
          * The duration (in seconds) that the received messages are hidden from
          * subsequent retrieve requests after being retrieved by a
@@ -587,20 +351,18 @@ public class SqsEndpoint {
          * java.lang.Integer type.
          */
         public SqsConsumer visibilityTimeout(Integer visibilityTimeout) {
-            this.visibilityTimeout = visibilityTimeout;
+            this.properties.put("visibilityTimeout", visibilityTimeout);
             return (SqsConsumer) this;
         }
-
         /**
          * Duration in seconds (0 to 20) that the ReceiveMessage action call
          * will wait until a message is in the queue to include in the response.
          * The option is a java.lang.Integer type.
          */
         public SqsConsumer waitTimeSeconds(Integer waitTimeSeconds) {
-            this.waitTimeSeconds = waitTimeSeconds;
+            this.properties.put("waitTimeSeconds", waitTimeSeconds);
             return (SqsConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -609,19 +371,17 @@ public class SqsEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public SqsConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SqsConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SqsConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SqsConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -630,29 +390,26 @@ public class SqsEndpoint {
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
         public SqsConsumer pollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (SqsConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public SqsConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (SqsConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public SqsConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (SqsConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -662,50 +419,45 @@ public class SqsEndpoint {
          * configured. The option is a int type.
          */
         public SqsConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (SqsConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public SqsConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (SqsConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public SqsConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (SqsConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public SqsConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (SqsConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public SqsConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (SqsConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -714,20 +466,18 @@ public class SqsEndpoint {
          */
         public SqsConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (SqsConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public SqsConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (SqsConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -735,306 +485,52 @@ public class SqsEndpoint {
          */
         public SqsConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (SqsConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public SqsConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (SqsConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public SqsConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (SqsConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public SqsConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (SqsConsumer) this;
-        }
-
-        public String getAttributeNames() {
-            return attributeNames;
-        }
-
-        public void setAttributeNames(String attributeNames) {
-            this.attributeNames = attributeNames;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Integer getConcurrentConsumers() {
-            return concurrentConsumers;
-        }
-
-        public void setConcurrentConsumers(Integer concurrentConsumers) {
-            this.concurrentConsumers = concurrentConsumers;
-        }
-
-        public Integer getDefaultVisibilityTimeout() {
-            return defaultVisibilityTimeout;
-        }
-
-        public void setDefaultVisibilityTimeout(Integer defaultVisibilityTimeout) {
-            this.defaultVisibilityTimeout = defaultVisibilityTimeout;
-        }
-
-        public Boolean getDeleteAfterRead() {
-            return deleteAfterRead;
-        }
-
-        public void setDeleteAfterRead(Boolean deleteAfterRead) {
-            this.deleteAfterRead = deleteAfterRead;
-        }
-
-        public Boolean getDeleteIfFiltered() {
-            return deleteIfFiltered;
-        }
-
-        public void setDeleteIfFiltered(Boolean deleteIfFiltered) {
-            this.deleteIfFiltered = deleteIfFiltered;
-        }
-
-        public Boolean getExtendMessageVisibility() {
-            return extendMessageVisibility;
-        }
-
-        public void setExtendMessageVisibility(Boolean extendMessageVisibility) {
-            this.extendMessageVisibility = extendMessageVisibility;
-        }
-
-        public Integer getKmsDataKeyReusePeriodSeconds() {
-            return kmsDataKeyReusePeriodSeconds;
-        }
-
-        public void setKmsDataKeyReusePeriodSeconds(
-                Integer kmsDataKeyReusePeriodSeconds) {
-            this.kmsDataKeyReusePeriodSeconds = kmsDataKeyReusePeriodSeconds;
-        }
-
-        public String getKmsMasterKeyId() {
-            return kmsMasterKeyId;
-        }
-
-        public void setKmsMasterKeyId(String kmsMasterKeyId) {
-            this.kmsMasterKeyId = kmsMasterKeyId;
-        }
-
-        public Integer getMaxMessagesPerPoll() {
-            return maxMessagesPerPoll;
-        }
-
-        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
-        }
-
-        public String getMessageAttributeNames() {
-            return messageAttributeNames;
-        }
-
-        public void setMessageAttributeNames(String messageAttributeNames) {
-            this.messageAttributeNames = messageAttributeNames;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public Boolean getServerSideEncryptionEnabled() {
-            return serverSideEncryptionEnabled;
-        }
-
-        public void setServerSideEncryptionEnabled(
-                Boolean serverSideEncryptionEnabled) {
-            this.serverSideEncryptionEnabled = serverSideEncryptionEnabled;
-        }
-
-        public Integer getVisibilityTimeout() {
-            return visibilityTimeout;
-        }
-
-        public void setVisibilityTimeout(Integer visibilityTimeout) {
-            this.visibilityTimeout = visibilityTimeout;
-        }
-
-        public Integer getWaitTimeSeconds() {
-            return waitTimeSeconds;
-        }
-
-        public void setWaitTimeSeconds(Integer waitTimeSeconds) {
-            this.waitTimeSeconds = waitTimeSeconds;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
-    public static class SqsProducer extends SqsCommon<SqsProducer> {
-        private Integer delaySeconds;
-        private Object messageDeduplicationIdStrategy;
-        private Object messageGroupIdStrategy;
-        private SqsOperations operation;
-
+    public static class SqsProducer
+            extends
+                SqsCommon<SqsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SqsProducer(String path) {
+            super(path);
+        }
         /**
          * Delay sending messages for a number of seconds. The option is a
          * java.lang.Integer type.
          */
         public SqsProducer delaySeconds(Integer delaySeconds) {
-            this.delaySeconds = delaySeconds;
+            this.properties.put("delaySeconds", delaySeconds);
             return (SqsProducer) this;
         }
-
         /**
          * Only for FIFO queues. Strategy for setting the messageDeduplicationId
          * on the message. Can be one of the following options: useExchangeId,
@@ -1046,10 +542,9 @@ public class SqsEndpoint {
          */
         public SqsProducer messageDeduplicationIdStrategy(
                 Object messageDeduplicationIdStrategy) {
-            this.messageDeduplicationIdStrategy = messageDeduplicationIdStrategy;
+            this.properties.put("messageDeduplicationIdStrategy", messageDeduplicationIdStrategy);
             return (SqsProducer) this;
         }
-
         /**
          * Only for FIFO queues. Strategy for setting the messageGroupId on the
          * message. Can be one of the following options: useConstant,
@@ -1058,51 +553,17 @@ public class SqsEndpoint {
          * a org.apache.camel.component.aws.sqs.MessageGroupIdStrategy type.
          */
         public SqsProducer messageGroupIdStrategy(Object messageGroupIdStrategy) {
-            this.messageGroupIdStrategy = messageGroupIdStrategy;
+            this.properties.put("messageGroupIdStrategy", messageGroupIdStrategy);
             return (SqsProducer) this;
         }
-
         /**
          * The operation to do in case the user don't want to send only a
          * message. The option is a
          * org.apache.camel.component.aws.sqs.SqsOperations type.
          */
         public SqsProducer operation(SqsOperations operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (SqsProducer) this;
-        }
-
-        public Integer getDelaySeconds() {
-            return delaySeconds;
-        }
-
-        public void setDelaySeconds(Integer delaySeconds) {
-            this.delaySeconds = delaySeconds;
-        }
-
-        public Object getMessageDeduplicationIdStrategy() {
-            return messageDeduplicationIdStrategy;
-        }
-
-        public void setMessageDeduplicationIdStrategy(
-                Object messageDeduplicationIdStrategy) {
-            this.messageDeduplicationIdStrategy = messageDeduplicationIdStrategy;
-        }
-
-        public Object getMessageGroupIdStrategy() {
-            return messageGroupIdStrategy;
-        }
-
-        public void setMessageGroupIdStrategy(Object messageGroupIdStrategy) {
-            this.messageGroupIdStrategy = messageGroupIdStrategy;
-        }
-
-        public SqsOperations getOperation() {
-            return operation;
-        }
-
-        public void setOperation(SqsOperations operation) {
-            this.operation = operation;
         }
     }
 

@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,109 +31,63 @@ import org.apache.camel.spi.ExceptionHandler;
 public class QueueServiceEndpoint {
 
 
-    public static class QueueServiceCommon<T extends EndpointConfiguration>
+    public static class QueueServiceCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String containerAndQueueUri;
-        private Object azureQueueClient;
-        private Object credentials;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        QueueServiceCommon(String path) {
+            super("azure-queue", path);
+        }
         /**
          * Container Queue compact Uri. The option is a java.lang.String type.
          */
         public T containerAndQueueUri(String containerAndQueueUri) {
-            this.containerAndQueueUri = containerAndQueueUri;
+            this.properties.put("containerAndQueueUri", containerAndQueueUri);
             return (T) this;
         }
-
         /**
          * The queue service client. The option is a
          * com.microsoft.azure.storage.queue.CloudQueue type.
          */
         public T azureQueueClient(Object azureQueueClient) {
-            this.azureQueueClient = azureQueueClient;
+            this.properties.put("azureQueueClient", azureQueueClient);
             return (T) this;
         }
-
         /**
          * Set the storage credentials, required in most cases. The option is a
          * com.microsoft.azure.storage.StorageCredentials type.
          */
         public T credentials(Object credentials) {
-            this.credentials = credentials;
+            this.properties.put("credentials", credentials);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getContainerAndQueueUri() {
-            return containerAndQueueUri;
-        }
-
-        public void setContainerAndQueueUri(String containerAndQueueUri) {
-            this.containerAndQueueUri = containerAndQueueUri;
-        }
-
-        public Object getAzureQueueClient() {
-            return azureQueueClient;
-        }
-
-        public void setAzureQueueClient(Object azureQueueClient) {
-            this.azureQueueClient = azureQueueClient;
-        }
-
-        public Object getCredentials() {
-            return credentials;
-        }
-
-        public void setCredentials(Object credentials) {
-            this.credentials = credentials;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class QueueServiceConsumer
             extends
-                QueueServiceCommon<QueueServiceConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                QueueServiceCommon<QueueServiceConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public QueueServiceConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -144,10 +99,9 @@ public class QueueServiceEndpoint {
          */
         public QueueServiceConsumer bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (QueueServiceConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -157,118 +111,58 @@ public class QueueServiceEndpoint {
          */
         public QueueServiceConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (QueueServiceConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public QueueServiceConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (QueueServiceConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class QueueServiceProducer
             extends
-                QueueServiceCommon<QueueServiceProducer> {
-        private Integer messageTimeToLive;
-        private Integer messageVisibilityDelay;
-        private QueueServiceOperations operation;
-        private String queuePrefix;
-
+                QueueServiceCommon<QueueServiceProducer>
+            implements
+                EndpointDefinition.Producer {
+        public QueueServiceProducer(String path) {
+            super(path);
+        }
         /**
          * Message Time To Live in seconds. The option is a int type.
          */
         public QueueServiceProducer messageTimeToLive(int messageTimeToLive) {
-            this.messageTimeToLive = messageTimeToLive;
+            this.properties.put("messageTimeToLive", messageTimeToLive);
             return (QueueServiceProducer) this;
         }
-
         /**
          * Message Visibility Delay in seconds. The option is a int type.
          */
         public QueueServiceProducer messageVisibilityDelay(
                 int messageVisibilityDelay) {
-            this.messageVisibilityDelay = messageVisibilityDelay;
+            this.properties.put("messageVisibilityDelay", messageVisibilityDelay);
             return (QueueServiceProducer) this;
         }
-
         /**
          * Queue service operation hint to the producer. The option is a
          * org.apache.camel.component.azure.queue.QueueServiceOperations type.
          */
         public QueueServiceProducer operation(QueueServiceOperations operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (QueueServiceProducer) this;
         }
-
         /**
          * Set a prefix which can be used for listing the queues. The option is
          * a java.lang.String type.
          */
         public QueueServiceProducer queuePrefix(String queuePrefix) {
-            this.queuePrefix = queuePrefix;
+            this.properties.put("queuePrefix", queuePrefix);
             return (QueueServiceProducer) this;
-        }
-
-        public Integer getMessageTimeToLive() {
-            return messageTimeToLive;
-        }
-
-        public void setMessageTimeToLive(Integer messageTimeToLive) {
-            this.messageTimeToLive = messageTimeToLive;
-        }
-
-        public Integer getMessageVisibilityDelay() {
-            return messageVisibilityDelay;
-        }
-
-        public void setMessageVisibilityDelay(Integer messageVisibilityDelay) {
-            this.messageVisibilityDelay = messageVisibilityDelay;
-        }
-
-        public QueueServiceOperations getOperation() {
-            return operation;
-        }
-
-        public void setOperation(QueueServiceOperations operation) {
-            this.operation = operation;
-        }
-
-        public String getQueuePrefix() {
-            return queuePrefix;
-        }
-
-        public void setQueuePrefix(String queuePrefix) {
-            this.queuePrefix = queuePrefix;
         }
     }
 

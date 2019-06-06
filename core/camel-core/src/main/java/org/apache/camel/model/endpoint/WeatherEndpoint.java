@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,84 +37,52 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class WeatherEndpoint {
 
 
-    public static class WeatherCommon<T extends EndpointConfiguration>
+    public static class WeatherCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private String appid;
-        private String headerName;
-        private WeatherLanguage language;
-        private WeatherMode mode;
-        private String period;
-        private WeatherUnits units;
-        private WeatherApi weatherApi;
-        private Boolean basicPropertyBinding;
-        private Object httpConnectionManager;
-        private Boolean synchronous;
-        private Integer cnt;
-        private List<String> ids;
-        private String lat;
-        private String location;
-        private String lon;
-        private String rightLon;
-        private String topLat;
-        private String zip;
-        private Integer zoom;
-        private String proxyAuthDomain;
-        private String proxyAuthHost;
-        private String proxyAuthMethod;
-        private String proxyAuthPassword;
-        private String proxyAuthUsername;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String geolocationAccessKey;
-        private String geolocationRequestHostIP;
-
+                EndpointDefinition<T> {
+        WeatherCommon(String path) {
+            super("weather", path);
+        }
         /**
          * The name value is not used. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * APPID ID used to authenticate the user connected to the API Server.
          * The option is a java.lang.String type.
          */
         public T appid(String appid) {
-            this.appid = appid;
+            this.properties.put("appid", appid);
             return (T) this;
         }
-
         /**
          * To store the weather result in this header instead of the message
          * body. This is useable if you want to keep current message body as-is.
          * The option is a java.lang.String type.
          */
         public T headerName(String headerName) {
-            this.headerName = headerName;
+            this.properties.put("headerName", headerName);
             return (T) this;
         }
-
         /**
          * Language of the response. The option is a
          * org.apache.camel.component.weather.WeatherLanguage type.
          */
         public T language(WeatherLanguage language) {
-            this.language = language;
+            this.properties.put("language", language);
             return (T) this;
         }
-
         /**
          * The output format of the weather data. The option is a
          * org.apache.camel.component.weather.WeatherMode type.
          */
         public T mode(WeatherMode mode) {
-            this.mode = mode;
+            this.properties.put("mode", mode);
             return (T) this;
         }
-
         /**
          * If null, the current weather will be returned, else use values of 5,
          * 7, 14 days. Only the numeric value for the forecast period is
@@ -121,86 +90,77 @@ public class WeatherEndpoint {
          * to you (its ignored). The option is a java.lang.String type.
          */
         public T period(String period) {
-            this.period = period;
+            this.properties.put("period", period);
             return (T) this;
         }
-
         /**
          * The units for temperature measurement. The option is a
          * org.apache.camel.component.weather.WeatherUnits type.
          */
         public T units(WeatherUnits units) {
-            this.units = units;
+            this.properties.put("units", units);
             return (T) this;
         }
-
         /**
          * The API to be use (current, forecast/3 hour, forecast daily,
          * station). The option is a
          * org.apache.camel.component.weather.WeatherApi type.
          */
         public T weatherApi(WeatherApi weatherApi) {
-            this.weatherApi = weatherApi;
+            this.properties.put("weatherApi", weatherApi);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use a custom HttpConnectionManager to manage connections. The
          * option is a org.apache.commons.httpclient.HttpConnectionManager type.
          */
         public T httpConnectionManager(Object httpConnectionManager) {
-            this.httpConnectionManager = httpConnectionManager;
+            this.properties.put("httpConnectionManager", httpConnectionManager);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Number of results to be found. The option is a java.lang.Integer
          * type.
          */
         public T cnt(Integer cnt) {
-            this.cnt = cnt;
+            this.properties.put("cnt", cnt);
             return (T) this;
         }
-
         /**
          * List of id's of city/stations. You can separate multiple ids by
          * comma. The option is a java.lang.String type.
          */
         public T ids(List<String> ids) {
-            this.ids = ids;
+            this.properties.put("ids", ids);
             return (T) this;
         }
-
         /**
          * Latitude of location. You can use lat and lon options instead of
          * location. For boxed queries this is the bottom latitude. The option
          * is a java.lang.String type.
          */
         public T lat(String lat) {
-            this.lat = lat;
+            this.properties.put("lat", lat);
             return (T) this;
         }
-
         /**
          * If null Camel will try and determine your current location using the
          * geolocation of your ip address, else specify the city,country. For
@@ -213,391 +173,131 @@ public class WeatherEndpoint {
          * type.
          */
         public T location(String location) {
-            this.location = location;
+            this.properties.put("location", location);
             return (T) this;
         }
-
         /**
          * Longitude of location. You can use lat and lon options instead of
          * location. For boxed queries this is the left longtitude. The option
          * is a java.lang.String type.
          */
         public T lon(String lon) {
-            this.lon = lon;
+            this.properties.put("lon", lon);
             return (T) this;
         }
-
         /**
          * For boxed queries this is the right longtitude. Needs to be used in
          * combination with topLat and zoom. The option is a java.lang.String
          * type.
          */
         public T rightLon(String rightLon) {
-            this.rightLon = rightLon;
+            this.properties.put("rightLon", rightLon);
             return (T) this;
         }
-
         /**
          * For boxed queries this is the top latitude. Needs to be used in
          * combination with rightLon and zoom. The option is a java.lang.String
          * type.
          */
         public T topLat(String topLat) {
-            this.topLat = topLat;
+            this.properties.put("topLat", topLat);
             return (T) this;
         }
-
         /**
          * Zip-code, e.g. 94040,us. The option is a java.lang.String type.
          */
         public T zip(String zip) {
-            this.zip = zip;
+            this.properties.put("zip", zip);
             return (T) this;
         }
-
         /**
          * For boxed queries this is the zoom. Needs to be used in combination
          * with rightLon and topLat. The option is a java.lang.Integer type.
          */
         public T zoom(Integer zoom) {
-            this.zoom = zoom;
+            this.properties.put("zoom", zoom);
             return (T) this;
         }
-
         /**
          * Domain for proxy NTLM authentication. The option is a
          * java.lang.String type.
          */
         public T proxyAuthDomain(String proxyAuthDomain) {
-            this.proxyAuthDomain = proxyAuthDomain;
+            this.properties.put("proxyAuthDomain", proxyAuthDomain);
             return (T) this;
         }
-
         /**
          * Optional host for proxy NTLM authentication. The option is a
          * java.lang.String type.
          */
         public T proxyAuthHost(String proxyAuthHost) {
-            this.proxyAuthHost = proxyAuthHost;
+            this.properties.put("proxyAuthHost", proxyAuthHost);
             return (T) this;
         }
-
         /**
          * Authentication method for proxy, either as Basic, Digest or NTLM. The
          * option is a java.lang.String type.
          */
         public T proxyAuthMethod(String proxyAuthMethod) {
-            this.proxyAuthMethod = proxyAuthMethod;
+            this.properties.put("proxyAuthMethod", proxyAuthMethod);
             return (T) this;
         }
-
         /**
          * Password for proxy authentication. The option is a java.lang.String
          * type.
          */
         public T proxyAuthPassword(String proxyAuthPassword) {
-            this.proxyAuthPassword = proxyAuthPassword;
+            this.properties.put("proxyAuthPassword", proxyAuthPassword);
             return (T) this;
         }
-
         /**
          * Username for proxy authentication. The option is a java.lang.String
          * type.
          */
         public T proxyAuthUsername(String proxyAuthUsername) {
-            this.proxyAuthUsername = proxyAuthUsername;
+            this.properties.put("proxyAuthUsername", proxyAuthUsername);
             return (T) this;
         }
-
         /**
          * The proxy host name. The option is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * The proxy port number. The option is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
-
         /**
          * The geolocation service now needs an accessKey to be used. The option
          * is a java.lang.String type.
          */
         public T geolocationAccessKey(String geolocationAccessKey) {
-            this.geolocationAccessKey = geolocationAccessKey;
+            this.properties.put("geolocationAccessKey", geolocationAccessKey);
             return (T) this;
         }
-
         /**
          * The geolocation service now needs to specify the IP associated to the
          * accessKey you're using. The option is a java.lang.String type.
          */
         public T geolocationRequestHostIP(String geolocationRequestHostIP) {
-            this.geolocationRequestHostIP = geolocationRequestHostIP;
+            this.properties.put("geolocationRequestHostIP", geolocationRequestHostIP);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getAppid() {
-            return appid;
-        }
-
-        public void setAppid(String appid) {
-            this.appid = appid;
-        }
-
-        public String getHeaderName() {
-            return headerName;
-        }
-
-        public void setHeaderName(String headerName) {
-            this.headerName = headerName;
-        }
-
-        public WeatherLanguage getLanguage() {
-            return language;
-        }
-
-        public void setLanguage(WeatherLanguage language) {
-            this.language = language;
-        }
-
-        public WeatherMode getMode() {
-            return mode;
-        }
-
-        public void setMode(WeatherMode mode) {
-            this.mode = mode;
-        }
-
-        public String getPeriod() {
-            return period;
-        }
-
-        public void setPeriod(String period) {
-            this.period = period;
-        }
-
-        public WeatherUnits getUnits() {
-            return units;
-        }
-
-        public void setUnits(WeatherUnits units) {
-            this.units = units;
-        }
-
-        public WeatherApi getWeatherApi() {
-            return weatherApi;
-        }
-
-        public void setWeatherApi(WeatherApi weatherApi) {
-            this.weatherApi = weatherApi;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getHttpConnectionManager() {
-            return httpConnectionManager;
-        }
-
-        public void setHttpConnectionManager(Object httpConnectionManager) {
-            this.httpConnectionManager = httpConnectionManager;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Integer getCnt() {
-            return cnt;
-        }
-
-        public void setCnt(Integer cnt) {
-            this.cnt = cnt;
-        }
-
-        public List<String> getIds() {
-            return ids;
-        }
-
-        public void setIds(List<String> ids) {
-            this.ids = ids;
-        }
-
-        public String getLat() {
-            return lat;
-        }
-
-        public void setLat(String lat) {
-            this.lat = lat;
-        }
-
-        public String getLocation() {
-            return location;
-        }
-
-        public void setLocation(String location) {
-            this.location = location;
-        }
-
-        public String getLon() {
-            return lon;
-        }
-
-        public void setLon(String lon) {
-            this.lon = lon;
-        }
-
-        public String getRightLon() {
-            return rightLon;
-        }
-
-        public void setRightLon(String rightLon) {
-            this.rightLon = rightLon;
-        }
-
-        public String getTopLat() {
-            return topLat;
-        }
-
-        public void setTopLat(String topLat) {
-            this.topLat = topLat;
-        }
-
-        public String getZip() {
-            return zip;
-        }
-
-        public void setZip(String zip) {
-            this.zip = zip;
-        }
-
-        public Integer getZoom() {
-            return zoom;
-        }
-
-        public void setZoom(Integer zoom) {
-            this.zoom = zoom;
-        }
-
-        public String getProxyAuthDomain() {
-            return proxyAuthDomain;
-        }
-
-        public void setProxyAuthDomain(String proxyAuthDomain) {
-            this.proxyAuthDomain = proxyAuthDomain;
-        }
-
-        public String getProxyAuthHost() {
-            return proxyAuthHost;
-        }
-
-        public void setProxyAuthHost(String proxyAuthHost) {
-            this.proxyAuthHost = proxyAuthHost;
-        }
-
-        public String getProxyAuthMethod() {
-            return proxyAuthMethod;
-        }
-
-        public void setProxyAuthMethod(String proxyAuthMethod) {
-            this.proxyAuthMethod = proxyAuthMethod;
-        }
-
-        public String getProxyAuthPassword() {
-            return proxyAuthPassword;
-        }
-
-        public void setProxyAuthPassword(String proxyAuthPassword) {
-            this.proxyAuthPassword = proxyAuthPassword;
-        }
-
-        public String getProxyAuthUsername() {
-            return proxyAuthUsername;
-        }
-
-        public void setProxyAuthUsername(String proxyAuthUsername) {
-            this.proxyAuthUsername = proxyAuthUsername;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getGeolocationAccessKey() {
-            return geolocationAccessKey;
-        }
-
-        public void setGeolocationAccessKey(String geolocationAccessKey) {
-            this.geolocationAccessKey = geolocationAccessKey;
-        }
-
-        public String getGeolocationRequestHostIP() {
-            return geolocationRequestHostIP;
-        }
-
-        public void setGeolocationRequestHostIP(String geolocationRequestHostIP) {
-            this.geolocationRequestHostIP = geolocationRequestHostIP;
         }
     }
 
     public static class WeatherConsumer
             extends
-                WeatherCommon<WeatherConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean sendEmptyMessageWhenIdle;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+                WeatherCommon<WeatherConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public WeatherConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -608,10 +308,9 @@ public class WeatherEndpoint {
          * ignored. The option is a boolean type.
          */
         public WeatherConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (WeatherConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -619,10 +318,9 @@ public class WeatherEndpoint {
          */
         public WeatherConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (WeatherConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -632,19 +330,17 @@ public class WeatherEndpoint {
          */
         public WeatherConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (WeatherConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public WeatherConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (WeatherConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -654,29 +350,26 @@ public class WeatherEndpoint {
          */
         public WeatherConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (WeatherConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public WeatherConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (WeatherConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public WeatherConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (WeatherConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -686,50 +379,45 @@ public class WeatherEndpoint {
          * configured. The option is a int type.
          */
         public WeatherConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (WeatherConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public WeatherConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (WeatherConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public WeatherConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (WeatherConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public WeatherConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (WeatherConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public WeatherConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (WeatherConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -738,10 +426,9 @@ public class WeatherEndpoint {
          */
         public WeatherConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (WeatherConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
@@ -749,10 +436,9 @@ public class WeatherEndpoint {
          */
         public WeatherConsumer scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (WeatherConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -760,188 +446,44 @@ public class WeatherEndpoint {
          */
         public WeatherConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (WeatherConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public WeatherConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (WeatherConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public WeatherConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (WeatherConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public WeatherConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (WeatherConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
     public static class WeatherProducer
             extends
-                WeatherCommon<WeatherProducer> {
+                WeatherCommon<WeatherProducer>
+            implements
+                EndpointDefinition.Producer {
+        public WeatherProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum WeatherLanguage {

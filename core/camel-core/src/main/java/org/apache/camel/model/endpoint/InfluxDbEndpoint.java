@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The influxdb component allows you to interact with InfluxDB, a time series
@@ -28,164 +29,97 @@ import javax.annotation.Generated;
 public class InfluxDbEndpoint {
 
 
-    public static class InfluxDbCommon<T extends EndpointConfiguration>
+    public static class InfluxDbCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String connectionBean;
-        private Boolean batch;
-        private String databaseName;
-        private String operation;
-        private String query;
-        private String retentionPolicy;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        InfluxDbCommon(String path) {
+            super("influxdb", path);
+        }
         /**
          * Connection to the influx database, of class InfluxDB.class. The
          * option is a java.lang.String type.
          */
         public T connectionBean(String connectionBean) {
-            this.connectionBean = connectionBean;
+            this.properties.put("connectionBean", connectionBean);
             return (T) this;
         }
-
         /**
          * Define if this operation is a batch operation or not. The option is a
          * boolean type.
          */
         public T batch(boolean batch) {
-            this.batch = batch;
+            this.properties.put("batch", batch);
             return (T) this;
         }
-
         /**
          * The name of the database where the time series will be stored. The
          * option is a java.lang.String type.
          */
         public T databaseName(String databaseName) {
-            this.databaseName = databaseName;
+            this.properties.put("databaseName", databaseName);
             return (T) this;
         }
-
         /**
          * Define if this operation is an insert or a query. The option is a
          * java.lang.String type.
          */
         public T operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * Define the query in case of operation query. The option is a
          * java.lang.String type.
          */
         public T query(String query) {
-            this.query = query;
+            this.properties.put("query", query);
             return (T) this;
         }
-
         /**
          * The string that defines the retention policy to the data created by
          * the endpoint. The option is a java.lang.String type.
          */
         public T retentionPolicy(String retentionPolicy) {
-            this.retentionPolicy = retentionPolicy;
+            this.properties.put("retentionPolicy", retentionPolicy);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getConnectionBean() {
-            return connectionBean;
-        }
-
-        public void setConnectionBean(String connectionBean) {
-            this.connectionBean = connectionBean;
-        }
-
-        public Boolean getBatch() {
-            return batch;
-        }
-
-        public void setBatch(Boolean batch) {
-            this.batch = batch;
-        }
-
-        public String getDatabaseName() {
-            return databaseName;
-        }
-
-        public void setDatabaseName(String databaseName) {
-            this.databaseName = databaseName;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
-        }
-
-        public String getQuery() {
-            return query;
-        }
-
-        public void setQuery(String query) {
-            this.query = query;
-        }
-
-        public String getRetentionPolicy() {
-            return retentionPolicy;
-        }
-
-        public void setRetentionPolicy(String retentionPolicy) {
-            this.retentionPolicy = retentionPolicy;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class InfluxDbConsumer
             extends
-                InfluxDbCommon<InfluxDbConsumer> {
+                InfluxDbCommon<InfluxDbConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public InfluxDbConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class InfluxDbProducer
             extends
-                InfluxDbCommon<InfluxDbProducer> {
+                InfluxDbCommon<InfluxDbProducer>
+            implements
+                EndpointDefinition.Producer {
+        public InfluxDbProducer(String path) {
+            super(path);
+        }
     }
 }

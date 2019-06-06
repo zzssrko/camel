@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The dataset-test component extends the mock component by on startup to pull
@@ -28,45 +29,37 @@ import javax.annotation.Generated;
 public class DataSetTestEndpoint {
 
 
-    public static class DataSetTestCommon<T extends EndpointConfiguration>
+    public static class DataSetTestCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private Boolean anyOrder;
-        private String delimiter;
-        private Boolean split;
-        private Long timeout;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        DataSetTestCommon(String path) {
+            super("dataset-test", path);
+        }
         /**
          * Name of endpoint to lookup in the registry to use for polling
          * messages used for testing. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * Whether the expected messages should arrive in the same order or can
          * be in any order. The option is a boolean type.
          */
         public T anyOrder(boolean anyOrder) {
-            this.anyOrder = anyOrder;
+            this.properties.put("anyOrder", anyOrder);
             return (T) this;
         }
-
         /**
          * The split delimiter to use when split is enabled. By default the
          * delimiter is new line based. The delimiter can be a regular
          * expression. The option is a java.lang.String type.
          */
         public T delimiter(String delimiter) {
-            this.delimiter = delimiter;
+            this.properties.put("delimiter", delimiter);
             return (T) this;
         }
-
         /**
          * If enabled the messages loaded from the test endpoint will be split
          * using new line delimiters so each line is an expected message. For
@@ -74,114 +67,55 @@ public class DataSetTestEndpoint {
          * expected message. The option is a boolean type.
          */
         public T split(boolean split) {
-            this.split = split;
+            this.properties.put("split", split);
             return (T) this;
         }
-
         /**
          * The timeout to use when polling for message bodies from the URI. The
          * option is a long type.
          */
         public T timeout(long timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Boolean getAnyOrder() {
-            return anyOrder;
-        }
-
-        public void setAnyOrder(Boolean anyOrder) {
-            this.anyOrder = anyOrder;
-        }
-
-        public String getDelimiter() {
-            return delimiter;
-        }
-
-        public void setDelimiter(String delimiter) {
-            this.delimiter = delimiter;
-        }
-
-        public Boolean getSplit() {
-            return split;
-        }
-
-        public void setSplit(Boolean split) {
-            this.split = split;
-        }
-
-        public Long getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Long timeout) {
-            this.timeout = timeout;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class DataSetTestConsumer
             extends
-                DataSetTestCommon<DataSetTestConsumer> {
+                DataSetTestCommon<DataSetTestConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DataSetTestConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class DataSetTestProducer
             extends
-                DataSetTestCommon<DataSetTestProducer> {
-        private Long assertPeriod;
-        private Integer expectedCount;
-        private Integer reportGroup;
-        private Long resultMinimumWaitTime;
-        private Long resultWaitTime;
-        private Integer retainFirst;
-        private Integer retainLast;
-        private Long sleepForEmptyTest;
-        private Boolean copyOnExchange;
-
+                DataSetTestCommon<DataSetTestProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DataSetTestProducer(String path) {
+            super(path);
+        }
         /**
          * Sets a grace period after which the mock endpoint will re-assert to
          * ensure the preliminary assertion is still valid. This is used for
@@ -194,10 +128,9 @@ public class DataSetTestEndpoint {
          * type.
          */
         public DataSetTestProducer assertPeriod(long assertPeriod) {
-            this.assertPeriod = assertPeriod;
+            this.properties.put("assertPeriod", assertPeriod);
             return (DataSetTestProducer) this;
         }
-
         /**
          * Specifies the expected number of message exchanges that should be
          * received by this endpoint. Beware: If you want to expect that 0
@@ -213,19 +146,17 @@ public class DataSetTestEndpoint {
          * for further details. The option is a int type.
          */
         public DataSetTestProducer expectedCount(int expectedCount) {
-            this.expectedCount = expectedCount;
+            this.properties.put("expectedCount", expectedCount);
             return (DataSetTestProducer) this;
         }
-
         /**
          * A number that is used to turn on throughput logging based on groups
          * of the size. The option is a int type.
          */
         public DataSetTestProducer reportGroup(int reportGroup) {
-            this.reportGroup = reportGroup;
+            this.properties.put("reportGroup", reportGroup);
             return (DataSetTestProducer) this;
         }
-
         /**
          * Sets the minimum expected amount of time (in millis) the
          * assertIsSatisfied() will wait on a latch until it is satisfied. The
@@ -233,20 +164,18 @@ public class DataSetTestEndpoint {
          */
         public DataSetTestProducer resultMinimumWaitTime(
                 long resultMinimumWaitTime) {
-            this.resultMinimumWaitTime = resultMinimumWaitTime;
+            this.properties.put("resultMinimumWaitTime", resultMinimumWaitTime);
             return (DataSetTestProducer) this;
         }
-
         /**
          * Sets the maximum amount of time (in millis) the assertIsSatisfied()
          * will wait on a latch until it is satisfied. The option is a long
          * type.
          */
         public DataSetTestProducer resultWaitTime(long resultWaitTime) {
-            this.resultWaitTime = resultWaitTime;
+            this.properties.put("resultWaitTime", resultWaitTime);
             return (DataSetTestProducer) this;
         }
-
         /**
          * Specifies to only retain the first n'th number of received Exchanges.
          * This is used when testing with big data, to reduce memory consumption
@@ -264,10 +193,9 @@ public class DataSetTestEndpoint {
          * both the first and last received. The option is a int type.
          */
         public DataSetTestProducer retainFirst(int retainFirst) {
-            this.retainFirst = retainFirst;
+            this.properties.put("retainFirst", retainFirst);
             return (DataSetTestProducer) this;
         }
-
         /**
          * Specifies to only retain the last n'th number of received Exchanges.
          * This is used when testing with big data, to reduce memory consumption
@@ -285,100 +213,26 @@ public class DataSetTestEndpoint {
          * first and last received. The option is a int type.
          */
         public DataSetTestProducer retainLast(int retainLast) {
-            this.retainLast = retainLast;
+            this.properties.put("retainLast", retainLast);
             return (DataSetTestProducer) this;
         }
-
         /**
          * Allows a sleep to be specified to wait to check that this endpoint
          * really is empty when expectedMessageCount(int) is called with zero.
          * The option is a long type.
          */
         public DataSetTestProducer sleepForEmptyTest(long sleepForEmptyTest) {
-            this.sleepForEmptyTest = sleepForEmptyTest;
+            this.properties.put("sleepForEmptyTest", sleepForEmptyTest);
             return (DataSetTestProducer) this;
         }
-
         /**
          * Sets whether to make a deep copy of the incoming Exchange when
          * received at this mock endpoint. Is by default true. The option is a
          * boolean type.
          */
         public DataSetTestProducer copyOnExchange(boolean copyOnExchange) {
-            this.copyOnExchange = copyOnExchange;
+            this.properties.put("copyOnExchange", copyOnExchange);
             return (DataSetTestProducer) this;
-        }
-
-        public Long getAssertPeriod() {
-            return assertPeriod;
-        }
-
-        public void setAssertPeriod(Long assertPeriod) {
-            this.assertPeriod = assertPeriod;
-        }
-
-        public Integer getExpectedCount() {
-            return expectedCount;
-        }
-
-        public void setExpectedCount(Integer expectedCount) {
-            this.expectedCount = expectedCount;
-        }
-
-        public Integer getReportGroup() {
-            return reportGroup;
-        }
-
-        public void setReportGroup(Integer reportGroup) {
-            this.reportGroup = reportGroup;
-        }
-
-        public Long getResultMinimumWaitTime() {
-            return resultMinimumWaitTime;
-        }
-
-        public void setResultMinimumWaitTime(Long resultMinimumWaitTime) {
-            this.resultMinimumWaitTime = resultMinimumWaitTime;
-        }
-
-        public Long getResultWaitTime() {
-            return resultWaitTime;
-        }
-
-        public void setResultWaitTime(Long resultWaitTime) {
-            this.resultWaitTime = resultWaitTime;
-        }
-
-        public Integer getRetainFirst() {
-            return retainFirst;
-        }
-
-        public void setRetainFirst(Integer retainFirst) {
-            this.retainFirst = retainFirst;
-        }
-
-        public Integer getRetainLast() {
-            return retainLast;
-        }
-
-        public void setRetainLast(Integer retainLast) {
-            this.retainLast = retainLast;
-        }
-
-        public Long getSleepForEmptyTest() {
-            return sleepForEmptyTest;
-        }
-
-        public void setSleepForEmptyTest(Long sleepForEmptyTest) {
-            this.sleepForEmptyTest = sleepForEmptyTest;
-        }
-
-        public Boolean getCopyOnExchange() {
-            return copyOnExchange;
-        }
-
-        public void setCopyOnExchange(Boolean copyOnExchange) {
-            this.copyOnExchange = copyOnExchange;
         }
     }
 }

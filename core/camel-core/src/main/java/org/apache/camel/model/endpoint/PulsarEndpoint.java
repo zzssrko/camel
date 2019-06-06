@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,60 +30,40 @@ import org.apache.camel.spi.ExceptionHandler;
 public class PulsarEndpoint {
 
 
-    public static class PulsarCommon<T extends EndpointConfiguration>
+    public static class PulsarCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        PulsarCommon(String path) {
+            super("pulsar", path);
+        }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class PulsarConsumer extends PulsarCommon<PulsarConsumer> {
-        private Boolean bridgeErrorHandler;
-        private String consumerName;
-        private String consumerNamePrefix;
-        private Integer consumerQueueSize;
-        private Integer numberOfConsumers;
-        private String subscriptionName;
-        private SubscriptionType subscriptionType;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class PulsarConsumer
+            extends
+                PulsarCommon<PulsarConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public PulsarConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -93,54 +74,48 @@ public class PulsarEndpoint {
          * ignored. The option is a boolean type.
          */
         public PulsarConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (PulsarConsumer) this;
         }
-
         /**
          * Name of the consumer when subscription is EXCLUSIVE. The option is a
          * java.lang.String type.
          */
         public PulsarConsumer consumerName(String consumerName) {
-            this.consumerName = consumerName;
+            this.properties.put("consumerName", consumerName);
             return (PulsarConsumer) this;
         }
-
         /**
          * Prefix to add to consumer names when a SHARED or FAILOVER
          * subscription is used. The option is a java.lang.String type.
          */
         public PulsarConsumer consumerNamePrefix(String consumerNamePrefix) {
-            this.consumerNamePrefix = consumerNamePrefix;
+            this.properties.put("consumerNamePrefix", consumerNamePrefix);
             return (PulsarConsumer) this;
         }
-
         /**
          * Size of the consumer queue - defaults to 10. The option is a int
          * type.
          */
         public PulsarConsumer consumerQueueSize(int consumerQueueSize) {
-            this.consumerQueueSize = consumerQueueSize;
+            this.properties.put("consumerQueueSize", consumerQueueSize);
             return (PulsarConsumer) this;
         }
-
         /**
          * Number of consumers - defaults to 1. The option is a int type.
          */
         public PulsarConsumer numberOfConsumers(int numberOfConsumers) {
-            this.numberOfConsumers = numberOfConsumers;
+            this.properties.put("numberOfConsumers", numberOfConsumers);
             return (PulsarConsumer) this;
         }
-
         /**
          * Name of the subscription to use. The option is a java.lang.String
          * type.
          */
         public PulsarConsumer subscriptionName(String subscriptionName) {
-            this.subscriptionName = subscriptionName;
+            this.properties.put("subscriptionName", subscriptionName);
             return (PulsarConsumer) this;
         }
-
         /**
          * Type of the subscription EXCLUSIVESHAREDFAILOVER, defaults to
          * EXCLUSIVE. The option is a
@@ -148,10 +123,9 @@ public class PulsarEndpoint {
          * type.
          */
         public PulsarConsumer subscriptionType(SubscriptionType subscriptionType) {
-            this.subscriptionType = subscriptionType;
+            this.properties.put("subscriptionType", subscriptionType);
             return (PulsarConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -160,127 +134,41 @@ public class PulsarEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public PulsarConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (PulsarConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public PulsarConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (PulsarConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public String getConsumerName() {
-            return consumerName;
-        }
-
-        public void setConsumerName(String consumerName) {
-            this.consumerName = consumerName;
-        }
-
-        public String getConsumerNamePrefix() {
-            return consumerNamePrefix;
-        }
-
-        public void setConsumerNamePrefix(String consumerNamePrefix) {
-            this.consumerNamePrefix = consumerNamePrefix;
-        }
-
-        public Integer getConsumerQueueSize() {
-            return consumerQueueSize;
-        }
-
-        public void setConsumerQueueSize(Integer consumerQueueSize) {
-            this.consumerQueueSize = consumerQueueSize;
-        }
-
-        public Integer getNumberOfConsumers() {
-            return numberOfConsumers;
-        }
-
-        public void setNumberOfConsumers(Integer numberOfConsumers) {
-            this.numberOfConsumers = numberOfConsumers;
-        }
-
-        public String getSubscriptionName() {
-            return subscriptionName;
-        }
-
-        public void setSubscriptionName(String subscriptionName) {
-            this.subscriptionName = subscriptionName;
-        }
-
-        public SubscriptionType getSubscriptionType() {
-            return subscriptionType;
-        }
-
-        public void setSubscriptionType(SubscriptionType subscriptionType) {
-            this.subscriptionType = subscriptionType;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class PulsarProducer extends PulsarCommon<PulsarProducer> {
-        private String topic;
-        private String producerName;
-
+    public static class PulsarProducer
+            extends
+                PulsarCommon<PulsarProducer>
+            implements
+                EndpointDefinition.Producer {
+        public PulsarProducer(String path) {
+            super(path);
+        }
         /**
          * The Topic's full URI path including type, tenant and namespace. The
          * option is a java.lang.String type.
          */
         public PulsarProducer topic(String topic) {
-            this.topic = topic;
+            this.properties.put("topic", topic);
             return (PulsarProducer) this;
         }
-
         /**
          * Name of the producer. The option is a java.lang.String type.
          */
         public PulsarProducer producerName(String producerName) {
-            this.producerName = producerName;
+            this.properties.put("producerName", producerName);
             return (PulsarProducer) this;
-        }
-
-        public String getTopic() {
-            return topic;
-        }
-
-        public void setTopic(String topic) {
-            this.topic = topic;
-        }
-
-        public String getProducerName() {
-            return producerName;
-        }
-
-        public void setProducerName(String producerName) {
-            this.producerName = producerName;
         }
     }
 

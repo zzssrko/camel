@@ -20,6 +20,7 @@ import java.util.List;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,145 +32,112 @@ import org.apache.camel.spi.ExceptionHandler;
 public class Mina2Endpoint {
 
 
-    public static class Mina2Common<T extends EndpointConfiguration>
+    public static class Mina2Common<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String protocol;
-        private String host;
-        private Integer port;
-        private Boolean disconnect;
-        private Boolean minaLogger;
-        private Boolean sync;
-        private Long timeout;
-        private Long writeTimeout;
-        private Boolean basicPropertyBinding;
-        private Integer maximumPoolSize;
-        private Boolean orderedThreadPoolExecutor;
-        private Boolean synchronous;
-        private Boolean transferExchange;
-        private Boolean allowDefaultCodec;
-        private Object codec;
-        private Integer decoderMaxLineLength;
-        private Integer encoderMaxLineLength;
-        private String encoding;
-        private List<Object> filters;
-        private Boolean textline;
-        private Mina2TextLineDelimiter textlineDelimiter;
-        private Boolean autoStartTls;
-        private Object sslContextParameters;
-
+                EndpointDefinition<T> {
+        Mina2Common(String path) {
+            super("mina", path);
+        }
         /**
          * Protocol to use. The option is a java.lang.String type.
          */
         public T protocol(String protocol) {
-            this.protocol = protocol;
+            this.properties.put("protocol", protocol);
             return (T) this;
         }
-
         /**
          * Hostname to use. Use localhost or 0.0.0.0 for local server as
          * consumer. For producer use the hostname or ip address of the remote
          * server. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Port number. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Whether or not to disconnect(close) from Mina session right after
          * use. Can be used for both consumer and producer. The option is a
          * boolean type.
          */
         public T disconnect(boolean disconnect) {
-            this.disconnect = disconnect;
+            this.properties.put("disconnect", disconnect);
             return (T) this;
         }
-
         /**
          * You can enable the Apache MINA logging filter. Apache MINA uses slf4j
          * logging at INFO level to log all input and output. The option is a
          * boolean type.
          */
         public T minaLogger(boolean minaLogger) {
-            this.minaLogger = minaLogger;
+            this.properties.put("minaLogger", minaLogger);
             return (T) this;
         }
-
         /**
          * Setting to set endpoint as one-way or request-response. The option is
          * a boolean type.
          */
         public T sync(boolean sync) {
-            this.sync = sync;
+            this.properties.put("sync", sync);
             return (T) this;
         }
-
         /**
          * You can configure the timeout that specifies how long to wait for a
          * response from a remote server. The timeout unit is in milliseconds,
          * so 60000 is 60 seconds. The option is a long type.
          */
         public T timeout(long timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (T) this;
         }
-
         /**
          * Maximum amount of time it should take to send data to the MINA
          * session. Default is 10000 milliseconds. The option is a long type.
          */
         public T writeTimeout(long writeTimeout) {
-            this.writeTimeout = writeTimeout;
+            this.properties.put("writeTimeout", writeTimeout);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Number of worker threads in the worker pool for TCP and UDP. The
          * option is a int type.
          */
         public T maximumPoolSize(int maximumPoolSize) {
-            this.maximumPoolSize = maximumPoolSize;
+            this.properties.put("maximumPoolSize", maximumPoolSize);
             return (T) this;
         }
-
         /**
          * Whether to use ordered thread pool, to ensure events are processed
          * orderly on the same channel. The option is a boolean type.
          */
         public T orderedThreadPoolExecutor(boolean orderedThreadPoolExecutor) {
-            this.orderedThreadPoolExecutor = orderedThreadPoolExecutor;
+            this.properties.put("orderedThreadPoolExecutor", orderedThreadPoolExecutor);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Only used for TCP. You can transfer the exchange over the wire
          * instead of just the body. The following fields are transferred: In
@@ -179,10 +147,9 @@ public class Mina2Endpoint {
          * objects and log it at WARN level. The option is a boolean type.
          */
         public T transferExchange(boolean transferExchange) {
-            this.transferExchange = transferExchange;
+            this.properties.put("transferExchange", transferExchange);
             return (T) this;
         }
-
         /**
          * The mina component installs a default codec if both, codec is null
          * and textline is false. Setting allowDefaultCodec to false prevents
@@ -192,58 +159,52 @@ public class Mina2Endpoint {
          * filter. The option is a boolean type.
          */
         public T allowDefaultCodec(boolean allowDefaultCodec) {
-            this.allowDefaultCodec = allowDefaultCodec;
+            this.properties.put("allowDefaultCodec", allowDefaultCodec);
             return (T) this;
         }
-
         /**
          * To use a custom minda codec implementation. The option is a
          * org.apache.mina.filter.codec.ProtocolCodecFactory type.
          */
         public T codec(Object codec) {
-            this.codec = codec;
+            this.properties.put("codec", codec);
             return (T) this;
         }
-
         /**
          * To set the textline protocol decoder max line length. By default the
          * default value of Mina itself is used which are 1024. The option is a
          * int type.
          */
         public T decoderMaxLineLength(int decoderMaxLineLength) {
-            this.decoderMaxLineLength = decoderMaxLineLength;
+            this.properties.put("decoderMaxLineLength", decoderMaxLineLength);
             return (T) this;
         }
-
         /**
          * To set the textline protocol encoder max line length. By default the
          * default value of Mina itself is used which are Integer.MAX_VALUE. The
          * option is a int type.
          */
         public T encoderMaxLineLength(int encoderMaxLineLength) {
-            this.encoderMaxLineLength = encoderMaxLineLength;
+            this.properties.put("encoderMaxLineLength", encoderMaxLineLength);
             return (T) this;
         }
-
         /**
          * You can configure the encoding (a charset name) to use for the TCP
          * textline codec and the UDP protocol. If not provided, Camel will use
          * the JVM default Charset. The option is a java.lang.String type.
          */
         public T encoding(String encoding) {
-            this.encoding = encoding;
+            this.properties.put("encoding", encoding);
             return (T) this;
         }
-
         /**
          * You can set a list of Mina IoFilters to use. The option is a
          * java.util.List<org.apache.mina.core.filterchain.IoFilter> type.
          */
         public T filters(List<Object> filters) {
-            this.filters = filters;
+            this.properties.put("filters", filters);
             return (T) this;
         }
-
         /**
          * Only used for TCP. If no codec is specified, you can use this flag to
          * indicate a text line based codec; if not specified or the value is
@@ -251,10 +212,9 @@ public class Mina2Endpoint {
          * boolean type.
          */
         public T textline(boolean textline) {
-            this.textline = textline;
+            this.properties.put("textline", textline);
             return (T) this;
         }
-
         /**
          * Only used for TCP and if textline=true. Sets the text line delimiter
          * to use. If none provided, Camel will use DEFAULT. This delimiter is
@@ -262,222 +222,34 @@ public class Mina2Endpoint {
          * org.apache.camel.component.mina2.Mina2TextLineDelimiter type.
          */
         public T textlineDelimiter(Mina2TextLineDelimiter textlineDelimiter) {
-            this.textlineDelimiter = textlineDelimiter;
+            this.properties.put("textlineDelimiter", textlineDelimiter);
             return (T) this;
         }
-
         /**
          * Whether to auto start SSL handshake. The option is a boolean type.
          */
         public T autoStartTls(boolean autoStartTls) {
-            this.autoStartTls = autoStartTls;
+            this.properties.put("autoStartTls", autoStartTls);
             return (T) this;
         }
-
         /**
          * To configure SSL security. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
-        }
-
-        public String getProtocol() {
-            return protocol;
-        }
-
-        public void setProtocol(String protocol) {
-            this.protocol = protocol;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public Boolean getDisconnect() {
-            return disconnect;
-        }
-
-        public void setDisconnect(Boolean disconnect) {
-            this.disconnect = disconnect;
-        }
-
-        public Boolean getMinaLogger() {
-            return minaLogger;
-        }
-
-        public void setMinaLogger(Boolean minaLogger) {
-            this.minaLogger = minaLogger;
-        }
-
-        public Boolean getSync() {
-            return sync;
-        }
-
-        public void setSync(Boolean sync) {
-            this.sync = sync;
-        }
-
-        public Long getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Long timeout) {
-            this.timeout = timeout;
-        }
-
-        public Long getWriteTimeout() {
-            return writeTimeout;
-        }
-
-        public void setWriteTimeout(Long writeTimeout) {
-            this.writeTimeout = writeTimeout;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Integer getMaximumPoolSize() {
-            return maximumPoolSize;
-        }
-
-        public void setMaximumPoolSize(Integer maximumPoolSize) {
-            this.maximumPoolSize = maximumPoolSize;
-        }
-
-        public Boolean getOrderedThreadPoolExecutor() {
-            return orderedThreadPoolExecutor;
-        }
-
-        public void setOrderedThreadPoolExecutor(
-                Boolean orderedThreadPoolExecutor) {
-            this.orderedThreadPoolExecutor = orderedThreadPoolExecutor;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Boolean getTransferExchange() {
-            return transferExchange;
-        }
-
-        public void setTransferExchange(Boolean transferExchange) {
-            this.transferExchange = transferExchange;
-        }
-
-        public Boolean getAllowDefaultCodec() {
-            return allowDefaultCodec;
-        }
-
-        public void setAllowDefaultCodec(Boolean allowDefaultCodec) {
-            this.allowDefaultCodec = allowDefaultCodec;
-        }
-
-        public Object getCodec() {
-            return codec;
-        }
-
-        public void setCodec(Object codec) {
-            this.codec = codec;
-        }
-
-        public Integer getDecoderMaxLineLength() {
-            return decoderMaxLineLength;
-        }
-
-        public void setDecoderMaxLineLength(Integer decoderMaxLineLength) {
-            this.decoderMaxLineLength = decoderMaxLineLength;
-        }
-
-        public Integer getEncoderMaxLineLength() {
-            return encoderMaxLineLength;
-        }
-
-        public void setEncoderMaxLineLength(Integer encoderMaxLineLength) {
-            this.encoderMaxLineLength = encoderMaxLineLength;
-        }
-
-        public String getEncoding() {
-            return encoding;
-        }
-
-        public void setEncoding(String encoding) {
-            this.encoding = encoding;
-        }
-
-        public List<Object> getFilters() {
-            return filters;
-        }
-
-        public void setFilters(List<Object> filters) {
-            this.filters = filters;
-        }
-
-        public Boolean getTextline() {
-            return textline;
-        }
-
-        public void setTextline(Boolean textline) {
-            this.textline = textline;
-        }
-
-        public Mina2TextLineDelimiter getTextlineDelimiter() {
-            return textlineDelimiter;
-        }
-
-        public void setTextlineDelimiter(
-                Mina2TextLineDelimiter textlineDelimiter) {
-            this.textlineDelimiter = textlineDelimiter;
-        }
-
-        public Boolean getAutoStartTls() {
-            return autoStartTls;
-        }
-
-        public void setAutoStartTls(Boolean autoStartTls) {
-            this.autoStartTls = autoStartTls;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
         }
     }
 
-    public static class Mina2Consumer extends Mina2Common<Mina2Consumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean clientMode;
-        private Boolean disconnectOnNoReply;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private LoggingLevel noReplyLogLevel;
-
+    public static class Mina2Consumer
+            extends
+                Mina2Common<Mina2Consumer>
+            implements
+                EndpointDefinition.Consumer {
+        public Mina2Consumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -488,29 +260,26 @@ public class Mina2Endpoint {
          * ignored. The option is a boolean type.
          */
         public Mina2Consumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (Mina2Consumer) this;
         }
-
         /**
          * If the clientMode is true, mina consumer will connect the address as
          * a TCP client. The option is a boolean type.
          */
         public Mina2Consumer clientMode(boolean clientMode) {
-            this.clientMode = clientMode;
+            this.properties.put("clientMode", clientMode);
             return (Mina2Consumer) this;
         }
-
         /**
          * If sync is enabled then this option dictates MinaConsumer if it
          * should disconnect where there is no reply to send back. The option is
          * a boolean type.
          */
         public Mina2Consumer disconnectOnNoReply(boolean disconnectOnNoReply) {
-            this.disconnectOnNoReply = disconnectOnNoReply;
+            this.properties.put("disconnectOnNoReply", disconnectOnNoReply);
             return (Mina2Consumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -519,116 +288,53 @@ public class Mina2Endpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public Mina2Consumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (Mina2Consumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public Mina2Consumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (Mina2Consumer) this;
         }
-
         /**
          * If sync is enabled this option dictates MinaConsumer which logging
          * level to use when logging a there is no reply to send back. The
          * option is a org.apache.camel.LoggingLevel type.
          */
         public Mina2Consumer noReplyLogLevel(LoggingLevel noReplyLogLevel) {
-            this.noReplyLogLevel = noReplyLogLevel;
+            this.properties.put("noReplyLogLevel", noReplyLogLevel);
             return (Mina2Consumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getClientMode() {
-            return clientMode;
-        }
-
-        public void setClientMode(Boolean clientMode) {
-            this.clientMode = clientMode;
-        }
-
-        public Boolean getDisconnectOnNoReply() {
-            return disconnectOnNoReply;
-        }
-
-        public void setDisconnectOnNoReply(Boolean disconnectOnNoReply) {
-            this.disconnectOnNoReply = disconnectOnNoReply;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public LoggingLevel getNoReplyLogLevel() {
-            return noReplyLogLevel;
-        }
-
-        public void setNoReplyLogLevel(LoggingLevel noReplyLogLevel) {
-            this.noReplyLogLevel = noReplyLogLevel;
         }
     }
 
-    public static class Mina2Producer extends Mina2Common<Mina2Producer> {
-        private Boolean cachedAddress;
-        private Boolean lazySessionCreation;
-
+    public static class Mina2Producer
+            extends
+                Mina2Common<Mina2Producer>
+            implements
+                EndpointDefinition.Producer {
+        public Mina2Producer(String path) {
+            super(path);
+        }
         /**
          * Whether to create the InetAddress once and reuse. Setting this to
          * false allows to pickup DNS changes in the network. The option is a
          * boolean type.
          */
         public Mina2Producer cachedAddress(boolean cachedAddress) {
-            this.cachedAddress = cachedAddress;
+            this.properties.put("cachedAddress", cachedAddress);
             return (Mina2Producer) this;
         }
-
         /**
          * Sessions can be lazily created to avoid exceptions, if the remote
          * server is not up and running when the Camel producer is started. The
          * option is a boolean type.
          */
         public Mina2Producer lazySessionCreation(boolean lazySessionCreation) {
-            this.lazySessionCreation = lazySessionCreation;
+            this.properties.put("lazySessionCreation", lazySessionCreation);
             return (Mina2Producer) this;
-        }
-
-        public Boolean getCachedAddress() {
-            return cachedAddress;
-        }
-
-        public void setCachedAddress(Boolean cachedAddress) {
-            this.cachedAddress = cachedAddress;
-        }
-
-        public Boolean getLazySessionCreation() {
-            return lazySessionCreation;
-        }
-
-        public void setLazySessionCreation(Boolean lazySessionCreation) {
-            this.lazySessionCreation = lazySessionCreation;
         }
     }
 

@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,170 +30,94 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GitHubEndpoint {
 
 
-    public static class GitHubCommon<T extends EndpointConfiguration>
+    public static class GitHubCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private GitHubType type;
-        private String oauthToken;
-        private String password;
-        private String repoName;
-        private String repoOwner;
-        private String username;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        GitHubCommon(String path) {
+            super("github", path);
+        }
         /**
          * What git operation to execute. The option is a
          * org.apache.camel.component.github.GitHubType type.
          */
         public T type(GitHubType type) {
-            this.type = type;
+            this.properties.put("type", type);
             return (T) this;
         }
-
         /**
          * GitHub OAuth token, required unless username & password are provided.
          * The option is a java.lang.String type.
          */
         public T oauthToken(String oauthToken) {
-            this.oauthToken = oauthToken;
+            this.properties.put("oauthToken", oauthToken);
             return (T) this;
         }
-
         /**
          * GitHub password, required unless oauthToken is provided. The option
          * is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * GitHub repository name. The option is a java.lang.String type.
          */
         public T repoName(String repoName) {
-            this.repoName = repoName;
+            this.properties.put("repoName", repoName);
             return (T) this;
         }
-
         /**
          * GitHub repository owner (organization). The option is a
          * java.lang.String type.
          */
         public T repoOwner(String repoOwner) {
-            this.repoOwner = repoOwner;
+            this.properties.put("repoOwner", repoOwner);
             return (T) this;
         }
-
         /**
          * GitHub username, required unless oauthToken is provided. The option
          * is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public GitHubType getType() {
-            return type;
-        }
-
-        public void setType(GitHubType type) {
-            this.type = type;
-        }
-
-        public String getOauthToken() {
-            return oauthToken;
-        }
-
-        public void setOauthToken(String oauthToken) {
-            this.oauthToken = oauthToken;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getRepoName() {
-            return repoName;
-        }
-
-        public void setRepoName(String repoName) {
-            this.repoName = repoName;
-        }
-
-        public String getRepoOwner() {
-            return repoOwner;
-        }
-
-        public void setRepoOwner(String repoOwner) {
-            this.repoOwner = repoOwner;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class GitHubConsumer extends GitHubCommon<GitHubConsumer> {
-        private String branchName;
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class GitHubConsumer
+            extends
+                GitHubCommon<GitHubConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GitHubConsumer(String path) {
+            super(path);
+        }
         /**
          * Name of branch. The option is a java.lang.String type.
          */
         public GitHubConsumer branchName(String branchName) {
-            this.branchName = branchName;
+            this.properties.put("branchName", branchName);
             return (GitHubConsumer) this;
         }
-
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -203,10 +128,9 @@ public class GitHubEndpoint {
          * ignored. The option is a boolean type.
          */
         public GitHubConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (GitHubConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -215,106 +139,50 @@ public class GitHubEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public GitHubConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (GitHubConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GitHubConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (GitHubConsumer) this;
-        }
-
-        public String getBranchName() {
-            return branchName;
-        }
-
-        public void setBranchName(String branchName) {
-            this.branchName = branchName;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class GitHubProducer extends GitHubCommon<GitHubProducer> {
-        private String encoding;
-        private String state;
-        private String targetUrl;
-
+    public static class GitHubProducer
+            extends
+                GitHubCommon<GitHubProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GitHubProducer(String path) {
+            super(path);
+        }
         /**
          * To use the given encoding when getting a git commit file. The option
          * is a java.lang.String type.
          */
         public GitHubProducer encoding(String encoding) {
-            this.encoding = encoding;
+            this.properties.put("encoding", encoding);
             return (GitHubProducer) this;
         }
-
         /**
          * To set git commit status state. The option is a java.lang.String
          * type.
          */
         public GitHubProducer state(String state) {
-            this.state = state;
+            this.properties.put("state", state);
             return (GitHubProducer) this;
         }
-
         /**
          * To set git commit status target url. The option is a java.lang.String
          * type.
          */
         public GitHubProducer targetUrl(String targetUrl) {
-            this.targetUrl = targetUrl;
+            this.properties.put("targetUrl", targetUrl);
             return (GitHubProducer) this;
-        }
-
-        public String getEncoding() {
-            return encoding;
-        }
-
-        public void setEncoding(String encoding) {
-            this.encoding = encoding;
-        }
-
-        public String getState() {
-            return state;
-        }
-
-        public void setState(String state) {
-            this.state = state;
-        }
-
-        public String getTargetUrl() {
-            return targetUrl;
-        }
-
-        public void setTargetUrl(String targetUrl) {
-            this.targetUrl = targetUrl;
         }
     }
 

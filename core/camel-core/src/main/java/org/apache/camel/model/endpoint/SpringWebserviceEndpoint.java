@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.net.URI;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,98 +32,57 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SpringWebserviceEndpoint {
 
 
-    public static class SpringWebserviceCommon<T extends EndpointConfiguration>
+    public static class SpringWebserviceCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private Object messageFilter;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private Object sslContextParameters;
-
+                EndpointDefinition<T> {
+        SpringWebserviceCommon(String path) {
+            super("spring-ws", path);
+        }
         /**
          * Option to provide a custom MessageFilter. For example when you want
          * to process your headers or attachments by your own. The option is a
          * org.apache.camel.component.spring.ws.filter.MessageFilter type.
          */
         public T messageFilter(Object messageFilter) {
-            this.messageFilter = messageFilter;
+            this.properties.put("messageFilter", messageFilter);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
-        }
-
-        public Object getMessageFilter() {
-            return messageFilter;
-        }
-
-        public void setMessageFilter(Object messageFilter) {
-            this.messageFilter = messageFilter;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
         }
     }
 
     public static class SpringWebserviceConsumer
             extends
-                SpringWebserviceCommon<SpringWebserviceConsumer> {
-        private EndpointMappingType type;
-        private String lookupKey;
-        private Boolean bridgeErrorHandler;
-        private Object endpointDispatcher;
-        private Object endpointMapping;
-        private String expression;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                SpringWebserviceCommon<SpringWebserviceConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SpringWebserviceConsumer(String path) {
+            super(path);
+        }
         /**
          * Endpoint mapping type if endpoint mapping is used. rootqname - Offers
          * the option to map web service requests based on the qualified name of
@@ -140,19 +100,17 @@ public class SpringWebserviceEndpoint {
          * org.apache.camel.component.spring.ws.type.EndpointMappingType type.
          */
         public SpringWebserviceConsumer type(EndpointMappingType type) {
-            this.type = type;
+            this.properties.put("type", type);
             return (SpringWebserviceConsumer) this;
         }
-
         /**
          * Endpoint mapping key if endpoint mapping is used. The option is a
          * java.lang.String type.
          */
         public SpringWebserviceConsumer lookupKey(String lookupKey) {
-            this.lookupKey = lookupKey;
+            this.properties.put("lookupKey", lookupKey);
             return (SpringWebserviceConsumer) this;
         }
-
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -164,10 +122,9 @@ public class SpringWebserviceEndpoint {
          */
         public SpringWebserviceConsumer bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SpringWebserviceConsumer) this;
         }
-
         /**
          * Spring org.springframework.ws.server.endpoint.MessageEndpoint for
          * dispatching messages received by Spring-WS to a Camel endpoint, to
@@ -179,10 +136,9 @@ public class SpringWebserviceEndpoint {
          */
         public SpringWebserviceConsumer endpointDispatcher(
                 Object endpointDispatcher) {
-            this.endpointDispatcher = endpointDispatcher;
+            this.properties.put("endpointDispatcher", endpointDispatcher);
             return (SpringWebserviceConsumer) this;
         }
-
         /**
          * Reference to an instance of
          * org.apache.camel.component.spring.ws.bean.CamelEndpointMapping in the
@@ -194,20 +150,18 @@ public class SpringWebserviceEndpoint {
          * org.apache.camel.component.spring.ws.bean.CamelSpringWSEndpointMapping type.
          */
         public SpringWebserviceConsumer endpointMapping(Object endpointMapping) {
-            this.endpointMapping = endpointMapping;
+            this.properties.put("endpointMapping", endpointMapping);
             return (SpringWebserviceConsumer) this;
         }
-
         /**
          * The XPath expression to use when option type=xpathresult. Then this
          * option is required to be configured. The option is a java.lang.String
          * type.
          */
         public SpringWebserviceConsumer expression(String expression) {
-            this.expression = expression;
+            this.properties.put("expression", expression);
             return (SpringWebserviceConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -217,113 +171,37 @@ public class SpringWebserviceEndpoint {
          */
         public SpringWebserviceConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SpringWebserviceConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SpringWebserviceConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SpringWebserviceConsumer) this;
-        }
-
-        public EndpointMappingType getType() {
-            return type;
-        }
-
-        public void setType(EndpointMappingType type) {
-            this.type = type;
-        }
-
-        public String getLookupKey() {
-            return lookupKey;
-        }
-
-        public void setLookupKey(String lookupKey) {
-            this.lookupKey = lookupKey;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Object getEndpointDispatcher() {
-            return endpointDispatcher;
-        }
-
-        public void setEndpointDispatcher(Object endpointDispatcher) {
-            this.endpointDispatcher = endpointDispatcher;
-        }
-
-        public Object getEndpointMapping() {
-            return endpointMapping;
-        }
-
-        public void setEndpointMapping(Object endpointMapping) {
-            this.endpointMapping = endpointMapping;
-        }
-
-        public String getExpression() {
-            return expression;
-        }
-
-        public void setExpression(String expression) {
-            this.expression = expression;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class SpringWebserviceProducer
             extends
-                SpringWebserviceCommon<SpringWebserviceProducer> {
-        private String webServiceEndpointUri;
-        private Boolean allowResponseAttachmentOverride;
-        private Boolean allowResponseHeaderOverride;
-        private URI faultAction;
-        private URI faultTo;
-        private Object messageFactory;
-        private Object messageIdStrategy;
-        private Object messageSender;
-        private URI outputAction;
-        private URI replyTo;
-        private String soapAction;
-        private Integer timeout;
-        private Object webServiceTemplate;
-        private URI wsAddressingAction;
-
+                SpringWebserviceCommon<SpringWebserviceProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SpringWebserviceProducer(String path) {
+            super(path);
+        }
         /**
          * The default Web Service endpoint uri to use for the producer. The
          * option is a java.lang.String type.
          */
         public SpringWebserviceProducer webServiceEndpointUri(
                 String webServiceEndpointUri) {
-            this.webServiceEndpointUri = webServiceEndpointUri;
+            this.properties.put("webServiceEndpointUri", webServiceEndpointUri);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * Option to override soap response attachments in in/out exchange with
          * attachments from the actual service layer. If the invoked service
@@ -333,10 +211,9 @@ public class SpringWebserviceEndpoint {
          */
         public SpringWebserviceProducer allowResponseAttachmentOverride(
                 boolean allowResponseAttachmentOverride) {
-            this.allowResponseAttachmentOverride = allowResponseAttachmentOverride;
+            this.properties.put("allowResponseAttachmentOverride", allowResponseAttachmentOverride);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * Option to override soap response header in in/out exchange with
          * header info from the actual service layer. If the invoked service
@@ -346,40 +223,36 @@ public class SpringWebserviceEndpoint {
          */
         public SpringWebserviceProducer allowResponseHeaderOverride(
                 boolean allowResponseHeaderOverride) {
-            this.allowResponseHeaderOverride = allowResponseHeaderOverride;
+            this.properties.put("allowResponseHeaderOverride", allowResponseHeaderOverride);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * Signifies the value for the faultAction response WS-Addressing Fault
          * Action header that is provided by the method. The option is a
          * java.net.URI type.
          */
         public SpringWebserviceProducer faultAction(URI faultAction) {
-            this.faultAction = faultAction;
+            this.properties.put("faultAction", faultAction);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * Signifies the value for the faultAction response WS-Addressing
          * FaultTo header that is provided by the method. The option is a
          * java.net.URI type.
          */
         public SpringWebserviceProducer faultTo(URI faultTo) {
-            this.faultTo = faultTo;
+            this.properties.put("faultTo", faultTo);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * Option to provide a custom WebServiceMessageFactory. For example when
          * you want Apache Axiom to handle web service messages instead of SAAJ.
          * The option is a org.springframework.ws.WebServiceMessageFactory type.
          */
         public SpringWebserviceProducer messageFactory(Object messageFactory) {
-            this.messageFactory = messageFactory;
+            this.properties.put("messageFactory", messageFactory);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * Option to provide a custom MessageIdStrategy to control generation of
          * unique message ids. The option is a
@@ -388,48 +261,43 @@ public class SpringWebserviceEndpoint {
          */
         public SpringWebserviceProducer messageIdStrategy(
                 Object messageIdStrategy) {
-            this.messageIdStrategy = messageIdStrategy;
+            this.properties.put("messageIdStrategy", messageIdStrategy);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * Option to provide a custom WebServiceMessageSender. For example to
          * perform authentication or use alternative transports. The option is a
          * org.springframework.ws.transport.WebServiceMessageSender type.
          */
         public SpringWebserviceProducer messageSender(Object messageSender) {
-            this.messageSender = messageSender;
+            this.properties.put("messageSender", messageSender);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * Signifies the value for the response WS-Addressing Action header that
          * is provided by the method. The option is a java.net.URI type.
          */
         public SpringWebserviceProducer outputAction(URI outputAction) {
-            this.outputAction = outputAction;
+            this.properties.put("outputAction", outputAction);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * Signifies the value for the replyTo response WS-Addressing ReplyTo
          * header that is provided by the method. The option is a java.net.URI
          * type.
          */
         public SpringWebserviceProducer replyTo(URI replyTo) {
-            this.replyTo = replyTo;
+            this.properties.put("replyTo", replyTo);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * SOAP action to include inside a SOAP request when accessing remote
          * web services. The option is a java.lang.String type.
          */
         public SpringWebserviceProducer soapAction(String soapAction) {
-            this.soapAction = soapAction;
+            this.properties.put("soapAction", soapAction);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * Sets the socket read timeout (in milliseconds) while invoking a
          * webservice using the producer, see URLConnection.setReadTimeout() and
@@ -446,10 +314,9 @@ public class SpringWebserviceEndpoint {
          * type.
          */
         public SpringWebserviceProducer timeout(int timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * Option to provide a custom WebServiceTemplate. This allows for full
          * control over client-side web services handling; like adding a custom
@@ -459,10 +326,9 @@ public class SpringWebserviceEndpoint {
          */
         public SpringWebserviceProducer webServiceTemplate(
                 Object webServiceTemplate) {
-            this.webServiceTemplate = webServiceTemplate;
+            this.properties.put("webServiceTemplate", webServiceTemplate);
             return (SpringWebserviceProducer) this;
         }
-
         /**
          * WS-Addressing 1.0 action header to include when accessing web
          * services. The To header is set to the address of the web service as
@@ -471,122 +337,8 @@ public class SpringWebserviceEndpoint {
          */
         public SpringWebserviceProducer wsAddressingAction(
                 URI wsAddressingAction) {
-            this.wsAddressingAction = wsAddressingAction;
+            this.properties.put("wsAddressingAction", wsAddressingAction);
             return (SpringWebserviceProducer) this;
-        }
-
-        public String getWebServiceEndpointUri() {
-            return webServiceEndpointUri;
-        }
-
-        public void setWebServiceEndpointUri(String webServiceEndpointUri) {
-            this.webServiceEndpointUri = webServiceEndpointUri;
-        }
-
-        public Boolean getAllowResponseAttachmentOverride() {
-            return allowResponseAttachmentOverride;
-        }
-
-        public void setAllowResponseAttachmentOverride(
-                Boolean allowResponseAttachmentOverride) {
-            this.allowResponseAttachmentOverride = allowResponseAttachmentOverride;
-        }
-
-        public Boolean getAllowResponseHeaderOverride() {
-            return allowResponseHeaderOverride;
-        }
-
-        public void setAllowResponseHeaderOverride(
-                Boolean allowResponseHeaderOverride) {
-            this.allowResponseHeaderOverride = allowResponseHeaderOverride;
-        }
-
-        public URI getFaultAction() {
-            return faultAction;
-        }
-
-        public void setFaultAction(URI faultAction) {
-            this.faultAction = faultAction;
-        }
-
-        public URI getFaultTo() {
-            return faultTo;
-        }
-
-        public void setFaultTo(URI faultTo) {
-            this.faultTo = faultTo;
-        }
-
-        public Object getMessageFactory() {
-            return messageFactory;
-        }
-
-        public void setMessageFactory(Object messageFactory) {
-            this.messageFactory = messageFactory;
-        }
-
-        public Object getMessageIdStrategy() {
-            return messageIdStrategy;
-        }
-
-        public void setMessageIdStrategy(Object messageIdStrategy) {
-            this.messageIdStrategy = messageIdStrategy;
-        }
-
-        public Object getMessageSender() {
-            return messageSender;
-        }
-
-        public void setMessageSender(Object messageSender) {
-            this.messageSender = messageSender;
-        }
-
-        public URI getOutputAction() {
-            return outputAction;
-        }
-
-        public void setOutputAction(URI outputAction) {
-            this.outputAction = outputAction;
-        }
-
-        public URI getReplyTo() {
-            return replyTo;
-        }
-
-        public void setReplyTo(URI replyTo) {
-            this.replyTo = replyTo;
-        }
-
-        public String getSoapAction() {
-            return soapAction;
-        }
-
-        public void setSoapAction(String soapAction) {
-            this.soapAction = soapAction;
-        }
-
-        public Integer getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Integer timeout) {
-            this.timeout = timeout;
-        }
-
-        public Object getWebServiceTemplate() {
-            return webServiceTemplate;
-        }
-
-        public void setWebServiceTemplate(Object webServiceTemplate) {
-            this.webServiceTemplate = webServiceTemplate;
-        }
-
-        public URI getWsAddressingAction() {
-            return wsAddressingAction;
-        }
-
-        public void setWsAddressingAction(URI wsAddressingAction) {
-            this.wsAddressingAction = wsAddressingAction;
         }
     }
 

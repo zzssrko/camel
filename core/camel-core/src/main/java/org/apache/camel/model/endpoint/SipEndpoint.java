@@ -20,6 +20,7 @@ import java.net.URI;
 import java.util.List;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -32,231 +33,173 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SipEndpoint {
 
 
-    public static class SipCommon<T extends EndpointConfiguration>
+    public static class SipCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private URI uri;
-        private Boolean cacheConnections;
-        private String contentSubType;
-        private String contentType;
-        private String eventHeaderName;
-        private String eventId;
-        private String fromHost;
-        private Integer fromPort;
-        private String fromUser;
-        private Integer msgExpiration;
-        private Long receiveTimeoutMillis;
-        private String stackName;
-        private String toHost;
-        private Integer toPort;
-        private String toUser;
-        private String transport;
-        private Object addressFactory;
-        private Boolean basicPropertyBinding;
-        private Object callIdHeader;
-        private Object contactHeader;
-        private Object contentTypeHeader;
-        private Object eventHeader;
-        private Object expiresHeader;
-        private Object extensionHeader;
-        private Object fromHeader;
-        private Object headerFactory;
-        private Object listeningPoint;
-        private Object maxForwardsHeader;
-        private Integer maxMessageSize;
-        private Object messageFactory;
-        private Object sipFactory;
-        private Object sipStack;
-        private Object sipUri;
-        private Boolean synchronous;
-        private Object toHeader;
-        private List<Object> viaHeaders;
-        private String implementationDebugLogFile;
-        private String implementationServerLogFile;
-        private String implementationTraceLevel;
-        private Integer maxForwards;
-        private Boolean useRouterForAllUris;
-
+                EndpointDefinition<T> {
+        SipCommon(String path) {
+            super("sip", path);
+        }
         /**
          * URI of the SIP server to connect to (the username and password can be
          * included such as: john:secretmyserver:9999). The option is a
          * java.net.URI type.
          */
         public T uri(URI uri) {
-            this.uri = uri;
+            this.properties.put("uri", uri);
             return (T) this;
         }
-
         /**
          * Should connections be cached by the SipStack to reduce cost of
          * connection creation. This is useful if the connection is used for
          * long running conversations. The option is a boolean type.
          */
         public T cacheConnections(boolean cacheConnections) {
-            this.cacheConnections = cacheConnections;
+            this.properties.put("cacheConnections", cacheConnections);
             return (T) this;
         }
-
         /**
          * Setting for contentSubType can be set to any valid MimeSubType. The
          * option is a java.lang.String type.
          */
         public T contentSubType(String contentSubType) {
-            this.contentSubType = contentSubType;
+            this.properties.put("contentSubType", contentSubType);
             return (T) this;
         }
-
         /**
          * Setting for contentType can be set to any valid MimeType. The option
          * is a java.lang.String type.
          */
         public T contentType(String contentType) {
-            this.contentType = contentType;
+            this.properties.put("contentType", contentType);
             return (T) this;
         }
-
         /**
          * Setting for a String based event type. The option is a
          * java.lang.String type.
          */
         public T eventHeaderName(String eventHeaderName) {
-            this.eventHeaderName = eventHeaderName;
+            this.properties.put("eventHeaderName", eventHeaderName);
             return (T) this;
         }
-
         /**
          * Setting for a String based event Id. Mandatory setting unless a
          * registry based FromHeader is specified. The option is a
          * java.lang.String type.
          */
         public T eventId(String eventId) {
-            this.eventId = eventId;
+            this.properties.put("eventId", eventId);
             return (T) this;
         }
-
         /**
          * Hostname of the message originator. Mandatory setting unless a
          * registry based FromHeader is specified. The option is a
          * java.lang.String type.
          */
         public T fromHost(String fromHost) {
-            this.fromHost = fromHost;
+            this.properties.put("fromHost", fromHost);
             return (T) this;
         }
-
         /**
          * Port of the message originator. Mandatory setting unless a registry
          * based FromHeader is specified. The option is a int type.
          */
         public T fromPort(int fromPort) {
-            this.fromPort = fromPort;
+            this.properties.put("fromPort", fromPort);
             return (T) this;
         }
-
         /**
          * Username of the message originator. Mandatory setting unless a
          * registry based custom FromHeader is specified. The option is a
          * java.lang.String type.
          */
         public T fromUser(String fromUser) {
-            this.fromUser = fromUser;
+            this.properties.put("fromUser", fromUser);
             return (T) this;
         }
-
         /**
          * The amount of time a message received at an endpoint is considered
          * valid. The option is a int type.
          */
         public T msgExpiration(int msgExpiration) {
-            this.msgExpiration = msgExpiration;
+            this.properties.put("msgExpiration", msgExpiration);
             return (T) this;
         }
-
         /**
          * Setting for specifying amount of time to wait for a Response and/or
          * Acknowledgement can be received from another SIP stack. The option is
          * a long type.
          */
         public T receiveTimeoutMillis(long receiveTimeoutMillis) {
-            this.receiveTimeoutMillis = receiveTimeoutMillis;
+            this.properties.put("receiveTimeoutMillis", receiveTimeoutMillis);
             return (T) this;
         }
-
         /**
          * Name of the SIP Stack instance associated with an SIP Endpoint. The
          * option is a java.lang.String type.
          */
         public T stackName(String stackName) {
-            this.stackName = stackName;
+            this.properties.put("stackName", stackName);
             return (T) this;
         }
-
         /**
          * Hostname of the message receiver. Mandatory setting unless a registry
          * based ToHeader is specified. The option is a java.lang.String type.
          */
         public T toHost(String toHost) {
-            this.toHost = toHost;
+            this.properties.put("toHost", toHost);
             return (T) this;
         }
-
         /**
          * Portname of the message receiver. Mandatory setting unless a registry
          * based ToHeader is specified. The option is a int type.
          */
         public T toPort(int toPort) {
-            this.toPort = toPort;
+            this.properties.put("toPort", toPort);
             return (T) this;
         }
-
         /**
          * Username of the message receiver. Mandatory setting unless a registry
          * based custom ToHeader is specified. The option is a java.lang.String
          * type.
          */
         public T toUser(String toUser) {
-            this.toUser = toUser;
+            this.properties.put("toUser", toUser);
             return (T) this;
         }
-
         /**
          * Setting for choice of transport protocol. Valid choices are tcp or
          * udp. The option is a java.lang.String type.
          */
         public T transport(String transport) {
-            this.transport = transport;
+            this.properties.put("transport", transport);
             return (T) this;
         }
-
         /**
          * To use a custom AddressFactory. The option is a
          * javax.sip.address.AddressFactory type.
          */
         public T addressFactory(Object addressFactory) {
-            this.addressFactory = addressFactory;
+            this.properties.put("addressFactory", addressFactory);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * A custom Header object containing call details. Must implement the
          * type javax.sip.header.CallIdHeader. The option is a
          * javax.sip.header.CallIdHeader type.
          */
         public T callIdHeader(Object callIdHeader) {
-            this.callIdHeader = callIdHeader;
+            this.properties.put("callIdHeader", callIdHeader);
             return (T) this;
         }
-
         /**
          * An optional custom Header object containing verbose contact details
          * (email, phone number etc). Must implement the type
@@ -264,78 +207,70 @@ public class SipEndpoint {
          * javax.sip.header.ContactHeader type.
          */
         public T contactHeader(Object contactHeader) {
-            this.contactHeader = contactHeader;
+            this.properties.put("contactHeader", contactHeader);
             return (T) this;
         }
-
         /**
          * A custom Header object containing message content details. Must
          * implement the type javax.sip.header.ContentTypeHeader. The option is
          * a javax.sip.header.ContentTypeHeader type.
          */
         public T contentTypeHeader(Object contentTypeHeader) {
-            this.contentTypeHeader = contentTypeHeader;
+            this.properties.put("contentTypeHeader", contentTypeHeader);
             return (T) this;
         }
-
         /**
          * A custom Header object containing event details. Must implement the
          * type javax.sip.header.EventHeader. The option is a
          * javax.sip.header.EventHeader type.
          */
         public T eventHeader(Object eventHeader) {
-            this.eventHeader = eventHeader;
+            this.properties.put("eventHeader", eventHeader);
             return (T) this;
         }
-
         /**
          * A custom Header object containing message expiration details. Must
          * implement the type javax.sip.header.ExpiresHeader. The option is a
          * javax.sip.header.ExpiresHeader type.
          */
         public T expiresHeader(Object expiresHeader) {
-            this.expiresHeader = expiresHeader;
+            this.properties.put("expiresHeader", expiresHeader);
             return (T) this;
         }
-
         /**
          * A custom Header object containing user/application specific details.
          * Must implement the type javax.sip.header.ExtensionHeader. The option
          * is a javax.sip.header.ExtensionHeader type.
          */
         public T extensionHeader(Object extensionHeader) {
-            this.extensionHeader = extensionHeader;
+            this.properties.put("extensionHeader", extensionHeader);
             return (T) this;
         }
-
         /**
          * A custom Header object containing message originator settings. Must
          * implement the type javax.sip.header.FromHeader. The option is a
          * javax.sip.header.FromHeader type.
          */
         public T fromHeader(Object fromHeader) {
-            this.fromHeader = fromHeader;
+            this.properties.put("fromHeader", fromHeader);
             return (T) this;
         }
-
         /**
          * To use a custom HeaderFactory. The option is a
          * javax.sip.header.HeaderFactory type.
          */
         public T headerFactory(Object headerFactory) {
-            this.headerFactory = headerFactory;
+            this.properties.put("headerFactory", headerFactory);
             return (T) this;
         }
-
         /**
          * To use a custom ListeningPoint implementation. The option is a
          * javax.sip.ListeningPoint type.
          */
         public T listeningPoint(Object listeningPoint) {
-            this.listeningPoint = listeningPoint;
+            this.properties.put("listeningPoint", listeningPoint);
             return (T) this;
         }
-
         /**
          * A custom Header object containing details on maximum proxy forwards.
          * This header places a limit on the viaHeaders possible. Must implement
@@ -343,75 +278,67 @@ public class SipEndpoint {
          * javax.sip.header.MaxForwardsHeader type.
          */
         public T maxForwardsHeader(Object maxForwardsHeader) {
-            this.maxForwardsHeader = maxForwardsHeader;
+            this.properties.put("maxForwardsHeader", maxForwardsHeader);
             return (T) this;
         }
-
         /**
          * Setting for maximum allowed Message size in bytes. The option is a
          * int type.
          */
         public T maxMessageSize(int maxMessageSize) {
-            this.maxMessageSize = maxMessageSize;
+            this.properties.put("maxMessageSize", maxMessageSize);
             return (T) this;
         }
-
         /**
          * To use a custom MessageFactory. The option is a
          * javax.sip.message.MessageFactory type.
          */
         public T messageFactory(Object messageFactory) {
-            this.messageFactory = messageFactory;
+            this.properties.put("messageFactory", messageFactory);
             return (T) this;
         }
-
         /**
          * To use a custom SipFactory to create the SipStack to be used. The
          * option is a javax.sip.SipFactory type.
          */
         public T sipFactory(Object sipFactory) {
-            this.sipFactory = sipFactory;
+            this.properties.put("sipFactory", sipFactory);
             return (T) this;
         }
-
         /**
          * To use a custom SipStack. The option is a javax.sip.SipStack type.
          */
         public T sipStack(Object sipStack) {
-            this.sipStack = sipStack;
+            this.properties.put("sipStack", sipStack);
             return (T) this;
         }
-
         /**
          * To use a custom SipURI. If none configured, then the SipUri fallback
          * to use the options toUser toHost:toPort. The option is a
          * javax.sip.address.SipURI type.
          */
         public T sipUri(Object sipUri) {
-            this.sipUri = sipUri;
+            this.properties.put("sipUri", sipUri);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * A custom Header object containing message receiver settings. Must
          * implement the type javax.sip.header.ToHeader. The option is a
          * javax.sip.header.ToHeader type.
          */
         public T toHeader(Object toHeader) {
-            this.toHeader = toHeader;
+            this.properties.put("toHeader", toHeader);
             return (T) this;
         }
-
         /**
          * List of custom Header objects of the type javax.sip.header.ViaHeader.
          * Each ViaHeader containing a proxy address for request forwarding.
@@ -420,391 +347,57 @@ public class SipEndpoint {
          * java.util.List<javax.sip.header.ViaHeader> type.
          */
         public T viaHeaders(List<Object> viaHeaders) {
-            this.viaHeaders = viaHeaders;
+            this.properties.put("viaHeaders", viaHeaders);
             return (T) this;
         }
-
         /**
          * Name of client debug log file to use for logging. The option is a
          * java.lang.String type.
          */
         public T implementationDebugLogFile(String implementationDebugLogFile) {
-            this.implementationDebugLogFile = implementationDebugLogFile;
+            this.properties.put("implementationDebugLogFile", implementationDebugLogFile);
             return (T) this;
         }
-
         /**
          * Name of server log file to use for logging. The option is a
          * java.lang.String type.
          */
         public T implementationServerLogFile(String implementationServerLogFile) {
-            this.implementationServerLogFile = implementationServerLogFile;
+            this.properties.put("implementationServerLogFile", implementationServerLogFile);
             return (T) this;
         }
-
         /**
          * Logging level for tracing. The option is a java.lang.String type.
          */
         public T implementationTraceLevel(String implementationTraceLevel) {
-            this.implementationTraceLevel = implementationTraceLevel;
+            this.properties.put("implementationTraceLevel", implementationTraceLevel);
             return (T) this;
         }
-
         /**
          * Number of maximum proxy forwards. The option is a int type.
          */
         public T maxForwards(int maxForwards) {
-            this.maxForwards = maxForwards;
+            this.properties.put("maxForwards", maxForwards);
             return (T) this;
         }
-
         /**
          * This setting is used when requests are sent to the Presence Agent via
          * a proxy. The option is a boolean type.
          */
         public T useRouterForAllUris(boolean useRouterForAllUris) {
-            this.useRouterForAllUris = useRouterForAllUris;
+            this.properties.put("useRouterForAllUris", useRouterForAllUris);
             return (T) this;
-        }
-
-        public URI getUri() {
-            return uri;
-        }
-
-        public void setUri(URI uri) {
-            this.uri = uri;
-        }
-
-        public Boolean getCacheConnections() {
-            return cacheConnections;
-        }
-
-        public void setCacheConnections(Boolean cacheConnections) {
-            this.cacheConnections = cacheConnections;
-        }
-
-        public String getContentSubType() {
-            return contentSubType;
-        }
-
-        public void setContentSubType(String contentSubType) {
-            this.contentSubType = contentSubType;
-        }
-
-        public String getContentType() {
-            return contentType;
-        }
-
-        public void setContentType(String contentType) {
-            this.contentType = contentType;
-        }
-
-        public String getEventHeaderName() {
-            return eventHeaderName;
-        }
-
-        public void setEventHeaderName(String eventHeaderName) {
-            this.eventHeaderName = eventHeaderName;
-        }
-
-        public String getEventId() {
-            return eventId;
-        }
-
-        public void setEventId(String eventId) {
-            this.eventId = eventId;
-        }
-
-        public String getFromHost() {
-            return fromHost;
-        }
-
-        public void setFromHost(String fromHost) {
-            this.fromHost = fromHost;
-        }
-
-        public Integer getFromPort() {
-            return fromPort;
-        }
-
-        public void setFromPort(Integer fromPort) {
-            this.fromPort = fromPort;
-        }
-
-        public String getFromUser() {
-            return fromUser;
-        }
-
-        public void setFromUser(String fromUser) {
-            this.fromUser = fromUser;
-        }
-
-        public Integer getMsgExpiration() {
-            return msgExpiration;
-        }
-
-        public void setMsgExpiration(Integer msgExpiration) {
-            this.msgExpiration = msgExpiration;
-        }
-
-        public Long getReceiveTimeoutMillis() {
-            return receiveTimeoutMillis;
-        }
-
-        public void setReceiveTimeoutMillis(Long receiveTimeoutMillis) {
-            this.receiveTimeoutMillis = receiveTimeoutMillis;
-        }
-
-        public String getStackName() {
-            return stackName;
-        }
-
-        public void setStackName(String stackName) {
-            this.stackName = stackName;
-        }
-
-        public String getToHost() {
-            return toHost;
-        }
-
-        public void setToHost(String toHost) {
-            this.toHost = toHost;
-        }
-
-        public Integer getToPort() {
-            return toPort;
-        }
-
-        public void setToPort(Integer toPort) {
-            this.toPort = toPort;
-        }
-
-        public String getToUser() {
-            return toUser;
-        }
-
-        public void setToUser(String toUser) {
-            this.toUser = toUser;
-        }
-
-        public String getTransport() {
-            return transport;
-        }
-
-        public void setTransport(String transport) {
-            this.transport = transport;
-        }
-
-        public Object getAddressFactory() {
-            return addressFactory;
-        }
-
-        public void setAddressFactory(Object addressFactory) {
-            this.addressFactory = addressFactory;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getCallIdHeader() {
-            return callIdHeader;
-        }
-
-        public void setCallIdHeader(Object callIdHeader) {
-            this.callIdHeader = callIdHeader;
-        }
-
-        public Object getContactHeader() {
-            return contactHeader;
-        }
-
-        public void setContactHeader(Object contactHeader) {
-            this.contactHeader = contactHeader;
-        }
-
-        public Object getContentTypeHeader() {
-            return contentTypeHeader;
-        }
-
-        public void setContentTypeHeader(Object contentTypeHeader) {
-            this.contentTypeHeader = contentTypeHeader;
-        }
-
-        public Object getEventHeader() {
-            return eventHeader;
-        }
-
-        public void setEventHeader(Object eventHeader) {
-            this.eventHeader = eventHeader;
-        }
-
-        public Object getExpiresHeader() {
-            return expiresHeader;
-        }
-
-        public void setExpiresHeader(Object expiresHeader) {
-            this.expiresHeader = expiresHeader;
-        }
-
-        public Object getExtensionHeader() {
-            return extensionHeader;
-        }
-
-        public void setExtensionHeader(Object extensionHeader) {
-            this.extensionHeader = extensionHeader;
-        }
-
-        public Object getFromHeader() {
-            return fromHeader;
-        }
-
-        public void setFromHeader(Object fromHeader) {
-            this.fromHeader = fromHeader;
-        }
-
-        public Object getHeaderFactory() {
-            return headerFactory;
-        }
-
-        public void setHeaderFactory(Object headerFactory) {
-            this.headerFactory = headerFactory;
-        }
-
-        public Object getListeningPoint() {
-            return listeningPoint;
-        }
-
-        public void setListeningPoint(Object listeningPoint) {
-            this.listeningPoint = listeningPoint;
-        }
-
-        public Object getMaxForwardsHeader() {
-            return maxForwardsHeader;
-        }
-
-        public void setMaxForwardsHeader(Object maxForwardsHeader) {
-            this.maxForwardsHeader = maxForwardsHeader;
-        }
-
-        public Integer getMaxMessageSize() {
-            return maxMessageSize;
-        }
-
-        public void setMaxMessageSize(Integer maxMessageSize) {
-            this.maxMessageSize = maxMessageSize;
-        }
-
-        public Object getMessageFactory() {
-            return messageFactory;
-        }
-
-        public void setMessageFactory(Object messageFactory) {
-            this.messageFactory = messageFactory;
-        }
-
-        public Object getSipFactory() {
-            return sipFactory;
-        }
-
-        public void setSipFactory(Object sipFactory) {
-            this.sipFactory = sipFactory;
-        }
-
-        public Object getSipStack() {
-            return sipStack;
-        }
-
-        public void setSipStack(Object sipStack) {
-            this.sipStack = sipStack;
-        }
-
-        public Object getSipUri() {
-            return sipUri;
-        }
-
-        public void setSipUri(Object sipUri) {
-            this.sipUri = sipUri;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Object getToHeader() {
-            return toHeader;
-        }
-
-        public void setToHeader(Object toHeader) {
-            this.toHeader = toHeader;
-        }
-
-        public List<Object> getViaHeaders() {
-            return viaHeaders;
-        }
-
-        public void setViaHeaders(List<Object> viaHeaders) {
-            this.viaHeaders = viaHeaders;
-        }
-
-        public String getImplementationDebugLogFile() {
-            return implementationDebugLogFile;
-        }
-
-        public void setImplementationDebugLogFile(
-                String implementationDebugLogFile) {
-            this.implementationDebugLogFile = implementationDebugLogFile;
-        }
-
-        public String getImplementationServerLogFile() {
-            return implementationServerLogFile;
-        }
-
-        public void setImplementationServerLogFile(
-                String implementationServerLogFile) {
-            this.implementationServerLogFile = implementationServerLogFile;
-        }
-
-        public String getImplementationTraceLevel() {
-            return implementationTraceLevel;
-        }
-
-        public void setImplementationTraceLevel(String implementationTraceLevel) {
-            this.implementationTraceLevel = implementationTraceLevel;
-        }
-
-        public Integer getMaxForwards() {
-            return maxForwards;
-        }
-
-        public void setMaxForwards(Integer maxForwards) {
-            this.maxForwards = maxForwards;
-        }
-
-        public Boolean getUseRouterForAllUris() {
-            return useRouterForAllUris;
-        }
-
-        public void setUseRouterForAllUris(Boolean useRouterForAllUris) {
-            this.useRouterForAllUris = useRouterForAllUris;
         }
     }
 
-    public static class SipConsumer extends SipCommon<SipConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean consumer;
-        private Boolean presenceAgent;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class SipConsumer
+            extends
+                SipCommon<SipConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SipConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -815,20 +408,18 @@ public class SipEndpoint {
          * ignored. The option is a boolean type.
          */
         public SipConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SipConsumer) this;
         }
-
         /**
          * This setting is used to determine whether the kind of header
          * (FromHeader,ToHeader etc) that needs to be created for this endpoint.
          * The option is a boolean type.
          */
         public SipConsumer consumer(boolean consumer) {
-            this.consumer = consumer;
+            this.properties.put("consumer", consumer);
             return (SipConsumer) this;
         }
-
         /**
          * This setting is used to distinguish between a Presence Agent & a
          * consumer. This is due to the fact that the SIP Camel component ships
@@ -836,10 +427,9 @@ public class SipEndpoint {
          * have to set this flag to true. The option is a boolean type.
          */
         public SipConsumer presenceAgent(boolean presenceAgent) {
-            this.presenceAgent = presenceAgent;
+            this.properties.put("presenceAgent", presenceAgent);
             return (SipConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -848,60 +438,26 @@ public class SipEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public SipConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SipConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SipConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SipConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getConsumer() {
-            return consumer;
-        }
-
-        public void setConsumer(Boolean consumer) {
-            this.consumer = consumer;
-        }
-
-        public Boolean getPresenceAgent() {
-            return presenceAgent;
-        }
-
-        public void setPresenceAgent(Boolean presenceAgent) {
-            this.presenceAgent = presenceAgent;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class SipProducer extends SipCommon<SipProducer> {
+    public static class SipProducer
+            extends
+                SipCommon<SipProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SipProducer(String path) {
+            super(path);
+        }
     }
 }

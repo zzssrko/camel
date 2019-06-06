@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.HeaderFilterStrategy;
 
@@ -31,64 +32,35 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class CxfEndpoint {
 
 
-    public static class CxfCommon<T extends EndpointConfiguration>
+    public static class CxfCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String beanId;
-        private String address;
-        private DataFormat dataFormat;
-        private Boolean wrappedStyle;
-        private Boolean allowStreaming;
-        private Boolean basicPropertyBinding;
-        private Object bus;
-        private Long continuationTimeout;
-        private Object cxfBinding;
-        private Object cxfEndpointConfigurer;
-        private Boolean defaultBus;
-        private HeaderFilterStrategy headerFilterStrategy;
-        private Boolean mergeProtocolHeaders;
-        private Boolean mtomEnabled;
-        private Map<String, Object> properties;
-        private Boolean skipPayloadMessagePartCheck;
-        private Boolean synchronous;
-        private Boolean loggingFeatureEnabled;
-        private Integer loggingSizeLimit;
-        private Boolean skipFaultLogging;
-        private String password;
-        private String username;
-        private String bindingId;
-        private String portName;
-        private String publishedEndpointUrl;
-        private Class<Object> serviceClass;
-        private String serviceName;
-        private String wsdlURL;
-
+                EndpointDefinition<T> {
+        CxfCommon(String path) {
+            super("cxf", path);
+        }
         /**
          * To lookup an existing configured CxfEndpoint. Must used bean: as
          * prefix. The option is a java.lang.String type.
          */
         public T beanId(String beanId) {
-            this.beanId = beanId;
+            this.properties.put("beanId", beanId);
             return (T) this;
         }
-
         /**
          * The service publish address. The option is a java.lang.String type.
          */
         public T address(String address) {
-            this.address = address;
+            this.properties.put("address", address);
             return (T) this;
         }
-
         /**
          * The data type messages supported by the CXF endpoint. The option is a
          * org.apache.camel.component.cxf.DataFormat type.
          */
         public T dataFormat(DataFormat dataFormat) {
-            this.dataFormat = dataFormat;
+            this.properties.put("dataFormat", dataFormat);
             return (T) this;
         }
-
         /**
          * The WSDL style that describes how parameters are represented in the
          * SOAP body. If the value is false, CXF will chose the document-literal
@@ -97,10 +69,9 @@ public class CxfEndpoint {
          * type.
          */
         public T wrappedStyle(Boolean wrappedStyle) {
-            this.wrappedStyle = wrappedStyle;
+            this.properties.put("wrappedStyle", wrappedStyle);
             return (T) this;
         }
-
         /**
          * This option controls whether the CXF component, when running in
          * PAYLOAD mode, will DOM parse the incoming messages into DOM Elements
@@ -109,49 +80,44 @@ public class CxfEndpoint {
          * type.
          */
         public T allowStreaming(Boolean allowStreaming) {
-            this.allowStreaming = allowStreaming;
+            this.properties.put("allowStreaming", allowStreaming);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use a custom configured CXF Bus. The option is a
          * org.apache.cxf.Bus type.
          */
         public T bus(Object bus) {
-            this.bus = bus;
+            this.properties.put("bus", bus);
             return (T) this;
         }
-
         /**
          * This option is used to set the CXF continuation timeout which could
          * be used in CxfConsumer by default when the CXF server is using Jetty
          * or Servlet transport. The option is a long type.
          */
         public T continuationTimeout(long continuationTimeout) {
-            this.continuationTimeout = continuationTimeout;
+            this.properties.put("continuationTimeout", continuationTimeout);
             return (T) this;
         }
-
         /**
          * To use a custom CxfBinding to control the binding between Camel
          * Message and CXF Message. The option is a
          * org.apache.camel.component.cxf.CxfBinding type.
          */
         public T cxfBinding(Object cxfBinding) {
-            this.cxfBinding = cxfBinding;
+            this.properties.put("cxfBinding", cxfBinding);
             return (T) this;
         }
-
         /**
          * This option could apply the implementation of
          * org.apache.camel.component.cxf.CxfEndpointConfigurer which supports
@@ -161,48 +127,43 @@ public class CxfEndpoint {
          * org.apache.camel.component.cxf.CxfEndpointConfigurer type.
          */
         public T cxfEndpointConfigurer(Object cxfEndpointConfigurer) {
-            this.cxfEndpointConfigurer = cxfEndpointConfigurer;
+            this.properties.put("cxfEndpointConfigurer", cxfEndpointConfigurer);
             return (T) this;
         }
-
         /**
          * Will set the default bus when CXF endpoint create a bus by itself.
          * The option is a boolean type.
          */
         public T defaultBus(boolean defaultBus) {
-            this.defaultBus = defaultBus;
+            this.properties.put("defaultBus", defaultBus);
             return (T) this;
         }
-
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
-
         /**
          * Whether to merge protocol headers. If enabled then propagating
          * headers between Camel and CXF becomes more consistent and similar.
          * For more details see CAMEL-6393. The option is a boolean type.
          */
         public T mergeProtocolHeaders(boolean mergeProtocolHeaders) {
-            this.mergeProtocolHeaders = mergeProtocolHeaders;
+            this.properties.put("mergeProtocolHeaders", mergeProtocolHeaders);
             return (T) this;
         }
-
         /**
          * To enable MTOM (attachments). This requires to use POJO or PAYLOAD
          * data format mode. The option is a boolean type.
          */
         public T mtomEnabled(boolean mtomEnabled) {
-            this.mtomEnabled = mtomEnabled;
+            this.properties.put("mtomEnabled", mtomEnabled);
             return (T) this;
         }
-
         /**
          * To set additional CXF options using the key/value pairs from the Map.
          * For example to turn on stacktraces in SOAP faults,
@@ -210,364 +171,128 @@ public class CxfEndpoint {
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T properties(Map<String, Object> properties) {
-            this.properties = properties;
+            this.properties.put("properties", properties);
             return (T) this;
         }
-
         /**
          * Sets whether SOAP message validation should be disabled. The option
          * is a boolean type.
          */
         public T skipPayloadMessagePartCheck(boolean skipPayloadMessagePartCheck) {
-            this.skipPayloadMessagePartCheck = skipPayloadMessagePartCheck;
+            this.properties.put("skipPayloadMessagePartCheck", skipPayloadMessagePartCheck);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * This option enables CXF Logging Feature which writes inbound and
          * outbound SOAP messages to log. The option is a boolean type.
          */
         public T loggingFeatureEnabled(boolean loggingFeatureEnabled) {
-            this.loggingFeatureEnabled = loggingFeatureEnabled;
+            this.properties.put("loggingFeatureEnabled", loggingFeatureEnabled);
             return (T) this;
         }
-
         /**
          * To limit the total size of number of bytes the logger will output
          * when logging feature has been enabled and -1 for no limit. The option
          * is a int type.
          */
         public T loggingSizeLimit(int loggingSizeLimit) {
-            this.loggingSizeLimit = loggingSizeLimit;
+            this.properties.put("loggingSizeLimit", loggingSizeLimit);
             return (T) this;
         }
-
         /**
          * This option controls whether the PhaseInterceptorChain skips logging
          * the Fault that it catches. The option is a boolean type.
          */
         public T skipFaultLogging(boolean skipFaultLogging) {
-            this.skipFaultLogging = skipFaultLogging;
+            this.properties.put("skipFaultLogging", skipFaultLogging);
             return (T) this;
         }
-
         /**
          * This option is used to set the basic authentication information of
          * password for the CXF client. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * This option is used to set the basic authentication information of
          * username for the CXF client. The option is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
         }
-
         /**
          * The bindingId for the service model to use. The option is a
          * java.lang.String type.
          */
         public T bindingId(String bindingId) {
-            this.bindingId = bindingId;
+            this.properties.put("bindingId", bindingId);
             return (T) this;
         }
-
         /**
          * The endpoint name this service is implementing, it maps to the
          * wsdl:portname. In the format of ns:PORT_NAME where ns is a namespace
          * prefix valid at this scope. The option is a java.lang.String type.
          */
         public T portName(String portName) {
-            this.portName = portName;
+            this.properties.put("portName", portName);
             return (T) this;
         }
-
         /**
          * This option can override the endpointUrl that published from the WSDL
          * which can be accessed with service address url plus wsd. The option
          * is a java.lang.String type.
          */
         public T publishedEndpointUrl(String publishedEndpointUrl) {
-            this.publishedEndpointUrl = publishedEndpointUrl;
+            this.properties.put("publishedEndpointUrl", publishedEndpointUrl);
             return (T) this;
         }
-
         /**
          * The class name of the SEI (Service Endpoint Interface) class which
          * could have JSR181 annotation or not. The option is a
          * java.lang.Class<?> type.
          */
         public T serviceClass(Class<Object> serviceClass) {
-            this.serviceClass = serviceClass;
+            this.properties.put("serviceClass", serviceClass);
             return (T) this;
         }
-
         /**
          * The service name this service is implementing, it maps to the
          * wsdl:servicename. The option is a java.lang.String type.
          */
         public T serviceName(String serviceName) {
-            this.serviceName = serviceName;
+            this.properties.put("serviceName", serviceName);
             return (T) this;
         }
-
         /**
          * The location of the WSDL. Can be on the classpath, file system, or be
          * hosted remotely. The option is a java.lang.String type.
          */
         public T wsdlURL(String wsdlURL) {
-            this.wsdlURL = wsdlURL;
+            this.properties.put("wsdlURL", wsdlURL);
             return (T) this;
-        }
-
-        public String getBeanId() {
-            return beanId;
-        }
-
-        public void setBeanId(String beanId) {
-            this.beanId = beanId;
-        }
-
-        public String getAddress() {
-            return address;
-        }
-
-        public void setAddress(String address) {
-            this.address = address;
-        }
-
-        public DataFormat getDataFormat() {
-            return dataFormat;
-        }
-
-        public void setDataFormat(DataFormat dataFormat) {
-            this.dataFormat = dataFormat;
-        }
-
-        public Boolean getWrappedStyle() {
-            return wrappedStyle;
-        }
-
-        public void setWrappedStyle(Boolean wrappedStyle) {
-            this.wrappedStyle = wrappedStyle;
-        }
-
-        public Boolean getAllowStreaming() {
-            return allowStreaming;
-        }
-
-        public void setAllowStreaming(Boolean allowStreaming) {
-            this.allowStreaming = allowStreaming;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getBus() {
-            return bus;
-        }
-
-        public void setBus(Object bus) {
-            this.bus = bus;
-        }
-
-        public Long getContinuationTimeout() {
-            return continuationTimeout;
-        }
-
-        public void setContinuationTimeout(Long continuationTimeout) {
-            this.continuationTimeout = continuationTimeout;
-        }
-
-        public Object getCxfBinding() {
-            return cxfBinding;
-        }
-
-        public void setCxfBinding(Object cxfBinding) {
-            this.cxfBinding = cxfBinding;
-        }
-
-        public Object getCxfEndpointConfigurer() {
-            return cxfEndpointConfigurer;
-        }
-
-        public void setCxfEndpointConfigurer(Object cxfEndpointConfigurer) {
-            this.cxfEndpointConfigurer = cxfEndpointConfigurer;
-        }
-
-        public Boolean getDefaultBus() {
-            return defaultBus;
-        }
-
-        public void setDefaultBus(Boolean defaultBus) {
-            this.defaultBus = defaultBus;
-        }
-
-        public HeaderFilterStrategy getHeaderFilterStrategy() {
-            return headerFilterStrategy;
-        }
-
-        public void setHeaderFilterStrategy(
-                HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
-        }
-
-        public Boolean getMergeProtocolHeaders() {
-            return mergeProtocolHeaders;
-        }
-
-        public void setMergeProtocolHeaders(Boolean mergeProtocolHeaders) {
-            this.mergeProtocolHeaders = mergeProtocolHeaders;
-        }
-
-        public Boolean getMtomEnabled() {
-            return mtomEnabled;
-        }
-
-        public void setMtomEnabled(Boolean mtomEnabled) {
-            this.mtomEnabled = mtomEnabled;
-        }
-
-        public Map<String, Object> getProperties() {
-            return properties;
-        }
-
-        public void setProperties(Map<String, Object> properties) {
-            this.properties = properties;
-        }
-
-        public Boolean getSkipPayloadMessagePartCheck() {
-            return skipPayloadMessagePartCheck;
-        }
-
-        public void setSkipPayloadMessagePartCheck(
-                Boolean skipPayloadMessagePartCheck) {
-            this.skipPayloadMessagePartCheck = skipPayloadMessagePartCheck;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Boolean getLoggingFeatureEnabled() {
-            return loggingFeatureEnabled;
-        }
-
-        public void setLoggingFeatureEnabled(Boolean loggingFeatureEnabled) {
-            this.loggingFeatureEnabled = loggingFeatureEnabled;
-        }
-
-        public Integer getLoggingSizeLimit() {
-            return loggingSizeLimit;
-        }
-
-        public void setLoggingSizeLimit(Integer loggingSizeLimit) {
-            this.loggingSizeLimit = loggingSizeLimit;
-        }
-
-        public Boolean getSkipFaultLogging() {
-            return skipFaultLogging;
-        }
-
-        public void setSkipFaultLogging(Boolean skipFaultLogging) {
-            this.skipFaultLogging = skipFaultLogging;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public String getBindingId() {
-            return bindingId;
-        }
-
-        public void setBindingId(String bindingId) {
-            this.bindingId = bindingId;
-        }
-
-        public String getPortName() {
-            return portName;
-        }
-
-        public void setPortName(String portName) {
-            this.portName = portName;
-        }
-
-        public String getPublishedEndpointUrl() {
-            return publishedEndpointUrl;
-        }
-
-        public void setPublishedEndpointUrl(String publishedEndpointUrl) {
-            this.publishedEndpointUrl = publishedEndpointUrl;
-        }
-
-        public Class<Object> getServiceClass() {
-            return serviceClass;
-        }
-
-        public void setServiceClass(Class<Object> serviceClass) {
-            this.serviceClass = serviceClass;
-        }
-
-        public String getServiceName() {
-            return serviceName;
-        }
-
-        public void setServiceName(String serviceName) {
-            this.serviceName = serviceName;
-        }
-
-        public String getWsdlURL() {
-            return wsdlURL;
-        }
-
-        public void setWsdlURL(String wsdlURL) {
-            this.wsdlURL = wsdlURL;
         }
     }
 
-    public static class CxfConsumer extends CxfCommon<CxfConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class CxfConsumer
+            extends
+                CxfCommon<CxfConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public CxfConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -578,10 +303,9 @@ public class CxfEndpoint {
          * ignored. The option is a boolean type.
          */
         public CxfConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (CxfConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -590,71 +314,44 @@ public class CxfEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public CxfConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (CxfConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public CxfConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (CxfConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class CxfProducer extends CxfCommon<CxfProducer> {
-        private Object cookieHandler;
-        private String defaultOperationName;
-        private String defaultOperationNamespace;
-        private Object hostnameVerifier;
-        private Object sslContextParameters;
-        private Boolean wrapped;
-
+    public static class CxfProducer
+            extends
+                CxfCommon<CxfProducer>
+            implements
+                EndpointDefinition.Producer {
+        public CxfProducer(String path) {
+            super(path);
+        }
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
          */
         public CxfProducer cookieHandler(Object cookieHandler) {
-            this.cookieHandler = cookieHandler;
+            this.properties.put("cookieHandler", cookieHandler);
             return (CxfProducer) this;
         }
-
         /**
          * This option will set the default operationName that will be used by
          * the CxfProducer which invokes the remote service. The option is a
          * java.lang.String type.
          */
         public CxfProducer defaultOperationName(String defaultOperationName) {
-            this.defaultOperationName = defaultOperationName;
+            this.properties.put("defaultOperationName", defaultOperationName);
             return (CxfProducer) this;
         }
-
         /**
          * This option will set the default operationNamespace that will be used
          * by the CxfProducer which invokes the remote service. The option is a
@@ -662,86 +359,34 @@ public class CxfEndpoint {
          */
         public CxfProducer defaultOperationNamespace(
                 String defaultOperationNamespace) {
-            this.defaultOperationNamespace = defaultOperationNamespace;
+            this.properties.put("defaultOperationNamespace", defaultOperationNamespace);
             return (CxfProducer) this;
         }
-
         /**
          * The hostname verifier to be used. Use the # notation to reference a
          * HostnameVerifier from the registry. The option is a
          * javax.net.ssl.HostnameVerifier type.
          */
         public CxfProducer hostnameVerifier(Object hostnameVerifier) {
-            this.hostnameVerifier = hostnameVerifier;
+            this.properties.put("hostnameVerifier", hostnameVerifier);
             return (CxfProducer) this;
         }
-
         /**
          * The Camel SSL setting reference. Use the # notation to reference the
          * SSL Context. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public CxfProducer sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (CxfProducer) this;
         }
-
         /**
          * Which kind of operation that CXF endpoint producer will invoke. The
          * option is a boolean type.
          */
         public CxfProducer wrapped(boolean wrapped) {
-            this.wrapped = wrapped;
+            this.properties.put("wrapped", wrapped);
             return (CxfProducer) this;
-        }
-
-        public Object getCookieHandler() {
-            return cookieHandler;
-        }
-
-        public void setCookieHandler(Object cookieHandler) {
-            this.cookieHandler = cookieHandler;
-        }
-
-        public String getDefaultOperationName() {
-            return defaultOperationName;
-        }
-
-        public void setDefaultOperationName(String defaultOperationName) {
-            this.defaultOperationName = defaultOperationName;
-        }
-
-        public String getDefaultOperationNamespace() {
-            return defaultOperationNamespace;
-        }
-
-        public void setDefaultOperationNamespace(
-                String defaultOperationNamespace) {
-            this.defaultOperationNamespace = defaultOperationNamespace;
-        }
-
-        public Object getHostnameVerifier() {
-            return hostnameVerifier;
-        }
-
-        public void setHostnameVerifier(Object hostnameVerifier) {
-            this.hostnameVerifier = hostnameVerifier;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
-        }
-
-        public Boolean getWrapped() {
-            return wrapped;
-        }
-
-        public void setWrapped(Boolean wrapped) {
-            this.wrapped = wrapped;
         }
     }
 

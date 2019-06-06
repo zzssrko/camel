@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The Kubernetes Secrets component provides a producer to execute kubernetes
@@ -28,407 +29,200 @@ import javax.annotation.Generated;
 public class KubernetesSecretsEndpoint {
 
 
-    public static class KubernetesSecretsCommon<T extends EndpointConfiguration>
+    public static class KubernetesSecretsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String masterUrl;
-        private String apiVersion;
-        private String dnsDomain;
-        private Object kubernetesClient;
-        private String portName;
-        private String portProtocol;
-        private Boolean basicPropertyBinding;
-        private Integer connectionTimeout;
-        private Boolean synchronous;
-        private String caCertData;
-        private String caCertFile;
-        private String clientCertData;
-        private String clientCertFile;
-        private String clientKeyAlgo;
-        private String clientKeyData;
-        private String clientKeyFile;
-        private String clientKeyPassphrase;
-        private String oauthToken;
-        private String password;
-        private Boolean trustCerts;
-        private String username;
-
+                EndpointDefinition<T> {
+        KubernetesSecretsCommon(String path) {
+            super("kubernetes-secrets", path);
+        }
         /**
          * Kubernetes Master url. The option is a java.lang.String type.
          */
         public T masterUrl(String masterUrl) {
-            this.masterUrl = masterUrl;
+            this.properties.put("masterUrl", masterUrl);
             return (T) this;
         }
-
         /**
          * The Kubernetes API Version to use. The option is a java.lang.String
          * type.
          */
         public T apiVersion(String apiVersion) {
-            this.apiVersion = apiVersion;
+            this.properties.put("apiVersion", apiVersion);
             return (T) this;
         }
-
         /**
          * The dns domain, used for ServiceCall EIP. The option is a
          * java.lang.String type.
          */
         public T dnsDomain(String dnsDomain) {
-            this.dnsDomain = dnsDomain;
+            this.properties.put("dnsDomain", dnsDomain);
             return (T) this;
         }
-
         /**
          * Default KubernetesClient to use if provided. The option is a
          * io.fabric8.kubernetes.client.KubernetesClient type.
          */
         public T kubernetesClient(Object kubernetesClient) {
-            this.kubernetesClient = kubernetesClient;
+            this.properties.put("kubernetesClient", kubernetesClient);
             return (T) this;
         }
-
         /**
          * The port name, used for ServiceCall EIP. The option is a
          * java.lang.String type.
          */
         public T portName(String portName) {
-            this.portName = portName;
+            this.properties.put("portName", portName);
             return (T) this;
         }
-
         /**
          * The port protocol, used for ServiceCall EIP. The option is a
          * java.lang.String type.
          */
         public T portProtocol(String portProtocol) {
-            this.portProtocol = portProtocol;
+            this.properties.put("portProtocol", portProtocol);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Connection timeout in milliseconds to use when making requests to the
          * Kubernetes API server. The option is a java.lang.Integer type.
          */
         public T connectionTimeout(Integer connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
+            this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * The CA Cert Data. The option is a java.lang.String type.
          */
         public T caCertData(String caCertData) {
-            this.caCertData = caCertData;
+            this.properties.put("caCertData", caCertData);
             return (T) this;
         }
-
         /**
          * The CA Cert File. The option is a java.lang.String type.
          */
         public T caCertFile(String caCertFile) {
-            this.caCertFile = caCertFile;
+            this.properties.put("caCertFile", caCertFile);
             return (T) this;
         }
-
         /**
          * The Client Cert Data. The option is a java.lang.String type.
          */
         public T clientCertData(String clientCertData) {
-            this.clientCertData = clientCertData;
+            this.properties.put("clientCertData", clientCertData);
             return (T) this;
         }
-
         /**
          * The Client Cert File. The option is a java.lang.String type.
          */
         public T clientCertFile(String clientCertFile) {
-            this.clientCertFile = clientCertFile;
+            this.properties.put("clientCertFile", clientCertFile);
             return (T) this;
         }
-
         /**
          * The Key Algorithm used by the client. The option is a
          * java.lang.String type.
          */
         public T clientKeyAlgo(String clientKeyAlgo) {
-            this.clientKeyAlgo = clientKeyAlgo;
+            this.properties.put("clientKeyAlgo", clientKeyAlgo);
             return (T) this;
         }
-
         /**
          * The Client Key data. The option is a java.lang.String type.
          */
         public T clientKeyData(String clientKeyData) {
-            this.clientKeyData = clientKeyData;
+            this.properties.put("clientKeyData", clientKeyData);
             return (T) this;
         }
-
         /**
          * The Client Key file. The option is a java.lang.String type.
          */
         public T clientKeyFile(String clientKeyFile) {
-            this.clientKeyFile = clientKeyFile;
+            this.properties.put("clientKeyFile", clientKeyFile);
             return (T) this;
         }
-
         /**
          * The Client Key Passphrase. The option is a java.lang.String type.
          */
         public T clientKeyPassphrase(String clientKeyPassphrase) {
-            this.clientKeyPassphrase = clientKeyPassphrase;
+            this.properties.put("clientKeyPassphrase", clientKeyPassphrase);
             return (T) this;
         }
-
         /**
          * The Auth Token. The option is a java.lang.String type.
          */
         public T oauthToken(String oauthToken) {
-            this.oauthToken = oauthToken;
+            this.properties.put("oauthToken", oauthToken);
             return (T) this;
         }
-
         /**
          * Password to connect to Kubernetes. The option is a java.lang.String
          * type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Define if the certs we used are trusted anyway or not. The option is
          * a java.lang.Boolean type.
          */
         public T trustCerts(Boolean trustCerts) {
-            this.trustCerts = trustCerts;
+            this.properties.put("trustCerts", trustCerts);
             return (T) this;
         }
-
         /**
          * Username to connect to Kubernetes. The option is a java.lang.String
          * type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
-        }
-
-        public String getMasterUrl() {
-            return masterUrl;
-        }
-
-        public void setMasterUrl(String masterUrl) {
-            this.masterUrl = masterUrl;
-        }
-
-        public String getApiVersion() {
-            return apiVersion;
-        }
-
-        public void setApiVersion(String apiVersion) {
-            this.apiVersion = apiVersion;
-        }
-
-        public String getDnsDomain() {
-            return dnsDomain;
-        }
-
-        public void setDnsDomain(String dnsDomain) {
-            this.dnsDomain = dnsDomain;
-        }
-
-        public Object getKubernetesClient() {
-            return kubernetesClient;
-        }
-
-        public void setKubernetesClient(Object kubernetesClient) {
-            this.kubernetesClient = kubernetesClient;
-        }
-
-        public String getPortName() {
-            return portName;
-        }
-
-        public void setPortName(String portName) {
-            this.portName = portName;
-        }
-
-        public String getPortProtocol() {
-            return portProtocol;
-        }
-
-        public void setPortProtocol(String portProtocol) {
-            this.portProtocol = portProtocol;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Integer getConnectionTimeout() {
-            return connectionTimeout;
-        }
-
-        public void setConnectionTimeout(Integer connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getCaCertData() {
-            return caCertData;
-        }
-
-        public void setCaCertData(String caCertData) {
-            this.caCertData = caCertData;
-        }
-
-        public String getCaCertFile() {
-            return caCertFile;
-        }
-
-        public void setCaCertFile(String caCertFile) {
-            this.caCertFile = caCertFile;
-        }
-
-        public String getClientCertData() {
-            return clientCertData;
-        }
-
-        public void setClientCertData(String clientCertData) {
-            this.clientCertData = clientCertData;
-        }
-
-        public String getClientCertFile() {
-            return clientCertFile;
-        }
-
-        public void setClientCertFile(String clientCertFile) {
-            this.clientCertFile = clientCertFile;
-        }
-
-        public String getClientKeyAlgo() {
-            return clientKeyAlgo;
-        }
-
-        public void setClientKeyAlgo(String clientKeyAlgo) {
-            this.clientKeyAlgo = clientKeyAlgo;
-        }
-
-        public String getClientKeyData() {
-            return clientKeyData;
-        }
-
-        public void setClientKeyData(String clientKeyData) {
-            this.clientKeyData = clientKeyData;
-        }
-
-        public String getClientKeyFile() {
-            return clientKeyFile;
-        }
-
-        public void setClientKeyFile(String clientKeyFile) {
-            this.clientKeyFile = clientKeyFile;
-        }
-
-        public String getClientKeyPassphrase() {
-            return clientKeyPassphrase;
-        }
-
-        public void setClientKeyPassphrase(String clientKeyPassphrase) {
-            this.clientKeyPassphrase = clientKeyPassphrase;
-        }
-
-        public String getOauthToken() {
-            return oauthToken;
-        }
-
-        public void setOauthToken(String oauthToken) {
-            this.oauthToken = oauthToken;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public Boolean getTrustCerts() {
-            return trustCerts;
-        }
-
-        public void setTrustCerts(Boolean trustCerts) {
-            this.trustCerts = trustCerts;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
         }
     }
 
     public static class KubernetesSecretsConsumer
             extends
-                KubernetesSecretsCommon<KubernetesSecretsConsumer> {
+                KubernetesSecretsCommon<KubernetesSecretsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public KubernetesSecretsConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class KubernetesSecretsProducer
             extends
-                KubernetesSecretsCommon<KubernetesSecretsProducer> {
-        private String operation;
-
+                KubernetesSecretsCommon<KubernetesSecretsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public KubernetesSecretsProducer(String path) {
+            super(path);
+        }
         /**
          * Producer operation to do on Kubernetes. The option is a
          * java.lang.String type.
          */
         public KubernetesSecretsProducer operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (KubernetesSecretsProducer) this;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
         }
     }
 }

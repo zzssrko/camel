@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,58 +31,45 @@ import org.apache.camel.spi.ExceptionHandler;
 public class DropboxEndpoint {
 
 
-    public static class DropboxCommon<T extends EndpointConfiguration>
+    public static class DropboxCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private DropboxOperation operation;
-        private String accessToken;
-        private Object client;
-        private String clientIdentifier;
-        private String localPath;
-        private String newRemotePath;
-        private String query;
-        private String remotePath;
-        private DropboxUploadMode uploadMode;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        DropboxCommon(String path) {
+            super("dropbox", path);
+        }
         /**
          * The specific action (typically is a CRUD action) to perform on
          * Dropbox remote folder. The option is a
          * org.apache.camel.component.dropbox.util.DropboxOperation type.
          */
         public T operation(DropboxOperation operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * The access token to make API requests for a specific Dropbox user.
          * The option is a java.lang.String type.
          */
         public T accessToken(String accessToken) {
-            this.accessToken = accessToken;
+            this.properties.put("accessToken", accessToken);
             return (T) this;
         }
-
         /**
          * To use an existing DbxClient instance as DropBox client. The option
          * is a com.dropbox.core.v2.DbxClientV2 type.
          */
         public T client(Object client) {
-            this.client = client;
+            this.properties.put("client", client);
             return (T) this;
         }
-
         /**
          * Name of the app registered to make API requests. The option is a
          * java.lang.String type.
          */
         public T clientIdentifier(String clientIdentifier) {
-            this.clientIdentifier = clientIdentifier;
+            this.properties.put("clientIdentifier", clientIdentifier);
             return (T) this;
         }
-
         /**
          * Optional folder or file to upload on Dropbox from the local
          * filesystem. If this option has not been configured then the message
@@ -89,37 +77,33 @@ public class DropboxEndpoint {
          * java.lang.String type.
          */
         public T localPath(String localPath) {
-            this.localPath = localPath;
+            this.properties.put("localPath", localPath);
             return (T) this;
         }
-
         /**
          * Destination file or folder. The option is a java.lang.String type.
          */
         public T newRemotePath(String newRemotePath) {
-            this.newRemotePath = newRemotePath;
+            this.properties.put("newRemotePath", newRemotePath);
             return (T) this;
         }
-
         /**
          * A space-separated list of sub-strings to search for. A file matches
          * only if it contains all the sub-strings. If this option is not set,
          * all files will be matched. The option is a java.lang.String type.
          */
         public T query(String query) {
-            this.query = query;
+            this.properties.put("query", query);
             return (T) this;
         }
-
         /**
          * Original file or folder to move. The option is a java.lang.String
          * type.
          */
         public T remotePath(String remotePath) {
-            this.remotePath = remotePath;
+            this.properties.put("remotePath", remotePath);
             return (T) this;
         }
-
         /**
          * Which mode to upload. in case of add the new file will be renamed if
          * a file with the same name already exists on dropbox. in case of force
@@ -128,126 +112,37 @@ public class DropboxEndpoint {
          * org.apache.camel.component.dropbox.util.DropboxUploadMode type.
          */
         public T uploadMode(DropboxUploadMode uploadMode) {
-            this.uploadMode = uploadMode;
+            this.properties.put("uploadMode", uploadMode);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public DropboxOperation getOperation() {
-            return operation;
-        }
-
-        public void setOperation(DropboxOperation operation) {
-            this.operation = operation;
-        }
-
-        public String getAccessToken() {
-            return accessToken;
-        }
-
-        public void setAccessToken(String accessToken) {
-            this.accessToken = accessToken;
-        }
-
-        public Object getClient() {
-            return client;
-        }
-
-        public void setClient(Object client) {
-            this.client = client;
-        }
-
-        public String getClientIdentifier() {
-            return clientIdentifier;
-        }
-
-        public void setClientIdentifier(String clientIdentifier) {
-            this.clientIdentifier = clientIdentifier;
-        }
-
-        public String getLocalPath() {
-            return localPath;
-        }
-
-        public void setLocalPath(String localPath) {
-            this.localPath = localPath;
-        }
-
-        public String getNewRemotePath() {
-            return newRemotePath;
-        }
-
-        public void setNewRemotePath(String newRemotePath) {
-            this.newRemotePath = newRemotePath;
-        }
-
-        public String getQuery() {
-            return query;
-        }
-
-        public void setQuery(String query) {
-            this.query = query;
-        }
-
-        public String getRemotePath() {
-            return remotePath;
-        }
-
-        public void setRemotePath(String remotePath) {
-            this.remotePath = remotePath;
-        }
-
-        public DropboxUploadMode getUploadMode() {
-            return uploadMode;
-        }
-
-        public void setUploadMode(DropboxUploadMode uploadMode) {
-            this.uploadMode = uploadMode;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class DropboxConsumer
             extends
-                DropboxCommon<DropboxConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                DropboxCommon<DropboxConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DropboxConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -258,10 +153,9 @@ public class DropboxEndpoint {
          * ignored. The option is a boolean type.
          */
         public DropboxConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (DropboxConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -271,47 +165,27 @@ public class DropboxEndpoint {
          */
         public DropboxConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (DropboxConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public DropboxConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (DropboxConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class DropboxProducer
             extends
-                DropboxCommon<DropboxProducer> {
+                DropboxCommon<DropboxProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DropboxProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum DropboxOperation {

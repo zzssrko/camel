@@ -20,6 +20,7 @@ import java.math.BigInteger;
 import java.util.List;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -32,272 +33,138 @@ import org.apache.camel.spi.ExceptionHandler;
 public class Web3jEndpoint {
 
 
-    public static class Web3jCommon<T extends EndpointConfiguration>
+    public static class Web3jCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String nodeAddress;
-        private List<String> addresses;
-        private String fromAddress;
-        private Object fromBlock;
-        private Boolean fullTransactionObjects;
-        private BigInteger gasLimit;
-        private List<String> privateFor;
-        private Boolean quorumAPI;
-        private String toAddress;
-        private Object toBlock;
-        private List<String> topics;
-        private Object web3j;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        Web3jCommon(String path) {
+            super("web3j", path);
+        }
         /**
          * Sets the node address used to communicate. The option is a
          * java.lang.String type.
          */
         public T nodeAddress(String nodeAddress) {
-            this.nodeAddress = nodeAddress;
+            this.properties.put("nodeAddress", nodeAddress);
             return (T) this;
         }
-
         /**
          * Contract address or a list of addresses. The option is a
          * java.util.List<java.lang.String> type.
          */
         public T addresses(List<String> addresses) {
-            this.addresses = addresses;
+            this.properties.put("addresses", addresses);
             return (T) this;
         }
-
         /**
          * The address the transaction is send from. The option is a
          * java.lang.String type.
          */
         public T fromAddress(String fromAddress) {
-            this.fromAddress = fromAddress;
+            this.properties.put("fromAddress", fromAddress);
             return (T) this;
         }
-
         /**
          * The block number, or the string latest for the last mined block or
          * pending, earliest for not yet mined transactions. The option is a
          * org.web3j.protocol.core.DefaultBlockParameter type.
          */
         public T fromBlock(Object fromBlock) {
-            this.fromBlock = fromBlock;
+            this.properties.put("fromBlock", fromBlock);
             return (T) this;
         }
-
         /**
          * If true it returns the full transaction objects, if false only the
          * hashes of the transactions. The option is a boolean type.
          */
         public T fullTransactionObjects(boolean fullTransactionObjects) {
-            this.fullTransactionObjects = fullTransactionObjects;
+            this.properties.put("fullTransactionObjects", fullTransactionObjects);
             return (T) this;
         }
-
         /**
          * The maximum gas allowed in this block. The option is a
          * java.math.BigInteger type.
          */
         public T gasLimit(BigInteger gasLimit) {
-            this.gasLimit = gasLimit;
+            this.properties.put("gasLimit", gasLimit);
             return (T) this;
         }
-
         /**
          * A transaction privateFor nodes with public keys in a Quorum network.
          * The option is a java.util.List<java.lang.String> type.
          */
         public T privateFor(List<String> privateFor) {
-            this.privateFor = privateFor;
+            this.properties.put("privateFor", privateFor);
             return (T) this;
         }
-
         /**
          * If true, this will support Quorum API. The option is a boolean type.
          */
         public T quorumAPI(boolean quorumAPI) {
-            this.quorumAPI = quorumAPI;
+            this.properties.put("quorumAPI", quorumAPI);
             return (T) this;
         }
-
         /**
          * The address the transaction is directed to. The option is a
          * java.lang.String type.
          */
         public T toAddress(String toAddress) {
-            this.toAddress = toAddress;
+            this.properties.put("toAddress", toAddress);
             return (T) this;
         }
-
         /**
          * The block number, or the string latest for the last mined block or
          * pending, earliest for not yet mined transactions. The option is a
          * org.web3j.protocol.core.DefaultBlockParameter type.
          */
         public T toBlock(Object toBlock) {
-            this.toBlock = toBlock;
+            this.properties.put("toBlock", toBlock);
             return (T) this;
         }
-
         /**
          * Topics are order-dependent. Each topic can also be a list of topics.
          * Specify multiple topics separated by comma. The option is a
          * java.lang.String type.
          */
         public T topics(List<String> topics) {
-            this.topics = topics;
+            this.properties.put("topics", topics);
             return (T) this;
         }
-
         /**
          * The preconfigured Web3j object. The option is a
          * org.web3j.protocol.Web3j type.
          */
         public T web3j(Object web3j) {
-            this.web3j = web3j;
+            this.properties.put("web3j", web3j);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getNodeAddress() {
-            return nodeAddress;
-        }
-
-        public void setNodeAddress(String nodeAddress) {
-            this.nodeAddress = nodeAddress;
-        }
-
-        public List<String> getAddresses() {
-            return addresses;
-        }
-
-        public void setAddresses(List<String> addresses) {
-            this.addresses = addresses;
-        }
-
-        public String getFromAddress() {
-            return fromAddress;
-        }
-
-        public void setFromAddress(String fromAddress) {
-            this.fromAddress = fromAddress;
-        }
-
-        public Object getFromBlock() {
-            return fromBlock;
-        }
-
-        public void setFromBlock(Object fromBlock) {
-            this.fromBlock = fromBlock;
-        }
-
-        public Boolean getFullTransactionObjects() {
-            return fullTransactionObjects;
-        }
-
-        public void setFullTransactionObjects(Boolean fullTransactionObjects) {
-            this.fullTransactionObjects = fullTransactionObjects;
-        }
-
-        public BigInteger getGasLimit() {
-            return gasLimit;
-        }
-
-        public void setGasLimit(BigInteger gasLimit) {
-            this.gasLimit = gasLimit;
-        }
-
-        public List<String> getPrivateFor() {
-            return privateFor;
-        }
-
-        public void setPrivateFor(List<String> privateFor) {
-            this.privateFor = privateFor;
-        }
-
-        public Boolean getQuorumAPI() {
-            return quorumAPI;
-        }
-
-        public void setQuorumAPI(Boolean quorumAPI) {
-            this.quorumAPI = quorumAPI;
-        }
-
-        public String getToAddress() {
-            return toAddress;
-        }
-
-        public void setToAddress(String toAddress) {
-            this.toAddress = toAddress;
-        }
-
-        public Object getToBlock() {
-            return toBlock;
-        }
-
-        public void setToBlock(Object toBlock) {
-            this.toBlock = toBlock;
-        }
-
-        public List<String> getTopics() {
-            return topics;
-        }
-
-        public void setTopics(List<String> topics) {
-            this.topics = topics;
-        }
-
-        public Object getWeb3j() {
-            return web3j;
-        }
-
-        public void setWeb3j(Object web3j) {
-            this.web3j = web3j;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class Web3jConsumer extends Web3jCommon<Web3jConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class Web3jConsumer
+            extends
+                Web3jCommon<Web3jConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public Web3jConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -308,10 +175,9 @@ public class Web3jEndpoint {
          * ignored. The option is a boolean type.
          */
         public Web3jConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (Web3jConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -320,455 +186,207 @@ public class Web3jEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public Web3jConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (Web3jConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public Web3jConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (Web3jConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class Web3jProducer extends Web3jCommon<Web3jProducer> {
-        private String address;
-        private Object atBlock;
-        private String blockHash;
-        private String clientId;
-        private String data;
-        private String databaseName;
-        private BigInteger filterId;
-        private BigInteger gasPrice;
-        private String hashrate;
-        private String headerPowHash;
-        private BigInteger index;
-        private String keyName;
-        private String mixDigest;
-        private String nonce;
-        private String operation;
-        private BigInteger position;
-        private BigInteger priority;
-        private String sha3HashOfDataToSign;
-        private String signedTransactionData;
-        private String sourceCode;
-        private String transactionHash;
-        private BigInteger ttl;
-        private BigInteger value;
-
+    public static class Web3jProducer
+            extends
+                Web3jCommon<Web3jProducer>
+            implements
+                EndpointDefinition.Producer {
+        public Web3jProducer(String path) {
+            super(path);
+        }
         /**
          * Contract address. The option is a java.lang.String type.
          */
         public Web3jProducer address(String address) {
-            this.address = address;
+            this.properties.put("address", address);
             return (Web3jProducer) this;
         }
-
         /**
          * The block number, or the string latest for the last mined block or
          * pending, earliest for not yet mined transactions. The option is a
          * org.web3j.protocol.core.DefaultBlockParameter type.
          */
         public Web3jProducer atBlock(Object atBlock) {
-            this.atBlock = atBlock;
+            this.properties.put("atBlock", atBlock);
             return (Web3jProducer) this;
         }
-
         /**
          * Hash of the block where this transaction was in. The option is a
          * java.lang.String type.
          */
         public Web3jProducer blockHash(String blockHash) {
-            this.blockHash = blockHash;
+            this.properties.put("blockHash", blockHash);
             return (Web3jProducer) this;
         }
-
         /**
          * A random hexadecimal(32 bytes) ID identifying the client. The option
          * is a java.lang.String type.
          */
         public Web3jProducer clientId(String clientId) {
-            this.clientId = clientId;
+            this.properties.put("clientId", clientId);
             return (Web3jProducer) this;
         }
-
         /**
          * The compiled code of a contract OR the hash of the invoked method
          * signature and encoded parameters. The option is a java.lang.String
          * type.
          */
         public Web3jProducer data(String data) {
-            this.data = data;
+            this.properties.put("data", data);
             return (Web3jProducer) this;
         }
-
         /**
          * The local database name. The option is a java.lang.String type.
          */
         public Web3jProducer databaseName(String databaseName) {
-            this.databaseName = databaseName;
+            this.properties.put("databaseName", databaseName);
             return (Web3jProducer) this;
         }
-
         /**
          * The filter id to use. The option is a java.math.BigInteger type.
          */
         public Web3jProducer filterId(BigInteger filterId) {
-            this.filterId = filterId;
+            this.properties.put("filterId", filterId);
             return (Web3jProducer) this;
         }
-
         /**
          * Gas price used for each paid gas. The option is a
          * java.math.BigInteger type.
          */
         public Web3jProducer gasPrice(BigInteger gasPrice) {
-            this.gasPrice = gasPrice;
+            this.properties.put("gasPrice", gasPrice);
             return (Web3jProducer) this;
         }
-
         /**
          * A hexadecimal string representation (32 bytes) of the hash rate. The
          * option is a java.lang.String type.
          */
         public Web3jProducer hashrate(String hashrate) {
-            this.hashrate = hashrate;
+            this.properties.put("hashrate", hashrate);
             return (Web3jProducer) this;
         }
-
         /**
          * The header's pow-hash (256 bits) used for submitting a proof-of-work
          * solution. The option is a java.lang.String type.
          */
         public Web3jProducer headerPowHash(String headerPowHash) {
-            this.headerPowHash = headerPowHash;
+            this.properties.put("headerPowHash", headerPowHash);
             return (Web3jProducer) this;
         }
-
         /**
          * The transactions/uncle index position in the block. The option is a
          * java.math.BigInteger type.
          */
         public Web3jProducer index(BigInteger index) {
-            this.index = index;
+            this.properties.put("index", index);
             return (Web3jProducer) this;
         }
-
         /**
          * The key name in the database. The option is a java.lang.String type.
          */
         public Web3jProducer keyName(String keyName) {
-            this.keyName = keyName;
+            this.properties.put("keyName", keyName);
             return (Web3jProducer) this;
         }
-
         /**
          * The mix digest (256 bits) used for submitting a proof-of-work
          * solution. The option is a java.lang.String type.
          */
         public Web3jProducer mixDigest(String mixDigest) {
-            this.mixDigest = mixDigest;
+            this.properties.put("mixDigest", mixDigest);
             return (Web3jProducer) this;
         }
-
         /**
          * The nonce found (64 bits) used for submitting a proof-of-work
          * solution. The option is a java.lang.String type.
          */
         public Web3jProducer nonce(String nonce) {
-            this.nonce = nonce;
+            this.properties.put("nonce", nonce);
             return (Web3jProducer) this;
         }
-
         /**
          * Operation to use. The option is a java.lang.String type.
          */
         public Web3jProducer operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (Web3jProducer) this;
         }
-
         /**
          * The transaction index position withing a block. The option is a
          * java.math.BigInteger type.
          */
         public Web3jProducer position(BigInteger position) {
-            this.position = position;
+            this.properties.put("position", position);
             return (Web3jProducer) this;
         }
-
         /**
          * The priority of a whisper message. The option is a
          * java.math.BigInteger type.
          */
         public Web3jProducer priority(BigInteger priority) {
-            this.priority = priority;
+            this.properties.put("priority", priority);
             return (Web3jProducer) this;
         }
-
         /**
          * Message to sign by calculating an Ethereum specific signature. The
          * option is a java.lang.String type.
          */
         public Web3jProducer sha3HashOfDataToSign(String sha3HashOfDataToSign) {
-            this.sha3HashOfDataToSign = sha3HashOfDataToSign;
+            this.properties.put("sha3HashOfDataToSign", sha3HashOfDataToSign);
             return (Web3jProducer) this;
         }
-
         /**
          * The signed transaction data for a new message call transaction or a
          * contract creation for signed transactions. The option is a
          * java.lang.String type.
          */
         public Web3jProducer signedTransactionData(String signedTransactionData) {
-            this.signedTransactionData = signedTransactionData;
+            this.properties.put("signedTransactionData", signedTransactionData);
             return (Web3jProducer) this;
         }
-
         /**
          * The source code to compile. The option is a java.lang.String type.
          */
         public Web3jProducer sourceCode(String sourceCode) {
-            this.sourceCode = sourceCode;
+            this.properties.put("sourceCode", sourceCode);
             return (Web3jProducer) this;
         }
-
         /**
          * The information about a transaction requested by transaction hash.
          * The option is a java.lang.String type.
          */
         public Web3jProducer transactionHash(String transactionHash) {
-            this.transactionHash = transactionHash;
+            this.properties.put("transactionHash", transactionHash);
             return (Web3jProducer) this;
         }
-
         /**
          * The time to live in seconds of a whisper message. The option is a
          * java.math.BigInteger type.
          */
         public Web3jProducer ttl(BigInteger ttl) {
-            this.ttl = ttl;
+            this.properties.put("ttl", ttl);
             return (Web3jProducer) this;
         }
-
         /**
          * The value sent within a transaction. The option is a
          * java.math.BigInteger type.
          */
         public Web3jProducer value(BigInteger value) {
-            this.value = value;
+            this.properties.put("value", value);
             return (Web3jProducer) this;
-        }
-
-        public String getAddress() {
-            return address;
-        }
-
-        public void setAddress(String address) {
-            this.address = address;
-        }
-
-        public Object getAtBlock() {
-            return atBlock;
-        }
-
-        public void setAtBlock(Object atBlock) {
-            this.atBlock = atBlock;
-        }
-
-        public String getBlockHash() {
-            return blockHash;
-        }
-
-        public void setBlockHash(String blockHash) {
-            this.blockHash = blockHash;
-        }
-
-        public String getClientId() {
-            return clientId;
-        }
-
-        public void setClientId(String clientId) {
-            this.clientId = clientId;
-        }
-
-        public String getData() {
-            return data;
-        }
-
-        public void setData(String data) {
-            this.data = data;
-        }
-
-        public String getDatabaseName() {
-            return databaseName;
-        }
-
-        public void setDatabaseName(String databaseName) {
-            this.databaseName = databaseName;
-        }
-
-        public BigInteger getFilterId() {
-            return filterId;
-        }
-
-        public void setFilterId(BigInteger filterId) {
-            this.filterId = filterId;
-        }
-
-        public BigInteger getGasPrice() {
-            return gasPrice;
-        }
-
-        public void setGasPrice(BigInteger gasPrice) {
-            this.gasPrice = gasPrice;
-        }
-
-        public String getHashrate() {
-            return hashrate;
-        }
-
-        public void setHashrate(String hashrate) {
-            this.hashrate = hashrate;
-        }
-
-        public String getHeaderPowHash() {
-            return headerPowHash;
-        }
-
-        public void setHeaderPowHash(String headerPowHash) {
-            this.headerPowHash = headerPowHash;
-        }
-
-        public BigInteger getIndex() {
-            return index;
-        }
-
-        public void setIndex(BigInteger index) {
-            this.index = index;
-        }
-
-        public String getKeyName() {
-            return keyName;
-        }
-
-        public void setKeyName(String keyName) {
-            this.keyName = keyName;
-        }
-
-        public String getMixDigest() {
-            return mixDigest;
-        }
-
-        public void setMixDigest(String mixDigest) {
-            this.mixDigest = mixDigest;
-        }
-
-        public String getNonce() {
-            return nonce;
-        }
-
-        public void setNonce(String nonce) {
-            this.nonce = nonce;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
-        }
-
-        public BigInteger getPosition() {
-            return position;
-        }
-
-        public void setPosition(BigInteger position) {
-            this.position = position;
-        }
-
-        public BigInteger getPriority() {
-            return priority;
-        }
-
-        public void setPriority(BigInteger priority) {
-            this.priority = priority;
-        }
-
-        public String getSha3HashOfDataToSign() {
-            return sha3HashOfDataToSign;
-        }
-
-        public void setSha3HashOfDataToSign(String sha3HashOfDataToSign) {
-            this.sha3HashOfDataToSign = sha3HashOfDataToSign;
-        }
-
-        public String getSignedTransactionData() {
-            return signedTransactionData;
-        }
-
-        public void setSignedTransactionData(String signedTransactionData) {
-            this.signedTransactionData = signedTransactionData;
-        }
-
-        public String getSourceCode() {
-            return sourceCode;
-        }
-
-        public void setSourceCode(String sourceCode) {
-            this.sourceCode = sourceCode;
-        }
-
-        public String getTransactionHash() {
-            return transactionHash;
-        }
-
-        public void setTransactionHash(String transactionHash) {
-            this.transactionHash = transactionHash;
-        }
-
-        public BigInteger getTtl() {
-            return ttl;
-        }
-
-        public void setTtl(BigInteger ttl) {
-            this.ttl = ttl;
-        }
-
-        public BigInteger getValue() {
-            return value;
-        }
-
-        public void setValue(BigInteger value) {
-            this.value = value;
         }
     }
 }

@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,178 +31,92 @@ import org.apache.camel.spi.ExceptionHandler;
 public class PgEventEndpoint {
 
 
-    public static class PgEventCommon<T extends EndpointConfiguration>
+    public static class PgEventCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private String database;
-        private String channel;
-        private Object datasource;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String pass;
-        private String user;
-
+                EndpointDefinition<T> {
+        PgEventCommon(String path) {
+            super("pgevent", path);
+        }
         /**
          * To connect using hostname and port to the database. The option is a
          * java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * To connect using hostname and port to the database. The option is a
          * java.lang.Integer type.
          */
         public T port(Integer port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * The database name. The option is a java.lang.String type.
          */
         public T database(String database) {
-            this.database = database;
+            this.properties.put("database", database);
             return (T) this;
         }
-
         /**
          * The channel name. The option is a java.lang.String type.
          */
         public T channel(String channel) {
-            this.channel = channel;
+            this.properties.put("channel", channel);
             return (T) this;
         }
-
         /**
          * To connect using the given javax.sql.DataSource instead of using
          * hostname and port. The option is a javax.sql.DataSource type.
          */
         public T datasource(Object datasource) {
-            this.datasource = datasource;
+            this.properties.put("datasource", datasource);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Password for login. The option is a java.lang.String type.
          */
         public T pass(String pass) {
-            this.pass = pass;
+            this.properties.put("pass", pass);
             return (T) this;
         }
-
         /**
          * Username for login. The option is a java.lang.String type.
          */
         public T user(String user) {
-            this.user = user;
+            this.properties.put("user", user);
             return (T) this;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getDatabase() {
-            return database;
-        }
-
-        public void setDatabase(String database) {
-            this.database = database;
-        }
-
-        public String getChannel() {
-            return channel;
-        }
-
-        public void setChannel(String channel) {
-            this.channel = channel;
-        }
-
-        public Object getDatasource() {
-            return datasource;
-        }
-
-        public void setDatasource(Object datasource) {
-            this.datasource = datasource;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getPass() {
-            return pass;
-        }
-
-        public void setPass(String pass) {
-            this.pass = pass;
-        }
-
-        public String getUser() {
-            return user;
-        }
-
-        public void setUser(String user) {
-            this.user = user;
         }
     }
 
     public static class PgEventConsumer
             extends
-                PgEventCommon<PgEventConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                PgEventCommon<PgEventConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public PgEventConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -212,10 +127,9 @@ public class PgEventEndpoint {
          * ignored. The option is a boolean type.
          */
         public PgEventConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (PgEventConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -225,46 +139,26 @@ public class PgEventEndpoint {
          */
         public PgEventConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (PgEventConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public PgEventConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (PgEventConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class PgEventProducer
             extends
-                PgEventCommon<PgEventProducer> {
+                PgEventCommon<PgEventProducer>
+            implements
+                EndpointDefinition.Producer {
+        public PgEventProducer(String path) {
+            super(path);
+        }
     }
 }

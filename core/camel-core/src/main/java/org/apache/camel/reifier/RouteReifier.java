@@ -38,6 +38,7 @@ import org.apache.camel.model.ProcessorDefinitionHelper;
 import org.apache.camel.model.PropertyDefinition;
 import org.apache.camel.model.RouteDefinition;
 import org.apache.camel.model.RoutesDefinition;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.processor.ContractAdvice;
 import org.apache.camel.processor.interceptor.HandleFault;
 import org.apache.camel.reifier.rest.RestBindingReifier;
@@ -326,7 +327,12 @@ public class RouteReifier extends ProcessorReifier<RouteDefinition> {
         // resolve endpoint
         Endpoint endpoint = definition.getInput().getEndpoint();
         if (endpoint == null) {
-            endpoint = routeContext.resolveEndpoint(definition.getInput().getUri());
+            EndpointDefinition.Consumer def = definition.getInput().getEndpointDefinition();
+            if (def != null) {
+                endpoint = def.resolve(routeContext);
+            } else {
+                endpoint = routeContext.resolveEndpoint(definition.getInput().getUri());
+            }
         }
         routeContext.setEndpoint(endpoint);
 

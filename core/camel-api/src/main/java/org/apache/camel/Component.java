@@ -18,6 +18,7 @@ package org.apache.camel;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Map;
 import java.util.Optional;
 
 import org.apache.camel.component.extension.ComponentExtension;
@@ -42,6 +43,8 @@ public interface Component extends CamelContextAware {
      * @see #useRawUri()
      */
     Endpoint createEndpoint(String uri) throws Exception;
+
+    Endpoint createEndpoint(String uri, Map<String, Object> parameters) throws Exception;
 
     /**
      * Whether to use raw or encoded uri, when creating endpoints.

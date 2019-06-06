@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The spring-ldap component allows you to perform searches in LDAP servers
@@ -28,111 +29,74 @@ import javax.annotation.Generated;
 public class SpringLdapEndpoint {
 
 
-    public static class SpringLdapCommon<T extends EndpointConfiguration>
+    public static class SpringLdapCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String templateName;
-        private LdapOperation operation;
-        private String scope;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        SpringLdapCommon(String path) {
+            super("spring-ldap", path);
+        }
         /**
          * Name of the Spring LDAP Template bean. The option is a
          * java.lang.String type.
          */
         public T templateName(String templateName) {
-            this.templateName = templateName;
+            this.properties.put("templateName", templateName);
             return (T) this;
         }
-
         /**
          * The LDAP operation to be performed. The option is a
          * org.apache.camel.component.springldap.LdapOperation type.
          */
         public T operation(LdapOperation operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * The scope of the search operation. The option is a java.lang.String
          * type.
          */
         public T scope(String scope) {
-            this.scope = scope;
+            this.properties.put("scope", scope);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getTemplateName() {
-            return templateName;
-        }
-
-        public void setTemplateName(String templateName) {
-            this.templateName = templateName;
-        }
-
-        public LdapOperation getOperation() {
-            return operation;
-        }
-
-        public void setOperation(LdapOperation operation) {
-            this.operation = operation;
-        }
-
-        public String getScope() {
-            return scope;
-        }
-
-        public void setScope(String scope) {
-            this.scope = scope;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class SpringLdapConsumer
             extends
-                SpringLdapCommon<SpringLdapConsumer> {
+                SpringLdapCommon<SpringLdapConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SpringLdapConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class SpringLdapProducer
             extends
-                SpringLdapCommon<SpringLdapProducer> {
+                SpringLdapCommon<SpringLdapProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SpringLdapProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum LdapOperation {

@@ -362,7 +362,13 @@ public abstract class ProcessorDefinition<Type extends ProcessorDefinition<Type>
         addOutput(new ToDefinition(endpoint));
         return (Type) this;
     }
-    
+
+    @SuppressWarnings("unchecked")
+    public Type to(EndpointDefinition.Producer endpoint) {
+        addOutput(new ToDefinition(endpoint));
+        return (Type) this;
+    }
+
     /**
      * Sends the exchange with certain exchange pattern to the given endpoint
      * <p/>

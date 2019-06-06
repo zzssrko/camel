@@ -200,28 +200,49 @@ public class EndpointDslMojo extends AbstractMojo {
         String name = model.getJavaType().substring(pos + 1);
         name = name.replace("Component", "Endpoint");
 
+        if (model.getJavaType().equals("org.apache.camel.component.atmosphere.websocket.WebsocketComponent")) {
+            name = "AtmosphereWebsocketEndpoint";
+        } else if (model.getJavaType().equals("org.apache.camel.component.zookeepermaster.MasterComponent")) {
+            name = "ZooKeeperMasterEndpoint";
+        }
+
         Class<?> realComponentClass = loadClass(model.getJavaType());
         Class<?> realEndpointClass = findEndpointClass(realComponentClass);
 
         final JavaClass javaClass = new JavaClass(getProjectClassLoader());
         javaClass.setPackage(packageName);
         javaClass.setName(name);
+        javaClass.addImport("org.apache.camel.model.EndpointDefinition");
 
         Map<String, JavaClass> enumClasses = new HashMap<>();
 
         JavaClass commonClass = javaClass.addNestedType().setPublic().setStatic(true);
-        commonClass.setName(name.replace("Endpoint", "Common") + "<T extends EndpointConfiguration>");
-        commonClass.extendSuperType("EndpointConfiguration<T>");
+        commonClass.setName(name.replace("Endpoint", "Common") + "<T extends EndpointDefinition>");
+        commonClass.extendSuperType("EndpointDefinition<T>");
+        commonClass.addMethod().setConstructor(true)
+                .setName(name.replace("Endpoint", "Common"))
+                .addParameter(String.class, "path")
+                .setBody("super(\"" + model.getScheme() + "\", path);");
         generateDummyClass(commonClass.getCanonicalName());
 
         JavaClass consumerClass = javaClass.addNestedType().setPublic().setStatic(true);
         consumerClass.setName(name.replace("Endpoint", "Consumer"));
         consumerClass.extendSuperType(name.replace("Endpoint", "Common") + "<" + name.replace("Endpoint", "Consumer") + ">");
+        consumerClass.implementInterface("EndpointDefinition.Consumer");
+        consumerClass.addMethod().setConstructor(true).setPublic()
+                .setName(name.replace("Endpoint", "Consumer"))
+                .addParameter(String.class, "path")
+                .setBody("super(path);");
         generateDummyClass(consumerClass.getCanonicalName());
 
         JavaClass producerClass = javaClass.addNestedType().setPublic().setStatic(true);
         producerClass.setName(name.replace("Endpoint", "Producer"));
         producerClass.extendSuperType(name.replace("Endpoint", "Common") + "<" + name.replace("Endpoint", "Producer") + ">");
+        producerClass.implementInterface("EndpointDefinition.Producer");
+        producerClass.addMethod().setConstructor(true).setPublic()
+                .setName(name.replace("Endpoint", "Producer"))
+                .addParameter(String.class, "path")
+                .setBody("super(path);");
         generateDummyClass(producerClass.getCanonicalName());
 
         generateDummyClass(packageName + ".T");
@@ -235,6 +256,7 @@ public class EndpointDslMojo extends AbstractMojo {
         javaClass.addAnnotation(Generated.class.getName())
                 .setStringValue("value", EndpointDslMojo.class.getName());
 
+        boolean pathSet = false;
         for (EndpointOptionModel option : model.getEndpointOptions()) {
 
             JavaClass target = commonClass;
@@ -257,18 +279,14 @@ public class EndpointDslMojo extends AbstractMojo {
             }
 
 
-            Property prop = target.addProperty(gtype, option.getName());
             String fluentBuilderTypeName = target == commonClass ? packageName + ".T" : target.getCanonicalName();
             String fluentBuilderTypeShortName = target == commonClass ? "T" : target.getName();
             Method fluent = target.addMethod().setPublic().setName(option.getName())
                     .setReturnType(new GenericType(loadClass(fluentBuilderTypeName)) )
                     .addParameter(PRIMITIVEMAP.containsKey(ogtype.toString()) ? ogtype : gtype, option.getName())
-                    .setBody("this." + option.getName() + " = " + option.getName() + ";\n" +
+                    .setBody("this.properties.put(\"" + option.getName() + "\", " + option.getName() + ");\n" +
                              "return (" + fluentBuilderTypeShortName + ") this;\n");
             if ("true".equals(option.getDeprecated())) {
-                prop.getField().addAnnotation(Deprecated.class);
-                prop.getAccessor().addAnnotation(Deprecated.class);
-                prop.getMutator().addAnnotation(Deprecated.class);
                 fluent.addAnnotation(Deprecated.class);
             }
             if (!Strings.isBlank(option.getDescription())) {

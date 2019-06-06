@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.Set;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,115 +32,65 @@ import org.apache.camel.spi.ExceptionHandler;
 public class IgniteEventsEndpoint {
 
 
-    public static class IgniteEventsCommon<T extends EndpointConfiguration>
+    public static class IgniteEventsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String endpointId;
-        private Boolean propagateIncomingBodyIfNoReturnValue;
-        private Boolean treatCollectionsAsCacheObjects;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        IgniteEventsCommon(String path) {
+            super("ignite-events", path);
+        }
         /**
          * The endpoint ID (not used). The option is a java.lang.String type.
          */
         public T endpointId(String endpointId) {
-            this.endpointId = endpointId;
+            this.properties.put("endpointId", endpointId);
             return (T) this;
         }
-
         /**
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option is a boolean type.
          */
         public T propagateIncomingBodyIfNoReturnValue(
                 boolean propagateIncomingBodyIfNoReturnValue) {
-            this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
+            this.properties.put("propagateIncomingBodyIfNoReturnValue", propagateIncomingBodyIfNoReturnValue);
             return (T) this;
         }
-
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
         public T treatCollectionsAsCacheObjects(
                 boolean treatCollectionsAsCacheObjects) {
-            this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
+            this.properties.put("treatCollectionsAsCacheObjects", treatCollectionsAsCacheObjects);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getEndpointId() {
-            return endpointId;
-        }
-
-        public void setEndpointId(String endpointId) {
-            this.endpointId = endpointId;
-        }
-
-        public Boolean getPropagateIncomingBodyIfNoReturnValue() {
-            return propagateIncomingBodyIfNoReturnValue;
-        }
-
-        public void setPropagateIncomingBodyIfNoReturnValue(
-                Boolean propagateIncomingBodyIfNoReturnValue) {
-            this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
-        }
-
-        public Boolean getTreatCollectionsAsCacheObjects() {
-            return treatCollectionsAsCacheObjects;
-        }
-
-        public void setTreatCollectionsAsCacheObjects(
-                Boolean treatCollectionsAsCacheObjects) {
-            this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class IgniteEventsConsumer
             extends
-                IgniteEventsCommon<IgniteEventsConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Object clusterGroupExpression;
-        private Set<Integer> events;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                IgniteEventsCommon<IgniteEventsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public IgniteEventsConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -151,30 +102,27 @@ public class IgniteEventsEndpoint {
          */
         public IgniteEventsConsumer bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (IgniteEventsConsumer) this;
         }
-
         /**
          * The cluster group expression. The option is a
          * org.apache.camel.component.ignite.ClusterGroupExpression type.
          */
         public IgniteEventsConsumer clusterGroupExpression(
                 Object clusterGroupExpression) {
-            this.clusterGroupExpression = clusterGroupExpression;
+            this.properties.put("clusterGroupExpression", clusterGroupExpression);
             return (IgniteEventsConsumer) this;
         }
-
         /**
          * The event IDs to subscribe to as a Set directly where the IDs are the
          * different constants in org.apache.ignite.events.EventType. The option
          * is a Set<Integer> or String type.
          */
         public IgniteEventsConsumer events(Set<Integer> events) {
-            this.events = events;
+            this.properties.put("events", events);
             return (IgniteEventsConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -184,63 +132,27 @@ public class IgniteEventsEndpoint {
          */
         public IgniteEventsConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (IgniteEventsConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public IgniteEventsConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (IgniteEventsConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Object getClusterGroupExpression() {
-            return clusterGroupExpression;
-        }
-
-        public void setClusterGroupExpression(Object clusterGroupExpression) {
-            this.clusterGroupExpression = clusterGroupExpression;
-        }
-
-        public Set<Integer> getEvents() {
-            return events;
-        }
-
-        public void setEvents(Set<Integer> events) {
-            this.events = events;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class IgniteEventsProducer
             extends
-                IgniteEventsCommon<IgniteEventsProducer> {
+                IgniteEventsCommon<IgniteEventsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public IgniteEventsProducer(String path) {
+            super(path);
+        }
     }
 }

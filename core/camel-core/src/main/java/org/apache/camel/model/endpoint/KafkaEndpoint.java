@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.concurrent.ExecutorService;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.HeaderFilterStrategy;
 import org.apache.camel.spi.StateRepository;
@@ -33,48 +34,21 @@ import org.apache.camel.spi.StateRepository;
 public class KafkaEndpoint {
 
 
-    public static class KafkaCommon<T extends EndpointConfiguration>
+    public static class KafkaCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String topic;
-        private String brokers;
-        private String clientId;
-        private HeaderFilterStrategy headerFilterStrategy;
-        private Integer reconnectBackoffMaxMs;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String interceptorClasses;
-        private Integer kerberosBeforeReloginMinTime;
-        private String kerberosInitCmd;
-        private String kerberosPrincipalToLocalRules;
-        private Double kerberosRenewJitter;
-        private Double kerberosRenewWindowFactor;
-        private String saslJaasConfig;
-        private String saslKerberosServiceName;
-        private String saslMechanism;
-        private String securityProtocol;
-        private String sslCipherSuites;
-        private Object sslContextParameters;
-        private String sslEnabledProtocols;
-        private String sslEndpointAlgorithm;
-        private String sslKeymanagerAlgorithm;
-        private String sslKeystoreType;
-        private String sslProtocol;
-        private String sslProvider;
-        private String sslTrustmanagerAlgorithm;
-        private String sslTruststoreType;
-        private String schemaRegistryURL;
-
+                EndpointDefinition<T> {
+        KafkaCommon(String path) {
+            super("kafka", path);
+        }
         /**
          * Name of the topic to use. On the consumer you can use comma to
          * separate multiple topics. A producer can only send a message to a
          * single topic. The option is a java.lang.String type.
          */
         public T topic(String topic) {
-            this.topic = topic;
+            this.properties.put("topic", topic);
             return (T) this;
         }
-
         /**
          * URL of the Kafka brokers to use. The format is
          * host1:port1,host2:port2, and the list can be a subset of brokers or a
@@ -83,30 +57,27 @@ public class KafkaEndpoint {
          * java.lang.String type.
          */
         public T brokers(String brokers) {
-            this.brokers = brokers;
+            this.properties.put("brokers", brokers);
             return (T) this;
         }
-
         /**
          * The client id is a user-specified string sent in each request to help
          * trace calls. It should logically identify the application making the
          * request. The option is a java.lang.String type.
          */
         public T clientId(String clientId) {
-            this.clientId = clientId;
+            this.properties.put("clientId", clientId);
             return (T) this;
         }
-
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
-
         /**
          * The maximum amount of time in milliseconds to wait when reconnecting
          * to a broker that has repeatedly failed to connect. If provided, the
@@ -116,30 +87,27 @@ public class KafkaEndpoint {
          * option is a java.lang.Integer type.
          */
         public T reconnectBackoffMaxMs(Integer reconnectBackoffMaxMs) {
-            this.reconnectBackoffMaxMs = reconnectBackoffMaxMs;
+            this.properties.put("reconnectBackoffMaxMs", reconnectBackoffMaxMs);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Sets interceptors for producer or consumers. Producer interceptors
          * have to be classes implementing
@@ -150,29 +118,26 @@ public class KafkaEndpoint {
          * exception in runtime. The option is a java.lang.String type.
          */
         public T interceptorClasses(String interceptorClasses) {
-            this.interceptorClasses = interceptorClasses;
+            this.properties.put("interceptorClasses", interceptorClasses);
             return (T) this;
         }
-
         /**
          * Login thread sleep time between refresh attempts. The option is a
          * java.lang.Integer type.
          */
         public T kerberosBeforeReloginMinTime(
                 Integer kerberosBeforeReloginMinTime) {
-            this.kerberosBeforeReloginMinTime = kerberosBeforeReloginMinTime;
+            this.properties.put("kerberosBeforeReloginMinTime", kerberosBeforeReloginMinTime);
             return (T) this;
         }
-
         /**
          * Kerberos kinit command path. Default is /usr/bin/kinit. The option is
          * a java.lang.String type.
          */
         public T kerberosInitCmd(String kerberosInitCmd) {
-            this.kerberosInitCmd = kerberosInitCmd;
+            this.properties.put("kerberosInitCmd", kerberosInitCmd);
             return (T) this;
         }
-
         /**
          * A list of rules for mapping from principal names to short names
          * (typically operating system usernames). The rules are evaluated in
@@ -185,19 +150,17 @@ public class KafkaEndpoint {
          */
         public T kerberosPrincipalToLocalRules(
                 String kerberosPrincipalToLocalRules) {
-            this.kerberosPrincipalToLocalRules = kerberosPrincipalToLocalRules;
+            this.properties.put("kerberosPrincipalToLocalRules", kerberosPrincipalToLocalRules);
             return (T) this;
         }
-
         /**
          * Percentage of random jitter added to the renewal time. The option is
          * a java.lang.Double type.
          */
         public T kerberosRenewJitter(Double kerberosRenewJitter) {
-            this.kerberosRenewJitter = kerberosRenewJitter;
+            this.properties.put("kerberosRenewJitter", kerberosRenewJitter);
             return (T) this;
         }
-
         /**
          * Login thread will sleep until the specified window factor of time
          * from last refresh to ticket's expiry has been reached, at which time
@@ -205,10 +168,9 @@ public class KafkaEndpoint {
          * type.
          */
         public T kerberosRenewWindowFactor(Double kerberosRenewWindowFactor) {
-            this.kerberosRenewWindowFactor = kerberosRenewWindowFactor;
+            this.properties.put("kerberosRenewWindowFactor", kerberosRenewWindowFactor);
             return (T) this;
         }
-
         /**
          * Expose the kafka sasl.jaas.config parameter Example:
          * org.apache.kafka.common.security.plain.PlainLoginModule required
@@ -216,39 +178,35 @@ public class KafkaEndpoint {
          * java.lang.String type.
          */
         public T saslJaasConfig(String saslJaasConfig) {
-            this.saslJaasConfig = saslJaasConfig;
+            this.properties.put("saslJaasConfig", saslJaasConfig);
             return (T) this;
         }
-
         /**
          * The Kerberos principal name that Kafka runs as. This can be defined
          * either in Kafka's JAAS config or in Kafka's config. The option is a
          * java.lang.String type.
          */
         public T saslKerberosServiceName(String saslKerberosServiceName) {
-            this.saslKerberosServiceName = saslKerberosServiceName;
+            this.properties.put("saslKerberosServiceName", saslKerberosServiceName);
             return (T) this;
         }
-
         /**
          * The Simple Authentication and Security Layer (SASL) Mechanism used.
          * For the valid values see a href=
          * http://www.iana.org/assignments/sasl-mechanisms/sasl-mechanisms.xhtmlhttp://www.iana.org/assignments/sasl-mechanisms/sasl-mechanisms.xhtml. The option is a java.lang.String type.
          */
         public T saslMechanism(String saslMechanism) {
-            this.saslMechanism = saslMechanism;
+            this.properties.put("saslMechanism", saslMechanism);
             return (T) this;
         }
-
         /**
          * Protocol used to communicate with brokers. SASL_PLAINTEXT, PLAINTEXT
          * and SSL are supported. The option is a java.lang.String type.
          */
         public T securityProtocol(String securityProtocol) {
-            this.securityProtocol = securityProtocol;
+            this.properties.put("securityProtocol", securityProtocol);
             return (T) this;
         }
-
         /**
          * A list of cipher suites. This is a named combination of
          * authentication, encryption, MAC and key exchange algorithm used to
@@ -257,58 +215,52 @@ public class KafkaEndpoint {
          * supported. The option is a java.lang.String type.
          */
         public T sslCipherSuites(String sslCipherSuites) {
-            this.sslCipherSuites = sslCipherSuites;
+            this.properties.put("sslCipherSuites", sslCipherSuites);
             return (T) this;
         }
-
         /**
          * SSL configuration using a Camel SSLContextParameters object. If
          * configured it's applied before the other SSL endpoint parameters. The
          * option is a org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
-
         /**
          * The list of protocols enabled for SSL connections. TLSv1.2, TLSv1.1
          * and TLSv1 are enabled by default. The option is a java.lang.String
          * type.
          */
         public T sslEnabledProtocols(String sslEnabledProtocols) {
-            this.sslEnabledProtocols = sslEnabledProtocols;
+            this.properties.put("sslEnabledProtocols", sslEnabledProtocols);
             return (T) this;
         }
-
         /**
          * The endpoint identification algorithm to validate server hostname
          * using server certificate. The option is a java.lang.String type.
          */
         public T sslEndpointAlgorithm(String sslEndpointAlgorithm) {
-            this.sslEndpointAlgorithm = sslEndpointAlgorithm;
+            this.properties.put("sslEndpointAlgorithm", sslEndpointAlgorithm);
             return (T) this;
         }
-
         /**
          * The algorithm used by key manager factory for SSL connections.
          * Default value is the key manager factory algorithm configured for the
          * Java Virtual Machine. The option is a java.lang.String type.
          */
         public T sslKeymanagerAlgorithm(String sslKeymanagerAlgorithm) {
-            this.sslKeymanagerAlgorithm = sslKeymanagerAlgorithm;
+            this.properties.put("sslKeymanagerAlgorithm", sslKeymanagerAlgorithm);
             return (T) this;
         }
-
         /**
          * The file format of the key store file. This is optional for client.
          * Default value is JKS. The option is a java.lang.String type.
          */
         public T sslKeystoreType(String sslKeystoreType) {
-            this.sslKeystoreType = sslKeystoreType;
+            this.properties.put("sslKeystoreType", sslKeystoreType);
             return (T) this;
         }
-
         /**
          * The SSL protocol used to generate the SSLContext. Default setting is
          * TLS, which is fine for most cases. Allowed values in recent JVMs are
@@ -317,39 +269,35 @@ public class KafkaEndpoint {
          * vulnerabilities. The option is a java.lang.String type.
          */
         public T sslProtocol(String sslProtocol) {
-            this.sslProtocol = sslProtocol;
+            this.properties.put("sslProtocol", sslProtocol);
             return (T) this;
         }
-
         /**
          * The name of the security provider used for SSL connections. Default
          * value is the default security provider of the JVM. The option is a
          * java.lang.String type.
          */
         public T sslProvider(String sslProvider) {
-            this.sslProvider = sslProvider;
+            this.properties.put("sslProvider", sslProvider);
             return (T) this;
         }
-
         /**
          * The algorithm used by trust manager factory for SSL connections.
          * Default value is the trust manager factory algorithm configured for
          * the Java Virtual Machine. The option is a java.lang.String type.
          */
         public T sslTrustmanagerAlgorithm(String sslTrustmanagerAlgorithm) {
-            this.sslTrustmanagerAlgorithm = sslTrustmanagerAlgorithm;
+            this.properties.put("sslTrustmanagerAlgorithm", sslTrustmanagerAlgorithm);
             return (T) this;
         }
-
         /**
          * The file format of the trust store file. Default value is JKS. The
          * option is a java.lang.String type.
          */
         public T sslTruststoreType(String sslTruststoreType) {
-            this.sslTruststoreType = sslTruststoreType;
+            this.properties.put("sslTruststoreType", sslTruststoreType);
             return (T) this;
         }
-
         /**
          * URL of the Confluent Platform schema registry servers to use. The
          * format is host1:port1,host2:port2. This is known as
@@ -358,272 +306,19 @@ public class KafkaEndpoint {
          * Apache Kafka). The option is a java.lang.String type.
          */
         public T schemaRegistryURL(String schemaRegistryURL) {
-            this.schemaRegistryURL = schemaRegistryURL;
+            this.properties.put("schemaRegistryURL", schemaRegistryURL);
             return (T) this;
-        }
-
-        public String getTopic() {
-            return topic;
-        }
-
-        public void setTopic(String topic) {
-            this.topic = topic;
-        }
-
-        public String getBrokers() {
-            return brokers;
-        }
-
-        public void setBrokers(String brokers) {
-            this.brokers = brokers;
-        }
-
-        public String getClientId() {
-            return clientId;
-        }
-
-        public void setClientId(String clientId) {
-            this.clientId = clientId;
-        }
-
-        public HeaderFilterStrategy getHeaderFilterStrategy() {
-            return headerFilterStrategy;
-        }
-
-        public void setHeaderFilterStrategy(
-                HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
-        }
-
-        public Integer getReconnectBackoffMaxMs() {
-            return reconnectBackoffMaxMs;
-        }
-
-        public void setReconnectBackoffMaxMs(Integer reconnectBackoffMaxMs) {
-            this.reconnectBackoffMaxMs = reconnectBackoffMaxMs;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getInterceptorClasses() {
-            return interceptorClasses;
-        }
-
-        public void setInterceptorClasses(String interceptorClasses) {
-            this.interceptorClasses = interceptorClasses;
-        }
-
-        public Integer getKerberosBeforeReloginMinTime() {
-            return kerberosBeforeReloginMinTime;
-        }
-
-        public void setKerberosBeforeReloginMinTime(
-                Integer kerberosBeforeReloginMinTime) {
-            this.kerberosBeforeReloginMinTime = kerberosBeforeReloginMinTime;
-        }
-
-        public String getKerberosInitCmd() {
-            return kerberosInitCmd;
-        }
-
-        public void setKerberosInitCmd(String kerberosInitCmd) {
-            this.kerberosInitCmd = kerberosInitCmd;
-        }
-
-        public String getKerberosPrincipalToLocalRules() {
-            return kerberosPrincipalToLocalRules;
-        }
-
-        public void setKerberosPrincipalToLocalRules(
-                String kerberosPrincipalToLocalRules) {
-            this.kerberosPrincipalToLocalRules = kerberosPrincipalToLocalRules;
-        }
-
-        public Double getKerberosRenewJitter() {
-            return kerberosRenewJitter;
-        }
-
-        public void setKerberosRenewJitter(Double kerberosRenewJitter) {
-            this.kerberosRenewJitter = kerberosRenewJitter;
-        }
-
-        public Double getKerberosRenewWindowFactor() {
-            return kerberosRenewWindowFactor;
-        }
-
-        public void setKerberosRenewWindowFactor(
-                Double kerberosRenewWindowFactor) {
-            this.kerberosRenewWindowFactor = kerberosRenewWindowFactor;
-        }
-
-        public String getSaslJaasConfig() {
-            return saslJaasConfig;
-        }
-
-        public void setSaslJaasConfig(String saslJaasConfig) {
-            this.saslJaasConfig = saslJaasConfig;
-        }
-
-        public String getSaslKerberosServiceName() {
-            return saslKerberosServiceName;
-        }
-
-        public void setSaslKerberosServiceName(String saslKerberosServiceName) {
-            this.saslKerberosServiceName = saslKerberosServiceName;
-        }
-
-        public String getSaslMechanism() {
-            return saslMechanism;
-        }
-
-        public void setSaslMechanism(String saslMechanism) {
-            this.saslMechanism = saslMechanism;
-        }
-
-        public String getSecurityProtocol() {
-            return securityProtocol;
-        }
-
-        public void setSecurityProtocol(String securityProtocol) {
-            this.securityProtocol = securityProtocol;
-        }
-
-        public String getSslCipherSuites() {
-            return sslCipherSuites;
-        }
-
-        public void setSslCipherSuites(String sslCipherSuites) {
-            this.sslCipherSuites = sslCipherSuites;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
-        }
-
-        public String getSslEnabledProtocols() {
-            return sslEnabledProtocols;
-        }
-
-        public void setSslEnabledProtocols(String sslEnabledProtocols) {
-            this.sslEnabledProtocols = sslEnabledProtocols;
-        }
-
-        public String getSslEndpointAlgorithm() {
-            return sslEndpointAlgorithm;
-        }
-
-        public void setSslEndpointAlgorithm(String sslEndpointAlgorithm) {
-            this.sslEndpointAlgorithm = sslEndpointAlgorithm;
-        }
-
-        public String getSslKeymanagerAlgorithm() {
-            return sslKeymanagerAlgorithm;
-        }
-
-        public void setSslKeymanagerAlgorithm(String sslKeymanagerAlgorithm) {
-            this.sslKeymanagerAlgorithm = sslKeymanagerAlgorithm;
-        }
-
-        public String getSslKeystoreType() {
-            return sslKeystoreType;
-        }
-
-        public void setSslKeystoreType(String sslKeystoreType) {
-            this.sslKeystoreType = sslKeystoreType;
-        }
-
-        public String getSslProtocol() {
-            return sslProtocol;
-        }
-
-        public void setSslProtocol(String sslProtocol) {
-            this.sslProtocol = sslProtocol;
-        }
-
-        public String getSslProvider() {
-            return sslProvider;
-        }
-
-        public void setSslProvider(String sslProvider) {
-            this.sslProvider = sslProvider;
-        }
-
-        public String getSslTrustmanagerAlgorithm() {
-            return sslTrustmanagerAlgorithm;
-        }
-
-        public void setSslTrustmanagerAlgorithm(String sslTrustmanagerAlgorithm) {
-            this.sslTrustmanagerAlgorithm = sslTrustmanagerAlgorithm;
-        }
-
-        public String getSslTruststoreType() {
-            return sslTruststoreType;
-        }
-
-        public void setSslTruststoreType(String sslTruststoreType) {
-            this.sslTruststoreType = sslTruststoreType;
-        }
-
-        public String getSchemaRegistryURL() {
-            return schemaRegistryURL;
-        }
-
-        public void setSchemaRegistryURL(String schemaRegistryURL) {
-            this.schemaRegistryURL = schemaRegistryURL;
         }
     }
 
-    public static class KafkaConsumer extends KafkaCommon<KafkaConsumer> {
-        private Boolean allowManualCommit;
-        private Boolean autoCommitEnable;
-        private Integer autoCommitIntervalMs;
-        private String autoCommitOnStop;
-        private String autoOffsetReset;
-        private Boolean breakOnFirstError;
-        private Boolean bridgeErrorHandler;
-        private Boolean checkCrcs;
-        private Integer consumerRequestTimeoutMs;
-        private Integer consumersCount;
-        private Integer consumerStreams;
-        private Integer fetchMaxBytes;
-        private Integer fetchMinBytes;
-        private Integer fetchWaitMaxMs;
-        private String groupId;
-        private Integer heartbeatIntervalMs;
-        private Object kafkaHeaderDeserializer;
-        private String keyDeserializer;
-        private Integer maxPartitionFetchBytes;
-        private Long maxPollIntervalMs;
-        private Integer maxPollRecords;
-        private StateRepository<String, String> offsetRepository;
-        private String partitionAssignor;
-        private Long pollTimeoutMs;
-        private String seekTo;
-        private Integer sessionTimeoutMs;
-        private Boolean specificAvroReader;
-        private Boolean topicIsPattern;
-        private String valueDeserializer;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class KafkaConsumer
+            extends
+                KafkaCommon<KafkaConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public KafkaConsumer(String path) {
+            super(path);
+        }
         /**
          * Whether to allow doing manual commits via KafkaManualCommit. If this
          * option is enabled then an instance of KafkaManualCommit is stored on
@@ -632,10 +327,9 @@ public class KafkaEndpoint {
          * option is a boolean type.
          */
         public KafkaConsumer allowManualCommit(boolean allowManualCommit) {
-            this.allowManualCommit = allowManualCommit;
+            this.properties.put("allowManualCommit", allowManualCommit);
             return (KafkaConsumer) this;
         }
-
         /**
          * If true, periodically commit to ZooKeeper the offset of messages
          * already fetched by the consumer. This committed offset will be used
@@ -643,19 +337,17 @@ public class KafkaEndpoint {
          * will begin. The option is a java.lang.Boolean type.
          */
         public KafkaConsumer autoCommitEnable(Boolean autoCommitEnable) {
-            this.autoCommitEnable = autoCommitEnable;
+            this.properties.put("autoCommitEnable", autoCommitEnable);
             return (KafkaConsumer) this;
         }
-
         /**
          * The frequency in ms that the consumer offsets are committed to
          * zookeeper. The option is a java.lang.Integer type.
          */
         public KafkaConsumer autoCommitIntervalMs(Integer autoCommitIntervalMs) {
-            this.autoCommitIntervalMs = autoCommitIntervalMs;
+            this.properties.put("autoCommitIntervalMs", autoCommitIntervalMs);
             return (KafkaConsumer) this;
         }
-
         /**
          * Whether to perform an explicit auto commit when the consumer stops to
          * ensure the broker has a commit from the last consumed message. This
@@ -664,10 +356,9 @@ public class KafkaEndpoint {
          * option is a java.lang.String type.
          */
         public KafkaConsumer autoCommitOnStop(String autoCommitOnStop) {
-            this.autoCommitOnStop = autoCommitOnStop;
+            this.properties.put("autoCommitOnStop", autoCommitOnStop);
             return (KafkaConsumer) this;
         }
-
         /**
          * What to do when there is no initial offset in ZooKeeper or if an
          * offset is out of range: earliest : automatically reset the offset to
@@ -676,10 +367,9 @@ public class KafkaEndpoint {
          * java.lang.String type.
          */
         public KafkaConsumer autoOffsetReset(String autoOffsetReset) {
-            this.autoOffsetReset = autoOffsetReset;
+            this.properties.put("autoOffsetReset", autoOffsetReset);
             return (KafkaConsumer) this;
         }
-
         /**
          * This options controls what happens when a consumer is processing an
          * exchange and it fails. If the option is false then the consumer
@@ -692,10 +382,9 @@ public class KafkaEndpoint {
          * Camel's error handler. The option is a boolean type.
          */
         public KafkaConsumer breakOnFirstError(boolean breakOnFirstError) {
-            this.breakOnFirstError = breakOnFirstError;
+            this.properties.put("breakOnFirstError", breakOnFirstError);
             return (KafkaConsumer) this;
         }
-
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -706,10 +395,9 @@ public class KafkaEndpoint {
          * ignored. The option is a boolean type.
          */
         public KafkaConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (KafkaConsumer) this;
         }
-
         /**
          * Automatically check the CRC32 of the records consumed. This ensures
          * no on-the-wire or on-disk corruption to the messages occurred. This
@@ -717,10 +405,9 @@ public class KafkaEndpoint {
          * extreme performance. The option is a java.lang.Boolean type.
          */
         public KafkaConsumer checkCrcs(Boolean checkCrcs) {
-            this.checkCrcs = checkCrcs;
+            this.properties.put("checkCrcs", checkCrcs);
             return (KafkaConsumer) this;
         }
-
         /**
          * The configuration controls the maximum amount of time the client will
          * wait for the response of a request. If the response is not received
@@ -730,28 +417,25 @@ public class KafkaEndpoint {
          */
         public KafkaConsumer consumerRequestTimeoutMs(
                 Integer consumerRequestTimeoutMs) {
-            this.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            this.properties.put("consumerRequestTimeoutMs", consumerRequestTimeoutMs);
             return (KafkaConsumer) this;
         }
-
         /**
          * The number of consumers that connect to kafka server. The option is a
          * int type.
          */
         public KafkaConsumer consumersCount(int consumersCount) {
-            this.consumersCount = consumersCount;
+            this.properties.put("consumersCount", consumersCount);
             return (KafkaConsumer) this;
         }
-
         /**
          * Number of concurrent consumers on the consumer. The option is a int
          * type.
          */
         public KafkaConsumer consumerStreams(int consumerStreams) {
-            this.consumerStreams = consumerStreams;
+            this.properties.put("consumerStreams", consumerStreams);
             return (KafkaConsumer) this;
         }
-
         /**
          * The maximum amount of data the server should return for a fetch
          * request This is not an absolute maximum, if the first message in the
@@ -763,10 +447,9 @@ public class KafkaEndpoint {
          * parallel. The option is a java.lang.Integer type.
          */
         public KafkaConsumer fetchMaxBytes(Integer fetchMaxBytes) {
-            this.fetchMaxBytes = fetchMaxBytes;
+            this.properties.put("fetchMaxBytes", fetchMaxBytes);
             return (KafkaConsumer) this;
         }
-
         /**
          * The minimum amount of data the server should return for a fetch
          * request. If insufficient data is available the request will wait for
@@ -774,20 +457,18 @@ public class KafkaEndpoint {
          * is a java.lang.Integer type.
          */
         public KafkaConsumer fetchMinBytes(Integer fetchMinBytes) {
-            this.fetchMinBytes = fetchMinBytes;
+            this.properties.put("fetchMinBytes", fetchMinBytes);
             return (KafkaConsumer) this;
         }
-
         /**
          * The maximum amount of time the server will block before answering the
          * fetch request if there isn't sufficient data to immediately satisfy
          * fetch.min.bytes. The option is a java.lang.Integer type.
          */
         public KafkaConsumer fetchWaitMaxMs(Integer fetchWaitMaxMs) {
-            this.fetchWaitMaxMs = fetchWaitMaxMs;
+            this.properties.put("fetchWaitMaxMs", fetchWaitMaxMs);
             return (KafkaConsumer) this;
         }
-
         /**
          * A string that uniquely identifies the group of consumer processes to
          * which this consumer belongs. By setting the same group id multiple
@@ -796,10 +477,9 @@ public class KafkaEndpoint {
          * java.lang.String type.
          */
         public KafkaConsumer groupId(String groupId) {
-            this.groupId = groupId;
+            this.properties.put("groupId", groupId);
             return (KafkaConsumer) this;
         }
-
         /**
          * The expected time between heartbeats to the consumer coordinator when
          * using Kafka's group management facilities. Heartbeats are used to
@@ -811,10 +491,9 @@ public class KafkaEndpoint {
          * java.lang.Integer type.
          */
         public KafkaConsumer heartbeatIntervalMs(Integer heartbeatIntervalMs) {
-            this.heartbeatIntervalMs = heartbeatIntervalMs;
+            this.properties.put("heartbeatIntervalMs", heartbeatIntervalMs);
             return (KafkaConsumer) this;
         }
-
         /**
          * Sets custom KafkaHeaderDeserializer for deserialization kafka headers
          * values to camel headers values. The option is a
@@ -822,19 +501,17 @@ public class KafkaEndpoint {
          */
         public KafkaConsumer kafkaHeaderDeserializer(
                 Object kafkaHeaderDeserializer) {
-            this.kafkaHeaderDeserializer = kafkaHeaderDeserializer;
+            this.properties.put("kafkaHeaderDeserializer", kafkaHeaderDeserializer);
             return (KafkaConsumer) this;
         }
-
         /**
          * Deserializer class for key that implements the Deserializer
          * interface. The option is a java.lang.String type.
          */
         public KafkaConsumer keyDeserializer(String keyDeserializer) {
-            this.keyDeserializer = keyDeserializer;
+            this.properties.put("keyDeserializer", keyDeserializer);
             return (KafkaConsumer) this;
         }
-
         /**
          * The maximum amount of data per-partition the server will return. The
          * maximum total memory used for a request will be #partitions
@@ -846,10 +523,9 @@ public class KafkaEndpoint {
          */
         public KafkaConsumer maxPartitionFetchBytes(
                 Integer maxPartitionFetchBytes) {
-            this.maxPartitionFetchBytes = maxPartitionFetchBytes;
+            this.properties.put("maxPartitionFetchBytes", maxPartitionFetchBytes);
             return (KafkaConsumer) this;
         }
-
         /**
          * The maximum delay between invocations of poll() when using consumer
          * group management. This places an upper bound on the amount of time
@@ -860,19 +536,17 @@ public class KafkaEndpoint {
          * type.
          */
         public KafkaConsumer maxPollIntervalMs(Long maxPollIntervalMs) {
-            this.maxPollIntervalMs = maxPollIntervalMs;
+            this.properties.put("maxPollIntervalMs", maxPollIntervalMs);
             return (KafkaConsumer) this;
         }
-
         /**
          * The maximum number of records returned in a single call to poll().
          * The option is a java.lang.Integer type.
          */
         public KafkaConsumer maxPollRecords(Integer maxPollRecords) {
-            this.maxPollRecords = maxPollRecords;
+            this.properties.put("maxPollRecords", maxPollRecords);
             return (KafkaConsumer) this;
         }
-
         /**
          * The offset repository to use in order to locally store the offset of
          * each partition of the topic. Defining one will disable the
@@ -881,29 +555,26 @@ public class KafkaEndpoint {
          */
         public KafkaConsumer offsetRepository(
                 StateRepository<String, String> offsetRepository) {
-            this.offsetRepository = offsetRepository;
+            this.properties.put("offsetRepository", offsetRepository);
             return (KafkaConsumer) this;
         }
-
         /**
          * The class name of the partition assignment strategy that the client
          * will use to distribute partition ownership amongst consumer instances
          * when group management is used. The option is a java.lang.String type.
          */
         public KafkaConsumer partitionAssignor(String partitionAssignor) {
-            this.partitionAssignor = partitionAssignor;
+            this.properties.put("partitionAssignor", partitionAssignor);
             return (KafkaConsumer) this;
         }
-
         /**
          * The timeout used when polling the KafkaConsumer. The option is a
          * java.lang.Long type.
          */
         public KafkaConsumer pollTimeoutMs(Long pollTimeoutMs) {
-            this.pollTimeoutMs = pollTimeoutMs;
+            this.properties.put("pollTimeoutMs", pollTimeoutMs);
             return (KafkaConsumer) this;
         }
-
         /**
          * Set if KafkaConsumer will read from beginning or end on startup:
          * beginning : read from beginning end : read from end This is replacing
@@ -911,19 +582,17 @@ public class KafkaEndpoint {
          * java.lang.String type.
          */
         public KafkaConsumer seekTo(String seekTo) {
-            this.seekTo = seekTo;
+            this.properties.put("seekTo", seekTo);
             return (KafkaConsumer) this;
         }
-
         /**
          * The timeout used to detect failures when using Kafka's group
          * management facilities. The option is a java.lang.Integer type.
          */
         public KafkaConsumer sessionTimeoutMs(Integer sessionTimeoutMs) {
-            this.sessionTimeoutMs = sessionTimeoutMs;
+            this.properties.put("sessionTimeoutMs", sessionTimeoutMs);
             return (KafkaConsumer) this;
         }
-
         /**
          * This enables the use of a specific Avro reader for use with the
          * Confluent Platform schema registry and the
@@ -932,29 +601,26 @@ public class KafkaEndpoint {
          * The option is a boolean type.
          */
         public KafkaConsumer specificAvroReader(boolean specificAvroReader) {
-            this.specificAvroReader = specificAvroReader;
+            this.properties.put("specificAvroReader", specificAvroReader);
             return (KafkaConsumer) this;
         }
-
         /**
          * Whether the topic is a pattern (regular expression). This can be used
          * to subscribe to dynamic number of topics matching the pattern. The
          * option is a boolean type.
          */
         public KafkaConsumer topicIsPattern(boolean topicIsPattern) {
-            this.topicIsPattern = topicIsPattern;
+            this.properties.put("topicIsPattern", topicIsPattern);
             return (KafkaConsumer) this;
         }
-
         /**
          * Deserializer class for value that implements the Deserializer
          * interface. The option is a java.lang.String type.
          */
         public KafkaConsumer valueDeserializer(String valueDeserializer) {
-            this.valueDeserializer = valueDeserializer;
+            this.properties.put("valueDeserializer", valueDeserializer);
             return (KafkaConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -963,319 +629,36 @@ public class KafkaEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public KafkaConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (KafkaConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public KafkaConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (KafkaConsumer) this;
-        }
-
-        public Boolean getAllowManualCommit() {
-            return allowManualCommit;
-        }
-
-        public void setAllowManualCommit(Boolean allowManualCommit) {
-            this.allowManualCommit = allowManualCommit;
-        }
-
-        public Boolean getAutoCommitEnable() {
-            return autoCommitEnable;
-        }
-
-        public void setAutoCommitEnable(Boolean autoCommitEnable) {
-            this.autoCommitEnable = autoCommitEnable;
-        }
-
-        public Integer getAutoCommitIntervalMs() {
-            return autoCommitIntervalMs;
-        }
-
-        public void setAutoCommitIntervalMs(Integer autoCommitIntervalMs) {
-            this.autoCommitIntervalMs = autoCommitIntervalMs;
-        }
-
-        public String getAutoCommitOnStop() {
-            return autoCommitOnStop;
-        }
-
-        public void setAutoCommitOnStop(String autoCommitOnStop) {
-            this.autoCommitOnStop = autoCommitOnStop;
-        }
-
-        public String getAutoOffsetReset() {
-            return autoOffsetReset;
-        }
-
-        public void setAutoOffsetReset(String autoOffsetReset) {
-            this.autoOffsetReset = autoOffsetReset;
-        }
-
-        public Boolean getBreakOnFirstError() {
-            return breakOnFirstError;
-        }
-
-        public void setBreakOnFirstError(Boolean breakOnFirstError) {
-            this.breakOnFirstError = breakOnFirstError;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getCheckCrcs() {
-            return checkCrcs;
-        }
-
-        public void setCheckCrcs(Boolean checkCrcs) {
-            this.checkCrcs = checkCrcs;
-        }
-
-        public Integer getConsumerRequestTimeoutMs() {
-            return consumerRequestTimeoutMs;
-        }
-
-        public void setConsumerRequestTimeoutMs(Integer consumerRequestTimeoutMs) {
-            this.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
-        }
-
-        public Integer getConsumersCount() {
-            return consumersCount;
-        }
-
-        public void setConsumersCount(Integer consumersCount) {
-            this.consumersCount = consumersCount;
-        }
-
-        public Integer getConsumerStreams() {
-            return consumerStreams;
-        }
-
-        public void setConsumerStreams(Integer consumerStreams) {
-            this.consumerStreams = consumerStreams;
-        }
-
-        public Integer getFetchMaxBytes() {
-            return fetchMaxBytes;
-        }
-
-        public void setFetchMaxBytes(Integer fetchMaxBytes) {
-            this.fetchMaxBytes = fetchMaxBytes;
-        }
-
-        public Integer getFetchMinBytes() {
-            return fetchMinBytes;
-        }
-
-        public void setFetchMinBytes(Integer fetchMinBytes) {
-            this.fetchMinBytes = fetchMinBytes;
-        }
-
-        public Integer getFetchWaitMaxMs() {
-            return fetchWaitMaxMs;
-        }
-
-        public void setFetchWaitMaxMs(Integer fetchWaitMaxMs) {
-            this.fetchWaitMaxMs = fetchWaitMaxMs;
-        }
-
-        public String getGroupId() {
-            return groupId;
-        }
-
-        public void setGroupId(String groupId) {
-            this.groupId = groupId;
-        }
-
-        public Integer getHeartbeatIntervalMs() {
-            return heartbeatIntervalMs;
-        }
-
-        public void setHeartbeatIntervalMs(Integer heartbeatIntervalMs) {
-            this.heartbeatIntervalMs = heartbeatIntervalMs;
-        }
-
-        public Object getKafkaHeaderDeserializer() {
-            return kafkaHeaderDeserializer;
-        }
-
-        public void setKafkaHeaderDeserializer(Object kafkaHeaderDeserializer) {
-            this.kafkaHeaderDeserializer = kafkaHeaderDeserializer;
-        }
-
-        public String getKeyDeserializer() {
-            return keyDeserializer;
-        }
-
-        public void setKeyDeserializer(String keyDeserializer) {
-            this.keyDeserializer = keyDeserializer;
-        }
-
-        public Integer getMaxPartitionFetchBytes() {
-            return maxPartitionFetchBytes;
-        }
-
-        public void setMaxPartitionFetchBytes(Integer maxPartitionFetchBytes) {
-            this.maxPartitionFetchBytes = maxPartitionFetchBytes;
-        }
-
-        public Long getMaxPollIntervalMs() {
-            return maxPollIntervalMs;
-        }
-
-        public void setMaxPollIntervalMs(Long maxPollIntervalMs) {
-            this.maxPollIntervalMs = maxPollIntervalMs;
-        }
-
-        public Integer getMaxPollRecords() {
-            return maxPollRecords;
-        }
-
-        public void setMaxPollRecords(Integer maxPollRecords) {
-            this.maxPollRecords = maxPollRecords;
-        }
-
-        public StateRepository<String, String> getOffsetRepository() {
-            return offsetRepository;
-        }
-
-        public void setOffsetRepository(
-                StateRepository<String, String> offsetRepository) {
-            this.offsetRepository = offsetRepository;
-        }
-
-        public String getPartitionAssignor() {
-            return partitionAssignor;
-        }
-
-        public void setPartitionAssignor(String partitionAssignor) {
-            this.partitionAssignor = partitionAssignor;
-        }
-
-        public Long getPollTimeoutMs() {
-            return pollTimeoutMs;
-        }
-
-        public void setPollTimeoutMs(Long pollTimeoutMs) {
-            this.pollTimeoutMs = pollTimeoutMs;
-        }
-
-        public String getSeekTo() {
-            return seekTo;
-        }
-
-        public void setSeekTo(String seekTo) {
-            this.seekTo = seekTo;
-        }
-
-        public Integer getSessionTimeoutMs() {
-            return sessionTimeoutMs;
-        }
-
-        public void setSessionTimeoutMs(Integer sessionTimeoutMs) {
-            this.sessionTimeoutMs = sessionTimeoutMs;
-        }
-
-        public Boolean getSpecificAvroReader() {
-            return specificAvroReader;
-        }
-
-        public void setSpecificAvroReader(Boolean specificAvroReader) {
-            this.specificAvroReader = specificAvroReader;
-        }
-
-        public Boolean getTopicIsPattern() {
-            return topicIsPattern;
-        }
-
-        public void setTopicIsPattern(Boolean topicIsPattern) {
-            this.topicIsPattern = topicIsPattern;
-        }
-
-        public String getValueDeserializer() {
-            return valueDeserializer;
-        }
-
-        public void setValueDeserializer(String valueDeserializer) {
-            this.valueDeserializer = valueDeserializer;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class KafkaProducer extends KafkaCommon<KafkaProducer> {
-        private Boolean bridgeEndpoint;
-        private Integer bufferMemorySize;
-        private Boolean circularTopicDetection;
-        private String compressionCodec;
-        private Integer connectionMaxIdleMs;
-        private Boolean enableIdempotence;
-        private Object kafkaHeaderSerializer;
-        private String key;
-        private String keySerializerClass;
-        private Integer lingerMs;
-        private Integer maxBlockMs;
-        private Integer maxInFlightRequest;
-        private Integer maxRequestSize;
-        private Integer metadataMaxAgeMs;
-        private String metricReporters;
-        private Integer metricsSampleWindowMs;
-        private Integer noOfMetricsSample;
-        private String partitioner;
-        private Integer partitionKey;
-        private Integer producerBatchSize;
-        private Integer queueBufferingMaxMessages;
-        private Integer receiveBufferBytes;
-        private Integer reconnectBackoffMs;
-        private Boolean recordMetadata;
-        private String requestRequiredAcks;
-        private Integer requestTimeoutMs;
-        private Integer retries;
-        private Integer retryBackoffMs;
-        private Integer sendBufferBytes;
-        private String serializerClass;
-        private ExecutorService workerPool;
-        private Integer workerPoolCoreSize;
-        private Integer workerPoolMaxSize;
-        private String sslKeyPassword;
-        private String sslKeystoreLocation;
-        private String sslKeystorePassword;
-        private String sslTruststoreLocation;
-        private String sslTruststorePassword;
-
+    public static class KafkaProducer
+            extends
+                KafkaCommon<KafkaProducer>
+            implements
+                EndpointDefinition.Producer {
+        public KafkaProducer(String path) {
+            super(path);
+        }
         /**
          * If the option is true, then KafkaProducer will ignore the
          * KafkaConstants.TOPIC header setting of the inbound message. The
          * option is a boolean type.
          */
         public KafkaProducer bridgeEndpoint(boolean bridgeEndpoint) {
-            this.bridgeEndpoint = bridgeEndpoint;
+            this.properties.put("bridgeEndpoint", bridgeEndpoint);
             return (KafkaProducer) this;
         }
-
         /**
          * The total bytes of memory the producer can use to buffer records
          * waiting to be sent to the server. If records are sent faster than
@@ -1289,10 +672,9 @@ public class KafkaEndpoint {
          * java.lang.Integer type.
          */
         public KafkaProducer bufferMemorySize(Integer bufferMemorySize) {
-            this.bufferMemorySize = bufferMemorySize;
+            this.properties.put("bufferMemorySize", bufferMemorySize);
             return (KafkaProducer) this;
         }
-
         /**
          * If the option is true, then KafkaProducer will detect if the message
          * is attempted to be sent back to the same topic it may come from, if
@@ -1306,29 +688,26 @@ public class KafkaEndpoint {
          */
         public KafkaProducer circularTopicDetection(
                 boolean circularTopicDetection) {
-            this.circularTopicDetection = circularTopicDetection;
+            this.properties.put("circularTopicDetection", circularTopicDetection);
             return (KafkaProducer) this;
         }
-
         /**
          * This parameter allows you to specify the compression codec for all
          * data generated by this producer. Valid values are none, gzip and
          * snappy. The option is a java.lang.String type.
          */
         public KafkaProducer compressionCodec(String compressionCodec) {
-            this.compressionCodec = compressionCodec;
+            this.properties.put("compressionCodec", compressionCodec);
             return (KafkaProducer) this;
         }
-
         /**
          * Close idle connections after the number of milliseconds specified by
          * this config. The option is a java.lang.Integer type.
          */
         public KafkaProducer connectionMaxIdleMs(Integer connectionMaxIdleMs) {
-            this.connectionMaxIdleMs = connectionMaxIdleMs;
+            this.properties.put("connectionMaxIdleMs", connectionMaxIdleMs);
             return (KafkaProducer) this;
         }
-
         /**
          * If set to 'true' the producer will ensure that exactly one copy of
          * each message is written in the stream. If 'false', producer retries
@@ -1338,39 +717,35 @@ public class KafkaEndpoint {
          * be set to 'all'. The option is a boolean type.
          */
         public KafkaProducer enableIdempotence(boolean enableIdempotence) {
-            this.enableIdempotence = enableIdempotence;
+            this.properties.put("enableIdempotence", enableIdempotence);
             return (KafkaProducer) this;
         }
-
         /**
          * Sets custom KafkaHeaderDeserializer for serialization camel headers
          * values to kafka headers values. The option is a
          * org.apache.camel.component.kafka.serde.KafkaHeaderSerializer type.
          */
         public KafkaProducer kafkaHeaderSerializer(Object kafkaHeaderSerializer) {
-            this.kafkaHeaderSerializer = kafkaHeaderSerializer;
+            this.properties.put("kafkaHeaderSerializer", kafkaHeaderSerializer);
             return (KafkaProducer) this;
         }
-
         /**
          * The record key (or null if no key is specified). If this option has
          * been configured then it take precedence over header
          * KafkaConstants#KEY. The option is a java.lang.String type.
          */
         public KafkaProducer key(String key) {
-            this.key = key;
+            this.properties.put("key", key);
             return (KafkaProducer) this;
         }
-
         /**
          * The serializer class for keys (defaults to the same as for messages
          * if nothing is given). The option is a java.lang.String type.
          */
         public KafkaProducer keySerializerClass(String keySerializerClass) {
-            this.keySerializerClass = keySerializerClass;
+            this.properties.put("keySerializerClass", keySerializerClass);
             return (KafkaProducer) this;
         }
-
         /**
          * The producer groups together any records that arrive in between
          * request transmissions into a single batched request. Normally this
@@ -1393,10 +768,9 @@ public class KafkaEndpoint {
          * a java.lang.Integer type.
          */
         public KafkaProducer lingerMs(Integer lingerMs) {
-            this.lingerMs = lingerMs;
+            this.properties.put("lingerMs", lingerMs);
             return (KafkaProducer) this;
         }
-
         /**
          * The configuration controls how long sending to kafka will block.
          * These methods can be blocked for multiple reasons. For e.g: buffer
@@ -1408,10 +782,9 @@ public class KafkaEndpoint {
          * java.lang.Integer type.
          */
         public KafkaProducer maxBlockMs(Integer maxBlockMs) {
-            this.maxBlockMs = maxBlockMs;
+            this.properties.put("maxBlockMs", maxBlockMs);
             return (KafkaProducer) this;
         }
-
         /**
          * The maximum number of unacknowledged requests the client will send on
          * a single connection before blocking. Note that if this setting is set
@@ -1420,10 +793,9 @@ public class KafkaEndpoint {
          * The option is a java.lang.Integer type.
          */
         public KafkaProducer maxInFlightRequest(Integer maxInFlightRequest) {
-            this.maxInFlightRequest = maxInFlightRequest;
+            this.properties.put("maxInFlightRequest", maxInFlightRequest);
             return (KafkaProducer) this;
         }
-
         /**
          * The maximum size of a request. This is also effectively a cap on the
          * maximum record size. Note that the server has its own cap on record
@@ -1433,10 +805,9 @@ public class KafkaEndpoint {
          * type.
          */
         public KafkaProducer maxRequestSize(Integer maxRequestSize) {
-            this.maxRequestSize = maxRequestSize;
+            this.properties.put("maxRequestSize", maxRequestSize);
             return (KafkaProducer) this;
         }
-
         /**
          * The period of time in milliseconds after which we force a refresh of
          * metadata even if we haven't seen any partition leadership changes to
@@ -1444,10 +815,9 @@ public class KafkaEndpoint {
          * java.lang.Integer type.
          */
         public KafkaProducer metadataMaxAgeMs(Integer metadataMaxAgeMs) {
-            this.metadataMaxAgeMs = metadataMaxAgeMs;
+            this.properties.put("metadataMaxAgeMs", metadataMaxAgeMs);
             return (KafkaProducer) this;
         }
-
         /**
          * A list of classes to use as metrics reporters. Implementing the
          * MetricReporter interface allows plugging in classes that will be
@@ -1455,38 +825,34 @@ public class KafkaEndpoint {
          * to register JMX statistics. The option is a java.lang.String type.
          */
         public KafkaProducer metricReporters(String metricReporters) {
-            this.metricReporters = metricReporters;
+            this.properties.put("metricReporters", metricReporters);
             return (KafkaProducer) this;
         }
-
         /**
          * The number of samples maintained to compute metrics. The option is a
          * java.lang.Integer type.
          */
         public KafkaProducer metricsSampleWindowMs(Integer metricsSampleWindowMs) {
-            this.metricsSampleWindowMs = metricsSampleWindowMs;
+            this.properties.put("metricsSampleWindowMs", metricsSampleWindowMs);
             return (KafkaProducer) this;
         }
-
         /**
          * The number of samples maintained to compute metrics. The option is a
          * java.lang.Integer type.
          */
         public KafkaProducer noOfMetricsSample(Integer noOfMetricsSample) {
-            this.noOfMetricsSample = noOfMetricsSample;
+            this.properties.put("noOfMetricsSample", noOfMetricsSample);
             return (KafkaProducer) this;
         }
-
         /**
          * The partitioner class for partitioning messages amongst sub-topics.
          * The default partitioner is based on the hash of the key. The option
          * is a java.lang.String type.
          */
         public KafkaProducer partitioner(String partitioner) {
-            this.partitioner = partitioner;
+            this.properties.put("partitioner", partitioner);
             return (KafkaProducer) this;
         }
-
         /**
          * The partition to which the record will be sent (or null if no
          * partition was specified). If this option has been configured then it
@@ -1494,10 +860,9 @@ public class KafkaEndpoint {
          * is a java.lang.Integer type.
          */
         public KafkaProducer partitionKey(Integer partitionKey) {
-            this.partitionKey = partitionKey;
+            this.properties.put("partitionKey", partitionKey);
             return (KafkaProducer) this;
         }
-
         /**
          * The producer will attempt to batch records together into fewer
          * requests whenever multiple records are being sent to the same
@@ -1513,10 +878,9 @@ public class KafkaEndpoint {
          * option is a java.lang.Integer type.
          */
         public KafkaProducer producerBatchSize(Integer producerBatchSize) {
-            this.producerBatchSize = producerBatchSize;
+            this.properties.put("producerBatchSize", producerBatchSize);
             return (KafkaProducer) this;
         }
-
         /**
          * The maximum number of unsent messages that can be queued up the
          * producer when using async mode before either the producer must be
@@ -1525,19 +889,17 @@ public class KafkaEndpoint {
          */
         public KafkaProducer queueBufferingMaxMessages(
                 Integer queueBufferingMaxMessages) {
-            this.queueBufferingMaxMessages = queueBufferingMaxMessages;
+            this.properties.put("queueBufferingMaxMessages", queueBufferingMaxMessages);
             return (KafkaProducer) this;
         }
-
         /**
          * The size of the TCP receive buffer (SO_RCVBUF) to use when reading
          * data. The option is a java.lang.Integer type.
          */
         public KafkaProducer receiveBufferBytes(Integer receiveBufferBytes) {
-            this.receiveBufferBytes = receiveBufferBytes;
+            this.properties.put("receiveBufferBytes", receiveBufferBytes);
             return (KafkaProducer) this;
         }
-
         /**
          * The amount of time to wait before attempting to reconnect to a given
          * host. This avoids repeatedly connecting to a host in a tight loop.
@@ -1545,10 +907,9 @@ public class KafkaEndpoint {
          * broker. The option is a java.lang.Integer type.
          */
         public KafkaProducer reconnectBackoffMs(Integer reconnectBackoffMs) {
-            this.reconnectBackoffMs = reconnectBackoffMs;
+            this.properties.put("reconnectBackoffMs", reconnectBackoffMs);
             return (KafkaProducer) this;
         }
-
         /**
          * Whether the producer should store the RecordMetadata results from
          * sending to Kafka. The results are stored in a List containing the
@@ -1556,10 +917,9 @@ public class KafkaEndpoint {
          * key KafkaConstants#KAFKA_RECORDMETA. The option is a boolean type.
          */
         public KafkaProducer recordMetadata(boolean recordMetadata) {
-            this.recordMetadata = recordMetadata;
+            this.properties.put("recordMetadata", recordMetadata);
             return (KafkaProducer) this;
         }
-
         /**
          * The number of acknowledgments the producer requires the leader to
          * have received before considering a request complete. This controls
@@ -1582,20 +942,18 @@ public class KafkaEndpoint {
          * java.lang.String type.
          */
         public KafkaProducer requestRequiredAcks(String requestRequiredAcks) {
-            this.requestRequiredAcks = requestRequiredAcks;
+            this.properties.put("requestRequiredAcks", requestRequiredAcks);
             return (KafkaProducer) this;
         }
-
         /**
          * The amount of time the broker will wait trying to meet the
          * request.required.acks requirement before sending back an error to the
          * client. The option is a java.lang.Integer type.
          */
         public KafkaProducer requestTimeoutMs(Integer requestTimeoutMs) {
-            this.requestTimeoutMs = requestTimeoutMs;
+            this.properties.put("requestTimeoutMs", requestTimeoutMs);
             return (KafkaProducer) this;
         }
-
         /**
          * Setting a value greater than zero will cause the client to resend any
          * record whose send fails with a potentially transient error. Note that
@@ -1607,10 +965,9 @@ public class KafkaEndpoint {
          * java.lang.Integer type.
          */
         public KafkaProducer retries(Integer retries) {
-            this.retries = retries;
+            this.properties.put("retries", retries);
             return (KafkaProducer) this;
         }
-
         /**
          * Before each retry, the producer refreshes the metadata of relevant
          * topics to see if a new leader has been elected. Since leader election
@@ -1619,27 +976,24 @@ public class KafkaEndpoint {
          * java.lang.Integer type.
          */
         public KafkaProducer retryBackoffMs(Integer retryBackoffMs) {
-            this.retryBackoffMs = retryBackoffMs;
+            this.properties.put("retryBackoffMs", retryBackoffMs);
             return (KafkaProducer) this;
         }
-
         /**
          * Socket write buffer size. The option is a java.lang.Integer type.
          */
         public KafkaProducer sendBufferBytes(Integer sendBufferBytes) {
-            this.sendBufferBytes = sendBufferBytes;
+            this.properties.put("sendBufferBytes", sendBufferBytes);
             return (KafkaProducer) this;
         }
-
         /**
          * The serializer class for messages. The option is a java.lang.String
          * type.
          */
         public KafkaProducer serializerClass(String serializerClass) {
-            this.serializerClass = serializerClass;
+            this.properties.put("serializerClass", serializerClass);
             return (KafkaProducer) this;
         }
-
         /**
          * To use a custom worker pool for continue routing Exchange after kafka
          * server has acknowledge the message that was sent to it from
@@ -1647,10 +1001,9 @@ public class KafkaEndpoint {
          * is a java.util.concurrent.ExecutorService type.
          */
         public KafkaProducer workerPool(ExecutorService workerPool) {
-            this.workerPool = workerPool;
+            this.properties.put("workerPool", workerPool);
             return (KafkaProducer) this;
         }
-
         /**
          * Number of core threads for the worker pool for continue routing
          * Exchange after kafka server has acknowledge the message that was sent
@@ -1658,10 +1011,9 @@ public class KafkaEndpoint {
          * The option is a java.lang.Integer type.
          */
         public KafkaProducer workerPoolCoreSize(Integer workerPoolCoreSize) {
-            this.workerPoolCoreSize = workerPoolCoreSize;
+            this.properties.put("workerPoolCoreSize", workerPoolCoreSize);
             return (KafkaProducer) this;
         }
-
         /**
          * Maximum number of threads for the worker pool for continue routing
          * Exchange after kafka server has acknowledge the message that was sent
@@ -1669,360 +1021,50 @@ public class KafkaEndpoint {
          * The option is a java.lang.Integer type.
          */
         public KafkaProducer workerPoolMaxSize(Integer workerPoolMaxSize) {
-            this.workerPoolMaxSize = workerPoolMaxSize;
+            this.properties.put("workerPoolMaxSize", workerPoolMaxSize);
             return (KafkaProducer) this;
         }
-
         /**
          * The password of the private key in the key store file. This is
          * optional for client. The option is a java.lang.String type.
          */
         public KafkaProducer sslKeyPassword(String sslKeyPassword) {
-            this.sslKeyPassword = sslKeyPassword;
+            this.properties.put("sslKeyPassword", sslKeyPassword);
             return (KafkaProducer) this;
         }
-
         /**
          * The location of the key store file. This is optional for client and
          * can be used for two-way authentication for client. The option is a
          * java.lang.String type.
          */
         public KafkaProducer sslKeystoreLocation(String sslKeystoreLocation) {
-            this.sslKeystoreLocation = sslKeystoreLocation;
+            this.properties.put("sslKeystoreLocation", sslKeystoreLocation);
             return (KafkaProducer) this;
         }
-
         /**
          * The store password for the key store file.This is optional for client
          * and only needed if ssl.keystore.location is configured. The option is
          * a java.lang.String type.
          */
         public KafkaProducer sslKeystorePassword(String sslKeystorePassword) {
-            this.sslKeystorePassword = sslKeystorePassword;
+            this.properties.put("sslKeystorePassword", sslKeystorePassword);
             return (KafkaProducer) this;
         }
-
         /**
          * The location of the trust store file. The option is a
          * java.lang.String type.
          */
         public KafkaProducer sslTruststoreLocation(String sslTruststoreLocation) {
-            this.sslTruststoreLocation = sslTruststoreLocation;
+            this.properties.put("sslTruststoreLocation", sslTruststoreLocation);
             return (KafkaProducer) this;
         }
-
         /**
          * The password for the trust store file. The option is a
          * java.lang.String type.
          */
         public KafkaProducer sslTruststorePassword(String sslTruststorePassword) {
-            this.sslTruststorePassword = sslTruststorePassword;
+            this.properties.put("sslTruststorePassword", sslTruststorePassword);
             return (KafkaProducer) this;
-        }
-
-        public Boolean getBridgeEndpoint() {
-            return bridgeEndpoint;
-        }
-
-        public void setBridgeEndpoint(Boolean bridgeEndpoint) {
-            this.bridgeEndpoint = bridgeEndpoint;
-        }
-
-        public Integer getBufferMemorySize() {
-            return bufferMemorySize;
-        }
-
-        public void setBufferMemorySize(Integer bufferMemorySize) {
-            this.bufferMemorySize = bufferMemorySize;
-        }
-
-        public Boolean getCircularTopicDetection() {
-            return circularTopicDetection;
-        }
-
-        public void setCircularTopicDetection(Boolean circularTopicDetection) {
-            this.circularTopicDetection = circularTopicDetection;
-        }
-
-        public String getCompressionCodec() {
-            return compressionCodec;
-        }
-
-        public void setCompressionCodec(String compressionCodec) {
-            this.compressionCodec = compressionCodec;
-        }
-
-        public Integer getConnectionMaxIdleMs() {
-            return connectionMaxIdleMs;
-        }
-
-        public void setConnectionMaxIdleMs(Integer connectionMaxIdleMs) {
-            this.connectionMaxIdleMs = connectionMaxIdleMs;
-        }
-
-        public Boolean getEnableIdempotence() {
-            return enableIdempotence;
-        }
-
-        public void setEnableIdempotence(Boolean enableIdempotence) {
-            this.enableIdempotence = enableIdempotence;
-        }
-
-        public Object getKafkaHeaderSerializer() {
-            return kafkaHeaderSerializer;
-        }
-
-        public void setKafkaHeaderSerializer(Object kafkaHeaderSerializer) {
-            this.kafkaHeaderSerializer = kafkaHeaderSerializer;
-        }
-
-        public String getKey() {
-            return key;
-        }
-
-        public void setKey(String key) {
-            this.key = key;
-        }
-
-        public String getKeySerializerClass() {
-            return keySerializerClass;
-        }
-
-        public void setKeySerializerClass(String keySerializerClass) {
-            this.keySerializerClass = keySerializerClass;
-        }
-
-        public Integer getLingerMs() {
-            return lingerMs;
-        }
-
-        public void setLingerMs(Integer lingerMs) {
-            this.lingerMs = lingerMs;
-        }
-
-        public Integer getMaxBlockMs() {
-            return maxBlockMs;
-        }
-
-        public void setMaxBlockMs(Integer maxBlockMs) {
-            this.maxBlockMs = maxBlockMs;
-        }
-
-        public Integer getMaxInFlightRequest() {
-            return maxInFlightRequest;
-        }
-
-        public void setMaxInFlightRequest(Integer maxInFlightRequest) {
-            this.maxInFlightRequest = maxInFlightRequest;
-        }
-
-        public Integer getMaxRequestSize() {
-            return maxRequestSize;
-        }
-
-        public void setMaxRequestSize(Integer maxRequestSize) {
-            this.maxRequestSize = maxRequestSize;
-        }
-
-        public Integer getMetadataMaxAgeMs() {
-            return metadataMaxAgeMs;
-        }
-
-        public void setMetadataMaxAgeMs(Integer metadataMaxAgeMs) {
-            this.metadataMaxAgeMs = metadataMaxAgeMs;
-        }
-
-        public String getMetricReporters() {
-            return metricReporters;
-        }
-
-        public void setMetricReporters(String metricReporters) {
-            this.metricReporters = metricReporters;
-        }
-
-        public Integer getMetricsSampleWindowMs() {
-            return metricsSampleWindowMs;
-        }
-
-        public void setMetricsSampleWindowMs(Integer metricsSampleWindowMs) {
-            this.metricsSampleWindowMs = metricsSampleWindowMs;
-        }
-
-        public Integer getNoOfMetricsSample() {
-            return noOfMetricsSample;
-        }
-
-        public void setNoOfMetricsSample(Integer noOfMetricsSample) {
-            this.noOfMetricsSample = noOfMetricsSample;
-        }
-
-        public String getPartitioner() {
-            return partitioner;
-        }
-
-        public void setPartitioner(String partitioner) {
-            this.partitioner = partitioner;
-        }
-
-        public Integer getPartitionKey() {
-            return partitionKey;
-        }
-
-        public void setPartitionKey(Integer partitionKey) {
-            this.partitionKey = partitionKey;
-        }
-
-        public Integer getProducerBatchSize() {
-            return producerBatchSize;
-        }
-
-        public void setProducerBatchSize(Integer producerBatchSize) {
-            this.producerBatchSize = producerBatchSize;
-        }
-
-        public Integer getQueueBufferingMaxMessages() {
-            return queueBufferingMaxMessages;
-        }
-
-        public void setQueueBufferingMaxMessages(
-                Integer queueBufferingMaxMessages) {
-            this.queueBufferingMaxMessages = queueBufferingMaxMessages;
-        }
-
-        public Integer getReceiveBufferBytes() {
-            return receiveBufferBytes;
-        }
-
-        public void setReceiveBufferBytes(Integer receiveBufferBytes) {
-            this.receiveBufferBytes = receiveBufferBytes;
-        }
-
-        public Integer getReconnectBackoffMs() {
-            return reconnectBackoffMs;
-        }
-
-        public void setReconnectBackoffMs(Integer reconnectBackoffMs) {
-            this.reconnectBackoffMs = reconnectBackoffMs;
-        }
-
-        public Boolean getRecordMetadata() {
-            return recordMetadata;
-        }
-
-        public void setRecordMetadata(Boolean recordMetadata) {
-            this.recordMetadata = recordMetadata;
-        }
-
-        public String getRequestRequiredAcks() {
-            return requestRequiredAcks;
-        }
-
-        public void setRequestRequiredAcks(String requestRequiredAcks) {
-            this.requestRequiredAcks = requestRequiredAcks;
-        }
-
-        public Integer getRequestTimeoutMs() {
-            return requestTimeoutMs;
-        }
-
-        public void setRequestTimeoutMs(Integer requestTimeoutMs) {
-            this.requestTimeoutMs = requestTimeoutMs;
-        }
-
-        public Integer getRetries() {
-            return retries;
-        }
-
-        public void setRetries(Integer retries) {
-            this.retries = retries;
-        }
-
-        public Integer getRetryBackoffMs() {
-            return retryBackoffMs;
-        }
-
-        public void setRetryBackoffMs(Integer retryBackoffMs) {
-            this.retryBackoffMs = retryBackoffMs;
-        }
-
-        public Integer getSendBufferBytes() {
-            return sendBufferBytes;
-        }
-
-        public void setSendBufferBytes(Integer sendBufferBytes) {
-            this.sendBufferBytes = sendBufferBytes;
-        }
-
-        public String getSerializerClass() {
-            return serializerClass;
-        }
-
-        public void setSerializerClass(String serializerClass) {
-            this.serializerClass = serializerClass;
-        }
-
-        public ExecutorService getWorkerPool() {
-            return workerPool;
-        }
-
-        public void setWorkerPool(ExecutorService workerPool) {
-            this.workerPool = workerPool;
-        }
-
-        public Integer getWorkerPoolCoreSize() {
-            return workerPoolCoreSize;
-        }
-
-        public void setWorkerPoolCoreSize(Integer workerPoolCoreSize) {
-            this.workerPoolCoreSize = workerPoolCoreSize;
-        }
-
-        public Integer getWorkerPoolMaxSize() {
-            return workerPoolMaxSize;
-        }
-
-        public void setWorkerPoolMaxSize(Integer workerPoolMaxSize) {
-            this.workerPoolMaxSize = workerPoolMaxSize;
-        }
-
-        public String getSslKeyPassword() {
-            return sslKeyPassword;
-        }
-
-        public void setSslKeyPassword(String sslKeyPassword) {
-            this.sslKeyPassword = sslKeyPassword;
-        }
-
-        public String getSslKeystoreLocation() {
-            return sslKeystoreLocation;
-        }
-
-        public void setSslKeystoreLocation(String sslKeystoreLocation) {
-            this.sslKeystoreLocation = sslKeystoreLocation;
-        }
-
-        public String getSslKeystorePassword() {
-            return sslKeystorePassword;
-        }
-
-        public void setSslKeystorePassword(String sslKeystorePassword) {
-            this.sslKeystorePassword = sslKeystorePassword;
-        }
-
-        public String getSslTruststoreLocation() {
-            return sslTruststoreLocation;
-        }
-
-        public void setSslTruststoreLocation(String sslTruststoreLocation) {
-            this.sslTruststoreLocation = sslTruststoreLocation;
-        }
-
-        public String getSslTruststorePassword() {
-            return sslTruststorePassword;
-        }
-
-        public void setSslTruststorePassword(String sslTruststorePassword) {
-            this.sslTruststorePassword = sslTruststorePassword;
         }
     }
 }

@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,106 +37,84 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class GoogleSheetsStreamEndpoint {
 
 
-    public static class GoogleSheetsStreamCommon<T extends EndpointConfiguration>
+    public static class GoogleSheetsStreamCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String apiName;
-        private String accessToken;
-        private String applicationName;
-        private String clientId;
-        private String clientSecret;
-        private Boolean includeGridData;
-        private String majorDimension;
-        private Integer maxResults;
-        private String range;
-        private String refreshToken;
-        private List<String> scopes;
-        private String spreadsheetId;
-        private String valueRenderOption;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        GoogleSheetsStreamCommon(String path) {
+            super("google-sheets-stream", path);
+        }
         /**
          * Sets the apiName. The option is a java.lang.String type.
          */
         public T apiName(String apiName) {
-            this.apiName = apiName;
+            this.properties.put("apiName", apiName);
             return (T) this;
         }
-
         /**
          * OAuth 2 access token. This typically expires after an hour so
          * refreshToken is recommended for long term usage. The option is a
          * java.lang.String type.
          */
         public T accessToken(String accessToken) {
-            this.accessToken = accessToken;
+            this.properties.put("accessToken", accessToken);
             return (T) this;
         }
-
         /**
          * Google sheets application name. Example would be
          * camel-google-sheets/1.0. The option is a java.lang.String type.
          */
         public T applicationName(String applicationName) {
-            this.applicationName = applicationName;
+            this.properties.put("applicationName", applicationName);
             return (T) this;
         }
-
         /**
          * Client ID of the sheets application. The option is a java.lang.String
          * type.
          */
         public T clientId(String clientId) {
-            this.clientId = clientId;
+            this.properties.put("clientId", clientId);
             return (T) this;
         }
-
         /**
          * Client secret of the sheets application. The option is a
          * java.lang.String type.
          */
         public T clientSecret(String clientSecret) {
-            this.clientSecret = clientSecret;
+            this.properties.put("clientSecret", clientSecret);
             return (T) this;
         }
-
         /**
          * True if grid data should be returned. The option is a boolean type.
          */
         public T includeGridData(boolean includeGridData) {
-            this.includeGridData = includeGridData;
+            this.properties.put("includeGridData", includeGridData);
             return (T) this;
         }
-
         /**
          * Specifies the major dimension that results should use.. The option is
          * a java.lang.String type.
          */
         public T majorDimension(String majorDimension) {
-            this.majorDimension = majorDimension;
+            this.properties.put("majorDimension", majorDimension);
             return (T) this;
         }
-
         /**
          * Specify the maximum number of returned results. This will limit the
          * number of rows in a returned value range data set or the number of
          * returned value ranges in a batch request. The option is a int type.
          */
         public T maxResults(int maxResults) {
-            this.maxResults = maxResults;
+            this.properties.put("maxResults", maxResults);
             return (T) this;
         }
-
         /**
          * Specifies the range of rows and columns in a sheet to get data from.
          * The option is a java.lang.String type.
          */
         public T range(String range) {
-            this.range = range;
+            this.properties.put("range", range);
             return (T) this;
         }
-
         /**
          * OAuth 2 refresh token. Using this, the Google Calendar component can
          * obtain a new accessToken whenever the current one expires - a
@@ -143,10 +122,9 @@ public class GoogleSheetsStreamEndpoint {
          * java.lang.String type.
          */
         public T refreshToken(String refreshToken) {
-            this.refreshToken = refreshToken;
+            this.properties.put("refreshToken", refreshToken);
             return (T) this;
         }
-
         /**
          * Specifies the level of permissions you want a sheets application to
          * have to a user account. See
@@ -154,191 +132,53 @@ public class GoogleSheetsStreamEndpoint {
          * more info. The option is a java.util.List<java.lang.String> type.
          */
         public T scopes(List<String> scopes) {
-            this.scopes = scopes;
+            this.properties.put("scopes", scopes);
             return (T) this;
         }
-
         /**
          * Specifies the spreadsheet identifier that is used to identify the
          * target to obtain. The option is a java.lang.String type.
          */
         public T spreadsheetId(String spreadsheetId) {
-            this.spreadsheetId = spreadsheetId;
+            this.properties.put("spreadsheetId", spreadsheetId);
             return (T) this;
         }
-
         /**
          * Determines how values should be rendered in the output. The option is
          * a java.lang.String type.
          */
         public T valueRenderOption(String valueRenderOption) {
-            this.valueRenderOption = valueRenderOption;
+            this.properties.put("valueRenderOption", valueRenderOption);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getApiName() {
-            return apiName;
-        }
-
-        public void setApiName(String apiName) {
-            this.apiName = apiName;
-        }
-
-        public String getAccessToken() {
-            return accessToken;
-        }
-
-        public void setAccessToken(String accessToken) {
-            this.accessToken = accessToken;
-        }
-
-        public String getApplicationName() {
-            return applicationName;
-        }
-
-        public void setApplicationName(String applicationName) {
-            this.applicationName = applicationName;
-        }
-
-        public String getClientId() {
-            return clientId;
-        }
-
-        public void setClientId(String clientId) {
-            this.clientId = clientId;
-        }
-
-        public String getClientSecret() {
-            return clientSecret;
-        }
-
-        public void setClientSecret(String clientSecret) {
-            this.clientSecret = clientSecret;
-        }
-
-        public Boolean getIncludeGridData() {
-            return includeGridData;
-        }
-
-        public void setIncludeGridData(Boolean includeGridData) {
-            this.includeGridData = includeGridData;
-        }
-
-        public String getMajorDimension() {
-            return majorDimension;
-        }
-
-        public void setMajorDimension(String majorDimension) {
-            this.majorDimension = majorDimension;
-        }
-
-        public Integer getMaxResults() {
-            return maxResults;
-        }
-
-        public void setMaxResults(Integer maxResults) {
-            this.maxResults = maxResults;
-        }
-
-        public String getRange() {
-            return range;
-        }
-
-        public void setRange(String range) {
-            this.range = range;
-        }
-
-        public String getRefreshToken() {
-            return refreshToken;
-        }
-
-        public void setRefreshToken(String refreshToken) {
-            this.refreshToken = refreshToken;
-        }
-
-        public List<String> getScopes() {
-            return scopes;
-        }
-
-        public void setScopes(List<String> scopes) {
-            this.scopes = scopes;
-        }
-
-        public String getSpreadsheetId() {
-            return spreadsheetId;
-        }
-
-        public void setSpreadsheetId(String spreadsheetId) {
-            this.spreadsheetId = spreadsheetId;
-        }
-
-        public String getValueRenderOption() {
-            return valueRenderOption;
-        }
-
-        public void setValueRenderOption(String valueRenderOption) {
-            this.valueRenderOption = valueRenderOption;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class GoogleSheetsStreamConsumer
             extends
-                GoogleSheetsStreamCommon<GoogleSheetsStreamConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean sendEmptyMessageWhenIdle;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+                GoogleSheetsStreamCommon<GoogleSheetsStreamConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GoogleSheetsStreamConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -350,10 +190,9 @@ public class GoogleSheetsStreamEndpoint {
          */
         public GoogleSheetsStreamConsumer bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -361,10 +200,9 @@ public class GoogleSheetsStreamEndpoint {
          */
         public GoogleSheetsStreamConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -374,20 +212,18 @@ public class GoogleSheetsStreamEndpoint {
          */
         public GoogleSheetsStreamConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GoogleSheetsStreamConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -397,10 +233,9 @@ public class GoogleSheetsStreamEndpoint {
          */
         public GoogleSheetsStreamConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
@@ -408,20 +243,18 @@ public class GoogleSheetsStreamEndpoint {
          */
         public GoogleSheetsStreamConsumer backoffErrorThreshold(
                 int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public GoogleSheetsStreamConsumer backoffIdleThreshold(
                 int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -432,40 +265,36 @@ public class GoogleSheetsStreamEndpoint {
          */
         public GoogleSheetsStreamConsumer backoffMultiplier(
                 int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public GoogleSheetsStreamConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public GoogleSheetsStreamConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public GoogleSheetsStreamConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
@@ -473,10 +302,9 @@ public class GoogleSheetsStreamEndpoint {
          */
         public GoogleSheetsStreamConsumer runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -485,10 +313,9 @@ public class GoogleSheetsStreamEndpoint {
          */
         public GoogleSheetsStreamConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
@@ -496,10 +323,9 @@ public class GoogleSheetsStreamEndpoint {
          */
         public GoogleSheetsStreamConsumer scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -507,187 +333,43 @@ public class GoogleSheetsStreamEndpoint {
          */
         public GoogleSheetsStreamConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public GoogleSheetsStreamConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public GoogleSheetsStreamConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (GoogleSheetsStreamConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public GoogleSheetsStreamConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (GoogleSheetsStreamConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
     public static class GoogleSheetsStreamProducer
             extends
-                GoogleSheetsStreamCommon<GoogleSheetsStreamProducer> {
+                GoogleSheetsStreamCommon<GoogleSheetsStreamProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GoogleSheetsStreamProducer(String path) {
+            super(path);
+        }
     }
 }

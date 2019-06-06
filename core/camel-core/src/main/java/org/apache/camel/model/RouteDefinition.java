@@ -168,6 +168,11 @@ public class RouteDefinition extends ProcessorDefinition<RouteDefinition> {
         return this;
     }
 
+    public RouteDefinition from(EndpointDefinition.Consumer endpoint) {
+        setInput(new FromDefinition(endpoint));
+        return this;
+    }
+
     /**
      * Set the group name for this route
      *

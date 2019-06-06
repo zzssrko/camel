@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The dataformat component is used for working with Data Formats as if it was a
@@ -28,91 +29,64 @@ import javax.annotation.Generated;
 public class DataFormatEndpoint {
 
 
-    public static class DataFormatCommon<T extends EndpointConfiguration>
+    public static class DataFormatCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private String operation;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        DataFormatCommon(String path) {
+            super("dataformat", path);
+        }
         /**
          * Name of data format. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * Operation to use either marshal or unmarshal. The option is a
          * java.lang.String type.
          */
         public T operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class DataFormatConsumer
             extends
-                DataFormatCommon<DataFormatConsumer> {
+                DataFormatCommon<DataFormatConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DataFormatConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class DataFormatProducer
             extends
-                DataFormatCommon<DataFormatProducer> {
+                DataFormatCommon<DataFormatProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DataFormatProducer(String path) {
+            super(path);
+        }
     }
 }

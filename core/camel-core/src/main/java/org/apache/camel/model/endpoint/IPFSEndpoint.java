@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import java.nio.file.Path;
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The camel-ipfs component provides access to the Interplanetary File System
@@ -29,86 +30,63 @@ import javax.annotation.Generated;
 public class IPFSEndpoint {
 
 
-    public static class IPFSCommon<T extends EndpointConfiguration>
+    public static class IPFSCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String ipfsCmd;
-        private Path outdir;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        IPFSCommon(String path) {
+            super("ipfs", path);
+        }
         /**
          * The ipfs command. The option is a java.lang.String type.
          */
         public T ipfsCmd(String ipfsCmd) {
-            this.ipfsCmd = ipfsCmd;
+            this.properties.put("ipfsCmd", ipfsCmd);
             return (T) this;
         }
-
         /**
          * The ipfs output directory. The option is a java.nio.file.Path type.
          */
         public T outdir(Path outdir) {
-            this.outdir = outdir;
+            this.properties.put("outdir", outdir);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getIpfsCmd() {
-            return ipfsCmd;
-        }
-
-        public void setIpfsCmd(String ipfsCmd) {
-            this.ipfsCmd = ipfsCmd;
-        }
-
-        public Path getOutdir() {
-            return outdir;
-        }
-
-        public void setOutdir(Path outdir) {
-            this.outdir = outdir;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class IPFSConsumer
+            extends
+                IPFSCommon<IPFSConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public IPFSConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class IPFSConsumer extends IPFSCommon<IPFSConsumer> {
-    }
-
-    public static class IPFSProducer extends IPFSCommon<IPFSProducer> {
+    public static class IPFSProducer
+            extends
+                IPFSCommon<IPFSProducer>
+            implements
+                EndpointDefinition.Producer {
+        public IPFSProducer(String path) {
+            super(path);
+        }
     }
 }

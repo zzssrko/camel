@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,36 +32,28 @@ import org.apache.camel.spi.ExceptionHandler;
 public class WebhookEndpoint {
 
 
-    public static class WebhookCommon<T extends EndpointConfiguration>
+    public static class WebhookCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String endpointUri;
-        private Boolean webhookAutoRegister;
-        private String webhookBasePath;
-        private String webhookComponentName;
-        private String webhookExternalUrl;
-        private String webhookPath;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        WebhookCommon(String path) {
+            super("webhook", path);
+        }
         /**
          * The delegate uri. Must belong to a component that supports webhooks.
          * The option is a java.lang.String type.
          */
         public T endpointUri(String endpointUri) {
-            this.endpointUri = endpointUri;
+            this.properties.put("endpointUri", endpointUri);
             return (T) this;
         }
-
         /**
          * Automatically register the webhook at startup and unregister it on
          * shutdown. The option is a boolean type.
          */
         public T webhookAutoRegister(boolean webhookAutoRegister) {
-            this.webhookAutoRegister = webhookAutoRegister;
+            this.properties.put("webhookAutoRegister", webhookAutoRegister);
             return (T) this;
         }
-
         /**
          * The first (base) path element where the webhook will be exposed. It's
          * a good practice to set it to a random string, so that it cannot be
@@ -68,129 +61,61 @@ public class WebhookEndpoint {
          * type.
          */
         public T webhookBasePath(String webhookBasePath) {
-            this.webhookBasePath = webhookBasePath;
+            this.properties.put("webhookBasePath", webhookBasePath);
             return (T) this;
         }
-
         /**
          * The Camel Rest component to use for the REST transport, such as
          * netty4-http. The option is a java.lang.String type.
          */
         public T webhookComponentName(String webhookComponentName) {
-            this.webhookComponentName = webhookComponentName;
+            this.properties.put("webhookComponentName", webhookComponentName);
             return (T) this;
         }
-
         /**
          * The URL of the current service as seen by the webhook provider. The
          * option is a java.lang.String type.
          */
         public T webhookExternalUrl(String webhookExternalUrl) {
-            this.webhookExternalUrl = webhookExternalUrl;
+            this.properties.put("webhookExternalUrl", webhookExternalUrl);
             return (T) this;
         }
-
         /**
          * The path where the webhook endpoint will be exposed (relative to
          * basePath, if any). The option is a java.lang.String type.
          */
         public T webhookPath(String webhookPath) {
-            this.webhookPath = webhookPath;
+            this.properties.put("webhookPath", webhookPath);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getEndpointUri() {
-            return endpointUri;
-        }
-
-        public void setEndpointUri(String endpointUri) {
-            this.endpointUri = endpointUri;
-        }
-
-        public Boolean getWebhookAutoRegister() {
-            return webhookAutoRegister;
-        }
-
-        public void setWebhookAutoRegister(Boolean webhookAutoRegister) {
-            this.webhookAutoRegister = webhookAutoRegister;
-        }
-
-        public String getWebhookBasePath() {
-            return webhookBasePath;
-        }
-
-        public void setWebhookBasePath(String webhookBasePath) {
-            this.webhookBasePath = webhookBasePath;
-        }
-
-        public String getWebhookComponentName() {
-            return webhookComponentName;
-        }
-
-        public void setWebhookComponentName(String webhookComponentName) {
-            this.webhookComponentName = webhookComponentName;
-        }
-
-        public String getWebhookExternalUrl() {
-            return webhookExternalUrl;
-        }
-
-        public void setWebhookExternalUrl(String webhookExternalUrl) {
-            this.webhookExternalUrl = webhookExternalUrl;
-        }
-
-        public String getWebhookPath() {
-            return webhookPath;
-        }
-
-        public void setWebhookPath(String webhookPath) {
-            this.webhookPath = webhookPath;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class WebhookConsumer
             extends
-                WebhookCommon<WebhookConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                WebhookCommon<WebhookConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public WebhookConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -201,10 +126,9 @@ public class WebhookEndpoint {
          * ignored. The option is a boolean type.
          */
         public WebhookConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (WebhookConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -214,46 +138,26 @@ public class WebhookEndpoint {
          */
         public WebhookConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (WebhookConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public WebhookConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (WebhookConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class WebhookProducer
             extends
-                WebhookCommon<WebhookProducer> {
+                WebhookCommon<WebhookProducer>
+            implements
+                EndpointDefinition.Producer {
+        public WebhookProducer(String path) {
+            super(path);
+        }
     }
 }

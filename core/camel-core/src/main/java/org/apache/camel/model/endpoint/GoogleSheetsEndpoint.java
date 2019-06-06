@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,85 +30,70 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GoogleSheetsEndpoint {
 
 
-    public static class GoogleSheetsCommon<T extends EndpointConfiguration>
+    public static class GoogleSheetsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private GoogleSheetsApiName apiName;
-        private String methodName;
-        private String accessToken;
-        private String applicationName;
-        private String clientId;
-        private String clientSecret;
-        private String inBody;
-        private String refreshToken;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        GoogleSheetsCommon(String path) {
+            super("google-sheets", path);
+        }
         /**
          * What kind of operation to perform. The option is a
          * org.apache.camel.component.google.sheets.internal.GoogleSheetsApiName
          * type.
          */
         public T apiName(GoogleSheetsApiName apiName) {
-            this.apiName = apiName;
+            this.properties.put("apiName", apiName);
             return (T) this;
         }
-
         /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
         public T methodName(String methodName) {
-            this.methodName = methodName;
+            this.properties.put("methodName", methodName);
             return (T) this;
         }
-
         /**
          * OAuth 2 access token. This typically expires after an hour so
          * refreshToken is recommended for long term usage. The option is a
          * java.lang.String type.
          */
         public T accessToken(String accessToken) {
-            this.accessToken = accessToken;
+            this.properties.put("accessToken", accessToken);
             return (T) this;
         }
-
         /**
          * Google Sheets application name. Example would be
          * camel-google-sheets/1.0. The option is a java.lang.String type.
          */
         public T applicationName(String applicationName) {
-            this.applicationName = applicationName;
+            this.properties.put("applicationName", applicationName);
             return (T) this;
         }
-
         /**
          * Client ID of the sheets application. The option is a java.lang.String
          * type.
          */
         public T clientId(String clientId) {
-            this.clientId = clientId;
+            this.properties.put("clientId", clientId);
             return (T) this;
         }
-
         /**
          * Client secret of the sheets application. The option is a
          * java.lang.String type.
          */
         public T clientSecret(String clientSecret) {
-            this.clientSecret = clientSecret;
+            this.properties.put("clientSecret", clientSecret);
             return (T) this;
         }
-
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
         public T inBody(String inBody) {
-            this.inBody = inBody;
+            this.properties.put("inBody", inBody);
             return (T) this;
         }
-
         /**
          * OAuth 2 refresh token. Using this, the Google Sheets component can
          * obtain a new accessToken whenever the current one expires - a
@@ -115,118 +101,37 @@ public class GoogleSheetsEndpoint {
          * java.lang.String type.
          */
         public T refreshToken(String refreshToken) {
-            this.refreshToken = refreshToken;
+            this.properties.put("refreshToken", refreshToken);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public GoogleSheetsApiName getApiName() {
-            return apiName;
-        }
-
-        public void setApiName(GoogleSheetsApiName apiName) {
-            this.apiName = apiName;
-        }
-
-        public String getMethodName() {
-            return methodName;
-        }
-
-        public void setMethodName(String methodName) {
-            this.methodName = methodName;
-        }
-
-        public String getAccessToken() {
-            return accessToken;
-        }
-
-        public void setAccessToken(String accessToken) {
-            this.accessToken = accessToken;
-        }
-
-        public String getApplicationName() {
-            return applicationName;
-        }
-
-        public void setApplicationName(String applicationName) {
-            this.applicationName = applicationName;
-        }
-
-        public String getClientId() {
-            return clientId;
-        }
-
-        public void setClientId(String clientId) {
-            this.clientId = clientId;
-        }
-
-        public String getClientSecret() {
-            return clientSecret;
-        }
-
-        public void setClientSecret(String clientSecret) {
-            this.clientSecret = clientSecret;
-        }
-
-        public String getInBody() {
-            return inBody;
-        }
-
-        public void setInBody(String inBody) {
-            this.inBody = inBody;
-        }
-
-        public String getRefreshToken() {
-            return refreshToken;
-        }
-
-        public void setRefreshToken(String refreshToken) {
-            this.refreshToken = refreshToken;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class GoogleSheetsConsumer
             extends
-                GoogleSheetsCommon<GoogleSheetsConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                GoogleSheetsCommon<GoogleSheetsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GoogleSheetsConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -238,10 +143,9 @@ public class GoogleSheetsEndpoint {
          */
         public GoogleSheetsConsumer bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (GoogleSheetsConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -251,48 +155,28 @@ public class GoogleSheetsEndpoint {
          */
         public GoogleSheetsConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (GoogleSheetsConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GoogleSheetsConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (GoogleSheetsConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class GoogleSheetsProducer
             extends
-                GoogleSheetsCommon<GoogleSheetsProducer> {
+                GoogleSheetsCommon<GoogleSheetsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GoogleSheetsProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum GoogleSheetsApiName {

@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,182 +30,96 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GooglePubsubEndpoint {
 
 
-    public static class GooglePubsubCommon<T extends EndpointConfiguration>
+    public static class GooglePubsubCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String projectId;
-        private String destinationName;
-        private AckMode ackMode;
-        private Integer concurrentConsumers;
-        private Object connectionFactory;
-        private String loggerId;
-        private Integer maxMessagesPerPoll;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        GooglePubsubCommon(String path) {
+            super("google-pubsub", path);
+        }
         /**
          * Project Id. The option is a java.lang.String type.
          */
         public T projectId(String projectId) {
-            this.projectId = projectId;
+            this.properties.put("projectId", projectId);
             return (T) this;
         }
-
         /**
          * Destination Name. The option is a java.lang.String type.
          */
         public T destinationName(String destinationName) {
-            this.destinationName = destinationName;
+            this.properties.put("destinationName", destinationName);
             return (T) this;
         }
-
         /**
          * AUTO = exchange gets ack'ed/nack'ed on completion. NONE = downstream
          * process has to ack/nack explicitly. The option is a
          * org.apache.camel.component.google.pubsub.GooglePubsubConstants.AckMode type.
          */
         public T ackMode(AckMode ackMode) {
-            this.ackMode = ackMode;
+            this.properties.put("ackMode", ackMode);
             return (T) this;
         }
-
         /**
          * The number of parallel streams consuming from the subscription. The
          * option is a java.lang.Integer type.
          */
         public T concurrentConsumers(Integer concurrentConsumers) {
-            this.concurrentConsumers = concurrentConsumers;
+            this.properties.put("concurrentConsumers", concurrentConsumers);
             return (T) this;
         }
-
         /**
          * ConnectionFactory to obtain connection to PubSub Service. If non
          * provided the default will be used. The option is a
          * org.apache.camel.component.google.pubsub.GooglePubsubConnectionFactory type.
          */
         public T connectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
+            this.properties.put("connectionFactory", connectionFactory);
             return (T) this;
         }
-
         /**
          * Logger ID to use when a match to the parent route required. The
          * option is a java.lang.String type.
          */
         public T loggerId(String loggerId) {
-            this.loggerId = loggerId;
+            this.properties.put("loggerId", loggerId);
             return (T) this;
         }
-
         /**
          * The max number of messages to receive from the server in a single API
          * call. The option is a java.lang.Integer type.
          */
         public T maxMessagesPerPoll(Integer maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getProjectId() {
-            return projectId;
-        }
-
-        public void setProjectId(String projectId) {
-            this.projectId = projectId;
-        }
-
-        public String getDestinationName() {
-            return destinationName;
-        }
-
-        public void setDestinationName(String destinationName) {
-            this.destinationName = destinationName;
-        }
-
-        public AckMode getAckMode() {
-            return ackMode;
-        }
-
-        public void setAckMode(AckMode ackMode) {
-            this.ackMode = ackMode;
-        }
-
-        public Integer getConcurrentConsumers() {
-            return concurrentConsumers;
-        }
-
-        public void setConcurrentConsumers(Integer concurrentConsumers) {
-            this.concurrentConsumers = concurrentConsumers;
-        }
-
-        public Object getConnectionFactory() {
-            return connectionFactory;
-        }
-
-        public void setConnectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
-        }
-
-        public String getLoggerId() {
-            return loggerId;
-        }
-
-        public void setLoggerId(String loggerId) {
-            this.loggerId = loggerId;
-        }
-
-        public Integer getMaxMessagesPerPoll() {
-            return maxMessagesPerPoll;
-        }
-
-        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class GooglePubsubConsumer
             extends
-                GooglePubsubCommon<GooglePubsubConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                GooglePubsubCommon<GooglePubsubConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GooglePubsubConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -216,10 +131,9 @@ public class GooglePubsubEndpoint {
          */
         public GooglePubsubConsumer bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (GooglePubsubConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -229,48 +143,28 @@ public class GooglePubsubEndpoint {
          */
         public GooglePubsubConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (GooglePubsubConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GooglePubsubConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (GooglePubsubConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class GooglePubsubProducer
             extends
-                GooglePubsubCommon<GooglePubsubProducer> {
+                GooglePubsubCommon<GooglePubsubProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GooglePubsubProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum AckMode {

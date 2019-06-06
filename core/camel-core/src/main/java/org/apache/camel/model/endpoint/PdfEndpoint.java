@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The pdf components provides the ability to create, modify or extract content
@@ -28,87 +29,70 @@ import javax.annotation.Generated;
 public class PdfEndpoint {
 
 
-    public static class PdfCommon<T extends EndpointConfiguration>
+    public static class PdfCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private PdfOperation operation;
-        private Object font;
-        private Float fontSize;
-        private Integer marginBottom;
-        private Integer marginLeft;
-        private Integer marginRight;
-        private Integer marginTop;
-        private Object pageSize;
-        private TextProcessingFactory textProcessingFactory;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        PdfCommon(String path) {
+            super("pdf", path);
+        }
         /**
          * Operation type. The option is a
          * org.apache.camel.component.pdf.PdfOperation type.
          */
         public T operation(PdfOperation operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * Font. The option is a org.apache.pdfbox.pdmodel.font.PDFont type.
          */
         public T font(Object font) {
-            this.font = font;
+            this.properties.put("font", font);
             return (T) this;
         }
-
         /**
          * Font size in pixels. The option is a float type.
          */
         public T fontSize(float fontSize) {
-            this.fontSize = fontSize;
+            this.properties.put("fontSize", fontSize);
             return (T) this;
         }
-
         /**
          * Margin bottom in pixels. The option is a int type.
          */
         public T marginBottom(int marginBottom) {
-            this.marginBottom = marginBottom;
+            this.properties.put("marginBottom", marginBottom);
             return (T) this;
         }
-
         /**
          * Margin left in pixels. The option is a int type.
          */
         public T marginLeft(int marginLeft) {
-            this.marginLeft = marginLeft;
+            this.properties.put("marginLeft", marginLeft);
             return (T) this;
         }
-
         /**
          * Margin right in pixels. The option is a int type.
          */
         public T marginRight(int marginRight) {
-            this.marginRight = marginRight;
+            this.properties.put("marginRight", marginRight);
             return (T) this;
         }
-
         /**
          * Margin top in pixels. The option is a int type.
          */
         public T marginTop(int marginTop) {
-            this.marginTop = marginTop;
+            this.properties.put("marginTop", marginTop);
             return (T) this;
         }
-
         /**
          * Page size. The option is a
          * org.apache.pdfbox.pdmodel.common.PDRectangle type.
          */
         public T pageSize(Object pageSize) {
-            this.pageSize = pageSize;
+            this.properties.put("pageSize", pageSize);
             return (T) this;
         }
-
         /**
          * Text processing to use. autoFormatting: Text is getting sliced by
          * words, then max amount of words that fits in the line will be written
@@ -121,124 +105,47 @@ public class PdfEndpoint {
          */
         public T textProcessingFactory(
                 TextProcessingFactory textProcessingFactory) {
-            this.textProcessingFactory = textProcessingFactory;
+            this.properties.put("textProcessingFactory", textProcessingFactory);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public PdfOperation getOperation() {
-            return operation;
-        }
-
-        public void setOperation(PdfOperation operation) {
-            this.operation = operation;
-        }
-
-        public Object getFont() {
-            return font;
-        }
-
-        public void setFont(Object font) {
-            this.font = font;
-        }
-
-        public Float getFontSize() {
-            return fontSize;
-        }
-
-        public void setFontSize(Float fontSize) {
-            this.fontSize = fontSize;
-        }
-
-        public Integer getMarginBottom() {
-            return marginBottom;
-        }
-
-        public void setMarginBottom(Integer marginBottom) {
-            this.marginBottom = marginBottom;
-        }
-
-        public Integer getMarginLeft() {
-            return marginLeft;
-        }
-
-        public void setMarginLeft(Integer marginLeft) {
-            this.marginLeft = marginLeft;
-        }
-
-        public Integer getMarginRight() {
-            return marginRight;
-        }
-
-        public void setMarginRight(Integer marginRight) {
-            this.marginRight = marginRight;
-        }
-
-        public Integer getMarginTop() {
-            return marginTop;
-        }
-
-        public void setMarginTop(Integer marginTop) {
-            this.marginTop = marginTop;
-        }
-
-        public Object getPageSize() {
-            return pageSize;
-        }
-
-        public void setPageSize(Object pageSize) {
-            this.pageSize = pageSize;
-        }
-
-        public TextProcessingFactory getTextProcessingFactory() {
-            return textProcessingFactory;
-        }
-
-        public void setTextProcessingFactory(
-                TextProcessingFactory textProcessingFactory) {
-            this.textProcessingFactory = textProcessingFactory;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class PdfConsumer
+            extends
+                PdfCommon<PdfConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public PdfConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class PdfConsumer extends PdfCommon<PdfConsumer> {
-    }
-
-    public static class PdfProducer extends PdfCommon<PdfProducer> {
+    public static class PdfProducer
+            extends
+                PdfCommon<PdfProducer>
+            implements
+                EndpointDefinition.Producer {
+        public PdfProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum PdfOperation {

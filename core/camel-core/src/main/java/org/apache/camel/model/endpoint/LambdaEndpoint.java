@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The aws-lambda is used for managing and invoking functions from Amazon
@@ -28,193 +29,110 @@ import javax.annotation.Generated;
 public class LambdaEndpoint {
 
 
-    public static class LambdaCommon<T extends EndpointConfiguration>
+    public static class LambdaCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String function;
-        private LambdaOperations operation;
-        private Object awsLambdaClient;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String accessKey;
-        private String secretKey;
-
+                EndpointDefinition<T> {
+        LambdaCommon(String path) {
+            super("aws-lambda", path);
+        }
         /**
          * Name of the Lambda function. The option is a java.lang.String type.
          */
         public T function(String function) {
-            this.function = function;
+            this.properties.put("function", function);
             return (T) this;
         }
-
         /**
          * The operation to perform. It can be listFunctions, getFunction,
          * createFunction, deleteFunction or invokeFunction. The option is a
          * org.apache.camel.component.aws.lambda.LambdaOperations type.
          */
         public T operation(LambdaOperations operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * To use a existing configured AwsLambdaClient as client. The option is
          * a com.amazonaws.services.lambda.AWSLambda type.
          */
         public T awsLambdaClient(Object awsLambdaClient) {
-            this.awsLambdaClient = awsLambdaClient;
+            this.properties.put("awsLambdaClient", awsLambdaClient);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * To define a proxy host when instantiating the Lambda client. The
          * option is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * To define a proxy port when instantiating the Lambda client. The
          * option is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
-
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public T accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (T) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public T secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (T) this;
         }
+    }
 
-        public String getFunction() {
-            return function;
-        }
-
-        public void setFunction(String function) {
-            this.function = function;
-        }
-
-        public LambdaOperations getOperation() {
-            return operation;
-        }
-
-        public void setOperation(LambdaOperations operation) {
-            this.operation = operation;
-        }
-
-        public Object getAwsLambdaClient() {
-            return awsLambdaClient;
-        }
-
-        public void setAwsLambdaClient(Object awsLambdaClient) {
-            this.awsLambdaClient = awsLambdaClient;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
+    public static class LambdaConsumer
+            extends
+                LambdaCommon<LambdaConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public LambdaConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class LambdaConsumer extends LambdaCommon<LambdaConsumer> {
-    }
-
-    public static class LambdaProducer extends LambdaCommon<LambdaProducer> {
-        private String region;
-
+    public static class LambdaProducer
+            extends
+                LambdaCommon<LambdaProducer>
+            implements
+                EndpointDefinition.Producer {
+        public LambdaProducer(String path) {
+            super(path);
+        }
         /**
          * Amazon AWS Region. The option is a java.lang.String type.
          */
         public LambdaProducer region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (LambdaProducer) this;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
         }
     }
 

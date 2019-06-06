@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The language component allows you to send a message to an endpoint which
@@ -28,47 +29,37 @@ import javax.annotation.Generated;
 public class LanguageEndpoint {
 
 
-    public static class LanguageCommon<T extends EndpointConfiguration>
+    public static class LanguageCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String languageName;
-        private String resourceUri;
-        private Boolean binary;
-        private Boolean cacheScript;
-        private Boolean contentCache;
-        private String script;
-        private Boolean transform;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        LanguageCommon(String path) {
+            super("language", path);
+        }
         /**
          * Sets the name of the language to use. The option is a
          * java.lang.String type.
          */
         public T languageName(String languageName) {
-            this.languageName = languageName;
+            this.properties.put("languageName", languageName);
             return (T) this;
         }
-
         /**
          * Path to the resource, or a reference to lookup a bean in the Registry
          * to use as the resource. The option is a java.lang.String type.
          */
         public T resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
+            this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
-
         /**
          * Whether the script is binary content or text content. By default the
          * script is read as text content (eg java.lang.String). The option is a
          * boolean type.
          */
         public T binary(boolean binary) {
-            this.binary = binary;
+            this.properties.put("binary", binary);
             return (T) this;
         }
-
         /**
          * Whether to cache the compiled script and reuse Notice reusing the
          * script can cause side effects from processing one Camel
@@ -76,136 +67,69 @@ public class LanguageEndpoint {
          * option is a boolean type.
          */
         public T cacheScript(boolean cacheScript) {
-            this.cacheScript = cacheScript;
+            this.properties.put("cacheScript", cacheScript);
             return (T) this;
         }
-
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
         public T contentCache(boolean contentCache) {
-            this.contentCache = contentCache;
+            this.properties.put("contentCache", contentCache);
             return (T) this;
         }
-
         /**
          * Sets the script to execute. The option is a java.lang.String type.
          */
         public T script(String script) {
-            this.script = script;
+            this.properties.put("script", script);
             return (T) this;
         }
-
         /**
          * Whether or not the result of the script should be used as message
          * body. This options is default true. The option is a boolean type.
          */
         public T transform(boolean transform) {
-            this.transform = transform;
+            this.properties.put("transform", transform);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getLanguageName() {
-            return languageName;
-        }
-
-        public void setLanguageName(String languageName) {
-            this.languageName = languageName;
-        }
-
-        public String getResourceUri() {
-            return resourceUri;
-        }
-
-        public void setResourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-        }
-
-        public Boolean getBinary() {
-            return binary;
-        }
-
-        public void setBinary(Boolean binary) {
-            this.binary = binary;
-        }
-
-        public Boolean getCacheScript() {
-            return cacheScript;
-        }
-
-        public void setCacheScript(Boolean cacheScript) {
-            this.cacheScript = cacheScript;
-        }
-
-        public Boolean getContentCache() {
-            return contentCache;
-        }
-
-        public void setContentCache(Boolean contentCache) {
-            this.contentCache = contentCache;
-        }
-
-        public String getScript() {
-            return script;
-        }
-
-        public void setScript(String script) {
-            this.script = script;
-        }
-
-        public Boolean getTransform() {
-            return transform;
-        }
-
-        public void setTransform(Boolean transform) {
-            this.transform = transform;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class LanguageConsumer
             extends
-                LanguageCommon<LanguageConsumer> {
+                LanguageCommon<LanguageConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public LanguageConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class LanguageProducer
             extends
-                LanguageCommon<LanguageProducer> {
+                LanguageCommon<LanguageProducer>
+            implements
+                EndpointDefinition.Producer {
+        public LanguageProducer(String path) {
+            super(path);
+        }
     }
 }

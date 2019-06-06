@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * Validates the payload of a message using NetworkNT JSON Schema library.
@@ -27,19 +28,12 @@ import javax.annotation.Generated;
 public class JsonValidatorEndpoint {
 
 
-    public static class JsonValidatorCommon<T extends EndpointConfiguration>
+    public static class JsonValidatorCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String resourceUri;
-        private Boolean contentCache;
-        private Boolean failOnNullBody;
-        private Boolean failOnNullHeader;
-        private String headerName;
-        private Boolean basicPropertyBinding;
-        private Object errorHandler;
-        private Object schemaLoader;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        JsonValidatorCommon(String path) {
+            super("json-validator", path);
+        }
         /**
          * Path to the resource. You can prefix with: classpath, file, http,
          * ref, or bean. classpath, file and http loads the resource using these
@@ -49,55 +43,49 @@ public class JsonValidatorEndpoint {
          * bean:myBean.myMethod. The option is a java.lang.String type.
          */
         public T resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
+            this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
-
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
         public T contentCache(boolean contentCache) {
-            this.contentCache = contentCache;
+            this.properties.put("contentCache", contentCache);
             return (T) this;
         }
-
         /**
          * Whether to fail if no body exists. The option is a boolean type.
          */
         public T failOnNullBody(boolean failOnNullBody) {
-            this.failOnNullBody = failOnNullBody;
+            this.properties.put("failOnNullBody", failOnNullBody);
             return (T) this;
         }
-
         /**
          * Whether to fail if no header exists when validating against a header.
          * The option is a boolean type.
          */
         public T failOnNullHeader(boolean failOnNullHeader) {
-            this.failOnNullHeader = failOnNullHeader;
+            this.properties.put("failOnNullHeader", failOnNullHeader);
             return (T) this;
         }
-
         /**
          * To validate against a header instead of the message body. The option
          * is a java.lang.String type.
          */
         public T headerName(String headerName) {
-            this.headerName = headerName;
+            this.properties.put("headerName", headerName);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use a custom ValidatorErrorHandler. The default error handler
          * captures the errors and throws an exception. The option is a
@@ -105,10 +93,9 @@ public class JsonValidatorEndpoint {
          * type.
          */
         public T errorHandler(Object errorHandler) {
-            this.errorHandler = errorHandler;
+            this.properties.put("errorHandler", errorHandler);
             return (T) this;
         }
-
         /**
          * To use a custom schema loader allowing for adding custom format
          * validation. The default implementation will create a schema loader
@@ -116,100 +103,37 @@ public class JsonValidatorEndpoint {
          * org.apache.camel.component.jsonvalidator.JsonSchemaLoader type.
          */
         public T schemaLoader(Object schemaLoader) {
-            this.schemaLoader = schemaLoader;
+            this.properties.put("schemaLoader", schemaLoader);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getResourceUri() {
-            return resourceUri;
-        }
-
-        public void setResourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-        }
-
-        public Boolean getContentCache() {
-            return contentCache;
-        }
-
-        public void setContentCache(Boolean contentCache) {
-            this.contentCache = contentCache;
-        }
-
-        public Boolean getFailOnNullBody() {
-            return failOnNullBody;
-        }
-
-        public void setFailOnNullBody(Boolean failOnNullBody) {
-            this.failOnNullBody = failOnNullBody;
-        }
-
-        public Boolean getFailOnNullHeader() {
-            return failOnNullHeader;
-        }
-
-        public void setFailOnNullHeader(Boolean failOnNullHeader) {
-            this.failOnNullHeader = failOnNullHeader;
-        }
-
-        public String getHeaderName() {
-            return headerName;
-        }
-
-        public void setHeaderName(String headerName) {
-            this.headerName = headerName;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getErrorHandler() {
-            return errorHandler;
-        }
-
-        public void setErrorHandler(Object errorHandler) {
-            this.errorHandler = errorHandler;
-        }
-
-        public Object getSchemaLoader() {
-            return schemaLoader;
-        }
-
-        public void setSchemaLoader(Object schemaLoader) {
-            this.schemaLoader = schemaLoader;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class JsonValidatorConsumer
             extends
-                JsonValidatorCommon<JsonValidatorConsumer> {
+                JsonValidatorCommon<JsonValidatorConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public JsonValidatorConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class JsonValidatorProducer
             extends
-                JsonValidatorCommon<JsonValidatorProducer> {
+                JsonValidatorCommon<JsonValidatorProducer>
+            implements
+                EndpointDefinition.Producer {
+        public JsonValidatorProducer(String path) {
+            super(path);
+        }
     }
 }

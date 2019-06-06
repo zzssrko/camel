@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import java.io.File;
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * To insert or query from Apache Lucene databases.
@@ -28,35 +29,27 @@ import javax.annotation.Generated;
 public class LuceneEndpoint {
 
 
-    public static class LuceneCommon<T extends EndpointConfiguration>
+    public static class LuceneCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private LuceneOperation operation;
-        private Object analyzer;
-        private File indexDir;
-        private Integer maxHits;
-        private File srcDir;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        LuceneCommon(String path) {
+            super("lucene", path);
+        }
         /**
          * The URL to the lucene server. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Operation to do such as insert or query. The option is a
          * org.apache.camel.component.lucene.LuceneOperation type.
          */
         public T operation(LuceneOperation operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * An Analyzer builds TokenStreams, which analyze text. It thus
          * represents a policy for extracting index terms from text. The value
@@ -66,128 +59,73 @@ public class LuceneEndpoint {
          * org.apache.lucene.analysis.Analyzer type.
          */
         public T analyzer(Object analyzer) {
-            this.analyzer = analyzer;
+            this.properties.put("analyzer", analyzer);
             return (T) this;
         }
-
         /**
          * A file system directory in which index files are created upon
          * analysis of the document by the specified analyzer. The option is a
          * java.io.File type.
          */
         public T indexDir(File indexDir) {
-            this.indexDir = indexDir;
+            this.properties.put("indexDir", indexDir);
             return (T) this;
         }
-
         /**
          * An integer value that limits the result set of the search operation.
          * The option is a int type.
          */
         public T maxHits(int maxHits) {
-            this.maxHits = maxHits;
+            this.properties.put("maxHits", maxHits);
             return (T) this;
         }
-
         /**
          * An optional directory containing files to be used to be analyzed and
          * added to the index at producer startup. The option is a java.io.File
          * type.
          */
         public T srcDir(File srcDir) {
-            this.srcDir = srcDir;
+            this.properties.put("srcDir", srcDir);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public LuceneOperation getOperation() {
-            return operation;
-        }
-
-        public void setOperation(LuceneOperation operation) {
-            this.operation = operation;
-        }
-
-        public Object getAnalyzer() {
-            return analyzer;
-        }
-
-        public void setAnalyzer(Object analyzer) {
-            this.analyzer = analyzer;
-        }
-
-        public File getIndexDir() {
-            return indexDir;
-        }
-
-        public void setIndexDir(File indexDir) {
-            this.indexDir = indexDir;
-        }
-
-        public Integer getMaxHits() {
-            return maxHits;
-        }
-
-        public void setMaxHits(Integer maxHits) {
-            this.maxHits = maxHits;
-        }
-
-        public File getSrcDir() {
-            return srcDir;
-        }
-
-        public void setSrcDir(File srcDir) {
-            this.srcDir = srcDir;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class LuceneConsumer
+            extends
+                LuceneCommon<LuceneConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public LuceneConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class LuceneConsumer extends LuceneCommon<LuceneConsumer> {
-    }
-
-    public static class LuceneProducer extends LuceneCommon<LuceneProducer> {
+    public static class LuceneProducer
+            extends
+                LuceneCommon<LuceneProducer>
+            implements
+                EndpointDefinition.Producer {
+        public LuceneProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum LuceneOperation {

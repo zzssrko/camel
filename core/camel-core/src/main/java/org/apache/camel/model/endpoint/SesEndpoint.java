@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import java.util.List;
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The aws-ses component is used for sending emails with Amazon's SES service.
@@ -28,250 +29,137 @@ import javax.annotation.Generated;
 public class SesEndpoint {
 
 
-    public static class SesCommon<T extends EndpointConfiguration>
+    public static class SesCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String from;
-        private Object amazonSESClient;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String region;
-        private List<String> replyToAddresses;
-        private String returnPath;
-        private String subject;
-        private List<String> to;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String accessKey;
-        private String secretKey;
-
+                EndpointDefinition<T> {
+        SesCommon(String path) {
+            super("aws-ses", path);
+        }
         /**
          * The sender's email address. The option is a java.lang.String type.
          */
         public T from(String from) {
-            this.from = from;
+            this.properties.put("from", from);
             return (T) this;
         }
-
         /**
          * To use the AmazonSimpleEmailService as the client. The option is a
          * com.amazonaws.services.simpleemail.AmazonSimpleEmailService type.
          */
         public T amazonSESClient(Object amazonSESClient) {
-            this.amazonSESClient = amazonSESClient;
+            this.properties.put("amazonSESClient", amazonSESClient);
             return (T) this;
         }
-
         /**
          * To define a proxy host when instantiating the SES client. The option
          * is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * To define a proxy port when instantiating the SES client. The option
          * is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
-
         /**
          * The region in which SES client needs to work. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * List of reply-to email address(es) for the message, override it using
          * 'CamelAwsSesReplyToAddresses' header. The option is a
          * java.util.List<java.lang.String> type.
          */
         public T replyToAddresses(List<String> replyToAddresses) {
-            this.replyToAddresses = replyToAddresses;
+            this.properties.put("replyToAddresses", replyToAddresses);
             return (T) this;
         }
-
         /**
          * The email address to which bounce notifications are to be forwarded,
          * override it using 'CamelAwsSesReturnPath' header. The option is a
          * java.lang.String type.
          */
         public T returnPath(String returnPath) {
-            this.returnPath = returnPath;
+            this.properties.put("returnPath", returnPath);
             return (T) this;
         }
-
         /**
          * The subject which is used if the message header 'CamelAwsSesSubject'
          * is not present. The option is a java.lang.String type.
          */
         public T subject(String subject) {
-            this.subject = subject;
+            this.properties.put("subject", subject);
             return (T) this;
         }
-
         /**
          * List of destination email address. Can be overriden with
          * 'CamelAwsSesTo' header. The option is a
          * java.util.List<java.lang.String> type.
          */
         public T to(List<String> to) {
-            this.to = to;
+            this.properties.put("to", to);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public T accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (T) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public T secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (T) this;
         }
+    }
 
-        public String getFrom() {
-            return from;
-        }
-
-        public void setFrom(String from) {
-            this.from = from;
-        }
-
-        public Object getAmazonSESClient() {
-            return amazonSESClient;
-        }
-
-        public void setAmazonSESClient(Object amazonSESClient) {
-            this.amazonSESClient = amazonSESClient;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public List<String> getReplyToAddresses() {
-            return replyToAddresses;
-        }
-
-        public void setReplyToAddresses(List<String> replyToAddresses) {
-            this.replyToAddresses = replyToAddresses;
-        }
-
-        public String getReturnPath() {
-            return returnPath;
-        }
-
-        public void setReturnPath(String returnPath) {
-            this.returnPath = returnPath;
-        }
-
-        public String getSubject() {
-            return subject;
-        }
-
-        public void setSubject(String subject) {
-            this.subject = subject;
-        }
-
-        public List<String> getTo() {
-            return to;
-        }
-
-        public void setTo(List<String> to) {
-            this.to = to;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
+    public static class SesConsumer
+            extends
+                SesCommon<SesConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SesConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class SesConsumer extends SesCommon<SesConsumer> {
-    }
-
-    public static class SesProducer extends SesCommon<SesProducer> {
+    public static class SesProducer
+            extends
+                SesCommon<SesProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SesProducer(String path) {
+            super(path);
+        }
     }
 }

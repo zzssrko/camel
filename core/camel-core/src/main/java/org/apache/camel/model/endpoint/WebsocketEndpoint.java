@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,299 +31,151 @@ import org.apache.camel.spi.ExceptionHandler;
 public class WebsocketEndpoint {
 
 
-    public static class WebsocketCommon<T extends EndpointConfiguration>
+    public static class WebsocketCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private String resourceUri;
-        private Integer maxBinaryMessageSize;
-        private Boolean basicPropertyBinding;
-        private Integer bufferSize;
-        private Integer maxIdleTime;
-        private Integer maxTextMessageSize;
-        private Integer minVersion;
-        private Boolean synchronous;
-        private String allowedOrigins;
-        private Boolean crossOriginFilterOn;
-        private String filterPath;
-        private Boolean enableJmx;
-        private Object sslContextParameters;
-
+                EndpointDefinition<T> {
+        WebsocketCommon(String path) {
+            super("websocket", path);
+        }
         /**
          * The hostname. The default value is 0.0.0.0. Setting this option on
          * the component will use the component configured value as default. The
          * option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * The port number. The default value is 9292. Setting this option on
          * the component will use the component configured value as default. The
          * option is a java.lang.Integer type.
          */
         public T port(Integer port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Name of the websocket channel to use. The option is a
          * java.lang.String type.
          */
         public T resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
+            this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
-
         /**
          * Can be used to set the size in bytes that the websocket created by
          * the websocketServlet may be accept before closing. (Default is -1 -
          * or unlimited). The option is a java.lang.Integer type.
          */
         public T maxBinaryMessageSize(Integer maxBinaryMessageSize) {
-            this.maxBinaryMessageSize = maxBinaryMessageSize;
+            this.properties.put("maxBinaryMessageSize", maxBinaryMessageSize);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Set the buffer size of the websocketServlet, which is also the max
          * frame byte size (default 8192). The option is a java.lang.Integer
          * type.
          */
         public T bufferSize(Integer bufferSize) {
-            this.bufferSize = bufferSize;
+            this.properties.put("bufferSize", bufferSize);
             return (T) this;
         }
-
         /**
          * Set the time in ms that the websocket created by the websocketServlet
          * may be idle before closing. (default is 300000). The option is a
          * java.lang.Integer type.
          */
         public T maxIdleTime(Integer maxIdleTime) {
-            this.maxIdleTime = maxIdleTime;
+            this.properties.put("maxIdleTime", maxIdleTime);
             return (T) this;
         }
-
         /**
          * Can be used to set the size in characters that the websocket created
          * by the websocketServlet may be accept before closing. The option is a
          * java.lang.Integer type.
          */
         public T maxTextMessageSize(Integer maxTextMessageSize) {
-            this.maxTextMessageSize = maxTextMessageSize;
+            this.properties.put("maxTextMessageSize", maxTextMessageSize);
             return (T) this;
         }
-
         /**
          * Can be used to set the minimum protocol version accepted for the
          * websocketServlet. (Default 13 - the RFC6455 version). The option is a
          * java.lang.Integer type.
          */
         public T minVersion(Integer minVersion) {
-            this.minVersion = minVersion;
+            this.properties.put("minVersion", minVersion);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * The CORS allowed origins. Use to allow all. The option is a
          * java.lang.String type.
          */
         public T allowedOrigins(String allowedOrigins) {
-            this.allowedOrigins = allowedOrigins;
+            this.properties.put("allowedOrigins", allowedOrigins);
             return (T) this;
         }
-
         /**
          * Whether to enable CORS. The option is a boolean type.
          */
         public T crossOriginFilterOn(boolean crossOriginFilterOn) {
-            this.crossOriginFilterOn = crossOriginFilterOn;
+            this.properties.put("crossOriginFilterOn", crossOriginFilterOn);
             return (T) this;
         }
-
         /**
          * Context path for filtering CORS. The option is a java.lang.String
          * type.
          */
         public T filterPath(String filterPath) {
-            this.filterPath = filterPath;
+            this.properties.put("filterPath", filterPath);
             return (T) this;
         }
-
         /**
          * If this option is true, Jetty JMX support will be enabled for this
          * endpoint. See Jetty JMX support for more details. The option is a
          * boolean type.
          */
         public T enableJmx(boolean enableJmx) {
-            this.enableJmx = enableJmx;
+            this.properties.put("enableJmx", enableJmx);
             return (T) this;
         }
-
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getResourceUri() {
-            return resourceUri;
-        }
-
-        public void setResourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-        }
-
-        public Integer getMaxBinaryMessageSize() {
-            return maxBinaryMessageSize;
-        }
-
-        public void setMaxBinaryMessageSize(Integer maxBinaryMessageSize) {
-            this.maxBinaryMessageSize = maxBinaryMessageSize;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Integer getBufferSize() {
-            return bufferSize;
-        }
-
-        public void setBufferSize(Integer bufferSize) {
-            this.bufferSize = bufferSize;
-        }
-
-        public Integer getMaxIdleTime() {
-            return maxIdleTime;
-        }
-
-        public void setMaxIdleTime(Integer maxIdleTime) {
-            this.maxIdleTime = maxIdleTime;
-        }
-
-        public Integer getMaxTextMessageSize() {
-            return maxTextMessageSize;
-        }
-
-        public void setMaxTextMessageSize(Integer maxTextMessageSize) {
-            this.maxTextMessageSize = maxTextMessageSize;
-        }
-
-        public Integer getMinVersion() {
-            return minVersion;
-        }
-
-        public void setMinVersion(Integer minVersion) {
-            this.minVersion = minVersion;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getAllowedOrigins() {
-            return allowedOrigins;
-        }
-
-        public void setAllowedOrigins(String allowedOrigins) {
-            this.allowedOrigins = allowedOrigins;
-        }
-
-        public Boolean getCrossOriginFilterOn() {
-            return crossOriginFilterOn;
-        }
-
-        public void setCrossOriginFilterOn(Boolean crossOriginFilterOn) {
-            this.crossOriginFilterOn = crossOriginFilterOn;
-        }
-
-        public String getFilterPath() {
-            return filterPath;
-        }
-
-        public void setFilterPath(String filterPath) {
-            this.filterPath = filterPath;
-        }
-
-        public Boolean getEnableJmx() {
-            return enableJmx;
-        }
-
-        public void setEnableJmx(Boolean enableJmx) {
-            this.enableJmx = enableJmx;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
         }
     }
 
     public static class WebsocketConsumer
             extends
-                WebsocketCommon<WebsocketConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean sessionSupport;
-        private String staticResources;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                WebsocketCommon<WebsocketConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public WebsocketConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -333,19 +186,17 @@ public class WebsocketEndpoint {
          * ignored. The option is a boolean type.
          */
         public WebsocketConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (WebsocketConsumer) this;
         }
-
         /**
          * Whether to enable session support which enables HttpSession for each
          * http request. The option is a boolean type.
          */
         public WebsocketConsumer sessionSupport(boolean sessionSupport) {
-            this.sessionSupport = sessionSupport;
+            this.properties.put("sessionSupport", sessionSupport);
             return (WebsocketConsumer) this;
         }
-
         /**
          * Set a resource path for static resources (such as .html files etc).
          * The resources can be loaded from classpath, if you prefix with
@@ -356,10 +207,9 @@ public class WebsocketEndpoint {
          * type.
          */
         public WebsocketConsumer staticResources(String staticResources) {
-            this.staticResources = staticResources;
+            this.properties.put("staticResources", staticResources);
             return (WebsocketConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -369,76 +219,36 @@ public class WebsocketEndpoint {
          */
         public WebsocketConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (WebsocketConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public WebsocketConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (WebsocketConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getSessionSupport() {
-            return sessionSupport;
-        }
-
-        public void setSessionSupport(Boolean sessionSupport) {
-            this.sessionSupport = sessionSupport;
-        }
-
-        public String getStaticResources() {
-            return staticResources;
-        }
-
-        public void setStaticResources(String staticResources) {
-            this.staticResources = staticResources;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class WebsocketProducer
             extends
-                WebsocketCommon<WebsocketProducer> {
-        private Integer sendTimeout;
-        private Boolean sendToAll;
-
+                WebsocketCommon<WebsocketProducer>
+            implements
+                EndpointDefinition.Producer {
+        public WebsocketProducer(String path) {
+            super(path);
+        }
         /**
          * Timeout in millis when sending to a websocket channel. The default
          * timeout is 30000 (30 seconds). The option is a java.lang.Integer
          * type.
          */
         public WebsocketProducer sendTimeout(Integer sendTimeout) {
-            this.sendTimeout = sendTimeout;
+            this.properties.put("sendTimeout", sendTimeout);
             return (WebsocketProducer) this;
         }
-
         /**
          * To send to all websocket subscribers. Can be used to configure on
          * endpoint level, instead of having to use the
@@ -446,24 +256,8 @@ public class WebsocketEndpoint {
          * java.lang.Boolean type.
          */
         public WebsocketProducer sendToAll(Boolean sendToAll) {
-            this.sendToAll = sendToAll;
+            this.properties.put("sendToAll", sendToAll);
             return (WebsocketProducer) this;
-        }
-
-        public Integer getSendTimeout() {
-            return sendTimeout;
-        }
-
-        public void setSendTimeout(Integer sendTimeout) {
-            this.sendTimeout = sendTimeout;
-        }
-
-        public Boolean getSendToAll() {
-            return sendToAll;
-        }
-
-        public void setSendToAll(Boolean sendToAll) {
-            this.sendToAll = sendToAll;
         }
     }
 }

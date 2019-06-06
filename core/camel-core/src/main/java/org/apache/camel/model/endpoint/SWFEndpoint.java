@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,41 +32,27 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SWFEndpoint {
 
 
-    public static class SWFCommon<T extends EndpointConfiguration>
+    public static class SWFCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String type;
-        private Object amazonSWClient;
-        private Object dataConverter;
-        private String domainName;
-        private String eventName;
-        private String region;
-        private String version;
-        private Boolean basicPropertyBinding;
-        private Map<String, Object> clientConfigurationParameters;
-        private Map<String, Object> startWorkflowOptionsParameters;
-        private Map<String, Object> sWClientParameters;
-        private Boolean synchronous;
-        private String accessKey;
-        private String secretKey;
-
+                EndpointDefinition<T> {
+        SWFCommon(String path) {
+            super("aws-swf", path);
+        }
         /**
          * Activity or workflow. The option is a java.lang.String type.
          */
         public T type(String type) {
-            this.type = type;
+            this.properties.put("type", type);
             return (T) this;
         }
-
         /**
          * To use the given AmazonSimpleWorkflowClient as client. The option is
          * a com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow type.
          */
         public T amazonSWClient(Object amazonSWClient) {
-            this.amazonSWClient = amazonSWClient;
+            this.properties.put("amazonSWClient", amazonSWClient);
             return (T) this;
         }
-
         /**
          * An instance of
          * com.amazonaws.services.simpleworkflow.flow.DataConverter to use for
@@ -73,54 +60,48 @@ public class SWFEndpoint {
          * com.amazonaws.services.simpleworkflow.flow.DataConverter type.
          */
         public T dataConverter(Object dataConverter) {
-            this.dataConverter = dataConverter;
+            this.properties.put("dataConverter", dataConverter);
             return (T) this;
         }
-
         /**
          * The workflow domain to use. The option is a java.lang.String type.
          */
         public T domainName(String domainName) {
-            this.domainName = domainName;
+            this.properties.put("domainName", domainName);
             return (T) this;
         }
-
         /**
          * The workflow or activity event name to use. The option is a
          * java.lang.String type.
          */
         public T eventName(String eventName) {
-            this.eventName = eventName;
+            this.properties.put("eventName", eventName);
             return (T) this;
         }
-
         /**
          * Amazon AWS Region. The option is a java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * The workflow or activity event version to use. The option is a
          * java.lang.String type.
          */
         public T version(String version) {
-            this.version = version;
+            this.properties.put("version", version);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To configure the ClientConfiguration using the key/values from the
          * Map. The option is a java.util.Map<java.lang.String,java.lang.Object>
@@ -128,10 +109,9 @@ public class SWFEndpoint {
          */
         public T clientConfigurationParameters(
                 Map<String, Object> clientConfigurationParameters) {
-            this.clientConfigurationParameters = clientConfigurationParameters;
+            this.properties.put("clientConfigurationParameters", clientConfigurationParameters);
             return (T) this;
         }
-
         /**
          * To configure the StartWorkflowOptions using the key/values from the
          * Map. The option is a java.util.Map<java.lang.String,java.lang.Object>
@@ -139,172 +119,51 @@ public class SWFEndpoint {
          */
         public T startWorkflowOptionsParameters(
                 Map<String, Object> startWorkflowOptionsParameters) {
-            this.startWorkflowOptionsParameters = startWorkflowOptionsParameters;
+            this.properties.put("startWorkflowOptionsParameters", startWorkflowOptionsParameters);
             return (T) this;
         }
-
         /**
          * To configure the AmazonSimpleWorkflowClient using the key/values from
          * the Map. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T sWClientParameters(Map<String, Object> sWClientParameters) {
-            this.sWClientParameters = sWClientParameters;
+            this.properties.put("sWClientParameters", sWClientParameters);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public T accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (T) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public T secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (T) this;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public Object getAmazonSWClient() {
-            return amazonSWClient;
-        }
-
-        public void setAmazonSWClient(Object amazonSWClient) {
-            this.amazonSWClient = amazonSWClient;
-        }
-
-        public Object getDataConverter() {
-            return dataConverter;
-        }
-
-        public void setDataConverter(Object dataConverter) {
-            this.dataConverter = dataConverter;
-        }
-
-        public String getDomainName() {
-            return domainName;
-        }
-
-        public void setDomainName(String domainName) {
-            this.domainName = domainName;
-        }
-
-        public String getEventName() {
-            return eventName;
-        }
-
-        public void setEventName(String eventName) {
-            this.eventName = eventName;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public String getVersion() {
-            return version;
-        }
-
-        public void setVersion(String version) {
-            this.version = version;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Map<String, Object> getClientConfigurationParameters() {
-            return clientConfigurationParameters;
-        }
-
-        public void setClientConfigurationParameters(
-                Map<String, Object> clientConfigurationParameters) {
-            this.clientConfigurationParameters = clientConfigurationParameters;
-        }
-
-        public Map<String, Object> getStartWorkflowOptionsParameters() {
-            return startWorkflowOptionsParameters;
-        }
-
-        public void setStartWorkflowOptionsParameters(
-                Map<String, Object> startWorkflowOptionsParameters) {
-            this.startWorkflowOptionsParameters = startWorkflowOptionsParameters;
-        }
-
-        public Map<String, Object> getSWClientParameters() {
-            return sWClientParameters;
-        }
-
-        public void setSWClientParameters(Map<String, Object> sWClientParameters) {
-            this.sWClientParameters = sWClientParameters;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
         }
     }
 
-    public static class SWFConsumer extends SWFCommon<SWFConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private String activityList;
-        private Integer activityThreadPoolSize;
-        private Object activityTypeExecutionOptions;
-        private Object activityTypeRegistrationOptions;
-        private String workflowList;
-        private Object workflowTypeRegistrationOptions;
-
+    public static class SWFConsumer
+            extends
+                SWFCommon<SWFConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SWFConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -315,10 +174,9 @@ public class SWFEndpoint {
          * ignored. The option is a boolean type.
          */
         public SWFConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SWFConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -327,163 +185,78 @@ public class SWFEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public SWFConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SWFConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SWFConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SWFConsumer) this;
         }
-
         /**
          * The list name to consume activities from. The option is a
          * java.lang.String type.
          */
         public SWFConsumer activityList(String activityList) {
-            this.activityList = activityList;
+            this.properties.put("activityList", activityList);
             return (SWFConsumer) this;
         }
-
         /**
          * Maximum number of threads in work pool for activity. The option is a
          * int type.
          */
         public SWFConsumer activityThreadPoolSize(int activityThreadPoolSize) {
-            this.activityThreadPoolSize = activityThreadPoolSize;
+            this.properties.put("activityThreadPoolSize", activityThreadPoolSize);
             return (SWFConsumer) this;
         }
-
         /**
          * Activity execution options. The option is a
          * com.amazonaws.services.simpleworkflow.flow.worker.ActivityTypeExecutionOptions type.
          */
         public SWFConsumer activityTypeExecutionOptions(
                 Object activityTypeExecutionOptions) {
-            this.activityTypeExecutionOptions = activityTypeExecutionOptions;
+            this.properties.put("activityTypeExecutionOptions", activityTypeExecutionOptions);
             return (SWFConsumer) this;
         }
-
         /**
          * Activity registration options. The option is a
          * com.amazonaws.services.simpleworkflow.flow.worker.ActivityTypeRegistrationOptions type.
          */
         public SWFConsumer activityTypeRegistrationOptions(
                 Object activityTypeRegistrationOptions) {
-            this.activityTypeRegistrationOptions = activityTypeRegistrationOptions;
+            this.properties.put("activityTypeRegistrationOptions", activityTypeRegistrationOptions);
             return (SWFConsumer) this;
         }
-
         /**
          * The list name to consume workflows from. The option is a
          * java.lang.String type.
          */
         public SWFConsumer workflowList(String workflowList) {
-            this.workflowList = workflowList;
+            this.properties.put("workflowList", workflowList);
             return (SWFConsumer) this;
         }
-
         /**
          * Workflow registration options. The option is a
          * com.amazonaws.services.simpleworkflow.flow.WorkflowTypeRegistrationOptions type.
          */
         public SWFConsumer workflowTypeRegistrationOptions(
                 Object workflowTypeRegistrationOptions) {
-            this.workflowTypeRegistrationOptions = workflowTypeRegistrationOptions;
+            this.properties.put("workflowTypeRegistrationOptions", workflowTypeRegistrationOptions);
             return (SWFConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public String getActivityList() {
-            return activityList;
-        }
-
-        public void setActivityList(String activityList) {
-            this.activityList = activityList;
-        }
-
-        public Integer getActivityThreadPoolSize() {
-            return activityThreadPoolSize;
-        }
-
-        public void setActivityThreadPoolSize(Integer activityThreadPoolSize) {
-            this.activityThreadPoolSize = activityThreadPoolSize;
-        }
-
-        public Object getActivityTypeExecutionOptions() {
-            return activityTypeExecutionOptions;
-        }
-
-        public void setActivityTypeExecutionOptions(
-                Object activityTypeExecutionOptions) {
-            this.activityTypeExecutionOptions = activityTypeExecutionOptions;
-        }
-
-        public Object getActivityTypeRegistrationOptions() {
-            return activityTypeRegistrationOptions;
-        }
-
-        public void setActivityTypeRegistrationOptions(
-                Object activityTypeRegistrationOptions) {
-            this.activityTypeRegistrationOptions = activityTypeRegistrationOptions;
-        }
-
-        public String getWorkflowList() {
-            return workflowList;
-        }
-
-        public void setWorkflowList(String workflowList) {
-            this.workflowList = workflowList;
-        }
-
-        public Object getWorkflowTypeRegistrationOptions() {
-            return workflowTypeRegistrationOptions;
-        }
-
-        public void setWorkflowTypeRegistrationOptions(
-                Object workflowTypeRegistrationOptions) {
-            this.workflowTypeRegistrationOptions = workflowTypeRegistrationOptions;
         }
     }
 
-    public static class SWFProducer extends SWFCommon<SWFProducer> {
-        private Object activitySchedulingOptions;
-        private String childPolicy;
-        private String executionStartToCloseTimeout;
-        private String operation;
-        private String signalName;
-        private String stateResultType;
-        private String taskStartToCloseTimeout;
-        private String terminationDetails;
-        private String terminationReason;
-
+    public static class SWFProducer
+            extends
+                SWFCommon<SWFProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SWFProducer(String path) {
+            super(path);
+        }
         /**
          * Activity scheduling options. The option is a
          * com.amazonaws.services.simpleworkflow.flow.ActivitySchedulingOptions
@@ -491,155 +264,73 @@ public class SWFEndpoint {
          */
         public SWFProducer activitySchedulingOptions(
                 Object activitySchedulingOptions) {
-            this.activitySchedulingOptions = activitySchedulingOptions;
+            this.properties.put("activitySchedulingOptions", activitySchedulingOptions);
             return (SWFProducer) this;
         }
-
         /**
          * The policy to use on child workflows when terminating a workflow. The
          * option is a java.lang.String type.
          */
         public SWFProducer childPolicy(String childPolicy) {
-            this.childPolicy = childPolicy;
+            this.properties.put("childPolicy", childPolicy);
             return (SWFProducer) this;
         }
-
         /**
          * Set the execution start to close timeout. The option is a
          * java.lang.String type.
          */
         public SWFProducer executionStartToCloseTimeout(
                 String executionStartToCloseTimeout) {
-            this.executionStartToCloseTimeout = executionStartToCloseTimeout;
+            this.properties.put("executionStartToCloseTimeout", executionStartToCloseTimeout);
             return (SWFProducer) this;
         }
-
         /**
          * Workflow operation. The option is a java.lang.String type.
          */
         public SWFProducer operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (SWFProducer) this;
         }
-
         /**
          * The name of the signal to send to the workflow. The option is a
          * java.lang.String type.
          */
         public SWFProducer signalName(String signalName) {
-            this.signalName = signalName;
+            this.properties.put("signalName", signalName);
             return (SWFProducer) this;
         }
-
         /**
          * The type of the result when a workflow state is queried. The option
          * is a java.lang.String type.
          */
         public SWFProducer stateResultType(String stateResultType) {
-            this.stateResultType = stateResultType;
+            this.properties.put("stateResultType", stateResultType);
             return (SWFProducer) this;
         }
-
         /**
          * Set the task start to close timeout. The option is a java.lang.String
          * type.
          */
         public SWFProducer taskStartToCloseTimeout(
                 String taskStartToCloseTimeout) {
-            this.taskStartToCloseTimeout = taskStartToCloseTimeout;
+            this.properties.put("taskStartToCloseTimeout", taskStartToCloseTimeout);
             return (SWFProducer) this;
         }
-
         /**
          * Details for terminating a workflow. The option is a java.lang.String
          * type.
          */
         public SWFProducer terminationDetails(String terminationDetails) {
-            this.terminationDetails = terminationDetails;
+            this.properties.put("terminationDetails", terminationDetails);
             return (SWFProducer) this;
         }
-
         /**
          * The reason for terminating a workflow. The option is a
          * java.lang.String type.
          */
         public SWFProducer terminationReason(String terminationReason) {
-            this.terminationReason = terminationReason;
+            this.properties.put("terminationReason", terminationReason);
             return (SWFProducer) this;
-        }
-
-        public Object getActivitySchedulingOptions() {
-            return activitySchedulingOptions;
-        }
-
-        public void setActivitySchedulingOptions(
-                Object activitySchedulingOptions) {
-            this.activitySchedulingOptions = activitySchedulingOptions;
-        }
-
-        public String getChildPolicy() {
-            return childPolicy;
-        }
-
-        public void setChildPolicy(String childPolicy) {
-            this.childPolicy = childPolicy;
-        }
-
-        public String getExecutionStartToCloseTimeout() {
-            return executionStartToCloseTimeout;
-        }
-
-        public void setExecutionStartToCloseTimeout(
-                String executionStartToCloseTimeout) {
-            this.executionStartToCloseTimeout = executionStartToCloseTimeout;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
-        }
-
-        public String getSignalName() {
-            return signalName;
-        }
-
-        public void setSignalName(String signalName) {
-            this.signalName = signalName;
-        }
-
-        public String getStateResultType() {
-            return stateResultType;
-        }
-
-        public void setStateResultType(String stateResultType) {
-            this.stateResultType = stateResultType;
-        }
-
-        public String getTaskStartToCloseTimeout() {
-            return taskStartToCloseTimeout;
-        }
-
-        public void setTaskStartToCloseTimeout(String taskStartToCloseTimeout) {
-            this.taskStartToCloseTimeout = taskStartToCloseTimeout;
-        }
-
-        public String getTerminationDetails() {
-            return terminationDetails;
-        }
-
-        public void setTerminationDetails(String terminationDetails) {
-            this.terminationDetails = terminationDetails;
-        }
-
-        public String getTerminationReason() {
-            return terminationReason;
-        }
-
-        public void setTerminationReason(String terminationReason) {
-            this.terminationReason = terminationReason;
         }
     }
 }

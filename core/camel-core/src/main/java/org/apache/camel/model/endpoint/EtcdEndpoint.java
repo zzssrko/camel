@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,232 +37,111 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class EtcdEndpoint {
 
 
-    public static class EtcdCommon<T extends EndpointConfiguration>
+    public static class EtcdCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private EtcdNamespace namespace;
-        private String path;
-        private Boolean recursive;
-        private String servicePath;
-        private Long timeout;
-        private String uris;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String password;
-        private Object sslContextParameters;
-        private String userName;
-
+                EndpointDefinition<T> {
+        EtcdCommon(String path) {
+            super("etcd", path);
+        }
         /**
          * The API namespace to use. The option is a
          * org.apache.camel.component.etcd.EtcdNamespace type.
          */
         public T namespace(EtcdNamespace namespace) {
-            this.namespace = namespace;
+            this.properties.put("namespace", namespace);
             return (T) this;
         }
-
         /**
          * The path the endpoint refers to. The option is a java.lang.String
          * type.
          */
         public T path(String path) {
-            this.path = path;
+            this.properties.put("path", path);
             return (T) this;
         }
-
         /**
          * To apply an action recursively. The option is a boolean type.
          */
         public T recursive(boolean recursive) {
-            this.recursive = recursive;
+            this.properties.put("recursive", recursive);
             return (T) this;
         }
-
         /**
          * The path to look for for service discovery. The option is a
          * java.lang.String type.
          */
         public T servicePath(String servicePath) {
-            this.servicePath = servicePath;
+            this.properties.put("servicePath", servicePath);
             return (T) this;
         }
-
         /**
          * To set the maximum time an action could take to complete. The option
          * is a java.lang.Long type.
          */
         public T timeout(Long timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (T) this;
         }
-
         /**
          * To set the URIs the client connects. The option is a java.lang.String
          * type.
          */
         public T uris(String uris) {
-            this.uris = uris;
+            this.properties.put("uris", uris);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * The password to use for basic authentication. The option is a
          * java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
-
         /**
          * The user name to use for basic authentication. The option is a
          * java.lang.String type.
          */
         public T userName(String userName) {
-            this.userName = userName;
+            this.properties.put("userName", userName);
             return (T) this;
-        }
-
-        public EtcdNamespace getNamespace() {
-            return namespace;
-        }
-
-        public void setNamespace(EtcdNamespace namespace) {
-            this.namespace = namespace;
-        }
-
-        public String getPath() {
-            return path;
-        }
-
-        public void setPath(String path) {
-            this.path = path;
-        }
-
-        public Boolean getRecursive() {
-            return recursive;
-        }
-
-        public void setRecursive(Boolean recursive) {
-            this.recursive = recursive;
-        }
-
-        public String getServicePath() {
-            return servicePath;
-        }
-
-        public void setServicePath(String servicePath) {
-            this.servicePath = servicePath;
-        }
-
-        public Long getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Long timeout) {
-            this.timeout = timeout;
-        }
-
-        public String getUris() {
-            return uris;
-        }
-
-        public void setUris(String uris) {
-            this.uris = uris;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
-        }
-
-        public String getUserName() {
-            return userName;
-        }
-
-        public void setUserName(String userName) {
-            this.userName = userName;
         }
     }
 
-    public static class EtcdConsumer extends EtcdCommon<EtcdConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean sendEmptyExchangeOnTimeout;
-        private Boolean sendEmptyMessageWhenIdle;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private Long fromIndex;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+    public static class EtcdConsumer
+            extends
+                EtcdCommon<EtcdConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public EtcdConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -272,20 +152,18 @@ public class EtcdEndpoint {
          * ignored. The option is a boolean type.
          */
         public EtcdConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (EtcdConsumer) this;
         }
-
         /**
          * To send an empty message in case of timeout watching for a key. The
          * option is a boolean type.
          */
         public EtcdConsumer sendEmptyExchangeOnTimeout(
                 boolean sendEmptyExchangeOnTimeout) {
-            this.sendEmptyExchangeOnTimeout = sendEmptyExchangeOnTimeout;
+            this.properties.put("sendEmptyExchangeOnTimeout", sendEmptyExchangeOnTimeout);
             return (EtcdConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -293,10 +171,9 @@ public class EtcdEndpoint {
          */
         public EtcdConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (EtcdConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -305,27 +182,24 @@ public class EtcdEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public EtcdConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (EtcdConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public EtcdConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (EtcdConsumer) this;
         }
-
         /**
          * The index to watch from. The option is a java.lang.Long type.
          */
         public EtcdConsumer fromIndex(Long fromIndex) {
-            this.fromIndex = fromIndex;
+            this.properties.put("fromIndex", fromIndex);
             return (EtcdConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -335,29 +209,26 @@ public class EtcdEndpoint {
          */
         public EtcdConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (EtcdConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public EtcdConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (EtcdConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public EtcdConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (EtcdConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -367,50 +238,45 @@ public class EtcdEndpoint {
          * configured. The option is a int type.
          */
         public EtcdConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (EtcdConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public EtcdConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (EtcdConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public EtcdConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (EtcdConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public EtcdConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (EtcdConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public EtcdConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (EtcdConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -419,20 +285,18 @@ public class EtcdEndpoint {
          */
         public EtcdConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (EtcdConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public EtcdConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (EtcdConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -440,220 +304,51 @@ public class EtcdEndpoint {
          */
         public EtcdConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (EtcdConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public EtcdConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (EtcdConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public EtcdConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (EtcdConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public EtcdConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (EtcdConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getSendEmptyExchangeOnTimeout() {
-            return sendEmptyExchangeOnTimeout;
-        }
-
-        public void setSendEmptyExchangeOnTimeout(
-                Boolean sendEmptyExchangeOnTimeout) {
-            this.sendEmptyExchangeOnTimeout = sendEmptyExchangeOnTimeout;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public Long getFromIndex() {
-            return fromIndex;
-        }
-
-        public void setFromIndex(Long fromIndex) {
-            this.fromIndex = fromIndex;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
-    public static class EtcdProducer extends EtcdCommon<EtcdProducer> {
-        private Integer timeToLive;
-
+    public static class EtcdProducer
+            extends
+                EtcdCommon<EtcdProducer>
+            implements
+                EndpointDefinition.Producer {
+        public EtcdProducer(String path) {
+            super(path);
+        }
         /**
          * To set the lifespan of a key in milliseconds. The option is a
          * java.lang.Integer type.
          */
         public EtcdProducer timeToLive(Integer timeToLive) {
-            this.timeToLive = timeToLive;
+            this.properties.put("timeToLive", timeToLive);
             return (EtcdProducer) this;
-        }
-
-        public Integer getTimeToLive() {
-            return timeToLive;
-        }
-
-        public void setTimeToLive(Integer timeToLive) {
-            this.timeToLive = timeToLive;
         }
     }
 

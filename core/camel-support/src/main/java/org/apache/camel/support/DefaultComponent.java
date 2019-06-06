@@ -73,6 +73,58 @@ public abstract class DefaultComponent extends ServiceSupport implements Compone
         return UnsafeUriCharactersEncoder.encode(uri);
     }
 
+    @Override
+    public Endpoint createEndpoint(String uri, Map<String, Object> parameters) throws Exception {
+        ObjectHelper.notNull(getCamelContext(), "camelContext");
+        // check URI string to the unsafe URI characters
+        String encodedUri = preProcessUri(uri);
+        URI u = new URI(encodedUri);
+        String path;
+        if (u.getScheme() != null) {
+            // if there is a scheme then there is also a path
+            path = URISupport.extractRemainderPath(u, useRawUri());
+        } else {
+            // this uri has no context-path as the leading text is the component name (scheme)
+            path = null;
+        }
+
+        // use encoded or raw uri?
+        uri = useRawUri() ? uri : encodedUri;
+
+        validateURI(uri, path, parameters);
+        if (log.isTraceEnabled()) {
+            // at trace level its okay to have parameters logged, that may contain passwords
+            log.trace("Creating endpoint uri=[{}], path=[{}], parameters=[{}]", URISupport.sanitizeUri(uri), URISupport.sanitizePath(path), parameters);
+        } else if (log.isDebugEnabled()) {
+            // but at debug level only output sanitized uris
+            log.debug("Creating endpoint uri=[{}], path=[{}]", URISupport.sanitizeUri(uri), URISupport.sanitizePath(path));
+        }
+        Endpoint endpoint = createEndpoint(uri, path, parameters);
+        if (endpoint == null) {
+            return null;
+        }
+
+        // setup whether to use basic property binding or not which must be done before we set properties
+        boolean basic = getAndRemoveParameter(parameters, "basicPropertyBinding", boolean.class, basicPropertyBinding);
+        if (endpoint instanceof DefaultEndpoint) {
+            ((DefaultEndpoint) endpoint).setBasicPropertyBinding(basic);
+        }
+
+        endpoint.configureProperties(parameters);
+        if (useIntrospectionOnEndpoint()) {
+            setProperties(endpoint, parameters);
+        }
+
+        // if endpoint is strict (not lenient) and we have unknown parameters configured then
+        // fail if there are parameters that could not be set, then they are probably misspell or not supported at all
+        if (!endpoint.isLenientProperties()) {
+            validateParameters(uri, parameters, null);
+        }
+
+        afterConfiguration(uri, path, endpoint, parameters);
+        return endpoint;
+    }
+
     public Endpoint createEndpoint(String uri) throws Exception {
         ObjectHelper.notNull(getCamelContext(), "camelContext");
         // check URI string to the unsafe URI characters

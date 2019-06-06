@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,44 +32,28 @@ import org.apache.camel.spi.ExceptionHandler;
 public class LinkedInEndpoint {
 
 
-    public static class LinkedInCommon<T extends EndpointConfiguration>
+    public static class LinkedInCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private LinkedInApiName apiName;
-        private String methodName;
-        private String accessToken;
-        private String clientId;
-        private String clientSecret;
-        private Long expiryTime;
-        private Map<String, Object> httpParams;
-        private String inBody;
-        private Boolean lazyAuth;
-        private String redirectUri;
-        private Object[] scopes;
-        private Object secureStorage;
-        private String userName;
-        private String userPassword;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        LinkedInCommon(String path) {
+            super("linkedin", path);
+        }
         /**
          * What kind of operation to perform. The option is a
          * org.apache.camel.component.linkedin.internal.LinkedInApiName type.
          */
         public T apiName(LinkedInApiName apiName) {
-            this.apiName = apiName;
+            this.properties.put("apiName", apiName);
             return (T) this;
         }
-
         /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
         public T methodName(String methodName) {
-            this.methodName = methodName;
+            this.properties.put("methodName", methodName);
             return (T) this;
         }
-
         /**
          * LinkedIn access token to avoid username and password login procedure.
          * LinkedIn responds to login forms by using a CAPTCHA. This makes it
@@ -90,28 +75,25 @@ public class LinkedInEndpoint {
          * that it uses the new token. The option is a java.lang.String type.
          */
         public T accessToken(String accessToken) {
-            this.accessToken = accessToken;
+            this.properties.put("accessToken", accessToken);
             return (T) this;
         }
-
         /**
          * LinkedIn application client ID. The option is a java.lang.String
          * type.
          */
         public T clientId(String clientId) {
-            this.clientId = clientId;
+            this.properties.put("clientId", clientId);
             return (T) this;
         }
-
         /**
          * LinkedIn application client secret. The option is a java.lang.String
          * type.
          */
         public T clientSecret(String clientSecret) {
-            this.clientSecret = clientSecret;
+            this.properties.put("clientSecret", clientSecret);
             return (T) this;
         }
-
         /**
          * A number of milliseconds since the UNIX Epoch. The default is 60
          * days. A LinkedIn access token expires when this amount of time
@@ -119,39 +101,35 @@ public class LinkedInEndpoint {
          * type.
          */
         public T expiryTime(Long expiryTime) {
-            this.expiryTime = expiryTime;
+            this.properties.put("expiryTime", expiryTime);
             return (T) this;
         }
-
         /**
          * Custom HTTP parameters, for example, proxy host and port. Use
          * constants from AllClientPNames. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T httpParams(Map<String, Object> httpParams) {
-            this.httpParams = httpParams;
+            this.properties.put("httpParams", httpParams);
             return (T) this;
         }
-
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
         public T inBody(String inBody) {
-            this.inBody = inBody;
+            this.properties.put("inBody", inBody);
             return (T) this;
         }
-
         /**
          * Flag to enable/disable lazy OAuth, default is true. When enabled,
          * OAuth token retrieval or generation is not done until the first REST
          * call. The option is a boolean type.
          */
         public T lazyAuth(boolean lazyAuth) {
-            this.lazyAuth = lazyAuth;
+            this.properties.put("lazyAuth", lazyAuth);
             return (T) this;
         }
-
         /**
          * Application redirect URI, although the component never redirects to
          * this page to avoid having to have a functioning redirect server. For
@@ -159,10 +137,9 @@ public class LinkedInEndpoint {
          * java.lang.String type.
          */
         public T redirectUri(String redirectUri) {
-            this.redirectUri = redirectUri;
+            this.properties.put("redirectUri", redirectUri);
             return (T) this;
         }
-
         /**
          * List of LinkedIn scopes as specified at
          * https://developer.linkedin.com/documents/authentication#granting. The
@@ -170,10 +147,9 @@ public class LinkedInEndpoint {
          * type.
          */
         public T scopes(Object[] scopes) {
-            this.scopes = scopes;
+            this.properties.put("scopes", scopes);
             return (T) this;
         }
-
         /**
          * Callback interface for providing an OAuth token or to store the token
          * generated by the component. The callback should return null on the
@@ -183,183 +159,52 @@ public class LinkedInEndpoint {
          * org.apache.camel.component.linkedin.api.OAuthSecureStorage type.
          */
         public T secureStorage(Object secureStorage) {
-            this.secureStorage = secureStorage;
+            this.properties.put("secureStorage", secureStorage);
             return (T) this;
         }
-
         /**
          * LinkedIn user account name, MUST be provided. The option is a
          * java.lang.String type.
          */
         public T userName(String userName) {
-            this.userName = userName;
+            this.properties.put("userName", userName);
             return (T) this;
         }
-
         /**
          * LinkedIn account password. The option is a java.lang.String type.
          */
         public T userPassword(String userPassword) {
-            this.userPassword = userPassword;
+            this.properties.put("userPassword", userPassword);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public LinkedInApiName getApiName() {
-            return apiName;
-        }
-
-        public void setApiName(LinkedInApiName apiName) {
-            this.apiName = apiName;
-        }
-
-        public String getMethodName() {
-            return methodName;
-        }
-
-        public void setMethodName(String methodName) {
-            this.methodName = methodName;
-        }
-
-        public String getAccessToken() {
-            return accessToken;
-        }
-
-        public void setAccessToken(String accessToken) {
-            this.accessToken = accessToken;
-        }
-
-        public String getClientId() {
-            return clientId;
-        }
-
-        public void setClientId(String clientId) {
-            this.clientId = clientId;
-        }
-
-        public String getClientSecret() {
-            return clientSecret;
-        }
-
-        public void setClientSecret(String clientSecret) {
-            this.clientSecret = clientSecret;
-        }
-
-        public Long getExpiryTime() {
-            return expiryTime;
-        }
-
-        public void setExpiryTime(Long expiryTime) {
-            this.expiryTime = expiryTime;
-        }
-
-        public Map<String, Object> getHttpParams() {
-            return httpParams;
-        }
-
-        public void setHttpParams(Map<String, Object> httpParams) {
-            this.httpParams = httpParams;
-        }
-
-        public String getInBody() {
-            return inBody;
-        }
-
-        public void setInBody(String inBody) {
-            this.inBody = inBody;
-        }
-
-        public Boolean getLazyAuth() {
-            return lazyAuth;
-        }
-
-        public void setLazyAuth(Boolean lazyAuth) {
-            this.lazyAuth = lazyAuth;
-        }
-
-        public String getRedirectUri() {
-            return redirectUri;
-        }
-
-        public void setRedirectUri(String redirectUri) {
-            this.redirectUri = redirectUri;
-        }
-
-        public Object[] getScopes() {
-            return scopes;
-        }
-
-        public void setScopes(Object[] scopes) {
-            this.scopes = scopes;
-        }
-
-        public Object getSecureStorage() {
-            return secureStorage;
-        }
-
-        public void setSecureStorage(Object secureStorage) {
-            this.secureStorage = secureStorage;
-        }
-
-        public String getUserName() {
-            return userName;
-        }
-
-        public void setUserName(String userName) {
-            this.userName = userName;
-        }
-
-        public String getUserPassword() {
-            return userPassword;
-        }
-
-        public void setUserPassword(String userPassword) {
-            this.userPassword = userPassword;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class LinkedInConsumer
             extends
-                LinkedInCommon<LinkedInConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                LinkedInCommon<LinkedInConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public LinkedInConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -370,10 +215,9 @@ public class LinkedInEndpoint {
          * ignored. The option is a boolean type.
          */
         public LinkedInConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (LinkedInConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -383,47 +227,27 @@ public class LinkedInEndpoint {
          */
         public LinkedInConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (LinkedInConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public LinkedInConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (LinkedInConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class LinkedInProducer
             extends
-                LinkedInCommon<LinkedInProducer> {
+                LinkedInCommon<LinkedInProducer>
+            implements
+                EndpointDefinition.Producer {
+        public LinkedInProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum LinkedInApiName {

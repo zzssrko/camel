@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The Ignite Sets endpoint is one of camel-ignite endpoints which allows you to
@@ -28,117 +29,75 @@ import javax.annotation.Generated;
 public class IgniteSetEndpoint {
 
 
-    public static class IgniteSetCommon<T extends EndpointConfiguration>
+    public static class IgniteSetCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private Boolean propagateIncomingBodyIfNoReturnValue;
-        private Boolean treatCollectionsAsCacheObjects;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        IgniteSetCommon(String path) {
+            super("ignite-set", path);
+        }
         /**
          * The set name. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option is a boolean type.
          */
         public T propagateIncomingBodyIfNoReturnValue(
                 boolean propagateIncomingBodyIfNoReturnValue) {
-            this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
+            this.properties.put("propagateIncomingBodyIfNoReturnValue", propagateIncomingBodyIfNoReturnValue);
             return (T) this;
         }
-
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
         public T treatCollectionsAsCacheObjects(
                 boolean treatCollectionsAsCacheObjects) {
-            this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
+            this.properties.put("treatCollectionsAsCacheObjects", treatCollectionsAsCacheObjects);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Boolean getPropagateIncomingBodyIfNoReturnValue() {
-            return propagateIncomingBodyIfNoReturnValue;
-        }
-
-        public void setPropagateIncomingBodyIfNoReturnValue(
-                Boolean propagateIncomingBodyIfNoReturnValue) {
-            this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
-        }
-
-        public Boolean getTreatCollectionsAsCacheObjects() {
-            return treatCollectionsAsCacheObjects;
-        }
-
-        public void setTreatCollectionsAsCacheObjects(
-                Boolean treatCollectionsAsCacheObjects) {
-            this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class IgniteSetConsumer
             extends
-                IgniteSetCommon<IgniteSetConsumer> {
+                IgniteSetCommon<IgniteSetConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public IgniteSetConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class IgniteSetProducer
             extends
-                IgniteSetCommon<IgniteSetProducer> {
-        private Object configuration;
-        private IgniteSetOperation operation;
-
+                IgniteSetCommon<IgniteSetProducer>
+            implements
+                EndpointDefinition.Producer {
+        public IgniteSetProducer(String path) {
+            super(path);
+        }
         /**
          * The collection configuration. Default: empty configuration. You can
          * also conveniently set inner properties by using configuration.xyz=123
@@ -146,10 +105,9 @@ public class IgniteSetEndpoint {
          * org.apache.ignite.configuration.CollectionConfiguration type.
          */
         public IgniteSetProducer configuration(Object configuration) {
-            this.configuration = configuration;
+            this.properties.put("configuration", configuration);
             return (IgniteSetProducer) this;
         }
-
         /**
          * The operation to invoke on the Ignite Set. Superseded by the
          * IgniteConstants.IGNITE_SETS_OPERATION header in the IN message.
@@ -158,24 +116,8 @@ public class IgniteSetEndpoint {
          * org.apache.camel.component.ignite.set.IgniteSetOperation type.
          */
         public IgniteSetProducer operation(IgniteSetOperation operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (IgniteSetProducer) this;
-        }
-
-        public Object getConfiguration() {
-            return configuration;
-        }
-
-        public void setConfiguration(Object configuration) {
-            this.configuration = configuration;
-        }
-
-        public IgniteSetOperation getOperation() {
-            return operation;
-        }
-
-        public void setOperation(IgniteSetOperation operation) {
-            this.operation = operation;
         }
     }
 

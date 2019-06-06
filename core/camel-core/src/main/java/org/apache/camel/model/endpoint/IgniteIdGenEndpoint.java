@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The Ignite ID Generator endpoint is one of camel-ignite endpoints which
@@ -28,134 +29,89 @@ import javax.annotation.Generated;
 public class IgniteIdGenEndpoint {
 
 
-    public static class IgniteIdGenCommon<T extends EndpointConfiguration>
+    public static class IgniteIdGenCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private Boolean propagateIncomingBodyIfNoReturnValue;
-        private Boolean treatCollectionsAsCacheObjects;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        IgniteIdGenCommon(String path) {
+            super("ignite-idgen", path);
+        }
         /**
          * The sequence name. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option is a boolean type.
          */
         public T propagateIncomingBodyIfNoReturnValue(
                 boolean propagateIncomingBodyIfNoReturnValue) {
-            this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
+            this.properties.put("propagateIncomingBodyIfNoReturnValue", propagateIncomingBodyIfNoReturnValue);
             return (T) this;
         }
-
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
         public T treatCollectionsAsCacheObjects(
                 boolean treatCollectionsAsCacheObjects) {
-            this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
+            this.properties.put("treatCollectionsAsCacheObjects", treatCollectionsAsCacheObjects);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Boolean getPropagateIncomingBodyIfNoReturnValue() {
-            return propagateIncomingBodyIfNoReturnValue;
-        }
-
-        public void setPropagateIncomingBodyIfNoReturnValue(
-                Boolean propagateIncomingBodyIfNoReturnValue) {
-            this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
-        }
-
-        public Boolean getTreatCollectionsAsCacheObjects() {
-            return treatCollectionsAsCacheObjects;
-        }
-
-        public void setTreatCollectionsAsCacheObjects(
-                Boolean treatCollectionsAsCacheObjects) {
-            this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class IgniteIdGenConsumer
             extends
-                IgniteIdGenCommon<IgniteIdGenConsumer> {
+                IgniteIdGenCommon<IgniteIdGenConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public IgniteIdGenConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class IgniteIdGenProducer
             extends
-                IgniteIdGenCommon<IgniteIdGenProducer> {
-        private Integer batchSize;
-        private Long initialValue;
-        private IgniteIdGenOperation operation;
-
+                IgniteIdGenCommon<IgniteIdGenProducer>
+            implements
+                EndpointDefinition.Producer {
+        public IgniteIdGenProducer(String path) {
+            super(path);
+        }
         /**
          * The batch size. The option is a java.lang.Integer type.
          */
         public IgniteIdGenProducer batchSize(Integer batchSize) {
-            this.batchSize = batchSize;
+            this.properties.put("batchSize", batchSize);
             return (IgniteIdGenProducer) this;
         }
-
         /**
          * The initial value. The option is a java.lang.Long type.
          */
         public IgniteIdGenProducer initialValue(Long initialValue) {
-            this.initialValue = initialValue;
+            this.properties.put("initialValue", initialValue);
             return (IgniteIdGenProducer) this;
         }
-
         /**
          * The operation to invoke on the Ignite ID Generator. Superseded by the
          * IgniteConstants.IGNITE_IDGEN_OPERATION header in the IN message.
@@ -164,32 +120,8 @@ public class IgniteIdGenEndpoint {
          * org.apache.camel.component.ignite.idgen.IgniteIdGenOperation type.
          */
         public IgniteIdGenProducer operation(IgniteIdGenOperation operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (IgniteIdGenProducer) this;
-        }
-
-        public Integer getBatchSize() {
-            return batchSize;
-        }
-
-        public void setBatchSize(Integer batchSize) {
-            this.batchSize = batchSize;
-        }
-
-        public Long getInitialValue() {
-            return initialValue;
-        }
-
-        public void setInitialValue(Long initialValue) {
-            this.initialValue = initialValue;
-        }
-
-        public IgniteIdGenOperation getOperation() {
-            return operation;
-        }
-
-        public void setOperation(IgniteIdGenOperation operation) {
-            this.operation = operation;
         }
     }
 

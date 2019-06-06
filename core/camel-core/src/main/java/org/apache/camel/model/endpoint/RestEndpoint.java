@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,45 +31,33 @@ import org.apache.camel.spi.ExceptionHandler;
 public class RestEndpoint {
 
 
-    public static class RestCommon<T extends EndpointConfiguration>
+    public static class RestCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String method;
-        private String path;
-        private String uriTemplate;
-        private String componentName;
-        private String consumes;
-        private String inType;
-        private String outType;
-        private String produces;
-        private String routeId;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        RestCommon(String path) {
+            super("rest", path);
+        }
         /**
          * HTTP method to use. The option is a java.lang.String type.
          */
         public T method(String method) {
-            this.method = method;
+            this.properties.put("method", method);
             return (T) this;
         }
-
         /**
          * The base path. The option is a java.lang.String type.
          */
         public T path(String path) {
-            this.path = path;
+            this.properties.put("path", path);
             return (T) this;
         }
-
         /**
          * The uri template. The option is a java.lang.String type.
          */
         public T uriTemplate(String uriTemplate) {
-            this.uriTemplate = uriTemplate;
+            this.properties.put("uriTemplate", uriTemplate);
             return (T) this;
         }
-
         /**
          * The Camel Rest component to use for the REST transport, such as
          * restlet, spark-rest. If no component has been explicit configured,
@@ -78,171 +67,78 @@ public class RestEndpoint {
          * being used. The option is a java.lang.String type.
          */
         public T componentName(String componentName) {
-            this.componentName = componentName;
+            this.properties.put("componentName", componentName);
             return (T) this;
         }
-
         /**
          * Media type such as: 'text/xml', or 'application/json' this REST
          * service accepts. By default we accept all kinds of types. The option
          * is a java.lang.String type.
          */
         public T consumes(String consumes) {
-            this.consumes = consumes;
+            this.properties.put("consumes", consumes);
             return (T) this;
         }
-
         /**
          * To declare the incoming POJO binding type as a FQN class name. The
          * option is a java.lang.String type.
          */
         public T inType(String inType) {
-            this.inType = inType;
+            this.properties.put("inType", inType);
             return (T) this;
         }
-
         /**
          * To declare the outgoing POJO binding type as a FQN class name. The
          * option is a java.lang.String type.
          */
         public T outType(String outType) {
-            this.outType = outType;
+            this.properties.put("outType", outType);
             return (T) this;
         }
-
         /**
          * Media type such as: 'text/xml', or 'application/json' this REST
          * service returns. The option is a java.lang.String type.
          */
         public T produces(String produces) {
-            this.produces = produces;
+            this.properties.put("produces", produces);
             return (T) this;
         }
-
         /**
          * Name of the route this REST services creates. The option is a
          * java.lang.String type.
          */
         public T routeId(String routeId) {
-            this.routeId = routeId;
+            this.properties.put("routeId", routeId);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getMethod() {
-            return method;
-        }
-
-        public void setMethod(String method) {
-            this.method = method;
-        }
-
-        public String getPath() {
-            return path;
-        }
-
-        public void setPath(String path) {
-            this.path = path;
-        }
-
-        public String getUriTemplate() {
-            return uriTemplate;
-        }
-
-        public void setUriTemplate(String uriTemplate) {
-            this.uriTemplate = uriTemplate;
-        }
-
-        public String getComponentName() {
-            return componentName;
-        }
-
-        public void setComponentName(String componentName) {
-            this.componentName = componentName;
-        }
-
-        public String getConsumes() {
-            return consumes;
-        }
-
-        public void setConsumes(String consumes) {
-            this.consumes = consumes;
-        }
-
-        public String getInType() {
-            return inType;
-        }
-
-        public void setInType(String inType) {
-            this.inType = inType;
-        }
-
-        public String getOutType() {
-            return outType;
-        }
-
-        public void setOutType(String outType) {
-            this.outType = outType;
-        }
-
-        public String getProduces() {
-            return produces;
-        }
-
-        public void setProduces(String produces) {
-            this.produces = produces;
-        }
-
-        public String getRouteId() {
-            return routeId;
-        }
-
-        public void setRouteId(String routeId) {
-            this.routeId = routeId;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class RestConsumer extends RestCommon<RestConsumer> {
-        private Boolean bridgeErrorHandler;
-        private String description;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class RestConsumer
+            extends
+                RestCommon<RestConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public RestConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -253,19 +149,17 @@ public class RestEndpoint {
          * ignored. The option is a boolean type.
          */
         public RestConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (RestConsumer) this;
         }
-
         /**
          * Human description to document this REST service. The option is a
          * java.lang.String type.
          */
         public RestConsumer description(String description) {
-            this.description = description;
+            this.properties.put("description", description);
             return (RestConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -274,68 +168,36 @@ public class RestEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public RestConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (RestConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public RestConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (RestConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class RestProducer extends RestCommon<RestProducer> {
-        private String apiDoc;
-        private RestBindingMode bindingMode;
-        private String host;
-        private String queryParameters;
-
+    public static class RestProducer
+            extends
+                RestCommon<RestProducer>
+            implements
+                EndpointDefinition.Producer {
+        public RestProducer(String path) {
+            super(path);
+        }
         /**
          * The swagger api doc resource to use. The resource is loaded from
          * classpath by default and must be in JSon format. The option is a
          * java.lang.String type.
          */
         public RestProducer apiDoc(String apiDoc) {
-            this.apiDoc = apiDoc;
+            this.properties.put("apiDoc", apiDoc);
             return (RestProducer) this;
         }
-
         /**
          * Configures the binding mode for the producer. If set to anything
          * other than 'off' the producer will try to convert the body of the
@@ -344,58 +206,24 @@ public class RestEndpoint {
          * org.apache.camel.spi.RestConfiguration.RestBindingMode type.
          */
         public RestProducer bindingMode(RestBindingMode bindingMode) {
-            this.bindingMode = bindingMode;
+            this.properties.put("bindingMode", bindingMode);
             return (RestProducer) this;
         }
-
         /**
          * Host and port of HTTP service to use (override host in swagger
          * schema). The option is a java.lang.String type.
          */
         public RestProducer host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (RestProducer) this;
         }
-
         /**
          * Query parameters for the HTTP service to call. The option is a
          * java.lang.String type.
          */
         public RestProducer queryParameters(String queryParameters) {
-            this.queryParameters = queryParameters;
+            this.properties.put("queryParameters", queryParameters);
             return (RestProducer) this;
-        }
-
-        public String getApiDoc() {
-            return apiDoc;
-        }
-
-        public void setApiDoc(String apiDoc) {
-            this.apiDoc = apiDoc;
-        }
-
-        public RestBindingMode getBindingMode() {
-            return bindingMode;
-        }
-
-        public void setBindingMode(RestBindingMode bindingMode) {
-            this.bindingMode = bindingMode;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public String getQueryParameters() {
-            return queryParameters;
-        }
-
-        public void setQueryParameters(String queryParameters) {
-            this.queryParameters = queryParameters;
         }
     }
 

@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * To collect various metrics directly from Camel routes using the DropWizard
@@ -28,199 +29,112 @@ import javax.annotation.Generated;
 public class MetricsEndpoint {
 
 
-    public static class MetricsCommon<T extends EndpointConfiguration>
+    public static class MetricsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private MetricsType metricsType;
-        private String metricsName;
-        private MetricsTimerAction action;
-        private Long decrement;
-        private Long increment;
-        private Long mark;
-        private Object subject;
-        private Long value;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        MetricsCommon(String path) {
+            super("metrics", path);
+        }
         /**
          * Type of metrics. The option is a
          * org.apache.camel.component.metrics.MetricsType type.
          */
         public T metricsType(MetricsType metricsType) {
-            this.metricsType = metricsType;
+            this.properties.put("metricsType", metricsType);
             return (T) this;
         }
-
         /**
          * Name of metrics. The option is a java.lang.String type.
          */
         public T metricsName(String metricsName) {
-            this.metricsName = metricsName;
+            this.properties.put("metricsName", metricsName);
             return (T) this;
         }
-
         /**
          * Action when using timer type. The option is a
          * org.apache.camel.component.metrics.MetricsTimerAction type.
          */
         public T action(MetricsTimerAction action) {
-            this.action = action;
+            this.properties.put("action", action);
             return (T) this;
         }
-
         /**
          * Decrement value when using counter type. The option is a
          * java.lang.Long type.
          */
         public T decrement(Long decrement) {
-            this.decrement = decrement;
+            this.properties.put("decrement", decrement);
             return (T) this;
         }
-
         /**
          * Increment value when using counter type. The option is a
          * java.lang.Long type.
          */
         public T increment(Long increment) {
-            this.increment = increment;
+            this.properties.put("increment", increment);
             return (T) this;
         }
-
         /**
          * Mark when using meter type. The option is a java.lang.Long type.
          */
         public T mark(Long mark) {
-            this.mark = mark;
+            this.properties.put("mark", mark);
             return (T) this;
         }
-
         /**
          * Subject value when using gauge type. The option is a java.lang.Object
          * type.
          */
         public T subject(Object subject) {
-            this.subject = subject;
+            this.properties.put("subject", subject);
             return (T) this;
         }
-
         /**
          * Value value when using histogram type. The option is a java.lang.Long
          * type.
          */
         public T value(Long value) {
-            this.value = value;
+            this.properties.put("value", value);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public MetricsType getMetricsType() {
-            return metricsType;
-        }
-
-        public void setMetricsType(MetricsType metricsType) {
-            this.metricsType = metricsType;
-        }
-
-        public String getMetricsName() {
-            return metricsName;
-        }
-
-        public void setMetricsName(String metricsName) {
-            this.metricsName = metricsName;
-        }
-
-        public MetricsTimerAction getAction() {
-            return action;
-        }
-
-        public void setAction(MetricsTimerAction action) {
-            this.action = action;
-        }
-
-        public Long getDecrement() {
-            return decrement;
-        }
-
-        public void setDecrement(Long decrement) {
-            this.decrement = decrement;
-        }
-
-        public Long getIncrement() {
-            return increment;
-        }
-
-        public void setIncrement(Long increment) {
-            this.increment = increment;
-        }
-
-        public Long getMark() {
-            return mark;
-        }
-
-        public void setMark(Long mark) {
-            this.mark = mark;
-        }
-
-        public Object getSubject() {
-            return subject;
-        }
-
-        public void setSubject(Object subject) {
-            this.subject = subject;
-        }
-
-        public Long getValue() {
-            return value;
-        }
-
-        public void setValue(Long value) {
-            this.value = value;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class MetricsConsumer
             extends
-                MetricsCommon<MetricsConsumer> {
+                MetricsCommon<MetricsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public MetricsConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class MetricsProducer
             extends
-                MetricsCommon<MetricsProducer> {
+                MetricsCommon<MetricsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public MetricsProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum MetricsType {

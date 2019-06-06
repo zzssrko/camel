@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,71 +31,47 @@ import org.apache.camel.spi.ExceptionHandler;
 public class DirectEndpoint {
 
 
-    public static class DirectCommon<T extends EndpointConfiguration>
+    public static class DirectCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        DirectCommon(String path) {
+            super("direct", path);
+        }
         /**
          * Name of direct endpoint. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class DirectConsumer extends DirectCommon<DirectConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class DirectConsumer
+            extends
+                DirectCommon<DirectConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DirectConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -105,10 +82,9 @@ public class DirectEndpoint {
          * ignored. The option is a boolean type.
          */
         public DirectConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (DirectConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -117,100 +93,52 @@ public class DirectEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public DirectConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (DirectConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public DirectConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (DirectConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class DirectProducer extends DirectCommon<DirectProducer> {
-        private Boolean block;
-        private Boolean failIfNoConsumers;
-        private Long timeout;
-
+    public static class DirectProducer
+            extends
+                DirectCommon<DirectProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DirectProducer(String path) {
+            super(path);
+        }
         /**
          * If sending a message to a direct endpoint which has no active
          * consumer, then we can tell the producer to block and wait for the
          * consumer to become active. The option is a boolean type.
          */
         public DirectProducer block(boolean block) {
-            this.block = block;
+            this.properties.put("block", block);
             return (DirectProducer) this;
         }
-
         /**
          * Whether the producer should fail by throwing an exception, when
          * sending to a DIRECT endpoint with no active consumers. The option is
          * a boolean type.
          */
         public DirectProducer failIfNoConsumers(boolean failIfNoConsumers) {
-            this.failIfNoConsumers = failIfNoConsumers;
+            this.properties.put("failIfNoConsumers", failIfNoConsumers);
             return (DirectProducer) this;
         }
-
         /**
          * The timeout value to use if block is enabled. The option is a long
          * type.
          */
         public DirectProducer timeout(long timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (DirectProducer) this;
-        }
-
-        public Boolean getBlock() {
-            return block;
-        }
-
-        public void setBlock(Boolean block) {
-            this.block = block;
-        }
-
-        public Boolean getFailIfNoConsumers() {
-            return failIfNoConsumers;
-        }
-
-        public void setFailIfNoConsumers(Boolean failIfNoConsumers) {
-            this.failIfNoConsumers = failIfNoConsumers;
-        }
-
-        public Long getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Long timeout) {
-            this.timeout = timeout;
         }
     }
 }

@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The geocoder component is used for looking up geocodes (latitude and
@@ -28,304 +29,157 @@ import javax.annotation.Generated;
 public class GeoCoderEndpoint {
 
 
-    public static class GeoCoderCommon<T extends EndpointConfiguration>
+    public static class GeoCoderCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String address;
-        private String latlng;
-        private Boolean headersOnly;
-        private String language;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String proxyAuthDomain;
-        private String proxyAuthHost;
-        private String proxyAuthMethod;
-        private String proxyAuthPassword;
-        private String proxyAuthUsername;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String apiKey;
-        private String clientId;
-        private String clientKey;
-
+                EndpointDefinition<T> {
+        GeoCoderCommon(String path) {
+            super("geocoder", path);
+        }
         /**
          * The geo address which should be prefixed with address:. The option is
          * a java.lang.String type.
          */
         public T address(String address) {
-            this.address = address;
+            this.properties.put("address", address);
             return (T) this;
         }
-
         /**
          * The geo latitude and longitude which should be prefixed with latlng:.
          * The option is a java.lang.String type.
          */
         public T latlng(String latlng) {
-            this.latlng = latlng;
+            this.properties.put("latlng", latlng);
             return (T) this;
         }
-
         /**
          * Whether to only enrich the Exchange with headers, and leave the body
          * as-is. The option is a boolean type.
          */
         public T headersOnly(boolean headersOnly) {
-            this.headersOnly = headersOnly;
+            this.properties.put("headersOnly", headersOnly);
             return (T) this;
         }
-
         /**
          * The language to use. The option is a java.lang.String type.
          */
         public T language(String language) {
-            this.language = language;
+            this.properties.put("language", language);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Domain for proxy NTML authentication. The option is a
          * java.lang.String type.
          */
         public T proxyAuthDomain(String proxyAuthDomain) {
-            this.proxyAuthDomain = proxyAuthDomain;
+            this.properties.put("proxyAuthDomain", proxyAuthDomain);
             return (T) this;
         }
-
         /**
          * Optional host for proxy NTML authentication. The option is a
          * java.lang.String type.
          */
         public T proxyAuthHost(String proxyAuthHost) {
-            this.proxyAuthHost = proxyAuthHost;
+            this.properties.put("proxyAuthHost", proxyAuthHost);
             return (T) this;
         }
-
         /**
          * Authentication method for proxy, either as Basic, Digest or NTLM. The
          * option is a java.lang.String type.
          */
         public T proxyAuthMethod(String proxyAuthMethod) {
-            this.proxyAuthMethod = proxyAuthMethod;
+            this.properties.put("proxyAuthMethod", proxyAuthMethod);
             return (T) this;
         }
-
         /**
          * Password for proxy authentication. The option is a java.lang.String
          * type.
          */
         public T proxyAuthPassword(String proxyAuthPassword) {
-            this.proxyAuthPassword = proxyAuthPassword;
+            this.properties.put("proxyAuthPassword", proxyAuthPassword);
             return (T) this;
         }
-
         /**
          * Username for proxy authentication. The option is a java.lang.String
          * type.
          */
         public T proxyAuthUsername(String proxyAuthUsername) {
-            this.proxyAuthUsername = proxyAuthUsername;
+            this.properties.put("proxyAuthUsername", proxyAuthUsername);
             return (T) this;
         }
-
         /**
          * The proxy host name. The option is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * The proxy port number. The option is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
-
         /**
          * To use google apiKey. The option is a java.lang.String type.
          */
         public T apiKey(String apiKey) {
-            this.apiKey = apiKey;
+            this.properties.put("apiKey", apiKey);
             return (T) this;
         }
-
         /**
          * To use google premium with this client id. The option is a
          * java.lang.String type.
          */
         public T clientId(String clientId) {
-            this.clientId = clientId;
+            this.properties.put("clientId", clientId);
             return (T) this;
         }
-
         /**
          * To use google premium with this client key. The option is a
          * java.lang.String type.
          */
         public T clientKey(String clientKey) {
-            this.clientKey = clientKey;
+            this.properties.put("clientKey", clientKey);
             return (T) this;
-        }
-
-        public String getAddress() {
-            return address;
-        }
-
-        public void setAddress(String address) {
-            this.address = address;
-        }
-
-        public String getLatlng() {
-            return latlng;
-        }
-
-        public void setLatlng(String latlng) {
-            this.latlng = latlng;
-        }
-
-        public Boolean getHeadersOnly() {
-            return headersOnly;
-        }
-
-        public void setHeadersOnly(Boolean headersOnly) {
-            this.headersOnly = headersOnly;
-        }
-
-        public String getLanguage() {
-            return language;
-        }
-
-        public void setLanguage(String language) {
-            this.language = language;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getProxyAuthDomain() {
-            return proxyAuthDomain;
-        }
-
-        public void setProxyAuthDomain(String proxyAuthDomain) {
-            this.proxyAuthDomain = proxyAuthDomain;
-        }
-
-        public String getProxyAuthHost() {
-            return proxyAuthHost;
-        }
-
-        public void setProxyAuthHost(String proxyAuthHost) {
-            this.proxyAuthHost = proxyAuthHost;
-        }
-
-        public String getProxyAuthMethod() {
-            return proxyAuthMethod;
-        }
-
-        public void setProxyAuthMethod(String proxyAuthMethod) {
-            this.proxyAuthMethod = proxyAuthMethod;
-        }
-
-        public String getProxyAuthPassword() {
-            return proxyAuthPassword;
-        }
-
-        public void setProxyAuthPassword(String proxyAuthPassword) {
-            this.proxyAuthPassword = proxyAuthPassword;
-        }
-
-        public String getProxyAuthUsername() {
-            return proxyAuthUsername;
-        }
-
-        public void setProxyAuthUsername(String proxyAuthUsername) {
-            this.proxyAuthUsername = proxyAuthUsername;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getApiKey() {
-            return apiKey;
-        }
-
-        public void setApiKey(String apiKey) {
-            this.apiKey = apiKey;
-        }
-
-        public String getClientId() {
-            return clientId;
-        }
-
-        public void setClientId(String clientId) {
-            this.clientId = clientId;
-        }
-
-        public String getClientKey() {
-            return clientKey;
-        }
-
-        public void setClientKey(String clientKey) {
-            this.clientKey = clientKey;
         }
     }
 
     public static class GeoCoderConsumer
             extends
-                GeoCoderCommon<GeoCoderConsumer> {
+                GeoCoderCommon<GeoCoderConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GeoCoderConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class GeoCoderProducer
             extends
-                GeoCoderCommon<GeoCoderProducer> {
+                GeoCoderCommon<GeoCoderProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GeoCoderProducer(String path) {
+            super(path);
+        }
     }
 }

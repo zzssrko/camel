@@ -36,6 +36,7 @@ import org.apache.camel.model.OnCompletionDefinition;
 import org.apache.camel.model.OnExceptionDefinition;
 import org.apache.camel.model.RouteDefinition;
 import org.apache.camel.model.RoutesDefinition;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.model.rest.RestConfigurationDefinition;
 import org.apache.camel.model.rest.RestDefinition;
 import org.apache.camel.model.rest.RestsDefinition;
@@ -236,6 +237,13 @@ public abstract class RouteBuilder extends BuilderSupport implements RoutesBuild
     public RouteDefinition from(Endpoint endpoint) {
         getRouteCollection().setCamelContext(getContext());
         RouteDefinition answer = getRouteCollection().from(endpoint);
+        configureRoute(answer);
+        return answer;
+    }
+
+    public RouteDefinition from(EndpointDefinition.Consumer endpointDefinition) {
+        getRouteCollection().setCamelContext(getContext());
+        RouteDefinition answer = getRouteCollection().from(endpointDefinition);
         configureRoute(answer);
         return answer;
     }

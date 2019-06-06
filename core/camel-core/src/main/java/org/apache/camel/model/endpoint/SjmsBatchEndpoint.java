@@ -21,6 +21,7 @@ import javax.annotation.Generated;
 import org.apache.camel.AggregationStrategy;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.Predicate;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.HeaderFilterStrategy;
 
@@ -34,61 +35,38 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class SjmsBatchEndpoint {
 
 
-    public static class SjmsBatchCommon<T extends EndpointConfiguration>
+    public static class SjmsBatchCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String destinationName;
-        private AggregationStrategy aggregationStrategy;
-        private Boolean allowNullBody;
-        private Integer completionInterval;
-        private Predicate completionPredicate;
-        private Integer completionSize;
-        private Integer completionTimeout;
-        private Integer consumerCount;
-        private Boolean eagerCheckCompletion;
-        private Boolean includeAllJMSXProperties;
-        private Boolean mapJmsMessage;
-        private Integer pollDuration;
-        private Boolean sendEmptyMessageWhenIdle;
-        private Boolean asyncStartListener;
-        private Boolean basicPropertyBinding;
-        private HeaderFilterStrategy headerFilterStrategy;
-        private Object jmsKeyFormatStrategy;
-        private Integer keepAliveDelay;
-        private Object messageCreatedStrategy;
-        private Integer recoveryInterval;
-        private Boolean synchronous;
-        private ScheduledExecutorService timeoutCheckerExecutorService;
-
+                EndpointDefinition<T> {
+        SjmsBatchCommon(String path) {
+            super("sjms-batch", path);
+        }
         /**
          * The destination name. Only queues are supported, names may be
          * prefixed by 'queue:'. The option is a java.lang.String type.
          */
         public T destinationName(String destinationName) {
-            this.destinationName = destinationName;
+            this.properties.put("destinationName", destinationName);
             return (T) this;
         }
-
         /**
          * The aggregation strategy to use, which merges all the batched
          * messages into a single message. The option is a
          * org.apache.camel.AggregationStrategy type.
          */
         public T aggregationStrategy(AggregationStrategy aggregationStrategy) {
-            this.aggregationStrategy = aggregationStrategy;
+            this.properties.put("aggregationStrategy", aggregationStrategy);
             return (T) this;
         }
-
         /**
          * Whether to allow sending messages with no body. If this option is
          * false and the message body is null, then an JMSException is thrown.
          * The option is a boolean type.
          */
         public T allowNullBody(boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
+            this.properties.put("allowNullBody", allowNullBody);
             return (T) this;
         }
-
         /**
          * The completion interval in millis, which causes batches to be
          * completed in a scheduled fixed rate every interval. The batch may be
@@ -98,10 +76,9 @@ public class SjmsBatchEndpoint {
          * a int type.
          */
         public T completionInterval(int completionInterval) {
-            this.completionInterval = completionInterval;
+            this.properties.put("completionInterval", completionInterval);
             return (T) this;
         }
-
         /**
          * The completion predicate, which causes batches to be completed when
          * the predicate evaluates as true. The predicate can also be configured
@@ -111,19 +88,17 @@ public class SjmsBatchEndpoint {
          * message. The option is a java.lang.String type.
          */
         public T completionPredicate(Predicate completionPredicate) {
-            this.completionPredicate = completionPredicate;
+            this.properties.put("completionPredicate", completionPredicate);
             return (T) this;
         }
-
         /**
          * The number of messages consumed at which the batch will be completed.
          * The option is a int type.
          */
         public T completionSize(int completionSize) {
-            this.completionSize = completionSize;
+            this.properties.put("completionSize", completionSize);
             return (T) this;
         }
-
         /**
          * The timeout in millis from receipt of the first first message when
          * the batch will be completed. The batch may be empty if the timeout
@@ -132,18 +107,16 @@ public class SjmsBatchEndpoint {
          * only one can be configured. The option is a int type.
          */
         public T completionTimeout(int completionTimeout) {
-            this.completionTimeout = completionTimeout;
+            this.properties.put("completionTimeout", completionTimeout);
             return (T) this;
         }
-
         /**
          * The number of JMS sessions to consume from. The option is a int type.
          */
         public T consumerCount(int consumerCount) {
-            this.consumerCount = consumerCount;
+            this.properties.put("consumerCount", consumerCount);
             return (T) this;
         }
-
         /**
          * Use eager completion checking which means that the
          * completionPredicate will use the incoming Exchange. As opposed to
@@ -151,10 +124,9 @@ public class SjmsBatchEndpoint {
          * the aggregated Exchange. The option is a boolean type.
          */
         public T eagerCheckCompletion(boolean eagerCheckCompletion) {
-            this.eagerCheckCompletion = eagerCheckCompletion;
+            this.properties.put("eagerCheckCompletion", eagerCheckCompletion);
             return (T) this;
         }
-
         /**
          * Whether to include all JMSXxxx properties when mapping from JMS to
          * Camel Message. Setting this to true will include properties such as
@@ -163,10 +135,9 @@ public class SjmsBatchEndpoint {
          * boolean type.
          */
         public T includeAllJMSXProperties(boolean includeAllJMSXProperties) {
-            this.includeAllJMSXProperties = includeAllJMSXProperties;
+            this.properties.put("includeAllJMSXProperties", includeAllJMSXProperties);
             return (T) this;
         }
-
         /**
          * Specifies whether Camel should auto map the received JMS message to a
          * suited payload type, such as javax.jms.TextMessage to a String etc.
@@ -174,20 +145,18 @@ public class SjmsBatchEndpoint {
          * option is a boolean type.
          */
         public T mapJmsMessage(boolean mapJmsMessage) {
-            this.mapJmsMessage = mapJmsMessage;
+            this.properties.put("mapJmsMessage", mapJmsMessage);
             return (T) this;
         }
-
         /**
          * The duration in milliseconds of each poll for messages.
          * completionTimeOut will be used if it is shorter and a batch has
          * started. The option is a int type.
          */
         public T pollDuration(int pollDuration) {
-            this.pollDuration = pollDuration;
+            this.properties.put("pollDuration", pollDuration);
             return (T) this;
         }
-
         /**
          * If using completion timeout or interval, then the batch may be empty
          * if the timeout triggered and there was no messages in the batch. If
@@ -196,10 +165,9 @@ public class SjmsBatchEndpoint {
          * boolean type.
          */
         public T sendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (T) this;
         }
-
         /**
          * Whether to startup the consumer message listener asynchronously, when
          * starting a route. For example if a JmsConsumer cannot get a
@@ -214,30 +182,27 @@ public class SjmsBatchEndpoint {
          * boolean type.
          */
         public T asyncStartListener(boolean asyncStartListener) {
-            this.asyncStartListener = asyncStartListener;
+            this.properties.put("asyncStartListener", asyncStartListener);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
-
         /**
          * Pluggable strategy for encoding and decoding JMS keys so they can be
          * compliant with the JMS specification. Camel provides two
@@ -251,10 +216,9 @@ public class SjmsBatchEndpoint {
          * org.apache.camel.component.sjms.jms.JmsKeyFormatStrategy type.
          */
         public T jmsKeyFormatStrategy(Object jmsKeyFormatStrategy) {
-            this.jmsKeyFormatStrategy = jmsKeyFormatStrategy;
+            this.properties.put("jmsKeyFormatStrategy", jmsKeyFormatStrategy);
             return (T) this;
         }
-
         /**
          * The delay in millis between attempts to re-establish a valid session.
          * If this is a positive value the SjmsBatchConsumer will attempt to
@@ -266,10 +230,9 @@ public class SjmsBatchEndpoint {
          * it sees an IllegalStateException. The option is a int type.
          */
         public T keepAliveDelay(int keepAliveDelay) {
-            this.keepAliveDelay = keepAliveDelay;
+            this.properties.put("keepAliveDelay", keepAliveDelay);
             return (T) this;
         }
-
         /**
          * To use the given MessageCreatedStrategy which are invoked when Camel
          * creates new instances of javax.jms.Message objects when Camel is
@@ -277,30 +240,27 @@ public class SjmsBatchEndpoint {
          * org.apache.camel.component.sjms.jms.MessageCreatedStrategy type.
          */
         public T messageCreatedStrategy(Object messageCreatedStrategy) {
-            this.messageCreatedStrategy = messageCreatedStrategy;
+            this.properties.put("messageCreatedStrategy", messageCreatedStrategy);
             return (T) this;
         }
-
         /**
          * Specifies the interval between recovery attempts, i.e. when a
          * connection is being refreshed, in milliseconds. The default is 5000
          * ms, that is, 5 seconds. The option is a int type.
          */
         public T recoveryInterval(int recoveryInterval) {
-            this.recoveryInterval = recoveryInterval;
+            this.properties.put("recoveryInterval", recoveryInterval);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * If using the completionInterval option a background thread is created
          * to trigger the completion interval. Set this option to provide a
@@ -310,197 +270,19 @@ public class SjmsBatchEndpoint {
          */
         public T timeoutCheckerExecutorService(
                 ScheduledExecutorService timeoutCheckerExecutorService) {
-            this.timeoutCheckerExecutorService = timeoutCheckerExecutorService;
+            this.properties.put("timeoutCheckerExecutorService", timeoutCheckerExecutorService);
             return (T) this;
-        }
-
-        public String getDestinationName() {
-            return destinationName;
-        }
-
-        public void setDestinationName(String destinationName) {
-            this.destinationName = destinationName;
-        }
-
-        public AggregationStrategy getAggregationStrategy() {
-            return aggregationStrategy;
-        }
-
-        public void setAggregationStrategy(
-                AggregationStrategy aggregationStrategy) {
-            this.aggregationStrategy = aggregationStrategy;
-        }
-
-        public Boolean getAllowNullBody() {
-            return allowNullBody;
-        }
-
-        public void setAllowNullBody(Boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
-        }
-
-        public Integer getCompletionInterval() {
-            return completionInterval;
-        }
-
-        public void setCompletionInterval(Integer completionInterval) {
-            this.completionInterval = completionInterval;
-        }
-
-        public Predicate getCompletionPredicate() {
-            return completionPredicate;
-        }
-
-        public void setCompletionPredicate(Predicate completionPredicate) {
-            this.completionPredicate = completionPredicate;
-        }
-
-        public Integer getCompletionSize() {
-            return completionSize;
-        }
-
-        public void setCompletionSize(Integer completionSize) {
-            this.completionSize = completionSize;
-        }
-
-        public Integer getCompletionTimeout() {
-            return completionTimeout;
-        }
-
-        public void setCompletionTimeout(Integer completionTimeout) {
-            this.completionTimeout = completionTimeout;
-        }
-
-        public Integer getConsumerCount() {
-            return consumerCount;
-        }
-
-        public void setConsumerCount(Integer consumerCount) {
-            this.consumerCount = consumerCount;
-        }
-
-        public Boolean getEagerCheckCompletion() {
-            return eagerCheckCompletion;
-        }
-
-        public void setEagerCheckCompletion(Boolean eagerCheckCompletion) {
-            this.eagerCheckCompletion = eagerCheckCompletion;
-        }
-
-        public Boolean getIncludeAllJMSXProperties() {
-            return includeAllJMSXProperties;
-        }
-
-        public void setIncludeAllJMSXProperties(Boolean includeAllJMSXProperties) {
-            this.includeAllJMSXProperties = includeAllJMSXProperties;
-        }
-
-        public Boolean getMapJmsMessage() {
-            return mapJmsMessage;
-        }
-
-        public void setMapJmsMessage(Boolean mapJmsMessage) {
-            this.mapJmsMessage = mapJmsMessage;
-        }
-
-        public Integer getPollDuration() {
-            return pollDuration;
-        }
-
-        public void setPollDuration(Integer pollDuration) {
-            this.pollDuration = pollDuration;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public Boolean getAsyncStartListener() {
-            return asyncStartListener;
-        }
-
-        public void setAsyncStartListener(Boolean asyncStartListener) {
-            this.asyncStartListener = asyncStartListener;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public HeaderFilterStrategy getHeaderFilterStrategy() {
-            return headerFilterStrategy;
-        }
-
-        public void setHeaderFilterStrategy(
-                HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
-        }
-
-        public Object getJmsKeyFormatStrategy() {
-            return jmsKeyFormatStrategy;
-        }
-
-        public void setJmsKeyFormatStrategy(Object jmsKeyFormatStrategy) {
-            this.jmsKeyFormatStrategy = jmsKeyFormatStrategy;
-        }
-
-        public Integer getKeepAliveDelay() {
-            return keepAliveDelay;
-        }
-
-        public void setKeepAliveDelay(Integer keepAliveDelay) {
-            this.keepAliveDelay = keepAliveDelay;
-        }
-
-        public Object getMessageCreatedStrategy() {
-            return messageCreatedStrategy;
-        }
-
-        public void setMessageCreatedStrategy(Object messageCreatedStrategy) {
-            this.messageCreatedStrategy = messageCreatedStrategy;
-        }
-
-        public Integer getRecoveryInterval() {
-            return recoveryInterval;
-        }
-
-        public void setRecoveryInterval(Integer recoveryInterval) {
-            this.recoveryInterval = recoveryInterval;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public ScheduledExecutorService getTimeoutCheckerExecutorService() {
-            return timeoutCheckerExecutorService;
-        }
-
-        public void setTimeoutCheckerExecutorService(
-                ScheduledExecutorService timeoutCheckerExecutorService) {
-            this.timeoutCheckerExecutorService = timeoutCheckerExecutorService;
         }
     }
 
     public static class SjmsBatchConsumer
             extends
-                SjmsBatchCommon<SjmsBatchConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                SjmsBatchCommon<SjmsBatchConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SjmsBatchConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -511,10 +293,9 @@ public class SjmsBatchEndpoint {
          * ignored. The option is a boolean type.
          */
         public SjmsBatchConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SjmsBatchConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -524,46 +305,26 @@ public class SjmsBatchEndpoint {
          */
         public SjmsBatchConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SjmsBatchConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SjmsBatchConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SjmsBatchConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class SjmsBatchProducer
             extends
-                SjmsBatchCommon<SjmsBatchProducer> {
+                SjmsBatchCommon<SjmsBatchProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SjmsBatchProducer(String path) {
+            super(path);
+        }
     }
 }

@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * To lookup domain information and run DNS queries using DNSJava.
@@ -27,71 +28,58 @@ import javax.annotation.Generated;
 public class DnsEndpoint {
 
 
-    public static class DnsCommon<T extends EndpointConfiguration>
+    public static class DnsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private DnsType dnsType;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        DnsCommon(String path) {
+            super("dns", path);
+        }
         /**
          * The type of the lookup. The option is a
          * org.apache.camel.component.dns.DnsType type.
          */
         public T dnsType(DnsType dnsType) {
-            this.dnsType = dnsType;
+            this.properties.put("dnsType", dnsType);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public DnsType getDnsType() {
-            return dnsType;
-        }
-
-        public void setDnsType(DnsType dnsType) {
-            this.dnsType = dnsType;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class DnsConsumer
+            extends
+                DnsCommon<DnsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DnsConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class DnsConsumer extends DnsCommon<DnsConsumer> {
-    }
-
-    public static class DnsProducer extends DnsCommon<DnsProducer> {
+    public static class DnsProducer
+            extends
+                DnsCommon<DnsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DnsProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum DnsType {

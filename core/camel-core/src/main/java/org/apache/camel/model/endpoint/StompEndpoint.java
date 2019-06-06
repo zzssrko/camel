@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.HeaderFilterStrategy;
 
@@ -31,178 +32,93 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class StompEndpoint {
 
 
-    public static class StompCommon<T extends EndpointConfiguration>
+    public static class StompCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String destination;
-        private String brokerURL;
-        private String host;
-        private Boolean basicPropertyBinding;
-        private HeaderFilterStrategy headerFilterStrategy;
-        private Boolean synchronous;
-        private String login;
-        private String passcode;
-        private Object sslContextParameters;
-
+                EndpointDefinition<T> {
+        StompCommon(String path) {
+            super("stomp", path);
+        }
         /**
          * Name of the queue. The option is a java.lang.String type.
          */
         public T destination(String destination) {
-            this.destination = destination;
+            this.properties.put("destination", destination);
             return (T) this;
         }
-
         /**
          * The URI of the Stomp broker to connect to. The option is a
          * java.lang.String type.
          */
         public T brokerURL(String brokerURL) {
-            this.brokerURL = brokerURL;
+            this.properties.put("brokerURL", brokerURL);
             return (T) this;
         }
-
         /**
          * The virtual host name. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * The username. The option is a java.lang.String type.
          */
         public T login(String login) {
-            this.login = login;
+            this.properties.put("login", login);
             return (T) this;
         }
-
         /**
          * The password. The option is a java.lang.String type.
          */
         public T passcode(String passcode) {
-            this.passcode = passcode;
+            this.properties.put("passcode", passcode);
             return (T) this;
         }
-
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
-        }
-
-        public String getDestination() {
-            return destination;
-        }
-
-        public void setDestination(String destination) {
-            this.destination = destination;
-        }
-
-        public String getBrokerURL() {
-            return brokerURL;
-        }
-
-        public void setBrokerURL(String brokerURL) {
-            this.brokerURL = brokerURL;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public HeaderFilterStrategy getHeaderFilterStrategy() {
-            return headerFilterStrategy;
-        }
-
-        public void setHeaderFilterStrategy(
-                HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getLogin() {
-            return login;
-        }
-
-        public void setLogin(String login) {
-            this.login = login;
-        }
-
-        public String getPasscode() {
-            return passcode;
-        }
-
-        public void setPasscode(String passcode) {
-            this.passcode = passcode;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
         }
     }
 
-    public static class StompConsumer extends StompCommon<StompConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class StompConsumer
+            extends
+                StompCommon<StompConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public StompConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -213,10 +129,9 @@ public class StompEndpoint {
          * ignored. The option is a boolean type.
          */
         public StompConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (StompConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -225,44 +140,26 @@ public class StompEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public StompConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (StompConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public StompConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (StompConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class StompProducer extends StompCommon<StompProducer> {
+    public static class StompProducer
+            extends
+                StompCommon<StompProducer>
+            implements
+                EndpointDefinition.Producer {
+        public StompProducer(String path) {
+            super(path);
+        }
     }
 }

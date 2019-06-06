@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The mock component is used for testing routes and mediation rules using
@@ -28,80 +29,57 @@ import javax.annotation.Generated;
 public class MockEndpoint {
 
 
-    public static class MockCommon<T extends EndpointConfiguration>
+    public static class MockCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        MockCommon(String path) {
+            super("mock", path);
+        }
         /**
          * Name of mock endpoint. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class MockConsumer
+            extends
+                MockCommon<MockConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public MockConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class MockConsumer extends MockCommon<MockConsumer> {
-    }
-
-    public static class MockProducer extends MockCommon<MockProducer> {
-        private Long assertPeriod;
-        private Integer expectedCount;
-        private Integer reportGroup;
-        private Long resultMinimumWaitTime;
-        private Long resultWaitTime;
-        private Integer retainFirst;
-        private Integer retainLast;
-        private Long sleepForEmptyTest;
-        private Boolean copyOnExchange;
-
+    public static class MockProducer
+            extends
+                MockCommon<MockProducer>
+            implements
+                EndpointDefinition.Producer {
+        public MockProducer(String path) {
+            super(path);
+        }
         /**
          * Sets a grace period after which the mock endpoint will re-assert to
          * ensure the preliminary assertion is still valid. This is used for
@@ -114,10 +92,9 @@ public class MockEndpoint {
          * type.
          */
         public MockProducer assertPeriod(long assertPeriod) {
-            this.assertPeriod = assertPeriod;
+            this.properties.put("assertPeriod", assertPeriod);
             return (MockProducer) this;
         }
-
         /**
          * Specifies the expected number of message exchanges that should be
          * received by this endpoint. Beware: If you want to expect that 0
@@ -133,39 +110,35 @@ public class MockEndpoint {
          * for further details. The option is a int type.
          */
         public MockProducer expectedCount(int expectedCount) {
-            this.expectedCount = expectedCount;
+            this.properties.put("expectedCount", expectedCount);
             return (MockProducer) this;
         }
-
         /**
          * A number that is used to turn on throughput logging based on groups
          * of the size. The option is a int type.
          */
         public MockProducer reportGroup(int reportGroup) {
-            this.reportGroup = reportGroup;
+            this.properties.put("reportGroup", reportGroup);
             return (MockProducer) this;
         }
-
         /**
          * Sets the minimum expected amount of time (in millis) the
          * assertIsSatisfied() will wait on a latch until it is satisfied. The
          * option is a long type.
          */
         public MockProducer resultMinimumWaitTime(long resultMinimumWaitTime) {
-            this.resultMinimumWaitTime = resultMinimumWaitTime;
+            this.properties.put("resultMinimumWaitTime", resultMinimumWaitTime);
             return (MockProducer) this;
         }
-
         /**
          * Sets the maximum amount of time (in millis) the assertIsSatisfied()
          * will wait on a latch until it is satisfied. The option is a long
          * type.
          */
         public MockProducer resultWaitTime(long resultWaitTime) {
-            this.resultWaitTime = resultWaitTime;
+            this.properties.put("resultWaitTime", resultWaitTime);
             return (MockProducer) this;
         }
-
         /**
          * Specifies to only retain the first n'th number of received Exchanges.
          * This is used when testing with big data, to reduce memory consumption
@@ -183,10 +156,9 @@ public class MockEndpoint {
          * both the first and last received. The option is a int type.
          */
         public MockProducer retainFirst(int retainFirst) {
-            this.retainFirst = retainFirst;
+            this.properties.put("retainFirst", retainFirst);
             return (MockProducer) this;
         }
-
         /**
          * Specifies to only retain the last n'th number of received Exchanges.
          * This is used when testing with big data, to reduce memory consumption
@@ -204,100 +176,26 @@ public class MockEndpoint {
          * first and last received. The option is a int type.
          */
         public MockProducer retainLast(int retainLast) {
-            this.retainLast = retainLast;
+            this.properties.put("retainLast", retainLast);
             return (MockProducer) this;
         }
-
         /**
          * Allows a sleep to be specified to wait to check that this endpoint
          * really is empty when expectedMessageCount(int) is called with zero.
          * The option is a long type.
          */
         public MockProducer sleepForEmptyTest(long sleepForEmptyTest) {
-            this.sleepForEmptyTest = sleepForEmptyTest;
+            this.properties.put("sleepForEmptyTest", sleepForEmptyTest);
             return (MockProducer) this;
         }
-
         /**
          * Sets whether to make a deep copy of the incoming Exchange when
          * received at this mock endpoint. Is by default true. The option is a
          * boolean type.
          */
         public MockProducer copyOnExchange(boolean copyOnExchange) {
-            this.copyOnExchange = copyOnExchange;
+            this.properties.put("copyOnExchange", copyOnExchange);
             return (MockProducer) this;
-        }
-
-        public Long getAssertPeriod() {
-            return assertPeriod;
-        }
-
-        public void setAssertPeriod(Long assertPeriod) {
-            this.assertPeriod = assertPeriod;
-        }
-
-        public Integer getExpectedCount() {
-            return expectedCount;
-        }
-
-        public void setExpectedCount(Integer expectedCount) {
-            this.expectedCount = expectedCount;
-        }
-
-        public Integer getReportGroup() {
-            return reportGroup;
-        }
-
-        public void setReportGroup(Integer reportGroup) {
-            this.reportGroup = reportGroup;
-        }
-
-        public Long getResultMinimumWaitTime() {
-            return resultMinimumWaitTime;
-        }
-
-        public void setResultMinimumWaitTime(Long resultMinimumWaitTime) {
-            this.resultMinimumWaitTime = resultMinimumWaitTime;
-        }
-
-        public Long getResultWaitTime() {
-            return resultWaitTime;
-        }
-
-        public void setResultWaitTime(Long resultWaitTime) {
-            this.resultWaitTime = resultWaitTime;
-        }
-
-        public Integer getRetainFirst() {
-            return retainFirst;
-        }
-
-        public void setRetainFirst(Integer retainFirst) {
-            this.retainFirst = retainFirst;
-        }
-
-        public Integer getRetainLast() {
-            return retainLast;
-        }
-
-        public void setRetainLast(Integer retainLast) {
-            this.retainLast = retainLast;
-        }
-
-        public Long getSleepForEmptyTest() {
-            return sleepForEmptyTest;
-        }
-
-        public void setSleepForEmptyTest(Long sleepForEmptyTest) {
-            this.sleepForEmptyTest = sleepForEmptyTest;
-        }
-
-        public Boolean getCopyOnExchange() {
-            return copyOnExchange;
-        }
-
-        public void setCopyOnExchange(Boolean copyOnExchange) {
-            this.copyOnExchange = copyOnExchange;
         }
     }
 }

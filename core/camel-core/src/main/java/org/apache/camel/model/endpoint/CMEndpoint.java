@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The cm-sms component allows to integrate with CM SMS Gateway.
@@ -27,35 +28,28 @@ import javax.annotation.Generated;
 public class CMEndpoint {
 
 
-    public static class CMCommon<T extends EndpointConfiguration>
+    public static class CMCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private String defaultFrom;
-        private Integer defaultMaxNumberOfParts;
-        private String productToken;
-        private Boolean testConnectionOnStartup;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        CMCommon(String path) {
+            super("cm-sms", path);
+        }
         /**
          * SMS Provider HOST with scheme. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * This is the sender name. The maximum length is 11 characters. The
          * option is a
          * (@javax.validation.constraints.NotNull,@javax.validation.constraints.Size(min=1, max=11) :: java.lang.String) type.
          */
         public T defaultFrom(String defaultFrom) {
-            this.defaultFrom = defaultFrom;
+            this.properties.put("defaultFrom", defaultFrom);
             return (T) this;
         }
-
         /**
          * If it is a multipart message forces the max number. Message can be
          * truncated. Technically the gateway will first check if a message is
@@ -65,108 +59,62 @@ public class CMEndpoint {
          * (@javax.validation.constraints.Min(1L),@javax.validation.constraints.Max(8L) :: int) type.
          */
         public T defaultMaxNumberOfParts(int defaultMaxNumberOfParts) {
-            this.defaultMaxNumberOfParts = defaultMaxNumberOfParts;
+            this.properties.put("defaultMaxNumberOfParts", defaultMaxNumberOfParts);
             return (T) this;
         }
-
         /**
          * The unique token to use. The option is a
          * (@javax.validation.constraints.NotNull :: java.lang.String) type.
          */
         public T productToken(String productToken) {
-            this.productToken = productToken;
+            this.properties.put("productToken", productToken);
             return (T) this;
         }
-
         /**
          * Whether to test the connection to the SMS Gateway on startup. The
          * option is a boolean type.
          */
         public T testConnectionOnStartup(boolean testConnectionOnStartup) {
-            this.testConnectionOnStartup = testConnectionOnStartup;
+            this.properties.put("testConnectionOnStartup", testConnectionOnStartup);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public String getDefaultFrom() {
-            return defaultFrom;
-        }
-
-        public void setDefaultFrom(String defaultFrom) {
-            this.defaultFrom = defaultFrom;
-        }
-
-        public Integer getDefaultMaxNumberOfParts() {
-            return defaultMaxNumberOfParts;
-        }
-
-        public void setDefaultMaxNumberOfParts(Integer defaultMaxNumberOfParts) {
-            this.defaultMaxNumberOfParts = defaultMaxNumberOfParts;
-        }
-
-        public String getProductToken() {
-            return productToken;
-        }
-
-        public void setProductToken(String productToken) {
-            this.productToken = productToken;
-        }
-
-        public Boolean getTestConnectionOnStartup() {
-            return testConnectionOnStartup;
-        }
-
-        public void setTestConnectionOnStartup(Boolean testConnectionOnStartup) {
-            this.testConnectionOnStartup = testConnectionOnStartup;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class CMConsumer
+            extends
+                CMCommon<CMConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public CMConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class CMConsumer extends CMCommon<CMConsumer> {
-    }
-
-    public static class CMProducer extends CMCommon<CMProducer> {
+    public static class CMProducer
+            extends
+                CMCommon<CMProducer>
+            implements
+                EndpointDefinition.Producer {
+        public CMProducer(String path) {
+            super(path);
+        }
     }
 }

@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * Validates the payload of a message using XML Schema and JAXP Validation.
@@ -27,22 +28,12 @@ import javax.annotation.Generated;
 public class ValidatorEndpoint {
 
 
-    public static class ValidatorCommon<T extends EndpointConfiguration>
+    public static class ValidatorCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String resourceUri;
-        private Boolean failOnNullBody;
-        private Boolean failOnNullHeader;
-        private String headerName;
-        private Boolean basicPropertyBinding;
-        private Object errorHandler;
-        private Object resourceResolver;
-        private Object resourceResolverFactory;
-        private Object schemaFactory;
-        private String schemaLanguage;
-        private Boolean synchronous;
-        private Boolean useSharedSchema;
-
+                EndpointDefinition<T> {
+        ValidatorCommon(String path) {
+            super("validator", path);
+        }
         /**
          * URL to a local resource on the classpath,or a reference to lookup a
          * bean in the Registry, or a full URL to a remote resource or resource
@@ -50,46 +41,41 @@ public class ValidatorEndpoint {
          * option is a java.lang.String type.
          */
         public T resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
+            this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
-
         /**
          * Whether to fail if no body exists. The option is a boolean type.
          */
         public T failOnNullBody(boolean failOnNullBody) {
-            this.failOnNullBody = failOnNullBody;
+            this.properties.put("failOnNullBody", failOnNullBody);
             return (T) this;
         }
-
         /**
          * Whether to fail if no header exists when validating against a header.
          * The option is a boolean type.
          */
         public T failOnNullHeader(boolean failOnNullHeader) {
-            this.failOnNullHeader = failOnNullHeader;
+            this.properties.put("failOnNullHeader", failOnNullHeader);
             return (T) this;
         }
-
         /**
          * To validate against a header instead of the message body. The option
          * is a java.lang.String type.
          */
         public T headerName(String headerName) {
-            this.headerName = headerName;
+            this.properties.put("headerName", headerName);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use a custom
          * org.apache.camel.processor.validation.ValidatorErrorHandler. The
@@ -99,20 +85,18 @@ public class ValidatorEndpoint {
          * type.
          */
         public T errorHandler(Object errorHandler) {
-            this.errorHandler = errorHandler;
+            this.properties.put("errorHandler", errorHandler);
             return (T) this;
         }
-
         /**
          * To use a custom LSResourceResolver. See also
          * setResourceResolverFactory(ValidatorResourceResolverFactory). The
          * option is a org.w3c.dom.ls.LSResourceResolver type.
          */
         public T resourceResolver(Object resourceResolver) {
-            this.resourceResolver = resourceResolver;
+            this.properties.put("resourceResolver", resourceResolver);
             return (T) this;
         }
-
         /**
          * For creating a resource resolver which depends on the endpoint
          * resource URI. Must not be used in combination with method
@@ -122,152 +106,62 @@ public class ValidatorEndpoint {
          * type.
          */
         public T resourceResolverFactory(Object resourceResolverFactory) {
-            this.resourceResolverFactory = resourceResolverFactory;
+            this.properties.put("resourceResolverFactory", resourceResolverFactory);
             return (T) this;
         }
-
         /**
          * To use a custom javax.xml.validation.SchemaFactory. The option is a
          * javax.xml.validation.SchemaFactory type.
          */
         public T schemaFactory(Object schemaFactory) {
-            this.schemaFactory = schemaFactory;
+            this.properties.put("schemaFactory", schemaFactory);
             return (T) this;
         }
-
         /**
          * Configures the W3C XML Schema Namespace URI. The option is a
          * java.lang.String type.
          */
         public T schemaLanguage(String schemaLanguage) {
-            this.schemaLanguage = schemaLanguage;
+            this.properties.put("schemaLanguage", schemaLanguage);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Whether the Schema instance should be shared or not. This option is
          * introduced to work around a JDK 1.6.x bug. Xerces should not have
          * this issue. The option is a boolean type.
          */
         public T useSharedSchema(boolean useSharedSchema) {
-            this.useSharedSchema = useSharedSchema;
+            this.properties.put("useSharedSchema", useSharedSchema);
             return (T) this;
-        }
-
-        public String getResourceUri() {
-            return resourceUri;
-        }
-
-        public void setResourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-        }
-
-        public Boolean getFailOnNullBody() {
-            return failOnNullBody;
-        }
-
-        public void setFailOnNullBody(Boolean failOnNullBody) {
-            this.failOnNullBody = failOnNullBody;
-        }
-
-        public Boolean getFailOnNullHeader() {
-            return failOnNullHeader;
-        }
-
-        public void setFailOnNullHeader(Boolean failOnNullHeader) {
-            this.failOnNullHeader = failOnNullHeader;
-        }
-
-        public String getHeaderName() {
-            return headerName;
-        }
-
-        public void setHeaderName(String headerName) {
-            this.headerName = headerName;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getErrorHandler() {
-            return errorHandler;
-        }
-
-        public void setErrorHandler(Object errorHandler) {
-            this.errorHandler = errorHandler;
-        }
-
-        public Object getResourceResolver() {
-            return resourceResolver;
-        }
-
-        public void setResourceResolver(Object resourceResolver) {
-            this.resourceResolver = resourceResolver;
-        }
-
-        public Object getResourceResolverFactory() {
-            return resourceResolverFactory;
-        }
-
-        public void setResourceResolverFactory(Object resourceResolverFactory) {
-            this.resourceResolverFactory = resourceResolverFactory;
-        }
-
-        public Object getSchemaFactory() {
-            return schemaFactory;
-        }
-
-        public void setSchemaFactory(Object schemaFactory) {
-            this.schemaFactory = schemaFactory;
-        }
-
-        public String getSchemaLanguage() {
-            return schemaLanguage;
-        }
-
-        public void setSchemaLanguage(String schemaLanguage) {
-            this.schemaLanguage = schemaLanguage;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Boolean getUseSharedSchema() {
-            return useSharedSchema;
-        }
-
-        public void setUseSharedSchema(Boolean useSharedSchema) {
-            this.useSharedSchema = useSharedSchema;
         }
     }
 
     public static class ValidatorConsumer
             extends
-                ValidatorCommon<ValidatorConsumer> {
+                ValidatorCommon<ValidatorConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ValidatorConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class ValidatorProducer
             extends
-                ValidatorCommon<ValidatorProducer> {
+                ValidatorCommon<ValidatorProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ValidatorProducer(String path) {
+            super(path);
+        }
     }
 }

@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The aws-sdb component is for storing and retrieving data from/to Amazon's SDB
@@ -28,231 +29,128 @@ import javax.annotation.Generated;
 public class SdbEndpoint {
 
 
-    public static class SdbCommon<T extends EndpointConfiguration>
+    public static class SdbCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String domainName;
-        private String accessKey;
-        private Object amazonSDBClient;
-        private Boolean consistentRead;
-        private Integer maxNumberOfDomains;
-        private SdbOperations operation;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String region;
-        private String secretKey;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        SdbCommon(String path) {
+            super("aws-sdb", path);
+        }
         /**
          * The name of the domain currently worked with. The option is a
          * java.lang.String type.
          */
         public T domainName(String domainName) {
-            this.domainName = domainName;
+            this.properties.put("domainName", domainName);
             return (T) this;
         }
-
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public T accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (T) this;
         }
-
         /**
          * To use the AmazonSimpleDB as the client. The option is a
          * com.amazonaws.services.simpledb.AmazonSimpleDB type.
          */
         public T amazonSDBClient(Object amazonSDBClient) {
-            this.amazonSDBClient = amazonSDBClient;
+            this.properties.put("amazonSDBClient", amazonSDBClient);
             return (T) this;
         }
-
         /**
          * Determines whether or not strong consistency should be enforced when
          * data is read. The option is a boolean type.
          */
         public T consistentRead(boolean consistentRead) {
-            this.consistentRead = consistentRead;
+            this.properties.put("consistentRead", consistentRead);
             return (T) this;
         }
-
         /**
          * The maximum number of domain names you want returned. The range is 1
          * to 100. The option is a java.lang.Integer type.
          */
         public T maxNumberOfDomains(Integer maxNumberOfDomains) {
-            this.maxNumberOfDomains = maxNumberOfDomains;
+            this.properties.put("maxNumberOfDomains", maxNumberOfDomains);
             return (T) this;
         }
-
         /**
          * Operation to perform. The option is a
          * org.apache.camel.component.aws.sdb.SdbOperations type.
          */
         public T operation(SdbOperations operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * To define a proxy host when instantiating the SDB client. The option
          * is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * To define a proxy port when instantiating the SDB client. The option
          * is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
-
         /**
          * The region in which SDB client needs to work. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public T secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getDomainName() {
-            return domainName;
-        }
-
-        public void setDomainName(String domainName) {
-            this.domainName = domainName;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public Object getAmazonSDBClient() {
-            return amazonSDBClient;
-        }
-
-        public void setAmazonSDBClient(Object amazonSDBClient) {
-            this.amazonSDBClient = amazonSDBClient;
-        }
-
-        public Boolean getConsistentRead() {
-            return consistentRead;
-        }
-
-        public void setConsistentRead(Boolean consistentRead) {
-            this.consistentRead = consistentRead;
-        }
-
-        public Integer getMaxNumberOfDomains() {
-            return maxNumberOfDomains;
-        }
-
-        public void setMaxNumberOfDomains(Integer maxNumberOfDomains) {
-            this.maxNumberOfDomains = maxNumberOfDomains;
-        }
-
-        public SdbOperations getOperation() {
-            return operation;
-        }
-
-        public void setOperation(SdbOperations operation) {
-            this.operation = operation;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class SdbConsumer
+            extends
+                SdbCommon<SdbConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SdbConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class SdbConsumer extends SdbCommon<SdbConsumer> {
-    }
-
-    public static class SdbProducer extends SdbCommon<SdbProducer> {
+    public static class SdbProducer
+            extends
+                SdbCommon<SdbProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SdbProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum SdbOperations {

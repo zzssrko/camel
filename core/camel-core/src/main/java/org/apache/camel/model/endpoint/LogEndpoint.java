@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The log component logs message exchanges to the underlying logging mechanism.
@@ -27,173 +28,132 @@ import javax.annotation.Generated;
 public class LogEndpoint {
 
 
-    public static class LogCommon<T extends EndpointConfiguration>
+    public static class LogCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String loggerName;
-        private Boolean groupActiveOnly;
-        private Long groupDelay;
-        private Long groupInterval;
-        private Integer groupSize;
-        private String level;
-        private Boolean logMask;
-        private String marker;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private Integer maxChars;
-        private Boolean multiline;
-        private Boolean showAll;
-        private Boolean showBody;
-        private Boolean showBodyType;
-        private Boolean showCaughtException;
-        private Boolean showException;
-        private Boolean showExchangeId;
-        private Boolean showExchangePattern;
-        private Boolean showFiles;
-        private Boolean showFuture;
-        private Boolean showHeaders;
-        private Boolean showOut;
-        private Boolean showProperties;
-        private Boolean showStackTrace;
-        private Boolean showStreams;
-        private Boolean skipBodyLineSeparator;
-        private OutputStyle style;
-
+                EndpointDefinition<T> {
+        LogCommon(String path) {
+            super("log", path);
+        }
         /**
          * The logger name to use. The option is a java.lang.String type.
          */
         public T loggerName(String loggerName) {
-            this.loggerName = loggerName;
+            this.properties.put("loggerName", loggerName);
             return (T) this;
         }
-
         /**
          * If true, will hide stats when no new messages have been received for
          * a time interval, if false, show stats regardless of message traffic.
          * The option is a java.lang.Boolean type.
          */
         public T groupActiveOnly(Boolean groupActiveOnly) {
-            this.groupActiveOnly = groupActiveOnly;
+            this.properties.put("groupActiveOnly", groupActiveOnly);
             return (T) this;
         }
-
         /**
          * Set the initial delay for stats (in millis). The option is a
          * java.lang.Long type.
          */
         public T groupDelay(Long groupDelay) {
-            this.groupDelay = groupDelay;
+            this.properties.put("groupDelay", groupDelay);
             return (T) this;
         }
-
         /**
          * If specified will group message stats by this time interval (in
          * millis). The option is a java.lang.Long type.
          */
         public T groupInterval(Long groupInterval) {
-            this.groupInterval = groupInterval;
+            this.properties.put("groupInterval", groupInterval);
             return (T) this;
         }
-
         /**
          * An integer that specifies a group size for throughput logging. The
          * option is a java.lang.Integer type.
          */
         public T groupSize(Integer groupSize) {
-            this.groupSize = groupSize;
+            this.properties.put("groupSize", groupSize);
             return (T) this;
         }
-
         /**
          * Logging level to use. The default value is INFO. The option is a
          * java.lang.String type.
          */
         public T level(String level) {
-            this.level = level;
+            this.properties.put("level", level);
             return (T) this;
         }
-
         /**
          * If true, mask sensitive information like password or passphrase in
          * the log. The option is a java.lang.Boolean type.
          */
         public T logMask(Boolean logMask) {
-            this.logMask = logMask;
+            this.properties.put("logMask", logMask);
             return (T) this;
         }
-
         /**
          * An optional Marker name to use. The option is a java.lang.String
          * type.
          */
         public T marker(String marker) {
-            this.marker = marker;
+            this.properties.put("marker", marker);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Limits the number of characters logged per line. The option is a int
          * type.
          */
         public T maxChars(int maxChars) {
-            this.maxChars = maxChars;
+            this.properties.put("maxChars", maxChars);
             return (T) this;
         }
-
         /**
          * If enabled then each information is outputted on a newline. The
          * option is a boolean type.
          */
         public T multiline(boolean multiline) {
-            this.multiline = multiline;
+            this.properties.put("multiline", multiline);
             return (T) this;
         }
-
         /**
          * Quick option for turning all options on. (multiline, maxChars has to
          * be manually set if to be used). The option is a boolean type.
          */
         public T showAll(boolean showAll) {
-            this.showAll = showAll;
+            this.properties.put("showAll", showAll);
             return (T) this;
         }
-
         /**
          * Show the message body. The option is a boolean type.
          */
         public T showBody(boolean showBody) {
-            this.showBody = showBody;
+            this.properties.put("showBody", showBody);
             return (T) this;
         }
-
         /**
          * Show the body Java type. The option is a boolean type.
          */
         public T showBodyType(boolean showBodyType) {
-            this.showBodyType = showBodyType;
+            this.properties.put("showBodyType", showBodyType);
             return (T) this;
         }
-
         /**
          * f the exchange has a caught exception, show the exception message (no
          * stack trace).A caught exception is stored as a property on the
@@ -202,88 +162,78 @@ public class LogEndpoint {
          * boolean type.
          */
         public T showCaughtException(boolean showCaughtException) {
-            this.showCaughtException = showCaughtException;
+            this.properties.put("showCaughtException", showCaughtException);
             return (T) this;
         }
-
         /**
          * If the exchange has an exception, show the exception message (no
          * stacktrace). The option is a boolean type.
          */
         public T showException(boolean showException) {
-            this.showException = showException;
+            this.properties.put("showException", showException);
             return (T) this;
         }
-
         /**
          * Show the unique exchange ID. The option is a boolean type.
          */
         public T showExchangeId(boolean showExchangeId) {
-            this.showExchangeId = showExchangeId;
+            this.properties.put("showExchangeId", showExchangeId);
             return (T) this;
         }
-
         /**
          * Shows the Message Exchange Pattern (or MEP for short). The option is
          * a boolean type.
          */
         public T showExchangePattern(boolean showExchangePattern) {
-            this.showExchangePattern = showExchangePattern;
+            this.properties.put("showExchangePattern", showExchangePattern);
             return (T) this;
         }
-
         /**
          * If enabled Camel will output files. The option is a boolean type.
          */
         public T showFiles(boolean showFiles) {
-            this.showFiles = showFiles;
+            this.properties.put("showFiles", showFiles);
             return (T) this;
         }
-
         /**
          * If enabled Camel will on Future objects wait for it to complete to
          * obtain the payload to be logged. The option is a boolean type.
          */
         public T showFuture(boolean showFuture) {
-            this.showFuture = showFuture;
+            this.properties.put("showFuture", showFuture);
             return (T) this;
         }
-
         /**
          * Show the message headers. The option is a boolean type.
          */
         public T showHeaders(boolean showHeaders) {
-            this.showHeaders = showHeaders;
+            this.properties.put("showHeaders", showHeaders);
             return (T) this;
         }
-
         /**
          * If the exchange has an out message, show the out message. The option
          * is a boolean type.
          */
         public T showOut(boolean showOut) {
-            this.showOut = showOut;
+            this.properties.put("showOut", showOut);
             return (T) this;
         }
-
         /**
          * Show the exchange properties. The option is a boolean type.
          */
         public T showProperties(boolean showProperties) {
-            this.showProperties = showProperties;
+            this.properties.put("showProperties", showProperties);
             return (T) this;
         }
-
         /**
          * Show the stack trace, if an exchange has an exception. Only effective
          * if one of showAll, showException or showCaughtException are enabled.
          * The option is a boolean type.
          */
         public T showStackTrace(boolean showStackTrace) {
-            this.showStackTrace = showStackTrace;
+            this.properties.put("showStackTrace", showStackTrace);
             return (T) this;
         }
-
         /**
          * Whether Camel should show stream bodies or not (eg such as
          * java.io.InputStream). Beware if you enable this option then you may
@@ -292,10 +242,9 @@ public class LogEndpoint {
          * Stream Caching. The option is a boolean type.
          */
         public T showStreams(boolean showStreams) {
-            this.showStreams = showStreams;
+            this.properties.put("showStreams", showStreams);
             return (T) this;
         }
-
         /**
          * Whether to skip line separators when logging the message body.This
          * allows to log the message body in one line, setting this option to
@@ -303,248 +252,37 @@ public class LogEndpoint {
          * will log the body as is. The option is a boolean type.
          */
         public T skipBodyLineSeparator(boolean skipBodyLineSeparator) {
-            this.skipBodyLineSeparator = skipBodyLineSeparator;
+            this.properties.put("skipBodyLineSeparator", skipBodyLineSeparator);
             return (T) this;
         }
-
         /**
          * Sets the outputs style to use. The option is a
          * org.apache.camel.support.processor.DefaultExchangeFormatter.OutputStyle type.
          */
         public T style(OutputStyle style) {
-            this.style = style;
+            this.properties.put("style", style);
             return (T) this;
         }
+    }
 
-        public String getLoggerName() {
-            return loggerName;
-        }
-
-        public void setLoggerName(String loggerName) {
-            this.loggerName = loggerName;
-        }
-
-        public Boolean getGroupActiveOnly() {
-            return groupActiveOnly;
-        }
-
-        public void setGroupActiveOnly(Boolean groupActiveOnly) {
-            this.groupActiveOnly = groupActiveOnly;
-        }
-
-        public Long getGroupDelay() {
-            return groupDelay;
-        }
-
-        public void setGroupDelay(Long groupDelay) {
-            this.groupDelay = groupDelay;
-        }
-
-        public Long getGroupInterval() {
-            return groupInterval;
-        }
-
-        public void setGroupInterval(Long groupInterval) {
-            this.groupInterval = groupInterval;
-        }
-
-        public Integer getGroupSize() {
-            return groupSize;
-        }
-
-        public void setGroupSize(Integer groupSize) {
-            this.groupSize = groupSize;
-        }
-
-        public String getLevel() {
-            return level;
-        }
-
-        public void setLevel(String level) {
-            this.level = level;
-        }
-
-        public Boolean getLogMask() {
-            return logMask;
-        }
-
-        public void setLogMask(Boolean logMask) {
-            this.logMask = logMask;
-        }
-
-        public String getMarker() {
-            return marker;
-        }
-
-        public void setMarker(String marker) {
-            this.marker = marker;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Integer getMaxChars() {
-            return maxChars;
-        }
-
-        public void setMaxChars(Integer maxChars) {
-            this.maxChars = maxChars;
-        }
-
-        public Boolean getMultiline() {
-            return multiline;
-        }
-
-        public void setMultiline(Boolean multiline) {
-            this.multiline = multiline;
-        }
-
-        public Boolean getShowAll() {
-            return showAll;
-        }
-
-        public void setShowAll(Boolean showAll) {
-            this.showAll = showAll;
-        }
-
-        public Boolean getShowBody() {
-            return showBody;
-        }
-
-        public void setShowBody(Boolean showBody) {
-            this.showBody = showBody;
-        }
-
-        public Boolean getShowBodyType() {
-            return showBodyType;
-        }
-
-        public void setShowBodyType(Boolean showBodyType) {
-            this.showBodyType = showBodyType;
-        }
-
-        public Boolean getShowCaughtException() {
-            return showCaughtException;
-        }
-
-        public void setShowCaughtException(Boolean showCaughtException) {
-            this.showCaughtException = showCaughtException;
-        }
-
-        public Boolean getShowException() {
-            return showException;
-        }
-
-        public void setShowException(Boolean showException) {
-            this.showException = showException;
-        }
-
-        public Boolean getShowExchangeId() {
-            return showExchangeId;
-        }
-
-        public void setShowExchangeId(Boolean showExchangeId) {
-            this.showExchangeId = showExchangeId;
-        }
-
-        public Boolean getShowExchangePattern() {
-            return showExchangePattern;
-        }
-
-        public void setShowExchangePattern(Boolean showExchangePattern) {
-            this.showExchangePattern = showExchangePattern;
-        }
-
-        public Boolean getShowFiles() {
-            return showFiles;
-        }
-
-        public void setShowFiles(Boolean showFiles) {
-            this.showFiles = showFiles;
-        }
-
-        public Boolean getShowFuture() {
-            return showFuture;
-        }
-
-        public void setShowFuture(Boolean showFuture) {
-            this.showFuture = showFuture;
-        }
-
-        public Boolean getShowHeaders() {
-            return showHeaders;
-        }
-
-        public void setShowHeaders(Boolean showHeaders) {
-            this.showHeaders = showHeaders;
-        }
-
-        public Boolean getShowOut() {
-            return showOut;
-        }
-
-        public void setShowOut(Boolean showOut) {
-            this.showOut = showOut;
-        }
-
-        public Boolean getShowProperties() {
-            return showProperties;
-        }
-
-        public void setShowProperties(Boolean showProperties) {
-            this.showProperties = showProperties;
-        }
-
-        public Boolean getShowStackTrace() {
-            return showStackTrace;
-        }
-
-        public void setShowStackTrace(Boolean showStackTrace) {
-            this.showStackTrace = showStackTrace;
-        }
-
-        public Boolean getShowStreams() {
-            return showStreams;
-        }
-
-        public void setShowStreams(Boolean showStreams) {
-            this.showStreams = showStreams;
-        }
-
-        public Boolean getSkipBodyLineSeparator() {
-            return skipBodyLineSeparator;
-        }
-
-        public void setSkipBodyLineSeparator(Boolean skipBodyLineSeparator) {
-            this.skipBodyLineSeparator = skipBodyLineSeparator;
-        }
-
-        public OutputStyle getStyle() {
-            return style;
-        }
-
-        public void setStyle(OutputStyle style) {
-            this.style = style;
+    public static class LogConsumer
+            extends
+                LogCommon<LogConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public LogConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class LogConsumer extends LogCommon<LogConsumer> {
-    }
-
-    public static class LogProducer extends LogCommon<LogProducer> {
+    public static class LogProducer
+            extends
+                LogCommon<LogProducer>
+            implements
+                EndpointDefinition.Producer {
+        public LogProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum OutputStyle {

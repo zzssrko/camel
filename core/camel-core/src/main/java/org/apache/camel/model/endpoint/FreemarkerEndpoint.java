@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * Transforms the message using a FreeMarker template.
@@ -27,17 +28,12 @@ import javax.annotation.Generated;
 public class FreemarkerEndpoint {
 
 
-    public static class FreemarkerCommon<T extends EndpointConfiguration>
+    public static class FreemarkerCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String resourceUri;
-        private Object configuration;
-        private Boolean contentCache;
-        private String encoding;
-        private Integer templateUpdateDelay;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        FreemarkerCommon(String path) {
+            super("freemarker", path);
+        }
         /**
          * Path to the resource. You can prefix with: classpath, file, http,
          * ref, or bean. classpath, file and http loads the resource using these
@@ -47,130 +43,78 @@ public class FreemarkerEndpoint {
          * bean:myBean.myMethod. The option is a java.lang.String type.
          */
         public T resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
+            this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
-
         /**
          * Sets the Freemarker configuration to use. The option is a
          * freemarker.template.Configuration type.
          */
         public T configuration(Object configuration) {
-            this.configuration = configuration;
+            this.properties.put("configuration", configuration);
             return (T) this;
         }
-
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
         public T contentCache(boolean contentCache) {
-            this.contentCache = contentCache;
+            this.properties.put("contentCache", contentCache);
             return (T) this;
         }
-
         /**
          * Sets the encoding to be used for loading the template file. The
          * option is a java.lang.String type.
          */
         public T encoding(String encoding) {
-            this.encoding = encoding;
+            this.properties.put("encoding", encoding);
             return (T) this;
         }
-
         /**
          * Number of seconds the loaded template resource will remain in the
          * cache. The option is a int type.
          */
         public T templateUpdateDelay(int templateUpdateDelay) {
-            this.templateUpdateDelay = templateUpdateDelay;
+            this.properties.put("templateUpdateDelay", templateUpdateDelay);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getResourceUri() {
-            return resourceUri;
-        }
-
-        public void setResourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-        }
-
-        public Object getConfiguration() {
-            return configuration;
-        }
-
-        public void setConfiguration(Object configuration) {
-            this.configuration = configuration;
-        }
-
-        public Boolean getContentCache() {
-            return contentCache;
-        }
-
-        public void setContentCache(Boolean contentCache) {
-            this.contentCache = contentCache;
-        }
-
-        public String getEncoding() {
-            return encoding;
-        }
-
-        public void setEncoding(String encoding) {
-            this.encoding = encoding;
-        }
-
-        public Integer getTemplateUpdateDelay() {
-            return templateUpdateDelay;
-        }
-
-        public void setTemplateUpdateDelay(Integer templateUpdateDelay) {
-            this.templateUpdateDelay = templateUpdateDelay;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class FreemarkerConsumer
             extends
-                FreemarkerCommon<FreemarkerConsumer> {
+                FreemarkerCommon<FreemarkerConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public FreemarkerConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class FreemarkerProducer
             extends
-                FreemarkerCommon<FreemarkerProducer> {
+                FreemarkerCommon<FreemarkerProducer>
+            implements
+                EndpointDefinition.Producer {
+        public FreemarkerProducer(String path) {
+            super(path);
+        }
     }
 }

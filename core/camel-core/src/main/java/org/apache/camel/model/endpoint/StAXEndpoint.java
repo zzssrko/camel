@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The stax component allows messages to be process through a SAX
@@ -28,70 +29,57 @@ import javax.annotation.Generated;
 public class StAXEndpoint {
 
 
-    public static class StAXCommon<T extends EndpointConfiguration>
+    public static class StAXCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String contentHandlerClass;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        StAXCommon(String path) {
+            super("stax", path);
+        }
         /**
          * The FQN class name for the ContentHandler implementation to use. The
          * option is a java.lang.String type.
          */
         public T contentHandlerClass(String contentHandlerClass) {
-            this.contentHandlerClass = contentHandlerClass;
+            this.properties.put("contentHandlerClass", contentHandlerClass);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getContentHandlerClass() {
-            return contentHandlerClass;
-        }
-
-        public void setContentHandlerClass(String contentHandlerClass) {
-            this.contentHandlerClass = contentHandlerClass;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class StAXConsumer
+            extends
+                StAXCommon<StAXConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public StAXConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class StAXConsumer extends StAXCommon<StAXConsumer> {
-    }
-
-    public static class StAXProducer extends StAXCommon<StAXProducer> {
+    public static class StAXProducer
+            extends
+                StAXCommon<StAXProducer>
+            implements
+                EndpointDefinition.Producer {
+        public StAXProducer(String path) {
+            super(path);
+        }
     }
 }

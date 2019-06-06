@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,91 +30,66 @@ import org.apache.camel.spi.ExceptionHandler;
 public class NatsEndpoint {
 
 
-    public static class NatsCommon<T extends EndpointConfiguration>
+    public static class NatsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String servers;
-        private Object connection;
-        private Integer connectionTimeout;
-        private Boolean flushConnection;
-        private Integer flushTimeout;
-        private Integer maxPingsOut;
-        private Integer maxReconnectAttempts;
-        private Boolean noEcho;
-        private Boolean noRandomizeServers;
-        private Boolean pedantic;
-        private Integer pingInterval;
-        private Boolean reconnect;
-        private Integer reconnectTimeWait;
-        private Integer requestCleanupInterval;
-        private String topic;
-        private Boolean verbose;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private Boolean secure;
-        private Object sslContextParameters;
-
+                EndpointDefinition<T> {
+        NatsCommon(String path) {
+            super("nats", path);
+        }
         /**
          * URLs to one or more NAT servers. Use comma to separate URLs when
          * specifying multiple servers. The option is a java.lang.String type.
          */
         public T servers(String servers) {
-            this.servers = servers;
+            this.properties.put("servers", servers);
             return (T) this;
         }
-
         /**
          * Reference an already instantiated connection to Nats server. The
          * option is a io.nats.client.Connection type.
          */
         public T connection(Object connection) {
-            this.connection = connection;
+            this.properties.put("connection", connection);
             return (T) this;
         }
-
         /**
          * Timeout for connection attempts. (in milliseconds). The option is a
          * int type.
          */
         public T connectionTimeout(int connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
+            this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
-
         /**
          * Define if we want to flush connection or not. The option is a boolean
          * type.
          */
         public T flushConnection(boolean flushConnection) {
-            this.flushConnection = flushConnection;
+            this.properties.put("flushConnection", flushConnection);
             return (T) this;
         }
-
         /**
          * Set the flush timeout (in milliseconds). The option is a int type.
          */
         public T flushTimeout(int flushTimeout) {
-            this.flushTimeout = flushTimeout;
+            this.properties.put("flushTimeout", flushTimeout);
             return (T) this;
         }
-
         /**
          * maximum number of pings have not received a response allowed by the
          * client. The option is a int type.
          */
         public T maxPingsOut(int maxPingsOut) {
-            this.maxPingsOut = maxPingsOut;
+            this.properties.put("maxPingsOut", maxPingsOut);
             return (T) this;
         }
-
         /**
          * Max reconnection attempts. The option is a int type.
          */
         public T maxReconnectAttempts(int maxReconnectAttempts) {
-            this.maxReconnectAttempts = maxReconnectAttempts;
+            this.properties.put("maxReconnectAttempts", maxReconnectAttempts);
             return (T) this;
         }
-
         /**
          * Turn off echo. If supported by the gnatsd version you are connecting
          * to this flag will prevent the server from echoing messages back to
@@ -121,288 +97,116 @@ public class NatsEndpoint {
          * to. The option is a boolean type.
          */
         public T noEcho(boolean noEcho) {
-            this.noEcho = noEcho;
+            this.properties.put("noEcho", noEcho);
             return (T) this;
         }
-
         /**
          * Whether or not randomizing the order of servers for the connection
          * attempts. The option is a boolean type.
          */
         public T noRandomizeServers(boolean noRandomizeServers) {
-            this.noRandomizeServers = noRandomizeServers;
+            this.properties.put("noRandomizeServers", noRandomizeServers);
             return (T) this;
         }
-
         /**
          * Whether or not running in pedantic mode (this affects performace).
          * The option is a boolean type.
          */
         public T pedantic(boolean pedantic) {
-            this.pedantic = pedantic;
+            this.properties.put("pedantic", pedantic);
             return (T) this;
         }
-
         /**
          * Ping interval to be aware if connection is still alive (in
          * milliseconds). The option is a int type.
          */
         public T pingInterval(int pingInterval) {
-            this.pingInterval = pingInterval;
+            this.properties.put("pingInterval", pingInterval);
             return (T) this;
         }
-
         /**
          * Whether or not using reconnection feature. The option is a boolean
          * type.
          */
         public T reconnect(boolean reconnect) {
-            this.reconnect = reconnect;
+            this.properties.put("reconnect", reconnect);
             return (T) this;
         }
-
         /**
          * Waiting time before attempts reconnection (in milliseconds). The
          * option is a int type.
          */
         public T reconnectTimeWait(int reconnectTimeWait) {
-            this.reconnectTimeWait = reconnectTimeWait;
+            this.properties.put("reconnectTimeWait", reconnectTimeWait);
             return (T) this;
         }
-
         /**
          * Interval to clean up cancelled/timed out requests. The option is a
          * int type.
          */
         public T requestCleanupInterval(int requestCleanupInterval) {
-            this.requestCleanupInterval = requestCleanupInterval;
+            this.properties.put("requestCleanupInterval", requestCleanupInterval);
             return (T) this;
         }
-
         /**
          * The name of topic we want to use. The option is a java.lang.String
          * type.
          */
         public T topic(String topic) {
-            this.topic = topic;
+            this.properties.put("topic", topic);
             return (T) this;
         }
-
         /**
          * Whether or not running in verbose mode. The option is a boolean type.
          */
         public T verbose(boolean verbose) {
-            this.verbose = verbose;
+            this.properties.put("verbose", verbose);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Set secure option indicating TLS is required. The option is a boolean
          * type.
          */
         public T secure(boolean secure) {
-            this.secure = secure;
+            this.properties.put("secure", secure);
             return (T) this;
         }
-
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
-        }
-
-        public String getServers() {
-            return servers;
-        }
-
-        public void setServers(String servers) {
-            this.servers = servers;
-        }
-
-        public Object getConnection() {
-            return connection;
-        }
-
-        public void setConnection(Object connection) {
-            this.connection = connection;
-        }
-
-        public Integer getConnectionTimeout() {
-            return connectionTimeout;
-        }
-
-        public void setConnectionTimeout(Integer connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
-        }
-
-        public Boolean getFlushConnection() {
-            return flushConnection;
-        }
-
-        public void setFlushConnection(Boolean flushConnection) {
-            this.flushConnection = flushConnection;
-        }
-
-        public Integer getFlushTimeout() {
-            return flushTimeout;
-        }
-
-        public void setFlushTimeout(Integer flushTimeout) {
-            this.flushTimeout = flushTimeout;
-        }
-
-        public Integer getMaxPingsOut() {
-            return maxPingsOut;
-        }
-
-        public void setMaxPingsOut(Integer maxPingsOut) {
-            this.maxPingsOut = maxPingsOut;
-        }
-
-        public Integer getMaxReconnectAttempts() {
-            return maxReconnectAttempts;
-        }
-
-        public void setMaxReconnectAttempts(Integer maxReconnectAttempts) {
-            this.maxReconnectAttempts = maxReconnectAttempts;
-        }
-
-        public Boolean getNoEcho() {
-            return noEcho;
-        }
-
-        public void setNoEcho(Boolean noEcho) {
-            this.noEcho = noEcho;
-        }
-
-        public Boolean getNoRandomizeServers() {
-            return noRandomizeServers;
-        }
-
-        public void setNoRandomizeServers(Boolean noRandomizeServers) {
-            this.noRandomizeServers = noRandomizeServers;
-        }
-
-        public Boolean getPedantic() {
-            return pedantic;
-        }
-
-        public void setPedantic(Boolean pedantic) {
-            this.pedantic = pedantic;
-        }
-
-        public Integer getPingInterval() {
-            return pingInterval;
-        }
-
-        public void setPingInterval(Integer pingInterval) {
-            this.pingInterval = pingInterval;
-        }
-
-        public Boolean getReconnect() {
-            return reconnect;
-        }
-
-        public void setReconnect(Boolean reconnect) {
-            this.reconnect = reconnect;
-        }
-
-        public Integer getReconnectTimeWait() {
-            return reconnectTimeWait;
-        }
-
-        public void setReconnectTimeWait(Integer reconnectTimeWait) {
-            this.reconnectTimeWait = reconnectTimeWait;
-        }
-
-        public Integer getRequestCleanupInterval() {
-            return requestCleanupInterval;
-        }
-
-        public void setRequestCleanupInterval(Integer requestCleanupInterval) {
-            this.requestCleanupInterval = requestCleanupInterval;
-        }
-
-        public String getTopic() {
-            return topic;
-        }
-
-        public void setTopic(String topic) {
-            this.topic = topic;
-        }
-
-        public Boolean getVerbose() {
-            return verbose;
-        }
-
-        public void setVerbose(Boolean verbose) {
-            this.verbose = verbose;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Boolean getSecure() {
-            return secure;
-        }
-
-        public void setSecure(Boolean secure) {
-            this.secure = secure;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
         }
     }
 
-    public static class NatsConsumer extends NatsCommon<NatsConsumer> {
-        private Boolean bridgeErrorHandler;
-        private String maxMessages;
-        private Integer poolSize;
-        private String queueName;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class NatsConsumer
+            extends
+                NatsCommon<NatsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public NatsConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -413,36 +217,32 @@ public class NatsEndpoint {
          * ignored. The option is a boolean type.
          */
         public NatsConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (NatsConsumer) this;
         }
-
         /**
          * Stop receiving messages from a topic we are subscribing to after
          * maxMessages. The option is a java.lang.String type.
          */
         public NatsConsumer maxMessages(String maxMessages) {
-            this.maxMessages = maxMessages;
+            this.properties.put("maxMessages", maxMessages);
             return (NatsConsumer) this;
         }
-
         /**
          * Consumer pool size. The option is a int type.
          */
         public NatsConsumer poolSize(int poolSize) {
-            this.poolSize = poolSize;
+            this.properties.put("poolSize", poolSize);
             return (NatsConsumer) this;
         }
-
         /**
          * The Queue name if we are using nats for a queue configuration. The
          * option is a java.lang.String type.
          */
         public NatsConsumer queueName(String queueName) {
-            this.queueName = queueName;
+            this.properties.put("queueName", queueName);
             return (NatsConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -451,86 +251,34 @@ public class NatsEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public NatsConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (NatsConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public NatsConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (NatsConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public String getMaxMessages() {
-            return maxMessages;
-        }
-
-        public void setMaxMessages(String maxMessages) {
-            this.maxMessages = maxMessages;
-        }
-
-        public Integer getPoolSize() {
-            return poolSize;
-        }
-
-        public void setPoolSize(Integer poolSize) {
-            this.poolSize = poolSize;
-        }
-
-        public String getQueueName() {
-            return queueName;
-        }
-
-        public void setQueueName(String queueName) {
-            this.queueName = queueName;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class NatsProducer extends NatsCommon<NatsProducer> {
-        private String replySubject;
-
+    public static class NatsProducer
+            extends
+                NatsCommon<NatsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public NatsProducer(String path) {
+            super(path);
+        }
         /**
          * the subject to which subscribers should send response. The option is
          * a java.lang.String type.
          */
         public NatsProducer replySubject(String replySubject) {
-            this.replySubject = replySubject;
+            this.properties.put("replySubject", replySubject);
             return (NatsProducer) this;
-        }
-
-        public String getReplySubject() {
-            return replySubject;
-        }
-
-        public void setReplySubject(String replySubject) {
-            this.replySubject = replySubject;
         }
     }
 }

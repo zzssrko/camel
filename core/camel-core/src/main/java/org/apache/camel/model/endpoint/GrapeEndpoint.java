@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The grape component allows you to fetch, load and manage additional jars when
@@ -28,70 +29,57 @@ import javax.annotation.Generated;
 public class GrapeEndpoint {
 
 
-    public static class GrapeCommon<T extends EndpointConfiguration>
+    public static class GrapeCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String defaultCoordinates;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        GrapeCommon(String path) {
+            super("grape", path);
+        }
         /**
          * Maven coordinates to use as default to grab if the message body is
          * empty. The option is a java.lang.String type.
          */
         public T defaultCoordinates(String defaultCoordinates) {
-            this.defaultCoordinates = defaultCoordinates;
+            this.properties.put("defaultCoordinates", defaultCoordinates);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getDefaultCoordinates() {
-            return defaultCoordinates;
-        }
-
-        public void setDefaultCoordinates(String defaultCoordinates) {
-            this.defaultCoordinates = defaultCoordinates;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class GrapeConsumer
+            extends
+                GrapeCommon<GrapeConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GrapeConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class GrapeConsumer extends GrapeCommon<GrapeConsumer> {
-    }
-
-    public static class GrapeProducer extends GrapeCommon<GrapeProducer> {
+    public static class GrapeProducer
+            extends
+                GrapeCommon<GrapeProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GrapeProducer(String path) {
+            super(path);
+        }
     }
 }

@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -34,1777 +35,768 @@ import org.apache.camel.spi.ExceptionHandler;
 public class FacebookEndpoint {
 
 
-    public static class FacebookCommon<T extends EndpointConfiguration>
+    public static class FacebookCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String methodName;
-        private URL achievementURL;
-        private String albumId;
-        private Object albumUpdate;
-        private String appId;
-        private Object center;
-        private String checkinId;
-        @Deprecated
-        private Object checkinUpdate;
-        private String clientURL;
-        private String clientVersion;
-        private String commentId;
-        private Object commentUpdate;
-        private Boolean debugEnabled;
-        private String description;
-        private Integer distance;
-        private String domainId;
-        private String domainName;
-        private List<String> domainNames;
-        private String eventId;
-        private Object eventUpdate;
-        private String friendId;
-        private String friendlistId;
-        private String friendlistName;
-        private String friendUserId;
-        private String groupId;
-        private Boolean gzipEnabled;
-        private Integer httpConnectionTimeout;
-        private Integer httpDefaultMaxPerRoute;
-        private Integer httpMaxTotalConnections;
-        private Integer httpReadTimeout;
-        private Integer httpRetryCount;
-        private Integer httpRetryIntervalSeconds;
-        private Integer httpStreamingReadTimeout;
-        private List<String> ids;
-        private String inBody;
-        private Boolean includeRead;
-        private Boolean isHidden;
-        private Boolean jsonStoreEnabled;
-        private URL link;
-        private String linkId;
-        private Locale locale;
-        private Boolean mbeanEnabled;
-        private String message;
-        private String messageId;
-        private String metric;
-        private String milestoneId;
-        private String name;
-        private String noteId;
-        private String notificationId;
-        private String objectId;
-        private String offerId;
-        private String optionDescription;
-        private String pageId;
-        private String permissionName;
-        private String permissions;
-        private String photoId;
-        private Integer pictureId;
-        private Integer pictureId2;
-        private PictureSize pictureSize;
-        private String placeId;
-        private String postId;
-        private Object postUpdate;
-        private Boolean prettyDebugEnabled;
-        private Map<String, String> queries;
-        private String query;
-        private String questionId;
-        private Object reading;
-        private Map<String, Object> readingOptions;
-        private String restBaseURL;
-        private Integer scoreValue;
-        private PictureSize size;
-        private Object source;
-        private String subject;
-        private String tabId;
-        private Object tagUpdate;
-        private Object testUser1;
-        private Object testUser2;
-        private String testUserId;
-        private String title;
-        private String toUserId;
-        private List<String> toUserIds;
-        private String userId;
-        private String userId1;
-        private String userId2;
-        private List<String> userIds;
-        private String userLocale;
-        private Boolean useSSL;
-        private String videoBaseURL;
-        private String videoId;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String httpProxyHost;
-        private String httpProxyPassword;
-        private Integer httpProxyPort;
-        private String httpProxyUser;
-        private String oAuthAccessToken;
-        private String oAuthAccessTokenURL;
-        private String oAuthAppId;
-        private String oAuthAppSecret;
-        private String oAuthAuthorizationURL;
-        private String oAuthPermissions;
-
+                EndpointDefinition<T> {
+        FacebookCommon(String path) {
+            super("facebook", path);
+        }
         /**
          * What operation to perform. The option is a java.lang.String type.
          */
         public T methodName(String methodName) {
-            this.methodName = methodName;
+            this.properties.put("methodName", methodName);
             return (T) this;
         }
-
         /**
          * The unique URL of the achievement. The option is a java.net.URL type.
          */
         public T achievementURL(URL achievementURL) {
-            this.achievementURL = achievementURL;
+            this.properties.put("achievementURL", achievementURL);
             return (T) this;
         }
-
         /**
          * The album ID. The option is a java.lang.String type.
          */
         public T albumId(String albumId) {
-            this.albumId = albumId;
+            this.properties.put("albumId", albumId);
             return (T) this;
         }
-
         /**
          * The facebook Album to be created or updated. The option is a
          * facebook4j.AlbumUpdate type.
          */
         public T albumUpdate(Object albumUpdate) {
-            this.albumUpdate = albumUpdate;
+            this.properties.put("albumUpdate", albumUpdate);
             return (T) this;
         }
-
         /**
          * The ID of the Facebook Application. The option is a java.lang.String
          * type.
          */
         public T appId(String appId) {
-            this.appId = appId;
+            this.properties.put("appId", appId);
             return (T) this;
         }
-
         /**
          * Location latitude and longitude. The option is a
          * facebook4j.GeoLocation type.
          */
         public T center(Object center) {
-            this.center = center;
+            this.properties.put("center", center);
             return (T) this;
         }
-
         /**
          * The checkin ID. The option is a java.lang.String type.
          */
         public T checkinId(String checkinId) {
-            this.checkinId = checkinId;
+            this.properties.put("checkinId", checkinId);
             return (T) this;
         }
-
         /**
          * The checkin to be created. Deprecated, instead create a Post with an
          * attached location. The option is a facebook4j.CheckinUpdate type.
          */
         @Deprecated
         public T checkinUpdate(Object checkinUpdate) {
-            this.checkinUpdate = checkinUpdate;
+            this.properties.put("checkinUpdate", checkinUpdate);
             return (T) this;
         }
-
         /**
          * Facebook4J API client URL. The option is a java.lang.String type.
          */
         public T clientURL(String clientURL) {
-            this.clientURL = clientURL;
+            this.properties.put("clientURL", clientURL);
             return (T) this;
         }
-
         /**
          * Facebook4J client API version. The option is a java.lang.String type.
          */
         public T clientVersion(String clientVersion) {
-            this.clientVersion = clientVersion;
+            this.properties.put("clientVersion", clientVersion);
             return (T) this;
         }
-
         /**
          * The comment ID. The option is a java.lang.String type.
          */
         public T commentId(String commentId) {
-            this.commentId = commentId;
+            this.properties.put("commentId", commentId);
             return (T) this;
         }
-
         /**
          * The facebook Comment to be created or updated. The option is a
          * facebook4j.CommentUpdate type.
          */
         public T commentUpdate(Object commentUpdate) {
-            this.commentUpdate = commentUpdate;
+            this.properties.put("commentUpdate", commentUpdate);
             return (T) this;
         }
-
         /**
          * Enables deubg output. Effective only with the embedded logger. The
          * option is a java.lang.Boolean type.
          */
         public T debugEnabled(Boolean debugEnabled) {
-            this.debugEnabled = debugEnabled;
+            this.properties.put("debugEnabled", debugEnabled);
             return (T) this;
         }
-
         /**
          * The description text. The option is a java.lang.String type.
          */
         public T description(String description) {
-            this.description = description;
+            this.properties.put("description", description);
             return (T) this;
         }
-
         /**
          * Distance in meters. The option is a java.lang.Integer type.
          */
         public T distance(Integer distance) {
-            this.distance = distance;
+            this.properties.put("distance", distance);
             return (T) this;
         }
-
         /**
          * The domain ID. The option is a java.lang.String type.
          */
         public T domainId(String domainId) {
-            this.domainId = domainId;
+            this.properties.put("domainId", domainId);
             return (T) this;
         }
-
         /**
          * The domain name. The option is a java.lang.String type.
          */
         public T domainName(String domainName) {
-            this.domainName = domainName;
+            this.properties.put("domainName", domainName);
             return (T) this;
         }
-
         /**
          * The domain names. The option is a java.util.List<java.lang.String>
          * type.
          */
         public T domainNames(List<String> domainNames) {
-            this.domainNames = domainNames;
+            this.properties.put("domainNames", domainNames);
             return (T) this;
         }
-
         /**
          * The event ID. The option is a java.lang.String type.
          */
         public T eventId(String eventId) {
-            this.eventId = eventId;
+            this.properties.put("eventId", eventId);
             return (T) this;
         }
-
         /**
          * The event to be created or updated. The option is a
          * facebook4j.EventUpdate type.
          */
         public T eventUpdate(Object eventUpdate) {
-            this.eventUpdate = eventUpdate;
+            this.properties.put("eventUpdate", eventUpdate);
             return (T) this;
         }
-
         /**
          * The friend ID. The option is a java.lang.String type.
          */
         public T friendId(String friendId) {
-            this.friendId = friendId;
+            this.properties.put("friendId", friendId);
             return (T) this;
         }
-
         /**
          * The friend list ID. The option is a java.lang.String type.
          */
         public T friendlistId(String friendlistId) {
-            this.friendlistId = friendlistId;
+            this.properties.put("friendlistId", friendlistId);
             return (T) this;
         }
-
         /**
          * The friend list Name. The option is a java.lang.String type.
          */
         public T friendlistName(String friendlistName) {
-            this.friendlistName = friendlistName;
+            this.properties.put("friendlistName", friendlistName);
             return (T) this;
         }
-
         /**
          * The friend user ID. The option is a java.lang.String type.
          */
         public T friendUserId(String friendUserId) {
-            this.friendUserId = friendUserId;
+            this.properties.put("friendUserId", friendUserId);
             return (T) this;
         }
-
         /**
          * The group ID. The option is a java.lang.String type.
          */
         public T groupId(String groupId) {
-            this.groupId = groupId;
+            this.properties.put("groupId", groupId);
             return (T) this;
         }
-
         /**
          * Use Facebook GZIP encoding. The option is a java.lang.Boolean type.
          */
         public T gzipEnabled(Boolean gzipEnabled) {
-            this.gzipEnabled = gzipEnabled;
+            this.properties.put("gzipEnabled", gzipEnabled);
             return (T) this;
         }
-
         /**
          * Http connection timeout in milliseconds. The option is a
          * java.lang.Integer type.
          */
         public T httpConnectionTimeout(Integer httpConnectionTimeout) {
-            this.httpConnectionTimeout = httpConnectionTimeout;
+            this.properties.put("httpConnectionTimeout", httpConnectionTimeout);
             return (T) this;
         }
-
         /**
          * HTTP maximum connections per route. The option is a java.lang.Integer
          * type.
          */
         public T httpDefaultMaxPerRoute(Integer httpDefaultMaxPerRoute) {
-            this.httpDefaultMaxPerRoute = httpDefaultMaxPerRoute;
+            this.properties.put("httpDefaultMaxPerRoute", httpDefaultMaxPerRoute);
             return (T) this;
         }
-
         /**
          * HTTP maximum total connections. The option is a java.lang.Integer
          * type.
          */
         public T httpMaxTotalConnections(Integer httpMaxTotalConnections) {
-            this.httpMaxTotalConnections = httpMaxTotalConnections;
+            this.properties.put("httpMaxTotalConnections", httpMaxTotalConnections);
             return (T) this;
         }
-
         /**
          * Http read timeout in milliseconds. The option is a java.lang.Integer
          * type.
          */
         public T httpReadTimeout(Integer httpReadTimeout) {
-            this.httpReadTimeout = httpReadTimeout;
+            this.properties.put("httpReadTimeout", httpReadTimeout);
             return (T) this;
         }
-
         /**
          * Number of HTTP retries. The option is a java.lang.Integer type.
          */
         public T httpRetryCount(Integer httpRetryCount) {
-            this.httpRetryCount = httpRetryCount;
+            this.properties.put("httpRetryCount", httpRetryCount);
             return (T) this;
         }
-
         /**
          * HTTP retry interval in seconds. The option is a java.lang.Integer
          * type.
          */
         public T httpRetryIntervalSeconds(Integer httpRetryIntervalSeconds) {
-            this.httpRetryIntervalSeconds = httpRetryIntervalSeconds;
+            this.properties.put("httpRetryIntervalSeconds", httpRetryIntervalSeconds);
             return (T) this;
         }
-
         /**
          * HTTP streaming read timeout in milliseconds. The option is a
          * java.lang.Integer type.
          */
         public T httpStreamingReadTimeout(Integer httpStreamingReadTimeout) {
-            this.httpStreamingReadTimeout = httpStreamingReadTimeout;
+            this.properties.put("httpStreamingReadTimeout", httpStreamingReadTimeout);
             return (T) this;
         }
-
         /**
          * The ids of users. The option is a java.util.List<java.lang.String>
          * type.
          */
         public T ids(List<String> ids) {
-            this.ids = ids;
+            this.properties.put("ids", ids);
             return (T) this;
         }
-
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
         public T inBody(String inBody) {
-            this.inBody = inBody;
+            this.properties.put("inBody", inBody);
             return (T) this;
         }
-
         /**
          * Enables notifications that the user has already read in addition to
          * unread ones. The option is a java.lang.Boolean type.
          */
         public T includeRead(Boolean includeRead) {
-            this.includeRead = includeRead;
+            this.properties.put("includeRead", includeRead);
             return (T) this;
         }
-
         /**
          * Whether hidden. The option is a java.lang.Boolean type.
          */
         public T isHidden(Boolean isHidden) {
-            this.isHidden = isHidden;
+            this.properties.put("isHidden", isHidden);
             return (T) this;
         }
-
         /**
          * If set to true, raw JSON forms will be stored in DataObjectFactory.
          * The option is a java.lang.Boolean type.
          */
         public T jsonStoreEnabled(Boolean jsonStoreEnabled) {
-            this.jsonStoreEnabled = jsonStoreEnabled;
+            this.properties.put("jsonStoreEnabled", jsonStoreEnabled);
             return (T) this;
         }
-
         /**
          * Link URL. The option is a java.net.URL type.
          */
         public T link(URL link) {
-            this.link = link;
+            this.properties.put("link", link);
             return (T) this;
         }
-
         /**
          * Link ID. The option is a java.lang.String type.
          */
         public T linkId(String linkId) {
-            this.linkId = linkId;
+            this.properties.put("linkId", linkId);
             return (T) this;
         }
-
         /**
          * Desired FQL locale. The option is a java.util.Locale type.
          */
         public T locale(Locale locale) {
-            this.locale = locale;
+            this.properties.put("locale", locale);
             return (T) this;
         }
-
         /**
          * If set to true, Facebook4J mbean will be registerd. The option is a
          * java.lang.Boolean type.
          */
         public T mbeanEnabled(Boolean mbeanEnabled) {
-            this.mbeanEnabled = mbeanEnabled;
+            this.properties.put("mbeanEnabled", mbeanEnabled);
             return (T) this;
         }
-
         /**
          * The message text. The option is a java.lang.String type.
          */
         public T message(String message) {
-            this.message = message;
+            this.properties.put("message", message);
             return (T) this;
         }
-
         /**
          * The message ID. The option is a java.lang.String type.
          */
         public T messageId(String messageId) {
-            this.messageId = messageId;
+            this.properties.put("messageId", messageId);
             return (T) this;
         }
-
         /**
          * The metric name. The option is a java.lang.String type.
          */
         public T metric(String metric) {
-            this.metric = metric;
+            this.properties.put("metric", metric);
             return (T) this;
         }
-
         /**
          * The milestone id. The option is a java.lang.String type.
          */
         public T milestoneId(String milestoneId) {
-            this.milestoneId = milestoneId;
+            this.properties.put("milestoneId", milestoneId);
             return (T) this;
         }
-
         /**
          * Test user name, must be of the form 'first last'. The option is a
          * java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * The note ID. The option is a java.lang.String type.
          */
         public T noteId(String noteId) {
-            this.noteId = noteId;
+            this.properties.put("noteId", noteId);
             return (T) this;
         }
-
         /**
          * The notification ID. The option is a java.lang.String type.
          */
         public T notificationId(String notificationId) {
-            this.notificationId = notificationId;
+            this.properties.put("notificationId", notificationId);
             return (T) this;
         }
-
         /**
          * The insight object ID. The option is a java.lang.String type.
          */
         public T objectId(String objectId) {
-            this.objectId = objectId;
+            this.properties.put("objectId", objectId);
             return (T) this;
         }
-
         /**
          * The offer id. The option is a java.lang.String type.
          */
         public T offerId(String offerId) {
-            this.offerId = offerId;
+            this.properties.put("offerId", offerId);
             return (T) this;
         }
-
         /**
          * The question's answer option description. The option is a
          * java.lang.String type.
          */
         public T optionDescription(String optionDescription) {
-            this.optionDescription = optionDescription;
+            this.properties.put("optionDescription", optionDescription);
             return (T) this;
         }
-
         /**
          * The page id. The option is a java.lang.String type.
          */
         public T pageId(String pageId) {
-            this.pageId = pageId;
+            this.properties.put("pageId", pageId);
             return (T) this;
         }
-
         /**
          * The permission name. The option is a java.lang.String type.
          */
         public T permissionName(String permissionName) {
-            this.permissionName = permissionName;
+            this.properties.put("permissionName", permissionName);
             return (T) this;
         }
-
         /**
          * Test user permissions in the format perm1,perm2,... The option is a
          * java.lang.String type.
          */
         public T permissions(String permissions) {
-            this.permissions = permissions;
+            this.properties.put("permissions", permissions);
             return (T) this;
         }
-
         /**
          * The photo ID. The option is a java.lang.String type.
          */
         public T photoId(String photoId) {
-            this.photoId = photoId;
+            this.properties.put("photoId", photoId);
             return (T) this;
         }
-
         /**
          * The picture id. The option is a java.lang.Integer type.
          */
         public T pictureId(Integer pictureId) {
-            this.pictureId = pictureId;
+            this.properties.put("pictureId", pictureId);
             return (T) this;
         }
-
         /**
          * The picture2 id. The option is a java.lang.Integer type.
          */
         public T pictureId2(Integer pictureId2) {
-            this.pictureId2 = pictureId2;
+            this.properties.put("pictureId2", pictureId2);
             return (T) this;
         }
-
         /**
          * The picture size. The option is a facebook4j.PictureSize type.
          */
         public T pictureSize(PictureSize pictureSize) {
-            this.pictureSize = pictureSize;
+            this.properties.put("pictureSize", pictureSize);
             return (T) this;
         }
-
         /**
          * The place ID. The option is a java.lang.String type.
          */
         public T placeId(String placeId) {
-            this.placeId = placeId;
+            this.properties.put("placeId", placeId);
             return (T) this;
         }
-
         /**
          * The post ID. The option is a java.lang.String type.
          */
         public T postId(String postId) {
-            this.postId = postId;
+            this.properties.put("postId", postId);
             return (T) this;
         }
-
         /**
          * The post to create or update. The option is a facebook4j.PostUpdate
          * type.
          */
         public T postUpdate(Object postUpdate) {
-            this.postUpdate = postUpdate;
+            this.properties.put("postUpdate", postUpdate);
             return (T) this;
         }
-
         /**
          * Prettify JSON debug output if set to true. The option is a
          * java.lang.Boolean type.
          */
         public T prettyDebugEnabled(Boolean prettyDebugEnabled) {
-            this.prettyDebugEnabled = prettyDebugEnabled;
+            this.properties.put("prettyDebugEnabled", prettyDebugEnabled);
             return (T) this;
         }
-
         /**
          * FQL queries. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
         public T queries(Map<String, String> queries) {
-            this.queries = queries;
+            this.properties.put("queries", queries);
             return (T) this;
         }
-
         /**
          * FQL query or search terms for search endpoints. The option is a
          * java.lang.String type.
          */
         public T query(String query) {
-            this.query = query;
+            this.properties.put("query", query);
             return (T) this;
         }
-
         /**
          * The question id. The option is a java.lang.String type.
          */
         public T questionId(String questionId) {
-            this.questionId = questionId;
+            this.properties.put("questionId", questionId);
             return (T) this;
         }
-
         /**
          * Optional reading parameters. See Reading Options(#reading). The
          * option is a facebook4j.Reading type.
          */
         public T reading(Object reading) {
-            this.reading = reading;
+            this.properties.put("reading", reading);
             return (T) this;
         }
-
         /**
          * To configure Reading using key/value pairs from the Map. The option
          * is a java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T readingOptions(Map<String, Object> readingOptions) {
-            this.readingOptions = readingOptions;
+            this.properties.put("readingOptions", readingOptions);
             return (T) this;
         }
-
         /**
          * API base URL. The option is a java.lang.String type.
          */
         public T restBaseURL(String restBaseURL) {
-            this.restBaseURL = restBaseURL;
+            this.properties.put("restBaseURL", restBaseURL);
             return (T) this;
         }
-
         /**
          * The numeric score with value. The option is a java.lang.Integer type.
          */
         public T scoreValue(Integer scoreValue) {
-            this.scoreValue = scoreValue;
+            this.properties.put("scoreValue", scoreValue);
             return (T) this;
         }
-
         /**
          * The picture size, one of large, normal, small or square. The option
          * is a facebook4j.PictureSize type.
          */
         public T size(PictureSize size) {
-            this.size = size;
+            this.properties.put("size", size);
             return (T) this;
         }
-
         /**
          * The media content from either a java.io.File or java.io.Inputstream.
          * The option is a facebook4j.Media type.
          */
         public T source(Object source) {
-            this.source = source;
+            this.properties.put("source", source);
             return (T) this;
         }
-
         /**
          * The note of the subject. The option is a java.lang.String type.
          */
         public T subject(String subject) {
-            this.subject = subject;
+            this.properties.put("subject", subject);
             return (T) this;
         }
-
         /**
          * The tab id. The option is a java.lang.String type.
          */
         public T tabId(String tabId) {
-            this.tabId = tabId;
+            this.properties.put("tabId", tabId);
             return (T) this;
         }
-
         /**
          * Photo tag information. The option is a facebook4j.TagUpdate type.
          */
         public T tagUpdate(Object tagUpdate) {
-            this.tagUpdate = tagUpdate;
+            this.properties.put("tagUpdate", tagUpdate);
             return (T) this;
         }
-
         /**
          * Test user 1. The option is a facebook4j.TestUser type.
          */
         public T testUser1(Object testUser1) {
-            this.testUser1 = testUser1;
+            this.properties.put("testUser1", testUser1);
             return (T) this;
         }
-
         /**
          * Test user 2. The option is a facebook4j.TestUser type.
          */
         public T testUser2(Object testUser2) {
-            this.testUser2 = testUser2;
+            this.properties.put("testUser2", testUser2);
             return (T) this;
         }
-
         /**
          * The ID of the test user. The option is a java.lang.String type.
          */
         public T testUserId(String testUserId) {
-            this.testUserId = testUserId;
+            this.properties.put("testUserId", testUserId);
             return (T) this;
         }
-
         /**
          * The title text. The option is a java.lang.String type.
          */
         public T title(String title) {
-            this.title = title;
+            this.properties.put("title", title);
             return (T) this;
         }
-
         /**
          * The ID of the user to tag. The option is a java.lang.String type.
          */
         public T toUserId(String toUserId) {
-            this.toUserId = toUserId;
+            this.properties.put("toUserId", toUserId);
             return (T) this;
         }
-
         /**
          * The IDs of the users to tag. The option is a
          * java.util.List<java.lang.String> type.
          */
         public T toUserIds(List<String> toUserIds) {
-            this.toUserIds = toUserIds;
+            this.properties.put("toUserIds", toUserIds);
             return (T) this;
         }
-
         /**
          * The Facebook user ID. The option is a java.lang.String type.
          */
         public T userId(String userId) {
-            this.userId = userId;
+            this.properties.put("userId", userId);
             return (T) this;
         }
-
         /**
          * The ID of a user 1. The option is a java.lang.String type.
          */
         public T userId1(String userId1) {
-            this.userId1 = userId1;
+            this.properties.put("userId1", userId1);
             return (T) this;
         }
-
         /**
          * The ID of a user 2. The option is a java.lang.String type.
          */
         public T userId2(String userId2) {
-            this.userId2 = userId2;
+            this.properties.put("userId2", userId2);
             return (T) this;
         }
-
         /**
          * The IDs of users to invite to event. The option is a
          * java.util.List<java.lang.String> type.
          */
         public T userIds(List<String> userIds) {
-            this.userIds = userIds;
+            this.properties.put("userIds", userIds);
             return (T) this;
         }
-
         /**
          * The test user locale. The option is a java.lang.String type.
          */
         public T userLocale(String userLocale) {
-            this.userLocale = userLocale;
+            this.properties.put("userLocale", userLocale);
             return (T) this;
         }
-
         /**
          * Use SSL. The option is a java.lang.Boolean type.
          */
         public T useSSL(Boolean useSSL) {
-            this.useSSL = useSSL;
+            this.properties.put("useSSL", useSSL);
             return (T) this;
         }
-
         /**
          * Video API base URL. The option is a java.lang.String type.
          */
         public T videoBaseURL(String videoBaseURL) {
-            this.videoBaseURL = videoBaseURL;
+            this.properties.put("videoBaseURL", videoBaseURL);
             return (T) this;
         }
-
         /**
          * The video ID. The option is a java.lang.String type.
          */
         public T videoId(String videoId) {
-            this.videoId = videoId;
+            this.properties.put("videoId", videoId);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * HTTP proxy server host name. The option is a java.lang.String type.
          */
         public T httpProxyHost(String httpProxyHost) {
-            this.httpProxyHost = httpProxyHost;
+            this.properties.put("httpProxyHost", httpProxyHost);
             return (T) this;
         }
-
         /**
          * HTTP proxy server password. The option is a java.lang.String type.
          */
         public T httpProxyPassword(String httpProxyPassword) {
-            this.httpProxyPassword = httpProxyPassword;
+            this.properties.put("httpProxyPassword", httpProxyPassword);
             return (T) this;
         }
-
         /**
          * HTTP proxy server port. The option is a java.lang.Integer type.
          */
         public T httpProxyPort(Integer httpProxyPort) {
-            this.httpProxyPort = httpProxyPort;
+            this.properties.put("httpProxyPort", httpProxyPort);
             return (T) this;
         }
-
         /**
          * HTTP proxy server user name. The option is a java.lang.String type.
          */
         public T httpProxyUser(String httpProxyUser) {
-            this.httpProxyUser = httpProxyUser;
+            this.properties.put("httpProxyUser", httpProxyUser);
             return (T) this;
         }
-
         /**
          * The user access token. The option is a java.lang.String type.
          */
         public T oAuthAccessToken(String oAuthAccessToken) {
-            this.oAuthAccessToken = oAuthAccessToken;
+            this.properties.put("oAuthAccessToken", oAuthAccessToken);
             return (T) this;
         }
-
         /**
          * OAuth access token URL. The option is a java.lang.String type.
          */
         public T oAuthAccessTokenURL(String oAuthAccessTokenURL) {
-            this.oAuthAccessTokenURL = oAuthAccessTokenURL;
+            this.properties.put("oAuthAccessTokenURL", oAuthAccessTokenURL);
             return (T) this;
         }
-
         /**
          * The application Id. The option is a java.lang.String type.
          */
         public T oAuthAppId(String oAuthAppId) {
-            this.oAuthAppId = oAuthAppId;
+            this.properties.put("oAuthAppId", oAuthAppId);
             return (T) this;
         }
-
         /**
          * The application Secret. The option is a java.lang.String type.
          */
         public T oAuthAppSecret(String oAuthAppSecret) {
-            this.oAuthAppSecret = oAuthAppSecret;
+            this.properties.put("oAuthAppSecret", oAuthAppSecret);
             return (T) this;
         }
-
         /**
          * OAuth authorization URL. The option is a java.lang.String type.
          */
         public T oAuthAuthorizationURL(String oAuthAuthorizationURL) {
-            this.oAuthAuthorizationURL = oAuthAuthorizationURL;
+            this.properties.put("oAuthAuthorizationURL", oAuthAuthorizationURL);
             return (T) this;
         }
-
         /**
          * Default OAuth permissions. Comma separated permission names. See
          * https://developers.facebook.com/docs/reference/login/#permissions for
          * the detail. The option is a java.lang.String type.
          */
         public T oAuthPermissions(String oAuthPermissions) {
-            this.oAuthPermissions = oAuthPermissions;
+            this.properties.put("oAuthPermissions", oAuthPermissions);
             return (T) this;
-        }
-
-        public String getMethodName() {
-            return methodName;
-        }
-
-        public void setMethodName(String methodName) {
-            this.methodName = methodName;
-        }
-
-        public URL getAchievementURL() {
-            return achievementURL;
-        }
-
-        public void setAchievementURL(URL achievementURL) {
-            this.achievementURL = achievementURL;
-        }
-
-        public String getAlbumId() {
-            return albumId;
-        }
-
-        public void setAlbumId(String albumId) {
-            this.albumId = albumId;
-        }
-
-        public Object getAlbumUpdate() {
-            return albumUpdate;
-        }
-
-        public void setAlbumUpdate(Object albumUpdate) {
-            this.albumUpdate = albumUpdate;
-        }
-
-        public String getAppId() {
-            return appId;
-        }
-
-        public void setAppId(String appId) {
-            this.appId = appId;
-        }
-
-        public Object getCenter() {
-            return center;
-        }
-
-        public void setCenter(Object center) {
-            this.center = center;
-        }
-
-        public String getCheckinId() {
-            return checkinId;
-        }
-
-        public void setCheckinId(String checkinId) {
-            this.checkinId = checkinId;
-        }
-
-        @Deprecated
-        public Object getCheckinUpdate() {
-            return checkinUpdate;
-        }
-
-        @Deprecated
-        public void setCheckinUpdate(Object checkinUpdate) {
-            this.checkinUpdate = checkinUpdate;
-        }
-
-        public String getClientURL() {
-            return clientURL;
-        }
-
-        public void setClientURL(String clientURL) {
-            this.clientURL = clientURL;
-        }
-
-        public String getClientVersion() {
-            return clientVersion;
-        }
-
-        public void setClientVersion(String clientVersion) {
-            this.clientVersion = clientVersion;
-        }
-
-        public String getCommentId() {
-            return commentId;
-        }
-
-        public void setCommentId(String commentId) {
-            this.commentId = commentId;
-        }
-
-        public Object getCommentUpdate() {
-            return commentUpdate;
-        }
-
-        public void setCommentUpdate(Object commentUpdate) {
-            this.commentUpdate = commentUpdate;
-        }
-
-        public Boolean getDebugEnabled() {
-            return debugEnabled;
-        }
-
-        public void setDebugEnabled(Boolean debugEnabled) {
-            this.debugEnabled = debugEnabled;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public Integer getDistance() {
-            return distance;
-        }
-
-        public void setDistance(Integer distance) {
-            this.distance = distance;
-        }
-
-        public String getDomainId() {
-            return domainId;
-        }
-
-        public void setDomainId(String domainId) {
-            this.domainId = domainId;
-        }
-
-        public String getDomainName() {
-            return domainName;
-        }
-
-        public void setDomainName(String domainName) {
-            this.domainName = domainName;
-        }
-
-        public List<String> getDomainNames() {
-            return domainNames;
-        }
-
-        public void setDomainNames(List<String> domainNames) {
-            this.domainNames = domainNames;
-        }
-
-        public String getEventId() {
-            return eventId;
-        }
-
-        public void setEventId(String eventId) {
-            this.eventId = eventId;
-        }
-
-        public Object getEventUpdate() {
-            return eventUpdate;
-        }
-
-        public void setEventUpdate(Object eventUpdate) {
-            this.eventUpdate = eventUpdate;
-        }
-
-        public String getFriendId() {
-            return friendId;
-        }
-
-        public void setFriendId(String friendId) {
-            this.friendId = friendId;
-        }
-
-        public String getFriendlistId() {
-            return friendlistId;
-        }
-
-        public void setFriendlistId(String friendlistId) {
-            this.friendlistId = friendlistId;
-        }
-
-        public String getFriendlistName() {
-            return friendlistName;
-        }
-
-        public void setFriendlistName(String friendlistName) {
-            this.friendlistName = friendlistName;
-        }
-
-        public String getFriendUserId() {
-            return friendUserId;
-        }
-
-        public void setFriendUserId(String friendUserId) {
-            this.friendUserId = friendUserId;
-        }
-
-        public String getGroupId() {
-            return groupId;
-        }
-
-        public void setGroupId(String groupId) {
-            this.groupId = groupId;
-        }
-
-        public Boolean getGzipEnabled() {
-            return gzipEnabled;
-        }
-
-        public void setGzipEnabled(Boolean gzipEnabled) {
-            this.gzipEnabled = gzipEnabled;
-        }
-
-        public Integer getHttpConnectionTimeout() {
-            return httpConnectionTimeout;
-        }
-
-        public void setHttpConnectionTimeout(Integer httpConnectionTimeout) {
-            this.httpConnectionTimeout = httpConnectionTimeout;
-        }
-
-        public Integer getHttpDefaultMaxPerRoute() {
-            return httpDefaultMaxPerRoute;
-        }
-
-        public void setHttpDefaultMaxPerRoute(Integer httpDefaultMaxPerRoute) {
-            this.httpDefaultMaxPerRoute = httpDefaultMaxPerRoute;
-        }
-
-        public Integer getHttpMaxTotalConnections() {
-            return httpMaxTotalConnections;
-        }
-
-        public void setHttpMaxTotalConnections(Integer httpMaxTotalConnections) {
-            this.httpMaxTotalConnections = httpMaxTotalConnections;
-        }
-
-        public Integer getHttpReadTimeout() {
-            return httpReadTimeout;
-        }
-
-        public void setHttpReadTimeout(Integer httpReadTimeout) {
-            this.httpReadTimeout = httpReadTimeout;
-        }
-
-        public Integer getHttpRetryCount() {
-            return httpRetryCount;
-        }
-
-        public void setHttpRetryCount(Integer httpRetryCount) {
-            this.httpRetryCount = httpRetryCount;
-        }
-
-        public Integer getHttpRetryIntervalSeconds() {
-            return httpRetryIntervalSeconds;
-        }
-
-        public void setHttpRetryIntervalSeconds(Integer httpRetryIntervalSeconds) {
-            this.httpRetryIntervalSeconds = httpRetryIntervalSeconds;
-        }
-
-        public Integer getHttpStreamingReadTimeout() {
-            return httpStreamingReadTimeout;
-        }
-
-        public void setHttpStreamingReadTimeout(Integer httpStreamingReadTimeout) {
-            this.httpStreamingReadTimeout = httpStreamingReadTimeout;
-        }
-
-        public List<String> getIds() {
-            return ids;
-        }
-
-        public void setIds(List<String> ids) {
-            this.ids = ids;
-        }
-
-        public String getInBody() {
-            return inBody;
-        }
-
-        public void setInBody(String inBody) {
-            this.inBody = inBody;
-        }
-
-        public Boolean getIncludeRead() {
-            return includeRead;
-        }
-
-        public void setIncludeRead(Boolean includeRead) {
-            this.includeRead = includeRead;
-        }
-
-        public Boolean getIsHidden() {
-            return isHidden;
-        }
-
-        public void setIsHidden(Boolean isHidden) {
-            this.isHidden = isHidden;
-        }
-
-        public Boolean getJsonStoreEnabled() {
-            return jsonStoreEnabled;
-        }
-
-        public void setJsonStoreEnabled(Boolean jsonStoreEnabled) {
-            this.jsonStoreEnabled = jsonStoreEnabled;
-        }
-
-        public URL getLink() {
-            return link;
-        }
-
-        public void setLink(URL link) {
-            this.link = link;
-        }
-
-        public String getLinkId() {
-            return linkId;
-        }
-
-        public void setLinkId(String linkId) {
-            this.linkId = linkId;
-        }
-
-        public Locale getLocale() {
-            return locale;
-        }
-
-        public void setLocale(Locale locale) {
-            this.locale = locale;
-        }
-
-        public Boolean getMbeanEnabled() {
-            return mbeanEnabled;
-        }
-
-        public void setMbeanEnabled(Boolean mbeanEnabled) {
-            this.mbeanEnabled = mbeanEnabled;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public void setMessage(String message) {
-            this.message = message;
-        }
-
-        public String getMessageId() {
-            return messageId;
-        }
-
-        public void setMessageId(String messageId) {
-            this.messageId = messageId;
-        }
-
-        public String getMetric() {
-            return metric;
-        }
-
-        public void setMetric(String metric) {
-            this.metric = metric;
-        }
-
-        public String getMilestoneId() {
-            return milestoneId;
-        }
-
-        public void setMilestoneId(String milestoneId) {
-            this.milestoneId = milestoneId;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getNoteId() {
-            return noteId;
-        }
-
-        public void setNoteId(String noteId) {
-            this.noteId = noteId;
-        }
-
-        public String getNotificationId() {
-            return notificationId;
-        }
-
-        public void setNotificationId(String notificationId) {
-            this.notificationId = notificationId;
-        }
-
-        public String getObjectId() {
-            return objectId;
-        }
-
-        public void setObjectId(String objectId) {
-            this.objectId = objectId;
-        }
-
-        public String getOfferId() {
-            return offerId;
-        }
-
-        public void setOfferId(String offerId) {
-            this.offerId = offerId;
-        }
-
-        public String getOptionDescription() {
-            return optionDescription;
-        }
-
-        public void setOptionDescription(String optionDescription) {
-            this.optionDescription = optionDescription;
-        }
-
-        public String getPageId() {
-            return pageId;
-        }
-
-        public void setPageId(String pageId) {
-            this.pageId = pageId;
-        }
-
-        public String getPermissionName() {
-            return permissionName;
-        }
-
-        public void setPermissionName(String permissionName) {
-            this.permissionName = permissionName;
-        }
-
-        public String getPermissions() {
-            return permissions;
-        }
-
-        public void setPermissions(String permissions) {
-            this.permissions = permissions;
-        }
-
-        public String getPhotoId() {
-            return photoId;
-        }
-
-        public void setPhotoId(String photoId) {
-            this.photoId = photoId;
-        }
-
-        public Integer getPictureId() {
-            return pictureId;
-        }
-
-        public void setPictureId(Integer pictureId) {
-            this.pictureId = pictureId;
-        }
-
-        public Integer getPictureId2() {
-            return pictureId2;
-        }
-
-        public void setPictureId2(Integer pictureId2) {
-            this.pictureId2 = pictureId2;
-        }
-
-        public PictureSize getPictureSize() {
-            return pictureSize;
-        }
-
-        public void setPictureSize(PictureSize pictureSize) {
-            this.pictureSize = pictureSize;
-        }
-
-        public String getPlaceId() {
-            return placeId;
-        }
-
-        public void setPlaceId(String placeId) {
-            this.placeId = placeId;
-        }
-
-        public String getPostId() {
-            return postId;
-        }
-
-        public void setPostId(String postId) {
-            this.postId = postId;
-        }
-
-        public Object getPostUpdate() {
-            return postUpdate;
-        }
-
-        public void setPostUpdate(Object postUpdate) {
-            this.postUpdate = postUpdate;
-        }
-
-        public Boolean getPrettyDebugEnabled() {
-            return prettyDebugEnabled;
-        }
-
-        public void setPrettyDebugEnabled(Boolean prettyDebugEnabled) {
-            this.prettyDebugEnabled = prettyDebugEnabled;
-        }
-
-        public Map<String, String> getQueries() {
-            return queries;
-        }
-
-        public void setQueries(Map<String, String> queries) {
-            this.queries = queries;
-        }
-
-        public String getQuery() {
-            return query;
-        }
-
-        public void setQuery(String query) {
-            this.query = query;
-        }
-
-        public String getQuestionId() {
-            return questionId;
-        }
-
-        public void setQuestionId(String questionId) {
-            this.questionId = questionId;
-        }
-
-        public Object getReading() {
-            return reading;
-        }
-
-        public void setReading(Object reading) {
-            this.reading = reading;
-        }
-
-        public Map<String, Object> getReadingOptions() {
-            return readingOptions;
-        }
-
-        public void setReadingOptions(Map<String, Object> readingOptions) {
-            this.readingOptions = readingOptions;
-        }
-
-        public String getRestBaseURL() {
-            return restBaseURL;
-        }
-
-        public void setRestBaseURL(String restBaseURL) {
-            this.restBaseURL = restBaseURL;
-        }
-
-        public Integer getScoreValue() {
-            return scoreValue;
-        }
-
-        public void setScoreValue(Integer scoreValue) {
-            this.scoreValue = scoreValue;
-        }
-
-        public PictureSize getSize() {
-            return size;
-        }
-
-        public void setSize(PictureSize size) {
-            this.size = size;
-        }
-
-        public Object getSource() {
-            return source;
-        }
-
-        public void setSource(Object source) {
-            this.source = source;
-        }
-
-        public String getSubject() {
-            return subject;
-        }
-
-        public void setSubject(String subject) {
-            this.subject = subject;
-        }
-
-        public String getTabId() {
-            return tabId;
-        }
-
-        public void setTabId(String tabId) {
-            this.tabId = tabId;
-        }
-
-        public Object getTagUpdate() {
-            return tagUpdate;
-        }
-
-        public void setTagUpdate(Object tagUpdate) {
-            this.tagUpdate = tagUpdate;
-        }
-
-        public Object getTestUser1() {
-            return testUser1;
-        }
-
-        public void setTestUser1(Object testUser1) {
-            this.testUser1 = testUser1;
-        }
-
-        public Object getTestUser2() {
-            return testUser2;
-        }
-
-        public void setTestUser2(Object testUser2) {
-            this.testUser2 = testUser2;
-        }
-
-        public String getTestUserId() {
-            return testUserId;
-        }
-
-        public void setTestUserId(String testUserId) {
-            this.testUserId = testUserId;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getToUserId() {
-            return toUserId;
-        }
-
-        public void setToUserId(String toUserId) {
-            this.toUserId = toUserId;
-        }
-
-        public List<String> getToUserIds() {
-            return toUserIds;
-        }
-
-        public void setToUserIds(List<String> toUserIds) {
-            this.toUserIds = toUserIds;
-        }
-
-        public String getUserId() {
-            return userId;
-        }
-
-        public void setUserId(String userId) {
-            this.userId = userId;
-        }
-
-        public String getUserId1() {
-            return userId1;
-        }
-
-        public void setUserId1(String userId1) {
-            this.userId1 = userId1;
-        }
-
-        public String getUserId2() {
-            return userId2;
-        }
-
-        public void setUserId2(String userId2) {
-            this.userId2 = userId2;
-        }
-
-        public List<String> getUserIds() {
-            return userIds;
-        }
-
-        public void setUserIds(List<String> userIds) {
-            this.userIds = userIds;
-        }
-
-        public String getUserLocale() {
-            return userLocale;
-        }
-
-        public void setUserLocale(String userLocale) {
-            this.userLocale = userLocale;
-        }
-
-        public Boolean getUseSSL() {
-            return useSSL;
-        }
-
-        public void setUseSSL(Boolean useSSL) {
-            this.useSSL = useSSL;
-        }
-
-        public String getVideoBaseURL() {
-            return videoBaseURL;
-        }
-
-        public void setVideoBaseURL(String videoBaseURL) {
-            this.videoBaseURL = videoBaseURL;
-        }
-
-        public String getVideoId() {
-            return videoId;
-        }
-
-        public void setVideoId(String videoId) {
-            this.videoId = videoId;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getHttpProxyHost() {
-            return httpProxyHost;
-        }
-
-        public void setHttpProxyHost(String httpProxyHost) {
-            this.httpProxyHost = httpProxyHost;
-        }
-
-        public String getHttpProxyPassword() {
-            return httpProxyPassword;
-        }
-
-        public void setHttpProxyPassword(String httpProxyPassword) {
-            this.httpProxyPassword = httpProxyPassword;
-        }
-
-        public Integer getHttpProxyPort() {
-            return httpProxyPort;
-        }
-
-        public void setHttpProxyPort(Integer httpProxyPort) {
-            this.httpProxyPort = httpProxyPort;
-        }
-
-        public String getHttpProxyUser() {
-            return httpProxyUser;
-        }
-
-        public void setHttpProxyUser(String httpProxyUser) {
-            this.httpProxyUser = httpProxyUser;
-        }
-
-        public String getOAuthAccessToken() {
-            return oAuthAccessToken;
-        }
-
-        public void setOAuthAccessToken(String oAuthAccessToken) {
-            this.oAuthAccessToken = oAuthAccessToken;
-        }
-
-        public String getOAuthAccessTokenURL() {
-            return oAuthAccessTokenURL;
-        }
-
-        public void setOAuthAccessTokenURL(String oAuthAccessTokenURL) {
-            this.oAuthAccessTokenURL = oAuthAccessTokenURL;
-        }
-
-        public String getOAuthAppId() {
-            return oAuthAppId;
-        }
-
-        public void setOAuthAppId(String oAuthAppId) {
-            this.oAuthAppId = oAuthAppId;
-        }
-
-        public String getOAuthAppSecret() {
-            return oAuthAppSecret;
-        }
-
-        public void setOAuthAppSecret(String oAuthAppSecret) {
-            this.oAuthAppSecret = oAuthAppSecret;
-        }
-
-        public String getOAuthAuthorizationURL() {
-            return oAuthAuthorizationURL;
-        }
-
-        public void setOAuthAuthorizationURL(String oAuthAuthorizationURL) {
-            this.oAuthAuthorizationURL = oAuthAuthorizationURL;
-        }
-
-        public String getOAuthPermissions() {
-            return oAuthPermissions;
-        }
-
-        public void setOAuthPermissions(String oAuthPermissions) {
-            this.oAuthPermissions = oAuthPermissions;
         }
     }
 
     public static class FacebookConsumer
             extends
-                FacebookCommon<FacebookConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                FacebookCommon<FacebookConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public FacebookConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -1815,10 +807,9 @@ public class FacebookEndpoint {
          * ignored. The option is a boolean type.
          */
         public FacebookConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (FacebookConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -1828,47 +819,27 @@ public class FacebookEndpoint {
          */
         public FacebookConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (FacebookConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public FacebookConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (FacebookConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class FacebookProducer
             extends
-                FacebookCommon<FacebookProducer> {
+                FacebookCommon<FacebookProducer>
+            implements
+                EndpointDefinition.Producer {
+        public FacebookProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum PictureSize {

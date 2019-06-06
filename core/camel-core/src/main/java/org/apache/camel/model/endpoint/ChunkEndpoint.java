@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * Transforms the message using a Chunk template.
@@ -27,19 +28,12 @@ import javax.annotation.Generated;
 public class ChunkEndpoint {
 
 
-    public static class ChunkCommon<T extends EndpointConfiguration>
+    public static class ChunkCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String resourceUri;
-        private Boolean contentCache;
-        private String encoding;
-        private String extension;
-        private String themeFolder;
-        private String themeLayer;
-        private String themeSubfolder;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        ChunkCommon(String path) {
+            super("chunk", path);
+        }
         /**
          * Path to the resource. You can prefix with: classpath, file, http,
          * ref, or bean. classpath, file and http loads the resource using these
@@ -49,160 +43,94 @@ public class ChunkEndpoint {
          * bean:myBean.myMethod. The option is a java.lang.String type.
          */
         public T resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
+            this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
-
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
         public T contentCache(boolean contentCache) {
-            this.contentCache = contentCache;
+            this.properties.put("contentCache", contentCache);
             return (T) this;
         }
-
         /**
          * Define the encoding of the body. The option is a java.lang.String
          * type.
          */
         public T encoding(String encoding) {
-            this.encoding = encoding;
+            this.properties.put("encoding", encoding);
             return (T) this;
         }
-
         /**
          * Define the file extension of the template. The option is a
          * java.lang.String type.
          */
         public T extension(String extension) {
-            this.extension = extension;
+            this.properties.put("extension", extension);
             return (T) this;
         }
-
         /**
          * Define the themes folder to scan. The option is a java.lang.String
          * type.
          */
         public T themeFolder(String themeFolder) {
-            this.themeFolder = themeFolder;
+            this.properties.put("themeFolder", themeFolder);
             return (T) this;
         }
-
         /**
          * Define the theme layer to elaborate. The option is a java.lang.String
          * type.
          */
         public T themeLayer(String themeLayer) {
-            this.themeLayer = themeLayer;
+            this.properties.put("themeLayer", themeLayer);
             return (T) this;
         }
-
         /**
          * Define the themes subfolder to scan. The option is a java.lang.String
          * type.
          */
         public T themeSubfolder(String themeSubfolder) {
-            this.themeSubfolder = themeSubfolder;
+            this.properties.put("themeSubfolder", themeSubfolder);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getResourceUri() {
-            return resourceUri;
-        }
-
-        public void setResourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-        }
-
-        public Boolean getContentCache() {
-            return contentCache;
-        }
-
-        public void setContentCache(Boolean contentCache) {
-            this.contentCache = contentCache;
-        }
-
-        public String getEncoding() {
-            return encoding;
-        }
-
-        public void setEncoding(String encoding) {
-            this.encoding = encoding;
-        }
-
-        public String getExtension() {
-            return extension;
-        }
-
-        public void setExtension(String extension) {
-            this.extension = extension;
-        }
-
-        public String getThemeFolder() {
-            return themeFolder;
-        }
-
-        public void setThemeFolder(String themeFolder) {
-            this.themeFolder = themeFolder;
-        }
-
-        public String getThemeLayer() {
-            return themeLayer;
-        }
-
-        public void setThemeLayer(String themeLayer) {
-            this.themeLayer = themeLayer;
-        }
-
-        public String getThemeSubfolder() {
-            return themeSubfolder;
-        }
-
-        public void setThemeSubfolder(String themeSubfolder) {
-            this.themeSubfolder = themeSubfolder;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class ChunkConsumer
+            extends
+                ChunkCommon<ChunkConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ChunkConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class ChunkConsumer extends ChunkCommon<ChunkConsumer> {
-    }
-
-    public static class ChunkProducer extends ChunkCommon<ChunkProducer> {
+    public static class ChunkProducer
+            extends
+                ChunkCommon<ChunkProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ChunkProducer(String path) {
+            super(path);
+        }
     }
 }

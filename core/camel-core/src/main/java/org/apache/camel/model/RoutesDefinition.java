@@ -175,6 +175,12 @@ public class RoutesDefinition extends OptionalIdentifiedDefinition<RoutesDefinit
         return route(route);
     }
 
+    public RouteDefinition from(EndpointDefinition.Consumer endpoint) {
+        RouteDefinition route = createRoute();
+        route.from(endpoint);
+        return route(route);
+    }
+
     /**
      * Creates a new route using the given route
      *

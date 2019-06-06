@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The ldap component allows you to perform searches in LDAP servers using
@@ -28,17 +29,12 @@ import javax.annotation.Generated;
 public class LdapEndpoint {
 
 
-    public static class LdapCommon<T extends EndpointConfiguration>
+    public static class LdapCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String dirContextName;
-        private String base;
-        private Integer pageSize;
-        private String returnedAttributes;
-        private String scope;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        LdapCommon(String path) {
+            super("ldap", path);
+        }
         /**
          * Name of either a javax.naming.directory.DirContext, or
          * java.util.Hashtable, or Map bean to lookup in the registry. If the
@@ -51,18 +47,16 @@ public class LdapEndpoint {
          * instead. The option is a java.lang.String type.
          */
         public T dirContextName(String dirContextName) {
-            this.dirContextName = dirContextName;
+            this.properties.put("dirContextName", dirContextName);
             return (T) this;
         }
-
         /**
          * The base DN for searches. The option is a java.lang.String type.
          */
         public T base(String base) {
-            this.base = base;
+            this.properties.put("base", base);
             return (T) this;
         }
-
         /**
          * When specified the ldap module uses paging to retrieve all results
          * (most LDAP Servers throw an exception when trying to retrieve more
@@ -72,108 +66,62 @@ public class LdapEndpoint {
          * type.
          */
         public T pageSize(Integer pageSize) {
-            this.pageSize = pageSize;
+            this.properties.put("pageSize", pageSize);
             return (T) this;
         }
-
         /**
          * Comma-separated list of attributes that should be set in each entry
          * of the result. The option is a java.lang.String type.
          */
         public T returnedAttributes(String returnedAttributes) {
-            this.returnedAttributes = returnedAttributes;
+            this.properties.put("returnedAttributes", returnedAttributes);
             return (T) this;
         }
-
         /**
          * Specifies how deeply to search the tree of entries, starting at the
          * base DN. The option is a java.lang.String type.
          */
         public T scope(String scope) {
-            this.scope = scope;
+            this.properties.put("scope", scope);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getDirContextName() {
-            return dirContextName;
-        }
-
-        public void setDirContextName(String dirContextName) {
-            this.dirContextName = dirContextName;
-        }
-
-        public String getBase() {
-            return base;
-        }
-
-        public void setBase(String base) {
-            this.base = base;
-        }
-
-        public Integer getPageSize() {
-            return pageSize;
-        }
-
-        public void setPageSize(Integer pageSize) {
-            this.pageSize = pageSize;
-        }
-
-        public String getReturnedAttributes() {
-            return returnedAttributes;
-        }
-
-        public void setReturnedAttributes(String returnedAttributes) {
-            this.returnedAttributes = returnedAttributes;
-        }
-
-        public String getScope() {
-            return scope;
-        }
-
-        public void setScope(String scope) {
-            this.scope = scope;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class LdapConsumer
+            extends
+                LdapCommon<LdapConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public LdapConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class LdapConsumer extends LdapCommon<LdapConsumer> {
-    }
-
-    public static class LdapProducer extends LdapCommon<LdapProducer> {
+    public static class LdapProducer
+            extends
+                LdapCommon<LdapProducer>
+            implements
+                EndpointDefinition.Producer {
+        public LdapProducer(String path) {
+            super(path);
+        }
     }
 }

@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,25 +31,21 @@ import org.apache.camel.spi.ExceptionHandler;
 public class QuickfixjEndpoint {
 
 
-    public static class QuickfixjCommon<T extends EndpointConfiguration>
+    public static class QuickfixjCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String configurationName;
-        private Boolean lazyCreateEngine;
-        private Object sessionID;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        QuickfixjCommon(String path) {
+            super("quickfix", path);
+        }
         /**
          * The configFile is the name of the QuickFIX/J configuration to use for
          * the FIX engine (located as a resource found in your classpath). The
          * option is a java.lang.String type.
          */
         public T configurationName(String configurationName) {
-            this.configurationName = configurationName;
+            this.properties.put("configurationName", configurationName);
             return (T) this;
         }
-
         /**
          * This option allows to create QuickFIX/J engine on demand. Value true
          * means the engine is started when first message is send or there's
@@ -58,88 +55,46 @@ public class QuickfixjEndpoint {
          * being used. The option is a boolean type.
          */
         public T lazyCreateEngine(boolean lazyCreateEngine) {
-            this.lazyCreateEngine = lazyCreateEngine;
+            this.properties.put("lazyCreateEngine", lazyCreateEngine);
             return (T) this;
         }
-
         /**
          * The optional sessionID identifies a specific FIX session. The format
          * of the sessionID is:
          * (BeginString):(SenderCompID)/(SenderSubID)/(SenderLocationID)-(TargetCompID)/(TargetSubID)/(TargetLocationID). The option is a quickfix.SessionID type.
          */
         public T sessionID(Object sessionID) {
-            this.sessionID = sessionID;
+            this.properties.put("sessionID", sessionID);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getConfigurationName() {
-            return configurationName;
-        }
-
-        public void setConfigurationName(String configurationName) {
-            this.configurationName = configurationName;
-        }
-
-        public Boolean getLazyCreateEngine() {
-            return lazyCreateEngine;
-        }
-
-        public void setLazyCreateEngine(Boolean lazyCreateEngine) {
-            this.lazyCreateEngine = lazyCreateEngine;
-        }
-
-        public Object getSessionID() {
-            return sessionID;
-        }
-
-        public void setSessionID(Object sessionID) {
-            this.sessionID = sessionID;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class QuickfixjConsumer
             extends
-                QuickfixjCommon<QuickfixjConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                QuickfixjCommon<QuickfixjConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public QuickfixjConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -150,10 +105,9 @@ public class QuickfixjEndpoint {
          * ignored. The option is a boolean type.
          */
         public QuickfixjConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (QuickfixjConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -163,46 +117,26 @@ public class QuickfixjEndpoint {
          */
         public QuickfixjConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (QuickfixjConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public QuickfixjConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (QuickfixjConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class QuickfixjProducer
             extends
-                QuickfixjCommon<QuickfixjProducer> {
+                QuickfixjCommon<QuickfixjProducer>
+            implements
+                EndpointDefinition.Producer {
+        public QuickfixjProducer(String path) {
+            super(path);
+        }
     }
 }

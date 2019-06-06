@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import java.util.Date;
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The aws-cw component is used for sending metrics to an Amazon CloudWatch.
@@ -28,243 +29,130 @@ import javax.annotation.Generated;
 public class CwEndpoint {
 
 
-    public static class CwCommon<T extends EndpointConfiguration>
+    public static class CwCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String namespace;
-        private Object amazonCwClient;
-        private String name;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String region;
-        private Date timestamp;
-        private String unit;
-        private Double value;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String accessKey;
-        private String secretKey;
-
+                EndpointDefinition<T> {
+        CwCommon(String path) {
+            super("aws-cw", path);
+        }
         /**
          * The metric namespace. The option is a java.lang.String type.
          */
         public T namespace(String namespace) {
-            this.namespace = namespace;
+            this.properties.put("namespace", namespace);
             return (T) this;
         }
-
         /**
          * To use the AmazonCloudWatch as the client. The option is a
          * com.amazonaws.services.cloudwatch.AmazonCloudWatch type.
          */
         public T amazonCwClient(Object amazonCwClient) {
-            this.amazonCwClient = amazonCwClient;
+            this.properties.put("amazonCwClient", amazonCwClient);
             return (T) this;
         }
-
         /**
          * The metric name. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * To define a proxy host when instantiating the CW client. The option
          * is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * To define a proxy port when instantiating the CW client. The option
          * is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
-
         /**
          * The region in which CW client needs to work. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * The metric timestamp. The option is a java.util.Date type.
          */
         public T timestamp(Date timestamp) {
-            this.timestamp = timestamp;
+            this.properties.put("timestamp", timestamp);
             return (T) this;
         }
-
         /**
          * The metric unit. The option is a java.lang.String type.
          */
         public T unit(String unit) {
-            this.unit = unit;
+            this.properties.put("unit", unit);
             return (T) this;
         }
-
         /**
          * The metric value. The option is a java.lang.Double type.
          */
         public T value(Double value) {
-            this.value = value;
+            this.properties.put("value", value);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public T accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (T) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public T secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (T) this;
         }
+    }
 
-        public String getNamespace() {
-            return namespace;
-        }
-
-        public void setNamespace(String namespace) {
-            this.namespace = namespace;
-        }
-
-        public Object getAmazonCwClient() {
-            return amazonCwClient;
-        }
-
-        public void setAmazonCwClient(Object amazonCwClient) {
-            this.amazonCwClient = amazonCwClient;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public Date getTimestamp() {
-            return timestamp;
-        }
-
-        public void setTimestamp(Date timestamp) {
-            this.timestamp = timestamp;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Double getValue() {
-            return value;
-        }
-
-        public void setValue(Double value) {
-            this.value = value;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
+    public static class CwConsumer
+            extends
+                CwCommon<CwConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public CwConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class CwConsumer extends CwCommon<CwConsumer> {
-    }
-
-    public static class CwProducer extends CwCommon<CwProducer> {
+    public static class CwProducer
+            extends
+                CwCommon<CwProducer>
+            implements
+                EndpointDefinition.Producer {
+        public CwProducer(String path) {
+            super(path);
+        }
     }
 }

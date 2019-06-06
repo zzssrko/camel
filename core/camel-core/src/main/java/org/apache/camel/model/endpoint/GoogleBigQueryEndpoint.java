@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * Google BigQuery data warehouse for analytics.
@@ -27,144 +28,87 @@ import javax.annotation.Generated;
 public class GoogleBigQueryEndpoint {
 
 
-    public static class GoogleBigQueryCommon<T extends EndpointConfiguration>
+    public static class GoogleBigQueryCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String projectId;
-        private String datasetId;
-        private String tableId;
-        private Object connectionFactory;
-        private String useAsInsertId;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        GoogleBigQueryCommon(String path) {
+            super("google-bigquery", path);
+        }
         /**
          * Google Cloud Project Id. The option is a java.lang.String type.
          */
         public T projectId(String projectId) {
-            this.projectId = projectId;
+            this.properties.put("projectId", projectId);
             return (T) this;
         }
-
         /**
          * BigQuery Dataset Id. The option is a java.lang.String type.
          */
         public T datasetId(String datasetId) {
-            this.datasetId = datasetId;
+            this.properties.put("datasetId", datasetId);
             return (T) this;
         }
-
         /**
          * BigQuery table id. The option is a java.lang.String type.
          */
         public T tableId(String tableId) {
-            this.tableId = tableId;
+            this.properties.put("tableId", tableId);
             return (T) this;
         }
-
         /**
          * ConnectionFactory to obtain connection to Bigquery Service. If non
          * provided the default will be used. The option is a
          * org.apache.camel.component.google.bigquery.GoogleBigQueryConnectionFactory type.
          */
         public T connectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
+            this.properties.put("connectionFactory", connectionFactory);
             return (T) this;
         }
-
         /**
          * Field name to use as insert id. The option is a java.lang.String
          * type.
          */
         public T useAsInsertId(String useAsInsertId) {
-            this.useAsInsertId = useAsInsertId;
+            this.properties.put("useAsInsertId", useAsInsertId);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getProjectId() {
-            return projectId;
-        }
-
-        public void setProjectId(String projectId) {
-            this.projectId = projectId;
-        }
-
-        public String getDatasetId() {
-            return datasetId;
-        }
-
-        public void setDatasetId(String datasetId) {
-            this.datasetId = datasetId;
-        }
-
-        public String getTableId() {
-            return tableId;
-        }
-
-        public void setTableId(String tableId) {
-            this.tableId = tableId;
-        }
-
-        public Object getConnectionFactory() {
-            return connectionFactory;
-        }
-
-        public void setConnectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
-        }
-
-        public String getUseAsInsertId() {
-            return useAsInsertId;
-        }
-
-        public void setUseAsInsertId(String useAsInsertId) {
-            this.useAsInsertId = useAsInsertId;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class GoogleBigQueryConsumer
             extends
-                GoogleBigQueryCommon<GoogleBigQueryConsumer> {
+                GoogleBigQueryCommon<GoogleBigQueryConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GoogleBigQueryConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class GoogleBigQueryProducer
             extends
-                GoogleBigQueryCommon<GoogleBigQueryProducer> {
+                GoogleBigQueryCommon<GoogleBigQueryProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GoogleBigQueryProducer(String path) {
+            super(path);
+        }
     }
 }

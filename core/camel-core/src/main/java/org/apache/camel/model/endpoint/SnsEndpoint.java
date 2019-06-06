@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.HeaderFilterStrategy;
 
 /**
@@ -29,354 +30,179 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class SnsEndpoint {
 
 
-    public static class SnsCommon<T extends EndpointConfiguration>
+    public static class SnsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String topicNameOrArn;
-        private Object amazonSNSClient;
-        private Object amazonSQSClient;
-        private Boolean autoCreateTopic;
-        private HeaderFilterStrategy headerFilterStrategy;
-        private String kmsMasterKeyId;
-        private String messageStructure;
-        private String policy;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String queueUrl;
-        private String region;
-        private Boolean serverSideEncryptionEnabled;
-        private String subject;
-        private Boolean subscribeSNStoSQS;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String accessKey;
-        private String secretKey;
-
+                EndpointDefinition<T> {
+        SnsCommon(String path) {
+            super("aws-sns", path);
+        }
         /**
          * Topic name or ARN. The option is a java.lang.String type.
          */
         public T topicNameOrArn(String topicNameOrArn) {
-            this.topicNameOrArn = topicNameOrArn;
+            this.properties.put("topicNameOrArn", topicNameOrArn);
             return (T) this;
         }
-
         /**
          * To use the AmazonSNS as the client. The option is a
          * com.amazonaws.services.sns.AmazonSNS type.
          */
         public T amazonSNSClient(Object amazonSNSClient) {
-            this.amazonSNSClient = amazonSNSClient;
+            this.properties.put("amazonSNSClient", amazonSNSClient);
             return (T) this;
         }
-
         /**
          * An SQS Client to use as bridge between SNS and SQS. The option is a
          * com.amazonaws.services.sqs.AmazonSQS type.
          */
         public T amazonSQSClient(Object amazonSQSClient) {
-            this.amazonSQSClient = amazonSQSClient;
+            this.properties.put("amazonSQSClient", amazonSQSClient);
             return (T) this;
         }
-
         /**
          * Setting the autocreation of the topic. The option is a boolean type.
          */
         public T autoCreateTopic(boolean autoCreateTopic) {
-            this.autoCreateTopic = autoCreateTopic;
+            this.properties.put("autoCreateTopic", autoCreateTopic);
             return (T) this;
         }
-
         /**
          * To use a custom HeaderFilterStrategy to map headers to/from Camel.
          * The option is a org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
-
         /**
          * The ID of an AWS-managed customer master key (CMK) for Amazon SNS or
          * a custom CMK. The option is a java.lang.String type.
          */
         public T kmsMasterKeyId(String kmsMasterKeyId) {
-            this.kmsMasterKeyId = kmsMasterKeyId;
+            this.properties.put("kmsMasterKeyId", kmsMasterKeyId);
             return (T) this;
         }
-
         /**
          * The message structure to use such as json. The option is a
          * java.lang.String type.
          */
         public T messageStructure(String messageStructure) {
-            this.messageStructure = messageStructure;
+            this.properties.put("messageStructure", messageStructure);
             return (T) this;
         }
-
         /**
          * The policy for this queue. The option is a java.lang.String type.
          */
         public T policy(String policy) {
-            this.policy = policy;
+            this.properties.put("policy", policy);
             return (T) this;
         }
-
         /**
          * To define a proxy host when instantiating the SNS client. The option
          * is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * To define a proxy port when instantiating the SNS client. The option
          * is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
-
         /**
          * The queueUrl to subscribe to. The option is a java.lang.String type.
          */
         public T queueUrl(String queueUrl) {
-            this.queueUrl = queueUrl;
+            this.properties.put("queueUrl", queueUrl);
             return (T) this;
         }
-
         /**
          * The region in which SNS client needs to work. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * Define if Server Side Encryption is enabled or not on the topic. The
          * option is a boolean type.
          */
         public T serverSideEncryptionEnabled(boolean serverSideEncryptionEnabled) {
-            this.serverSideEncryptionEnabled = serverSideEncryptionEnabled;
+            this.properties.put("serverSideEncryptionEnabled", serverSideEncryptionEnabled);
             return (T) this;
         }
-
         /**
          * The subject which is used if the message header 'CamelAwsSnsSubject'
          * is not present. The option is a java.lang.String type.
          */
         public T subject(String subject) {
-            this.subject = subject;
+            this.properties.put("subject", subject);
             return (T) this;
         }
-
         /**
          * Define if the subscription between SNS Topic and SQS must be done or
          * not. The option is a boolean type.
          */
         public T subscribeSNStoSQS(boolean subscribeSNStoSQS) {
-            this.subscribeSNStoSQS = subscribeSNStoSQS;
+            this.properties.put("subscribeSNStoSQS", subscribeSNStoSQS);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public T accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (T) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public T secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (T) this;
         }
+    }
 
-        public String getTopicNameOrArn() {
-            return topicNameOrArn;
-        }
-
-        public void setTopicNameOrArn(String topicNameOrArn) {
-            this.topicNameOrArn = topicNameOrArn;
-        }
-
-        public Object getAmazonSNSClient() {
-            return amazonSNSClient;
-        }
-
-        public void setAmazonSNSClient(Object amazonSNSClient) {
-            this.amazonSNSClient = amazonSNSClient;
-        }
-
-        public Object getAmazonSQSClient() {
-            return amazonSQSClient;
-        }
-
-        public void setAmazonSQSClient(Object amazonSQSClient) {
-            this.amazonSQSClient = amazonSQSClient;
-        }
-
-        public Boolean getAutoCreateTopic() {
-            return autoCreateTopic;
-        }
-
-        public void setAutoCreateTopic(Boolean autoCreateTopic) {
-            this.autoCreateTopic = autoCreateTopic;
-        }
-
-        public HeaderFilterStrategy getHeaderFilterStrategy() {
-            return headerFilterStrategy;
-        }
-
-        public void setHeaderFilterStrategy(
-                HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
-        }
-
-        public String getKmsMasterKeyId() {
-            return kmsMasterKeyId;
-        }
-
-        public void setKmsMasterKeyId(String kmsMasterKeyId) {
-            this.kmsMasterKeyId = kmsMasterKeyId;
-        }
-
-        public String getMessageStructure() {
-            return messageStructure;
-        }
-
-        public void setMessageStructure(String messageStructure) {
-            this.messageStructure = messageStructure;
-        }
-
-        public String getPolicy() {
-            return policy;
-        }
-
-        public void setPolicy(String policy) {
-            this.policy = policy;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getQueueUrl() {
-            return queueUrl;
-        }
-
-        public void setQueueUrl(String queueUrl) {
-            this.queueUrl = queueUrl;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public Boolean getServerSideEncryptionEnabled() {
-            return serverSideEncryptionEnabled;
-        }
-
-        public void setServerSideEncryptionEnabled(
-                Boolean serverSideEncryptionEnabled) {
-            this.serverSideEncryptionEnabled = serverSideEncryptionEnabled;
-        }
-
-        public String getSubject() {
-            return subject;
-        }
-
-        public void setSubject(String subject) {
-            this.subject = subject;
-        }
-
-        public Boolean getSubscribeSNStoSQS() {
-            return subscribeSNStoSQS;
-        }
-
-        public void setSubscribeSNStoSQS(Boolean subscribeSNStoSQS) {
-            this.subscribeSNStoSQS = subscribeSNStoSQS;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
+    public static class SnsConsumer
+            extends
+                SnsCommon<SnsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SnsConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class SnsConsumer extends SnsCommon<SnsConsumer> {
-    }
-
-    public static class SnsProducer extends SnsCommon<SnsProducer> {
+    public static class SnsProducer
+            extends
+                SnsCommon<SnsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SnsProducer(String path) {
+            super(path);
+        }
     }
 }

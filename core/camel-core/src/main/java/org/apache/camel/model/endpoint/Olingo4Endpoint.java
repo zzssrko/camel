@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,71 +31,53 @@ import org.apache.camel.spi.ExceptionHandler;
 public class Olingo4Endpoint {
 
 
-    public static class Olingo4Common<T extends EndpointConfiguration>
+    public static class Olingo4Common<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private Olingo4ApiName apiName;
-        private String methodName;
-        private Integer connectTimeout;
-        private String contentType;
-        private Boolean filterAlreadySeen;
-        private Object httpAsyncClientBuilder;
-        private Object httpClientBuilder;
-        private Map<String, String> httpHeaders;
-        private String inBody;
-        private Object proxy;
-        private String serviceUri;
-        private Integer socketTimeout;
-        private Object sslContextParameters;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        Olingo4Common(String path) {
+            super("olingo4", path);
+        }
         /**
          * What kind of operation to perform. The option is a
          * org.apache.camel.component.olingo4.internal.Olingo4ApiName type.
          */
         public T apiName(Olingo4ApiName apiName) {
-            this.apiName = apiName;
+            this.properties.put("apiName", apiName);
             return (T) this;
         }
-
         /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
         public T methodName(String methodName) {
-            this.methodName = methodName;
+            this.properties.put("methodName", methodName);
             return (T) this;
         }
-
         /**
          * HTTP connection creation timeout in milliseconds, defaults to 30,000
          * (30 seconds). The option is a int type.
          */
         public T connectTimeout(int connectTimeout) {
-            this.connectTimeout = connectTimeout;
+            this.properties.put("connectTimeout", connectTimeout);
             return (T) this;
         }
-
         /**
          * Content-Type header value can be used to specify JSON or XML message
          * format, defaults to application/json;charset=utf-8. The option is a
          * java.lang.String type.
          */
         public T contentType(String contentType) {
-            this.contentType = contentType;
+            this.properties.put("contentType", contentType);
             return (T) this;
         }
-
         /**
          * Set this to true to filter out results that have already been
          * communicated by this component. The option is a boolean type.
          */
         public T filterAlreadySeen(boolean filterAlreadySeen) {
-            this.filterAlreadySeen = filterAlreadySeen;
+            this.properties.put("filterAlreadySeen", filterAlreadySeen);
             return (T) this;
         }
-
         /**
          * Custom HTTP async client builder for more complex HTTP client
          * configuration, overrides connectionTimeout, socketTimeout, proxy and
@@ -104,10 +87,9 @@ public class Olingo4Endpoint {
          * type.
          */
         public T httpAsyncClientBuilder(Object httpAsyncClientBuilder) {
-            this.httpAsyncClientBuilder = httpAsyncClientBuilder;
+            this.properties.put("httpAsyncClientBuilder", httpAsyncClientBuilder);
             return (T) this;
         }
-
         /**
          * Custom HTTP client builder for more complex HTTP client
          * configuration, overrides connectionTimeout, socketTimeout, proxy and
@@ -116,214 +98,87 @@ public class Olingo4Endpoint {
          * option is a org.apache.http.impl.client.HttpClientBuilder type.
          */
         public T httpClientBuilder(Object httpClientBuilder) {
-            this.httpClientBuilder = httpClientBuilder;
+            this.properties.put("httpClientBuilder", httpClientBuilder);
             return (T) this;
         }
-
         /**
          * Custom HTTP headers to inject into every request, this could include
          * OAuth tokens, etc. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
         public T httpHeaders(Map<String, String> httpHeaders) {
-            this.httpHeaders = httpHeaders;
+            this.properties.put("httpHeaders", httpHeaders);
             return (T) this;
         }
-
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
         public T inBody(String inBody) {
-            this.inBody = inBody;
+            this.properties.put("inBody", inBody);
             return (T) this;
         }
-
         /**
          * HTTP proxy server configuration. The option is a
          * org.apache.http.HttpHost type.
          */
         public T proxy(Object proxy) {
-            this.proxy = proxy;
+            this.properties.put("proxy", proxy);
             return (T) this;
         }
-
         /**
          * Target OData service base URI, e.g.
          * http://services.odata.org/OData/OData.svc. The option is a
          * java.lang.String type.
          */
         public T serviceUri(String serviceUri) {
-            this.serviceUri = serviceUri;
+            this.properties.put("serviceUri", serviceUri);
             return (T) this;
         }
-
         /**
          * HTTP request timeout in milliseconds, defaults to 30,000 (30
          * seconds). The option is a int type.
          */
         public T socketTimeout(int socketTimeout) {
-            this.socketTimeout = socketTimeout;
+            this.properties.put("socketTimeout", socketTimeout);
             return (T) this;
         }
-
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public Olingo4ApiName getApiName() {
-            return apiName;
-        }
-
-        public void setApiName(Olingo4ApiName apiName) {
-            this.apiName = apiName;
-        }
-
-        public String getMethodName() {
-            return methodName;
-        }
-
-        public void setMethodName(String methodName) {
-            this.methodName = methodName;
-        }
-
-        public Integer getConnectTimeout() {
-            return connectTimeout;
-        }
-
-        public void setConnectTimeout(Integer connectTimeout) {
-            this.connectTimeout = connectTimeout;
-        }
-
-        public String getContentType() {
-            return contentType;
-        }
-
-        public void setContentType(String contentType) {
-            this.contentType = contentType;
-        }
-
-        public Boolean getFilterAlreadySeen() {
-            return filterAlreadySeen;
-        }
-
-        public void setFilterAlreadySeen(Boolean filterAlreadySeen) {
-            this.filterAlreadySeen = filterAlreadySeen;
-        }
-
-        public Object getHttpAsyncClientBuilder() {
-            return httpAsyncClientBuilder;
-        }
-
-        public void setHttpAsyncClientBuilder(Object httpAsyncClientBuilder) {
-            this.httpAsyncClientBuilder = httpAsyncClientBuilder;
-        }
-
-        public Object getHttpClientBuilder() {
-            return httpClientBuilder;
-        }
-
-        public void setHttpClientBuilder(Object httpClientBuilder) {
-            this.httpClientBuilder = httpClientBuilder;
-        }
-
-        public Map<String, String> getHttpHeaders() {
-            return httpHeaders;
-        }
-
-        public void setHttpHeaders(Map<String, String> httpHeaders) {
-            this.httpHeaders = httpHeaders;
-        }
-
-        public String getInBody() {
-            return inBody;
-        }
-
-        public void setInBody(String inBody) {
-            this.inBody = inBody;
-        }
-
-        public Object getProxy() {
-            return proxy;
-        }
-
-        public void setProxy(Object proxy) {
-            this.proxy = proxy;
-        }
-
-        public String getServiceUri() {
-            return serviceUri;
-        }
-
-        public void setServiceUri(String serviceUri) {
-            this.serviceUri = serviceUri;
-        }
-
-        public Integer getSocketTimeout() {
-            return socketTimeout;
-        }
-
-        public void setSocketTimeout(Integer socketTimeout) {
-            this.socketTimeout = socketTimeout;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class Olingo4Consumer
             extends
-                Olingo4Common<Olingo4Consumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                Olingo4Common<Olingo4Consumer>
+            implements
+                EndpointDefinition.Consumer {
+        public Olingo4Consumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -334,10 +189,9 @@ public class Olingo4Endpoint {
          * ignored. The option is a boolean type.
          */
         public Olingo4Consumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (Olingo4Consumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -347,47 +201,27 @@ public class Olingo4Endpoint {
          */
         public Olingo4Consumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (Olingo4Consumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public Olingo4Consumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (Olingo4Consumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class Olingo4Producer
             extends
-                Olingo4Common<Olingo4Producer> {
+                Olingo4Common<Olingo4Producer>
+            implements
+                EndpointDefinition.Producer {
+        public Olingo4Producer(String path) {
+            super(path);
+        }
     }
 
     public static enum Olingo4ApiName {

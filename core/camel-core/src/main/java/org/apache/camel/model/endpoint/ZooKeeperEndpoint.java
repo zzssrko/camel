@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,161 +30,88 @@ import org.apache.camel.spi.ExceptionHandler;
 public class ZooKeeperEndpoint {
 
 
-    public static class ZooKeeperCommon<T extends EndpointConfiguration>
+    public static class ZooKeeperCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String serverUrls;
-        private String path;
-        @Deprecated
-        private Boolean awaitExistence;
-        private Boolean listChildren;
-        private Integer timeout;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        ZooKeeperCommon(String path) {
+            super("zookeeper", path);
+        }
         /**
          * The zookeeper server hosts (multiple servers can be separated by
          * comma). The option is a java.lang.String type.
          */
         public T serverUrls(String serverUrls) {
-            this.serverUrls = serverUrls;
+            this.properties.put("serverUrls", serverUrls);
             return (T) this;
         }
-
         /**
          * The node in the ZooKeeper server (aka znode). The option is a
          * java.lang.String type.
          */
         public T path(String path) {
-            this.path = path;
+            this.properties.put("path", path);
             return (T) this;
         }
-
         /**
          * Not in use. The option is a boolean type.
          */
         @Deprecated
         public T awaitExistence(boolean awaitExistence) {
-            this.awaitExistence = awaitExistence;
+            this.properties.put("awaitExistence", awaitExistence);
             return (T) this;
         }
-
         /**
          * Whether the children of the node should be listed. The option is a
          * boolean type.
          */
         public T listChildren(boolean listChildren) {
-            this.listChildren = listChildren;
+            this.properties.put("listChildren", listChildren);
             return (T) this;
         }
-
         /**
          * The time interval to wait on connection before timing out. The option
          * is a int type.
          */
         public T timeout(int timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getServerUrls() {
-            return serverUrls;
-        }
-
-        public void setServerUrls(String serverUrls) {
-            this.serverUrls = serverUrls;
-        }
-
-        public String getPath() {
-            return path;
-        }
-
-        public void setPath(String path) {
-            this.path = path;
-        }
-
-        @Deprecated
-        public Boolean getAwaitExistence() {
-            return awaitExistence;
-        }
-
-        @Deprecated
-        public void setAwaitExistence(Boolean awaitExistence) {
-            this.awaitExistence = awaitExistence;
-        }
-
-        public Boolean getListChildren() {
-            return listChildren;
-        }
-
-        public void setListChildren(Boolean listChildren) {
-            this.listChildren = listChildren;
-        }
-
-        public Integer getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Integer timeout) {
-            this.timeout = timeout;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class ZooKeeperConsumer
             extends
-                ZooKeeperCommon<ZooKeeperConsumer> {
-        private Long backoff;
-        private Boolean bridgeErrorHandler;
-        private Boolean repeat;
-        private Boolean sendEmptyMessageOnDelete;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                ZooKeeperCommon<ZooKeeperConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ZooKeeperConsumer(String path) {
+            super(path);
+        }
         /**
          * The time interval to backoff for after an error before retrying. The
          * option is a long type.
          */
         public ZooKeeperConsumer backoff(long backoff) {
-            this.backoff = backoff;
+            this.properties.put("backoff", backoff);
             return (ZooKeeperConsumer) this;
         }
-
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -194,29 +122,26 @@ public class ZooKeeperEndpoint {
          * ignored. The option is a boolean type.
          */
         public ZooKeeperConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (ZooKeeperConsumer) this;
         }
-
         /**
          * Should changes to the znode be 'watched' and repeatedly processed.
          * The option is a boolean type.
          */
         public ZooKeeperConsumer repeat(boolean repeat) {
-            this.repeat = repeat;
+            this.properties.put("repeat", repeat);
             return (ZooKeeperConsumer) this;
         }
-
         /**
          * Upon the delete of a znode, should an empty message be send to the
          * consumer. The option is a boolean type.
          */
         public ZooKeeperConsumer sendEmptyMessageOnDelete(
                 boolean sendEmptyMessageOnDelete) {
-            this.sendEmptyMessageOnDelete = sendEmptyMessageOnDelete;
+            this.properties.put("sendEmptyMessageOnDelete", sendEmptyMessageOnDelete);
             return (ZooKeeperConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -226,106 +151,42 @@ public class ZooKeeperEndpoint {
          */
         public ZooKeeperConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (ZooKeeperConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public ZooKeeperConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (ZooKeeperConsumer) this;
-        }
-
-        public Long getBackoff() {
-            return backoff;
-        }
-
-        public void setBackoff(Long backoff) {
-            this.backoff = backoff;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getRepeat() {
-            return repeat;
-        }
-
-        public void setRepeat(Boolean repeat) {
-            this.repeat = repeat;
-        }
-
-        public Boolean getSendEmptyMessageOnDelete() {
-            return sendEmptyMessageOnDelete;
-        }
-
-        public void setSendEmptyMessageOnDelete(Boolean sendEmptyMessageOnDelete) {
-            this.sendEmptyMessageOnDelete = sendEmptyMessageOnDelete;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class ZooKeeperProducer
             extends
-                ZooKeeperCommon<ZooKeeperProducer> {
-        private Boolean create;
-        private String createMode;
-
+                ZooKeeperCommon<ZooKeeperProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ZooKeeperProducer(String path) {
+            super(path);
+        }
         /**
          * Should the endpoint create the node if it does not currently exist.
          * The option is a boolean type.
          */
         public ZooKeeperProducer create(boolean create) {
-            this.create = create;
+            this.properties.put("create", create);
             return (ZooKeeperProducer) this;
         }
-
         /**
          * The create mode that should be used for the newly created node. The
          * option is a java.lang.String type.
          */
         public ZooKeeperProducer createMode(String createMode) {
-            this.createMode = createMode;
+            this.properties.put("createMode", createMode);
             return (ZooKeeperProducer) this;
-        }
-
-        public Boolean getCreate() {
-            return create;
-        }
-
-        public void setCreate(Boolean create) {
-            this.create = create;
-        }
-
-        public String getCreateMode() {
-            return createMode;
-        }
-
-        public void setCreateMode(String createMode) {
-            this.createMode = createMode;
         }
     }
 }

@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.WaitForTaskToComplete;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,22 +32,19 @@ import org.apache.camel.spi.ExceptionHandler;
 public class DisruptorVmEndpoint {
 
 
-    public static class DisruptorVmCommon<T extends EndpointConfiguration>
+    public static class DisruptorVmCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private Integer size;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        DisruptorVmCommon(String path) {
+            super("disruptor-vm", path);
+        }
         /**
          * Name of queue. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * The maximum capacity of the Disruptors ringbuffer Will be effectively
          * increased to the nearest power of two. Notice: Mind if you use this
@@ -56,73 +54,37 @@ public class DisruptorVmEndpoint {
          * endpoint being created. The option is a int type.
          */
         public T size(int size) {
-            this.size = size;
+            this.properties.put("size", size);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Integer getSize() {
-            return size;
-        }
-
-        public void setSize(Integer size) {
-            this.size = size;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class DisruptorVmConsumer
             extends
-                DisruptorVmCommon<DisruptorVmConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Integer concurrentConsumers;
-        private Boolean multipleConsumers;
-        private DisruptorWaitStrategy waitStrategy;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                DisruptorVmCommon<DisruptorVmConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DisruptorVmConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -133,19 +95,17 @@ public class DisruptorVmEndpoint {
          * ignored. The option is a boolean type.
          */
         public DisruptorVmConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (DisruptorVmConsumer) this;
         }
-
         /**
          * Number of concurrent threads processing exchanges. The option is a
          * int type.
          */
         public DisruptorVmConsumer concurrentConsumers(int concurrentConsumers) {
-            this.concurrentConsumers = concurrentConsumers;
+            this.properties.put("concurrentConsumers", concurrentConsumers);
             return (DisruptorVmConsumer) this;
         }
-
         /**
          * Specifies whether multiple consumers are allowed. If enabled, you can
          * use Disruptor for Publish-Subscribe messaging. That is, you can send
@@ -154,10 +114,9 @@ public class DisruptorVmEndpoint {
          * consumer endpoint. The option is a boolean type.
          */
         public DisruptorVmConsumer multipleConsumers(boolean multipleConsumers) {
-            this.multipleConsumers = multipleConsumers;
+            this.properties.put("multipleConsumers", multipleConsumers);
             return (DisruptorVmConsumer) this;
         }
-
         /**
          * Defines the strategy used by consumer threads to wait on new
          * exchanges to be published. The options allowed are:Blocking,
@@ -166,10 +125,9 @@ public class DisruptorVmEndpoint {
          */
         public DisruptorVmConsumer waitStrategy(
                 DisruptorWaitStrategy waitStrategy) {
-            this.waitStrategy = waitStrategy;
+            this.properties.put("waitStrategy", waitStrategy);
             return (DisruptorVmConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -179,77 +137,28 @@ public class DisruptorVmEndpoint {
          */
         public DisruptorVmConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (DisruptorVmConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public DisruptorVmConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (DisruptorVmConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Integer getConcurrentConsumers() {
-            return concurrentConsumers;
-        }
-
-        public void setConcurrentConsumers(Integer concurrentConsumers) {
-            this.concurrentConsumers = concurrentConsumers;
-        }
-
-        public Boolean getMultipleConsumers() {
-            return multipleConsumers;
-        }
-
-        public void setMultipleConsumers(Boolean multipleConsumers) {
-            this.multipleConsumers = multipleConsumers;
-        }
-
-        public DisruptorWaitStrategy getWaitStrategy() {
-            return waitStrategy;
-        }
-
-        public void setWaitStrategy(DisruptorWaitStrategy waitStrategy) {
-            this.waitStrategy = waitStrategy;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class DisruptorVmProducer
             extends
-                DisruptorVmCommon<DisruptorVmProducer> {
-        private Boolean blockWhenFull;
-        private DisruptorProducerType producerType;
-        private Long timeout;
-        private WaitForTaskToComplete waitForTaskToComplete;
-
+                DisruptorVmCommon<DisruptorVmProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DisruptorVmProducer(String path) {
+            super(path);
+        }
         /**
          * Whether a thread that sends messages to a full Disruptor will block
          * until the ringbuffer's capacity is no longer exhausted. By default,
@@ -258,10 +167,9 @@ public class DisruptorVmEndpoint {
          * stating that the queue is full. The option is a boolean type.
          */
         public DisruptorVmProducer blockWhenFull(boolean blockWhenFull) {
-            this.blockWhenFull = blockWhenFull;
+            this.properties.put("blockWhenFull", blockWhenFull);
             return (DisruptorVmProducer) this;
         }
-
         /**
          * Defines the producers allowed on the Disruptor. The options allowed
          * are: Multi to allow multiple producers and Single to enable certain
@@ -271,20 +179,18 @@ public class DisruptorVmEndpoint {
          */
         public DisruptorVmProducer producerType(
                 DisruptorProducerType producerType) {
-            this.producerType = producerType;
+            this.properties.put("producerType", producerType);
             return (DisruptorVmProducer) this;
         }
-
         /**
          * Timeout (in milliseconds) before a producer will stop waiting for an
          * asynchronous task to complete. You can disable timeout by using 0 or
          * a negative value. The option is a long type.
          */
         public DisruptorVmProducer timeout(long timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (DisruptorVmProducer) this;
         }
-
         /**
          * Option to specify whether the caller should wait for the async task
          * to complete or not before continuing. The following three options are
@@ -295,41 +201,8 @@ public class DisruptorVmEndpoint {
          */
         public DisruptorVmProducer waitForTaskToComplete(
                 WaitForTaskToComplete waitForTaskToComplete) {
-            this.waitForTaskToComplete = waitForTaskToComplete;
+            this.properties.put("waitForTaskToComplete", waitForTaskToComplete);
             return (DisruptorVmProducer) this;
-        }
-
-        public Boolean getBlockWhenFull() {
-            return blockWhenFull;
-        }
-
-        public void setBlockWhenFull(Boolean blockWhenFull) {
-            this.blockWhenFull = blockWhenFull;
-        }
-
-        public DisruptorProducerType getProducerType() {
-            return producerType;
-        }
-
-        public void setProducerType(DisruptorProducerType producerType) {
-            this.producerType = producerType;
-        }
-
-        public Long getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Long timeout) {
-            this.timeout = timeout;
-        }
-
-        public WaitForTaskToComplete getWaitForTaskToComplete() {
-            return waitForTaskToComplete;
-        }
-
-        public void setWaitForTaskToComplete(
-                WaitForTaskToComplete waitForTaskToComplete) {
-            this.waitForTaskToComplete = waitForTaskToComplete;
         }
     }
 

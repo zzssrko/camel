@@ -36,6 +36,8 @@ public class FromDefinition extends OptionalIdentifiedDefinition<FromDefinition>
     private String uri;
     @XmlTransient
     private Endpoint endpoint;
+    @XmlTransient
+    private EndpointDefinition.Consumer endpointDefinition;
 
     public FromDefinition() {
     }
@@ -46,6 +48,10 @@ public class FromDefinition extends OptionalIdentifiedDefinition<FromDefinition>
 
     public FromDefinition(Endpoint endpoint) {
         setEndpoint(endpoint);
+    }
+
+    public FromDefinition(EndpointDefinition.Consumer endpointDefinition) {
+        this.endpointDefinition = endpointDefinition;
     }
 
     @Override
@@ -109,6 +115,14 @@ public class FromDefinition extends OptionalIdentifiedDefinition<FromDefinition>
         if (endpoint != null) {
             this.uri = endpoint.getEndpointUri();
         }
+    }
+
+    public EndpointDefinition.Consumer getEndpointDefinition() {
+        return endpointDefinition;
+    }
+
+    public void setEndpointDefinition(EndpointDefinition.Consumer endpointDefinition) {
+        this.endpointDefinition = endpointDefinition;
     }
 
     // Implementation methods

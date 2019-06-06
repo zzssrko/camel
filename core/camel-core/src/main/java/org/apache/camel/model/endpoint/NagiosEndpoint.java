@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * To send passive checks to Nagios using JSendNSCA.
@@ -27,46 +28,34 @@ import javax.annotation.Generated;
 public class NagiosEndpoint {
 
 
-    public static class NagiosCommon<T extends EndpointConfiguration>
+    public static class NagiosCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private Integer connectionTimeout;
-        private Boolean sendSync;
-        private Integer timeout;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private Encryption encryption;
-        @Deprecated
-        private NagiosEncryptionMethod encryptionMethod;
-        private String password;
-
+                EndpointDefinition<T> {
+        NagiosCommon(String path) {
+            super("nagios", path);
+        }
         /**
          * This is the address of the Nagios host where checks should be send.
          * The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * The port number of the host. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Connection timeout in millis. The option is a int type.
          */
         public T connectionTimeout(int connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
+            this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
-
         /**
          * Whether or not to use synchronous when sending a passive check.
          * Setting it to false will allow Camel to continue routing the message
@@ -74,153 +63,79 @@ public class NagiosEndpoint {
          * is a boolean type.
          */
         public T sendSync(boolean sendSync) {
-            this.sendSync = sendSync;
+            this.properties.put("sendSync", sendSync);
             return (T) this;
         }
-
         /**
          * Sending timeout in millis. The option is a int type.
          */
         public T timeout(int timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * To specify an encryption method. The option is a
          * com.googlecode.jsendnsca.encryption.Encryption type.
          */
         public T encryption(Encryption encryption) {
-            this.encryption = encryption;
+            this.properties.put("encryption", encryption);
             return (T) this;
         }
-
         /**
          * To specify an encryption method. The option is a
          * org.apache.camel.component.nagios.NagiosEncryptionMethod type.
          */
         @Deprecated
         public T encryptionMethod(NagiosEncryptionMethod encryptionMethod) {
-            this.encryptionMethod = encryptionMethod;
+            this.properties.put("encryptionMethod", encryptionMethod);
             return (T) this;
         }
-
         /**
          * Password to be authenticated when sending checks to Nagios. The
          * option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
+    }
 
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public Integer getConnectionTimeout() {
-            return connectionTimeout;
-        }
-
-        public void setConnectionTimeout(Integer connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
-        }
-
-        public Boolean getSendSync() {
-            return sendSync;
-        }
-
-        public void setSendSync(Boolean sendSync) {
-            this.sendSync = sendSync;
-        }
-
-        public Integer getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Integer timeout) {
-            this.timeout = timeout;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Encryption getEncryption() {
-            return encryption;
-        }
-
-        public void setEncryption(Encryption encryption) {
-            this.encryption = encryption;
-        }
-
-        @Deprecated
-        public NagiosEncryptionMethod getEncryptionMethod() {
-            return encryptionMethod;
-        }
-
-        @Deprecated
-        public void setEncryptionMethod(NagiosEncryptionMethod encryptionMethod) {
-            this.encryptionMethod = encryptionMethod;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
+    public static class NagiosConsumer
+            extends
+                NagiosCommon<NagiosConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public NagiosConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class NagiosConsumer extends NagiosCommon<NagiosConsumer> {
-    }
-
-    public static class NagiosProducer extends NagiosCommon<NagiosProducer> {
+    public static class NagiosProducer
+            extends
+                NagiosCommon<NagiosProducer>
+            implements
+                EndpointDefinition.Producer {
+        public NagiosProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum Encryption {

@@ -22,6 +22,7 @@ import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.cert.Certificate;
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The crypto component is used for signing and verifying exchanges using the
@@ -33,60 +34,37 @@ import javax.annotation.Generated;
 public class DigitalSignatureEndpoint {
 
 
-    public static class DigitalSignatureCommon<T extends EndpointConfiguration>
+    public static class DigitalSignatureCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private CryptoOperation cryptoOperation;
-        private String name;
-        private String algorithm;
-        private String alias;
-        private String certificateName;
-        private KeyStore keystore;
-        private String keystoreName;
-        private PrivateKey privateKey;
-        private String privateKeyName;
-        private String provider;
-        private String publicKeyName;
-        private String secureRandomName;
-        private String signatureHeaderName;
-        private Boolean basicPropertyBinding;
-        private Integer bufferSize;
-        private Certificate certificate;
-        private Boolean clearHeaders;
-        private Object keyStoreParameters;
-        private PublicKey publicKey;
-        private SecureRandom secureRandom;
-        private Boolean synchronous;
-        private Character[] password;
-
+                EndpointDefinition<T> {
+        DigitalSignatureCommon(String path) {
+            super("crypto", path);
+        }
         /**
          * Set the Crypto operation from that supplied after the crypto scheme
          * in the endpoint uri e.g. crypto:sign sets sign as the operation. The
          * option is a org.apache.camel.component.crypto.CryptoOperation type.
          */
         public T cryptoOperation(CryptoOperation cryptoOperation) {
-            this.cryptoOperation = cryptoOperation;
+            this.properties.put("cryptoOperation", cryptoOperation);
             return (T) this;
         }
-
         /**
          * The logical name of this operation. The option is a java.lang.String
          * type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * Sets the JCE name of the Algorithm that should be used for the
          * signer. The option is a java.lang.String type.
          */
         public T algorithm(String algorithm) {
-            this.algorithm = algorithm;
+            this.properties.put("algorithm", algorithm);
             return (T) this;
         }
-
         /**
          * Sets the alias used to query the KeyStore for keys and {link
          * java.security.cert.Certificate Certificates} to be used in signing
@@ -95,19 +73,17 @@ public class DigitalSignatureEndpoint {
          * org.apache.camel.component.crypto.DigitalSignatureConstants#KEYSTORE_ALIAS. The option is a java.lang.String type.
          */
         public T alias(String alias) {
-            this.alias = alias;
+            this.properties.put("alias", alias);
             return (T) this;
         }
-
         /**
          * Sets the reference name for a PrivateKey that can be found in the
          * registry. The option is a java.lang.String type.
          */
         public T certificateName(String certificateName) {
-            this.certificateName = certificateName;
+            this.properties.put("certificateName", certificateName);
             return (T) this;
         }
-
         /**
          * Sets the KeyStore that can contain keys and Certficates for use in
          * signing and verifying exchanges. A KeyStore is typically used with an
@@ -118,103 +94,92 @@ public class DigitalSignatureEndpoint {
          * type.
          */
         public T keystore(KeyStore keystore) {
-            this.keystore = keystore;
+            this.properties.put("keystore", keystore);
             return (T) this;
         }
-
         /**
          * Sets the reference name for a Keystore that can be found in the
          * registry. The option is a java.lang.String type.
          */
         public T keystoreName(String keystoreName) {
-            this.keystoreName = keystoreName;
+            this.properties.put("keystoreName", keystoreName);
             return (T) this;
         }
-
         /**
          * Set the PrivateKey that should be used to sign the exchange. The
          * option is a java.security.PrivateKey type.
          */
         public T privateKey(PrivateKey privateKey) {
-            this.privateKey = privateKey;
+            this.properties.put("privateKey", privateKey);
             return (T) this;
         }
-
         /**
          * Sets the reference name for a PrivateKey that can be found in the
          * registry. The option is a java.lang.String type.
          */
         public T privateKeyName(String privateKeyName) {
-            this.privateKeyName = privateKeyName;
+            this.properties.put("privateKeyName", privateKeyName);
             return (T) this;
         }
-
         /**
          * Set the id of the security provider that provides the configured
          * Signature algorithm. The option is a java.lang.String type.
          */
         public T provider(String provider) {
-            this.provider = provider;
+            this.properties.put("provider", provider);
             return (T) this;
         }
-
         /**
          * references that should be resolved when the context changes. The
          * option is a java.lang.String type.
          */
         public T publicKeyName(String publicKeyName) {
-            this.publicKeyName = publicKeyName;
+            this.properties.put("publicKeyName", publicKeyName);
             return (T) this;
         }
-
         /**
          * Sets the reference name for a SecureRandom that can be found in the
          * registry. The option is a java.lang.String type.
          */
         public T secureRandomName(String secureRandomName) {
-            this.secureRandomName = secureRandomName;
+            this.properties.put("secureRandomName", secureRandomName);
             return (T) this;
         }
-
         /**
          * Set the name of the message header that should be used to store the
          * base64 encoded signature. This defaults to 'CamelDigitalSignature'.
          * The option is a java.lang.String type.
          */
         public T signatureHeaderName(String signatureHeaderName) {
-            this.signatureHeaderName = signatureHeaderName;
+            this.properties.put("signatureHeaderName", signatureHeaderName);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Set the size of the buffer used to read in the Exchange payload data.
          * The option is a java.lang.Integer type.
          */
         public T bufferSize(Integer bufferSize) {
-            this.bufferSize = bufferSize;
+            this.properties.put("bufferSize", bufferSize);
             return (T) this;
         }
-
         /**
          * Set the Certificate that should be used to verify the signature in
          * the exchange based on its payload. The option is a
          * java.security.cert.Certificate type.
          */
         public T certificate(Certificate certificate) {
-            this.certificate = certificate;
+            this.properties.put("certificate", certificate);
             return (T) this;
         }
-
         /**
          * Determines if the Signature specific headers be cleared after signing
          * and verification. Defaults to true, and should only be made otherwise
@@ -222,10 +187,9 @@ public class DigitalSignatureEndpoint {
          * passwords may escape if unset. The option is a boolean type.
          */
         public T clearHeaders(boolean clearHeaders) {
-            this.clearHeaders = clearHeaders;
+            this.properties.put("clearHeaders", clearHeaders);
             return (T) this;
         }
-
         /**
          * Sets the KeyStore that can contain keys and Certficates for use in
          * signing and verifying exchanges based on the given
@@ -237,232 +201,62 @@ public class DigitalSignatureEndpoint {
          * org.apache.camel.support.jsse.KeyStoreParameters type.
          */
         public T keyStoreParameters(Object keyStoreParameters) {
-            this.keyStoreParameters = keyStoreParameters;
+            this.properties.put("keyStoreParameters", keyStoreParameters);
             return (T) this;
         }
-
         /**
          * Set the PublicKey that should be used to verify the signature in the
          * exchange. The option is a java.security.PublicKey type.
          */
         public T publicKey(PublicKey publicKey) {
-            this.publicKey = publicKey;
+            this.properties.put("publicKey", publicKey);
             return (T) this;
         }
-
         /**
          * Set the SecureRandom used to initialize the Signature service. The
          * option is a java.security.SecureRandom type.
          */
         public T secureRandom(SecureRandom secureRandom) {
-            this.secureRandom = secureRandom;
+            this.properties.put("secureRandom", secureRandom);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Sets the password used to access an aliased PrivateKey in the
          * KeyStore. The option is a java.lang.String type.
          */
         public T password(Character[] password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
-        }
-
-        public CryptoOperation getCryptoOperation() {
-            return cryptoOperation;
-        }
-
-        public void setCryptoOperation(CryptoOperation cryptoOperation) {
-            this.cryptoOperation = cryptoOperation;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getAlgorithm() {
-            return algorithm;
-        }
-
-        public void setAlgorithm(String algorithm) {
-            this.algorithm = algorithm;
-        }
-
-        public String getAlias() {
-            return alias;
-        }
-
-        public void setAlias(String alias) {
-            this.alias = alias;
-        }
-
-        public String getCertificateName() {
-            return certificateName;
-        }
-
-        public void setCertificateName(String certificateName) {
-            this.certificateName = certificateName;
-        }
-
-        public KeyStore getKeystore() {
-            return keystore;
-        }
-
-        public void setKeystore(KeyStore keystore) {
-            this.keystore = keystore;
-        }
-
-        public String getKeystoreName() {
-            return keystoreName;
-        }
-
-        public void setKeystoreName(String keystoreName) {
-            this.keystoreName = keystoreName;
-        }
-
-        public PrivateKey getPrivateKey() {
-            return privateKey;
-        }
-
-        public void setPrivateKey(PrivateKey privateKey) {
-            this.privateKey = privateKey;
-        }
-
-        public String getPrivateKeyName() {
-            return privateKeyName;
-        }
-
-        public void setPrivateKeyName(String privateKeyName) {
-            this.privateKeyName = privateKeyName;
-        }
-
-        public String getProvider() {
-            return provider;
-        }
-
-        public void setProvider(String provider) {
-            this.provider = provider;
-        }
-
-        public String getPublicKeyName() {
-            return publicKeyName;
-        }
-
-        public void setPublicKeyName(String publicKeyName) {
-            this.publicKeyName = publicKeyName;
-        }
-
-        public String getSecureRandomName() {
-            return secureRandomName;
-        }
-
-        public void setSecureRandomName(String secureRandomName) {
-            this.secureRandomName = secureRandomName;
-        }
-
-        public String getSignatureHeaderName() {
-            return signatureHeaderName;
-        }
-
-        public void setSignatureHeaderName(String signatureHeaderName) {
-            this.signatureHeaderName = signatureHeaderName;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Integer getBufferSize() {
-            return bufferSize;
-        }
-
-        public void setBufferSize(Integer bufferSize) {
-            this.bufferSize = bufferSize;
-        }
-
-        public Certificate getCertificate() {
-            return certificate;
-        }
-
-        public void setCertificate(Certificate certificate) {
-            this.certificate = certificate;
-        }
-
-        public Boolean getClearHeaders() {
-            return clearHeaders;
-        }
-
-        public void setClearHeaders(Boolean clearHeaders) {
-            this.clearHeaders = clearHeaders;
-        }
-
-        public Object getKeyStoreParameters() {
-            return keyStoreParameters;
-        }
-
-        public void setKeyStoreParameters(Object keyStoreParameters) {
-            this.keyStoreParameters = keyStoreParameters;
-        }
-
-        public PublicKey getPublicKey() {
-            return publicKey;
-        }
-
-        public void setPublicKey(PublicKey publicKey) {
-            this.publicKey = publicKey;
-        }
-
-        public SecureRandom getSecureRandom() {
-            return secureRandom;
-        }
-
-        public void setSecureRandom(SecureRandom secureRandom) {
-            this.secureRandom = secureRandom;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Character[] getPassword() {
-            return password;
-        }
-
-        public void setPassword(Character[] password) {
-            this.password = password;
         }
     }
 
     public static class DigitalSignatureConsumer
             extends
-                DigitalSignatureCommon<DigitalSignatureConsumer> {
+                DigitalSignatureCommon<DigitalSignatureConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DigitalSignatureConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class DigitalSignatureProducer
             extends
-                DigitalSignatureCommon<DigitalSignatureProducer> {
+                DigitalSignatureCommon<DigitalSignatureProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DigitalSignatureProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum CryptoOperation {

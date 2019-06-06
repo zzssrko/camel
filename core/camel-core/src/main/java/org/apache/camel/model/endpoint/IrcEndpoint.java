@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,227 +30,181 @@ import org.apache.camel.spi.ExceptionHandler;
 public class IrcEndpoint {
 
 
-    public static class IrcCommon<T extends EndpointConfiguration>
+    public static class IrcCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String hostname;
-        private Integer port;
-        private Boolean autoRejoin;
-        private Long commandTimeout;
-        private Boolean namesOnJoin;
-        private String nickname;
-        @Deprecated
-        private Boolean persistent;
-        private String realname;
-        private Boolean basicPropertyBinding;
-        private Boolean colors;
-        private Boolean synchronous;
-        private Boolean onJoin;
-        private Boolean onKick;
-        private Boolean onMode;
-        private Boolean onNick;
-        private Boolean onPart;
-        private Boolean onPrivmsg;
-        private Boolean onQuit;
-        private Boolean onReply;
-        private Boolean onTopic;
-        private String nickPassword;
-        private String password;
-        private Object sslContextParameters;
-        private Object trustManager;
-        private String username;
-
+                EndpointDefinition<T> {
+        IrcCommon(String path) {
+            super("irc", path);
+        }
         /**
          * Hostname for the IRC chat server. The option is a java.lang.String
          * type.
          */
         public T hostname(String hostname) {
-            this.hostname = hostname;
+            this.properties.put("hostname", hostname);
             return (T) this;
         }
-
         /**
          * Port number for the IRC chat server. If no port is configured then a
          * default port of either 6667, 6668 or 6669 is used. The option is a
          * int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Whether to auto re-join when being kicked. The option is a boolean
          * type.
          */
         public T autoRejoin(boolean autoRejoin) {
-            this.autoRejoin = autoRejoin;
+            this.properties.put("autoRejoin", autoRejoin);
             return (T) this;
         }
-
         /**
          * Delay in milliseconds before sending commands after the connection is
          * established. The option is a long type.
          */
         public T commandTimeout(long commandTimeout) {
-            this.commandTimeout = commandTimeout;
+            this.properties.put("commandTimeout", commandTimeout);
             return (T) this;
         }
-
         /**
          * Sends NAMES command to channel after joining it. onReply has to be
          * true in order to process the result which will have the header value
          * irc.num = '353'. The option is a boolean type.
          */
         public T namesOnJoin(boolean namesOnJoin) {
-            this.namesOnJoin = namesOnJoin;
+            this.properties.put("namesOnJoin", namesOnJoin);
             return (T) this;
         }
-
         /**
          * The nickname used in chat. The option is a java.lang.String type.
          */
         public T nickname(String nickname) {
-            this.nickname = nickname;
+            this.properties.put("nickname", nickname);
             return (T) this;
         }
-
         /**
          * Use persistent messages. The option is a boolean type.
          */
         @Deprecated
         public T persistent(boolean persistent) {
-            this.persistent = persistent;
+            this.properties.put("persistent", persistent);
             return (T) this;
         }
-
         /**
          * The IRC user's actual name. The option is a java.lang.String type.
          */
         public T realname(String realname) {
-            this.realname = realname;
+            this.properties.put("realname", realname);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Whether or not the server supports color codes. The option is a
          * boolean type.
          */
         public T colors(boolean colors) {
-            this.colors = colors;
+            this.properties.put("colors", colors);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Handle user join events. The option is a boolean type.
          */
         public T onJoin(boolean onJoin) {
-            this.onJoin = onJoin;
+            this.properties.put("onJoin", onJoin);
             return (T) this;
         }
-
         /**
          * Handle kick events. The option is a boolean type.
          */
         public T onKick(boolean onKick) {
-            this.onKick = onKick;
+            this.properties.put("onKick", onKick);
             return (T) this;
         }
-
         /**
          * Handle mode change events. The option is a boolean type.
          */
         public T onMode(boolean onMode) {
-            this.onMode = onMode;
+            this.properties.put("onMode", onMode);
             return (T) this;
         }
-
         /**
          * Handle nickname change events. The option is a boolean type.
          */
         public T onNick(boolean onNick) {
-            this.onNick = onNick;
+            this.properties.put("onNick", onNick);
             return (T) this;
         }
-
         /**
          * Handle user part events. The option is a boolean type.
          */
         public T onPart(boolean onPart) {
-            this.onPart = onPart;
+            this.properties.put("onPart", onPart);
             return (T) this;
         }
-
         /**
          * Handle private message events. The option is a boolean type.
          */
         public T onPrivmsg(boolean onPrivmsg) {
-            this.onPrivmsg = onPrivmsg;
+            this.properties.put("onPrivmsg", onPrivmsg);
             return (T) this;
         }
-
         /**
          * Handle user quit events. The option is a boolean type.
          */
         public T onQuit(boolean onQuit) {
-            this.onQuit = onQuit;
+            this.properties.put("onQuit", onQuit);
             return (T) this;
         }
-
         /**
          * Whether or not to handle general responses to commands or
          * informational messages. The option is a boolean type.
          */
         public T onReply(boolean onReply) {
-            this.onReply = onReply;
+            this.properties.put("onReply", onReply);
             return (T) this;
         }
-
         /**
          * Handle topic change events. The option is a boolean type.
          */
         public T onTopic(boolean onTopic) {
-            this.onTopic = onTopic;
+            this.properties.put("onTopic", onTopic);
             return (T) this;
         }
-
         /**
          * Your IRC server nickname password. The option is a java.lang.String
          * type.
          */
         public T nickPassword(String nickPassword) {
-            this.nickPassword = nickPassword;
+            this.properties.put("nickPassword", nickPassword);
             return (T) this;
         }
-
         /**
          * The IRC server password. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Used for configuring security using SSL. Reference to a
          * org.apache.camel.support.jsse.SSLContextParameters in the Registry.
@@ -259,235 +214,34 @@ public class IrcEndpoint {
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
-
         /**
          * The trust manager used to verify the SSL server's certificate. The
          * option is a org.schwering.irc.lib.ssl.SSLTrustManager type.
          */
         public T trustManager(Object trustManager) {
-            this.trustManager = trustManager;
+            this.properties.put("trustManager", trustManager);
             return (T) this;
         }
-
         /**
          * The IRC server user name. The option is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
-        }
-
-        public String getHostname() {
-            return hostname;
-        }
-
-        public void setHostname(String hostname) {
-            this.hostname = hostname;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public Boolean getAutoRejoin() {
-            return autoRejoin;
-        }
-
-        public void setAutoRejoin(Boolean autoRejoin) {
-            this.autoRejoin = autoRejoin;
-        }
-
-        public Long getCommandTimeout() {
-            return commandTimeout;
-        }
-
-        public void setCommandTimeout(Long commandTimeout) {
-            this.commandTimeout = commandTimeout;
-        }
-
-        public Boolean getNamesOnJoin() {
-            return namesOnJoin;
-        }
-
-        public void setNamesOnJoin(Boolean namesOnJoin) {
-            this.namesOnJoin = namesOnJoin;
-        }
-
-        public String getNickname() {
-            return nickname;
-        }
-
-        public void setNickname(String nickname) {
-            this.nickname = nickname;
-        }
-
-        @Deprecated
-        public Boolean getPersistent() {
-            return persistent;
-        }
-
-        @Deprecated
-        public void setPersistent(Boolean persistent) {
-            this.persistent = persistent;
-        }
-
-        public String getRealname() {
-            return realname;
-        }
-
-        public void setRealname(String realname) {
-            this.realname = realname;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getColors() {
-            return colors;
-        }
-
-        public void setColors(Boolean colors) {
-            this.colors = colors;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Boolean getOnJoin() {
-            return onJoin;
-        }
-
-        public void setOnJoin(Boolean onJoin) {
-            this.onJoin = onJoin;
-        }
-
-        public Boolean getOnKick() {
-            return onKick;
-        }
-
-        public void setOnKick(Boolean onKick) {
-            this.onKick = onKick;
-        }
-
-        public Boolean getOnMode() {
-            return onMode;
-        }
-
-        public void setOnMode(Boolean onMode) {
-            this.onMode = onMode;
-        }
-
-        public Boolean getOnNick() {
-            return onNick;
-        }
-
-        public void setOnNick(Boolean onNick) {
-            this.onNick = onNick;
-        }
-
-        public Boolean getOnPart() {
-            return onPart;
-        }
-
-        public void setOnPart(Boolean onPart) {
-            this.onPart = onPart;
-        }
-
-        public Boolean getOnPrivmsg() {
-            return onPrivmsg;
-        }
-
-        public void setOnPrivmsg(Boolean onPrivmsg) {
-            this.onPrivmsg = onPrivmsg;
-        }
-
-        public Boolean getOnQuit() {
-            return onQuit;
-        }
-
-        public void setOnQuit(Boolean onQuit) {
-            this.onQuit = onQuit;
-        }
-
-        public Boolean getOnReply() {
-            return onReply;
-        }
-
-        public void setOnReply(Boolean onReply) {
-            this.onReply = onReply;
-        }
-
-        public Boolean getOnTopic() {
-            return onTopic;
-        }
-
-        public void setOnTopic(Boolean onTopic) {
-            this.onTopic = onTopic;
-        }
-
-        public String getNickPassword() {
-            return nickPassword;
-        }
-
-        public void setNickPassword(String nickPassword) {
-            this.nickPassword = nickPassword;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
-        }
-
-        public Object getTrustManager() {
-            return trustManager;
-        }
-
-        public void setTrustManager(Object trustManager) {
-            this.trustManager = trustManager;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
         }
     }
 
-    public static class IrcConsumer extends IrcCommon<IrcConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class IrcConsumer
+            extends
+                IrcCommon<IrcConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public IrcConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -498,10 +252,9 @@ public class IrcEndpoint {
          * ignored. The option is a boolean type.
          */
         public IrcConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (IrcConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -510,44 +263,26 @@ public class IrcEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public IrcConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (IrcConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public IrcConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (IrcConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class IrcProducer extends IrcCommon<IrcProducer> {
+    public static class IrcProducer
+            extends
+                IrcCommon<IrcProducer>
+            implements
+                EndpointDefinition.Producer {
+        public IrcProducer(String path) {
+            super(path);
+        }
     }
 }

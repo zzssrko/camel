@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The Validator component performs bean validation of the message body using
@@ -28,166 +29,97 @@ import javax.annotation.Generated;
 public class BeanValidatorEndpoint {
 
 
-    public static class BeanValidatorCommon<T extends EndpointConfiguration>
+    public static class BeanValidatorCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String label;
-        private Object constraintValidatorFactory;
-        private String group;
-        private Object messageInterpolator;
-        private Object traversableResolver;
-        private Object validationProviderResolver;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        BeanValidatorCommon(String path) {
+            super("bean-validator", path);
+        }
         /**
          * Where label is an arbitrary text value describing the endpoint. The
          * option is a java.lang.String type.
          */
         public T label(String label) {
-            this.label = label;
+            this.properties.put("label", label);
             return (T) this;
         }
-
         /**
          * To use a custom ConstraintValidatorFactory. The option is a
          * javax.validation.ConstraintValidatorFactory type.
          */
         public T constraintValidatorFactory(Object constraintValidatorFactory) {
-            this.constraintValidatorFactory = constraintValidatorFactory;
+            this.properties.put("constraintValidatorFactory", constraintValidatorFactory);
             return (T) this;
         }
-
         /**
          * To use a custom validation group. The option is a java.lang.String
          * type.
          */
         public T group(String group) {
-            this.group = group;
+            this.properties.put("group", group);
             return (T) this;
         }
-
         /**
          * To use a custom MessageInterpolator. The option is a
          * javax.validation.MessageInterpolator type.
          */
         public T messageInterpolator(Object messageInterpolator) {
-            this.messageInterpolator = messageInterpolator;
+            this.properties.put("messageInterpolator", messageInterpolator);
             return (T) this;
         }
-
         /**
          * To use a custom TraversableResolver. The option is a
          * javax.validation.TraversableResolver type.
          */
         public T traversableResolver(Object traversableResolver) {
-            this.traversableResolver = traversableResolver;
+            this.properties.put("traversableResolver", traversableResolver);
             return (T) this;
         }
-
         /**
          * To use a a custom ValidationProviderResolver. The option is a
          * javax.validation.ValidationProviderResolver type.
          */
         public T validationProviderResolver(Object validationProviderResolver) {
-            this.validationProviderResolver = validationProviderResolver;
+            this.properties.put("validationProviderResolver", validationProviderResolver);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-
-        public void setLabel(String label) {
-            this.label = label;
-        }
-
-        public Object getConstraintValidatorFactory() {
-            return constraintValidatorFactory;
-        }
-
-        public void setConstraintValidatorFactory(
-                Object constraintValidatorFactory) {
-            this.constraintValidatorFactory = constraintValidatorFactory;
-        }
-
-        public String getGroup() {
-            return group;
-        }
-
-        public void setGroup(String group) {
-            this.group = group;
-        }
-
-        public Object getMessageInterpolator() {
-            return messageInterpolator;
-        }
-
-        public void setMessageInterpolator(Object messageInterpolator) {
-            this.messageInterpolator = messageInterpolator;
-        }
-
-        public Object getTraversableResolver() {
-            return traversableResolver;
-        }
-
-        public void setTraversableResolver(Object traversableResolver) {
-            this.traversableResolver = traversableResolver;
-        }
-
-        public Object getValidationProviderResolver() {
-            return validationProviderResolver;
-        }
-
-        public void setValidationProviderResolver(
-                Object validationProviderResolver) {
-            this.validationProviderResolver = validationProviderResolver;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class BeanValidatorConsumer
             extends
-                BeanValidatorCommon<BeanValidatorConsumer> {
+                BeanValidatorCommon<BeanValidatorConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public BeanValidatorConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class BeanValidatorProducer
             extends
-                BeanValidatorCommon<BeanValidatorProducer> {
+                BeanValidatorCommon<BeanValidatorProducer>
+            implements
+                EndpointDefinition.Producer {
+        public BeanValidatorProducer(String path) {
+            super(path);
+        }
     }
 }

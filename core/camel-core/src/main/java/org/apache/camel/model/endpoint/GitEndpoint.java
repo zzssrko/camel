@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,175 +30,90 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GitEndpoint {
 
 
-    public static class GitCommon<T extends EndpointConfiguration>
+    public static class GitCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String localPath;
-        private String branchName;
-        private String password;
-        private String remoteName;
-        private String remotePath;
-        private String tagName;
-        private String username;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        GitCommon(String path) {
+            super("git", path);
+        }
         /**
          * Local repository path. The option is a java.lang.String type.
          */
         public T localPath(String localPath) {
-            this.localPath = localPath;
+            this.properties.put("localPath", localPath);
             return (T) this;
         }
-
         /**
          * The branch name to work on. The option is a java.lang.String type.
          */
         public T branchName(String branchName) {
-            this.branchName = branchName;
+            this.properties.put("branchName", branchName);
             return (T) this;
         }
-
         /**
          * Remote repository password. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * The remote repository name to use in particular operation like pull.
          * The option is a java.lang.String type.
          */
         public T remoteName(String remoteName) {
-            this.remoteName = remoteName;
+            this.properties.put("remoteName", remoteName);
             return (T) this;
         }
-
         /**
          * The remote repository path. The option is a java.lang.String type.
          */
         public T remotePath(String remotePath) {
-            this.remotePath = remotePath;
+            this.properties.put("remotePath", remotePath);
             return (T) this;
         }
-
         /**
          * The tag name to work on. The option is a java.lang.String type.
          */
         public T tagName(String tagName) {
-            this.tagName = tagName;
+            this.properties.put("tagName", tagName);
             return (T) this;
         }
-
         /**
          * Remote repository username. The option is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getLocalPath() {
-            return localPath;
-        }
-
-        public void setLocalPath(String localPath) {
-            this.localPath = localPath;
-        }
-
-        public String getBranchName() {
-            return branchName;
-        }
-
-        public void setBranchName(String branchName) {
-            this.branchName = branchName;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getRemoteName() {
-            return remoteName;
-        }
-
-        public void setRemoteName(String remoteName) {
-            this.remoteName = remoteName;
-        }
-
-        public String getRemotePath() {
-            return remotePath;
-        }
-
-        public void setRemotePath(String remotePath) {
-            this.remotePath = remotePath;
-        }
-
-        public String getTagName() {
-            return tagName;
-        }
-
-        public void setTagName(String tagName) {
-            this.tagName = tagName;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class GitConsumer extends GitCommon<GitConsumer> {
-        private Boolean bridgeErrorHandler;
-        private GitType type;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class GitConsumer
+            extends
+                GitCommon<GitConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GitConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -208,19 +124,17 @@ public class GitEndpoint {
          * ignored. The option is a boolean type.
          */
         public GitConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (GitConsumer) this;
         }
-
         /**
          * The consumer type. The option is a
          * org.apache.camel.component.git.consumer.GitType type.
          */
         public GitConsumer type(GitType type) {
-            this.type = type;
+            this.properties.put("type", type);
             return (GitConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -229,87 +143,41 @@ public class GitEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public GitConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (GitConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GitConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (GitConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public GitType getType() {
-            return type;
-        }
-
-        public void setType(GitType type) {
-            this.type = type;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class GitProducer extends GitCommon<GitProducer> {
-        private Boolean allowEmpty;
-        private String operation;
-
+    public static class GitProducer
+            extends
+                GitCommon<GitProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GitProducer(String path) {
+            super(path);
+        }
         /**
          * The flag to manage empty git commits. The option is a boolean type.
          */
         public GitProducer allowEmpty(boolean allowEmpty) {
-            this.allowEmpty = allowEmpty;
+            this.properties.put("allowEmpty", allowEmpty);
             return (GitProducer) this;
         }
-
         /**
          * The operation to do on the repository. The option is a
          * java.lang.String type.
          */
         public GitProducer operation(String operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (GitProducer) this;
-        }
-
-        public Boolean getAllowEmpty() {
-            return allowEmpty;
-        }
-
-        public void setAllowEmpty(Boolean allowEmpty) {
-            this.allowEmpty = allowEmpty;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
         }
     }
 

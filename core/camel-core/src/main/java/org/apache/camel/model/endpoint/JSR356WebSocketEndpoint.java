@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,111 +30,65 @@ import org.apache.camel.spi.ExceptionHandler;
 public class JSR356WebSocketEndpoint {
 
 
-    public static class JSR356WebSocketCommon<T extends EndpointConfiguration>
+    public static class JSR356WebSocketCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String websocketPathOrUri;
-        private String context;
-        private Integer sessionCount;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        JSR356WebSocketCommon(String path) {
+            super("websocket-jsr356", path);
+        }
         /**
          * If a path (/foo) it will deploy locally the endpoint, if an uri it
          * will connect to the corresponding server. The option is a
          * java.lang.String type.
          */
         public T websocketPathOrUri(String websocketPathOrUri) {
-            this.websocketPathOrUri = websocketPathOrUri;
+            this.properties.put("websocketPathOrUri", websocketPathOrUri);
             return (T) this;
         }
-
         /**
          * the servlet context to use (represented by its path). The option is a
          * java.lang.String type.
          */
         public T context(String context) {
-            this.context = context;
+            this.properties.put("context", context);
             return (T) this;
         }
-
         /**
          * Used when the endpoint is in client mode to populate a pool of
          * sessions. The option is a int type.
          */
         public T sessionCount(int sessionCount) {
-            this.sessionCount = sessionCount;
+            this.properties.put("sessionCount", sessionCount);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getWebsocketPathOrUri() {
-            return websocketPathOrUri;
-        }
-
-        public void setWebsocketPathOrUri(String websocketPathOrUri) {
-            this.websocketPathOrUri = websocketPathOrUri;
-        }
-
-        public String getContext() {
-            return context;
-        }
-
-        public void setContext(String context) {
-            this.context = context;
-        }
-
-        public Integer getSessionCount() {
-            return sessionCount;
-        }
-
-        public void setSessionCount(Integer sessionCount) {
-            this.sessionCount = sessionCount;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class JSR356WebSocketConsumer
             extends
-                JSR356WebSocketCommon<JSR356WebSocketConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                JSR356WebSocketCommon<JSR356WebSocketConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public JSR356WebSocketConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -145,10 +100,9 @@ public class JSR356WebSocketEndpoint {
          */
         public JSR356WebSocketConsumer bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (JSR356WebSocketConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -158,47 +112,27 @@ public class JSR356WebSocketEndpoint {
          */
         public JSR356WebSocketConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (JSR356WebSocketConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public JSR356WebSocketConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (JSR356WebSocketConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class JSR356WebSocketProducer
             extends
-                JSR356WebSocketCommon<JSR356WebSocketProducer> {
+                JSR356WebSocketCommon<JSR356WebSocketProducer>
+            implements
+                EndpointDefinition.Producer {
+        public JSR356WebSocketProducer(String path) {
+            super(path);
+        }
     }
 }

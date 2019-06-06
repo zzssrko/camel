@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,232 +30,118 @@ import org.apache.camel.spi.ExceptionHandler;
 public class AvroEndpoint {
 
 
-    public static class AvroCommon<T extends EndpointConfiguration>
+    public static class AvroCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private AvroTransport transport;
-        private Integer port;
-        private String host;
-        private String messageName;
-        private Object protocol;
-        private String protocolClassName;
-        private String protocolLocation;
-        private Boolean reflectionProtocol;
-        private Boolean singleParameter;
-        private String uriAuthority;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        AvroCommon(String path) {
+            super("avro", path);
+        }
         /**
          * Transport to use, can be either http or netty. The option is a
          * org.apache.camel.component.avro.AvroTransport type.
          */
         public T transport(AvroTransport transport) {
-            this.transport = transport;
+            this.properties.put("transport", transport);
             return (T) this;
         }
-
         /**
          * Port number to use. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Hostname to use. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * The name of the message to send. The option is a java.lang.String
          * type.
          */
         public T messageName(String messageName) {
-            this.messageName = messageName;
+            this.properties.put("messageName", messageName);
             return (T) this;
         }
-
         /**
          * Avro protocol to use. The option is a org.apache.avro.Protocol type.
          */
         public T protocol(Object protocol) {
-            this.protocol = protocol;
+            this.properties.put("protocol", protocol);
             return (T) this;
         }
-
         /**
          * Avro protocol to use defined by the FQN class name. The option is a
          * java.lang.String type.
          */
         public T protocolClassName(String protocolClassName) {
-            this.protocolClassName = protocolClassName;
+            this.properties.put("protocolClassName", protocolClassName);
             return (T) this;
         }
-
         /**
          * Avro protocol location. The option is a java.lang.String type.
          */
         public T protocolLocation(String protocolLocation) {
-            this.protocolLocation = protocolLocation;
+            this.properties.put("protocolLocation", protocolLocation);
             return (T) this;
         }
-
         /**
          * If protocol object provided is reflection protocol. Should be used
          * only with protocol parameter because for protocolClassName protocol
          * type will be auto detected. The option is a boolean type.
          */
         public T reflectionProtocol(boolean reflectionProtocol) {
-            this.reflectionProtocol = reflectionProtocol;
+            this.properties.put("reflectionProtocol", reflectionProtocol);
             return (T) this;
         }
-
         /**
          * If true, consumer parameter won't be wrapped into array. Will fail if
          * protocol specifies more then 1 parameter for the message. The option
          * is a boolean type.
          */
         public T singleParameter(boolean singleParameter) {
-            this.singleParameter = singleParameter;
+            this.properties.put("singleParameter", singleParameter);
             return (T) this;
         }
-
         /**
          * Authority to use (username and password). The option is a
          * java.lang.String type.
          */
         public T uriAuthority(String uriAuthority) {
-            this.uriAuthority = uriAuthority;
+            this.properties.put("uriAuthority", uriAuthority);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public AvroTransport getTransport() {
-            return transport;
-        }
-
-        public void setTransport(AvroTransport transport) {
-            this.transport = transport;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public String getMessageName() {
-            return messageName;
-        }
-
-        public void setMessageName(String messageName) {
-            this.messageName = messageName;
-        }
-
-        public Object getProtocol() {
-            return protocol;
-        }
-
-        public void setProtocol(Object protocol) {
-            this.protocol = protocol;
-        }
-
-        public String getProtocolClassName() {
-            return protocolClassName;
-        }
-
-        public void setProtocolClassName(String protocolClassName) {
-            this.protocolClassName = protocolClassName;
-        }
-
-        public String getProtocolLocation() {
-            return protocolLocation;
-        }
-
-        public void setProtocolLocation(String protocolLocation) {
-            this.protocolLocation = protocolLocation;
-        }
-
-        public Boolean getReflectionProtocol() {
-            return reflectionProtocol;
-        }
-
-        public void setReflectionProtocol(Boolean reflectionProtocol) {
-            this.reflectionProtocol = reflectionProtocol;
-        }
-
-        public Boolean getSingleParameter() {
-            return singleParameter;
-        }
-
-        public void setSingleParameter(Boolean singleParameter) {
-            this.singleParameter = singleParameter;
-        }
-
-        public String getUriAuthority() {
-            return uriAuthority;
-        }
-
-        public void setUriAuthority(String uriAuthority) {
-            this.uriAuthority = uriAuthority;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
-    public static class AvroConsumer extends AvroCommon<AvroConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class AvroConsumer
+            extends
+                AvroCommon<AvroConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public AvroConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -265,10 +152,9 @@ public class AvroEndpoint {
          * ignored. The option is a boolean type.
          */
         public AvroConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (AvroConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -277,45 +163,27 @@ public class AvroEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public AvroConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (AvroConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public AvroConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (AvroConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class AvroProducer extends AvroCommon<AvroProducer> {
+    public static class AvroProducer
+            extends
+                AvroCommon<AvroProducer>
+            implements
+                EndpointDefinition.Producer {
+        public AvroProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum AvroTransport {

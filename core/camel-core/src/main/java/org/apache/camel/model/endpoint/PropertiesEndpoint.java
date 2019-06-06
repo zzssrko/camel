@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.List;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,33 +32,28 @@ import org.apache.camel.spi.ExceptionHandler;
 public class PropertiesEndpoint {
 
 
-    public static class PropertiesCommon<T extends EndpointConfiguration>
+    public static class PropertiesCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String key;
-        private Boolean ignoreMissingLocation;
-        private List<Object> locations;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        PropertiesCommon(String path) {
+            super("properties", path);
+        }
         /**
          * Property key to use as placeholder. The option is a java.lang.String
          * type.
          */
         public T key(String key) {
-            this.key = key;
+            this.properties.put("key", key);
             return (T) this;
         }
-
         /**
          * Whether to silently ignore if a location cannot be located, such as a
          * properties file not found. The option is a boolean type.
          */
         public T ignoreMissingLocation(boolean ignoreMissingLocation) {
-            this.ignoreMissingLocation = ignoreMissingLocation;
+            this.properties.put("ignoreMissingLocation", ignoreMissingLocation);
             return (T) this;
         }
-
         /**
          * A list of locations to load properties. You can use comma to separate
          * multiple locations. This option will override any default locations
@@ -65,78 +61,37 @@ public class PropertiesEndpoint {
          * java.lang.String type.
          */
         public T locations(List<Object> locations) {
-            this.locations = locations;
+            this.properties.put("locations", locations);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getKey() {
-            return key;
-        }
-
-        public void setKey(String key) {
-            this.key = key;
-        }
-
-        public Boolean getIgnoreMissingLocation() {
-            return ignoreMissingLocation;
-        }
-
-        public void setIgnoreMissingLocation(Boolean ignoreMissingLocation) {
-            this.ignoreMissingLocation = ignoreMissingLocation;
-        }
-
-        public List<Object> getLocations() {
-            return locations;
-        }
-
-        public void setLocations(List<Object> locations) {
-            this.locations = locations;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class PropertiesConsumer
             extends
-                PropertiesCommon<PropertiesConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                PropertiesCommon<PropertiesConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public PropertiesConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -147,10 +102,9 @@ public class PropertiesEndpoint {
          * ignored. The option is a boolean type.
          */
         public PropertiesConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (PropertiesConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -160,47 +114,27 @@ public class PropertiesEndpoint {
          */
         public PropertiesConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (PropertiesConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public PropertiesConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (PropertiesConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class PropertiesProducer
             extends
-                PropertiesCommon<PropertiesProducer> {
+                PropertiesCommon<PropertiesProducer>
+            implements
+                EndpointDefinition.Producer {
+        public PropertiesProducer(String path) {
+            super(path);
+        }
     }
 }

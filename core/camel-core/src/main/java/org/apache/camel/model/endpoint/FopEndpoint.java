@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The fop component allows you to render a message into different output
@@ -28,109 +29,76 @@ import javax.annotation.Generated;
 public class FopEndpoint {
 
 
-    public static class FopCommon<T extends EndpointConfiguration>
+    public static class FopCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private FopOutputType outputType;
-        private Object fopFactory;
-        private String userConfigURL;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        FopCommon(String path) {
+            super("fop", path);
+        }
         /**
          * The primary output format is PDF but other output formats are also
          * supported. The option is a
          * org.apache.camel.component.fop.FopOutputType type.
          */
         public T outputType(FopOutputType outputType) {
-            this.outputType = outputType;
+            this.properties.put("outputType", outputType);
             return (T) this;
         }
-
         /**
          * Allows to use a custom configured or implementation of
          * org.apache.fop.apps.FopFactory. The option is a
          * org.apache.fop.apps.FopFactory type.
          */
         public T fopFactory(Object fopFactory) {
-            this.fopFactory = fopFactory;
+            this.properties.put("fopFactory", fopFactory);
             return (T) this;
         }
-
         /**
          * The location of a configuration file which can be loaded from
          * classpath or file system. The option is a java.lang.String type.
          */
         public T userConfigURL(String userConfigURL) {
-            this.userConfigURL = userConfigURL;
+            this.properties.put("userConfigURL", userConfigURL);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public FopOutputType getOutputType() {
-            return outputType;
-        }
-
-        public void setOutputType(FopOutputType outputType) {
-            this.outputType = outputType;
-        }
-
-        public Object getFopFactory() {
-            return fopFactory;
-        }
-
-        public void setFopFactory(Object fopFactory) {
-            this.fopFactory = fopFactory;
-        }
-
-        public String getUserConfigURL() {
-            return userConfigURL;
-        }
-
-        public void setUserConfigURL(String userConfigURL) {
-            this.userConfigURL = userConfigURL;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class FopConsumer
+            extends
+                FopCommon<FopConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public FopConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class FopConsumer extends FopCommon<FopConsumer> {
-    }
-
-    public static class FopProducer extends FopCommon<FopProducer> {
+    public static class FopProducer
+            extends
+                FopCommon<FopProducer>
+            implements
+                EndpointDefinition.Producer {
+        public FopProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum FopOutputType {

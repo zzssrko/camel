@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,24 +31,20 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GuavaEventBusEndpoint {
 
 
-    public static class GuavaEventBusCommon<T extends EndpointConfiguration>
+    public static class GuavaEventBusCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String eventBusRef;
-        private Class<Object> eventClass;
-        private Class<Object> listenerInterface;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        GuavaEventBusCommon(String path) {
+            super("guava-eventbus", path);
+        }
         /**
          * To lookup the Guava EventBus from the registry with the given name.
          * The option is a java.lang.String type.
          */
         public T eventBusRef(String eventBusRef) {
-            this.eventBusRef = eventBusRef;
+            this.properties.put("eventBusRef", eventBusRef);
             return (T) this;
         }
-
         /**
          * If used on the consumer side of the route, will filter events
          * received from the EventBus to the instances of the class and
@@ -58,10 +55,9 @@ public class GuavaEventBusEndpoint {
          * java.lang.Class<?> type.
          */
         public T eventClass(Class<Object> eventClass) {
-            this.eventClass = eventClass;
+            this.properties.put("eventClass", eventClass);
             return (T) this;
         }
-
         /**
          * The interface with method(s) marked with the Subscribe annotation.
          * Dynamic proxy will be created over the interface so it could be
@@ -71,78 +67,37 @@ public class GuavaEventBusEndpoint {
          * option is a java.lang.Class<?> type.
          */
         public T listenerInterface(Class<Object> listenerInterface) {
-            this.listenerInterface = listenerInterface;
+            this.properties.put("listenerInterface", listenerInterface);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getEventBusRef() {
-            return eventBusRef;
-        }
-
-        public void setEventBusRef(String eventBusRef) {
-            this.eventBusRef = eventBusRef;
-        }
-
-        public Class<Object> getEventClass() {
-            return eventClass;
-        }
-
-        public void setEventClass(Class<Object> eventClass) {
-            this.eventClass = eventClass;
-        }
-
-        public Class<Object> getListenerInterface() {
-            return listenerInterface;
-        }
-
-        public void setListenerInterface(Class<Object> listenerInterface) {
-            this.listenerInterface = listenerInterface;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class GuavaEventBusConsumer
             extends
-                GuavaEventBusCommon<GuavaEventBusConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                GuavaEventBusCommon<GuavaEventBusConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GuavaEventBusConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -154,10 +109,9 @@ public class GuavaEventBusEndpoint {
          */
         public GuavaEventBusConsumer bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (GuavaEventBusConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -167,47 +121,27 @@ public class GuavaEventBusEndpoint {
          */
         public GuavaEventBusConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (GuavaEventBusConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GuavaEventBusConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (GuavaEventBusConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class GuavaEventBusProducer
             extends
-                GuavaEventBusCommon<GuavaEventBusProducer> {
+                GuavaEventBusCommon<GuavaEventBusProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GuavaEventBusProducer(String path) {
+            super(path);
+        }
     }
 }

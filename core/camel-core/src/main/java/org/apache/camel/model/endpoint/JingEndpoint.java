@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * Validates the payload of a message using RelaxNG Syntax using Jing library.
@@ -27,90 +28,67 @@ import javax.annotation.Generated;
 public class JingEndpoint {
 
 
-    public static class JingCommon<T extends EndpointConfiguration>
+    public static class JingCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String resourceUri;
-        private Boolean compactSyntax;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        JingCommon(String path) {
+            super("jing", path);
+        }
         /**
          * URL to a local resource on the classpath or a full URL to a remote
          * resource or resource on the file system which contains the schema to
          * validate against. The option is a java.lang.String type.
          */
         public T resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
+            this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
-
         /**
          * Whether to validate using RelaxNG compact syntax or not. By default
          * this is false for using RelaxNG XML Syntax (rng) And true is for
          * using RelaxNG Compact Syntax (rnc). The option is a boolean type.
          */
         public T compactSyntax(boolean compactSyntax) {
-            this.compactSyntax = compactSyntax;
+            this.properties.put("compactSyntax", compactSyntax);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getResourceUri() {
-            return resourceUri;
-        }
-
-        public void setResourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-        }
-
-        public Boolean getCompactSyntax() {
-            return compactSyntax;
-        }
-
-        public void setCompactSyntax(Boolean compactSyntax) {
-            this.compactSyntax = compactSyntax;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class JingConsumer
+            extends
+                JingCommon<JingConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public JingConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class JingConsumer extends JingCommon<JingConsumer> {
-    }
-
-    public static class JingProducer extends JingCommon<JingProducer> {
+    public static class JingProducer
+            extends
+                JingCommon<JingProducer>
+            implements
+                EndpointDefinition.Producer {
+        public JingProducer(String path) {
+            super(path);
+        }
     }
 }

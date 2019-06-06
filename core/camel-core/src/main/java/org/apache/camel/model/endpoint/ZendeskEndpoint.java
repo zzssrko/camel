@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,176 +30,90 @@ import org.apache.camel.spi.ExceptionHandler;
 public class ZendeskEndpoint {
 
 
-    public static class ZendeskCommon<T extends EndpointConfiguration>
+    public static class ZendeskCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String methodName;
-        private String inBody;
-        private String serverUrl;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String oauthToken;
-        private String password;
-        private String token;
-        private String username;
-
+                EndpointDefinition<T> {
+        ZendeskCommon(String path) {
+            super("zendesk", path);
+        }
         /**
          * What operation to use. The option is a java.lang.String type.
          */
         public T methodName(String methodName) {
-            this.methodName = methodName;
+            this.properties.put("methodName", methodName);
             return (T) this;
         }
-
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
         public T inBody(String inBody) {
-            this.inBody = inBody;
+            this.properties.put("inBody", inBody);
             return (T) this;
         }
-
         /**
          * The server URL to connect. The option is a java.lang.String type.
          */
         public T serverUrl(String serverUrl) {
-            this.serverUrl = serverUrl;
+            this.properties.put("serverUrl", serverUrl);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * The OAuth token. The option is a java.lang.String type.
          */
         public T oauthToken(String oauthToken) {
-            this.oauthToken = oauthToken;
+            this.properties.put("oauthToken", oauthToken);
             return (T) this;
         }
-
         /**
          * The password. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * The security token. The option is a java.lang.String type.
          */
         public T token(String token) {
-            this.token = token;
+            this.properties.put("token", token);
             return (T) this;
         }
-
         /**
          * The user name. The option is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
-        }
-
-        public String getMethodName() {
-            return methodName;
-        }
-
-        public void setMethodName(String methodName) {
-            this.methodName = methodName;
-        }
-
-        public String getInBody() {
-            return inBody;
-        }
-
-        public void setInBody(String inBody) {
-            this.inBody = inBody;
-        }
-
-        public String getServerUrl() {
-            return serverUrl;
-        }
-
-        public void setServerUrl(String serverUrl) {
-            this.serverUrl = serverUrl;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getOauthToken() {
-            return oauthToken;
-        }
-
-        public void setOauthToken(String oauthToken) {
-            this.oauthToken = oauthToken;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getToken() {
-            return token;
-        }
-
-        public void setToken(String token) {
-            this.token = token;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
         }
     }
 
     public static class ZendeskConsumer
             extends
-                ZendeskCommon<ZendeskConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                ZendeskCommon<ZendeskConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ZendeskConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -209,10 +124,9 @@ public class ZendeskEndpoint {
          * ignored. The option is a boolean type.
          */
         public ZendeskConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (ZendeskConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -222,46 +136,26 @@ public class ZendeskEndpoint {
          */
         public ZendeskConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (ZendeskConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public ZendeskConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (ZendeskConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class ZendeskProducer
             extends
-                ZendeskCommon<ZendeskProducer> {
+                ZendeskCommon<ZendeskProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ZendeskProducer(String path) {
+            super(path);
+        }
     }
 }

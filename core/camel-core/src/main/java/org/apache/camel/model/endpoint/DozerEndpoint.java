@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The dozer component provides the ability to map between Java beans using the
@@ -28,28 +29,20 @@ import javax.annotation.Generated;
 public class DozerEndpoint {
 
 
-    public static class DozerCommon<T extends EndpointConfiguration>
+    public static class DozerCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private Object mappingConfiguration;
-        private String mappingFile;
-        private String marshalId;
-        private String sourceModel;
-        private String targetModel;
-        private String unmarshalId;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        DozerCommon(String path) {
+            super("dozer", path);
+        }
         /**
          * A human readable name of the mapping. The option is a
          * java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * The name of a DozerBeanMapperConfiguration bean in the Camel registry
          * which should be used for configuring the Dozer mapping. This is an
@@ -60,10 +53,9 @@ public class DozerEndpoint {
          * org.apache.camel.converter.dozer.DozerBeanMapperConfiguration type.
          */
         public T mappingConfiguration(Object mappingConfiguration) {
-            this.mappingConfiguration = mappingConfiguration;
+            this.properties.put("mappingConfiguration", mappingConfiguration);
             return (T) this;
         }
-
         /**
          * The location of a Dozer configuration file. The file is loaded from
          * the classpath by default, but you can use file:, classpath:, or http:
@@ -71,20 +63,18 @@ public class DozerEndpoint {
          * java.lang.String type.
          */
         public T mappingFile(String mappingFile) {
-            this.mappingFile = mappingFile;
+            this.properties.put("mappingFile", mappingFile);
             return (T) this;
         }
-
         /**
          * The id of a dataFormat defined within the Camel Context to use for
          * marshalling the mapping output to a non-Java type. The option is a
          * java.lang.String type.
          */
         public T marshalId(String marshalId) {
-            this.marshalId = marshalId;
+            this.properties.put("marshalId", marshalId);
             return (T) this;
         }
-
         /**
          * Fully-qualified class name for the source type used in the mapping.
          * If specified, the input to the mapping is converted to the specified
@@ -92,125 +82,63 @@ public class DozerEndpoint {
          * type.
          */
         public T sourceModel(String sourceModel) {
-            this.sourceModel = sourceModel;
+            this.properties.put("sourceModel", sourceModel);
             return (T) this;
         }
-
         /**
          * Fully-qualified class name for the target type used in the mapping.
          * The option is a java.lang.String type.
          */
         public T targetModel(String targetModel) {
-            this.targetModel = targetModel;
+            this.properties.put("targetModel", targetModel);
             return (T) this;
         }
-
         /**
          * The id of a dataFormat defined within the Camel Context to use for
          * unmarshalling the mapping input from a non-Java type. The option is a
          * java.lang.String type.
          */
         public T unmarshalId(String unmarshalId) {
-            this.unmarshalId = unmarshalId;
+            this.properties.put("unmarshalId", unmarshalId);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Object getMappingConfiguration() {
-            return mappingConfiguration;
-        }
-
-        public void setMappingConfiguration(Object mappingConfiguration) {
-            this.mappingConfiguration = mappingConfiguration;
-        }
-
-        public String getMappingFile() {
-            return mappingFile;
-        }
-
-        public void setMappingFile(String mappingFile) {
-            this.mappingFile = mappingFile;
-        }
-
-        public String getMarshalId() {
-            return marshalId;
-        }
-
-        public void setMarshalId(String marshalId) {
-            this.marshalId = marshalId;
-        }
-
-        public String getSourceModel() {
-            return sourceModel;
-        }
-
-        public void setSourceModel(String sourceModel) {
-            this.sourceModel = sourceModel;
-        }
-
-        public String getTargetModel() {
-            return targetModel;
-        }
-
-        public void setTargetModel(String targetModel) {
-            this.targetModel = targetModel;
-        }
-
-        public String getUnmarshalId() {
-            return unmarshalId;
-        }
-
-        public void setUnmarshalId(String unmarshalId) {
-            this.unmarshalId = unmarshalId;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class DozerConsumer
+            extends
+                DozerCommon<DozerConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DozerConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class DozerConsumer extends DozerCommon<DozerConsumer> {
-    }
-
-    public static class DozerProducer extends DozerCommon<DozerProducer> {
+    public static class DozerProducer
+            extends
+                DozerCommon<DozerProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DozerProducer(String path) {
+            super(path);
+        }
     }
 }

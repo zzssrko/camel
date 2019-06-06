@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.Language;
 
 /**
@@ -30,28 +31,20 @@ import org.apache.camel.spi.Language;
 public class ControlBusEndpoint {
 
 
-    public static class ControlBusCommon<T extends EndpointConfiguration>
+    public static class ControlBusCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String command;
-        private Language language;
-        private String action;
-        private Boolean async;
-        private LoggingLevel loggingLevel;
-        private Integer restartDelay;
-        private String routeId;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        ControlBusCommon(String path) {
+            super("controlbus", path);
+        }
         /**
          * Command can be either route or language. The option is a
          * java.lang.String type.
          */
         public T command(String command) {
-            this.command = command;
+            this.properties.put("command", command);
             return (T) this;
         }
-
         /**
          * Allows you to specify the name of a Language to use for evaluating
          * the message body. If there is any result from the evaluation, then
@@ -59,10 +52,9 @@ public class ControlBusEndpoint {
          * org.apache.camel.spi.Language type.
          */
         public T language(Language language) {
-            this.language = language;
+            this.properties.put("language", language);
             return (T) this;
         }
-
         /**
          * To denote an action that can be either: start, stop, or status. To
          * either start or stop a route, or to get the status of the route as
@@ -75,10 +67,9 @@ public class ControlBusEndpoint {
          * restart the route. The option is a java.lang.String type.
          */
         public T action(String action) {
-            this.action = action;
+            this.properties.put("action", action);
             return (T) this;
         }
-
         /**
          * Whether to execute the control bus task asynchronously. Important: If
          * this option is enabled, then any result from the task is not set on
@@ -86,138 +77,71 @@ public class ControlBusEndpoint {
          * The option is a boolean type.
          */
         public T async(boolean async) {
-            this.async = async;
+            this.properties.put("async", async);
             return (T) this;
         }
-
         /**
          * Logging level used for logging when task is done, or if any
          * exceptions occurred during processing the task. The option is a
          * org.apache.camel.LoggingLevel type.
          */
         public T loggingLevel(LoggingLevel loggingLevel) {
-            this.loggingLevel = loggingLevel;
+            this.properties.put("loggingLevel", loggingLevel);
             return (T) this;
         }
-
         /**
          * The delay in millis to use when restarting a route. The option is a
          * int type.
          */
         public T restartDelay(int restartDelay) {
-            this.restartDelay = restartDelay;
+            this.properties.put("restartDelay", restartDelay);
             return (T) this;
         }
-
         /**
          * To specify a route by its id. The special keyword current indicates
          * the current route. The option is a java.lang.String type.
          */
         public T routeId(String routeId) {
-            this.routeId = routeId;
+            this.properties.put("routeId", routeId);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getCommand() {
-            return command;
-        }
-
-        public void setCommand(String command) {
-            this.command = command;
-        }
-
-        public Language getLanguage() {
-            return language;
-        }
-
-        public void setLanguage(Language language) {
-            this.language = language;
-        }
-
-        public String getAction() {
-            return action;
-        }
-
-        public void setAction(String action) {
-            this.action = action;
-        }
-
-        public Boolean getAsync() {
-            return async;
-        }
-
-        public void setAsync(Boolean async) {
-            this.async = async;
-        }
-
-        public LoggingLevel getLoggingLevel() {
-            return loggingLevel;
-        }
-
-        public void setLoggingLevel(LoggingLevel loggingLevel) {
-            this.loggingLevel = loggingLevel;
-        }
-
-        public Integer getRestartDelay() {
-            return restartDelay;
-        }
-
-        public void setRestartDelay(Integer restartDelay) {
-            this.restartDelay = restartDelay;
-        }
-
-        public String getRouteId() {
-            return routeId;
-        }
-
-        public void setRouteId(String routeId) {
-            this.routeId = routeId;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class ControlBusConsumer
             extends
-                ControlBusCommon<ControlBusConsumer> {
+                ControlBusCommon<ControlBusConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ControlBusConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class ControlBusProducer
             extends
-                ControlBusCommon<ControlBusProducer> {
+                ControlBusCommon<ControlBusProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ControlBusProducer(String path) {
+            super(path);
+        }
     }
 }

@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The solr component allows you to interface with an Apache Lucene Solr server.
@@ -27,289 +28,155 @@ import javax.annotation.Generated;
 public class SolrEndpoint {
 
 
-    public static class SolrCommon<T extends EndpointConfiguration>
+    public static class SolrCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String url;
-        private Boolean allowCompression;
-        private Integer connectionTimeout;
-        private Integer defaultMaxConnectionsPerHost;
-        private Boolean followRedirects;
-        private Integer maxRetries;
-        private Integer maxTotalConnections;
-        private String requestHandler;
-        private Integer soTimeout;
-        private Integer streamingQueueSize;
-        private Integer streamingThreadCount;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String collection;
-        private String zkHost;
-
+                EndpointDefinition<T> {
+        SolrCommon(String path) {
+            super("solr", path);
+        }
         /**
          * Hostname and port for the solr server. The option is a
          * java.lang.String type.
          */
         public T url(String url) {
-            this.url = url;
+            this.properties.put("url", url);
             return (T) this;
         }
-
         /**
          * Server side must support gzip or deflate for this to have any effect.
          * The option is a java.lang.Boolean type.
          */
         public T allowCompression(Boolean allowCompression) {
-            this.allowCompression = allowCompression;
+            this.properties.put("allowCompression", allowCompression);
             return (T) this;
         }
-
         /**
          * connectionTimeout on the underlying HttpConnectionManager. The option
          * is a java.lang.Integer type.
          */
         public T connectionTimeout(Integer connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
+            this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
-
         /**
          * maxConnectionsPerHost on the underlying HttpConnectionManager. The
          * option is a java.lang.Integer type.
          */
         public T defaultMaxConnectionsPerHost(
                 Integer defaultMaxConnectionsPerHost) {
-            this.defaultMaxConnectionsPerHost = defaultMaxConnectionsPerHost;
+            this.properties.put("defaultMaxConnectionsPerHost", defaultMaxConnectionsPerHost);
             return (T) this;
         }
-
         /**
          * indicates whether redirects are used to get to the Solr server. The
          * option is a java.lang.Boolean type.
          */
         public T followRedirects(Boolean followRedirects) {
-            this.followRedirects = followRedirects;
+            this.properties.put("followRedirects", followRedirects);
             return (T) this;
         }
-
         /**
          * Maximum number of retries to attempt in the event of transient
          * errors. The option is a java.lang.Integer type.
          */
         public T maxRetries(Integer maxRetries) {
-            this.maxRetries = maxRetries;
+            this.properties.put("maxRetries", maxRetries);
             return (T) this;
         }
-
         /**
          * maxTotalConnection on the underlying HttpConnectionManager. The
          * option is a java.lang.Integer type.
          */
         public T maxTotalConnections(Integer maxTotalConnections) {
-            this.maxTotalConnections = maxTotalConnections;
+            this.properties.put("maxTotalConnections", maxTotalConnections);
             return (T) this;
         }
-
         /**
          * Set the request handler to be used. The option is a java.lang.String
          * type.
          */
         public T requestHandler(String requestHandler) {
-            this.requestHandler = requestHandler;
+            this.properties.put("requestHandler", requestHandler);
             return (T) this;
         }
-
         /**
          * Read timeout on the underlying HttpConnectionManager. This is
          * desirable for queries, but probably not for indexing. The option is a
          * java.lang.Integer type.
          */
         public T soTimeout(Integer soTimeout) {
-            this.soTimeout = soTimeout;
+            this.properties.put("soTimeout", soTimeout);
             return (T) this;
         }
-
         /**
          * Set the queue size for the StreamingUpdateSolrServer. The option is a
          * int type.
          */
         public T streamingQueueSize(int streamingQueueSize) {
-            this.streamingQueueSize = streamingQueueSize;
+            this.properties.put("streamingQueueSize", streamingQueueSize);
             return (T) this;
         }
-
         /**
          * Set the number of threads for the StreamingUpdateSolrServer. The
          * option is a int type.
          */
         public T streamingThreadCount(int streamingThreadCount) {
-            this.streamingThreadCount = streamingThreadCount;
+            this.properties.put("streamingThreadCount", streamingThreadCount);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Set the collection name which the solrCloud server could use. The
          * option is a java.lang.String type.
          */
         public T collection(String collection) {
-            this.collection = collection;
+            this.properties.put("collection", collection);
             return (T) this;
         }
-
         /**
          * Set the ZooKeeper host information which the solrCloud could use,
          * such as zkhost=localhost:8123. The option is a java.lang.String type.
          */
         public T zkHost(String zkHost) {
-            this.zkHost = zkHost;
+            this.properties.put("zkHost", zkHost);
             return (T) this;
         }
+    }
 
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        public Boolean getAllowCompression() {
-            return allowCompression;
-        }
-
-        public void setAllowCompression(Boolean allowCompression) {
-            this.allowCompression = allowCompression;
-        }
-
-        public Integer getConnectionTimeout() {
-            return connectionTimeout;
-        }
-
-        public void setConnectionTimeout(Integer connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
-        }
-
-        public Integer getDefaultMaxConnectionsPerHost() {
-            return defaultMaxConnectionsPerHost;
-        }
-
-        public void setDefaultMaxConnectionsPerHost(
-                Integer defaultMaxConnectionsPerHost) {
-            this.defaultMaxConnectionsPerHost = defaultMaxConnectionsPerHost;
-        }
-
-        public Boolean getFollowRedirects() {
-            return followRedirects;
-        }
-
-        public void setFollowRedirects(Boolean followRedirects) {
-            this.followRedirects = followRedirects;
-        }
-
-        public Integer getMaxRetries() {
-            return maxRetries;
-        }
-
-        public void setMaxRetries(Integer maxRetries) {
-            this.maxRetries = maxRetries;
-        }
-
-        public Integer getMaxTotalConnections() {
-            return maxTotalConnections;
-        }
-
-        public void setMaxTotalConnections(Integer maxTotalConnections) {
-            this.maxTotalConnections = maxTotalConnections;
-        }
-
-        public String getRequestHandler() {
-            return requestHandler;
-        }
-
-        public void setRequestHandler(String requestHandler) {
-            this.requestHandler = requestHandler;
-        }
-
-        public Integer getSoTimeout() {
-            return soTimeout;
-        }
-
-        public void setSoTimeout(Integer soTimeout) {
-            this.soTimeout = soTimeout;
-        }
-
-        public Integer getStreamingQueueSize() {
-            return streamingQueueSize;
-        }
-
-        public void setStreamingQueueSize(Integer streamingQueueSize) {
-            this.streamingQueueSize = streamingQueueSize;
-        }
-
-        public Integer getStreamingThreadCount() {
-            return streamingThreadCount;
-        }
-
-        public void setStreamingThreadCount(Integer streamingThreadCount) {
-            this.streamingThreadCount = streamingThreadCount;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getCollection() {
-            return collection;
-        }
-
-        public void setCollection(String collection) {
-            this.collection = collection;
-        }
-
-        public String getZkHost() {
-            return zkHost;
-        }
-
-        public void setZkHost(String zkHost) {
-            this.zkHost = zkHost;
+    public static class SolrConsumer
+            extends
+                SolrCommon<SolrConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SolrConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class SolrConsumer extends SolrCommon<SolrConsumer> {
-    }
-
-    public static class SolrProducer extends SolrCommon<SolrProducer> {
+    public static class SolrProducer
+            extends
+                SolrCommon<SolrProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SolrProducer(String path) {
+            super(path);
+        }
     }
 }

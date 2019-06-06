@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -30,345 +31,166 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GrpcEndpoint {
 
 
-    public static class GrpcCommon<T extends EndpointConfiguration>
+    public static class GrpcCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private String service;
-        private Integer flowControlWindow;
-        private Integer maxMessageSize;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private GrpcAuthType authenticationType;
-        private JwtAlgorithm jwtAlgorithm;
-        private String jwtIssuer;
-        private String jwtSecret;
-        private String jwtSubject;
-        private String keyCertChainResource;
-        private String keyPassword;
-        private String keyResource;
-        private NegotiationType negotiationType;
-        private String serviceAccountResource;
-        private String trustCertCollectionResource;
-
+                EndpointDefinition<T> {
+        GrpcCommon(String path) {
+            super("grpc", path);
+        }
         /**
          * The gRPC server host name. This is localhost or 0.0.0.0 when being a
          * consumer or remote server host name when using producer. The option
          * is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * The gRPC local or remote server port. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Fully qualified service name from the protocol buffer descriptor file
          * (package dot service definition name). The option is a
          * java.lang.String type.
          */
         public T service(String service) {
-            this.service = service;
+            this.properties.put("service", service);
             return (T) this;
         }
-
         /**
          * The HTTP/2 flow control window size (MiB). The option is a int type.
          */
         public T flowControlWindow(int flowControlWindow) {
-            this.flowControlWindow = flowControlWindow;
+            this.properties.put("flowControlWindow", flowControlWindow);
             return (T) this;
         }
-
         /**
          * The maximum message size allowed to be received/sent (MiB). The
          * option is a int type.
          */
         public T maxMessageSize(int maxMessageSize) {
-            this.maxMessageSize = maxMessageSize;
+            this.properties.put("maxMessageSize", maxMessageSize);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Authentication method type in advance to the SSL/TLS negotiation. The
          * option is a org.apache.camel.component.grpc.GrpcAuthType type.
          */
         public T authenticationType(GrpcAuthType authenticationType) {
-            this.authenticationType = authenticationType;
+            this.properties.put("authenticationType", authenticationType);
             return (T) this;
         }
-
         /**
          * JSON Web Token sign algorithm. The option is a
          * org.apache.camel.component.grpc.auth.jwt.JwtAlgorithm type.
          */
         public T jwtAlgorithm(JwtAlgorithm jwtAlgorithm) {
-            this.jwtAlgorithm = jwtAlgorithm;
+            this.properties.put("jwtAlgorithm", jwtAlgorithm);
             return (T) this;
         }
-
         /**
          * JSON Web Token issuer. The option is a java.lang.String type.
          */
         public T jwtIssuer(String jwtIssuer) {
-            this.jwtIssuer = jwtIssuer;
+            this.properties.put("jwtIssuer", jwtIssuer);
             return (T) this;
         }
-
         /**
          * JSON Web Token secret. The option is a java.lang.String type.
          */
         public T jwtSecret(String jwtSecret) {
-            this.jwtSecret = jwtSecret;
+            this.properties.put("jwtSecret", jwtSecret);
             return (T) this;
         }
-
         /**
          * JSON Web Token subject. The option is a java.lang.String type.
          */
         public T jwtSubject(String jwtSubject) {
-            this.jwtSubject = jwtSubject;
+            this.properties.put("jwtSubject", jwtSubject);
             return (T) this;
         }
-
         /**
          * The X.509 certificate chain file resource in PEM format link. The
          * option is a java.lang.String type.
          */
         public T keyCertChainResource(String keyCertChainResource) {
-            this.keyCertChainResource = keyCertChainResource;
+            this.properties.put("keyCertChainResource", keyCertChainResource);
             return (T) this;
         }
-
         /**
          * The PKCS#8 private key file password. The option is a
          * java.lang.String type.
          */
         public T keyPassword(String keyPassword) {
-            this.keyPassword = keyPassword;
+            this.properties.put("keyPassword", keyPassword);
             return (T) this;
         }
-
         /**
          * The PKCS#8 private key file resource in PEM format link. The option
          * is a java.lang.String type.
          */
         public T keyResource(String keyResource) {
-            this.keyResource = keyResource;
+            this.properties.put("keyResource", keyResource);
             return (T) this;
         }
-
         /**
          * Identifies the security negotiation type used for HTTP/2
          * communication. The option is a io.grpc.netty.NegotiationType type.
          */
         public T negotiationType(NegotiationType negotiationType) {
-            this.negotiationType = negotiationType;
+            this.properties.put("negotiationType", negotiationType);
             return (T) this;
         }
-
         /**
          * Service Account key file in JSON format resource link supported by
          * the Google Cloud SDK. The option is a java.lang.String type.
          */
         public T serviceAccountResource(String serviceAccountResource) {
-            this.serviceAccountResource = serviceAccountResource;
+            this.properties.put("serviceAccountResource", serviceAccountResource);
             return (T) this;
         }
-
         /**
          * The trusted certificates collection file resource in PEM format for
          * verifying the remote endpoint's certificate. The option is a
          * java.lang.String type.
          */
         public T trustCertCollectionResource(String trustCertCollectionResource) {
-            this.trustCertCollectionResource = trustCertCollectionResource;
+            this.properties.put("trustCertCollectionResource", trustCertCollectionResource);
             return (T) this;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getService() {
-            return service;
-        }
-
-        public void setService(String service) {
-            this.service = service;
-        }
-
-        public Integer getFlowControlWindow() {
-            return flowControlWindow;
-        }
-
-        public void setFlowControlWindow(Integer flowControlWindow) {
-            this.flowControlWindow = flowControlWindow;
-        }
-
-        public Integer getMaxMessageSize() {
-            return maxMessageSize;
-        }
-
-        public void setMaxMessageSize(Integer maxMessageSize) {
-            this.maxMessageSize = maxMessageSize;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public GrpcAuthType getAuthenticationType() {
-            return authenticationType;
-        }
-
-        public void setAuthenticationType(GrpcAuthType authenticationType) {
-            this.authenticationType = authenticationType;
-        }
-
-        public JwtAlgorithm getJwtAlgorithm() {
-            return jwtAlgorithm;
-        }
-
-        public void setJwtAlgorithm(JwtAlgorithm jwtAlgorithm) {
-            this.jwtAlgorithm = jwtAlgorithm;
-        }
-
-        public String getJwtIssuer() {
-            return jwtIssuer;
-        }
-
-        public void setJwtIssuer(String jwtIssuer) {
-            this.jwtIssuer = jwtIssuer;
-        }
-
-        public String getJwtSecret() {
-            return jwtSecret;
-        }
-
-        public void setJwtSecret(String jwtSecret) {
-            this.jwtSecret = jwtSecret;
-        }
-
-        public String getJwtSubject() {
-            return jwtSubject;
-        }
-
-        public void setJwtSubject(String jwtSubject) {
-            this.jwtSubject = jwtSubject;
-        }
-
-        public String getKeyCertChainResource() {
-            return keyCertChainResource;
-        }
-
-        public void setKeyCertChainResource(String keyCertChainResource) {
-            this.keyCertChainResource = keyCertChainResource;
-        }
-
-        public String getKeyPassword() {
-            return keyPassword;
-        }
-
-        public void setKeyPassword(String keyPassword) {
-            this.keyPassword = keyPassword;
-        }
-
-        public String getKeyResource() {
-            return keyResource;
-        }
-
-        public void setKeyResource(String keyResource) {
-            this.keyResource = keyResource;
-        }
-
-        public NegotiationType getNegotiationType() {
-            return negotiationType;
-        }
-
-        public void setNegotiationType(NegotiationType negotiationType) {
-            this.negotiationType = negotiationType;
-        }
-
-        public String getServiceAccountResource() {
-            return serviceAccountResource;
-        }
-
-        public void setServiceAccountResource(String serviceAccountResource) {
-            this.serviceAccountResource = serviceAccountResource;
-        }
-
-        public String getTrustCertCollectionResource() {
-            return trustCertCollectionResource;
-        }
-
-        public void setTrustCertCollectionResource(
-                String trustCertCollectionResource) {
-            this.trustCertCollectionResource = trustCertCollectionResource;
         }
     }
 
-    public static class GrpcConsumer extends GrpcCommon<GrpcConsumer> {
-        private Boolean bridgeErrorHandler;
-        private GrpcConsumerStrategy consumerStrategy;
-        private Boolean forwardOnCompleted;
-        private Boolean forwardOnError;
-        private Integer maxConcurrentCallsPerConnection;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class GrpcConsumer
+            extends
+                GrpcCommon<GrpcConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public GrpcConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -379,10 +201,9 @@ public class GrpcEndpoint {
          * ignored. The option is a boolean type.
          */
         public GrpcConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (GrpcConsumer) this;
         }
-
         /**
          * This option specifies the top-level strategy for processing service
          * requests and responses in streaming mode. If an aggregation strategy
@@ -395,38 +216,34 @@ public class GrpcEndpoint {
          */
         public GrpcConsumer consumerStrategy(
                 GrpcConsumerStrategy consumerStrategy) {
-            this.consumerStrategy = consumerStrategy;
+            this.properties.put("consumerStrategy", consumerStrategy);
             return (GrpcConsumer) this;
         }
-
         /**
          * Determines if onCompleted events should be pushed to the Camel route.
          * The option is a boolean type.
          */
         public GrpcConsumer forwardOnCompleted(boolean forwardOnCompleted) {
-            this.forwardOnCompleted = forwardOnCompleted;
+            this.properties.put("forwardOnCompleted", forwardOnCompleted);
             return (GrpcConsumer) this;
         }
-
         /**
          * Determines if onError events should be pushed to the Camel route.
          * Exceptions will be set as message body. The option is a boolean type.
          */
         public GrpcConsumer forwardOnError(boolean forwardOnError) {
-            this.forwardOnError = forwardOnError;
+            this.properties.put("forwardOnError", forwardOnError);
             return (GrpcConsumer) this;
         }
-
         /**
          * The maximum number of concurrent calls permitted for each incoming
          * server connection. The option is a int type.
          */
         public GrpcConsumer maxConcurrentCallsPerConnection(
                 int maxConcurrentCallsPerConnection) {
-            this.maxConcurrentCallsPerConnection = maxConcurrentCallsPerConnection;
+            this.properties.put("maxConcurrentCallsPerConnection", maxConcurrentCallsPerConnection);
             return (GrpcConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -435,91 +252,34 @@ public class GrpcEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public GrpcConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (GrpcConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GrpcConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (GrpcConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public GrpcConsumerStrategy getConsumerStrategy() {
-            return consumerStrategy;
-        }
-
-        public void setConsumerStrategy(GrpcConsumerStrategy consumerStrategy) {
-            this.consumerStrategy = consumerStrategy;
-        }
-
-        public Boolean getForwardOnCompleted() {
-            return forwardOnCompleted;
-        }
-
-        public void setForwardOnCompleted(Boolean forwardOnCompleted) {
-            this.forwardOnCompleted = forwardOnCompleted;
-        }
-
-        public Boolean getForwardOnError() {
-            return forwardOnError;
-        }
-
-        public void setForwardOnError(Boolean forwardOnError) {
-            this.forwardOnError = forwardOnError;
-        }
-
-        public Integer getMaxConcurrentCallsPerConnection() {
-            return maxConcurrentCallsPerConnection;
-        }
-
-        public void setMaxConcurrentCallsPerConnection(
-                Integer maxConcurrentCallsPerConnection) {
-            this.maxConcurrentCallsPerConnection = maxConcurrentCallsPerConnection;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class GrpcProducer extends GrpcCommon<GrpcProducer> {
-        private String method;
-        private GrpcProducerStrategy producerStrategy;
-        private String streamRepliesTo;
-        private String userAgent;
-
+    public static class GrpcProducer
+            extends
+                GrpcCommon<GrpcProducer>
+            implements
+                EndpointDefinition.Producer {
+        public GrpcProducer(String path) {
+            super(path);
+        }
         /**
          * gRPC method name. The option is a java.lang.String type.
          */
         public GrpcProducer method(String method) {
-            this.method = method;
+            this.properties.put("method", method);
             return (GrpcProducer) this;
         }
-
         /**
          * The mode used to communicate with a remote gRPC server. In SIMPLE
          * mode a single exchange is translated into a remote procedure call. In
@@ -530,58 +290,24 @@ public class GrpcEndpoint {
          */
         public GrpcProducer producerStrategy(
                 GrpcProducerStrategy producerStrategy) {
-            this.producerStrategy = producerStrategy;
+            this.properties.put("producerStrategy", producerStrategy);
             return (GrpcProducer) this;
         }
-
         /**
          * When using STREAMING client mode, it indicates the endpoint where
          * responses should be forwarded. The option is a java.lang.String type.
          */
         public GrpcProducer streamRepliesTo(String streamRepliesTo) {
-            this.streamRepliesTo = streamRepliesTo;
+            this.properties.put("streamRepliesTo", streamRepliesTo);
             return (GrpcProducer) this;
         }
-
         /**
          * The user agent header passed to the server. The option is a
          * java.lang.String type.
          */
         public GrpcProducer userAgent(String userAgent) {
-            this.userAgent = userAgent;
+            this.properties.put("userAgent", userAgent);
             return (GrpcProducer) this;
-        }
-
-        public String getMethod() {
-            return method;
-        }
-
-        public void setMethod(String method) {
-            this.method = method;
-        }
-
-        public GrpcProducerStrategy getProducerStrategy() {
-            return producerStrategy;
-        }
-
-        public void setProducerStrategy(GrpcProducerStrategy producerStrategy) {
-            this.producerStrategy = producerStrategy;
-        }
-
-        public String getStreamRepliesTo() {
-            return streamRepliesTo;
-        }
-
-        public void setStreamRepliesTo(String streamRepliesTo) {
-            this.streamRepliesTo = streamRepliesTo;
-        }
-
-        public String getUserAgent() {
-            return userAgent;
-        }
-
-        public void setUserAgent(String userAgent) {
-            this.userAgent = userAgent;
         }
     }
 

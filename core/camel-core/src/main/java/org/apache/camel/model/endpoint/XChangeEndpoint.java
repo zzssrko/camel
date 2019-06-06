@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The camel-xchange component provide access to many bitcoin and altcoin
@@ -28,146 +29,89 @@ import javax.annotation.Generated;
 public class XChangeEndpoint {
 
 
-    public static class XChangeCommon<T extends EndpointConfiguration>
+    public static class XChangeCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private Object currency;
-        private Object currencyPair;
-        private Object method;
-        private Object service;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        XChangeCommon(String path) {
+            super("xchange", path);
+        }
         /**
          * The exchange to connect to. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * The currency. The option is a org.knowm.xchange.currency.Currency
          * type.
          */
         public T currency(Object currency) {
-            this.currency = currency;
+            this.properties.put("currency", currency);
             return (T) this;
         }
-
         /**
          * The currency pair. The option is a
          * org.knowm.xchange.currency.CurrencyPair type.
          */
         public T currencyPair(Object currencyPair) {
-            this.currencyPair = currencyPair;
+            this.properties.put("currencyPair", currencyPair);
             return (T) this;
         }
-
         /**
          * The method to execute. The option is a
          * org.apache.camel.component.xchange.XChangeConfiguration.XChangeMethod
          * type.
          */
         public T method(Object method) {
-            this.method = method;
+            this.properties.put("method", method);
             return (T) this;
         }
-
         /**
          * The service to call. The option is a
          * org.apache.camel.component.xchange.XChangeConfiguration.XChangeService type.
          */
         public T service(Object service) {
-            this.service = service;
+            this.properties.put("service", service);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Object getCurrency() {
-            return currency;
-        }
-
-        public void setCurrency(Object currency) {
-            this.currency = currency;
-        }
-
-        public Object getCurrencyPair() {
-            return currencyPair;
-        }
-
-        public void setCurrencyPair(Object currencyPair) {
-            this.currencyPair = currencyPair;
-        }
-
-        public Object getMethod() {
-            return method;
-        }
-
-        public void setMethod(Object method) {
-            this.method = method;
-        }
-
-        public Object getService() {
-            return service;
-        }
-
-        public void setService(Object service) {
-            this.service = service;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class XChangeConsumer
             extends
-                XChangeCommon<XChangeConsumer> {
+                XChangeCommon<XChangeConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public XChangeConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class XChangeProducer
             extends
-                XChangeCommon<XChangeProducer> {
+                XChangeCommon<XChangeProducer>
+            implements
+                EndpointDefinition.Producer {
+        public XChangeProducer(String path) {
+            super(path);
+        }
     }
 }

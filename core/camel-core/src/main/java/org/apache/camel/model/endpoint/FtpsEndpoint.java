@@ -26,6 +26,7 @@ import org.apache.camel.ExchangePattern;
 import org.apache.camel.Expression;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Predicate;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.IdempotentRepository;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
@@ -41,85 +42,41 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class FtpsEndpoint {
 
 
-    public static class FtpsCommon<T extends EndpointConfiguration>
+    public static class FtpsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private String directoryName;
-        private Boolean binary;
-        private String charset;
-        private Boolean disconnect;
-        private String doneFileName;
-        private Expression fileName;
-        private Boolean passiveMode;
-        private Object separator;
-        private Integer transferLoggingIntervalSeconds;
-        private LoggingLevel transferLoggingLevel;
-        private Boolean transferLoggingVerbose;
-        private Boolean fastExistsCheck;
-        private String activePortRange;
-        private Boolean autoCreate;
-        private Boolean basicPropertyBinding;
-        private Integer bufferSize;
-        private Integer connectTimeout;
-        private Object ftpClient;
-        private Object ftpClientConfig;
-        private Map<String, Object> ftpClientConfigParameters;
-        private Map<String, Object> ftpClientParameters;
-        private Integer maximumReconnectAttempts;
-        private Long reconnectDelay;
-        private String siteCommand;
-        private Integer soTimeout;
-        private Boolean stepwise;
-        private Boolean synchronous;
-        private Boolean throwExceptionOnConnectFailed;
-        private Integer timeout;
-        private String account;
-        private Boolean disableSecureDataChannelDefaults;
-        private Long execPbsz;
-        private String execProt;
-        private Map<String, Object> ftpClientKeyStoreParameters;
-        private Map<String, Object> ftpClientTrustStoreParameters;
-        private Boolean isImplicit;
-        private String password;
-        private String securityProtocol;
-        private Object sslContextParameters;
-        private String username;
-
+                EndpointDefinition<T> {
+        FtpsCommon(String path) {
+            super("ftps", path);
+        }
         /**
          * Hostname of the FTP server. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Port of the FTP server. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * The starting directory. The option is a java.lang.String type.
          */
         public T directoryName(String directoryName) {
-            this.directoryName = directoryName;
+            this.properties.put("directoryName", directoryName);
             return (T) this;
         }
-
         /**
          * Specifies the file transfer mode, BINARY or ASCII. Default is ASCII
          * (false). The option is a boolean type.
          */
         public T binary(boolean binary) {
-            this.binary = binary;
+            this.properties.put("binary", binary);
             return (T) this;
         }
-
         /**
          * This option is used to specify the encoding of the file. You can use
          * this on the consumer, to specify the encodings of the files, which
@@ -132,10 +89,9 @@ public class FtpsEndpoint {
          * messages. The option is a java.lang.String type.
          */
         public T charset(String charset) {
-            this.charset = charset;
+            this.properties.put("charset", charset);
             return (T) this;
         }
-
         /**
          * Whether or not to disconnect from remote FTP server right after use.
          * Disconnect will only disconnect the current connection to the FTP
@@ -143,10 +99,9 @@ public class FtpsEndpoint {
          * to stop the consumer/route instead. The option is a boolean type.
          */
         public T disconnect(boolean disconnect) {
-            this.disconnect = disconnect;
+            this.properties.put("disconnect", disconnect);
             return (T) this;
         }
-
         /**
          * Producer: If provided, then Camel will write a 2nd done file when the
          * original file has been written. The done file will be empty. This
@@ -161,10 +116,9 @@ public class FtpsEndpoint {
          * placeholders. The option is a java.lang.String type.
          */
         public T doneFileName(String doneFileName) {
-            this.doneFileName = doneFileName;
+            this.properties.put("doneFileName", doneFileName);
             return (T) this;
         }
-
         /**
          * Use Expression such as File Language to dynamically set the filename.
          * For consumers, it's used as a filename filter. For producers, it's
@@ -185,19 +139,17 @@ public class FtpsEndpoint {
          * java.lang.String type.
          */
         public T fileName(Expression fileName) {
-            this.fileName = fileName;
+            this.properties.put("fileName", fileName);
             return (T) this;
         }
-
         /**
          * Sets passive mode connections. Default is active mode connections.
          * The option is a boolean type.
          */
         public T passiveMode(boolean passiveMode) {
-            this.passiveMode = passiveMode;
+            this.properties.put("passiveMode", passiveMode);
             return (T) this;
         }
-
         /**
          * Sets the path separator to be used. UNIX = Uses unix style path
          * separator Windows = Uses windows style path separator Auto = (is
@@ -205,10 +157,9 @@ public class FtpsEndpoint {
          * org.apache.camel.component.file.remote.RemoteFileConfiguration.PathSeparator type.
          */
         public T separator(Object separator) {
-            this.separator = separator;
+            this.properties.put("separator", separator);
             return (T) this;
         }
-
         /**
          * Configures the interval in seconds to use when logging the progress
          * of upload and download operations that are in-flight. This is used
@@ -217,30 +168,27 @@ public class FtpsEndpoint {
          */
         public T transferLoggingIntervalSeconds(
                 int transferLoggingIntervalSeconds) {
-            this.transferLoggingIntervalSeconds = transferLoggingIntervalSeconds;
+            this.properties.put("transferLoggingIntervalSeconds", transferLoggingIntervalSeconds);
             return (T) this;
         }
-
         /**
          * Configure the logging level to use when logging the progress of
          * upload and download operations. The option is a
          * org.apache.camel.LoggingLevel type.
          */
         public T transferLoggingLevel(LoggingLevel transferLoggingLevel) {
-            this.transferLoggingLevel = transferLoggingLevel;
+            this.properties.put("transferLoggingLevel", transferLoggingLevel);
             return (T) this;
         }
-
         /**
          * Configures whether the perform verbose (fine grained) logging of the
          * progress of upload and download operations. The option is a boolean
          * type.
          */
         public T transferLoggingVerbose(boolean transferLoggingVerbose) {
-            this.transferLoggingVerbose = transferLoggingVerbose;
+            this.properties.put("transferLoggingVerbose", transferLoggingVerbose);
             return (T) this;
         }
-
         /**
          * If set this option to be true, camel-ftp will use the list file
          * directly to check if the file exists. Since some FTP server may not
@@ -252,20 +200,18 @@ public class FtpsEndpoint {
          * of files. The option is a boolean type.
          */
         public T fastExistsCheck(boolean fastExistsCheck) {
-            this.fastExistsCheck = fastExistsCheck;
+            this.properties.put("fastExistsCheck", fastExistsCheck);
             return (T) this;
         }
-
         /**
          * Set the client side port range in active mode. The syntax is:
          * minPort-maxPort Both port numbers are inclusive, eg 10000-19999 to
          * include all 1xxxx ports. The option is a java.lang.String type.
          */
         public T activePortRange(String activePortRange) {
-            this.activePortRange = activePortRange;
+            this.properties.put("activePortRange", activePortRange);
             return (T) this;
         }
-
         /**
          * Automatically create missing directories in the file's pathname. For
          * the file consumer, that means creating the starting directory. For
@@ -273,57 +219,51 @@ public class FtpsEndpoint {
          * to. The option is a boolean type.
          */
         public T autoCreate(boolean autoCreate) {
-            this.autoCreate = autoCreate;
+            this.properties.put("autoCreate", autoCreate);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Write buffer sized in bytes. The option is a int type.
          */
         public T bufferSize(int bufferSize) {
-            this.bufferSize = bufferSize;
+            this.properties.put("bufferSize", bufferSize);
             return (T) this;
         }
-
         /**
          * Sets the connect timeout for waiting for a connection to be
          * established Used by both FTPClient and JSCH. The option is a int
          * type.
          */
         public T connectTimeout(int connectTimeout) {
-            this.connectTimeout = connectTimeout;
+            this.properties.put("connectTimeout", connectTimeout);
             return (T) this;
         }
-
         /**
          * To use a custom instance of FTPClient. The option is a
          * org.apache.commons.net.ftp.FTPClient type.
          */
         public T ftpClient(Object ftpClient) {
-            this.ftpClient = ftpClient;
+            this.properties.put("ftpClient", ftpClient);
             return (T) this;
         }
-
         /**
          * To use a custom instance of FTPClientConfig to configure the FTP
          * client the endpoint should use. The option is a
          * org.apache.commons.net.ftp.FTPClientConfig type.
          */
         public T ftpClientConfig(Object ftpClientConfig) {
-            this.ftpClientConfig = ftpClientConfig;
+            this.properties.put("ftpClientConfig", ftpClientConfig);
             return (T) this;
         }
-
         /**
          * Used by FtpComponent to provide additional parameters for the
          * FTPClientConfig. The option is a
@@ -331,49 +271,44 @@ public class FtpsEndpoint {
          */
         public T ftpClientConfigParameters(
                 Map<String, Object> ftpClientConfigParameters) {
-            this.ftpClientConfigParameters = ftpClientConfigParameters;
+            this.properties.put("ftpClientConfigParameters", ftpClientConfigParameters);
             return (T) this;
         }
-
         /**
          * Used by FtpComponent to provide additional parameters for the
          * FTPClient. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T ftpClientParameters(Map<String, Object> ftpClientParameters) {
-            this.ftpClientParameters = ftpClientParameters;
+            this.properties.put("ftpClientParameters", ftpClientParameters);
             return (T) this;
         }
-
         /**
          * Specifies the maximum reconnect attempts Camel performs when it tries
          * to connect to the remote FTP server. Use 0 to disable this behavior.
          * The option is a int type.
          */
         public T maximumReconnectAttempts(int maximumReconnectAttempts) {
-            this.maximumReconnectAttempts = maximumReconnectAttempts;
+            this.properties.put("maximumReconnectAttempts", maximumReconnectAttempts);
             return (T) this;
         }
-
         /**
          * Delay in millis Camel will wait before performing a reconnect
          * attempt. The option is a long type.
          */
         public T reconnectDelay(long reconnectDelay) {
-            this.reconnectDelay = reconnectDelay;
+            this.properties.put("reconnectDelay", reconnectDelay);
             return (T) this;
         }
-
         /**
          * Sets optional site command(s) to be executed after successful login.
          * Multiple site commands can be separated using a new line character.
          * The option is a java.lang.String type.
          */
         public T siteCommand(String siteCommand) {
-            this.siteCommand = siteCommand;
+            this.properties.put("siteCommand", siteCommand);
             return (T) this;
         }
-
         /**
          * Sets the so timeout FTP and FTPS Only for Camel 2.4. SFTP for Camel
          * 2.14.3/2.15.3/2.16 onwards. Is the SocketOptions.SO_TIMEOUT value in
@@ -382,10 +317,9 @@ public class FtpsEndpoint {
          * Session instance. The option is a int type.
          */
         public T soTimeout(int soTimeout) {
-            this.soTimeout = soTimeout;
+            this.properties.put("soTimeout", soTimeout);
             return (T) this;
         }
-
         /**
          * Sets whether we should stepwise change directories while traversing
          * file structures when downloading files, or as well when uploading a
@@ -394,20 +328,18 @@ public class FtpsEndpoint {
          * security reasons. The option is a boolean type.
          */
         public T stepwise(boolean stepwise) {
-            this.stepwise = stepwise;
+            this.properties.put("stepwise", stepwise);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Should an exception be thrown if connection failed (exhausted) By
          * default exception is not thrown and a WARN is logged. You can use
@@ -417,27 +349,24 @@ public class FtpsEndpoint {
          */
         public T throwExceptionOnConnectFailed(
                 boolean throwExceptionOnConnectFailed) {
-            this.throwExceptionOnConnectFailed = throwExceptionOnConnectFailed;
+            this.properties.put("throwExceptionOnConnectFailed", throwExceptionOnConnectFailed);
             return (T) this;
         }
-
         /**
          * Sets the data timeout for waiting for reply Used only by FTPClient.
          * The option is a int type.
          */
         public T timeout(int timeout) {
-            this.timeout = timeout;
+            this.properties.put("timeout", timeout);
             return (T) this;
         }
-
         /**
          * Account to use for login. The option is a java.lang.String type.
          */
         public T account(String account) {
-            this.account = account;
+            this.properties.put("account", account);
             return (T) this;
         }
-
         /**
          * Use this option to disable default options when using secure data
          * channel. This allows you to be in full control what the execPbsz and
@@ -446,75 +375,67 @@ public class FtpsEndpoint {
          */
         public T disableSecureDataChannelDefaults(
                 boolean disableSecureDataChannelDefaults) {
-            this.disableSecureDataChannelDefaults = disableSecureDataChannelDefaults;
+            this.properties.put("disableSecureDataChannelDefaults", disableSecureDataChannelDefaults);
             return (T) this;
         }
-
         /**
          * When using secure data channel you can set the exec protection buffer
          * size. The option is a java.lang.Long type.
          */
         public T execPbsz(Long execPbsz) {
-            this.execPbsz = execPbsz;
+            this.properties.put("execPbsz", execPbsz);
             return (T) this;
         }
-
         /**
          * The exec protection level PROT command. C - Clear S - Safe(SSL
          * protocol only) E - Confidential(SSL protocol only) P - Private. The
          * option is a java.lang.String type.
          */
         public T execProt(String execProt) {
-            this.execProt = execProt;
+            this.properties.put("execProt", execProt);
             return (T) this;
         }
-
         /**
          * Set the key store parameters. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T ftpClientKeyStoreParameters(
                 Map<String, Object> ftpClientKeyStoreParameters) {
-            this.ftpClientKeyStoreParameters = ftpClientKeyStoreParameters;
+            this.properties.put("ftpClientKeyStoreParameters", ftpClientKeyStoreParameters);
             return (T) this;
         }
-
         /**
          * Set the trust store parameters. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T ftpClientTrustStoreParameters(
                 Map<String, Object> ftpClientTrustStoreParameters) {
-            this.ftpClientTrustStoreParameters = ftpClientTrustStoreParameters;
+            this.properties.put("ftpClientTrustStoreParameters", ftpClientTrustStoreParameters);
             return (T) this;
         }
-
         /**
          * Set the security mode(Implicit/Explicit). true - Implicit Mode /
          * False - Explicit Mode. The option is a boolean type.
          */
         public T isImplicit(boolean isImplicit) {
-            this.isImplicit = isImplicit;
+            this.properties.put("isImplicit", isImplicit);
             return (T) this;
         }
-
         /**
          * Password to use for login. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Set the underlying security protocol. The option is a
          * java.lang.String type.
          */
         public T securityProtocol(String securityProtocol) {
-            this.securityProtocol = securityProtocol;
+            this.properties.put("securityProtocol", securityProtocol);
             return (T) this;
         }
-
         /**
          * Gets the JSSE configuration that overrides any settings in
          * FtpsEndpoint#ftpClientKeyStoreParameters,
@@ -523,433 +444,26 @@ public class FtpsEndpoint {
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
+            this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
-
         /**
          * Username to use for login. The option is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getDirectoryName() {
-            return directoryName;
-        }
-
-        public void setDirectoryName(String directoryName) {
-            this.directoryName = directoryName;
-        }
-
-        public Boolean getBinary() {
-            return binary;
-        }
-
-        public void setBinary(Boolean binary) {
-            this.binary = binary;
-        }
-
-        public String getCharset() {
-            return charset;
-        }
-
-        public void setCharset(String charset) {
-            this.charset = charset;
-        }
-
-        public Boolean getDisconnect() {
-            return disconnect;
-        }
-
-        public void setDisconnect(Boolean disconnect) {
-            this.disconnect = disconnect;
-        }
-
-        public String getDoneFileName() {
-            return doneFileName;
-        }
-
-        public void setDoneFileName(String doneFileName) {
-            this.doneFileName = doneFileName;
-        }
-
-        public Expression getFileName() {
-            return fileName;
-        }
-
-        public void setFileName(Expression fileName) {
-            this.fileName = fileName;
-        }
-
-        public Boolean getPassiveMode() {
-            return passiveMode;
-        }
-
-        public void setPassiveMode(Boolean passiveMode) {
-            this.passiveMode = passiveMode;
-        }
-
-        public Object getSeparator() {
-            return separator;
-        }
-
-        public void setSeparator(Object separator) {
-            this.separator = separator;
-        }
-
-        public Integer getTransferLoggingIntervalSeconds() {
-            return transferLoggingIntervalSeconds;
-        }
-
-        public void setTransferLoggingIntervalSeconds(
-                Integer transferLoggingIntervalSeconds) {
-            this.transferLoggingIntervalSeconds = transferLoggingIntervalSeconds;
-        }
-
-        public LoggingLevel getTransferLoggingLevel() {
-            return transferLoggingLevel;
-        }
-
-        public void setTransferLoggingLevel(LoggingLevel transferLoggingLevel) {
-            this.transferLoggingLevel = transferLoggingLevel;
-        }
-
-        public Boolean getTransferLoggingVerbose() {
-            return transferLoggingVerbose;
-        }
-
-        public void setTransferLoggingVerbose(Boolean transferLoggingVerbose) {
-            this.transferLoggingVerbose = transferLoggingVerbose;
-        }
-
-        public Boolean getFastExistsCheck() {
-            return fastExistsCheck;
-        }
-
-        public void setFastExistsCheck(Boolean fastExistsCheck) {
-            this.fastExistsCheck = fastExistsCheck;
-        }
-
-        public String getActivePortRange() {
-            return activePortRange;
-        }
-
-        public void setActivePortRange(String activePortRange) {
-            this.activePortRange = activePortRange;
-        }
-
-        public Boolean getAutoCreate() {
-            return autoCreate;
-        }
-
-        public void setAutoCreate(Boolean autoCreate) {
-            this.autoCreate = autoCreate;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Integer getBufferSize() {
-            return bufferSize;
-        }
-
-        public void setBufferSize(Integer bufferSize) {
-            this.bufferSize = bufferSize;
-        }
-
-        public Integer getConnectTimeout() {
-            return connectTimeout;
-        }
-
-        public void setConnectTimeout(Integer connectTimeout) {
-            this.connectTimeout = connectTimeout;
-        }
-
-        public Object getFtpClient() {
-            return ftpClient;
-        }
-
-        public void setFtpClient(Object ftpClient) {
-            this.ftpClient = ftpClient;
-        }
-
-        public Object getFtpClientConfig() {
-            return ftpClientConfig;
-        }
-
-        public void setFtpClientConfig(Object ftpClientConfig) {
-            this.ftpClientConfig = ftpClientConfig;
-        }
-
-        public Map<String, Object> getFtpClientConfigParameters() {
-            return ftpClientConfigParameters;
-        }
-
-        public void setFtpClientConfigParameters(
-                Map<String, Object> ftpClientConfigParameters) {
-            this.ftpClientConfigParameters = ftpClientConfigParameters;
-        }
-
-        public Map<String, Object> getFtpClientParameters() {
-            return ftpClientParameters;
-        }
-
-        public void setFtpClientParameters(
-                Map<String, Object> ftpClientParameters) {
-            this.ftpClientParameters = ftpClientParameters;
-        }
-
-        public Integer getMaximumReconnectAttempts() {
-            return maximumReconnectAttempts;
-        }
-
-        public void setMaximumReconnectAttempts(Integer maximumReconnectAttempts) {
-            this.maximumReconnectAttempts = maximumReconnectAttempts;
-        }
-
-        public Long getReconnectDelay() {
-            return reconnectDelay;
-        }
-
-        public void setReconnectDelay(Long reconnectDelay) {
-            this.reconnectDelay = reconnectDelay;
-        }
-
-        public String getSiteCommand() {
-            return siteCommand;
-        }
-
-        public void setSiteCommand(String siteCommand) {
-            this.siteCommand = siteCommand;
-        }
-
-        public Integer getSoTimeout() {
-            return soTimeout;
-        }
-
-        public void setSoTimeout(Integer soTimeout) {
-            this.soTimeout = soTimeout;
-        }
-
-        public Boolean getStepwise() {
-            return stepwise;
-        }
-
-        public void setStepwise(Boolean stepwise) {
-            this.stepwise = stepwise;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Boolean getThrowExceptionOnConnectFailed() {
-            return throwExceptionOnConnectFailed;
-        }
-
-        public void setThrowExceptionOnConnectFailed(
-                Boolean throwExceptionOnConnectFailed) {
-            this.throwExceptionOnConnectFailed = throwExceptionOnConnectFailed;
-        }
-
-        public Integer getTimeout() {
-            return timeout;
-        }
-
-        public void setTimeout(Integer timeout) {
-            this.timeout = timeout;
-        }
-
-        public String getAccount() {
-            return account;
-        }
-
-        public void setAccount(String account) {
-            this.account = account;
-        }
-
-        public Boolean getDisableSecureDataChannelDefaults() {
-            return disableSecureDataChannelDefaults;
-        }
-
-        public void setDisableSecureDataChannelDefaults(
-                Boolean disableSecureDataChannelDefaults) {
-            this.disableSecureDataChannelDefaults = disableSecureDataChannelDefaults;
-        }
-
-        public Long getExecPbsz() {
-            return execPbsz;
-        }
-
-        public void setExecPbsz(Long execPbsz) {
-            this.execPbsz = execPbsz;
-        }
-
-        public String getExecProt() {
-            return execProt;
-        }
-
-        public void setExecProt(String execProt) {
-            this.execProt = execProt;
-        }
-
-        public Map<String, Object> getFtpClientKeyStoreParameters() {
-            return ftpClientKeyStoreParameters;
-        }
-
-        public void setFtpClientKeyStoreParameters(
-                Map<String, Object> ftpClientKeyStoreParameters) {
-            this.ftpClientKeyStoreParameters = ftpClientKeyStoreParameters;
-        }
-
-        public Map<String, Object> getFtpClientTrustStoreParameters() {
-            return ftpClientTrustStoreParameters;
-        }
-
-        public void setFtpClientTrustStoreParameters(
-                Map<String, Object> ftpClientTrustStoreParameters) {
-            this.ftpClientTrustStoreParameters = ftpClientTrustStoreParameters;
-        }
-
-        public Boolean getIsImplicit() {
-            return isImplicit;
-        }
-
-        public void setIsImplicit(Boolean isImplicit) {
-            this.isImplicit = isImplicit;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getSecurityProtocol() {
-            return securityProtocol;
-        }
-
-        public void setSecurityProtocol(String securityProtocol) {
-            this.securityProtocol = securityProtocol;
-        }
-
-        public Object getSslContextParameters() {
-            return sslContextParameters;
-        }
-
-        public void setSslContextParameters(Object sslContextParameters) {
-            this.sslContextParameters = sslContextParameters;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
         }
     }
 
-    public static class FtpsConsumer extends FtpsCommon<FtpsConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean delete;
-        private Expression moveFailed;
-        private Boolean noop;
-        private Expression preMove;
-        private Boolean preSort;
-        private Boolean recursive;
-        private Boolean resumeDownload;
-        private Boolean sendEmptyMessageWhenIdle;
-        private Boolean streamDownload;
-        private Boolean download;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private Boolean handleDirectoryParserAbsoluteResult;
-        private Boolean ignoreFileNotFoundOrPermissionError;
-        private IdempotentRepository inProgressRepository;
-        private String localWorkDirectory;
-        private ExceptionHandler onCompletionExceptionHandler;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Object processStrategy;
-        private Integer receiveBufferSize;
-        private Boolean useList;
-        private String antExclude;
-        private Boolean antFilterCaseSensitive;
-        private String antInclude;
-        private Boolean eagerMaxMessagesPerPoll;
-        private String exclude;
-        private Object filter;
-        private Predicate filterDirectory;
-        private Predicate filterFile;
-        private Boolean idempotent;
-        private Expression idempotentKey;
-        private IdempotentRepository idempotentRepository;
-        private String include;
-        private Integer maxDepth;
-        private Integer maxMessagesPerPoll;
-        private Integer minDepth;
-        private Expression move;
-        private Object exclusiveReadLockStrategy;
-        private String readLock;
-        private Long readLockCheckInterval;
-        private Boolean readLockDeleteOrphanLockFiles;
-        private Boolean readLockIdempotentReleaseAsync;
-        private Integer readLockIdempotentReleaseAsyncPoolSize;
-        private Integer readLockIdempotentReleaseDelay;
-        private ScheduledExecutorService readLockIdempotentReleaseExecutorService;
-        private LoggingLevel readLockLoggingLevel;
-        private Boolean readLockMarkerFile;
-        private Long readLockMinAge;
-        private Long readLockMinLength;
-        private Boolean readLockRemoveOnCommit;
-        private Boolean readLockRemoveOnRollback;
-        private Long readLockTimeout;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-        private Boolean shuffle;
-        private Comparator<Exchange> sortBy;
-        private Comparator<Object> sorter;
-
+    public static class FtpsConsumer
+            extends
+                FtpsCommon<FtpsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public FtpsConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -960,19 +474,17 @@ public class FtpsEndpoint {
          * ignored. The option is a boolean type.
          */
         public FtpsConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (FtpsConsumer) this;
         }
-
         /**
          * If true, the file will be deleted after it is processed successfully.
          * The option is a boolean type.
          */
         public FtpsConsumer delete(boolean delete) {
-            this.delete = delete;
+            this.properties.put("delete", delete);
             return (FtpsConsumer) this;
         }
-
         /**
          * Sets the move failure expression based on Simple language. For
          * example, to move files into a .error subdirectory use: .error. Note:
@@ -981,10 +493,9 @@ public class FtpsEndpoint {
          * java.lang.String type.
          */
         public FtpsConsumer moveFailed(Expression moveFailed) {
-            this.moveFailed = moveFailed;
+            this.properties.put("moveFailed", moveFailed);
             return (FtpsConsumer) this;
         }
-
         /**
          * If true, the file is not moved or deleted in any way. This option is
          * good for readonly data, or for ETL type requirements. If noop=true,
@@ -992,10 +503,9 @@ public class FtpsEndpoint {
          * files over and over again. The option is a boolean type.
          */
         public FtpsConsumer noop(boolean noop) {
-            this.noop = noop;
+            this.properties.put("noop", noop);
             return (FtpsConsumer) this;
         }
-
         /**
          * Expression (such as File Language) used to dynamically set the
          * filename when moving it before processing. For example to move
@@ -1003,10 +513,9 @@ public class FtpsEndpoint {
          * The option is a java.lang.String type.
          */
         public FtpsConsumer preMove(Expression preMove) {
-            this.preMove = preMove;
+            this.properties.put("preMove", preMove);
             return (FtpsConsumer) this;
         }
-
         /**
          * When pre-sort is enabled then the consumer will sort the file and
          * directory names during polling, that was retrieved from the file
@@ -1016,19 +525,17 @@ public class FtpsEndpoint {
          * is default=false meaning disabled. The option is a boolean type.
          */
         public FtpsConsumer preSort(boolean preSort) {
-            this.preSort = preSort;
+            this.properties.put("preSort", preSort);
             return (FtpsConsumer) this;
         }
-
         /**
          * If a directory, will look for files in all the sub-directories as
          * well. The option is a boolean type.
          */
         public FtpsConsumer recursive(boolean recursive) {
-            this.recursive = recursive;
+            this.properties.put("recursive", recursive);
             return (FtpsConsumer) this;
         }
-
         /**
          * Configures whether resume download is enabled. This must be supported
          * by the FTP server (almost all FTP servers support it). In addition
@@ -1038,10 +545,9 @@ public class FtpsEndpoint {
          * option is a boolean type.
          */
         public FtpsConsumer resumeDownload(boolean resumeDownload) {
-            this.resumeDownload = resumeDownload;
+            this.properties.put("resumeDownload", resumeDownload);
             return (FtpsConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -1049,10 +555,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (FtpsConsumer) this;
         }
-
         /**
          * Sets the download method to use when not using a local working
          * directory. If set to true, the remote files are streamed to the route
@@ -1061,10 +566,9 @@ public class FtpsEndpoint {
          * type.
          */
         public FtpsConsumer streamDownload(boolean streamDownload) {
-            this.streamDownload = streamDownload;
+            this.properties.put("streamDownload", streamDownload);
             return (FtpsConsumer) this;
         }
-
         /**
          * Whether the FTP consumer should download the file. If this option is
          * set to false, then the message body will be null, but the consumer
@@ -1073,10 +577,9 @@ public class FtpsEndpoint {
          * be downloaded. The option is a boolean type.
          */
         public FtpsConsumer download(boolean download) {
-            this.download = download;
+            this.properties.put("download", download);
             return (FtpsConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -1085,19 +588,17 @@ public class FtpsEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public FtpsConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (FtpsConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public FtpsConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (FtpsConsumer) this;
         }
-
         /**
          * Allows you to set how the consumer will handle subfolders and files
          * in the path if the directory parser results in with absolute paths
@@ -1108,10 +609,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer handleDirectoryParserAbsoluteResult(
                 boolean handleDirectoryParserAbsoluteResult) {
-            this.handleDirectoryParserAbsoluteResult = handleDirectoryParserAbsoluteResult;
+            this.properties.put("handleDirectoryParserAbsoluteResult", handleDirectoryParserAbsoluteResult);
             return (FtpsConsumer) this;
         }
-
         /**
          * Whether to ignore when (trying to list files in directories or when
          * downloading a file), which does not exist or due to permission error.
@@ -1121,10 +621,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer ignoreFileNotFoundOrPermissionError(
                 boolean ignoreFileNotFoundOrPermissionError) {
-            this.ignoreFileNotFoundOrPermissionError = ignoreFileNotFoundOrPermissionError;
+            this.properties.put("ignoreFileNotFoundOrPermissionError", ignoreFileNotFoundOrPermissionError);
             return (FtpsConsumer) this;
         }
-
         /**
          * A pluggable in-progress repository
          * org.apache.camel.spi.IdempotentRepository. The in-progress repository
@@ -1134,10 +633,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer inProgressRepository(
                 IdempotentRepository inProgressRepository) {
-            this.inProgressRepository = inProgressRepository;
+            this.properties.put("inProgressRepository", inProgressRepository);
             return (FtpsConsumer) this;
         }
-
         /**
          * When consuming, a local work directory can be used to store the
          * remote file content directly in local files, to avoid loading the
@@ -1146,10 +644,9 @@ public class FtpsEndpoint {
          * java.lang.String type.
          */
         public FtpsConsumer localWorkDirectory(String localWorkDirectory) {
-            this.localWorkDirectory = localWorkDirectory;
+            this.properties.put("localWorkDirectory", localWorkDirectory);
             return (FtpsConsumer) this;
         }
-
         /**
          * To use a custom org.apache.camel.spi.ExceptionHandler to handle any
          * thrown exceptions that happens during the file on completion process
@@ -1159,10 +656,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer onCompletionExceptionHandler(
                 ExceptionHandler onCompletionExceptionHandler) {
-            this.onCompletionExceptionHandler = onCompletionExceptionHandler;
+            this.properties.put("onCompletionExceptionHandler", onCompletionExceptionHandler);
             return (FtpsConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -1172,10 +668,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (FtpsConsumer) this;
         }
-
         /**
          * A pluggable
          * org.apache.camel.component.file.GenericFileProcessStrategy allowing
@@ -1186,19 +681,17 @@ public class FtpsEndpoint {
          * org.apache.camel.component.file.GenericFileProcessStrategy<T> type.
          */
         public FtpsConsumer processStrategy(Object processStrategy) {
-            this.processStrategy = processStrategy;
+            this.properties.put("processStrategy", processStrategy);
             return (FtpsConsumer) this;
         }
-
         /**
          * The receive (download) buffer size Used only by FTPClient. The option
          * is a int type.
          */
         public FtpsConsumer receiveBufferSize(int receiveBufferSize) {
-            this.receiveBufferSize = receiveBufferSize;
+            this.properties.put("receiveBufferSize", receiveBufferSize);
             return (FtpsConsumer) this;
         }
-
         /**
          * Whether to allow using LIST command when downloading a file. Default
          * is true. In some use cases you may want to download a specific file
@@ -1210,10 +703,9 @@ public class FtpsEndpoint {
          * is a boolean type.
          */
         public FtpsConsumer useList(boolean useList) {
-            this.useList = useList;
+            this.properties.put("useList", useList);
             return (FtpsConsumer) this;
         }
-
         /**
          * Ant style filter exclusion. If both antInclude and antExclude are
          * used, antExclude takes precedence over antInclude. Multiple
@@ -1221,28 +713,25 @@ public class FtpsEndpoint {
          * a java.lang.String type.
          */
         public FtpsConsumer antExclude(String antExclude) {
-            this.antExclude = antExclude;
+            this.properties.put("antExclude", antExclude);
             return (FtpsConsumer) this;
         }
-
         /**
          * Sets case sensitive flag on ant filter. The option is a boolean type.
          */
         public FtpsConsumer antFilterCaseSensitive(
                 boolean antFilterCaseSensitive) {
-            this.antFilterCaseSensitive = antFilterCaseSensitive;
+            this.properties.put("antFilterCaseSensitive", antFilterCaseSensitive);
             return (FtpsConsumer) this;
         }
-
         /**
          * Ant style filter inclusion. Multiple inclusions may be specified in
          * comma-delimited format. The option is a java.lang.String type.
          */
         public FtpsConsumer antInclude(String antInclude) {
-            this.antInclude = antInclude;
+            this.properties.put("antInclude", antInclude);
             return (FtpsConsumer) this;
         }
-
         /**
          * Allows for controlling whether the limit from maxMessagesPerPoll is
          * eager or not. If eager then the limit is during the scanning of
@@ -1254,10 +743,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer eagerMaxMessagesPerPoll(
                 boolean eagerMaxMessagesPerPoll) {
-            this.eagerMaxMessagesPerPoll = eagerMaxMessagesPerPoll;
+            this.properties.put("eagerMaxMessagesPerPoll", eagerMaxMessagesPerPoll);
             return (FtpsConsumer) this;
         }
-
         /**
          * Is used to exclude files, if filename matches the regex pattern
          * (matching is case in-senstive). Notice if you use symbols such as
@@ -1266,10 +754,9 @@ public class FtpsEndpoint {
          * configuring endpoint uris. The option is a java.lang.String type.
          */
         public FtpsConsumer exclude(String exclude) {
-            this.exclude = exclude;
+            this.properties.put("exclude", exclude);
             return (FtpsConsumer) this;
         }
-
         /**
          * Pluggable filter as a
          * org.apache.camel.component.file.GenericFileFilter class. Will skip
@@ -1277,30 +764,27 @@ public class FtpsEndpoint {
          * org.apache.camel.component.file.GenericFileFilter<T> type.
          */
         public FtpsConsumer filter(Object filter) {
-            this.filter = filter;
+            this.properties.put("filter", filter);
             return (FtpsConsumer) this;
         }
-
         /**
          * Filters the directory based on Simple language. For example to filter
          * on current date, you can use a simple date pattern such as
          * ${date:now:yyyMMdd}. The option is a java.lang.String type.
          */
         public FtpsConsumer filterDirectory(Predicate filterDirectory) {
-            this.filterDirectory = filterDirectory;
+            this.properties.put("filterDirectory", filterDirectory);
             return (FtpsConsumer) this;
         }
-
         /**
          * Filters the file based on Simple language. For example to filter on
          * file size, you can use ${file:size} 5000. The option is a
          * java.lang.String type.
          */
         public FtpsConsumer filterFile(Predicate filterFile) {
-            this.filterFile = filterFile;
+            this.properties.put("filterFile", filterFile);
             return (FtpsConsumer) this;
         }
-
         /**
          * Option to use the Idempotent Consumer EIP pattern to let Camel skip
          * already processed files. Will by default use a memory based LRUCache
@@ -1309,10 +793,9 @@ public class FtpsEndpoint {
          * option is a java.lang.Boolean type.
          */
         public FtpsConsumer idempotent(Boolean idempotent) {
-            this.idempotent = idempotent;
+            this.properties.put("idempotent", idempotent);
             return (FtpsConsumer) this;
         }
-
         /**
          * To use a custom idempotent key. By default the absolute path of the
          * file is used. You can use the File Language, for example to use the
@@ -1321,10 +804,9 @@ public class FtpsEndpoint {
          * java.lang.String type.
          */
         public FtpsConsumer idempotentKey(Expression idempotentKey) {
-            this.idempotentKey = idempotentKey;
+            this.properties.put("idempotentKey", idempotentKey);
             return (FtpsConsumer) this;
         }
-
         /**
          * A pluggable repository org.apache.camel.spi.IdempotentRepository
          * which by default use MemoryMessageIdRepository if none is specified
@@ -1333,10 +815,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer idempotentRepository(
                 IdempotentRepository idempotentRepository) {
-            this.idempotentRepository = idempotentRepository;
+            this.properties.put("idempotentRepository", idempotentRepository);
             return (FtpsConsumer) this;
         }
-
         /**
          * Is used to include files, if filename matches the regex pattern
          * (matching is case in-sensitive). Notice if you use symbols such as
@@ -1345,19 +826,17 @@ public class FtpsEndpoint {
          * configuring endpoint uris. The option is a java.lang.String type.
          */
         public FtpsConsumer include(String include) {
-            this.include = include;
+            this.properties.put("include", include);
             return (FtpsConsumer) this;
         }
-
         /**
          * The maximum depth to traverse when recursively processing a
          * directory. The option is a int type.
          */
         public FtpsConsumer maxDepth(int maxDepth) {
-            this.maxDepth = maxDepth;
+            this.properties.put("maxDepth", maxDepth);
             return (FtpsConsumer) this;
         }
-
         /**
          * To define a maximum messages to gather per poll. By default no
          * maximum is set. Can be used to set a limit of e.g. 1000 to avoid when
@@ -1371,30 +850,27 @@ public class FtpsEndpoint {
          * type.
          */
         public FtpsConsumer maxMessagesPerPoll(int maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
             return (FtpsConsumer) this;
         }
-
         /**
          * The minimum depth to start processing when recursively processing a
          * directory. Using minDepth=1 means the base directory. Using
          * minDepth=2 means the first sub directory. The option is a int type.
          */
         public FtpsConsumer minDepth(int minDepth) {
-            this.minDepth = minDepth;
+            this.properties.put("minDepth", minDepth);
             return (FtpsConsumer) this;
         }
-
         /**
          * Expression (such as Simple Language) used to dynamically set the
          * filename when moving it after processing. To move files into a .done
          * subdirectory just enter .done. The option is a java.lang.String type.
          */
         public FtpsConsumer move(Expression move) {
-            this.move = move;
+            this.properties.put("move", move);
             return (FtpsConsumer) this;
         }
-
         /**
          * Pluggable read-lock as a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy
@@ -1403,10 +879,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer exclusiveReadLockStrategy(
                 Object exclusiveReadLockStrategy) {
-            this.exclusiveReadLockStrategy = exclusiveReadLockStrategy;
+            this.properties.put("exclusiveReadLockStrategy", exclusiveReadLockStrategy);
             return (FtpsConsumer) this;
         }
-
         /**
          * Used by consumer, to only poll the files if it has exclusive
          * read-lock on the file (i.e. the file is not in-progress or being
@@ -1448,10 +923,9 @@ public class FtpsEndpoint {
          * Infinispan. The option is a java.lang.String type.
          */
         public FtpsConsumer readLock(String readLock) {
-            this.readLock = readLock;
+            this.properties.put("readLock", readLock);
             return (FtpsConsumer) this;
         }
-
         /**
          * Interval in millis for the read-lock, if supported by the read lock.
          * This interval is used for sleeping between attempts to acquire the
@@ -1466,10 +940,9 @@ public class FtpsEndpoint {
          * lock before the timeout was hit. The option is a long type.
          */
         public FtpsConsumer readLockCheckInterval(long readLockCheckInterval) {
-            this.readLockCheckInterval = readLockCheckInterval;
+            this.properties.put("readLockCheckInterval", readLockCheckInterval);
             return (FtpsConsumer) this;
         }
-
         /**
          * Whether or not read lock with marker files should upon startup delete
          * any orphan read lock files, which may have been left on the file
@@ -1481,10 +954,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer readLockDeleteOrphanLockFiles(
                 boolean readLockDeleteOrphanLockFiles) {
-            this.readLockDeleteOrphanLockFiles = readLockDeleteOrphanLockFiles;
+            this.properties.put("readLockDeleteOrphanLockFiles", readLockDeleteOrphanLockFiles);
             return (FtpsConsumer) this;
         }
-
         /**
          * Whether the delayed release task should be synchronous or
          * asynchronous. See more details at the readLockIdempotentReleaseDelay
@@ -1492,10 +964,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer readLockIdempotentReleaseAsync(
                 boolean readLockIdempotentReleaseAsync) {
-            this.readLockIdempotentReleaseAsync = readLockIdempotentReleaseAsync;
+            this.properties.put("readLockIdempotentReleaseAsync", readLockIdempotentReleaseAsync);
             return (FtpsConsumer) this;
         }
-
         /**
          * The number of threads in the scheduled thread pool when using
          * asynchronous release tasks. Using a default of 1 core threads should
@@ -1508,10 +979,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer readLockIdempotentReleaseAsyncPoolSize(
                 int readLockIdempotentReleaseAsyncPoolSize) {
-            this.readLockIdempotentReleaseAsyncPoolSize = readLockIdempotentReleaseAsyncPoolSize;
+            this.properties.put("readLockIdempotentReleaseAsyncPoolSize", readLockIdempotentReleaseAsyncPoolSize);
             return (FtpsConsumer) this;
         }
-
         /**
          * Whether to delay the release task for a period of millis. This can be
          * used to delay the release tasks to expand the window when a file is
@@ -1524,10 +994,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer readLockIdempotentReleaseDelay(
                 int readLockIdempotentReleaseDelay) {
-            this.readLockIdempotentReleaseDelay = readLockIdempotentReleaseDelay;
+            this.properties.put("readLockIdempotentReleaseDelay", readLockIdempotentReleaseDelay);
             return (FtpsConsumer) this;
         }
-
         /**
          * To use a custom and shared thread pool for asynchronous release
          * tasks. See more details at the readLockIdempotentReleaseDelay option.
@@ -1535,10 +1004,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer readLockIdempotentReleaseExecutorService(
                 ScheduledExecutorService readLockIdempotentReleaseExecutorService) {
-            this.readLockIdempotentReleaseExecutorService = readLockIdempotentReleaseExecutorService;
+            this.properties.put("readLockIdempotentReleaseExecutorService", readLockIdempotentReleaseExecutorService);
             return (FtpsConsumer) this;
         }
-
         /**
          * Logging level used when a read lock could not be acquired. By default
          * a DEBUG is logged. You can change this level, for example to OFF to
@@ -1549,10 +1017,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer readLockLoggingLevel(
                 LoggingLevel readLockLoggingLevel) {
-            this.readLockLoggingLevel = readLockLoggingLevel;
+            this.properties.put("readLockLoggingLevel", readLockLoggingLevel);
             return (FtpsConsumer) this;
         }
-
         /**
          * Whether to use marker file with the changed, rename, or exclusive
          * read lock types. By default a marker file is used as well to guard
@@ -1562,10 +1029,9 @@ public class FtpsEndpoint {
          * application. The option is a boolean type.
          */
         public FtpsConsumer readLockMarkerFile(boolean readLockMarkerFile) {
-            this.readLockMarkerFile = readLockMarkerFile;
+            this.properties.put("readLockMarkerFile", readLockMarkerFile);
             return (FtpsConsumer) this;
         }
-
         /**
          * This option is applied only for readLock=changed. It allows to
          * specify a minimum age the file must be before attempting to acquire
@@ -1575,10 +1041,9 @@ public class FtpsEndpoint {
          * given age. The option is a long type.
          */
         public FtpsConsumer readLockMinAge(long readLockMinAge) {
-            this.readLockMinAge = readLockMinAge;
+            this.properties.put("readLockMinAge", readLockMinAge);
             return (FtpsConsumer) this;
         }
-
         /**
          * This option is applied only for readLock=changed. It allows you to
          * configure a minimum file length. By default Camel expects the file to
@@ -1587,10 +1052,9 @@ public class FtpsEndpoint {
          * long type.
          */
         public FtpsConsumer readLockMinLength(long readLockMinLength) {
-            this.readLockMinLength = readLockMinLength;
+            this.properties.put("readLockMinLength", readLockMinLength);
             return (FtpsConsumer) this;
         }
-
         /**
          * This option is applied only for readLock=idempotent. It allows to
          * specify whether to remove the file name entry from the idempotent
@@ -1605,10 +1069,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer readLockRemoveOnCommit(
                 boolean readLockRemoveOnCommit) {
-            this.readLockRemoveOnCommit = readLockRemoveOnCommit;
+            this.properties.put("readLockRemoveOnCommit", readLockRemoveOnCommit);
             return (FtpsConsumer) this;
         }
-
         /**
          * This option is applied only for readLock=idempotent. It allows to
          * specify whether to remove the file name entry from the idempotent
@@ -1618,10 +1081,9 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer readLockRemoveOnRollback(
                 boolean readLockRemoveOnRollback) {
-            this.readLockRemoveOnRollback = readLockRemoveOnRollback;
+            this.properties.put("readLockRemoveOnRollback", readLockRemoveOnRollback);
             return (FtpsConsumer) this;
         }
-
         /**
          * Optional timeout in millis for the read-lock, if supported by the
          * read-lock. If the read-lock could not be granted and the timeout
@@ -1637,29 +1099,26 @@ public class FtpsEndpoint {
          * lock before the timeout was hit. The option is a long type.
          */
         public FtpsConsumer readLockTimeout(long readLockTimeout) {
-            this.readLockTimeout = readLockTimeout;
+            this.properties.put("readLockTimeout", readLockTimeout);
             return (FtpsConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public FtpsConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (FtpsConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public FtpsConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (FtpsConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -1669,50 +1128,45 @@ public class FtpsEndpoint {
          * configured. The option is a int type.
          */
         public FtpsConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (FtpsConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public FtpsConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (FtpsConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public FtpsConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (FtpsConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public FtpsConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (FtpsConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public FtpsConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (FtpsConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -1721,20 +1175,18 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (FtpsConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public FtpsConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (FtpsConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -1742,648 +1194,70 @@ public class FtpsEndpoint {
          */
         public FtpsConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (FtpsConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public FtpsConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (FtpsConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public FtpsConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (FtpsConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public FtpsConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (FtpsConsumer) this;
         }
-
         /**
          * To shuffle the list of files (sort in random order). The option is a
          * boolean type.
          */
         public FtpsConsumer shuffle(boolean shuffle) {
-            this.shuffle = shuffle;
+            this.properties.put("shuffle", shuffle);
             return (FtpsConsumer) this;
         }
-
         /**
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
          * date. The option is a java.lang.String type.
          */
         public FtpsConsumer sortBy(Comparator<Exchange> sortBy) {
-            this.sortBy = sortBy;
+            this.properties.put("sortBy", sortBy);
             return (FtpsConsumer) this;
         }
-
         /**
          * Pluggable sorter as a java.util.Comparator class. The option is a
          * java.util.Comparator<org.apache.camel.component.file.GenericFile<T>>
          * type.
          */
         public FtpsConsumer sorter(Comparator<Object> sorter) {
-            this.sorter = sorter;
+            this.properties.put("sorter", sorter);
             return (FtpsConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getDelete() {
-            return delete;
-        }
-
-        public void setDelete(Boolean delete) {
-            this.delete = delete;
-        }
-
-        public Expression getMoveFailed() {
-            return moveFailed;
-        }
-
-        public void setMoveFailed(Expression moveFailed) {
-            this.moveFailed = moveFailed;
-        }
-
-        public Boolean getNoop() {
-            return noop;
-        }
-
-        public void setNoop(Boolean noop) {
-            this.noop = noop;
-        }
-
-        public Expression getPreMove() {
-            return preMove;
-        }
-
-        public void setPreMove(Expression preMove) {
-            this.preMove = preMove;
-        }
-
-        public Boolean getPreSort() {
-            return preSort;
-        }
-
-        public void setPreSort(Boolean preSort) {
-            this.preSort = preSort;
-        }
-
-        public Boolean getRecursive() {
-            return recursive;
-        }
-
-        public void setRecursive(Boolean recursive) {
-            this.recursive = recursive;
-        }
-
-        public Boolean getResumeDownload() {
-            return resumeDownload;
-        }
-
-        public void setResumeDownload(Boolean resumeDownload) {
-            this.resumeDownload = resumeDownload;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public Boolean getStreamDownload() {
-            return streamDownload;
-        }
-
-        public void setStreamDownload(Boolean streamDownload) {
-            this.streamDownload = streamDownload;
-        }
-
-        public Boolean getDownload() {
-            return download;
-        }
-
-        public void setDownload(Boolean download) {
-            this.download = download;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public Boolean getHandleDirectoryParserAbsoluteResult() {
-            return handleDirectoryParserAbsoluteResult;
-        }
-
-        public void setHandleDirectoryParserAbsoluteResult(
-                Boolean handleDirectoryParserAbsoluteResult) {
-            this.handleDirectoryParserAbsoluteResult = handleDirectoryParserAbsoluteResult;
-        }
-
-        public Boolean getIgnoreFileNotFoundOrPermissionError() {
-            return ignoreFileNotFoundOrPermissionError;
-        }
-
-        public void setIgnoreFileNotFoundOrPermissionError(
-                Boolean ignoreFileNotFoundOrPermissionError) {
-            this.ignoreFileNotFoundOrPermissionError = ignoreFileNotFoundOrPermissionError;
-        }
-
-        public IdempotentRepository getInProgressRepository() {
-            return inProgressRepository;
-        }
-
-        public void setInProgressRepository(
-                IdempotentRepository inProgressRepository) {
-            this.inProgressRepository = inProgressRepository;
-        }
-
-        public String getLocalWorkDirectory() {
-            return localWorkDirectory;
-        }
-
-        public void setLocalWorkDirectory(String localWorkDirectory) {
-            this.localWorkDirectory = localWorkDirectory;
-        }
-
-        public ExceptionHandler getOnCompletionExceptionHandler() {
-            return onCompletionExceptionHandler;
-        }
-
-        public void setOnCompletionExceptionHandler(
-                ExceptionHandler onCompletionExceptionHandler) {
-            this.onCompletionExceptionHandler = onCompletionExceptionHandler;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Object getProcessStrategy() {
-            return processStrategy;
-        }
-
-        public void setProcessStrategy(Object processStrategy) {
-            this.processStrategy = processStrategy;
-        }
-
-        public Integer getReceiveBufferSize() {
-            return receiveBufferSize;
-        }
-
-        public void setReceiveBufferSize(Integer receiveBufferSize) {
-            this.receiveBufferSize = receiveBufferSize;
-        }
-
-        public Boolean getUseList() {
-            return useList;
-        }
-
-        public void setUseList(Boolean useList) {
-            this.useList = useList;
-        }
-
-        public String getAntExclude() {
-            return antExclude;
-        }
-
-        public void setAntExclude(String antExclude) {
-            this.antExclude = antExclude;
-        }
-
-        public Boolean getAntFilterCaseSensitive() {
-            return antFilterCaseSensitive;
-        }
-
-        public void setAntFilterCaseSensitive(Boolean antFilterCaseSensitive) {
-            this.antFilterCaseSensitive = antFilterCaseSensitive;
-        }
-
-        public String getAntInclude() {
-            return antInclude;
-        }
-
-        public void setAntInclude(String antInclude) {
-            this.antInclude = antInclude;
-        }
-
-        public Boolean getEagerMaxMessagesPerPoll() {
-            return eagerMaxMessagesPerPoll;
-        }
-
-        public void setEagerMaxMessagesPerPoll(Boolean eagerMaxMessagesPerPoll) {
-            this.eagerMaxMessagesPerPoll = eagerMaxMessagesPerPoll;
-        }
-
-        public String getExclude() {
-            return exclude;
-        }
-
-        public void setExclude(String exclude) {
-            this.exclude = exclude;
-        }
-
-        public Object getFilter() {
-            return filter;
-        }
-
-        public void setFilter(Object filter) {
-            this.filter = filter;
-        }
-
-        public Predicate getFilterDirectory() {
-            return filterDirectory;
-        }
-
-        public void setFilterDirectory(Predicate filterDirectory) {
-            this.filterDirectory = filterDirectory;
-        }
-
-        public Predicate getFilterFile() {
-            return filterFile;
-        }
-
-        public void setFilterFile(Predicate filterFile) {
-            this.filterFile = filterFile;
-        }
-
-        public Boolean getIdempotent() {
-            return idempotent;
-        }
-
-        public void setIdempotent(Boolean idempotent) {
-            this.idempotent = idempotent;
-        }
-
-        public Expression getIdempotentKey() {
-            return idempotentKey;
-        }
-
-        public void setIdempotentKey(Expression idempotentKey) {
-            this.idempotentKey = idempotentKey;
-        }
-
-        public IdempotentRepository getIdempotentRepository() {
-            return idempotentRepository;
-        }
-
-        public void setIdempotentRepository(
-                IdempotentRepository idempotentRepository) {
-            this.idempotentRepository = idempotentRepository;
-        }
-
-        public String getInclude() {
-            return include;
-        }
-
-        public void setInclude(String include) {
-            this.include = include;
-        }
-
-        public Integer getMaxDepth() {
-            return maxDepth;
-        }
-
-        public void setMaxDepth(Integer maxDepth) {
-            this.maxDepth = maxDepth;
-        }
-
-        public Integer getMaxMessagesPerPoll() {
-            return maxMessagesPerPoll;
-        }
-
-        public void setMaxMessagesPerPoll(Integer maxMessagesPerPoll) {
-            this.maxMessagesPerPoll = maxMessagesPerPoll;
-        }
-
-        public Integer getMinDepth() {
-            return minDepth;
-        }
-
-        public void setMinDepth(Integer minDepth) {
-            this.minDepth = minDepth;
-        }
-
-        public Expression getMove() {
-            return move;
-        }
-
-        public void setMove(Expression move) {
-            this.move = move;
-        }
-
-        public Object getExclusiveReadLockStrategy() {
-            return exclusiveReadLockStrategy;
-        }
-
-        public void setExclusiveReadLockStrategy(
-                Object exclusiveReadLockStrategy) {
-            this.exclusiveReadLockStrategy = exclusiveReadLockStrategy;
-        }
-
-        public String getReadLock() {
-            return readLock;
-        }
-
-        public void setReadLock(String readLock) {
-            this.readLock = readLock;
-        }
-
-        public Long getReadLockCheckInterval() {
-            return readLockCheckInterval;
-        }
-
-        public void setReadLockCheckInterval(Long readLockCheckInterval) {
-            this.readLockCheckInterval = readLockCheckInterval;
-        }
-
-        public Boolean getReadLockDeleteOrphanLockFiles() {
-            return readLockDeleteOrphanLockFiles;
-        }
-
-        public void setReadLockDeleteOrphanLockFiles(
-                Boolean readLockDeleteOrphanLockFiles) {
-            this.readLockDeleteOrphanLockFiles = readLockDeleteOrphanLockFiles;
-        }
-
-        public Boolean getReadLockIdempotentReleaseAsync() {
-            return readLockIdempotentReleaseAsync;
-        }
-
-        public void setReadLockIdempotentReleaseAsync(
-                Boolean readLockIdempotentReleaseAsync) {
-            this.readLockIdempotentReleaseAsync = readLockIdempotentReleaseAsync;
-        }
-
-        public Integer getReadLockIdempotentReleaseAsyncPoolSize() {
-            return readLockIdempotentReleaseAsyncPoolSize;
-        }
-
-        public void setReadLockIdempotentReleaseAsyncPoolSize(
-                Integer readLockIdempotentReleaseAsyncPoolSize) {
-            this.readLockIdempotentReleaseAsyncPoolSize = readLockIdempotentReleaseAsyncPoolSize;
-        }
-
-        public Integer getReadLockIdempotentReleaseDelay() {
-            return readLockIdempotentReleaseDelay;
-        }
-
-        public void setReadLockIdempotentReleaseDelay(
-                Integer readLockIdempotentReleaseDelay) {
-            this.readLockIdempotentReleaseDelay = readLockIdempotentReleaseDelay;
-        }
-
-        public ScheduledExecutorService getReadLockIdempotentReleaseExecutorService() {
-            return readLockIdempotentReleaseExecutorService;
-        }
-
-        public void setReadLockIdempotentReleaseExecutorService(
-                ScheduledExecutorService readLockIdempotentReleaseExecutorService) {
-            this.readLockIdempotentReleaseExecutorService = readLockIdempotentReleaseExecutorService;
-        }
-
-        public LoggingLevel getReadLockLoggingLevel() {
-            return readLockLoggingLevel;
-        }
-
-        public void setReadLockLoggingLevel(LoggingLevel readLockLoggingLevel) {
-            this.readLockLoggingLevel = readLockLoggingLevel;
-        }
-
-        public Boolean getReadLockMarkerFile() {
-            return readLockMarkerFile;
-        }
-
-        public void setReadLockMarkerFile(Boolean readLockMarkerFile) {
-            this.readLockMarkerFile = readLockMarkerFile;
-        }
-
-        public Long getReadLockMinAge() {
-            return readLockMinAge;
-        }
-
-        public void setReadLockMinAge(Long readLockMinAge) {
-            this.readLockMinAge = readLockMinAge;
-        }
-
-        public Long getReadLockMinLength() {
-            return readLockMinLength;
-        }
-
-        public void setReadLockMinLength(Long readLockMinLength) {
-            this.readLockMinLength = readLockMinLength;
-        }
-
-        public Boolean getReadLockRemoveOnCommit() {
-            return readLockRemoveOnCommit;
-        }
-
-        public void setReadLockRemoveOnCommit(Boolean readLockRemoveOnCommit) {
-            this.readLockRemoveOnCommit = readLockRemoveOnCommit;
-        }
-
-        public Boolean getReadLockRemoveOnRollback() {
-            return readLockRemoveOnRollback;
-        }
-
-        public void setReadLockRemoveOnRollback(Boolean readLockRemoveOnRollback) {
-            this.readLockRemoveOnRollback = readLockRemoveOnRollback;
-        }
-
-        public Long getReadLockTimeout() {
-            return readLockTimeout;
-        }
-
-        public void setReadLockTimeout(Long readLockTimeout) {
-            this.readLockTimeout = readLockTimeout;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
-        }
-
-        public Boolean getShuffle() {
-            return shuffle;
-        }
-
-        public void setShuffle(Boolean shuffle) {
-            this.shuffle = shuffle;
-        }
-
-        public Comparator<Exchange> getSortBy() {
-            return sortBy;
-        }
-
-        public void setSortBy(Comparator<Exchange> sortBy) {
-            this.sortBy = sortBy;
-        }
-
-        public Comparator<Object> getSorter() {
-            return sorter;
-        }
-
-        public void setSorter(Comparator<Object> sorter) {
-            this.sorter = sorter;
         }
     }
 
-    public static class FtpsProducer extends FtpsCommon<FtpsProducer> {
-        private GenericFileExist fileExist;
-        private Boolean flatten;
-        private Boolean jailStartingDirectory;
-        private Expression moveExisting;
-        private Expression tempFileName;
-        private String tempPrefix;
-        private Boolean allowNullBody;
-        private String chmod;
-        private Boolean disconnectOnBatchComplete;
-        private Boolean eagerDeleteTargetFile;
-        private Boolean keepLastModified;
-        private Object moveExistingFileStrategy;
-        private Boolean sendNoop;
-
+    public static class FtpsProducer
+            extends
+                FtpsCommon<FtpsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public FtpsProducer(String path) {
+            super(path);
+        }
         /**
          * What to do if a file already exists with the same name. Override,
          * which is the default, replaces the existing file. Append - adds
@@ -2403,10 +1277,9 @@ public class FtpsEndpoint {
          * org.apache.camel.component.file.GenericFileExist type.
          */
         public FtpsProducer fileExist(GenericFileExist fileExist) {
-            this.fileExist = fileExist;
+            this.properties.put("fileExist", fileExist);
             return (FtpsProducer) this;
         }
-
         /**
          * Flatten is used to flatten the file name path to strip any leading
          * paths, so it's just the file name. This allows you to consume
@@ -2417,10 +1290,9 @@ public class FtpsEndpoint {
          * option is a boolean type.
          */
         public FtpsProducer flatten(boolean flatten) {
-            this.flatten = flatten;
+            this.properties.put("flatten", flatten);
             return (FtpsProducer) this;
         }
-
         /**
          * Used for jailing (restricting) writing files to the starting
          * directory (and sub) only. This is enabled by default to not allow
@@ -2430,10 +1302,9 @@ public class FtpsEndpoint {
          * folders. The option is a boolean type.
          */
         public FtpsProducer jailStartingDirectory(boolean jailStartingDirectory) {
-            this.jailStartingDirectory = jailStartingDirectory;
+            this.properties.put("jailStartingDirectory", jailStartingDirectory);
             return (FtpsProducer) this;
         }
-
         /**
          * Expression (such as File Language) used to compute file name to use
          * when fileExist=Move is configured. To move files into a backup
@@ -2446,10 +1317,9 @@ public class FtpsEndpoint {
          * java.lang.String type.
          */
         public FtpsProducer moveExisting(Expression moveExisting) {
-            this.moveExisting = moveExisting;
+            this.properties.put("moveExisting", moveExisting);
             return (FtpsProducer) this;
         }
-
         /**
          * The same as tempPrefix option but offering a more fine grained
          * control on the naming of the temporary filename as it uses the File
@@ -2460,10 +1330,9 @@ public class FtpsEndpoint {
          * dir. The option is a java.lang.String type.
          */
         public FtpsProducer tempFileName(Expression tempFileName) {
-            this.tempFileName = tempFileName;
+            this.properties.put("tempFileName", tempFileName);
             return (FtpsProducer) this;
         }
-
         /**
          * This option is used to write the file using a temporary name and
          * then, after the write is complete, rename it to the real name. Can be
@@ -2473,10 +1342,9 @@ public class FtpsEndpoint {
          * type.
          */
         public FtpsProducer tempPrefix(String tempPrefix) {
-            this.tempPrefix = tempPrefix;
+            this.properties.put("tempPrefix", tempPrefix);
             return (FtpsProducer) this;
         }
-
         /**
          * Used to specify if a null body is allowed during file writing. If set
          * to true then an empty file will be created, when set to false, and
@@ -2487,19 +1355,17 @@ public class FtpsEndpoint {
          * unchanged. The option is a boolean type.
          */
         public FtpsProducer allowNullBody(boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
+            this.properties.put("allowNullBody", allowNullBody);
             return (FtpsProducer) this;
         }
-
         /**
          * Allows you to set chmod on the stored file. For example chmod=640.
          * The option is a java.lang.String type.
          */
         public FtpsProducer chmod(String chmod) {
-            this.chmod = chmod;
+            this.properties.put("chmod", chmod);
             return (FtpsProducer) this;
         }
-
         /**
          * Whether or not to disconnect from remote FTP server right after a
          * Batch upload is complete. disconnectOnBatchComplete will only
@@ -2508,10 +1374,9 @@ public class FtpsEndpoint {
          */
         public FtpsProducer disconnectOnBatchComplete(
                 boolean disconnectOnBatchComplete) {
-            this.disconnectOnBatchComplete = disconnectOnBatchComplete;
+            this.properties.put("disconnectOnBatchComplete", disconnectOnBatchComplete);
             return (FtpsProducer) this;
         }
-
         /**
          * Whether or not to eagerly delete any existing target file. This
          * option only applies when you use fileExists=Override and the
@@ -2528,10 +1393,9 @@ public class FtpsEndpoint {
          * deleted before the move operation. The option is a boolean type.
          */
         public FtpsProducer eagerDeleteTargetFile(boolean eagerDeleteTargetFile) {
-            this.eagerDeleteTargetFile = eagerDeleteTargetFile;
+            this.properties.put("eagerDeleteTargetFile", eagerDeleteTargetFile);
             return (FtpsProducer) this;
         }
-
         /**
          * Will keep the last modified timestamp from the source file (if any).
          * Will use the Exchange.FILE_LAST_MODIFIED header to located the
@@ -2542,10 +1406,9 @@ public class FtpsEndpoint {
          * any of the ftp producers. The option is a boolean type.
          */
         public FtpsProducer keepLastModified(boolean keepLastModified) {
-            this.keepLastModified = keepLastModified;
+            this.properties.put("keepLastModified", keepLastModified);
             return (FtpsProducer) this;
         }
-
         /**
          * Strategy (Custom Strategy) used to move file with special naming
          * token to use when fileExist=Move is configured. By default, there is
@@ -2556,10 +1419,9 @@ public class FtpsEndpoint {
          */
         public FtpsProducer moveExistingFileStrategy(
                 Object moveExistingFileStrategy) {
-            this.moveExistingFileStrategy = moveExistingFileStrategy;
+            this.properties.put("moveExistingFileStrategy", moveExistingFileStrategy);
             return (FtpsProducer) this;
         }
-
         /**
          * Whether to send a noop command as a pre-write check before uploading
          * files to the FTP server. This is enabled by default as a validation
@@ -2568,113 +1430,8 @@ public class FtpsEndpoint {
          * can turn this option off. The option is a boolean type.
          */
         public FtpsProducer sendNoop(boolean sendNoop) {
-            this.sendNoop = sendNoop;
+            this.properties.put("sendNoop", sendNoop);
             return (FtpsProducer) this;
-        }
-
-        public GenericFileExist getFileExist() {
-            return fileExist;
-        }
-
-        public void setFileExist(GenericFileExist fileExist) {
-            this.fileExist = fileExist;
-        }
-
-        public Boolean getFlatten() {
-            return flatten;
-        }
-
-        public void setFlatten(Boolean flatten) {
-            this.flatten = flatten;
-        }
-
-        public Boolean getJailStartingDirectory() {
-            return jailStartingDirectory;
-        }
-
-        public void setJailStartingDirectory(Boolean jailStartingDirectory) {
-            this.jailStartingDirectory = jailStartingDirectory;
-        }
-
-        public Expression getMoveExisting() {
-            return moveExisting;
-        }
-
-        public void setMoveExisting(Expression moveExisting) {
-            this.moveExisting = moveExisting;
-        }
-
-        public Expression getTempFileName() {
-            return tempFileName;
-        }
-
-        public void setTempFileName(Expression tempFileName) {
-            this.tempFileName = tempFileName;
-        }
-
-        public String getTempPrefix() {
-            return tempPrefix;
-        }
-
-        public void setTempPrefix(String tempPrefix) {
-            this.tempPrefix = tempPrefix;
-        }
-
-        public Boolean getAllowNullBody() {
-            return allowNullBody;
-        }
-
-        public void setAllowNullBody(Boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
-        }
-
-        public String getChmod() {
-            return chmod;
-        }
-
-        public void setChmod(String chmod) {
-            this.chmod = chmod;
-        }
-
-        public Boolean getDisconnectOnBatchComplete() {
-            return disconnectOnBatchComplete;
-        }
-
-        public void setDisconnectOnBatchComplete(
-                Boolean disconnectOnBatchComplete) {
-            this.disconnectOnBatchComplete = disconnectOnBatchComplete;
-        }
-
-        public Boolean getEagerDeleteTargetFile() {
-            return eagerDeleteTargetFile;
-        }
-
-        public void setEagerDeleteTargetFile(Boolean eagerDeleteTargetFile) {
-            this.eagerDeleteTargetFile = eagerDeleteTargetFile;
-        }
-
-        public Boolean getKeepLastModified() {
-            return keepLastModified;
-        }
-
-        public void setKeepLastModified(Boolean keepLastModified) {
-            this.keepLastModified = keepLastModified;
-        }
-
-        public Object getMoveExistingFileStrategy() {
-            return moveExistingFileStrategy;
-        }
-
-        public void setMoveExistingFileStrategy(Object moveExistingFileStrategy) {
-            this.moveExistingFileStrategy = moveExistingFileStrategy;
-        }
-
-        public Boolean getSendNoop() {
-            return sendNoop;
-        }
-
-        public void setSendNoop(Boolean sendNoop) {
-            this.sendNoop = sendNoop;
         }
     }
 

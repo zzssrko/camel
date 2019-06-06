@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The saga component provides access to advanced options for managing the flow
@@ -28,70 +29,57 @@ import javax.annotation.Generated;
 public class SagaEndpoint {
 
 
-    public static class SagaCommon<T extends EndpointConfiguration>
+    public static class SagaCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private Object action;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        SagaCommon(String path) {
+            super("saga", path);
+        }
         /**
          * Action to execute (complete or compensate). The option is a
          * org.apache.camel.component.saga.SagaEndpoint.SagaEndpointAction type.
          */
         public T action(Object action) {
-            this.action = action;
+            this.properties.put("action", action);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public Object getAction() {
-            return action;
-        }
-
-        public void setAction(Object action) {
-            this.action = action;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class SagaConsumer
+            extends
+                SagaCommon<SagaConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SagaConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class SagaConsumer extends SagaCommon<SagaConsumer> {
-    }
-
-    public static class SagaProducer extends SagaCommon<SagaProducer> {
+    public static class SagaProducer
+            extends
+                SagaCommon<SagaProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SagaProducer(String path) {
+            super(path);
+        }
     }
 }

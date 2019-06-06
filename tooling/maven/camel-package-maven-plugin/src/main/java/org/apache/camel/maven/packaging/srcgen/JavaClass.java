@@ -34,6 +34,7 @@ public class JavaClass {
     String packageName;
     String name;
     String extendsName = "java.lang.Object";
+    List<String> implementNames = new ArrayList<>();
     List<String> imports = new ArrayList<>();
     List<Annotation> annotations = new ArrayList<>();
     List<Property> properties = new ArrayList<>();
@@ -116,6 +117,10 @@ public class JavaClass {
         return extendsName;
     }
 
+    public JavaClass implementInterface(String implementName) {
+        this.implementNames.add(implementName);
+        return this;
+    }
 
     public List<String> getImports() {
         return imports;
@@ -281,6 +286,10 @@ public class JavaClass {
         if (extendsName != null && !"java.lang.Object".equals(extendsName)) {
             sb2.append(" extends ").append(extendsName);
         }
+        if (!implementNames.isEmpty()) {
+            sb2.append(" implements ")
+                    .append(Strings.join(implementNames, ", "));
+        }
         sb2.append(" {");
         if (sb2.length() < 80) {
             sb.append(sb2).append("\n");
@@ -297,6 +306,11 @@ public class JavaClass {
                 sb.append("\n");
                 sb.append(indent).append("        extends\n");
                 sb.append(indent).append("            ").append(extendsName);
+            }
+            if (!implementNames.isEmpty()) {
+                sb.append("\n");
+                sb.append(indent).append("        implements\n");
+                sb.append(indent).append("            ").append(Strings.join(implementNames, ", "));
             }
             sb.append(" {\n");
         }

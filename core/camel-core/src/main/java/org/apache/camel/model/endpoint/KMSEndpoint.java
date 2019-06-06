@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The aws-kms is used for managing Amazon KMS
@@ -27,193 +28,110 @@ import javax.annotation.Generated;
 public class KMSEndpoint {
 
 
-    public static class KMSCommon<T extends EndpointConfiguration>
+    public static class KMSCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String label;
-        private String region;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        KMSCommon(String path) {
+            super("aws-kms", path);
+        }
         /**
          * Logical name. The option is a java.lang.String type.
          */
         public T label(String label) {
-            this.label = label;
+            this.properties.put("label", label);
             return (T) this;
         }
-
         /**
          * The region in which KMS client needs to work. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getLabel() {
-            return label;
-        }
-
-        public void setLabel(String label) {
-            this.label = label;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class KMSConsumer
+            extends
+                KMSCommon<KMSConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public KMSConsumer(String path) {
+            super(path);
         }
     }
 
-    public static class KMSConsumer extends KMSCommon<KMSConsumer> {
-    }
-
-    public static class KMSProducer extends KMSCommon<KMSProducer> {
-        private String accessKey;
-        private Object kmsClient;
-        private KMSOperations operation;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String secretKey;
-
+    public static class KMSProducer
+            extends
+                KMSCommon<KMSProducer>
+            implements
+                EndpointDefinition.Producer {
+        public KMSProducer(String path) {
+            super(path);
+        }
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public KMSProducer accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (KMSProducer) this;
         }
-
         /**
          * To use a existing configured AWS KMS as client. The option is a
          * com.amazonaws.services.kms.AWSKMS type.
          */
         public KMSProducer kmsClient(Object kmsClient) {
-            this.kmsClient = kmsClient;
+            this.properties.put("kmsClient", kmsClient);
             return (KMSProducer) this;
         }
-
         /**
          * The operation to perform. The option is a
          * org.apache.camel.component.aws.kms.KMSOperations type.
          */
         public KMSProducer operation(KMSOperations operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (KMSProducer) this;
         }
-
         /**
          * To define a proxy host when instantiating the KMS client. The option
          * is a java.lang.String type.
          */
         public KMSProducer proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (KMSProducer) this;
         }
-
         /**
          * To define a proxy port when instantiating the KMS client. The option
          * is a java.lang.Integer type.
          */
         public KMSProducer proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (KMSProducer) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public KMSProducer secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (KMSProducer) this;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public Object getKmsClient() {
-            return kmsClient;
-        }
-
-        public void setKmsClient(Object kmsClient) {
-            this.kmsClient = kmsClient;
-        }
-
-        public KMSOperations getOperation() {
-            return operation;
-        }
-
-        public void setOperation(KMSOperations operation) {
-            this.operation = operation;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
         }
     }
 

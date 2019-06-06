@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -36,323 +37,151 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class CassandraEndpoint {
 
 
-    public static class CassandraCommon<T extends EndpointConfiguration>
+    public static class CassandraCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String beanRef;
-        private String hosts;
-        private Integer port;
-        private String keyspace;
-        private Object cluster;
-        private String clusterName;
-        private ConsistencyLevel consistencyLevel;
-        private String cql;
-        private String loadBalancingPolicy;
-        private String password;
-        private Boolean prepareStatements;
-        private Object resultSetConversionStrategy;
-        private Object session;
-        private String username;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        CassandraCommon(String path) {
+            super("cql", path);
+        }
         /**
          * beanRef is defined using bean:id. The option is a java.lang.String
          * type.
          */
         public T beanRef(String beanRef) {
-            this.beanRef = beanRef;
+            this.properties.put("beanRef", beanRef);
             return (T) this;
         }
-
         /**
          * Hostname(s) cassansdra server(s). Multiple hosts can be separated by
          * comma. The option is a java.lang.String type.
          */
         public T hosts(String hosts) {
-            this.hosts = hosts;
+            this.properties.put("hosts", hosts);
             return (T) this;
         }
-
         /**
          * Port number of cassansdra server(s). The option is a
          * java.lang.Integer type.
          */
         public T port(Integer port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Keyspace to use. The option is a java.lang.String type.
          */
         public T keyspace(String keyspace) {
-            this.keyspace = keyspace;
+            this.properties.put("keyspace", keyspace);
             return (T) this;
         }
-
         /**
          * To use the Cluster instance (you would normally not use this option).
          * The option is a com.datastax.driver.core.Cluster type.
          */
         public T cluster(Object cluster) {
-            this.cluster = cluster;
+            this.properties.put("cluster", cluster);
             return (T) this;
         }
-
         /**
          * Cluster name. The option is a java.lang.String type.
          */
         public T clusterName(String clusterName) {
-            this.clusterName = clusterName;
+            this.properties.put("clusterName", clusterName);
             return (T) this;
         }
-
         /**
          * Consistency level to use. The option is a
          * com.datastax.driver.core.ConsistencyLevel type.
          */
         public T consistencyLevel(ConsistencyLevel consistencyLevel) {
-            this.consistencyLevel = consistencyLevel;
+            this.properties.put("consistencyLevel", consistencyLevel);
             return (T) this;
         }
-
         /**
          * CQL query to perform. Can be overridden with the message header with
          * key CamelCqlQuery. The option is a java.lang.String type.
          */
         public T cql(String cql) {
-            this.cql = cql;
+            this.properties.put("cql", cql);
             return (T) this;
         }
-
         /**
          * To use a specific LoadBalancingPolicy. The option is a
          * java.lang.String type.
          */
         public T loadBalancingPolicy(String loadBalancingPolicy) {
-            this.loadBalancingPolicy = loadBalancingPolicy;
+            this.properties.put("loadBalancingPolicy", loadBalancingPolicy);
             return (T) this;
         }
-
         /**
          * Password for session authentication. The option is a java.lang.String
          * type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Whether to use PreparedStatements or regular Statements. The option
          * is a boolean type.
          */
         public T prepareStatements(boolean prepareStatements) {
-            this.prepareStatements = prepareStatements;
+            this.properties.put("prepareStatements", prepareStatements);
             return (T) this;
         }
-
         /**
          * To use a custom class that implements logic for converting ResultSet
          * into message body ALL, ONE, LIMIT_10, LIMIT_100... The option is a
          * java.lang.String type.
          */
         public T resultSetConversionStrategy(Object resultSetConversionStrategy) {
-            this.resultSetConversionStrategy = resultSetConversionStrategy;
+            this.properties.put("resultSetConversionStrategy", resultSetConversionStrategy);
             return (T) this;
         }
-
         /**
          * To use the Session instance (you would normally not use this option).
          * The option is a com.datastax.driver.core.Session type.
          */
         public T session(Object session) {
-            this.session = session;
+            this.properties.put("session", session);
             return (T) this;
         }
-
         /**
          * Username for session authentication. The option is a java.lang.String
          * type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getBeanRef() {
-            return beanRef;
-        }
-
-        public void setBeanRef(String beanRef) {
-            this.beanRef = beanRef;
-        }
-
-        public String getHosts() {
-            return hosts;
-        }
-
-        public void setHosts(String hosts) {
-            this.hosts = hosts;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getKeyspace() {
-            return keyspace;
-        }
-
-        public void setKeyspace(String keyspace) {
-            this.keyspace = keyspace;
-        }
-
-        public Object getCluster() {
-            return cluster;
-        }
-
-        public void setCluster(Object cluster) {
-            this.cluster = cluster;
-        }
-
-        public String getClusterName() {
-            return clusterName;
-        }
-
-        public void setClusterName(String clusterName) {
-            this.clusterName = clusterName;
-        }
-
-        public ConsistencyLevel getConsistencyLevel() {
-            return consistencyLevel;
-        }
-
-        public void setConsistencyLevel(ConsistencyLevel consistencyLevel) {
-            this.consistencyLevel = consistencyLevel;
-        }
-
-        public String getCql() {
-            return cql;
-        }
-
-        public void setCql(String cql) {
-            this.cql = cql;
-        }
-
-        public String getLoadBalancingPolicy() {
-            return loadBalancingPolicy;
-        }
-
-        public void setLoadBalancingPolicy(String loadBalancingPolicy) {
-            this.loadBalancingPolicy = loadBalancingPolicy;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public Boolean getPrepareStatements() {
-            return prepareStatements;
-        }
-
-        public void setPrepareStatements(Boolean prepareStatements) {
-            this.prepareStatements = prepareStatements;
-        }
-
-        public Object getResultSetConversionStrategy() {
-            return resultSetConversionStrategy;
-        }
-
-        public void setResultSetConversionStrategy(
-                Object resultSetConversionStrategy) {
-            this.resultSetConversionStrategy = resultSetConversionStrategy;
-        }
-
-        public Object getSession() {
-            return session;
-        }
-
-        public void setSession(Object session) {
-            this.session = session;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class CassandraConsumer
             extends
-                CassandraCommon<CassandraConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Boolean sendEmptyMessageWhenIdle;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+                CassandraCommon<CassandraConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public CassandraConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -363,10 +192,9 @@ public class CassandraEndpoint {
          * ignored. The option is a boolean type.
          */
         public CassandraConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (CassandraConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -374,10 +202,9 @@ public class CassandraEndpoint {
          */
         public CassandraConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (CassandraConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -387,19 +214,17 @@ public class CassandraEndpoint {
          */
         public CassandraConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (CassandraConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public CassandraConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (CassandraConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -409,29 +234,26 @@ public class CassandraEndpoint {
          */
         public CassandraConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (CassandraConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public CassandraConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (CassandraConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public CassandraConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (CassandraConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -441,50 +263,45 @@ public class CassandraEndpoint {
          * configured. The option is a int type.
          */
         public CassandraConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (CassandraConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public CassandraConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (CassandraConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public CassandraConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (CassandraConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public CassandraConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (CassandraConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public CassandraConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (CassandraConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -493,10 +310,9 @@ public class CassandraEndpoint {
          */
         public CassandraConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (CassandraConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
@@ -504,10 +320,9 @@ public class CassandraEndpoint {
          */
         public CassandraConsumer scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (CassandraConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -515,188 +330,44 @@ public class CassandraEndpoint {
          */
         public CassandraConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (CassandraConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public CassandraConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (CassandraConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public CassandraConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (CassandraConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public CassandraConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (CassandraConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
     public static class CassandraProducer
             extends
-                CassandraCommon<CassandraProducer> {
+                CassandraCommon<CassandraProducer>
+            implements
+                EndpointDefinition.Producer {
+        public CassandraProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum ConsistencyLevel {

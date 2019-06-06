@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,350 +30,166 @@ import org.apache.camel.spi.ExceptionHandler;
 public class DockerEndpoint {
 
 
-    public static class DockerCommon<T extends EndpointConfiguration>
+    public static class DockerCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private DockerOperation operation;
-        private String email;
-        private String host;
-        private Integer port;
-        private Integer requestTimeout;
-        private Boolean basicPropertyBinding;
-        private String cmdExecFactory;
-        private Boolean followRedirectFilter;
-        private Boolean loggingFilter;
-        private Integer maxPerRouteConnections;
-        private Integer maxTotalConnections;
-        private String serverAddress;
-        private Boolean socket;
-        private Boolean synchronous;
-        private String certPath;
-        private String password;
-        private Boolean secure;
-        private Boolean tlsVerify;
-        private String username;
-
+                EndpointDefinition<T> {
+        DockerCommon(String path) {
+            super("docker", path);
+        }
         /**
          * Which operation to use. The option is a
          * org.apache.camel.component.docker.DockerOperation type.
          */
         public T operation(DockerOperation operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (T) this;
         }
-
         /**
          * Email address associated with the user. The option is a
          * java.lang.String type.
          */
         public T email(String email) {
-            this.email = email;
+            this.properties.put("email", email);
             return (T) this;
         }
-
         /**
          * Docker host. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Docker port. The option is a java.lang.Integer type.
          */
         public T port(Integer port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Request timeout for response (in seconds). The option is a
          * java.lang.Integer type.
          */
         public T requestTimeout(Integer requestTimeout) {
-            this.requestTimeout = requestTimeout;
+            this.properties.put("requestTimeout", requestTimeout);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * The fully qualified class name of the DockerCmdExecFactory
          * implementation to use. The option is a java.lang.String type.
          */
         public T cmdExecFactory(String cmdExecFactory) {
-            this.cmdExecFactory = cmdExecFactory;
+            this.properties.put("cmdExecFactory", cmdExecFactory);
             return (T) this;
         }
-
         /**
          * Whether to follow redirect filter. The option is a boolean type.
          */
         public T followRedirectFilter(boolean followRedirectFilter) {
-            this.followRedirectFilter = followRedirectFilter;
+            this.properties.put("followRedirectFilter", followRedirectFilter);
             return (T) this;
         }
-
         /**
          * Whether to use logging filter. The option is a boolean type.
          */
         public T loggingFilter(boolean loggingFilter) {
-            this.loggingFilter = loggingFilter;
+            this.properties.put("loggingFilter", loggingFilter);
             return (T) this;
         }
-
         /**
          * Maximum route connections. The option is a java.lang.Integer type.
          */
         public T maxPerRouteConnections(Integer maxPerRouteConnections) {
-            this.maxPerRouteConnections = maxPerRouteConnections;
+            this.properties.put("maxPerRouteConnections", maxPerRouteConnections);
             return (T) this;
         }
-
         /**
          * Maximum total connections. The option is a java.lang.Integer type.
          */
         public T maxTotalConnections(Integer maxTotalConnections) {
-            this.maxTotalConnections = maxTotalConnections;
+            this.properties.put("maxTotalConnections", maxTotalConnections);
             return (T) this;
         }
-
         /**
          * Server address for docker registry. The option is a java.lang.String
          * type.
          */
         public T serverAddress(String serverAddress) {
-            this.serverAddress = serverAddress;
+            this.properties.put("serverAddress", serverAddress);
             return (T) this;
         }
-
         /**
          * Socket connection mode. The option is a boolean type.
          */
         public T socket(boolean socket) {
-            this.socket = socket;
+            this.properties.put("socket", socket);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Location containing the SSL certificate chain. The option is a
          * java.lang.String type.
          */
         public T certPath(String certPath) {
-            this.certPath = certPath;
+            this.properties.put("certPath", certPath);
             return (T) this;
         }
-
         /**
          * Password to authenticate with. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Use HTTPS communication. The option is a boolean type.
          */
         public T secure(boolean secure) {
-            this.secure = secure;
+            this.properties.put("secure", secure);
             return (T) this;
         }
-
         /**
          * Check TLS. The option is a boolean type.
          */
         public T tlsVerify(boolean tlsVerify) {
-            this.tlsVerify = tlsVerify;
+            this.properties.put("tlsVerify", tlsVerify);
             return (T) this;
         }
-
         /**
          * User name to authenticate with. The option is a java.lang.String
          * type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
-        }
-
-        public DockerOperation getOperation() {
-            return operation;
-        }
-
-        public void setOperation(DockerOperation operation) {
-            this.operation = operation;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public Integer getRequestTimeout() {
-            return requestTimeout;
-        }
-
-        public void setRequestTimeout(Integer requestTimeout) {
-            this.requestTimeout = requestTimeout;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public String getCmdExecFactory() {
-            return cmdExecFactory;
-        }
-
-        public void setCmdExecFactory(String cmdExecFactory) {
-            this.cmdExecFactory = cmdExecFactory;
-        }
-
-        public Boolean getFollowRedirectFilter() {
-            return followRedirectFilter;
-        }
-
-        public void setFollowRedirectFilter(Boolean followRedirectFilter) {
-            this.followRedirectFilter = followRedirectFilter;
-        }
-
-        public Boolean getLoggingFilter() {
-            return loggingFilter;
-        }
-
-        public void setLoggingFilter(Boolean loggingFilter) {
-            this.loggingFilter = loggingFilter;
-        }
-
-        public Integer getMaxPerRouteConnections() {
-            return maxPerRouteConnections;
-        }
-
-        public void setMaxPerRouteConnections(Integer maxPerRouteConnections) {
-            this.maxPerRouteConnections = maxPerRouteConnections;
-        }
-
-        public Integer getMaxTotalConnections() {
-            return maxTotalConnections;
-        }
-
-        public void setMaxTotalConnections(Integer maxTotalConnections) {
-            this.maxTotalConnections = maxTotalConnections;
-        }
-
-        public String getServerAddress() {
-            return serverAddress;
-        }
-
-        public void setServerAddress(String serverAddress) {
-            this.serverAddress = serverAddress;
-        }
-
-        public Boolean getSocket() {
-            return socket;
-        }
-
-        public void setSocket(Boolean socket) {
-            this.socket = socket;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getCertPath() {
-            return certPath;
-        }
-
-        public void setCertPath(String certPath) {
-            this.certPath = certPath;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public Boolean getSecure() {
-            return secure;
-        }
-
-        public void setSecure(Boolean secure) {
-            this.secure = secure;
-        }
-
-        public Boolean getTlsVerify() {
-            return tlsVerify;
-        }
-
-        public void setTlsVerify(Boolean tlsVerify) {
-            this.tlsVerify = tlsVerify;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
         }
     }
 
-    public static class DockerConsumer extends DockerCommon<DockerConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class DockerConsumer
+            extends
+                DockerCommon<DockerConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public DockerConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -383,10 +200,9 @@ public class DockerEndpoint {
          * ignored. The option is a boolean type.
          */
         public DockerConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (DockerConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -395,45 +211,27 @@ public class DockerEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public DockerConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (DockerConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public DockerConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (DockerConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class DockerProducer extends DockerCommon<DockerProducer> {
+    public static class DockerProducer
+            extends
+                DockerCommon<DockerProducer>
+            implements
+                EndpointDefinition.Producer {
+        public DockerProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum DockerOperation {

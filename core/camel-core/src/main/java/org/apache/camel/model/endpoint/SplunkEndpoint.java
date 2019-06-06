@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
@@ -35,267 +36,121 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class SplunkEndpoint {
 
 
-    public static class SplunkCommon<T extends EndpointConfiguration>
+    public static class SplunkCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String name;
-        private String app;
-        private Integer connectionTimeout;
-        private String host;
-        private String owner;
-        private Integer port;
-        private String scheme;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String password;
-        private SSLSecurityProtocol sslProtocol;
-        private String username;
-        private Boolean useSunHttpsHandler;
-
+                EndpointDefinition<T> {
+        SplunkCommon(String path) {
+            super("splunk", path);
+        }
         /**
          * Name has no purpose. The option is a java.lang.String type.
          */
         public T name(String name) {
-            this.name = name;
+            this.properties.put("name", name);
             return (T) this;
         }
-
         /**
          * Splunk app. The option is a java.lang.String type.
          */
         public T app(String app) {
-            this.app = app;
+            this.properties.put("app", app);
             return (T) this;
         }
-
         /**
          * Timeout in MS when connecting to Splunk server. The option is a int
          * type.
          */
         public T connectionTimeout(int connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
+            this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
-
         /**
          * Splunk host. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Splunk owner. The option is a java.lang.String type.
          */
         public T owner(String owner) {
-            this.owner = owner;
+            this.properties.put("owner", owner);
             return (T) this;
         }
-
         /**
          * Splunk port. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * Splunk scheme. The option is a java.lang.String type.
          */
         public T scheme(String scheme) {
-            this.scheme = scheme;
+            this.properties.put("scheme", scheme);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Password for Splunk. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Set the ssl protocol to use. The option is a
          * com.splunk.SSLSecurityProtocol type.
          */
         public T sslProtocol(SSLSecurityProtocol sslProtocol) {
-            this.sslProtocol = sslProtocol;
+            this.properties.put("sslProtocol", sslProtocol);
             return (T) this;
         }
-
         /**
          * Username for Splunk. The option is a java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
         }
-
         /**
          * Use sun.net.www.protocol.https.Handler Https handler to establish the
          * Splunk Connection. Can be useful when running in application servers
          * to avoid app. server https handling. The option is a boolean type.
          */
         public T useSunHttpsHandler(boolean useSunHttpsHandler) {
-            this.useSunHttpsHandler = useSunHttpsHandler;
+            this.properties.put("useSunHttpsHandler", useSunHttpsHandler);
             return (T) this;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getApp() {
-            return app;
-        }
-
-        public void setApp(String app) {
-            this.app = app;
-        }
-
-        public Integer getConnectionTimeout() {
-            return connectionTimeout;
-        }
-
-        public void setConnectionTimeout(Integer connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public String getOwner() {
-            return owner;
-        }
-
-        public void setOwner(String owner) {
-            this.owner = owner;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getScheme() {
-            return scheme;
-        }
-
-        public void setScheme(String scheme) {
-            this.scheme = scheme;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public SSLSecurityProtocol getSslProtocol() {
-            return sslProtocol;
-        }
-
-        public void setSslProtocol(SSLSecurityProtocol sslProtocol) {
-            this.sslProtocol = sslProtocol;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public Boolean getUseSunHttpsHandler() {
-            return useSunHttpsHandler;
-        }
-
-        public void setUseSunHttpsHandler(Boolean useSunHttpsHandler) {
-            this.useSunHttpsHandler = useSunHttpsHandler;
         }
     }
 
-    public static class SplunkConsumer extends SplunkCommon<SplunkConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Integer count;
-        private String earliestTime;
-        private String initEarliestTime;
-        private String latestTime;
-        private String savedSearch;
-        private String search;
-        private Boolean sendEmptyMessageWhenIdle;
-        private Boolean streaming;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private PollingConsumerPollStrategy pollStrategy;
-        private Integer backoffErrorThreshold;
-        private Integer backoffIdleThreshold;
-        private Integer backoffMultiplier;
-        private Long delay;
-        private Boolean greedy;
-        private Long initialDelay;
-        private LoggingLevel runLoggingLevel;
-        private ScheduledExecutorService scheduledExecutorService;
-        private ScheduledPollConsumerScheduler scheduler;
-        private Map<String, Object> schedulerProperties;
-        private Boolean startScheduler;
-        private TimeUnit timeUnit;
-        private Boolean useFixedDelay;
-
+    public static class SplunkConsumer
+            extends
+                SplunkCommon<SplunkConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SplunkConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -306,63 +161,56 @@ public class SplunkEndpoint {
          * ignored. The option is a boolean type.
          */
         public SplunkConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SplunkConsumer) this;
         }
-
         /**
          * A number that indicates the maximum number of entities to return. The
          * option is a int type.
          */
         public SplunkConsumer count(int count) {
-            this.count = count;
+            this.properties.put("count", count);
             return (SplunkConsumer) this;
         }
-
         /**
          * Earliest time of the search time window. The option is a
          * java.lang.String type.
          */
         public SplunkConsumer earliestTime(String earliestTime) {
-            this.earliestTime = earliestTime;
+            this.properties.put("earliestTime", earliestTime);
             return (SplunkConsumer) this;
         }
-
         /**
          * Initial start offset of the first search. The option is a
          * java.lang.String type.
          */
         public SplunkConsumer initEarliestTime(String initEarliestTime) {
-            this.initEarliestTime = initEarliestTime;
+            this.properties.put("initEarliestTime", initEarliestTime);
             return (SplunkConsumer) this;
         }
-
         /**
          * Latest time of the search time window. The option is a
          * java.lang.String type.
          */
         public SplunkConsumer latestTime(String latestTime) {
-            this.latestTime = latestTime;
+            this.properties.put("latestTime", latestTime);
             return (SplunkConsumer) this;
         }
-
         /**
          * The name of the query saved in Splunk to run. The option is a
          * java.lang.String type.
          */
         public SplunkConsumer savedSearch(String savedSearch) {
-            this.savedSearch = savedSearch;
+            this.properties.put("savedSearch", savedSearch);
             return (SplunkConsumer) this;
         }
-
         /**
          * The Splunk query to run. The option is a java.lang.String type.
          */
         public SplunkConsumer search(String search) {
-            this.search = search;
+            this.properties.put("search", search);
             return (SplunkConsumer) this;
         }
-
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
@@ -370,20 +218,18 @@ public class SplunkEndpoint {
          */
         public SplunkConsumer sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (SplunkConsumer) this;
         }
-
         /**
          * Sets streaming mode. Streaming mode sends exchanges as they are
          * received, rather than in a batch. The option is a java.lang.Boolean
          * type.
          */
         public SplunkConsumer streaming(Boolean streaming) {
-            this.streaming = streaming;
+            this.properties.put("streaming", streaming);
             return (SplunkConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -392,19 +238,17 @@ public class SplunkEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public SplunkConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SplunkConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SplunkConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SplunkConsumer) this;
         }
-
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -414,29 +258,26 @@ public class SplunkEndpoint {
          */
         public SplunkConsumer pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
+            this.properties.put("pollStrategy", pollStrategy);
             return (SplunkConsumer) this;
         }
-
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
         public SplunkConsumer backoffErrorThreshold(int backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
             return (SplunkConsumer) this;
         }
-
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public SplunkConsumer backoffIdleThreshold(int backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (SplunkConsumer) this;
         }
-
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -446,50 +287,45 @@ public class SplunkEndpoint {
          * configured. The option is a int type.
          */
         public SplunkConsumer backoffMultiplier(int backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
+            this.properties.put("backoffMultiplier", backoffMultiplier);
             return (SplunkConsumer) this;
         }
-
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public SplunkConsumer delay(long delay) {
-            this.delay = delay;
+            this.properties.put("delay", delay);
             return (SplunkConsumer) this;
         }
-
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
         public SplunkConsumer greedy(boolean greedy) {
-            this.greedy = greedy;
+            this.properties.put("greedy", greedy);
             return (SplunkConsumer) this;
         }
-
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public SplunkConsumer initialDelay(long initialDelay) {
-            this.initialDelay = initialDelay;
+            this.properties.put("initialDelay", initialDelay);
             return (SplunkConsumer) this;
         }
-
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public SplunkConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
+            this.properties.put("runLoggingLevel", runLoggingLevel);
             return (SplunkConsumer) this;
         }
-
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
@@ -498,20 +334,18 @@ public class SplunkEndpoint {
          */
         public SplunkConsumer scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
             return (SplunkConsumer) this;
         }
-
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public SplunkConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
+            this.properties.put("scheduler", scheduler);
             return (SplunkConsumer) this;
         }
-
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
@@ -519,344 +353,86 @@ public class SplunkEndpoint {
          */
         public SplunkConsumer schedulerProperties(
                 Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
+            this.properties.put("schedulerProperties", schedulerProperties);
             return (SplunkConsumer) this;
         }
-
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public SplunkConsumer startScheduler(boolean startScheduler) {
-            this.startScheduler = startScheduler;
+            this.properties.put("startScheduler", startScheduler);
             return (SplunkConsumer) this;
         }
-
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public SplunkConsumer timeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
+            this.properties.put("timeUnit", timeUnit);
             return (SplunkConsumer) this;
         }
-
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public SplunkConsumer useFixedDelay(boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
+            this.properties.put("useFixedDelay", useFixedDelay);
             return (SplunkConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Integer getCount() {
-            return count;
-        }
-
-        public void setCount(Integer count) {
-            this.count = count;
-        }
-
-        public String getEarliestTime() {
-            return earliestTime;
-        }
-
-        public void setEarliestTime(String earliestTime) {
-            this.earliestTime = earliestTime;
-        }
-
-        public String getInitEarliestTime() {
-            return initEarliestTime;
-        }
-
-        public void setInitEarliestTime(String initEarliestTime) {
-            this.initEarliestTime = initEarliestTime;
-        }
-
-        public String getLatestTime() {
-            return latestTime;
-        }
-
-        public void setLatestTime(String latestTime) {
-            this.latestTime = latestTime;
-        }
-
-        public String getSavedSearch() {
-            return savedSearch;
-        }
-
-        public void setSavedSearch(String savedSearch) {
-            this.savedSearch = savedSearch;
-        }
-
-        public String getSearch() {
-            return search;
-        }
-
-        public void setSearch(String search) {
-            this.search = search;
-        }
-
-        public Boolean getSendEmptyMessageWhenIdle() {
-            return sendEmptyMessageWhenIdle;
-        }
-
-        public void setSendEmptyMessageWhenIdle(Boolean sendEmptyMessageWhenIdle) {
-            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
-        }
-
-        public Boolean getStreaming() {
-            return streaming;
-        }
-
-        public void setStreaming(Boolean streaming) {
-            this.streaming = streaming;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public PollingConsumerPollStrategy getPollStrategy() {
-            return pollStrategy;
-        }
-
-        public void setPollStrategy(PollingConsumerPollStrategy pollStrategy) {
-            this.pollStrategy = pollStrategy;
-        }
-
-        public Integer getBackoffErrorThreshold() {
-            return backoffErrorThreshold;
-        }
-
-        public void setBackoffErrorThreshold(Integer backoffErrorThreshold) {
-            this.backoffErrorThreshold = backoffErrorThreshold;
-        }
-
-        public Integer getBackoffIdleThreshold() {
-            return backoffIdleThreshold;
-        }
-
-        public void setBackoffIdleThreshold(Integer backoffIdleThreshold) {
-            this.backoffIdleThreshold = backoffIdleThreshold;
-        }
-
-        public Integer getBackoffMultiplier() {
-            return backoffMultiplier;
-        }
-
-        public void setBackoffMultiplier(Integer backoffMultiplier) {
-            this.backoffMultiplier = backoffMultiplier;
-        }
-
-        public Long getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Long delay) {
-            this.delay = delay;
-        }
-
-        public Boolean getGreedy() {
-            return greedy;
-        }
-
-        public void setGreedy(Boolean greedy) {
-            this.greedy = greedy;
-        }
-
-        public Long getInitialDelay() {
-            return initialDelay;
-        }
-
-        public void setInitialDelay(Long initialDelay) {
-            this.initialDelay = initialDelay;
-        }
-
-        public LoggingLevel getRunLoggingLevel() {
-            return runLoggingLevel;
-        }
-
-        public void setRunLoggingLevel(LoggingLevel runLoggingLevel) {
-            this.runLoggingLevel = runLoggingLevel;
-        }
-
-        public ScheduledExecutorService getScheduledExecutorService() {
-            return scheduledExecutorService;
-        }
-
-        public void setScheduledExecutorService(
-                ScheduledExecutorService scheduledExecutorService) {
-            this.scheduledExecutorService = scheduledExecutorService;
-        }
-
-        public ScheduledPollConsumerScheduler getScheduler() {
-            return scheduler;
-        }
-
-        public void setScheduler(ScheduledPollConsumerScheduler scheduler) {
-            this.scheduler = scheduler;
-        }
-
-        public Map<String, Object> getSchedulerProperties() {
-            return schedulerProperties;
-        }
-
-        public void setSchedulerProperties(
-                Map<String, Object> schedulerProperties) {
-            this.schedulerProperties = schedulerProperties;
-        }
-
-        public Boolean getStartScheduler() {
-            return startScheduler;
-        }
-
-        public void setStartScheduler(Boolean startScheduler) {
-            this.startScheduler = startScheduler;
-        }
-
-        public TimeUnit getTimeUnit() {
-            return timeUnit;
-        }
-
-        public void setTimeUnit(TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-        }
-
-        public Boolean getUseFixedDelay() {
-            return useFixedDelay;
-        }
-
-        public void setUseFixedDelay(Boolean useFixedDelay) {
-            this.useFixedDelay = useFixedDelay;
         }
     }
 
-    public static class SplunkProducer extends SplunkCommon<SplunkProducer> {
-        private String eventHost;
-        private String index;
-        private Boolean raw;
-        private String source;
-        private String sourceType;
-        private Integer tcpReceiverPort;
-
+    public static class SplunkProducer
+            extends
+                SplunkCommon<SplunkProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SplunkProducer(String path) {
+            super(path);
+        }
         /**
          * Override the default Splunk event host field. The option is a
          * java.lang.String type.
          */
         public SplunkProducer eventHost(String eventHost) {
-            this.eventHost = eventHost;
+            this.properties.put("eventHost", eventHost);
             return (SplunkProducer) this;
         }
-
         /**
          * Splunk index to write to. The option is a java.lang.String type.
          */
         public SplunkProducer index(String index) {
-            this.index = index;
+            this.properties.put("index", index);
             return (SplunkProducer) this;
         }
-
         /**
          * Should the payload be inserted raw. The option is a boolean type.
          */
         public SplunkProducer raw(boolean raw) {
-            this.raw = raw;
+            this.properties.put("raw", raw);
             return (SplunkProducer) this;
         }
-
         /**
          * Splunk source argument. The option is a java.lang.String type.
          */
         public SplunkProducer source(String source) {
-            this.source = source;
+            this.properties.put("source", source);
             return (SplunkProducer) this;
         }
-
         /**
          * Splunk sourcetype argument. The option is a java.lang.String type.
          */
         public SplunkProducer sourceType(String sourceType) {
-            this.sourceType = sourceType;
+            this.properties.put("sourceType", sourceType);
             return (SplunkProducer) this;
         }
-
         /**
          * Splunk tcp receiver port. The option is a int type.
          */
         public SplunkProducer tcpReceiverPort(int tcpReceiverPort) {
-            this.tcpReceiverPort = tcpReceiverPort;
+            this.properties.put("tcpReceiverPort", tcpReceiverPort);
             return (SplunkProducer) this;
-        }
-
-        public String getEventHost() {
-            return eventHost;
-        }
-
-        public void setEventHost(String eventHost) {
-            this.eventHost = eventHost;
-        }
-
-        public String getIndex() {
-            return index;
-        }
-
-        public void setIndex(String index) {
-            this.index = index;
-        }
-
-        public Boolean getRaw() {
-            return raw;
-        }
-
-        public void setRaw(Boolean raw) {
-            this.raw = raw;
-        }
-
-        public String getSource() {
-            return source;
-        }
-
-        public void setSource(String source) {
-            this.source = source;
-        }
-
-        public String getSourceType() {
-            return sourceType;
-        }
-
-        public void setSourceType(String sourceType) {
-            this.sourceType = sourceType;
-        }
-
-        public Integer getTcpReceiverPort() {
-            return tcpReceiverPort;
-        }
-
-        public void setTcpReceiverPort(Integer tcpReceiverPort) {
-            this.tcpReceiverPort = tcpReceiverPort;
         }
     }
 

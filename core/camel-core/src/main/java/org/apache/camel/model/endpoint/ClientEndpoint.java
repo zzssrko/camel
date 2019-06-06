@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.TimeZone;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -32,91 +33,68 @@ import org.apache.camel.spi.ExceptionHandler;
 public class ClientEndpoint {
 
 
-    public static class ClientCommon<T extends EndpointConfiguration>
+    public static class ClientCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private Object uriPath;
-        private Object dataModuleOptions;
-        private Object protocolOptions;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private Short acknowledgeWindow;
-        private ASDUAddressType adsuAddressType;
-        private CauseOfTransmissionType causeOfTransmissionType;
-        private InformationObjectAddressType informationObjectAddressType;
-        private Short maxUnacknowledged;
-        private Integer timeout1;
-        private Integer timeout2;
-        private Integer timeout3;
-        private Boolean causeSourceAddress;
-        private Boolean ignoreBackgroundScan;
-        private Boolean ignoreDaylightSavingTime;
-        private TimeZone timeZone;
-        private String connectionId;
-
+                EndpointDefinition<T> {
+        ClientCommon(String path) {
+            super("iec60870-client", path);
+        }
         /**
          * The object information address. The option is a
          * org.apache.camel.component.iec60870.ObjectAddress type.
          */
         public T uriPath(Object uriPath) {
-            this.uriPath = uriPath;
+            this.properties.put("uriPath", uriPath);
             return (T) this;
         }
-
         /**
          * Data module options. The option is a DataModuleOptions type.
          */
         public T dataModuleOptions(Object dataModuleOptions) {
-            this.dataModuleOptions = dataModuleOptions;
+            this.properties.put("dataModuleOptions", dataModuleOptions);
             return (T) this;
         }
-
         /**
          * Protocol options. The option is a ProtocolOptions type.
          */
         public T protocolOptions(Object protocolOptions) {
-            this.protocolOptions = protocolOptions;
+            this.properties.put("protocolOptions", protocolOptions);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Parameter W - Acknowledgment window. The option is a short type.
          */
         public T acknowledgeWindow(short acknowledgeWindow) {
-            this.acknowledgeWindow = acknowledgeWindow;
+            this.properties.put("acknowledgeWindow", acknowledgeWindow);
             return (T) this;
         }
-
         /**
          * The common ASDU address size. May be either SIZE_1 or SIZE_2. The
          * option is a org.eclipse.neoscada.protocol.iec60870.ASDUAddressType
          * type.
          */
         public T adsuAddressType(ASDUAddressType adsuAddressType) {
-            this.adsuAddressType = adsuAddressType;
+            this.properties.put("adsuAddressType", adsuAddressType);
             return (T) this;
         }
-
         /**
          * The cause of transmission type. May be either SIZE_1 or SIZE_2. The
          * option is a
@@ -124,10 +102,9 @@ public class ClientEndpoint {
          */
         public T causeOfTransmissionType(
                 CauseOfTransmissionType causeOfTransmissionType) {
-            this.causeOfTransmissionType = causeOfTransmissionType;
+            this.properties.put("causeOfTransmissionType", causeOfTransmissionType);
             return (T) this;
         }
-
         /**
          * The information address size. May be either SIZE_1, SIZE_2 or SIZE_3.
          * The option is a
@@ -136,238 +113,86 @@ public class ClientEndpoint {
          */
         public T informationObjectAddressType(
                 InformationObjectAddressType informationObjectAddressType) {
-            this.informationObjectAddressType = informationObjectAddressType;
+            this.properties.put("informationObjectAddressType", informationObjectAddressType);
             return (T) this;
         }
-
         /**
          * Parameter K - Maximum number of un-acknowledged messages. The option
          * is a short type.
          */
         public T maxUnacknowledged(short maxUnacknowledged) {
-            this.maxUnacknowledged = maxUnacknowledged;
+            this.properties.put("maxUnacknowledged", maxUnacknowledged);
             return (T) this;
         }
-
         /**
          * Timeout T1 in milliseconds. The option is a int type.
          */
         public T timeout1(int timeout1) {
-            this.timeout1 = timeout1;
+            this.properties.put("timeout1", timeout1);
             return (T) this;
         }
-
         /**
          * Timeout T2 in milliseconds. The option is a int type.
          */
         public T timeout2(int timeout2) {
-            this.timeout2 = timeout2;
+            this.properties.put("timeout2", timeout2);
             return (T) this;
         }
-
         /**
          * Timeout T3 in milliseconds. The option is a int type.
          */
         public T timeout3(int timeout3) {
-            this.timeout3 = timeout3;
+            this.properties.put("timeout3", timeout3);
             return (T) this;
         }
-
         /**
          * Whether to include the source address. The option is a boolean type.
          */
         public T causeSourceAddress(boolean causeSourceAddress) {
-            this.causeSourceAddress = causeSourceAddress;
+            this.properties.put("causeSourceAddress", causeSourceAddress);
             return (T) this;
         }
-
         /**
          * Whether background scan transmissions should be ignored. The option
          * is a boolean type.
          */
         public T ignoreBackgroundScan(boolean ignoreBackgroundScan) {
-            this.ignoreBackgroundScan = ignoreBackgroundScan;
+            this.properties.put("ignoreBackgroundScan", ignoreBackgroundScan);
             return (T) this;
         }
-
         /**
          * Whether to ignore or respect DST. The option is a boolean type.
          */
         public T ignoreDaylightSavingTime(boolean ignoreDaylightSavingTime) {
-            this.ignoreDaylightSavingTime = ignoreDaylightSavingTime;
+            this.properties.put("ignoreDaylightSavingTime", ignoreDaylightSavingTime);
             return (T) this;
         }
-
         /**
          * The timezone to use. May be any Java time zone string. The option is
          * a java.util.TimeZone type.
          */
         public T timeZone(TimeZone timeZone) {
-            this.timeZone = timeZone;
+            this.properties.put("timeZone", timeZone);
             return (T) this;
         }
-
         /**
          * An identifier grouping connection instances. The option is a
          * java.lang.String type.
          */
         public T connectionId(String connectionId) {
-            this.connectionId = connectionId;
+            this.properties.put("connectionId", connectionId);
             return (T) this;
-        }
-
-        public Object getUriPath() {
-            return uriPath;
-        }
-
-        public void setUriPath(Object uriPath) {
-            this.uriPath = uriPath;
-        }
-
-        public Object getDataModuleOptions() {
-            return dataModuleOptions;
-        }
-
-        public void setDataModuleOptions(Object dataModuleOptions) {
-            this.dataModuleOptions = dataModuleOptions;
-        }
-
-        public Object getProtocolOptions() {
-            return protocolOptions;
-        }
-
-        public void setProtocolOptions(Object protocolOptions) {
-            this.protocolOptions = protocolOptions;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public Short getAcknowledgeWindow() {
-            return acknowledgeWindow;
-        }
-
-        public void setAcknowledgeWindow(Short acknowledgeWindow) {
-            this.acknowledgeWindow = acknowledgeWindow;
-        }
-
-        public ASDUAddressType getAdsuAddressType() {
-            return adsuAddressType;
-        }
-
-        public void setAdsuAddressType(ASDUAddressType adsuAddressType) {
-            this.adsuAddressType = adsuAddressType;
-        }
-
-        public CauseOfTransmissionType getCauseOfTransmissionType() {
-            return causeOfTransmissionType;
-        }
-
-        public void setCauseOfTransmissionType(
-                CauseOfTransmissionType causeOfTransmissionType) {
-            this.causeOfTransmissionType = causeOfTransmissionType;
-        }
-
-        public InformationObjectAddressType getInformationObjectAddressType() {
-            return informationObjectAddressType;
-        }
-
-        public void setInformationObjectAddressType(
-                InformationObjectAddressType informationObjectAddressType) {
-            this.informationObjectAddressType = informationObjectAddressType;
-        }
-
-        public Short getMaxUnacknowledged() {
-            return maxUnacknowledged;
-        }
-
-        public void setMaxUnacknowledged(Short maxUnacknowledged) {
-            this.maxUnacknowledged = maxUnacknowledged;
-        }
-
-        public Integer getTimeout1() {
-            return timeout1;
-        }
-
-        public void setTimeout1(Integer timeout1) {
-            this.timeout1 = timeout1;
-        }
-
-        public Integer getTimeout2() {
-            return timeout2;
-        }
-
-        public void setTimeout2(Integer timeout2) {
-            this.timeout2 = timeout2;
-        }
-
-        public Integer getTimeout3() {
-            return timeout3;
-        }
-
-        public void setTimeout3(Integer timeout3) {
-            this.timeout3 = timeout3;
-        }
-
-        public Boolean getCauseSourceAddress() {
-            return causeSourceAddress;
-        }
-
-        public void setCauseSourceAddress(Boolean causeSourceAddress) {
-            this.causeSourceAddress = causeSourceAddress;
-        }
-
-        public Boolean getIgnoreBackgroundScan() {
-            return ignoreBackgroundScan;
-        }
-
-        public void setIgnoreBackgroundScan(Boolean ignoreBackgroundScan) {
-            this.ignoreBackgroundScan = ignoreBackgroundScan;
-        }
-
-        public Boolean getIgnoreDaylightSavingTime() {
-            return ignoreDaylightSavingTime;
-        }
-
-        public void setIgnoreDaylightSavingTime(Boolean ignoreDaylightSavingTime) {
-            this.ignoreDaylightSavingTime = ignoreDaylightSavingTime;
-        }
-
-        public TimeZone getTimeZone() {
-            return timeZone;
-        }
-
-        public void setTimeZone(TimeZone timeZone) {
-            this.timeZone = timeZone;
-        }
-
-        public String getConnectionId() {
-            return connectionId;
-        }
-
-        public void setConnectionId(String connectionId) {
-            this.connectionId = connectionId;
         }
     }
 
-    public static class ClientConsumer extends ClientCommon<ClientConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class ClientConsumer
+            extends
+                ClientCommon<ClientConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public ClientConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -378,10 +203,9 @@ public class ClientEndpoint {
          * ignored. The option is a boolean type.
          */
         public ClientConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (ClientConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -390,45 +214,27 @@ public class ClientEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public ClientConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (ClientConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public ClientConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (ClientConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class ClientProducer extends ClientCommon<ClientProducer> {
+    public static class ClientProducer
+            extends
+                ClientCommon<ClientProducer>
+            implements
+                EndpointDefinition.Producer {
+        public ClientProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum ASDUAddressType {

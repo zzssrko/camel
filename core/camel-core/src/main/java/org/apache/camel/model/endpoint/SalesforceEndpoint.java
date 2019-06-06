@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -31,195 +32,140 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SalesforceEndpoint {
 
 
-    public static class SalesforceCommon<T extends EndpointConfiguration>
+    public static class SalesforceCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String apexMethod;
-        private Map<String, Object> apexQueryParams;
-        private String apexUrl;
-        private String apiVersion;
-        private Long backoffIncrement;
-        private String batchId;
-        private ContentType contentType;
-        private Long defaultReplayId;
-        private PayloadFormat format;
-        private Object httpClient;
-        private Boolean includeDetails;
-        private Map<String, Long> initialReplayIdMap;
-        private String instanceId;
-        private String jobId;
-        private Integer limit;
-        private Long maxBackoff;
-        private NotFoundBehaviour notFoundBehaviour;
-        private NotifyForFieldsEnum notifyForFields;
-        private Boolean notifyForOperationCreate;
-        private Boolean notifyForOperationDelete;
-        private NotifyForOperationsEnum notifyForOperations;
-        private Boolean notifyForOperationUndelete;
-        private Boolean notifyForOperationUpdate;
-        private Object objectMapper;
-        private Boolean rawPayload;
-        private String reportId;
-        private Object reportMetadata;
-        private String resultId;
-        private Boolean serializeNulls;
-        private String sObjectBlobFieldName;
-        private String sObjectClass;
-        private String sObjectFields;
-        private String sObjectId;
-        private String sObjectIdName;
-        private String sObjectIdValue;
-        private String sObjectName;
-        private String sObjectQuery;
-        private String sObjectSearch;
-        private Boolean updateTopic;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        SalesforceCommon(String path) {
+            super("salesforce", path);
+        }
         /**
          * APEX method name. The option is a java.lang.String type.
          */
         public T apexMethod(String apexMethod) {
-            this.apexMethod = apexMethod;
+            this.properties.put("apexMethod", apexMethod);
             return (T) this;
         }
-
         /**
          * Query params for APEX method. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T apexQueryParams(Map<String, Object> apexQueryParams) {
-            this.apexQueryParams = apexQueryParams;
+            this.properties.put("apexQueryParams", apexQueryParams);
             return (T) this;
         }
-
         /**
          * APEX method URL. The option is a java.lang.String type.
          */
         public T apexUrl(String apexUrl) {
-            this.apexUrl = apexUrl;
+            this.properties.put("apexUrl", apexUrl);
             return (T) this;
         }
-
         /**
          * Salesforce API version, defaults to
          * SalesforceEndpointConfig.DEFAULT_VERSION. The option is a
          * java.lang.String type.
          */
         public T apiVersion(String apiVersion) {
-            this.apiVersion = apiVersion;
+            this.properties.put("apiVersion", apiVersion);
             return (T) this;
         }
-
         /**
          * Backoff interval increment for Streaming connection restart attempts
          * for failures beyond CometD auto-reconnect. The option is a long type.
          */
         public T backoffIncrement(long backoffIncrement) {
-            this.backoffIncrement = backoffIncrement;
+            this.properties.put("backoffIncrement", backoffIncrement);
             return (T) this;
         }
-
         /**
          * Bulk API Batch ID. The option is a java.lang.String type.
          */
         public T batchId(String batchId) {
-            this.batchId = batchId;
+            this.properties.put("batchId", batchId);
             return (T) this;
         }
-
         /**
          * Bulk API content type, one of XML, CSV, ZIP_XML, ZIP_CSV. The option
          * is a org.apache.camel.component.salesforce.api.dto.bulk.ContentType
          * type.
          */
         public T contentType(ContentType contentType) {
-            this.contentType = contentType;
+            this.properties.put("contentType", contentType);
             return (T) this;
         }
-
         /**
          * Default replayId setting if no value is found in initialReplayIdMap.
          * The option is a java.lang.Long type.
          */
         public T defaultReplayId(Long defaultReplayId) {
-            this.defaultReplayId = defaultReplayId;
+            this.properties.put("defaultReplayId", defaultReplayId);
             return (T) this;
         }
-
         /**
          * Payload format to use for Salesforce API calls, either JSON or XML,
          * defaults to JSON. The option is a
          * org.apache.camel.component.salesforce.internal.PayloadFormat type.
          */
         public T format(PayloadFormat format) {
-            this.format = format;
+            this.properties.put("format", format);
             return (T) this;
         }
-
         /**
          * Custom Jetty Http Client to use to connect to Salesforce. The option
          * is a org.apache.camel.component.salesforce.SalesforceHttpClient type.
          */
         public T httpClient(Object httpClient) {
-            this.httpClient = httpClient;
+            this.properties.put("httpClient", httpClient);
             return (T) this;
         }
-
         /**
          * Include details in Salesforce1 Analytics report, defaults to false.
          * The option is a java.lang.Boolean type.
          */
         public T includeDetails(Boolean includeDetails) {
-            this.includeDetails = includeDetails;
+            this.properties.put("includeDetails", includeDetails);
             return (T) this;
         }
-
         /**
          * Replay IDs to start from per channel name. The option is a
          * java.util.Map<java.lang.String,java.lang.Long> type.
          */
         public T initialReplayIdMap(Map<String, Long> initialReplayIdMap) {
-            this.initialReplayIdMap = initialReplayIdMap;
+            this.properties.put("initialReplayIdMap", initialReplayIdMap);
             return (T) this;
         }
-
         /**
          * Salesforce1 Analytics report execution instance ID. The option is a
          * java.lang.String type.
          */
         public T instanceId(String instanceId) {
-            this.instanceId = instanceId;
+            this.properties.put("instanceId", instanceId);
             return (T) this;
         }
-
         /**
          * Bulk API Job ID. The option is a java.lang.String type.
          */
         public T jobId(String jobId) {
-            this.jobId = jobId;
+            this.properties.put("jobId", jobId);
             return (T) this;
         }
-
         /**
          * Limit on number of returned records. Applicable to some of the API,
          * check the Salesforce documentation. The option is a java.lang.Integer
          * type.
          */
         public T limit(Integer limit) {
-            this.limit = limit;
+            this.properties.put("limit", limit);
             return (T) this;
         }
-
         /**
          * Maximum backoff interval for Streaming connection restart attempts
          * for failures beyond CometD auto-reconnect. The option is a long type.
          */
         public T maxBackoff(long maxBackoff) {
-            this.maxBackoff = maxBackoff;
+            this.properties.put("maxBackoff", maxBackoff);
             return (T) this;
         }
-
         /**
          * Sets the behaviour of 404 not found status received from Salesforce
          * API. Should the body be set to NULL NotFoundBehaviour#NULL or should
@@ -228,576 +174,220 @@ public class SalesforceEndpoint {
          * org.apache.camel.component.salesforce.NotFoundBehaviour type.
          */
         public T notFoundBehaviour(NotFoundBehaviour notFoundBehaviour) {
-            this.notFoundBehaviour = notFoundBehaviour;
+            this.properties.put("notFoundBehaviour", notFoundBehaviour);
             return (T) this;
         }
-
         /**
          * Notify for fields, options are ALL, REFERENCED, SELECT, WHERE. The
          * option is a
          * org.apache.camel.component.salesforce.internal.dto.NotifyForFieldsEnum type.
          */
         public T notifyForFields(NotifyForFieldsEnum notifyForFields) {
-            this.notifyForFields = notifyForFields;
+            this.properties.put("notifyForFields", notifyForFields);
             return (T) this;
         }
-
         /**
          * Notify for create operation, defaults to false (API version = 29.0).
          * The option is a java.lang.Boolean type.
          */
         public T notifyForOperationCreate(Boolean notifyForOperationCreate) {
-            this.notifyForOperationCreate = notifyForOperationCreate;
+            this.properties.put("notifyForOperationCreate", notifyForOperationCreate);
             return (T) this;
         }
-
         /**
          * Notify for delete operation, defaults to false (API version = 29.0).
          * The option is a java.lang.Boolean type.
          */
         public T notifyForOperationDelete(Boolean notifyForOperationDelete) {
-            this.notifyForOperationDelete = notifyForOperationDelete;
+            this.properties.put("notifyForOperationDelete", notifyForOperationDelete);
             return (T) this;
         }
-
         /**
          * Notify for operations, options are ALL, CREATE, EXTENDED, UPDATE (API
          * version 29.0). The option is a
          * org.apache.camel.component.salesforce.internal.dto.NotifyForOperationsEnum type.
          */
         public T notifyForOperations(NotifyForOperationsEnum notifyForOperations) {
-            this.notifyForOperations = notifyForOperations;
+            this.properties.put("notifyForOperations", notifyForOperations);
             return (T) this;
         }
-
         /**
          * Notify for un-delete operation, defaults to false (API version =
          * 29.0). The option is a java.lang.Boolean type.
          */
         public T notifyForOperationUndelete(Boolean notifyForOperationUndelete) {
-            this.notifyForOperationUndelete = notifyForOperationUndelete;
+            this.properties.put("notifyForOperationUndelete", notifyForOperationUndelete);
             return (T) this;
         }
-
         /**
          * Notify for update operation, defaults to false (API version = 29.0).
          * The option is a java.lang.Boolean type.
          */
         public T notifyForOperationUpdate(Boolean notifyForOperationUpdate) {
-            this.notifyForOperationUpdate = notifyForOperationUpdate;
+            this.properties.put("notifyForOperationUpdate", notifyForOperationUpdate);
             return (T) this;
         }
-
         /**
          * Custom Jackson ObjectMapper to use when serializing/deserializing
          * Salesforce objects. The option is a
          * com.fasterxml.jackson.databind.ObjectMapper type.
          */
         public T objectMapper(Object objectMapper) {
-            this.objectMapper = objectMapper;
+            this.properties.put("objectMapper", objectMapper);
             return (T) this;
         }
-
         /**
          * Use raw payload String for request and response (either JSON or XML
          * depending on format), instead of DTOs, false by default. The option
          * is a boolean type.
          */
         public T rawPayload(boolean rawPayload) {
-            this.rawPayload = rawPayload;
+            this.properties.put("rawPayload", rawPayload);
             return (T) this;
         }
-
         /**
          * Salesforce1 Analytics report Id. The option is a java.lang.String
          * type.
          */
         public T reportId(String reportId) {
-            this.reportId = reportId;
+            this.properties.put("reportId", reportId);
             return (T) this;
         }
-
         /**
          * Salesforce1 Analytics report metadata for filtering. The option is a
          * org.apache.camel.component.salesforce.api.dto.analytics.reports.ReportMetadata type.
          */
         public T reportMetadata(Object reportMetadata) {
-            this.reportMetadata = reportMetadata;
+            this.properties.put("reportMetadata", reportMetadata);
             return (T) this;
         }
-
         /**
          * Bulk API Result ID. The option is a java.lang.String type.
          */
         public T resultId(String resultId) {
-            this.resultId = resultId;
+            this.properties.put("resultId", resultId);
             return (T) this;
         }
-
         /**
          * Should the NULL values of given DTO be serialized with empty (NULL)
          * values. This affects only JSON data format. The option is a boolean
          * type.
          */
         public T serializeNulls(boolean serializeNulls) {
-            this.serializeNulls = serializeNulls;
+            this.properties.put("serializeNulls", serializeNulls);
             return (T) this;
         }
-
         /**
          * SObject blob field name. The option is a java.lang.String type.
          */
         public T sObjectBlobFieldName(String sObjectBlobFieldName) {
-            this.sObjectBlobFieldName = sObjectBlobFieldName;
+            this.properties.put("sObjectBlobFieldName", sObjectBlobFieldName);
             return (T) this;
         }
-
         /**
          * Fully qualified SObject class name, usually generated using
          * camel-salesforce-maven-plugin. The option is a java.lang.String type.
          */
         public T sObjectClass(String sObjectClass) {
-            this.sObjectClass = sObjectClass;
+            this.properties.put("sObjectClass", sObjectClass);
             return (T) this;
         }
-
         /**
          * SObject fields to retrieve. The option is a java.lang.String type.
          */
         public T sObjectFields(String sObjectFields) {
-            this.sObjectFields = sObjectFields;
+            this.properties.put("sObjectFields", sObjectFields);
             return (T) this;
         }
-
         /**
          * SObject ID if required by API. The option is a java.lang.String type.
          */
         public T sObjectId(String sObjectId) {
-            this.sObjectId = sObjectId;
+            this.properties.put("sObjectId", sObjectId);
             return (T) this;
         }
-
         /**
          * SObject external ID field name. The option is a java.lang.String
          * type.
          */
         public T sObjectIdName(String sObjectIdName) {
-            this.sObjectIdName = sObjectIdName;
+            this.properties.put("sObjectIdName", sObjectIdName);
             return (T) this;
         }
-
         /**
          * SObject external ID field value. The option is a java.lang.String
          * type.
          */
         public T sObjectIdValue(String sObjectIdValue) {
-            this.sObjectIdValue = sObjectIdValue;
+            this.properties.put("sObjectIdValue", sObjectIdValue);
             return (T) this;
         }
-
         /**
          * SObject name if required or supported by API. The option is a
          * java.lang.String type.
          */
         public T sObjectName(String sObjectName) {
-            this.sObjectName = sObjectName;
+            this.properties.put("sObjectName", sObjectName);
             return (T) this;
         }
-
         /**
          * Salesforce SOQL query string. The option is a java.lang.String type.
          */
         public T sObjectQuery(String sObjectQuery) {
-            this.sObjectQuery = sObjectQuery;
+            this.properties.put("sObjectQuery", sObjectQuery);
             return (T) this;
         }
-
         /**
          * Salesforce SOSL search string. The option is a java.lang.String type.
          */
         public T sObjectSearch(String sObjectSearch) {
-            this.sObjectSearch = sObjectSearch;
+            this.properties.put("sObjectSearch", sObjectSearch);
             return (T) this;
         }
-
         /**
          * Whether to update an existing Push Topic when using the Streaming
          * API, defaults to false. The option is a boolean type.
          */
         public T updateTopic(boolean updateTopic) {
-            this.updateTopic = updateTopic;
+            this.properties.put("updateTopic", updateTopic);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
-        }
-
-        public String getApexMethod() {
-            return apexMethod;
-        }
-
-        public void setApexMethod(String apexMethod) {
-            this.apexMethod = apexMethod;
-        }
-
-        public Map<String, Object> getApexQueryParams() {
-            return apexQueryParams;
-        }
-
-        public void setApexQueryParams(Map<String, Object> apexQueryParams) {
-            this.apexQueryParams = apexQueryParams;
-        }
-
-        public String getApexUrl() {
-            return apexUrl;
-        }
-
-        public void setApexUrl(String apexUrl) {
-            this.apexUrl = apexUrl;
-        }
-
-        public String getApiVersion() {
-            return apiVersion;
-        }
-
-        public void setApiVersion(String apiVersion) {
-            this.apiVersion = apiVersion;
-        }
-
-        public Long getBackoffIncrement() {
-            return backoffIncrement;
-        }
-
-        public void setBackoffIncrement(Long backoffIncrement) {
-            this.backoffIncrement = backoffIncrement;
-        }
-
-        public String getBatchId() {
-            return batchId;
-        }
-
-        public void setBatchId(String batchId) {
-            this.batchId = batchId;
-        }
-
-        public ContentType getContentType() {
-            return contentType;
-        }
-
-        public void setContentType(ContentType contentType) {
-            this.contentType = contentType;
-        }
-
-        public Long getDefaultReplayId() {
-            return defaultReplayId;
-        }
-
-        public void setDefaultReplayId(Long defaultReplayId) {
-            this.defaultReplayId = defaultReplayId;
-        }
-
-        public PayloadFormat getFormat() {
-            return format;
-        }
-
-        public void setFormat(PayloadFormat format) {
-            this.format = format;
-        }
-
-        public Object getHttpClient() {
-            return httpClient;
-        }
-
-        public void setHttpClient(Object httpClient) {
-            this.httpClient = httpClient;
-        }
-
-        public Boolean getIncludeDetails() {
-            return includeDetails;
-        }
-
-        public void setIncludeDetails(Boolean includeDetails) {
-            this.includeDetails = includeDetails;
-        }
-
-        public Map<String, Long> getInitialReplayIdMap() {
-            return initialReplayIdMap;
-        }
-
-        public void setInitialReplayIdMap(Map<String, Long> initialReplayIdMap) {
-            this.initialReplayIdMap = initialReplayIdMap;
-        }
-
-        public String getInstanceId() {
-            return instanceId;
-        }
-
-        public void setInstanceId(String instanceId) {
-            this.instanceId = instanceId;
-        }
-
-        public String getJobId() {
-            return jobId;
-        }
-
-        public void setJobId(String jobId) {
-            this.jobId = jobId;
-        }
-
-        public Integer getLimit() {
-            return limit;
-        }
-
-        public void setLimit(Integer limit) {
-            this.limit = limit;
-        }
-
-        public Long getMaxBackoff() {
-            return maxBackoff;
-        }
-
-        public void setMaxBackoff(Long maxBackoff) {
-            this.maxBackoff = maxBackoff;
-        }
-
-        public NotFoundBehaviour getNotFoundBehaviour() {
-            return notFoundBehaviour;
-        }
-
-        public void setNotFoundBehaviour(NotFoundBehaviour notFoundBehaviour) {
-            this.notFoundBehaviour = notFoundBehaviour;
-        }
-
-        public NotifyForFieldsEnum getNotifyForFields() {
-            return notifyForFields;
-        }
-
-        public void setNotifyForFields(NotifyForFieldsEnum notifyForFields) {
-            this.notifyForFields = notifyForFields;
-        }
-
-        public Boolean getNotifyForOperationCreate() {
-            return notifyForOperationCreate;
-        }
-
-        public void setNotifyForOperationCreate(Boolean notifyForOperationCreate) {
-            this.notifyForOperationCreate = notifyForOperationCreate;
-        }
-
-        public Boolean getNotifyForOperationDelete() {
-            return notifyForOperationDelete;
-        }
-
-        public void setNotifyForOperationDelete(Boolean notifyForOperationDelete) {
-            this.notifyForOperationDelete = notifyForOperationDelete;
-        }
-
-        public NotifyForOperationsEnum getNotifyForOperations() {
-            return notifyForOperations;
-        }
-
-        public void setNotifyForOperations(
-                NotifyForOperationsEnum notifyForOperations) {
-            this.notifyForOperations = notifyForOperations;
-        }
-
-        public Boolean getNotifyForOperationUndelete() {
-            return notifyForOperationUndelete;
-        }
-
-        public void setNotifyForOperationUndelete(
-                Boolean notifyForOperationUndelete) {
-            this.notifyForOperationUndelete = notifyForOperationUndelete;
-        }
-
-        public Boolean getNotifyForOperationUpdate() {
-            return notifyForOperationUpdate;
-        }
-
-        public void setNotifyForOperationUpdate(Boolean notifyForOperationUpdate) {
-            this.notifyForOperationUpdate = notifyForOperationUpdate;
-        }
-
-        public Object getObjectMapper() {
-            return objectMapper;
-        }
-
-        public void setObjectMapper(Object objectMapper) {
-            this.objectMapper = objectMapper;
-        }
-
-        public Boolean getRawPayload() {
-            return rawPayload;
-        }
-
-        public void setRawPayload(Boolean rawPayload) {
-            this.rawPayload = rawPayload;
-        }
-
-        public String getReportId() {
-            return reportId;
-        }
-
-        public void setReportId(String reportId) {
-            this.reportId = reportId;
-        }
-
-        public Object getReportMetadata() {
-            return reportMetadata;
-        }
-
-        public void setReportMetadata(Object reportMetadata) {
-            this.reportMetadata = reportMetadata;
-        }
-
-        public String getResultId() {
-            return resultId;
-        }
-
-        public void setResultId(String resultId) {
-            this.resultId = resultId;
-        }
-
-        public Boolean getSerializeNulls() {
-            return serializeNulls;
-        }
-
-        public void setSerializeNulls(Boolean serializeNulls) {
-            this.serializeNulls = serializeNulls;
-        }
-
-        public String getSObjectBlobFieldName() {
-            return sObjectBlobFieldName;
-        }
-
-        public void setSObjectBlobFieldName(String sObjectBlobFieldName) {
-            this.sObjectBlobFieldName = sObjectBlobFieldName;
-        }
-
-        public String getSObjectClass() {
-            return sObjectClass;
-        }
-
-        public void setSObjectClass(String sObjectClass) {
-            this.sObjectClass = sObjectClass;
-        }
-
-        public String getSObjectFields() {
-            return sObjectFields;
-        }
-
-        public void setSObjectFields(String sObjectFields) {
-            this.sObjectFields = sObjectFields;
-        }
-
-        public String getSObjectId() {
-            return sObjectId;
-        }
-
-        public void setSObjectId(String sObjectId) {
-            this.sObjectId = sObjectId;
-        }
-
-        public String getSObjectIdName() {
-            return sObjectIdName;
-        }
-
-        public void setSObjectIdName(String sObjectIdName) {
-            this.sObjectIdName = sObjectIdName;
-        }
-
-        public String getSObjectIdValue() {
-            return sObjectIdValue;
-        }
-
-        public void setSObjectIdValue(String sObjectIdValue) {
-            this.sObjectIdValue = sObjectIdValue;
-        }
-
-        public String getSObjectName() {
-            return sObjectName;
-        }
-
-        public void setSObjectName(String sObjectName) {
-            this.sObjectName = sObjectName;
-        }
-
-        public String getSObjectQuery() {
-            return sObjectQuery;
-        }
-
-        public void setSObjectQuery(String sObjectQuery) {
-            this.sObjectQuery = sObjectQuery;
-        }
-
-        public String getSObjectSearch() {
-            return sObjectSearch;
-        }
-
-        public void setSObjectSearch(String sObjectSearch) {
-            this.sObjectSearch = sObjectSearch;
-        }
-
-        public Boolean getUpdateTopic() {
-            return updateTopic;
-        }
-
-        public void setUpdateTopic(Boolean updateTopic) {
-            this.updateTopic = updateTopic;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
         }
     }
 
     public static class SalesforceConsumer
             extends
-                SalesforceCommon<SalesforceConsumer> {
-        private String topicName;
-        private Boolean bridgeErrorHandler;
-        private Long replayId;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+                SalesforceCommon<SalesforceConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SalesforceConsumer(String path) {
+            super(path);
+        }
         /**
          * The name of the topic/channel to use. The option is a
          * java.lang.String type.
          */
         public SalesforceConsumer topicName(String topicName) {
-            this.topicName = topicName;
+            this.properties.put("topicName", topicName);
             return (SalesforceConsumer) this;
         }
-
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -808,19 +398,17 @@ public class SalesforceEndpoint {
          * ignored. The option is a boolean type.
          */
         public SalesforceConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SalesforceConsumer) this;
         }
-
         /**
          * The replayId value to use when subscribing. The option is a
          * java.lang.Long type.
          */
         public SalesforceConsumer replayId(Long replayId) {
-            this.replayId = replayId;
+            this.properties.put("replayId", replayId);
             return (SalesforceConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -830,81 +418,35 @@ public class SalesforceEndpoint {
          */
         public SalesforceConsumer exceptionHandler(
                 ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SalesforceConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SalesforceConsumer exchangePattern(
                 ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SalesforceConsumer) this;
-        }
-
-        public String getTopicName() {
-            return topicName;
-        }
-
-        public void setTopicName(String topicName) {
-            this.topicName = topicName;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Long getReplayId() {
-            return replayId;
-        }
-
-        public void setReplayId(Long replayId) {
-            this.replayId = replayId;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
     public static class SalesforceProducer
             extends
-                SalesforceCommon<SalesforceProducer> {
-        private OperationName operationName;
-
+                SalesforceCommon<SalesforceProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SalesforceProducer(String path) {
+            super(path);
+        }
         /**
          * The operation to use. The option is a
          * org.apache.camel.component.salesforce.internal.OperationName type.
          */
         public SalesforceProducer operationName(OperationName operationName) {
-            this.operationName = operationName;
+            this.properties.put("operationName", operationName);
             return (SalesforceProducer) this;
-        }
-
-        public OperationName getOperationName() {
-            return operationName;
-        }
-
-        public void setOperationName(OperationName operationName) {
-            this.operationName = operationName;
         }
     }
 

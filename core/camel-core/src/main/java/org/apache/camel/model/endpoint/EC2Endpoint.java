@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The aws-ec2 is used for managing Amazon EC2 instances.
@@ -27,112 +28,80 @@ import javax.annotation.Generated;
 public class EC2Endpoint {
 
 
-    public static class EC2Common<T extends EndpointConfiguration>
+    public static class EC2Common<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String label;
-        private String region;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-
+                EndpointDefinition<T> {
+        EC2Common(String path) {
+            super("aws-ec2", path);
+        }
         /**
          * Logical name. The option is a java.lang.String type.
          */
         public T label(String label) {
-            this.label = label;
+            this.properties.put("label", label);
             return (T) this;
         }
-
         /**
          * The region in which EC2 client needs to work. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
+    }
 
-        public String getLabel() {
-            return label;
-        }
-
-        public void setLabel(String label) {
-            this.label = label;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
+    public static class EC2Consumer
+            extends
+                EC2Common<EC2Consumer>
+            implements
+                EndpointDefinition.Consumer {
+        public EC2Consumer(String path) {
+            super(path);
         }
     }
 
-    public static class EC2Consumer extends EC2Common<EC2Consumer> {
-    }
-
-    public static class EC2Producer extends EC2Common<EC2Producer> {
-        private String accessKey;
-        private Object amazonEc2Client;
-        private EC2Operations operation;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String secretKey;
-
+    public static class EC2Producer
+            extends
+                EC2Common<EC2Producer>
+            implements
+                EndpointDefinition.Producer {
+        public EC2Producer(String path) {
+            super(path);
+        }
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public EC2Producer accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (EC2Producer) this;
         }
-
         /**
          * To use a existing configured AmazonEC2Client as client. The option is
          * a com.amazonaws.services.ec2.AmazonEC2 type.
          */
         public EC2Producer amazonEc2Client(Object amazonEc2Client) {
-            this.amazonEc2Client = amazonEc2Client;
+            this.properties.put("amazonEc2Client", amazonEc2Client);
             return (EC2Producer) this;
         }
-
         /**
          * The operation to perform. It can be createAndRunInstances,
          * startInstances, stopInstances, terminateInstances, describeInstances,
@@ -141,82 +110,31 @@ public class EC2Endpoint {
          * org.apache.camel.component.aws.ec2.EC2Operations type.
          */
         public EC2Producer operation(EC2Operations operation) {
-            this.operation = operation;
+            this.properties.put("operation", operation);
             return (EC2Producer) this;
         }
-
         /**
          * To define a proxy host when instantiating the EC2 client. The option
          * is a java.lang.String type.
          */
         public EC2Producer proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (EC2Producer) this;
         }
-
         /**
          * To define a proxy port when instantiating the EC2 client. The option
          * is a java.lang.Integer type.
          */
         public EC2Producer proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (EC2Producer) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public EC2Producer secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (EC2Producer) this;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public Object getAmazonEc2Client() {
-            return amazonEc2Client;
-        }
-
-        public void setAmazonEc2Client(Object amazonEc2Client) {
-            this.amazonEc2Client = amazonEc2Client;
-        }
-
-        public EC2Operations getOperation() {
-            return operation;
-        }
-
-        public void setOperation(EC2Operations operation) {
-            this.operation = operation;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
         }
     }
 

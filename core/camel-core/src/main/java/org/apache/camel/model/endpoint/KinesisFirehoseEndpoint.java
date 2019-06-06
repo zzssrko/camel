@@ -17,6 +17,7 @@
 package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
+import org.apache.camel.model.EndpointDefinition;
 
 /**
  * The aws-kinesis-firehose component is used for producing Amazon's Kinesis
@@ -28,181 +29,103 @@ import javax.annotation.Generated;
 public class KinesisFirehoseEndpoint {
 
 
-    public static class KinesisFirehoseCommon<T extends EndpointConfiguration>
+    public static class KinesisFirehoseCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String streamName;
-        private Object amazonKinesisFirehoseClient;
-        private String proxyHost;
-        private Integer proxyPort;
-        private String region;
-        private Boolean basicPropertyBinding;
-        private Boolean synchronous;
-        private String accessKey;
-        private String secretKey;
-
+                EndpointDefinition<T> {
+        KinesisFirehoseCommon(String path) {
+            super("aws-kinesis-firehose", path);
+        }
         /**
          * Name of the stream. The option is a java.lang.String type.
          */
         public T streamName(String streamName) {
-            this.streamName = streamName;
+            this.properties.put("streamName", streamName);
             return (T) this;
         }
-
         /**
          * Amazon Kinesis Firehose client to use for all requests for this
          * endpoint. The option is a
          * com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehose type.
          */
         public T amazonKinesisFirehoseClient(Object amazonKinesisFirehoseClient) {
-            this.amazonKinesisFirehoseClient = amazonKinesisFirehoseClient;
+            this.properties.put("amazonKinesisFirehoseClient", amazonKinesisFirehoseClient);
             return (T) this;
         }
-
         /**
          * To define a proxy host when instantiating the DDBStreams client. The
          * option is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * To define a proxy port when instantiating the DDBStreams client. The
          * option is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
-
         /**
          * The region in which Kinesis client needs to work. The option is a
          * java.lang.String type.
          */
         public T region(String region) {
-            this.region = region;
+            this.properties.put("region", region);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
         public T accessKey(String accessKey) {
-            this.accessKey = accessKey;
+            this.properties.put("accessKey", accessKey);
             return (T) this;
         }
-
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
         public T secretKey(String secretKey) {
-            this.secretKey = secretKey;
+            this.properties.put("secretKey", secretKey);
             return (T) this;
-        }
-
-        public String getStreamName() {
-            return streamName;
-        }
-
-        public void setStreamName(String streamName) {
-            this.streamName = streamName;
-        }
-
-        public Object getAmazonKinesisFirehoseClient() {
-            return amazonKinesisFirehoseClient;
-        }
-
-        public void setAmazonKinesisFirehoseClient(
-                Object amazonKinesisFirehoseClient) {
-            this.amazonKinesisFirehoseClient = amazonKinesisFirehoseClient;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public void setRegion(String region) {
-            this.region = region;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public String getAccessKey() {
-            return accessKey;
-        }
-
-        public void setAccessKey(String accessKey) {
-            this.accessKey = accessKey;
-        }
-
-        public String getSecretKey() {
-            return secretKey;
-        }
-
-        public void setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
         }
     }
 
     public static class KinesisFirehoseConsumer
             extends
-                KinesisFirehoseCommon<KinesisFirehoseConsumer> {
+                KinesisFirehoseCommon<KinesisFirehoseConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public KinesisFirehoseConsumer(String path) {
+            super(path);
+        }
     }
 
     public static class KinesisFirehoseProducer
             extends
-                KinesisFirehoseCommon<KinesisFirehoseProducer> {
+                KinesisFirehoseCommon<KinesisFirehoseProducer>
+            implements
+                EndpointDefinition.Producer {
+        public KinesisFirehoseProducer(String path) {
+            super(path);
+        }
     }
 }

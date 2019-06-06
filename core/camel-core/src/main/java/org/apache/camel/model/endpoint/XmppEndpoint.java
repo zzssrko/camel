@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.HeaderFilterStrategy;
 
@@ -30,79 +31,58 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class XmppEndpoint {
 
 
-    public static class XmppCommon<T extends EndpointConfiguration>
+    public static class XmppCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String host;
-        private Integer port;
-        private String participant;
-        private Boolean login;
-        private String nickname;
-        private Boolean pubsub;
-        private String room;
-        private String serviceName;
-        private Boolean testConnectionOnStartup;
-        private Boolean createAccount;
-        private String resource;
-        private Boolean basicPropertyBinding;
-        private Object connectionConfig;
-        private Boolean synchronous;
-        private HeaderFilterStrategy headerFilterStrategy;
-        private String password;
-        private String user;
-
+                EndpointDefinition<T> {
+        XmppCommon(String path) {
+            super("xmpp", path);
+        }
         /**
          * Hostname for the chat server. The option is a java.lang.String type.
          */
         public T host(String host) {
-            this.host = host;
+            this.properties.put("host", host);
             return (T) this;
         }
-
         /**
          * Port number for the chat server. The option is a int type.
          */
         public T port(int port) {
-            this.port = port;
+            this.properties.put("port", port);
             return (T) this;
         }
-
         /**
          * JID (Jabber ID) of person to receive messages. room parameter has
          * precedence over participant. The option is a java.lang.String type.
          */
         public T participant(String participant) {
-            this.participant = participant;
+            this.properties.put("participant", participant);
             return (T) this;
         }
-
         /**
          * Whether to login the user. The option is a boolean type.
          */
         public T login(boolean login) {
-            this.login = login;
+            this.properties.put("login", login);
             return (T) this;
         }
-
         /**
          * Use nickname when joining room. If room is specified and nickname is
          * not, user will be used for the nickname. The option is a
          * java.lang.String type.
          */
         public T nickname(String nickname) {
-            this.nickname = nickname;
+            this.properties.put("nickname", nickname);
             return (T) this;
         }
-
         /**
          * Accept pubsub packets on input, default is false. The option is a
          * boolean type.
          */
         public T pubsub(boolean pubsub) {
-            this.pubsub = pubsub;
+            this.properties.put("pubsub", pubsub);
             return (T) this;
         }
-
         /**
          * If this option is specified, the component will connect to MUC (Multi
          * User Chat). Usually, the domain name for MUC is different from the
@@ -114,19 +94,17 @@ public class XmppEndpoint {
          * by Camel. The option is a java.lang.String type.
          */
         public T room(String room) {
-            this.room = room;
+            this.properties.put("room", room);
             return (T) this;
         }
-
         /**
          * The name of the service you are connecting to. For Google Talk, this
          * would be gmail.com. The option is a java.lang.String type.
          */
         public T serviceName(String serviceName) {
-            this.serviceName = serviceName;
+            this.properties.put("serviceName", serviceName);
             return (T) this;
         }
-
         /**
          * Specifies whether to test the connection on startup. This is used to
          * ensure that the XMPP client has a valid connection to the XMPP server
@@ -138,38 +116,34 @@ public class XmppEndpoint {
          * type.
          */
         public T testConnectionOnStartup(boolean testConnectionOnStartup) {
-            this.testConnectionOnStartup = testConnectionOnStartup;
+            this.properties.put("testConnectionOnStartup", testConnectionOnStartup);
             return (T) this;
         }
-
         /**
          * If true, an attempt to create an account will be made. Default is
          * false. The option is a boolean type.
          */
         public T createAccount(boolean createAccount) {
-            this.createAccount = createAccount;
+            this.properties.put("createAccount", createAccount);
             return (T) this;
         }
-
         /**
          * XMPP resource. The default is Camel. The option is a java.lang.String
          * type.
          */
         public T resource(String resource) {
-            this.resource = resource;
+            this.properties.put("resource", resource);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * To use an existing connection configuration. Currently
          * org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration is only
@@ -177,192 +151,52 @@ public class XmppEndpoint {
          * org.jivesoftware.smack.ConnectionConfiguration type.
          */
         public T connectionConfig(Object connectionConfig) {
-            this.connectionConfig = connectionConfig;
+            this.properties.put("connectionConfig", connectionConfig);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
-
         /**
          * Password for login. The option is a java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * User name (without server name). If not specified, anonymous login
          * will be attempted. The option is a java.lang.String type.
          */
         public T user(String user) {
-            this.user = user;
+            this.properties.put("user", user);
             return (T) this;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public void setPort(Integer port) {
-            this.port = port;
-        }
-
-        public String getParticipant() {
-            return participant;
-        }
-
-        public void setParticipant(String participant) {
-            this.participant = participant;
-        }
-
-        public Boolean getLogin() {
-            return login;
-        }
-
-        public void setLogin(Boolean login) {
-            this.login = login;
-        }
-
-        public String getNickname() {
-            return nickname;
-        }
-
-        public void setNickname(String nickname) {
-            this.nickname = nickname;
-        }
-
-        public Boolean getPubsub() {
-            return pubsub;
-        }
-
-        public void setPubsub(Boolean pubsub) {
-            this.pubsub = pubsub;
-        }
-
-        public String getRoom() {
-            return room;
-        }
-
-        public void setRoom(String room) {
-            this.room = room;
-        }
-
-        public String getServiceName() {
-            return serviceName;
-        }
-
-        public void setServiceName(String serviceName) {
-            this.serviceName = serviceName;
-        }
-
-        public Boolean getTestConnectionOnStartup() {
-            return testConnectionOnStartup;
-        }
-
-        public void setTestConnectionOnStartup(Boolean testConnectionOnStartup) {
-            this.testConnectionOnStartup = testConnectionOnStartup;
-        }
-
-        public Boolean getCreateAccount() {
-            return createAccount;
-        }
-
-        public void setCreateAccount(Boolean createAccount) {
-            this.createAccount = createAccount;
-        }
-
-        public String getResource() {
-            return resource;
-        }
-
-        public void setResource(String resource) {
-            this.resource = resource;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Object getConnectionConfig() {
-            return connectionConfig;
-        }
-
-        public void setConnectionConfig(Object connectionConfig) {
-            this.connectionConfig = connectionConfig;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public HeaderFilterStrategy getHeaderFilterStrategy() {
-            return headerFilterStrategy;
-        }
-
-        public void setHeaderFilterStrategy(
-                HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getUser() {
-            return user;
-        }
-
-        public void setUser(String user) {
-            this.user = user;
         }
     }
 
-    public static class XmppConsumer extends XmppCommon<XmppConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Integer connectionPollDelay;
-        private Boolean doc;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class XmppConsumer
+            extends
+                XmppCommon<XmppConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public XmppConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -373,10 +207,9 @@ public class XmppEndpoint {
          * ignored. The option is a boolean type.
          */
         public XmppConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (XmppConsumer) this;
         }
-
         /**
          * The amount of time in seconds between polls (in seconds) to verify
          * the health of the XMPP connection, or between attempts to establish
@@ -385,20 +218,18 @@ public class XmppEndpoint {
          * option is a int type.
          */
         public XmppConsumer connectionPollDelay(int connectionPollDelay) {
-            this.connectionPollDelay = connectionPollDelay;
+            this.properties.put("connectionPollDelay", connectionPollDelay);
             return (XmppConsumer) this;
         }
-
         /**
          * Set a doc header on the IN message containing a Document form of the
          * incoming packet; default is true if presence or pubsub are true,
          * otherwise false. The option is a boolean type.
          */
         public XmppConsumer doc(boolean doc) {
-            this.doc = doc;
+            this.properties.put("doc", doc);
             return (XmppConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -407,60 +238,26 @@ public class XmppEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public XmppConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (XmppConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public XmppConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (XmppConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Integer getConnectionPollDelay() {
-            return connectionPollDelay;
-        }
-
-        public void setConnectionPollDelay(Integer connectionPollDelay) {
-            this.connectionPollDelay = connectionPollDelay;
-        }
-
-        public Boolean getDoc() {
-            return doc;
-        }
-
-        public void setDoc(Boolean doc) {
-            this.doc = doc;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class XmppProducer extends XmppCommon<XmppProducer> {
+    public static class XmppProducer
+            extends
+                XmppCommon<XmppProducer>
+            implements
+                EndpointDefinition.Producer {
+        public XmppProducer(String path) {
+            super(path);
+        }
     }
 }

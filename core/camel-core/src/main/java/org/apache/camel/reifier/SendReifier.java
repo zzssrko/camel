@@ -37,7 +37,11 @@ class SendReifier extends ProcessorReifier<SendDefinition<?>> {
 
     public Endpoint resolveEndpoint(RouteContext context) {
         if (definition.getEndpoint() == null) {
-            return context.resolveEndpoint(definition.getUri(), null);
+            if (definition.getEndpointDefinition() == null) {
+                return context.resolveEndpoint(definition.getUri(), null);
+            } else {
+                return definition.getEndpointDefinition().resolve(context);
+            }
         } else {
             return definition.getEndpoint();
         }

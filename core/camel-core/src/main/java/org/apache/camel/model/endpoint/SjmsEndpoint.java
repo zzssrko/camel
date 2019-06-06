@@ -19,6 +19,7 @@ package org.apache.camel.model.endpoint;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.HeaderFilterStrategy;
 
@@ -32,47 +33,29 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class SjmsEndpoint {
 
 
-    public static class SjmsCommon<T extends EndpointConfiguration>
+    public static class SjmsCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private String destinationType;
-        private String destinationName;
-        private SessionAcknowledgementType acknowledgementMode;
-        private Boolean asyncStartListener;
-        private Boolean asyncStopListener;
-        private Boolean basicPropertyBinding;
-        private Integer connectionCount;
-        private Object connectionFactory;
-        private Object connectionResource;
-        private Object destinationCreationStrategy;
-        private Object exceptionListener;
-        private HeaderFilterStrategy headerFilterStrategy;
-        private Boolean includeAllJMSXProperties;
-        private Object jmsKeyFormatStrategy;
-        private Boolean mapJmsMessage;
-        private Object messageCreatedStrategy;
-        private Object transactionCommitStrategy;
-        private Boolean sharedJMSSession;
-
+                EndpointDefinition<T> {
+        SjmsCommon(String path) {
+            super("sjms", path);
+        }
         /**
          * The kind of destination to use. The option is a java.lang.String
          * type.
          */
         public T destinationType(String destinationType) {
-            this.destinationType = destinationType;
+            this.properties.put("destinationType", destinationType);
             return (T) this;
         }
-
         /**
          * DestinationName is a JMS queue or topic name. By default, the
          * destinationName is interpreted as a queue name. The option is a
          * java.lang.String type.
          */
         public T destinationName(String destinationName) {
-            this.destinationName = destinationName;
+            this.properties.put("destinationName", destinationName);
             return (T) this;
         }
-
         /**
          * The JMS acknowledgement name, which is one of: SESSION_TRANSACTED,
          * CLIENT_ACKNOWLEDGE, AUTO_ACKNOWLEDGE, DUPS_OK_ACKNOWLEDGE. The option
@@ -81,10 +64,9 @@ public class SjmsEndpoint {
          */
         public T acknowledgementMode(
                 SessionAcknowledgementType acknowledgementMode) {
-            this.acknowledgementMode = acknowledgementMode;
+            this.properties.put("acknowledgementMode", acknowledgementMode);
             return (T) this;
         }
-
         /**
          * Whether to startup the consumer message listener asynchronously, when
          * starting a route. For example if a JmsConsumer cannot get a
@@ -99,48 +81,43 @@ public class SjmsEndpoint {
          * boolean type.
          */
         public T asyncStartListener(boolean asyncStartListener) {
-            this.asyncStartListener = asyncStartListener;
+            this.properties.put("asyncStartListener", asyncStartListener);
             return (T) this;
         }
-
         /**
          * Whether to stop the consumer message listener asynchronously, when
          * stopping a route. The option is a boolean type.
          */
         public T asyncStopListener(boolean asyncStopListener) {
-            this.asyncStopListener = asyncStopListener;
+            this.properties.put("asyncStopListener", asyncStopListener);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * The maximum number of connections available to this endpoint. The
          * option is a java.lang.Integer type.
          */
         public T connectionCount(Integer connectionCount) {
-            this.connectionCount = connectionCount;
+            this.properties.put("connectionCount", connectionCount);
             return (T) this;
         }
-
         /**
          * Initializes the connectionFactory for the endpoint, which takes
          * precedence over the component's connectionFactory, if any. The option
          * is a javax.jms.ConnectionFactory type.
          */
         public T connectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
+            this.properties.put("connectionFactory", connectionFactory);
             return (T) this;
         }
-
         /**
          * Initializes the connectionResource for the endpoint, which takes
          * precedence over the component's connectionResource, if any. The
@@ -148,39 +125,35 @@ public class SjmsEndpoint {
          * type.
          */
         public T connectionResource(Object connectionResource) {
-            this.connectionResource = connectionResource;
+            this.properties.put("connectionResource", connectionResource);
             return (T) this;
         }
-
         /**
          * To use a custom DestinationCreationStrategy. The option is a
          * org.apache.camel.component.sjms.jms.DestinationCreationStrategy type.
          */
         public T destinationCreationStrategy(Object destinationCreationStrategy) {
-            this.destinationCreationStrategy = destinationCreationStrategy;
+            this.properties.put("destinationCreationStrategy", destinationCreationStrategy);
             return (T) this;
         }
-
         /**
          * Specifies the JMS Exception Listener that is to be notified of any
          * underlying JMS exceptions. The option is a
          * javax.jms.ExceptionListener type.
          */
         public T exceptionListener(Object exceptionListener) {
-            this.exceptionListener = exceptionListener;
+            this.properties.put("exceptionListener", exceptionListener);
             return (T) this;
         }
-
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
-
         /**
          * Whether to include all JMSXxxx properties when mapping from JMS to
          * Camel Message. Setting this to true will include properties such as
@@ -189,10 +162,9 @@ public class SjmsEndpoint {
          * boolean type.
          */
         public T includeAllJMSXProperties(boolean includeAllJMSXProperties) {
-            this.includeAllJMSXProperties = includeAllJMSXProperties;
+            this.properties.put("includeAllJMSXProperties", includeAllJMSXProperties);
             return (T) this;
         }
-
         /**
          * Pluggable strategy for encoding and decoding JMS keys so they can be
          * compliant with the JMS specification. Camel provides two
@@ -206,10 +178,9 @@ public class SjmsEndpoint {
          * org.apache.camel.component.sjms.jms.JmsKeyFormatStrategy type.
          */
         public T jmsKeyFormatStrategy(Object jmsKeyFormatStrategy) {
-            this.jmsKeyFormatStrategy = jmsKeyFormatStrategy;
+            this.properties.put("jmsKeyFormatStrategy", jmsKeyFormatStrategy);
             return (T) this;
         }
-
         /**
          * Specifies whether Camel should auto map the received JMS message to a
          * suited payload type, such as javax.jms.TextMessage to a String etc.
@@ -217,10 +188,9 @@ public class SjmsEndpoint {
          * option is a boolean type.
          */
         public T mapJmsMessage(boolean mapJmsMessage) {
-            this.mapJmsMessage = mapJmsMessage;
+            this.properties.put("mapJmsMessage", mapJmsMessage);
             return (T) this;
         }
-
         /**
          * To use the given MessageCreatedStrategy which are invoked when Camel
          * creates new instances of javax.jms.Message objects when Camel is
@@ -228,19 +198,17 @@ public class SjmsEndpoint {
          * org.apache.camel.component.sjms.jms.MessageCreatedStrategy type.
          */
         public T messageCreatedStrategy(Object messageCreatedStrategy) {
-            this.messageCreatedStrategy = messageCreatedStrategy;
+            this.properties.put("messageCreatedStrategy", messageCreatedStrategy);
             return (T) this;
         }
-
         /**
          * Sets the commit strategy. The option is a
          * org.apache.camel.component.sjms.TransactionCommitStrategy type.
          */
         public T transactionCommitStrategy(Object transactionCommitStrategy) {
-            this.transactionCommitStrategy = transactionCommitStrategy;
+            this.properties.put("transactionCommitStrategy", transactionCommitStrategy);
             return (T) this;
         }
-
         /**
          * Specifies whether to share JMS session with other SJMS endpoints.
          * Turn this off if your route is accessing to multiple JMS providers.
@@ -248,173 +216,19 @@ public class SjmsEndpoint {
          * component to leverage XA transaction. The option is a boolean type.
          */
         public T sharedJMSSession(boolean sharedJMSSession) {
-            this.sharedJMSSession = sharedJMSSession;
+            this.properties.put("sharedJMSSession", sharedJMSSession);
             return (T) this;
-        }
-
-        public String getDestinationType() {
-            return destinationType;
-        }
-
-        public void setDestinationType(String destinationType) {
-            this.destinationType = destinationType;
-        }
-
-        public String getDestinationName() {
-            return destinationName;
-        }
-
-        public void setDestinationName(String destinationName) {
-            this.destinationName = destinationName;
-        }
-
-        public SessionAcknowledgementType getAcknowledgementMode() {
-            return acknowledgementMode;
-        }
-
-        public void setAcknowledgementMode(
-                SessionAcknowledgementType acknowledgementMode) {
-            this.acknowledgementMode = acknowledgementMode;
-        }
-
-        public Boolean getAsyncStartListener() {
-            return asyncStartListener;
-        }
-
-        public void setAsyncStartListener(Boolean asyncStartListener) {
-            this.asyncStartListener = asyncStartListener;
-        }
-
-        public Boolean getAsyncStopListener() {
-            return asyncStopListener;
-        }
-
-        public void setAsyncStopListener(Boolean asyncStopListener) {
-            this.asyncStopListener = asyncStopListener;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Integer getConnectionCount() {
-            return connectionCount;
-        }
-
-        public void setConnectionCount(Integer connectionCount) {
-            this.connectionCount = connectionCount;
-        }
-
-        public Object getConnectionFactory() {
-            return connectionFactory;
-        }
-
-        public void setConnectionFactory(Object connectionFactory) {
-            this.connectionFactory = connectionFactory;
-        }
-
-        public Object getConnectionResource() {
-            return connectionResource;
-        }
-
-        public void setConnectionResource(Object connectionResource) {
-            this.connectionResource = connectionResource;
-        }
-
-        public Object getDestinationCreationStrategy() {
-            return destinationCreationStrategy;
-        }
-
-        public void setDestinationCreationStrategy(
-                Object destinationCreationStrategy) {
-            this.destinationCreationStrategy = destinationCreationStrategy;
-        }
-
-        public Object getExceptionListener() {
-            return exceptionListener;
-        }
-
-        public void setExceptionListener(Object exceptionListener) {
-            this.exceptionListener = exceptionListener;
-        }
-
-        public HeaderFilterStrategy getHeaderFilterStrategy() {
-            return headerFilterStrategy;
-        }
-
-        public void setHeaderFilterStrategy(
-                HeaderFilterStrategy headerFilterStrategy) {
-            this.headerFilterStrategy = headerFilterStrategy;
-        }
-
-        public Boolean getIncludeAllJMSXProperties() {
-            return includeAllJMSXProperties;
-        }
-
-        public void setIncludeAllJMSXProperties(Boolean includeAllJMSXProperties) {
-            this.includeAllJMSXProperties = includeAllJMSXProperties;
-        }
-
-        public Object getJmsKeyFormatStrategy() {
-            return jmsKeyFormatStrategy;
-        }
-
-        public void setJmsKeyFormatStrategy(Object jmsKeyFormatStrategy) {
-            this.jmsKeyFormatStrategy = jmsKeyFormatStrategy;
-        }
-
-        public Boolean getMapJmsMessage() {
-            return mapJmsMessage;
-        }
-
-        public void setMapJmsMessage(Boolean mapJmsMessage) {
-            this.mapJmsMessage = mapJmsMessage;
-        }
-
-        public Object getMessageCreatedStrategy() {
-            return messageCreatedStrategy;
-        }
-
-        public void setMessageCreatedStrategy(Object messageCreatedStrategy) {
-            this.messageCreatedStrategy = messageCreatedStrategy;
-        }
-
-        public Object getTransactionCommitStrategy() {
-            return transactionCommitStrategy;
-        }
-
-        public void setTransactionCommitStrategy(
-                Object transactionCommitStrategy) {
-            this.transactionCommitStrategy = transactionCommitStrategy;
-        }
-
-        public Boolean getSharedJMSSession() {
-            return sharedJMSSession;
-        }
-
-        public void setSharedJMSSession(Boolean sharedJMSSession) {
-            this.sharedJMSSession = sharedJMSSession;
         }
     }
 
-    public static class SjmsConsumer extends SjmsCommon<SjmsConsumer> {
-        private Boolean bridgeErrorHandler;
-        private Integer consumerCount;
-        private String durableSubscriptionId;
-        private Boolean synchronous;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-        private String messageSelector;
-        private LoggingLevel errorHandlerLoggingLevel;
-        private Boolean errorHandlerLogStackTrace;
-        private Boolean transacted;
-        private Integer transactionBatchCount;
-        private Long transactionBatchTimeout;
-
+    public static class SjmsConsumer
+            extends
+                SjmsCommon<SjmsConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public SjmsConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -425,38 +239,34 @@ public class SjmsEndpoint {
          * ignored. The option is a boolean type.
          */
         public SjmsConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SjmsConsumer) this;
         }
-
         /**
          * Sets the number of consumer listeners used for this endpoint. The
          * option is a int type.
          */
         public SjmsConsumer consumerCount(int consumerCount) {
-            this.consumerCount = consumerCount;
+            this.properties.put("consumerCount", consumerCount);
             return (SjmsConsumer) this;
         }
-
         /**
          * Sets the durable subscription Id required for durable topics. The
          * option is a java.lang.String type.
          */
         public SjmsConsumer durableSubscriptionId(String durableSubscriptionId) {
-            this.durableSubscriptionId = durableSubscriptionId;
+            this.properties.put("durableSubscriptionId", durableSubscriptionId);
             return (SjmsConsumer) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public SjmsConsumer synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (SjmsConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -465,28 +275,25 @@ public class SjmsEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public SjmsConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (SjmsConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SjmsConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (SjmsConsumer) this;
         }
-
         /**
          * Sets the JMS Message selector syntax. The option is a
          * java.lang.String type.
          */
         public SjmsConsumer messageSelector(String messageSelector) {
-            this.messageSelector = messageSelector;
+            this.properties.put("messageSelector", messageSelector);
             return (SjmsConsumer) this;
         }
-
         /**
          * Allows to configure the default errorHandler logging level for
          * logging uncaught exceptions. The option is a
@@ -494,155 +301,52 @@ public class SjmsEndpoint {
          */
         public SjmsConsumer errorHandlerLoggingLevel(
                 LoggingLevel errorHandlerLoggingLevel) {
-            this.errorHandlerLoggingLevel = errorHandlerLoggingLevel;
+            this.properties.put("errorHandlerLoggingLevel", errorHandlerLoggingLevel);
             return (SjmsConsumer) this;
         }
-
         /**
          * Allows to control whether stacktraces should be logged or not, by the
          * default errorHandler. The option is a boolean type.
          */
         public SjmsConsumer errorHandlerLogStackTrace(
                 boolean errorHandlerLogStackTrace) {
-            this.errorHandlerLogStackTrace = errorHandlerLogStackTrace;
+            this.properties.put("errorHandlerLogStackTrace", errorHandlerLogStackTrace);
             return (SjmsConsumer) this;
         }
-
         /**
          * Specifies whether to use transacted mode. The option is a boolean
          * type.
          */
         public SjmsConsumer transacted(boolean transacted) {
-            this.transacted = transacted;
+            this.properties.put("transacted", transacted);
             return (SjmsConsumer) this;
         }
-
         /**
          * If transacted sets the number of messages to process before
          * committing a transaction. The option is a int type.
          */
         public SjmsConsumer transactionBatchCount(int transactionBatchCount) {
-            this.transactionBatchCount = transactionBatchCount;
+            this.properties.put("transactionBatchCount", transactionBatchCount);
             return (SjmsConsumer) this;
         }
-
         /**
          * Sets timeout (in millis) for batch transactions, the value should be
          * 1000 or higher. The option is a long type.
          */
         public SjmsConsumer transactionBatchTimeout(long transactionBatchTimeout) {
-            this.transactionBatchTimeout = transactionBatchTimeout;
+            this.properties.put("transactionBatchTimeout", transactionBatchTimeout);
             return (SjmsConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public Integer getConsumerCount() {
-            return consumerCount;
-        }
-
-        public void setConsumerCount(Integer consumerCount) {
-            this.consumerCount = consumerCount;
-        }
-
-        public String getDurableSubscriptionId() {
-            return durableSubscriptionId;
-        }
-
-        public void setDurableSubscriptionId(String durableSubscriptionId) {
-            this.durableSubscriptionId = durableSubscriptionId;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
-        }
-
-        public String getMessageSelector() {
-            return messageSelector;
-        }
-
-        public void setMessageSelector(String messageSelector) {
-            this.messageSelector = messageSelector;
-        }
-
-        public LoggingLevel getErrorHandlerLoggingLevel() {
-            return errorHandlerLoggingLevel;
-        }
-
-        public void setErrorHandlerLoggingLevel(
-                LoggingLevel errorHandlerLoggingLevel) {
-            this.errorHandlerLoggingLevel = errorHandlerLoggingLevel;
-        }
-
-        public Boolean getErrorHandlerLogStackTrace() {
-            return errorHandlerLogStackTrace;
-        }
-
-        public void setErrorHandlerLogStackTrace(
-                Boolean errorHandlerLogStackTrace) {
-            this.errorHandlerLogStackTrace = errorHandlerLogStackTrace;
-        }
-
-        public Boolean getTransacted() {
-            return transacted;
-        }
-
-        public void setTransacted(Boolean transacted) {
-            this.transacted = transacted;
-        }
-
-        public Integer getTransactionBatchCount() {
-            return transactionBatchCount;
-        }
-
-        public void setTransactionBatchCount(Integer transactionBatchCount) {
-            this.transactionBatchCount = transactionBatchCount;
-        }
-
-        public Long getTransactionBatchTimeout() {
-            return transactionBatchTimeout;
-        }
-
-        public void setTransactionBatchTimeout(Long transactionBatchTimeout) {
-            this.transactionBatchTimeout = transactionBatchTimeout;
         }
     }
 
-    public static class SjmsProducer extends SjmsCommon<SjmsProducer> {
-        private String namedReplyTo;
-        private Boolean persistent;
-        private Integer producerCount;
-        private Long ttl;
-        private Boolean allowNullBody;
-        private Boolean prefillPool;
-        private Long responseTimeOut;
-
+    public static class SjmsProducer
+            extends
+                SjmsCommon<SjmsProducer>
+            implements
+                EndpointDefinition.Producer {
+        public SjmsProducer(String path) {
+            super(path);
+        }
         /**
          * Sets the reply to destination name used for InOut producer endpoints.
          * The type of the reply to destination can be determined by the
@@ -650,119 +354,57 @@ public class SjmsEndpoint {
          * java.lang.String type.
          */
         public SjmsProducer namedReplyTo(String namedReplyTo) {
-            this.namedReplyTo = namedReplyTo;
+            this.properties.put("namedReplyTo", namedReplyTo);
             return (SjmsProducer) this;
         }
-
         /**
          * Flag used to enable/disable message persistence. The option is a
          * boolean type.
          */
         public SjmsProducer persistent(boolean persistent) {
-            this.persistent = persistent;
+            this.properties.put("persistent", persistent);
             return (SjmsProducer) this;
         }
-
         /**
          * Sets the number of producers used for this endpoint. The option is a
          * int type.
          */
         public SjmsProducer producerCount(int producerCount) {
-            this.producerCount = producerCount;
+            this.properties.put("producerCount", producerCount);
             return (SjmsProducer) this;
         }
-
         /**
          * Flag used to adjust the Time To Live value of produced messages. The
          * option is a long type.
          */
         public SjmsProducer ttl(long ttl) {
-            this.ttl = ttl;
+            this.properties.put("ttl", ttl);
             return (SjmsProducer) this;
         }
-
         /**
          * Whether to allow sending messages with no body. If this option is
          * false and the message body is null, then an JMSException is thrown.
          * The option is a boolean type.
          */
         public SjmsProducer allowNullBody(boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
+            this.properties.put("allowNullBody", allowNullBody);
             return (SjmsProducer) this;
         }
-
         /**
          * Whether to prefill the producer connection pool on startup, or create
          * connections lazy when needed. The option is a boolean type.
          */
         public SjmsProducer prefillPool(boolean prefillPool) {
-            this.prefillPool = prefillPool;
+            this.properties.put("prefillPool", prefillPool);
             return (SjmsProducer) this;
         }
-
         /**
          * Sets the amount of time we should wait before timing out a InOut
          * response. The option is a long type.
          */
         public SjmsProducer responseTimeOut(long responseTimeOut) {
-            this.responseTimeOut = responseTimeOut;
+            this.properties.put("responseTimeOut", responseTimeOut);
             return (SjmsProducer) this;
-        }
-
-        public String getNamedReplyTo() {
-            return namedReplyTo;
-        }
-
-        public void setNamedReplyTo(String namedReplyTo) {
-            this.namedReplyTo = namedReplyTo;
-        }
-
-        public Boolean getPersistent() {
-            return persistent;
-        }
-
-        public void setPersistent(Boolean persistent) {
-            this.persistent = persistent;
-        }
-
-        public Integer getProducerCount() {
-            return producerCount;
-        }
-
-        public void setProducerCount(Integer producerCount) {
-            this.producerCount = producerCount;
-        }
-
-        public Long getTtl() {
-            return ttl;
-        }
-
-        public void setTtl(Long ttl) {
-            this.ttl = ttl;
-        }
-
-        public Boolean getAllowNullBody() {
-            return allowNullBody;
-        }
-
-        public void setAllowNullBody(Boolean allowNullBody) {
-            this.allowNullBody = allowNullBody;
-        }
-
-        public Boolean getPrefillPool() {
-            return prefillPool;
-        }
-
-        public void setPrefillPool(Boolean prefillPool) {
-            this.prefillPool = prefillPool;
-        }
-
-        public Long getResponseTimeOut() {
-            return responseTimeOut;
-        }
-
-        public void setResponseTimeOut(Long responseTimeOut) {
-            this.responseTimeOut = responseTimeOut;
         }
     }
 

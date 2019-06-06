@@ -18,6 +18,7 @@ package org.apache.camel.model.endpoint;
 
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.spi.ExceptionHandler;
 
 /**
@@ -29,478 +30,224 @@ import org.apache.camel.spi.ExceptionHandler;
 public class FhirEndpoint {
 
 
-    public static class FhirCommon<T extends EndpointConfiguration>
+    public static class FhirCommon<T extends EndpointDefinition>
             extends
-                EndpointConfiguration<T> {
-        private FhirApiName apiName;
-        private String methodName;
-        private EncodingEnum encoding;
-        private FhirVersionEnum fhirVersion;
-        private String inBody;
-        private Boolean log;
-        private Boolean prettyPrint;
-        private String serverUrl;
-        private Boolean basicPropertyBinding;
-        private Boolean compress;
-        private Integer connectionTimeout;
-        private Boolean deferModelScanning;
-        private Object fhirContext;
-        private Boolean forceConformanceCheck;
-        private String sessionCookie;
-        private Integer socketTimeout;
-        private SummaryEnum summary;
-        private Boolean synchronous;
-        private ServerValidationModeEnum validationMode;
-        private String proxyHost;
-        private String proxyPassword;
-        private Integer proxyPort;
-        private String proxyUser;
-        private String accessToken;
-        private String password;
-        private String username;
-
+                EndpointDefinition<T> {
+        FhirCommon(String path) {
+            super("fhir", path);
+        }
         /**
          * What kind of operation to perform. The option is a
          * org.apache.camel.component.fhir.internal.FhirApiName type.
          */
         public T apiName(FhirApiName apiName) {
-            this.apiName = apiName;
+            this.properties.put("apiName", apiName);
             return (T) this;
         }
-
         /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
         public T methodName(String methodName) {
-            this.methodName = methodName;
+            this.properties.put("methodName", methodName);
             return (T) this;
         }
-
         /**
          * Encoding to use for all request. The option is a java.lang.String
          * type.
          */
         public T encoding(EncodingEnum encoding) {
-            this.encoding = encoding;
+            this.properties.put("encoding", encoding);
             return (T) this;
         }
-
         /**
          * The FHIR Version to use. The option is a java.lang.String type.
          */
         public T fhirVersion(FhirVersionEnum fhirVersion) {
-            this.fhirVersion = fhirVersion;
+            this.properties.put("fhirVersion", fhirVersion);
             return (T) this;
         }
-
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
         public T inBody(String inBody) {
-            this.inBody = inBody;
+            this.properties.put("inBody", inBody);
             return (T) this;
         }
-
         /**
          * Will log every requests and responses. The option is a boolean type.
          */
         public T log(boolean log) {
-            this.log = log;
+            this.properties.put("log", log);
             return (T) this;
         }
-
         /**
          * Pretty print all request. The option is a boolean type.
          */
         public T prettyPrint(boolean prettyPrint) {
-            this.prettyPrint = prettyPrint;
+            this.properties.put("prettyPrint", prettyPrint);
             return (T) this;
         }
-
         /**
          * The FHIR server base URL. The option is a java.lang.String type.
          */
         public T serverUrl(String serverUrl) {
-            this.serverUrl = serverUrl;
+            this.properties.put("serverUrl", serverUrl);
             return (T) this;
         }
-
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
-
         /**
          * Compresses outgoing (POST/PUT) contents to the GZIP format. The
          * option is a boolean type.
          */
         public T compress(boolean compress) {
-            this.compress = compress;
+            this.properties.put("compress", compress);
             return (T) this;
         }
-
         /**
          * How long to try and establish the initial TCP connection (in ms). The
          * option is a java.lang.Integer type.
          */
         public T connectionTimeout(Integer connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
+            this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
-
         /**
          * When this option is set, model classes will not be scanned for
          * children until the child list for the given type is actually
          * accessed. The option is a boolean type.
          */
         public T deferModelScanning(boolean deferModelScanning) {
-            this.deferModelScanning = deferModelScanning;
+            this.properties.put("deferModelScanning", deferModelScanning);
             return (T) this;
         }
-
         /**
          * FhirContext is an expensive object to create. To avoid creating
          * multiple instances, it can be set directly. The option is a
          * ca.uhn.fhir.context.FhirContext type.
          */
         public T fhirContext(Object fhirContext) {
-            this.fhirContext = fhirContext;
+            this.properties.put("fhirContext", fhirContext);
             return (T) this;
         }
-
         /**
          * Force conformance check. The option is a boolean type.
          */
         public T forceConformanceCheck(boolean forceConformanceCheck) {
-            this.forceConformanceCheck = forceConformanceCheck;
+            this.properties.put("forceConformanceCheck", forceConformanceCheck);
             return (T) this;
         }
-
         /**
          * HTTP session cookie to add to every request. The option is a
          * java.lang.String type.
          */
         public T sessionCookie(String sessionCookie) {
-            this.sessionCookie = sessionCookie;
+            this.properties.put("sessionCookie", sessionCookie);
             return (T) this;
         }
-
         /**
          * How long to block for individual read/write operations (in ms). The
          * option is a java.lang.Integer type.
          */
         public T socketTimeout(Integer socketTimeout) {
-            this.socketTimeout = socketTimeout;
+            this.properties.put("socketTimeout", socketTimeout);
             return (T) this;
         }
-
         /**
          * Request that the server modify the response using the _summary param.
          * The option is a java.lang.String type.
          */
         public T summary(SummaryEnum summary) {
-            this.summary = summary;
+            this.properties.put("summary", summary);
             return (T) this;
         }
-
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
-            this.synchronous = synchronous;
+            this.properties.put("synchronous", synchronous);
             return (T) this;
         }
-
         /**
          * When should Camel validate the FHIR Server's conformance statement.
          * The option is a java.lang.String type.
          */
         public T validationMode(ServerValidationModeEnum validationMode) {
-            this.validationMode = validationMode;
+            this.properties.put("validationMode", validationMode);
             return (T) this;
         }
-
         /**
          * The proxy host. The option is a java.lang.String type.
          */
         public T proxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
+            this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
-
         /**
          * The proxy password. The option is a java.lang.String type.
          */
         public T proxyPassword(String proxyPassword) {
-            this.proxyPassword = proxyPassword;
+            this.properties.put("proxyPassword", proxyPassword);
             return (T) this;
         }
-
         /**
          * The proxy port. The option is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
+            this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
-
         /**
          * The proxy username. The option is a java.lang.String type.
          */
         public T proxyUser(String proxyUser) {
-            this.proxyUser = proxyUser;
+            this.properties.put("proxyUser", proxyUser);
             return (T) this;
         }
-
         /**
          * OAuth access token. The option is a java.lang.String type.
          */
         public T accessToken(String accessToken) {
-            this.accessToken = accessToken;
+            this.properties.put("accessToken", accessToken);
             return (T) this;
         }
-
         /**
          * Username to use for basic authentication. The option is a
          * java.lang.String type.
          */
         public T password(String password) {
-            this.password = password;
+            this.properties.put("password", password);
             return (T) this;
         }
-
         /**
          * Username to use for basic authentication. The option is a
          * java.lang.String type.
          */
         public T username(String username) {
-            this.username = username;
+            this.properties.put("username", username);
             return (T) this;
-        }
-
-        public FhirApiName getApiName() {
-            return apiName;
-        }
-
-        public void setApiName(FhirApiName apiName) {
-            this.apiName = apiName;
-        }
-
-        public String getMethodName() {
-            return methodName;
-        }
-
-        public void setMethodName(String methodName) {
-            this.methodName = methodName;
-        }
-
-        public EncodingEnum getEncoding() {
-            return encoding;
-        }
-
-        public void setEncoding(EncodingEnum encoding) {
-            this.encoding = encoding;
-        }
-
-        public FhirVersionEnum getFhirVersion() {
-            return fhirVersion;
-        }
-
-        public void setFhirVersion(FhirVersionEnum fhirVersion) {
-            this.fhirVersion = fhirVersion;
-        }
-
-        public String getInBody() {
-            return inBody;
-        }
-
-        public void setInBody(String inBody) {
-            this.inBody = inBody;
-        }
-
-        public Boolean getLog() {
-            return log;
-        }
-
-        public void setLog(Boolean log) {
-            this.log = log;
-        }
-
-        public Boolean getPrettyPrint() {
-            return prettyPrint;
-        }
-
-        public void setPrettyPrint(Boolean prettyPrint) {
-            this.prettyPrint = prettyPrint;
-        }
-
-        public String getServerUrl() {
-            return serverUrl;
-        }
-
-        public void setServerUrl(String serverUrl) {
-            this.serverUrl = serverUrl;
-        }
-
-        public Boolean getBasicPropertyBinding() {
-            return basicPropertyBinding;
-        }
-
-        public void setBasicPropertyBinding(Boolean basicPropertyBinding) {
-            this.basicPropertyBinding = basicPropertyBinding;
-        }
-
-        public Boolean getCompress() {
-            return compress;
-        }
-
-        public void setCompress(Boolean compress) {
-            this.compress = compress;
-        }
-
-        public Integer getConnectionTimeout() {
-            return connectionTimeout;
-        }
-
-        public void setConnectionTimeout(Integer connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
-        }
-
-        public Boolean getDeferModelScanning() {
-            return deferModelScanning;
-        }
-
-        public void setDeferModelScanning(Boolean deferModelScanning) {
-            this.deferModelScanning = deferModelScanning;
-        }
-
-        public Object getFhirContext() {
-            return fhirContext;
-        }
-
-        public void setFhirContext(Object fhirContext) {
-            this.fhirContext = fhirContext;
-        }
-
-        public Boolean getForceConformanceCheck() {
-            return forceConformanceCheck;
-        }
-
-        public void setForceConformanceCheck(Boolean forceConformanceCheck) {
-            this.forceConformanceCheck = forceConformanceCheck;
-        }
-
-        public String getSessionCookie() {
-            return sessionCookie;
-        }
-
-        public void setSessionCookie(String sessionCookie) {
-            this.sessionCookie = sessionCookie;
-        }
-
-        public Integer getSocketTimeout() {
-            return socketTimeout;
-        }
-
-        public void setSocketTimeout(Integer socketTimeout) {
-            this.socketTimeout = socketTimeout;
-        }
-
-        public SummaryEnum getSummary() {
-            return summary;
-        }
-
-        public void setSummary(SummaryEnum summary) {
-            this.summary = summary;
-        }
-
-        public Boolean getSynchronous() {
-            return synchronous;
-        }
-
-        public void setSynchronous(Boolean synchronous) {
-            this.synchronous = synchronous;
-        }
-
-        public ServerValidationModeEnum getValidationMode() {
-            return validationMode;
-        }
-
-        public void setValidationMode(ServerValidationModeEnum validationMode) {
-            this.validationMode = validationMode;
-        }
-
-        public String getProxyHost() {
-            return proxyHost;
-        }
-
-        public void setProxyHost(String proxyHost) {
-            this.proxyHost = proxyHost;
-        }
-
-        public String getProxyPassword() {
-            return proxyPassword;
-        }
-
-        public void setProxyPassword(String proxyPassword) {
-            this.proxyPassword = proxyPassword;
-        }
-
-        public Integer getProxyPort() {
-            return proxyPort;
-        }
-
-        public void setProxyPort(Integer proxyPort) {
-            this.proxyPort = proxyPort;
-        }
-
-        public String getProxyUser() {
-            return proxyUser;
-        }
-
-        public void setProxyUser(String proxyUser) {
-            this.proxyUser = proxyUser;
-        }
-
-        public String getAccessToken() {
-            return accessToken;
-        }
-
-        public void setAccessToken(String accessToken) {
-            this.accessToken = accessToken;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
         }
     }
 
-    public static class FhirConsumer extends FhirCommon<FhirConsumer> {
-        private Boolean bridgeErrorHandler;
-        private ExceptionHandler exceptionHandler;
-        private ExchangePattern exchangePattern;
-
+    public static class FhirConsumer
+            extends
+                FhirCommon<FhirConsumer>
+            implements
+                EndpointDefinition.Consumer {
+        public FhirConsumer(String path) {
+            super(path);
+        }
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -511,10 +258,9 @@ public class FhirEndpoint {
          * ignored. The option is a boolean type.
          */
         public FhirConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (FhirConsumer) this;
         }
-
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -523,45 +269,27 @@ public class FhirEndpoint {
          * org.apache.camel.spi.ExceptionHandler type.
          */
         public FhirConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
+            this.properties.put("exceptionHandler", exceptionHandler);
             return (FhirConsumer) this;
         }
-
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public FhirConsumer exchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
+            this.properties.put("exchangePattern", exchangePattern);
             return (FhirConsumer) this;
-        }
-
-        public Boolean getBridgeErrorHandler() {
-            return bridgeErrorHandler;
-        }
-
-        public void setBridgeErrorHandler(Boolean bridgeErrorHandler) {
-            this.bridgeErrorHandler = bridgeErrorHandler;
-        }
-
-        public ExceptionHandler getExceptionHandler() {
-            return exceptionHandler;
-        }
-
-        public void setExceptionHandler(ExceptionHandler exceptionHandler) {
-            this.exceptionHandler = exceptionHandler;
-        }
-
-        public ExchangePattern getExchangePattern() {
-            return exchangePattern;
-        }
-
-        public void setExchangePattern(ExchangePattern exchangePattern) {
-            this.exchangePattern = exchangePattern;
         }
     }
 
-    public static class FhirProducer extends FhirCommon<FhirProducer> {
+    public static class FhirProducer
+            extends
+                FhirCommon<FhirProducer>
+            implements
+                EndpointDefinition.Producer {
+        public FhirProducer(String path) {
+            super(path);
+        }
     }
 
     public static enum FhirApiName {
