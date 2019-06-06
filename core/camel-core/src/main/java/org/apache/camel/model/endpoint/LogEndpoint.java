@@ -27,82 +27,173 @@ import javax.annotation.Generated;
 public class LogEndpoint {
 
 
-    public static class LogCommon extends EndpointConfiguration {
+    public static class LogCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String loggerName;
+        private Boolean groupActiveOnly;
+        private Long groupDelay;
+        private Long groupInterval;
+        private Integer groupSize;
+        private String level;
+        private Boolean logMask;
+        private String marker;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Integer maxChars;
+        private Boolean multiline;
+        private Boolean showAll;
+        private Boolean showBody;
+        private Boolean showBodyType;
+        private Boolean showCaughtException;
+        private Boolean showException;
+        private Boolean showExchangeId;
+        private Boolean showExchangePattern;
+        private Boolean showFiles;
+        private Boolean showFuture;
+        private Boolean showHeaders;
+        private Boolean showOut;
+        private Boolean showProperties;
+        private Boolean showStackTrace;
+        private Boolean showStreams;
+        private Boolean skipBodyLineSeparator;
+        private OutputStyle style;
+
         /**
          * The logger name to use. The option is a java.lang.String type.
          */
-        private String loggerName;
+        public T loggerName(String loggerName) {
+            this.loggerName = loggerName;
+            return (T) this;
+        }
+
         /**
          * If true, will hide stats when no new messages have been received for
          * a time interval, if false, show stats regardless of message traffic.
          * The option is a java.lang.Boolean type.
          */
-        private Boolean groupActiveOnly;
+        public T groupActiveOnly(Boolean groupActiveOnly) {
+            this.groupActiveOnly = groupActiveOnly;
+            return (T) this;
+        }
+
         /**
          * Set the initial delay for stats (in millis). The option is a
          * java.lang.Long type.
          */
-        private Long groupDelay;
+        public T groupDelay(Long groupDelay) {
+            this.groupDelay = groupDelay;
+            return (T) this;
+        }
+
         /**
          * If specified will group message stats by this time interval (in
          * millis). The option is a java.lang.Long type.
          */
-        private Long groupInterval;
+        public T groupInterval(Long groupInterval) {
+            this.groupInterval = groupInterval;
+            return (T) this;
+        }
+
         /**
          * An integer that specifies a group size for throughput logging. The
          * option is a java.lang.Integer type.
          */
-        private Integer groupSize;
+        public T groupSize(Integer groupSize) {
+            this.groupSize = groupSize;
+            return (T) this;
+        }
+
         /**
          * Logging level to use. The default value is INFO. The option is a
          * java.lang.String type.
          */
-        private String level;
+        public T level(String level) {
+            this.level = level;
+            return (T) this;
+        }
+
         /**
          * If true, mask sensitive information like password or passphrase in
          * the log. The option is a java.lang.Boolean type.
          */
-        private Boolean logMask;
+        public T logMask(Boolean logMask) {
+            this.logMask = logMask;
+            return (T) this;
+        }
+
         /**
          * An optional Marker name to use. The option is a java.lang.String
          * type.
          */
-        private String marker;
+        public T marker(String marker) {
+            this.marker = marker;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Limits the number of characters logged per line. The option is a int
          * type.
          */
-        private Integer maxChars;
+        public T maxChars(int maxChars) {
+            this.maxChars = maxChars;
+            return (T) this;
+        }
+
         /**
          * If enabled then each information is outputted on a newline. The
          * option is a boolean type.
          */
-        private Boolean multiline;
+        public T multiline(boolean multiline) {
+            this.multiline = multiline;
+            return (T) this;
+        }
+
         /**
          * Quick option for turning all options on. (multiline, maxChars has to
          * be manually set if to be used). The option is a boolean type.
          */
-        private Boolean showAll;
+        public T showAll(boolean showAll) {
+            this.showAll = showAll;
+            return (T) this;
+        }
+
         /**
          * Show the message body. The option is a boolean type.
          */
-        private Boolean showBody;
+        public T showBody(boolean showBody) {
+            this.showBody = showBody;
+            return (T) this;
+        }
+
         /**
          * Show the body Java type. The option is a boolean type.
          */
-        private Boolean showBodyType;
+        public T showBodyType(boolean showBodyType) {
+            this.showBodyType = showBodyType;
+            return (T) this;
+        }
+
         /**
          * f the exchange has a caught exception, show the exception message (no
          * stack trace).A caught exception is stored as a property on the
@@ -110,49 +201,89 @@ public class LogEndpoint {
          * and for instance a doCatch can catch exceptions. The option is a
          * boolean type.
          */
-        private Boolean showCaughtException;
+        public T showCaughtException(boolean showCaughtException) {
+            this.showCaughtException = showCaughtException;
+            return (T) this;
+        }
+
         /**
          * If the exchange has an exception, show the exception message (no
          * stacktrace). The option is a boolean type.
          */
-        private Boolean showException;
+        public T showException(boolean showException) {
+            this.showException = showException;
+            return (T) this;
+        }
+
         /**
          * Show the unique exchange ID. The option is a boolean type.
          */
-        private Boolean showExchangeId;
+        public T showExchangeId(boolean showExchangeId) {
+            this.showExchangeId = showExchangeId;
+            return (T) this;
+        }
+
         /**
          * Shows the Message Exchange Pattern (or MEP for short). The option is
          * a boolean type.
          */
-        private Boolean showExchangePattern;
+        public T showExchangePattern(boolean showExchangePattern) {
+            this.showExchangePattern = showExchangePattern;
+            return (T) this;
+        }
+
         /**
          * If enabled Camel will output files. The option is a boolean type.
          */
-        private Boolean showFiles;
+        public T showFiles(boolean showFiles) {
+            this.showFiles = showFiles;
+            return (T) this;
+        }
+
         /**
          * If enabled Camel will on Future objects wait for it to complete to
          * obtain the payload to be logged. The option is a boolean type.
          */
-        private Boolean showFuture;
+        public T showFuture(boolean showFuture) {
+            this.showFuture = showFuture;
+            return (T) this;
+        }
+
         /**
          * Show the message headers. The option is a boolean type.
          */
-        private Boolean showHeaders;
+        public T showHeaders(boolean showHeaders) {
+            this.showHeaders = showHeaders;
+            return (T) this;
+        }
+
         /**
          * If the exchange has an out message, show the out message. The option
          * is a boolean type.
          */
-        private Boolean showOut;
+        public T showOut(boolean showOut) {
+            this.showOut = showOut;
+            return (T) this;
+        }
+
         /**
          * Show the exchange properties. The option is a boolean type.
          */
-        private Boolean showProperties;
+        public T showProperties(boolean showProperties) {
+            this.showProperties = showProperties;
+            return (T) this;
+        }
+
         /**
          * Show the stack trace, if an exchange has an exception. Only effective
          * if one of showAll, showException or showCaughtException are enabled.
          * The option is a boolean type.
          */
-        private Boolean showStackTrace;
+        public T showStackTrace(boolean showStackTrace) {
+            this.showStackTrace = showStackTrace;
+            return (T) this;
+        }
+
         /**
          * Whether Camel should show stream bodies or not (eg such as
          * java.io.InputStream). Beware if you enable this option then you may
@@ -160,19 +291,30 @@ public class LogEndpoint {
          * already been read by this logger. To remedy this you will have to use
          * Stream Caching. The option is a boolean type.
          */
-        private Boolean showStreams;
+        public T showStreams(boolean showStreams) {
+            this.showStreams = showStreams;
+            return (T) this;
+        }
+
         /**
          * Whether to skip line separators when logging the message body.This
          * allows to log the message body in one line, setting this option to
          * false will preserve any line separators from the body, which then
          * will log the body as is. The option is a boolean type.
          */
-        private Boolean skipBodyLineSeparator;
+        public T skipBodyLineSeparator(boolean skipBodyLineSeparator) {
+            this.skipBodyLineSeparator = skipBodyLineSeparator;
+            return (T) this;
+        }
+
         /**
          * Sets the outputs style to use. The option is a
          * org.apache.camel.support.processor.DefaultExchangeFormatter.OutputStyle type.
          */
-        private OutputStyle style;
+        public T style(OutputStyle style) {
+            this.style = style;
+            return (T) this;
+        }
 
         public String getLoggerName() {
             return loggerName;
@@ -399,10 +541,10 @@ public class LogEndpoint {
         }
     }
 
-    public static class LogConsumer extends LogCommon {
+    public static class LogConsumer extends LogCommon<LogConsumer> {
     }
 
-    public static class LogProducer extends LogCommon {
+    public static class LogProducer extends LogCommon<LogProducer> {
     }
 
     public static enum OutputStyle {

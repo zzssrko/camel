@@ -31,46 +31,91 @@ import javax.annotation.Generated;
 public class CryptoCmsEndpoint {
 
 
-    public static class CryptoCmsCommon extends EndpointConfiguration {
+    public static class CryptoCmsCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private CryptoOperation cryptoOperation;
+        private String name;
+        private KeyStore keyStore;
+        private Object keyStoreParameters;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Character[] password;
+        private Boolean fromBase64;
+        private String contentEncryptionAlgorithm;
+        private Object originatorInformationProvider;
+        private List<Object> recipient;
+        private Integer secretKeyLength;
+        private Object unprotectedAttributesGeneratorProvider;
+        private Boolean toBase64;
+        private Boolean includeContent;
+        private List<Object> signer;
+        private Boolean signedDataHeaderBase64;
+        private Boolean verifySignaturesOfAllSigners;
+
         /**
          * Set the Crypto operation from that supplied after the crypto scheme
          * in the endpoint uri e.g. crypto-cms:sign sets sign as the operation.
          * Possible values: sign, verify, encrypt, or decrypt. The option is a
          * org.apache.camel.component.crypto.cms.CryptoOperation type.
          */
-        private CryptoOperation cryptoOperation;
+        public T cryptoOperation(CryptoOperation cryptoOperation) {
+            this.cryptoOperation = cryptoOperation;
+            return (T) this;
+        }
+
         /**
          * The name part in the URI can be chosen by the user to distinguish
          * between different signer/verifier/encryptor/decryptor endpoints
          * within the camel context. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * Keystore which contains signer private keys, verifier public keys,
          * encryptor public keys, decryptor private keys depending on the
          * operation. Use either this parameter or the parameter
          * 'keyStoreParameters'. The option is a java.security.KeyStore type.
          */
-        private KeyStore keyStore;
+        public T keyStore(KeyStore keyStore) {
+            this.keyStore = keyStore;
+            return (T) this;
+        }
+
         /**
          * Keystore containing signer private keys, verifier public keys,
          * encryptor public keys, decryptor private keys depending on the
          * operation. Use either this parameter or the parameter 'keystore'. The
          * option is a org.apache.camel.support.jsse.KeyStoreParameters type.
          */
-        private Object keyStoreParameters;
+        public T keyStoreParameters(Object keyStoreParameters) {
+            this.keyStoreParameters = keyStoreParameters;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Sets the password of the private keys. It is assumed that all private
          * keys in the keystore have the same password. If not set then it is
@@ -78,34 +123,55 @@ public class CryptoCmsEndpoint {
          * keystore password given in the KeyStoreParameters. The option is a
          * char[] type.
          */
-        private Character[] password;
+        public T password(Character[] password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * If true then the CMS message is base 64 encoded and must be decoded
          * during the processing. Default value is false. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean fromBase64;
+        public T fromBase64(Boolean fromBase64) {
+            this.fromBase64 = fromBase64;
+            return (T) this;
+        }
+
         /**
          * Encryption algorithm, for example DESede/CBC/PKCS5Padding. Further
          * possible values: DESede/CBC/PKCS5Padding, AES/CBC/PKCS5Padding,
          * Camellia/CBC/PKCS5Padding, CAST5/CBC/PKCS5Padding. The option is a
          * java.lang.String type.
          */
-        private String contentEncryptionAlgorithm;
+        public T contentEncryptionAlgorithm(String contentEncryptionAlgorithm) {
+            this.contentEncryptionAlgorithm = contentEncryptionAlgorithm;
+            return (T) this;
+        }
+
         /**
          * Provider for the originator info. See
          * https://tools.ietf.org/html/rfc5652#section-6.1. The default value is
          * null. The option is a
          * org.apache.camel.component.crypto.cms.common.OriginatorInformationProvider type.
          */
-        private Object originatorInformationProvider;
+        public T originatorInformationProvider(
+                Object originatorInformationProvider) {
+            this.originatorInformationProvider = originatorInformationProvider;
+            return (T) this;
+        }
+
         /**
          * Recipient Info: reference to a bean which implements the interface
          * org.apache.camel.component.crypto.cms.api.TransRecipientInfo. The
          * option is a
          * java.util.List<org.apache.camel.component.crypto.cms.crypt.RecipientInfo> type.
          */
-        private List<Object> recipient;
+        public T recipient(List<Object> recipient) {
+            this.recipient = recipient;
+            return (T) this;
+        }
+
         /**
          * Key length for the secret symmetric key used for the content
          * encryption. Only used if the specified content-encryption algorithm
@@ -117,7 +183,11 @@ public class CryptoCmsEndpoint {
          * Camellia/CBC/PKCS5Padding also the key lengths 192 and 256 are
          * possible. The option is a int type.
          */
-        private Integer secretKeyLength;
+        public T secretKeyLength(int secretKeyLength) {
+            this.secretKeyLength = secretKeyLength;
+            return (T) this;
+        }
+
         /**
          * Provider of the generator for the unprotected attributes. The default
          * value is null which means no unprotected attribute is added to the
@@ -125,33 +195,54 @@ public class CryptoCmsEndpoint {
          * https://tools.ietf.org/html/rfc5652#section-6.1. The option is a
          * org.apache.camel.component.crypto.cms.common.AttributesGeneratorProvider type.
          */
-        private Object unprotectedAttributesGeneratorProvider;
+        public T unprotectedAttributesGeneratorProvider(
+                Object unprotectedAttributesGeneratorProvider) {
+            this.unprotectedAttributesGeneratorProvider = unprotectedAttributesGeneratorProvider;
+            return (T) this;
+        }
+
         /**
          * Indicates whether the Signed Data or Enveloped Data instance shall be
          * base 64 encoded. Default value is false. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean toBase64;
+        public T toBase64(Boolean toBase64) {
+            this.toBase64 = toBase64;
+            return (T) this;
+        }
+
         /**
          * Indicates whether the signed content should be included into the
          * Signed Data instance. If false then a detached Signed Data instance
          * is created in the header CamelCryptoCmsSignedData. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean includeContent;
+        public T includeContent(Boolean includeContent) {
+            this.includeContent = includeContent;
+            return (T) this;
+        }
+
         /**
          * Signer information: reference to bean(s) which implements
          * org.apache.camel.component.crypto.cms.api.SignerInfo. Multiple values
          * can be separated by comma. The option is a java.lang.String type.
          */
-        private List<Object> signer;
+        public T signer(List<Object> signer) {
+            this.signer = signer;
+            return (T) this;
+        }
+
         /**
          * Indicates whether the value in the header CamelCryptoCmsSignedData is
          * base64 encoded. Default value is false. Only relevant for detached
          * signatures. In the detached signature case, the header contains the
          * Signed Data object. The option is a java.lang.Boolean type.
          */
-        private Boolean signedDataHeaderBase64;
+        public T signedDataHeaderBase64(Boolean signedDataHeaderBase64) {
+            this.signedDataHeaderBase64 = signedDataHeaderBase64;
+            return (T) this;
+        }
+
         /**
          * If true then the signatures of all signers contained in the Signed
          * Data object are verified. If false then only one signature whose
@@ -159,7 +250,11 @@ public class CryptoCmsEndpoint {
          * verified. Default value is true. The option is a java.lang.Boolean
          * type.
          */
-        private Boolean verifySignaturesOfAllSigners;
+        public T verifySignaturesOfAllSigners(
+                Boolean verifySignaturesOfAllSigners) {
+            this.verifySignaturesOfAllSigners = verifySignaturesOfAllSigners;
+            return (T) this;
+        }
 
         public CryptoOperation getCryptoOperation() {
             return cryptoOperation;
@@ -310,10 +405,14 @@ public class CryptoCmsEndpoint {
         }
     }
 
-    public static class CryptoCmsConsumer extends CryptoCmsCommon {
+    public static class CryptoCmsConsumer
+            extends
+                CryptoCmsCommon<CryptoCmsConsumer> {
     }
 
-    public static class CryptoCmsProducer extends CryptoCmsCommon {
+    public static class CryptoCmsProducer
+            extends
+                CryptoCmsCommon<CryptoCmsProducer> {
     }
 
     public static enum CryptoOperation {

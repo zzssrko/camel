@@ -30,29 +30,51 @@ import org.apache.camel.spi.ExceptionHandler;
 public class MasterEndpoint {
 
 
-    public static class MasterCommon extends EndpointConfiguration {
+    public static class MasterCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String groupName;
+        private String consumerEndpointUri;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The name of the cluster group to use. The option is a
          * java.lang.String type.
          */
-        private String groupName;
+        public T groupName(String groupName) {
+            this.groupName = groupName;
+            return (T) this;
+        }
+
         /**
          * The consumer endpoint to use in master/slave mode. The option is a
          * java.lang.String type.
          */
-        private String consumerEndpointUri;
+        public T consumerEndpointUri(String consumerEndpointUri) {
+            this.consumerEndpointUri = consumerEndpointUri;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getGroupName() {
             return groupName;
@@ -87,7 +109,11 @@ public class MasterEndpoint {
         }
     }
 
-    public static class MasterConsumer extends MasterCommon {
+    public static class MasterConsumer extends MasterCommon<MasterConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -97,7 +123,11 @@ public class MasterEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public MasterConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (MasterConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -105,12 +135,19 @@ public class MasterEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public MasterConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (MasterConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public MasterConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (MasterConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -137,6 +174,6 @@ public class MasterEndpoint {
         }
     }
 
-    public static class MasterProducer extends MasterCommon {
+    public static class MasterProducer extends MasterCommon<MasterProducer> {
     }
 }

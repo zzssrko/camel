@@ -32,63 +32,120 @@ import org.apache.camel.spi.ExceptionHandler;
 public class EhcacheEndpoint {
 
 
-    public static class EhcacheCommon extends EndpointConfiguration {
+    public static class EhcacheCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String cacheName;
+        private Object cacheManager;
+        private Object cacheManagerConfiguration;
+        private String configurationUri;
+        private Boolean createCacheIfNotExist;
+        private Boolean basicPropertyBinding;
+        private Object configuration;
+        private Map<String, Object> configurations;
+        private Class<Object> keyType;
+        private Boolean synchronous;
+        private Class<Object> valueType;
+
         /**
          * the cache name. The option is a java.lang.String type.
          */
-        private String cacheName;
+        public T cacheName(String cacheName) {
+            this.cacheName = cacheName;
+            return (T) this;
+        }
+
         /**
          * The cache manager. The option is a org.ehcache.CacheManager type.
          */
-        private Object cacheManager;
+        public T cacheManager(Object cacheManager) {
+            this.cacheManager = cacheManager;
+            return (T) this;
+        }
+
         /**
          * The cache manager configuration. The option is a
          * org.ehcache.config.Configuration type.
          */
-        private Object cacheManagerConfiguration;
+        public T cacheManagerConfiguration(Object cacheManagerConfiguration) {
+            this.cacheManagerConfiguration = cacheManagerConfiguration;
+            return (T) this;
+        }
+
         /**
          * URI pointing to the Ehcache XML configuration file's location. The
          * option is a java.lang.String type.
          */
-        private String configurationUri;
+        public T configurationUri(String configurationUri) {
+            this.configurationUri = configurationUri;
+            return (T) this;
+        }
+
         /**
          * Configure if a cache need to be created if it does exist or can't be
          * pre-configured. The option is a boolean type.
          */
-        private Boolean createCacheIfNotExist;
+        public T createCacheIfNotExist(boolean createCacheIfNotExist) {
+            this.createCacheIfNotExist = createCacheIfNotExist;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * The default cache configuration to be used to create caches. The
          * option is a org.ehcache.config.CacheConfiguration<?,?> type.
          */
-        private Object configuration;
+        public T configuration(Object configuration) {
+            this.configuration = configuration;
+            return (T) this;
+        }
+
         /**
          * A map of cache configuration to be used to create caches. The option
          * is a
          * java.util.Map<java.lang.String,org.ehcache.config.CacheConfiguration<?,?>> type.
          */
-        private Map<String, Object> configurations;
+        public T configurations(Map<String, Object> configurations) {
+            this.configurations = configurations;
+            return (T) this;
+        }
+
         /**
          * The cache key type, default java.lang.Object. The option is a
          * java.lang.String type.
          */
-        private Class<Object> keyType;
+        public T keyType(Class<Object> keyType) {
+            this.keyType = keyType;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The cache value type, default java.lang.Object. The option is a
          * java.lang.String type.
          */
-        private Class<Object> valueType;
+        public T valueType(Class<Object> valueType) {
+            this.valueType = valueType;
+            return (T) this;
+        }
 
         public String getCacheName() {
             return cacheName;
@@ -180,7 +237,16 @@ public class EhcacheEndpoint {
         }
     }
 
-    public static class EhcacheConsumer extends EhcacheCommon {
+    public static class EhcacheConsumer
+            extends
+                EhcacheCommon<EhcacheConsumer> {
+        private Boolean bridgeErrorHandler;
+        private EventFiring eventFiring;
+        private EventOrdering eventOrdering;
+        private Set<EventType> eventTypes;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -190,22 +256,38 @@ public class EhcacheEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public EhcacheConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (EhcacheConsumer) this;
+        }
+
         /**
          * Set the delivery mode (synchronous, asynchronous). The option is a
          * org.ehcache.event.EventFiring type.
          */
-        private EventFiring eventFiring;
+        public EhcacheConsumer eventFiring(EventFiring eventFiring) {
+            this.eventFiring = eventFiring;
+            return (EhcacheConsumer) this;
+        }
+
         /**
          * Set the delivery mode (ordered, unordered). The option is a
          * org.ehcache.event.EventOrdering type.
          */
-        private EventOrdering eventOrdering;
+        public EhcacheConsumer eventOrdering(EventOrdering eventOrdering) {
+            this.eventOrdering = eventOrdering;
+            return (EhcacheConsumer) this;
+        }
+
         /**
          * Set the type of events to listen for. The option is a
          * java.util.Set<org.ehcache.event.EventType> type.
          */
-        private Set<EventType> eventTypes;
+        public EhcacheConsumer eventTypes(Set<EventType> eventTypes) {
+            this.eventTypes = eventTypes;
+            return (EhcacheConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -213,12 +295,20 @@ public class EhcacheEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public EhcacheConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (EhcacheConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public EhcacheConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (EhcacheConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -269,19 +359,31 @@ public class EhcacheEndpoint {
         }
     }
 
-    public static class EhcacheProducer extends EhcacheCommon {
+    public static class EhcacheProducer
+            extends
+                EhcacheCommon<EhcacheProducer> {
+        private String action;
+        private Object key;
+
         /**
          * To configure the default cache action. If an action is set in the
          * message header, then the operation from the header takes precedence.
          * The option is a java.lang.String type.
          */
-        private String action;
+        public EhcacheProducer action(String action) {
+            this.action = action;
+            return (EhcacheProducer) this;
+        }
+
         /**
          * To configure the default action key. If a key is set in the message
          * header, then the key from the header takes precedence. The option is
          * a java.lang.Object type.
          */
-        private Object key;
+        public EhcacheProducer key(Object key) {
+            this.key = key;
+            return (EhcacheProducer) this;
+        }
 
         public String getAction() {
             return action;

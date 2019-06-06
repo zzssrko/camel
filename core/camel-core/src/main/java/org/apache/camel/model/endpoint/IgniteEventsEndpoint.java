@@ -31,33 +31,62 @@ import org.apache.camel.spi.ExceptionHandler;
 public class IgniteEventsEndpoint {
 
 
-    public static class IgniteEventsCommon extends EndpointConfiguration {
+    public static class IgniteEventsCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String endpointId;
+        private Boolean propagateIncomingBodyIfNoReturnValue;
+        private Boolean treatCollectionsAsCacheObjects;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The endpoint ID (not used). The option is a java.lang.String type.
          */
-        private String endpointId;
+        public T endpointId(String endpointId) {
+            this.endpointId = endpointId;
+            return (T) this;
+        }
+
         /**
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option is a boolean type.
          */
-        private Boolean propagateIncomingBodyIfNoReturnValue;
+        public T propagateIncomingBodyIfNoReturnValue(
+                boolean propagateIncomingBodyIfNoReturnValue) {
+            this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
+            return (T) this;
+        }
+
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
-        private Boolean treatCollectionsAsCacheObjects;
+        public T treatCollectionsAsCacheObjects(
+                boolean treatCollectionsAsCacheObjects) {
+            this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getEndpointId() {
             return endpointId;
@@ -102,7 +131,15 @@ public class IgniteEventsEndpoint {
         }
     }
 
-    public static class IgniteEventsConsumer extends IgniteEventsCommon {
+    public static class IgniteEventsConsumer
+            extends
+                IgniteEventsCommon<IgniteEventsConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Object clusterGroupExpression;
+        private Set<Integer> events;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -112,18 +149,32 @@ public class IgniteEventsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public IgniteEventsConsumer bridgeErrorHandler(
+                boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (IgniteEventsConsumer) this;
+        }
+
         /**
          * The cluster group expression. The option is a
          * org.apache.camel.component.ignite.ClusterGroupExpression type.
          */
-        private Object clusterGroupExpression;
+        public IgniteEventsConsumer clusterGroupExpression(
+                Object clusterGroupExpression) {
+            this.clusterGroupExpression = clusterGroupExpression;
+            return (IgniteEventsConsumer) this;
+        }
+
         /**
          * The event IDs to subscribe to as a Set directly where the IDs are the
          * different constants in org.apache.ignite.events.EventType. The option
          * is a Set<Integer> or String type.
          */
-        private Set<Integer> events;
+        public IgniteEventsConsumer events(Set<Integer> events) {
+            this.events = events;
+            return (IgniteEventsConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -131,12 +182,21 @@ public class IgniteEventsEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public IgniteEventsConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (IgniteEventsConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public IgniteEventsConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (IgniteEventsConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -179,6 +239,8 @@ public class IgniteEventsEndpoint {
         }
     }
 
-    public static class IgniteEventsProducer extends IgniteEventsCommon {
+    public static class IgniteEventsProducer
+            extends
+                IgniteEventsCommon<IgniteEventsProducer> {
     }
 }

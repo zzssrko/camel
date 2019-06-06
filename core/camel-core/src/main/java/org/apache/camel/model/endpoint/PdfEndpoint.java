@@ -28,41 +28,87 @@ import javax.annotation.Generated;
 public class PdfEndpoint {
 
 
-    public static class PdfCommon extends EndpointConfiguration {
+    public static class PdfCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private PdfOperation operation;
+        private Object font;
+        private Float fontSize;
+        private Integer marginBottom;
+        private Integer marginLeft;
+        private Integer marginRight;
+        private Integer marginTop;
+        private Object pageSize;
+        private TextProcessingFactory textProcessingFactory;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Operation type. The option is a
          * org.apache.camel.component.pdf.PdfOperation type.
          */
-        private PdfOperation operation;
+        public T operation(PdfOperation operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * Font. The option is a org.apache.pdfbox.pdmodel.font.PDFont type.
          */
-        private Object font;
+        public T font(Object font) {
+            this.font = font;
+            return (T) this;
+        }
+
         /**
          * Font size in pixels. The option is a float type.
          */
-        private Float fontSize;
+        public T fontSize(float fontSize) {
+            this.fontSize = fontSize;
+            return (T) this;
+        }
+
         /**
          * Margin bottom in pixels. The option is a int type.
          */
-        private Integer marginBottom;
+        public T marginBottom(int marginBottom) {
+            this.marginBottom = marginBottom;
+            return (T) this;
+        }
+
         /**
          * Margin left in pixels. The option is a int type.
          */
-        private Integer marginLeft;
+        public T marginLeft(int marginLeft) {
+            this.marginLeft = marginLeft;
+            return (T) this;
+        }
+
         /**
          * Margin right in pixels. The option is a int type.
          */
-        private Integer marginRight;
+        public T marginRight(int marginRight) {
+            this.marginRight = marginRight;
+            return (T) this;
+        }
+
         /**
          * Margin top in pixels. The option is a int type.
          */
-        private Integer marginTop;
+        public T marginTop(int marginTop) {
+            this.marginTop = marginTop;
+            return (T) this;
+        }
+
         /**
          * Page size. The option is a
          * org.apache.pdfbox.pdmodel.common.PDRectangle type.
          */
-        private Object pageSize;
+        public T pageSize(Object pageSize) {
+            this.pageSize = pageSize;
+            return (T) this;
+        }
+
         /**
          * Text processing to use. autoFormatting: Text is getting sliced by
          * words, then max amount of words that fits in the line will be written
@@ -73,19 +119,31 @@ public class PdfEndpoint {
          * fits in the line or not. The option is a
          * org.apache.camel.component.pdf.TextProcessingFactory type.
          */
-        private TextProcessingFactory textProcessingFactory;
+        public T textProcessingFactory(
+                TextProcessingFactory textProcessingFactory) {
+            this.textProcessingFactory = textProcessingFactory;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public PdfOperation getOperation() {
             return operation;
@@ -177,10 +235,10 @@ public class PdfEndpoint {
         }
     }
 
-    public static class PdfConsumer extends PdfCommon {
+    public static class PdfConsumer extends PdfCommon<PdfConsumer> {
     }
 
-    public static class PdfProducer extends PdfCommon {
+    public static class PdfProducer extends PdfCommon<PdfProducer> {
     }
 
     public static enum PdfOperation {

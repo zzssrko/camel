@@ -35,42 +35,79 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class DdbStreamEndpoint {
 
 
-    public static class DdbStreamCommon extends EndpointConfiguration {
+    public static class DdbStreamCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String proxyHost;
+        private Integer proxyPort;
+        private String region;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String accessKey;
+        private String secretKey;
+
         /**
          * To define a proxy host when instantiating the DDBStreams client. The
          * option is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * To define a proxy port when instantiating the DDBStreams client. The
          * option is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
+
         /**
          * The region in which DDBStreams client needs to work. The option is a
          * java.lang.String type.
          */
-        private String region;
+        public T region(String region) {
+            this.region = region;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public T accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public T secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (T) this;
+        }
 
         public String getProxyHost() {
             return proxyHost;
@@ -129,17 +166,52 @@ public class DdbStreamEndpoint {
         }
     }
 
-    public static class DdbStreamConsumer extends DdbStreamCommon {
+    public static class DdbStreamConsumer
+            extends
+                DdbStreamCommon<DdbStreamConsumer> {
+        private String tableName;
+        private Object amazonDynamoDbStreamsClient;
+        private Boolean bridgeErrorHandler;
+        private ShardIteratorType iteratorType;
+        private Integer maxResultsPerRequest;
+        private Boolean sendEmptyMessageWhenIdle;
+        private Object sequenceNumberProvider;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+
         /**
          * Name of the dynamodb table. The option is a java.lang.String type.
          */
-        private String tableName;
+        public DdbStreamConsumer tableName(String tableName) {
+            this.tableName = tableName;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Amazon DynamoDB client to use for all requests for this endpoint. The
          * option is a com.amazonaws.services.dynamodbv2.AmazonDynamoDBStreams
          * type.
          */
-        private Object amazonDynamoDbStreamsClient;
+        public DdbStreamConsumer amazonDynamoDbStreamsClient(
+                Object amazonDynamoDbStreamsClient) {
+            this.amazonDynamoDbStreamsClient = amazonDynamoDbStreamsClient;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -149,7 +221,11 @@ public class DdbStreamEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public DdbStreamConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Defines where in the DynaboDB stream to start getting records. Note
          * that using TRIM_HORIZON can cause a significant delay before the
@@ -157,25 +233,43 @@ public class DdbStreamEndpoint {
          * used, then a sequenceNumberProvider MUST be supplied. The option is a
          * com.amazonaws.services.dynamodbv2.model.ShardIteratorType type.
          */
-        private ShardIteratorType iteratorType;
+        public DdbStreamConsumer iteratorType(ShardIteratorType iteratorType) {
+            this.iteratorType = iteratorType;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Maximum number of records that will be fetched in each poll. The
          * option is a int type.
          */
-        private Integer maxResultsPerRequest;
+        public DdbStreamConsumer maxResultsPerRequest(int maxResultsPerRequest) {
+            this.maxResultsPerRequest = maxResultsPerRequest;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public DdbStreamConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Provider for the sequence number when using one of the two
          * ShardIteratorType.{AT,AFTER}_SEQUENCE_NUMBER iterator types. Can be a
          * registry reference or a literal sequence number. The option is a
          * org.apache.camel.component.aws.ddbstream.SequenceNumberProvider type.
          */
-        private Object sequenceNumberProvider;
+        public DdbStreamConsumer sequenceNumberProvider(
+                Object sequenceNumberProvider) {
+            this.sequenceNumberProvider = sequenceNumberProvider;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -183,12 +277,21 @@ public class DdbStreamEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public DdbStreamConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public DdbStreamConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -196,18 +299,31 @@ public class DdbStreamEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public DdbStreamConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public DdbStreamConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public DdbStreamConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -216,66 +332,112 @@ public class DdbStreamEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public DdbStreamConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long delay;
+        public DdbStreamConsumer delay(long delay) {
+            this.delay = delay;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public DdbStreamConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public DdbStreamConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public DdbStreamConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public DdbStreamConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public DdbStreamConsumer scheduler(
+                ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public DdbStreamConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public DdbStreamConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public DdbStreamConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (DdbStreamConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public DdbStreamConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (DdbStreamConsumer) this;
+        }
 
         public String getTableName() {
             return tableName;
@@ -465,7 +627,9 @@ public class DdbStreamEndpoint {
         }
     }
 
-    public static class DdbStreamProducer extends DdbStreamCommon {
+    public static class DdbStreamProducer
+            extends
+                DdbStreamCommon<DdbStreamProducer> {
     }
 
     public static enum ShardIteratorType {

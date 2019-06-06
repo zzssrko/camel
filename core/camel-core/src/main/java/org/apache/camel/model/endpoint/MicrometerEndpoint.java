@@ -28,53 +28,100 @@ import javax.annotation.Generated;
 public class MicrometerEndpoint {
 
 
-    public static class MicrometerCommon extends EndpointConfiguration {
+    public static class MicrometerCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private Object metricsType;
+        private String metricsName;
+        private Iterable<Object> tags;
+        private String action;
+        private String decrement;
+        private String increment;
+        private String value;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Type of metrics. The option is a
          * io.micrometer.core.instrument.Meter.Type type.
          */
-        private Object metricsType;
+        public T metricsType(Object metricsType) {
+            this.metricsType = metricsType;
+            return (T) this;
+        }
+
         /**
          * Name of metrics. The option is a java.lang.String type.
          */
-        private String metricsName;
+        public T metricsName(String metricsName) {
+            this.metricsName = metricsName;
+            return (T) this;
+        }
+
         /**
          * Tags of metrics. The option is a
          * java.lang.Iterable<io.micrometer.core.instrument.Tag> type.
          */
-        private Iterable<Object> tags;
+        public T tags(Iterable<Object> tags) {
+            this.tags = tags;
+            return (T) this;
+        }
+
         /**
          * Action expression when using timer type. The option is a
          * java.lang.String type.
          */
-        private String action;
+        public T action(String action) {
+            this.action = action;
+            return (T) this;
+        }
+
         /**
          * Decrement value expression when using counter type. The option is a
          * java.lang.String type.
          */
-        private String decrement;
+        public T decrement(String decrement) {
+            this.decrement = decrement;
+            return (T) this;
+        }
+
         /**
          * Increment value expression when using counter type. The option is a
          * java.lang.String type.
          */
-        private String increment;
+        public T increment(String increment) {
+            this.increment = increment;
+            return (T) this;
+        }
+
         /**
          * Value expression when using histogram type. The option is a
          * java.lang.String type.
          */
-        private String value;
+        public T value(String value) {
+            this.value = value;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public Object getMetricsType() {
             return metricsType;
@@ -149,9 +196,13 @@ public class MicrometerEndpoint {
         }
     }
 
-    public static class MicrometerConsumer extends MicrometerCommon {
+    public static class MicrometerConsumer
+            extends
+                MicrometerCommon<MicrometerConsumer> {
     }
 
-    public static class MicrometerProducer extends MicrometerCommon {
+    public static class MicrometerProducer
+            extends
+                MicrometerCommon<MicrometerProducer> {
     }
 }

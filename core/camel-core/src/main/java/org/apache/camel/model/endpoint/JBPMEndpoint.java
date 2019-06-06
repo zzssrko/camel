@@ -33,146 +33,293 @@ import org.apache.camel.spi.ExceptionHandler;
 public class JBPMEndpoint {
 
 
-    public static class JBPMCommon extends EndpointConfiguration {
+    public static class JBPMCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private URL connectionURL;
+        private String eventListenerType;
+        private Long attachmentId;
+        private Long contentId;
+        private String deploymentId;
+        private Boolean emitterSendItems;
+        private Object event;
+        private String eventType;
+        private String identifier;
+        private Integer maxNumber;
+        private Integer page;
+        private Integer pageSize;
+        private String processId;
+        private Long processInstanceId;
+        private String targetUserId;
+        private Object task;
+        private Long taskId;
+        private Integer timeout;
+        private String userId;
+        private Object value;
+        private Long workItemId;
+        private Boolean basicPropertyBinding;
+        private List<String> entities;
+        private Class[] extraJaxbClasses;
+        private Map<String, Object> parameters;
+        private Boolean synchronous;
+        private List<String> statuses;
+        private String password;
+        private String userName;
+
         /**
          * The URL to the jBPM server. The option is a java.net.URL type.
          */
-        private URL connectionURL;
+        public T connectionURL(URL connectionURL) {
+            this.connectionURL = connectionURL;
+            return (T) this;
+        }
+
         /**
          * Sets the event listener type to attach to. The option is a
          * java.lang.String type.
          */
-        private String eventListenerType;
+        public T eventListenerType(String eventListenerType) {
+            this.eventListenerType = eventListenerType;
+            return (T) this;
+        }
+
         /**
          * attachId to use when retrieving attachments. The option is a
          * java.lang.Long type.
          */
-        private Long attachmentId;
+        public T attachmentId(Long attachmentId) {
+            this.attachmentId = attachmentId;
+            return (T) this;
+        }
+
         /**
          * contentId to use when retrieving attachments. The option is a
          * java.lang.Long type.
          */
-        private Long contentId;
+        public T contentId(Long contentId) {
+            this.contentId = contentId;
+            return (T) this;
+        }
+
         /**
          * The id of the deployment. The option is a java.lang.String type.
          */
-        private String deploymentId;
+        public T deploymentId(String deploymentId) {
+            this.deploymentId = deploymentId;
+            return (T) this;
+        }
+
         /**
          * Sets if event produced by emitter should be sent as single items or
          * complete collection. The option is a java.lang.Boolean type.
          */
-        private Boolean emitterSendItems;
+        public T emitterSendItems(Boolean emitterSendItems) {
+            this.emitterSendItems = emitterSendItems;
+            return (T) this;
+        }
+
         /**
          * the data associated with this event when signalEvent operation is
          * performed. The option is a java.lang.Object type.
          */
-        private Object event;
+        public T event(Object event) {
+            this.event = event;
+            return (T) this;
+        }
+
         /**
          * the type of event to use when signalEvent operation is performed. The
          * option is a java.lang.String type.
          */
-        private String eventType;
+        public T eventType(String eventType) {
+            this.eventType = eventType;
+            return (T) this;
+        }
+
         /**
          * identifier the global identifier. The option is a java.lang.String
          * type.
          */
-        private String identifier;
+        public T identifier(String identifier) {
+            this.identifier = identifier;
+            return (T) this;
+        }
+
         /**
          * the maximum number of rules that should be fired. The option is a
          * java.lang.Integer type.
          */
-        private Integer maxNumber;
+        public T maxNumber(Integer maxNumber) {
+            this.maxNumber = maxNumber;
+            return (T) this;
+        }
+
         /**
          * The page to use when retrieving user tasks. The option is a
          * java.lang.Integer type.
          */
-        private Integer page;
+        public T page(Integer page) {
+            this.page = page;
+            return (T) this;
+        }
+
         /**
          * The page size to use when retrieving user tasks. The option is a
          * java.lang.Integer type.
          */
-        private Integer pageSize;
+        public T pageSize(Integer pageSize) {
+            this.pageSize = pageSize;
+            return (T) this;
+        }
+
         /**
          * the id of the process that should be acted upon. The option is a
          * java.lang.String type.
          */
-        private String processId;
+        public T processId(String processId) {
+            this.processId = processId;
+            return (T) this;
+        }
+
         /**
          * the id of the process instance. The option is a java.lang.Long type.
          */
-        private Long processInstanceId;
+        public T processInstanceId(Long processInstanceId) {
+            this.processInstanceId = processInstanceId;
+            return (T) this;
+        }
+
         /**
          * The targetUserId used when delegating a task. The option is a
          * java.lang.String type.
          */
-        private String targetUserId;
+        public T targetUserId(String targetUserId) {
+            this.targetUserId = targetUserId;
+            return (T) this;
+        }
+
         /**
          * The task instance to use with task operations. The option is a
          * org.kie.api.task.model.Task type.
          */
-        private Object task;
+        public T task(Object task) {
+            this.task = task;
+            return (T) this;
+        }
+
         /**
          * the id of the task. The option is a java.lang.Long type.
          */
-        private Long taskId;
+        public T taskId(Long taskId) {
+            this.taskId = taskId;
+            return (T) this;
+        }
+
         /**
          * A timeout value. The option is a java.lang.Integer type.
          */
-        private Integer timeout;
+        public T timeout(Integer timeout) {
+            this.timeout = timeout;
+            return (T) this;
+        }
+
         /**
          * userId to use with task operations. The option is a java.lang.String
          * type.
          */
-        private String userId;
+        public T userId(String userId) {
+            this.userId = userId;
+            return (T) this;
+        }
+
         /**
          * the value to assign to the global identifier. The option is a
          * java.lang.Object type.
          */
-        private Object value;
+        public T value(Object value) {
+            this.value = value;
+            return (T) this;
+        }
+
         /**
          * the id of the work item. The option is a java.lang.Long type.
          */
-        private Long workItemId;
+        public T workItemId(Long workItemId) {
+            this.workItemId = workItemId;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * The potentialOwners when nominateTask operation is performed. The
          * option is a java.util.List<java.lang.String> type.
          */
-        private List<String> entities;
+        public T entities(List<String> entities) {
+            this.entities = entities;
+            return (T) this;
+        }
+
         /**
          * To load additional classes when working with XML. The option is a
          * java.lang.Class[] type.
          */
-        private Class[] extraJaxbClasses;
+        public T extraJaxbClasses(Class[] extraJaxbClasses) {
+            this.extraJaxbClasses = extraJaxbClasses;
+            return (T) this;
+        }
+
         /**
          * the variables that should be set for various operations. The option
          * is a java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> parameters;
+        public T parameters(Map<String, Object> parameters) {
+            this.parameters = parameters;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The list of status to use when filtering tasks. The option is a
          * java.util.List<java.lang.String> type.
          */
-        private List<String> statuses;
+        public T statuses(List<String> statuses) {
+            this.statuses = statuses;
+            return (T) this;
+        }
+
         /**
          * Password for authentication. The option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Username for authentication. The option is a java.lang.String type.
          */
-        private String userName;
+        public T userName(String userName) {
+            this.userName = userName;
+            return (T) this;
+        }
 
         public URL getConnectionURL() {
             return connectionURL;
@@ -407,7 +554,11 @@ public class JBPMEndpoint {
         }
     }
 
-    public static class JBPMConsumer extends JBPMCommon {
+    public static class JBPMConsumer extends JBPMCommon<JBPMConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -417,7 +568,11 @@ public class JBPMEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public JBPMConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (JBPMConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -425,12 +580,19 @@ public class JBPMEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public JBPMConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (JBPMConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public JBPMConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (JBPMConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -457,11 +619,16 @@ public class JBPMEndpoint {
         }
     }
 
-    public static class JBPMProducer extends JBPMCommon {
+    public static class JBPMProducer extends JBPMCommon<JBPMProducer> {
+        private String operation;
+
         /**
          * The operation to perform. The option is a java.lang.String type.
          */
-        private String operation;
+        public JBPMProducer operation(String operation) {
+            this.operation = operation;
+            return (JBPMProducer) this;
+        }
 
         public String getOperation() {
             return operation;

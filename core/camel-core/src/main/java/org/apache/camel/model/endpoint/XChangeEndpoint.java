@@ -28,44 +28,81 @@ import javax.annotation.Generated;
 public class XChangeEndpoint {
 
 
-    public static class XChangeCommon extends EndpointConfiguration {
+    public static class XChangeCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String name;
+        private Object currency;
+        private Object currencyPair;
+        private Object method;
+        private Object service;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The exchange to connect to. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * The currency. The option is a org.knowm.xchange.currency.Currency
          * type.
          */
-        private Object currency;
+        public T currency(Object currency) {
+            this.currency = currency;
+            return (T) this;
+        }
+
         /**
          * The currency pair. The option is a
          * org.knowm.xchange.currency.CurrencyPair type.
          */
-        private Object currencyPair;
+        public T currencyPair(Object currencyPair) {
+            this.currencyPair = currencyPair;
+            return (T) this;
+        }
+
         /**
          * The method to execute. The option is a
          * org.apache.camel.component.xchange.XChangeConfiguration.XChangeMethod
          * type.
          */
-        private Object method;
+        public T method(Object method) {
+            this.method = method;
+            return (T) this;
+        }
+
         /**
          * The service to call. The option is a
          * org.apache.camel.component.xchange.XChangeConfiguration.XChangeService type.
          */
-        private Object service;
+        public T service(Object service) {
+            this.service = service;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getName() {
             return name;
@@ -124,9 +161,13 @@ public class XChangeEndpoint {
         }
     }
 
-    public static class XChangeConsumer extends XChangeCommon {
+    public static class XChangeConsumer
+            extends
+                XChangeCommon<XChangeConsumer> {
     }
 
-    public static class XChangeProducer extends XChangeCommon {
+    public static class XChangeProducer
+            extends
+                XChangeCommon<XChangeProducer> {
     }
 }

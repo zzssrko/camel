@@ -29,44 +29,82 @@ import org.apache.camel.spi.ExceptionHandler;
 public class ZooKeeperEndpoint {
 
 
-    public static class ZooKeeperCommon extends EndpointConfiguration {
+    public static class ZooKeeperCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String serverUrls;
+        private String path;
+        @Deprecated
+        private Boolean awaitExistence;
+        private Boolean listChildren;
+        private Integer timeout;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The zookeeper server hosts (multiple servers can be separated by
          * comma). The option is a java.lang.String type.
          */
-        private String serverUrls;
+        public T serverUrls(String serverUrls) {
+            this.serverUrls = serverUrls;
+            return (T) this;
+        }
+
         /**
          * The node in the ZooKeeper server (aka znode). The option is a
          * java.lang.String type.
          */
-        private String path;
+        public T path(String path) {
+            this.path = path;
+            return (T) this;
+        }
+
         /**
          * Not in use. The option is a boolean type.
          */
         @Deprecated
-        private Boolean awaitExistence;
+        public T awaitExistence(boolean awaitExistence) {
+            this.awaitExistence = awaitExistence;
+            return (T) this;
+        }
+
         /**
          * Whether the children of the node should be listed. The option is a
          * boolean type.
          */
-        private Boolean listChildren;
+        public T listChildren(boolean listChildren) {
+            this.listChildren = listChildren;
+            return (T) this;
+        }
+
         /**
          * The time interval to wait on connection before timing out. The option
          * is a int type.
          */
-        private Integer timeout;
+        public T timeout(int timeout) {
+            this.timeout = timeout;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getServerUrls() {
             return serverUrls;
@@ -127,12 +165,25 @@ public class ZooKeeperEndpoint {
         }
     }
 
-    public static class ZooKeeperConsumer extends ZooKeeperCommon {
+    public static class ZooKeeperConsumer
+            extends
+                ZooKeeperCommon<ZooKeeperConsumer> {
+        private Long backoff;
+        private Boolean bridgeErrorHandler;
+        private Boolean repeat;
+        private Boolean sendEmptyMessageOnDelete;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * The time interval to backoff for after an error before retrying. The
          * option is a long type.
          */
-        private Long backoff;
+        public ZooKeeperConsumer backoff(long backoff) {
+            this.backoff = backoff;
+            return (ZooKeeperConsumer) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -142,17 +193,30 @@ public class ZooKeeperEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public ZooKeeperConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (ZooKeeperConsumer) this;
+        }
+
         /**
          * Should changes to the znode be 'watched' and repeatedly processed.
          * The option is a boolean type.
          */
-        private Boolean repeat;
+        public ZooKeeperConsumer repeat(boolean repeat) {
+            this.repeat = repeat;
+            return (ZooKeeperConsumer) this;
+        }
+
         /**
          * Upon the delete of a znode, should an empty message be send to the
          * consumer. The option is a boolean type.
          */
-        private Boolean sendEmptyMessageOnDelete;
+        public ZooKeeperConsumer sendEmptyMessageOnDelete(
+                boolean sendEmptyMessageOnDelete) {
+            this.sendEmptyMessageOnDelete = sendEmptyMessageOnDelete;
+            return (ZooKeeperConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -160,12 +224,20 @@ public class ZooKeeperEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public ZooKeeperConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (ZooKeeperConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public ZooKeeperConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (ZooKeeperConsumer) this;
+        }
 
         public Long getBackoff() {
             return backoff;
@@ -216,17 +288,29 @@ public class ZooKeeperEndpoint {
         }
     }
 
-    public static class ZooKeeperProducer extends ZooKeeperCommon {
+    public static class ZooKeeperProducer
+            extends
+                ZooKeeperCommon<ZooKeeperProducer> {
+        private Boolean create;
+        private String createMode;
+
         /**
          * Should the endpoint create the node if it does not currently exist.
          * The option is a boolean type.
          */
-        private Boolean create;
+        public ZooKeeperProducer create(boolean create) {
+            this.create = create;
+            return (ZooKeeperProducer) this;
+        }
+
         /**
          * The create mode that should be used for the newly created node. The
          * option is a java.lang.String type.
          */
-        private String createMode;
+        public ZooKeeperProducer createMode(String createMode) {
+            this.createMode = createMode;
+            return (ZooKeeperProducer) this;
+        }
 
         public Boolean getCreate() {
             return create;

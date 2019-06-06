@@ -28,48 +28,90 @@ import javax.annotation.Generated;
 public class NetWeaverEndpoint {
 
 
-    public static class NetWeaverCommon extends EndpointConfiguration {
+    public static class NetWeaverCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String url;
+        private Boolean flatternMap;
+        private Boolean json;
+        private Boolean jsonAsMap;
+        private String password;
+        private String username;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Url to the SAP net-weaver gateway server. The option is a
          * java.lang.String type.
          */
-        private String url;
+        public T url(String url) {
+            this.url = url;
+            return (T) this;
+        }
+
         /**
          * If the JSON Map contains only a single entry, then flattern by
          * storing that single entry value as the message body. The option is a
          * boolean type.
          */
-        private Boolean flatternMap;
+        public T flatternMap(boolean flatternMap) {
+            this.flatternMap = flatternMap;
+            return (T) this;
+        }
+
         /**
          * Whether to return data in JSON format. If this option is false, then
          * XML is returned in Atom format. The option is a boolean type.
          */
-        private Boolean json;
+        public T json(boolean json) {
+            this.json = json;
+            return (T) this;
+        }
+
         /**
          * To transform the JSON from a String to a Map in the message body. The
          * option is a boolean type.
          */
-        private Boolean jsonAsMap;
+        public T jsonAsMap(boolean jsonAsMap) {
+            this.jsonAsMap = jsonAsMap;
+            return (T) this;
+        }
+
         /**
          * Password for account. The option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Username for account. The option is a java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getUrl() {
             return url;
@@ -136,9 +178,13 @@ public class NetWeaverEndpoint {
         }
     }
 
-    public static class NetWeaverConsumer extends NetWeaverCommon {
+    public static class NetWeaverConsumer
+            extends
+                NetWeaverCommon<NetWeaverConsumer> {
     }
 
-    public static class NetWeaverProducer extends NetWeaverCommon {
+    public static class NetWeaverProducer
+            extends
+                NetWeaverCommon<NetWeaverProducer> {
     }
 }

@@ -30,50 +30,96 @@ import org.apache.camel.spi.ExceptionHandler;
 public class DropboxEndpoint {
 
 
-    public static class DropboxCommon extends EndpointConfiguration {
+    public static class DropboxCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private DropboxOperation operation;
+        private String accessToken;
+        private Object client;
+        private String clientIdentifier;
+        private String localPath;
+        private String newRemotePath;
+        private String query;
+        private String remotePath;
+        private DropboxUploadMode uploadMode;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The specific action (typically is a CRUD action) to perform on
          * Dropbox remote folder. The option is a
          * org.apache.camel.component.dropbox.util.DropboxOperation type.
          */
-        private DropboxOperation operation;
+        public T operation(DropboxOperation operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * The access token to make API requests for a specific Dropbox user.
          * The option is a java.lang.String type.
          */
-        private String accessToken;
+        public T accessToken(String accessToken) {
+            this.accessToken = accessToken;
+            return (T) this;
+        }
+
         /**
          * To use an existing DbxClient instance as DropBox client. The option
          * is a com.dropbox.core.v2.DbxClientV2 type.
          */
-        private Object client;
+        public T client(Object client) {
+            this.client = client;
+            return (T) this;
+        }
+
         /**
          * Name of the app registered to make API requests. The option is a
          * java.lang.String type.
          */
-        private String clientIdentifier;
+        public T clientIdentifier(String clientIdentifier) {
+            this.clientIdentifier = clientIdentifier;
+            return (T) this;
+        }
+
         /**
          * Optional folder or file to upload on Dropbox from the local
          * filesystem. If this option has not been configured then the message
          * body is used as the content to upload. The option is a
          * java.lang.String type.
          */
-        private String localPath;
+        public T localPath(String localPath) {
+            this.localPath = localPath;
+            return (T) this;
+        }
+
         /**
          * Destination file or folder. The option is a java.lang.String type.
          */
-        private String newRemotePath;
+        public T newRemotePath(String newRemotePath) {
+            this.newRemotePath = newRemotePath;
+            return (T) this;
+        }
+
         /**
          * A space-separated list of sub-strings to search for. A file matches
          * only if it contains all the sub-strings. If this option is not set,
          * all files will be matched. The option is a java.lang.String type.
          */
-        private String query;
+        public T query(String query) {
+            this.query = query;
+            return (T) this;
+        }
+
         /**
          * Original file or folder to move. The option is a java.lang.String
          * type.
          */
-        private String remotePath;
+        public T remotePath(String remotePath) {
+            this.remotePath = remotePath;
+            return (T) this;
+        }
+
         /**
          * Which mode to upload. in case of add the new file will be renamed if
          * a file with the same name already exists on dropbox. in case of force
@@ -81,19 +127,30 @@ public class DropboxEndpoint {
          * overwritten. The option is a
          * org.apache.camel.component.dropbox.util.DropboxUploadMode type.
          */
-        private DropboxUploadMode uploadMode;
+        public T uploadMode(DropboxUploadMode uploadMode) {
+            this.uploadMode = uploadMode;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public DropboxOperation getOperation() {
             return operation;
@@ -184,7 +241,13 @@ public class DropboxEndpoint {
         }
     }
 
-    public static class DropboxConsumer extends DropboxCommon {
+    public static class DropboxConsumer
+            extends
+                DropboxCommon<DropboxConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -194,7 +257,11 @@ public class DropboxEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public DropboxConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (DropboxConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -202,12 +269,20 @@ public class DropboxEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public DropboxConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (DropboxConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public DropboxConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (DropboxConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -234,7 +309,9 @@ public class DropboxEndpoint {
         }
     }
 
-    public static class DropboxProducer extends DropboxCommon {
+    public static class DropboxProducer
+            extends
+                DropboxCommon<DropboxProducer> {
     }
 
     public static enum DropboxOperation {

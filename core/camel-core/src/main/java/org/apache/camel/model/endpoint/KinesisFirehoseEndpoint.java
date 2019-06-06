@@ -28,52 +28,99 @@ import javax.annotation.Generated;
 public class KinesisFirehoseEndpoint {
 
 
-    public static class KinesisFirehoseCommon extends EndpointConfiguration {
+    public static class KinesisFirehoseCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String streamName;
+        private Object amazonKinesisFirehoseClient;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String region;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String accessKey;
+        private String secretKey;
+
         /**
          * Name of the stream. The option is a java.lang.String type.
          */
-        private String streamName;
+        public T streamName(String streamName) {
+            this.streamName = streamName;
+            return (T) this;
+        }
+
         /**
          * Amazon Kinesis Firehose client to use for all requests for this
          * endpoint. The option is a
          * com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehose type.
          */
-        private Object amazonKinesisFirehoseClient;
+        public T amazonKinesisFirehoseClient(Object amazonKinesisFirehoseClient) {
+            this.amazonKinesisFirehoseClient = amazonKinesisFirehoseClient;
+            return (T) this;
+        }
+
         /**
          * To define a proxy host when instantiating the DDBStreams client. The
          * option is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * To define a proxy port when instantiating the DDBStreams client. The
          * option is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
+
         /**
          * The region in which Kinesis client needs to work. The option is a
          * java.lang.String type.
          */
-        private String region;
+        public T region(String region) {
+            this.region = region;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public T accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public T secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (T) this;
+        }
 
         public String getStreamName() {
             return streamName;
@@ -149,9 +196,13 @@ public class KinesisFirehoseEndpoint {
         }
     }
 
-    public static class KinesisFirehoseConsumer extends KinesisFirehoseCommon {
+    public static class KinesisFirehoseConsumer
+            extends
+                KinesisFirehoseCommon<KinesisFirehoseConsumer> {
     }
 
-    public static class KinesisFirehoseProducer extends KinesisFirehoseCommon {
+    public static class KinesisFirehoseProducer
+            extends
+                KinesisFirehoseCommon<KinesisFirehoseProducer> {
     }
 }

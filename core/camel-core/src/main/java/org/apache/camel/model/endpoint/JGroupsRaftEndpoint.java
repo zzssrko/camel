@@ -30,24 +30,41 @@ import org.apache.camel.spi.ExceptionHandler;
 public class JGroupsRaftEndpoint {
 
 
-    public static class JGroupsRaftCommon extends EndpointConfiguration {
+    public static class JGroupsRaftCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String clusterName;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The name of the JGroupsraft cluster the component should connect to.
          * The option is a java.lang.String type.
          */
-        private String clusterName;
+        public T clusterName(String clusterName) {
+            this.clusterName = clusterName;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getClusterName() {
             return clusterName;
@@ -74,7 +91,14 @@ public class JGroupsRaftEndpoint {
         }
     }
 
-    public static class JGroupsRaftConsumer extends JGroupsRaftCommon {
+    public static class JGroupsRaftConsumer
+            extends
+                JGroupsRaftCommon<JGroupsRaftConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean enableRoleChangeEvents;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -84,13 +108,22 @@ public class JGroupsRaftEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public JGroupsRaftConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (JGroupsRaftConsumer) this;
+        }
+
         /**
          * If set to true, the consumer endpoint will receive roleChange event
          * as well (not just connecting and/or using the state machine). By
          * default it is set to false. The option is a boolean type.
          */
-        private Boolean enableRoleChangeEvents;
+        public JGroupsRaftConsumer enableRoleChangeEvents(
+                boolean enableRoleChangeEvents) {
+            this.enableRoleChangeEvents = enableRoleChangeEvents;
+            return (JGroupsRaftConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -98,12 +131,21 @@ public class JGroupsRaftEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public JGroupsRaftConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (JGroupsRaftConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public JGroupsRaftConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (JGroupsRaftConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -138,6 +180,8 @@ public class JGroupsRaftEndpoint {
         }
     }
 
-    public static class JGroupsRaftProducer extends JGroupsRaftCommon {
+    public static class JGroupsRaftProducer
+            extends
+                JGroupsRaftCommon<JGroupsRaftProducer> {
     }
 }

@@ -30,107 +30,212 @@ import org.apache.camel.spi.ExceptionHandler;
 public class KubernetesDeploymentsEndpoint {
 
 
-    public static class KubernetesDeploymentsCommon
+    public static class KubernetesDeploymentsCommon<T extends EndpointConfiguration>
             extends
-                EndpointConfiguration {
+                EndpointConfiguration<T> {
+        private String masterUrl;
+        private String apiVersion;
+        private String dnsDomain;
+        private Object kubernetesClient;
+        private String portName;
+        private String portProtocol;
+        private Boolean basicPropertyBinding;
+        private Integer connectionTimeout;
+        private Boolean synchronous;
+        private String caCertData;
+        private String caCertFile;
+        private String clientCertData;
+        private String clientCertFile;
+        private String clientKeyAlgo;
+        private String clientKeyData;
+        private String clientKeyFile;
+        private String clientKeyPassphrase;
+        private String oauthToken;
+        private String password;
+        private Boolean trustCerts;
+        private String username;
+
         /**
          * Kubernetes Master url. The option is a java.lang.String type.
          */
-        private String masterUrl;
+        public T masterUrl(String masterUrl) {
+            this.masterUrl = masterUrl;
+            return (T) this;
+        }
+
         /**
          * The Kubernetes API Version to use. The option is a java.lang.String
          * type.
          */
-        private String apiVersion;
+        public T apiVersion(String apiVersion) {
+            this.apiVersion = apiVersion;
+            return (T) this;
+        }
+
         /**
          * The dns domain, used for ServiceCall EIP. The option is a
          * java.lang.String type.
          */
-        private String dnsDomain;
+        public T dnsDomain(String dnsDomain) {
+            this.dnsDomain = dnsDomain;
+            return (T) this;
+        }
+
         /**
          * Default KubernetesClient to use if provided. The option is a
          * io.fabric8.kubernetes.client.KubernetesClient type.
          */
-        private Object kubernetesClient;
+        public T kubernetesClient(Object kubernetesClient) {
+            this.kubernetesClient = kubernetesClient;
+            return (T) this;
+        }
+
         /**
          * The port name, used for ServiceCall EIP. The option is a
          * java.lang.String type.
          */
-        private String portName;
+        public T portName(String portName) {
+            this.portName = portName;
+            return (T) this;
+        }
+
         /**
          * The port protocol, used for ServiceCall EIP. The option is a
          * java.lang.String type.
          */
-        private String portProtocol;
+        public T portProtocol(String portProtocol) {
+            this.portProtocol = portProtocol;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Connection timeout in milliseconds to use when making requests to the
          * Kubernetes API server. The option is a java.lang.Integer type.
          */
-        private Integer connectionTimeout;
+        public T connectionTimeout(Integer connectionTimeout) {
+            this.connectionTimeout = connectionTimeout;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The CA Cert Data. The option is a java.lang.String type.
          */
-        private String caCertData;
+        public T caCertData(String caCertData) {
+            this.caCertData = caCertData;
+            return (T) this;
+        }
+
         /**
          * The CA Cert File. The option is a java.lang.String type.
          */
-        private String caCertFile;
+        public T caCertFile(String caCertFile) {
+            this.caCertFile = caCertFile;
+            return (T) this;
+        }
+
         /**
          * The Client Cert Data. The option is a java.lang.String type.
          */
-        private String clientCertData;
+        public T clientCertData(String clientCertData) {
+            this.clientCertData = clientCertData;
+            return (T) this;
+        }
+
         /**
          * The Client Cert File. The option is a java.lang.String type.
          */
-        private String clientCertFile;
+        public T clientCertFile(String clientCertFile) {
+            this.clientCertFile = clientCertFile;
+            return (T) this;
+        }
+
         /**
          * The Key Algorithm used by the client. The option is a
          * java.lang.String type.
          */
-        private String clientKeyAlgo;
+        public T clientKeyAlgo(String clientKeyAlgo) {
+            this.clientKeyAlgo = clientKeyAlgo;
+            return (T) this;
+        }
+
         /**
          * The Client Key data. The option is a java.lang.String type.
          */
-        private String clientKeyData;
+        public T clientKeyData(String clientKeyData) {
+            this.clientKeyData = clientKeyData;
+            return (T) this;
+        }
+
         /**
          * The Client Key file. The option is a java.lang.String type.
          */
-        private String clientKeyFile;
+        public T clientKeyFile(String clientKeyFile) {
+            this.clientKeyFile = clientKeyFile;
+            return (T) this;
+        }
+
         /**
          * The Client Key Passphrase. The option is a java.lang.String type.
          */
-        private String clientKeyPassphrase;
+        public T clientKeyPassphrase(String clientKeyPassphrase) {
+            this.clientKeyPassphrase = clientKeyPassphrase;
+            return (T) this;
+        }
+
         /**
          * The Auth Token. The option is a java.lang.String type.
          */
-        private String oauthToken;
+        public T oauthToken(String oauthToken) {
+            this.oauthToken = oauthToken;
+            return (T) this;
+        }
+
         /**
          * Password to connect to Kubernetes. The option is a java.lang.String
          * type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Define if the certs we used are trusted anyway or not. The option is
          * a java.lang.Boolean type.
          */
-        private Boolean trustCerts;
+        public T trustCerts(Boolean trustCerts) {
+            this.trustCerts = trustCerts;
+            return (T) this;
+        }
+
         /**
          * Username to connect to Kubernetes. The option is a java.lang.String
          * type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public String getMasterUrl() {
             return masterUrl;
@@ -303,7 +408,16 @@ public class KubernetesDeploymentsEndpoint {
 
     public static class KubernetesDeploymentsConsumer
             extends
-                KubernetesDeploymentsCommon {
+                KubernetesDeploymentsCommon<KubernetesDeploymentsConsumer> {
+        private Boolean bridgeErrorHandler;
+        private String labelKey;
+        private String labelValue;
+        private String namespace;
+        private Integer poolSize;
+        private String resourceName;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -313,30 +427,55 @@ public class KubernetesDeploymentsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public KubernetesDeploymentsConsumer bridgeErrorHandler(
+                boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (KubernetesDeploymentsConsumer) this;
+        }
+
         /**
          * The Consumer Label key when watching at some resources. The option is
          * a java.lang.String type.
          */
-        private String labelKey;
+        public KubernetesDeploymentsConsumer labelKey(String labelKey) {
+            this.labelKey = labelKey;
+            return (KubernetesDeploymentsConsumer) this;
+        }
+
         /**
          * The Consumer Label value when watching at some resources. The option
          * is a java.lang.String type.
          */
-        private String labelValue;
+        public KubernetesDeploymentsConsumer labelValue(String labelValue) {
+            this.labelValue = labelValue;
+            return (KubernetesDeploymentsConsumer) this;
+        }
+
         /**
          * The namespace. The option is a java.lang.String type.
          */
-        private String namespace;
+        public KubernetesDeploymentsConsumer namespace(String namespace) {
+            this.namespace = namespace;
+            return (KubernetesDeploymentsConsumer) this;
+        }
+
         /**
          * The Consumer pool size. The option is a int type.
          */
-        private Integer poolSize;
+        public KubernetesDeploymentsConsumer poolSize(int poolSize) {
+            this.poolSize = poolSize;
+            return (KubernetesDeploymentsConsumer) this;
+        }
+
         /**
          * The Consumer Resource Name we would like to watch. The option is a
          * java.lang.String type.
          */
-        private String resourceName;
+        public KubernetesDeploymentsConsumer resourceName(String resourceName) {
+            this.resourceName = resourceName;
+            return (KubernetesDeploymentsConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -344,12 +483,21 @@ public class KubernetesDeploymentsEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public KubernetesDeploymentsConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (KubernetesDeploymentsConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public KubernetesDeploymentsConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (KubernetesDeploymentsConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -418,12 +566,17 @@ public class KubernetesDeploymentsEndpoint {
 
     public static class KubernetesDeploymentsProducer
             extends
-                KubernetesDeploymentsCommon {
+                KubernetesDeploymentsCommon<KubernetesDeploymentsProducer> {
+        private String operation;
+
         /**
          * Producer operation to do on Kubernetes. The option is a
          * java.lang.String type.
          */
-        private String operation;
+        public KubernetesDeploymentsProducer operation(String operation) {
+            this.operation = operation;
+            return (KubernetesDeploymentsProducer) this;
+        }
 
         public String getOperation() {
             return operation;

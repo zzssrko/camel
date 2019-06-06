@@ -33,11 +33,29 @@ import org.apache.camel.spi.ExceptionHandler;
 public class CoAPEndpoint {
 
 
-    public static class CoAPCommon extends EndpointConfiguration {
+    public static class CoAPCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private URI uri;
+        private String alias;
+        private String cipherSuites;
+        private String clientAuthentication;
+        private PrivateKey privateKey;
+        private Object pskStore;
+        private PublicKey publicKey;
+        private Object sslContextParameters;
+        private Object trustedRpkStore;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The URI for the CoAP endpoint. The option is a java.net.URI type.
          */
-        private URI uri;
+        public T uri(URI uri) {
+            this.uri = uri;
+            return (T) this;
+        }
+
         /**
          * Sets the alias used to query the KeyStore for the private key and
          * certificate. This parameter is used when we are enabling TLS with
@@ -49,14 +67,22 @@ public class CoAPEndpoint {
          * Public Key or a Pre-Shared Key. The option is a java.lang.String
          * type.
          */
-        private String alias;
+        public T alias(String alias) {
+            this.alias = alias;
+            return (T) this;
+        }
+
         /**
          * Sets the cipherSuites String. This is a comma separated String of
          * ciphersuites to configure. If it is not specified, then it falls back
          * to getting the ciphersuites from the sslContextParameters object. The
          * option is a java.lang.String type.
          */
-        private String cipherSuites;
+        public T cipherSuites(String cipherSuites) {
+            this.cipherSuites = cipherSuites;
+            return (T) this;
+        }
+
         /**
          * Sets the configuration options for server-side client-authentication
          * requirements. The value must be one of NONE, WANT, REQUIRE. If this
@@ -64,47 +90,78 @@ public class CoAPEndpoint {
          * sslContextParameters.getServerParameters().getClientAuthentication()
          * value. The option is a java.lang.String type.
          */
-        private String clientAuthentication;
+        public T clientAuthentication(String clientAuthentication) {
+            this.clientAuthentication = clientAuthentication;
+            return (T) this;
+        }
+
         /**
          * Set the configured private key for use with Raw Public Key. The
          * option is a java.security.PrivateKey type.
          */
-        private PrivateKey privateKey;
+        public T privateKey(PrivateKey privateKey) {
+            this.privateKey = privateKey;
+            return (T) this;
+        }
+
         /**
          * Set the PskStore to use for pre-shared key. The option is a
          * org.eclipse.californium.scandium.dtls.pskstore.PskStore type.
          */
-        private Object pskStore;
+        public T pskStore(Object pskStore) {
+            this.pskStore = pskStore;
+            return (T) this;
+        }
+
         /**
          * Set the configured public key for use with Raw Public Key. The option
          * is a java.security.PublicKey type.
          */
-        private PublicKey publicKey;
+        public T publicKey(PublicKey publicKey) {
+            this.publicKey = publicKey;
+            return (T) this;
+        }
+
         /**
          * Set the SSLContextParameters object for setting up TLS. This is
          * required for coapstcp, and for coaps when we are using certificates
          * for TLS (as opposed to RPK or PKS). The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
+
         /**
          * Set the TrustedRpkStore to use to determine trust in raw public keys.
          * The option is a
          * org.eclipse.californium.scandium.dtls.rpkstore.TrustedRpkStore type.
          */
-        private Object trustedRpkStore;
+        public T trustedRpkStore(Object trustedRpkStore) {
+            this.trustedRpkStore = trustedRpkStore;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public URI getUri() {
             return uri;
@@ -195,7 +252,12 @@ public class CoAPEndpoint {
         }
     }
 
-    public static class CoAPConsumer extends CoAPCommon {
+    public static class CoAPConsumer extends CoAPCommon<CoAPConsumer> {
+        private Boolean bridgeErrorHandler;
+        private String coapMethodRestrict;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -205,13 +267,21 @@ public class CoAPEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public CoAPConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (CoAPConsumer) this;
+        }
+
         /**
          * Comma separated list of methods that the CoAP consumer will bind to.
          * The default is to bind to all methods (DELETE, GET, POST, PUT). The
          * option is a java.lang.String type.
          */
-        private String coapMethodRestrict;
+        public CoAPConsumer coapMethodRestrict(String coapMethodRestrict) {
+            this.coapMethodRestrict = coapMethodRestrict;
+            return (CoAPConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -219,12 +289,19 @@ public class CoAPEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public CoAPConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (CoAPConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public CoAPConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (CoAPConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -259,6 +336,6 @@ public class CoAPEndpoint {
         }
     }
 
-    public static class CoAPProducer extends CoAPCommon {
+    public static class CoAPProducer extends CoAPCommon<CoAPProducer> {
     }
 }

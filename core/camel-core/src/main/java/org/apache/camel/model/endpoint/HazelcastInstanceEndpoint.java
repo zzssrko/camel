@@ -30,76 +30,138 @@ import org.apache.camel.spi.ExceptionHandler;
 public class HazelcastInstanceEndpoint {
 
 
-    public static class HazelcastInstanceCommon extends EndpointConfiguration {
+    public static class HazelcastInstanceCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String cacheName;
+        private Boolean reliable;
+        private HazelcastOperation defaultOperation;
+        private Object hazelcastInstance;
+        private String hazelcastInstanceName;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Integer concurrentConsumers;
+        private Integer onErrorDelay;
+        private Integer pollTimeout;
+        private Boolean transacted;
+        private Boolean transferExchange;
+
         /**
          * The name of the cache. The option is a java.lang.String type.
          */
-        private String cacheName;
+        public T cacheName(String cacheName) {
+            this.cacheName = cacheName;
+            return (T) this;
+        }
+
         /**
          * Define if the endpoint will use a reliable Topic struct or not. The
          * option is a boolean type.
          */
-        private Boolean reliable;
+        public T reliable(boolean reliable) {
+            this.reliable = reliable;
+            return (T) this;
+        }
+
         /**
          * To specify a default operation to use, if no operation header has
          * been provided. The option is a
          * org.apache.camel.component.hazelcast.HazelcastOperation type.
          */
-        private HazelcastOperation defaultOperation;
+        public T defaultOperation(HazelcastOperation defaultOperation) {
+            this.defaultOperation = defaultOperation;
+            return (T) this;
+        }
+
         /**
          * The hazelcast instance reference which can be used for hazelcast
          * endpoint. The option is a com.hazelcast.core.HazelcastInstance type.
          */
-        private Object hazelcastInstance;
+        public T hazelcastInstance(Object hazelcastInstance) {
+            this.hazelcastInstance = hazelcastInstance;
+            return (T) this;
+        }
+
         /**
          * The hazelcast instance reference name which can be used for hazelcast
          * endpoint. If you don't specify the instance reference, camel use the
          * default hazelcast instance from the camel-hazelcast instance. The
          * option is a java.lang.String type.
          */
-        private String hazelcastInstanceName;
+        public T hazelcastInstanceName(String hazelcastInstanceName) {
+            this.hazelcastInstanceName = hazelcastInstanceName;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * To use concurrent consumers polling from the SEDA queue. The option
          * is a int type.
          */
-        private Integer concurrentConsumers;
+        public T concurrentConsumers(int concurrentConsumers) {
+            this.concurrentConsumers = concurrentConsumers;
+            return (T) this;
+        }
+
         /**
          * Milliseconds before consumer continues polling after an error has
          * occurred. The option is a int type.
          */
-        private Integer onErrorDelay;
+        public T onErrorDelay(int onErrorDelay) {
+            this.onErrorDelay = onErrorDelay;
+            return (T) this;
+        }
+
         /**
          * The timeout used when consuming from the SEDA queue. When a timeout
          * occurs, the consumer can check whether it is allowed to continue
          * running. Setting a lower value allows the consumer to react more
          * quickly upon shutdown. The option is a int type.
          */
-        private Integer pollTimeout;
+        public T pollTimeout(int pollTimeout) {
+            this.pollTimeout = pollTimeout;
+            return (T) this;
+        }
+
         /**
          * If set to true then the consumer runs in transaction mode, where the
          * messages in the seda queue will only be removed if the transaction
          * commits, which happens when the processing is complete. The option is
          * a boolean type.
          */
-        private Boolean transacted;
+        public T transacted(boolean transacted) {
+            this.transacted = transacted;
+            return (T) this;
+        }
+
         /**
          * If set to true the whole Exchange will be transfered. If header or
          * body contains not serializable objects, they will be skipped. The
          * option is a boolean type.
          */
-        private Boolean transferExchange;
+        public T transferExchange(boolean transferExchange) {
+            this.transferExchange = transferExchange;
+            return (T) this;
+        }
 
         public String getCacheName() {
             return cacheName;
@@ -200,7 +262,14 @@ public class HazelcastInstanceEndpoint {
 
     public static class HazelcastInstanceConsumer
             extends
-                HazelcastInstanceCommon {
+                HazelcastInstanceCommon<HazelcastInstanceConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Long pollingTimeout;
+        private Integer poolSize;
+        private HazelcastQueueConsumerMode queueConsumerMode;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -210,23 +279,41 @@ public class HazelcastInstanceEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public HazelcastInstanceConsumer bridgeErrorHandler(
+                boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (HazelcastInstanceConsumer) this;
+        }
+
         /**
          * Define the polling timeout of the Queue consumer in Poll mode. The
          * option is a long type.
          */
-        private Long pollingTimeout;
+        public HazelcastInstanceConsumer pollingTimeout(long pollingTimeout) {
+            this.pollingTimeout = pollingTimeout;
+            return (HazelcastInstanceConsumer) this;
+        }
+
         /**
          * Define the Pool size for Queue Consumer Executor. The option is a int
          * type.
          */
-        private Integer poolSize;
+        public HazelcastInstanceConsumer poolSize(int poolSize) {
+            this.poolSize = poolSize;
+            return (HazelcastInstanceConsumer) this;
+        }
+
         /**
          * Define the Queue Consumer mode: Listen or Poll. The option is a
          * org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode
          * type.
          */
-        private HazelcastQueueConsumerMode queueConsumerMode;
+        public HazelcastInstanceConsumer queueConsumerMode(
+                HazelcastQueueConsumerMode queueConsumerMode) {
+            this.queueConsumerMode = queueConsumerMode;
+            return (HazelcastInstanceConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -234,12 +321,21 @@ public class HazelcastInstanceEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public HazelcastInstanceConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (HazelcastInstanceConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public HazelcastInstanceConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (HazelcastInstanceConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -293,7 +389,7 @@ public class HazelcastInstanceEndpoint {
 
     public static class HazelcastInstanceProducer
             extends
-                HazelcastInstanceCommon {
+                HazelcastInstanceCommon<HazelcastInstanceProducer> {
     }
 
     public static enum HazelcastOperation {

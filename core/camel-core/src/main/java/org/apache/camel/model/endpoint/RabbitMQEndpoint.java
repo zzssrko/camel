@@ -31,121 +31,247 @@ import org.apache.camel.spi.ExceptionHandler;
 public class RabbitMQEndpoint {
 
 
-    public static class RabbitMQCommon extends EndpointConfiguration {
+    public static class RabbitMQCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String exchangeName;
+        private Object[] addresses;
+        private Boolean autoDelete;
+        private Object connectionFactory;
+        private String deadLetterExchange;
+        private String deadLetterExchangeType;
+        private String deadLetterQueue;
+        private String deadLetterRoutingKey;
+        private Boolean declare;
+        private Boolean durable;
+        private String exchangeType;
+        private Boolean exclusive;
+        private String hostname;
+        private Boolean passive;
+        private Integer portNumber;
+        private String queue;
+        private String routingKey;
+        private Boolean skipExchangeDeclare;
+        private Boolean skipQueueBind;
+        private Boolean skipQueueDeclare;
+        private String vhost;
+        private Map<String, Object> args;
+        private Boolean automaticRecoveryEnabled;
+        private Boolean basicPropertyBinding;
+        private Map<String, Object> clientProperties;
+        private Integer connectionTimeout;
+        private Integer networkRecoveryInterval;
+        private Integer requestedChannelMax;
+        private Integer requestedFrameMax;
+        private Integer requestedHeartbeat;
+        private Long requestTimeout;
+        private Long requestTimeoutCheckerInterval;
+        private Boolean synchronous;
+        private Boolean topologyRecoveryEnabled;
+        private Boolean transferException;
+        private String password;
+        private String sslProtocol;
+        private Object trustManager;
+        private String username;
+
         /**
          * The exchange name determines which exchange produced messages will
          * sent to. In the case of consumers, the exchange name determines which
          * exchange the queue will bind to. The option is a java.lang.String
          * type.
          */
-        private String exchangeName;
+        public T exchangeName(String exchangeName) {
+            this.exchangeName = exchangeName;
+            return (T) this;
+        }
+
         /**
          * If this option is set, camel-rabbitmq will try to create connection
          * based on the setting of option addresses. The addresses value is a
          * string which looks like server1:12345, server2:12345. The option is a
          * com.rabbitmq.client.Address[] type.
          */
-        private Object[] addresses;
+        public T addresses(Object[] addresses) {
+            this.addresses = addresses;
+            return (T) this;
+        }
+
         /**
          * If it is true, the exchange will be deleted when it is no longer in
          * use. The option is a boolean type.
          */
-        private Boolean autoDelete;
+        public T autoDelete(boolean autoDelete) {
+            this.autoDelete = autoDelete;
+            return (T) this;
+        }
+
         /**
          * To use a custom RabbitMQ connection factory. When this option is set,
          * all connection options (connectionTimeout, requestedChannelMax...)
          * set on URI are not used. The option is a
          * com.rabbitmq.client.ConnectionFactory type.
          */
-        private Object connectionFactory;
+        public T connectionFactory(Object connectionFactory) {
+            this.connectionFactory = connectionFactory;
+            return (T) this;
+        }
+
         /**
          * The name of the dead letter exchange. The option is a
          * java.lang.String type.
          */
-        private String deadLetterExchange;
+        public T deadLetterExchange(String deadLetterExchange) {
+            this.deadLetterExchange = deadLetterExchange;
+            return (T) this;
+        }
+
         /**
          * The type of the dead letter exchange. The option is a
          * java.lang.String type.
          */
-        private String deadLetterExchangeType;
+        public T deadLetterExchangeType(String deadLetterExchangeType) {
+            this.deadLetterExchangeType = deadLetterExchangeType;
+            return (T) this;
+        }
+
         /**
          * The name of the dead letter queue. The option is a java.lang.String
          * type.
          */
-        private String deadLetterQueue;
+        public T deadLetterQueue(String deadLetterQueue) {
+            this.deadLetterQueue = deadLetterQueue;
+            return (T) this;
+        }
+
         /**
          * The routing key for the dead letter exchange. The option is a
          * java.lang.String type.
          */
-        private String deadLetterRoutingKey;
+        public T deadLetterRoutingKey(String deadLetterRoutingKey) {
+            this.deadLetterRoutingKey = deadLetterRoutingKey;
+            return (T) this;
+        }
+
         /**
          * If the option is true, camel declare the exchange and queue name and
          * bind them together. If the option is false, camel won't declare the
          * exchange and queue name on the server. The option is a boolean type.
          */
-        private Boolean declare;
+        public T declare(boolean declare) {
+            this.declare = declare;
+            return (T) this;
+        }
+
         /**
          * If we are declaring a durable exchange (the exchange will survive a
          * server restart). The option is a boolean type.
          */
-        private Boolean durable;
+        public T durable(boolean durable) {
+            this.durable = durable;
+            return (T) this;
+        }
+
         /**
          * The exchange type such as direct or topic. The option is a
          * java.lang.String type.
          */
-        private String exchangeType;
+        public T exchangeType(String exchangeType) {
+            this.exchangeType = exchangeType;
+            return (T) this;
+        }
+
         /**
          * Exclusive queues may only be accessed by the current connection, and
          * are deleted when that connection closes. The option is a boolean
          * type.
          */
-        private Boolean exclusive;
+        public T exclusive(boolean exclusive) {
+            this.exclusive = exclusive;
+            return (T) this;
+        }
+
         /**
          * The hostname of the running rabbitmq instance or cluster. The option
          * is a java.lang.String type.
          */
-        private String hostname;
+        public T hostname(String hostname) {
+            this.hostname = hostname;
+            return (T) this;
+        }
+
         /**
          * Passive queues depend on the queue already to be available at
          * RabbitMQ. The option is a boolean type.
          */
-        private Boolean passive;
+        public T passive(boolean passive) {
+            this.passive = passive;
+            return (T) this;
+        }
+
         /**
          * Port number for the host with the running rabbitmq instance or
          * cluster. Default value is 5672. The option is a int type.
          */
-        private Integer portNumber;
+        public T portNumber(int portNumber) {
+            this.portNumber = portNumber;
+            return (T) this;
+        }
+
         /**
          * The queue to receive messages from. The option is a java.lang.String
          * type.
          */
-        private String queue;
+        public T queue(String queue) {
+            this.queue = queue;
+            return (T) this;
+        }
+
         /**
          * The routing key to use when binding a consumer queue to the exchange.
          * For producer routing keys, you set the header rabbitmq.ROUTING_KEY.
          * The option is a java.lang.String type.
          */
-        private String routingKey;
+        public T routingKey(String routingKey) {
+            this.routingKey = routingKey;
+            return (T) this;
+        }
+
         /**
          * This can be used if we need to declare the queue but not the
          * exchange. The option is a boolean type.
          */
-        private Boolean skipExchangeDeclare;
+        public T skipExchangeDeclare(boolean skipExchangeDeclare) {
+            this.skipExchangeDeclare = skipExchangeDeclare;
+            return (T) this;
+        }
+
         /**
          * If true the queue will not be bound to the exchange after declaring
          * it. The option is a boolean type.
          */
-        private Boolean skipQueueBind;
+        public T skipQueueBind(boolean skipQueueBind) {
+            this.skipQueueBind = skipQueueBind;
+            return (T) this;
+        }
+
         /**
          * If true the producer will not declare and bind a queue. This can be
          * used for directing messages via an existing routing key. The option
          * is a boolean type.
          */
-        private Boolean skipQueueDeclare;
+        public T skipQueueDeclare(boolean skipQueueDeclare) {
+            this.skipQueueDeclare = skipQueueDeclare;
+            return (T) this;
+        }
+
         /**
          * The vhost for the channel. The option is a java.lang.String type.
          */
-        private String vhost;
+        public T vhost(String vhost) {
+            this.vhost = vhost;
+            return (T) this;
+        }
+
         /**
          * Specify arguments for configuring the different RabbitMQ concepts, a
          * different prefix is required for each: Exchange: arg.exchange. Queue:
@@ -153,97 +279,169 @@ public class RabbitMQEndpoint {
          * message ttl argument:
          * http://localhost:5672/exchange/queueargs=arg.queue.x-message-ttl=60000. The option is a java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> args;
+        public T args(Map<String, Object> args) {
+            this.args = args;
+            return (T) this;
+        }
+
         /**
          * Enables connection automatic recovery (uses connection implementation
          * that performs automatic recovery when connection shutdown is not
          * initiated by the application). The option is a java.lang.Boolean
          * type.
          */
-        private Boolean automaticRecoveryEnabled;
+        public T automaticRecoveryEnabled(Boolean automaticRecoveryEnabled) {
+            this.automaticRecoveryEnabled = automaticRecoveryEnabled;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Connection client properties (client info used in negotiating with
          * the server). The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> clientProperties;
+        public T clientProperties(Map<String, Object> clientProperties) {
+            this.clientProperties = clientProperties;
+            return (T) this;
+        }
+
         /**
          * Connection timeout. The option is a int type.
          */
-        private Integer connectionTimeout;
+        public T connectionTimeout(int connectionTimeout) {
+            this.connectionTimeout = connectionTimeout;
+            return (T) this;
+        }
+
         /**
          * Network recovery interval in milliseconds (interval used when
          * recovering from network failure). The option is a java.lang.Integer
          * type.
          */
-        private Integer networkRecoveryInterval;
+        public T networkRecoveryInterval(Integer networkRecoveryInterval) {
+            this.networkRecoveryInterval = networkRecoveryInterval;
+            return (T) this;
+        }
+
         /**
          * Connection requested channel max (max number of channels offered).
          * The option is a int type.
          */
-        private Integer requestedChannelMax;
+        public T requestedChannelMax(int requestedChannelMax) {
+            this.requestedChannelMax = requestedChannelMax;
+            return (T) this;
+        }
+
         /**
          * Connection requested frame max (max size of frame offered). The
          * option is a int type.
          */
-        private Integer requestedFrameMax;
+        public T requestedFrameMax(int requestedFrameMax) {
+            this.requestedFrameMax = requestedFrameMax;
+            return (T) this;
+        }
+
         /**
          * Connection requested heartbeat (heart-beat in seconds offered). The
          * option is a int type.
          */
-        private Integer requestedHeartbeat;
+        public T requestedHeartbeat(int requestedHeartbeat) {
+            this.requestedHeartbeat = requestedHeartbeat;
+            return (T) this;
+        }
+
         /**
          * Set timeout for waiting for a reply when using the InOut Exchange
          * Pattern (in milliseconds). The option is a long type.
          */
-        private Long requestTimeout;
+        public T requestTimeout(long requestTimeout) {
+            this.requestTimeout = requestTimeout;
+            return (T) this;
+        }
+
         /**
          * Set requestTimeoutCheckerInterval for inOut exchange. The option is a
          * long type.
          */
-        private Long requestTimeoutCheckerInterval;
+        public T requestTimeoutCheckerInterval(
+                long requestTimeoutCheckerInterval) {
+            this.requestTimeoutCheckerInterval = requestTimeoutCheckerInterval;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Enables connection topology recovery (should topology recovery be
          * performed). The option is a java.lang.Boolean type.
          */
-        private Boolean topologyRecoveryEnabled;
+        public T topologyRecoveryEnabled(Boolean topologyRecoveryEnabled) {
+            this.topologyRecoveryEnabled = topologyRecoveryEnabled;
+            return (T) this;
+        }
+
         /**
          * When true and an inOut Exchange failed on the consumer side send the
          * caused Exception back in the response. The option is a boolean type.
          */
-        private Boolean transferException;
+        public T transferException(boolean transferException) {
+            this.transferException = transferException;
+            return (T) this;
+        }
+
         /**
          * Password for authenticated access. The option is a java.lang.String
          * type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Enables SSL on connection, accepted value are true, TLS and 'SSLv3.
          * The option is a java.lang.String type.
          */
-        private String sslProtocol;
+        public T sslProtocol(String sslProtocol) {
+            this.sslProtocol = sslProtocol;
+            return (T) this;
+        }
+
         /**
          * Configure SSL trust manager, SSL should be enabled for this option to
          * be effective. The option is a javax.net.ssl.TrustManager type.
          */
-        private Object trustManager;
+        public T trustManager(Object trustManager) {
+            this.trustManager = trustManager;
+            return (T) this;
+        }
+
         /**
          * Username in case of authenticated access. The option is a
          * java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public String getExchangeName() {
             return exchangeName;
@@ -559,12 +757,30 @@ public class RabbitMQEndpoint {
         }
     }
 
-    public static class RabbitMQConsumer extends RabbitMQCommon {
+    public static class RabbitMQConsumer
+            extends
+                RabbitMQCommon<RabbitMQConsumer> {
+        private Boolean autoAck;
+        private Boolean bridgeErrorHandler;
+        private Integer concurrentConsumers;
+        private Boolean exclusiveConsumer;
+        private Integer prefetchCount;
+        private Boolean prefetchEnabled;
+        private Boolean prefetchGlobal;
+        private Integer prefetchSize;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private Integer threadPoolSize;
+
         /**
          * If messages should be auto acknowledged. The option is a boolean
          * type.
          */
-        private Boolean autoAck;
+        public RabbitMQConsumer autoAck(boolean autoAck) {
+            this.autoAck = autoAck;
+            return (RabbitMQConsumer) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -574,47 +790,75 @@ public class RabbitMQEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public RabbitMQConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (RabbitMQConsumer) this;
+        }
+
         /**
          * Number of concurrent consumers when consuming from broker. (eg
          * similar as to the same option for the JMS component). The option is a
          * int type.
          */
-        private Integer concurrentConsumers;
+        public RabbitMQConsumer concurrentConsumers(int concurrentConsumers) {
+            this.concurrentConsumers = concurrentConsumers;
+            return (RabbitMQConsumer) this;
+        }
+
         /**
          * Request exclusive access to the queue (meaning only this consumer can
          * access the queue). This is useful when you want a long-lived shared
          * queue to be temporarily accessible by just one consumer. The option
          * is a boolean type.
          */
-        private Boolean exclusiveConsumer;
+        public RabbitMQConsumer exclusiveConsumer(boolean exclusiveConsumer) {
+            this.exclusiveConsumer = exclusiveConsumer;
+            return (RabbitMQConsumer) this;
+        }
+
         /**
          * The maximum number of messages that the server will deliver, 0 if
          * unlimited. You need to specify the option of prefetchSize,
          * prefetchCount, prefetchGlobal at the same time. The option is a int
          * type.
          */
-        private Integer prefetchCount;
+        public RabbitMQConsumer prefetchCount(int prefetchCount) {
+            this.prefetchCount = prefetchCount;
+            return (RabbitMQConsumer) this;
+        }
+
         /**
          * Enables the quality of service on the RabbitMQConsumer side. You need
          * to specify the option of prefetchSize, prefetchCount, prefetchGlobal
          * at the same time. The option is a boolean type.
          */
-        private Boolean prefetchEnabled;
+        public RabbitMQConsumer prefetchEnabled(boolean prefetchEnabled) {
+            this.prefetchEnabled = prefetchEnabled;
+            return (RabbitMQConsumer) this;
+        }
+
         /**
          * If the settings should be applied to the entire channel rather than
          * each consumer You need to specify the option of prefetchSize,
          * prefetchCount, prefetchGlobal at the same time. The option is a
          * boolean type.
          */
-        private Boolean prefetchGlobal;
+        public RabbitMQConsumer prefetchGlobal(boolean prefetchGlobal) {
+            this.prefetchGlobal = prefetchGlobal;
+            return (RabbitMQConsumer) this;
+        }
+
         /**
          * The maximum amount of content (measured in octets) that the server
          * will deliver, 0 if unlimited. You need to specify the option of
          * prefetchSize, prefetchCount, prefetchGlobal at the same time. The
          * option is a int type.
          */
-        private Integer prefetchSize;
+        public RabbitMQConsumer prefetchSize(int prefetchSize) {
+            this.prefetchSize = prefetchSize;
+            return (RabbitMQConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -622,18 +866,30 @@ public class RabbitMQEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public RabbitMQConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (RabbitMQConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public RabbitMQConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (RabbitMQConsumer) this;
+        }
+
         /**
          * The consumer uses a Thread Pool Executor with a fixed number of
          * threads. This setting allows you to set that number of threads. The
          * option is a int type.
          */
-        private Integer threadPoolSize;
+        public RabbitMQConsumer threadPoolSize(int threadPoolSize) {
+            this.threadPoolSize = threadPoolSize;
+            return (RabbitMQConsumer) this;
+        }
 
         public Boolean getAutoAck() {
             return autoAck;
@@ -724,27 +980,55 @@ public class RabbitMQEndpoint {
         }
     }
 
-    public static class RabbitMQProducer extends RabbitMQCommon {
+    public static class RabbitMQProducer
+            extends
+                RabbitMQCommon<RabbitMQProducer> {
+        private Boolean allowNullHeaders;
+        private Boolean bridgeEndpoint;
+        private Integer channelPoolMaxSize;
+        private Long channelPoolMaxWait;
+        private Boolean guaranteedDeliveries;
+        private Boolean immediate;
+        private Boolean mandatory;
+        private Boolean publisherAcknowledgements;
+        private Long publisherAcknowledgementsTimeout;
+
         /**
          * Allow pass null values to header. The option is a boolean type.
          */
-        private Boolean allowNullHeaders;
+        public RabbitMQProducer allowNullHeaders(boolean allowNullHeaders) {
+            this.allowNullHeaders = allowNullHeaders;
+            return (RabbitMQProducer) this;
+        }
+
         /**
          * If the bridgeEndpoint is true, the producer will ignore the message
          * header of rabbitmq.EXCHANGE_NAME and rabbitmq.ROUTING_KEY. The option
          * is a boolean type.
          */
-        private Boolean bridgeEndpoint;
+        public RabbitMQProducer bridgeEndpoint(boolean bridgeEndpoint) {
+            this.bridgeEndpoint = bridgeEndpoint;
+            return (RabbitMQProducer) this;
+        }
+
         /**
          * Get maximum number of opened channel in pool. The option is a int
          * type.
          */
-        private Integer channelPoolMaxSize;
+        public RabbitMQProducer channelPoolMaxSize(int channelPoolMaxSize) {
+            this.channelPoolMaxSize = channelPoolMaxSize;
+            return (RabbitMQProducer) this;
+        }
+
         /**
          * Set the maximum number of milliseconds to wait for a channel from the
          * pool. The option is a long type.
          */
-        private Long channelPoolMaxWait;
+        public RabbitMQProducer channelPoolMaxWait(long channelPoolMaxWait) {
+            this.channelPoolMaxWait = channelPoolMaxWait;
+            return (RabbitMQProducer) this;
+        }
+
         /**
          * When true, an exception will be thrown when the message cannot be
          * delivered (basic.return) and the message is marked as mandatory.
@@ -752,7 +1036,12 @@ public class RabbitMQEndpoint {
          * also publisher acknowledgements - When will messages be confirmed.
          * The option is a boolean type.
          */
-        private Boolean guaranteedDeliveries;
+        public RabbitMQProducer guaranteedDeliveries(
+                boolean guaranteedDeliveries) {
+            this.guaranteedDeliveries = guaranteedDeliveries;
+            return (RabbitMQProducer) this;
+        }
+
         /**
          * This flag tells the server how to react if the message cannot be
          * routed to a queue consumer immediately. If this flag is set, the
@@ -762,7 +1051,11 @@ public class RabbitMQEndpoint {
          * rabbitmq.IMMEDIATE it will override this option. The option is a
          * boolean type.
          */
-        private Boolean immediate;
+        public RabbitMQProducer immediate(boolean immediate) {
+            this.immediate = immediate;
+            return (RabbitMQProducer) this;
+        }
+
         /**
          * This flag tells the server how to react if the message cannot be
          * routed to a queue. If this flag is set, the server will return an
@@ -771,17 +1064,30 @@ public class RabbitMQEndpoint {
          * rabbitmq.MANDATORY it will override this option. The option is a
          * boolean type.
          */
-        private Boolean mandatory;
+        public RabbitMQProducer mandatory(boolean mandatory) {
+            this.mandatory = mandatory;
+            return (RabbitMQProducer) this;
+        }
+
         /**
          * When true, the message will be published with publisher
          * acknowledgements turned on. The option is a boolean type.
          */
-        private Boolean publisherAcknowledgements;
+        public RabbitMQProducer publisherAcknowledgements(
+                boolean publisherAcknowledgements) {
+            this.publisherAcknowledgements = publisherAcknowledgements;
+            return (RabbitMQProducer) this;
+        }
+
         /**
          * The amount of time in milliseconds to wait for a basic.ack response
          * from RabbitMQ server. The option is a long type.
          */
-        private Long publisherAcknowledgementsTimeout;
+        public RabbitMQProducer publisherAcknowledgementsTimeout(
+                long publisherAcknowledgementsTimeout) {
+            this.publisherAcknowledgementsTimeout = publisherAcknowledgementsTimeout;
+            return (RabbitMQProducer) this;
+        }
 
         public Boolean getAllowNullHeaders() {
             return allowNullHeaders;

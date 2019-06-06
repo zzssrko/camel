@@ -29,22 +29,45 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GridFsEndpoint {
 
 
-    public static class GridFsCommon extends EndpointConfiguration {
+    public static class GridFsCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String connectionBean;
+        private String bucket;
+        private String database;
+        private Object readPreference;
+        private Object writeConcern;
+        private Object writeConcernRef;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Name of com.mongodb.Mongo to use. The option is a java.lang.String
          * type.
          */
-        private String connectionBean;
+        public T connectionBean(String connectionBean) {
+            this.connectionBean = connectionBean;
+            return (T) this;
+        }
+
         /**
          * Sets the name of the GridFS bucket within the database. Default is
          * fs. The option is a java.lang.String type.
          */
-        private String bucket;
+        public T bucket(String bucket) {
+            this.bucket = bucket;
+            return (T) this;
+        }
+
         /**
          * Sets the name of the MongoDB database to target. The option is a
          * java.lang.String type.
          */
-        private String database;
+        public T database(String database) {
+            this.database = database;
+            return (T) this;
+        }
+
         /**
          * Sets a MongoDB ReadPreference on the Mongo connection. Read
          * preferences set directly on the connection will be overridden by this
@@ -53,14 +76,22 @@ public class GridFsEndpoint {
          * examples for the possible values are nearest, primary or secondary
          * etc. The option is a com.mongodb.ReadPreference type.
          */
-        private Object readPreference;
+        public T readPreference(Object readPreference) {
+            this.readPreference = readPreference;
+            return (T) this;
+        }
+
         /**
          * Set the WriteConcern for write operations on MongoDB using the
          * standard ones. Resolved from the fields of the WriteConcern class by
          * calling the WriteConcern#valueOf(String) method. The option is a
          * com.mongodb.WriteConcern type.
          */
-        private Object writeConcern;
+        public T writeConcern(Object writeConcern) {
+            this.writeConcern = writeConcern;
+            return (T) this;
+        }
+
         /**
          * Set the WriteConcern for write operations on MongoDB, passing in the
          * bean ref to a custom WriteConcern which exists in the Registry. You
@@ -68,19 +99,30 @@ public class GridFsEndpoint {
          * {link #setWriteConcern(String) setWriteConcern} method. The option is
          * a com.mongodb.WriteConcern type.
          */
-        private Object writeConcernRef;
+        public T writeConcernRef(Object writeConcernRef) {
+            this.writeConcernRef = writeConcernRef;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getConnectionBean() {
             return connectionBean;
@@ -147,7 +189,18 @@ public class GridFsEndpoint {
         }
     }
 
-    public static class GridFsConsumer extends GridFsCommon {
+    public static class GridFsConsumer extends GridFsCommon<GridFsConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Long delay;
+        private String fileAttributeName;
+        private Long initialDelay;
+        private String persistentTSCollection;
+        private String persistentTSObject;
+        private String query;
+        private QueryStrategy queryStrategy;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -157,47 +210,80 @@ public class GridFsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public GridFsConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (GridFsConsumer) this;
+        }
+
         /**
          * Sets the delay between polls within the Consumer. Default is 500ms.
          * The option is a long type.
          */
-        private Long delay;
+        public GridFsConsumer delay(long delay) {
+            this.delay = delay;
+            return (GridFsConsumer) this;
+        }
+
         /**
          * If the QueryType uses a FileAttribute, this sets the name of the
          * attribute that is used. Default is camel-processed. The option is a
          * java.lang.String type.
          */
-        private String fileAttributeName;
+        public GridFsConsumer fileAttributeName(String fileAttributeName) {
+            this.fileAttributeName = fileAttributeName;
+            return (GridFsConsumer) this;
+        }
+
         /**
          * Sets the initialDelay before the consumer will start polling. Default
          * is 1000ms. The option is a long type.
          */
-        private Long initialDelay;
+        public GridFsConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (GridFsConsumer) this;
+        }
+
         /**
          * If the QueryType uses a persistent timestamp, this sets the name of
          * the collection within the DB to store the timestamp. The option is a
          * java.lang.String type.
          */
-        private String persistentTSCollection;
+        public GridFsConsumer persistentTSCollection(
+                String persistentTSCollection) {
+            this.persistentTSCollection = persistentTSCollection;
+            return (GridFsConsumer) this;
+        }
+
         /**
          * If the QueryType uses a persistent timestamp, this is the ID of the
          * object in the collection to store the timestamp. The option is a
          * java.lang.String type.
          */
-        private String persistentTSObject;
+        public GridFsConsumer persistentTSObject(String persistentTSObject) {
+            this.persistentTSObject = persistentTSObject;
+            return (GridFsConsumer) this;
+        }
+
         /**
          * Additional query parameters (in JSON) that are used to configure the
          * query used for finding files in the GridFsConsumer. The option is a
          * java.lang.String type.
          */
-        private String query;
+        public GridFsConsumer query(String query) {
+            this.query = query;
+            return (GridFsConsumer) this;
+        }
+
         /**
          * Sets the QueryStrategy that is used for polling for new files.
          * Default is Timestamp. The option is a
          * org.apache.camel.component.mongodb.gridfs.QueryStrategy type.
          */
-        private QueryStrategy queryStrategy;
+        public GridFsConsumer queryStrategy(QueryStrategy queryStrategy) {
+            this.queryStrategy = queryStrategy;
+            return (GridFsConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -205,12 +291,19 @@ public class GridFsEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public GridFsConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (GridFsConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public GridFsConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (GridFsConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -293,12 +386,17 @@ public class GridFsEndpoint {
         }
     }
 
-    public static class GridFsProducer extends GridFsCommon {
+    public static class GridFsProducer extends GridFsCommon<GridFsProducer> {
+        private String operation;
+
         /**
          * Sets the operation this endpoint will execute against GridRS. The
          * option is a java.lang.String type.
          */
-        private String operation;
+        public GridFsProducer operation(String operation) {
+            this.operation = operation;
+            return (GridFsProducer) this;
+        }
 
         public String getOperation() {
             return operation;

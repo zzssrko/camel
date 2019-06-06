@@ -29,108 +29,210 @@ import org.apache.camel.spi.ExceptionHandler;
 public class NatsEndpoint {
 
 
-    public static class NatsCommon extends EndpointConfiguration {
+    public static class NatsCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String servers;
+        private Object connection;
+        private Integer connectionTimeout;
+        private Boolean flushConnection;
+        private Integer flushTimeout;
+        private Integer maxPingsOut;
+        private Integer maxReconnectAttempts;
+        private Boolean noEcho;
+        private Boolean noRandomizeServers;
+        private Boolean pedantic;
+        private Integer pingInterval;
+        private Boolean reconnect;
+        private Integer reconnectTimeWait;
+        private Integer requestCleanupInterval;
+        private String topic;
+        private Boolean verbose;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Boolean secure;
+        private Object sslContextParameters;
+
         /**
          * URLs to one or more NAT servers. Use comma to separate URLs when
          * specifying multiple servers. The option is a java.lang.String type.
          */
-        private String servers;
+        public T servers(String servers) {
+            this.servers = servers;
+            return (T) this;
+        }
+
         /**
          * Reference an already instantiated connection to Nats server. The
          * option is a io.nats.client.Connection type.
          */
-        private Object connection;
+        public T connection(Object connection) {
+            this.connection = connection;
+            return (T) this;
+        }
+
         /**
          * Timeout for connection attempts. (in milliseconds). The option is a
          * int type.
          */
-        private Integer connectionTimeout;
+        public T connectionTimeout(int connectionTimeout) {
+            this.connectionTimeout = connectionTimeout;
+            return (T) this;
+        }
+
         /**
          * Define if we want to flush connection or not. The option is a boolean
          * type.
          */
-        private Boolean flushConnection;
+        public T flushConnection(boolean flushConnection) {
+            this.flushConnection = flushConnection;
+            return (T) this;
+        }
+
         /**
          * Set the flush timeout (in milliseconds). The option is a int type.
          */
-        private Integer flushTimeout;
+        public T flushTimeout(int flushTimeout) {
+            this.flushTimeout = flushTimeout;
+            return (T) this;
+        }
+
         /**
          * maximum number of pings have not received a response allowed by the
          * client. The option is a int type.
          */
-        private Integer maxPingsOut;
+        public T maxPingsOut(int maxPingsOut) {
+            this.maxPingsOut = maxPingsOut;
+            return (T) this;
+        }
+
         /**
          * Max reconnection attempts. The option is a int type.
          */
-        private Integer maxReconnectAttempts;
+        public T maxReconnectAttempts(int maxReconnectAttempts) {
+            this.maxReconnectAttempts = maxReconnectAttempts;
+            return (T) this;
+        }
+
         /**
          * Turn off echo. If supported by the gnatsd version you are connecting
          * to this flag will prevent the server from echoing messages back to
          * the connection if it has subscriptions on the subject being published
          * to. The option is a boolean type.
          */
-        private Boolean noEcho;
+        public T noEcho(boolean noEcho) {
+            this.noEcho = noEcho;
+            return (T) this;
+        }
+
         /**
          * Whether or not randomizing the order of servers for the connection
          * attempts. The option is a boolean type.
          */
-        private Boolean noRandomizeServers;
+        public T noRandomizeServers(boolean noRandomizeServers) {
+            this.noRandomizeServers = noRandomizeServers;
+            return (T) this;
+        }
+
         /**
          * Whether or not running in pedantic mode (this affects performace).
          * The option is a boolean type.
          */
-        private Boolean pedantic;
+        public T pedantic(boolean pedantic) {
+            this.pedantic = pedantic;
+            return (T) this;
+        }
+
         /**
          * Ping interval to be aware if connection is still alive (in
          * milliseconds). The option is a int type.
          */
-        private Integer pingInterval;
+        public T pingInterval(int pingInterval) {
+            this.pingInterval = pingInterval;
+            return (T) this;
+        }
+
         /**
          * Whether or not using reconnection feature. The option is a boolean
          * type.
          */
-        private Boolean reconnect;
+        public T reconnect(boolean reconnect) {
+            this.reconnect = reconnect;
+            return (T) this;
+        }
+
         /**
          * Waiting time before attempts reconnection (in milliseconds). The
          * option is a int type.
          */
-        private Integer reconnectTimeWait;
+        public T reconnectTimeWait(int reconnectTimeWait) {
+            this.reconnectTimeWait = reconnectTimeWait;
+            return (T) this;
+        }
+
         /**
          * Interval to clean up cancelled/timed out requests. The option is a
          * int type.
          */
-        private Integer requestCleanupInterval;
+        public T requestCleanupInterval(int requestCleanupInterval) {
+            this.requestCleanupInterval = requestCleanupInterval;
+            return (T) this;
+        }
+
         /**
          * The name of topic we want to use. The option is a java.lang.String
          * type.
          */
-        private String topic;
+        public T topic(String topic) {
+            this.topic = topic;
+            return (T) this;
+        }
+
         /**
          * Whether or not running in verbose mode. The option is a boolean type.
          */
-        private Boolean verbose;
+        public T verbose(boolean verbose) {
+            this.verbose = verbose;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Set secure option indicating TLS is required. The option is a boolean
          * type.
          */
-        private Boolean secure;
+        public T secure(boolean secure) {
+            this.secure = secure;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
 
         public String getServers() {
             return servers;
@@ -293,7 +395,14 @@ public class NatsEndpoint {
         }
     }
 
-    public static class NatsConsumer extends NatsCommon {
+    public static class NatsConsumer extends NatsCommon<NatsConsumer> {
+        private Boolean bridgeErrorHandler;
+        private String maxMessages;
+        private Integer poolSize;
+        private String queueName;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -303,21 +412,37 @@ public class NatsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public NatsConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (NatsConsumer) this;
+        }
+
         /**
          * Stop receiving messages from a topic we are subscribing to after
          * maxMessages. The option is a java.lang.String type.
          */
-        private String maxMessages;
+        public NatsConsumer maxMessages(String maxMessages) {
+            this.maxMessages = maxMessages;
+            return (NatsConsumer) this;
+        }
+
         /**
          * Consumer pool size. The option is a int type.
          */
-        private Integer poolSize;
+        public NatsConsumer poolSize(int poolSize) {
+            this.poolSize = poolSize;
+            return (NatsConsumer) this;
+        }
+
         /**
          * The Queue name if we are using nats for a queue configuration. The
          * option is a java.lang.String type.
          */
-        private String queueName;
+        public NatsConsumer queueName(String queueName) {
+            this.queueName = queueName;
+            return (NatsConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -325,12 +450,19 @@ public class NatsEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public NatsConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (NatsConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public NatsConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (NatsConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -381,12 +513,17 @@ public class NatsEndpoint {
         }
     }
 
-    public static class NatsProducer extends NatsCommon {
+    public static class NatsProducer extends NatsCommon<NatsProducer> {
+        private String replySubject;
+
         /**
          * the subject to which subscribers should send response. The option is
          * a java.lang.String type.
          */
-        private String replySubject;
+        public NatsProducer replySubject(String replySubject) {
+            this.replySubject = replySubject;
+            return (NatsProducer) this;
+        }
 
         public String getReplySubject() {
             return replySubject;

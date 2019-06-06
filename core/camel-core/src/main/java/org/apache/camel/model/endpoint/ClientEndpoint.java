@@ -32,95 +32,189 @@ import org.apache.camel.spi.ExceptionHandler;
 public class ClientEndpoint {
 
 
-    public static class ClientCommon extends EndpointConfiguration {
+    public static class ClientCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private Object uriPath;
+        private Object dataModuleOptions;
+        private Object protocolOptions;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Short acknowledgeWindow;
+        private ASDUAddressType adsuAddressType;
+        private CauseOfTransmissionType causeOfTransmissionType;
+        private InformationObjectAddressType informationObjectAddressType;
+        private Short maxUnacknowledged;
+        private Integer timeout1;
+        private Integer timeout2;
+        private Integer timeout3;
+        private Boolean causeSourceAddress;
+        private Boolean ignoreBackgroundScan;
+        private Boolean ignoreDaylightSavingTime;
+        private TimeZone timeZone;
+        private String connectionId;
+
         /**
          * The object information address. The option is a
          * org.apache.camel.component.iec60870.ObjectAddress type.
          */
-        private Object uriPath;
+        public T uriPath(Object uriPath) {
+            this.uriPath = uriPath;
+            return (T) this;
+        }
+
         /**
          * Data module options. The option is a DataModuleOptions type.
          */
-        private Object dataModuleOptions;
+        public T dataModuleOptions(Object dataModuleOptions) {
+            this.dataModuleOptions = dataModuleOptions;
+            return (T) this;
+        }
+
         /**
          * Protocol options. The option is a ProtocolOptions type.
          */
-        private Object protocolOptions;
+        public T protocolOptions(Object protocolOptions) {
+            this.protocolOptions = protocolOptions;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Parameter W - Acknowledgment window. The option is a short type.
          */
-        private Short acknowledgeWindow;
+        public T acknowledgeWindow(short acknowledgeWindow) {
+            this.acknowledgeWindow = acknowledgeWindow;
+            return (T) this;
+        }
+
         /**
          * The common ASDU address size. May be either SIZE_1 or SIZE_2. The
          * option is a org.eclipse.neoscada.protocol.iec60870.ASDUAddressType
          * type.
          */
-        private ASDUAddressType adsuAddressType;
+        public T adsuAddressType(ASDUAddressType adsuAddressType) {
+            this.adsuAddressType = adsuAddressType;
+            return (T) this;
+        }
+
         /**
          * The cause of transmission type. May be either SIZE_1 or SIZE_2. The
          * option is a
          * org.eclipse.neoscada.protocol.iec60870.CauseOfTransmissionType type.
          */
-        private CauseOfTransmissionType causeOfTransmissionType;
+        public T causeOfTransmissionType(
+                CauseOfTransmissionType causeOfTransmissionType) {
+            this.causeOfTransmissionType = causeOfTransmissionType;
+            return (T) this;
+        }
+
         /**
          * The information address size. May be either SIZE_1, SIZE_2 or SIZE_3.
          * The option is a
          * org.eclipse.neoscada.protocol.iec60870.InformationObjectAddressType
          * type.
          */
-        private InformationObjectAddressType informationObjectAddressType;
+        public T informationObjectAddressType(
+                InformationObjectAddressType informationObjectAddressType) {
+            this.informationObjectAddressType = informationObjectAddressType;
+            return (T) this;
+        }
+
         /**
          * Parameter K - Maximum number of un-acknowledged messages. The option
          * is a short type.
          */
-        private Short maxUnacknowledged;
+        public T maxUnacknowledged(short maxUnacknowledged) {
+            this.maxUnacknowledged = maxUnacknowledged;
+            return (T) this;
+        }
+
         /**
          * Timeout T1 in milliseconds. The option is a int type.
          */
-        private Integer timeout1;
+        public T timeout1(int timeout1) {
+            this.timeout1 = timeout1;
+            return (T) this;
+        }
+
         /**
          * Timeout T2 in milliseconds. The option is a int type.
          */
-        private Integer timeout2;
+        public T timeout2(int timeout2) {
+            this.timeout2 = timeout2;
+            return (T) this;
+        }
+
         /**
          * Timeout T3 in milliseconds. The option is a int type.
          */
-        private Integer timeout3;
+        public T timeout3(int timeout3) {
+            this.timeout3 = timeout3;
+            return (T) this;
+        }
+
         /**
          * Whether to include the source address. The option is a boolean type.
          */
-        private Boolean causeSourceAddress;
+        public T causeSourceAddress(boolean causeSourceAddress) {
+            this.causeSourceAddress = causeSourceAddress;
+            return (T) this;
+        }
+
         /**
          * Whether background scan transmissions should be ignored. The option
          * is a boolean type.
          */
-        private Boolean ignoreBackgroundScan;
+        public T ignoreBackgroundScan(boolean ignoreBackgroundScan) {
+            this.ignoreBackgroundScan = ignoreBackgroundScan;
+            return (T) this;
+        }
+
         /**
          * Whether to ignore or respect DST. The option is a boolean type.
          */
-        private Boolean ignoreDaylightSavingTime;
+        public T ignoreDaylightSavingTime(boolean ignoreDaylightSavingTime) {
+            this.ignoreDaylightSavingTime = ignoreDaylightSavingTime;
+            return (T) this;
+        }
+
         /**
          * The timezone to use. May be any Java time zone string. The option is
          * a java.util.TimeZone type.
          */
-        private TimeZone timeZone;
+        public T timeZone(TimeZone timeZone) {
+            this.timeZone = timeZone;
+            return (T) this;
+        }
+
         /**
          * An identifier grouping connection instances. The option is a
          * java.lang.String type.
          */
-        private String connectionId;
+        public T connectionId(String connectionId) {
+            this.connectionId = connectionId;
+            return (T) this;
+        }
 
         public Object getUriPath() {
             return uriPath;
@@ -269,7 +363,11 @@ public class ClientEndpoint {
         }
     }
 
-    public static class ClientConsumer extends ClientCommon {
+    public static class ClientConsumer extends ClientCommon<ClientConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -279,7 +377,11 @@ public class ClientEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public ClientConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (ClientConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -287,12 +389,19 @@ public class ClientEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public ClientConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (ClientConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public ClientConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (ClientConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -319,7 +428,7 @@ public class ClientEndpoint {
         }
     }
 
-    public static class ClientProducer extends ClientCommon {
+    public static class ClientProducer extends ClientCommon<ClientProducer> {
     }
 
     public static enum ASDUAddressType {

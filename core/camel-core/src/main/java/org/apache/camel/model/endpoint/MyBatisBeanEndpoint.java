@@ -28,30 +28,52 @@ import javax.annotation.Generated;
 public class MyBatisBeanEndpoint {
 
 
-    public static class MyBatisBeanCommon extends EndpointConfiguration {
+    public static class MyBatisBeanCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String beanName;
+        private String methodName;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Name of the bean with the MyBatis annotations. This can either by a
          * type alias or a FQN class name. The option is a java.lang.String
          * type.
          */
-        private String beanName;
+        public T beanName(String beanName) {
+            this.beanName = beanName;
+            return (T) this;
+        }
+
         /**
          * Name of the method on the bean that has the SQL query to be executed.
          * The option is a java.lang.String type.
          */
-        private String methodName;
+        public T methodName(String methodName) {
+            this.methodName = methodName;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getBeanName() {
             return beanName;
@@ -86,17 +108,29 @@ public class MyBatisBeanEndpoint {
         }
     }
 
-    public static class MyBatisBeanConsumer extends MyBatisBeanCommon {
+    public static class MyBatisBeanConsumer
+            extends
+                MyBatisBeanCommon<MyBatisBeanConsumer> {
     }
 
-    public static class MyBatisBeanProducer extends MyBatisBeanCommon {
+    public static class MyBatisBeanProducer
+            extends
+                MyBatisBeanCommon<MyBatisBeanProducer> {
+        private ExecutorType executorType;
+        private String inputHeader;
+        private String outputHeader;
+
         /**
          * The executor type to be used while executing statements. simple -
          * executor does nothing special. reuse - executor reuses prepared
          * statements. batch - executor reuses statements and batches updates.
          * The option is a org.apache.ibatis.session.ExecutorType type.
          */
-        private ExecutorType executorType;
+        public MyBatisBeanProducer executorType(ExecutorType executorType) {
+            this.executorType = executorType;
+            return (MyBatisBeanProducer) this;
+        }
+
         /**
          * User the header value for input parameters instead of the message
          * body. By default, inputHeader == null and the input parameters are
@@ -104,7 +138,11 @@ public class MyBatisBeanEndpoint {
          * used and query parameters will be taken from the header instead of
          * the body. The option is a java.lang.String type.
          */
-        private String inputHeader;
+        public MyBatisBeanProducer inputHeader(String inputHeader) {
+            this.inputHeader = inputHeader;
+            return (MyBatisBeanProducer) this;
+        }
+
         /**
          * Store the query result in a header instead of the message body. By
          * default, outputHeader == null and the query result is stored in the
@@ -115,7 +153,10 @@ public class MyBatisBeanEndpoint {
          * CamelMyBatisResult header since it would be the same as outputHeader
          * all the time. The option is a java.lang.String type.
          */
-        private String outputHeader;
+        public MyBatisBeanProducer outputHeader(String outputHeader) {
+            this.outputHeader = outputHeader;
+            return (MyBatisBeanProducer) this;
+        }
 
         public ExecutorType getExecutorType() {
             return executorType;

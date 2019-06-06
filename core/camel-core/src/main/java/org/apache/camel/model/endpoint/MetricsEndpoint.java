@@ -28,57 +28,109 @@ import javax.annotation.Generated;
 public class MetricsEndpoint {
 
 
-    public static class MetricsCommon extends EndpointConfiguration {
+    public static class MetricsCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private MetricsType metricsType;
+        private String metricsName;
+        private MetricsTimerAction action;
+        private Long decrement;
+        private Long increment;
+        private Long mark;
+        private Object subject;
+        private Long value;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Type of metrics. The option is a
          * org.apache.camel.component.metrics.MetricsType type.
          */
-        private MetricsType metricsType;
+        public T metricsType(MetricsType metricsType) {
+            this.metricsType = metricsType;
+            return (T) this;
+        }
+
         /**
          * Name of metrics. The option is a java.lang.String type.
          */
-        private String metricsName;
+        public T metricsName(String metricsName) {
+            this.metricsName = metricsName;
+            return (T) this;
+        }
+
         /**
          * Action when using timer type. The option is a
          * org.apache.camel.component.metrics.MetricsTimerAction type.
          */
-        private MetricsTimerAction action;
+        public T action(MetricsTimerAction action) {
+            this.action = action;
+            return (T) this;
+        }
+
         /**
          * Decrement value when using counter type. The option is a
          * java.lang.Long type.
          */
-        private Long decrement;
+        public T decrement(Long decrement) {
+            this.decrement = decrement;
+            return (T) this;
+        }
+
         /**
          * Increment value when using counter type. The option is a
          * java.lang.Long type.
          */
-        private Long increment;
+        public T increment(Long increment) {
+            this.increment = increment;
+            return (T) this;
+        }
+
         /**
          * Mark when using meter type. The option is a java.lang.Long type.
          */
-        private Long mark;
+        public T mark(Long mark) {
+            this.mark = mark;
+            return (T) this;
+        }
+
         /**
          * Subject value when using gauge type. The option is a java.lang.Object
          * type.
          */
-        private Object subject;
+        public T subject(Object subject) {
+            this.subject = subject;
+            return (T) this;
+        }
+
         /**
          * Value value when using histogram type. The option is a java.lang.Long
          * type.
          */
-        private Long value;
+        public T value(Long value) {
+            this.value = value;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public MetricsType getMetricsType() {
             return metricsType;
@@ -161,10 +213,14 @@ public class MetricsEndpoint {
         }
     }
 
-    public static class MetricsConsumer extends MetricsCommon {
+    public static class MetricsConsumer
+            extends
+                MetricsCommon<MetricsConsumer> {
     }
 
-    public static class MetricsProducer extends MetricsCommon {
+    public static class MetricsProducer
+            extends
+                MetricsCommon<MetricsProducer> {
     }
 
     public static enum MetricsType {

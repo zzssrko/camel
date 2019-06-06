@@ -29,48 +29,95 @@ import org.apache.camel.spi.ExceptionHandler;
 public class ZendeskEndpoint {
 
 
-    public static class ZendeskCommon extends EndpointConfiguration {
+    public static class ZendeskCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String methodName;
+        private String inBody;
+        private String serverUrl;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String oauthToken;
+        private String password;
+        private String token;
+        private String username;
+
         /**
          * What operation to use. The option is a java.lang.String type.
          */
-        private String methodName;
+        public T methodName(String methodName) {
+            this.methodName = methodName;
+            return (T) this;
+        }
+
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
-        private String inBody;
+        public T inBody(String inBody) {
+            this.inBody = inBody;
+            return (T) this;
+        }
+
         /**
          * The server URL to connect. The option is a java.lang.String type.
          */
-        private String serverUrl;
+        public T serverUrl(String serverUrl) {
+            this.serverUrl = serverUrl;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The OAuth token. The option is a java.lang.String type.
          */
-        private String oauthToken;
+        public T oauthToken(String oauthToken) {
+            this.oauthToken = oauthToken;
+            return (T) this;
+        }
+
         /**
          * The password. The option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * The security token. The option is a java.lang.String type.
          */
-        private String token;
+        public T token(String token) {
+            this.token = token;
+            return (T) this;
+        }
+
         /**
          * The user name. The option is a java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public String getMethodName() {
             return methodName;
@@ -145,7 +192,13 @@ public class ZendeskEndpoint {
         }
     }
 
-    public static class ZendeskConsumer extends ZendeskCommon {
+    public static class ZendeskConsumer
+            extends
+                ZendeskCommon<ZendeskConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -155,7 +208,11 @@ public class ZendeskEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public ZendeskConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (ZendeskConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -163,12 +220,20 @@ public class ZendeskEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public ZendeskConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (ZendeskConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public ZendeskConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (ZendeskConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -195,6 +260,8 @@ public class ZendeskEndpoint {
         }
     }
 
-    public static class ZendeskProducer extends ZendeskCommon {
+    public static class ZendeskProducer
+            extends
+                ZendeskCommon<ZendeskProducer> {
     }
 }

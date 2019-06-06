@@ -27,31 +27,53 @@ import javax.annotation.Generated;
 public class JingEndpoint {
 
 
-    public static class JingCommon extends EndpointConfiguration {
+    public static class JingCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String resourceUri;
+        private Boolean compactSyntax;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * URL to a local resource on the classpath or a full URL to a remote
          * resource or resource on the file system which contains the schema to
          * validate against. The option is a java.lang.String type.
          */
-        private String resourceUri;
+        public T resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return (T) this;
+        }
+
         /**
          * Whether to validate using RelaxNG compact syntax or not. By default
          * this is false for using RelaxNG XML Syntax (rng) And true is for
          * using RelaxNG Compact Syntax (rnc). The option is a boolean type.
          */
-        private Boolean compactSyntax;
+        public T compactSyntax(boolean compactSyntax) {
+            this.compactSyntax = compactSyntax;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getResourceUri() {
             return resourceUri;
@@ -86,9 +108,9 @@ public class JingEndpoint {
         }
     }
 
-    public static class JingConsumer extends JingCommon {
+    public static class JingConsumer extends JingCommon<JingConsumer> {
     }
 
-    public static class JingProducer extends JingCommon {
+    public static class JingProducer extends JingCommon<JingProducer> {
     }
 }

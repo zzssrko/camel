@@ -30,91 +30,168 @@ import org.apache.camel.spi.ExceptionHandler;
 public class WebsocketEndpoint {
 
 
-    public static class WebsocketCommon extends EndpointConfiguration {
+    public static class WebsocketCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private String resourceUri;
+        private Integer maxBinaryMessageSize;
+        private Boolean basicPropertyBinding;
+        private Integer bufferSize;
+        private Integer maxIdleTime;
+        private Integer maxTextMessageSize;
+        private Integer minVersion;
+        private Boolean synchronous;
+        private String allowedOrigins;
+        private Boolean crossOriginFilterOn;
+        private String filterPath;
+        private Boolean enableJmx;
+        private Object sslContextParameters;
+
         /**
          * The hostname. The default value is 0.0.0.0. Setting this option on
          * the component will use the component configured value as default. The
          * option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * The port number. The default value is 9292. Setting this option on
          * the component will use the component configured value as default. The
          * option is a java.lang.Integer type.
          */
-        private Integer port;
+        public T port(Integer port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Name of the websocket channel to use. The option is a
          * java.lang.String type.
          */
-        private String resourceUri;
+        public T resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return (T) this;
+        }
+
         /**
          * Can be used to set the size in bytes that the websocket created by
          * the websocketServlet may be accept before closing. (Default is -1 -
          * or unlimited). The option is a java.lang.Integer type.
          */
-        private Integer maxBinaryMessageSize;
+        public T maxBinaryMessageSize(Integer maxBinaryMessageSize) {
+            this.maxBinaryMessageSize = maxBinaryMessageSize;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Set the buffer size of the websocketServlet, which is also the max
          * frame byte size (default 8192). The option is a java.lang.Integer
          * type.
          */
-        private Integer bufferSize;
+        public T bufferSize(Integer bufferSize) {
+            this.bufferSize = bufferSize;
+            return (T) this;
+        }
+
         /**
          * Set the time in ms that the websocket created by the websocketServlet
          * may be idle before closing. (default is 300000). The option is a
          * java.lang.Integer type.
          */
-        private Integer maxIdleTime;
+        public T maxIdleTime(Integer maxIdleTime) {
+            this.maxIdleTime = maxIdleTime;
+            return (T) this;
+        }
+
         /**
          * Can be used to set the size in characters that the websocket created
          * by the websocketServlet may be accept before closing. The option is a
          * java.lang.Integer type.
          */
-        private Integer maxTextMessageSize;
+        public T maxTextMessageSize(Integer maxTextMessageSize) {
+            this.maxTextMessageSize = maxTextMessageSize;
+            return (T) this;
+        }
+
         /**
          * Can be used to set the minimum protocol version accepted for the
          * websocketServlet. (Default 13 - the RFC6455 version). The option is a
          * java.lang.Integer type.
          */
-        private Integer minVersion;
+        public T minVersion(Integer minVersion) {
+            this.minVersion = minVersion;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The CORS allowed origins. Use to allow all. The option is a
          * java.lang.String type.
          */
-        private String allowedOrigins;
+        public T allowedOrigins(String allowedOrigins) {
+            this.allowedOrigins = allowedOrigins;
+            return (T) this;
+        }
+
         /**
          * Whether to enable CORS. The option is a boolean type.
          */
-        private Boolean crossOriginFilterOn;
+        public T crossOriginFilterOn(boolean crossOriginFilterOn) {
+            this.crossOriginFilterOn = crossOriginFilterOn;
+            return (T) this;
+        }
+
         /**
          * Context path for filtering CORS. The option is a java.lang.String
          * type.
          */
-        private String filterPath;
+        public T filterPath(String filterPath) {
+            this.filterPath = filterPath;
+            return (T) this;
+        }
+
         /**
          * If this option is true, Jetty JMX support will be enabled for this
          * endpoint. See Jetty JMX support for more details. The option is a
          * boolean type.
          */
-        private Boolean enableJmx;
+        public T enableJmx(boolean enableJmx) {
+            this.enableJmx = enableJmx;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -237,7 +314,15 @@ public class WebsocketEndpoint {
         }
     }
 
-    public static class WebsocketConsumer extends WebsocketCommon {
+    public static class WebsocketConsumer
+            extends
+                WebsocketCommon<WebsocketConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean sessionSupport;
+        private String staticResources;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -247,12 +332,20 @@ public class WebsocketEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public WebsocketConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (WebsocketConsumer) this;
+        }
+
         /**
          * Whether to enable session support which enables HttpSession for each
          * http request. The option is a boolean type.
          */
-        private Boolean sessionSupport;
+        public WebsocketConsumer sessionSupport(boolean sessionSupport) {
+            this.sessionSupport = sessionSupport;
+            return (WebsocketConsumer) this;
+        }
+
         /**
          * Set a resource path for static resources (such as .html files etc).
          * The resources can be loaded from classpath, if you prefix with
@@ -262,7 +355,11 @@ public class WebsocketEndpoint {
          * then no static resource is in use. The option is a java.lang.String
          * type.
          */
-        private String staticResources;
+        public WebsocketConsumer staticResources(String staticResources) {
+            this.staticResources = staticResources;
+            return (WebsocketConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -270,12 +367,20 @@ public class WebsocketEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public WebsocketConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (WebsocketConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public WebsocketConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (WebsocketConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -318,20 +423,32 @@ public class WebsocketEndpoint {
         }
     }
 
-    public static class WebsocketProducer extends WebsocketCommon {
+    public static class WebsocketProducer
+            extends
+                WebsocketCommon<WebsocketProducer> {
+        private Integer sendTimeout;
+        private Boolean sendToAll;
+
         /**
          * Timeout in millis when sending to a websocket channel. The default
          * timeout is 30000 (30 seconds). The option is a java.lang.Integer
          * type.
          */
-        private Integer sendTimeout;
+        public WebsocketProducer sendTimeout(Integer sendTimeout) {
+            this.sendTimeout = sendTimeout;
+            return (WebsocketProducer) this;
+        }
+
         /**
          * To send to all websocket subscribers. Can be used to configure on
          * endpoint level, instead of having to use the
          * WebsocketConstants.SEND_TO_ALL header on the message. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean sendToAll;
+        public WebsocketProducer sendToAll(Boolean sendToAll) {
+            this.sendToAll = sendToAll;
+            return (WebsocketProducer) this;
+        }
 
         public Integer getSendTimeout() {
             return sendTimeout;

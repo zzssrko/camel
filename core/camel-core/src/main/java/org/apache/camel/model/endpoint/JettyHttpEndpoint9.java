@@ -34,13 +34,32 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class JettyHttpEndpoint9 {
 
 
-    public static class JettyHttpCommon9 extends EndpointConfiguration {
+    public static class JettyHttpCommon9<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private Boolean chunked;
+        private Boolean disableStreamCache;
+        private Boolean enableMultipartFilter;
+        private HeaderFilterStrategy headerFilterStrategy;
+        private Boolean transferException;
+        private Object httpBinding;
+        private Boolean basicPropertyBinding;
+        private Boolean mapHttpMessageBody;
+        private Boolean mapHttpMessageFormUrlEncodedBody;
+        private Boolean mapHttpMessageHeaders;
+        private Boolean synchronous;
+        private Object sslContextParameters;
+
         /**
          * If this option is false the Servlet will disable the HTTP streaming
          * and set the content-length header on the response. The option is a
          * boolean type.
          */
-        private Boolean chunked;
+        public T chunked(boolean chunked) {
+            this.chunked = chunked;
+            return (T) this;
+        }
+
         /**
          * Determines whether or not the raw input stream from Servlet is cached
          * or not (Camel will read the stream into a in memory/overflow to file,
@@ -60,20 +79,32 @@ public class JettyHttpEndpoint9 {
          * response stream as-is as the message body. The option is a boolean
          * type.
          */
-        private Boolean disableStreamCache;
+        public T disableStreamCache(boolean disableStreamCache) {
+            this.disableStreamCache = disableStreamCache;
+            return (T) this;
+        }
+
         /**
          * Whether Jetty org.eclipse.jetty.servlets.MultiPartFilter is enabled
          * or not. You should set this value to false when bridging endpoints,
          * to ensure multipart requests is proxied/bridged as well. The option
          * is a boolean type.
          */
-        private Boolean enableMultipartFilter;
+        public T enableMultipartFilter(boolean enableMultipartFilter) {
+            this.enableMultipartFilter = enableMultipartFilter;
+            return (T) this;
+        }
+
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (T) this;
+        }
+
         /**
          * If enabled and an Exchange failed processing on the consumer side,
          * and if the caused Exception was send back serialized in the response
@@ -85,48 +116,80 @@ public class JettyHttpEndpoint9 {
          * data from the request to Java and that can be a potential security
          * risk. The option is a boolean type.
          */
-        private Boolean transferException;
+        public T transferException(boolean transferException) {
+            this.transferException = transferException;
+            return (T) this;
+        }
+
         /**
          * To use a custom HttpBinding to control the mapping between Camel
          * message and HttpClient. The option is a
          * org.apache.camel.http.common.HttpBinding type.
          */
-        private Object httpBinding;
+        public T httpBinding(Object httpBinding) {
+            this.httpBinding = httpBinding;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * If this option is true then IN exchange Body of the exchange will be
          * mapped to HTTP body. Setting this to false will avoid the HTTP
          * mapping. The option is a boolean type.
          */
-        private Boolean mapHttpMessageBody;
+        public T mapHttpMessageBody(boolean mapHttpMessageBody) {
+            this.mapHttpMessageBody = mapHttpMessageBody;
+            return (T) this;
+        }
+
         /**
          * If this option is true then IN exchange Form Encoded body of the
          * exchange will be mapped to HTTP. Setting this to false will avoid the
          * HTTP Form Encoded body mapping. The option is a boolean type.
          */
-        private Boolean mapHttpMessageFormUrlEncodedBody;
+        public T mapHttpMessageFormUrlEncodedBody(
+                boolean mapHttpMessageFormUrlEncodedBody) {
+            this.mapHttpMessageFormUrlEncodedBody = mapHttpMessageFormUrlEncodedBody;
+            return (T) this;
+        }
+
         /**
          * If this option is true then IN exchange Headers of the exchange will
          * be mapped to HTTP headers. Setting this to false will avoid the HTTP
          * Headers mapping. The option is a boolean type.
          */
-        private Boolean mapHttpMessageHeaders;
+        public T mapHttpMessageHeaders(boolean mapHttpMessageHeaders) {
+            this.mapHttpMessageHeaders = mapHttpMessageHeaders;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
 
         public Boolean getChunked() {
             return chunked;
@@ -227,12 +290,44 @@ public class JettyHttpEndpoint9 {
         }
     }
 
-    public static class JettyHttpConsumer9 extends JettyHttpCommon9 {
+    public static class JettyHttpConsumer9
+            extends
+                JettyHttpCommon9<JettyHttpConsumer9> {
+        private Boolean async;
+        private Boolean bridgeErrorHandler;
+        private Long continuationTimeout;
+        private Boolean enableCORS;
+        private Boolean enableJmx;
+        private String httpMethodRestrict;
+        private Boolean matchOnUriPrefix;
+        private Integer responseBufferSize;
+        private Boolean sendDateHeader;
+        private Boolean sendServerVersion;
+        private Boolean sessionSupport;
+        private Boolean useContinuation;
+        private Boolean eagerCheckContentAvailable;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private Map<String, String> filterInitParameters;
+        private List<Object> filtersRef;
+        private List<Object> handlers;
+        @Deprecated
+        private String httpBindingRef;
+        private Object multipartFilter;
+        @Deprecated
+        private String multipartFilterRef;
+        private Boolean optionsEnabled;
+        private Boolean traceEnabled;
+
         /**
          * Configure the consumer to work in async mode. The option is a boolean
          * type.
          */
-        private Boolean async;
+        public JettyHttpConsumer9 async(boolean async) {
+            this.async = async;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -242,7 +337,11 @@ public class JettyHttpEndpoint9 {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public JettyHttpConsumer9 bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Allows to set a timeout in millis when using Jetty as consumer
          * (server). By default Jetty uses 30000. You can use a value of = 0 to
@@ -251,42 +350,70 @@ public class JettyHttpEndpoint9 {
          * option is only in use when using Jetty with the Asynchronous Routing
          * Engine. The option is a java.lang.Long type.
          */
-        private Long continuationTimeout;
+        public JettyHttpConsumer9 continuationTimeout(Long continuationTimeout) {
+            this.continuationTimeout = continuationTimeout;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * If the option is true, Jetty server will setup the CrossOriginFilter
          * which supports the CORS out of box. The option is a boolean type.
          */
-        private Boolean enableCORS;
+        public JettyHttpConsumer9 enableCORS(boolean enableCORS) {
+            this.enableCORS = enableCORS;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * If this option is true, Jetty JMX support will be enabled for this
          * endpoint. See Jetty JMX support for more details. The option is a
          * boolean type.
          */
-        private Boolean enableJmx;
+        public JettyHttpConsumer9 enableJmx(boolean enableJmx) {
+            this.enableJmx = enableJmx;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Used to only allow consuming if the HttpMethod matches, such as
          * GET/POST/PUT etc. Multiple methods can be specified separated by
          * comma. The option is a java.lang.String type.
          */
-        private String httpMethodRestrict;
+        public JettyHttpConsumer9 httpMethodRestrict(String httpMethodRestrict) {
+            this.httpMethodRestrict = httpMethodRestrict;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Whether or not the consumer should try to find a target consumer by
          * matching the URI prefix if no exact match is found. The option is a
          * boolean type.
          */
-        private Boolean matchOnUriPrefix;
+        public JettyHttpConsumer9 matchOnUriPrefix(boolean matchOnUriPrefix) {
+            this.matchOnUriPrefix = matchOnUriPrefix;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * To use a custom buffer size on the javax.servlet.ServletResponse. The
          * option is a java.lang.Integer type.
          */
-        private Integer responseBufferSize;
+        public JettyHttpConsumer9 responseBufferSize(Integer responseBufferSize) {
+            this.responseBufferSize = responseBufferSize;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * If the option is true, jetty server will send the date header to the
          * client which sends the request. NOTE please make sure there is no any
          * other camel-jetty endpoint is share the same port, otherwise this
          * option may not work as expected. The option is a boolean type.
          */
-        private Boolean sendDateHeader;
+        public JettyHttpConsumer9 sendDateHeader(boolean sendDateHeader) {
+            this.sendDateHeader = sendDateHeader;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * If the option is true, jetty will send the server header with the
          * jetty version information to the client which sends the request. NOTE
@@ -294,24 +421,41 @@ public class JettyHttpEndpoint9 {
          * the same port, otherwise this option may not work as expected. The
          * option is a boolean type.
          */
-        private Boolean sendServerVersion;
+        public JettyHttpConsumer9 sendServerVersion(boolean sendServerVersion) {
+            this.sendServerVersion = sendServerVersion;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Specifies whether to enable the session manager on the server side of
          * Jetty. The option is a boolean type.
          */
-        private Boolean sessionSupport;
+        public JettyHttpConsumer9 sessionSupport(boolean sessionSupport) {
+            this.sessionSupport = sessionSupport;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Whether or not to use Jetty continuations for the Jetty Server. The
          * option is a java.lang.Boolean type.
          */
-        private Boolean useContinuation;
+        public JettyHttpConsumer9 useContinuation(boolean useContinuation) {
+            this.useContinuation = useContinuation;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Whether to eager check whether the HTTP requests has content if the
          * content-length header is 0 or not present. This can be turned on in
          * case HTTP clients do not send streamed data. The option is a boolean
          * type.
          */
-        private Boolean eagerCheckContentAvailable;
+        public JettyHttpConsumer9 eagerCheckContentAvailable(
+                boolean eagerCheckContentAvailable) {
+            this.eagerCheckContentAvailable = eagerCheckContentAvailable;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -319,24 +463,43 @@ public class JettyHttpEndpoint9 {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public JettyHttpConsumer9 exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public JettyHttpConsumer9 exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Configuration of the filter init parameters. These parameters will be
          * applied to the filter list before starting the jetty server. The
          * option is a java.util.Map<java.lang.String,java.lang.String> type.
          */
-        private Map<String, String> filterInitParameters;
+        public JettyHttpConsumer9 filterInitParameters(
+                Map<String, String> filterInitParameters) {
+            this.filterInitParameters = filterInitParameters;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Allows using a custom filters which is putted into a list and can be
          * find in the Registry. Multiple values can be separated by comma. The
          * option is a java.lang.String type.
          */
-        private List<Object> filtersRef;
+        public JettyHttpConsumer9 filtersRef(List<Object> filtersRef) {
+            this.filtersRef = filtersRef;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Specifies a comma-delimited set of Handler instances to lookup in
          * your Registry. These handlers are added to the Jetty servlet context
@@ -346,7 +509,11 @@ public class JettyHttpEndpoint9 {
          * handlers, then use different port numbers. The option is a
          * java.lang.String type.
          */
-        private List<Object> handlers;
+        public JettyHttpConsumer9 handlers(List<Object> handlers) {
+            this.handlers = handlers;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Option to disable throwing the HttpOperationFailedException in case
          * of failed responses from the remote server. This allows you to get
@@ -354,30 +521,49 @@ public class JettyHttpEndpoint9 {
          * java.lang.String type.
          */
         @Deprecated
-        private String httpBindingRef;
+        public JettyHttpConsumer9 httpBindingRef(String httpBindingRef) {
+            this.httpBindingRef = httpBindingRef;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Allows using a custom multipart filter. Note: setting
          * multipartFilterRef forces the value of enableMultipartFilter to true.
          * The option is a javax.servlet.Filter type.
          */
-        private Object multipartFilter;
+        public JettyHttpConsumer9 multipartFilter(Object multipartFilter) {
+            this.multipartFilter = multipartFilter;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Allows using a custom multipart filter. Note: setting
          * multipartFilterRef forces the value of enableMultipartFilter to true.
          * The option is a java.lang.String type.
          */
         @Deprecated
-        private String multipartFilterRef;
+        public JettyHttpConsumer9 multipartFilterRef(String multipartFilterRef) {
+            this.multipartFilterRef = multipartFilterRef;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Specifies whether to enable HTTP OPTIONS for this Servlet consumer.
          * By default OPTIONS is turned off. The option is a boolean type.
          */
-        private Boolean optionsEnabled;
+        public JettyHttpConsumer9 optionsEnabled(boolean optionsEnabled) {
+            this.optionsEnabled = optionsEnabled;
+            return (JettyHttpConsumer9) this;
+        }
+
         /**
          * Specifies whether to enable HTTP TRACE for this Servlet consumer. By
          * default TRACE is turned off. The option is a boolean type.
          */
-        private Boolean traceEnabled;
+        public JettyHttpConsumer9 traceEnabled(boolean traceEnabled) {
+            this.traceEnabled = traceEnabled;
+            return (JettyHttpConsumer9) this;
+        }
 
         public Boolean getAsync() {
             return async;
@@ -570,37 +756,83 @@ public class JettyHttpEndpoint9 {
         }
     }
 
-    public static class JettyHttpProducer9 extends JettyHttpCommon9 {
+    public static class JettyHttpProducer9
+            extends
+                JettyHttpCommon9<JettyHttpProducer9> {
+        private URI httpUri;
+        private Boolean bridgeEndpoint;
+        private Boolean connectionClose;
+        private Object cookieHandler;
+        private Boolean copyHeaders;
+        private Integer httpClientMaxThreads;
+        private Integer httpClientMinThreads;
+        private HttpMethods httpMethod;
+        private Boolean ignoreResponseBody;
+        private Boolean preserveHostHeader;
+        private Boolean throwExceptionOnFailure;
+        private Object httpClient;
+        private Map<String, Object> httpClientParameters;
+        private Object jettyBinding;
+        @Deprecated
+        private String jettyBindingRef;
+        private String okStatusCodeRange;
+        @Deprecated
+        private Object urlRewrite;
+        private String proxyAuthScheme;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String authHost;
+
         /**
          * The url of the HTTP endpoint to call. The option is a java.net.URI
          * type.
          */
-        private URI httpUri;
+        public JettyHttpProducer9 httpUri(URI httpUri) {
+            this.httpUri = httpUri;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * If the option is true, HttpProducer will ignore the Exchange.HTTP_URI
          * header, and use the endpoint's URI for request. You may also set the
          * option throwExceptionOnFailure to be false to let the HttpProducer
          * send all the fault response back. The option is a boolean type.
          */
-        private Boolean bridgeEndpoint;
+        public JettyHttpProducer9 bridgeEndpoint(boolean bridgeEndpoint) {
+            this.bridgeEndpoint = bridgeEndpoint;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * Specifies whether a Connection Close header must be added to HTTP
          * Request. By default connectionClose is false. The option is a boolean
          * type.
          */
-        private Boolean connectionClose;
+        public JettyHttpProducer9 connectionClose(boolean connectionClose) {
+            this.connectionClose = connectionClose;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
          */
-        private Object cookieHandler;
+        public JettyHttpProducer9 cookieHandler(Object cookieHandler) {
+            this.cookieHandler = cookieHandler;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * If this option is true then IN exchange headers will be copied to OUT
          * exchange headers according to copy strategy. Setting this to false,
          * allows to only include the headers from the HTTP response (not
          * propagating IN headers). The option is a boolean type.
          */
-        private Boolean copyHeaders;
+        public JettyHttpProducer9 copyHeaders(boolean copyHeaders) {
+            this.copyHeaders = copyHeaders;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * To set a value for maximum number of threads in HttpClient thread
          * pool. This setting override any setting configured on component
@@ -608,7 +840,12 @@ public class JettyHttpEndpoint9 {
          * set it default to max 254 threads used in Jettys thread pool. The
          * option is a java.lang.Integer type.
          */
-        private Integer httpClientMaxThreads;
+        public JettyHttpProducer9 httpClientMaxThreads(
+                Integer httpClientMaxThreads) {
+            this.httpClientMaxThreads = httpClientMaxThreads;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * To set a value for minimum number of threads in HttpClient thread
          * pool. This setting override any setting configured on component
@@ -616,18 +853,31 @@ public class JettyHttpEndpoint9 {
          * set it default to min 8 threads used in Jettys thread pool. The
          * option is a java.lang.Integer type.
          */
-        private Integer httpClientMinThreads;
+        public JettyHttpProducer9 httpClientMinThreads(
+                Integer httpClientMinThreads) {
+            this.httpClientMinThreads = httpClientMinThreads;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * Configure the HTTP method to use. The HttpMethod header cannot
          * override this option if set. The option is a
          * org.apache.camel.http.common.HttpMethods type.
          */
-        private HttpMethods httpMethod;
+        public JettyHttpProducer9 httpMethod(HttpMethods httpMethod) {
+            this.httpMethod = httpMethod;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * If this option is true, The http producer won't read response body
          * and cache the input stream. The option is a boolean type.
          */
-        private Boolean ignoreResponseBody;
+        public JettyHttpProducer9 ignoreResponseBody(boolean ignoreResponseBody) {
+            this.ignoreResponseBody = ignoreResponseBody;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * If the option is true, HttpProducer will set the Host header to the
          * value contained in the current exchange Host header, useful in
@@ -637,14 +887,23 @@ public class JettyHttpEndpoint9 {
          * generate accurate URL's for a proxied service. The option is a
          * boolean type.
          */
-        private Boolean preserveHostHeader;
+        public JettyHttpProducer9 preserveHostHeader(boolean preserveHostHeader) {
+            this.preserveHostHeader = preserveHostHeader;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * Option to disable throwing the HttpOperationFailedException in case
          * of failed responses from the remote server. This allows you to get
          * all responses regardless of the HTTP status code. The option is a
          * boolean type.
          */
-        private Boolean throwExceptionOnFailure;
+        public JettyHttpProducer9 throwExceptionOnFailure(
+                boolean throwExceptionOnFailure) {
+            this.throwExceptionOnFailure = throwExceptionOnFailure;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * Sets a shared HttpClient to use for all producers created by this
          * endpoint. By default each producer will use a new http client, and
@@ -655,7 +914,11 @@ public class JettyHttpEndpoint9 {
          * used in special circumstances. The option is a
          * org.eclipse.jetty.client.HttpClient type.
          */
-        private Object httpClient;
+        public JettyHttpProducer9 httpClient(Object httpClient) {
+            this.httpClient = httpClient;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * Configuration of Jetty's HttpClient. For example, setting
          * httpClient.idleTimeout=30000 sets the idle timeout to 30 seconds. And
@@ -664,20 +927,33 @@ public class JettyHttpEndpoint9 {
          * request/response calls. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> httpClientParameters;
+        public JettyHttpProducer9 httpClientParameters(
+                Map<String, Object> httpClientParameters) {
+            this.httpClientParameters = httpClientParameters;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * To use a custom JettyHttpBinding which be used to customize how a
          * response should be written for the producer. The option is a
          * org.apache.camel.component.jetty.JettyHttpBinding type.
          */
-        private Object jettyBinding;
+        public JettyHttpProducer9 jettyBinding(Object jettyBinding) {
+            this.jettyBinding = jettyBinding;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * To use a custom JettyHttpBinding which be used to customize how a
          * response should be written for the producer. The option is a
          * java.lang.String type.
          */
         @Deprecated
-        private String jettyBindingRef;
+        public JettyHttpProducer9 jettyBindingRef(String jettyBindingRef) {
+            this.jettyBindingRef = jettyBindingRef;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * The status codes which are considered a success response. The values
          * are inclusive. Multiple ranges can be defined, separated by comma,
@@ -685,7 +961,11 @@ public class JettyHttpEndpoint9 {
          * from-to with the dash included. The option is a java.lang.String
          * type.
          */
-        private String okStatusCodeRange;
+        public JettyHttpProducer9 okStatusCodeRange(String okStatusCodeRange) {
+            this.okStatusCodeRange = okStatusCodeRange;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * Refers to a custom org.apache.camel.component.http.UrlRewrite which
          * allows you to rewrite urls when you bridge/proxy endpoints. See more
@@ -693,25 +973,44 @@ public class JettyHttpEndpoint9 {
          * org.apache.camel.http.common.UrlRewrite type.
          */
         @Deprecated
-        private Object urlRewrite;
+        public JettyHttpProducer9 urlRewrite(Object urlRewrite) {
+            this.urlRewrite = urlRewrite;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * Proxy authentication scheme to use. The option is a java.lang.String
          * type.
          */
-        private String proxyAuthScheme;
+        public JettyHttpProducer9 proxyAuthScheme(String proxyAuthScheme) {
+            this.proxyAuthScheme = proxyAuthScheme;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * Proxy hostname to use. The option is a java.lang.String type.
          */
-        private String proxyHost;
+        public JettyHttpProducer9 proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * Proxy port to use. The option is a int type.
          */
-        private Integer proxyPort;
+        public JettyHttpProducer9 proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (JettyHttpProducer9) this;
+        }
+
         /**
          * Authentication host to use with NTML. The option is a
          * java.lang.String type.
          */
-        private String authHost;
+        public JettyHttpProducer9 authHost(String authHost) {
+            this.authHost = authHost;
+            return (JettyHttpProducer9) this;
+        }
 
         public URI getHttpUri() {
             return httpUri;

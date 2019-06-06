@@ -28,36 +28,63 @@ import javax.annotation.Generated;
 public class FopEndpoint {
 
 
-    public static class FopCommon extends EndpointConfiguration {
+    public static class FopCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private FopOutputType outputType;
+        private Object fopFactory;
+        private String userConfigURL;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The primary output format is PDF but other output formats are also
          * supported. The option is a
          * org.apache.camel.component.fop.FopOutputType type.
          */
-        private FopOutputType outputType;
+        public T outputType(FopOutputType outputType) {
+            this.outputType = outputType;
+            return (T) this;
+        }
+
         /**
          * Allows to use a custom configured or implementation of
          * org.apache.fop.apps.FopFactory. The option is a
          * org.apache.fop.apps.FopFactory type.
          */
-        private Object fopFactory;
+        public T fopFactory(Object fopFactory) {
+            this.fopFactory = fopFactory;
+            return (T) this;
+        }
+
         /**
          * The location of a configuration file which can be loaded from
          * classpath or file system. The option is a java.lang.String type.
          */
-        private String userConfigURL;
+        public T userConfigURL(String userConfigURL) {
+            this.userConfigURL = userConfigURL;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public FopOutputType getOutputType() {
             return outputType;
@@ -100,10 +127,10 @@ public class FopEndpoint {
         }
     }
 
-    public static class FopConsumer extends FopCommon {
+    public static class FopConsumer extends FopCommon<FopConsumer> {
     }
 
-    public static class FopProducer extends FopCommon {
+    public static class FopProducer extends FopCommon<FopProducer> {
     }
 
     public static enum FopOutputType {

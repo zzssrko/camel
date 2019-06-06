@@ -31,34 +31,67 @@ import org.apache.camel.spi.ExceptionHandler;
 public class HBaseEndpoint {
 
 
-    public static class HBaseCommon extends EndpointConfiguration {
+    public static class HBaseCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String tableName;
+        private Object cellMappingStrategyFactory;
+        private List<Object> filters;
+        private String mappingStrategyClassName;
+        private String mappingStrategyName;
+        private Map<String, Object> rowMapping;
+        private Object rowModel;
+        private Object userGroupInformation;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The name of the table. The option is a java.lang.String type.
          */
-        private String tableName;
+        public T tableName(String tableName) {
+            this.tableName = tableName;
+            return (T) this;
+        }
+
         /**
          * To use a custom CellMappingStrategyFactory that is responsible for
          * mapping cells. The option is a
          * org.apache.camel.component.hbase.mapping.CellMappingStrategyFactory
          * type.
          */
-        private Object cellMappingStrategyFactory;
+        public T cellMappingStrategyFactory(Object cellMappingStrategyFactory) {
+            this.cellMappingStrategyFactory = cellMappingStrategyFactory;
+            return (T) this;
+        }
+
         /**
          * A list of filters to use. The option is a
          * java.util.List<org.apache.hadoop.hbase.filter.Filter> type.
          */
-        private List<Object> filters;
+        public T filters(List<Object> filters) {
+            this.filters = filters;
+            return (T) this;
+        }
+
         /**
          * The class name of a custom mapping strategy implementation. The
          * option is a java.lang.String type.
          */
-        private String mappingStrategyClassName;
+        public T mappingStrategyClassName(String mappingStrategyClassName) {
+            this.mappingStrategyClassName = mappingStrategyClassName;
+            return (T) this;
+        }
+
         /**
          * The strategy to use for mapping Camel messages to HBase columns.
          * Supported values: header, or body. The option is a java.lang.String
          * type.
          */
-        private String mappingStrategyName;
+        public T mappingStrategyName(String mappingStrategyName) {
+            this.mappingStrategyName = mappingStrategyName;
+            return (T) this;
+        }
+
         /**
          * To map the key/values from the Map to a HBaseRow. The following keys
          * is supported: rowId - The id of the row. This has limited use as the
@@ -72,30 +105,49 @@ public class HBaseEndpoint {
          * columns. Supported operations: CamelHBaseGet, and CamelHBaseScan. The
          * option is a java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> rowMapping;
+        public T rowMapping(Map<String, Object> rowMapping) {
+            this.rowMapping = rowMapping;
+            return (T) this;
+        }
+
         /**
          * An instance of org.apache.camel.component.hbase.model.HBaseRow which
          * describes how each row should be modeled. The option is a
          * org.apache.camel.component.hbase.model.HBaseRow type.
          */
-        private Object rowModel;
+        public T rowModel(Object rowModel) {
+            this.rowModel = rowModel;
+            return (T) this;
+        }
+
         /**
          * Defines privileges to communicate with HBase such as using kerberos.
          * The option is a org.apache.hadoop.security.UserGroupInformation type.
          */
-        private Object userGroupInformation;
+        public T userGroupInformation(Object userGroupInformation) {
+            this.userGroupInformation = userGroupInformation;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getTableName() {
             return tableName;
@@ -179,7 +231,15 @@ public class HBaseEndpoint {
         }
     }
 
-    public static class HBaseConsumer extends HBaseCommon {
+    public static class HBaseConsumer extends HBaseCommon<HBaseConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Integer maxMessagesPerPoll;
+        private String operation;
+        private Boolean remove;
+        private Object removeHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -189,29 +249,49 @@ public class HBaseEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public HBaseConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (HBaseConsumer) this;
+        }
+
         /**
          * Gets the maximum number of messages as a limit to poll at each
          * polling. Is default unlimited, but use 0 or negative number to
          * disable it as unlimited. The option is a int type.
          */
-        private Integer maxMessagesPerPoll;
+        public HBaseConsumer maxMessagesPerPoll(int maxMessagesPerPoll) {
+            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            return (HBaseConsumer) this;
+        }
+
         /**
          * The HBase operation to perform. The option is a java.lang.String
          * type.
          */
-        private String operation;
+        public HBaseConsumer operation(String operation) {
+            this.operation = operation;
+            return (HBaseConsumer) this;
+        }
+
         /**
          * If the option is true, Camel HBase Consumer will remove the rows
          * which it processes. The option is a boolean type.
          */
-        private Boolean remove;
+        public HBaseConsumer remove(boolean remove) {
+            this.remove = remove;
+            return (HBaseConsumer) this;
+        }
+
         /**
          * To use a custom HBaseRemoveHandler that is executed when a row is to
          * be removed. The option is a
          * org.apache.camel.component.hbase.HBaseRemoveHandler type.
          */
-        private Object removeHandler;
+        public HBaseConsumer removeHandler(Object removeHandler) {
+            this.removeHandler = removeHandler;
+            return (HBaseConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -219,12 +299,19 @@ public class HBaseEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public HBaseConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (HBaseConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public HBaseConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (HBaseConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -283,11 +370,16 @@ public class HBaseEndpoint {
         }
     }
 
-    public static class HBaseProducer extends HBaseCommon {
+    public static class HBaseProducer extends HBaseCommon<HBaseProducer> {
+        private Integer maxResults;
+
         /**
          * The maximum number of rows to scan. The option is a int type.
          */
-        private Integer maxResults;
+        public HBaseProducer maxResults(int maxResults) {
+            this.maxResults = maxResults;
+            return (HBaseProducer) this;
+        }
 
         public Integer getMaxResults() {
             return maxResults;

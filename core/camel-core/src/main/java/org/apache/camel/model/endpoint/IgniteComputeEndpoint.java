@@ -30,33 +30,62 @@ import javax.annotation.Generated;
 public class IgniteComputeEndpoint {
 
 
-    public static class IgniteComputeCommon extends EndpointConfiguration {
+    public static class IgniteComputeCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String endpointId;
+        private Boolean propagateIncomingBodyIfNoReturnValue;
+        private Boolean treatCollectionsAsCacheObjects;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The endpoint ID (not used). The option is a java.lang.String type.
          */
-        private String endpointId;
+        public T endpointId(String endpointId) {
+            this.endpointId = endpointId;
+            return (T) this;
+        }
+
         /**
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option is a boolean type.
          */
-        private Boolean propagateIncomingBodyIfNoReturnValue;
+        public T propagateIncomingBodyIfNoReturnValue(
+                boolean propagateIncomingBodyIfNoReturnValue) {
+            this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
+            return (T) this;
+        }
+
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
-        private Boolean treatCollectionsAsCacheObjects;
+        public T treatCollectionsAsCacheObjects(
+                boolean treatCollectionsAsCacheObjects) {
+            this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getEndpointId() {
             return endpointId;
@@ -101,22 +130,41 @@ public class IgniteComputeEndpoint {
         }
     }
 
-    public static class IgniteComputeConsumer extends IgniteComputeCommon {
+    public static class IgniteComputeConsumer
+            extends
+                IgniteComputeCommon<IgniteComputeConsumer> {
     }
 
-    public static class IgniteComputeProducer extends IgniteComputeCommon {
+    public static class IgniteComputeProducer
+            extends
+                IgniteComputeCommon<IgniteComputeProducer> {
+        private Object clusterGroupExpression;
+        private String computeName;
+        private IgniteComputeExecutionType executionType;
+        private String taskName;
+        private Long timeoutMillis;
+
         /**
          * An expression that returns the Cluster Group for the IgniteCompute
          * instance. The option is a
          * org.apache.camel.component.ignite.ClusterGroupExpression type.
          */
-        private Object clusterGroupExpression;
+        public IgniteComputeProducer clusterGroupExpression(
+                Object clusterGroupExpression) {
+            this.clusterGroupExpression = clusterGroupExpression;
+            return (IgniteComputeProducer) this;
+        }
+
         /**
          * The name of the compute job, which will be set via
          * IgniteCompute#withName(String). The option is a java.lang.String
          * type.
          */
-        private String computeName;
+        public IgniteComputeProducer computeName(String computeName) {
+            this.computeName = computeName;
+            return (IgniteComputeProducer) this;
+        }
+
         /**
          * The compute operation to perform. Possible values: CALL, BROADCAST,
          * APPLY, EXECUTE, RUN, AFFINITY_CALL, AFFINITY_RUN. The component
@@ -125,19 +173,31 @@ public class IgniteComputeEndpoint {
          * org.apache.camel.component.ignite.compute.IgniteComputeExecutionType
          * type.
          */
-        private IgniteComputeExecutionType executionType;
+        public IgniteComputeProducer executionType(
+                IgniteComputeExecutionType executionType) {
+            this.executionType = executionType;
+            return (IgniteComputeProducer) this;
+        }
+
         /**
          * The task name, only applicable if using the
          * IgniteComputeExecutionType#EXECUTE execution type. The option is a
          * java.lang.String type.
          */
-        private String taskName;
+        public IgniteComputeProducer taskName(String taskName) {
+            this.taskName = taskName;
+            return (IgniteComputeProducer) this;
+        }
+
         /**
          * The timeout interval for triggered jobs, in milliseconds, which will
          * be set via IgniteCompute#withTimeout(long). The option is a
          * java.lang.Long type.
          */
-        private Long timeoutMillis;
+        public IgniteComputeProducer timeoutMillis(Long timeoutMillis) {
+            this.timeoutMillis = timeoutMillis;
+            return (IgniteComputeProducer) this;
+        }
 
         public Object getClusterGroupExpression() {
             return clusterGroupExpression;

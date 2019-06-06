@@ -30,34 +30,61 @@ import org.apache.camel.spi.ExceptionHandler;
 public class LumberjackEndpoint {
 
 
-    public static class LumberjackCommon extends EndpointConfiguration {
+    public static class LumberjackCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private Object sslContextParameters;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Network interface on which to listen for Lumberjack. The option is a
          * java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Network port on which to listen for Lumberjack. The option is a int
          * type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * SSL configuration. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -100,7 +127,13 @@ public class LumberjackEndpoint {
         }
     }
 
-    public static class LumberjackConsumer extends LumberjackCommon {
+    public static class LumberjackConsumer
+            extends
+                LumberjackCommon<LumberjackConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -110,7 +143,11 @@ public class LumberjackEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public LumberjackConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (LumberjackConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -118,12 +155,21 @@ public class LumberjackEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public LumberjackConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (LumberjackConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public LumberjackConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (LumberjackConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -150,6 +196,8 @@ public class LumberjackEndpoint {
         }
     }
 
-    public static class LumberjackProducer extends LumberjackCommon {
+    public static class LumberjackProducer
+            extends
+                LumberjackCommon<LumberjackProducer> {
     }
 }

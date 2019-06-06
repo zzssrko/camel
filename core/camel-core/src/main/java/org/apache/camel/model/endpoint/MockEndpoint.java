@@ -28,23 +28,40 @@ import javax.annotation.Generated;
 public class MockEndpoint {
 
 
-    public static class MockCommon extends EndpointConfiguration {
+    public static class MockCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String name;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Name of mock endpoint. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getName() {
             return name;
@@ -71,10 +88,20 @@ public class MockEndpoint {
         }
     }
 
-    public static class MockConsumer extends MockCommon {
+    public static class MockConsumer extends MockCommon<MockConsumer> {
     }
 
-    public static class MockProducer extends MockCommon {
+    public static class MockProducer extends MockCommon<MockProducer> {
+        private Long assertPeriod;
+        private Integer expectedCount;
+        private Integer reportGroup;
+        private Long resultMinimumWaitTime;
+        private Long resultWaitTime;
+        private Integer retainFirst;
+        private Integer retainLast;
+        private Long sleepForEmptyTest;
+        private Boolean copyOnExchange;
+
         /**
          * Sets a grace period after which the mock endpoint will re-assert to
          * ensure the preliminary assertion is still valid. This is used for
@@ -86,7 +113,11 @@ public class MockEndpoint {
          * method for. By default this period is disabled. The option is a long
          * type.
          */
-        private Long assertPeriod;
+        public MockProducer assertPeriod(long assertPeriod) {
+            this.assertPeriod = assertPeriod;
+            return (MockProducer) this;
+        }
+
         /**
          * Specifies the expected number of message exchanges that should be
          * received by this endpoint. Beware: If you want to expect that 0
@@ -101,24 +132,40 @@ public class MockEndpoint {
          * this mock endpoint, then see also the setAssertPeriod(long) method
          * for further details. The option is a int type.
          */
-        private Integer expectedCount;
+        public MockProducer expectedCount(int expectedCount) {
+            this.expectedCount = expectedCount;
+            return (MockProducer) this;
+        }
+
         /**
          * A number that is used to turn on throughput logging based on groups
          * of the size. The option is a int type.
          */
-        private Integer reportGroup;
+        public MockProducer reportGroup(int reportGroup) {
+            this.reportGroup = reportGroup;
+            return (MockProducer) this;
+        }
+
         /**
          * Sets the minimum expected amount of time (in millis) the
          * assertIsSatisfied() will wait on a latch until it is satisfied. The
          * option is a long type.
          */
-        private Long resultMinimumWaitTime;
+        public MockProducer resultMinimumWaitTime(long resultMinimumWaitTime) {
+            this.resultMinimumWaitTime = resultMinimumWaitTime;
+            return (MockProducer) this;
+        }
+
         /**
          * Sets the maximum amount of time (in millis) the assertIsSatisfied()
          * will wait on a latch until it is satisfied. The option is a long
          * type.
          */
-        private Long resultWaitTime;
+        public MockProducer resultWaitTime(long resultWaitTime) {
+            this.resultWaitTime = resultWaitTime;
+            return (MockProducer) this;
+        }
+
         /**
          * Specifies to only retain the first n'th number of received Exchanges.
          * This is used when testing with big data, to reduce memory consumption
@@ -135,7 +182,11 @@ public class MockEndpoint {
          * both setRetainFirst(int) and setRetainLast(int) methods, to limit
          * both the first and last received. The option is a int type.
          */
-        private Integer retainFirst;
+        public MockProducer retainFirst(int retainFirst) {
+            this.retainFirst = retainFirst;
+            return (MockProducer) this;
+        }
+
         /**
          * Specifies to only retain the last n'th number of received Exchanges.
          * This is used when testing with big data, to reduce memory consumption
@@ -152,19 +203,30 @@ public class MockEndpoint {
          * setRetainFirst(int) and setRetainLast(int) methods, to limit both the
          * first and last received. The option is a int type.
          */
-        private Integer retainLast;
+        public MockProducer retainLast(int retainLast) {
+            this.retainLast = retainLast;
+            return (MockProducer) this;
+        }
+
         /**
          * Allows a sleep to be specified to wait to check that this endpoint
          * really is empty when expectedMessageCount(int) is called with zero.
          * The option is a long type.
          */
-        private Long sleepForEmptyTest;
+        public MockProducer sleepForEmptyTest(long sleepForEmptyTest) {
+            this.sleepForEmptyTest = sleepForEmptyTest;
+            return (MockProducer) this;
+        }
+
         /**
          * Sets whether to make a deep copy of the incoming Exchange when
          * received at this mock endpoint. Is by default true. The option is a
          * boolean type.
          */
-        private Boolean copyOnExchange;
+        public MockProducer copyOnExchange(boolean copyOnExchange) {
+            this.copyOnExchange = copyOnExchange;
+            return (MockProducer) this;
+        }
 
         public Long getAssertPeriod() {
             return assertPeriod;

@@ -27,59 +27,112 @@ import javax.annotation.Generated;
 public class NagiosEndpoint {
 
 
-    public static class NagiosCommon extends EndpointConfiguration {
+    public static class NagiosCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private Integer connectionTimeout;
+        private Boolean sendSync;
+        private Integer timeout;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Encryption encryption;
+        @Deprecated
+        private NagiosEncryptionMethod encryptionMethod;
+        private String password;
+
         /**
          * This is the address of the Nagios host where checks should be send.
          * The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * The port number of the host. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Connection timeout in millis. The option is a int type.
          */
-        private Integer connectionTimeout;
+        public T connectionTimeout(int connectionTimeout) {
+            this.connectionTimeout = connectionTimeout;
+            return (T) this;
+        }
+
         /**
          * Whether or not to use synchronous when sending a passive check.
          * Setting it to false will allow Camel to continue routing the message
          * and the passive check message will be send asynchronously. The option
          * is a boolean type.
          */
-        private Boolean sendSync;
+        public T sendSync(boolean sendSync) {
+            this.sendSync = sendSync;
+            return (T) this;
+        }
+
         /**
          * Sending timeout in millis. The option is a int type.
          */
-        private Integer timeout;
+        public T timeout(int timeout) {
+            this.timeout = timeout;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * To specify an encryption method. The option is a
          * com.googlecode.jsendnsca.encryption.Encryption type.
          */
-        private Encryption encryption;
+        public T encryption(Encryption encryption) {
+            this.encryption = encryption;
+            return (T) this;
+        }
+
         /**
          * To specify an encryption method. The option is a
          * org.apache.camel.component.nagios.NagiosEncryptionMethod type.
          */
         @Deprecated
-        private NagiosEncryptionMethod encryptionMethod;
+        public T encryptionMethod(NagiosEncryptionMethod encryptionMethod) {
+            this.encryptionMethod = encryptionMethod;
+            return (T) this;
+        }
+
         /**
          * Password to be authenticated when sending checks to Nagios. The
          * option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -164,10 +217,10 @@ public class NagiosEndpoint {
         }
     }
 
-    public static class NagiosConsumer extends NagiosCommon {
+    public static class NagiosConsumer extends NagiosCommon<NagiosConsumer> {
     }
 
-    public static class NagiosProducer extends NagiosCommon {
+    public static class NagiosProducer extends NagiosCommon<NagiosProducer> {
     }
 
     public static enum Encryption {

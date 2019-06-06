@@ -30,64 +30,121 @@ import org.apache.camel.spi.ExceptionHandler;
 public class PubNubEndpoint {
 
 
-    public static class PubNubCommon extends EndpointConfiguration {
+    public static class PubNubCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String channel;
+        private String uuid;
+        private Boolean basicPropertyBinding;
+        private Object pubnub;
+        private Boolean synchronous;
+        private String authKey;
+        private String cipherKey;
+        private String publishKey;
+        private String secretKey;
+        private Boolean secure;
+        private String subscribeKey;
+
         /**
          * The channel used for subscribing/publishing events. The option is a
          * java.lang.String type.
          */
-        private String channel;
+        public T channel(String channel) {
+            this.channel = channel;
+            return (T) this;
+        }
+
         /**
          * UUID to be used as a device identifier, a default UUID is generated
          * if not passed. The option is a java.lang.String type.
          */
-        private String uuid;
+        public T uuid(String uuid) {
+            this.uuid = uuid;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Reference to a Pubnub client in the registry. The option is a
          * com.pubnub.api.PubNub type.
          */
-        private Object pubnub;
+        public T pubnub(Object pubnub) {
+            this.pubnub = pubnub;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * If Access Manager is utilized, client will use this authKey in all
          * restricted requests. The option is a java.lang.String type.
          */
-        private String authKey;
+        public T authKey(String authKey) {
+            this.authKey = authKey;
+            return (T) this;
+        }
+
         /**
          * If cipher is passed, all communicatons to/from PubNub will be
          * encrypted. The option is a java.lang.String type.
          */
-        private String cipherKey;
+        public T cipherKey(String cipherKey) {
+            this.cipherKey = cipherKey;
+            return (T) this;
+        }
+
         /**
          * The publish key obtained from your PubNub account. Required when
          * publishing messages. The option is a java.lang.String type.
          */
-        private String publishKey;
+        public T publishKey(String publishKey) {
+            this.publishKey = publishKey;
+            return (T) this;
+        }
+
         /**
          * The secret key used for message signing. The option is a
          * java.lang.String type.
          */
-        private String secretKey;
+        public T secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (T) this;
+        }
+
         /**
          * Use SSL for secure transmission. The option is a boolean type.
          */
-        private Boolean secure;
+        public T secure(boolean secure) {
+            this.secure = secure;
+            return (T) this;
+        }
+
         /**
          * The subscribe key obtained from your PubNub account. Required when
          * subscribing to channels or listening for presence events. The option
          * is a java.lang.String type.
          */
-        private String subscribeKey;
+        public T subscribeKey(String subscribeKey) {
+            this.subscribeKey = subscribeKey;
+            return (T) this;
+        }
 
         public String getChannel() {
             return channel;
@@ -178,7 +235,12 @@ public class PubNubEndpoint {
         }
     }
 
-    public static class PubNubConsumer extends PubNubCommon {
+    public static class PubNubConsumer extends PubNubCommon<PubNubConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean withPresence;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -188,12 +250,20 @@ public class PubNubEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public PubNubConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (PubNubConsumer) this;
+        }
+
         /**
          * Also subscribe to related presence information. The option is a
          * boolean type.
          */
-        private Boolean withPresence;
+        public PubNubConsumer withPresence(boolean withPresence) {
+            this.withPresence = withPresence;
+            return (PubNubConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -201,12 +271,19 @@ public class PubNubEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public PubNubConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (PubNubConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public PubNubConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (PubNubConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -241,7 +318,9 @@ public class PubNubEndpoint {
         }
     }
 
-    public static class PubNubProducer extends PubNubCommon {
+    public static class PubNubProducer extends PubNubCommon<PubNubProducer> {
+        private String operation;
+
         /**
          * The operation to perform. PUBLISH: Default. Send a message to all
          * subscribers of a channel. FIRE: allows the client to send a message
@@ -257,7 +336,10 @@ public class PubNubEndpoint {
          * historical messages of a channel. The option is a java.lang.String
          * type.
          */
-        private String operation;
+        public PubNubProducer operation(String operation) {
+            this.operation = operation;
+            return (PubNubProducer) this;
+        }
 
         public String getOperation() {
             return operation;

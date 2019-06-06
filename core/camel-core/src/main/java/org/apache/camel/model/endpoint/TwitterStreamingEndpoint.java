@@ -36,68 +36,125 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class TwitterStreamingEndpoint {
 
 
-    public static class TwitterStreamingCommon extends EndpointConfiguration {
+    public static class TwitterStreamingCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private StreamingType streamingType;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String httpProxyHost;
+        private String httpProxyPassword;
+        private Integer httpProxyPort;
+        private String httpProxyUser;
+        private String accessToken;
+        private String accessTokenSecret;
+        private String consumerKey;
+        private String consumerSecret;
+
         /**
          * The streaming type to consume. The option is a
          * org.apache.camel.component.twitter.data.StreamingType type.
          */
-        private StreamingType streamingType;
+        public T streamingType(StreamingType streamingType) {
+            this.streamingType = streamingType;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The http proxy host which can be used for the camel-twitter. Can also
          * be configured on the TwitterComponent level instead. The option is a
          * java.lang.String type.
          */
-        private String httpProxyHost;
+        public T httpProxyHost(String httpProxyHost) {
+            this.httpProxyHost = httpProxyHost;
+            return (T) this;
+        }
+
         /**
          * The http proxy password which can be used for the camel-twitter. Can
          * also be configured on the TwitterComponent level instead. The option
          * is a java.lang.String type.
          */
-        private String httpProxyPassword;
+        public T httpProxyPassword(String httpProxyPassword) {
+            this.httpProxyPassword = httpProxyPassword;
+            return (T) this;
+        }
+
         /**
          * The http proxy port which can be used for the camel-twitter. Can also
          * be configured on the TwitterComponent level instead. The option is a
          * java.lang.Integer type.
          */
-        private Integer httpProxyPort;
+        public T httpProxyPort(Integer httpProxyPort) {
+            this.httpProxyPort = httpProxyPort;
+            return (T) this;
+        }
+
         /**
          * The http proxy user which can be used for the camel-twitter. Can also
          * be configured on the TwitterComponent level instead. The option is a
          * java.lang.String type.
          */
-        private String httpProxyUser;
+        public T httpProxyUser(String httpProxyUser) {
+            this.httpProxyUser = httpProxyUser;
+            return (T) this;
+        }
+
         /**
          * The access token. Can also be configured on the TwitterComponent
          * level instead. The option is a java.lang.String type.
          */
-        private String accessToken;
+        public T accessToken(String accessToken) {
+            this.accessToken = accessToken;
+            return (T) this;
+        }
+
         /**
          * The access secret. Can also be configured on the TwitterComponent
          * level instead. The option is a java.lang.String type.
          */
-        private String accessTokenSecret;
+        public T accessTokenSecret(String accessTokenSecret) {
+            this.accessTokenSecret = accessTokenSecret;
+            return (T) this;
+        }
+
         /**
          * The consumer key. Can also be configured on the TwitterComponent
          * level instead. The option is a java.lang.String type.
          */
-        private String consumerKey;
+        public T consumerKey(String consumerKey) {
+            this.consumerKey = consumerKey;
+            return (T) this;
+        }
+
         /**
          * The consumer secret. Can also be configured on the TwitterComponent
          * level instead. The option is a java.lang.String type.
          */
-        private String consumerSecret;
+        public T consumerSecret(String consumerSecret) {
+            this.consumerSecret = consumerSecret;
+            return (T) this;
+        }
 
         public StreamingType getStreamingType() {
             return streamingType;
@@ -190,7 +247,42 @@ public class TwitterStreamingEndpoint {
 
     public static class TwitterStreamingConsumer
             extends
-                TwitterStreamingCommon {
+                TwitterStreamingCommon<TwitterStreamingConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean sendEmptyMessageWhenIdle;
+        private EndpointType type;
+        private String distanceMetric;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private Boolean extendedMode;
+        private Double latitude;
+        private String locations;
+        private Double longitude;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Double radius;
+        private Object twitterStream;
+        private Integer count;
+        private Boolean filterOld;
+        private String keywords;
+        private String lang;
+        private Integer numberOfPages;
+        private Long sinceId;
+        private String userIds;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+        private Boolean sortById;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -200,18 +292,32 @@ public class TwitterStreamingEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public TwitterStreamingConsumer bridgeErrorHandler(
+                boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public TwitterStreamingConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Endpoint type to use. Only streaming supports event type. The option
          * is a org.apache.camel.component.twitter.data.EndpointType type.
          */
-        private EndpointType type;
+        public TwitterStreamingConsumer type(EndpointType type) {
+            this.type = type;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Used by the non-stream geography search, to search by radius using
          * the configured metrics. The unit can either be mi for miles, or km
@@ -219,7 +325,11 @@ public class TwitterStreamingEndpoint {
          * longitude, latitude, radius, and distanceMetric. The option is a
          * java.lang.String type.
          */
-        private String distanceMetric;
+        public TwitterStreamingConsumer distanceMetric(String distanceMetric) {
+            this.distanceMetric = distanceMetric;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -227,36 +337,62 @@ public class TwitterStreamingEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public TwitterStreamingConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public TwitterStreamingConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Used for enabling full text from twitter (eg receive tweets that
          * contains more than 140 characters). The option is a boolean type.
          */
-        private Boolean extendedMode;
+        public TwitterStreamingConsumer extendedMode(boolean extendedMode) {
+            this.extendedMode = extendedMode;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Used by the non-stream geography search to search by latitude. You
          * need to configure all the following options: longitude, latitude,
          * radius, and distanceMetric. The option is a java.lang.Double type.
          */
-        private Double latitude;
+        public TwitterStreamingConsumer latitude(Double latitude) {
+            this.latitude = latitude;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Bounding boxes, created by pairs of lat/lons. Can be used for
          * streaming/filter. A pair is defined as lat,lon. And multiple paris
          * can be separated by semi colon. The option is a java.lang.String
          * type.
          */
-        private String locations;
+        public TwitterStreamingConsumer locations(String locations) {
+            this.locations = locations;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Used by the non-stream geography search to search by longitude. You
          * need to configure all the following options: longitude, latitude,
          * radius, and distanceMetric. The option is a java.lang.Double type.
          */
-        private Double longitude;
+        public TwitterStreamingConsumer longitude(Double longitude) {
+            this.longitude = longitude;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -264,66 +400,117 @@ public class TwitterStreamingEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public TwitterStreamingConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Used by the non-stream geography search to search by radius. You need
          * to configure all the following options: longitude, latitude, radius,
          * and distanceMetric. The option is a java.lang.Double type.
          */
-        private Double radius;
+        public TwitterStreamingConsumer radius(Double radius) {
+            this.radius = radius;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * To use a custom instance of TwitterStream. The option is a
          * twitter4j.TwitterStream type.
          */
-        private Object twitterStream;
+        public TwitterStreamingConsumer twitterStream(Object twitterStream) {
+            this.twitterStream = twitterStream;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Limiting number of results per page. The option is a
          * java.lang.Integer type.
          */
-        private Integer count;
+        public TwitterStreamingConsumer count(Integer count) {
+            this.count = count;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Filter out old tweets, that has previously been polled. This state is
          * stored in memory only, and based on last tweet id. The option is a
          * boolean type.
          */
-        private Boolean filterOld;
+        public TwitterStreamingConsumer filterOld(boolean filterOld) {
+            this.filterOld = filterOld;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Can be used for a streaming filter. Multiple values can be separated
          * with comma. The option is a java.lang.String type.
          */
-        private String keywords;
+        public TwitterStreamingConsumer keywords(String keywords) {
+            this.keywords = keywords;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * The lang string ISO_639-1 which will be used for searching. The
          * option is a java.lang.String type.
          */
-        private String lang;
+        public TwitterStreamingConsumer lang(String lang) {
+            this.lang = lang;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * The number of pages result which you want camel-twitter to consume.
          * The option is a java.lang.Integer type.
          */
-        private Integer numberOfPages;
+        public TwitterStreamingConsumer numberOfPages(Integer numberOfPages) {
+            this.numberOfPages = numberOfPages;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * The last tweet id which will be used for pulling the tweets. It is
          * useful when the camel route is restarted after a long running. The
          * option is a long type.
          */
-        private Long sinceId;
+        public TwitterStreamingConsumer sinceId(long sinceId) {
+            this.sinceId = sinceId;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * To filter by user ids for streaming/filter. Multiple values can be
          * separated by comma. The option is a java.lang.String type.
          */
-        private String userIds;
+        public TwitterStreamingConsumer userIds(String userIds) {
+            this.userIds = userIds;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public TwitterStreamingConsumer backoffErrorThreshold(
+                int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public TwitterStreamingConsumer backoffIdleThreshold(
+                int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -332,69 +519,120 @@ public class TwitterStreamingEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public TwitterStreamingConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. The option is a long type.
          */
-        private Long delay;
+        public TwitterStreamingConsumer delay(long delay) {
+            this.delay = delay;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public TwitterStreamingConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public TwitterStreamingConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public TwitterStreamingConsumer runLoggingLevel(
+                LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public TwitterStreamingConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public TwitterStreamingConsumer scheduler(
+                ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public TwitterStreamingConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public TwitterStreamingConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public TwitterStreamingConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public TwitterStreamingConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (TwitterStreamingConsumer) this;
+        }
+
         /**
          * Sorts by id, so the oldest are first, and newest last. The option is
          * a boolean type.
          */
-        private Boolean sortById;
+        public TwitterStreamingConsumer sortById(boolean sortById) {
+            this.sortById = sortById;
+            return (TwitterStreamingConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -673,7 +911,7 @@ public class TwitterStreamingEndpoint {
 
     public static class TwitterStreamingProducer
             extends
-                TwitterStreamingCommon {
+                TwitterStreamingCommon<TwitterStreamingProducer> {
     }
 
     public static enum StreamingType {

@@ -36,87 +36,179 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class CouchbaseEndpoint {
 
 
-    public static class CouchbaseCommon extends EndpointConfiguration {
+    public static class CouchbaseCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String protocol;
+        private String hostname;
+        private Integer port;
+        private String bucket;
+        private String key;
+        private String additionalHosts;
+        private Boolean basicPropertyBinding;
+        private Long maxReconnectDelay;
+        private Long obsPollInterval;
+        private Long obsTimeout;
+        private Long opQueueMaxBlockTime;
+        private Long opTimeOut;
+        private Integer readBufferSize;
+        private Boolean shouldOptimize;
+        private Boolean synchronous;
+        private Integer timeoutExceptionThreshold;
+        private String password;
+        private String username;
+
         /**
          * The protocol to use. The option is a java.lang.String type.
          */
-        private String protocol;
+        public T protocol(String protocol) {
+            this.protocol = protocol;
+            return (T) this;
+        }
+
         /**
          * The hostname to use. The option is a java.lang.String type.
          */
-        private String hostname;
+        public T hostname(String hostname) {
+            this.hostname = hostname;
+            return (T) this;
+        }
+
         /**
          * The port number to use. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * The bucket to use. The option is a java.lang.String type.
          */
-        private String bucket;
+        public T bucket(String bucket) {
+            this.bucket = bucket;
+            return (T) this;
+        }
+
         /**
          * The key to use. The option is a java.lang.String type.
          */
-        private String key;
+        public T key(String key) {
+            this.key = key;
+            return (T) this;
+        }
+
         /**
          * The additional hosts. The option is a java.lang.String type.
          */
-        private String additionalHosts;
+        public T additionalHosts(String additionalHosts) {
+            this.additionalHosts = additionalHosts;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Define the max delay during a reconnection. The option is a long
          * type.
          */
-        private Long maxReconnectDelay;
+        public T maxReconnectDelay(long maxReconnectDelay) {
+            this.maxReconnectDelay = maxReconnectDelay;
+            return (T) this;
+        }
+
         /**
          * Define the observation polling interval. The option is a long type.
          */
-        private Long obsPollInterval;
+        public T obsPollInterval(long obsPollInterval) {
+            this.obsPollInterval = obsPollInterval;
+            return (T) this;
+        }
+
         /**
          * Define the observation timeout. The option is a long type.
          */
-        private Long obsTimeout;
+        public T obsTimeout(long obsTimeout) {
+            this.obsTimeout = obsTimeout;
+            return (T) this;
+        }
+
         /**
          * Define the max time an operation can be in queue blocked. The option
          * is a long type.
          */
-        private Long opQueueMaxBlockTime;
+        public T opQueueMaxBlockTime(long opQueueMaxBlockTime) {
+            this.opQueueMaxBlockTime = opQueueMaxBlockTime;
+            return (T) this;
+        }
+
         /**
          * Define the operation timeout. The option is a long type.
          */
-        private Long opTimeOut;
+        public T opTimeOut(long opTimeOut) {
+            this.opTimeOut = opTimeOut;
+            return (T) this;
+        }
+
         /**
          * Define the buffer size. The option is a int type.
          */
-        private Integer readBufferSize;
+        public T readBufferSize(int readBufferSize) {
+            this.readBufferSize = readBufferSize;
+            return (T) this;
+        }
+
         /**
          * Define if we want to use optimization or not where possible. The
          * option is a boolean type.
          */
-        private Boolean shouldOptimize;
+        public T shouldOptimize(boolean shouldOptimize) {
+            this.shouldOptimize = shouldOptimize;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Define the threshold for throwing a timeout Exception. The option is
          * a int type.
          */
-        private Integer timeoutExceptionThreshold;
+        public T timeoutExceptionThreshold(int timeoutExceptionThreshold) {
+            this.timeoutExceptionThreshold = timeoutExceptionThreshold;
+            return (T) this;
+        }
+
         /**
          * The password to use. The option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * The username to use. The option is a java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public String getProtocol() {
             return protocol;
@@ -264,7 +356,36 @@ public class CouchbaseEndpoint {
         }
     }
 
-    public static class CouchbaseConsumer extends CouchbaseCommon {
+    public static class CouchbaseConsumer
+            extends
+                CouchbaseCommon<CouchbaseConsumer> {
+        private Boolean bridgeErrorHandler;
+        private String consumerProcessedStrategy;
+        private Boolean descending;
+        private String designDocumentName;
+        private Integer limit;
+        private String rangeEndKey;
+        private String rangeStartKey;
+        private Boolean sendEmptyMessageWhenIdle;
+        private Integer skip;
+        private String viewName;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -274,50 +395,92 @@ public class CouchbaseEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public CouchbaseConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Define the consumer Processed strategy to use. The option is a
          * java.lang.String type.
          */
-        private String consumerProcessedStrategy;
+        public CouchbaseConsumer consumerProcessedStrategy(
+                String consumerProcessedStrategy) {
+            this.consumerProcessedStrategy = consumerProcessedStrategy;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Define if this operation is descending or not. The option is a
          * boolean type.
          */
-        private Boolean descending;
+        public CouchbaseConsumer descending(boolean descending) {
+            this.descending = descending;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * The design document name to use. The option is a java.lang.String
          * type.
          */
-        private String designDocumentName;
+        public CouchbaseConsumer designDocumentName(String designDocumentName) {
+            this.designDocumentName = designDocumentName;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * The output limit to use. The option is a int type.
          */
-        private Integer limit;
+        public CouchbaseConsumer limit(int limit) {
+            this.limit = limit;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Define a range for the end key. The option is a java.lang.String
          * type.
          */
-        private String rangeEndKey;
+        public CouchbaseConsumer rangeEndKey(String rangeEndKey) {
+            this.rangeEndKey = rangeEndKey;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Define a range for the start key. The option is a java.lang.String
          * type.
          */
-        private String rangeStartKey;
+        public CouchbaseConsumer rangeStartKey(String rangeStartKey) {
+            this.rangeStartKey = rangeStartKey;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public CouchbaseConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Define the skip to use. The option is a int type.
          */
-        private Integer skip;
+        public CouchbaseConsumer skip(int skip) {
+            this.skip = skip;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * The view name to use. The option is a java.lang.String type.
          */
-        private String viewName;
+        public CouchbaseConsumer viewName(String viewName) {
+            this.viewName = viewName;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -325,12 +488,21 @@ public class CouchbaseEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public CouchbaseConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public CouchbaseConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -338,18 +510,31 @@ public class CouchbaseEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public CouchbaseConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public CouchbaseConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public CouchbaseConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -358,66 +543,112 @@ public class CouchbaseEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public CouchbaseConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long delay;
+        public CouchbaseConsumer delay(long delay) {
+            this.delay = delay;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public CouchbaseConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public CouchbaseConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public CouchbaseConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public CouchbaseConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public CouchbaseConsumer scheduler(
+                ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public CouchbaseConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public CouchbaseConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public CouchbaseConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (CouchbaseConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public CouchbaseConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (CouchbaseConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -631,38 +862,77 @@ public class CouchbaseEndpoint {
         }
     }
 
-    public static class CouchbaseProducer extends CouchbaseCommon {
+    public static class CouchbaseProducer
+            extends
+                CouchbaseCommon<CouchbaseProducer> {
+        private Boolean autoStartIdForInserts;
+        private String operation;
+        private Integer persistTo;
+        private Integer producerRetryAttempts;
+        private Integer producerRetryPause;
+        private Integer replicateTo;
+        private Long startingIdForInsertsFrom;
+
         /**
          * Define if we want an autostart Id when we are doing an insert
          * operation. The option is a boolean type.
          */
-        private Boolean autoStartIdForInserts;
+        public CouchbaseProducer autoStartIdForInserts(
+                boolean autoStartIdForInserts) {
+            this.autoStartIdForInserts = autoStartIdForInserts;
+            return (CouchbaseProducer) this;
+        }
+
         /**
          * The operation to do. The option is a java.lang.String type.
          */
-        private String operation;
+        public CouchbaseProducer operation(String operation) {
+            this.operation = operation;
+            return (CouchbaseProducer) this;
+        }
+
         /**
          * Where to persist the data. The option is a int type.
          */
-        private Integer persistTo;
+        public CouchbaseProducer persistTo(int persistTo) {
+            this.persistTo = persistTo;
+            return (CouchbaseProducer) this;
+        }
+
         /**
          * Define the number of retry attempts. The option is a int type.
          */
-        private Integer producerRetryAttempts;
+        public CouchbaseProducer producerRetryAttempts(int producerRetryAttempts) {
+            this.producerRetryAttempts = producerRetryAttempts;
+            return (CouchbaseProducer) this;
+        }
+
         /**
          * Define the retry pause between different attempts. The option is a
          * int type.
          */
-        private Integer producerRetryPause;
+        public CouchbaseProducer producerRetryPause(int producerRetryPause) {
+            this.producerRetryPause = producerRetryPause;
+            return (CouchbaseProducer) this;
+        }
+
         /**
          * Where to replicate the data. The option is a int type.
          */
-        private Integer replicateTo;
+        public CouchbaseProducer replicateTo(int replicateTo) {
+            this.replicateTo = replicateTo;
+            return (CouchbaseProducer) this;
+        }
+
         /**
          * Define the starting Id where we are doing an insert operation. The
          * option is a long type.
          */
-        private Long startingIdForInsertsFrom;
+        public CouchbaseProducer startingIdForInsertsFrom(
+                long startingIdForInsertsFrom) {
+            this.startingIdForInsertsFrom = startingIdForInsertsFrom;
+            return (CouchbaseProducer) this;
+        }
 
         public Boolean getAutoStartIdForInserts() {
             return autoStartIdForInserts;

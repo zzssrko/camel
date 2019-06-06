@@ -27,7 +27,19 @@ import javax.annotation.Generated;
 public class JsonValidatorEndpoint {
 
 
-    public static class JsonValidatorCommon extends EndpointConfiguration {
+    public static class JsonValidatorCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String resourceUri;
+        private Boolean contentCache;
+        private Boolean failOnNullBody;
+        private Boolean failOnNullHeader;
+        private String headerName;
+        private Boolean basicPropertyBinding;
+        private Object errorHandler;
+        private Object schemaLoader;
+        private Boolean synchronous;
+
         /**
          * Path to the resource. You can prefix with: classpath, file, http,
          * ref, or bean. classpath, file and http loads the resource using these
@@ -36,52 +48,87 @@ public class JsonValidatorEndpoint {
          * resource. For bean you can specify the method name after dot, eg
          * bean:myBean.myMethod. The option is a java.lang.String type.
          */
-        private String resourceUri;
+        public T resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return (T) this;
+        }
+
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
-        private Boolean contentCache;
+        public T contentCache(boolean contentCache) {
+            this.contentCache = contentCache;
+            return (T) this;
+        }
+
         /**
          * Whether to fail if no body exists. The option is a boolean type.
          */
-        private Boolean failOnNullBody;
+        public T failOnNullBody(boolean failOnNullBody) {
+            this.failOnNullBody = failOnNullBody;
+            return (T) this;
+        }
+
         /**
          * Whether to fail if no header exists when validating against a header.
          * The option is a boolean type.
          */
-        private Boolean failOnNullHeader;
+        public T failOnNullHeader(boolean failOnNullHeader) {
+            this.failOnNullHeader = failOnNullHeader;
+            return (T) this;
+        }
+
         /**
          * To validate against a header instead of the message body. The option
          * is a java.lang.String type.
          */
-        private String headerName;
+        public T headerName(String headerName) {
+            this.headerName = headerName;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a custom ValidatorErrorHandler. The default error handler
          * captures the errors and throws an exception. The option is a
          * org.apache.camel.component.jsonvalidator.JsonValidatorErrorHandler
          * type.
          */
-        private Object errorHandler;
+        public T errorHandler(Object errorHandler) {
+            this.errorHandler = errorHandler;
+            return (T) this;
+        }
+
         /**
          * To use a custom schema loader allowing for adding custom format
          * validation. The default implementation will create a schema loader
          * with draft v4 support. The option is a
          * org.apache.camel.component.jsonvalidator.JsonSchemaLoader type.
          */
-        private Object schemaLoader;
+        public T schemaLoader(Object schemaLoader) {
+            this.schemaLoader = schemaLoader;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getResourceUri() {
             return resourceUri;
@@ -156,9 +203,13 @@ public class JsonValidatorEndpoint {
         }
     }
 
-    public static class JsonValidatorConsumer extends JsonValidatorCommon {
+    public static class JsonValidatorConsumer
+            extends
+                JsonValidatorCommon<JsonValidatorConsumer> {
     }
 
-    public static class JsonValidatorProducer extends JsonValidatorCommon {
+    public static class JsonValidatorProducer
+            extends
+                JsonValidatorCommon<JsonValidatorProducer> {
     }
 }

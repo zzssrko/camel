@@ -27,22 +27,47 @@ import javax.annotation.Generated;
 public class ExecEndpoint {
 
 
-    public static class ExecCommon extends EndpointConfiguration {
+    public static class ExecCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String executable;
+        private String args;
+        private Object binding;
+        private Object commandExecutor;
+        private String outFile;
+        private Long timeout;
+        private Boolean useStderrOnEmptyStdout;
+        private String workingDir;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Sets the executable to be executed. The executable must not be empty
          * or null. The option is a java.lang.String type.
          */
-        private String executable;
+        public T executable(String executable) {
+            this.executable = executable;
+            return (T) this;
+        }
+
         /**
          * The arguments may be one or many whitespace-separated tokens. The
          * option is a java.lang.String type.
          */
-        private String args;
+        public T args(String args) {
+            this.args = args;
+            return (T) this;
+        }
+
         /**
          * A reference to a org.apache.commons.exec.ExecBinding in the Registry.
          * The option is a org.apache.camel.component.exec.ExecBinding type.
          */
-        private Object binding;
+        public T binding(Object binding) {
+            this.binding = binding;
+            return (T) this;
+        }
+
         /**
          * A reference to a org.apache.commons.exec.ExecCommandExecutor in the
          * Registry that customizes the command execution. The default command
@@ -50,44 +75,71 @@ public class ExecEndpoint {
          * hook for every executed command. The option is a
          * org.apache.camel.component.exec.ExecCommandExecutor type.
          */
-        private Object commandExecutor;
+        public T commandExecutor(Object commandExecutor) {
+            this.commandExecutor = commandExecutor;
+            return (T) this;
+        }
+
         /**
          * The name of a file, created by the executable, that should be
          * considered as its output. If no outFile is set, the standard output
          * (stdout) of the executable will be used instead. The option is a
          * java.lang.String type.
          */
-        private String outFile;
+        public T outFile(String outFile) {
+            this.outFile = outFile;
+            return (T) this;
+        }
+
         /**
          * The timeout, in milliseconds, after which the executable should be
          * terminated. If execution has not completed within the timeout, the
          * component will send a termination request. The option is a long type.
          */
-        private Long timeout;
+        public T timeout(long timeout) {
+            this.timeout = timeout;
+            return (T) this;
+        }
+
         /**
          * A boolean indicating that when stdout is empty, this component will
          * populate the Camel Message Body with stderr. This behavior is
          * disabled (false) by default. The option is a boolean type.
          */
-        private Boolean useStderrOnEmptyStdout;
+        public T useStderrOnEmptyStdout(boolean useStderrOnEmptyStdout) {
+            this.useStderrOnEmptyStdout = useStderrOnEmptyStdout;
+            return (T) this;
+        }
+
         /**
          * The directory in which the command should be executed. If null, the
          * working directory of the current process will be used. The option is
          * a java.lang.String type.
          */
-        private String workingDir;
+        public T workingDir(String workingDir) {
+            this.workingDir = workingDir;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getExecutable() {
             return executable;
@@ -170,9 +222,9 @@ public class ExecEndpoint {
         }
     }
 
-    public static class ExecConsumer extends ExecCommon {
+    public static class ExecConsumer extends ExecCommon<ExecConsumer> {
     }
 
-    public static class ExecProducer extends ExecCommon {
+    public static class ExecProducer extends ExecCommon<ExecProducer> {
     }
 }

@@ -36,83 +36,171 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class WeatherEndpoint {
 
 
-    public static class WeatherCommon extends EndpointConfiguration {
+    public static class WeatherCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String name;
+        private String appid;
+        private String headerName;
+        private WeatherLanguage language;
+        private WeatherMode mode;
+        private String period;
+        private WeatherUnits units;
+        private WeatherApi weatherApi;
+        private Boolean basicPropertyBinding;
+        private Object httpConnectionManager;
+        private Boolean synchronous;
+        private Integer cnt;
+        private List<String> ids;
+        private String lat;
+        private String location;
+        private String lon;
+        private String rightLon;
+        private String topLat;
+        private String zip;
+        private Integer zoom;
+        private String proxyAuthDomain;
+        private String proxyAuthHost;
+        private String proxyAuthMethod;
+        private String proxyAuthPassword;
+        private String proxyAuthUsername;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String geolocationAccessKey;
+        private String geolocationRequestHostIP;
+
         /**
          * The name value is not used. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * APPID ID used to authenticate the user connected to the API Server.
          * The option is a java.lang.String type.
          */
-        private String appid;
+        public T appid(String appid) {
+            this.appid = appid;
+            return (T) this;
+        }
+
         /**
          * To store the weather result in this header instead of the message
          * body. This is useable if you want to keep current message body as-is.
          * The option is a java.lang.String type.
          */
-        private String headerName;
+        public T headerName(String headerName) {
+            this.headerName = headerName;
+            return (T) this;
+        }
+
         /**
          * Language of the response. The option is a
          * org.apache.camel.component.weather.WeatherLanguage type.
          */
-        private WeatherLanguage language;
+        public T language(WeatherLanguage language) {
+            this.language = language;
+            return (T) this;
+        }
+
         /**
          * The output format of the weather data. The option is a
          * org.apache.camel.component.weather.WeatherMode type.
          */
-        private WeatherMode mode;
+        public T mode(WeatherMode mode) {
+            this.mode = mode;
+            return (T) this;
+        }
+
         /**
          * If null, the current weather will be returned, else use values of 5,
          * 7, 14 days. Only the numeric value for the forecast period is
          * actually parsed, so spelling, capitalisation of the time period is up
          * to you (its ignored). The option is a java.lang.String type.
          */
-        private String period;
+        public T period(String period) {
+            this.period = period;
+            return (T) this;
+        }
+
         /**
          * The units for temperature measurement. The option is a
          * org.apache.camel.component.weather.WeatherUnits type.
          */
-        private WeatherUnits units;
+        public T units(WeatherUnits units) {
+            this.units = units;
+            return (T) this;
+        }
+
         /**
          * The API to be use (current, forecast/3 hour, forecast daily,
          * station). The option is a
          * org.apache.camel.component.weather.WeatherApi type.
          */
-        private WeatherApi weatherApi;
+        public T weatherApi(WeatherApi weatherApi) {
+            this.weatherApi = weatherApi;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a custom HttpConnectionManager to manage connections. The
          * option is a org.apache.commons.httpclient.HttpConnectionManager type.
          */
-        private Object httpConnectionManager;
+        public T httpConnectionManager(Object httpConnectionManager) {
+            this.httpConnectionManager = httpConnectionManager;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Number of results to be found. The option is a java.lang.Integer
          * type.
          */
-        private Integer cnt;
+        public T cnt(Integer cnt) {
+            this.cnt = cnt;
+            return (T) this;
+        }
+
         /**
          * List of id's of city/stations. You can separate multiple ids by
          * comma. The option is a java.lang.String type.
          */
-        private List<String> ids;
+        public T ids(List<String> ids) {
+            this.ids = ids;
+            return (T) this;
+        }
+
         /**
          * Latitude of location. You can use lat and lon options instead of
          * location. For boxed queries this is the bottom latitude. The option
          * is a java.lang.String type.
          */
-        private String lat;
+        public T lat(String lat) {
+            this.lat = lat;
+            return (T) this;
+        }
+
         /**
          * If null Camel will try and determine your current location using the
          * geolocation of your ip address, else specify the city,country. For
@@ -124,77 +212,136 @@ public class WeatherEndpoint {
          * and lon options instead of location. The option is a java.lang.String
          * type.
          */
-        private String location;
+        public T location(String location) {
+            this.location = location;
+            return (T) this;
+        }
+
         /**
          * Longitude of location. You can use lat and lon options instead of
          * location. For boxed queries this is the left longtitude. The option
          * is a java.lang.String type.
          */
-        private String lon;
+        public T lon(String lon) {
+            this.lon = lon;
+            return (T) this;
+        }
+
         /**
          * For boxed queries this is the right longtitude. Needs to be used in
          * combination with topLat and zoom. The option is a java.lang.String
          * type.
          */
-        private String rightLon;
+        public T rightLon(String rightLon) {
+            this.rightLon = rightLon;
+            return (T) this;
+        }
+
         /**
          * For boxed queries this is the top latitude. Needs to be used in
          * combination with rightLon and zoom. The option is a java.lang.String
          * type.
          */
-        private String topLat;
+        public T topLat(String topLat) {
+            this.topLat = topLat;
+            return (T) this;
+        }
+
         /**
          * Zip-code, e.g. 94040,us. The option is a java.lang.String type.
          */
-        private String zip;
+        public T zip(String zip) {
+            this.zip = zip;
+            return (T) this;
+        }
+
         /**
          * For boxed queries this is the zoom. Needs to be used in combination
          * with rightLon and topLat. The option is a java.lang.Integer type.
          */
-        private Integer zoom;
+        public T zoom(Integer zoom) {
+            this.zoom = zoom;
+            return (T) this;
+        }
+
         /**
          * Domain for proxy NTLM authentication. The option is a
          * java.lang.String type.
          */
-        private String proxyAuthDomain;
+        public T proxyAuthDomain(String proxyAuthDomain) {
+            this.proxyAuthDomain = proxyAuthDomain;
+            return (T) this;
+        }
+
         /**
          * Optional host for proxy NTLM authentication. The option is a
          * java.lang.String type.
          */
-        private String proxyAuthHost;
+        public T proxyAuthHost(String proxyAuthHost) {
+            this.proxyAuthHost = proxyAuthHost;
+            return (T) this;
+        }
+
         /**
          * Authentication method for proxy, either as Basic, Digest or NTLM. The
          * option is a java.lang.String type.
          */
-        private String proxyAuthMethod;
+        public T proxyAuthMethod(String proxyAuthMethod) {
+            this.proxyAuthMethod = proxyAuthMethod;
+            return (T) this;
+        }
+
         /**
          * Password for proxy authentication. The option is a java.lang.String
          * type.
          */
-        private String proxyAuthPassword;
+        public T proxyAuthPassword(String proxyAuthPassword) {
+            this.proxyAuthPassword = proxyAuthPassword;
+            return (T) this;
+        }
+
         /**
          * Username for proxy authentication. The option is a java.lang.String
          * type.
          */
-        private String proxyAuthUsername;
+        public T proxyAuthUsername(String proxyAuthUsername) {
+            this.proxyAuthUsername = proxyAuthUsername;
+            return (T) this;
+        }
+
         /**
          * The proxy host name. The option is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * The proxy port number. The option is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
+
         /**
          * The geolocation service now needs an accessKey to be used. The option
          * is a java.lang.String type.
          */
-        private String geolocationAccessKey;
+        public T geolocationAccessKey(String geolocationAccessKey) {
+            this.geolocationAccessKey = geolocationAccessKey;
+            return (T) this;
+        }
+
         /**
          * The geolocation service now needs to specify the IP associated to the
          * accessKey you're using. The option is a java.lang.String type.
          */
-        private String geolocationRequestHostIP;
+        public T geolocationRequestHostIP(String geolocationRequestHostIP) {
+            this.geolocationRequestHostIP = geolocationRequestHostIP;
+            return (T) this;
+        }
 
         public String getName() {
             return name;
@@ -429,7 +576,28 @@ public class WeatherEndpoint {
         }
     }
 
-    public static class WeatherConsumer extends WeatherCommon {
+    public static class WeatherConsumer
+            extends
+                WeatherCommon<WeatherConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean sendEmptyMessageWhenIdle;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -439,13 +607,22 @@ public class WeatherEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public WeatherConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public WeatherConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -453,12 +630,21 @@ public class WeatherEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public WeatherConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public WeatherConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -466,18 +652,31 @@ public class WeatherEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public WeatherConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public WeatherConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public WeatherConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -486,66 +685,112 @@ public class WeatherEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public WeatherConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long delay;
+        public WeatherConsumer delay(long delay) {
+            this.delay = delay;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public WeatherConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public WeatherConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public WeatherConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public WeatherConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public WeatherConsumer scheduler(
+                ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public WeatherConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public WeatherConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public WeatherConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (WeatherConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public WeatherConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (WeatherConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -694,7 +939,9 @@ public class WeatherEndpoint {
         }
     }
 
-    public static class WeatherProducer extends WeatherCommon {
+    public static class WeatherProducer
+            extends
+                WeatherCommon<WeatherProducer> {
     }
 
     public static enum WeatherLanguage {

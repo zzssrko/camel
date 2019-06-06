@@ -28,52 +28,99 @@ import javax.annotation.Generated;
 public class LambdaEndpoint {
 
 
-    public static class LambdaCommon extends EndpointConfiguration {
+    public static class LambdaCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String function;
+        private LambdaOperations operation;
+        private Object awsLambdaClient;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String accessKey;
+        private String secretKey;
+
         /**
          * Name of the Lambda function. The option is a java.lang.String type.
          */
-        private String function;
+        public T function(String function) {
+            this.function = function;
+            return (T) this;
+        }
+
         /**
          * The operation to perform. It can be listFunctions, getFunction,
          * createFunction, deleteFunction or invokeFunction. The option is a
          * org.apache.camel.component.aws.lambda.LambdaOperations type.
          */
-        private LambdaOperations operation;
+        public T operation(LambdaOperations operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * To use a existing configured AwsLambdaClient as client. The option is
          * a com.amazonaws.services.lambda.AWSLambda type.
          */
-        private Object awsLambdaClient;
+        public T awsLambdaClient(Object awsLambdaClient) {
+            this.awsLambdaClient = awsLambdaClient;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * To define a proxy host when instantiating the Lambda client. The
          * option is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * To define a proxy port when instantiating the Lambda client. The
          * option is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public T accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public T secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (T) this;
+        }
 
         public String getFunction() {
             return function;
@@ -148,14 +195,19 @@ public class LambdaEndpoint {
         }
     }
 
-    public static class LambdaConsumer extends LambdaCommon {
+    public static class LambdaConsumer extends LambdaCommon<LambdaConsumer> {
     }
 
-    public static class LambdaProducer extends LambdaCommon {
+    public static class LambdaProducer extends LambdaCommon<LambdaProducer> {
+        private String region;
+
         /**
          * Amazon AWS Region. The option is a java.lang.String type.
          */
-        private String region;
+        public LambdaProducer region(String region) {
+            this.region = region;
+            return (LambdaProducer) this;
+        }
 
         public String getRegion() {
             return region;

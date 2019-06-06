@@ -30,40 +30,77 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GoraEndpoint {
 
 
-    public static class GoraCommon extends EndpointConfiguration {
+    public static class GoraCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String name;
+        private String dataStoreClass;
+        private String keyClass;
+        private String valueClass;
+        private Boolean basicPropertyBinding;
+        private Object hadoopConfiguration;
+        private Boolean synchronous;
+
         /**
          * Instance name. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * The type of the dataStore. The option is a java.lang.String type.
          */
-        private String dataStoreClass;
+        public T dataStoreClass(String dataStoreClass) {
+            this.dataStoreClass = dataStoreClass;
+            return (T) this;
+        }
+
         /**
          * The type class of the key. The option is a java.lang.String type.
          */
-        private String keyClass;
+        public T keyClass(String keyClass) {
+            this.keyClass = keyClass;
+            return (T) this;
+        }
+
         /**
          * The type of the value. The option is a java.lang.String type.
          */
-        private String valueClass;
+        public T valueClass(String valueClass) {
+            this.valueClass = valueClass;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Hadoop Configuration. The option is a
          * org.apache.hadoop.conf.Configuration type.
          */
-        private Object hadoopConfiguration;
+        public T hadoopConfiguration(Object hadoopConfiguration) {
+            this.hadoopConfiguration = hadoopConfiguration;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getName() {
             return name;
@@ -122,7 +159,23 @@ public class GoraEndpoint {
         }
     }
 
-    public static class GoraConsumer extends GoraCommon {
+    public static class GoraConsumer extends GoraCommon<GoraConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Integer concurrentConsumers;
+        private Object endKey;
+        private Long endTime;
+        private Object fields;
+        private Object keyRangeFrom;
+        private Object keyRangeTo;
+        private Long limit;
+        private Object startKey;
+        private Long startTime;
+        private Long timeRangeFrom;
+        private Long timeRangeTo;
+        private Long timestamp;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -132,55 +185,107 @@ public class GoraEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public GoraConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (GoraConsumer) this;
+        }
+
         /**
          * Number of concurrent consumers. The option is a int type.
          */
-        private Integer concurrentConsumers;
+        public GoraConsumer concurrentConsumers(int concurrentConsumers) {
+            this.concurrentConsumers = concurrentConsumers;
+            return (GoraConsumer) this;
+        }
+
         /**
          * The End Key. The option is a java.lang.Object type.
          */
-        private Object endKey;
+        public GoraConsumer endKey(Object endKey) {
+            this.endKey = endKey;
+            return (GoraConsumer) this;
+        }
+
         /**
          * The End Time. The option is a long type.
          */
-        private Long endTime;
+        public GoraConsumer endTime(long endTime) {
+            this.endTime = endTime;
+            return (GoraConsumer) this;
+        }
+
         /**
          * The Fields. The option is a com.google.common.base.Strings type.
          */
-        private Object fields;
+        public GoraConsumer fields(Object fields) {
+            this.fields = fields;
+            return (GoraConsumer) this;
+        }
+
         /**
          * The Key Range From. The option is a java.lang.Object type.
          */
-        private Object keyRangeFrom;
+        public GoraConsumer keyRangeFrom(Object keyRangeFrom) {
+            this.keyRangeFrom = keyRangeFrom;
+            return (GoraConsumer) this;
+        }
+
         /**
          * The Key Range To. The option is a java.lang.Object type.
          */
-        private Object keyRangeTo;
+        public GoraConsumer keyRangeTo(Object keyRangeTo) {
+            this.keyRangeTo = keyRangeTo;
+            return (GoraConsumer) this;
+        }
+
         /**
          * The Limit. The option is a long type.
          */
-        private Long limit;
+        public GoraConsumer limit(long limit) {
+            this.limit = limit;
+            return (GoraConsumer) this;
+        }
+
         /**
          * The Start Key. The option is a java.lang.Object type.
          */
-        private Object startKey;
+        public GoraConsumer startKey(Object startKey) {
+            this.startKey = startKey;
+            return (GoraConsumer) this;
+        }
+
         /**
          * The Start Time. The option is a long type.
          */
-        private Long startTime;
+        public GoraConsumer startTime(long startTime) {
+            this.startTime = startTime;
+            return (GoraConsumer) this;
+        }
+
         /**
          * The Time Range From. The option is a long type.
          */
-        private Long timeRangeFrom;
+        public GoraConsumer timeRangeFrom(long timeRangeFrom) {
+            this.timeRangeFrom = timeRangeFrom;
+            return (GoraConsumer) this;
+        }
+
         /**
          * The Time Range To. The option is a long type.
          */
-        private Long timeRangeTo;
+        public GoraConsumer timeRangeTo(long timeRangeTo) {
+            this.timeRangeTo = timeRangeTo;
+            return (GoraConsumer) this;
+        }
+
         /**
          * The Timestamp. The option is a long type.
          */
-        private Long timestamp;
+        public GoraConsumer timestamp(long timestamp) {
+            this.timestamp = timestamp;
+            return (GoraConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -188,12 +293,19 @@ public class GoraEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public GoraConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (GoraConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public GoraConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (GoraConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -316,11 +428,16 @@ public class GoraEndpoint {
         }
     }
 
-    public static class GoraProducer extends GoraCommon {
+    public static class GoraProducer extends GoraCommon<GoraProducer> {
+        private Boolean flushOnEveryOperation;
+
         /**
          * Flush on every operation. The option is a boolean type.
          */
-        private Boolean flushOnEveryOperation;
+        public GoraProducer flushOnEveryOperation(boolean flushOnEveryOperation) {
+            this.flushOnEveryOperation = flushOnEveryOperation;
+            return (GoraProducer) this;
+        }
 
         public Boolean getFlushOnEveryOperation() {
             return flushOnEveryOperation;

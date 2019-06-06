@@ -32,11 +32,29 @@ import org.apache.camel.spi.ExceptionHandler;
 public class TimerEndpoint {
 
 
-    public static class TimerCommon extends EndpointConfiguration {
+    public static class TimerCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String timerName;
+        private Long delay;
+        private Boolean fixedRate;
+        private Long period;
+        private Long repeatCount;
+        private Boolean basicPropertyBinding;
+        private Boolean daemon;
+        private String pattern;
+        private Boolean synchronous;
+        private Date time;
+        private Timer timer;
+
         /**
          * The name of the timer. The option is a java.lang.String type.
          */
-        private String timerName;
+        public T timerName(String timerName) {
+            this.timerName = timerName;
+            return (T) this;
+        }
+
         /**
          * The number of milliseconds to wait before the first event is
          * generated. Should not be used in conjunction with the time option.
@@ -44,59 +62,98 @@ public class TimerEndpoint {
          * units, such as 60s (60 seconds), 5m30s (5 minutes and 30 seconds),
          * and 1h (1 hour). The option is a long type.
          */
-        private Long delay;
+        public T delay(long delay) {
+            this.delay = delay;
+            return (T) this;
+        }
+
         /**
          * Events take place at approximately regular intervals, separated by
          * the specified period. The option is a boolean type.
          */
-        private Boolean fixedRate;
+        public T fixedRate(boolean fixedRate) {
+            this.fixedRate = fixedRate;
+            return (T) this;
+        }
+
         /**
          * If greater than 0, generate periodic events every period
          * milliseconds. The default value is 1000. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long period;
+        public T period(long period) {
+            this.period = period;
+            return (T) this;
+        }
+
         /**
          * Specifies a maximum limit of number of fires. So if you set it to 1,
          * the timer will only fire once. If you set it to 5, it will only fire
          * five times. A value of zero or negative means fire forever. The
          * option is a long type.
          */
-        private Long repeatCount;
+        public T repeatCount(long repeatCount) {
+            this.repeatCount = repeatCount;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Specifies whether or not the thread associated with the timer
          * endpoint runs as a daemon. The default value is true. The option is a
          * boolean type.
          */
-        private Boolean daemon;
+        public T daemon(boolean daemon) {
+            this.daemon = daemon;
+            return (T) this;
+        }
+
         /**
          * Allows you to specify a custom Date pattern to use for setting the
          * time option using URI syntax. The option is a java.lang.String type.
          */
-        private String pattern;
+        public T pattern(String pattern) {
+            this.pattern = pattern;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * A java.util.Date the first event should be generated. If using the
          * URI, the pattern expected is: yyyy-MM-dd HH:mm:ss or
          * yyyy-MM-dd'T'HH:mm:ss. The option is a java.util.Date type.
          */
-        private Date time;
+        public T time(Date time) {
+            this.time = time;
+            return (T) this;
+        }
+
         /**
          * To use a custom Timer. The option is a java.util.Timer type.
          */
-        private Timer timer;
+        public T timer(Timer timer) {
+            this.timer = timer;
+            return (T) this;
+        }
 
         public String getTimerName() {
             return timerName;
@@ -187,7 +244,11 @@ public class TimerEndpoint {
         }
     }
 
-    public static class TimerConsumer extends TimerCommon {
+    public static class TimerConsumer extends TimerCommon<TimerConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -197,7 +258,11 @@ public class TimerEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public TimerConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (TimerConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -205,12 +270,19 @@ public class TimerEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public TimerConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (TimerConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public TimerConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (TimerConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -237,6 +309,6 @@ public class TimerEndpoint {
         }
     }
 
-    public static class TimerProducer extends TimerCommon {
+    public static class TimerProducer extends TimerCommon<TimerProducer> {
     }
 }

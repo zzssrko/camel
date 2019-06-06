@@ -27,43 +27,80 @@ import javax.annotation.Generated;
 public class ChatScriptEndpoint {
 
 
-    public static class ChatScriptCommon extends EndpointConfiguration {
+    public static class ChatScriptCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private String botName;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Boolean resetchat;
+        private String chatUserName;
+
         /**
          * Hostname or IP of the server on which CS server is running. The
          * option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Port on which ChatScript is listening to. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Name of the Bot in CS to converse with. The option is a
          * java.lang.String type.
          */
-        private String botName;
+        public T botName(String botName) {
+            this.botName = botName;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Issues :reset command to start a new conversation everytime. The
          * option is a boolean type.
          */
-        private Boolean resetchat;
+        public T resetchat(boolean resetchat) {
+            this.resetchat = resetchat;
+            return (T) this;
+        }
+
         /**
          * Username who initializes the CS conversation. To be set when chat is
          * initialized from camel route. The option is a java.lang.String type.
          */
-        private String chatUserName;
+        public T chatUserName(String chatUserName) {
+            this.chatUserName = chatUserName;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -122,9 +159,13 @@ public class ChatScriptEndpoint {
         }
     }
 
-    public static class ChatScriptConsumer extends ChatScriptCommon {
+    public static class ChatScriptConsumer
+            extends
+                ChatScriptCommon<ChatScriptConsumer> {
     }
 
-    public static class ChatScriptProducer extends ChatScriptCommon {
+    public static class ChatScriptProducer
+            extends
+                ChatScriptCommon<ChatScriptProducer> {
     }
 }

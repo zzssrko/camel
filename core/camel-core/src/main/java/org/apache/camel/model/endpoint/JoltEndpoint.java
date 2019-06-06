@@ -28,7 +28,17 @@ import javax.annotation.Generated;
 public class JoltEndpoint {
 
 
-    public static class JoltCommon extends EndpointConfiguration {
+    public static class JoltCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String resourceUri;
+        private Boolean contentCache;
+        private JoltInputOutputType inputType;
+        private JoltInputOutputType outputType;
+        private JoltTransformType transformDsl;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Path to the resource. You can prefix with: classpath, file, http,
          * ref, or bean. classpath, file and http loads the resource using these
@@ -37,40 +47,67 @@ public class JoltEndpoint {
          * resource. For bean you can specify the method name after dot, eg
          * bean:myBean.myMethod. The option is a java.lang.String type.
          */
-        private String resourceUri;
+        public T resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return (T) this;
+        }
+
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
-        private Boolean contentCache;
+        public T contentCache(boolean contentCache) {
+            this.contentCache = contentCache;
+            return (T) this;
+        }
+
         /**
          * Specifies if the input is hydrated JSON or a JSON String. The option
          * is a org.apache.camel.component.jolt.JoltInputOutputType type.
          */
-        private JoltInputOutputType inputType;
+        public T inputType(JoltInputOutputType inputType) {
+            this.inputType = inputType;
+            return (T) this;
+        }
+
         /**
          * Specifies if the output should be hydrated JSON or a JSON String. The
          * option is a org.apache.camel.component.jolt.JoltInputOutputType type.
          */
-        private JoltInputOutputType outputType;
+        public T outputType(JoltInputOutputType outputType) {
+            this.outputType = outputType;
+            return (T) this;
+        }
+
         /**
          * Specifies the Transform DSL of the endpoint resource. If none is
          * specified Chainr will be used. The option is a
          * org.apache.camel.component.jolt.JoltTransformType type.
          */
-        private JoltTransformType transformDsl;
+        public T transformDsl(JoltTransformType transformDsl) {
+            this.transformDsl = transformDsl;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getResourceUri() {
             return resourceUri;
@@ -129,10 +166,10 @@ public class JoltEndpoint {
         }
     }
 
-    public static class JoltConsumer extends JoltCommon {
+    public static class JoltConsumer extends JoltCommon<JoltConsumer> {
     }
 
-    public static class JoltProducer extends JoltCommon {
+    public static class JoltProducer extends JoltCommon<JoltProducer> {
     }
 
     public static enum JoltInputOutputType {

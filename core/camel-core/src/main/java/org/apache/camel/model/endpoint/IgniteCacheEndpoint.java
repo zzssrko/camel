@@ -30,33 +30,62 @@ import org.apache.camel.spi.ExceptionHandler;
 public class IgniteCacheEndpoint {
 
 
-    public static class IgniteCacheCommon extends EndpointConfiguration {
+    public static class IgniteCacheCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String cacheName;
+        private Boolean propagateIncomingBodyIfNoReturnValue;
+        private Boolean treatCollectionsAsCacheObjects;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The cache name. The option is a java.lang.String type.
          */
-        private String cacheName;
+        public T cacheName(String cacheName) {
+            this.cacheName = cacheName;
+            return (T) this;
+        }
+
         /**
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option is a boolean type.
          */
-        private Boolean propagateIncomingBodyIfNoReturnValue;
+        public T propagateIncomingBodyIfNoReturnValue(
+                boolean propagateIncomingBodyIfNoReturnValue) {
+            this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
+            return (T) this;
+        }
+
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
-        private Boolean treatCollectionsAsCacheObjects;
+        public T treatCollectionsAsCacheObjects(
+                boolean treatCollectionsAsCacheObjects) {
+            this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getCacheName() {
             return cacheName;
@@ -101,12 +130,28 @@ public class IgniteCacheEndpoint {
         }
     }
 
-    public static class IgniteCacheConsumer extends IgniteCacheCommon {
+    public static class IgniteCacheConsumer
+            extends
+                IgniteCacheCommon<IgniteCacheConsumer> {
+        private Boolean autoUnsubscribe;
+        private Boolean bridgeErrorHandler;
+        private Boolean fireExistingQueryResults;
+        private Boolean oneExchangePerUpdate;
+        private Integer pageSize;
+        private Object remoteFilter;
+        private Long timeInterval;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Whether auto unsubscribe is enabled in the Continuous Query Consumer.
          * The option is a boolean type.
          */
-        private Boolean autoUnsubscribe;
+        public IgniteCacheConsumer autoUnsubscribe(boolean autoUnsubscribe) {
+            this.autoUnsubscribe = autoUnsubscribe;
+            return (IgniteCacheConsumer) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -116,35 +161,61 @@ public class IgniteCacheEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public IgniteCacheConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (IgniteCacheConsumer) this;
+        }
+
         /**
          * Whether to process existing results that match the query. Used on
          * initialization of the Continuous Query Consumer. The option is a
          * boolean type.
          */
-        private Boolean fireExistingQueryResults;
+        public IgniteCacheConsumer fireExistingQueryResults(
+                boolean fireExistingQueryResults) {
+            this.fireExistingQueryResults = fireExistingQueryResults;
+            return (IgniteCacheConsumer) this;
+        }
+
         /**
          * Whether to pack each update in an individual Exchange, even if
          * multiple updates are received in one batch. Only used by the
          * Continuous Query Consumer. The option is a boolean type.
          */
-        private Boolean oneExchangePerUpdate;
+        public IgniteCacheConsumer oneExchangePerUpdate(
+                boolean oneExchangePerUpdate) {
+            this.oneExchangePerUpdate = oneExchangePerUpdate;
+            return (IgniteCacheConsumer) this;
+        }
+
         /**
          * The page size. Only used by the Continuous Query Consumer. The option
          * is a int type.
          */
-        private Integer pageSize;
+        public IgniteCacheConsumer pageSize(int pageSize) {
+            this.pageSize = pageSize;
+            return (IgniteCacheConsumer) this;
+        }
+
         /**
          * The remote filter, only used by the Continuous Query Consumer. The
          * option is a
          * org.apache.ignite.cache.CacheEntryEventSerializableFilter<java.lang.Object,java.lang.Object> type.
          */
-        private Object remoteFilter;
+        public IgniteCacheConsumer remoteFilter(Object remoteFilter) {
+            this.remoteFilter = remoteFilter;
+            return (IgniteCacheConsumer) this;
+        }
+
         /**
          * The time interval for the Continuous Query Consumer. The option is a
          * long type.
          */
-        private Long timeInterval;
+        public IgniteCacheConsumer timeInterval(long timeInterval) {
+            this.timeInterval = timeInterval;
+            return (IgniteCacheConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -152,12 +223,21 @@ public class IgniteCacheEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public IgniteCacheConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (IgniteCacheConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public IgniteCacheConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (IgniteCacheConsumer) this;
+        }
 
         public Boolean getAutoUnsubscribe() {
             return autoUnsubscribe;
@@ -232,30 +312,53 @@ public class IgniteCacheEndpoint {
         }
     }
 
-    public static class IgniteCacheProducer extends IgniteCacheCommon {
+    public static class IgniteCacheProducer
+            extends
+                IgniteCacheCommon<IgniteCacheProducer> {
+        private Object query;
+        private CachePeekMode cachePeekMode;
+        private Boolean failIfInexistentCache;
+        private IgniteCacheOperation operation;
+
         /**
          * The Query to execute, only needed for operations that require it, and
          * for the Continuous Query Consumer. The option is a
          * org.apache.ignite.cache.query.Query<javax.cache.Cache.Entry<java.lang.Object,java.lang.Object>> type.
          */
-        private Object query;
+        public IgniteCacheProducer query(Object query) {
+            this.query = query;
+            return (IgniteCacheProducer) this;
+        }
+
         /**
          * The CachePeekMode, only needed for operations that require it
          * (IgniteCacheOperation#SIZE). The option is a
          * org.apache.ignite.cache.CachePeekMode type.
          */
-        private CachePeekMode cachePeekMode;
+        public IgniteCacheProducer cachePeekMode(CachePeekMode cachePeekMode) {
+            this.cachePeekMode = cachePeekMode;
+            return (IgniteCacheProducer) this;
+        }
+
         /**
          * Whether to fail the initialization if the cache doesn't exist. The
          * option is a boolean type.
          */
-        private Boolean failIfInexistentCache;
+        public IgniteCacheProducer failIfInexistentCache(
+                boolean failIfInexistentCache) {
+            this.failIfInexistentCache = failIfInexistentCache;
+            return (IgniteCacheProducer) this;
+        }
+
         /**
          * The cache operation to invoke. Possible values: GET, PUT, REMOVE,
          * SIZE, REBALANCE, QUERY, CLEAR. The option is a
          * org.apache.camel.component.ignite.cache.IgniteCacheOperation type.
          */
-        private IgniteCacheOperation operation;
+        public IgniteCacheProducer operation(IgniteCacheOperation operation) {
+            this.operation = operation;
+            return (IgniteCacheProducer) this;
+        }
 
         public Object getQuery() {
             return query;

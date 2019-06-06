@@ -31,79 +31,160 @@ import org.apache.camel.spi.ExceptionHandler;
 public class JMXEndpoint {
 
 
-    public static class JMXCommon extends EndpointConfiguration {
+    public static class JMXCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String serverURL;
+        private String format;
+        private Long granularityPeriod;
+        private String monitorType;
+        private String objectDomain;
+        private String objectName;
+        private String observedAttribute;
+        private Boolean basicPropertyBinding;
+        private ExecutorService executorService;
+        private Object handback;
+        private Object notificationFilter;
+        private Map<String, String> objectProperties;
+        private Integer reconnectDelay;
+        private Boolean reconnectOnConnectionFailure;
+        private Boolean synchronous;
+        private Boolean testConnectionOnStartup;
+        private Integer initThreshold;
+        private Integer modulus;
+        private Integer offset;
+        private Boolean differenceMode;
+        private Boolean notifyHigh;
+        private Boolean notifyLow;
+        private Double thresholdHigh;
+        private Double thresholdLow;
+        private String password;
+        private String user;
+
         /**
          * Server url comes from the remaining endpoint. Use platform to connect
          * to local JVM. The option is a java.lang.String type.
          */
-        private String serverURL;
+        public T serverURL(String serverURL) {
+            this.serverURL = serverURL;
+            return (T) this;
+        }
+
         /**
          * Format for the message body. Either xml or raw. If xml, the
          * notification is serialized to xml. If raw, then the raw java object
          * is set as the body. The option is a java.lang.String type.
          */
-        private String format;
+        public T format(String format) {
+            this.format = format;
+            return (T) this;
+        }
+
         /**
          * The frequency to poll the bean to check the monitor (monitor types
          * only). The option is a long type.
          */
-        private Long granularityPeriod;
+        public T granularityPeriod(long granularityPeriod) {
+            this.granularityPeriod = granularityPeriod;
+            return (T) this;
+        }
+
         /**
          * The type of monitor to create. One of string, gauge, counter (monitor
          * types only). The option is a java.lang.String type.
          */
-        private String monitorType;
+        public T monitorType(String monitorType) {
+            this.monitorType = monitorType;
+            return (T) this;
+        }
+
         /**
          * The domain for the mbean you're connecting to. The option is a
          * java.lang.String type.
          */
-        private String objectDomain;
+        public T objectDomain(String objectDomain) {
+            this.objectDomain = objectDomain;
+            return (T) this;
+        }
+
         /**
          * The name key for the mbean you're connecting to. This value is
          * mutually exclusive with the object properties that get passed. The
          * option is a java.lang.String type.
          */
-        private String objectName;
+        public T objectName(String objectName) {
+            this.objectName = objectName;
+            return (T) this;
+        }
+
         /**
          * The attribute to observe for the monitor bean or consumer. The option
          * is a java.lang.String type.
          */
-        private String observedAttribute;
+        public T observedAttribute(String observedAttribute) {
+            this.observedAttribute = observedAttribute;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a custom shared thread pool for the consumers. By default each
          * consume has their own thread-pool to process and route notifications.
          * The option is a java.util.concurrent.ExecutorService type.
          */
-        private ExecutorService executorService;
+        public T executorService(ExecutorService executorService) {
+            this.executorService = executorService;
+            return (T) this;
+        }
+
         /**
          * Value to handback to the listener when a notification is received.
          * This value will be put in the message header with the key
          * jmx.handback. The option is a java.lang.Object type.
          */
-        private Object handback;
+        public T handback(Object handback) {
+            this.handback = handback;
+            return (T) this;
+        }
+
         /**
          * Reference to a bean that implements the NotificationFilter. The
          * option is a javax.management.NotificationFilter type.
          */
-        private Object notificationFilter;
+        public T notificationFilter(Object notificationFilter) {
+            this.notificationFilter = notificationFilter;
+            return (T) this;
+        }
+
         /**
          * Properties for the object name. These values will be used if the
          * objectName param is not set. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
-        private Map<String, String> objectProperties;
+        public T objectProperties(Map<String, String> objectProperties) {
+            this.objectProperties = objectProperties;
+            return (T) this;
+        }
+
         /**
          * The number of seconds to wait before attempting to retry
          * establishment of the initial connection or attempt to reconnect a
          * lost connection. The option is a int type.
          */
-        private Integer reconnectDelay;
+        public T reconnectDelay(int reconnectDelay) {
+            this.reconnectDelay = reconnectDelay;
+            return (T) this;
+        }
+
         /**
          * If true the consumer will attempt to reconnect to the JMX server when
          * any connection failure occurs. The consumer will attempt to
@@ -111,13 +192,22 @@ public class JMXEndpoint {
          * connection is made-- where 'x' is the configured reconnectionDelay.
          * The option is a boolean type.
          */
-        private Boolean reconnectOnConnectionFailure;
+        public T reconnectOnConnectionFailure(
+                boolean reconnectOnConnectionFailure) {
+            this.reconnectOnConnectionFailure = reconnectOnConnectionFailure;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * If true the consumer will throw an exception if unable to establish
          * the JMX connection upon startup. If false, the consumer will attempt
@@ -125,59 +215,102 @@ public class JMXEndpoint {
          * connection is made -- where 'x' is the configured reconnectionDelay.
          * The option is a boolean type.
          */
-        private Boolean testConnectionOnStartup;
+        public T testConnectionOnStartup(boolean testConnectionOnStartup) {
+            this.testConnectionOnStartup = testConnectionOnStartup;
+            return (T) this;
+        }
+
         /**
          * Initial threshold for the monitor. The value must exceed this before
          * notifications are fired (counter monitor only). The option is a int
          * type.
          */
-        private Integer initThreshold;
+        public T initThreshold(int initThreshold) {
+            this.initThreshold = initThreshold;
+            return (T) this;
+        }
+
         /**
          * The value at which the counter is reset to zero (counter monitor
          * only). The option is a int type.
          */
-        private Integer modulus;
+        public T modulus(int modulus) {
+            this.modulus = modulus;
+            return (T) this;
+        }
+
         /**
          * The amount to increment the threshold after it's been exceeded
          * (counter monitor only). The option is a int type.
          */
-        private Integer offset;
+        public T offset(int offset) {
+            this.offset = offset;
+            return (T) this;
+        }
+
         /**
          * If true, then the value reported in the notification is the
          * difference from the threshold as opposed to the value itself (counter
          * and gauge monitor only). The option is a boolean type.
          */
-        private Boolean differenceMode;
+        public T differenceMode(boolean differenceMode) {
+            this.differenceMode = differenceMode;
+            return (T) this;
+        }
+
         /**
          * If true, the gauge will fire a notification when the high threshold
          * is exceeded (gauge monitor only). The option is a boolean type.
          */
-        private Boolean notifyHigh;
+        public T notifyHigh(boolean notifyHigh) {
+            this.notifyHigh = notifyHigh;
+            return (T) this;
+        }
+
         /**
          * If true, the gauge will fire a notification when the low threshold is
          * exceeded (gauge monitor only). The option is a boolean type.
          */
-        private Boolean notifyLow;
+        public T notifyLow(boolean notifyLow) {
+            this.notifyLow = notifyLow;
+            return (T) this;
+        }
+
         /**
          * Value for the gauge's high threshold (gauge monitor only). The option
          * is a java.lang.Double type.
          */
-        private Double thresholdHigh;
+        public T thresholdHigh(Double thresholdHigh) {
+            this.thresholdHigh = thresholdHigh;
+            return (T) this;
+        }
+
         /**
          * Value for the gauge's low threshold (gauge monitor only). The option
          * is a java.lang.Double type.
          */
-        private Double thresholdLow;
+        public T thresholdLow(Double thresholdLow) {
+            this.thresholdLow = thresholdLow;
+            return (T) this;
+        }
+
         /**
          * Credentials for making a remote connection. The option is a
          * java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Credentials for making a remote connection. The option is a
          * java.lang.String type.
          */
-        private String user;
+        public T user(String user) {
+            this.user = user;
+            return (T) this;
+        }
 
         public String getServerURL() {
             return serverURL;
@@ -389,7 +522,14 @@ public class JMXEndpoint {
         }
     }
 
-    public static class JMXConsumer extends JMXCommon {
+    public static class JMXConsumer extends JMXCommon<JMXConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private Boolean notifyDiffer;
+        private Boolean notifyMatch;
+        private String stringToCompare;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -399,7 +539,11 @@ public class JMXEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public JMXConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (JMXConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -407,33 +551,52 @@ public class JMXEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public JMXConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (JMXConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public JMXConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (JMXConsumer) this;
+        }
+
         /**
          * If true, will fire a notification when the string attribute differs
          * from the string to compare (string monitor or consumer). By default
          * the consumer will notify match if observed attribute and string to
          * compare has been configured. The option is a boolean type.
          */
-        private Boolean notifyDiffer;
+        public JMXConsumer notifyDiffer(boolean notifyDiffer) {
+            this.notifyDiffer = notifyDiffer;
+            return (JMXConsumer) this;
+        }
+
         /**
          * If true, will fire a notification when the string attribute matches
          * the string to compare (string monitor or consumer). By default the
          * consumer will notify match if observed attribute and string to
          * compare has been configured. The option is a boolean type.
          */
-        private Boolean notifyMatch;
+        public JMXConsumer notifyMatch(boolean notifyMatch) {
+            this.notifyMatch = notifyMatch;
+            return (JMXConsumer) this;
+        }
+
         /**
          * Value for attribute to compare (string monitor or consumer). By
          * default the consumer will notify match if observed attribute and
          * string to compare has been configured. The option is a
          * java.lang.String type.
          */
-        private String stringToCompare;
+        public JMXConsumer stringToCompare(String stringToCompare) {
+            this.stringToCompare = stringToCompare;
+            return (JMXConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -484,6 +647,6 @@ public class JMXEndpoint {
         }
     }
 
-    public static class JMXProducer extends JMXCommon {
+    public static class JMXProducer extends JMXCommon<JMXProducer> {
     }
 }

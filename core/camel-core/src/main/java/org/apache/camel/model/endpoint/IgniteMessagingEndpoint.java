@@ -30,33 +30,62 @@ import org.apache.camel.spi.ExceptionHandler;
 public class IgniteMessagingEndpoint {
 
 
-    public static class IgniteMessagingCommon extends EndpointConfiguration {
+    public static class IgniteMessagingCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String topic;
+        private Boolean propagateIncomingBodyIfNoReturnValue;
+        private Boolean treatCollectionsAsCacheObjects;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The topic name. The option is a java.lang.String type.
          */
-        private String topic;
+        public T topic(String topic) {
+            this.topic = topic;
+            return (T) this;
+        }
+
         /**
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option is a boolean type.
          */
-        private Boolean propagateIncomingBodyIfNoReturnValue;
+        public T propagateIncomingBodyIfNoReturnValue(
+                boolean propagateIncomingBodyIfNoReturnValue) {
+            this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
+            return (T) this;
+        }
+
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
-        private Boolean treatCollectionsAsCacheObjects;
+        public T treatCollectionsAsCacheObjects(
+                boolean treatCollectionsAsCacheObjects) {
+            this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getTopic() {
             return topic;
@@ -101,7 +130,13 @@ public class IgniteMessagingEndpoint {
         }
     }
 
-    public static class IgniteMessagingConsumer extends IgniteMessagingCommon {
+    public static class IgniteMessagingConsumer
+            extends
+                IgniteMessagingCommon<IgniteMessagingConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -111,7 +146,12 @@ public class IgniteMessagingEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public IgniteMessagingConsumer bridgeErrorHandler(
+                boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (IgniteMessagingConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -119,12 +159,21 @@ public class IgniteMessagingEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public IgniteMessagingConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (IgniteMessagingConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public IgniteMessagingConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (IgniteMessagingConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -151,24 +200,42 @@ public class IgniteMessagingEndpoint {
         }
     }
 
-    public static class IgniteMessagingProducer extends IgniteMessagingCommon {
+    public static class IgniteMessagingProducer
+            extends
+                IgniteMessagingCommon<IgniteMessagingProducer> {
+        private Object clusterGroupExpression;
+        private IgniteMessagingSendMode sendMode;
+        private Long timeout;
+
         /**
          * The cluster group expression. The option is a
          * org.apache.camel.component.ignite.ClusterGroupExpression type.
          */
-        private Object clusterGroupExpression;
+        public IgniteMessagingProducer clusterGroupExpression(
+                Object clusterGroupExpression) {
+            this.clusterGroupExpression = clusterGroupExpression;
+            return (IgniteMessagingProducer) this;
+        }
+
         /**
          * The send mode to use. Possible values: UNORDERED, ORDERED. The option
          * is a
          * org.apache.camel.component.ignite.messaging.IgniteMessagingSendMode
          * type.
          */
-        private IgniteMessagingSendMode sendMode;
+        public IgniteMessagingProducer sendMode(IgniteMessagingSendMode sendMode) {
+            this.sendMode = sendMode;
+            return (IgniteMessagingProducer) this;
+        }
+
         /**
          * The timeout for the send operation when using ordered messages. The
          * option is a java.lang.Long type.
          */
-        private Long timeout;
+        public IgniteMessagingProducer timeout(Long timeout) {
+            this.timeout = timeout;
+            return (IgniteMessagingProducer) this;
+        }
 
         public Object getClusterGroupExpression() {
             return clusterGroupExpression;

@@ -34,450 +34,958 @@ import org.apache.camel.spi.ExceptionHandler;
 public class FacebookEndpoint {
 
 
-    public static class FacebookCommon extends EndpointConfiguration {
+    public static class FacebookCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String methodName;
+        private URL achievementURL;
+        private String albumId;
+        private Object albumUpdate;
+        private String appId;
+        private Object center;
+        private String checkinId;
+        @Deprecated
+        private Object checkinUpdate;
+        private String clientURL;
+        private String clientVersion;
+        private String commentId;
+        private Object commentUpdate;
+        private Boolean debugEnabled;
+        private String description;
+        private Integer distance;
+        private String domainId;
+        private String domainName;
+        private List<String> domainNames;
+        private String eventId;
+        private Object eventUpdate;
+        private String friendId;
+        private String friendlistId;
+        private String friendlistName;
+        private String friendUserId;
+        private String groupId;
+        private Boolean gzipEnabled;
+        private Integer httpConnectionTimeout;
+        private Integer httpDefaultMaxPerRoute;
+        private Integer httpMaxTotalConnections;
+        private Integer httpReadTimeout;
+        private Integer httpRetryCount;
+        private Integer httpRetryIntervalSeconds;
+        private Integer httpStreamingReadTimeout;
+        private List<String> ids;
+        private String inBody;
+        private Boolean includeRead;
+        private Boolean isHidden;
+        private Boolean jsonStoreEnabled;
+        private URL link;
+        private String linkId;
+        private Locale locale;
+        private Boolean mbeanEnabled;
+        private String message;
+        private String messageId;
+        private String metric;
+        private String milestoneId;
+        private String name;
+        private String noteId;
+        private String notificationId;
+        private String objectId;
+        private String offerId;
+        private String optionDescription;
+        private String pageId;
+        private String permissionName;
+        private String permissions;
+        private String photoId;
+        private Integer pictureId;
+        private Integer pictureId2;
+        private PictureSize pictureSize;
+        private String placeId;
+        private String postId;
+        private Object postUpdate;
+        private Boolean prettyDebugEnabled;
+        private Map<String, String> queries;
+        private String query;
+        private String questionId;
+        private Object reading;
+        private Map<String, Object> readingOptions;
+        private String restBaseURL;
+        private Integer scoreValue;
+        private PictureSize size;
+        private Object source;
+        private String subject;
+        private String tabId;
+        private Object tagUpdate;
+        private Object testUser1;
+        private Object testUser2;
+        private String testUserId;
+        private String title;
+        private String toUserId;
+        private List<String> toUserIds;
+        private String userId;
+        private String userId1;
+        private String userId2;
+        private List<String> userIds;
+        private String userLocale;
+        private Boolean useSSL;
+        private String videoBaseURL;
+        private String videoId;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String httpProxyHost;
+        private String httpProxyPassword;
+        private Integer httpProxyPort;
+        private String httpProxyUser;
+        private String oAuthAccessToken;
+        private String oAuthAccessTokenURL;
+        private String oAuthAppId;
+        private String oAuthAppSecret;
+        private String oAuthAuthorizationURL;
+        private String oAuthPermissions;
+
         /**
          * What operation to perform. The option is a java.lang.String type.
          */
-        private String methodName;
+        public T methodName(String methodName) {
+            this.methodName = methodName;
+            return (T) this;
+        }
+
         /**
          * The unique URL of the achievement. The option is a java.net.URL type.
          */
-        private URL achievementURL;
+        public T achievementURL(URL achievementURL) {
+            this.achievementURL = achievementURL;
+            return (T) this;
+        }
+
         /**
          * The album ID. The option is a java.lang.String type.
          */
-        private String albumId;
+        public T albumId(String albumId) {
+            this.albumId = albumId;
+            return (T) this;
+        }
+
         /**
          * The facebook Album to be created or updated. The option is a
          * facebook4j.AlbumUpdate type.
          */
-        private Object albumUpdate;
+        public T albumUpdate(Object albumUpdate) {
+            this.albumUpdate = albumUpdate;
+            return (T) this;
+        }
+
         /**
          * The ID of the Facebook Application. The option is a java.lang.String
          * type.
          */
-        private String appId;
+        public T appId(String appId) {
+            this.appId = appId;
+            return (T) this;
+        }
+
         /**
          * Location latitude and longitude. The option is a
          * facebook4j.GeoLocation type.
          */
-        private Object center;
+        public T center(Object center) {
+            this.center = center;
+            return (T) this;
+        }
+
         /**
          * The checkin ID. The option is a java.lang.String type.
          */
-        private String checkinId;
+        public T checkinId(String checkinId) {
+            this.checkinId = checkinId;
+            return (T) this;
+        }
+
         /**
          * The checkin to be created. Deprecated, instead create a Post with an
          * attached location. The option is a facebook4j.CheckinUpdate type.
          */
         @Deprecated
-        private Object checkinUpdate;
+        public T checkinUpdate(Object checkinUpdate) {
+            this.checkinUpdate = checkinUpdate;
+            return (T) this;
+        }
+
         /**
          * Facebook4J API client URL. The option is a java.lang.String type.
          */
-        private String clientURL;
+        public T clientURL(String clientURL) {
+            this.clientURL = clientURL;
+            return (T) this;
+        }
+
         /**
          * Facebook4J client API version. The option is a java.lang.String type.
          */
-        private String clientVersion;
+        public T clientVersion(String clientVersion) {
+            this.clientVersion = clientVersion;
+            return (T) this;
+        }
+
         /**
          * The comment ID. The option is a java.lang.String type.
          */
-        private String commentId;
+        public T commentId(String commentId) {
+            this.commentId = commentId;
+            return (T) this;
+        }
+
         /**
          * The facebook Comment to be created or updated. The option is a
          * facebook4j.CommentUpdate type.
          */
-        private Object commentUpdate;
+        public T commentUpdate(Object commentUpdate) {
+            this.commentUpdate = commentUpdate;
+            return (T) this;
+        }
+
         /**
          * Enables deubg output. Effective only with the embedded logger. The
          * option is a java.lang.Boolean type.
          */
-        private Boolean debugEnabled;
+        public T debugEnabled(Boolean debugEnabled) {
+            this.debugEnabled = debugEnabled;
+            return (T) this;
+        }
+
         /**
          * The description text. The option is a java.lang.String type.
          */
-        private String description;
+        public T description(String description) {
+            this.description = description;
+            return (T) this;
+        }
+
         /**
          * Distance in meters. The option is a java.lang.Integer type.
          */
-        private Integer distance;
+        public T distance(Integer distance) {
+            this.distance = distance;
+            return (T) this;
+        }
+
         /**
          * The domain ID. The option is a java.lang.String type.
          */
-        private String domainId;
+        public T domainId(String domainId) {
+            this.domainId = domainId;
+            return (T) this;
+        }
+
         /**
          * The domain name. The option is a java.lang.String type.
          */
-        private String domainName;
+        public T domainName(String domainName) {
+            this.domainName = domainName;
+            return (T) this;
+        }
+
         /**
          * The domain names. The option is a java.util.List<java.lang.String>
          * type.
          */
-        private List<String> domainNames;
+        public T domainNames(List<String> domainNames) {
+            this.domainNames = domainNames;
+            return (T) this;
+        }
+
         /**
          * The event ID. The option is a java.lang.String type.
          */
-        private String eventId;
+        public T eventId(String eventId) {
+            this.eventId = eventId;
+            return (T) this;
+        }
+
         /**
          * The event to be created or updated. The option is a
          * facebook4j.EventUpdate type.
          */
-        private Object eventUpdate;
+        public T eventUpdate(Object eventUpdate) {
+            this.eventUpdate = eventUpdate;
+            return (T) this;
+        }
+
         /**
          * The friend ID. The option is a java.lang.String type.
          */
-        private String friendId;
+        public T friendId(String friendId) {
+            this.friendId = friendId;
+            return (T) this;
+        }
+
         /**
          * The friend list ID. The option is a java.lang.String type.
          */
-        private String friendlistId;
+        public T friendlistId(String friendlistId) {
+            this.friendlistId = friendlistId;
+            return (T) this;
+        }
+
         /**
          * The friend list Name. The option is a java.lang.String type.
          */
-        private String friendlistName;
+        public T friendlistName(String friendlistName) {
+            this.friendlistName = friendlistName;
+            return (T) this;
+        }
+
         /**
          * The friend user ID. The option is a java.lang.String type.
          */
-        private String friendUserId;
+        public T friendUserId(String friendUserId) {
+            this.friendUserId = friendUserId;
+            return (T) this;
+        }
+
         /**
          * The group ID. The option is a java.lang.String type.
          */
-        private String groupId;
+        public T groupId(String groupId) {
+            this.groupId = groupId;
+            return (T) this;
+        }
+
         /**
          * Use Facebook GZIP encoding. The option is a java.lang.Boolean type.
          */
-        private Boolean gzipEnabled;
+        public T gzipEnabled(Boolean gzipEnabled) {
+            this.gzipEnabled = gzipEnabled;
+            return (T) this;
+        }
+
         /**
          * Http connection timeout in milliseconds. The option is a
          * java.lang.Integer type.
          */
-        private Integer httpConnectionTimeout;
+        public T httpConnectionTimeout(Integer httpConnectionTimeout) {
+            this.httpConnectionTimeout = httpConnectionTimeout;
+            return (T) this;
+        }
+
         /**
          * HTTP maximum connections per route. The option is a java.lang.Integer
          * type.
          */
-        private Integer httpDefaultMaxPerRoute;
+        public T httpDefaultMaxPerRoute(Integer httpDefaultMaxPerRoute) {
+            this.httpDefaultMaxPerRoute = httpDefaultMaxPerRoute;
+            return (T) this;
+        }
+
         /**
          * HTTP maximum total connections. The option is a java.lang.Integer
          * type.
          */
-        private Integer httpMaxTotalConnections;
+        public T httpMaxTotalConnections(Integer httpMaxTotalConnections) {
+            this.httpMaxTotalConnections = httpMaxTotalConnections;
+            return (T) this;
+        }
+
         /**
          * Http read timeout in milliseconds. The option is a java.lang.Integer
          * type.
          */
-        private Integer httpReadTimeout;
+        public T httpReadTimeout(Integer httpReadTimeout) {
+            this.httpReadTimeout = httpReadTimeout;
+            return (T) this;
+        }
+
         /**
          * Number of HTTP retries. The option is a java.lang.Integer type.
          */
-        private Integer httpRetryCount;
+        public T httpRetryCount(Integer httpRetryCount) {
+            this.httpRetryCount = httpRetryCount;
+            return (T) this;
+        }
+
         /**
          * HTTP retry interval in seconds. The option is a java.lang.Integer
          * type.
          */
-        private Integer httpRetryIntervalSeconds;
+        public T httpRetryIntervalSeconds(Integer httpRetryIntervalSeconds) {
+            this.httpRetryIntervalSeconds = httpRetryIntervalSeconds;
+            return (T) this;
+        }
+
         /**
          * HTTP streaming read timeout in milliseconds. The option is a
          * java.lang.Integer type.
          */
-        private Integer httpStreamingReadTimeout;
+        public T httpStreamingReadTimeout(Integer httpStreamingReadTimeout) {
+            this.httpStreamingReadTimeout = httpStreamingReadTimeout;
+            return (T) this;
+        }
+
         /**
          * The ids of users. The option is a java.util.List<java.lang.String>
          * type.
          */
-        private List<String> ids;
+        public T ids(List<String> ids) {
+            this.ids = ids;
+            return (T) this;
+        }
+
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
-        private String inBody;
+        public T inBody(String inBody) {
+            this.inBody = inBody;
+            return (T) this;
+        }
+
         /**
          * Enables notifications that the user has already read in addition to
          * unread ones. The option is a java.lang.Boolean type.
          */
-        private Boolean includeRead;
+        public T includeRead(Boolean includeRead) {
+            this.includeRead = includeRead;
+            return (T) this;
+        }
+
         /**
          * Whether hidden. The option is a java.lang.Boolean type.
          */
-        private Boolean isHidden;
+        public T isHidden(Boolean isHidden) {
+            this.isHidden = isHidden;
+            return (T) this;
+        }
+
         /**
          * If set to true, raw JSON forms will be stored in DataObjectFactory.
          * The option is a java.lang.Boolean type.
          */
-        private Boolean jsonStoreEnabled;
+        public T jsonStoreEnabled(Boolean jsonStoreEnabled) {
+            this.jsonStoreEnabled = jsonStoreEnabled;
+            return (T) this;
+        }
+
         /**
          * Link URL. The option is a java.net.URL type.
          */
-        private URL link;
+        public T link(URL link) {
+            this.link = link;
+            return (T) this;
+        }
+
         /**
          * Link ID. The option is a java.lang.String type.
          */
-        private String linkId;
+        public T linkId(String linkId) {
+            this.linkId = linkId;
+            return (T) this;
+        }
+
         /**
          * Desired FQL locale. The option is a java.util.Locale type.
          */
-        private Locale locale;
+        public T locale(Locale locale) {
+            this.locale = locale;
+            return (T) this;
+        }
+
         /**
          * If set to true, Facebook4J mbean will be registerd. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean mbeanEnabled;
+        public T mbeanEnabled(Boolean mbeanEnabled) {
+            this.mbeanEnabled = mbeanEnabled;
+            return (T) this;
+        }
+
         /**
          * The message text. The option is a java.lang.String type.
          */
-        private String message;
+        public T message(String message) {
+            this.message = message;
+            return (T) this;
+        }
+
         /**
          * The message ID. The option is a java.lang.String type.
          */
-        private String messageId;
+        public T messageId(String messageId) {
+            this.messageId = messageId;
+            return (T) this;
+        }
+
         /**
          * The metric name. The option is a java.lang.String type.
          */
-        private String metric;
+        public T metric(String metric) {
+            this.metric = metric;
+            return (T) this;
+        }
+
         /**
          * The milestone id. The option is a java.lang.String type.
          */
-        private String milestoneId;
+        public T milestoneId(String milestoneId) {
+            this.milestoneId = milestoneId;
+            return (T) this;
+        }
+
         /**
          * Test user name, must be of the form 'first last'. The option is a
          * java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * The note ID. The option is a java.lang.String type.
          */
-        private String noteId;
+        public T noteId(String noteId) {
+            this.noteId = noteId;
+            return (T) this;
+        }
+
         /**
          * The notification ID. The option is a java.lang.String type.
          */
-        private String notificationId;
+        public T notificationId(String notificationId) {
+            this.notificationId = notificationId;
+            return (T) this;
+        }
+
         /**
          * The insight object ID. The option is a java.lang.String type.
          */
-        private String objectId;
+        public T objectId(String objectId) {
+            this.objectId = objectId;
+            return (T) this;
+        }
+
         /**
          * The offer id. The option is a java.lang.String type.
          */
-        private String offerId;
+        public T offerId(String offerId) {
+            this.offerId = offerId;
+            return (T) this;
+        }
+
         /**
          * The question's answer option description. The option is a
          * java.lang.String type.
          */
-        private String optionDescription;
+        public T optionDescription(String optionDescription) {
+            this.optionDescription = optionDescription;
+            return (T) this;
+        }
+
         /**
          * The page id. The option is a java.lang.String type.
          */
-        private String pageId;
+        public T pageId(String pageId) {
+            this.pageId = pageId;
+            return (T) this;
+        }
+
         /**
          * The permission name. The option is a java.lang.String type.
          */
-        private String permissionName;
+        public T permissionName(String permissionName) {
+            this.permissionName = permissionName;
+            return (T) this;
+        }
+
         /**
          * Test user permissions in the format perm1,perm2,... The option is a
          * java.lang.String type.
          */
-        private String permissions;
+        public T permissions(String permissions) {
+            this.permissions = permissions;
+            return (T) this;
+        }
+
         /**
          * The photo ID. The option is a java.lang.String type.
          */
-        private String photoId;
+        public T photoId(String photoId) {
+            this.photoId = photoId;
+            return (T) this;
+        }
+
         /**
          * The picture id. The option is a java.lang.Integer type.
          */
-        private Integer pictureId;
+        public T pictureId(Integer pictureId) {
+            this.pictureId = pictureId;
+            return (T) this;
+        }
+
         /**
          * The picture2 id. The option is a java.lang.Integer type.
          */
-        private Integer pictureId2;
+        public T pictureId2(Integer pictureId2) {
+            this.pictureId2 = pictureId2;
+            return (T) this;
+        }
+
         /**
          * The picture size. The option is a facebook4j.PictureSize type.
          */
-        private PictureSize pictureSize;
+        public T pictureSize(PictureSize pictureSize) {
+            this.pictureSize = pictureSize;
+            return (T) this;
+        }
+
         /**
          * The place ID. The option is a java.lang.String type.
          */
-        private String placeId;
+        public T placeId(String placeId) {
+            this.placeId = placeId;
+            return (T) this;
+        }
+
         /**
          * The post ID. The option is a java.lang.String type.
          */
-        private String postId;
+        public T postId(String postId) {
+            this.postId = postId;
+            return (T) this;
+        }
+
         /**
          * The post to create or update. The option is a facebook4j.PostUpdate
          * type.
          */
-        private Object postUpdate;
+        public T postUpdate(Object postUpdate) {
+            this.postUpdate = postUpdate;
+            return (T) this;
+        }
+
         /**
          * Prettify JSON debug output if set to true. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean prettyDebugEnabled;
+        public T prettyDebugEnabled(Boolean prettyDebugEnabled) {
+            this.prettyDebugEnabled = prettyDebugEnabled;
+            return (T) this;
+        }
+
         /**
          * FQL queries. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
-        private Map<String, String> queries;
+        public T queries(Map<String, String> queries) {
+            this.queries = queries;
+            return (T) this;
+        }
+
         /**
          * FQL query or search terms for search endpoints. The option is a
          * java.lang.String type.
          */
-        private String query;
+        public T query(String query) {
+            this.query = query;
+            return (T) this;
+        }
+
         /**
          * The question id. The option is a java.lang.String type.
          */
-        private String questionId;
+        public T questionId(String questionId) {
+            this.questionId = questionId;
+            return (T) this;
+        }
+
         /**
          * Optional reading parameters. See Reading Options(#reading). The
          * option is a facebook4j.Reading type.
          */
-        private Object reading;
+        public T reading(Object reading) {
+            this.reading = reading;
+            return (T) this;
+        }
+
         /**
          * To configure Reading using key/value pairs from the Map. The option
          * is a java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> readingOptions;
+        public T readingOptions(Map<String, Object> readingOptions) {
+            this.readingOptions = readingOptions;
+            return (T) this;
+        }
+
         /**
          * API base URL. The option is a java.lang.String type.
          */
-        private String restBaseURL;
+        public T restBaseURL(String restBaseURL) {
+            this.restBaseURL = restBaseURL;
+            return (T) this;
+        }
+
         /**
          * The numeric score with value. The option is a java.lang.Integer type.
          */
-        private Integer scoreValue;
+        public T scoreValue(Integer scoreValue) {
+            this.scoreValue = scoreValue;
+            return (T) this;
+        }
+
         /**
          * The picture size, one of large, normal, small or square. The option
          * is a facebook4j.PictureSize type.
          */
-        private PictureSize size;
+        public T size(PictureSize size) {
+            this.size = size;
+            return (T) this;
+        }
+
         /**
          * The media content from either a java.io.File or java.io.Inputstream.
          * The option is a facebook4j.Media type.
          */
-        private Object source;
+        public T source(Object source) {
+            this.source = source;
+            return (T) this;
+        }
+
         /**
          * The note of the subject. The option is a java.lang.String type.
          */
-        private String subject;
+        public T subject(String subject) {
+            this.subject = subject;
+            return (T) this;
+        }
+
         /**
          * The tab id. The option is a java.lang.String type.
          */
-        private String tabId;
+        public T tabId(String tabId) {
+            this.tabId = tabId;
+            return (T) this;
+        }
+
         /**
          * Photo tag information. The option is a facebook4j.TagUpdate type.
          */
-        private Object tagUpdate;
+        public T tagUpdate(Object tagUpdate) {
+            this.tagUpdate = tagUpdate;
+            return (T) this;
+        }
+
         /**
          * Test user 1. The option is a facebook4j.TestUser type.
          */
-        private Object testUser1;
+        public T testUser1(Object testUser1) {
+            this.testUser1 = testUser1;
+            return (T) this;
+        }
+
         /**
          * Test user 2. The option is a facebook4j.TestUser type.
          */
-        private Object testUser2;
+        public T testUser2(Object testUser2) {
+            this.testUser2 = testUser2;
+            return (T) this;
+        }
+
         /**
          * The ID of the test user. The option is a java.lang.String type.
          */
-        private String testUserId;
+        public T testUserId(String testUserId) {
+            this.testUserId = testUserId;
+            return (T) this;
+        }
+
         /**
          * The title text. The option is a java.lang.String type.
          */
-        private String title;
+        public T title(String title) {
+            this.title = title;
+            return (T) this;
+        }
+
         /**
          * The ID of the user to tag. The option is a java.lang.String type.
          */
-        private String toUserId;
+        public T toUserId(String toUserId) {
+            this.toUserId = toUserId;
+            return (T) this;
+        }
+
         /**
          * The IDs of the users to tag. The option is a
          * java.util.List<java.lang.String> type.
          */
-        private List<String> toUserIds;
+        public T toUserIds(List<String> toUserIds) {
+            this.toUserIds = toUserIds;
+            return (T) this;
+        }
+
         /**
          * The Facebook user ID. The option is a java.lang.String type.
          */
-        private String userId;
+        public T userId(String userId) {
+            this.userId = userId;
+            return (T) this;
+        }
+
         /**
          * The ID of a user 1. The option is a java.lang.String type.
          */
-        private String userId1;
+        public T userId1(String userId1) {
+            this.userId1 = userId1;
+            return (T) this;
+        }
+
         /**
          * The ID of a user 2. The option is a java.lang.String type.
          */
-        private String userId2;
+        public T userId2(String userId2) {
+            this.userId2 = userId2;
+            return (T) this;
+        }
+
         /**
          * The IDs of users to invite to event. The option is a
          * java.util.List<java.lang.String> type.
          */
-        private List<String> userIds;
+        public T userIds(List<String> userIds) {
+            this.userIds = userIds;
+            return (T) this;
+        }
+
         /**
          * The test user locale. The option is a java.lang.String type.
          */
-        private String userLocale;
+        public T userLocale(String userLocale) {
+            this.userLocale = userLocale;
+            return (T) this;
+        }
+
         /**
          * Use SSL. The option is a java.lang.Boolean type.
          */
-        private Boolean useSSL;
+        public T useSSL(Boolean useSSL) {
+            this.useSSL = useSSL;
+            return (T) this;
+        }
+
         /**
          * Video API base URL. The option is a java.lang.String type.
          */
-        private String videoBaseURL;
+        public T videoBaseURL(String videoBaseURL) {
+            this.videoBaseURL = videoBaseURL;
+            return (T) this;
+        }
+
         /**
          * The video ID. The option is a java.lang.String type.
          */
-        private String videoId;
+        public T videoId(String videoId) {
+            this.videoId = videoId;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * HTTP proxy server host name. The option is a java.lang.String type.
          */
-        private String httpProxyHost;
+        public T httpProxyHost(String httpProxyHost) {
+            this.httpProxyHost = httpProxyHost;
+            return (T) this;
+        }
+
         /**
          * HTTP proxy server password. The option is a java.lang.String type.
          */
-        private String httpProxyPassword;
+        public T httpProxyPassword(String httpProxyPassword) {
+            this.httpProxyPassword = httpProxyPassword;
+            return (T) this;
+        }
+
         /**
          * HTTP proxy server port. The option is a java.lang.Integer type.
          */
-        private Integer httpProxyPort;
+        public T httpProxyPort(Integer httpProxyPort) {
+            this.httpProxyPort = httpProxyPort;
+            return (T) this;
+        }
+
         /**
          * HTTP proxy server user name. The option is a java.lang.String type.
          */
-        private String httpProxyUser;
+        public T httpProxyUser(String httpProxyUser) {
+            this.httpProxyUser = httpProxyUser;
+            return (T) this;
+        }
+
         /**
          * The user access token. The option is a java.lang.String type.
          */
-        private String oAuthAccessToken;
+        public T oAuthAccessToken(String oAuthAccessToken) {
+            this.oAuthAccessToken = oAuthAccessToken;
+            return (T) this;
+        }
+
         /**
          * OAuth access token URL. The option is a java.lang.String type.
          */
-        private String oAuthAccessTokenURL;
+        public T oAuthAccessTokenURL(String oAuthAccessTokenURL) {
+            this.oAuthAccessTokenURL = oAuthAccessTokenURL;
+            return (T) this;
+        }
+
         /**
          * The application Id. The option is a java.lang.String type.
          */
-        private String oAuthAppId;
+        public T oAuthAppId(String oAuthAppId) {
+            this.oAuthAppId = oAuthAppId;
+            return (T) this;
+        }
+
         /**
          * The application Secret. The option is a java.lang.String type.
          */
-        private String oAuthAppSecret;
+        public T oAuthAppSecret(String oAuthAppSecret) {
+            this.oAuthAppSecret = oAuthAppSecret;
+            return (T) this;
+        }
+
         /**
          * OAuth authorization URL. The option is a java.lang.String type.
          */
-        private String oAuthAuthorizationURL;
+        public T oAuthAuthorizationURL(String oAuthAuthorizationURL) {
+            this.oAuthAuthorizationURL = oAuthAuthorizationURL;
+            return (T) this;
+        }
+
         /**
          * Default OAuth permissions. Comma separated permission names. See
          * https://developers.facebook.com/docs/reference/login/#permissions for
          * the detail. The option is a java.lang.String type.
          */
-        private String oAuthPermissions;
+        public T oAuthPermissions(String oAuthPermissions) {
+            this.oAuthPermissions = oAuthPermissions;
+            return (T) this;
+        }
 
         public String getMethodName() {
             return methodName;
@@ -1290,7 +1798,13 @@ public class FacebookEndpoint {
         }
     }
 
-    public static class FacebookConsumer extends FacebookCommon {
+    public static class FacebookConsumer
+            extends
+                FacebookCommon<FacebookConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -1300,7 +1814,11 @@ public class FacebookEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public FacebookConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (FacebookConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -1308,12 +1826,20 @@ public class FacebookEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public FacebookConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (FacebookConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public FacebookConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (FacebookConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -1340,7 +1866,9 @@ public class FacebookEndpoint {
         }
     }
 
-    public static class FacebookProducer extends FacebookCommon {
+    public static class FacebookProducer
+            extends
+                FacebookCommon<FacebookProducer> {
     }
 
     public static enum PictureSize {

@@ -29,51 +29,100 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SoroushBotEndpoint {
 
 
-    public static class SoroushBotCommon extends EndpointConfiguration {
+    public static class SoroushBotCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private Endpoint endpoint;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Boolean autoDownload;
+        private Long reconnectIdleConnectionTimeout;
+        private Boolean downloadThumbnail;
+        private Boolean forceDownload;
+        private String backOffStrategy;
+        private Integer connectionTimeout;
+        private Integer maxConnectionRetry;
+        private Long maxRetryWaitingTime;
+        private Long retryExponentialCoefficient;
+        private Long retryLinearIncrement;
+        private Long retryWaitingTime;
+        private String authorizationToken;
+        private Boolean autoUploadFile;
+        private Boolean forceUpload;
+
         /**
          * The endpoint type. Support getMessage as consumer and
          * sendMessage,uploadFile,downloadFile as producer. The option is a
          * org.apache.camel.component.soroushbot.models.Endpoint type.
          */
-        private Endpoint endpoint;
+        public T endpoint(Endpoint endpoint) {
+            this.endpoint = endpoint;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Automatically download SoroushMessage.fileUrl and
          * SoroushMessage.thumbnailUrl if exists for the message and store them
          * in SoroushMessage.file and SoroushMessage.thumbnail field. The option
          * is a java.lang.Boolean type.
          */
-        private Boolean autoDownload;
+        public T autoDownload(Boolean autoDownload) {
+            this.autoDownload = autoDownload;
+            return (T) this;
+        }
+
         /**
          * The timeout in millisecond to reconnect the existing getMessage
          * connection to ensure that the connection is always live and does not
          * dead without notifying the bot. this value should not be changed. The
          * option is a long type.
          */
-        private Long reconnectIdleConnectionTimeout;
+        public T reconnectIdleConnectionTimeout(
+                long reconnectIdleConnectionTimeout) {
+            this.reconnectIdleConnectionTimeout = reconnectIdleConnectionTimeout;
+            return (T) this;
+        }
+
         /**
          * If true, when downloading an attached file, thumbnail will be
          * downloaded if provided in the message. Otherwise, only the file will
          * be downloaded. The option is a java.lang.Boolean type.
          */
-        private Boolean downloadThumbnail;
+        public T downloadThumbnail(Boolean downloadThumbnail) {
+            this.downloadThumbnail = downloadThumbnail;
+            return (T) this;
+        }
+
         /**
          * Force to download SoroushMessage.fileUrl(SoroushMessage.thumbnailUrl)
          * if exists, even if the SoroushMessage.file(SoroushMessage.thumbnail)
          * was not null in that message. The option is a java.lang.Boolean type.
          */
-        private Boolean forceDownload;
+        public T forceDownload(Boolean forceDownload) {
+            this.forceDownload = forceDownload;
+            return (T) this;
+        }
+
         /**
          * The strategy to backoff in case of connection failure. Currently 3
          * strategies are supported: 1. Exponential (default): It multiply
@@ -83,33 +132,57 @@ public class SoroushBotEndpoint {
          * use retryWaitingTime as the time between retries. The option is a
          * java.lang.String type.
          */
-        private String backOffStrategy;
+        public T backOffStrategy(String backOffStrategy) {
+            this.backOffStrategy = backOffStrategy;
+            return (T) this;
+        }
+
         /**
          * Connection timeout in ms when connecting to soroush API. The option
          * is a java.lang.Integer type.
          */
-        private Integer connectionTimeout;
+        public T connectionTimeout(Integer connectionTimeout) {
+            this.connectionTimeout = connectionTimeout;
+            return (T) this;
+        }
+
         /**
          * Maximum connection retry when fail to connect to soroush API, if the
          * quota is reached, MaximumConnectionRetryReachedException is thrown
          * for that message. The option is a java.lang.Integer type.
          */
-        private Integer maxConnectionRetry;
+        public T maxConnectionRetry(Integer maxConnectionRetry) {
+            this.maxConnectionRetry = maxConnectionRetry;
+            return (T) this;
+        }
+
         /**
          * Maximum amount of time (in millisecond) a thread wait before retrying
          * failed request. The option is a java.lang.Long type.
          */
-        private Long maxRetryWaitingTime;
+        public T maxRetryWaitingTime(Long maxRetryWaitingTime) {
+            this.maxRetryWaitingTime = maxRetryWaitingTime;
+            return (T) this;
+        }
+
         /**
          * Coefficient to compute back off time when using Exponential Back Off
          * strategy. The option is a java.lang.Long type.
          */
-        private Long retryExponentialCoefficient;
+        public T retryExponentialCoefficient(Long retryExponentialCoefficient) {
+            this.retryExponentialCoefficient = retryExponentialCoefficient;
+            return (T) this;
+        }
+
         /**
          * The amount of time (in millisecond) which adds to waiting time when
          * using Linear back off strategy. The option is a java.lang.Long type.
          */
-        private Long retryLinearIncrement;
+        public T retryLinearIncrement(Long retryLinearIncrement) {
+            this.retryLinearIncrement = retryLinearIncrement;
+            return (T) this;
+        }
+
         /**
          * Waiting time before retry failed request (Millisecond). If
          * backOffStrategy is not Fixed this is the based value for computing
@@ -117,13 +190,21 @@ public class SoroushBotEndpoint {
          * after failure and retryWaitingTime do not apply to the first retry.
          * The option is a java.lang.Long type.
          */
-        private Long retryWaitingTime;
+        public T retryWaitingTime(Long retryWaitingTime) {
+            this.retryWaitingTime = retryWaitingTime;
+            return (T) this;
+        }
+
         /**
          * The authorization token for using the bot. if uri path does not
          * contain authorization token, this token will be used. The option is a
          * java.lang.String type.
          */
-        private String authorizationToken;
+        public T authorizationToken(String authorizationToken) {
+            this.authorizationToken = authorizationToken;
+            return (T) this;
+        }
+
         /**
          * Automatically upload attachments when a message goes to the
          * sendMessage endpoint and the SoroushMessage.file
@@ -131,14 +212,21 @@ public class SoroushBotEndpoint {
          * SoroushMessage.fileUrl(SoroushMessage.thumbnailUrl) is null. The
          * option is a java.lang.Boolean type.
          */
-        private Boolean autoUploadFile;
+        public T autoUploadFile(Boolean autoUploadFile) {
+            this.autoUploadFile = autoUploadFile;
+            return (T) this;
+        }
+
         /**
          * Force to upload SoroushMessage.file(SoroushMessage.thumbnail) if
          * exists, even if the
          * SoroushMessage.fileUrl(SoroushMessage.thumbnailUrl) is not null in
          * the message. The option is a java.lang.Boolean type.
          */
-        private Boolean forceUpload;
+        public T forceUpload(Boolean forceUpload) {
+            this.forceUpload = forceUpload;
+            return (T) this;
+        }
 
         public Endpoint getEndpoint() {
             return endpoint;
@@ -279,7 +367,15 @@ public class SoroushBotEndpoint {
         }
     }
 
-    public static class SoroushBotConsumer extends SoroushBotCommon {
+    public static class SoroushBotConsumer
+            extends
+                SoroushBotCommon<SoroushBotConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Integer concurrentConsumers;
+        private Integer queueCapacityPerThread;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -289,7 +385,11 @@ public class SoroushBotEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public SoroushBotConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (SoroushBotConsumer) this;
+        }
+
         /**
          * Number of Thread created by consumer in the route. if you use this
          * method for parallelism, it is guaranteed that messages from same user
@@ -298,7 +398,12 @@ public class SoroushBotEndpoint {
          * SoroushBotSingleThreadConsumer. The option is a java.lang.Integer
          * type.
          */
-        private Integer concurrentConsumers;
+        public SoroushBotConsumer concurrentConsumers(
+                Integer concurrentConsumers) {
+            this.concurrentConsumers = concurrentConsumers;
+            return (SoroushBotConsumer) this;
+        }
+
         /**
          * Maximum capacity of each queue when concurrentConsumers is greater
          * than 1. if a queue become full, every message that should go to that
@@ -308,7 +413,12 @@ public class SoroushBotEndpoint {
          * onException(CongestionException.class) route. Default value notice:
          * infinite capacity. The option is a java.lang.Integer type.
          */
-        private Integer queueCapacityPerThread;
+        public SoroushBotConsumer queueCapacityPerThread(
+                Integer queueCapacityPerThread) {
+            this.queueCapacityPerThread = queueCapacityPerThread;
+            return (SoroushBotConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -316,12 +426,21 @@ public class SoroushBotEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public SoroushBotConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (SoroushBotConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public SoroushBotConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (SoroushBotConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -364,7 +483,9 @@ public class SoroushBotEndpoint {
         }
     }
 
-    public static class SoroushBotProducer extends SoroushBotCommon {
+    public static class SoroushBotProducer
+            extends
+                SoroushBotCommon<SoroushBotProducer> {
     }
 
     public static enum Endpoint {

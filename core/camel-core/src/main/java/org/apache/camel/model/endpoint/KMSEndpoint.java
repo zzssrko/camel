@@ -27,28 +27,50 @@ import javax.annotation.Generated;
 public class KMSEndpoint {
 
 
-    public static class KMSCommon extends EndpointConfiguration {
+    public static class KMSCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String label;
+        private String region;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Logical name. The option is a java.lang.String type.
          */
-        private String label;
+        public T label(String label) {
+            this.label = label;
+            return (T) this;
+        }
+
         /**
          * The region in which KMS client needs to work. The option is a
          * java.lang.String type.
          */
-        private String region;
+        public T region(String region) {
+            this.region = region;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getLabel() {
             return label;
@@ -83,38 +105,68 @@ public class KMSEndpoint {
         }
     }
 
-    public static class KMSConsumer extends KMSCommon {
+    public static class KMSConsumer extends KMSCommon<KMSConsumer> {
     }
 
-    public static class KMSProducer extends KMSCommon {
+    public static class KMSProducer extends KMSCommon<KMSProducer> {
+        private String accessKey;
+        private Object kmsClient;
+        private KMSOperations operation;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String secretKey;
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public KMSProducer accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (KMSProducer) this;
+        }
+
         /**
          * To use a existing configured AWS KMS as client. The option is a
          * com.amazonaws.services.kms.AWSKMS type.
          */
-        private Object kmsClient;
+        public KMSProducer kmsClient(Object kmsClient) {
+            this.kmsClient = kmsClient;
+            return (KMSProducer) this;
+        }
+
         /**
          * The operation to perform. The option is a
          * org.apache.camel.component.aws.kms.KMSOperations type.
          */
-        private KMSOperations operation;
+        public KMSProducer operation(KMSOperations operation) {
+            this.operation = operation;
+            return (KMSProducer) this;
+        }
+
         /**
          * To define a proxy host when instantiating the KMS client. The option
          * is a java.lang.String type.
          */
-        private String proxyHost;
+        public KMSProducer proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (KMSProducer) this;
+        }
+
         /**
          * To define a proxy port when instantiating the KMS client. The option
          * is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public KMSProducer proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (KMSProducer) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public KMSProducer secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (KMSProducer) this;
+        }
 
         public String getAccessKey() {
             return accessKey;

@@ -27,7 +27,15 @@ import javax.annotation.Generated;
 public class MvelEndpoint {
 
 
-    public static class MvelCommon extends EndpointConfiguration {
+    public static class MvelCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String resourceUri;
+        private Boolean contentCache;
+        private String encoding;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Path to the resource. You can prefix with: classpath, file, http,
          * ref, or bean. classpath, file and http loads the resource using these
@@ -36,29 +44,48 @@ public class MvelEndpoint {
          * resource. For bean you can specify the method name after dot, eg
          * bean:myBean.myMethod. The option is a java.lang.String type.
          */
-        private String resourceUri;
+        public T resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return (T) this;
+        }
+
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
-        private Boolean contentCache;
+        public T contentCache(boolean contentCache) {
+            this.contentCache = contentCache;
+            return (T) this;
+        }
+
         /**
          * Character encoding of the resource content. The option is a
          * java.lang.String type.
          */
-        private String encoding;
+        public T encoding(String encoding) {
+            this.encoding = encoding;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getResourceUri() {
             return resourceUri;
@@ -101,9 +128,9 @@ public class MvelEndpoint {
         }
     }
 
-    public static class MvelConsumer extends MvelCommon {
+    public static class MvelConsumer extends MvelCommon<MvelConsumer> {
     }
 
-    public static class MvelProducer extends MvelCommon {
+    public static class MvelProducer extends MvelCommon<MvelProducer> {
     }
 }

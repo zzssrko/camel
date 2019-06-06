@@ -28,56 +28,103 @@ import javax.annotation.Generated;
 public class LanguageEndpoint {
 
 
-    public static class LanguageCommon extends EndpointConfiguration {
+    public static class LanguageCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String languageName;
+        private String resourceUri;
+        private Boolean binary;
+        private Boolean cacheScript;
+        private Boolean contentCache;
+        private String script;
+        private Boolean transform;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Sets the name of the language to use. The option is a
          * java.lang.String type.
          */
-        private String languageName;
+        public T languageName(String languageName) {
+            this.languageName = languageName;
+            return (T) this;
+        }
+
         /**
          * Path to the resource, or a reference to lookup a bean in the Registry
          * to use as the resource. The option is a java.lang.String type.
          */
-        private String resourceUri;
+        public T resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return (T) this;
+        }
+
         /**
          * Whether the script is binary content or text content. By default the
          * script is read as text content (eg java.lang.String). The option is a
          * boolean type.
          */
-        private Boolean binary;
+        public T binary(boolean binary) {
+            this.binary = binary;
+            return (T) this;
+        }
+
         /**
          * Whether to cache the compiled script and reuse Notice reusing the
          * script can cause side effects from processing one Camel
          * org.apache.camel.Exchange to the next org.apache.camel.Exchange. The
          * option is a boolean type.
          */
-        private Boolean cacheScript;
+        public T cacheScript(boolean cacheScript) {
+            this.cacheScript = cacheScript;
+            return (T) this;
+        }
+
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
-        private Boolean contentCache;
+        public T contentCache(boolean contentCache) {
+            this.contentCache = contentCache;
+            return (T) this;
+        }
+
         /**
          * Sets the script to execute. The option is a java.lang.String type.
          */
-        private String script;
+        public T script(String script) {
+            this.script = script;
+            return (T) this;
+        }
+
         /**
          * Whether or not the result of the script should be used as message
          * body. This options is default true. The option is a boolean type.
          */
-        private Boolean transform;
+        public T transform(boolean transform) {
+            this.transform = transform;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getLanguageName() {
             return languageName;
@@ -152,9 +199,13 @@ public class LanguageEndpoint {
         }
     }
 
-    public static class LanguageConsumer extends LanguageCommon {
+    public static class LanguageConsumer
+            extends
+                LanguageCommon<LanguageConsumer> {
     }
 
-    public static class LanguageProducer extends LanguageCommon {
+    public static class LanguageProducer
+            extends
+                LanguageCommon<LanguageProducer> {
     }
 }

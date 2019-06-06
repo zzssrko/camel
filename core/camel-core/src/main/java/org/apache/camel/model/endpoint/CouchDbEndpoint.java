@@ -29,53 +29,100 @@ import org.apache.camel.spi.ExceptionHandler;
 public class CouchDbEndpoint {
 
 
-    public static class CouchDbCommon extends EndpointConfiguration {
+    public static class CouchDbCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String protocol;
+        private String hostname;
+        private Integer port;
+        private String database;
+        private Boolean createDatabase;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String password;
+        private String username;
+
         /**
          * The protocol to use for communicating with the database. The option
          * is a java.lang.String type.
          */
-        private String protocol;
+        public T protocol(String protocol) {
+            this.protocol = protocol;
+            return (T) this;
+        }
+
         /**
          * Hostname of the running couchdb instance. The option is a
          * java.lang.String type.
          */
-        private String hostname;
+        public T hostname(String hostname) {
+            this.hostname = hostname;
+            return (T) this;
+        }
+
         /**
          * Port number for the running couchdb instance. The option is a int
          * type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Name of the database to use. The option is a java.lang.String type.
          */
-        private String database;
+        public T database(String database) {
+            this.database = database;
+            return (T) this;
+        }
+
         /**
          * Creates the database if it does not already exist. The option is a
          * boolean type.
          */
-        private Boolean createDatabase;
+        public T createDatabase(boolean createDatabase) {
+            this.createDatabase = createDatabase;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Password for authenticated databases. The option is a
          * java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Username in case of authenticated databases. The option is a
          * java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public String getProtocol() {
             return protocol;
@@ -150,7 +197,18 @@ public class CouchDbEndpoint {
         }
     }
 
-    public static class CouchDbConsumer extends CouchDbCommon {
+    public static class CouchDbConsumer
+            extends
+                CouchDbCommon<CouchDbConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean deletes;
+        private Long heartbeat;
+        private String since;
+        private String style;
+        private Boolean updates;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -160,35 +218,59 @@ public class CouchDbEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public CouchDbConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (CouchDbConsumer) this;
+        }
+
         /**
          * Document deletes are published as events. The option is a boolean
          * type.
          */
-        private Boolean deletes;
+        public CouchDbConsumer deletes(boolean deletes) {
+            this.deletes = deletes;
+            return (CouchDbConsumer) this;
+        }
+
         /**
          * How often to send an empty message to keep socket alive in millis.
          * The option is a long type.
          */
-        private Long heartbeat;
+        public CouchDbConsumer heartbeat(long heartbeat) {
+            this.heartbeat = heartbeat;
+            return (CouchDbConsumer) this;
+        }
+
         /**
          * Start tracking changes immediately after the given update sequence.
          * The default, null, will start monitoring from the latest sequence.
          * The option is a java.lang.String type.
          */
-        private String since;
+        public CouchDbConsumer since(String since) {
+            this.since = since;
+            return (CouchDbConsumer) this;
+        }
+
         /**
          * Specifies how many revisions are returned in the changes array. The
          * default, main_only, will only return the current winning revision;
          * all_docs will return all leaf revisions (including conflicts and
          * deleted former conflicts.). The option is a java.lang.String type.
          */
-        private String style;
+        public CouchDbConsumer style(String style) {
+            this.style = style;
+            return (CouchDbConsumer) this;
+        }
+
         /**
          * Document inserts/updates are published as events. The option is a
          * boolean type.
          */
-        private Boolean updates;
+        public CouchDbConsumer updates(boolean updates) {
+            this.updates = updates;
+            return (CouchDbConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -196,12 +278,20 @@ public class CouchDbEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public CouchDbConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (CouchDbConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public CouchDbConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (CouchDbConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -268,6 +358,8 @@ public class CouchDbEndpoint {
         }
     }
 
-    public static class CouchDbProducer extends CouchDbCommon {
+    public static class CouchDbProducer
+            extends
+                CouchDbCommon<CouchDbProducer> {
     }
 }

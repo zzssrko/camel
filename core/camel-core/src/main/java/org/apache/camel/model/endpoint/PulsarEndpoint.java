@@ -29,19 +29,31 @@ import org.apache.camel.spi.ExceptionHandler;
 public class PulsarEndpoint {
 
 
-    public static class PulsarCommon extends EndpointConfiguration {
+    public static class PulsarCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
@@ -60,7 +72,17 @@ public class PulsarEndpoint {
         }
     }
 
-    public static class PulsarConsumer extends PulsarCommon {
+    public static class PulsarConsumer extends PulsarCommon<PulsarConsumer> {
+        private Boolean bridgeErrorHandler;
+        private String consumerName;
+        private String consumerNamePrefix;
+        private Integer consumerQueueSize;
+        private Integer numberOfConsumers;
+        private String subscriptionName;
+        private SubscriptionType subscriptionType;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -70,38 +92,66 @@ public class PulsarEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public PulsarConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (PulsarConsumer) this;
+        }
+
         /**
          * Name of the consumer when subscription is EXCLUSIVE. The option is a
          * java.lang.String type.
          */
-        private String consumerName;
+        public PulsarConsumer consumerName(String consumerName) {
+            this.consumerName = consumerName;
+            return (PulsarConsumer) this;
+        }
+
         /**
          * Prefix to add to consumer names when a SHARED or FAILOVER
          * subscription is used. The option is a java.lang.String type.
          */
-        private String consumerNamePrefix;
+        public PulsarConsumer consumerNamePrefix(String consumerNamePrefix) {
+            this.consumerNamePrefix = consumerNamePrefix;
+            return (PulsarConsumer) this;
+        }
+
         /**
          * Size of the consumer queue - defaults to 10. The option is a int
          * type.
          */
-        private Integer consumerQueueSize;
+        public PulsarConsumer consumerQueueSize(int consumerQueueSize) {
+            this.consumerQueueSize = consumerQueueSize;
+            return (PulsarConsumer) this;
+        }
+
         /**
          * Number of consumers - defaults to 1. The option is a int type.
          */
-        private Integer numberOfConsumers;
+        public PulsarConsumer numberOfConsumers(int numberOfConsumers) {
+            this.numberOfConsumers = numberOfConsumers;
+            return (PulsarConsumer) this;
+        }
+
         /**
          * Name of the subscription to use. The option is a java.lang.String
          * type.
          */
-        private String subscriptionName;
+        public PulsarConsumer subscriptionName(String subscriptionName) {
+            this.subscriptionName = subscriptionName;
+            return (PulsarConsumer) this;
+        }
+
         /**
          * Type of the subscription EXCLUSIVESHAREDFAILOVER, defaults to
          * EXCLUSIVE. The option is a
          * org.apache.camel.component.pulsar.utils.consumers.SubscriptionType
          * type.
          */
-        private SubscriptionType subscriptionType;
+        public PulsarConsumer subscriptionType(SubscriptionType subscriptionType) {
+            this.subscriptionType = subscriptionType;
+            return (PulsarConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -109,12 +159,19 @@ public class PulsarEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public PulsarConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (PulsarConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public PulsarConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (PulsarConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -189,16 +246,26 @@ public class PulsarEndpoint {
         }
     }
 
-    public static class PulsarProducer extends PulsarCommon {
+    public static class PulsarProducer extends PulsarCommon<PulsarProducer> {
+        private String topic;
+        private String producerName;
+
         /**
          * The Topic's full URI path including type, tenant and namespace. The
          * option is a java.lang.String type.
          */
-        private String topic;
+        public PulsarProducer topic(String topic) {
+            this.topic = topic;
+            return (PulsarProducer) this;
+        }
+
         /**
          * Name of the producer. The option is a java.lang.String type.
          */
-        private String producerName;
+        public PulsarProducer producerName(String producerName) {
+            this.producerName = producerName;
+            return (PulsarProducer) this;
+        }
 
         public String getTopic() {
             return topic;

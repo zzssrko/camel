@@ -28,82 +28,159 @@ import javax.annotation.Generated;
 public class DdbEndpoint {
 
 
-    public static class DdbCommon extends EndpointConfiguration {
+    public static class DdbCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String tableName;
+        private Object amazonDDBClient;
+        private Boolean consistentRead;
+        private String keyAttributeName;
+        private String keyAttributeType;
+        private DdbOperations operation;
+        private String proxyHost;
+        private Integer proxyPort;
+        private Long readCapacity;
+        private String region;
+        private Long writeCapacity;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String accessKey;
+        private String secretKey;
+
         /**
          * The name of the table currently worked with. The option is a
          * java.lang.String type.
          */
-        private String tableName;
+        public T tableName(String tableName) {
+            this.tableName = tableName;
+            return (T) this;
+        }
+
         /**
          * To use the AmazonDynamoDB as the client. The option is a
          * com.amazonaws.services.dynamodbv2.AmazonDynamoDB type.
          */
-        private Object amazonDDBClient;
+        public T amazonDDBClient(Object amazonDDBClient) {
+            this.amazonDDBClient = amazonDDBClient;
+            return (T) this;
+        }
+
         /**
          * Determines whether or not strong consistency should be enforced when
          * data is read. The option is a boolean type.
          */
-        private Boolean consistentRead;
+        public T consistentRead(boolean consistentRead) {
+            this.consistentRead = consistentRead;
+            return (T) this;
+        }
+
         /**
          * Attribute name when creating table. The option is a java.lang.String
          * type.
          */
-        private String keyAttributeName;
+        public T keyAttributeName(String keyAttributeName) {
+            this.keyAttributeName = keyAttributeName;
+            return (T) this;
+        }
+
         /**
          * Attribute type when creating table. The option is a java.lang.String
          * type.
          */
-        private String keyAttributeType;
+        public T keyAttributeType(String keyAttributeType) {
+            this.keyAttributeType = keyAttributeType;
+            return (T) this;
+        }
+
         /**
          * What operation to perform. The option is a
          * org.apache.camel.component.aws.ddb.DdbOperations type.
          */
-        private DdbOperations operation;
+        public T operation(DdbOperations operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * To define a proxy host when instantiating the DDB client. The option
          * is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * To define a proxy port when instantiating the DDB client. The option
          * is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
+
         /**
          * The provisioned throughput to reserve for reading resources from your
          * table. The option is a java.lang.Long type.
          */
-        private Long readCapacity;
+        public T readCapacity(Long readCapacity) {
+            this.readCapacity = readCapacity;
+            return (T) this;
+        }
+
         /**
          * The region in which DDB client needs to work. The option is a
          * java.lang.String type.
          */
-        private String region;
+        public T region(String region) {
+            this.region = region;
+            return (T) this;
+        }
+
         /**
          * The provisioned throughput to reserved for writing resources to your
          * table. The option is a java.lang.Long type.
          */
-        private Long writeCapacity;
+        public T writeCapacity(Long writeCapacity) {
+            this.writeCapacity = writeCapacity;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public T accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public T secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (T) this;
+        }
 
         public String getTableName() {
             return tableName;
@@ -226,10 +303,10 @@ public class DdbEndpoint {
         }
     }
 
-    public static class DdbConsumer extends DdbCommon {
+    public static class DdbConsumer extends DdbCommon<DdbConsumer> {
     }
 
-    public static class DdbProducer extends DdbCommon {
+    public static class DdbProducer extends DdbCommon<DdbProducer> {
     }
 
     public static enum DdbOperations {

@@ -30,29 +30,51 @@ import org.apache.camel.spi.ExceptionHandler;
 public class VertxEndpoint {
 
 
-    public static class VertxCommon extends EndpointConfiguration {
+    public static class VertxCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String address;
+        private Boolean pubSub;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Sets the event bus address used to communicate. The option is a
          * java.lang.String type.
          */
-        private String address;
+        public T address(String address) {
+            this.address = address;
+            return (T) this;
+        }
+
         /**
          * Whether to use publish/subscribe instead of point to point when
          * sending to a vertx endpoint. The option is a java.lang.Boolean type.
          */
-        private Boolean pubSub;
+        public T pubSub(Boolean pubSub) {
+            this.pubSub = pubSub;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getAddress() {
             return address;
@@ -87,7 +109,11 @@ public class VertxEndpoint {
         }
     }
 
-    public static class VertxConsumer extends VertxCommon {
+    public static class VertxConsumer extends VertxCommon<VertxConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -97,7 +123,11 @@ public class VertxEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public VertxConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (VertxConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -105,12 +135,19 @@ public class VertxEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public VertxConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (VertxConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public VertxConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (VertxConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -137,6 +174,6 @@ public class VertxEndpoint {
         }
     }
 
-    public static class VertxProducer extends VertxCommon {
+    public static class VertxProducer extends VertxCommon<VertxProducer> {
     }
 }

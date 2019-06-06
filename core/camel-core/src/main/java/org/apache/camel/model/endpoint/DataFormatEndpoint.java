@@ -28,28 +28,50 @@ import javax.annotation.Generated;
 public class DataFormatEndpoint {
 
 
-    public static class DataFormatCommon extends EndpointConfiguration {
+    public static class DataFormatCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String name;
+        private String operation;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Name of data format. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * Operation to use either marshal or unmarshal. The option is a
          * java.lang.String type.
          */
-        private String operation;
+        public T operation(String operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getName() {
             return name;
@@ -84,9 +106,13 @@ public class DataFormatEndpoint {
         }
     }
 
-    public static class DataFormatConsumer extends DataFormatCommon {
+    public static class DataFormatConsumer
+            extends
+                DataFormatCommon<DataFormatConsumer> {
     }
 
-    public static class DataFormatProducer extends DataFormatCommon {
+    public static class DataFormatProducer
+            extends
+                DataFormatCommon<DataFormatProducer> {
     }
 }

@@ -31,30 +31,52 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SpringWebserviceEndpoint {
 
 
-    public static class SpringWebserviceCommon extends EndpointConfiguration {
+    public static class SpringWebserviceCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private Object messageFilter;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Object sslContextParameters;
+
         /**
          * Option to provide a custom MessageFilter. For example when you want
          * to process your headers or attachments by your own. The option is a
          * org.apache.camel.component.spring.ws.filter.MessageFilter type.
          */
-        private Object messageFilter;
+        public T messageFilter(Object messageFilter) {
+            this.messageFilter = messageFilter;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
 
         public Object getMessageFilter() {
             return messageFilter;
@@ -91,7 +113,16 @@ public class SpringWebserviceEndpoint {
 
     public static class SpringWebserviceConsumer
             extends
-                SpringWebserviceCommon {
+                SpringWebserviceCommon<SpringWebserviceConsumer> {
+        private EndpointMappingType type;
+        private String lookupKey;
+        private Boolean bridgeErrorHandler;
+        private Object endpointDispatcher;
+        private Object endpointMapping;
+        private String expression;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Endpoint mapping type if endpoint mapping is used. rootqname - Offers
          * the option to map web service requests based on the qualified name of
@@ -108,12 +139,20 @@ public class SpringWebserviceEndpoint {
          * The option is a
          * org.apache.camel.component.spring.ws.type.EndpointMappingType type.
          */
-        private EndpointMappingType type;
+        public SpringWebserviceConsumer type(EndpointMappingType type) {
+            this.type = type;
+            return (SpringWebserviceConsumer) this;
+        }
+
         /**
          * Endpoint mapping key if endpoint mapping is used. The option is a
          * java.lang.String type.
          */
-        private String lookupKey;
+        public SpringWebserviceConsumer lookupKey(String lookupKey) {
+            this.lookupKey = lookupKey;
+            return (SpringWebserviceConsumer) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -123,7 +162,12 @@ public class SpringWebserviceEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public SpringWebserviceConsumer bridgeErrorHandler(
+                boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (SpringWebserviceConsumer) this;
+        }
+
         /**
          * Spring org.springframework.ws.server.endpoint.MessageEndpoint for
          * dispatching messages received by Spring-WS to a Camel endpoint, to
@@ -133,7 +177,12 @@ public class SpringWebserviceEndpoint {
          * org.apache.camel.component.spring.ws.bean.CamelEndpointDispatcher
          * type.
          */
-        private Object endpointDispatcher;
+        public SpringWebserviceConsumer endpointDispatcher(
+                Object endpointDispatcher) {
+            this.endpointDispatcher = endpointDispatcher;
+            return (SpringWebserviceConsumer) this;
+        }
+
         /**
          * Reference to an instance of
          * org.apache.camel.component.spring.ws.bean.CamelEndpointMapping in the
@@ -144,13 +193,21 @@ public class SpringWebserviceEndpoint {
          * (like root QName, SOAP action, etc). The option is a
          * org.apache.camel.component.spring.ws.bean.CamelSpringWSEndpointMapping type.
          */
-        private Object endpointMapping;
+        public SpringWebserviceConsumer endpointMapping(Object endpointMapping) {
+            this.endpointMapping = endpointMapping;
+            return (SpringWebserviceConsumer) this;
+        }
+
         /**
          * The XPath expression to use when option type=xpathresult. Then this
          * option is required to be configured. The option is a java.lang.String
          * type.
          */
-        private String expression;
+        public SpringWebserviceConsumer expression(String expression) {
+            this.expression = expression;
+            return (SpringWebserviceConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -158,12 +215,21 @@ public class SpringWebserviceEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public SpringWebserviceConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (SpringWebserviceConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public SpringWebserviceConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (SpringWebserviceConsumer) this;
+        }
 
         public EndpointMappingType getType() {
             return type;
@@ -232,12 +298,32 @@ public class SpringWebserviceEndpoint {
 
     public static class SpringWebserviceProducer
             extends
-                SpringWebserviceCommon {
+                SpringWebserviceCommon<SpringWebserviceProducer> {
+        private String webServiceEndpointUri;
+        private Boolean allowResponseAttachmentOverride;
+        private Boolean allowResponseHeaderOverride;
+        private URI faultAction;
+        private URI faultTo;
+        private Object messageFactory;
+        private Object messageIdStrategy;
+        private Object messageSender;
+        private URI outputAction;
+        private URI replyTo;
+        private String soapAction;
+        private Integer timeout;
+        private Object webServiceTemplate;
+        private URI wsAddressingAction;
+
         /**
          * The default Web Service endpoint uri to use for the producer. The
          * option is a java.lang.String type.
          */
-        private String webServiceEndpointUri;
+        public SpringWebserviceProducer webServiceEndpointUri(
+                String webServiceEndpointUri) {
+            this.webServiceEndpointUri = webServiceEndpointUri;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * Option to override soap response attachments in in/out exchange with
          * attachments from the actual service layer. If the invoked service
@@ -245,7 +331,12 @@ public class SpringWebserviceEndpoint {
          * true, allows the modified soap attachments to be overwritten in
          * in/out message attachments. The option is a boolean type.
          */
-        private Boolean allowResponseAttachmentOverride;
+        public SpringWebserviceProducer allowResponseAttachmentOverride(
+                boolean allowResponseAttachmentOverride) {
+            this.allowResponseAttachmentOverride = allowResponseAttachmentOverride;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * Option to override soap response header in in/out exchange with
          * header info from the actual service layer. If the invoked service
@@ -253,54 +344,92 @@ public class SpringWebserviceEndpoint {
          * allows the modified soap header to be overwritten in in/out message
          * headers. The option is a boolean type.
          */
-        private Boolean allowResponseHeaderOverride;
+        public SpringWebserviceProducer allowResponseHeaderOverride(
+                boolean allowResponseHeaderOverride) {
+            this.allowResponseHeaderOverride = allowResponseHeaderOverride;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * Signifies the value for the faultAction response WS-Addressing Fault
          * Action header that is provided by the method. The option is a
          * java.net.URI type.
          */
-        private URI faultAction;
+        public SpringWebserviceProducer faultAction(URI faultAction) {
+            this.faultAction = faultAction;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * Signifies the value for the faultAction response WS-Addressing
          * FaultTo header that is provided by the method. The option is a
          * java.net.URI type.
          */
-        private URI faultTo;
+        public SpringWebserviceProducer faultTo(URI faultTo) {
+            this.faultTo = faultTo;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * Option to provide a custom WebServiceMessageFactory. For example when
          * you want Apache Axiom to handle web service messages instead of SAAJ.
          * The option is a org.springframework.ws.WebServiceMessageFactory type.
          */
-        private Object messageFactory;
+        public SpringWebserviceProducer messageFactory(Object messageFactory) {
+            this.messageFactory = messageFactory;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * Option to provide a custom MessageIdStrategy to control generation of
          * unique message ids. The option is a
          * org.springframework.ws.soap.addressing.messageid.MessageIdStrategy
          * type.
          */
-        private Object messageIdStrategy;
+        public SpringWebserviceProducer messageIdStrategy(
+                Object messageIdStrategy) {
+            this.messageIdStrategy = messageIdStrategy;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * Option to provide a custom WebServiceMessageSender. For example to
          * perform authentication or use alternative transports. The option is a
          * org.springframework.ws.transport.WebServiceMessageSender type.
          */
-        private Object messageSender;
+        public SpringWebserviceProducer messageSender(Object messageSender) {
+            this.messageSender = messageSender;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * Signifies the value for the response WS-Addressing Action header that
          * is provided by the method. The option is a java.net.URI type.
          */
-        private URI outputAction;
+        public SpringWebserviceProducer outputAction(URI outputAction) {
+            this.outputAction = outputAction;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * Signifies the value for the replyTo response WS-Addressing ReplyTo
          * header that is provided by the method. The option is a java.net.URI
          * type.
          */
-        private URI replyTo;
+        public SpringWebserviceProducer replyTo(URI replyTo) {
+            this.replyTo = replyTo;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * SOAP action to include inside a SOAP request when accessing remote
          * web services. The option is a java.lang.String type.
          */
-        private String soapAction;
+        public SpringWebserviceProducer soapAction(String soapAction) {
+            this.soapAction = soapAction;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * Sets the socket read timeout (in milliseconds) while invoking a
          * webservice using the producer, see URLConnection.setReadTimeout() and
@@ -316,7 +445,11 @@ public class SpringWebserviceEndpoint {
          * HttpComponentsMessageSender.setReadTimeout(). The option is a int
          * type.
          */
-        private Integer timeout;
+        public SpringWebserviceProducer timeout(int timeout) {
+            this.timeout = timeout;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * Option to provide a custom WebServiceTemplate. This allows for full
          * control over client-side web services handling; like adding a custom
@@ -324,14 +457,23 @@ public class SpringWebserviceEndpoint {
          * factory. The option is a
          * org.springframework.ws.client.core.WebServiceTemplate type.
          */
-        private Object webServiceTemplate;
+        public SpringWebserviceProducer webServiceTemplate(
+                Object webServiceTemplate) {
+            this.webServiceTemplate = webServiceTemplate;
+            return (SpringWebserviceProducer) this;
+        }
+
         /**
          * WS-Addressing 1.0 action header to include when accessing web
          * services. The To header is set to the address of the web service as
          * specified in the endpoint URI (default Spring-WS behavior). The
          * option is a java.net.URI type.
          */
-        private URI wsAddressingAction;
+        public SpringWebserviceProducer wsAddressingAction(
+                URI wsAddressingAction) {
+            this.wsAddressingAction = wsAddressingAction;
+            return (SpringWebserviceProducer) this;
+        }
 
         public String getWebServiceEndpointUri() {
             return webServiceEndpointUri;

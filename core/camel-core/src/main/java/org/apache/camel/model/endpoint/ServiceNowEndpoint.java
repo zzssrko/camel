@@ -29,35 +29,104 @@ import javax.annotation.Generated;
 public class ServiceNowEndpoint {
 
 
-    public static class ServiceNowCommon extends EndpointConfiguration {
+    public static class ServiceNowCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String instanceName;
+        private String display;
+        private String displayValue;
+        private Boolean excludeReferenceLink;
+        private Boolean favorites;
+        private Boolean includeAggregates;
+        private Boolean includeAvailableAggregates;
+        private Boolean includeAvailableBreakdowns;
+        private Boolean includeScoreNotes;
+        private Boolean includeScores;
+        private Boolean inputDisplayValue;
+        private Boolean key;
+        private Map<String, Class<Object>> models;
+        private Integer perPage;
+        private ServiceNowRelease release;
+        private Map<String, Class<Object>> requestModels;
+        private String resource;
+        private Map<String, Class<Object>> responseModels;
+        private String sortBy;
+        private String sortDir;
+        private Boolean suppressAutoSysField;
+        private Boolean suppressPaginationHeader;
+        private String table;
+        private Boolean target;
+        private Boolean topLevelOnly;
+        private String apiVersion;
+        private Boolean basicPropertyBinding;
+        private String dateFormat;
+        private String dateTimeFormat;
+        private Object httpClientPolicy;
+        private Object mapper;
+        private Object proxyAuthorizationPolicy;
+        private Boolean retrieveTargetRecordOnImport;
+        private Boolean synchronous;
+        private String timeFormat;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String apiUrl;
+        private String oauthClientId;
+        private String oauthClientSecret;
+        private String oauthTokenUrl;
+        private String password;
+        private String proxyPassword;
+        private String proxyUserName;
+        private Object sslContextParameters;
+        private String userName;
+
         /**
          * The ServiceNow instance name. The option is a java.lang.String type.
          */
-        private String instanceName;
+        public T instanceName(String instanceName) {
+            this.instanceName = instanceName;
+            return (T) this;
+        }
+
         /**
          * Set this parameter to true to return only scorecards where the
          * indicator Display field is selected. Set this parameter to all to
          * return scorecards with any Display field value. This parameter is
          * true by default. The option is a java.lang.String type.
          */
-        private String display;
+        public T display(String display) {
+            this.display = display;
+            return (T) this;
+        }
+
         /**
          * Return the display value (true), actual value (false), or both (all)
          * for reference fields (default: false). The option is a
          * java.lang.String type.
          */
-        private String displayValue;
+        public T displayValue(String displayValue) {
+            this.displayValue = displayValue;
+            return (T) this;
+        }
+
         /**
          * True to exclude Table API links for reference fields (default:
          * false). The option is a java.lang.Boolean type.
          */
-        private Boolean excludeReferenceLink;
+        public T excludeReferenceLink(Boolean excludeReferenceLink) {
+            this.excludeReferenceLink = excludeReferenceLink;
+            return (T) this;
+        }
+
         /**
          * Set this parameter to true to return only scorecards that are
          * favorites of the querying user. The option is a java.lang.Boolean
          * type.
          */
-        private Boolean favorites;
+        public T favorites(Boolean favorites) {
+            this.favorites = favorites;
+            return (T) this;
+        }
+
         /**
          * Set this parameter to true to always return all available aggregates
          * for an indicator, including when an aggregate has already been
@@ -65,216 +134,380 @@ public class ServiceNowEndpoint {
          * false and returns no aggregates. The option is a java.lang.Boolean
          * type.
          */
-        private Boolean includeAggregates;
+        public T includeAggregates(Boolean includeAggregates) {
+            this.includeAggregates = includeAggregates;
+            return (T) this;
+        }
+
         /**
          * Set this parameter to true to return all available aggregates for an
          * indicator when no aggregate has been applied. If a value is not
          * specified, this parameter defaults to false and returns no
          * aggregates. The option is a java.lang.Boolean type.
          */
-        private Boolean includeAvailableAggregates;
+        public T includeAvailableAggregates(Boolean includeAvailableAggregates) {
+            this.includeAvailableAggregates = includeAvailableAggregates;
+            return (T) this;
+        }
+
         /**
          * Set this parameter to true to return all available breakdowns for an
          * indicator. If a value is not specified, this parameter defaults to
          * false and returns no breakdowns. The option is a java.lang.Boolean
          * type.
          */
-        private Boolean includeAvailableBreakdowns;
+        public T includeAvailableBreakdowns(Boolean includeAvailableBreakdowns) {
+            this.includeAvailableBreakdowns = includeAvailableBreakdowns;
+            return (T) this;
+        }
+
         /**
          * Set this parameter to true to return all notes associated with the
          * score. The note element contains the note text as well as the author
          * and timestamp when the note was added. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean includeScoreNotes;
+        public T includeScoreNotes(Boolean includeScoreNotes) {
+            this.includeScoreNotes = includeScoreNotes;
+            return (T) this;
+        }
+
         /**
          * Set this parameter to true to return all scores for a scorecard. If a
          * value is not specified, this parameter defaults to false and returns
          * only the most recent score value. The option is a java.lang.Boolean
          * type.
          */
-        private Boolean includeScores;
+        public T includeScores(Boolean includeScores) {
+            this.includeScores = includeScores;
+            return (T) this;
+        }
+
         /**
          * True to set raw value of input fields (default: false). The option is
          * a java.lang.Boolean type.
          */
-        private Boolean inputDisplayValue;
+        public T inputDisplayValue(Boolean inputDisplayValue) {
+            this.inputDisplayValue = inputDisplayValue;
+            return (T) this;
+        }
+
         /**
          * Set this parameter to true to return only scorecards for key
          * indicators. The option is a java.lang.Boolean type.
          */
-        private Boolean key;
+        public T key(Boolean key) {
+            this.key = key;
+            return (T) this;
+        }
+
         /**
          * Defines both request and response models. The option is a
          * java.lang.String type.
          */
-        private Map<String, Class<Object>> models;
+        public T models(Map<String, Class<Object>> models) {
+            this.models = models;
+            return (T) this;
+        }
+
         /**
          * Enter the maximum number of scorecards each query can return. By
          * default this value is 10, and the maximum is 100. The option is a
          * java.lang.Integer type.
          */
-        private Integer perPage;
+        public T perPage(Integer perPage) {
+            this.perPage = perPage;
+            return (T) this;
+        }
+
         /**
          * The ServiceNow release to target, default to Helsinki See
          * https://docs.servicenow.com. The option is a
          * org.apache.camel.component.servicenow.ServiceNowRelease type.
          */
-        private ServiceNowRelease release;
+        public T release(ServiceNowRelease release) {
+            this.release = release;
+            return (T) this;
+        }
+
         /**
          * Defines the request model. The option is a java.lang.String type.
          */
-        private Map<String, Class<Object>> requestModels;
+        public T requestModels(Map<String, Class<Object>> requestModels) {
+            this.requestModels = requestModels;
+            return (T) this;
+        }
+
         /**
          * The default resource, can be overridden by header
          * CamelServiceNowResource. The option is a java.lang.String type.
          */
-        private String resource;
+        public T resource(String resource) {
+            this.resource = resource;
+            return (T) this;
+        }
+
         /**
          * Defines the response model. The option is a java.lang.String type.
          */
-        private Map<String, Class<Object>> responseModels;
+        public T responseModels(Map<String, Class<Object>> responseModels) {
+            this.responseModels = responseModels;
+            return (T) this;
+        }
+
         /**
          * Specify the value to use when sorting results. By default, queries
          * sort records by value. The option is a java.lang.String type.
          */
-        private String sortBy;
+        public T sortBy(String sortBy) {
+            this.sortBy = sortBy;
+            return (T) this;
+        }
+
         /**
          * Specify the sort direction, ascending or descending. By default,
          * queries sort records in descending order. Use sysparm_sortdir=asc to
          * sort in ascending order. The option is a java.lang.String type.
          */
-        private String sortDir;
+        public T sortDir(String sortDir) {
+            this.sortDir = sortDir;
+            return (T) this;
+        }
+
         /**
          * True to suppress auto generation of system fields (default: false).
          * The option is a java.lang.Boolean type.
          */
-        private Boolean suppressAutoSysField;
+        public T suppressAutoSysField(Boolean suppressAutoSysField) {
+            this.suppressAutoSysField = suppressAutoSysField;
+            return (T) this;
+        }
+
         /**
          * Set this value to true to remove the Link header from the response.
          * The Link header allows you to request additional pages of data when
          * the number of records matching your query exceeds the query limit.
          * The option is a java.lang.Boolean type.
          */
-        private Boolean suppressPaginationHeader;
+        public T suppressPaginationHeader(Boolean suppressPaginationHeader) {
+            this.suppressPaginationHeader = suppressPaginationHeader;
+            return (T) this;
+        }
+
         /**
          * The default table, can be overridden by header CamelServiceNowTable.
          * The option is a java.lang.String type.
          */
-        private String table;
+        public T table(String table) {
+            this.table = table;
+            return (T) this;
+        }
+
         /**
          * Set this parameter to true to return only scorecards that have a
          * target. The option is a java.lang.Boolean type.
          */
-        private Boolean target;
+        public T target(Boolean target) {
+            this.target = target;
+            return (T) this;
+        }
+
         /**
          * Gets only those categories whose parent is a catalog. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean topLevelOnly;
+        public T topLevelOnly(Boolean topLevelOnly) {
+            this.topLevelOnly = topLevelOnly;
+            return (T) this;
+        }
+
         /**
          * The ServiceNow REST API version, default latest. The option is a
          * java.lang.String type.
          */
-        private String apiVersion;
+        public T apiVersion(String apiVersion) {
+            this.apiVersion = apiVersion;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * The date format used for Json serialization/deserialization. The
          * option is a java.lang.String type.
          */
-        private String dateFormat;
+        public T dateFormat(String dateFormat) {
+            this.dateFormat = dateFormat;
+            return (T) this;
+        }
+
         /**
          * The date-time format used for Json serialization/deserialization. The
          * option is a java.lang.String type.
          */
-        private String dateTimeFormat;
+        public T dateTimeFormat(String dateTimeFormat) {
+            this.dateTimeFormat = dateTimeFormat;
+            return (T) this;
+        }
+
         /**
          * To configure http-client. The option is a
          * org.apache.cxf.transports.http.configuration.HTTPClientPolicy type.
          */
-        private Object httpClientPolicy;
+        public T httpClientPolicy(Object httpClientPolicy) {
+            this.httpClientPolicy = httpClientPolicy;
+            return (T) this;
+        }
+
         /**
          * Sets Jackson's ObjectMapper to use for request/reply. The option is a
          * com.fasterxml.jackson.databind.ObjectMapper type.
          */
-        private Object mapper;
+        public T mapper(Object mapper) {
+            this.mapper = mapper;
+            return (T) this;
+        }
+
         /**
          * To configure proxy authentication. The option is a
          * org.apache.cxf.configuration.security.ProxyAuthorizationPolicy type.
          */
-        private Object proxyAuthorizationPolicy;
+        public T proxyAuthorizationPolicy(Object proxyAuthorizationPolicy) {
+            this.proxyAuthorizationPolicy = proxyAuthorizationPolicy;
+            return (T) this;
+        }
+
         /**
          * Set this parameter to true to retrieve the target record when using
          * import set api. The import set result is then replaced by the target
          * record. The option is a java.lang.Boolean type.
          */
-        private Boolean retrieveTargetRecordOnImport;
+        public T retrieveTargetRecordOnImport(
+                Boolean retrieveTargetRecordOnImport) {
+            this.retrieveTargetRecordOnImport = retrieveTargetRecordOnImport;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The time format used for Json serialization/deserialization. The
          * option is a java.lang.String type.
          */
-        private String timeFormat;
+        public T timeFormat(String timeFormat) {
+            this.timeFormat = timeFormat;
+            return (T) this;
+        }
+
         /**
          * The proxy host name. The option is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * The proxy port number. The option is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
+
         /**
          * The ServiceNow REST API url. The option is a java.lang.String type.
          */
-        private String apiUrl;
+        public T apiUrl(String apiUrl) {
+            this.apiUrl = apiUrl;
+            return (T) this;
+        }
+
         /**
          * OAuth2 ClientID. The option is a java.lang.String type.
          */
-        private String oauthClientId;
+        public T oauthClientId(String oauthClientId) {
+            this.oauthClientId = oauthClientId;
+            return (T) this;
+        }
+
         /**
          * OAuth2 ClientSecret. The option is a java.lang.String type.
          */
-        private String oauthClientSecret;
+        public T oauthClientSecret(String oauthClientSecret) {
+            this.oauthClientSecret = oauthClientSecret;
+            return (T) this;
+        }
+
         /**
          * OAuth token Url. The option is a java.lang.String type.
          */
-        private String oauthTokenUrl;
+        public T oauthTokenUrl(String oauthTokenUrl) {
+            this.oauthTokenUrl = oauthTokenUrl;
+            return (T) this;
+        }
+
         /**
          * ServiceNow account password, MUST be provided. The option is a
          * java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Password for proxy authentication. The option is a java.lang.String
          * type.
          */
-        private String proxyPassword;
+        public T proxyPassword(String proxyPassword) {
+            this.proxyPassword = proxyPassword;
+            return (T) this;
+        }
+
         /**
          * Username for proxy authentication. The option is a java.lang.String
          * type.
          */
-        private String proxyUserName;
+        public T proxyUserName(String proxyUserName) {
+            this.proxyUserName = proxyUserName;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. See
          * http://camel.apache.org/camel-configuration-utilities.html. The
          * option is a org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
+
         /**
          * ServiceNow user account name, MUST be provided. The option is a
          * java.lang.String type.
          */
-        private String userName;
+        public T userName(String userName) {
+            this.userName = userName;
+            return (T) this;
+        }
 
         public String getInstanceName() {
             return instanceName;
@@ -648,10 +881,14 @@ public class ServiceNowEndpoint {
         }
     }
 
-    public static class ServiceNowConsumer extends ServiceNowCommon {
+    public static class ServiceNowConsumer
+            extends
+                ServiceNowCommon<ServiceNowConsumer> {
     }
 
-    public static class ServiceNowProducer extends ServiceNowCommon {
+    public static class ServiceNowProducer
+            extends
+                ServiceNowCommon<ServiceNowProducer> {
     }
 
     public static enum ServiceNowRelease {

@@ -32,168 +32,327 @@ import org.apache.camel.spi.ExceptionHandler;
 public class AS2Endpoint {
 
 
-    public static class AS2Common extends EndpointConfiguration {
+    public static class AS2Common<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private AS2ApiName apiName;
+        private String methodName;
+        private String as2From;
+        private AS2MessageStructure as2MessageStructure;
+        private String as2To;
+        private String as2Version;
+        private String clientFqdn;
+        private AS2CompressionAlgorithm compressionAlgorithm;
+        private PrivateKey decryptingPrivateKey;
+        private String dispositionNotificationTo;
+        private String ediMessageTransferEncoding;
+        private Object ediMessageType;
+        private AS2EncryptionAlgorithm encryptingAlgorithm;
+        private Certificate[] encryptingCertificateChain;
+        private String from;
+        private String inBody;
+        private String mdnMessageTemplate;
+        private String requestUri;
+        private String server;
+        private String serverFqdn;
+        private Integer serverPortNumber;
+        private String[] signedReceiptMicAlgorithms;
+        private AS2SignatureAlgorithm signingAlgorithm;
+        private Certificate[] signingCertificateChain;
+        private PrivateKey signingPrivateKey;
+        private String subject;
+        private String targetHostname;
+        private Integer targetPortNumber;
+        private String userAgent;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * What kind of operation to perform. The option is a
          * org.apache.camel.component.as2.internal.AS2ApiName type.
          */
-        private AS2ApiName apiName;
+        public T apiName(AS2ApiName apiName) {
+            this.apiName = apiName;
+            return (T) this;
+        }
+
         /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
-        private String methodName;
+        public T methodName(String methodName) {
+            this.methodName = methodName;
+            return (T) this;
+        }
+
         /**
          * The value of the AS2From header of AS2 message. The option is a
          * java.lang.String type.
          */
-        private String as2From;
+        public T as2From(String as2From) {
+            this.as2From = as2From;
+            return (T) this;
+        }
+
         /**
          * The structure of AS2 Message. One of: PLAIN - No encryption, no
          * signature, SIGNED - No encryption, signature, ENCRYPTED - Encryption,
          * no signature, ENCRYPTED_SIGNED - Encryption, signature. The option is
          * a org.apache.camel.component.as2.api.AS2MessageStructure type.
          */
-        private AS2MessageStructure as2MessageStructure;
+        public T as2MessageStructure(AS2MessageStructure as2MessageStructure) {
+            this.as2MessageStructure = as2MessageStructure;
+            return (T) this;
+        }
+
         /**
          * The value of the AS2To header of AS2 message. The option is a
          * java.lang.String type.
          */
-        private String as2To;
+        public T as2To(String as2To) {
+            this.as2To = as2To;
+            return (T) this;
+        }
+
         /**
          * The version of the AS2 protocol. The option is a java.lang.String
          * type.
          */
-        private String as2Version;
+        public T as2Version(String as2Version) {
+            this.as2Version = as2Version;
+            return (T) this;
+        }
+
         /**
          * The Client Fully Qualified Domain Name (FQDN). Used in message ids
          * sent by endpoint. The option is a java.lang.String type.
          */
-        private String clientFqdn;
+        public T clientFqdn(String clientFqdn) {
+            this.clientFqdn = clientFqdn;
+            return (T) this;
+        }
+
         /**
          * The algorithm used to compress EDI message. The option is a
          * org.apache.camel.component.as2.api.AS2CompressionAlgorithm type.
          */
-        private AS2CompressionAlgorithm compressionAlgorithm;
+        public T compressionAlgorithm(
+                AS2CompressionAlgorithm compressionAlgorithm) {
+            this.compressionAlgorithm = compressionAlgorithm;
+            return (T) this;
+        }
+
         /**
          * The key used to encrypt the EDI message. The option is a
          * java.security.PrivateKey type.
          */
-        private PrivateKey decryptingPrivateKey;
+        public T decryptingPrivateKey(PrivateKey decryptingPrivateKey) {
+            this.decryptingPrivateKey = decryptingPrivateKey;
+            return (T) this;
+        }
+
         /**
          * The value of the Disposition-Notification-To header. Assigning a
          * value to this parameter requests a message disposition notification
          * (MDN) for the AS2 message. The option is a java.lang.String type.
          */
-        private String dispositionNotificationTo;
+        public T dispositionNotificationTo(String dispositionNotificationTo) {
+            this.dispositionNotificationTo = dispositionNotificationTo;
+            return (T) this;
+        }
+
         /**
          * The transfer encoding of EDI message. The option is a
          * java.lang.String type.
          */
-        private String ediMessageTransferEncoding;
+        public T ediMessageTransferEncoding(String ediMessageTransferEncoding) {
+            this.ediMessageTransferEncoding = ediMessageTransferEncoding;
+            return (T) this;
+        }
+
         /**
          * The content type of EDI message. One of application/edifact,
          * application/edi-x12, application/edi-consent. The option is a
          * org.apache.http.entity.ContentType type.
          */
-        private Object ediMessageType;
+        public T ediMessageType(Object ediMessageType) {
+            this.ediMessageType = ediMessageType;
+            return (T) this;
+        }
+
         /**
          * The algorithm used to encrypt EDI message. The option is a
          * org.apache.camel.component.as2.api.AS2EncryptionAlgorithm type.
          */
-        private AS2EncryptionAlgorithm encryptingAlgorithm;
+        public T encryptingAlgorithm(AS2EncryptionAlgorithm encryptingAlgorithm) {
+            this.encryptingAlgorithm = encryptingAlgorithm;
+            return (T) this;
+        }
+
         /**
          * The chain of certificates used to encrypt EDI message. The option is
          * a java.security.cert.Certificate[] type.
          */
-        private Certificate[] encryptingCertificateChain;
+        public T encryptingCertificateChain(
+                Certificate[] encryptingCertificateChain) {
+            this.encryptingCertificateChain = encryptingCertificateChain;
+            return (T) this;
+        }
+
         /**
          * The value of the From header of AS2 message. The option is a
          * java.lang.String type.
          */
-        private String from;
+        public T from(String from) {
+            this.from = from;
+            return (T) this;
+        }
+
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
-        private String inBody;
+        public T inBody(String inBody) {
+            this.inBody = inBody;
+            return (T) this;
+        }
+
         /**
          * The template used to format MDN message. The option is a
          * java.lang.String type.
          */
-        private String mdnMessageTemplate;
+        public T mdnMessageTemplate(String mdnMessageTemplate) {
+            this.mdnMessageTemplate = mdnMessageTemplate;
+            return (T) this;
+        }
+
         /**
          * The request URI of EDI message. The option is a java.lang.String
          * type.
          */
-        private String requestUri;
+        public T requestUri(String requestUri) {
+            this.requestUri = requestUri;
+            return (T) this;
+        }
+
         /**
          * The value included in the Server message header identifying the AS2
          * Server. The option is a java.lang.String type.
          */
-        private String server;
+        public T server(String server) {
+            this.server = server;
+            return (T) this;
+        }
+
         /**
          * The Server Fully Qualified Domain Name (FQDN). Used in message ids
          * sent by endpoint. The option is a java.lang.String type.
          */
-        private String serverFqdn;
+        public T serverFqdn(String serverFqdn) {
+            this.serverFqdn = serverFqdn;
+            return (T) this;
+        }
+
         /**
          * The port number of server. The option is a java.lang.Integer type.
          */
-        private Integer serverPortNumber;
+        public T serverPortNumber(Integer serverPortNumber) {
+            this.serverPortNumber = serverPortNumber;
+            return (T) this;
+        }
+
         /**
          * The list of algorithms, in order of preference, requested to generate
          * a message integrity check (MIC) returned in message dispostion
          * notification (MDN). The option is a java.lang.String[] type.
          */
-        private String[] signedReceiptMicAlgorithms;
+        public T signedReceiptMicAlgorithms(String[] signedReceiptMicAlgorithms) {
+            this.signedReceiptMicAlgorithms = signedReceiptMicAlgorithms;
+            return (T) this;
+        }
+
         /**
          * The algorithm used to sign EDI message. The option is a
          * org.apache.camel.component.as2.api.AS2SignatureAlgorithm type.
          */
-        private AS2SignatureAlgorithm signingAlgorithm;
+        public T signingAlgorithm(AS2SignatureAlgorithm signingAlgorithm) {
+            this.signingAlgorithm = signingAlgorithm;
+            return (T) this;
+        }
+
         /**
          * The chain of certificates used to sign EDI message. The option is a
          * java.security.cert.Certificate[] type.
          */
-        private Certificate[] signingCertificateChain;
+        public T signingCertificateChain(Certificate[] signingCertificateChain) {
+            this.signingCertificateChain = signingCertificateChain;
+            return (T) this;
+        }
+
         /**
          * The key used to sign the EDI message. The option is a
          * java.security.PrivateKey type.
          */
-        private PrivateKey signingPrivateKey;
+        public T signingPrivateKey(PrivateKey signingPrivateKey) {
+            this.signingPrivateKey = signingPrivateKey;
+            return (T) this;
+        }
+
         /**
          * The value of Subject header of AS2 message. The option is a
          * java.lang.String type.
          */
-        private String subject;
+        public T subject(String subject) {
+            this.subject = subject;
+            return (T) this;
+        }
+
         /**
          * The host name (IP or DNS name) of target host. The option is a
          * java.lang.String type.
          */
-        private String targetHostname;
+        public T targetHostname(String targetHostname) {
+            this.targetHostname = targetHostname;
+            return (T) this;
+        }
+
         /**
          * The port number of target host. -1 indicates the scheme default port.
          * The option is a java.lang.Integer type.
          */
-        private Integer targetPortNumber;
+        public T targetPortNumber(Integer targetPortNumber) {
+            this.targetPortNumber = targetPortNumber;
+            return (T) this;
+        }
+
         /**
          * The value included in the User-Agent message header identifying the
          * AS2 user agent. The option is a java.lang.String type.
          */
-        private String userAgent;
+        public T userAgent(String userAgent) {
+            this.userAgent = userAgent;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public AS2ApiName getApiName() {
             return apiName;
@@ -452,7 +611,11 @@ public class AS2Endpoint {
         }
     }
 
-    public static class AS2Consumer extends AS2Common {
+    public static class AS2Consumer extends AS2Common<AS2Consumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -462,7 +625,11 @@ public class AS2Endpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public AS2Consumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (AS2Consumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -470,12 +637,19 @@ public class AS2Endpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public AS2Consumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (AS2Consumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public AS2Consumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (AS2Consumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -502,7 +676,7 @@ public class AS2Endpoint {
         }
     }
 
-    public static class AS2Producer extends AS2Common {
+    public static class AS2Producer extends AS2Common<AS2Producer> {
     }
 
     public static enum AS2ApiName {

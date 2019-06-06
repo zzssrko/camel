@@ -31,51 +31,98 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class StompEndpoint {
 
 
-    public static class StompCommon extends EndpointConfiguration {
+    public static class StompCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String destination;
+        private String brokerURL;
+        private String host;
+        private Boolean basicPropertyBinding;
+        private HeaderFilterStrategy headerFilterStrategy;
+        private Boolean synchronous;
+        private String login;
+        private String passcode;
+        private Object sslContextParameters;
+
         /**
          * Name of the queue. The option is a java.lang.String type.
          */
-        private String destination;
+        public T destination(String destination) {
+            this.destination = destination;
+            return (T) this;
+        }
+
         /**
          * The URI of the Stomp broker to connect to. The option is a
          * java.lang.String type.
          */
-        private String brokerURL;
+        public T brokerURL(String brokerURL) {
+            this.brokerURL = brokerURL;
+            return (T) this;
+        }
+
         /**
          * The virtual host name. The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The username. The option is a java.lang.String type.
          */
-        private String login;
+        public T login(String login) {
+            this.login = login;
+            return (T) this;
+        }
+
         /**
          * The password. The option is a java.lang.String type.
          */
-        private String passcode;
+        public T passcode(String passcode) {
+            this.passcode = passcode;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
 
         public String getDestination() {
             return destination;
@@ -151,7 +198,11 @@ public class StompEndpoint {
         }
     }
 
-    public static class StompConsumer extends StompCommon {
+    public static class StompConsumer extends StompCommon<StompConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -161,7 +212,11 @@ public class StompEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public StompConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (StompConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -169,12 +224,19 @@ public class StompEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public StompConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (StompConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public StompConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (StompConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -201,6 +263,6 @@ public class StompEndpoint {
         }
     }
 
-    public static class StompProducer extends StompCommon {
+    public static class StompProducer extends StompCommon<StompProducer> {
     }
 }

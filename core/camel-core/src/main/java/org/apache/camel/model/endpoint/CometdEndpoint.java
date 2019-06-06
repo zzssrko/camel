@@ -30,25 +30,59 @@ import org.apache.camel.spi.ExceptionHandler;
 public class CometdEndpoint {
 
 
-    public static class CometdCommon extends EndpointConfiguration {
+    public static class CometdCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private String channelName;
+        private String allowedOrigins;
+        private String baseResource;
+        private Boolean crossOriginFilterOn;
+        private String filterPath;
+        private Integer interval;
+        private Boolean jsonCommented;
+        private Integer logLevel;
+        private Integer maxInterval;
+        private Integer multiFrameInterval;
+        private Integer timeout;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Hostname. The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Host port number. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * The channelName represents a topic that can be subscribed to by the
          * Camel endpoints. The option is a java.lang.String type.
          */
-        private String channelName;
+        public T channelName(String channelName) {
+            this.channelName = channelName;
+            return (T) this;
+        }
+
         /**
          * The origins domain that support to cross, if the crosssOriginFilterOn
          * is true. The option is a java.lang.String type.
          */
-        private String allowedOrigins;
+        public T allowedOrigins(String allowedOrigins) {
+            this.allowedOrigins = allowedOrigins;
+            return (T) this;
+        }
+
         /**
          * The root directory for the web resources or classpath. Use the
          * protocol file: or classpath: depending if you want that the component
@@ -56,61 +90,104 @@ public class CometdEndpoint {
          * required for OSGI deployment where the resources are packaged in the
          * jar. The option is a java.lang.String type.
          */
-        private String baseResource;
+        public T baseResource(String baseResource) {
+            this.baseResource = baseResource;
+            return (T) this;
+        }
+
         /**
          * If true, the server will support for cross-domain filtering. The
          * option is a boolean type.
          */
-        private Boolean crossOriginFilterOn;
+        public T crossOriginFilterOn(boolean crossOriginFilterOn) {
+            this.crossOriginFilterOn = crossOriginFilterOn;
+            return (T) this;
+        }
+
         /**
          * The filterPath will be used by the CrossOriginFilter, if the
          * crosssOriginFilterOn is true. The option is a java.lang.String type.
          */
-        private String filterPath;
+        public T filterPath(String filterPath) {
+            this.filterPath = filterPath;
+            return (T) this;
+        }
+
         /**
          * The client side poll timeout in milliseconds. How long a client will
          * wait between reconnects. The option is a int type.
          */
-        private Integer interval;
+        public T interval(int interval) {
+            this.interval = interval;
+            return (T) this;
+        }
+
         /**
          * If true, the server will accept JSON wrapped in a comment and will
          * generate JSON wrapped in a comment. This is a defence against Ajax
          * Hijacking. The option is a boolean type.
          */
-        private Boolean jsonCommented;
+        public T jsonCommented(boolean jsonCommented) {
+            this.jsonCommented = jsonCommented;
+            return (T) this;
+        }
+
         /**
          * Logging level. 0=none, 1=info, 2=debug. The option is a int type.
          */
-        private Integer logLevel;
+        public T logLevel(int logLevel) {
+            this.logLevel = logLevel;
+            return (T) this;
+        }
+
         /**
          * The max client side poll timeout in milliseconds. A client will be
          * removed if a connection is not received in this time. The option is a
          * int type.
          */
-        private Integer maxInterval;
+        public T maxInterval(int maxInterval) {
+            this.maxInterval = maxInterval;
+            return (T) this;
+        }
+
         /**
          * The client side poll timeout, if multiple connections are detected
          * from the same browser. The option is a int type.
          */
-        private Integer multiFrameInterval;
+        public T multiFrameInterval(int multiFrameInterval) {
+            this.multiFrameInterval = multiFrameInterval;
+            return (T) this;
+        }
+
         /**
          * The server side poll timeout in milliseconds. This is how long the
          * server will hold a reconnect request before responding. The option is
          * a int type.
          */
-        private Integer timeout;
+        public T timeout(int timeout) {
+            this.timeout = timeout;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -233,7 +310,12 @@ public class CometdEndpoint {
         }
     }
 
-    public static class CometdConsumer extends CometdCommon {
+    public static class CometdConsumer extends CometdCommon<CometdConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean sessionHeadersEnabled;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -243,13 +325,22 @@ public class CometdEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public CometdConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (CometdConsumer) this;
+        }
+
         /**
          * Whether to include the server session headers in the Camel message
          * when creating a Camel Message for incoming requests. The option is a
          * boolean type.
          */
-        private Boolean sessionHeadersEnabled;
+        public CometdConsumer sessionHeadersEnabled(
+                boolean sessionHeadersEnabled) {
+            this.sessionHeadersEnabled = sessionHeadersEnabled;
+            return (CometdConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -257,12 +348,19 @@ public class CometdEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public CometdConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (CometdConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public CometdConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (CometdConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -297,14 +395,20 @@ public class CometdEndpoint {
         }
     }
 
-    public static class CometdProducer extends CometdCommon {
+    public static class CometdProducer extends CometdCommon<CometdProducer> {
+        private Boolean disconnectLocalSession;
+
         /**
          * Whether to disconnect local sessions after publishing a message to
          * its channel. Disconnecting local session is needed as they are not
          * swept by default by CometD, and therefore you can run out of memory.
          * The option is a boolean type.
          */
-        private Boolean disconnectLocalSession;
+        public CometdProducer disconnectLocalSession(
+                boolean disconnectLocalSession) {
+            this.disconnectLocalSession = disconnectLocalSession;
+            return (CometdProducer) this;
+        }
 
         public Boolean getDisconnectLocalSession() {
             return disconnectLocalSession;

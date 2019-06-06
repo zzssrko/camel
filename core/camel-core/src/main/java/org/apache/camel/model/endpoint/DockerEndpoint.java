@@ -29,94 +29,191 @@ import org.apache.camel.spi.ExceptionHandler;
 public class DockerEndpoint {
 
 
-    public static class DockerCommon extends EndpointConfiguration {
+    public static class DockerCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private DockerOperation operation;
+        private String email;
+        private String host;
+        private Integer port;
+        private Integer requestTimeout;
+        private Boolean basicPropertyBinding;
+        private String cmdExecFactory;
+        private Boolean followRedirectFilter;
+        private Boolean loggingFilter;
+        private Integer maxPerRouteConnections;
+        private Integer maxTotalConnections;
+        private String serverAddress;
+        private Boolean socket;
+        private Boolean synchronous;
+        private String certPath;
+        private String password;
+        private Boolean secure;
+        private Boolean tlsVerify;
+        private String username;
+
         /**
          * Which operation to use. The option is a
          * org.apache.camel.component.docker.DockerOperation type.
          */
-        private DockerOperation operation;
+        public T operation(DockerOperation operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * Email address associated with the user. The option is a
          * java.lang.String type.
          */
-        private String email;
+        public T email(String email) {
+            this.email = email;
+            return (T) this;
+        }
+
         /**
          * Docker host. The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Docker port. The option is a java.lang.Integer type.
          */
-        private Integer port;
+        public T port(Integer port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Request timeout for response (in seconds). The option is a
          * java.lang.Integer type.
          */
-        private Integer requestTimeout;
+        public T requestTimeout(Integer requestTimeout) {
+            this.requestTimeout = requestTimeout;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * The fully qualified class name of the DockerCmdExecFactory
          * implementation to use. The option is a java.lang.String type.
          */
-        private String cmdExecFactory;
+        public T cmdExecFactory(String cmdExecFactory) {
+            this.cmdExecFactory = cmdExecFactory;
+            return (T) this;
+        }
+
         /**
          * Whether to follow redirect filter. The option is a boolean type.
          */
-        private Boolean followRedirectFilter;
+        public T followRedirectFilter(boolean followRedirectFilter) {
+            this.followRedirectFilter = followRedirectFilter;
+            return (T) this;
+        }
+
         /**
          * Whether to use logging filter. The option is a boolean type.
          */
-        private Boolean loggingFilter;
+        public T loggingFilter(boolean loggingFilter) {
+            this.loggingFilter = loggingFilter;
+            return (T) this;
+        }
+
         /**
          * Maximum route connections. The option is a java.lang.Integer type.
          */
-        private Integer maxPerRouteConnections;
+        public T maxPerRouteConnections(Integer maxPerRouteConnections) {
+            this.maxPerRouteConnections = maxPerRouteConnections;
+            return (T) this;
+        }
+
         /**
          * Maximum total connections. The option is a java.lang.Integer type.
          */
-        private Integer maxTotalConnections;
+        public T maxTotalConnections(Integer maxTotalConnections) {
+            this.maxTotalConnections = maxTotalConnections;
+            return (T) this;
+        }
+
         /**
          * Server address for docker registry. The option is a java.lang.String
          * type.
          */
-        private String serverAddress;
+        public T serverAddress(String serverAddress) {
+            this.serverAddress = serverAddress;
+            return (T) this;
+        }
+
         /**
          * Socket connection mode. The option is a boolean type.
          */
-        private Boolean socket;
+        public T socket(boolean socket) {
+            this.socket = socket;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Location containing the SSL certificate chain. The option is a
          * java.lang.String type.
          */
-        private String certPath;
+        public T certPath(String certPath) {
+            this.certPath = certPath;
+            return (T) this;
+        }
+
         /**
          * Password to authenticate with. The option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Use HTTPS communication. The option is a boolean type.
          */
-        private Boolean secure;
+        public T secure(boolean secure) {
+            this.secure = secure;
+            return (T) this;
+        }
+
         /**
          * Check TLS. The option is a boolean type.
          */
-        private Boolean tlsVerify;
+        public T tlsVerify(boolean tlsVerify) {
+            this.tlsVerify = tlsVerify;
+            return (T) this;
+        }
+
         /**
          * User name to authenticate with. The option is a java.lang.String
          * type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public DockerOperation getOperation() {
             return operation;
@@ -271,7 +368,11 @@ public class DockerEndpoint {
         }
     }
 
-    public static class DockerConsumer extends DockerCommon {
+    public static class DockerConsumer extends DockerCommon<DockerConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -281,7 +382,11 @@ public class DockerEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public DockerConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (DockerConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -289,12 +394,19 @@ public class DockerEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public DockerConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (DockerConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public DockerConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (DockerConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -321,7 +433,7 @@ public class DockerEndpoint {
         }
     }
 
-    public static class DockerProducer extends DockerCommon {
+    public static class DockerProducer extends DockerCommon<DockerProducer> {
     }
 
     public static enum DockerOperation {

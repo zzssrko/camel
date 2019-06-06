@@ -27,39 +27,71 @@ import javax.annotation.Generated;
 public class SchematronEndpoint {
 
 
-    public static class SchematronCommon extends EndpointConfiguration {
+    public static class SchematronCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String path;
+        private Boolean abort;
+        private Object rules;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Object uriResolver;
+
         /**
          * The path to the schematron rules file. Can either be in class path or
          * location in the file system. The option is a java.lang.String type.
          */
-        private String path;
+        public T path(String path) {
+            this.path = path;
+            return (T) this;
+        }
+
         /**
          * Flag to abort the route and throw a schematron validation exception.
          * The option is a boolean type.
          */
-        private Boolean abort;
+        public T abort(boolean abort) {
+            this.abort = abort;
+            return (T) this;
+        }
+
         /**
          * To use the given schematron rules instead of loading from the path.
          * The option is a javax.xml.transform.Templates type.
          */
-        private Object rules;
+        public T rules(Object rules) {
+            this.rules = rules;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Set the URIResolver to be used for resolving schematron includes in
          * the rules file. The option is a javax.xml.transform.URIResolver type.
          */
-        private Object uriResolver;
+        public T uriResolver(Object uriResolver) {
+            this.uriResolver = uriResolver;
+            return (T) this;
+        }
 
         public String getPath() {
             return path;
@@ -110,9 +142,13 @@ public class SchematronEndpoint {
         }
     }
 
-    public static class SchematronConsumer extends SchematronCommon {
+    public static class SchematronConsumer
+            extends
+                SchematronCommon<SchematronConsumer> {
     }
 
-    public static class SchematronProducer extends SchematronCommon {
+    public static class SchematronProducer
+            extends
+                SchematronCommon<SchematronProducer> {
     }
 }

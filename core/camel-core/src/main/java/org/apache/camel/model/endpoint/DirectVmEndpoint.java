@@ -31,29 +31,51 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class DirectVmEndpoint {
 
 
-    public static class DirectVmCommon extends EndpointConfiguration {
+    public static class DirectVmCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String name;
+        private Boolean basicPropertyBinding;
+        private Boolean propagateProperties;
+        private Boolean synchronous;
+
         /**
          * Name of direct-vm endpoint. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Whether to propagate or not properties from the producer side to the
          * consumer side, and vice versa. Default value: true. The option is a
          * boolean type.
          */
-        private Boolean propagateProperties;
+        public T propagateProperties(boolean propagateProperties) {
+            this.propagateProperties = propagateProperties;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getName() {
             return name;
@@ -88,7 +110,13 @@ public class DirectVmEndpoint {
         }
     }
 
-    public static class DirectVmConsumer extends DirectVmCommon {
+    public static class DirectVmConsumer
+            extends
+                DirectVmCommon<DirectVmConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -98,7 +126,11 @@ public class DirectVmEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public DirectVmConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (DirectVmConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -106,12 +138,20 @@ public class DirectVmEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public DirectVmConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (DirectVmConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public DirectVmConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (DirectVmConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -138,30 +178,53 @@ public class DirectVmEndpoint {
         }
     }
 
-    public static class DirectVmProducer extends DirectVmCommon {
+    public static class DirectVmProducer
+            extends
+                DirectVmCommon<DirectVmProducer> {
+        private Boolean block;
+        private Boolean failIfNoConsumers;
+        private Long timeout;
+        private HeaderFilterStrategy headerFilterStrategy;
+
         /**
          * If sending a message to a direct endpoint which has no active
          * consumer, then we can tell the producer to block and wait for the
          * consumer to become active. The option is a boolean type.
          */
-        private Boolean block;
+        public DirectVmProducer block(boolean block) {
+            this.block = block;
+            return (DirectVmProducer) this;
+        }
+
         /**
          * Whether the producer should fail by throwing an exception, when
          * sending to a Direct-VM endpoint with no active consumers. The option
          * is a boolean type.
          */
-        private Boolean failIfNoConsumers;
+        public DirectVmProducer failIfNoConsumers(boolean failIfNoConsumers) {
+            this.failIfNoConsumers = failIfNoConsumers;
+            return (DirectVmProducer) this;
+        }
+
         /**
          * The timeout value to use if block is enabled. The option is a long
          * type.
          */
-        private Long timeout;
+        public DirectVmProducer timeout(long timeout) {
+            this.timeout = timeout;
+            return (DirectVmProducer) this;
+        }
+
         /**
          * Sets a HeaderFilterStrategy that will only be applied on producer
          * endpoints (on both directions: request and response). Default value:
          * none. The option is a org.apache.camel.spi.HeaderFilterStrategy type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public DirectVmProducer headerFilterStrategy(
+                HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (DirectVmProducer) this;
+        }
 
         public Boolean getBlock() {
             return block;

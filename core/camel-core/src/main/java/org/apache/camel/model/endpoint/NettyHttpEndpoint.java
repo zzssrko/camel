@@ -34,26 +34,92 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class NettyHttpEndpoint {
 
 
-    public static class NettyHttpCommon extends EndpointConfiguration {
+    public static class NettyHttpCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String protocol;
+        private String host;
+        private Integer port;
+        private String path;
+        private Boolean bridgeEndpoint;
+        private Boolean disconnect;
+        private Boolean keepAlive;
+        private Boolean reuseAddress;
+        private Boolean reuseChannel;
+        private Boolean sync;
+        private Boolean tcpNoDelay;
+        private Boolean allowSerializedHeaders;
+        private Object channelGroup;
+        private Object configuration;
+        private Boolean disableStreamCache;
+        private HeaderFilterStrategy headerFilterStrategy;
+        private Boolean nativeTransport;
+        private Object nettyHttpBinding;
+        private Map<String, Object> options;
+        private Integer receiveBufferSize;
+        private Integer receiveBufferSizePredictor;
+        private Integer sendBufferSize;
+        private Boolean transferException;
+        private Boolean transferExchange;
+        private Integer workerCount;
+        private Object workerGroup;
+        @Deprecated
+        private Object decoder;
+        private List<Object> decoders;
+        @Deprecated
+        private Object encoder;
+        private List<Object> encoders;
+        private String enabledProtocols;
+        private File keyStoreFile;
+        private String keyStoreFormat;
+        private String keyStoreResource;
+        private String passphrase;
+        private String securityProvider;
+        private Boolean ssl;
+        private Boolean sslClientCertHeaders;
+        private Object sslContextParameters;
+        private Object sslHandler;
+        private File trustStoreFile;
+        private String trustStoreResource;
+        private Boolean basicPropertyBinding;
+        private Object bootstrapConfiguration;
+        private Boolean synchronous;
+
         /**
          * The protocol to use which is either http, https or proxy - a consumer
          * only option. The option is a java.lang.String type.
          */
-        private String protocol;
+        public T protocol(String protocol) {
+            this.protocol = protocol;
+            return (T) this;
+        }
+
         /**
          * The local hostname such as localhost, or 0.0.0.0 when being a
          * consumer. The remote HTTP server hostname when using producer. The
          * option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * The host port number. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Resource path. The option is a java.lang.String type.
          */
-        private String path;
+        public T path(String path) {
+            this.path = path;
+            return (T) this;
+        }
+
         /**
          * If the option is true, the producer will ignore the Exchange.HTTP_URI
          * header, and use the endpoint's URI for request. You may also set the
@@ -63,23 +129,39 @@ public class NettyHttpEndpoint {
          * Exchange.SKIP_GZIP_ENCODING and Exchange.SKIP_WWW_FORM_URLENCODED
          * headers to the consumed exchange). The option is a boolean type.
          */
-        private Boolean bridgeEndpoint;
+        public T bridgeEndpoint(boolean bridgeEndpoint) {
+            this.bridgeEndpoint = bridgeEndpoint;
+            return (T) this;
+        }
+
         /**
          * Whether or not to disconnect(close) from Netty Channel right after
          * use. Can be used for both consumer and producer. The option is a
          * boolean type.
          */
-        private Boolean disconnect;
+        public T disconnect(boolean disconnect) {
+            this.disconnect = disconnect;
+            return (T) this;
+        }
+
         /**
          * Setting to ensure socket is not closed due to inactivity. The option
          * is a boolean type.
          */
-        private Boolean keepAlive;
+        public T keepAlive(boolean keepAlive) {
+            this.keepAlive = keepAlive;
+            return (T) this;
+        }
+
         /**
          * Setting to facilitate socket multiplexing. The option is a boolean
          * type.
          */
-        private Boolean reuseAddress;
+        public T reuseAddress(boolean reuseAddress) {
+            this.reuseAddress = reuseAddress;
+            return (T) this;
+        }
+
         /**
          * This option allows producers and consumers (in client mode) to reuse
          * the same Netty Channel for the lifecycle of processing the Exchange.
@@ -92,35 +174,59 @@ public class NettyHttpEndpoint {
          * channel during routing and use it as well. The option is a boolean
          * type.
          */
-        private Boolean reuseChannel;
+        public T reuseChannel(boolean reuseChannel) {
+            this.reuseChannel = reuseChannel;
+            return (T) this;
+        }
+
         /**
          * Setting to set endpoint as one-way or request-response. The option is
          * a boolean type.
          */
-        private Boolean sync;
+        public T sync(boolean sync) {
+            this.sync = sync;
+            return (T) this;
+        }
+
         /**
          * Setting to improve TCP protocol performance. The option is a boolean
          * type.
          */
-        private Boolean tcpNoDelay;
+        public T tcpNoDelay(boolean tcpNoDelay) {
+            this.tcpNoDelay = tcpNoDelay;
+            return (T) this;
+        }
+
         /**
          * Only used for TCP when transferExchange is true. When set to true,
          * serializable objects in headers and properties will be added to the
          * exchange. Otherwise Camel will exclude any non-serializable objects
          * and log it at WARN level. The option is a boolean type.
          */
-        private Boolean allowSerializedHeaders;
+        public T allowSerializedHeaders(boolean allowSerializedHeaders) {
+            this.allowSerializedHeaders = allowSerializedHeaders;
+            return (T) this;
+        }
+
         /**
          * To use a explicit ChannelGroup. The option is a
          * io.netty.channel.group.ChannelGroup type.
          */
-        private Object channelGroup;
+        public T channelGroup(Object channelGroup) {
+            this.channelGroup = channelGroup;
+            return (T) this;
+        }
+
         /**
          * To use a custom configured NettyHttpConfiguration for configuring
          * this endpoint. The option is a
          * org.apache.camel.component.netty4.http.NettyHttpConfiguration type.
          */
-        private Object configuration;
+        public T configuration(Object configuration) {
+            this.configuration = configuration;
+            return (T) this;
+        }
+
         /**
          * Determines whether or not the raw input stream from Netty
          * HttpRequest#getContent() or HttpResponset#getContent() is cached or
@@ -139,13 +245,21 @@ public class NettyHttpEndpoint {
          * org.apache.camel.Exchange may not be able to read the Netty stream,
          * because Netty has closed it. The option is a boolean type.
          */
-        private Boolean disableStreamCache;
+        public T disableStreamCache(boolean disableStreamCache) {
+            this.disableStreamCache = disableStreamCache;
+            return (T) this;
+        }
+
         /**
          * To use a custom org.apache.camel.spi.HeaderFilterStrategy to filter
          * headers. The option is a org.apache.camel.spi.HeaderFilterStrategy
          * type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (T) this;
+        }
+
         /**
          * Whether to use native transport instead of NIO. Native transport
          * takes advantage of the host operating system and is only supported on
@@ -154,14 +268,22 @@ public class NettyHttpEndpoint {
          * http://netty.io/wiki/native-transports.html. The option is a boolean
          * type.
          */
-        private Boolean nativeTransport;
+        public T nativeTransport(boolean nativeTransport) {
+            this.nativeTransport = nativeTransport;
+            return (T) this;
+        }
+
         /**
          * To use a custom
          * org.apache.camel.component.netty4.http.NettyHttpBinding for binding
          * to/from Netty and Camel Message API. The option is a
          * org.apache.camel.component.netty4.http.NettyHttpBinding type.
          */
-        private Object nettyHttpBinding;
+        public T nettyHttpBinding(Object nettyHttpBinding) {
+            this.nettyHttpBinding = nettyHttpBinding;
+            return (T) this;
+        }
+
         /**
          * Allows to configure additional netty options using option. as prefix.
          * For example option.child.keepAlive=false to set the netty option
@@ -169,22 +291,38 @@ public class NettyHttpEndpoint {
          * options that can be used. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> options;
+        public T options(Map<String, Object> options) {
+            this.options = options;
+            return (T) this;
+        }
+
         /**
          * The TCP/UDP buffer sizes to be used during inbound communication.
          * Size is bytes. The option is a int type.
          */
-        private Integer receiveBufferSize;
+        public T receiveBufferSize(int receiveBufferSize) {
+            this.receiveBufferSize = receiveBufferSize;
+            return (T) this;
+        }
+
         /**
          * Configures the buffer size predictor. See details at Jetty
          * documentation and this mail thread. The option is a int type.
          */
-        private Integer receiveBufferSizePredictor;
+        public T receiveBufferSizePredictor(int receiveBufferSizePredictor) {
+            this.receiveBufferSizePredictor = receiveBufferSizePredictor;
+            return (T) this;
+        }
+
         /**
          * The TCP/UDP buffer sizes to be used during outbound communication.
          * Size is bytes. The option is a int type.
          */
-        private Integer sendBufferSize;
+        public T sendBufferSize(int sendBufferSize) {
+            this.sendBufferSize = sendBufferSize;
+            return (T) this;
+        }
+
         /**
          * If enabled and an Exchange failed processing on the consumer side,
          * and if the caused Exception was send back serialized in the response
@@ -196,7 +334,11 @@ public class NettyHttpEndpoint {
          * data from the request to Java and that can be a potential security
          * risk. The option is a boolean type.
          */
-        private Boolean transferException;
+        public T transferException(boolean transferException) {
+            this.transferException = transferException;
+            return (T) this;
+        }
+
         /**
          * Only used for TCP. You can transfer the exchange over the wire
          * instead of just the body. The following fields are transferred: In
@@ -205,14 +347,22 @@ public class NettyHttpEndpoint {
          * objects are serializable. Camel will exclude any non-serializable
          * objects and log it at WARN level. The option is a boolean type.
          */
-        private Boolean transferExchange;
+        public T transferExchange(boolean transferExchange) {
+            this.transferExchange = transferExchange;
+            return (T) this;
+        }
+
         /**
          * When netty works on nio mode, it uses default workerCount parameter
          * from Netty, which is cpu_core_threads x 2. User can use this
          * operation to override the default workerCount from Netty. The option
          * is a int type.
          */
-        private Integer workerCount;
+        public T workerCount(int workerCount) {
+            this.workerCount = workerCount;
+            return (T) this;
+        }
+
         /**
          * To use a explicit EventLoopGroup as the boss thread pool. For example
          * to share a thread pool with multiple consumers or producers. By
@@ -220,118 +370,197 @@ public class NettyHttpEndpoint {
          * cpu count core threads. The option is a
          * io.netty.channel.EventLoopGroup type.
          */
-        private Object workerGroup;
+        public T workerGroup(Object workerGroup) {
+            this.workerGroup = workerGroup;
+            return (T) this;
+        }
+
         /**
          * To use a single decoder. This options is deprecated use encoders
          * instead. The option is a io.netty.channel.ChannelHandler type.
          */
         @Deprecated
-        private Object decoder;
+        public T decoder(Object decoder) {
+            this.decoder = decoder;
+            return (T) this;
+        }
+
         /**
          * A list of decoders to be used. You can use a String which have values
          * separated by comma, and have the values be looked up in the Registry.
          * Just remember to prefix the value with # so Camel knows it should
          * lookup. The option is a java.lang.String type.
          */
-        private List<Object> decoders;
+        public T decoders(List<Object> decoders) {
+            this.decoders = decoders;
+            return (T) this;
+        }
+
         /**
          * To use a single encoder. This options is deprecated use encoders
          * instead. The option is a io.netty.channel.ChannelHandler type.
          */
         @Deprecated
-        private Object encoder;
+        public T encoder(Object encoder) {
+            this.encoder = encoder;
+            return (T) this;
+        }
+
         /**
          * A list of encoders to be used. You can use a String which have values
          * separated by comma, and have the values be looked up in the Registry.
          * Just remember to prefix the value with # so Camel knows it should
          * lookup. The option is a java.lang.String type.
          */
-        private List<Object> encoders;
+        public T encoders(List<Object> encoders) {
+            this.encoders = encoders;
+            return (T) this;
+        }
+
         /**
          * Which protocols to enable when using SSL. The option is a
          * java.lang.String type.
          */
-        private String enabledProtocols;
+        public T enabledProtocols(String enabledProtocols) {
+            this.enabledProtocols = enabledProtocols;
+            return (T) this;
+        }
+
         /**
          * Client side certificate keystore to be used for encryption. The
          * option is a java.io.File type.
          */
-        private File keyStoreFile;
+        public T keyStoreFile(File keyStoreFile) {
+            this.keyStoreFile = keyStoreFile;
+            return (T) this;
+        }
+
         /**
          * Keystore format to be used for payload encryption. Defaults to JKS if
          * not set. The option is a java.lang.String type.
          */
-        private String keyStoreFormat;
+        public T keyStoreFormat(String keyStoreFormat) {
+            this.keyStoreFormat = keyStoreFormat;
+            return (T) this;
+        }
+
         /**
          * Client side certificate keystore to be used for encryption. Is loaded
          * by default from classpath, but you can prefix with classpath:, file:,
          * or http: to load the resource from different systems. The option is a
          * java.lang.String type.
          */
-        private String keyStoreResource;
+        public T keyStoreResource(String keyStoreResource) {
+            this.keyStoreResource = keyStoreResource;
+            return (T) this;
+        }
+
         /**
          * Password setting to use in order to encrypt/decrypt payloads sent
          * using SSH. The option is a java.lang.String type.
          */
-        private String passphrase;
+        public T passphrase(String passphrase) {
+            this.passphrase = passphrase;
+            return (T) this;
+        }
+
         /**
          * Security provider to be used for payload encryption. Defaults to
          * SunX509 if not set. The option is a java.lang.String type.
          */
-        private String securityProvider;
+        public T securityProvider(String securityProvider) {
+            this.securityProvider = securityProvider;
+            return (T) this;
+        }
+
         /**
          * Setting to specify whether SSL encryption is applied to this
          * endpoint. The option is a boolean type.
          */
-        private Boolean ssl;
+        public T ssl(boolean ssl) {
+            this.ssl = ssl;
+            return (T) this;
+        }
+
         /**
          * When enabled and in SSL mode, then the Netty consumer will enrich the
          * Camel Message with headers having information about the client
          * certificate such as subject name, issuer name, serial number, and the
          * valid date range. The option is a boolean type.
          */
-        private Boolean sslClientCertHeaders;
+        public T sslClientCertHeaders(boolean sslClientCertHeaders) {
+            this.sslClientCertHeaders = sslClientCertHeaders;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
+
         /**
          * Reference to a class that could be used to return an SSL Handler. The
          * option is a io.netty.handler.ssl.SslHandler type.
          */
-        private Object sslHandler;
+        public T sslHandler(Object sslHandler) {
+            this.sslHandler = sslHandler;
+            return (T) this;
+        }
+
         /**
          * Server side certificate keystore to be used for encryption. The
          * option is a java.io.File type.
          */
-        private File trustStoreFile;
+        public T trustStoreFile(File trustStoreFile) {
+            this.trustStoreFile = trustStoreFile;
+            return (T) this;
+        }
+
         /**
          * Server side certificate keystore to be used for encryption. Is loaded
          * by default from classpath, but you can prefix with classpath:, file:,
          * or http: to load the resource from different systems. The option is a
          * java.lang.String type.
          */
-        private String trustStoreResource;
+        public T trustStoreResource(String trustStoreResource) {
+            this.trustStoreResource = trustStoreResource;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a custom configured NettyServerBootstrapConfiguration for
          * configuring this endpoint. The option is a
          * org.apache.camel.component.netty4.NettyServerBootstrapConfiguration
          * type.
          */
-        private Object bootstrapConfiguration;
+        public T bootstrapConfiguration(Object bootstrapConfiguration) {
+            this.bootstrapConfiguration = bootstrapConfiguration;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getProtocol() {
             return protocol;
@@ -700,20 +929,58 @@ public class NettyHttpEndpoint {
         }
     }
 
-    public static class NettyHttpConsumer extends NettyHttpCommon {
+    public static class NettyHttpConsumer
+            extends
+                NettyHttpCommon<NettyHttpConsumer> {
+        private Boolean matchOnUriPrefix;
+        private Boolean send503whenSuspended;
+        private Integer backlog;
+        private Integer bossCount;
+        private Object bossGroup;
+        private Integer chunkedMaxContentLength;
+        private Boolean compression;
+        private Boolean disconnectOnNoReply;
+        private String httpMethodRestrict;
+        private Boolean mapHeaders;
+        private Integer maxHeaderSize;
+        private Object nettyServerBootstrapFactory;
+        private Object nettySharedHttpServer;
+        private LoggingLevel noReplyLogLevel;
+        private LoggingLevel serverClosedChannelExceptionCaughtLogLevel;
+        private LoggingLevel serverExceptionCaughtLogLevel;
+        private Object serverInitializerFactory;
+        private Boolean traceEnabled;
+        private Boolean urlDecodeHeaders;
+        private Boolean usingExecutorService;
+        private Boolean needClientAuth;
+        private Object securityConfiguration;
+        private Map<String, Object> securityOptions;
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Whether or not Camel should try to find a target consumer by matching
          * the URI prefix if no exact match is found. The option is a boolean
          * type.
          */
-        private Boolean matchOnUriPrefix;
+        public NettyHttpConsumer matchOnUriPrefix(boolean matchOnUriPrefix) {
+            this.matchOnUriPrefix = matchOnUriPrefix;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * Whether to send back HTTP status code 503 when the consumer has been
          * suspended. If the option is false then the Netty Acceptor is unbound
          * when the consumer is suspended, so clients cannot connect anymore.
          * The option is a boolean type.
          */
-        private Boolean send503whenSuspended;
+        public NettyHttpConsumer send503whenSuspended(
+                boolean send503whenSuspended) {
+            this.send503whenSuspended = send503whenSuspended;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * Allows to configure a backlog for netty consumer (server). Note the
          * backlog is just a best effort depending on the OS. Setting this
@@ -721,41 +988,70 @@ public class NettyHttpEndpoint {
          * long the accept queue can be If this option is not configured, then
          * the backlog depends on OS setting. The option is a int type.
          */
-        private Integer backlog;
+        public NettyHttpConsumer backlog(int backlog) {
+            this.backlog = backlog;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * When netty works on nio mode, it uses default bossCount parameter
          * from Netty, which is 1. User can use this operation to override the
          * default bossCount from Netty. The option is a int type.
          */
-        private Integer bossCount;
+        public NettyHttpConsumer bossCount(int bossCount) {
+            this.bossCount = bossCount;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * Set the BossGroup which could be used for handling the new connection
          * of the server side across the NettyEndpoint. The option is a
          * io.netty.channel.EventLoopGroup type.
          */
-        private Object bossGroup;
+        public NettyHttpConsumer bossGroup(Object bossGroup) {
+            this.bossGroup = bossGroup;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * Value in bytes the max content length per chunked frame received on
          * the Netty HTTP server. The option is a int type.
          */
-        private Integer chunkedMaxContentLength;
+        public NettyHttpConsumer chunkedMaxContentLength(
+                int chunkedMaxContentLength) {
+            this.chunkedMaxContentLength = chunkedMaxContentLength;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * Allow using gzip/deflate for compression on the Netty HTTP server if
          * the client supports it from the HTTP headers. The option is a boolean
          * type.
          */
-        private Boolean compression;
+        public NettyHttpConsumer compression(boolean compression) {
+            this.compression = compression;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * If sync is enabled then this option dictates NettyConsumer if it
          * should disconnect where there is no reply to send back. The option is
          * a boolean type.
          */
-        private Boolean disconnectOnNoReply;
+        public NettyHttpConsumer disconnectOnNoReply(boolean disconnectOnNoReply) {
+            this.disconnectOnNoReply = disconnectOnNoReply;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * To disable HTTP methods on the Netty HTTP consumer. You can specify
          * multiple separated by comma. The option is a java.lang.String type.
          */
-        private String httpMethodRestrict;
+        public NettyHttpConsumer httpMethodRestrict(String httpMethodRestrict) {
+            this.httpMethodRestrict = httpMethodRestrict;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * If this option is enabled, then during binding from Netty to Camel
          * Message then the headers will be mapped as well (eg added as header
@@ -766,31 +1062,53 @@ public class NettyHttpEndpoint {
          * io.netty.handler.codec.http.HttpRequest instance. The option is a
          * boolean type.
          */
-        private Boolean mapHeaders;
+        public NettyHttpConsumer mapHeaders(boolean mapHeaders) {
+            this.mapHeaders = mapHeaders;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * The maximum length of all headers. If the sum of the length of each
          * header exceeds this value, a
          * io.netty.handler.codec.TooLongFrameException will be raised. The
          * option is a int type.
          */
-        private Integer maxHeaderSize;
+        public NettyHttpConsumer maxHeaderSize(int maxHeaderSize) {
+            this.maxHeaderSize = maxHeaderSize;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * To use a custom NettyServerBootstrapFactory. The option is a
          * org.apache.camel.component.netty4.NettyServerBootstrapFactory type.
          */
-        private Object nettyServerBootstrapFactory;
+        public NettyHttpConsumer nettyServerBootstrapFactory(
+                Object nettyServerBootstrapFactory) {
+            this.nettyServerBootstrapFactory = nettyServerBootstrapFactory;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * To use a shared Netty HTTP server. See Netty HTTP Server Example for
          * more details. The option is a
          * org.apache.camel.component.netty4.http.NettySharedHttpServer type.
          */
-        private Object nettySharedHttpServer;
+        public NettyHttpConsumer nettySharedHttpServer(
+                Object nettySharedHttpServer) {
+            this.nettySharedHttpServer = nettySharedHttpServer;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * If sync is enabled this option dictates NettyConsumer which logging
          * level to use when logging a there is no reply to send back. The
          * option is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel noReplyLogLevel;
+        public NettyHttpConsumer noReplyLogLevel(LoggingLevel noReplyLogLevel) {
+            this.noReplyLogLevel = noReplyLogLevel;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * If the server (NettyConsumer) catches an
          * java.nio.channels.ClosedChannelException then its logged using this
@@ -799,23 +1117,42 @@ public class NettyHttpEndpoint {
          * of closed exceptions in the Netty server. The option is a
          * org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel serverClosedChannelExceptionCaughtLogLevel;
+        public NettyHttpConsumer serverClosedChannelExceptionCaughtLogLevel(
+                LoggingLevel serverClosedChannelExceptionCaughtLogLevel) {
+            this.serverClosedChannelExceptionCaughtLogLevel = serverClosedChannelExceptionCaughtLogLevel;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * If the server (NettyConsumer) catches an exception then its logged
          * using this logging level. The option is a
          * org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel serverExceptionCaughtLogLevel;
+        public NettyHttpConsumer serverExceptionCaughtLogLevel(
+                LoggingLevel serverExceptionCaughtLogLevel) {
+            this.serverExceptionCaughtLogLevel = serverExceptionCaughtLogLevel;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * To use a custom ServerInitializerFactory. The option is a
          * org.apache.camel.component.netty4.ServerInitializerFactory type.
          */
-        private Object serverInitializerFactory;
+        public NettyHttpConsumer serverInitializerFactory(
+                Object serverInitializerFactory) {
+            this.serverInitializerFactory = serverInitializerFactory;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * Specifies whether to enable HTTP TRACE for this Netty HTTP consumer.
          * By default TRACE is turned off. The option is a boolean type.
          */
-        private Boolean traceEnabled;
+        public NettyHttpConsumer traceEnabled(boolean traceEnabled) {
+            this.traceEnabled = traceEnabled;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * If this option is enabled, then during binding from Netty to Camel
          * Message then the header values will be URL decoded (eg %20 will be a
@@ -826,17 +1163,30 @@ public class NettyHttpEndpoint {
          * would need to decode the headers accordingly to this option. The
          * option is a boolean type.
          */
-        private Boolean urlDecodeHeaders;
+        public NettyHttpConsumer urlDecodeHeaders(boolean urlDecodeHeaders) {
+            this.urlDecodeHeaders = urlDecodeHeaders;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * Whether to use ordered thread pool, to ensure events are processed
          * orderly on the same channel. The option is a boolean type.
          */
-        private Boolean usingExecutorService;
+        public NettyHttpConsumer usingExecutorService(
+                boolean usingExecutorService) {
+            this.usingExecutorService = usingExecutorService;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * Configures whether the server needs client authentication when using
          * SSL. The option is a boolean type.
          */
-        private Boolean needClientAuth;
+        public NettyHttpConsumer needClientAuth(boolean needClientAuth) {
+            this.needClientAuth = needClientAuth;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * Refers to a
          * org.apache.camel.component.netty4.http.NettyHttpSecurityConfiguration
@@ -844,13 +1194,23 @@ public class NettyHttpEndpoint {
          * org.apache.camel.component.netty4.http.NettyHttpSecurityConfiguration
          * type.
          */
-        private Object securityConfiguration;
+        public NettyHttpConsumer securityConfiguration(
+                Object securityConfiguration) {
+            this.securityConfiguration = securityConfiguration;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * To configure NettyHttpSecurityConfiguration using key/value pairs
          * from the map. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> securityOptions;
+        public NettyHttpConsumer securityOptions(
+                Map<String, Object> securityOptions) {
+            this.securityOptions = securityOptions;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -860,7 +1220,11 @@ public class NettyHttpEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public NettyHttpConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -868,12 +1232,20 @@ public class NettyHttpEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public NettyHttpConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (NettyHttpConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public NettyHttpConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (NettyHttpConsumer) this;
+        }
 
         public Boolean getMatchOnUriPrefix() {
             return matchOnUriPrefix;
@@ -1087,17 +1459,41 @@ public class NettyHttpEndpoint {
         }
     }
 
-    public static class NettyHttpProducer extends NettyHttpCommon {
+    public static class NettyHttpProducer
+            extends
+                NettyHttpCommon<NettyHttpProducer> {
+        private Integer connectTimeout;
+        private Object cookieHandler;
+        private Long requestTimeout;
+        private Boolean throwExceptionOnFailure;
+        private Object clientInitializerFactory;
+        private Boolean lazyChannelCreation;
+        private String okStatusCodeRange;
+        private Boolean producerPoolEnabled;
+        private Integer producerPoolMaxActive;
+        private Integer producerPoolMaxIdle;
+        private Long producerPoolMinEvictableIdle;
+        private Integer producerPoolMinIdle;
+        private Boolean useRelativePath;
+
         /**
          * Time to wait for a socket connection to be available. Value is in
          * milliseconds. The option is a int type.
          */
-        private Integer connectTimeout;
+        public NettyHttpProducer connectTimeout(int connectTimeout) {
+            this.connectTimeout = connectTimeout;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
          */
-        private Object cookieHandler;
+        public NettyHttpProducer cookieHandler(Object cookieHandler) {
+            this.cookieHandler = cookieHandler;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * Allows to use a timeout for the Netty producer when calling a remote
          * server. By default no timeout is in use. The value is in milli
@@ -1105,25 +1501,43 @@ public class NettyHttpEndpoint {
          * Netty's ReadTimeoutHandler to trigger the timeout. The option is a
          * long type.
          */
-        private Long requestTimeout;
+        public NettyHttpProducer requestTimeout(long requestTimeout) {
+            this.requestTimeout = requestTimeout;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * Option to disable throwing the HttpOperationFailedException in case
          * of failed responses from the remote server. This allows you to get
          * all responses regardless of the HTTP status code. The option is a
          * boolean type.
          */
-        private Boolean throwExceptionOnFailure;
+        public NettyHttpProducer throwExceptionOnFailure(
+                boolean throwExceptionOnFailure) {
+            this.throwExceptionOnFailure = throwExceptionOnFailure;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * To use a custom ClientInitializerFactory. The option is a
          * org.apache.camel.component.netty4.ClientInitializerFactory type.
          */
-        private Object clientInitializerFactory;
+        public NettyHttpProducer clientInitializerFactory(
+                Object clientInitializerFactory) {
+            this.clientInitializerFactory = clientInitializerFactory;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * Channels can be lazily created to avoid exceptions, if the remote
          * server is not up and running when the Camel producer is started. The
          * option is a boolean type.
          */
-        private Boolean lazyChannelCreation;
+        public NettyHttpProducer lazyChannelCreation(boolean lazyChannelCreation) {
+            this.lazyChannelCreation = lazyChannelCreation;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * The status codes which are considered a success response. The values
          * are inclusive. Multiple ranges can be defined, separated by comma,
@@ -1131,7 +1545,11 @@ public class NettyHttpEndpoint {
          * from-to with the dash included. The default range is 200-299. The
          * option is a java.lang.String type.
          */
-        private String okStatusCodeRange;
+        public NettyHttpProducer okStatusCodeRange(String okStatusCodeRange) {
+            this.okStatusCodeRange = okStatusCodeRange;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * Whether producer pool is enabled or not. Important: If you turn this
          * off then a single shared connection is used for the producer, also if
@@ -1146,35 +1564,59 @@ public class NettyHttpEndpoint {
          * correlationManager option for more details. The option is a boolean
          * type.
          */
-        private Boolean producerPoolEnabled;
+        public NettyHttpProducer producerPoolEnabled(boolean producerPoolEnabled) {
+            this.producerPoolEnabled = producerPoolEnabled;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * Sets the cap on the number of objects that can be allocated by the
          * pool (checked out to clients, or idle awaiting checkout) at a given
          * time. Use a negative value for no limit. The option is a int type.
          */
-        private Integer producerPoolMaxActive;
+        public NettyHttpProducer producerPoolMaxActive(int producerPoolMaxActive) {
+            this.producerPoolMaxActive = producerPoolMaxActive;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * Sets the cap on the number of idle instances in the pool. The option
          * is a int type.
          */
-        private Integer producerPoolMaxIdle;
+        public NettyHttpProducer producerPoolMaxIdle(int producerPoolMaxIdle) {
+            this.producerPoolMaxIdle = producerPoolMaxIdle;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * Sets the minimum amount of time (value in millis) an object may sit
          * idle in the pool before it is eligible for eviction by the idle
          * object evictor. The option is a long type.
          */
-        private Long producerPoolMinEvictableIdle;
+        public NettyHttpProducer producerPoolMinEvictableIdle(
+                long producerPoolMinEvictableIdle) {
+            this.producerPoolMinEvictableIdle = producerPoolMinEvictableIdle;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * Sets the minimum number of instances allowed in the producer pool
          * before the evictor thread (if active) spawns new objects. The option
          * is a int type.
          */
-        private Integer producerPoolMinIdle;
+        public NettyHttpProducer producerPoolMinIdle(int producerPoolMinIdle) {
+            this.producerPoolMinIdle = producerPoolMinIdle;
+            return (NettyHttpProducer) this;
+        }
+
         /**
          * Sets whether to use a relative path in HTTP requests. The option is a
          * boolean type.
          */
-        private Boolean useRelativePath;
+        public NettyHttpProducer useRelativePath(boolean useRelativePath) {
+            this.useRelativePath = useRelativePath;
+            return (NettyHttpProducer) this;
+        }
 
         public Integer getConnectTimeout() {
             return connectTimeout;

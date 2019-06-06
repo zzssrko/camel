@@ -30,22 +30,48 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SparkEndpoint {
 
 
-    public static class SparkCommon extends EndpointConfiguration {
+    public static class SparkCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String verb;
+        private String path;
+        private String accept;
+        private Boolean disableStreamCache;
+        private Boolean mapHeaders;
+        private Boolean transferException;
+        private Boolean urlDecodeHeaders;
+        private Boolean basicPropertyBinding;
+        private Boolean matchOnUriPrefix;
+        private Object sparkBinding;
+        private Boolean synchronous;
+
         /**
          * get, post, put, patch, delete, head, trace, connect, or options. The
          * option is a java.lang.String type.
          */
-        private String verb;
+        public T verb(String verb) {
+            this.verb = verb;
+            return (T) this;
+        }
+
         /**
          * The content path which support Spark syntax. The option is a
          * java.lang.String type.
          */
-        private String path;
+        public T path(String path) {
+            this.path = path;
+            return (T) this;
+        }
+
         /**
          * Accept type such as: 'text/xml', or 'application/json'. By default we
          * accept all kinds of types. The option is a java.lang.String type.
          */
-        private String accept;
+        public T accept(String accept) {
+            this.accept = accept;
+            return (T) this;
+        }
+
         /**
          * Determines whether or not the raw input stream from Spark
          * HttpRequest#getContent() is cached or not (Camel will read the stream
@@ -59,7 +85,11 @@ public class SparkEndpoint {
          * would need manually to reset the reader index on the Spark raw
          * stream. The option is a boolean type.
          */
-        private Boolean disableStreamCache;
+        public T disableStreamCache(boolean disableStreamCache) {
+            this.disableStreamCache = disableStreamCache;
+            return (T) this;
+        }
+
         /**
          * If this option is enabled, then during binding from Spark to Camel
          * Message then the headers will be mapped as well (eg added as header
@@ -69,7 +99,11 @@ public class SparkEndpoint {
          * method getRequest() that returns the Spark HTTP request instance. The
          * option is a boolean type.
          */
-        private Boolean mapHeaders;
+        public T mapHeaders(boolean mapHeaders) {
+            this.mapHeaders = mapHeaders;
+            return (T) this;
+        }
+
         /**
          * If enabled and an Exchange failed processing on the consumer side,
          * and if the caused Exception was send back serialized in the response
@@ -78,36 +112,59 @@ public class SparkEndpoint {
          * deserialize the incoming data from the request to Java and that can
          * be a potential security risk. The option is a boolean type.
          */
-        private Boolean transferException;
+        public T transferException(boolean transferException) {
+            this.transferException = transferException;
+            return (T) this;
+        }
+
         /**
          * If this option is enabled, then during binding from Spark to Camel
          * Message then the header values will be URL decoded (eg %20 will be a
          * space character.). The option is a boolean type.
          */
-        private Boolean urlDecodeHeaders;
+        public T urlDecodeHeaders(boolean urlDecodeHeaders) {
+            this.urlDecodeHeaders = urlDecodeHeaders;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Whether or not the consumer should try to find a target consumer by
          * matching the URI prefix if no exact match is found. The option is a
          * boolean type.
          */
-        private Boolean matchOnUriPrefix;
+        public T matchOnUriPrefix(boolean matchOnUriPrefix) {
+            this.matchOnUriPrefix = matchOnUriPrefix;
+            return (T) this;
+        }
+
         /**
          * To use a custom SparkBinding to map to/from Camel message. The option
          * is a org.apache.camel.component.sparkrest.SparkBinding type.
          */
-        private Object sparkBinding;
+        public T sparkBinding(Object sparkBinding) {
+            this.sparkBinding = sparkBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getVerb() {
             return verb;
@@ -198,7 +255,11 @@ public class SparkEndpoint {
         }
     }
 
-    public static class SparkConsumer extends SparkCommon {
+    public static class SparkConsumer extends SparkCommon<SparkConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -208,7 +269,11 @@ public class SparkEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public SparkConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (SparkConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -216,12 +281,19 @@ public class SparkEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public SparkConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (SparkConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public SparkConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (SparkConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -248,6 +320,6 @@ public class SparkEndpoint {
         }
     }
 
-    public static class SparkProducer extends SparkCommon {
+    public static class SparkProducer extends SparkCommon<SparkProducer> {
     }
 }

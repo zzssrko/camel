@@ -38,22 +38,59 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class MailEndpoint {
 
 
-    public static class MailCommon extends EndpointConfiguration {
+    public static class MailCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private Properties additionalJavaMailProperties;
+        private String alternativeBodyHeader;
+        private Object attachmentsContentTransferEncodingResolver;
+        private Boolean basicPropertyBinding;
+        private Object binding;
+        private Integer connectionTimeout;
+        private String contentType;
+        private Object contentTypeResolver;
+        private Boolean debugMode;
+        private HeaderFilterStrategy headerFilterStrategy;
+        private Boolean ignoreUnsupportedCharset;
+        private Boolean ignoreUriScheme;
+        private Object session;
+        private Boolean synchronous;
+        private Boolean useInlineAttachments;
+        private Boolean dummyTrustManager;
+        private String password;
+        private Object sslContextParameters;
+        private String username;
+
         /**
          * The mail server host name. The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * The port number of the mail server. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Sets additional java mail properties, that will append/override any
          * default properties that is set based on all the other options. This
          * is useful if you need to add some special options but want to keep
          * the others as is. The option is a java.util.Properties type.
          */
-        private Properties additionalJavaMailProperties;
+        public T additionalJavaMailProperties(
+                Properties additionalJavaMailProperties) {
+            this.additionalJavaMailProperties = additionalJavaMailProperties;
+            return (T) this;
+        }
+
         /**
          * Specifies the key to an IN message header that contains an
          * alternative email body. For example, if you send emails in text/html
@@ -61,51 +98,88 @@ public class MailEndpoint {
          * email clients, set the alternative mail body with this key as a
          * header. The option is a java.lang.String type.
          */
-        private String alternativeBodyHeader;
+        public T alternativeBodyHeader(String alternativeBodyHeader) {
+            this.alternativeBodyHeader = alternativeBodyHeader;
+            return (T) this;
+        }
+
         /**
          * To use a custom AttachmentsContentTransferEncodingResolver to resolve
          * what content-type-encoding to use for attachments. The option is a
          * org.apache.camel.component.mail.AttachmentsContentTransferEncodingResolver type.
          */
-        private Object attachmentsContentTransferEncodingResolver;
+        public T attachmentsContentTransferEncodingResolver(
+                Object attachmentsContentTransferEncodingResolver) {
+            this.attachmentsContentTransferEncodingResolver = attachmentsContentTransferEncodingResolver;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets the binding used to convert from a Camel message to and from a
          * Mail message. The option is a
          * org.apache.camel.component.mail.MailBinding type.
          */
-        private Object binding;
+        public T binding(Object binding) {
+            this.binding = binding;
+            return (T) this;
+        }
+
         /**
          * The connection timeout in milliseconds. The option is a int type.
          */
-        private Integer connectionTimeout;
+        public T connectionTimeout(int connectionTimeout) {
+            this.connectionTimeout = connectionTimeout;
+            return (T) this;
+        }
+
         /**
          * The mail message content type. Use text/html for HTML mails. The
          * option is a java.lang.String type.
          */
-        private String contentType;
+        public T contentType(String contentType) {
+            this.contentType = contentType;
+            return (T) this;
+        }
+
         /**
          * Resolver to determine Content-Type for file attachments. The option
          * is a org.apache.camel.component.mail.ContentTypeResolver type.
          */
-        private Object contentTypeResolver;
+        public T contentTypeResolver(Object contentTypeResolver) {
+            this.contentTypeResolver = contentTypeResolver;
+            return (T) this;
+        }
+
         /**
          * Enable debug mode on the underlying mail framework. The SUN Mail
          * framework logs the debug messages to System.out by default. The
          * option is a boolean type.
          */
-        private Boolean debugMode;
+        public T debugMode(boolean debugMode) {
+            this.debugMode = debugMode;
+            return (T) this;
+        }
+
         /**
          * To use a custom org.apache.camel.spi.HeaderFilterStrategy to filter
          * headers. The option is a org.apache.camel.spi.HeaderFilterStrategy
          * type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (T) this;
+        }
+
         /**
          * Option to let Camel ignore unsupported charset in the local JVM when
          * sending mails. If the charset is unsupported then charset=XXX (where
@@ -113,7 +187,11 @@ public class MailEndpoint {
          * content-type and it relies on the platform default instead. The
          * option is a boolean type.
          */
-        private Boolean ignoreUnsupportedCharset;
+        public T ignoreUnsupportedCharset(boolean ignoreUnsupportedCharset) {
+            this.ignoreUnsupportedCharset = ignoreUnsupportedCharset;
+            return (T) this;
+        }
+
         /**
          * Option to let Camel ignore unsupported charset in the local JVM when
          * sending mails. If the charset is unsupported then charset=XXX (where
@@ -121,7 +199,11 @@ public class MailEndpoint {
          * content-type and it relies on the platform default instead. The
          * option is a boolean type.
          */
-        private Boolean ignoreUriScheme;
+        public T ignoreUriScheme(boolean ignoreUriScheme) {
+            this.ignoreUriScheme = ignoreUriScheme;
+            return (T) this;
+        }
+
         /**
          * Specifies the mail session that camel should use for all mail
          * interactions. Useful in scenarios where mail sessions are created and
@@ -129,37 +211,64 @@ public class MailEndpoint {
          * is not specified, Camel automatically creates the mail session for
          * you. The option is a javax.mail.Session type.
          */
-        private Object session;
+        public T session(Object session) {
+            this.session = session;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Whether to use disposition inline or attachment. The option is a
          * boolean type.
          */
-        private Boolean useInlineAttachments;
+        public T useInlineAttachments(boolean useInlineAttachments) {
+            this.useInlineAttachments = useInlineAttachments;
+            return (T) this;
+        }
+
         /**
          * To use a dummy security setting for trusting all certificates. Should
          * only be used for development mode, and not production. The option is
          * a boolean type.
          */
-        private Boolean dummyTrustManager;
+        public T dummyTrustManager(boolean dummyTrustManager) {
+            this.dummyTrustManager = dummyTrustManager;
+            return (T) this;
+        }
+
         /**
          * The password for login. The option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
+
         /**
          * The username for login. The option is a java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -333,7 +442,45 @@ public class MailEndpoint {
         }
     }
 
-    public static class MailConsumer extends MailCommon {
+    public static class MailConsumer extends MailCommon<MailConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean closeFolder;
+        private String copyTo;
+        private Boolean delete;
+        private Boolean disconnect;
+        private Boolean handleFailedMessage;
+        private Integer maxMessagesPerPoll;
+        private Boolean mimeDecodeHeaders;
+        private Boolean peek;
+        private Boolean sendEmptyMessageWhenIdle;
+        private Boolean skipFailedMessage;
+        private Boolean unseen;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private Integer fetchSize;
+        private String folderName;
+        private Object mailUidGenerator;
+        private Boolean mapMailMessage;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Object postProcessAction;
+        private IdempotentRepository idempotentRepository;
+        private Boolean idempotentRepositoryRemoveOnCommit;
+        private Object searchTerm;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+        private Object[] sortTerm;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -343,21 +490,33 @@ public class MailEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public MailConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (MailConsumer) this;
+        }
+
         /**
          * Whether the consumer should close the folder after polling. Setting
          * this option to false and having disconnect=false as well, then the
          * consumer keep the folder open between polls. The option is a boolean
          * type.
          */
-        private Boolean closeFolder;
+        public MailConsumer closeFolder(boolean closeFolder) {
+            this.closeFolder = closeFolder;
+            return (MailConsumer) this;
+        }
+
         /**
          * After processing a mail message, it can be copied to a mail folder
          * with the given name. You can override this configuration value, with
          * a header with the key copyTo, allowing you to copy messages to folder
          * names configured at runtime. The option is a java.lang.String type.
          */
-        private String copyTo;
+        public MailConsumer copyTo(String copyTo) {
+            this.copyTo = copyTo;
+            return (MailConsumer) this;
+        }
+
         /**
          * Deletes the messages after they have been processed. This is done by
          * setting the DELETED flag on the mail message. If false, the SEEN flag
@@ -365,12 +524,20 @@ public class MailEndpoint {
          * option by setting a header with the key delete to determine if the
          * mail should be deleted or not. The option is a boolean type.
          */
-        private Boolean delete;
+        public MailConsumer delete(boolean delete) {
+            this.delete = delete;
+            return (MailConsumer) this;
+        }
+
         /**
          * Whether the consumer should disconnect after polling. If enabled this
          * forces Camel to connect on each poll. The option is a boolean type.
          */
-        private Boolean disconnect;
+        public MailConsumer disconnect(boolean disconnect) {
+            this.disconnect = disconnect;
+            return (MailConsumer) this;
+        }
+
         /**
          * If the mail consumer cannot retrieve a given mail message, then this
          * option allows to handle the caused exception by the consumer's error
@@ -380,7 +547,11 @@ public class MailEndpoint {
          * mails from the batch would be able to be routed by Camel. The option
          * is a boolean type.
          */
-        private Boolean handleFailedMessage;
+        public MailConsumer handleFailedMessage(boolean handleFailedMessage) {
+            this.handleFailedMessage = handleFailedMessage;
+            return (MailConsumer) this;
+        }
+
         /**
          * Specifies the maximum number of messages to gather per poll. By
          * default, no maximum is set. Can be used to set a limit of e.g. 1000
@@ -388,12 +559,20 @@ public class MailEndpoint {
          * Set a value of 0 or negative to disable this option. The option is a
          * int type.
          */
-        private Integer maxMessagesPerPoll;
+        public MailConsumer maxMessagesPerPoll(int maxMessagesPerPoll) {
+            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            return (MailConsumer) this;
+        }
+
         /**
          * This option enables transparent MIME decoding and unfolding for mail
          * headers. The option is a boolean type.
          */
-        private Boolean mimeDecodeHeaders;
+        public MailConsumer mimeDecodeHeaders(boolean mimeDecodeHeaders) {
+            this.mimeDecodeHeaders = mimeDecodeHeaders;
+            return (MailConsumer) this;
+        }
+
         /**
          * Will mark the javax.mail.Message as peeked before processing the mail
          * message. This applies to IMAPMessage messages types only. By using
@@ -401,13 +580,22 @@ public class MailEndpoint {
          * which allows us to rollback the mail message if there is an error
          * processing in Camel. The option is a boolean type.
          */
-        private Boolean peek;
+        public MailConsumer peek(boolean peek) {
+            this.peek = peek;
+            return (MailConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public MailConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (MailConsumer) this;
+        }
+
         /**
          * If the mail consumer cannot retrieve a given mail message, then this
          * option allows to skip the message and move on to retrieve the next
@@ -415,11 +603,19 @@ public class MailEndpoint {
          * exception and no mails from the batch would be able to be routed by
          * Camel. The option is a boolean type.
          */
-        private Boolean skipFailedMessage;
+        public MailConsumer skipFailedMessage(boolean skipFailedMessage) {
+            this.skipFailedMessage = skipFailedMessage;
+            return (MailConsumer) this;
+        }
+
         /**
          * Whether to limit by unseen mails only. The option is a boolean type.
          */
-        private Boolean unseen;
+        public MailConsumer unseen(boolean unseen) {
+            this.unseen = unseen;
+            return (MailConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -427,12 +623,20 @@ public class MailEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public MailConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (MailConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public MailConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (MailConsumer) this;
+        }
+
         /**
          * Sets the maximum number of messages to consume during a poll. This
          * can be used to avoid overloading a mail server, if a mailbox folder
@@ -441,17 +645,29 @@ public class MailEndpoint {
          * special corner case, where Camel will not consume any messages at
          * all. The option is a int type.
          */
-        private Integer fetchSize;
+        public MailConsumer fetchSize(int fetchSize) {
+            this.fetchSize = fetchSize;
+            return (MailConsumer) this;
+        }
+
         /**
          * The folder to poll. The option is a java.lang.String type.
          */
-        private String folderName;
+        public MailConsumer folderName(String folderName) {
+            this.folderName = folderName;
+            return (MailConsumer) this;
+        }
+
         /**
          * A pluggable MailUidGenerator that allows to use custom logic to
          * generate UUID of the mail message. The option is a
          * org.apache.camel.component.mail.MailUidGenerator type.
          */
-        private Object mailUidGenerator;
+        public MailConsumer mailUidGenerator(Object mailUidGenerator) {
+            this.mailUidGenerator = mailUidGenerator;
+            return (MailConsumer) this;
+        }
+
         /**
          * Specifies whether Camel should map the received mail message to Camel
          * body/headers. If set to true, the body of the mail message is mapped
@@ -461,7 +677,11 @@ public class MailEndpoint {
          * by calling exchange.getIn().getBody(javax.mail.Message.class). The
          * option is a boolean type.
          */
-        private Boolean mapMailMessage;
+        public MailConsumer mapMailMessage(boolean mapMailMessage) {
+            this.mapMailMessage = mapMailMessage;
+            return (MailConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -469,13 +689,22 @@ public class MailEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public MailConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (MailConsumer) this;
+        }
+
         /**
          * Refers to an MailBoxPostProcessAction for doing post processing tasks
          * on the mailbox once the normal processing ended. The option is a
          * org.apache.camel.component.mail.MailBoxPostProcessAction type.
          */
-        private Object postProcessAction;
+        public MailConsumer postProcessAction(Object postProcessAction) {
+            this.postProcessAction = postProcessAction;
+            return (MailConsumer) this;
+        }
+
         /**
          * A pluggable repository org.apache.camel.spi.IdempotentRepository
          * which allows to cluster consuming from the same mailbox, and let the
@@ -483,7 +712,12 @@ public class MailEndpoint {
          * consumer to process. By default no repository is in use. The option
          * is a org.apache.camel.spi.IdempotentRepository type.
          */
-        private IdempotentRepository idempotentRepository;
+        public MailConsumer idempotentRepository(
+                IdempotentRepository idempotentRepository) {
+            this.idempotentRepository = idempotentRepository;
+            return (MailConsumer) this;
+        }
+
         /**
          * When using idempotent repository, then when the mail message has been
          * successfully processed and is committed, should the message id be
@@ -496,24 +730,41 @@ public class MailEndpoint {
          * message id, for whatever reason you may have. The option is a boolean
          * type.
          */
-        private Boolean idempotentRepositoryRemoveOnCommit;
+        public MailConsumer idempotentRepositoryRemoveOnCommit(
+                boolean idempotentRepositoryRemoveOnCommit) {
+            this.idempotentRepositoryRemoveOnCommit = idempotentRepositoryRemoveOnCommit;
+            return (MailConsumer) this;
+        }
+
         /**
          * Refers to a javax.mail.search.SearchTerm which allows to filter mails
          * based on search criteria such as subject, body, from, sent after a
          * certain date etc. The option is a javax.mail.search.SearchTerm type.
          */
-        private Object searchTerm;
+        public MailConsumer searchTerm(Object searchTerm) {
+            this.searchTerm = searchTerm;
+            return (MailConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public MailConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (MailConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public MailConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (MailConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -522,70 +773,119 @@ public class MailEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public MailConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (MailConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. The option is a long type.
          */
-        private Long delay;
+        public MailConsumer delay(long delay) {
+            this.delay = delay;
+            return (MailConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public MailConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (MailConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public MailConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (MailConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public MailConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (MailConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public MailConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (MailConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public MailConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (MailConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public MailConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (MailConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public MailConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (MailConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public MailConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (MailConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public MailConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (MailConsumer) this;
+        }
+
         /**
          * Sorting order for messages. Only natively supported for IMAP.
          * Emulated to some degree when using POP3 or when IMAP server does not
          * have the SORT capability. The option is a java.lang.String type.
          */
-        private Object[] sortTerm;
+        public MailConsumer sortTerm(Object[] sortTerm) {
+            this.sortTerm = sortTerm;
+            return (MailConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -888,44 +1188,79 @@ public class MailEndpoint {
         }
     }
 
-    public static class MailProducer extends MailCommon {
+    public static class MailProducer extends MailCommon<MailProducer> {
+        private String bcc;
+        private String cc;
+        private String from;
+        private String replyTo;
+        private String subject;
+        private String to;
+        private Object javaMailSender;
+
         /**
          * Sets the BCC email address. Separate multiple email addresses with
          * comma. The option is a java.lang.String type.
          */
-        private String bcc;
+        public MailProducer bcc(String bcc) {
+            this.bcc = bcc;
+            return (MailProducer) this;
+        }
+
         /**
          * Sets the CC email address. Separate multiple email addresses with
          * comma. The option is a java.lang.String type.
          */
-        private String cc;
+        public MailProducer cc(String cc) {
+            this.cc = cc;
+            return (MailProducer) this;
+        }
+
         /**
          * The from email address. The option is a java.lang.String type.
          */
-        private String from;
+        public MailProducer from(String from) {
+            this.from = from;
+            return (MailProducer) this;
+        }
+
         /**
          * The Reply-To recipients (the receivers of the response mail).
          * Separate multiple email addresses with a comma. The option is a
          * java.lang.String type.
          */
-        private String replyTo;
+        public MailProducer replyTo(String replyTo) {
+            this.replyTo = replyTo;
+            return (MailProducer) this;
+        }
+
         /**
          * The Subject of the message being sent. Note: Setting the subject in
          * the header takes precedence over this option. The option is a
          * java.lang.String type.
          */
-        private String subject;
+        public MailProducer subject(String subject) {
+            this.subject = subject;
+            return (MailProducer) this;
+        }
+
         /**
          * Sets the To email address. Separate multiple email addresses with
          * comma. The option is a java.lang.String type.
          */
-        private String to;
+        public MailProducer to(String to) {
+            this.to = to;
+            return (MailProducer) this;
+        }
+
         /**
          * To use a custom org.apache.camel.component.mail.JavaMailSender for
          * sending emails. The option is a
          * org.apache.camel.component.mail.JavaMailSender type.
          */
-        private Object javaMailSender;
+        public MailProducer javaMailSender(Object javaMailSender) {
+            this.javaMailSender = javaMailSender;
+            return (MailProducer) this;
+        }
 
         public String getBcc() {
             return bcc;

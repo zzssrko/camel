@@ -36,77 +36,151 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class SnmpEndpoint {
 
 
-    public static class SnmpCommon extends EndpointConfiguration {
+    public static class SnmpCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private Object oids;
+        private String protocol;
+        private Integer retries;
+        private String snmpCommunity;
+        private String snmpContextEngineId;
+        private String snmpContextName;
+        private Integer snmpVersion;
+        private Integer timeout;
+        private SnmpActionType type;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String authenticationPassphrase;
+        private String authenticationProtocol;
+        private String privacyPassphrase;
+        private String privacyProtocol;
+        private Integer securityLevel;
+        private String securityName;
+
         /**
          * Hostname of the SNMP enabled device. The option is a java.lang.String
          * type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Port number of the SNMP enabled device. The option is a
          * java.lang.Integer type.
          */
-        private Integer port;
+        public T port(Integer port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Defines which values you are interested in. Please have a look at the
          * Wikipedia to get a better understanding. You may provide a single OID
          * or a coma separated list of OIDs. Example:
          * oids=1.3.6.1.2.1.1.3.0,1.3.6.1.2.1.25.3.2.1.5.1,1.3.6.1.2.1.25.3.5.1.1.1,1.3.6.1.2.1.43.5.1.1.11.1. The option is a java.lang.String type.
          */
-        private Object oids;
+        public T oids(Object oids) {
+            this.oids = oids;
+            return (T) this;
+        }
+
         /**
          * Here you can select which protocol to use. You can use either udp or
          * tcp. The option is a java.lang.String type.
          */
-        private String protocol;
+        public T protocol(String protocol) {
+            this.protocol = protocol;
+            return (T) this;
+        }
+
         /**
          * Defines how often a retry is made before canceling the request. The
          * option is a int type.
          */
-        private Integer retries;
+        public T retries(int retries) {
+            this.retries = retries;
+            return (T) this;
+        }
+
         /**
          * Sets the community octet string for the snmp request. The option is a
          * java.lang.String type.
          */
-        private String snmpCommunity;
+        public T snmpCommunity(String snmpCommunity) {
+            this.snmpCommunity = snmpCommunity;
+            return (T) this;
+        }
+
         /**
          * Sets the context engine ID field of the scoped PDU. The option is a
          * java.lang.String type.
          */
-        private String snmpContextEngineId;
+        public T snmpContextEngineId(String snmpContextEngineId) {
+            this.snmpContextEngineId = snmpContextEngineId;
+            return (T) this;
+        }
+
         /**
          * Sets the context name field of this scoped PDU. The option is a
          * java.lang.String type.
          */
-        private String snmpContextName;
+        public T snmpContextName(String snmpContextName) {
+            this.snmpContextName = snmpContextName;
+            return (T) this;
+        }
+
         /**
          * Sets the snmp version for the request. The value 0 means SNMPv1, 1
          * means SNMPv2c, and the value 3 means SNMPv3. The option is a int
          * type.
          */
-        private Integer snmpVersion;
+        public T snmpVersion(int snmpVersion) {
+            this.snmpVersion = snmpVersion;
+            return (T) this;
+        }
+
         /**
          * Sets the timeout value for the request in millis. The option is a int
          * type.
          */
-        private Integer timeout;
+        public T timeout(int timeout) {
+            this.timeout = timeout;
+            return (T) this;
+        }
+
         /**
          * Which operation to perform such as poll, trap, etc. The option is a
          * org.apache.camel.component.snmp.SnmpActionType type.
          */
-        private SnmpActionType type;
+        public T type(SnmpActionType type) {
+            this.type = type;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The authentication passphrase. If not null, authenticationProtocol
          * must also be not null. RFC3414 11.2 requires passphrases to have a
@@ -114,13 +188,21 @@ public class SnmpEndpoint {
          * is less than 8 bytes an IllegalArgumentException is thrown. The
          * option is a java.lang.String type.
          */
-        private String authenticationPassphrase;
+        public T authenticationPassphrase(String authenticationPassphrase) {
+            this.authenticationPassphrase = authenticationPassphrase;
+            return (T) this;
+        }
+
         /**
          * Authentication protocol to use if security level is set to enable
          * authentication The possible values are: MD5, SHA1. The option is a
          * java.lang.String type.
          */
-        private String authenticationProtocol;
+        public T authenticationProtocol(String authenticationProtocol) {
+            this.authenticationProtocol = authenticationProtocol;
+            return (T) this;
+        }
+
         /**
          * The privacy passphrase. If not null, privacyProtocol must also be not
          * null. RFC3414 11.2 requires passphrases to have a minimum length of 8
@@ -128,13 +210,21 @@ public class SnmpEndpoint {
          * an IllegalArgumentException is thrown. The option is a
          * java.lang.String type.
          */
-        private String privacyPassphrase;
+        public T privacyPassphrase(String privacyPassphrase) {
+            this.privacyPassphrase = privacyPassphrase;
+            return (T) this;
+        }
+
         /**
          * The privacy protocol ID to be associated with this user. If set to
          * null, this user only supports unencrypted messages. The option is a
          * java.lang.String type.
          */
-        private String privacyProtocol;
+        public T privacyProtocol(String privacyProtocol) {
+            this.privacyProtocol = privacyProtocol;
+            return (T) this;
+        }
+
         /**
          * Sets the security level for this target. The supplied security level
          * must be supported by the security model dependent information
@@ -149,12 +239,19 @@ public class SnmpEndpoint {
          * only the one with the right encryption/decryption key can read the
          * contents of the message. The option is a int type.
          */
-        private Integer securityLevel;
+        public T securityLevel(int securityLevel) {
+            this.securityLevel = securityLevel;
+            return (T) this;
+        }
+
         /**
          * Sets the security name to be used with this target. The option is a
          * java.lang.String type.
          */
-        private String securityName;
+        public T securityName(String securityName) {
+            this.securityName = securityName;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -309,7 +406,27 @@ public class SnmpEndpoint {
         }
     }
 
-    public static class SnmpConsumer extends SnmpCommon {
+    public static class SnmpConsumer extends SnmpCommon<SnmpConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Long delay;
+        private Boolean sendEmptyMessageWhenIdle;
+        private Boolean treeList;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -319,22 +436,39 @@ public class SnmpEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public SnmpConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * Sets update rate in seconds. The option is a long type.
          */
-        private Long delay;
+        public SnmpConsumer delay(long delay) {
+            this.delay = delay;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public SnmpConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * Sets the flag whether the scoped PDU will be displayed as the list if
          * it has child elements in its tree. The option is a boolean type.
          */
-        private Boolean treeList;
+        public SnmpConsumer treeList(boolean treeList) {
+            this.treeList = treeList;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -342,12 +476,20 @@ public class SnmpEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public SnmpConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public SnmpConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -355,18 +497,31 @@ public class SnmpEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public SnmpConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public SnmpConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public SnmpConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -375,60 +530,101 @@ public class SnmpEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public SnmpConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public SnmpConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public SnmpConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public SnmpConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public SnmpConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public SnmpConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public SnmpConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public SnmpConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public SnmpConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (SnmpConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public SnmpConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (SnmpConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -585,7 +781,7 @@ public class SnmpEndpoint {
         }
     }
 
-    public static class SnmpProducer extends SnmpCommon {
+    public static class SnmpProducer extends SnmpCommon<SnmpProducer> {
     }
 
     public static enum SnmpActionType {

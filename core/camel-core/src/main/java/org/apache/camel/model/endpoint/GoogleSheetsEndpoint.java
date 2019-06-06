@@ -29,63 +29,115 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GoogleSheetsEndpoint {
 
 
-    public static class GoogleSheetsCommon extends EndpointConfiguration {
+    public static class GoogleSheetsCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private GoogleSheetsApiName apiName;
+        private String methodName;
+        private String accessToken;
+        private String applicationName;
+        private String clientId;
+        private String clientSecret;
+        private String inBody;
+        private String refreshToken;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * What kind of operation to perform. The option is a
          * org.apache.camel.component.google.sheets.internal.GoogleSheetsApiName
          * type.
          */
-        private GoogleSheetsApiName apiName;
+        public T apiName(GoogleSheetsApiName apiName) {
+            this.apiName = apiName;
+            return (T) this;
+        }
+
         /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
-        private String methodName;
+        public T methodName(String methodName) {
+            this.methodName = methodName;
+            return (T) this;
+        }
+
         /**
          * OAuth 2 access token. This typically expires after an hour so
          * refreshToken is recommended for long term usage. The option is a
          * java.lang.String type.
          */
-        private String accessToken;
+        public T accessToken(String accessToken) {
+            this.accessToken = accessToken;
+            return (T) this;
+        }
+
         /**
          * Google Sheets application name. Example would be
          * camel-google-sheets/1.0. The option is a java.lang.String type.
          */
-        private String applicationName;
+        public T applicationName(String applicationName) {
+            this.applicationName = applicationName;
+            return (T) this;
+        }
+
         /**
          * Client ID of the sheets application. The option is a java.lang.String
          * type.
          */
-        private String clientId;
+        public T clientId(String clientId) {
+            this.clientId = clientId;
+            return (T) this;
+        }
+
         /**
          * Client secret of the sheets application. The option is a
          * java.lang.String type.
          */
-        private String clientSecret;
+        public T clientSecret(String clientSecret) {
+            this.clientSecret = clientSecret;
+            return (T) this;
+        }
+
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
-        private String inBody;
+        public T inBody(String inBody) {
+            this.inBody = inBody;
+            return (T) this;
+        }
+
         /**
          * OAuth 2 refresh token. Using this, the Google Sheets component can
          * obtain a new accessToken whenever the current one expires - a
          * necessity if the application is long-lived. The option is a
          * java.lang.String type.
          */
-        private String refreshToken;
+        public T refreshToken(String refreshToken) {
+            this.refreshToken = refreshToken;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public GoogleSheetsApiName getApiName() {
             return apiName;
@@ -168,7 +220,13 @@ public class GoogleSheetsEndpoint {
         }
     }
 
-    public static class GoogleSheetsConsumer extends GoogleSheetsCommon {
+    public static class GoogleSheetsConsumer
+            extends
+                GoogleSheetsCommon<GoogleSheetsConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -178,7 +236,12 @@ public class GoogleSheetsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public GoogleSheetsConsumer bridgeErrorHandler(
+                boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (GoogleSheetsConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -186,12 +249,21 @@ public class GoogleSheetsEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public GoogleSheetsConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (GoogleSheetsConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public GoogleSheetsConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (GoogleSheetsConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -218,7 +290,9 @@ public class GoogleSheetsEndpoint {
         }
     }
 
-    public static class GoogleSheetsProducer extends GoogleSheetsCommon {
+    public static class GoogleSheetsProducer
+            extends
+                GoogleSheetsCommon<GoogleSheetsProducer> {
     }
 
     public static enum GoogleSheetsApiName {

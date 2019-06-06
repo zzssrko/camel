@@ -29,61 +29,123 @@ import org.apache.camel.spi.ExceptionHandler;
 public class AtmosEndpoint {
 
 
-    public static class AtmosCommon extends EndpointConfiguration {
+    public static class AtmosCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String name;
+        private AtmosOperation operation;
+        private Boolean enableSslValidation;
+        private String fullTokenId;
+        private String localPath;
+        private String newRemotePath;
+        private String query;
+        private String remotePath;
+        private String secretKey;
+        private String uri;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Atmos name. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * Operation to perform. The option is a
          * org.apache.camel.component.atmos.util.AtmosOperation type.
          */
-        private AtmosOperation operation;
+        public T operation(AtmosOperation operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * Atmos SSL validation. The option is a boolean type.
          */
-        private Boolean enableSslValidation;
+        public T enableSslValidation(boolean enableSslValidation) {
+            this.enableSslValidation = enableSslValidation;
+            return (T) this;
+        }
+
         /**
          * Atmos client fullTokenId. The option is a java.lang.String type.
          */
-        private String fullTokenId;
+        public T fullTokenId(String fullTokenId) {
+            this.fullTokenId = fullTokenId;
+            return (T) this;
+        }
+
         /**
          * Local path to put files. The option is a java.lang.String type.
          */
-        private String localPath;
+        public T localPath(String localPath) {
+            this.localPath = localPath;
+            return (T) this;
+        }
+
         /**
          * New path on Atmos when moving files. The option is a java.lang.String
          * type.
          */
-        private String newRemotePath;
+        public T newRemotePath(String newRemotePath) {
+            this.newRemotePath = newRemotePath;
+            return (T) this;
+        }
+
         /**
          * Search query on Atmos. The option is a java.lang.String type.
          */
-        private String query;
+        public T query(String query) {
+            this.query = query;
+            return (T) this;
+        }
+
         /**
          * Where to put files on Atmos. The option is a java.lang.String type.
          */
-        private String remotePath;
+        public T remotePath(String remotePath) {
+            this.remotePath = remotePath;
+            return (T) this;
+        }
+
         /**
          * Atmos shared secret. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public T secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (T) this;
+        }
+
         /**
          * Atomos server uri. The option is a java.lang.String type.
          */
-        private String uri;
+        public T uri(String uri) {
+            this.uri = uri;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getName() {
             return name;
@@ -182,7 +244,11 @@ public class AtmosEndpoint {
         }
     }
 
-    public static class AtmosConsumer extends AtmosCommon {
+    public static class AtmosConsumer extends AtmosCommon<AtmosConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -192,7 +258,11 @@ public class AtmosEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public AtmosConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (AtmosConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -200,12 +270,19 @@ public class AtmosEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public AtmosConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (AtmosConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public AtmosConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (AtmosConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -232,7 +309,7 @@ public class AtmosEndpoint {
         }
     }
 
-    public static class AtmosProducer extends AtmosCommon {
+    public static class AtmosProducer extends AtmosCommon<AtmosProducer> {
     }
 
     public static enum AtmosOperation {

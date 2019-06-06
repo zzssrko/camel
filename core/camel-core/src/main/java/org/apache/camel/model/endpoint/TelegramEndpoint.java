@@ -35,39 +35,71 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class TelegramEndpoint {
 
 
-    public static class TelegramCommon extends EndpointConfiguration {
+    public static class TelegramCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String type;
+        private String authorizationToken;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String proxyHost;
+        private Integer proxyPort;
+
         /**
          * The endpoint type. Currently, only the 'bots' type is supported. The
          * option is a java.lang.String type.
          */
-        private String type;
+        public T type(String type) {
+            this.type = type;
+            return (T) this;
+        }
+
         /**
          * The authorization token for using the bot (ask the BotFather). The
          * option is a java.lang.String type.
          */
-        private String authorizationToken;
+        public T authorizationToken(String authorizationToken) {
+            this.authorizationToken = authorizationToken;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * HTTP proxy host which could be used when sending out the message. The
          * option is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * HTTP proxy port which could be used when sending out the message. The
          * option is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
 
         public String getType() {
             return type;
@@ -118,7 +150,30 @@ public class TelegramEndpoint {
         }
     }
 
-    public static class TelegramConsumer extends TelegramCommon {
+    public static class TelegramConsumer
+            extends
+                TelegramCommon<TelegramConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Integer limit;
+        private Boolean sendEmptyMessageWhenIdle;
+        private Integer timeout;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -128,24 +183,41 @@ public class TelegramEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public TelegramConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * Limit on the number of updates that can be received in a single
          * polling request. The option is a java.lang.Integer type.
          */
-        private Integer limit;
+        public TelegramConsumer limit(Integer limit) {
+            this.limit = limit;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public TelegramConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * Timeout in seconds for long polling. Put 0 for short polling or a
          * bigger number for long polling. Long polling produces shorter
          * response time. The option is a java.lang.Integer type.
          */
-        private Integer timeout;
+        public TelegramConsumer timeout(Integer timeout) {
+            this.timeout = timeout;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -153,12 +225,21 @@ public class TelegramEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public TelegramConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public TelegramConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -166,18 +247,31 @@ public class TelegramEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public TelegramConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public TelegramConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public TelegramConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -186,66 +280,112 @@ public class TelegramEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public TelegramConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long delay;
+        public TelegramConsumer delay(long delay) {
+            this.delay = delay;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public TelegramConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public TelegramConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public TelegramConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public TelegramConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public TelegramConsumer scheduler(
+                ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public TelegramConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public TelegramConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public TelegramConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (TelegramConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public TelegramConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (TelegramConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -410,7 +550,11 @@ public class TelegramEndpoint {
         }
     }
 
-    public static class TelegramProducer extends TelegramCommon {
+    public static class TelegramProducer
+            extends
+                TelegramCommon<TelegramProducer> {
+        private String chatId;
+
         /**
          * The identifier of the chat that will receive the produced messages.
          * Chat ids can be first obtained from incoming messages (eg. when a
@@ -420,7 +564,10 @@ public class TelegramEndpoint {
          * outgoing message (using body or headers). The option is a
          * java.lang.String type.
          */
-        private String chatId;
+        public TelegramProducer chatId(String chatId) {
+            this.chatId = chatId;
+            return (TelegramProducer) this;
+        }
 
         public String getChatId() {
             return chatId;

@@ -30,74 +30,146 @@ import org.apache.camel.spi.ExceptionHandler;
 public class PahoEndpoint {
 
 
-    public static class PahoCommon extends EndpointConfiguration {
+    public static class PahoCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String topic;
+        private Boolean autoReconnect;
+        private String brokerUrl;
+        private String clientId;
+        private Object connectOptions;
+        private String filePersistenceDirectory;
+        private String password;
+        private PahoPersistence persistence;
+        private Integer qos;
+        private Boolean resolveMqttConnectOptions;
+        private Boolean retained;
+        private String userName;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Name of the topic. The option is a java.lang.String type.
          */
-        private String topic;
+        public T topic(String topic) {
+            this.topic = topic;
+            return (T) this;
+        }
+
         /**
          * Client will automatically attempt to reconnect to the server if the
          * connection is lost. The option is a boolean type.
          */
-        private Boolean autoReconnect;
+        public T autoReconnect(boolean autoReconnect) {
+            this.autoReconnect = autoReconnect;
+            return (T) this;
+        }
+
         /**
          * The URL of the MQTT broker. The option is a java.lang.String type.
          */
-        private String brokerUrl;
+        public T brokerUrl(String brokerUrl) {
+            this.brokerUrl = brokerUrl;
+            return (T) this;
+        }
+
         /**
          * MQTT client identifier. The option is a java.lang.String type.
          */
-        private String clientId;
+        public T clientId(String clientId) {
+            this.clientId = clientId;
+            return (T) this;
+        }
+
         /**
          * Client connection options. The option is a
          * org.eclipse.paho.client.mqttv3.MqttConnectOptions type.
          */
-        private Object connectOptions;
+        public T connectOptions(Object connectOptions) {
+            this.connectOptions = connectOptions;
+            return (T) this;
+        }
+
         /**
          * Base directory used by the file persistence provider. The option is a
          * java.lang.String type.
          */
-        private String filePersistenceDirectory;
+        public T filePersistenceDirectory(String filePersistenceDirectory) {
+            this.filePersistenceDirectory = filePersistenceDirectory;
+            return (T) this;
+        }
+
         /**
          * Password to be used for authentication against the MQTT broker. The
          * option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Client persistence to be used - memory or file. The option is a
          * org.apache.camel.component.paho.PahoPersistence type.
          */
-        private PahoPersistence persistence;
+        public T persistence(PahoPersistence persistence) {
+            this.persistence = persistence;
+            return (T) this;
+        }
+
         /**
          * Client quality of service level (0-2). The option is a int type.
          */
-        private Integer qos;
+        public T qos(int qos) {
+            this.qos = qos;
+            return (T) this;
+        }
+
         /**
          * Define if you don't want to resolve the MQTT Connect Options from
          * registry. The option is a boolean type.
          */
-        private Boolean resolveMqttConnectOptions;
+        public T resolveMqttConnectOptions(boolean resolveMqttConnectOptions) {
+            this.resolveMqttConnectOptions = resolveMqttConnectOptions;
+            return (T) this;
+        }
+
         /**
          * Retain option. The option is a boolean type.
          */
-        private Boolean retained;
+        public T retained(boolean retained) {
+            this.retained = retained;
+            return (T) this;
+        }
+
         /**
          * Username to be used for authentication against the MQTT broker. The
          * option is a java.lang.String type.
          */
-        private String userName;
+        public T userName(String userName) {
+            this.userName = userName;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getTopic() {
             return topic;
@@ -213,7 +285,11 @@ public class PahoEndpoint {
         }
     }
 
-    public static class PahoConsumer extends PahoCommon {
+    public static class PahoConsumer extends PahoCommon<PahoConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -223,7 +299,11 @@ public class PahoEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public PahoConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (PahoConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -231,12 +311,19 @@ public class PahoEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public PahoConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (PahoConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public PahoConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (PahoConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -263,7 +350,7 @@ public class PahoEndpoint {
         }
     }
 
-    public static class PahoProducer extends PahoCommon {
+    public static class PahoProducer extends PahoCommon<PahoProducer> {
     }
 
     public static enum PahoPersistence {

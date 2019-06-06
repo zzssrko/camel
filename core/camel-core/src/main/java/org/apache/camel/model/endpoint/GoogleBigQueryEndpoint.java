@@ -27,42 +27,79 @@ import javax.annotation.Generated;
 public class GoogleBigQueryEndpoint {
 
 
-    public static class GoogleBigQueryCommon extends EndpointConfiguration {
+    public static class GoogleBigQueryCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String projectId;
+        private String datasetId;
+        private String tableId;
+        private Object connectionFactory;
+        private String useAsInsertId;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Google Cloud Project Id. The option is a java.lang.String type.
          */
-        private String projectId;
+        public T projectId(String projectId) {
+            this.projectId = projectId;
+            return (T) this;
+        }
+
         /**
          * BigQuery Dataset Id. The option is a java.lang.String type.
          */
-        private String datasetId;
+        public T datasetId(String datasetId) {
+            this.datasetId = datasetId;
+            return (T) this;
+        }
+
         /**
          * BigQuery table id. The option is a java.lang.String type.
          */
-        private String tableId;
+        public T tableId(String tableId) {
+            this.tableId = tableId;
+            return (T) this;
+        }
+
         /**
          * ConnectionFactory to obtain connection to Bigquery Service. If non
          * provided the default will be used. The option is a
          * org.apache.camel.component.google.bigquery.GoogleBigQueryConnectionFactory type.
          */
-        private Object connectionFactory;
+        public T connectionFactory(Object connectionFactory) {
+            this.connectionFactory = connectionFactory;
+            return (T) this;
+        }
+
         /**
          * Field name to use as insert id. The option is a java.lang.String
          * type.
          */
-        private String useAsInsertId;
+        public T useAsInsertId(String useAsInsertId) {
+            this.useAsInsertId = useAsInsertId;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getProjectId() {
             return projectId;
@@ -121,9 +158,13 @@ public class GoogleBigQueryEndpoint {
         }
     }
 
-    public static class GoogleBigQueryConsumer extends GoogleBigQueryCommon {
+    public static class GoogleBigQueryConsumer
+            extends
+                GoogleBigQueryCommon<GoogleBigQueryConsumer> {
     }
 
-    public static class GoogleBigQueryProducer extends GoogleBigQueryCommon {
+    public static class GoogleBigQueryProducer
+            extends
+                GoogleBigQueryCommon<GoogleBigQueryProducer> {
     }
 }

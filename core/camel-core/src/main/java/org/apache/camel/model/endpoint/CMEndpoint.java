@@ -27,17 +27,35 @@ import javax.annotation.Generated;
 public class CMEndpoint {
 
 
-    public static class CMCommon extends EndpointConfiguration {
+    public static class CMCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private String defaultFrom;
+        private Integer defaultMaxNumberOfParts;
+        private String productToken;
+        private Boolean testConnectionOnStartup;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * SMS Provider HOST with scheme. The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * This is the sender name. The maximum length is 11 characters. The
          * option is a
          * (@javax.validation.constraints.NotNull,@javax.validation.constraints.Size(min=1, max=11) :: java.lang.String) type.
          */
-        private String defaultFrom;
+        public T defaultFrom(String defaultFrom) {
+            this.defaultFrom = defaultFrom;
+            return (T) this;
+        }
+
         /**
          * If it is a multipart message forces the max number. Message can be
          * truncated. Technically the gateway will first check if a message is
@@ -46,29 +64,48 @@ public class CMEndpoint {
          * is a
          * (@javax.validation.constraints.Min(1L),@javax.validation.constraints.Max(8L) :: int) type.
          */
-        private Integer defaultMaxNumberOfParts;
+        public T defaultMaxNumberOfParts(int defaultMaxNumberOfParts) {
+            this.defaultMaxNumberOfParts = defaultMaxNumberOfParts;
+            return (T) this;
+        }
+
         /**
          * The unique token to use. The option is a
          * (@javax.validation.constraints.NotNull :: java.lang.String) type.
          */
-        private String productToken;
+        public T productToken(String productToken) {
+            this.productToken = productToken;
+            return (T) this;
+        }
+
         /**
          * Whether to test the connection to the SMS Gateway on startup. The
          * option is a boolean type.
          */
-        private Boolean testConnectionOnStartup;
+        public T testConnectionOnStartup(boolean testConnectionOnStartup) {
+            this.testConnectionOnStartup = testConnectionOnStartup;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -127,9 +164,9 @@ public class CMEndpoint {
         }
     }
 
-    public static class CMConsumer extends CMCommon {
+    public static class CMConsumer extends CMCommon<CMConsumer> {
     }
 
-    public static class CMProducer extends CMCommon {
+    public static class CMProducer extends CMCommon<CMProducer> {
     }
 }

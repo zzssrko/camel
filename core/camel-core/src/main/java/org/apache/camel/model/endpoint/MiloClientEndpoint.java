@@ -32,127 +32,259 @@ import org.apache.camel.spi.ExceptionHandler;
 public class MiloClientEndpoint {
 
 
-    public static class MiloClientCommon extends EndpointConfiguration {
+    public static class MiloClientCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String endpointUri;
+        private String clientId;
+        private Boolean defaultAwaitWrites;
+        private String discoveryEndpointSuffix;
+        private String discoveryEndpointUri;
+        private Object method;
+        private Object node;
+        private Double samplingInterval;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Set<String> allowedSecurityPolicies;
+        private String applicationName;
+        private String applicationUri;
+        private Long channelLifetime;
+        private String keyAlias;
+        private String keyPassword;
+        private String keyStorePassword;
+        private String keyStoreType;
+        private URL keyStoreUrl;
+        private Long maxPendingPublishRequests;
+        private Long maxResponseMessageSize;
+        private Boolean overrideHost;
+        private String productUri;
+        private Long requestTimeout;
+        private String sessionName;
+        private Long sessionTimeout;
+
         /**
          * The OPC UA server endpoint. The option is a java.lang.String type.
          */
-        private String endpointUri;
+        public T endpointUri(String endpointUri) {
+            this.endpointUri = endpointUri;
+            return (T) this;
+        }
+
         /**
          * A virtual client id to force the creation of a new connection
          * instance. The option is a java.lang.String type.
          */
-        private String clientId;
+        public T clientId(String clientId) {
+            this.clientId = clientId;
+            return (T) this;
+        }
+
         /**
          * Default await setting for writes. The option is a boolean type.
          */
-        private Boolean defaultAwaitWrites;
+        public T defaultAwaitWrites(boolean defaultAwaitWrites) {
+            this.defaultAwaitWrites = defaultAwaitWrites;
+            return (T) this;
+        }
+
         /**
          * A suffix for endpoint URI when discovering. The option is a
          * java.lang.String type.
          */
-        private String discoveryEndpointSuffix;
+        public T discoveryEndpointSuffix(String discoveryEndpointSuffix) {
+            this.discoveryEndpointSuffix = discoveryEndpointSuffix;
+            return (T) this;
+        }
+
         /**
          * An alternative discovery URI. The option is a java.lang.String type.
          */
-        private String discoveryEndpointUri;
+        public T discoveryEndpointUri(String discoveryEndpointUri) {
+            this.discoveryEndpointUri = discoveryEndpointUri;
+            return (T) this;
+        }
+
         /**
          * The method definition (see Method ID). The option is a
          * org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId type.
          */
-        private Object method;
+        public T method(Object method) {
+            this.method = method;
+            return (T) this;
+        }
+
         /**
          * The node definition (see Node ID). The option is a
          * org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId type.
          */
-        private Object node;
+        public T node(Object node) {
+            this.node = node;
+            return (T) this;
+        }
+
         /**
          * The sampling interval in milliseconds. The option is a
          * java.lang.Double type.
          */
-        private Double samplingInterval;
+        public T samplingInterval(Double samplingInterval) {
+            this.samplingInterval = samplingInterval;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * A set of allowed security policy URIs. Default is to accept all and
          * use the highest. The option is a java.lang.String type.
          */
-        private Set<String> allowedSecurityPolicies;
+        public T allowedSecurityPolicies(Set<String> allowedSecurityPolicies) {
+            this.allowedSecurityPolicies = allowedSecurityPolicies;
+            return (T) this;
+        }
+
         /**
          * The application name. The option is a java.lang.String type.
          */
-        private String applicationName;
+        public T applicationName(String applicationName) {
+            this.applicationName = applicationName;
+            return (T) this;
+        }
+
         /**
          * The application URI. The option is a java.lang.String type.
          */
-        private String applicationUri;
+        public T applicationUri(String applicationUri) {
+            this.applicationUri = applicationUri;
+            return (T) this;
+        }
+
         /**
          * Channel lifetime in milliseconds. The option is a java.lang.Long
          * type.
          */
-        private Long channelLifetime;
+        public T channelLifetime(Long channelLifetime) {
+            this.channelLifetime = channelLifetime;
+            return (T) this;
+        }
+
         /**
          * The name of the key in the keystore file. The option is a
          * java.lang.String type.
          */
-        private String keyAlias;
+        public T keyAlias(String keyAlias) {
+            this.keyAlias = keyAlias;
+            return (T) this;
+        }
+
         /**
          * The key password. The option is a java.lang.String type.
          */
-        private String keyPassword;
+        public T keyPassword(String keyPassword) {
+            this.keyPassword = keyPassword;
+            return (T) this;
+        }
+
         /**
          * The keystore password. The option is a java.lang.String type.
          */
-        private String keyStorePassword;
+        public T keyStorePassword(String keyStorePassword) {
+            this.keyStorePassword = keyStorePassword;
+            return (T) this;
+        }
+
         /**
          * The key store type. The option is a java.lang.String type.
          */
-        private String keyStoreType;
+        public T keyStoreType(String keyStoreType) {
+            this.keyStoreType = keyStoreType;
+            return (T) this;
+        }
+
         /**
          * The URL where the key should be loaded from. The option is a
          * java.net.URL type.
          */
-        private URL keyStoreUrl;
+        public T keyStoreUrl(URL keyStoreUrl) {
+            this.keyStoreUrl = keyStoreUrl;
+            return (T) this;
+        }
+
         /**
          * The maximum number of pending publish requests. The option is a
          * java.lang.Long type.
          */
-        private Long maxPendingPublishRequests;
+        public T maxPendingPublishRequests(Long maxPendingPublishRequests) {
+            this.maxPendingPublishRequests = maxPendingPublishRequests;
+            return (T) this;
+        }
+
         /**
          * The maximum number of bytes a response message may have. The option
          * is a java.lang.Long type.
          */
-        private Long maxResponseMessageSize;
+        public T maxResponseMessageSize(Long maxResponseMessageSize) {
+            this.maxResponseMessageSize = maxResponseMessageSize;
+            return (T) this;
+        }
+
         /**
          * Override the server reported endpoint host with the host from the
          * endpoint URI. The option is a boolean type.
          */
-        private Boolean overrideHost;
+        public T overrideHost(boolean overrideHost) {
+            this.overrideHost = overrideHost;
+            return (T) this;
+        }
+
         /**
          * The product URI. The option is a java.lang.String type.
          */
-        private String productUri;
+        public T productUri(String productUri) {
+            this.productUri = productUri;
+            return (T) this;
+        }
+
         /**
          * Request timeout in milliseconds. The option is a java.lang.Long type.
          */
-        private Long requestTimeout;
+        public T requestTimeout(Long requestTimeout) {
+            this.requestTimeout = requestTimeout;
+            return (T) this;
+        }
+
         /**
          * Session name. The option is a java.lang.String type.
          */
-        private String sessionName;
+        public T sessionName(String sessionName) {
+            this.sessionName = sessionName;
+            return (T) this;
+        }
+
         /**
          * Session timeout in milliseconds. The option is a java.lang.Long type.
          */
-        private Long sessionTimeout;
+        public T sessionTimeout(Long sessionTimeout) {
+            this.sessionTimeout = sessionTimeout;
+            return (T) this;
+        }
 
         public String getEndpointUri() {
             return endpointUri;
@@ -364,7 +496,13 @@ public class MiloClientEndpoint {
         }
     }
 
-    public static class MiloClientConsumer extends MiloClientCommon {
+    public static class MiloClientConsumer
+            extends
+                MiloClientCommon<MiloClientConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -374,7 +512,11 @@ public class MiloClientEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public MiloClientConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (MiloClientConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -382,12 +524,21 @@ public class MiloClientEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public MiloClientConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (MiloClientConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public MiloClientConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (MiloClientConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -414,6 +565,8 @@ public class MiloClientEndpoint {
         }
     }
 
-    public static class MiloClientProducer extends MiloClientCommon {
+    public static class MiloClientProducer
+            extends
+                MiloClientCommon<MiloClientProducer> {
     }
 }

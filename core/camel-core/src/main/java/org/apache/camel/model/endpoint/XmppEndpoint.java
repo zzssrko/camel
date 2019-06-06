@@ -30,35 +30,79 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class XmppEndpoint {
 
 
-    public static class XmppCommon extends EndpointConfiguration {
+    public static class XmppCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private String participant;
+        private Boolean login;
+        private String nickname;
+        private Boolean pubsub;
+        private String room;
+        private String serviceName;
+        private Boolean testConnectionOnStartup;
+        private Boolean createAccount;
+        private String resource;
+        private Boolean basicPropertyBinding;
+        private Object connectionConfig;
+        private Boolean synchronous;
+        private HeaderFilterStrategy headerFilterStrategy;
+        private String password;
+        private String user;
+
         /**
          * Hostname for the chat server. The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Port number for the chat server. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * JID (Jabber ID) of person to receive messages. room parameter has
          * precedence over participant. The option is a java.lang.String type.
          */
-        private String participant;
+        public T participant(String participant) {
+            this.participant = participant;
+            return (T) this;
+        }
+
         /**
          * Whether to login the user. The option is a boolean type.
          */
-        private Boolean login;
+        public T login(boolean login) {
+            this.login = login;
+            return (T) this;
+        }
+
         /**
          * Use nickname when joining room. If room is specified and nickname is
          * not, user will be used for the nickname. The option is a
          * java.lang.String type.
          */
-        private String nickname;
+        public T nickname(String nickname) {
+            this.nickname = nickname;
+            return (T) this;
+        }
+
         /**
          * Accept pubsub packets on input, default is false. The option is a
          * boolean type.
          */
-        private Boolean pubsub;
+        public T pubsub(boolean pubsub) {
+            this.pubsub = pubsub;
+            return (T) this;
+        }
+
         /**
          * If this option is specified, the component will connect to MUC (Multi
          * User Chat). Usually, the domain name for MUC is different from the
@@ -69,12 +113,20 @@ public class XmppEndpoint {
          * not contain the symbol, the domain part will be discovered and added
          * by Camel. The option is a java.lang.String type.
          */
-        private String room;
+        public T room(String room) {
+            this.room = room;
+            return (T) this;
+        }
+
         /**
          * The name of the service you are connecting to. For Google Talk, this
          * would be gmail.com. The option is a java.lang.String type.
          */
-        private String serviceName;
+        public T serviceName(String serviceName) {
+            this.serviceName = serviceName;
+            return (T) this;
+        }
+
         /**
          * Specifies whether to test the connection on startup. This is used to
          * ensure that the XMPP client has a valid connection to the XMPP server
@@ -85,51 +137,86 @@ public class XmppEndpoint {
          * connection is established. Default is true. The option is a boolean
          * type.
          */
-        private Boolean testConnectionOnStartup;
+        public T testConnectionOnStartup(boolean testConnectionOnStartup) {
+            this.testConnectionOnStartup = testConnectionOnStartup;
+            return (T) this;
+        }
+
         /**
          * If true, an attempt to create an account will be made. Default is
          * false. The option is a boolean type.
          */
-        private Boolean createAccount;
+        public T createAccount(boolean createAccount) {
+            this.createAccount = createAccount;
+            return (T) this;
+        }
+
         /**
          * XMPP resource. The default is Camel. The option is a java.lang.String
          * type.
          */
-        private String resource;
+        public T resource(String resource) {
+            this.resource = resource;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use an existing connection configuration. Currently
          * org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration is only
          * supported (XMPP over TCP). The option is a
          * org.jivesoftware.smack.ConnectionConfiguration type.
          */
-        private Object connectionConfig;
+        public T connectionConfig(Object connectionConfig) {
+            this.connectionConfig = connectionConfig;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (T) this;
+        }
+
         /**
          * Password for login. The option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * User name (without server name). If not specified, anonymous login
          * will be attempted. The option is a java.lang.String type.
          */
-        private String user;
+        public T user(String user) {
+            this.user = user;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -269,7 +356,13 @@ public class XmppEndpoint {
         }
     }
 
-    public static class XmppConsumer extends XmppCommon {
+    public static class XmppConsumer extends XmppCommon<XmppConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Integer connectionPollDelay;
+        private Boolean doc;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -279,7 +372,11 @@ public class XmppEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public XmppConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (XmppConsumer) this;
+        }
+
         /**
          * The amount of time in seconds between polls (in seconds) to verify
          * the health of the XMPP connection, or between attempts to establish
@@ -287,13 +384,21 @@ public class XmppEndpoint {
          * connection if it has become inactive. Default is 10 seconds. The
          * option is a int type.
          */
-        private Integer connectionPollDelay;
+        public XmppConsumer connectionPollDelay(int connectionPollDelay) {
+            this.connectionPollDelay = connectionPollDelay;
+            return (XmppConsumer) this;
+        }
+
         /**
          * Set a doc header on the IN message containing a Document form of the
          * incoming packet; default is true if presence or pubsub are true,
          * otherwise false. The option is a boolean type.
          */
-        private Boolean doc;
+        public XmppConsumer doc(boolean doc) {
+            this.doc = doc;
+            return (XmppConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -301,12 +406,19 @@ public class XmppEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public XmppConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (XmppConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public XmppConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (XmppConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -349,6 +461,6 @@ public class XmppEndpoint {
         }
     }
 
-    public static class XmppProducer extends XmppCommon {
+    public static class XmppProducer extends XmppCommon<XmppProducer> {
     }
 }

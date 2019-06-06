@@ -29,34 +29,61 @@ import org.apache.camel.spi.ExceptionHandler;
 public class JcloudsEndpoint {
 
 
-    public static class JcloudsCommon extends EndpointConfiguration {
+    public static class JcloudsCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private JcloudsCommand command;
+        private String providerId;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String container;
+
         /**
          * What command to execute such as blobstore or compute. The option is a
          * org.apache.camel.component.jclouds.JcloudsCommand type.
          */
-        private JcloudsCommand command;
+        public T command(JcloudsCommand command) {
+            this.command = command;
+            return (T) this;
+        }
+
         /**
          * The name of the cloud provider that provides the target service (e.g.
          * aws-s3 or aws_ec2). The option is a java.lang.String type.
          */
-        private String providerId;
+        public T providerId(String providerId) {
+            this.providerId = providerId;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The name of the blob container. The option is a java.lang.String
          * type.
          */
-        private String container;
+        public T container(String container) {
+            this.container = container;
+            return (T) this;
+        }
 
         public JcloudsCommand getCommand() {
             return command;
@@ -99,7 +126,14 @@ public class JcloudsEndpoint {
         }
     }
 
-    public static class JcloudsConsumer extends JcloudsCommon {
+    public static class JcloudsConsumer
+            extends
+                JcloudsCommon<JcloudsConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private String directory;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -109,7 +143,11 @@ public class JcloudsEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public JcloudsConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (JcloudsConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -117,17 +155,29 @@ public class JcloudsEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public JcloudsConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (JcloudsConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public JcloudsConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (JcloudsConsumer) this;
+        }
+
         /**
          * An optional directory name to use. The option is a java.lang.String
          * type.
          */
-        private String directory;
+        public JcloudsConsumer directory(String directory) {
+            this.directory = directory;
+            return (JcloudsConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -162,52 +212,99 @@ public class JcloudsEndpoint {
         }
     }
 
-    public static class JcloudsProducer extends JcloudsCommon {
+    public static class JcloudsProducer
+            extends
+                JcloudsCommon<JcloudsProducer> {
+        private String blobName;
+        private String group;
+        private String hardwareId;
+        private String imageId;
+        private String locationId;
+        private String nodeId;
+        private String nodeState;
+        private String operation;
+        private String user;
+
         /**
          * The name of the blob. The option is a java.lang.String type.
          */
-        private String blobName;
+        public JcloudsProducer blobName(String blobName) {
+            this.blobName = blobName;
+            return (JcloudsProducer) this;
+        }
+
         /**
          * The group that will be assigned to the newly created node. Values
          * depend on the actual cloud provider. The option is a java.lang.String
          * type.
          */
-        private String group;
+        public JcloudsProducer group(String group) {
+            this.group = group;
+            return (JcloudsProducer) this;
+        }
+
         /**
          * The hardware that will be used for creating a node. Values depend on
          * the actual cloud provider. The option is a java.lang.String type.
          */
-        private String hardwareId;
+        public JcloudsProducer hardwareId(String hardwareId) {
+            this.hardwareId = hardwareId;
+            return (JcloudsProducer) this;
+        }
+
         /**
          * The imageId that will be used for creating a node. Values depend on
          * the actual cloud provider. The option is a java.lang.String type.
          */
-        private String imageId;
+        public JcloudsProducer imageId(String imageId) {
+            this.imageId = imageId;
+            return (JcloudsProducer) this;
+        }
+
         /**
          * The location that will be used for creating a node. Values depend on
          * the actual cloud provider. The option is a java.lang.String type.
          */
-        private String locationId;
+        public JcloudsProducer locationId(String locationId) {
+            this.locationId = locationId;
+            return (JcloudsProducer) this;
+        }
+
         /**
          * The id of the node that will run the script or destroyed. The option
          * is a java.lang.String type.
          */
-        private String nodeId;
+        public JcloudsProducer nodeId(String nodeId) {
+            this.nodeId = nodeId;
+            return (JcloudsProducer) this;
+        }
+
         /**
          * To filter by node status to only select running nodes etc. The option
          * is a java.lang.String type.
          */
-        private String nodeState;
+        public JcloudsProducer nodeState(String nodeState) {
+            this.nodeState = nodeState;
+            return (JcloudsProducer) this;
+        }
+
         /**
          * Specifies the type of operation that will be performed to the
          * blobstore. The option is a java.lang.String type.
          */
-        private String operation;
+        public JcloudsProducer operation(String operation) {
+            this.operation = operation;
+            return (JcloudsProducer) this;
+        }
+
         /**
          * The user on the target node that will run the script. The option is a
          * java.lang.String type.
          */
-        private String user;
+        public JcloudsProducer user(String user) {
+            this.user = user;
+            return (JcloudsProducer) this;
+        }
 
         public String getBlobName() {
             return blobName;

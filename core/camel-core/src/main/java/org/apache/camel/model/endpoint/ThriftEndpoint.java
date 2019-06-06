@@ -30,54 +30,101 @@ import org.apache.camel.spi.ExceptionHandler;
 public class ThriftEndpoint {
 
 
-    public static class ThriftCommon extends EndpointConfiguration {
+    public static class ThriftCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private String service;
+        private ThriftCompressionType compressionType;
+        private ThriftExchangeProtocol exchangeProtocol;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private ThriftNegotiationType negotiationType;
+        private Object sslParameters;
+
         /**
          * The Thrift server host name. This is localhost or 0.0.0.0 (if not
          * defined) when being a consumer or remote server host name when using
          * producer. The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * The Thrift server port. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Fully qualified service name from the thrift descriptor file (package
          * dot service definition name). The option is a java.lang.String type.
          */
-        private String service;
+        public T service(String service) {
+            this.service = service;
+            return (T) this;
+        }
+
         /**
          * Protocol compression mechanism type. The option is a
          * org.apache.camel.component.thrift.ThriftCompressionType type.
          */
-        private ThriftCompressionType compressionType;
+        public T compressionType(ThriftCompressionType compressionType) {
+            this.compressionType = compressionType;
+            return (T) this;
+        }
+
         /**
          * Exchange protocol serialization type. The option is a
          * org.apache.camel.component.thrift.ThriftExchangeProtocol type.
          */
-        private ThriftExchangeProtocol exchangeProtocol;
+        public T exchangeProtocol(ThriftExchangeProtocol exchangeProtocol) {
+            this.exchangeProtocol = exchangeProtocol;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Security negotiation type. The option is a
          * org.apache.camel.component.thrift.ThriftNegotiationType type.
          */
-        private ThriftNegotiationType negotiationType;
+        public T negotiationType(ThriftNegotiationType negotiationType) {
+            this.negotiationType = negotiationType;
+            return (T) this;
+        }
+
         /**
          * Configuration parameters for SSL/TLS security negotiation. The option
          * is a org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslParameters;
+        public T sslParameters(Object sslParameters) {
+            this.sslParameters = sslParameters;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -152,7 +199,14 @@ public class ThriftEndpoint {
         }
     }
 
-    public static class ThriftConsumer extends ThriftCommon {
+    public static class ThriftConsumer extends ThriftCommon<ThriftConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Integer clientTimeout;
+        private Integer maxPoolSize;
+        private Integer poolSize;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -162,21 +216,37 @@ public class ThriftEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public ThriftConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (ThriftConsumer) this;
+        }
+
         /**
          * Client timeout for consumers. The option is a int type.
          */
-        private Integer clientTimeout;
+        public ThriftConsumer clientTimeout(int clientTimeout) {
+            this.clientTimeout = clientTimeout;
+            return (ThriftConsumer) this;
+        }
+
         /**
          * The Thrift server consumer max thread pool size. The option is a int
          * type.
          */
-        private Integer maxPoolSize;
+        public ThriftConsumer maxPoolSize(int maxPoolSize) {
+            this.maxPoolSize = maxPoolSize;
+            return (ThriftConsumer) this;
+        }
+
         /**
          * The Thrift server consumer initial thread pool size. The option is a
          * int type.
          */
-        private Integer poolSize;
+        public ThriftConsumer poolSize(int poolSize) {
+            this.poolSize = poolSize;
+            return (ThriftConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -184,12 +254,19 @@ public class ThriftEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public ThriftConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (ThriftConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public ThriftConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (ThriftConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -240,12 +317,17 @@ public class ThriftEndpoint {
         }
     }
 
-    public static class ThriftProducer extends ThriftCommon {
+    public static class ThriftProducer extends ThriftCommon<ThriftProducer> {
+        private String method;
+
         /**
          * The Thrift invoked method name. The option is a java.lang.String
          * type.
          */
-        private String method;
+        public ThriftProducer method(String method) {
+            this.method = method;
+            return (ThriftProducer) this;
+        }
 
         public String getMethod() {
             return method;

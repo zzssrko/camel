@@ -31,110 +31,212 @@ import org.apache.camel.spi.ExceptionHandler;
 public class BoxEndpoint {
 
 
-    public static class BoxCommon extends EndpointConfiguration {
+    public static class BoxCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private BoxApiName apiName;
+        private String methodName;
+        private String clientId;
+        private String enterpriseId;
+        private String inBody;
+        private String userId;
+        private Boolean basicPropertyBinding;
+        private Map<String, Object> httpParams;
+        private Boolean synchronous;
+        private Object accessTokenCache;
+        private String clientSecret;
+        private EncryptionAlgorithm encryptionAlgorithm;
+        private Integer maxCacheEntries;
+        private String authenticationType;
+        private String privateKeyFile;
+        private String privateKeyPassword;
+        private String publicKeyId;
+        private Object sslContextParameters;
+        private String userName;
+        private String userPassword;
+
         /**
          * What kind of operation to perform. The option is a
          * org.apache.camel.component.box.internal.BoxApiName type.
          */
-        private BoxApiName apiName;
+        public T apiName(BoxApiName apiName) {
+            this.apiName = apiName;
+            return (T) this;
+        }
+
         /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
-        private String methodName;
+        public T methodName(String methodName) {
+            this.methodName = methodName;
+            return (T) this;
+        }
+
         /**
          * Box application client ID. The option is a java.lang.String type.
          */
-        private String clientId;
+        public T clientId(String clientId) {
+            this.clientId = clientId;
+            return (T) this;
+        }
+
         /**
          * The enterprise ID to use for an App Enterprise. The option is a
          * java.lang.String type.
          */
-        private String enterpriseId;
+        public T enterpriseId(String enterpriseId) {
+            this.enterpriseId = enterpriseId;
+            return (T) this;
+        }
+
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
-        private String inBody;
+        public T inBody(String inBody) {
+            this.inBody = inBody;
+            return (T) this;
+        }
+
         /**
          * The user ID to use for an App User. The option is a java.lang.String
          * type.
          */
-        private String userId;
+        public T userId(String userId) {
+            this.userId = userId;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Custom HTTP params for settings like proxy host. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> httpParams;
+        public T httpParams(Map<String, Object> httpParams) {
+            this.httpParams = httpParams;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Custom Access Token Cache for storing and retrieving access tokens.
          * The option is a com.box.sdk.IAccessTokenCache type.
          */
-        private Object accessTokenCache;
+        public T accessTokenCache(Object accessTokenCache) {
+            this.accessTokenCache = accessTokenCache;
+            return (T) this;
+        }
+
         /**
          * Box application client secret. The option is a java.lang.String type.
          */
-        private String clientSecret;
+        public T clientSecret(String clientSecret) {
+            this.clientSecret = clientSecret;
+            return (T) this;
+        }
+
         /**
          * The type of encryption algorithm for JWT. Supported Algorithms:
          * RSA_SHA_256 RSA_SHA_384 RSA_SHA_512. The option is a
          * com.box.sdk.EncryptionAlgorithm type.
          */
-        private EncryptionAlgorithm encryptionAlgorithm;
+        public T encryptionAlgorithm(EncryptionAlgorithm encryptionAlgorithm) {
+            this.encryptionAlgorithm = encryptionAlgorithm;
+            return (T) this;
+        }
+
         /**
          * The maximum number of access tokens in cache. The option is a int
          * type.
          */
-        private Integer maxCacheEntries;
+        public T maxCacheEntries(int maxCacheEntries) {
+            this.maxCacheEntries = maxCacheEntries;
+            return (T) this;
+        }
+
         /**
          * The type of authentication for connection. Types of Authentication:
          * STANDARD_AUTHENTICATION - OAuth 2.0 (3-legged) SERVER_AUTHENTICATION
          * - OAuth 2.0 with JSON Web Tokens. The option is a java.lang.String
          * type.
          */
-        private String authenticationType;
+        public T authenticationType(String authenticationType) {
+            this.authenticationType = authenticationType;
+            return (T) this;
+        }
+
         /**
          * The private key for generating the JWT signature. The option is a
          * java.lang.String type.
          */
-        private String privateKeyFile;
+        public T privateKeyFile(String privateKeyFile) {
+            this.privateKeyFile = privateKeyFile;
+            return (T) this;
+        }
+
         /**
          * The password for the private key. The option is a java.lang.String
          * type.
          */
-        private String privateKeyPassword;
+        public T privateKeyPassword(String privateKeyPassword) {
+            this.privateKeyPassword = privateKeyPassword;
+            return (T) this;
+        }
+
         /**
          * The ID for public key for validating the JWT signature. The option is
          * a java.lang.String type.
          */
-        private String publicKeyId;
+        public T publicKeyId(String publicKeyId) {
+            this.publicKeyId = publicKeyId;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
+
         /**
          * Box user name, MUST be provided. The option is a java.lang.String
          * type.
          */
-        private String userName;
+        public T userName(String userName) {
+            this.userName = userName;
+            return (T) this;
+        }
+
         /**
          * Box user password, MUST be provided if authSecureStorage is not set,
          * or returns null on first call. The option is a java.lang.String type.
          */
-        private String userPassword;
+        public T userPassword(String userPassword) {
+            this.userPassword = userPassword;
+            return (T) this;
+        }
 
         public BoxApiName getApiName() {
             return apiName;
@@ -298,7 +400,11 @@ public class BoxEndpoint {
         }
     }
 
-    public static class BoxConsumer extends BoxCommon {
+    public static class BoxConsumer extends BoxCommon<BoxConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -308,7 +414,11 @@ public class BoxEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public BoxConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (BoxConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -316,12 +426,19 @@ public class BoxEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public BoxConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (BoxConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public BoxConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (BoxConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -348,7 +465,7 @@ public class BoxEndpoint {
         }
     }
 
-    public static class BoxProducer extends BoxCommon {
+    public static class BoxProducer extends BoxCommon<BoxProducer> {
     }
 
     public static enum BoxApiName {

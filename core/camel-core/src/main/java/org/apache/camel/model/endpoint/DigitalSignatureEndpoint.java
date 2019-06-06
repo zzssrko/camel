@@ -33,23 +33,60 @@ import javax.annotation.Generated;
 public class DigitalSignatureEndpoint {
 
 
-    public static class DigitalSignatureCommon extends EndpointConfiguration {
+    public static class DigitalSignatureCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private CryptoOperation cryptoOperation;
+        private String name;
+        private String algorithm;
+        private String alias;
+        private String certificateName;
+        private KeyStore keystore;
+        private String keystoreName;
+        private PrivateKey privateKey;
+        private String privateKeyName;
+        private String provider;
+        private String publicKeyName;
+        private String secureRandomName;
+        private String signatureHeaderName;
+        private Boolean basicPropertyBinding;
+        private Integer bufferSize;
+        private Certificate certificate;
+        private Boolean clearHeaders;
+        private Object keyStoreParameters;
+        private PublicKey publicKey;
+        private SecureRandom secureRandom;
+        private Boolean synchronous;
+        private Character[] password;
+
         /**
          * Set the Crypto operation from that supplied after the crypto scheme
          * in the endpoint uri e.g. crypto:sign sets sign as the operation. The
          * option is a org.apache.camel.component.crypto.CryptoOperation type.
          */
-        private CryptoOperation cryptoOperation;
+        public T cryptoOperation(CryptoOperation cryptoOperation) {
+            this.cryptoOperation = cryptoOperation;
+            return (T) this;
+        }
+
         /**
          * The logical name of this operation. The option is a java.lang.String
          * type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * Sets the JCE name of the Algorithm that should be used for the
          * signer. The option is a java.lang.String type.
          */
-        private String algorithm;
+        public T algorithm(String algorithm) {
+            this.algorithm = algorithm;
+            return (T) this;
+        }
+
         /**
          * Sets the alias used to query the KeyStore for keys and {link
          * java.security.cert.Certificate Certificates} to be used in signing
@@ -57,12 +94,20 @@ public class DigitalSignatureEndpoint {
          * the message header
          * org.apache.camel.component.crypto.DigitalSignatureConstants#KEYSTORE_ALIAS. The option is a java.lang.String type.
          */
-        private String alias;
+        public T alias(String alias) {
+            this.alias = alias;
+            return (T) this;
+        }
+
         /**
          * Sets the reference name for a PrivateKey that can be found in the
          * registry. The option is a java.lang.String type.
          */
-        private String certificateName;
+        public T certificateName(String certificateName) {
+            this.certificateName = certificateName;
+            return (T) this;
+        }
+
         /**
          * Sets the KeyStore that can contain keys and Certficates for use in
          * signing and verifying exchanges. A KeyStore is typically used with an
@@ -72,67 +117,115 @@ public class DigitalSignatureEndpoint {
          * single entry will be used. The option is a java.security.KeyStore
          * type.
          */
-        private KeyStore keystore;
+        public T keystore(KeyStore keystore) {
+            this.keystore = keystore;
+            return (T) this;
+        }
+
         /**
          * Sets the reference name for a Keystore that can be found in the
          * registry. The option is a java.lang.String type.
          */
-        private String keystoreName;
+        public T keystoreName(String keystoreName) {
+            this.keystoreName = keystoreName;
+            return (T) this;
+        }
+
         /**
          * Set the PrivateKey that should be used to sign the exchange. The
          * option is a java.security.PrivateKey type.
          */
-        private PrivateKey privateKey;
+        public T privateKey(PrivateKey privateKey) {
+            this.privateKey = privateKey;
+            return (T) this;
+        }
+
         /**
          * Sets the reference name for a PrivateKey that can be found in the
          * registry. The option is a java.lang.String type.
          */
-        private String privateKeyName;
+        public T privateKeyName(String privateKeyName) {
+            this.privateKeyName = privateKeyName;
+            return (T) this;
+        }
+
         /**
          * Set the id of the security provider that provides the configured
          * Signature algorithm. The option is a java.lang.String type.
          */
-        private String provider;
+        public T provider(String provider) {
+            this.provider = provider;
+            return (T) this;
+        }
+
         /**
          * references that should be resolved when the context changes. The
          * option is a java.lang.String type.
          */
-        private String publicKeyName;
+        public T publicKeyName(String publicKeyName) {
+            this.publicKeyName = publicKeyName;
+            return (T) this;
+        }
+
         /**
          * Sets the reference name for a SecureRandom that can be found in the
          * registry. The option is a java.lang.String type.
          */
-        private String secureRandomName;
+        public T secureRandomName(String secureRandomName) {
+            this.secureRandomName = secureRandomName;
+            return (T) this;
+        }
+
         /**
          * Set the name of the message header that should be used to store the
          * base64 encoded signature. This defaults to 'CamelDigitalSignature'.
          * The option is a java.lang.String type.
          */
-        private String signatureHeaderName;
+        public T signatureHeaderName(String signatureHeaderName) {
+            this.signatureHeaderName = signatureHeaderName;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Set the size of the buffer used to read in the Exchange payload data.
          * The option is a java.lang.Integer type.
          */
-        private Integer bufferSize;
+        public T bufferSize(Integer bufferSize) {
+            this.bufferSize = bufferSize;
+            return (T) this;
+        }
+
         /**
          * Set the Certificate that should be used to verify the signature in
          * the exchange based on its payload. The option is a
          * java.security.cert.Certificate type.
          */
-        private Certificate certificate;
+        public T certificate(Certificate certificate) {
+            this.certificate = certificate;
+            return (T) this;
+        }
+
         /**
          * Determines if the Signature specific headers be cleared after signing
          * and verification. Defaults to true, and should only be made otherwise
          * at your extreme peril as vital private information such as Keys and
          * passwords may escape if unset. The option is a boolean type.
          */
-        private Boolean clearHeaders;
+        public T clearHeaders(boolean clearHeaders) {
+            this.clearHeaders = clearHeaders;
+            return (T) this;
+        }
+
         /**
          * Sets the KeyStore that can contain keys and Certficates for use in
          * signing and verifying exchanges based on the given
@@ -143,28 +236,47 @@ public class DigitalSignatureEndpoint {
          * entry will be used. The option is a
          * org.apache.camel.support.jsse.KeyStoreParameters type.
          */
-        private Object keyStoreParameters;
+        public T keyStoreParameters(Object keyStoreParameters) {
+            this.keyStoreParameters = keyStoreParameters;
+            return (T) this;
+        }
+
         /**
          * Set the PublicKey that should be used to verify the signature in the
          * exchange. The option is a java.security.PublicKey type.
          */
-        private PublicKey publicKey;
+        public T publicKey(PublicKey publicKey) {
+            this.publicKey = publicKey;
+            return (T) this;
+        }
+
         /**
          * Set the SecureRandom used to initialize the Signature service. The
          * option is a java.security.SecureRandom type.
          */
-        private SecureRandom secureRandom;
+        public T secureRandom(SecureRandom secureRandom) {
+            this.secureRandom = secureRandom;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Sets the password used to access an aliased PrivateKey in the
          * KeyStore. The option is a java.lang.String type.
          */
-        private Character[] password;
+        public T password(Character[] password) {
+            this.password = password;
+            return (T) this;
+        }
 
         public CryptoOperation getCryptoOperation() {
             return cryptoOperation;
@@ -345,12 +457,12 @@ public class DigitalSignatureEndpoint {
 
     public static class DigitalSignatureConsumer
             extends
-                DigitalSignatureCommon {
+                DigitalSignatureCommon<DigitalSignatureConsumer> {
     }
 
     public static class DigitalSignatureProducer
             extends
-                DigitalSignatureCommon {
+                DigitalSignatureCommon<DigitalSignatureProducer> {
     }
 
     public static enum CryptoOperation {

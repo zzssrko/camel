@@ -28,74 +28,141 @@ import javax.annotation.Generated;
 public class SesEndpoint {
 
 
-    public static class SesCommon extends EndpointConfiguration {
+    public static class SesCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String from;
+        private Object amazonSESClient;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String region;
+        private List<String> replyToAddresses;
+        private String returnPath;
+        private String subject;
+        private List<String> to;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String accessKey;
+        private String secretKey;
+
         /**
          * The sender's email address. The option is a java.lang.String type.
          */
-        private String from;
+        public T from(String from) {
+            this.from = from;
+            return (T) this;
+        }
+
         /**
          * To use the AmazonSimpleEmailService as the client. The option is a
          * com.amazonaws.services.simpleemail.AmazonSimpleEmailService type.
          */
-        private Object amazonSESClient;
+        public T amazonSESClient(Object amazonSESClient) {
+            this.amazonSESClient = amazonSESClient;
+            return (T) this;
+        }
+
         /**
          * To define a proxy host when instantiating the SES client. The option
          * is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * To define a proxy port when instantiating the SES client. The option
          * is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
+
         /**
          * The region in which SES client needs to work. The option is a
          * java.lang.String type.
          */
-        private String region;
+        public T region(String region) {
+            this.region = region;
+            return (T) this;
+        }
+
         /**
          * List of reply-to email address(es) for the message, override it using
          * 'CamelAwsSesReplyToAddresses' header. The option is a
          * java.util.List<java.lang.String> type.
          */
-        private List<String> replyToAddresses;
+        public T replyToAddresses(List<String> replyToAddresses) {
+            this.replyToAddresses = replyToAddresses;
+            return (T) this;
+        }
+
         /**
          * The email address to which bounce notifications are to be forwarded,
          * override it using 'CamelAwsSesReturnPath' header. The option is a
          * java.lang.String type.
          */
-        private String returnPath;
+        public T returnPath(String returnPath) {
+            this.returnPath = returnPath;
+            return (T) this;
+        }
+
         /**
          * The subject which is used if the message header 'CamelAwsSesSubject'
          * is not present. The option is a java.lang.String type.
          */
-        private String subject;
+        public T subject(String subject) {
+            this.subject = subject;
+            return (T) this;
+        }
+
         /**
          * List of destination email address. Can be overriden with
          * 'CamelAwsSesTo' header. The option is a
          * java.util.List<java.lang.String> type.
          */
-        private List<String> to;
+        public T to(List<String> to) {
+            this.to = to;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public T accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public T secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (T) this;
+        }
 
         public String getFrom() {
             return from;
@@ -202,9 +269,9 @@ public class SesEndpoint {
         }
     }
 
-    public static class SesConsumer extends SesCommon {
+    public static class SesConsumer extends SesCommon<SesConsumer> {
     }
 
-    public static class SesProducer extends SesCommon {
+    public static class SesProducer extends SesCommon<SesProducer> {
     }
 }

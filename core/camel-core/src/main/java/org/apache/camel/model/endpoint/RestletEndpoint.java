@@ -31,66 +31,123 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class RestletEndpoint {
 
 
-    public static class RestletCommon extends EndpointConfiguration {
+    public static class RestletCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String protocol;
+        private String host;
+        private Integer port;
+        private String uriPattern;
+        private Object restletMethod;
+        private Boolean basicPropertyBinding;
+        private HeaderFilterStrategy headerFilterStrategy;
+        private Object restletBinding;
+        private Boolean synchronous;
+        private Map<String, String> restletRealm;
+        private Object sslContextParameters;
+
         /**
          * The protocol to use which is http or https. The option is a
          * java.lang.String type.
          */
-        private String protocol;
+        public T protocol(String protocol) {
+            this.protocol = protocol;
+            return (T) this;
+        }
+
         /**
          * The hostname of the restlet service. The option is a java.lang.String
          * type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * The port number of the restlet service. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * The resource pattern such as /customer/{id}. The option is a
          * java.lang.String type.
          */
-        private String uriPattern;
+        public T uriPattern(String uriPattern) {
+            this.uriPattern = uriPattern;
+            return (T) this;
+        }
+
         /**
          * On a producer endpoint, specifies the request method to use. On a
          * consumer endpoint, specifies that the endpoint consumes only
          * restletMethod requests. The option is a org.restlet.data.Method type.
          */
-        private Object restletMethod;
+        public T restletMethod(Object restletMethod) {
+            this.restletMethod = restletMethod;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (T) this;
+        }
+
         /**
          * To use a custom RestletBinding to bind between Restlet and Camel
          * message. The option is a
          * org.apache.camel.component.restlet.RestletBinding type.
          */
-        private Object restletBinding;
+        public T restletBinding(Object restletBinding) {
+            this.restletBinding = restletBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(Boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * To configure the security realms of restlet as a map. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
-        private Map<String, String> restletRealm;
+        public T restletRealm(Map<String, String> restletRealm) {
+            this.restletRealm = restletRealm;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
 
         public String getProtocol() {
             return protocol;
@@ -182,7 +239,15 @@ public class RestletEndpoint {
         }
     }
 
-    public static class RestletConsumer extends RestletCommon {
+    public static class RestletConsumer
+            extends
+                RestletCommon<RestletConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Object[] restletMethods;
+        private Boolean disableStreamCache;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -192,7 +257,11 @@ public class RestletEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public RestletConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (RestletConsumer) this;
+        }
+
         /**
          * Specify one or more methods separated by commas (e.g.
          * restletMethods=post,put) to be serviced by a restlet consumer
@@ -201,7 +270,11 @@ public class RestletEndpoint {
          * are: ALL,CONNECT,DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT,TRACE. The
          * option is a java.lang.String type.
          */
-        private Object[] restletMethods;
+        public RestletConsumer restletMethods(Object[] restletMethods) {
+            this.restletMethods = restletMethods;
+            return (RestletConsumer) this;
+        }
+
         /**
          * Determines whether or not the raw input stream from Restlet is cached
          * or not (Camel will read the stream into a in memory/overflow to file,
@@ -215,7 +288,11 @@ public class RestletEndpoint {
          * support reading the stream multiple times. The option is a boolean
          * type.
          */
-        private Boolean disableStreamCache;
+        public RestletConsumer disableStreamCache(boolean disableStreamCache) {
+            this.disableStreamCache = disableStreamCache;
+            return (RestletConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -223,12 +300,20 @@ public class RestletEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public RestletConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (RestletConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public RestletConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (RestletConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -271,28 +356,54 @@ public class RestletEndpoint {
         }
     }
 
-    public static class RestletProducer extends RestletCommon {
+    public static class RestletProducer
+            extends
+                RestletCommon<RestletProducer> {
+        private Integer connectTimeout;
+        private Object cookieHandler;
+        private Integer socketTimeout;
+        private Boolean throwExceptionOnFailure;
+        private Boolean autoCloseStream;
+        private Boolean streamRepresentation;
+
         /**
          * The Client will give up connection if the connection is timeout, 0
          * for unlimited wait. The option is a int type.
          */
-        private Integer connectTimeout;
+        public RestletProducer connectTimeout(int connectTimeout) {
+            this.connectTimeout = connectTimeout;
+            return (RestletProducer) this;
+        }
+
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
          */
-        private Object cookieHandler;
+        public RestletProducer cookieHandler(Object cookieHandler) {
+            this.cookieHandler = cookieHandler;
+            return (RestletProducer) this;
+        }
+
         /**
          * The Client socket receive timeout, 0 for unlimited wait. The option
          * is a int type.
          */
-        private Integer socketTimeout;
+        public RestletProducer socketTimeout(int socketTimeout) {
+            this.socketTimeout = socketTimeout;
+            return (RestletProducer) this;
+        }
+
         /**
          * Whether to throw exception on a producer failure. If this option is
          * false then the http status code is set as a message header which can
          * be checked if it has an error value. The option is a boolean type.
          */
-        private Boolean throwExceptionOnFailure;
+        public RestletProducer throwExceptionOnFailure(
+                boolean throwExceptionOnFailure) {
+            this.throwExceptionOnFailure = throwExceptionOnFailure;
+            return (RestletProducer) this;
+        }
+
         /**
          * Whether to auto close the stream representation as response from
          * calling a REST service using the restlet producer. If the response is
@@ -303,7 +414,11 @@ public class RestletEndpoint {
          * route, you may need to not auto close the stream. The option is a
          * boolean type.
          */
-        private Boolean autoCloseStream;
+        public RestletProducer autoCloseStream(boolean autoCloseStream) {
+            this.autoCloseStream = autoCloseStream;
+            return (RestletProducer) this;
+        }
+
         /**
          * Whether to support stream representation as response from calling a
          * REST service using the restlet producer. If the response is streaming
@@ -314,7 +429,10 @@ public class RestletEndpoint {
          * However if you need to read the stream outside a Camel route, you may
          * need to not auto close the stream. The option is a boolean type.
          */
-        private Boolean streamRepresentation;
+        public RestletProducer streamRepresentation(boolean streamRepresentation) {
+            this.streamRepresentation = streamRepresentation;
+            return (RestletProducer) this;
+        }
 
         public Integer getConnectTimeout() {
             return connectTimeout;

@@ -31,17 +31,73 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class AMQPEndpoint {
 
 
-    public static class AMQPCommon extends EndpointConfiguration {
+    public static class AMQPCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String destinationType;
+        private String destinationName;
+        private String clientId;
+        private Object connectionFactory;
+        private Boolean disableReplyTo;
+        private String durableSubscriptionName;
+        private JmsMessageType jmsMessageType;
+        private Boolean testConnectionOnStartup;
+        private Boolean allowSerializedHeaders;
+        private Boolean asyncStartListener;
+        private Boolean asyncStopListener;
+        private Boolean basicPropertyBinding;
+        private Object destinationResolver;
+        private Object errorHandler;
+        private Object exceptionListener;
+        private HeaderFilterStrategy headerFilterStrategy;
+        private Integer idleConsumerLimit;
+        private Integer idleTaskExecutionLimit;
+        private Boolean includeAllJMSXProperties;
+        private Object jmsKeyFormatStrategy;
+        private Boolean mapJmsMessage;
+        private Integer maxMessagesPerTask;
+        private Object messageConverter;
+        private Object messageCreatedStrategy;
+        private Boolean messageIdEnabled;
+        private Object messageListenerContainerFactory;
+        private Boolean messageTimestampEnabled;
+        private Boolean pubSubNoLocal;
+        private Long receiveTimeout;
+        private Long recoveryInterval;
+        private Long requestTimeoutCheckerInterval;
+        private Boolean synchronous;
+        private Boolean transferException;
+        private Boolean transferExchange;
+        private Boolean transferFault;
+        private Boolean useMessageIDAsCorrelationID;
+        private Integer waitForProvisionCorrelationToBeUpdatedCounter;
+        private Long waitForProvisionCorrelationToBeUpdatedThreadSleepingTime;
+        private String password;
+        private String username;
+        private Boolean transacted;
+        private Boolean lazyCreateTransactionManager;
+        private Object transactionManager;
+        private String transactionName;
+        private Integer transactionTimeout;
+
         /**
          * The kind of destination to use. The option is a java.lang.String
          * type.
          */
-        private String destinationType;
+        public T destinationType(String destinationType) {
+            this.destinationType = destinationType;
+            return (T) this;
+        }
+
         /**
          * Name of the queue or topic to use as destination. The option is a
          * java.lang.String type.
          */
-        private String destinationName;
+        public T destinationName(String destinationName) {
+            this.destinationName = destinationName;
+            return (T) this;
+        }
+
         /**
          * Sets the JMS client ID to use. Note that this value, if specified,
          * must be unique and can only be used by a single JMS connection
@@ -49,7 +105,11 @@ public class AMQPEndpoint {
          * subscriptions. If using Apache ActiveMQ you may prefer to use Virtual
          * Topics instead. The option is a java.lang.String type.
          */
-        private String clientId;
+        public T clientId(String clientId) {
+            this.clientId = clientId;
+            return (T) this;
+        }
+
         /**
          * Sets the default connection factory to be used if a connection
          * factory is not specified for either
@@ -57,7 +117,11 @@ public class AMQPEndpoint {
          * setListenerConnectionFactory(ConnectionFactory). The option is a
          * javax.jms.ConnectionFactory type.
          */
-        private Object connectionFactory;
+        public T connectionFactory(Object connectionFactory) {
+            this.connectionFactory = connectionFactory;
+            return (T) this;
+        }
+
         /**
          * Specifies whether Camel ignores the JMSReplyTo header in messages. If
          * true, Camel does not send a reply back to the destination specified
@@ -69,13 +133,21 @@ public class AMQPEndpoint {
          * want to route message from one system to another. The option is a
          * boolean type.
          */
-        private Boolean disableReplyTo;
+        public T disableReplyTo(boolean disableReplyTo) {
+            this.disableReplyTo = disableReplyTo;
+            return (T) this;
+        }
+
         /**
          * The durable subscriber name for specifying durable topic
          * subscriptions. The clientId option must be configured as well. The
          * option is a java.lang.String type.
          */
-        private String durableSubscriptionName;
+        public T durableSubscriptionName(String durableSubscriptionName) {
+            this.durableSubscriptionName = durableSubscriptionName;
+            return (T) this;
+        }
+
         /**
          * Allows you to force the use of a specific javax.jms.Message
          * implementation for sending JMS messages. Possible values are: Bytes,
@@ -84,7 +156,11 @@ public class AMQPEndpoint {
          * to specify it. The option is a
          * org.apache.camel.component.jms.JmsMessageType type.
          */
-        private JmsMessageType jmsMessageType;
+        public T jmsMessageType(JmsMessageType jmsMessageType) {
+            this.jmsMessageType = jmsMessageType;
+            return (T) this;
+        }
+
         /**
          * Specifies whether to test the connection on startup. This ensures
          * that when Camel starts that all the JMS consumers have a valid
@@ -93,14 +169,22 @@ public class AMQPEndpoint {
          * started with failed connections. The JMS producers is tested as well.
          * The option is a boolean type.
          */
-        private Boolean testConnectionOnStartup;
+        public T testConnectionOnStartup(boolean testConnectionOnStartup) {
+            this.testConnectionOnStartup = testConnectionOnStartup;
+            return (T) this;
+        }
+
         /**
          * Controls whether or not to include serialized headers. Applies only
          * when isTransferExchange() is true. This requires that the objects are
          * serializable. Camel will exclude any non-serializable objects and log
          * it at WARN level. The option is a boolean type.
          */
-        private Boolean allowSerializedHeaders;
+        public T allowSerializedHeaders(boolean allowSerializedHeaders) {
+            this.allowSerializedHeaders = allowSerializedHeaders;
+            return (T) this;
+        }
+
         /**
          * Whether to startup the JmsConsumer message listener asynchronously,
          * when starting a route. For example if a JmsConsumer cannot get a
@@ -114,18 +198,30 @@ public class AMQPEndpoint {
          * messages; You can then restart the route to retry. The option is a
          * boolean type.
          */
-        private Boolean asyncStartListener;
+        public T asyncStartListener(boolean asyncStartListener) {
+            this.asyncStartListener = asyncStartListener;
+            return (T) this;
+        }
+
         /**
          * Whether to stop the JmsConsumer message listener asynchronously, when
          * stopping a route. The option is a boolean type.
          */
-        private Boolean asyncStopListener;
+        public T asyncStopListener(boolean asyncStopListener) {
+            this.asyncStopListener = asyncStopListener;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * A pluggable
          * org.springframework.jms.support.destination.DestinationResolver that
@@ -133,7 +229,11 @@ public class AMQPEndpoint {
          * destination in a JNDI registry). The option is a
          * org.springframework.jms.support.destination.DestinationResolver type.
          */
-        private Object destinationResolver;
+        public T destinationResolver(Object destinationResolver) {
+            this.destinationResolver = destinationResolver;
+            return (T) this;
+        }
+
         /**
          * Specifies a org.springframework.util.ErrorHandler to be invoked in
          * case of any uncaught exceptions thrown while processing a Message. By
@@ -144,24 +244,40 @@ public class AMQPEndpoint {
          * configure, than having to code a custom errorHandler. The option is a
          * org.springframework.util.ErrorHandler type.
          */
-        private Object errorHandler;
+        public T errorHandler(Object errorHandler) {
+            this.errorHandler = errorHandler;
+            return (T) this;
+        }
+
         /**
          * Specifies the JMS Exception Listener that is to be notified of any
          * underlying JMS exceptions. The option is a
          * javax.jms.ExceptionListener type.
          */
-        private Object exceptionListener;
+        public T exceptionListener(Object exceptionListener) {
+            this.exceptionListener = exceptionListener;
+            return (T) this;
+        }
+
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (T) this;
+        }
+
         /**
          * Specify the limit for the number of consumers that are allowed to be
          * idle at any given time. The option is a int type.
          */
-        private Integer idleConsumerLimit;
+        public T idleConsumerLimit(int idleConsumerLimit) {
+            this.idleConsumerLimit = idleConsumerLimit;
+            return (T) this;
+        }
+
         /**
          * Specifies the limit for idle executions of a receive task, not having
          * received any message within its execution. If this limit is reached,
@@ -170,7 +286,11 @@ public class AMQPEndpoint {
          * setting). There is additional doc available from Spring. The option
          * is a int type.
          */
-        private Integer idleTaskExecutionLimit;
+        public T idleTaskExecutionLimit(int idleTaskExecutionLimit) {
+            this.idleTaskExecutionLimit = idleTaskExecutionLimit;
+            return (T) this;
+        }
+
         /**
          * Whether to include all JMSXxxx properties when mapping from JMS to
          * Camel Message. Setting this to true will include properties such as
@@ -178,7 +298,11 @@ public class AMQPEndpoint {
          * headerFilterStrategy then this option does not apply. The option is a
          * boolean type.
          */
-        private Boolean includeAllJMSXProperties;
+        public T includeAllJMSXProperties(boolean includeAllJMSXProperties) {
+            this.includeAllJMSXProperties = includeAllJMSXProperties;
+            return (T) this;
+        }
+
         /**
          * Pluggable strategy for encoding and decoding JMS keys so they can be
          * compliant with the JMS specification. Camel provides two
@@ -190,34 +314,54 @@ public class AMQPEndpoint {
          * org.apache.camel.component.jms.JmsKeyFormatStrategy and refer to it
          * using the # notation. The option is a java.lang.String type.
          */
-        private Object jmsKeyFormatStrategy;
+        public T jmsKeyFormatStrategy(Object jmsKeyFormatStrategy) {
+            this.jmsKeyFormatStrategy = jmsKeyFormatStrategy;
+            return (T) this;
+        }
+
         /**
          * Specifies whether Camel should auto map the received JMS message to a
          * suited payload type, such as javax.jms.TextMessage to a String etc.
          * The option is a boolean type.
          */
-        private Boolean mapJmsMessage;
+        public T mapJmsMessage(boolean mapJmsMessage) {
+            this.mapJmsMessage = mapJmsMessage;
+            return (T) this;
+        }
+
         /**
          * The number of messages per task. -1 is unlimited. If you use a range
          * for concurrent consumers (eg min max), then this option can be used
          * to set a value to eg 100 to control how fast the consumers will
          * shrink when less work is required. The option is a int type.
          */
-        private Integer maxMessagesPerTask;
+        public T maxMessagesPerTask(int maxMessagesPerTask) {
+            this.maxMessagesPerTask = maxMessagesPerTask;
+            return (T) this;
+        }
+
         /**
          * To use a custom Spring
          * org.springframework.jms.support.converter.MessageConverter so you can
          * be in control how to map to/from a javax.jms.Message. The option is a
          * org.springframework.jms.support.converter.MessageConverter type.
          */
-        private Object messageConverter;
+        public T messageConverter(Object messageConverter) {
+            this.messageConverter = messageConverter;
+            return (T) this;
+        }
+
         /**
          * To use the given MessageCreatedStrategy which are invoked when Camel
          * creates new instances of javax.jms.Message objects when Camel is
          * sending a JMS message. The option is a
          * org.apache.camel.component.jms.MessageCreatedStrategy type.
          */
-        private Object messageCreatedStrategy;
+        public T messageCreatedStrategy(Object messageCreatedStrategy) {
+            this.messageCreatedStrategy = messageCreatedStrategy;
+            return (T) this;
+        }
+
         /**
          * When sending, specifies whether message IDs should be added. This is
          * just an hint to the JMS Broker. If the JMS provider accepts this
@@ -225,7 +369,11 @@ public class AMQPEndpoint {
          * provider ignores the hint, the message ID must be set to its normal
          * unique value. The option is a boolean type.
          */
-        private Boolean messageIdEnabled;
+        public T messageIdEnabled(boolean messageIdEnabled) {
+            this.messageIdEnabled = messageIdEnabled;
+            return (T) this;
+        }
+
         /**
          * Registry ID of the MessageListenerContainerFactory used to determine
          * what
@@ -234,7 +382,12 @@ public class AMQPEndpoint {
          * consumerType to Custom. The option is a
          * org.apache.camel.component.jms.MessageListenerContainerFactory type.
          */
-        private Object messageListenerContainerFactory;
+        public T messageListenerContainerFactory(
+                Object messageListenerContainerFactory) {
+            this.messageListenerContainerFactory = messageListenerContainerFactory;
+            return (T) this;
+        }
+
         /**
          * Specifies whether timestamps should be enabled by default on sending
          * messages. This is just an hint to the JMS Broker. If the JMS provider
@@ -242,23 +395,39 @@ public class AMQPEndpoint {
          * zero; if the provider ignores the hint, the timestamp must be set to
          * its normal value. The option is a boolean type.
          */
-        private Boolean messageTimestampEnabled;
+        public T messageTimestampEnabled(boolean messageTimestampEnabled) {
+            this.messageTimestampEnabled = messageTimestampEnabled;
+            return (T) this;
+        }
+
         /**
          * Specifies whether to inhibit the delivery of messages published by
          * its own connection. The option is a boolean type.
          */
-        private Boolean pubSubNoLocal;
+        public T pubSubNoLocal(boolean pubSubNoLocal) {
+            this.pubSubNoLocal = pubSubNoLocal;
+            return (T) this;
+        }
+
         /**
          * The timeout for receiving messages (in milliseconds). The option is a
          * long type.
          */
-        private Long receiveTimeout;
+        public T receiveTimeout(long receiveTimeout) {
+            this.receiveTimeout = receiveTimeout;
+            return (T) this;
+        }
+
         /**
          * Specifies the interval between recovery attempts, i.e. when a
          * connection is being refreshed, in milliseconds. The default is 5000
          * ms, that is, 5 seconds. The option is a long type.
          */
-        private Long recoveryInterval;
+        public T recoveryInterval(long recoveryInterval) {
+            this.recoveryInterval = recoveryInterval;
+            return (T) this;
+        }
+
         /**
          * Configures how often Camel should check for timed out Exchanges when
          * doing request/reply over JMS. By default Camel checks once per
@@ -266,13 +435,22 @@ public class AMQPEndpoint {
          * can lower this interval, to check more frequently. The timeout is
          * determined by the option requestTimeout. The option is a long type.
          */
-        private Long requestTimeoutCheckerInterval;
+        public T requestTimeoutCheckerInterval(
+                long requestTimeoutCheckerInterval) {
+            this.requestTimeoutCheckerInterval = requestTimeoutCheckerInterval;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * If enabled and you are using Request Reply messaging (InOut) and an
          * Exchange failed on the consumer side, then the caused Exception will
@@ -286,7 +464,11 @@ public class AMQPEndpoint {
          * org.apache.camel.RuntimeCamelException when returned to the producer.
          * The option is a boolean type.
          */
-        private Boolean transferException;
+        public T transferException(boolean transferException) {
+            this.transferException = transferException;
+            return (T) this;
+        }
+
         /**
          * You can transfer the exchange over the wire instead of just the body
          * and headers. The following fields are transferred: In body, Out body,
@@ -297,7 +479,11 @@ public class AMQPEndpoint {
          * and consumer side, so Camel knows the payloads is an Exchange and not
          * a regular payload. The option is a boolean type.
          */
-        private Boolean transferExchange;
+        public T transferExchange(boolean transferExchange) {
+            this.transferExchange = transferExchange;
+            return (T) this;
+        }
+
         /**
          * If enabled and you are using Request Reply messaging (InOut) and an
          * Exchange failed with a SOAP fault (not exception) on the consumer
@@ -309,62 +495,108 @@ public class AMQPEndpoint {
          * this when using Camel components that support faults such as SOAP
          * based such as cxf or spring-ws. The option is a boolean type.
          */
-        private Boolean transferFault;
+        public T transferFault(boolean transferFault) {
+            this.transferFault = transferFault;
+            return (T) this;
+        }
+
         /**
          * Specifies whether JMSMessageID should always be used as
          * JMSCorrelationID for InOut messages. The option is a boolean type.
          */
-        private Boolean useMessageIDAsCorrelationID;
+        public T useMessageIDAsCorrelationID(boolean useMessageIDAsCorrelationID) {
+            this.useMessageIDAsCorrelationID = useMessageIDAsCorrelationID;
+            return (T) this;
+        }
+
         /**
          * Number of times to wait for provisional correlation id to be updated
          * to the actual correlation id when doing request/reply over JMS and
          * when the option useMessageIDAsCorrelationID is enabled. The option is
          * a int type.
          */
-        private Integer waitForProvisionCorrelationToBeUpdatedCounter;
+        public T waitForProvisionCorrelationToBeUpdatedCounter(
+                int waitForProvisionCorrelationToBeUpdatedCounter) {
+            this.waitForProvisionCorrelationToBeUpdatedCounter = waitForProvisionCorrelationToBeUpdatedCounter;
+            return (T) this;
+        }
+
         /**
          * Interval in millis to sleep each time while waiting for provisional
          * correlation id to be updated. The option is a long type.
          */
-        private Long waitForProvisionCorrelationToBeUpdatedThreadSleepingTime;
+        public T waitForProvisionCorrelationToBeUpdatedThreadSleepingTime(
+                long waitForProvisionCorrelationToBeUpdatedThreadSleepingTime) {
+            this.waitForProvisionCorrelationToBeUpdatedThreadSleepingTime = waitForProvisionCorrelationToBeUpdatedThreadSleepingTime;
+            return (T) this;
+        }
+
         /**
          * Password to use with the ConnectionFactory. You can also configure
          * username/password directly on the ConnectionFactory. The option is a
          * java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Username to use with the ConnectionFactory. You can also configure
          * username/password directly on the ConnectionFactory. The option is a
          * java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
+
         /**
          * Specifies whether to use transacted mode. The option is a boolean
          * type.
          */
-        private Boolean transacted;
+        public T transacted(boolean transacted) {
+            this.transacted = transacted;
+            return (T) this;
+        }
+
         /**
          * If true, Camel will create a JmsTransactionManager, if there is no
          * transactionManager injected when option transacted=true. The option
          * is a boolean type.
          */
-        private Boolean lazyCreateTransactionManager;
+        public T lazyCreateTransactionManager(
+                boolean lazyCreateTransactionManager) {
+            this.lazyCreateTransactionManager = lazyCreateTransactionManager;
+            return (T) this;
+        }
+
         /**
          * The Spring transaction manager to use. The option is a
          * org.springframework.transaction.PlatformTransactionManager type.
          */
-        private Object transactionManager;
+        public T transactionManager(Object transactionManager) {
+            this.transactionManager = transactionManager;
+            return (T) this;
+        }
+
         /**
          * The name of the transaction to use. The option is a java.lang.String
          * type.
          */
-        private String transactionName;
+        public T transactionName(String transactionName) {
+            this.transactionName = transactionName;
+            return (T) this;
+        }
+
         /**
          * The timeout value of the transaction (in seconds), if using
          * transacted mode. The option is a int type.
          */
-        private Integer transactionTimeout;
+        public T transactionTimeout(int transactionTimeout) {
+            this.transactionTimeout = transactionTimeout;
+            return (T) this;
+        }
 
         public String getDestinationType() {
             return destinationType;
@@ -734,13 +966,45 @@ public class AMQPEndpoint {
         }
     }
 
-    public static class AMQPConsumer extends AMQPCommon {
+    public static class AMQPConsumer extends AMQPCommon<AMQPConsumer> {
+        private String acknowledgementModeName;
+        private Boolean asyncConsumer;
+        private Boolean autoStartup;
+        private Boolean bridgeErrorHandler;
+        private Integer cacheLevel;
+        private String cacheLevelName;
+        private Integer concurrentConsumers;
+        private Integer maxConcurrentConsumers;
+        private String replyTo;
+        private Boolean replyToDeliveryPersistent;
+        private String selector;
+        private Boolean subscriptionDurable;
+        private String subscriptionName;
+        private Boolean subscriptionShared;
+        private Boolean acceptMessagesWhileStopping;
+        private Boolean allowReplyManagerQuickStop;
+        private ConsumerType consumerType;
+        private DefaultTaskExecutorType defaultTaskExecutorType;
+        private Boolean eagerLoadingOfProperties;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private Boolean exposeListenerSession;
+        private Boolean replyToSameDestinationAllowed;
+        private Object taskExecutor;
+        private LoggingLevel errorHandlerLoggingLevel;
+        private Boolean errorHandlerLogStackTrace;
+
         /**
          * The JMS acknowledgement name, which is one of: SESSION_TRANSACTED,
          * CLIENT_ACKNOWLEDGE, AUTO_ACKNOWLEDGE, DUPS_OK_ACKNOWLEDGE. The option
          * is a java.lang.String type.
          */
-        private String acknowledgementModeName;
+        public AMQPConsumer acknowledgementModeName(
+                String acknowledgementModeName) {
+            this.acknowledgementModeName = acknowledgementModeName;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Whether the JmsConsumer processes the Exchange asynchronously. If
          * enabled then the JmsConsumer may pickup the next message from the JMS
@@ -753,12 +1017,20 @@ public class AMQPEndpoint {
          * transaction must be executed synchronously (Camel 3.0 may support
          * async transactions). The option is a boolean type.
          */
-        private Boolean asyncConsumer;
+        public AMQPConsumer asyncConsumer(boolean asyncConsumer) {
+            this.asyncConsumer = asyncConsumer;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Specifies whether the consumer container should auto-startup. The
          * option is a boolean type.
          */
-        private Boolean autoStartup;
+        public AMQPConsumer autoStartup(boolean autoStartup) {
+            this.autoStartup = autoStartup;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -768,12 +1040,20 @@ public class AMQPEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public AMQPConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Sets the cache level by ID for the underlying JMS resources. See
          * cacheLevelName option for more details. The option is a int type.
          */
-        private Integer cacheLevel;
+        public AMQPConsumer cacheLevel(int cacheLevel) {
+            this.cacheLevel = cacheLevel;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Sets the cache level by name for the underlying JMS resources.
          * Possible values are: CACHE_AUTO, CACHE_CONNECTION, CACHE_CONSUMER,
@@ -781,7 +1061,11 @@ public class AMQPEndpoint {
          * the Spring documentation and Transactions Cache Levels for more
          * information. The option is a java.lang.String type.
          */
-        private String cacheLevelName;
+        public AMQPConsumer cacheLevelName(String cacheLevelName) {
+            this.cacheLevelName = cacheLevelName;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Specifies the default number of concurrent consumers when consuming
          * from JMS (not for request/reply over JMS). See also the
@@ -790,7 +1074,11 @@ public class AMQPEndpoint {
          * replyToConcurrentConsumers is used to control number of concurrent
          * consumers on the reply message listener. The option is a int type.
          */
-        private Integer concurrentConsumers;
+        public AMQPConsumer concurrentConsumers(int concurrentConsumers) {
+            this.concurrentConsumers = concurrentConsumers;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Specifies the maximum number of concurrent consumers when consuming
          * from JMS (not for request/reply over JMS). See also the
@@ -799,22 +1087,39 @@ public class AMQPEndpoint {
          * replyToMaxConcurrentConsumers is used to control number of concurrent
          * consumers on the reply message listener. The option is a int type.
          */
-        private Integer maxConcurrentConsumers;
+        public AMQPConsumer maxConcurrentConsumers(int maxConcurrentConsumers) {
+            this.maxConcurrentConsumers = maxConcurrentConsumers;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Provides an explicit ReplyTo destination, which overrides any
          * incoming value of Message.getJMSReplyTo(). The option is a
          * java.lang.String type.
          */
-        private String replyTo;
+        public AMQPConsumer replyTo(String replyTo) {
+            this.replyTo = replyTo;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Specifies whether to use persistent delivery by default for replies.
          * The option is a boolean type.
          */
-        private Boolean replyToDeliveryPersistent;
+        public AMQPConsumer replyToDeliveryPersistent(
+                boolean replyToDeliveryPersistent) {
+            this.replyToDeliveryPersistent = replyToDeliveryPersistent;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Sets the JMS selector to use. The option is a java.lang.String type.
          */
-        private String selector;
+        public AMQPConsumer selector(String selector) {
+            this.selector = selector;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Set whether to make the subscription durable. The durable
          * subscription name to be used can be specified through the
@@ -825,7 +1130,11 @@ public class AMQPEndpoint {
          * a topic (pub-sub domain), therefore this method switches the
          * pubSubDomain flag as well. The option is a boolean type.
          */
-        private Boolean subscriptionDurable;
+        public AMQPConsumer subscriptionDurable(boolean subscriptionDurable) {
+            this.subscriptionDurable = subscriptionDurable;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Set the name of a subscription to create. To be applied in case of a
          * topic (pub-sub domain) with a shared or durable subscription. The
@@ -836,7 +1145,11 @@ public class AMQPEndpoint {
          * for a shared subscription (which requires JMS 2.0). The option is a
          * java.lang.String type.
          */
-        private String subscriptionName;
+        public AMQPConsumer subscriptionName(String subscriptionName) {
+            this.subscriptionName = subscriptionName;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Set whether to make the subscription shared. The shared subscription
          * name to be used can be specified through the subscriptionName
@@ -850,7 +1163,11 @@ public class AMQPEndpoint {
          * pubSubDomain flag as well. Requires a JMS 2.0 compatible message
          * broker. The option is a boolean type.
          */
-        private Boolean subscriptionShared;
+        public AMQPConsumer subscriptionShared(boolean subscriptionShared) {
+            this.subscriptionShared = subscriptionShared;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Specifies whether the consumer accept messages while it is stopping.
          * You may consider enabling this option, if you start and stop JMS
@@ -862,7 +1179,12 @@ public class AMQPEndpoint {
          * avoid this its recommended to enable this option. The option is a
          * boolean type.
          */
-        private Boolean acceptMessagesWhileStopping;
+        public AMQPConsumer acceptMessagesWhileStopping(
+                boolean acceptMessagesWhileStopping) {
+            this.acceptMessagesWhileStopping = acceptMessagesWhileStopping;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Whether the DefaultMessageListenerContainer used in the reply
          * managers for request-reply messaging allow the
@@ -873,7 +1195,12 @@ public class AMQPEndpoint {
          * but to enable for reply managers you must enable this flag. The
          * option is a boolean type.
          */
-        private Boolean allowReplyManagerQuickStop;
+        public AMQPConsumer allowReplyManagerQuickStop(
+                boolean allowReplyManagerQuickStop) {
+            this.allowReplyManagerQuickStop = allowReplyManagerQuickStop;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * The consumer type to use, which can be one of: Simple, Default, or
          * Custom. The consumer type determines which Spring JMS listener to
@@ -887,7 +1214,11 @@ public class AMQPEndpoint {
          * use. The option is a org.apache.camel.component.jms.ConsumerType
          * type.
          */
-        private ConsumerType consumerType;
+        public AMQPConsumer consumerType(ConsumerType consumerType) {
+            this.consumerType = consumerType;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Specifies what default TaskExecutor type to use in the
          * DefaultMessageListenerContainer, for both consumer endpoints and the
@@ -901,7 +1232,12 @@ public class AMQPEndpoint {
          * decreasing concurrent consumers. The option is a
          * org.apache.camel.component.jms.DefaultTaskExecutorType type.
          */
-        private DefaultTaskExecutorType defaultTaskExecutorType;
+        public AMQPConsumer defaultTaskExecutorType(
+                DefaultTaskExecutorType defaultTaskExecutorType) {
+            this.defaultTaskExecutorType = defaultTaskExecutorType;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Enables eager loading of JMS properties and payload as soon as a
          * message is loaded which generally is inefficient as the JMS
@@ -909,7 +1245,12 @@ public class AMQPEndpoint {
          * issues with the underlying JMS provider and the use of JMS
          * properties. The option is a boolean type.
          */
-        private Boolean eagerLoadingOfProperties;
+        public AMQPConsumer eagerLoadingOfProperties(
+                boolean eagerLoadingOfProperties) {
+            this.eagerLoadingOfProperties = eagerLoadingOfProperties;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -917,40 +1258,70 @@ public class AMQPEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public AMQPConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public AMQPConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Specifies whether the listener session should be exposed when
          * consuming messages. The option is a boolean type.
          */
-        private Boolean exposeListenerSession;
+        public AMQPConsumer exposeListenerSession(boolean exposeListenerSession) {
+            this.exposeListenerSession = exposeListenerSession;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Whether a JMS consumer is allowed to send a reply message to the same
          * destination that the consumer is using to consume from. This prevents
          * an endless loop by consuming and sending back the same message to
          * itself. The option is a boolean type.
          */
-        private Boolean replyToSameDestinationAllowed;
+        public AMQPConsumer replyToSameDestinationAllowed(
+                boolean replyToSameDestinationAllowed) {
+            this.replyToSameDestinationAllowed = replyToSameDestinationAllowed;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Allows you to specify a custom task executor for consuming messages.
          * The option is a org.springframework.core.task.TaskExecutor type.
          */
-        private Object taskExecutor;
+        public AMQPConsumer taskExecutor(Object taskExecutor) {
+            this.taskExecutor = taskExecutor;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Allows to configure the default errorHandler logging level for
          * logging uncaught exceptions. The option is a
          * org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel errorHandlerLoggingLevel;
+        public AMQPConsumer errorHandlerLoggingLevel(
+                LoggingLevel errorHandlerLoggingLevel) {
+            this.errorHandlerLoggingLevel = errorHandlerLoggingLevel;
+            return (AMQPConsumer) this;
+        }
+
         /**
          * Allows to control whether stacktraces should be logged or not, by the
          * default errorHandler. The option is a boolean type.
          */
-        private Boolean errorHandlerLogStackTrace;
+        public AMQPConsumer errorHandlerLogStackTrace(
+                boolean errorHandlerLogStackTrace) {
+            this.errorHandlerLogStackTrace = errorHandlerLogStackTrace;
+            return (AMQPConsumer) this;
+        }
 
         public String getAcknowledgementModeName() {
             return acknowledgementModeName;
@@ -1168,18 +1539,50 @@ public class AMQPEndpoint {
         }
     }
 
-    public static class AMQPProducer extends AMQPCommon {
+    public static class AMQPProducer extends AMQPCommon<AMQPProducer> {
+        private Integer deliveryMode;
+        private Boolean deliveryPersistent;
+        private Boolean explicitQosEnabled;
+        private Boolean formatDateHeadersToIso8601;
+        private Boolean preserveMessageQos;
+        private Integer priority;
+        private Integer replyToConcurrentConsumers;
+        private Integer replyToMaxConcurrentConsumers;
+        private Integer replyToOnTimeoutMaxConcurrentConsumers;
+        private String replyToOverride;
+        private ReplyToType replyToType;
+        private Long requestTimeout;
+        private Long timeToLive;
+        private String allowAdditionalHeaders;
+        private Boolean allowNullBody;
+        private Boolean alwaysCopyMessage;
+        private String correlationProperty;
+        private Boolean disableTimeToLive;
+        private Boolean forceSendOriginalMessage;
+        private Boolean includeSentJMSMessageID;
+        private String replyToCacheLevelName;
+        private String replyToDestinationSelectorName;
+        private Boolean streamMessageTypeEnabled;
+
         /**
          * Specifies the delivery mode to be used. Possibles values are those
          * defined by javax.jms.DeliveryMode. NON_PERSISTENT = 1 and PERSISTENT
          * = 2. The option is a java.lang.Integer type.
          */
-        private Integer deliveryMode;
+        public AMQPProducer deliveryMode(Integer deliveryMode) {
+            this.deliveryMode = deliveryMode;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Specifies whether persistent delivery is used by default. The option
          * is a boolean type.
          */
-        private Boolean deliveryPersistent;
+        public AMQPProducer deliveryPersistent(boolean deliveryPersistent) {
+            this.deliveryPersistent = deliveryPersistent;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Set if the deliveryMode, priority or timeToLive qualities of service
          * should be used when sending messages. This option is based on
@@ -1189,12 +1592,21 @@ public class AMQPEndpoint {
          * reading QoS properties exclusively from the Camel In message headers.
          * The option is a java.lang.Boolean type.
          */
-        private Boolean explicitQosEnabled;
+        public AMQPProducer explicitQosEnabled(Boolean explicitQosEnabled) {
+            this.explicitQosEnabled = explicitQosEnabled;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Sets whether date headers should be formatted according to the ISO
          * 8601 standard. The option is a boolean type.
          */
-        private Boolean formatDateHeadersToIso8601;
+        public AMQPProducer formatDateHeadersToIso8601(
+                boolean formatDateHeadersToIso8601) {
+            this.formatDateHeadersToIso8601 = formatDateHeadersToIso8601;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Set to true, if you want to send message using the QoS settings
          * specified on the message, instead of the QoS settings on the JMS
@@ -1206,39 +1618,66 @@ public class AMQPEndpoint {
          * by contrast, will only use options set on the endpoint, and not
          * values from the message header. The option is a boolean type.
          */
-        private Boolean preserveMessageQos;
+        public AMQPProducer preserveMessageQos(boolean preserveMessageQos) {
+            this.preserveMessageQos = preserveMessageQos;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Values greater than 1 specify the message priority when sending
          * (where 0 is the lowest priority and 9 is the highest). The
          * explicitQosEnabled option must also be enabled in order for this
          * option to have any effect. The option is a int type.
          */
-        private Integer priority;
+        public AMQPProducer priority(int priority) {
+            this.priority = priority;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Specifies the default number of concurrent consumers when doing
          * request/reply over JMS. See also the maxMessagesPerTask option to
          * control dynamic scaling up/down of threads. The option is a int type.
          */
-        private Integer replyToConcurrentConsumers;
+        public AMQPProducer replyToConcurrentConsumers(
+                int replyToConcurrentConsumers) {
+            this.replyToConcurrentConsumers = replyToConcurrentConsumers;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Specifies the maximum number of concurrent consumers when using
          * request/reply over JMS. See also the maxMessagesPerTask option to
          * control dynamic scaling up/down of threads. The option is a int type.
          */
-        private Integer replyToMaxConcurrentConsumers;
+        public AMQPProducer replyToMaxConcurrentConsumers(
+                int replyToMaxConcurrentConsumers) {
+            this.replyToMaxConcurrentConsumers = replyToMaxConcurrentConsumers;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Specifies the maximum number of concurrent consumers for continue
          * routing when timeout occurred when using request/reply over JMS. The
          * option is a int type.
          */
-        private Integer replyToOnTimeoutMaxConcurrentConsumers;
+        public AMQPProducer replyToOnTimeoutMaxConcurrentConsumers(
+                int replyToOnTimeoutMaxConcurrentConsumers) {
+            this.replyToOnTimeoutMaxConcurrentConsumers = replyToOnTimeoutMaxConcurrentConsumers;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Provides an explicit ReplyTo destination in the JMS message, which
          * overrides the setting of replyTo. It is useful if you want to forward
          * the message to a remote Queue and receive the reply message from the
          * ReplyTo destination. The option is a java.lang.String type.
          */
-        private String replyToOverride;
+        public AMQPProducer replyToOverride(String replyToOverride) {
+            this.replyToOverride = replyToOverride;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Allows for explicitly specifying which kind of strategy to use for
          * replyTo queues when doing request/reply over JMS. Possible values
@@ -1251,7 +1690,11 @@ public class AMQPEndpoint {
          * lower performance than its alternatives Temporary and Exclusive. The
          * option is a org.apache.camel.component.jms.ReplyToType type.
          */
-        private ReplyToType replyToType;
+        public AMQPProducer replyToType(ReplyToType replyToType) {
+            this.replyToType = replyToType;
+            return (AMQPProducer) this;
+        }
+
         /**
          * The timeout for waiting for a reply when using the InOut Exchange
          * Pattern (in milliseconds). The default is 20 seconds. You can include
@@ -1260,12 +1703,20 @@ public class AMQPEndpoint {
          * timeout values. See also the requestTimeoutCheckerInterval option.
          * The option is a long type.
          */
-        private Long requestTimeout;
+        public AMQPProducer requestTimeout(long requestTimeout) {
+            this.requestTimeout = requestTimeout;
+            return (AMQPProducer) this;
+        }
+
         /**
          * When sending messages, specifies the time-to-live of the message (in
          * milliseconds). The option is a long type.
          */
-        private Long timeToLive;
+        public AMQPProducer timeToLive(long timeToLive) {
+            this.timeToLive = timeToLive;
+            return (AMQPProducer) this;
+        }
+
         /**
          * This option is used to allow additional headers which may have values
          * that are invalid according to JMS specification. For example some
@@ -1275,13 +1726,21 @@ public class AMQPEndpoint {
          * use as suffix for wildcard matching. The option is a java.lang.String
          * type.
          */
-        private String allowAdditionalHeaders;
+        public AMQPProducer allowAdditionalHeaders(String allowAdditionalHeaders) {
+            this.allowAdditionalHeaders = allowAdditionalHeaders;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Whether to allow sending messages with no body. If this option is
          * false and the message body is null, then an JMSException is thrown.
          * The option is a boolean type.
          */
-        private Boolean allowNullBody;
+        public AMQPProducer allowNullBody(boolean allowNullBody) {
+            this.allowNullBody = allowNullBody;
+            return (AMQPProducer) this;
+        }
+
         /**
          * If true, Camel will always make a JMS message copy of the message
          * when it is passed to the producer for sending. Copying the message is
@@ -1290,7 +1749,11 @@ public class AMQPEndpoint {
          * the alwaysCopyMessage option to true, if a
          * replyToDestinationSelectorName is set). The option is a boolean type.
          */
-        private Boolean alwaysCopyMessage;
+        public AMQPProducer alwaysCopyMessage(boolean alwaysCopyMessage) {
+            this.alwaysCopyMessage = alwaysCopyMessage;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Use this JMS property to correlate messages in InOut exchange pattern
          * (request-reply) instead of JMSCorrelationID property. This allows you
@@ -1300,7 +1763,11 @@ public class AMQPEndpoint {
          * generated if not supplied in the header of the message under the same
          * name. The option is a java.lang.String type.
          */
-        private String correlationProperty;
+        public AMQPProducer correlationProperty(String correlationProperty) {
+            this.correlationProperty = correlationProperty;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Use this option to force disabling time to live. For example when you
          * do request/reply over JMS, then Camel will by default use the
@@ -1312,14 +1779,23 @@ public class AMQPEndpoint {
          * on the receiver system. See below in section About time to live for
          * more details. The option is a boolean type.
          */
-        private Boolean disableTimeToLive;
+        public AMQPProducer disableTimeToLive(boolean disableTimeToLive) {
+            this.disableTimeToLive = disableTimeToLive;
+            return (AMQPProducer) this;
+        }
+
         /**
          * When using mapJmsMessage=false Camel will create a new JMS message to
          * send to a new JMS destination if you touch the headers (get or set)
          * during the route. Set this option to true to force Camel to send the
          * original JMS message that was received. The option is a boolean type.
          */
-        private Boolean forceSendOriginalMessage;
+        public AMQPProducer forceSendOriginalMessage(
+                boolean forceSendOriginalMessage) {
+            this.forceSendOriginalMessage = forceSendOriginalMessage;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Only applicable when sending to JMS destination using InOnly (eg fire
          * and forget). Enabling this option will enrich the Camel Exchange with
@@ -1327,7 +1803,12 @@ public class AMQPEndpoint {
          * message was sent to the JMS destination. The option is a boolean
          * type.
          */
-        private Boolean includeSentJMSMessageID;
+        public AMQPProducer includeSentJMSMessageID(
+                boolean includeSentJMSMessageID) {
+            this.includeSentJMSMessageID = includeSentJMSMessageID;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Sets the cache level by name for the reply consumer when doing
          * request/reply over JMS. This option only applies when using fixed
@@ -1340,14 +1821,23 @@ public class AMQPEndpoint {
          * value such as CACHE_CONSUMER or CACHE_SESSION. The option is a
          * java.lang.String type.
          */
-        private String replyToCacheLevelName;
+        public AMQPProducer replyToCacheLevelName(String replyToCacheLevelName) {
+            this.replyToCacheLevelName = replyToCacheLevelName;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Sets the JMS Selector using the fixed name to be used so you can
          * filter out your own replies from the others when using a shared queue
          * (that is, if you are not using a temporary reply queue). The option
          * is a java.lang.String type.
          */
-        private String replyToDestinationSelectorName;
+        public AMQPProducer replyToDestinationSelectorName(
+                String replyToDestinationSelectorName) {
+            this.replyToDestinationSelectorName = replyToDestinationSelectorName;
+            return (AMQPProducer) this;
+        }
+
         /**
          * Sets whether StreamMessage type is enabled or not. Message payloads
          * of streaming kind such as files, InputStream, etc will either by sent
@@ -1358,7 +1848,11 @@ public class AMQPEndpoint {
          * chunk is then written to the StreamMessage until no more data. The
          * option is a boolean type.
          */
-        private Boolean streamMessageTypeEnabled;
+        public AMQPProducer streamMessageTypeEnabled(
+                boolean streamMessageTypeEnabled) {
+            this.streamMessageTypeEnabled = streamMessageTypeEnabled;
+            return (AMQPProducer) this;
+        }
 
         public Integer getDeliveryMode() {
             return deliveryMode;

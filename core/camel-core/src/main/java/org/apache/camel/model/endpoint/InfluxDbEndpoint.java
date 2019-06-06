@@ -28,49 +28,91 @@ import javax.annotation.Generated;
 public class InfluxDbEndpoint {
 
 
-    public static class InfluxDbCommon extends EndpointConfiguration {
+    public static class InfluxDbCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String connectionBean;
+        private Boolean batch;
+        private String databaseName;
+        private String operation;
+        private String query;
+        private String retentionPolicy;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Connection to the influx database, of class InfluxDB.class. The
          * option is a java.lang.String type.
          */
-        private String connectionBean;
+        public T connectionBean(String connectionBean) {
+            this.connectionBean = connectionBean;
+            return (T) this;
+        }
+
         /**
          * Define if this operation is a batch operation or not. The option is a
          * boolean type.
          */
-        private Boolean batch;
+        public T batch(boolean batch) {
+            this.batch = batch;
+            return (T) this;
+        }
+
         /**
          * The name of the database where the time series will be stored. The
          * option is a java.lang.String type.
          */
-        private String databaseName;
+        public T databaseName(String databaseName) {
+            this.databaseName = databaseName;
+            return (T) this;
+        }
+
         /**
          * Define if this operation is an insert or a query. The option is a
          * java.lang.String type.
          */
-        private String operation;
+        public T operation(String operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * Define the query in case of operation query. The option is a
          * java.lang.String type.
          */
-        private String query;
+        public T query(String query) {
+            this.query = query;
+            return (T) this;
+        }
+
         /**
          * The string that defines the retention policy to the data created by
          * the endpoint. The option is a java.lang.String type.
          */
-        private String retentionPolicy;
+        public T retentionPolicy(String retentionPolicy) {
+            this.retentionPolicy = retentionPolicy;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getConnectionBean() {
             return connectionBean;
@@ -137,9 +179,13 @@ public class InfluxDbEndpoint {
         }
     }
 
-    public static class InfluxDbConsumer extends InfluxDbCommon {
+    public static class InfluxDbConsumer
+            extends
+                InfluxDbCommon<InfluxDbConsumer> {
     }
 
-    public static class InfluxDbProducer extends InfluxDbCommon {
+    public static class InfluxDbProducer
+            extends
+                InfluxDbCommon<InfluxDbProducer> {
     }
 }

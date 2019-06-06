@@ -35,25 +35,42 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class SlackEndpoint {
 
 
-    public static class SlackCommon extends EndpointConfiguration {
+    public static class SlackCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String channel;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The channel name (syntax #name) or slackuser (syntax userName) to
          * send a message directly to an user. The option is a java.lang.String
          * type.
          */
-        private String channel;
+        public T channel(String channel) {
+            this.channel = channel;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getChannel() {
             return channel;
@@ -80,7 +97,29 @@ public class SlackEndpoint {
         }
     }
 
-    public static class SlackConsumer extends SlackCommon {
+    public static class SlackConsumer extends SlackCommon<SlackConsumer> {
+        private Boolean bridgeErrorHandler;
+        private String maxResults;
+        private Boolean sendEmptyMessageWhenIdle;
+        private String serverUrl;
+        private String token;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -90,26 +129,47 @@ public class SlackEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public SlackConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (SlackConsumer) this;
+        }
+
         /**
          * The Max Result for the poll. The option is a java.lang.String type.
          */
-        private String maxResults;
+        public SlackConsumer maxResults(String maxResults) {
+            this.maxResults = maxResults;
+            return (SlackConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public SlackConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (SlackConsumer) this;
+        }
+
         /**
          * The Server URL of the Slack instance. The option is a
          * java.lang.String type.
          */
-        private String serverUrl;
+        public SlackConsumer serverUrl(String serverUrl) {
+            this.serverUrl = serverUrl;
+            return (SlackConsumer) this;
+        }
+
         /**
          * The token to use. The option is a java.lang.String type.
          */
-        private String token;
+        public SlackConsumer token(String token) {
+            this.token = token;
+            return (SlackConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -117,12 +177,20 @@ public class SlackEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public SlackConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (SlackConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public SlackConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (SlackConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -130,18 +198,31 @@ public class SlackEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public SlackConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (SlackConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public SlackConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (SlackConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public SlackConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (SlackConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -150,66 +231,111 @@ public class SlackEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public SlackConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (SlackConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long delay;
+        public SlackConsumer delay(long delay) {
+            this.delay = delay;
+            return (SlackConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public SlackConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (SlackConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public SlackConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (SlackConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public SlackConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (SlackConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public SlackConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (SlackConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public SlackConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (SlackConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public SlackConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (SlackConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public SlackConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (SlackConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public SlackConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (SlackConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public SlackConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (SlackConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -382,26 +508,46 @@ public class SlackEndpoint {
         }
     }
 
-    public static class SlackProducer extends SlackCommon {
+    public static class SlackProducer extends SlackCommon<SlackProducer> {
+        private String iconEmoji;
+        private String iconUrl;
+        private String username;
+        private String webhookUrl;
+
         /**
          * Use a Slack emoji as an avatar. The option is a java.lang.String
          * type.
          */
-        private String iconEmoji;
+        public SlackProducer iconEmoji(String iconEmoji) {
+            this.iconEmoji = iconEmoji;
+            return (SlackProducer) this;
+        }
+
         /**
          * The avatar that the component will use when sending message to a
          * channel or user. The option is a java.lang.String type.
          */
-        private String iconUrl;
+        public SlackProducer iconUrl(String iconUrl) {
+            this.iconUrl = iconUrl;
+            return (SlackProducer) this;
+        }
+
         /**
          * This is the username that the bot will have when sending messages to
          * a channel or user. The option is a java.lang.String type.
          */
-        private String username;
+        public SlackProducer username(String username) {
+            this.username = username;
+            return (SlackProducer) this;
+        }
+
         /**
          * The incoming webhook URL. The option is a java.lang.String type.
          */
-        private String webhookUrl;
+        public SlackProducer webhookUrl(String webhookUrl) {
+            this.webhookUrl = webhookUrl;
+            return (SlackProducer) this;
+        }
 
         public String getIconEmoji() {
             return iconEmoji;

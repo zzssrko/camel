@@ -28,16 +28,35 @@ import javax.annotation.Generated;
 public class LuceneEndpoint {
 
 
-    public static class LuceneCommon extends EndpointConfiguration {
+    public static class LuceneCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private LuceneOperation operation;
+        private Object analyzer;
+        private File indexDir;
+        private Integer maxHits;
+        private File srcDir;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The URL to the lucene server. The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Operation to do such as insert or query. The option is a
          * org.apache.camel.component.lucene.LuceneOperation type.
          */
-        private LuceneOperation operation;
+        public T operation(LuceneOperation operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * An Analyzer builds TokenStreams, which analyze text. It thus
          * represents a policy for extracting index terms from text. The value
@@ -46,36 +65,59 @@ public class LuceneEndpoint {
          * analyzers out of the box. The option is a
          * org.apache.lucene.analysis.Analyzer type.
          */
-        private Object analyzer;
+        public T analyzer(Object analyzer) {
+            this.analyzer = analyzer;
+            return (T) this;
+        }
+
         /**
          * A file system directory in which index files are created upon
          * analysis of the document by the specified analyzer. The option is a
          * java.io.File type.
          */
-        private File indexDir;
+        public T indexDir(File indexDir) {
+            this.indexDir = indexDir;
+            return (T) this;
+        }
+
         /**
          * An integer value that limits the result set of the search operation.
          * The option is a int type.
          */
-        private Integer maxHits;
+        public T maxHits(int maxHits) {
+            this.maxHits = maxHits;
+            return (T) this;
+        }
+
         /**
          * An optional directory containing files to be used to be analyzed and
          * added to the index at producer startup. The option is a java.io.File
          * type.
          */
-        private File srcDir;
+        public T srcDir(File srcDir) {
+            this.srcDir = srcDir;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -142,10 +184,10 @@ public class LuceneEndpoint {
         }
     }
 
-    public static class LuceneConsumer extends LuceneCommon {
+    public static class LuceneConsumer extends LuceneCommon<LuceneConsumer> {
     }
 
-    public static class LuceneProducer extends LuceneCommon {
+    public static class LuceneProducer extends LuceneCommon<LuceneProducer> {
     }
 
     public static enum LuceneOperation {

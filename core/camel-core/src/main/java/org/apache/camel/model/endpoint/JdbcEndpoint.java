@@ -29,7 +29,25 @@ import javax.annotation.Generated;
 public class JdbcEndpoint {
 
 
-    public static class JdbcCommon extends EndpointConfiguration {
+    public static class JdbcCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String dataSourceName;
+        private Boolean allowNamedParameters;
+        private String outputClass;
+        private JdbcOutputType outputType;
+        private Map<String, Object> parameters;
+        private Integer readSize;
+        private Boolean resetAutoCommit;
+        private Boolean transacted;
+        private Boolean useGetBytesForBlob;
+        private Boolean useHeadersAsParameters;
+        private Boolean useJDBC4ColumnNameAndLabelSemantics;
+        private Boolean basicPropertyBinding;
+        private Object beanRowMapper;
+        private Object prepareStatementStrategy;
+        private Boolean synchronous;
+
         /**
          * Name of DataSource to lookup in the Registry. If the name is
          * dataSource or default, then Camel will attempt to lookup a default
@@ -37,34 +55,58 @@ public class JdbcEndpoint {
          * of DataSource found, then this DataSource will be used. The option is
          * a java.lang.String type.
          */
-        private String dataSourceName;
+        public T dataSourceName(String dataSourceName) {
+            this.dataSourceName = dataSourceName;
+            return (T) this;
+        }
+
         /**
          * Whether to allow using named parameters in the queries. The option is
          * a boolean type.
          */
-        private Boolean allowNamedParameters;
+        public T allowNamedParameters(boolean allowNamedParameters) {
+            this.allowNamedParameters = allowNamedParameters;
+            return (T) this;
+        }
+
         /**
          * Specify the full package and class name to use as conversion when
          * outputType=SelectOne or SelectList. The option is a java.lang.String
          * type.
          */
-        private String outputClass;
+        public T outputClass(String outputClass) {
+            this.outputClass = outputClass;
+            return (T) this;
+        }
+
         /**
          * Determines the output the producer should use. The option is a
          * org.apache.camel.component.jdbc.JdbcOutputType type.
          */
-        private JdbcOutputType outputType;
+        public T outputType(JdbcOutputType outputType) {
+            this.outputType = outputType;
+            return (T) this;
+        }
+
         /**
          * Optional parameters to the java.sql.Statement. For example to set
          * maxRows, fetchSize etc. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> parameters;
+        public T parameters(Map<String, Object> parameters) {
+            this.parameters = parameters;
+            return (T) this;
+        }
+
         /**
          * The default maximum number of rows that can be read by a polling
          * query. The default value is 0. The option is a int type.
          */
-        private Integer readSize;
+        public T readSize(int readSize) {
+            this.readSize = readSize;
+            return (T) this;
+        }
+
         /**
          * Camel will set the autoCommit on the JDBC connection to be false,
          * commit the change after executed the statement and reset the
@@ -76,24 +118,40 @@ public class JdbcEndpoint {
          * transaction manager is in charge of committing this tx. The option is
          * a boolean type.
          */
-        private Boolean resetAutoCommit;
+        public T resetAutoCommit(boolean resetAutoCommit) {
+            this.resetAutoCommit = resetAutoCommit;
+            return (T) this;
+        }
+
         /**
          * Whether transactions are in use. The option is a boolean type.
          */
-        private Boolean transacted;
+        public T transacted(boolean transacted) {
+            this.transacted = transacted;
+            return (T) this;
+        }
+
         /**
          * To read BLOB columns as bytes instead of string data. This may be
          * needed for certain databases such as Oracle where you must read BLOB
          * columns as bytes. The option is a boolean type.
          */
-        private Boolean useGetBytesForBlob;
+        public T useGetBytesForBlob(boolean useGetBytesForBlob) {
+            this.useGetBytesForBlob = useGetBytesForBlob;
+            return (T) this;
+        }
+
         /**
          * Set this option to true to use the prepareStatementStrategy with
          * named parameters. This allows to define queries with named
          * placeholders, and use headers with the dynamic values for the query
          * placeholders. The option is a boolean type.
          */
-        private Boolean useHeadersAsParameters;
+        public T useHeadersAsParameters(boolean useHeadersAsParameters) {
+            this.useHeadersAsParameters = useHeadersAsParameters;
+            return (T) this;
+        }
+
         /**
          * Sets whether to use JDBC 4 or JDBC 3.0 or older semantic when
          * retrieving column name. JDBC 4.0 uses columnLabel to get the column
@@ -103,13 +161,22 @@ public class JdbcEndpoint {
          * using this component This option is default true. The option is a
          * boolean type.
          */
-        private Boolean useJDBC4ColumnNameAndLabelSemantics;
+        public T useJDBC4ColumnNameAndLabelSemantics(
+                boolean useJDBC4ColumnNameAndLabelSemantics) {
+            this.useJDBC4ColumnNameAndLabelSemantics = useJDBC4ColumnNameAndLabelSemantics;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a custom org.apache.camel.component.jdbc.BeanRowMapper when
          * using outputClass. The default implementation will lower case the row
@@ -117,7 +184,11 @@ public class JdbcEndpoint {
          * as custId. The option is a
          * org.apache.camel.component.jdbc.BeanRowMapper type.
          */
-        private Object beanRowMapper;
+        public T beanRowMapper(Object beanRowMapper) {
+            this.beanRowMapper = beanRowMapper;
+            return (T) this;
+        }
+
         /**
          * Allows to plugin to use a custom
          * org.apache.camel.component.jdbc.JdbcPrepareStatementStrategy to
@@ -125,13 +196,20 @@ public class JdbcEndpoint {
          * is a org.apache.camel.component.jdbc.JdbcPrepareStatementStrategy
          * type.
          */
-        private Object prepareStatementStrategy;
+        public T prepareStatementStrategy(Object prepareStatementStrategy) {
+            this.prepareStatementStrategy = prepareStatementStrategy;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getDataSourceName() {
             return dataSourceName;
@@ -255,10 +333,10 @@ public class JdbcEndpoint {
         }
     }
 
-    public static class JdbcConsumer extends JdbcCommon {
+    public static class JdbcConsumer extends JdbcCommon<JdbcConsumer> {
     }
 
-    public static class JdbcProducer extends JdbcCommon {
+    public static class JdbcProducer extends JdbcCommon<JdbcProducer> {
     }
 
     public static enum JdbcOutputType {

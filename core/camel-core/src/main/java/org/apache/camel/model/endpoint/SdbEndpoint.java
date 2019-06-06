@@ -28,67 +28,129 @@ import javax.annotation.Generated;
 public class SdbEndpoint {
 
 
-    public static class SdbCommon extends EndpointConfiguration {
+    public static class SdbCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String domainName;
+        private String accessKey;
+        private Object amazonSDBClient;
+        private Boolean consistentRead;
+        private Integer maxNumberOfDomains;
+        private SdbOperations operation;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String region;
+        private String secretKey;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The name of the domain currently worked with. The option is a
          * java.lang.String type.
          */
-        private String domainName;
+        public T domainName(String domainName) {
+            this.domainName = domainName;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public T accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (T) this;
+        }
+
         /**
          * To use the AmazonSimpleDB as the client. The option is a
          * com.amazonaws.services.simpledb.AmazonSimpleDB type.
          */
-        private Object amazonSDBClient;
+        public T amazonSDBClient(Object amazonSDBClient) {
+            this.amazonSDBClient = amazonSDBClient;
+            return (T) this;
+        }
+
         /**
          * Determines whether or not strong consistency should be enforced when
          * data is read. The option is a boolean type.
          */
-        private Boolean consistentRead;
+        public T consistentRead(boolean consistentRead) {
+            this.consistentRead = consistentRead;
+            return (T) this;
+        }
+
         /**
          * The maximum number of domain names you want returned. The range is 1
          * to 100. The option is a java.lang.Integer type.
          */
-        private Integer maxNumberOfDomains;
+        public T maxNumberOfDomains(Integer maxNumberOfDomains) {
+            this.maxNumberOfDomains = maxNumberOfDomains;
+            return (T) this;
+        }
+
         /**
          * Operation to perform. The option is a
          * org.apache.camel.component.aws.sdb.SdbOperations type.
          */
-        private SdbOperations operation;
+        public T operation(SdbOperations operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * To define a proxy host when instantiating the SDB client. The option
          * is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * To define a proxy port when instantiating the SDB client. The option
          * is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
+
         /**
          * The region in which SDB client needs to work. The option is a
          * java.lang.String type.
          */
-        private String region;
+        public T region(String region) {
+            this.region = region;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public T secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getDomainName() {
             return domainName;
@@ -187,10 +249,10 @@ public class SdbEndpoint {
         }
     }
 
-    public static class SdbConsumer extends SdbCommon {
+    public static class SdbConsumer extends SdbCommon<SdbConsumer> {
     }
 
-    public static class SdbProducer extends SdbCommon {
+    public static class SdbProducer extends SdbCommon<SdbProducer> {
     }
 
     public static enum SdbOperations {

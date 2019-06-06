@@ -30,19 +30,39 @@ import org.apache.camel.spi.Language;
 public class ControlBusEndpoint {
 
 
-    public static class ControlBusCommon extends EndpointConfiguration {
+    public static class ControlBusCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String command;
+        private Language language;
+        private String action;
+        private Boolean async;
+        private LoggingLevel loggingLevel;
+        private Integer restartDelay;
+        private String routeId;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Command can be either route or language. The option is a
          * java.lang.String type.
          */
-        private String command;
+        public T command(String command) {
+            this.command = command;
+            return (T) this;
+        }
+
         /**
          * Allows you to specify the name of a Language to use for evaluating
          * the message body. If there is any result from the evaluation, then
          * the result is put in the message body. The option is a
          * org.apache.camel.spi.Language type.
          */
-        private Language language;
+        public T language(Language language) {
+            this.language = language;
+            return (T) this;
+        }
+
         /**
          * To denote an action that can be either: start, stop, or status. To
          * either start or stop a route, or to get the status of the route as
@@ -54,42 +74,69 @@ public class ControlBusEndpoint {
          * get statistics for the entire CamelContext. The restart action will
          * restart the route. The option is a java.lang.String type.
          */
-        private String action;
+        public T action(String action) {
+            this.action = action;
+            return (T) this;
+        }
+
         /**
          * Whether to execute the control bus task asynchronously. Important: If
          * this option is enabled, then any result from the task is not set on
          * the Exchange. This is only possible if executing tasks synchronously.
          * The option is a boolean type.
          */
-        private Boolean async;
+        public T async(boolean async) {
+            this.async = async;
+            return (T) this;
+        }
+
         /**
          * Logging level used for logging when task is done, or if any
          * exceptions occurred during processing the task. The option is a
          * org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel loggingLevel;
+        public T loggingLevel(LoggingLevel loggingLevel) {
+            this.loggingLevel = loggingLevel;
+            return (T) this;
+        }
+
         /**
          * The delay in millis to use when restarting a route. The option is a
          * int type.
          */
-        private Integer restartDelay;
+        public T restartDelay(int restartDelay) {
+            this.restartDelay = restartDelay;
+            return (T) this;
+        }
+
         /**
          * To specify a route by its id. The special keyword current indicates
          * the current route. The option is a java.lang.String type.
          */
-        private String routeId;
+        public T routeId(String routeId) {
+            this.routeId = routeId;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getCommand() {
             return command;
@@ -164,9 +211,13 @@ public class ControlBusEndpoint {
         }
     }
 
-    public static class ControlBusConsumer extends ControlBusCommon {
+    public static class ControlBusConsumer
+            extends
+                ControlBusCommon<ControlBusConsumer> {
     }
 
-    public static class ControlBusProducer extends ControlBusCommon {
+    public static class ControlBusProducer
+            extends
+                ControlBusCommon<ControlBusProducer> {
     }
 }

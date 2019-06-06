@@ -29,98 +29,195 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class SnsEndpoint {
 
 
-    public static class SnsCommon extends EndpointConfiguration {
+    public static class SnsCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String topicNameOrArn;
+        private Object amazonSNSClient;
+        private Object amazonSQSClient;
+        private Boolean autoCreateTopic;
+        private HeaderFilterStrategy headerFilterStrategy;
+        private String kmsMasterKeyId;
+        private String messageStructure;
+        private String policy;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String queueUrl;
+        private String region;
+        private Boolean serverSideEncryptionEnabled;
+        private String subject;
+        private Boolean subscribeSNStoSQS;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String accessKey;
+        private String secretKey;
+
         /**
          * Topic name or ARN. The option is a java.lang.String type.
          */
-        private String topicNameOrArn;
+        public T topicNameOrArn(String topicNameOrArn) {
+            this.topicNameOrArn = topicNameOrArn;
+            return (T) this;
+        }
+
         /**
          * To use the AmazonSNS as the client. The option is a
          * com.amazonaws.services.sns.AmazonSNS type.
          */
-        private Object amazonSNSClient;
+        public T amazonSNSClient(Object amazonSNSClient) {
+            this.amazonSNSClient = amazonSNSClient;
+            return (T) this;
+        }
+
         /**
          * An SQS Client to use as bridge between SNS and SQS. The option is a
          * com.amazonaws.services.sqs.AmazonSQS type.
          */
-        private Object amazonSQSClient;
+        public T amazonSQSClient(Object amazonSQSClient) {
+            this.amazonSQSClient = amazonSQSClient;
+            return (T) this;
+        }
+
         /**
          * Setting the autocreation of the topic. The option is a boolean type.
          */
-        private Boolean autoCreateTopic;
+        public T autoCreateTopic(boolean autoCreateTopic) {
+            this.autoCreateTopic = autoCreateTopic;
+            return (T) this;
+        }
+
         /**
          * To use a custom HeaderFilterStrategy to map headers to/from Camel.
          * The option is a org.apache.camel.spi.HeaderFilterStrategy type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (T) this;
+        }
+
         /**
          * The ID of an AWS-managed customer master key (CMK) for Amazon SNS or
          * a custom CMK. The option is a java.lang.String type.
          */
-        private String kmsMasterKeyId;
+        public T kmsMasterKeyId(String kmsMasterKeyId) {
+            this.kmsMasterKeyId = kmsMasterKeyId;
+            return (T) this;
+        }
+
         /**
          * The message structure to use such as json. The option is a
          * java.lang.String type.
          */
-        private String messageStructure;
+        public T messageStructure(String messageStructure) {
+            this.messageStructure = messageStructure;
+            return (T) this;
+        }
+
         /**
          * The policy for this queue. The option is a java.lang.String type.
          */
-        private String policy;
+        public T policy(String policy) {
+            this.policy = policy;
+            return (T) this;
+        }
+
         /**
          * To define a proxy host when instantiating the SNS client. The option
          * is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * To define a proxy port when instantiating the SNS client. The option
          * is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
+
         /**
          * The queueUrl to subscribe to. The option is a java.lang.String type.
          */
-        private String queueUrl;
+        public T queueUrl(String queueUrl) {
+            this.queueUrl = queueUrl;
+            return (T) this;
+        }
+
         /**
          * The region in which SNS client needs to work. The option is a
          * java.lang.String type.
          */
-        private String region;
+        public T region(String region) {
+            this.region = region;
+            return (T) this;
+        }
+
         /**
          * Define if Server Side Encryption is enabled or not on the topic. The
          * option is a boolean type.
          */
-        private Boolean serverSideEncryptionEnabled;
+        public T serverSideEncryptionEnabled(boolean serverSideEncryptionEnabled) {
+            this.serverSideEncryptionEnabled = serverSideEncryptionEnabled;
+            return (T) this;
+        }
+
         /**
          * The subject which is used if the message header 'CamelAwsSnsSubject'
          * is not present. The option is a java.lang.String type.
          */
-        private String subject;
+        public T subject(String subject) {
+            this.subject = subject;
+            return (T) this;
+        }
+
         /**
          * Define if the subscription between SNS Topic and SQS must be done or
          * not. The option is a boolean type.
          */
-        private Boolean subscribeSNStoSQS;
+        public T subscribeSNStoSQS(boolean subscribeSNStoSQS) {
+            this.subscribeSNStoSQS = subscribeSNStoSQS;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public T accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public T secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (T) this;
+        }
 
         public String getTopicNameOrArn() {
             return topicNameOrArn;
@@ -277,9 +374,9 @@ public class SnsEndpoint {
         }
     }
 
-    public static class SnsConsumer extends SnsCommon {
+    public static class SnsConsumer extends SnsCommon<SnsConsumer> {
     }
 
-    public static class SnsProducer extends SnsCommon {
+    public static class SnsProducer extends SnsCommon<SnsProducer> {
     }
 }

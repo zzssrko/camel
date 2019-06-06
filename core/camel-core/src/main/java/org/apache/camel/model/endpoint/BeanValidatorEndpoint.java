@@ -28,49 +28,91 @@ import javax.annotation.Generated;
 public class BeanValidatorEndpoint {
 
 
-    public static class BeanValidatorCommon extends EndpointConfiguration {
+    public static class BeanValidatorCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String label;
+        private Object constraintValidatorFactory;
+        private String group;
+        private Object messageInterpolator;
+        private Object traversableResolver;
+        private Object validationProviderResolver;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Where label is an arbitrary text value describing the endpoint. The
          * option is a java.lang.String type.
          */
-        private String label;
+        public T label(String label) {
+            this.label = label;
+            return (T) this;
+        }
+
         /**
          * To use a custom ConstraintValidatorFactory. The option is a
          * javax.validation.ConstraintValidatorFactory type.
          */
-        private Object constraintValidatorFactory;
+        public T constraintValidatorFactory(Object constraintValidatorFactory) {
+            this.constraintValidatorFactory = constraintValidatorFactory;
+            return (T) this;
+        }
+
         /**
          * To use a custom validation group. The option is a java.lang.String
          * type.
          */
-        private String group;
+        public T group(String group) {
+            this.group = group;
+            return (T) this;
+        }
+
         /**
          * To use a custom MessageInterpolator. The option is a
          * javax.validation.MessageInterpolator type.
          */
-        private Object messageInterpolator;
+        public T messageInterpolator(Object messageInterpolator) {
+            this.messageInterpolator = messageInterpolator;
+            return (T) this;
+        }
+
         /**
          * To use a custom TraversableResolver. The option is a
          * javax.validation.TraversableResolver type.
          */
-        private Object traversableResolver;
+        public T traversableResolver(Object traversableResolver) {
+            this.traversableResolver = traversableResolver;
+            return (T) this;
+        }
+
         /**
          * To use a a custom ValidationProviderResolver. The option is a
          * javax.validation.ValidationProviderResolver type.
          */
-        private Object validationProviderResolver;
+        public T validationProviderResolver(Object validationProviderResolver) {
+            this.validationProviderResolver = validationProviderResolver;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getLabel() {
             return label;
@@ -139,9 +181,13 @@ public class BeanValidatorEndpoint {
         }
     }
 
-    public static class BeanValidatorConsumer extends BeanValidatorCommon {
+    public static class BeanValidatorConsumer
+            extends
+                BeanValidatorCommon<BeanValidatorConsumer> {
     }
 
-    public static class BeanValidatorProducer extends BeanValidatorCommon {
+    public static class BeanValidatorProducer
+            extends
+                BeanValidatorCommon<BeanValidatorProducer> {
     }
 }

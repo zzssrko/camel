@@ -29,23 +29,40 @@ import org.apache.camel.spi.ExceptionHandler;
 public class MiloServerEndpoint {
 
 
-    public static class MiloServerCommon extends EndpointConfiguration {
+    public static class MiloServerCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String itemId;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * ID of the item. The option is a java.lang.String type.
          */
-        private String itemId;
+        public T itemId(String itemId) {
+            this.itemId = itemId;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getItemId() {
             return itemId;
@@ -72,7 +89,13 @@ public class MiloServerEndpoint {
         }
     }
 
-    public static class MiloServerConsumer extends MiloServerCommon {
+    public static class MiloServerConsumer
+            extends
+                MiloServerCommon<MiloServerConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -82,7 +105,11 @@ public class MiloServerEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public MiloServerConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (MiloServerConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -90,12 +117,21 @@ public class MiloServerEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public MiloServerConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (MiloServerConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public MiloServerConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (MiloServerConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -122,6 +158,8 @@ public class MiloServerEndpoint {
         }
     }
 
-    public static class MiloServerProducer extends MiloServerCommon {
+    public static class MiloServerProducer
+            extends
+                MiloServerCommon<MiloServerProducer> {
     }
 }

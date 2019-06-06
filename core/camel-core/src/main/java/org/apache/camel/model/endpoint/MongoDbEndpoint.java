@@ -29,38 +29,83 @@ import org.apache.camel.spi.ExceptionHandler;
 public class MongoDbEndpoint {
 
 
-    public static class MongoDbCommon extends EndpointConfiguration {
+    public static class MongoDbCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String connectionBean;
+        private String collection;
+        private String collectionIndex;
+        private Boolean createCollection;
+        private String database;
+        private MongoDbOperation operation;
+        private MongoDbOutputType outputType;
+        private Boolean basicPropertyBinding;
+        private Long cursorRegenerationDelay;
+        private Boolean dynamicity;
+        private Boolean synchronous;
+        private Boolean writeResultAsHeader;
+        private String persistentId;
+        private Boolean persistentTailTracking;
+        private String tailTrackCollection;
+        private String tailTrackDb;
+        private String tailTrackField;
+        private String tailTrackIncreasingField;
+
         /**
          * Name of com.mongodb.Mongo to use. The option is a java.lang.String
          * type.
          */
-        private String connectionBean;
+        public T connectionBean(String connectionBean) {
+            this.connectionBean = connectionBean;
+            return (T) this;
+        }
+
         /**
          * Sets the name of the MongoDB collection to bind to this endpoint. The
          * option is a java.lang.String type.
          */
-        private String collection;
+        public T collection(String collection) {
+            this.collection = collection;
+            return (T) this;
+        }
+
         /**
          * Sets the collection index (JSON FORMAT : { field1 : order1, field2 :
          * order2}). The option is a java.lang.String type.
          */
-        private String collectionIndex;
+        public T collectionIndex(String collectionIndex) {
+            this.collectionIndex = collectionIndex;
+            return (T) this;
+        }
+
         /**
          * Create collection during initialisation if it doesn't exist. Default
          * is true. The option is a boolean type.
          */
-        private Boolean createCollection;
+        public T createCollection(boolean createCollection) {
+            this.createCollection = createCollection;
+            return (T) this;
+        }
+
         /**
          * Sets the name of the MongoDB database to target. The option is a
          * java.lang.String type.
          */
-        private String database;
+        public T database(String database) {
+            this.database = database;
+            return (T) this;
+        }
+
         /**
          * Sets the operation this endpoint will execute against MongoDB. For
          * possible values, see MongoDbOperation. The option is a
          * org.apache.camel.component.mongodb3.MongoDbOperation type.
          */
-        private MongoDbOperation operation;
+        public T operation(MongoDbOperation operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * Convert the output of the producer to the selected type :
          * DocumentList Document or MongoIterable. DocumentList or MongoIterable
@@ -68,13 +113,21 @@ public class MongoDbEndpoint {
          * operations. The option is a
          * org.apache.camel.component.mongodb3.MongoDbOutputType type.
          */
-        private MongoDbOutputType outputType;
+        public T outputType(MongoDbOutputType outputType) {
+            this.outputType = outputType;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * MongoDB tailable cursors will block until new data arrives. If no new
          * data is inserted, after some time the cursor will be automatically
@@ -84,7 +137,11 @@ public class MongoDbEndpoint {
          * fails, how long before the next attempt is made. Default value is
          * 1000ms. The option is a long type.
          */
-        private Long cursorRegenerationDelay;
+        public T cursorRegenerationDelay(long cursorRegenerationDelay) {
+            this.cursorRegenerationDelay = cursorRegenerationDelay;
+            return (T) this;
+        }
+
         /**
          * Sets whether this endpoint will attempt to dynamically resolve the
          * target database and collection from the incoming Exchange properties.
@@ -93,39 +150,63 @@ public class MongoDbEndpoint {
          * default to boost performance. Enabling it will take a minimal
          * performance hit. The option is a boolean type.
          */
-        private Boolean dynamicity;
+        public T dynamicity(boolean dynamicity) {
+            this.dynamicity = dynamicity;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * In write operations, it determines whether instead of returning
          * WriteResult as the body of the OUT message, we transfer the IN
          * message to the OUT and attach the WriteResult as a header. The option
          * is a boolean type.
          */
-        private Boolean writeResultAsHeader;
+        public T writeResultAsHeader(boolean writeResultAsHeader) {
+            this.writeResultAsHeader = writeResultAsHeader;
+            return (T) this;
+        }
+
         /**
          * One tail tracking collection can host many trackers for several
          * tailable consumers. To keep them separate, each tracker should have
          * its own unique persistentId. The option is a java.lang.String type.
          */
-        private String persistentId;
+        public T persistentId(String persistentId) {
+            this.persistentId = persistentId;
+            return (T) this;
+        }
+
         /**
          * Enable persistent tail tracking, which is a mechanism to keep track
          * of the last consumed message across system restarts. The next time
          * the system is up, the endpoint will recover the cursor from the point
          * where it last stopped slurping records. The option is a boolean type.
          */
-        private Boolean persistentTailTracking;
+        public T persistentTailTracking(boolean persistentTailTracking) {
+            this.persistentTailTracking = persistentTailTracking;
+            return (T) this;
+        }
+
         /**
          * Collection where tail tracking information will be persisted. If not
          * specified, MongoDbTailTrackingConfig#DEFAULT_COLLECTION will be used
          * by default. The option is a java.lang.String type.
          */
-        private String tailTrackCollection;
+        public T tailTrackCollection(String tailTrackCollection) {
+            this.tailTrackCollection = tailTrackCollection;
+            return (T) this;
+        }
+
         /**
          * Indicates what database the tail tracking mechanism will persist to.
          * If not specified, the current database will be picked by default.
@@ -133,13 +214,21 @@ public class MongoDbEndpoint {
          * tail tracking database will not vary past endpoint initialisation.
          * The option is a java.lang.String type.
          */
-        private String tailTrackDb;
+        public T tailTrackDb(String tailTrackDb) {
+            this.tailTrackDb = tailTrackDb;
+            return (T) this;
+        }
+
         /**
          * Field where the last tracked value will be placed. If not specified,
          * MongoDbTailTrackingConfig#DEFAULT_FIELD will be used by default. The
          * option is a java.lang.String type.
          */
-        private String tailTrackField;
+        public T tailTrackField(String tailTrackField) {
+            this.tailTrackField = tailTrackField;
+            return (T) this;
+        }
+
         /**
          * Correlation field in the incoming record which is of increasing
          * nature and will be used to position the tailing cursor every time it
@@ -150,7 +239,10 @@ public class MongoDbEndpoint {
          * should be at the top level of the document. The option is a
          * java.lang.String type.
          */
-        private String tailTrackIncreasingField;
+        public T tailTrackIncreasingField(String tailTrackIncreasingField) {
+            this.tailTrackIncreasingField = tailTrackIncreasingField;
+            return (T) this;
+        }
 
         public String getConnectionBean() {
             return connectionBean;
@@ -297,7 +389,13 @@ public class MongoDbEndpoint {
         }
     }
 
-    public static class MongoDbConsumer extends MongoDbCommon {
+    public static class MongoDbConsumer
+            extends
+                MongoDbCommon<MongoDbConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -307,7 +405,11 @@ public class MongoDbEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public MongoDbConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (MongoDbConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -315,12 +417,20 @@ public class MongoDbEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public MongoDbConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (MongoDbConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public MongoDbConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (MongoDbConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -347,7 +457,9 @@ public class MongoDbEndpoint {
         }
     }
 
-    public static class MongoDbProducer extends MongoDbCommon {
+    public static class MongoDbProducer
+            extends
+                MongoDbCommon<MongoDbProducer> {
     }
 
     public static enum MongoDbOperation {

@@ -31,7 +31,20 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class ServletEndpoint {
 
 
-    public static class ServletCommon extends EndpointConfiguration {
+    public static class ServletCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private Boolean disableStreamCache;
+        private HeaderFilterStrategy headerFilterStrategy;
+        private Object httpBinding;
+        private Boolean chunked;
+        private Boolean transferException;
+        private Boolean basicPropertyBinding;
+        private Boolean mapHttpMessageBody;
+        private Boolean mapHttpMessageFormUrlEncodedBody;
+        private Boolean mapHttpMessageHeaders;
+        private Boolean synchronous;
+
         /**
          * Determines whether or not the raw input stream from Servlet is cached
          * or not (Camel will read the stream into a in memory/overflow to file,
@@ -51,25 +64,41 @@ public class ServletEndpoint {
          * response stream as-is as the message body. The option is a boolean
          * type.
          */
-        private Boolean disableStreamCache;
+        public T disableStreamCache(boolean disableStreamCache) {
+            this.disableStreamCache = disableStreamCache;
+            return (T) this;
+        }
+
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (T) this;
+        }
+
         /**
          * To use a custom HttpBinding to control the mapping between Camel
          * message and HttpClient. The option is a
          * org.apache.camel.http.common.HttpBinding type.
          */
-        private Object httpBinding;
+        public T httpBinding(Object httpBinding) {
+            this.httpBinding = httpBinding;
+            return (T) this;
+        }
+
         /**
          * If this option is false the Servlet will disable the HTTP streaming
          * and set the content-length header on the response. The option is a
          * boolean type.
          */
-        private Boolean chunked;
+        public T chunked(boolean chunked) {
+            this.chunked = chunked;
+            return (T) this;
+        }
+
         /**
          * If enabled and an Exchange failed processing on the consumer side,
          * and if the caused Exception was send back serialized in the response
@@ -81,37 +110,61 @@ public class ServletEndpoint {
          * data from the request to Java and that can be a potential security
          * risk. The option is a boolean type.
          */
-        private Boolean transferException;
+        public T transferException(boolean transferException) {
+            this.transferException = transferException;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * If this option is true then IN exchange Body of the exchange will be
          * mapped to HTTP body. Setting this to false will avoid the HTTP
          * mapping. The option is a boolean type.
          */
-        private Boolean mapHttpMessageBody;
+        public T mapHttpMessageBody(boolean mapHttpMessageBody) {
+            this.mapHttpMessageBody = mapHttpMessageBody;
+            return (T) this;
+        }
+
         /**
          * If this option is true then IN exchange Form Encoded body of the
          * exchange will be mapped to HTTP. Setting this to false will avoid the
          * HTTP Form Encoded body mapping. The option is a boolean type.
          */
-        private Boolean mapHttpMessageFormUrlEncodedBody;
+        public T mapHttpMessageFormUrlEncodedBody(
+                boolean mapHttpMessageFormUrlEncodedBody) {
+            this.mapHttpMessageFormUrlEncodedBody = mapHttpMessageFormUrlEncodedBody;
+            return (T) this;
+        }
+
         /**
          * If this option is true then IN exchange Headers of the exchange will
          * be mapped to HTTP headers. Setting this to false will avoid the HTTP
          * Headers mapping. The option is a boolean type.
          */
-        private Boolean mapHttpMessageHeaders;
+        public T mapHttpMessageHeaders(boolean mapHttpMessageHeaders) {
+            this.mapHttpMessageHeaders = mapHttpMessageHeaders;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public Boolean getDisableStreamCache() {
             return disableStreamCache;
@@ -196,16 +249,41 @@ public class ServletEndpoint {
         }
     }
 
-    public static class ServletConsumer extends ServletCommon {
+    public static class ServletConsumer
+            extends
+                ServletCommon<ServletConsumer> {
+        private String contextPath;
+        private Boolean async;
+        private Boolean bridgeErrorHandler;
+        private String httpMethodRestrict;
+        private Boolean matchOnUriPrefix;
+        private Integer responseBufferSize;
+        private String servletName;
+        private Boolean attachmentMultipartBinding;
+        private Boolean eagerCheckContentAvailable;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private String fileNameExtWhitelist;
+        private Boolean optionsEnabled;
+        private Boolean traceEnabled;
+
         /**
          * The context-path to use. The option is a java.lang.String type.
          */
-        private String contextPath;
+        public ServletConsumer contextPath(String contextPath) {
+            this.contextPath = contextPath;
+            return (ServletConsumer) this;
+        }
+
         /**
          * Configure the consumer to work in async mode. The option is a boolean
          * type.
          */
-        private Boolean async;
+        public ServletConsumer async(boolean async) {
+            this.async = async;
+            return (ServletConsumer) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -215,28 +293,48 @@ public class ServletEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public ServletConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (ServletConsumer) this;
+        }
+
         /**
          * Used to only allow consuming if the HttpMethod matches, such as
          * GET/POST/PUT etc. Multiple methods can be specified separated by
          * comma. The option is a java.lang.String type.
          */
-        private String httpMethodRestrict;
+        public ServletConsumer httpMethodRestrict(String httpMethodRestrict) {
+            this.httpMethodRestrict = httpMethodRestrict;
+            return (ServletConsumer) this;
+        }
+
         /**
          * Whether or not the consumer should try to find a target consumer by
          * matching the URI prefix if no exact match is found. The option is a
          * boolean type.
          */
-        private Boolean matchOnUriPrefix;
+        public ServletConsumer matchOnUriPrefix(boolean matchOnUriPrefix) {
+            this.matchOnUriPrefix = matchOnUriPrefix;
+            return (ServletConsumer) this;
+        }
+
         /**
          * To use a custom buffer size on the javax.servlet.ServletResponse. The
          * option is a java.lang.Integer type.
          */
-        private Integer responseBufferSize;
+        public ServletConsumer responseBufferSize(Integer responseBufferSize) {
+            this.responseBufferSize = responseBufferSize;
+            return (ServletConsumer) this;
+        }
+
         /**
          * Name of the servlet to use. The option is a java.lang.String type.
          */
-        private String servletName;
+        public ServletConsumer servletName(String servletName) {
+            this.servletName = servletName;
+            return (ServletConsumer) this;
+        }
+
         /**
          * Whether to automatic bind multipart/form-data as attachments on the
          * Camel Exchange. The options attachmentMultipartBinding=true and
@@ -245,14 +343,24 @@ public class ServletEndpoint {
          * off by default as this may require servlet specific configuration to
          * enable this when using Servlet's. The option is a boolean type.
          */
-        private Boolean attachmentMultipartBinding;
+        public ServletConsumer attachmentMultipartBinding(
+                boolean attachmentMultipartBinding) {
+            this.attachmentMultipartBinding = attachmentMultipartBinding;
+            return (ServletConsumer) this;
+        }
+
         /**
          * Whether to eager check whether the HTTP requests has content if the
          * content-length header is 0 or not present. This can be turned on in
          * case HTTP clients do not send streamed data. The option is a boolean
          * type.
          */
-        private Boolean eagerCheckContentAvailable;
+        public ServletConsumer eagerCheckContentAvailable(
+                boolean eagerCheckContentAvailable) {
+            this.eagerCheckContentAvailable = eagerCheckContentAvailable;
+            return (ServletConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -260,28 +368,48 @@ public class ServletEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public ServletConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (ServletConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public ServletConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (ServletConsumer) this;
+        }
+
         /**
          * Whitelist of accepted filename extensions for accepting uploaded
          * files. Multiple extensions can be separated by comma, such as
          * txt,xml. The option is a java.lang.String type.
          */
-        private String fileNameExtWhitelist;
+        public ServletConsumer fileNameExtWhitelist(String fileNameExtWhitelist) {
+            this.fileNameExtWhitelist = fileNameExtWhitelist;
+            return (ServletConsumer) this;
+        }
+
         /**
          * Specifies whether to enable HTTP OPTIONS for this Servlet consumer.
          * By default OPTIONS is turned off. The option is a boolean type.
          */
-        private Boolean optionsEnabled;
+        public ServletConsumer optionsEnabled(boolean optionsEnabled) {
+            this.optionsEnabled = optionsEnabled;
+            return (ServletConsumer) this;
+        }
+
         /**
          * Specifies whether to enable HTTP TRACE for this Servlet consumer. By
          * default TRACE is turned off. The option is a boolean type.
          */
-        private Boolean traceEnabled;
+        public ServletConsumer traceEnabled(boolean traceEnabled) {
+            this.traceEnabled = traceEnabled;
+            return (ServletConsumer) this;
+        }
 
         public String getContextPath() {
             return contextPath;
@@ -398,6 +526,8 @@ public class ServletEndpoint {
         }
     }
 
-    public static class ServletProducer extends ServletCommon {
+    public static class ServletProducer
+            extends
+                ServletCommon<ServletProducer> {
     }
 }

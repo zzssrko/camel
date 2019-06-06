@@ -28,67 +28,134 @@ import javax.annotation.Generated;
 public class CwEndpoint {
 
 
-    public static class CwCommon extends EndpointConfiguration {
+    public static class CwCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String namespace;
+        private Object amazonCwClient;
+        private String name;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String region;
+        private Date timestamp;
+        private String unit;
+        private Double value;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String accessKey;
+        private String secretKey;
+
         /**
          * The metric namespace. The option is a java.lang.String type.
          */
-        private String namespace;
+        public T namespace(String namespace) {
+            this.namespace = namespace;
+            return (T) this;
+        }
+
         /**
          * To use the AmazonCloudWatch as the client. The option is a
          * com.amazonaws.services.cloudwatch.AmazonCloudWatch type.
          */
-        private Object amazonCwClient;
+        public T amazonCwClient(Object amazonCwClient) {
+            this.amazonCwClient = amazonCwClient;
+            return (T) this;
+        }
+
         /**
          * The metric name. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * To define a proxy host when instantiating the CW client. The option
          * is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * To define a proxy port when instantiating the CW client. The option
          * is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
+
         /**
          * The region in which CW client needs to work. The option is a
          * java.lang.String type.
          */
-        private String region;
+        public T region(String region) {
+            this.region = region;
+            return (T) this;
+        }
+
         /**
          * The metric timestamp. The option is a java.util.Date type.
          */
-        private Date timestamp;
+        public T timestamp(Date timestamp) {
+            this.timestamp = timestamp;
+            return (T) this;
+        }
+
         /**
          * The metric unit. The option is a java.lang.String type.
          */
-        private String unit;
+        public T unit(String unit) {
+            this.unit = unit;
+            return (T) this;
+        }
+
         /**
          * The metric value. The option is a java.lang.Double type.
          */
-        private Double value;
+        public T value(Double value) {
+            this.value = value;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public T accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public T secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (T) this;
+        }
 
         public String getNamespace() {
             return namespace;
@@ -195,9 +262,9 @@ public class CwEndpoint {
         }
     }
 
-    public static class CwConsumer extends CwCommon {
+    public static class CwConsumer extends CwCommon<CwConsumer> {
     }
 
-    public static class CwProducer extends CwCommon {
+    public static class CwProducer extends CwCommon<CwProducer> {
     }
 }

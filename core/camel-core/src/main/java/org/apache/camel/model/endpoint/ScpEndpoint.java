@@ -28,31 +28,75 @@ import org.apache.camel.Expression;
 public class ScpEndpoint {
 
 
-    public static class ScpCommon extends EndpointConfiguration {
+    public static class ScpCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private String directoryName;
+        private Boolean disconnect;
+        private String chmod;
+        private Expression fileName;
+        private String strictHostKeyChecking;
+        private Boolean basicPropertyBinding;
+        private Integer connectTimeout;
+        private Integer soTimeout;
+        private Boolean synchronous;
+        private Integer timeout;
+        private String knownHostsFile;
+        private String password;
+        private String preferredAuthentications;
+        private Byte[] privateKeyBytes;
+        private String privateKeyFile;
+        private String privateKeyFilePassphrase;
+        private String username;
+        private Boolean useUserKnownHostsFile;
+        private String ciphers;
+
         /**
          * Hostname of the FTP server. The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Port of the FTP server. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * The starting directory. The option is a java.lang.String type.
          */
-        private String directoryName;
+        public T directoryName(String directoryName) {
+            this.directoryName = directoryName;
+            return (T) this;
+        }
+
         /**
          * Whether or not to disconnect from remote FTP server right after use.
          * Disconnect will only disconnect the current connection to the FTP
          * server. If you have a consumer which you want to stop, then you need
          * to stop the consumer/route instead. The option is a boolean type.
          */
-        private Boolean disconnect;
+        public T disconnect(boolean disconnect) {
+            this.disconnect = disconnect;
+            return (T) this;
+        }
+
         /**
          * Allows you to set chmod on the stored file. For example chmod=664.
          * The option is a java.lang.String type.
          */
-        private String chmod;
+        public T chmod(String chmod) {
+            this.chmod = chmod;
+            return (T) this;
+        }
+
         /**
          * Use Expression such as File Language to dynamically set the filename.
          * For consumers, it's used as a filename filter. For producers, it's
@@ -72,24 +116,40 @@ public class ScpEndpoint {
          * CamelFileName and have to restore it afterwards. The option is a
          * java.lang.String type.
          */
-        private Expression fileName;
+        public T fileName(Expression fileName) {
+            this.fileName = fileName;
+            return (T) this;
+        }
+
         /**
          * Sets whether to use strict host key checking. Possible values are:
          * no, yes. The option is a java.lang.String type.
          */
-        private String strictHostKeyChecking;
+        public T strictHostKeyChecking(String strictHostKeyChecking) {
+            this.strictHostKeyChecking = strictHostKeyChecking;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets the connect timeout for waiting for a connection to be
          * established Used by both FTPClient and JSCH. The option is a int
          * type.
          */
-        private Integer connectTimeout;
+        public T connectTimeout(int connectTimeout) {
+            this.connectTimeout = connectTimeout;
+            return (T) this;
+        }
+
         /**
          * Sets the so timeout FTP and FTPS Only for Camel 2.4. SFTP for Camel
          * 2.14.3/2.15.3/2.16 onwards. Is the SocketOptions.SO_TIMEOUT value in
@@ -97,29 +157,49 @@ public class ScpEndpoint {
          * hanged connection. On SFTP this option is set as timeout on the JSCH
          * Session instance. The option is a int type.
          */
-        private Integer soTimeout;
+        public T soTimeout(int soTimeout) {
+            this.soTimeout = soTimeout;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Sets the data timeout for waiting for reply Used only by FTPClient.
          * The option is a int type.
          */
-        private Integer timeout;
+        public T timeout(int timeout) {
+            this.timeout = timeout;
+            return (T) this;
+        }
+
         /**
          * Sets the known_hosts file, so that the jsch endpoint can do host key
          * verification. You can prefix with classpath: to load the file from
          * classpath instead of file system. The option is a java.lang.String
          * type.
          */
-        private String knownHostsFile;
+        public T knownHostsFile(String knownHostsFile) {
+            this.knownHostsFile = knownHostsFile;
+            return (T) this;
+        }
+
         /**
          * Password to use for login. The option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Set a comma separated list of authentications that will be used in
          * order of preference. Possible authentication methods are defined by
@@ -128,43 +208,70 @@ public class ScpEndpoint {
          * specified the JSCH and/or system defaults will be used. The option is
          * a java.lang.String type.
          */
-        private String preferredAuthentications;
+        public T preferredAuthentications(String preferredAuthentications) {
+            this.preferredAuthentications = preferredAuthentications;
+            return (T) this;
+        }
+
         /**
          * Set the private key bytes to that the endpoint can do private key
          * verification. This must be used only if privateKeyFile wasn't set.
          * Otherwise the file will have the priority. The option is a byte[]
          * type.
          */
-        private Byte[] privateKeyBytes;
+        public T privateKeyBytes(Byte[] privateKeyBytes) {
+            this.privateKeyBytes = privateKeyBytes;
+            return (T) this;
+        }
+
         /**
          * Set the private key file to that the endpoint can do private key
          * verification. You can prefix with classpath: to load the file from
          * classpath instead of file system. The option is a java.lang.String
          * type.
          */
-        private String privateKeyFile;
+        public T privateKeyFile(String privateKeyFile) {
+            this.privateKeyFile = privateKeyFile;
+            return (T) this;
+        }
+
         /**
          * Set the private key file passphrase to that the endpoint can do
          * private key verification. The option is a java.lang.String type.
          */
-        private String privateKeyFilePassphrase;
+        public T privateKeyFilePassphrase(String privateKeyFilePassphrase) {
+            this.privateKeyFilePassphrase = privateKeyFilePassphrase;
+            return (T) this;
+        }
+
         /**
          * Username to use for login. The option is a java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
+
         /**
          * If knownHostFile has not been explicit configured, then use the host
          * file from System.getProperty(user.home) /.ssh/known_hosts. The option
          * is a boolean type.
          */
-        private Boolean useUserKnownHostsFile;
+        public T useUserKnownHostsFile(boolean useUserKnownHostsFile) {
+            this.useUserKnownHostsFile = useUserKnownHostsFile;
+            return (T) this;
+        }
+
         /**
          * Set a comma separated list of ciphers that will be used in order of
          * preference. Possible cipher names are defined by JCraft JSCH. Some
          * examples include:
          * aes128-ctr,aes128-cbc,3des-ctr,3des-cbc,blowfish-cbc,aes192-cbc,aes256-cbc. If not specified the default list from JSCH will be used. The option is a java.lang.String type.
          */
-        private String ciphers;
+        public T ciphers(String ciphers) {
+            this.ciphers = ciphers;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -335,10 +442,16 @@ public class ScpEndpoint {
         }
     }
 
-    public static class ScpConsumer extends ScpCommon {
+    public static class ScpConsumer extends ScpCommon<ScpConsumer> {
     }
 
-    public static class ScpProducer extends ScpCommon {
+    public static class ScpProducer extends ScpCommon<ScpProducer> {
+        private Boolean flatten;
+        private Boolean jailStartingDirectory;
+        private Boolean allowNullBody;
+        private Boolean disconnectOnBatchComplete;
+        private Object moveExistingFileStrategy;
+
         /**
          * Flatten is used to flatten the file name path to strip any leading
          * paths, so it's just the file name. This allows you to consume
@@ -348,7 +461,11 @@ public class ScpEndpoint {
          * CamelFileName header will be stripped for any leading paths. The
          * option is a boolean type.
          */
-        private Boolean flatten;
+        public ScpProducer flatten(boolean flatten) {
+            this.flatten = flatten;
+            return (ScpProducer) this;
+        }
+
         /**
          * Used for jailing (restricting) writing files to the starting
          * directory (and sub) only. This is enabled by default to not allow
@@ -357,7 +474,11 @@ public class ScpEndpoint {
          * directories outside the starting directory, such as parent or root
          * folders. The option is a boolean type.
          */
-        private Boolean jailStartingDirectory;
+        public ScpProducer jailStartingDirectory(boolean jailStartingDirectory) {
+            this.jailStartingDirectory = jailStartingDirectory;
+            return (ScpProducer) this;
+        }
+
         /**
          * Used to specify if a null body is allowed during file writing. If set
          * to true then an empty file will be created, when set to false, and
@@ -367,14 +488,23 @@ public class ScpEndpoint {
          * file will be truncated, and if set to append the file will remain
          * unchanged. The option is a boolean type.
          */
-        private Boolean allowNullBody;
+        public ScpProducer allowNullBody(boolean allowNullBody) {
+            this.allowNullBody = allowNullBody;
+            return (ScpProducer) this;
+        }
+
         /**
          * Whether or not to disconnect from remote FTP server right after a
          * Batch upload is complete. disconnectOnBatchComplete will only
          * disconnect the current connection to the FTP server. The option is a
          * boolean type.
          */
-        private Boolean disconnectOnBatchComplete;
+        public ScpProducer disconnectOnBatchComplete(
+                boolean disconnectOnBatchComplete) {
+            this.disconnectOnBatchComplete = disconnectOnBatchComplete;
+            return (ScpProducer) this;
+        }
+
         /**
          * Strategy (Custom Strategy) used to move file with special naming
          * token to use when fileExist=Move is configured. By default, there is
@@ -383,7 +513,11 @@ public class ScpEndpoint {
          * org.apache.camel.component.file.strategy.FileMoveExistingStrategy
          * type.
          */
-        private Object moveExistingFileStrategy;
+        public ScpProducer moveExistingFileStrategy(
+                Object moveExistingFileStrategy) {
+            this.moveExistingFileStrategy = moveExistingFileStrategy;
+            return (ScpProducer) this;
+        }
 
         public Boolean getFlatten() {
             return flatten;

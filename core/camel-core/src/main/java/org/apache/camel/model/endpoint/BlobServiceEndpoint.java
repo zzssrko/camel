@@ -31,69 +31,131 @@ import org.apache.camel.spi.ExceptionHandler;
 public class BlobServiceEndpoint {
 
 
-    public static class BlobServiceCommon extends EndpointConfiguration {
+    public static class BlobServiceCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String containerOrBlobUri;
+        private Object azureBlobClient;
+        private Long blobOffset;
+        private BlobType blobType;
+        private Boolean closeStreamAfterRead;
+        private Object credentials;
+        private Long dataLength;
+        private String fileDir;
+        private Boolean publicForRead;
+        private Integer streamReadSize;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Container or Blob compact Uri. The option is a java.lang.String type.
          */
-        private String containerOrBlobUri;
+        public T containerOrBlobUri(String containerOrBlobUri) {
+            this.containerOrBlobUri = containerOrBlobUri;
+            return (T) this;
+        }
+
         /**
          * The blob service client. The option is a
          * com.microsoft.azure.storage.blob.CloudBlob type.
          */
-        private Object azureBlobClient;
+        public T azureBlobClient(Object azureBlobClient) {
+            this.azureBlobClient = azureBlobClient;
+            return (T) this;
+        }
+
         /**
          * Set the blob offset for the upload or download operations, default is
          * 0. The option is a java.lang.Long type.
          */
-        private Long blobOffset;
+        public T blobOffset(Long blobOffset) {
+            this.blobOffset = blobOffset;
+            return (T) this;
+        }
+
         /**
          * Set a blob type, 'blockblob' is default. The option is a
          * org.apache.camel.component.azure.blob.BlobType type.
          */
-        private BlobType blobType;
+        public T blobType(BlobType blobType) {
+            this.blobType = blobType;
+            return (T) this;
+        }
+
         /**
          * Close the stream after read or keep it open, default is true. The
          * option is a boolean type.
          */
-        private Boolean closeStreamAfterRead;
+        public T closeStreamAfterRead(boolean closeStreamAfterRead) {
+            this.closeStreamAfterRead = closeStreamAfterRead;
+            return (T) this;
+        }
+
         /**
          * Set the storage credentials, required in most cases. The option is a
          * com.microsoft.azure.storage.StorageCredentials type.
          */
-        private Object credentials;
+        public T credentials(Object credentials) {
+            this.credentials = credentials;
+            return (T) this;
+        }
+
         /**
          * Set the data length for the download or page blob upload operations.
          * The option is a java.lang.Long type.
          */
-        private Long dataLength;
+        public T dataLength(Long dataLength) {
+            this.dataLength = dataLength;
+            return (T) this;
+        }
+
         /**
          * Set the file directory where the downloaded blobs will be saved to.
          * The option is a java.lang.String type.
          */
-        private String fileDir;
+        public T fileDir(String fileDir) {
+            this.fileDir = fileDir;
+            return (T) this;
+        }
+
         /**
          * Storage resources can be public for reading their content, if this
          * property is enabled then the credentials do not have to be set. The
          * option is a boolean type.
          */
-        private Boolean publicForRead;
+        public T publicForRead(boolean publicForRead) {
+            this.publicForRead = publicForRead;
+            return (T) this;
+        }
+
         /**
          * Set the minimum read size in bytes when reading the blob content. The
          * option is a int type.
          */
-        private Integer streamReadSize;
+        public T streamReadSize(int streamReadSize) {
+            this.streamReadSize = streamReadSize;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getContainerOrBlobUri() {
             return containerOrBlobUri;
@@ -192,7 +254,13 @@ public class BlobServiceEndpoint {
         }
     }
 
-    public static class BlobServiceConsumer extends BlobServiceCommon {
+    public static class BlobServiceConsumer
+            extends
+                BlobServiceCommon<BlobServiceConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -202,7 +270,11 @@ public class BlobServiceEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public BlobServiceConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (BlobServiceConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -210,12 +282,21 @@ public class BlobServiceEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public BlobServiceConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (BlobServiceConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public BlobServiceConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (BlobServiceConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -242,37 +323,70 @@ public class BlobServiceEndpoint {
         }
     }
 
-    public static class BlobServiceProducer extends BlobServiceCommon {
+    public static class BlobServiceProducer
+            extends
+                BlobServiceCommon<BlobServiceProducer> {
+        private Map<String, String> blobMetadata;
+        private String blobPrefix;
+        private Boolean closeStreamAfterWrite;
+        private BlobServiceOperations operation;
+        private Integer streamWriteSize;
+        private Boolean useFlatListing;
+
         /**
          * Set the blob meta-data. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
-        private Map<String, String> blobMetadata;
+        public BlobServiceProducer blobMetadata(Map<String, String> blobMetadata) {
+            this.blobMetadata = blobMetadata;
+            return (BlobServiceProducer) this;
+        }
+
         /**
          * Set a prefix which can be used for listing the blobs. The option is a
          * java.lang.String type.
          */
-        private String blobPrefix;
+        public BlobServiceProducer blobPrefix(String blobPrefix) {
+            this.blobPrefix = blobPrefix;
+            return (BlobServiceProducer) this;
+        }
+
         /**
          * Close the stream after write or keep it open, default is true. The
          * option is a boolean type.
          */
-        private Boolean closeStreamAfterWrite;
+        public BlobServiceProducer closeStreamAfterWrite(
+                boolean closeStreamAfterWrite) {
+            this.closeStreamAfterWrite = closeStreamAfterWrite;
+            return (BlobServiceProducer) this;
+        }
+
         /**
          * Blob service operation hint to the producer. The option is a
          * org.apache.camel.component.azure.blob.BlobServiceOperations type.
          */
-        private BlobServiceOperations operation;
+        public BlobServiceProducer operation(BlobServiceOperations operation) {
+            this.operation = operation;
+            return (BlobServiceProducer) this;
+        }
+
         /**
          * Set the size of the buffer for writing block and page blocks. The
          * option is a int type.
          */
-        private Integer streamWriteSize;
+        public BlobServiceProducer streamWriteSize(int streamWriteSize) {
+            this.streamWriteSize = streamWriteSize;
+            return (BlobServiceProducer) this;
+        }
+
         /**
          * Specify if the flat or hierarchical blob listing should be used. The
          * option is a boolean type.
          */
-        private Boolean useFlatListing;
+        public BlobServiceProducer useFlatListing(boolean useFlatListing) {
+            this.useFlatListing = useFlatListing;
+            return (BlobServiceProducer) this;
+        }
 
         public Map<String, String> getBlobMetadata() {
             return blobMetadata;

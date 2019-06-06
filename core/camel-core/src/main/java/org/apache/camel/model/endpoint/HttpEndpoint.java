@@ -30,7 +30,31 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class HttpEndpoint {
 
 
-    public static class HttpCommon extends EndpointConfiguration {
+    public static class HttpCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private Boolean disableStreamCache;
+        private HeaderFilterStrategy headerFilterStrategy;
+        private Object httpBinding;
+        private Boolean chunked;
+        private Boolean transferException;
+        private Boolean basicPropertyBinding;
+        private Object clientBuilder;
+        private Object clientConnectionManager;
+        private Integer connectionsPerRoute;
+        private Object httpClient;
+        private Object httpClientConfigurer;
+        private Map<String, Object> httpClientOptions;
+        private Object httpContext;
+        private Boolean mapHttpMessageBody;
+        private Boolean mapHttpMessageFormUrlEncodedBody;
+        private Boolean mapHttpMessageHeaders;
+        private Integer maxTotalConnections;
+        private Boolean synchronous;
+        private Boolean useSystemProperties;
+        private Object sslContextParameters;
+        private Object x509HostnameVerifier;
+
         /**
          * Determines whether or not the raw input stream from Servlet is cached
          * or not (Camel will read the stream into a in memory/overflow to file,
@@ -50,25 +74,41 @@ public class HttpEndpoint {
          * response stream as-is as the message body. The option is a boolean
          * type.
          */
-        private Boolean disableStreamCache;
+        public T disableStreamCache(boolean disableStreamCache) {
+            this.disableStreamCache = disableStreamCache;
+            return (T) this;
+        }
+
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (T) this;
+        }
+
         /**
          * To use a custom HttpBinding to control the mapping between Camel
          * message and HttpClient. The option is a
          * org.apache.camel.http.common.HttpBinding type.
          */
-        private Object httpBinding;
+        public T httpBinding(Object httpBinding) {
+            this.httpBinding = httpBinding;
+            return (T) this;
+        }
+
         /**
          * If this option is false the Servlet will disable the HTTP streaming
          * and set the content-length header on the response. The option is a
          * boolean type.
          */
-        private Boolean chunked;
+        public T chunked(boolean chunked) {
+            this.chunked = chunked;
+            return (T) this;
+        }
+
         /**
          * If enabled and an Exchange failed processing on the consumer side,
          * and if the caused Exception was send back serialized in the response
@@ -80,86 +120,147 @@ public class HttpEndpoint {
          * data from the request to Java and that can be a potential security
          * risk. The option is a boolean type.
          */
-        private Boolean transferException;
+        public T transferException(boolean transferException) {
+            this.transferException = transferException;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Provide access to the http client request parameters used on new
          * RequestConfig instances used by producers or consumers of this
          * endpoint. The option is a
          * org.apache.http.impl.client.HttpClientBuilder type.
          */
-        private Object clientBuilder;
+        public T clientBuilder(Object clientBuilder) {
+            this.clientBuilder = clientBuilder;
+            return (T) this;
+        }
+
         /**
          * To use a custom HttpClientConnectionManager to manage connections.
          * The option is a org.apache.http.conn.HttpClientConnectionManager
          * type.
          */
-        private Object clientConnectionManager;
+        public T clientConnectionManager(Object clientConnectionManager) {
+            this.clientConnectionManager = clientConnectionManager;
+            return (T) this;
+        }
+
         /**
          * The maximum number of connections per route. The option is a int
          * type.
          */
-        private Integer connectionsPerRoute;
+        public T connectionsPerRoute(int connectionsPerRoute) {
+            this.connectionsPerRoute = connectionsPerRoute;
+            return (T) this;
+        }
+
         /**
          * Sets a custom HttpClient to be used by the producer. The option is a
          * org.apache.http.client.HttpClient type.
          */
-        private Object httpClient;
+        public T httpClient(Object httpClient) {
+            this.httpClient = httpClient;
+            return (T) this;
+        }
+
         /**
          * Register a custom configuration strategy for new HttpClient instances
          * created by producers or consumers such as to configure authentication
          * mechanisms etc. The option is a
          * org.apache.camel.component.http4.HttpClientConfigurer type.
          */
-        private Object httpClientConfigurer;
+        public T httpClientConfigurer(Object httpClientConfigurer) {
+            this.httpClientConfigurer = httpClientConfigurer;
+            return (T) this;
+        }
+
         /**
          * To configure the HttpClient using the key/values from the Map. The
          * option is a java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> httpClientOptions;
+        public T httpClientOptions(Map<String, Object> httpClientOptions) {
+            this.httpClientOptions = httpClientOptions;
+            return (T) this;
+        }
+
         /**
          * To use a custom HttpContext instance. The option is a
          * org.apache.http.protocol.HttpContext type.
          */
-        private Object httpContext;
+        public T httpContext(Object httpContext) {
+            this.httpContext = httpContext;
+            return (T) this;
+        }
+
         /**
          * If this option is true then IN exchange Body of the exchange will be
          * mapped to HTTP body. Setting this to false will avoid the HTTP
          * mapping. The option is a boolean type.
          */
-        private Boolean mapHttpMessageBody;
+        public T mapHttpMessageBody(boolean mapHttpMessageBody) {
+            this.mapHttpMessageBody = mapHttpMessageBody;
+            return (T) this;
+        }
+
         /**
          * If this option is true then IN exchange Form Encoded body of the
          * exchange will be mapped to HTTP. Setting this to false will avoid the
          * HTTP Form Encoded body mapping. The option is a boolean type.
          */
-        private Boolean mapHttpMessageFormUrlEncodedBody;
+        public T mapHttpMessageFormUrlEncodedBody(
+                boolean mapHttpMessageFormUrlEncodedBody) {
+            this.mapHttpMessageFormUrlEncodedBody = mapHttpMessageFormUrlEncodedBody;
+            return (T) this;
+        }
+
         /**
          * If this option is true then IN exchange Headers of the exchange will
          * be mapped to HTTP headers. Setting this to false will avoid the HTTP
          * Headers mapping. The option is a boolean type.
          */
-        private Boolean mapHttpMessageHeaders;
+        public T mapHttpMessageHeaders(boolean mapHttpMessageHeaders) {
+            this.mapHttpMessageHeaders = mapHttpMessageHeaders;
+            return (T) this;
+        }
+
         /**
          * The maximum number of connections. The option is a int type.
          */
-        private Integer maxTotalConnections;
+        public T maxTotalConnections(int maxTotalConnections) {
+            this.maxTotalConnections = maxTotalConnections;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * To use System Properties as fallback for configuration. The option is
          * a boolean type.
          */
-        private Boolean useSystemProperties;
+        public T useSystemProperties(boolean useSystemProperties) {
+            this.useSystemProperties = useSystemProperties;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. Important: Only one
          * instance of org.apache.camel.util.jsse.SSLContextParameters is
@@ -168,13 +269,20 @@ public class HttpEndpoint {
          * need. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
+
         /**
          * To use a custom X509HostnameVerifier such as DefaultHostnameVerifier
          * or org.apache.http.conn.ssl.NoopHostnameVerifier. The option is a
          * javax.net.ssl.HostnameVerifier type.
          */
-        private Object x509HostnameVerifier;
+        public T x509HostnameVerifier(Object x509HostnameVerifier) {
+            this.x509HostnameVerifier = x509HostnameVerifier;
+            return (T) this;
+        }
 
         public Boolean getDisableStreamCache() {
             return disableStreamCache;
@@ -347,40 +455,93 @@ public class HttpEndpoint {
         }
     }
 
-    public static class HttpConsumer extends HttpCommon {
+    public static class HttpConsumer extends HttpCommon<HttpConsumer> {
     }
 
-    public static class HttpProducer extends HttpCommon {
+    public static class HttpProducer extends HttpCommon<HttpProducer> {
+        private URI httpUri;
+        private Boolean authenticationPreemptive;
+        private Boolean bridgeEndpoint;
+        private Boolean clearExpiredCookies;
+        private Boolean connectionClose;
+        private Object cookieStore;
+        private Boolean copyHeaders;
+        private Boolean deleteWithBody;
+        private HttpMethods httpMethod;
+        private Boolean ignoreResponseBody;
+        private Boolean preserveHostHeader;
+        private Boolean throwExceptionOnFailure;
+        private Object cookieHandler;
+        private String okStatusCodeRange;
+        @Deprecated
+        private Object urlRewrite;
+        private String proxyAuthDomain;
+        private String proxyAuthHost;
+        private String proxyAuthMethod;
+        private String proxyAuthPassword;
+        private Integer proxyAuthPort;
+        private String proxyAuthScheme;
+        private String proxyAuthUsername;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String authDomain;
+        private String authHost;
+        private String authMethod;
+        private String authMethodPriority;
+        private String authPassword;
+        private String authUsername;
+
         /**
          * The url of the HTTP endpoint to call. The option is a java.net.URI
          * type.
          */
-        private URI httpUri;
+        public HttpProducer httpUri(URI httpUri) {
+            this.httpUri = httpUri;
+            return (HttpProducer) this;
+        }
+
         /**
          * If this option is true, camel-http4 sends preemptive basic
          * authentication to the server. The option is a boolean type.
          */
-        private Boolean authenticationPreemptive;
+        public HttpProducer authenticationPreemptive(
+                boolean authenticationPreemptive) {
+            this.authenticationPreemptive = authenticationPreemptive;
+            return (HttpProducer) this;
+        }
+
         /**
          * If the option is true, HttpProducer will ignore the Exchange.HTTP_URI
          * header, and use the endpoint's URI for request. You may also set the
          * option throwExceptionOnFailure to be false to let the HttpProducer
          * send all the fault response back. The option is a boolean type.
          */
-        private Boolean bridgeEndpoint;
+        public HttpProducer bridgeEndpoint(boolean bridgeEndpoint) {
+            this.bridgeEndpoint = bridgeEndpoint;
+            return (HttpProducer) this;
+        }
+
         /**
          * Whether to clear expired cookies before sending the HTTP request.
          * This ensures the cookies store does not keep growing by adding new
          * cookies which is newer removed when they are expired. The option is a
          * boolean type.
          */
-        private Boolean clearExpiredCookies;
+        public HttpProducer clearExpiredCookies(boolean clearExpiredCookies) {
+            this.clearExpiredCookies = clearExpiredCookies;
+            return (HttpProducer) this;
+        }
+
         /**
          * Specifies whether a Connection Close header must be added to HTTP
          * Request. By default connectionClose is false. The option is a boolean
          * type.
          */
-        private Boolean connectionClose;
+        public HttpProducer connectionClose(boolean connectionClose) {
+            this.connectionClose = connectionClose;
+            return (HttpProducer) this;
+        }
+
         /**
          * To use a custom CookieStore. By default the BasicCookieStore is used
          * which is an in-memory only cookie store. Notice if
@@ -391,32 +552,52 @@ public class HttpEndpoint {
          * then performed by the cookieHandler. The option is a
          * org.apache.http.client.CookieStore type.
          */
-        private Object cookieStore;
+        public HttpProducer cookieStore(Object cookieStore) {
+            this.cookieStore = cookieStore;
+            return (HttpProducer) this;
+        }
+
         /**
          * If this option is true then IN exchange headers will be copied to OUT
          * exchange headers according to copy strategy. Setting this to false,
          * allows to only include the headers from the HTTP response (not
          * propagating IN headers). The option is a boolean type.
          */
-        private Boolean copyHeaders;
+        public HttpProducer copyHeaders(boolean copyHeaders) {
+            this.copyHeaders = copyHeaders;
+            return (HttpProducer) this;
+        }
+
         /**
          * Whether the HTTP DELETE should include the message body or not. By
          * default HTTP DELETE do not include any HTTP message. However in some
          * rare cases users may need to be able to include the message body. The
          * option is a boolean type.
          */
-        private Boolean deleteWithBody;
+        public HttpProducer deleteWithBody(boolean deleteWithBody) {
+            this.deleteWithBody = deleteWithBody;
+            return (HttpProducer) this;
+        }
+
         /**
          * Configure the HTTP method to use. The HttpMethod header cannot
          * override this option if set. The option is a
          * org.apache.camel.http.common.HttpMethods type.
          */
-        private HttpMethods httpMethod;
+        public HttpProducer httpMethod(HttpMethods httpMethod) {
+            this.httpMethod = httpMethod;
+            return (HttpProducer) this;
+        }
+
         /**
          * If this option is true, The http producer won't read response body
          * and cache the input stream. The option is a boolean type.
          */
-        private Boolean ignoreResponseBody;
+        public HttpProducer ignoreResponseBody(boolean ignoreResponseBody) {
+            this.ignoreResponseBody = ignoreResponseBody;
+            return (HttpProducer) this;
+        }
+
         /**
          * If the option is true, HttpProducer will set the Host header to the
          * value contained in the current exchange Host header, useful in
@@ -426,19 +607,32 @@ public class HttpEndpoint {
          * generate accurate URL's for a proxied service. The option is a
          * boolean type.
          */
-        private Boolean preserveHostHeader;
+        public HttpProducer preserveHostHeader(boolean preserveHostHeader) {
+            this.preserveHostHeader = preserveHostHeader;
+            return (HttpProducer) this;
+        }
+
         /**
          * Option to disable throwing the HttpOperationFailedException in case
          * of failed responses from the remote server. This allows you to get
          * all responses regardless of the HTTP status code. The option is a
          * boolean type.
          */
-        private Boolean throwExceptionOnFailure;
+        public HttpProducer throwExceptionOnFailure(
+                boolean throwExceptionOnFailure) {
+            this.throwExceptionOnFailure = throwExceptionOnFailure;
+            return (HttpProducer) this;
+        }
+
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
          */
-        private Object cookieHandler;
+        public HttpProducer cookieHandler(Object cookieHandler) {
+            this.cookieHandler = cookieHandler;
+            return (HttpProducer) this;
+        }
+
         /**
          * The status codes which are considered a success response. The values
          * are inclusive. Multiple ranges can be defined, separated by comma,
@@ -446,7 +640,11 @@ public class HttpEndpoint {
          * from-to with the dash included. The option is a java.lang.String
          * type.
          */
-        private String okStatusCodeRange;
+        public HttpProducer okStatusCodeRange(String okStatusCodeRange) {
+            this.okStatusCodeRange = okStatusCodeRange;
+            return (HttpProducer) this;
+        }
+
         /**
          * Refers to a custom org.apache.camel.component.http.UrlRewrite which
          * allows you to rewrite urls when you bridge/proxy endpoints. See more
@@ -454,74 +652,137 @@ public class HttpEndpoint {
          * org.apache.camel.http.common.UrlRewrite type.
          */
         @Deprecated
-        private Object urlRewrite;
+        public HttpProducer urlRewrite(Object urlRewrite) {
+            this.urlRewrite = urlRewrite;
+            return (HttpProducer) this;
+        }
+
         /**
          * Proxy authentication domain to use with NTML. The option is a
          * java.lang.String type.
          */
-        private String proxyAuthDomain;
+        public HttpProducer proxyAuthDomain(String proxyAuthDomain) {
+            this.proxyAuthDomain = proxyAuthDomain;
+            return (HttpProducer) this;
+        }
+
         /**
          * Proxy authentication host. The option is a java.lang.String type.
          */
-        private String proxyAuthHost;
+        public HttpProducer proxyAuthHost(String proxyAuthHost) {
+            this.proxyAuthHost = proxyAuthHost;
+            return (HttpProducer) this;
+        }
+
         /**
          * Proxy authentication method to use. The option is a java.lang.String
          * type.
          */
-        private String proxyAuthMethod;
+        public HttpProducer proxyAuthMethod(String proxyAuthMethod) {
+            this.proxyAuthMethod = proxyAuthMethod;
+            return (HttpProducer) this;
+        }
+
         /**
          * Proxy authentication password. The option is a java.lang.String type.
          */
-        private String proxyAuthPassword;
+        public HttpProducer proxyAuthPassword(String proxyAuthPassword) {
+            this.proxyAuthPassword = proxyAuthPassword;
+            return (HttpProducer) this;
+        }
+
         /**
          * Proxy authentication port. The option is a int type.
          */
-        private Integer proxyAuthPort;
+        public HttpProducer proxyAuthPort(int proxyAuthPort) {
+            this.proxyAuthPort = proxyAuthPort;
+            return (HttpProducer) this;
+        }
+
         /**
          * Proxy authentication scheme to use. The option is a java.lang.String
          * type.
          */
-        private String proxyAuthScheme;
+        public HttpProducer proxyAuthScheme(String proxyAuthScheme) {
+            this.proxyAuthScheme = proxyAuthScheme;
+            return (HttpProducer) this;
+        }
+
         /**
          * Proxy authentication username. The option is a java.lang.String type.
          */
-        private String proxyAuthUsername;
+        public HttpProducer proxyAuthUsername(String proxyAuthUsername) {
+            this.proxyAuthUsername = proxyAuthUsername;
+            return (HttpProducer) this;
+        }
+
         /**
          * Proxy hostname to use. The option is a java.lang.String type.
          */
-        private String proxyHost;
+        public HttpProducer proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (HttpProducer) this;
+        }
+
         /**
          * Proxy port to use. The option is a int type.
          */
-        private Integer proxyPort;
+        public HttpProducer proxyPort(int proxyPort) {
+            this.proxyPort = proxyPort;
+            return (HttpProducer) this;
+        }
+
         /**
          * Authentication domain to use with NTML. The option is a
          * java.lang.String type.
          */
-        private String authDomain;
+        public HttpProducer authDomain(String authDomain) {
+            this.authDomain = authDomain;
+            return (HttpProducer) this;
+        }
+
         /**
          * Authentication host to use with NTML. The option is a
          * java.lang.String type.
          */
-        private String authHost;
+        public HttpProducer authHost(String authHost) {
+            this.authHost = authHost;
+            return (HttpProducer) this;
+        }
+
         /**
          * Authentication methods allowed to use as a comma separated list of
          * values Basic, Digest or NTLM. The option is a java.lang.String type.
          */
-        private String authMethod;
+        public HttpProducer authMethod(String authMethod) {
+            this.authMethod = authMethod;
+            return (HttpProducer) this;
+        }
+
         /**
          * Which authentication method to prioritize to use, either as Basic,
          * Digest or NTLM. The option is a java.lang.String type.
          */
-        private String authMethodPriority;
+        public HttpProducer authMethodPriority(String authMethodPriority) {
+            this.authMethodPriority = authMethodPriority;
+            return (HttpProducer) this;
+        }
+
         /**
          * Authentication password. The option is a java.lang.String type.
          */
-        private String authPassword;
+        public HttpProducer authPassword(String authPassword) {
+            this.authPassword = authPassword;
+            return (HttpProducer) this;
+        }
+
         /**
          * Authentication username. The option is a java.lang.String type.
          */
-        private String authUsername;
+        public HttpProducer authUsername(String authUsername) {
+            this.authUsername = authUsername;
+            return (HttpProducer) this;
+        }
 
         public URI getHttpUri() {
             return httpUri;

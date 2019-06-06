@@ -28,80 +28,157 @@ import javax.annotation.Generated;
 public class ElasticsearchEndpoint {
 
 
-    public static class ElasticsearchCommon extends EndpointConfiguration {
+    public static class ElasticsearchCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String clusterName;
+        private Integer connectionTimeout;
+        private Boolean disconnect;
+        private Boolean enableSSL;
+        private String hostAddresses;
+        private String indexName;
+        private String indexType;
+        private Integer maxRetryTimeout;
+        private ElasticsearchOperation operation;
+        private Integer scrollKeepAliveMs;
+        private Integer socketTimeout;
+        private Boolean useScroll;
+        private Integer waitForActiveShards;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Name of the cluster. The option is a java.lang.String type.
          */
-        private String clusterName;
+        public T clusterName(String clusterName) {
+            this.clusterName = clusterName;
+            return (T) this;
+        }
+
         /**
          * The time in ms to wait before connection will timeout. The option is
          * a int type.
          */
-        private Integer connectionTimeout;
+        public T connectionTimeout(int connectionTimeout) {
+            this.connectionTimeout = connectionTimeout;
+            return (T) this;
+        }
+
         /**
          * Disconnect after it finish calling the producer. The option is a
          * boolean type.
          */
-        private Boolean disconnect;
+        public T disconnect(boolean disconnect) {
+            this.disconnect = disconnect;
+            return (T) this;
+        }
+
         /**
          * Enable SSL. The option is a boolean type.
          */
-        private Boolean enableSSL;
+        public T enableSSL(boolean enableSSL) {
+            this.enableSSL = enableSSL;
+            return (T) this;
+        }
+
         /**
          * Comma separated list with ip:port formatted remote transport
          * addresses to use. The option is a java.lang.String type.
          */
-        private String hostAddresses;
+        public T hostAddresses(String hostAddresses) {
+            this.hostAddresses = hostAddresses;
+            return (T) this;
+        }
+
         /**
          * The name of the index to act against. The option is a
          * java.lang.String type.
          */
-        private String indexName;
+        public T indexName(String indexName) {
+            this.indexName = indexName;
+            return (T) this;
+        }
+
         /**
          * The type of the index to act against. The option is a
          * java.lang.String type.
          */
-        private String indexType;
+        public T indexType(String indexType) {
+            this.indexType = indexType;
+            return (T) this;
+        }
+
         /**
          * The time in ms before retry. The option is a int type.
          */
-        private Integer maxRetryTimeout;
+        public T maxRetryTimeout(int maxRetryTimeout) {
+            this.maxRetryTimeout = maxRetryTimeout;
+            return (T) this;
+        }
+
         /**
          * What operation to perform. The option is a
          * org.apache.camel.component.elasticsearch.ElasticsearchOperation type.
          */
-        private ElasticsearchOperation operation;
+        public T operation(ElasticsearchOperation operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * Time in ms during which elasticsearch will keep search context alive.
          * The option is a int type.
          */
-        private Integer scrollKeepAliveMs;
+        public T scrollKeepAliveMs(int scrollKeepAliveMs) {
+            this.scrollKeepAliveMs = scrollKeepAliveMs;
+            return (T) this;
+        }
+
         /**
          * The timeout in ms to wait before the socket will timeout. The option
          * is a int type.
          */
-        private Integer socketTimeout;
+        public T socketTimeout(int socketTimeout) {
+            this.socketTimeout = socketTimeout;
+            return (T) this;
+        }
+
         /**
          * Enable scroll usage. The option is a boolean type.
          */
-        private Boolean useScroll;
+        public T useScroll(boolean useScroll) {
+            this.useScroll = useScroll;
+            return (T) this;
+        }
+
         /**
          * Index creation waits for the write consistency number of shards to be
          * available. The option is a int type.
          */
-        private Integer waitForActiveShards;
+        public T waitForActiveShards(int waitForActiveShards) {
+            this.waitForActiveShards = waitForActiveShards;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getClusterName() {
             return clusterName;
@@ -224,10 +301,14 @@ public class ElasticsearchEndpoint {
         }
     }
 
-    public static class ElasticsearchConsumer extends ElasticsearchCommon {
+    public static class ElasticsearchConsumer
+            extends
+                ElasticsearchCommon<ElasticsearchConsumer> {
     }
 
-    public static class ElasticsearchProducer extends ElasticsearchCommon {
+    public static class ElasticsearchProducer
+            extends
+                ElasticsearchCommon<ElasticsearchProducer> {
     }
 
     public static enum ElasticsearchOperation {

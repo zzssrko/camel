@@ -28,107 +28,212 @@ import javax.annotation.Generated;
 public class KubernetesServiceAccountsEndpoint {
 
 
-    public static class KubernetesServiceAccountsCommon
+    public static class KubernetesServiceAccountsCommon<T extends EndpointConfiguration>
             extends
-                EndpointConfiguration {
+                EndpointConfiguration<T> {
+        private String masterUrl;
+        private String apiVersion;
+        private String dnsDomain;
+        private Object kubernetesClient;
+        private String portName;
+        private String portProtocol;
+        private Boolean basicPropertyBinding;
+        private Integer connectionTimeout;
+        private Boolean synchronous;
+        private String caCertData;
+        private String caCertFile;
+        private String clientCertData;
+        private String clientCertFile;
+        private String clientKeyAlgo;
+        private String clientKeyData;
+        private String clientKeyFile;
+        private String clientKeyPassphrase;
+        private String oauthToken;
+        private String password;
+        private Boolean trustCerts;
+        private String username;
+
         /**
          * Kubernetes Master url. The option is a java.lang.String type.
          */
-        private String masterUrl;
+        public T masterUrl(String masterUrl) {
+            this.masterUrl = masterUrl;
+            return (T) this;
+        }
+
         /**
          * The Kubernetes API Version to use. The option is a java.lang.String
          * type.
          */
-        private String apiVersion;
+        public T apiVersion(String apiVersion) {
+            this.apiVersion = apiVersion;
+            return (T) this;
+        }
+
         /**
          * The dns domain, used for ServiceCall EIP. The option is a
          * java.lang.String type.
          */
-        private String dnsDomain;
+        public T dnsDomain(String dnsDomain) {
+            this.dnsDomain = dnsDomain;
+            return (T) this;
+        }
+
         /**
          * Default KubernetesClient to use if provided. The option is a
          * io.fabric8.kubernetes.client.KubernetesClient type.
          */
-        private Object kubernetesClient;
+        public T kubernetesClient(Object kubernetesClient) {
+            this.kubernetesClient = kubernetesClient;
+            return (T) this;
+        }
+
         /**
          * The port name, used for ServiceCall EIP. The option is a
          * java.lang.String type.
          */
-        private String portName;
+        public T portName(String portName) {
+            this.portName = portName;
+            return (T) this;
+        }
+
         /**
          * The port protocol, used for ServiceCall EIP. The option is a
          * java.lang.String type.
          */
-        private String portProtocol;
+        public T portProtocol(String portProtocol) {
+            this.portProtocol = portProtocol;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Connection timeout in milliseconds to use when making requests to the
          * Kubernetes API server. The option is a java.lang.Integer type.
          */
-        private Integer connectionTimeout;
+        public T connectionTimeout(Integer connectionTimeout) {
+            this.connectionTimeout = connectionTimeout;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The CA Cert Data. The option is a java.lang.String type.
          */
-        private String caCertData;
+        public T caCertData(String caCertData) {
+            this.caCertData = caCertData;
+            return (T) this;
+        }
+
         /**
          * The CA Cert File. The option is a java.lang.String type.
          */
-        private String caCertFile;
+        public T caCertFile(String caCertFile) {
+            this.caCertFile = caCertFile;
+            return (T) this;
+        }
+
         /**
          * The Client Cert Data. The option is a java.lang.String type.
          */
-        private String clientCertData;
+        public T clientCertData(String clientCertData) {
+            this.clientCertData = clientCertData;
+            return (T) this;
+        }
+
         /**
          * The Client Cert File. The option is a java.lang.String type.
          */
-        private String clientCertFile;
+        public T clientCertFile(String clientCertFile) {
+            this.clientCertFile = clientCertFile;
+            return (T) this;
+        }
+
         /**
          * The Key Algorithm used by the client. The option is a
          * java.lang.String type.
          */
-        private String clientKeyAlgo;
+        public T clientKeyAlgo(String clientKeyAlgo) {
+            this.clientKeyAlgo = clientKeyAlgo;
+            return (T) this;
+        }
+
         /**
          * The Client Key data. The option is a java.lang.String type.
          */
-        private String clientKeyData;
+        public T clientKeyData(String clientKeyData) {
+            this.clientKeyData = clientKeyData;
+            return (T) this;
+        }
+
         /**
          * The Client Key file. The option is a java.lang.String type.
          */
-        private String clientKeyFile;
+        public T clientKeyFile(String clientKeyFile) {
+            this.clientKeyFile = clientKeyFile;
+            return (T) this;
+        }
+
         /**
          * The Client Key Passphrase. The option is a java.lang.String type.
          */
-        private String clientKeyPassphrase;
+        public T clientKeyPassphrase(String clientKeyPassphrase) {
+            this.clientKeyPassphrase = clientKeyPassphrase;
+            return (T) this;
+        }
+
         /**
          * The Auth Token. The option is a java.lang.String type.
          */
-        private String oauthToken;
+        public T oauthToken(String oauthToken) {
+            this.oauthToken = oauthToken;
+            return (T) this;
+        }
+
         /**
          * Password to connect to Kubernetes. The option is a java.lang.String
          * type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Define if the certs we used are trusted anyway or not. The option is
          * a java.lang.Boolean type.
          */
-        private Boolean trustCerts;
+        public T trustCerts(Boolean trustCerts) {
+            this.trustCerts = trustCerts;
+            return (T) this;
+        }
+
         /**
          * Username to connect to Kubernetes. The option is a java.lang.String
          * type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public String getMasterUrl() {
             return masterUrl;
@@ -301,17 +406,22 @@ public class KubernetesServiceAccountsEndpoint {
 
     public static class KubernetesServiceAccountsConsumer
             extends
-                KubernetesServiceAccountsCommon {
+                KubernetesServiceAccountsCommon<KubernetesServiceAccountsConsumer> {
     }
 
     public static class KubernetesServiceAccountsProducer
             extends
-                KubernetesServiceAccountsCommon {
+                KubernetesServiceAccountsCommon<KubernetesServiceAccountsProducer> {
+        private String operation;
+
         /**
          * Producer operation to do on Kubernetes. The option is a
          * java.lang.String type.
          */
-        private String operation;
+        public KubernetesServiceAccountsProducer operation(String operation) {
+            this.operation = operation;
+            return (KubernetesServiceAccountsProducer) this;
+        }
 
         public String getOperation() {
             return operation;

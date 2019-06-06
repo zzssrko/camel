@@ -29,35 +29,62 @@ import org.apache.camel.spi.ExceptionHandler;
 public class JSR356WebSocketEndpoint {
 
 
-    public static class JSR356WebSocketCommon extends EndpointConfiguration {
+    public static class JSR356WebSocketCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String websocketPathOrUri;
+        private String context;
+        private Integer sessionCount;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * If a path (/foo) it will deploy locally the endpoint, if an uri it
          * will connect to the corresponding server. The option is a
          * java.lang.String type.
          */
-        private String websocketPathOrUri;
+        public T websocketPathOrUri(String websocketPathOrUri) {
+            this.websocketPathOrUri = websocketPathOrUri;
+            return (T) this;
+        }
+
         /**
          * the servlet context to use (represented by its path). The option is a
          * java.lang.String type.
          */
-        private String context;
+        public T context(String context) {
+            this.context = context;
+            return (T) this;
+        }
+
         /**
          * Used when the endpoint is in client mode to populate a pool of
          * sessions. The option is a int type.
          */
-        private Integer sessionCount;
+        public T sessionCount(int sessionCount) {
+            this.sessionCount = sessionCount;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getWebsocketPathOrUri() {
             return websocketPathOrUri;
@@ -100,7 +127,13 @@ public class JSR356WebSocketEndpoint {
         }
     }
 
-    public static class JSR356WebSocketConsumer extends JSR356WebSocketCommon {
+    public static class JSR356WebSocketConsumer
+            extends
+                JSR356WebSocketCommon<JSR356WebSocketConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -110,7 +143,12 @@ public class JSR356WebSocketEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public JSR356WebSocketConsumer bridgeErrorHandler(
+                boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (JSR356WebSocketConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -118,12 +156,21 @@ public class JSR356WebSocketEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public JSR356WebSocketConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (JSR356WebSocketConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public JSR356WebSocketConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (JSR356WebSocketConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -150,6 +197,8 @@ public class JSR356WebSocketEndpoint {
         }
     }
 
-    public static class JSR356WebSocketProducer extends JSR356WebSocketCommon {
+    public static class JSR356WebSocketProducer
+            extends
+                JSR356WebSocketCommon<JSR356WebSocketProducer> {
     }
 }

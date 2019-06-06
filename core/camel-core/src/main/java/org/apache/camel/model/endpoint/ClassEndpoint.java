@@ -28,40 +28,72 @@ import javax.annotation.Generated;
 public class ClassEndpoint {
 
 
-    public static class ClassCommon extends EndpointConfiguration {
+    public static class ClassCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String beanName;
+        private String method;
+        private Boolean basicPropertyBinding;
+        private Boolean cache;
+        private Map<String, Object> parameters;
+        private Boolean synchronous;
+
         /**
          * Sets the name of the bean to invoke. The option is a java.lang.String
          * type.
          */
-        private String beanName;
+        public T beanName(String beanName) {
+            this.beanName = beanName;
+            return (T) this;
+        }
+
         /**
          * Sets the name of the method to invoke on the bean. The option is a
          * java.lang.String type.
          */
-        private String method;
+        public T method(String method) {
+            this.method = method;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * If enabled, Camel will cache the result of the first Registry
          * look-up. Cache can be enabled if the bean in the Registry is defined
          * as a singleton scope. The option is a java.lang.Boolean type.
          */
-        private Boolean cache;
+        public T cache(Boolean cache) {
+            this.cache = cache;
+            return (T) this;
+        }
+
         /**
          * Used for configuring additional properties on the bean. The option is
          * a java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> parameters;
+        public T parameters(Map<String, Object> parameters) {
+            this.parameters = parameters;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getBeanName() {
             return beanName;
@@ -112,9 +144,9 @@ public class ClassEndpoint {
         }
     }
 
-    public static class ClassConsumer extends ClassCommon {
+    public static class ClassConsumer extends ClassCommon<ClassConsumer> {
     }
 
-    public static class ClassProducer extends ClassCommon {
+    public static class ClassProducer extends ClassCommon<ClassProducer> {
     }
 }

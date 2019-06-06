@@ -29,131 +29,263 @@ import org.apache.camel.spi.ExceptionHandler;
 public class FhirEndpoint {
 
 
-    public static class FhirCommon extends EndpointConfiguration {
+    public static class FhirCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private FhirApiName apiName;
+        private String methodName;
+        private EncodingEnum encoding;
+        private FhirVersionEnum fhirVersion;
+        private String inBody;
+        private Boolean log;
+        private Boolean prettyPrint;
+        private String serverUrl;
+        private Boolean basicPropertyBinding;
+        private Boolean compress;
+        private Integer connectionTimeout;
+        private Boolean deferModelScanning;
+        private Object fhirContext;
+        private Boolean forceConformanceCheck;
+        private String sessionCookie;
+        private Integer socketTimeout;
+        private SummaryEnum summary;
+        private Boolean synchronous;
+        private ServerValidationModeEnum validationMode;
+        private String proxyHost;
+        private String proxyPassword;
+        private Integer proxyPort;
+        private String proxyUser;
+        private String accessToken;
+        private String password;
+        private String username;
+
         /**
          * What kind of operation to perform. The option is a
          * org.apache.camel.component.fhir.internal.FhirApiName type.
          */
-        private FhirApiName apiName;
+        public T apiName(FhirApiName apiName) {
+            this.apiName = apiName;
+            return (T) this;
+        }
+
         /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
-        private String methodName;
+        public T methodName(String methodName) {
+            this.methodName = methodName;
+            return (T) this;
+        }
+
         /**
          * Encoding to use for all request. The option is a java.lang.String
          * type.
          */
-        private EncodingEnum encoding;
+        public T encoding(EncodingEnum encoding) {
+            this.encoding = encoding;
+            return (T) this;
+        }
+
         /**
          * The FHIR Version to use. The option is a java.lang.String type.
          */
-        private FhirVersionEnum fhirVersion;
+        public T fhirVersion(FhirVersionEnum fhirVersion) {
+            this.fhirVersion = fhirVersion;
+            return (T) this;
+        }
+
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
-        private String inBody;
+        public T inBody(String inBody) {
+            this.inBody = inBody;
+            return (T) this;
+        }
+
         /**
          * Will log every requests and responses. The option is a boolean type.
          */
-        private Boolean log;
+        public T log(boolean log) {
+            this.log = log;
+            return (T) this;
+        }
+
         /**
          * Pretty print all request. The option is a boolean type.
          */
-        private Boolean prettyPrint;
+        public T prettyPrint(boolean prettyPrint) {
+            this.prettyPrint = prettyPrint;
+            return (T) this;
+        }
+
         /**
          * The FHIR server base URL. The option is a java.lang.String type.
          */
-        private String serverUrl;
+        public T serverUrl(String serverUrl) {
+            this.serverUrl = serverUrl;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Compresses outgoing (POST/PUT) contents to the GZIP format. The
          * option is a boolean type.
          */
-        private Boolean compress;
+        public T compress(boolean compress) {
+            this.compress = compress;
+            return (T) this;
+        }
+
         /**
          * How long to try and establish the initial TCP connection (in ms). The
          * option is a java.lang.Integer type.
          */
-        private Integer connectionTimeout;
+        public T connectionTimeout(Integer connectionTimeout) {
+            this.connectionTimeout = connectionTimeout;
+            return (T) this;
+        }
+
         /**
          * When this option is set, model classes will not be scanned for
          * children until the child list for the given type is actually
          * accessed. The option is a boolean type.
          */
-        private Boolean deferModelScanning;
+        public T deferModelScanning(boolean deferModelScanning) {
+            this.deferModelScanning = deferModelScanning;
+            return (T) this;
+        }
+
         /**
          * FhirContext is an expensive object to create. To avoid creating
          * multiple instances, it can be set directly. The option is a
          * ca.uhn.fhir.context.FhirContext type.
          */
-        private Object fhirContext;
+        public T fhirContext(Object fhirContext) {
+            this.fhirContext = fhirContext;
+            return (T) this;
+        }
+
         /**
          * Force conformance check. The option is a boolean type.
          */
-        private Boolean forceConformanceCheck;
+        public T forceConformanceCheck(boolean forceConformanceCheck) {
+            this.forceConformanceCheck = forceConformanceCheck;
+            return (T) this;
+        }
+
         /**
          * HTTP session cookie to add to every request. The option is a
          * java.lang.String type.
          */
-        private String sessionCookie;
+        public T sessionCookie(String sessionCookie) {
+            this.sessionCookie = sessionCookie;
+            return (T) this;
+        }
+
         /**
          * How long to block for individual read/write operations (in ms). The
          * option is a java.lang.Integer type.
          */
-        private Integer socketTimeout;
+        public T socketTimeout(Integer socketTimeout) {
+            this.socketTimeout = socketTimeout;
+            return (T) this;
+        }
+
         /**
          * Request that the server modify the response using the _summary param.
          * The option is a java.lang.String type.
          */
-        private SummaryEnum summary;
+        public T summary(SummaryEnum summary) {
+            this.summary = summary;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * When should Camel validate the FHIR Server's conformance statement.
          * The option is a java.lang.String type.
          */
-        private ServerValidationModeEnum validationMode;
+        public T validationMode(ServerValidationModeEnum validationMode) {
+            this.validationMode = validationMode;
+            return (T) this;
+        }
+
         /**
          * The proxy host. The option is a java.lang.String type.
          */
-        private String proxyHost;
+        public T proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (T) this;
+        }
+
         /**
          * The proxy password. The option is a java.lang.String type.
          */
-        private String proxyPassword;
+        public T proxyPassword(String proxyPassword) {
+            this.proxyPassword = proxyPassword;
+            return (T) this;
+        }
+
         /**
          * The proxy port. The option is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public T proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (T) this;
+        }
+
         /**
          * The proxy username. The option is a java.lang.String type.
          */
-        private String proxyUser;
+        public T proxyUser(String proxyUser) {
+            this.proxyUser = proxyUser;
+            return (T) this;
+        }
+
         /**
          * OAuth access token. The option is a java.lang.String type.
          */
-        private String accessToken;
+        public T accessToken(String accessToken) {
+            this.accessToken = accessToken;
+            return (T) this;
+        }
+
         /**
          * Username to use for basic authentication. The option is a
          * java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Username to use for basic authentication. The option is a
          * java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public FhirApiName getApiName() {
             return apiName;
@@ -364,7 +496,11 @@ public class FhirEndpoint {
         }
     }
 
-    public static class FhirConsumer extends FhirCommon {
+    public static class FhirConsumer extends FhirCommon<FhirConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -374,7 +510,11 @@ public class FhirEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public FhirConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (FhirConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -382,12 +522,19 @@ public class FhirEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public FhirConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (FhirConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public FhirConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (FhirConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -414,7 +561,7 @@ public class FhirEndpoint {
         }
     }
 
-    public static class FhirProducer extends FhirCommon {
+    public static class FhirProducer extends FhirCommon<FhirProducer> {
     }
 
     public static enum FhirApiName {

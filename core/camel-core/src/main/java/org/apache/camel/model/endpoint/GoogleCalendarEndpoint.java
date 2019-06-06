@@ -29,85 +29,157 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GoogleCalendarEndpoint {
 
 
-    public static class GoogleCalendarCommon extends EndpointConfiguration {
+    public static class GoogleCalendarCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private GoogleCalendarApiName apiName;
+        private String methodName;
+        private String accessToken;
+        private String applicationName;
+        private String clientId;
+        private String clientSecret;
+        private String emailAddress;
+        private String inBody;
+        private String p12FileName;
+        private String refreshToken;
+        private String scopes;
+        private String user;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * What kind of operation to perform. The option is a
          * org.apache.camel.component.google.calendar.internal.GoogleCalendarApiName type.
          */
-        private GoogleCalendarApiName apiName;
+        public T apiName(GoogleCalendarApiName apiName) {
+            this.apiName = apiName;
+            return (T) this;
+        }
+
         /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
-        private String methodName;
+        public T methodName(String methodName) {
+            this.methodName = methodName;
+            return (T) this;
+        }
+
         /**
          * OAuth 2 access token. This typically expires after an hour so
          * refreshToken is recommended for long term usage. The option is a
          * java.lang.String type.
          */
-        private String accessToken;
+        public T accessToken(String accessToken) {
+            this.accessToken = accessToken;
+            return (T) this;
+        }
+
         /**
          * Google calendar application name. Example would be
          * camel-google-calendar/1.0. The option is a java.lang.String type.
          */
-        private String applicationName;
+        public T applicationName(String applicationName) {
+            this.applicationName = applicationName;
+            return (T) this;
+        }
+
         /**
          * Client ID of the calendar application. The option is a
          * java.lang.String type.
          */
-        private String clientId;
+        public T clientId(String clientId) {
+            this.clientId = clientId;
+            return (T) this;
+        }
+
         /**
          * Client secret of the calendar application. The option is a
          * java.lang.String type.
          */
-        private String clientSecret;
+        public T clientSecret(String clientSecret) {
+            this.clientSecret = clientSecret;
+            return (T) this;
+        }
+
         /**
          * The emailAddress of the Google Service Account. The option is a
          * java.lang.String type.
          */
-        private String emailAddress;
+        public T emailAddress(String emailAddress) {
+            this.emailAddress = emailAddress;
+            return (T) this;
+        }
+
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a java.lang.String type.
          */
-        private String inBody;
+        public T inBody(String inBody) {
+            this.inBody = inBody;
+            return (T) this;
+        }
+
         /**
          * The name of the p12 file which has the private key to use with the
          * Google Service Account. The option is a java.lang.String type.
          */
-        private String p12FileName;
+        public T p12FileName(String p12FileName) {
+            this.p12FileName = p12FileName;
+            return (T) this;
+        }
+
         /**
          * OAuth 2 refresh token. Using this, the Google Calendar component can
          * obtain a new accessToken whenever the current one expires - a
          * necessity if the application is long-lived. The option is a
          * java.lang.String type.
          */
-        private String refreshToken;
+        public T refreshToken(String refreshToken) {
+            this.refreshToken = refreshToken;
+            return (T) this;
+        }
+
         /**
          * Specifies the level of permissions you want a calendar application to
          * have to a user account. You can separate multiple scopes by comma.
          * See https://developers.google.com/google-apps/calendar/auth for more
          * info. The option is a java.lang.String type.
          */
-        private String scopes;
+        public T scopes(String scopes) {
+            this.scopes = scopes;
+            return (T) this;
+        }
+
         /**
          * The email address of the user the application is trying to
          * impersonate in the service account flow. The option is a
          * java.lang.String type.
          */
-        private String user;
+        public T user(String user) {
+            this.user = user;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public GoogleCalendarApiName getApiName() {
             return apiName;
@@ -222,7 +294,13 @@ public class GoogleCalendarEndpoint {
         }
     }
 
-    public static class GoogleCalendarConsumer extends GoogleCalendarCommon {
+    public static class GoogleCalendarConsumer
+            extends
+                GoogleCalendarCommon<GoogleCalendarConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -232,7 +310,12 @@ public class GoogleCalendarEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public GoogleCalendarConsumer bridgeErrorHandler(
+                boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (GoogleCalendarConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -240,12 +323,21 @@ public class GoogleCalendarEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public GoogleCalendarConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (GoogleCalendarConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public GoogleCalendarConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (GoogleCalendarConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -272,7 +364,9 @@ public class GoogleCalendarEndpoint {
         }
     }
 
-    public static class GoogleCalendarProducer extends GoogleCalendarCommon {
+    public static class GoogleCalendarProducer
+            extends
+                GoogleCalendarCommon<GoogleCalendarProducer> {
     }
 
     public static enum GoogleCalendarApiName {

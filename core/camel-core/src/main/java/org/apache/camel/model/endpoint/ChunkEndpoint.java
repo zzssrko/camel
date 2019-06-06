@@ -27,7 +27,19 @@ import javax.annotation.Generated;
 public class ChunkEndpoint {
 
 
-    public static class ChunkCommon extends EndpointConfiguration {
+    public static class ChunkCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String resourceUri;
+        private Boolean contentCache;
+        private String encoding;
+        private String extension;
+        private String themeFolder;
+        private String themeLayer;
+        private String themeSubfolder;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Path to the resource. You can prefix with: classpath, file, http,
          * ref, or bean. classpath, file and http loads the resource using these
@@ -36,49 +48,84 @@ public class ChunkEndpoint {
          * resource. For bean you can specify the method name after dot, eg
          * bean:myBean.myMethod. The option is a java.lang.String type.
          */
-        private String resourceUri;
+        public T resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return (T) this;
+        }
+
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
-        private Boolean contentCache;
+        public T contentCache(boolean contentCache) {
+            this.contentCache = contentCache;
+            return (T) this;
+        }
+
         /**
          * Define the encoding of the body. The option is a java.lang.String
          * type.
          */
-        private String encoding;
+        public T encoding(String encoding) {
+            this.encoding = encoding;
+            return (T) this;
+        }
+
         /**
          * Define the file extension of the template. The option is a
          * java.lang.String type.
          */
-        private String extension;
+        public T extension(String extension) {
+            this.extension = extension;
+            return (T) this;
+        }
+
         /**
          * Define the themes folder to scan. The option is a java.lang.String
          * type.
          */
-        private String themeFolder;
+        public T themeFolder(String themeFolder) {
+            this.themeFolder = themeFolder;
+            return (T) this;
+        }
+
         /**
          * Define the theme layer to elaborate. The option is a java.lang.String
          * type.
          */
-        private String themeLayer;
+        public T themeLayer(String themeLayer) {
+            this.themeLayer = themeLayer;
+            return (T) this;
+        }
+
         /**
          * Define the themes subfolder to scan. The option is a java.lang.String
          * type.
          */
-        private String themeSubfolder;
+        public T themeSubfolder(String themeSubfolder) {
+            this.themeSubfolder = themeSubfolder;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getResourceUri() {
             return resourceUri;
@@ -153,9 +200,9 @@ public class ChunkEndpoint {
         }
     }
 
-    public static class ChunkConsumer extends ChunkCommon {
+    public static class ChunkConsumer extends ChunkCommon<ChunkConsumer> {
     }
 
-    public static class ChunkProducer extends ChunkCommon {
+    public static class ChunkProducer extends ChunkCommon<ChunkProducer> {
     }
 }

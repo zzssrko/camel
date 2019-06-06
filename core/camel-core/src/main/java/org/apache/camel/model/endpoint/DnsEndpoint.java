@@ -27,24 +27,41 @@ import javax.annotation.Generated;
 public class DnsEndpoint {
 
 
-    public static class DnsCommon extends EndpointConfiguration {
+    public static class DnsCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private DnsType dnsType;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The type of the lookup. The option is a
          * org.apache.camel.component.dns.DnsType type.
          */
-        private DnsType dnsType;
+        public T dnsType(DnsType dnsType) {
+            this.dnsType = dnsType;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public DnsType getDnsType() {
             return dnsType;
@@ -71,10 +88,10 @@ public class DnsEndpoint {
         }
     }
 
-    public static class DnsConsumer extends DnsCommon {
+    public static class DnsConsumer extends DnsCommon<DnsConsumer> {
     }
 
-    public static class DnsProducer extends DnsCommon {
+    public static class DnsProducer extends DnsCommon<DnsProducer> {
     }
 
     public static enum DnsType {

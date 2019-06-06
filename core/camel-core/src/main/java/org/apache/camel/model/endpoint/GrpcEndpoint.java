@@ -30,97 +30,189 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GrpcEndpoint {
 
 
-    public static class GrpcCommon extends EndpointConfiguration {
+    public static class GrpcCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private String service;
+        private Integer flowControlWindow;
+        private Integer maxMessageSize;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private GrpcAuthType authenticationType;
+        private JwtAlgorithm jwtAlgorithm;
+        private String jwtIssuer;
+        private String jwtSecret;
+        private String jwtSubject;
+        private String keyCertChainResource;
+        private String keyPassword;
+        private String keyResource;
+        private NegotiationType negotiationType;
+        private String serviceAccountResource;
+        private String trustCertCollectionResource;
+
         /**
          * The gRPC server host name. This is localhost or 0.0.0.0 when being a
          * consumer or remote server host name when using producer. The option
          * is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * The gRPC local or remote server port. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Fully qualified service name from the protocol buffer descriptor file
          * (package dot service definition name). The option is a
          * java.lang.String type.
          */
-        private String service;
+        public T service(String service) {
+            this.service = service;
+            return (T) this;
+        }
+
         /**
          * The HTTP/2 flow control window size (MiB). The option is a int type.
          */
-        private Integer flowControlWindow;
+        public T flowControlWindow(int flowControlWindow) {
+            this.flowControlWindow = flowControlWindow;
+            return (T) this;
+        }
+
         /**
          * The maximum message size allowed to be received/sent (MiB). The
          * option is a int type.
          */
-        private Integer maxMessageSize;
+        public T maxMessageSize(int maxMessageSize) {
+            this.maxMessageSize = maxMessageSize;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Authentication method type in advance to the SSL/TLS negotiation. The
          * option is a org.apache.camel.component.grpc.GrpcAuthType type.
          */
-        private GrpcAuthType authenticationType;
+        public T authenticationType(GrpcAuthType authenticationType) {
+            this.authenticationType = authenticationType;
+            return (T) this;
+        }
+
         /**
          * JSON Web Token sign algorithm. The option is a
          * org.apache.camel.component.grpc.auth.jwt.JwtAlgorithm type.
          */
-        private JwtAlgorithm jwtAlgorithm;
+        public T jwtAlgorithm(JwtAlgorithm jwtAlgorithm) {
+            this.jwtAlgorithm = jwtAlgorithm;
+            return (T) this;
+        }
+
         /**
          * JSON Web Token issuer. The option is a java.lang.String type.
          */
-        private String jwtIssuer;
+        public T jwtIssuer(String jwtIssuer) {
+            this.jwtIssuer = jwtIssuer;
+            return (T) this;
+        }
+
         /**
          * JSON Web Token secret. The option is a java.lang.String type.
          */
-        private String jwtSecret;
+        public T jwtSecret(String jwtSecret) {
+            this.jwtSecret = jwtSecret;
+            return (T) this;
+        }
+
         /**
          * JSON Web Token subject. The option is a java.lang.String type.
          */
-        private String jwtSubject;
+        public T jwtSubject(String jwtSubject) {
+            this.jwtSubject = jwtSubject;
+            return (T) this;
+        }
+
         /**
          * The X.509 certificate chain file resource in PEM format link. The
          * option is a java.lang.String type.
          */
-        private String keyCertChainResource;
+        public T keyCertChainResource(String keyCertChainResource) {
+            this.keyCertChainResource = keyCertChainResource;
+            return (T) this;
+        }
+
         /**
          * The PKCS#8 private key file password. The option is a
          * java.lang.String type.
          */
-        private String keyPassword;
+        public T keyPassword(String keyPassword) {
+            this.keyPassword = keyPassword;
+            return (T) this;
+        }
+
         /**
          * The PKCS#8 private key file resource in PEM format link. The option
          * is a java.lang.String type.
          */
-        private String keyResource;
+        public T keyResource(String keyResource) {
+            this.keyResource = keyResource;
+            return (T) this;
+        }
+
         /**
          * Identifies the security negotiation type used for HTTP/2
          * communication. The option is a io.grpc.netty.NegotiationType type.
          */
-        private NegotiationType negotiationType;
+        public T negotiationType(NegotiationType negotiationType) {
+            this.negotiationType = negotiationType;
+            return (T) this;
+        }
+
         /**
          * Service Account key file in JSON format resource link supported by
          * the Google Cloud SDK. The option is a java.lang.String type.
          */
-        private String serviceAccountResource;
+        public T serviceAccountResource(String serviceAccountResource) {
+            this.serviceAccountResource = serviceAccountResource;
+            return (T) this;
+        }
+
         /**
          * The trusted certificates collection file resource in PEM format for
          * verifying the remote endpoint's certificate. The option is a
          * java.lang.String type.
          */
-        private String trustCertCollectionResource;
+        public T trustCertCollectionResource(String trustCertCollectionResource) {
+            this.trustCertCollectionResource = trustCertCollectionResource;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -268,7 +360,15 @@ public class GrpcEndpoint {
         }
     }
 
-    public static class GrpcConsumer extends GrpcCommon {
+    public static class GrpcConsumer extends GrpcCommon<GrpcConsumer> {
+        private Boolean bridgeErrorHandler;
+        private GrpcConsumerStrategy consumerStrategy;
+        private Boolean forwardOnCompleted;
+        private Boolean forwardOnError;
+        private Integer maxConcurrentCallsPerConnection;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -278,7 +378,11 @@ public class GrpcEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public GrpcConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (GrpcConsumer) this;
+        }
+
         /**
          * This option specifies the top-level strategy for processing service
          * requests and responses in streaming mode. If an aggregation strategy
@@ -289,22 +393,40 @@ public class GrpcEndpoint {
          * sender. The option is a
          * org.apache.camel.component.grpc.GrpcConsumerStrategy type.
          */
-        private GrpcConsumerStrategy consumerStrategy;
+        public GrpcConsumer consumerStrategy(
+                GrpcConsumerStrategy consumerStrategy) {
+            this.consumerStrategy = consumerStrategy;
+            return (GrpcConsumer) this;
+        }
+
         /**
          * Determines if onCompleted events should be pushed to the Camel route.
          * The option is a boolean type.
          */
-        private Boolean forwardOnCompleted;
+        public GrpcConsumer forwardOnCompleted(boolean forwardOnCompleted) {
+            this.forwardOnCompleted = forwardOnCompleted;
+            return (GrpcConsumer) this;
+        }
+
         /**
          * Determines if onError events should be pushed to the Camel route.
          * Exceptions will be set as message body. The option is a boolean type.
          */
-        private Boolean forwardOnError;
+        public GrpcConsumer forwardOnError(boolean forwardOnError) {
+            this.forwardOnError = forwardOnError;
+            return (GrpcConsumer) this;
+        }
+
         /**
          * The maximum number of concurrent calls permitted for each incoming
          * server connection. The option is a int type.
          */
-        private Integer maxConcurrentCallsPerConnection;
+        public GrpcConsumer maxConcurrentCallsPerConnection(
+                int maxConcurrentCallsPerConnection) {
+            this.maxConcurrentCallsPerConnection = maxConcurrentCallsPerConnection;
+            return (GrpcConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -312,12 +434,19 @@ public class GrpcEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public GrpcConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (GrpcConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public GrpcConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (GrpcConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -377,11 +506,20 @@ public class GrpcEndpoint {
         }
     }
 
-    public static class GrpcProducer extends GrpcCommon {
+    public static class GrpcProducer extends GrpcCommon<GrpcProducer> {
+        private String method;
+        private GrpcProducerStrategy producerStrategy;
+        private String streamRepliesTo;
+        private String userAgent;
+
         /**
          * gRPC method name. The option is a java.lang.String type.
          */
-        private String method;
+        public GrpcProducer method(String method) {
+            this.method = method;
+            return (GrpcProducer) this;
+        }
+
         /**
          * The mode used to communicate with a remote gRPC server. In SIMPLE
          * mode a single exchange is translated into a remote procedure call. In
@@ -390,17 +528,29 @@ public class GrpcEndpoint {
          * 'stream'). The option is a
          * org.apache.camel.component.grpc.GrpcProducerStrategy type.
          */
-        private GrpcProducerStrategy producerStrategy;
+        public GrpcProducer producerStrategy(
+                GrpcProducerStrategy producerStrategy) {
+            this.producerStrategy = producerStrategy;
+            return (GrpcProducer) this;
+        }
+
         /**
          * When using STREAMING client mode, it indicates the endpoint where
          * responses should be forwarded. The option is a java.lang.String type.
          */
-        private String streamRepliesTo;
+        public GrpcProducer streamRepliesTo(String streamRepliesTo) {
+            this.streamRepliesTo = streamRepliesTo;
+            return (GrpcProducer) this;
+        }
+
         /**
          * The user agent header passed to the server. The option is a
          * java.lang.String type.
          */
-        private String userAgent;
+        public GrpcProducer userAgent(String userAgent) {
+            this.userAgent = userAgent;
+            return (GrpcProducer) this;
+        }
 
         public String getMethod() {
             return method;

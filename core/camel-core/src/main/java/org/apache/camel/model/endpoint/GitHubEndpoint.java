@@ -29,48 +29,90 @@ import org.apache.camel.spi.ExceptionHandler;
 public class GitHubEndpoint {
 
 
-    public static class GitHubCommon extends EndpointConfiguration {
+    public static class GitHubCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private GitHubType type;
+        private String oauthToken;
+        private String password;
+        private String repoName;
+        private String repoOwner;
+        private String username;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * What git operation to execute. The option is a
          * org.apache.camel.component.github.GitHubType type.
          */
-        private GitHubType type;
+        public T type(GitHubType type) {
+            this.type = type;
+            return (T) this;
+        }
+
         /**
          * GitHub OAuth token, required unless username & password are provided.
          * The option is a java.lang.String type.
          */
-        private String oauthToken;
+        public T oauthToken(String oauthToken) {
+            this.oauthToken = oauthToken;
+            return (T) this;
+        }
+
         /**
          * GitHub password, required unless oauthToken is provided. The option
          * is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * GitHub repository name. The option is a java.lang.String type.
          */
-        private String repoName;
+        public T repoName(String repoName) {
+            this.repoName = repoName;
+            return (T) this;
+        }
+
         /**
          * GitHub repository owner (organization). The option is a
          * java.lang.String type.
          */
-        private String repoOwner;
+        public T repoOwner(String repoOwner) {
+            this.repoOwner = repoOwner;
+            return (T) this;
+        }
+
         /**
          * GitHub username, required unless oauthToken is provided. The option
          * is a java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public GitHubType getType() {
             return type;
@@ -137,11 +179,20 @@ public class GitHubEndpoint {
         }
     }
 
-    public static class GitHubConsumer extends GitHubCommon {
+    public static class GitHubConsumer extends GitHubCommon<GitHubConsumer> {
+        private String branchName;
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Name of branch. The option is a java.lang.String type.
          */
-        private String branchName;
+        public GitHubConsumer branchName(String branchName) {
+            this.branchName = branchName;
+            return (GitHubConsumer) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -151,7 +202,11 @@ public class GitHubEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public GitHubConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (GitHubConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -159,12 +214,19 @@ public class GitHubEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public GitHubConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (GitHubConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public GitHubConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (GitHubConsumer) this;
+        }
 
         public String getBranchName() {
             return branchName;
@@ -199,22 +261,37 @@ public class GitHubEndpoint {
         }
     }
 
-    public static class GitHubProducer extends GitHubCommon {
+    public static class GitHubProducer extends GitHubCommon<GitHubProducer> {
+        private String encoding;
+        private String state;
+        private String targetUrl;
+
         /**
          * To use the given encoding when getting a git commit file. The option
          * is a java.lang.String type.
          */
-        private String encoding;
+        public GitHubProducer encoding(String encoding) {
+            this.encoding = encoding;
+            return (GitHubProducer) this;
+        }
+
         /**
          * To set git commit status state. The option is a java.lang.String
          * type.
          */
-        private String state;
+        public GitHubProducer state(String state) {
+            this.state = state;
+            return (GitHubProducer) this;
+        }
+
         /**
          * To set git commit status target url. The option is a java.lang.String
          * type.
          */
-        private String targetUrl;
+        public GitHubProducer targetUrl(String targetUrl) {
+            this.targetUrl = targetUrl;
+            return (GitHubProducer) this;
+        }
 
         public String getEncoding() {
             return encoding;

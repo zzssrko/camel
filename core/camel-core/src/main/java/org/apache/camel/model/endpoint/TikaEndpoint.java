@@ -28,27 +28,53 @@ import javax.annotation.Generated;
 public class TikaEndpoint {
 
 
-    public static class TikaCommon extends EndpointConfiguration {
+    public static class TikaCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private TikaOperation operation;
+        private Object tikaConfig;
+        private String tikaConfigUri;
+        private String tikaParseOutputEncoding;
+        private TikaParseOutputFormat tikaParseOutputFormat;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Tika Operation. parse or detect. The option is a
          * org.apache.camel.component.tika.TikaOperation type.
          */
-        private TikaOperation operation;
+        public T operation(TikaOperation operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * Tika Config. The option is a org.apache.tika.config.TikaConfig type.
          */
-        private Object tikaConfig;
+        public T tikaConfig(Object tikaConfig) {
+            this.tikaConfig = tikaConfig;
+            return (T) this;
+        }
+
         /**
          * Tika Config Uri: The URI of tika-config.xml. The option is a
          * java.lang.String type.
          */
-        private String tikaConfigUri;
+        public T tikaConfigUri(String tikaConfigUri) {
+            this.tikaConfigUri = tikaConfigUri;
+            return (T) this;
+        }
+
         /**
          * Tika Parse Output Encoding - Used to specify the character encoding
          * of the parsed output. Defaults to Charset.defaultCharset() . The
          * option is a java.lang.String type.
          */
-        private String tikaParseOutputEncoding;
+        public T tikaParseOutputEncoding(String tikaParseOutputEncoding) {
+            this.tikaParseOutputEncoding = tikaParseOutputEncoding;
+            return (T) this;
+        }
+
         /**
          * Tika Output Format. Supported output formats. xml: Returns Parsed
          * Content as XML. html: Returns Parsed Content as HTML. text: Returns
@@ -56,19 +82,31 @@ public class TikaEndpoint {
          * automatically extract the main content from a web page. The option is
          * a org.apache.camel.component.tika.TikaParseOutputFormat type.
          */
-        private TikaParseOutputFormat tikaParseOutputFormat;
+        public T tikaParseOutputFormat(
+                TikaParseOutputFormat tikaParseOutputFormat) {
+            this.tikaParseOutputFormat = tikaParseOutputFormat;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public TikaOperation getOperation() {
             return operation;
@@ -128,10 +166,10 @@ public class TikaEndpoint {
         }
     }
 
-    public static class TikaConsumer extends TikaCommon {
+    public static class TikaConsumer extends TikaCommon<TikaConsumer> {
     }
 
-    public static class TikaProducer extends TikaCommon {
+    public static class TikaProducer extends TikaCommon<TikaProducer> {
     }
 
     public static enum TikaOperation {

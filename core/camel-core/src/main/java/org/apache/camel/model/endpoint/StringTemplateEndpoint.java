@@ -27,7 +27,16 @@ import javax.annotation.Generated;
 public class StringTemplateEndpoint {
 
 
-    public static class StringTemplateCommon extends EndpointConfiguration {
+    public static class StringTemplateCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String resourceUri;
+        private Boolean contentCache;
+        private Character delimiterStart;
+        private Character delimiterStop;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Path to the resource. You can prefix with: classpath, file, http,
          * ref, or bean. classpath, file and http loads the resource using these
@@ -36,32 +45,55 @@ public class StringTemplateEndpoint {
          * resource. For bean you can specify the method name after dot, eg
          * bean:myBean.myMethod. The option is a java.lang.String type.
          */
-        private String resourceUri;
+        public T resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return (T) this;
+        }
+
         /**
          * Sets whether to use resource content cache or not. The option is a
          * boolean type.
          */
-        private Boolean contentCache;
+        public T contentCache(boolean contentCache) {
+            this.contentCache = contentCache;
+            return (T) this;
+        }
+
         /**
          * The variable start delimiter. The option is a char type.
          */
-        private Character delimiterStart;
+        public T delimiterStart(char delimiterStart) {
+            this.delimiterStart = delimiterStart;
+            return (T) this;
+        }
+
         /**
          * The variable end delimiter. The option is a char type.
          */
-        private Character delimiterStop;
+        public T delimiterStop(char delimiterStop) {
+            this.delimiterStop = delimiterStop;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getResourceUri() {
             return resourceUri;
@@ -112,9 +144,13 @@ public class StringTemplateEndpoint {
         }
     }
 
-    public static class StringTemplateConsumer extends StringTemplateCommon {
+    public static class StringTemplateConsumer
+            extends
+                StringTemplateCommon<StringTemplateConsumer> {
     }
 
-    public static class StringTemplateProducer extends StringTemplateCommon {
+    public static class StringTemplateProducer
+            extends
+                StringTemplateCommon<StringTemplateProducer> {
     }
 }

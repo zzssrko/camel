@@ -31,11 +31,22 @@ import org.apache.camel.spi.ExceptionHandler;
 public class DisruptorVmEndpoint {
 
 
-    public static class DisruptorVmCommon extends EndpointConfiguration {
+    public static class DisruptorVmCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String name;
+        private Integer size;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Name of queue. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * The maximum capacity of the Disruptors ringbuffer Will be effectively
          * increased to the nearest power of two. Notice: Mind if you use this
@@ -44,19 +55,30 @@ public class DisruptorVmEndpoint {
          * size, then configure the size option on all of them, or the first
          * endpoint being created. The option is a int type.
          */
-        private Integer size;
+        public T size(int size) {
+            this.size = size;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getName() {
             return name;
@@ -91,7 +113,16 @@ public class DisruptorVmEndpoint {
         }
     }
 
-    public static class DisruptorVmConsumer extends DisruptorVmCommon {
+    public static class DisruptorVmConsumer
+            extends
+                DisruptorVmCommon<DisruptorVmConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Integer concurrentConsumers;
+        private Boolean multipleConsumers;
+        private DisruptorWaitStrategy waitStrategy;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -101,12 +132,20 @@ public class DisruptorVmEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public DisruptorVmConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (DisruptorVmConsumer) this;
+        }
+
         /**
          * Number of concurrent threads processing exchanges. The option is a
          * int type.
          */
-        private Integer concurrentConsumers;
+        public DisruptorVmConsumer concurrentConsumers(int concurrentConsumers) {
+            this.concurrentConsumers = concurrentConsumers;
+            return (DisruptorVmConsumer) this;
+        }
+
         /**
          * Specifies whether multiple consumers are allowed. If enabled, you can
          * use Disruptor for Publish-Subscribe messaging. That is, you can send
@@ -114,14 +153,23 @@ public class DisruptorVmEndpoint {
          * message. When enabled, this option should be specified on every
          * consumer endpoint. The option is a boolean type.
          */
-        private Boolean multipleConsumers;
+        public DisruptorVmConsumer multipleConsumers(boolean multipleConsumers) {
+            this.multipleConsumers = multipleConsumers;
+            return (DisruptorVmConsumer) this;
+        }
+
         /**
          * Defines the strategy used by consumer threads to wait on new
          * exchanges to be published. The options allowed are:Blocking,
          * Sleeping, BusySpin and Yielding. The option is a
          * org.apache.camel.component.disruptor.DisruptorWaitStrategy type.
          */
-        private DisruptorWaitStrategy waitStrategy;
+        public DisruptorVmConsumer waitStrategy(
+                DisruptorWaitStrategy waitStrategy) {
+            this.waitStrategy = waitStrategy;
+            return (DisruptorVmConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -129,12 +177,21 @@ public class DisruptorVmEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public DisruptorVmConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (DisruptorVmConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public DisruptorVmConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (DisruptorVmConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -185,7 +242,14 @@ public class DisruptorVmEndpoint {
         }
     }
 
-    public static class DisruptorVmProducer extends DisruptorVmCommon {
+    public static class DisruptorVmProducer
+            extends
+                DisruptorVmCommon<DisruptorVmProducer> {
+        private Boolean blockWhenFull;
+        private DisruptorProducerType producerType;
+        private Long timeout;
+        private WaitForTaskToComplete waitForTaskToComplete;
+
         /**
          * Whether a thread that sends messages to a full Disruptor will block
          * until the ringbuffer's capacity is no longer exhausted. By default,
@@ -193,7 +257,11 @@ public class DisruptorVmEndpoint {
          * accepted. By disabling this option, an exception will be thrown
          * stating that the queue is full. The option is a boolean type.
          */
-        private Boolean blockWhenFull;
+        public DisruptorVmProducer blockWhenFull(boolean blockWhenFull) {
+            this.blockWhenFull = blockWhenFull;
+            return (DisruptorVmProducer) this;
+        }
+
         /**
          * Defines the producers allowed on the Disruptor. The options allowed
          * are: Multi to allow multiple producers and Single to enable certain
@@ -201,13 +269,22 @@ public class DisruptorVmEndpoint {
          * thread or otherwise synchronized) is active. The option is a
          * org.apache.camel.component.disruptor.DisruptorProducerType type.
          */
-        private DisruptorProducerType producerType;
+        public DisruptorVmProducer producerType(
+                DisruptorProducerType producerType) {
+            this.producerType = producerType;
+            return (DisruptorVmProducer) this;
+        }
+
         /**
          * Timeout (in milliseconds) before a producer will stop waiting for an
          * asynchronous task to complete. You can disable timeout by using 0 or
          * a negative value. The option is a long type.
          */
-        private Long timeout;
+        public DisruptorVmProducer timeout(long timeout) {
+            this.timeout = timeout;
+            return (DisruptorVmProducer) this;
+        }
+
         /**
          * Option to specify whether the caller should wait for the async task
          * to complete or not before continuing. The following three options are
@@ -216,7 +293,11 @@ public class DisruptorVmEndpoint {
          * the message is Request Reply based. The option is a
          * org.apache.camel.WaitForTaskToComplete type.
          */
-        private WaitForTaskToComplete waitForTaskToComplete;
+        public DisruptorVmProducer waitForTaskToComplete(
+                WaitForTaskToComplete waitForTaskToComplete) {
+            this.waitForTaskToComplete = waitForTaskToComplete;
+            return (DisruptorVmProducer) this;
+        }
 
         public Boolean getBlockWhenFull() {
             return blockWhenFull;

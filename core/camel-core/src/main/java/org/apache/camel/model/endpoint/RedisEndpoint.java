@@ -29,58 +29,105 @@ import org.apache.camel.spi.ExceptionHandler;
 public class RedisEndpoint {
 
 
-    public static class RedisCommon extends EndpointConfiguration {
+    public static class RedisCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private String channels;
+        private Command command;
+        private Object connectionFactory;
+        private Object redisTemplate;
+        private Object serializer;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The host where Redis server is running. The option is a
          * java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Redis server port number. The option is a java.lang.Integer type.
          */
-        private Integer port;
+        public T port(Integer port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * List of topic names or name patterns to subscribe to. Multiple names
          * can be separated by comma. The option is a java.lang.String type.
          */
-        private String channels;
+        public T channels(String channels) {
+            this.channels = channels;
+            return (T) this;
+        }
+
         /**
          * Default command, which can be overridden by message header. Notice
          * the consumer only supports the following commands: PSUBSCRIBE and
          * SUBSCRIBE. The option is a org.apache.camel.component.redis.Command
          * type.
          */
-        private Command command;
+        public T command(Command command) {
+            this.command = command;
+            return (T) this;
+        }
+
         /**
          * Reference to a pre-configured RedisConnectionFactory instance to use.
          * The option is a
          * org.springframework.data.redis.connection.RedisConnectionFactory
          * type.
          */
-        private Object connectionFactory;
+        public T connectionFactory(Object connectionFactory) {
+            this.connectionFactory = connectionFactory;
+            return (T) this;
+        }
+
         /**
          * Reference to a pre-configured RedisTemplate instance to use. The
          * option is a org.springframework.data.redis.core.RedisTemplate type.
          */
-        private Object redisTemplate;
+        public T redisTemplate(Object redisTemplate) {
+            this.redisTemplate = redisTemplate;
+            return (T) this;
+        }
+
         /**
          * Reference to a pre-configured RedisSerializer instance to use. The
          * option is a org.springframework.data.redis.serializer.RedisSerializer
          * type.
          */
-        private Object serializer;
+        public T serializer(Object serializer) {
+            this.serializer = serializer;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -155,7 +202,12 @@ public class RedisEndpoint {
         }
     }
 
-    public static class RedisConsumer extends RedisCommon {
+    public static class RedisConsumer extends RedisCommon<RedisConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private Object listenerContainer;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -165,7 +217,11 @@ public class RedisEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public RedisConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (RedisConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -173,19 +229,30 @@ public class RedisEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public RedisConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (RedisConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public RedisConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (RedisConsumer) this;
+        }
+
         /**
          * Reference to a pre-configured RedisMessageListenerContainer instance
          * to use. The option is a
          * org.springframework.data.redis.listener.RedisMessageListenerContainer
          * type.
          */
-        private Object listenerContainer;
+        public RedisConsumer listenerContainer(Object listenerContainer) {
+            this.listenerContainer = listenerContainer;
+            return (RedisConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -220,7 +287,7 @@ public class RedisEndpoint {
         }
     }
 
-    public static class RedisProducer extends RedisCommon {
+    public static class RedisProducer extends RedisCommon<RedisProducer> {
     }
 
     public static enum Command {

@@ -31,79 +31,153 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SWFEndpoint {
 
 
-    public static class SWFCommon extends EndpointConfiguration {
+    public static class SWFCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String type;
+        private Object amazonSWClient;
+        private Object dataConverter;
+        private String domainName;
+        private String eventName;
+        private String region;
+        private String version;
+        private Boolean basicPropertyBinding;
+        private Map<String, Object> clientConfigurationParameters;
+        private Map<String, Object> startWorkflowOptionsParameters;
+        private Map<String, Object> sWClientParameters;
+        private Boolean synchronous;
+        private String accessKey;
+        private String secretKey;
+
         /**
          * Activity or workflow. The option is a java.lang.String type.
          */
-        private String type;
+        public T type(String type) {
+            this.type = type;
+            return (T) this;
+        }
+
         /**
          * To use the given AmazonSimpleWorkflowClient as client. The option is
          * a com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow type.
          */
-        private Object amazonSWClient;
+        public T amazonSWClient(Object amazonSWClient) {
+            this.amazonSWClient = amazonSWClient;
+            return (T) this;
+        }
+
         /**
          * An instance of
          * com.amazonaws.services.simpleworkflow.flow.DataConverter to use for
          * serializing/deserializing the data. The option is a
          * com.amazonaws.services.simpleworkflow.flow.DataConverter type.
          */
-        private Object dataConverter;
+        public T dataConverter(Object dataConverter) {
+            this.dataConverter = dataConverter;
+            return (T) this;
+        }
+
         /**
          * The workflow domain to use. The option is a java.lang.String type.
          */
-        private String domainName;
+        public T domainName(String domainName) {
+            this.domainName = domainName;
+            return (T) this;
+        }
+
         /**
          * The workflow or activity event name to use. The option is a
          * java.lang.String type.
          */
-        private String eventName;
+        public T eventName(String eventName) {
+            this.eventName = eventName;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Region. The option is a java.lang.String type.
          */
-        private String region;
+        public T region(String region) {
+            this.region = region;
+            return (T) this;
+        }
+
         /**
          * The workflow or activity event version to use. The option is a
          * java.lang.String type.
          */
-        private String version;
+        public T version(String version) {
+            this.version = version;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To configure the ClientConfiguration using the key/values from the
          * Map. The option is a java.util.Map<java.lang.String,java.lang.Object>
          * type.
          */
-        private Map<String, Object> clientConfigurationParameters;
+        public T clientConfigurationParameters(
+                Map<String, Object> clientConfigurationParameters) {
+            this.clientConfigurationParameters = clientConfigurationParameters;
+            return (T) this;
+        }
+
         /**
          * To configure the StartWorkflowOptions using the key/values from the
          * Map. The option is a java.util.Map<java.lang.String,java.lang.Object>
          * type.
          */
-        private Map<String, Object> startWorkflowOptionsParameters;
+        public T startWorkflowOptionsParameters(
+                Map<String, Object> startWorkflowOptionsParameters) {
+            this.startWorkflowOptionsParameters = startWorkflowOptionsParameters;
+            return (T) this;
+        }
+
         /**
          * To configure the AmazonSimpleWorkflowClient using the key/values from
          * the Map. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> sWClientParameters;
+        public T sWClientParameters(Map<String, Object> sWClientParameters) {
+            this.sWClientParameters = sWClientParameters;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public T accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (T) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public T secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (T) this;
+        }
 
         public String getType() {
             return type;
@@ -220,7 +294,17 @@ public class SWFEndpoint {
         }
     }
 
-    public static class SWFConsumer extends SWFCommon {
+    public static class SWFConsumer extends SWFCommon<SWFConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private String activityList;
+        private Integer activityThreadPoolSize;
+        private Object activityTypeExecutionOptions;
+        private Object activityTypeRegistrationOptions;
+        private String workflowList;
+        private Object workflowTypeRegistrationOptions;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -230,7 +314,11 @@ public class SWFEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public SWFConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (SWFConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -238,42 +326,76 @@ public class SWFEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public SWFConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (SWFConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public SWFConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (SWFConsumer) this;
+        }
+
         /**
          * The list name to consume activities from. The option is a
          * java.lang.String type.
          */
-        private String activityList;
+        public SWFConsumer activityList(String activityList) {
+            this.activityList = activityList;
+            return (SWFConsumer) this;
+        }
+
         /**
          * Maximum number of threads in work pool for activity. The option is a
          * int type.
          */
-        private Integer activityThreadPoolSize;
+        public SWFConsumer activityThreadPoolSize(int activityThreadPoolSize) {
+            this.activityThreadPoolSize = activityThreadPoolSize;
+            return (SWFConsumer) this;
+        }
+
         /**
          * Activity execution options. The option is a
          * com.amazonaws.services.simpleworkflow.flow.worker.ActivityTypeExecutionOptions type.
          */
-        private Object activityTypeExecutionOptions;
+        public SWFConsumer activityTypeExecutionOptions(
+                Object activityTypeExecutionOptions) {
+            this.activityTypeExecutionOptions = activityTypeExecutionOptions;
+            return (SWFConsumer) this;
+        }
+
         /**
          * Activity registration options. The option is a
          * com.amazonaws.services.simpleworkflow.flow.worker.ActivityTypeRegistrationOptions type.
          */
-        private Object activityTypeRegistrationOptions;
+        public SWFConsumer activityTypeRegistrationOptions(
+                Object activityTypeRegistrationOptions) {
+            this.activityTypeRegistrationOptions = activityTypeRegistrationOptions;
+            return (SWFConsumer) this;
+        }
+
         /**
          * The list name to consume workflows from. The option is a
          * java.lang.String type.
          */
-        private String workflowList;
+        public SWFConsumer workflowList(String workflowList) {
+            this.workflowList = workflowList;
+            return (SWFConsumer) this;
+        }
+
         /**
          * Workflow registration options. The option is a
          * com.amazonaws.services.simpleworkflow.flow.WorkflowTypeRegistrationOptions type.
          */
-        private Object workflowTypeRegistrationOptions;
+        public SWFConsumer workflowTypeRegistrationOptions(
+                Object workflowTypeRegistrationOptions) {
+            this.workflowTypeRegistrationOptions = workflowTypeRegistrationOptions;
+            return (SWFConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -351,52 +473,100 @@ public class SWFEndpoint {
         }
     }
 
-    public static class SWFProducer extends SWFCommon {
+    public static class SWFProducer extends SWFCommon<SWFProducer> {
+        private Object activitySchedulingOptions;
+        private String childPolicy;
+        private String executionStartToCloseTimeout;
+        private String operation;
+        private String signalName;
+        private String stateResultType;
+        private String taskStartToCloseTimeout;
+        private String terminationDetails;
+        private String terminationReason;
+
         /**
          * Activity scheduling options. The option is a
          * com.amazonaws.services.simpleworkflow.flow.ActivitySchedulingOptions
          * type.
          */
-        private Object activitySchedulingOptions;
+        public SWFProducer activitySchedulingOptions(
+                Object activitySchedulingOptions) {
+            this.activitySchedulingOptions = activitySchedulingOptions;
+            return (SWFProducer) this;
+        }
+
         /**
          * The policy to use on child workflows when terminating a workflow. The
          * option is a java.lang.String type.
          */
-        private String childPolicy;
+        public SWFProducer childPolicy(String childPolicy) {
+            this.childPolicy = childPolicy;
+            return (SWFProducer) this;
+        }
+
         /**
          * Set the execution start to close timeout. The option is a
          * java.lang.String type.
          */
-        private String executionStartToCloseTimeout;
+        public SWFProducer executionStartToCloseTimeout(
+                String executionStartToCloseTimeout) {
+            this.executionStartToCloseTimeout = executionStartToCloseTimeout;
+            return (SWFProducer) this;
+        }
+
         /**
          * Workflow operation. The option is a java.lang.String type.
          */
-        private String operation;
+        public SWFProducer operation(String operation) {
+            this.operation = operation;
+            return (SWFProducer) this;
+        }
+
         /**
          * The name of the signal to send to the workflow. The option is a
          * java.lang.String type.
          */
-        private String signalName;
+        public SWFProducer signalName(String signalName) {
+            this.signalName = signalName;
+            return (SWFProducer) this;
+        }
+
         /**
          * The type of the result when a workflow state is queried. The option
          * is a java.lang.String type.
          */
-        private String stateResultType;
+        public SWFProducer stateResultType(String stateResultType) {
+            this.stateResultType = stateResultType;
+            return (SWFProducer) this;
+        }
+
         /**
          * Set the task start to close timeout. The option is a java.lang.String
          * type.
          */
-        private String taskStartToCloseTimeout;
+        public SWFProducer taskStartToCloseTimeout(
+                String taskStartToCloseTimeout) {
+            this.taskStartToCloseTimeout = taskStartToCloseTimeout;
+            return (SWFProducer) this;
+        }
+
         /**
          * Details for terminating a workflow. The option is a java.lang.String
          * type.
          */
-        private String terminationDetails;
+        public SWFProducer terminationDetails(String terminationDetails) {
+            this.terminationDetails = terminationDetails;
+            return (SWFProducer) this;
+        }
+
         /**
          * The reason for terminating a workflow. The option is a
          * java.lang.String type.
          */
-        private String terminationReason;
+        public SWFProducer terminationReason(String terminationReason) {
+            this.terminationReason = terminationReason;
+            return (SWFProducer) this;
+        }
 
         public Object getActivitySchedulingOptions() {
             return activitySchedulingOptions;

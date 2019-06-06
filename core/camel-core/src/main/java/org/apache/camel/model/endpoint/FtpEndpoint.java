@@ -41,24 +41,77 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class FtpEndpoint {
 
 
-    public static class FtpCommon extends EndpointConfiguration {
+    public static class FtpCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private String directoryName;
+        private Boolean binary;
+        private String charset;
+        private Boolean disconnect;
+        private String doneFileName;
+        private Expression fileName;
+        private Boolean passiveMode;
+        private Object separator;
+        private Integer transferLoggingIntervalSeconds;
+        private LoggingLevel transferLoggingLevel;
+        private Boolean transferLoggingVerbose;
+        private Boolean fastExistsCheck;
+        private String activePortRange;
+        private Boolean autoCreate;
+        private Boolean basicPropertyBinding;
+        private Integer bufferSize;
+        private Integer connectTimeout;
+        private Object ftpClient;
+        private Object ftpClientConfig;
+        private Map<String, Object> ftpClientConfigParameters;
+        private Map<String, Object> ftpClientParameters;
+        private Integer maximumReconnectAttempts;
+        private Long reconnectDelay;
+        private String siteCommand;
+        private Integer soTimeout;
+        private Boolean stepwise;
+        private Boolean synchronous;
+        private Boolean throwExceptionOnConnectFailed;
+        private Integer timeout;
+        private String account;
+        private String password;
+        private String username;
+
         /**
          * Hostname of the FTP server. The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Port of the FTP server. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * The starting directory. The option is a java.lang.String type.
          */
-        private String directoryName;
+        public T directoryName(String directoryName) {
+            this.directoryName = directoryName;
+            return (T) this;
+        }
+
         /**
          * Specifies the file transfer mode, BINARY or ASCII. Default is ASCII
          * (false). The option is a boolean type.
          */
-        private Boolean binary;
+        public T binary(boolean binary) {
+            this.binary = binary;
+            return (T) this;
+        }
+
         /**
          * This option is used to specify the encoding of the file. You can use
          * this on the consumer, to specify the encodings of the files, which
@@ -70,14 +123,22 @@ public class FtpEndpoint {
          * into the configured charset, so do not use this if you have big
          * messages. The option is a java.lang.String type.
          */
-        private String charset;
+        public T charset(String charset) {
+            this.charset = charset;
+            return (T) this;
+        }
+
         /**
          * Whether or not to disconnect from remote FTP server right after use.
          * Disconnect will only disconnect the current connection to the FTP
          * server. If you have a consumer which you want to stop, then you need
          * to stop the consumer/route instead. The option is a boolean type.
          */
-        private Boolean disconnect;
+        public T disconnect(boolean disconnect) {
+            this.disconnect = disconnect;
+            return (T) this;
+        }
+
         /**
          * Producer: If provided, then Camel will write a 2nd done file when the
          * original file has been written. The done file will be empty. This
@@ -91,7 +152,11 @@ public class FtpEndpoint {
          * ${file.name} and ${file.name.noext} is supported as dynamic
          * placeholders. The option is a java.lang.String type.
          */
-        private String doneFileName;
+        public T doneFileName(String doneFileName) {
+            this.doneFileName = doneFileName;
+            return (T) this;
+        }
+
         /**
          * Use Expression such as File Language to dynamically set the filename.
          * For consumers, it's used as a filename filter. For producers, it's
@@ -111,38 +176,63 @@ public class FtpEndpoint {
          * CamelFileName and have to restore it afterwards. The option is a
          * java.lang.String type.
          */
-        private Expression fileName;
+        public T fileName(Expression fileName) {
+            this.fileName = fileName;
+            return (T) this;
+        }
+
         /**
          * Sets passive mode connections. Default is active mode connections.
          * The option is a boolean type.
          */
-        private Boolean passiveMode;
+        public T passiveMode(boolean passiveMode) {
+            this.passiveMode = passiveMode;
+            return (T) this;
+        }
+
         /**
          * Sets the path separator to be used. UNIX = Uses unix style path
          * separator Windows = Uses windows style path separator Auto = (is
          * default) Use existing path separator in file name. The option is a
          * org.apache.camel.component.file.remote.RemoteFileConfiguration.PathSeparator type.
          */
-        private Object separator;
+        public T separator(Object separator) {
+            this.separator = separator;
+            return (T) this;
+        }
+
         /**
          * Configures the interval in seconds to use when logging the progress
          * of upload and download operations that are in-flight. This is used
          * for logging progress when operations takes longer time. The option is
          * a int type.
          */
-        private Integer transferLoggingIntervalSeconds;
+        public T transferLoggingIntervalSeconds(
+                int transferLoggingIntervalSeconds) {
+            this.transferLoggingIntervalSeconds = transferLoggingIntervalSeconds;
+            return (T) this;
+        }
+
         /**
          * Configure the logging level to use when logging the progress of
          * upload and download operations. The option is a
          * org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel transferLoggingLevel;
+        public T transferLoggingLevel(LoggingLevel transferLoggingLevel) {
+            this.transferLoggingLevel = transferLoggingLevel;
+            return (T) this;
+        }
+
         /**
          * Configures whether the perform verbose (fine grained) logging of the
          * progress of upload and download operations. The option is a boolean
          * type.
          */
-        private Boolean transferLoggingVerbose;
+        public T transferLoggingVerbose(boolean transferLoggingVerbose) {
+            this.transferLoggingVerbose = transferLoggingVerbose;
+            return (T) this;
+        }
+
         /**
          * If set this option to be true, camel-ftp will use the list file
          * directly to check if the file exists. Since some FTP server may not
@@ -153,76 +243,129 @@ public class FtpEndpoint {
          * This can be used to speed up the process if the FTP server has a lot
          * of files. The option is a boolean type.
          */
-        private Boolean fastExistsCheck;
+        public T fastExistsCheck(boolean fastExistsCheck) {
+            this.fastExistsCheck = fastExistsCheck;
+            return (T) this;
+        }
+
         /**
          * Set the client side port range in active mode. The syntax is:
          * minPort-maxPort Both port numbers are inclusive, eg 10000-19999 to
          * include all 1xxxx ports. The option is a java.lang.String type.
          */
-        private String activePortRange;
+        public T activePortRange(String activePortRange) {
+            this.activePortRange = activePortRange;
+            return (T) this;
+        }
+
         /**
          * Automatically create missing directories in the file's pathname. For
          * the file consumer, that means creating the starting directory. For
          * the file producer, it means the directory the files should be written
          * to. The option is a boolean type.
          */
-        private Boolean autoCreate;
+        public T autoCreate(boolean autoCreate) {
+            this.autoCreate = autoCreate;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Write buffer sized in bytes. The option is a int type.
          */
-        private Integer bufferSize;
+        public T bufferSize(int bufferSize) {
+            this.bufferSize = bufferSize;
+            return (T) this;
+        }
+
         /**
          * Sets the connect timeout for waiting for a connection to be
          * established Used by both FTPClient and JSCH. The option is a int
          * type.
          */
-        private Integer connectTimeout;
+        public T connectTimeout(int connectTimeout) {
+            this.connectTimeout = connectTimeout;
+            return (T) this;
+        }
+
         /**
          * To use a custom instance of FTPClient. The option is a
          * org.apache.commons.net.ftp.FTPClient type.
          */
-        private Object ftpClient;
+        public T ftpClient(Object ftpClient) {
+            this.ftpClient = ftpClient;
+            return (T) this;
+        }
+
         /**
          * To use a custom instance of FTPClientConfig to configure the FTP
          * client the endpoint should use. The option is a
          * org.apache.commons.net.ftp.FTPClientConfig type.
          */
-        private Object ftpClientConfig;
+        public T ftpClientConfig(Object ftpClientConfig) {
+            this.ftpClientConfig = ftpClientConfig;
+            return (T) this;
+        }
+
         /**
          * Used by FtpComponent to provide additional parameters for the
          * FTPClientConfig. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> ftpClientConfigParameters;
+        public T ftpClientConfigParameters(
+                Map<String, Object> ftpClientConfigParameters) {
+            this.ftpClientConfigParameters = ftpClientConfigParameters;
+            return (T) this;
+        }
+
         /**
          * Used by FtpComponent to provide additional parameters for the
          * FTPClient. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> ftpClientParameters;
+        public T ftpClientParameters(Map<String, Object> ftpClientParameters) {
+            this.ftpClientParameters = ftpClientParameters;
+            return (T) this;
+        }
+
         /**
          * Specifies the maximum reconnect attempts Camel performs when it tries
          * to connect to the remote FTP server. Use 0 to disable this behavior.
          * The option is a int type.
          */
-        private Integer maximumReconnectAttempts;
+        public T maximumReconnectAttempts(int maximumReconnectAttempts) {
+            this.maximumReconnectAttempts = maximumReconnectAttempts;
+            return (T) this;
+        }
+
         /**
          * Delay in millis Camel will wait before performing a reconnect
          * attempt. The option is a long type.
          */
-        private Long reconnectDelay;
+        public T reconnectDelay(long reconnectDelay) {
+            this.reconnectDelay = reconnectDelay;
+            return (T) this;
+        }
+
         /**
          * Sets optional site command(s) to be executed after successful login.
          * Multiple site commands can be separated using a new line character.
          * The option is a java.lang.String type.
          */
-        private String siteCommand;
+        public T siteCommand(String siteCommand) {
+            this.siteCommand = siteCommand;
+            return (T) this;
+        }
+
         /**
          * Sets the so timeout FTP and FTPS Only for Camel 2.4. SFTP for Camel
          * 2.14.3/2.15.3/2.16 onwards. Is the SocketOptions.SO_TIMEOUT value in
@@ -230,7 +373,11 @@ public class FtpEndpoint {
          * hanged connection. On SFTP this option is set as timeout on the JSCH
          * Session instance. The option is a int type.
          */
-        private Integer soTimeout;
+        public T soTimeout(int soTimeout) {
+            this.soTimeout = soTimeout;
+            return (T) this;
+        }
+
         /**
          * Sets whether we should stepwise change directories while traversing
          * file structures when downloading files, or as well when uploading a
@@ -238,13 +385,21 @@ public class FtpEndpoint {
          * situation where you cannot change directory on the FTP server due
          * security reasons. The option is a boolean type.
          */
-        private Boolean stepwise;
+        public T stepwise(boolean stepwise) {
+            this.stepwise = stepwise;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Should an exception be thrown if connection failed (exhausted) By
          * default exception is not thrown and a WARN is logged. You can use
@@ -252,24 +407,44 @@ public class FtpEndpoint {
          * from the org.apache.camel.spi.PollingConsumerPollStrategy rollback
          * method. The option is a boolean type.
          */
-        private Boolean throwExceptionOnConnectFailed;
+        public T throwExceptionOnConnectFailed(
+                boolean throwExceptionOnConnectFailed) {
+            this.throwExceptionOnConnectFailed = throwExceptionOnConnectFailed;
+            return (T) this;
+        }
+
         /**
          * Sets the data timeout for waiting for reply Used only by FTPClient.
          * The option is a int type.
          */
-        private Integer timeout;
+        public T timeout(int timeout) {
+            this.timeout = timeout;
+            return (T) this;
+        }
+
         /**
          * Account to use for login. The option is a java.lang.String type.
          */
-        private String account;
+        public T account(String account) {
+            this.account = account;
+            return (T) this;
+        }
+
         /**
          * Password to use for login. The option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Username to use for login. The option is a java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -548,7 +723,73 @@ public class FtpEndpoint {
         }
     }
 
-    public static class FtpConsumer extends FtpCommon {
+    public static class FtpConsumer extends FtpCommon<FtpConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean delete;
+        private Expression moveFailed;
+        private Boolean noop;
+        private Expression preMove;
+        private Boolean preSort;
+        private Boolean recursive;
+        private Boolean resumeDownload;
+        private Boolean sendEmptyMessageWhenIdle;
+        private Boolean streamDownload;
+        private Boolean download;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private Boolean handleDirectoryParserAbsoluteResult;
+        private Boolean ignoreFileNotFoundOrPermissionError;
+        private IdempotentRepository inProgressRepository;
+        private String localWorkDirectory;
+        private ExceptionHandler onCompletionExceptionHandler;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Object processStrategy;
+        private Integer receiveBufferSize;
+        private Boolean useList;
+        private String antExclude;
+        private Boolean antFilterCaseSensitive;
+        private String antInclude;
+        private Boolean eagerMaxMessagesPerPoll;
+        private String exclude;
+        private Object filter;
+        private Predicate filterDirectory;
+        private Predicate filterFile;
+        private Boolean idempotent;
+        private Expression idempotentKey;
+        private IdempotentRepository idempotentRepository;
+        private String include;
+        private Integer maxDepth;
+        private Integer maxMessagesPerPoll;
+        private Integer minDepth;
+        private Expression move;
+        private Object exclusiveReadLockStrategy;
+        private String readLock;
+        private Long readLockCheckInterval;
+        private Boolean readLockDeleteOrphanLockFiles;
+        private LoggingLevel readLockLoggingLevel;
+        private Boolean readLockMarkerFile;
+        private Long readLockMinAge;
+        private Long readLockMinLength;
+        private Boolean readLockRemoveOnCommit;
+        private Boolean readLockRemoveOnRollback;
+        private Long readLockTimeout;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+        private Boolean shuffle;
+        private Comparator<Exchange> sortBy;
+        private Comparator<Object> sorter;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -558,12 +799,20 @@ public class FtpEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public FtpConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (FtpConsumer) this;
+        }
+
         /**
          * If true, the file will be deleted after it is processed successfully.
          * The option is a boolean type.
          */
-        private Boolean delete;
+        public FtpConsumer delete(boolean delete) {
+            this.delete = delete;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Sets the move failure expression based on Simple language. For
          * example, to move files into a .error subdirectory use: .error. Note:
@@ -571,21 +820,33 @@ public class FtpEndpoint {
          * error and will not pick up the file again. The option is a
          * java.lang.String type.
          */
-        private Expression moveFailed;
+        public FtpConsumer moveFailed(Expression moveFailed) {
+            this.moveFailed = moveFailed;
+            return (FtpConsumer) this;
+        }
+
         /**
          * If true, the file is not moved or deleted in any way. This option is
          * good for readonly data, or for ETL type requirements. If noop=true,
          * Camel will set idempotent=true as well, to avoid consuming the same
          * files over and over again. The option is a boolean type.
          */
-        private Boolean noop;
+        public FtpConsumer noop(boolean noop) {
+            this.noop = noop;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Expression (such as File Language) used to dynamically set the
          * filename when moving it before processing. For example to move
          * in-progress files into the order directory set this value to order.
          * The option is a java.lang.String type.
          */
-        private Expression preMove;
+        public FtpConsumer preMove(Expression preMove) {
+            this.preMove = preMove;
+            return (FtpConsumer) this;
+        }
+
         /**
          * When pre-sort is enabled then the consumer will sort the file and
          * directory names during polling, that was retrieved from the file
@@ -594,12 +855,20 @@ public class FtpEndpoint {
          * starts to filter, and accept files to process by Camel. This option
          * is default=false meaning disabled. The option is a boolean type.
          */
-        private Boolean preSort;
+        public FtpConsumer preSort(boolean preSort) {
+            this.preSort = preSort;
+            return (FtpConsumer) this;
+        }
+
         /**
          * If a directory, will look for files in all the sub-directories as
          * well. The option is a boolean type.
          */
-        private Boolean recursive;
+        public FtpConsumer recursive(boolean recursive) {
+            this.recursive = recursive;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Configures whether resume download is enabled. This must be supported
          * by the FTP server (almost all FTP servers support it). In addition
@@ -608,13 +877,22 @@ public class FtpEndpoint {
          * enabled, which is required to support resuming of downloads. The
          * option is a boolean type.
          */
-        private Boolean resumeDownload;
+        public FtpConsumer resumeDownload(boolean resumeDownload) {
+            this.resumeDownload = resumeDownload;
+            return (FtpConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public FtpConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Sets the download method to use when not using a local working
          * directory. If set to true, the remote files are streamed to the route
@@ -622,7 +900,11 @@ public class FtpEndpoint {
          * memory before being sent into the route. The option is a boolean
          * type.
          */
-        private Boolean streamDownload;
+        public FtpConsumer streamDownload(boolean streamDownload) {
+            this.streamDownload = streamDownload;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Whether the FTP consumer should download the file. If this option is
          * set to false, then the message body will be null, but the consumer
@@ -630,7 +912,11 @@ public class FtpEndpoint {
          * such as file name, file size, etc. It's just that the file will not
          * be downloaded. The option is a boolean type.
          */
-        private Boolean download;
+        public FtpConsumer download(boolean download) {
+            this.download = download;
+            return (FtpConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -638,12 +924,20 @@ public class FtpEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public FtpConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public FtpConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Allows you to set how the consumer will handle subfolders and files
          * in the path if the directory parser results in with absolute paths
@@ -652,7 +946,12 @@ public class FtpEndpoint {
          * this by converting the returned path into a relative path. The option
          * is a boolean type.
          */
-        private Boolean handleDirectoryParserAbsoluteResult;
+        public FtpConsumer handleDirectoryParserAbsoluteResult(
+                boolean handleDirectoryParserAbsoluteResult) {
+            this.handleDirectoryParserAbsoluteResult = handleDirectoryParserAbsoluteResult;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Whether to ignore when (trying to list files in directories or when
          * downloading a file), which does not exist or due to permission error.
@@ -660,7 +959,12 @@ public class FtpEndpoint {
          * permission, then an exception is thrown. Setting this option to true
          * allows to ignore that instead. The option is a boolean type.
          */
-        private Boolean ignoreFileNotFoundOrPermissionError;
+        public FtpConsumer ignoreFileNotFoundOrPermissionError(
+                boolean ignoreFileNotFoundOrPermissionError) {
+            this.ignoreFileNotFoundOrPermissionError = ignoreFileNotFoundOrPermissionError;
+            return (FtpConsumer) this;
+        }
+
         /**
          * A pluggable in-progress repository
          * org.apache.camel.spi.IdempotentRepository. The in-progress repository
@@ -668,7 +972,12 @@ public class FtpEndpoint {
          * default a memory based repository is used. The option is a
          * org.apache.camel.spi.IdempotentRepository type.
          */
-        private IdempotentRepository inProgressRepository;
+        public FtpConsumer inProgressRepository(
+                IdempotentRepository inProgressRepository) {
+            this.inProgressRepository = inProgressRepository;
+            return (FtpConsumer) this;
+        }
+
         /**
          * When consuming, a local work directory can be used to store the
          * remote file content directly in local files, to avoid loading the
@@ -676,7 +985,11 @@ public class FtpEndpoint {
          * remote file and thus can conserve memory. The option is a
          * java.lang.String type.
          */
-        private String localWorkDirectory;
+        public FtpConsumer localWorkDirectory(String localWorkDirectory) {
+            this.localWorkDirectory = localWorkDirectory;
+            return (FtpConsumer) this;
+        }
+
         /**
          * To use a custom org.apache.camel.spi.ExceptionHandler to handle any
          * thrown exceptions that happens during the file on completion process
@@ -684,7 +997,12 @@ public class FtpEndpoint {
          * implementation will log any exception at WARN level and ignore. The
          * option is a org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler onCompletionExceptionHandler;
+        public FtpConsumer onCompletionExceptionHandler(
+                ExceptionHandler onCompletionExceptionHandler) {
+            this.onCompletionExceptionHandler = onCompletionExceptionHandler;
+            return (FtpConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -692,7 +1010,11 @@ public class FtpEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public FtpConsumer pollStrategy(PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (FtpConsumer) this;
+        }
+
         /**
          * A pluggable
          * org.apache.camel.component.file.GenericFileProcessStrategy allowing
@@ -702,12 +1024,20 @@ public class FtpEndpoint {
          * then the readLock option does not apply. The option is a
          * org.apache.camel.component.file.GenericFileProcessStrategy<T> type.
          */
-        private Object processStrategy;
+        public FtpConsumer processStrategy(Object processStrategy) {
+            this.processStrategy = processStrategy;
+            return (FtpConsumer) this;
+        }
+
         /**
          * The receive (download) buffer size Used only by FTPClient. The option
          * is a int type.
          */
-        private Integer receiveBufferSize;
+        public FtpConsumer receiveBufferSize(int receiveBufferSize) {
+            this.receiveBufferSize = receiveBufferSize;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Whether to allow using LIST command when downloading a file. Default
          * is true. In some use cases you may want to download a specific file
@@ -718,23 +1048,39 @@ public class FtpEndpoint {
          * is only possible to retrieve when LIST command is in use. The option
          * is a boolean type.
          */
-        private Boolean useList;
+        public FtpConsumer useList(boolean useList) {
+            this.useList = useList;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Ant style filter exclusion. If both antInclude and antExclude are
          * used, antExclude takes precedence over antInclude. Multiple
          * exclusions may be specified in comma-delimited format. The option is
          * a java.lang.String type.
          */
-        private String antExclude;
+        public FtpConsumer antExclude(String antExclude) {
+            this.antExclude = antExclude;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Sets case sensitive flag on ant filter. The option is a boolean type.
          */
-        private Boolean antFilterCaseSensitive;
+        public FtpConsumer antFilterCaseSensitive(boolean antFilterCaseSensitive) {
+            this.antFilterCaseSensitive = antFilterCaseSensitive;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Ant style filter inclusion. Multiple inclusions may be specified in
          * comma-delimited format. The option is a java.lang.String type.
          */
-        private String antInclude;
+        public FtpConsumer antInclude(String antInclude) {
+            this.antInclude = antInclude;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Allows for controlling whether the limit from maxMessagesPerPoll is
          * eager or not. If eager then the limit is during the scanning of
@@ -744,7 +1090,12 @@ public class FtpEndpoint {
          * all file details are in memory to perform the sorting. The option is
          * a boolean type.
          */
-        private Boolean eagerMaxMessagesPerPoll;
+        public FtpConsumer eagerMaxMessagesPerPoll(
+                boolean eagerMaxMessagesPerPoll) {
+            this.eagerMaxMessagesPerPoll = eagerMaxMessagesPerPoll;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Is used to exclude files, if filename matches the regex pattern
          * (matching is case in-senstive). Notice if you use symbols such as
@@ -752,26 +1103,42 @@ public class FtpEndpoint {
          * syntax if configuring this as an endpoint uri. See more details at
          * configuring endpoint uris. The option is a java.lang.String type.
          */
-        private String exclude;
+        public FtpConsumer exclude(String exclude) {
+            this.exclude = exclude;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Pluggable filter as a
          * org.apache.camel.component.file.GenericFileFilter class. Will skip
          * files if filter returns false in its accept() method. The option is a
          * org.apache.camel.component.file.GenericFileFilter<T> type.
          */
-        private Object filter;
+        public FtpConsumer filter(Object filter) {
+            this.filter = filter;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Filters the directory based on Simple language. For example to filter
          * on current date, you can use a simple date pattern such as
          * ${date:now:yyyMMdd}. The option is a java.lang.String type.
          */
-        private Predicate filterDirectory;
+        public FtpConsumer filterDirectory(Predicate filterDirectory) {
+            this.filterDirectory = filterDirectory;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Filters the file based on Simple language. For example to filter on
          * file size, you can use ${file:size} 5000. The option is a
          * java.lang.String type.
          */
-        private Predicate filterFile;
+        public FtpConsumer filterFile(Predicate filterFile) {
+            this.filterFile = filterFile;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Option to use the Idempotent Consumer EIP pattern to let Camel skip
          * already processed files. Will by default use a memory based LRUCache
@@ -779,7 +1146,11 @@ public class FtpEndpoint {
          * as well to avoid consuming the same files over and over again. The
          * option is a java.lang.Boolean type.
          */
-        private Boolean idempotent;
+        public FtpConsumer idempotent(Boolean idempotent) {
+            this.idempotent = idempotent;
+            return (FtpConsumer) this;
+        }
+
         /**
          * To use a custom idempotent key. By default the absolute path of the
          * file is used. You can use the File Language, for example to use the
@@ -787,14 +1158,23 @@ public class FtpEndpoint {
          * idempotentKey=${file:name}-${file:size}. The option is a
          * java.lang.String type.
          */
-        private Expression idempotentKey;
+        public FtpConsumer idempotentKey(Expression idempotentKey) {
+            this.idempotentKey = idempotentKey;
+            return (FtpConsumer) this;
+        }
+
         /**
          * A pluggable repository org.apache.camel.spi.IdempotentRepository
          * which by default use MemoryMessageIdRepository if none is specified
          * and idempotent is true. The option is a
          * org.apache.camel.spi.IdempotentRepository type.
          */
-        private IdempotentRepository idempotentRepository;
+        public FtpConsumer idempotentRepository(
+                IdempotentRepository idempotentRepository) {
+            this.idempotentRepository = idempotentRepository;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Is used to include files, if filename matches the regex pattern
          * (matching is case in-sensitive). Notice if you use symbols such as
@@ -802,12 +1182,20 @@ public class FtpEndpoint {
          * syntax if configuring this as an endpoint uri. See more details at
          * configuring endpoint uris. The option is a java.lang.String type.
          */
-        private String include;
+        public FtpConsumer include(String include) {
+            this.include = include;
+            return (FtpConsumer) this;
+        }
+
         /**
          * The maximum depth to traverse when recursively processing a
          * directory. The option is a int type.
          */
-        private Integer maxDepth;
+        public FtpConsumer maxDepth(int maxDepth) {
+            this.maxDepth = maxDepth;
+            return (FtpConsumer) this;
+        }
+
         /**
          * To define a maximum messages to gather per poll. By default no
          * maximum is set. Can be used to set a limit of e.g. 1000 to avoid when
@@ -820,26 +1208,43 @@ public class FtpEndpoint {
          * to scan all files first and then sort afterwards. The option is a int
          * type.
          */
-        private Integer maxMessagesPerPoll;
+        public FtpConsumer maxMessagesPerPoll(int maxMessagesPerPoll) {
+            this.maxMessagesPerPoll = maxMessagesPerPoll;
+            return (FtpConsumer) this;
+        }
+
         /**
          * The minimum depth to start processing when recursively processing a
          * directory. Using minDepth=1 means the base directory. Using
          * minDepth=2 means the first sub directory. The option is a int type.
          */
-        private Integer minDepth;
+        public FtpConsumer minDepth(int minDepth) {
+            this.minDepth = minDepth;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Expression (such as Simple Language) used to dynamically set the
          * filename when moving it after processing. To move files into a .done
          * subdirectory just enter .done. The option is a java.lang.String type.
          */
-        private Expression move;
+        public FtpConsumer move(Expression move) {
+            this.move = move;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Pluggable read-lock as a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy
          * implementation. The option is a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy<T> type.
          */
-        private Object exclusiveReadLockStrategy;
+        public FtpConsumer exclusiveReadLockStrategy(
+                Object exclusiveReadLockStrategy) {
+            this.exclusiveReadLockStrategy = exclusiveReadLockStrategy;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Used by consumer, to only poll the files if it has exclusive
          * read-lock on the file (i.e. the file is not in-progress or being
@@ -880,7 +1285,11 @@ public class FtpEndpoint {
          * repository supports clustering, such as Hazelcast Component or
          * Infinispan. The option is a java.lang.String type.
          */
-        private String readLock;
+        public FtpConsumer readLock(String readLock) {
+            this.readLock = readLock;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Interval in millis for the read-lock, if supported by the read lock.
          * This interval is used for sleeping between attempts to acquire the
@@ -894,7 +1303,11 @@ public class FtpEndpoint {
          * amble time is allowed for the read lock process to try to grab the
          * lock before the timeout was hit. The option is a long type.
          */
-        private Long readLockCheckInterval;
+        public FtpConsumer readLockCheckInterval(long readLockCheckInterval) {
+            this.readLockCheckInterval = readLockCheckInterval;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Whether or not read lock with marker files should upon startup delete
          * any orphan read lock files, which may have been left on the file
@@ -904,7 +1317,12 @@ public class FtpEndpoint {
          * another node is concurrently reading files from the same shared
          * directory. The option is a boolean type.
          */
-        private Boolean readLockDeleteOrphanLockFiles;
+        public FtpConsumer readLockDeleteOrphanLockFiles(
+                boolean readLockDeleteOrphanLockFiles) {
+            this.readLockDeleteOrphanLockFiles = readLockDeleteOrphanLockFiles;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Logging level used when a read lock could not be acquired. By default
          * a DEBUG is logged. You can change this level, for example to OFF to
@@ -913,7 +1331,12 @@ public class FtpEndpoint {
          * idempotent-rename, rename. The option is a
          * org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel readLockLoggingLevel;
+        public FtpConsumer readLockLoggingLevel(
+                LoggingLevel readLockLoggingLevel) {
+            this.readLockLoggingLevel = readLockLoggingLevel;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Whether to use marker file with the changed, rename, or exclusive
          * read lock types. By default a marker file is used as well to guard
@@ -922,7 +1345,11 @@ public class FtpEndpoint {
          * not want to write marker files to the file systems by the Camel
          * application. The option is a boolean type.
          */
-        private Boolean readLockMarkerFile;
+        public FtpConsumer readLockMarkerFile(boolean readLockMarkerFile) {
+            this.readLockMarkerFile = readLockMarkerFile;
+            return (FtpConsumer) this;
+        }
+
         /**
          * This option is applied only for readLock=changed. It allows to
          * specify a minimum age the file must be before attempting to acquire
@@ -931,7 +1358,11 @@ public class FtpEndpoint {
          * as it will only attempt to acquire files which are at least that
          * given age. The option is a long type.
          */
-        private Long readLockMinAge;
+        public FtpConsumer readLockMinAge(long readLockMinAge) {
+            this.readLockMinAge = readLockMinAge;
+            return (FtpConsumer) this;
+        }
+
         /**
          * This option is applied only for readLock=changed. It allows you to
          * configure a minimum file length. By default Camel expects the file to
@@ -939,7 +1370,11 @@ public class FtpEndpoint {
          * option to zero, to allow consuming zero-length files. The option is a
          * long type.
          */
-        private Long readLockMinLength;
+        public FtpConsumer readLockMinLength(long readLockMinLength) {
+            this.readLockMinLength = readLockMinLength;
+            return (FtpConsumer) this;
+        }
+
         /**
          * This option is applied only for readLock=idempotent. It allows to
          * specify whether to remove the file name entry from the idempotent
@@ -952,7 +1387,11 @@ public class FtpEndpoint {
          * details at the readLockIdempotentReleaseDelay option. The option is a
          * boolean type.
          */
-        private Boolean readLockRemoveOnCommit;
+        public FtpConsumer readLockRemoveOnCommit(boolean readLockRemoveOnCommit) {
+            this.readLockRemoveOnCommit = readLockRemoveOnCommit;
+            return (FtpConsumer) this;
+        }
+
         /**
          * This option is applied only for readLock=idempotent. It allows to
          * specify whether to remove the file name entry from the idempotent
@@ -960,7 +1399,12 @@ public class FtpEndpoint {
          * this option is false, then the file name entry is confirmed (as if
          * the file did a commit). The option is a boolean type.
          */
-        private Boolean readLockRemoveOnRollback;
+        public FtpConsumer readLockRemoveOnRollback(
+                boolean readLockRemoveOnRollback) {
+            this.readLockRemoveOnRollback = readLockRemoveOnRollback;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Optional timeout in millis for the read-lock, if supported by the
          * read-lock. If the read-lock could not be granted and the timeout
@@ -975,18 +1419,30 @@ public class FtpEndpoint {
          * amble time is allowed for the read lock process to try to grab the
          * lock before the timeout was hit. The option is a long type.
          */
-        private Long readLockTimeout;
+        public FtpConsumer readLockTimeout(long readLockTimeout) {
+            this.readLockTimeout = readLockTimeout;
+            return (FtpConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public FtpConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (FtpConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public FtpConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (FtpConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -995,83 +1451,140 @@ public class FtpEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public FtpConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long delay;
+        public FtpConsumer delay(long delay) {
+            this.delay = delay;
+            return (FtpConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public FtpConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public FtpConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (FtpConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public FtpConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public FtpConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (FtpConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public FtpConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (FtpConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public FtpConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public FtpConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public FtpConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public FtpConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (FtpConsumer) this;
+        }
+
         /**
          * To shuffle the list of files (sort in random order). The option is a
          * boolean type.
          */
-        private Boolean shuffle;
+        public FtpConsumer shuffle(boolean shuffle) {
+            this.shuffle = shuffle;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
          * date. The option is a java.lang.String type.
          */
-        private Comparator<Exchange> sortBy;
+        public FtpConsumer sortBy(Comparator<Exchange> sortBy) {
+            this.sortBy = sortBy;
+            return (FtpConsumer) this;
+        }
+
         /**
          * Pluggable sorter as a java.util.Comparator class. The option is a
          * java.util.Comparator<org.apache.camel.component.file.GenericFile<T>>
          * type.
          */
-        private Comparator<Object> sorter;
+        public FtpConsumer sorter(Comparator<Object> sorter) {
+            this.sorter = sorter;
+            return (FtpConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -1603,7 +2116,21 @@ public class FtpEndpoint {
         }
     }
 
-    public static class FtpProducer extends FtpCommon {
+    public static class FtpProducer extends FtpCommon<FtpProducer> {
+        private GenericFileExist fileExist;
+        private Boolean flatten;
+        private Boolean jailStartingDirectory;
+        private Expression moveExisting;
+        private Expression tempFileName;
+        private String tempPrefix;
+        private Boolean allowNullBody;
+        private String chmod;
+        private Boolean disconnectOnBatchComplete;
+        private Boolean eagerDeleteTargetFile;
+        private Boolean keepLastModified;
+        private Object moveExistingFileStrategy;
+        private Boolean sendNoop;
+
         /**
          * What to do if a file already exists with the same name. Override,
          * which is the default, replaces the existing file. Append - adds
@@ -1622,7 +2149,11 @@ public class FtpEndpoint {
          * and especially FTP servers. The option is a
          * org.apache.camel.component.file.GenericFileExist type.
          */
-        private GenericFileExist fileExist;
+        public FtpProducer fileExist(GenericFileExist fileExist) {
+            this.fileExist = fileExist;
+            return (FtpProducer) this;
+        }
+
         /**
          * Flatten is used to flatten the file name path to strip any leading
          * paths, so it's just the file name. This allows you to consume
@@ -1632,7 +2163,11 @@ public class FtpEndpoint {
          * CamelFileName header will be stripped for any leading paths. The
          * option is a boolean type.
          */
-        private Boolean flatten;
+        public FtpProducer flatten(boolean flatten) {
+            this.flatten = flatten;
+            return (FtpProducer) this;
+        }
+
         /**
          * Used for jailing (restricting) writing files to the starting
          * directory (and sub) only. This is enabled by default to not allow
@@ -1641,7 +2176,11 @@ public class FtpEndpoint {
          * directories outside the starting directory, such as parent or root
          * folders. The option is a boolean type.
          */
-        private Boolean jailStartingDirectory;
+        public FtpProducer jailStartingDirectory(boolean jailStartingDirectory) {
+            this.jailStartingDirectory = jailStartingDirectory;
+            return (FtpProducer) this;
+        }
+
         /**
          * Expression (such as File Language) used to compute file name to use
          * when fileExist=Move is configured. To move files into a backup
@@ -1653,7 +2192,11 @@ public class FtpEndpoint {
          * relative directory based on current dir as base. The option is a
          * java.lang.String type.
          */
-        private Expression moveExisting;
+        public FtpProducer moveExisting(Expression moveExisting) {
+            this.moveExisting = moveExisting;
+            return (FtpProducer) this;
+        }
+
         /**
          * The same as tempPrefix option but offering a more fine grained
          * control on the naming of the temporary filename as it uses the File
@@ -1663,7 +2206,11 @@ public class FtpEndpoint {
          * dir/finalFilename then tempFileName is relative to that subdirectory
          * dir. The option is a java.lang.String type.
          */
-        private Expression tempFileName;
+        public FtpProducer tempFileName(Expression tempFileName) {
+            this.tempFileName = tempFileName;
+            return (FtpProducer) this;
+        }
+
         /**
          * This option is used to write the file using a temporary name and
          * then, after the write is complete, rename it to the real name. Can be
@@ -1672,7 +2219,11 @@ public class FtpEndpoint {
          * by FTP when uploading big files. The option is a java.lang.String
          * type.
          */
-        private String tempPrefix;
+        public FtpProducer tempPrefix(String tempPrefix) {
+            this.tempPrefix = tempPrefix;
+            return (FtpProducer) this;
+        }
+
         /**
          * Used to specify if a null body is allowed during file writing. If set
          * to true then an empty file will be created, when set to false, and
@@ -1682,19 +2233,32 @@ public class FtpEndpoint {
          * file will be truncated, and if set to append the file will remain
          * unchanged. The option is a boolean type.
          */
-        private Boolean allowNullBody;
+        public FtpProducer allowNullBody(boolean allowNullBody) {
+            this.allowNullBody = allowNullBody;
+            return (FtpProducer) this;
+        }
+
         /**
          * Allows you to set chmod on the stored file. For example chmod=640.
          * The option is a java.lang.String type.
          */
-        private String chmod;
+        public FtpProducer chmod(String chmod) {
+            this.chmod = chmod;
+            return (FtpProducer) this;
+        }
+
         /**
          * Whether or not to disconnect from remote FTP server right after a
          * Batch upload is complete. disconnectOnBatchComplete will only
          * disconnect the current connection to the FTP server. The option is a
          * boolean type.
          */
-        private Boolean disconnectOnBatchComplete;
+        public FtpProducer disconnectOnBatchComplete(
+                boolean disconnectOnBatchComplete) {
+            this.disconnectOnBatchComplete = disconnectOnBatchComplete;
+            return (FtpProducer) this;
+        }
+
         /**
          * Whether or not to eagerly delete any existing target file. This
          * option only applies when you use fileExists=Override and the
@@ -1710,7 +2274,11 @@ public class FtpEndpoint {
          * an existing file existed, if its true, then the existing file is
          * deleted before the move operation. The option is a boolean type.
          */
-        private Boolean eagerDeleteTargetFile;
+        public FtpProducer eagerDeleteTargetFile(boolean eagerDeleteTargetFile) {
+            this.eagerDeleteTargetFile = eagerDeleteTargetFile;
+            return (FtpProducer) this;
+        }
+
         /**
          * Will keep the last modified timestamp from the source file (if any).
          * Will use the Exchange.FILE_LAST_MODIFIED header to located the
@@ -1720,7 +2288,11 @@ public class FtpEndpoint {
          * only applies to the file producer. You cannot use this option with
          * any of the ftp producers. The option is a boolean type.
          */
-        private Boolean keepLastModified;
+        public FtpProducer keepLastModified(boolean keepLastModified) {
+            this.keepLastModified = keepLastModified;
+            return (FtpProducer) this;
+        }
+
         /**
          * Strategy (Custom Strategy) used to move file with special naming
          * token to use when fileExist=Move is configured. By default, there is
@@ -1729,7 +2301,12 @@ public class FtpEndpoint {
          * org.apache.camel.component.file.strategy.FileMoveExistingStrategy
          * type.
          */
-        private Object moveExistingFileStrategy;
+        public FtpProducer moveExistingFileStrategy(
+                Object moveExistingFileStrategy) {
+            this.moveExistingFileStrategy = moveExistingFileStrategy;
+            return (FtpProducer) this;
+        }
+
         /**
          * Whether to send a noop command as a pre-write check before uploading
          * files to the FTP server. This is enabled by default as a validation
@@ -1737,7 +2314,10 @@ public class FtpEndpoint {
          * to be able to upload the file. However if this causes problems, you
          * can turn this option off. The option is a boolean type.
          */
-        private Boolean sendNoop;
+        public FtpProducer sendNoop(boolean sendNoop) {
+            this.sendNoop = sendNoop;
+            return (FtpProducer) this;
+        }
 
         public GenericFileExist getFileExist() {
             return fileExist;

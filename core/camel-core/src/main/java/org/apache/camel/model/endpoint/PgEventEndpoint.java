@@ -30,50 +30,97 @@ import org.apache.camel.spi.ExceptionHandler;
 public class PgEventEndpoint {
 
 
-    public static class PgEventCommon extends EndpointConfiguration {
+    public static class PgEventCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private String database;
+        private String channel;
+        private Object datasource;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String pass;
+        private String user;
+
         /**
          * To connect using hostname and port to the database. The option is a
          * java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * To connect using hostname and port to the database. The option is a
          * java.lang.Integer type.
          */
-        private Integer port;
+        public T port(Integer port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * The database name. The option is a java.lang.String type.
          */
-        private String database;
+        public T database(String database) {
+            this.database = database;
+            return (T) this;
+        }
+
         /**
          * The channel name. The option is a java.lang.String type.
          */
-        private String channel;
+        public T channel(String channel) {
+            this.channel = channel;
+            return (T) this;
+        }
+
         /**
          * To connect using the given javax.sql.DataSource instead of using
          * hostname and port. The option is a javax.sql.DataSource type.
          */
-        private Object datasource;
+        public T datasource(Object datasource) {
+            this.datasource = datasource;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Password for login. The option is a java.lang.String type.
          */
-        private String pass;
+        public T pass(String pass) {
+            this.pass = pass;
+            return (T) this;
+        }
+
         /**
          * Username for login. The option is a java.lang.String type.
          */
-        private String user;
+        public T user(String user) {
+            this.user = user;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -148,7 +195,13 @@ public class PgEventEndpoint {
         }
     }
 
-    public static class PgEventConsumer extends PgEventCommon {
+    public static class PgEventConsumer
+            extends
+                PgEventCommon<PgEventConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -158,7 +211,11 @@ public class PgEventEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public PgEventConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (PgEventConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -166,12 +223,20 @@ public class PgEventEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public PgEventConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (PgEventConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public PgEventConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (PgEventConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -198,6 +263,8 @@ public class PgEventEndpoint {
         }
     }
 
-    public static class PgEventProducer extends PgEventCommon {
+    public static class PgEventProducer
+            extends
+                PgEventCommon<PgEventProducer> {
     }
 }

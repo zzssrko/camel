@@ -28,19 +28,31 @@ import javax.annotation.Generated;
 public class RestSwaggerEndpoint {
 
 
-    public static class RestSwaggerCommon extends EndpointConfiguration {
+    public static class RestSwaggerCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public Boolean getBasicPropertyBinding() {
             return basicPropertyBinding;
@@ -59,10 +71,22 @@ public class RestSwaggerEndpoint {
         }
     }
 
-    public static class RestSwaggerConsumer extends RestSwaggerCommon {
+    public static class RestSwaggerConsumer
+            extends
+                RestSwaggerCommon<RestSwaggerConsumer> {
     }
 
-    public static class RestSwaggerProducer extends RestSwaggerCommon {
+    public static class RestSwaggerProducer
+            extends
+                RestSwaggerCommon<RestSwaggerProducer> {
+        private URI specificationUri;
+        private String operationId;
+        private String basePath;
+        private String componentName;
+        private String consumes;
+        private String host;
+        private String produces;
+
         /**
          * Path to the Swagger specification file. The scheme, host base path
          * are taken from this specification, but these can be overridden with
@@ -79,18 +103,30 @@ public class RestSwaggerEndpoint {
          * properties). How to do that consult the JDK documentation for
          * UrlHandler. The option is a java.net.URI type.
          */
-        private URI specificationUri;
+        public RestSwaggerProducer specificationUri(URI specificationUri) {
+            this.specificationUri = specificationUri;
+            return (RestSwaggerProducer) this;
+        }
+
         /**
          * ID of the operation from the Swagger specification. The option is a
          * java.lang.String type.
          */
-        private String operationId;
+        public RestSwaggerProducer operationId(String operationId) {
+            this.operationId = operationId;
+            return (RestSwaggerProducer) this;
+        }
+
         /**
          * API basePath, for example /v2. Default is unset, if set overrides the
          * value present in Swagger specification and in the component
          * configuration. The option is a java.lang.String type.
          */
-        private String basePath;
+        public RestSwaggerProducer basePath(String basePath) {
+            this.basePath = basePath;
+            return (RestSwaggerProducer) this;
+        }
+
         /**
          * Name of the Camel component that will perform the requests. The
          * compnent must be present in Camel registry and it must implement
@@ -99,7 +135,11 @@ public class RestSwaggerEndpoint {
          * SPI. Overrides component configuration. The option is a
          * java.lang.String type.
          */
-        private String componentName;
+        public RestSwaggerProducer componentName(String componentName) {
+            this.componentName = componentName;
+            return (RestSwaggerProducer) this;
+        }
+
         /**
          * What payload type this component capable of consuming. Could be one
          * type, like application/json or multiple types as application/json,
@@ -108,7 +148,11 @@ public class RestSwaggerEndpoint {
          * Swagger specification and. in the component configuration. The option
          * is a java.lang.String type.
          */
-        private String consumes;
+        public RestSwaggerProducer consumes(String consumes) {
+            this.consumes = consumes;
+            return (RestSwaggerProducer) this;
+        }
+
         /**
          * Scheme hostname and port to direct the HTTP requests to in the form
          * of https://hostname:port. Can be configured at the endpoint,
@@ -119,7 +163,11 @@ public class RestSwaggerEndpoint {
          * specification, RestConfiguration. Overrides all other configuration.
          * The option is a java.lang.String type.
          */
-        private String host;
+        public RestSwaggerProducer host(String host) {
+            this.host = host;
+            return (RestSwaggerProducer) this;
+        }
+
         /**
          * What payload type this component is producing. For example
          * application/json according to the RFC7231. This equates to the value
@@ -127,7 +175,10 @@ public class RestSwaggerEndpoint {
          * the Swagger specification. Overrides all other configuration. The
          * option is a java.lang.String type.
          */
-        private String produces;
+        public RestSwaggerProducer produces(String produces) {
+            this.produces = produces;
+            return (RestSwaggerProducer) this;
+        }
 
         public URI getSpecificationUri() {
             return specificationUri;

@@ -29,44 +29,81 @@ import org.apache.camel.spi.ExceptionHandler;
 public class NsqEndpoint {
 
 
-    public static class NsqCommon extends EndpointConfiguration {
+    public static class NsqCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String servers;
+        private String topic;
+        private String userAgent;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Boolean secure;
+        private Object sslContextParameters;
+
         /**
          * The hostnames of one or more nsqlookupd servers (consumer) or nsqd
          * servers (producer). The option is a java.lang.String type.
          */
-        private String servers;
+        public T servers(String servers) {
+            this.servers = servers;
+            return (T) this;
+        }
+
         /**
          * The name of topic we want to use. The option is a java.lang.String
          * type.
          */
-        private String topic;
+        public T topic(String topic) {
+            this.topic = topic;
+            return (T) this;
+        }
+
         /**
          * A String to identify the kind of client. The option is a
          * java.lang.String type.
          */
-        private String userAgent;
+        public T userAgent(String userAgent) {
+            this.userAgent = userAgent;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Set secure option indicating TLS is required. The option is a boolean
          * type.
          */
-        private Boolean secure;
+        public T secure(boolean secure) {
+            this.secure = secure;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
 
         public String getServers() {
             return servers;
@@ -125,13 +162,28 @@ public class NsqEndpoint {
         }
     }
 
-    public static class NsqConsumer extends NsqCommon {
+    public static class NsqConsumer extends NsqCommon<NsqConsumer> {
+        private Boolean autoFinish;
+        private Boolean bridgeErrorHandler;
+        private String channel;
+        private Long lookupInterval;
+        private Integer lookupServerPort;
+        private Long messageTimeout;
+        private Integer poolSize;
+        private Long requeueInterval;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Automatically finish the NSQ message when it is retrieved from the
          * quese and before the Exchange is processed. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean autoFinish;
+        public NsqConsumer autoFinish(Boolean autoFinish) {
+            this.autoFinish = autoFinish;
+            return (NsqConsumer) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -141,32 +193,60 @@ public class NsqEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public NsqConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (NsqConsumer) this;
+        }
+
         /**
          * The name of channel we want to use. The option is a java.lang.String
          * type.
          */
-        private String channel;
+        public NsqConsumer channel(String channel) {
+            this.channel = channel;
+            return (NsqConsumer) this;
+        }
+
         /**
          * The lookup retry interval. The option is a long type.
          */
-        private Long lookupInterval;
+        public NsqConsumer lookupInterval(long lookupInterval) {
+            this.lookupInterval = lookupInterval;
+            return (NsqConsumer) this;
+        }
+
         /**
          * The port of the nsqdlookupd server. The option is a int type.
          */
-        private Integer lookupServerPort;
+        public NsqConsumer lookupServerPort(int lookupServerPort) {
+            this.lookupServerPort = lookupServerPort;
+            return (NsqConsumer) this;
+        }
+
         /**
          * The NSQ message timeout for a consumer. The option is a long type.
          */
-        private Long messageTimeout;
+        public NsqConsumer messageTimeout(long messageTimeout) {
+            this.messageTimeout = messageTimeout;
+            return (NsqConsumer) this;
+        }
+
         /**
          * Consumer pool size. The option is a int type.
          */
-        private Integer poolSize;
+        public NsqConsumer poolSize(int poolSize) {
+            this.poolSize = poolSize;
+            return (NsqConsumer) this;
+        }
+
         /**
          * The requeue interval. The option is a long type.
          */
-        private Long requeueInterval;
+        public NsqConsumer requeueInterval(long requeueInterval) {
+            this.requeueInterval = requeueInterval;
+            return (NsqConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -174,12 +254,19 @@ public class NsqEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public NsqConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (NsqConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public NsqConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (NsqConsumer) this;
+        }
 
         public Boolean getAutoFinish() {
             return autoFinish;
@@ -262,11 +349,16 @@ public class NsqEndpoint {
         }
     }
 
-    public static class NsqProducer extends NsqCommon {
+    public static class NsqProducer extends NsqCommon<NsqProducer> {
+        private Integer port;
+
         /**
          * The port of the nsqd server. The option is a int type.
          */
-        private Integer port;
+        public NsqProducer port(int port) {
+            this.port = port;
+            return (NsqProducer) this;
+        }
 
         public Integer getPort() {
             return port;

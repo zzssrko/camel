@@ -30,33 +30,73 @@ import org.apache.camel.spi.ExceptionHandler;
 public class MllpEndpoint {
 
 
-    public static class MllpCommon extends EndpointConfiguration {
+    public static class MllpCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String hostname;
+        private Integer port;
+        private Boolean autoAck;
+        @Deprecated
+        private Boolean bufferWrites;
+        private Boolean hl7Headers;
+        private Boolean requireEndOfData;
+        private Boolean stringPayload;
+        private Boolean validatePayload;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private Integer idleTimeout;
+        private Integer receiveBufferSize;
+        private Integer sendBufferSize;
+        private Integer readTimeout;
+        private Integer receiveTimeout;
+        private String charsetName;
+
         /**
          * Hostname or IP for connection for the TCP connection. The default
          * value is null, which means any local IP address. The option is a
          * java.lang.String type.
          */
-        private String hostname;
+        public T hostname(String hostname) {
+            this.hostname = hostname;
+            return (T) this;
+        }
+
         /**
          * Port number for the TCP connection. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Enable/Disable the automatic generation of a MLLP Acknowledgement
          * MLLP Consumers only. The option is a boolean type.
          */
-        private Boolean autoAck;
+        public T autoAck(boolean autoAck) {
+            this.autoAck = autoAck;
+            return (T) this;
+        }
+
         /**
          * Enable/Disable the buffering of HL7 payloads before writing to the
          * socket. The option is a boolean type.
          */
         @Deprecated
-        private Boolean bufferWrites;
+        public T bufferWrites(boolean bufferWrites) {
+            this.bufferWrites = bufferWrites;
+            return (T) this;
+        }
+
         /**
          * Enable/Disable the automatic generation of message headers from the
          * HL7 Message MLLP Consumers only. The option is a boolean type.
          */
-        private Boolean hl7Headers;
+        public T hl7Headers(boolean hl7Headers) {
+            this.hl7Headers = hl7Headers;
+            return (T) this;
+        }
+
         /**
          * Enable/Disable strict compliance to the MLLP standard. The MLLP
          * standard specifies START_OF_BLOCKhl7 payloadEND_OF_BLOCKEND_OF_DATA,
@@ -64,7 +104,11 @@ public class MllpEndpoint {
          * setting controls whether or not the final END_OF_DATA byte is
          * required or optional. The option is a boolean type.
          */
-        private Boolean requireEndOfData;
+        public T requireEndOfData(boolean requireEndOfData) {
+            this.requireEndOfData = requireEndOfData;
+            return (T) this;
+        }
+
         /**
          * Enable/Disable converting the payload to a String. If enabled, HL7
          * Payloads received from external systems will be validated converted
@@ -74,7 +118,11 @@ public class MllpEndpoint {
          * character set. If MSH-18 is not set, then the default ISO-8859-1
          * character set will be use. The option is a boolean type.
          */
-        private Boolean stringPayload;
+        public T stringPayload(boolean stringPayload) {
+            this.stringPayload = stringPayload;
+            return (T) this;
+        }
+
         /**
          * Enable/Disable the validation of HL7 Payloads If enabled, HL7
          * Payloads received from external systems will be validated (see
@@ -84,51 +132,86 @@ public class MllpEndpoint {
          * MllpInvalidAcknowledgementException will be thrown. The option is a
          * boolean type.
          */
-        private Boolean validatePayload;
+        public T validatePayload(boolean validatePayload) {
+            this.validatePayload = validatePayload;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used (this
          * component only supports synchronous operations). The option is a
          * boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The approximate idle time allowed before the Client TCP Connection
          * will be reset. A null value or a value less than or equal to zero
          * will disable the idle timeout. The option is a java.lang.Integer
          * type.
          */
-        private Integer idleTimeout;
+        public T idleTimeout(Integer idleTimeout) {
+            this.idleTimeout = idleTimeout;
+            return (T) this;
+        }
+
         /**
          * Sets the SO_RCVBUF option to the specified value (in bytes). The
          * option is a java.lang.Integer type.
          */
-        private Integer receiveBufferSize;
+        public T receiveBufferSize(Integer receiveBufferSize) {
+            this.receiveBufferSize = receiveBufferSize;
+            return (T) this;
+        }
+
         /**
          * Sets the SO_SNDBUF option to the specified value (in bytes). The
          * option is a java.lang.Integer type.
          */
-        private Integer sendBufferSize;
+        public T sendBufferSize(Integer sendBufferSize) {
+            this.sendBufferSize = sendBufferSize;
+            return (T) this;
+        }
+
         /**
          * The SO_TIMEOUT value (in milliseconds) used after the start of an
          * MLLP frame has been received. The option is a int type.
          */
-        private Integer readTimeout;
+        public T readTimeout(int readTimeout) {
+            this.readTimeout = readTimeout;
+            return (T) this;
+        }
+
         /**
          * The SO_TIMEOUT value (in milliseconds) used when waiting for the
          * start of an MLLP frame. The option is a int type.
          */
-        private Integer receiveTimeout;
+        public T receiveTimeout(int receiveTimeout) {
+            this.receiveTimeout = receiveTimeout;
+            return (T) this;
+        }
+
         /**
          * Set the CamelCharsetName property on the exchange. The option is a
          * java.lang.String type.
          */
-        private String charsetName;
+        public T charsetName(String charsetName) {
+            this.charsetName = charsetName;
+            return (T) this;
+        }
 
         public String getHostname() {
             return hostname;
@@ -261,7 +344,20 @@ public class MllpEndpoint {
         }
     }
 
-    public static class MllpConsumer extends MllpCommon {
+    public static class MllpConsumer extends MllpCommon<MllpConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private Integer backlog;
+        private Boolean lenientBind;
+        private Integer maxConcurrentConsumers;
+        private Boolean reuseAddress;
+        private Integer acceptTimeout;
+        private Integer bindRetryInterval;
+        private Integer bindTimeout;
+        @Deprecated
+        private Integer maxReceiveTimeouts;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -271,7 +367,11 @@ public class MllpEndpoint {
          * with exceptions by logging them at WARN or ERROR level and ignored.
          * The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public MllpConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (MllpConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -279,60 +379,99 @@ public class MllpEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public MllpConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (MllpConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public MllpConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (MllpConsumer) this;
+        }
+
         /**
          * The maximum queue length for incoming connection indications (a
          * request to connect) is set to the backlog parameter. If a connection
          * indication arrives when the queue is full, the connection is refused.
          * The option is a java.lang.Integer type.
          */
-        private Integer backlog;
+        public MllpConsumer backlog(Integer backlog) {
+            this.backlog = backlog;
+            return (MllpConsumer) this;
+        }
+
         /**
          * TCP Server Only - Allow the endpoint to start before the TCP
          * ServerSocket is bound. In some environments, it may be desirable to
          * allow the endpoint to start before the TCP ServerSocket is bound. The
          * option is a boolean type.
          */
-        private Boolean lenientBind;
+        public MllpConsumer lenientBind(boolean lenientBind) {
+            this.lenientBind = lenientBind;
+            return (MllpConsumer) this;
+        }
+
         /**
          * The maximum number of concurrent MLLP Consumer connections that will
          * be allowed. If a new connection is received and the maximum is number
          * are already established, the new connection will be reset
          * immediately. The option is a int type.
          */
-        private Integer maxConcurrentConsumers;
+        public MllpConsumer maxConcurrentConsumers(int maxConcurrentConsumers) {
+            this.maxConcurrentConsumers = maxConcurrentConsumers;
+            return (MllpConsumer) this;
+        }
+
         /**
          * Enable/disable the SO_REUSEADDR socket option. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean reuseAddress;
+        public MllpConsumer reuseAddress(Boolean reuseAddress) {
+            this.reuseAddress = reuseAddress;
+            return (MllpConsumer) this;
+        }
+
         /**
          * Timeout (in milliseconds) while waiting for a TCP connection TCP
          * Server Only. The option is a int type.
          */
-        private Integer acceptTimeout;
+        public MllpConsumer acceptTimeout(int acceptTimeout) {
+            this.acceptTimeout = acceptTimeout;
+            return (MllpConsumer) this;
+        }
+
         /**
          * TCP Server Only - The number of milliseconds to wait between bind
          * attempts. The option is a int type.
          */
-        private Integer bindRetryInterval;
+        public MllpConsumer bindRetryInterval(int bindRetryInterval) {
+            this.bindRetryInterval = bindRetryInterval;
+            return (MllpConsumer) this;
+        }
+
         /**
          * TCP Server Only - The number of milliseconds to retry binding to a
          * server port. The option is a int type.
          */
-        private Integer bindTimeout;
+        public MllpConsumer bindTimeout(int bindTimeout) {
+            this.bindTimeout = bindTimeout;
+            return (MllpConsumer) this;
+        }
+
         /**
          * The maximum number of timeouts (specified by receiveTimeout) allowed
          * before the TCP Connection will be reset. The option is a
          * java.lang.Integer type.
          */
         @Deprecated
-        private Integer maxReceiveTimeouts;
+        public MllpConsumer maxReceiveTimeouts(Integer maxReceiveTimeouts) {
+            this.maxReceiveTimeouts = maxReceiveTimeouts;
+            return (MllpConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -425,22 +564,37 @@ public class MllpEndpoint {
         }
     }
 
-    public static class MllpProducer extends MllpCommon {
+    public static class MllpProducer extends MllpCommon<MllpProducer> {
+        private Integer connectTimeout;
+        private Boolean keepAlive;
+        private Boolean tcpNoDelay;
+
         /**
          * Timeout (in milliseconds) for establishing for a TCP connection TCP
          * Client only. The option is a int type.
          */
-        private Integer connectTimeout;
+        public MllpProducer connectTimeout(int connectTimeout) {
+            this.connectTimeout = connectTimeout;
+            return (MllpProducer) this;
+        }
+
         /**
          * Enable/disable the SO_KEEPALIVE socket option. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean keepAlive;
+        public MllpProducer keepAlive(Boolean keepAlive) {
+            this.keepAlive = keepAlive;
+            return (MllpProducer) this;
+        }
+
         /**
          * Enable/disable the TCP_NODELAY socket option. The option is a
          * java.lang.Boolean type.
          */
-        private Boolean tcpNoDelay;
+        public MllpProducer tcpNoDelay(Boolean tcpNoDelay) {
+            this.tcpNoDelay = tcpNoDelay;
+            return (MllpProducer) this;
+        }
 
         public Integer getConnectTimeout() {
             return connectTimeout;

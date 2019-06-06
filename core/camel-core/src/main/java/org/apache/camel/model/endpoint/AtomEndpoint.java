@@ -36,67 +36,124 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class AtomEndpoint {
 
 
-    public static class AtomCommon extends EndpointConfiguration {
+    public static class AtomCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String feedUri;
+        private Boolean feedHeader;
+        private Boolean filter;
+        private Date lastUpdate;
+        private String password;
+        private Boolean sortEntries;
+        private Boolean splitEntries;
+        private Boolean throttleEntries;
+        private String username;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The URI to the feed to poll. The option is a java.lang.String type.
          */
-        private String feedUri;
+        public T feedUri(String feedUri) {
+            this.feedUri = feedUri;
+            return (T) this;
+        }
+
         /**
          * Sets whether to add the feed object as a header. The option is a
          * boolean type.
          */
-        private Boolean feedHeader;
+        public T feedHeader(boolean feedHeader) {
+            this.feedHeader = feedHeader;
+            return (T) this;
+        }
+
         /**
          * Sets whether to use filtering or not of the entries. The option is a
          * boolean type.
          */
-        private Boolean filter;
+        public T filter(boolean filter) {
+            this.filter = filter;
+            return (T) this;
+        }
+
         /**
          * Sets the timestamp to be used for filtering entries from the atom
          * feeds. This options is only in conjunction with the splitEntries. The
          * option is a java.util.Date type.
          */
-        private Date lastUpdate;
+        public T lastUpdate(Date lastUpdate) {
+            this.lastUpdate = lastUpdate;
+            return (T) this;
+        }
+
         /**
          * Sets the password to be used for basic authentication when polling
          * from a HTTP feed. The option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Sets whether to sort entries by published date. Only works when
          * splitEntries = true. The option is a boolean type.
          */
-        private Boolean sortEntries;
+        public T sortEntries(boolean sortEntries) {
+            this.sortEntries = sortEntries;
+            return (T) this;
+        }
+
         /**
          * Sets whether or not entries should be sent individually or whether
          * the entire feed should be sent as a single message. The option is a
          * boolean type.
          */
-        private Boolean splitEntries;
+        public T splitEntries(boolean splitEntries) {
+            this.splitEntries = splitEntries;
+            return (T) this;
+        }
+
         /**
          * Sets whether all entries identified in a single feed poll should be
          * delivered immediately. If true, only one entry is processed per
          * consumer.delay. Only applicable when splitEntries = true. The option
          * is a boolean type.
          */
-        private Boolean throttleEntries;
+        public T throttleEntries(boolean throttleEntries) {
+            this.throttleEntries = throttleEntries;
+            return (T) this;
+        }
+
         /**
          * Sets the username to be used for basic authentication when polling
          * from a HTTP feed. The option is a java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getFeedUri() {
             return feedUri;
@@ -187,7 +244,26 @@ public class AtomEndpoint {
         }
     }
 
-    public static class AtomConsumer extends AtomCommon {
+    public static class AtomConsumer extends AtomCommon<AtomConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean sendEmptyMessageWhenIdle;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -197,13 +273,22 @@ public class AtomEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public AtomConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (AtomConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public AtomConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (AtomConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -211,12 +296,20 @@ public class AtomEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public AtomConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (AtomConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public AtomConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (AtomConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -224,18 +317,31 @@ public class AtomEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public AtomConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (AtomConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public AtomConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (AtomConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public AtomConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (AtomConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -244,66 +350,111 @@ public class AtomEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public AtomConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (AtomConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long delay;
+        public AtomConsumer delay(long delay) {
+            this.delay = delay;
+            return (AtomConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public AtomConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (AtomConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public AtomConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (AtomConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public AtomConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (AtomConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public AtomConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (AtomConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public AtomConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (AtomConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public AtomConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (AtomConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public AtomConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (AtomConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public AtomConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (AtomConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public AtomConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (AtomConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -452,6 +603,6 @@ public class AtomEndpoint {
         }
     }
 
-    public static class AtomProducer extends AtomCommon {
+    public static class AtomProducer extends AtomCommon<AtomProducer> {
     }
 }

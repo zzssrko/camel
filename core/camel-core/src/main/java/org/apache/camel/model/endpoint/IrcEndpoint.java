@@ -29,110 +29,227 @@ import org.apache.camel.spi.ExceptionHandler;
 public class IrcEndpoint {
 
 
-    public static class IrcCommon extends EndpointConfiguration {
+    public static class IrcCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String hostname;
+        private Integer port;
+        private Boolean autoRejoin;
+        private Long commandTimeout;
+        private Boolean namesOnJoin;
+        private String nickname;
+        @Deprecated
+        private Boolean persistent;
+        private String realname;
+        private Boolean basicPropertyBinding;
+        private Boolean colors;
+        private Boolean synchronous;
+        private Boolean onJoin;
+        private Boolean onKick;
+        private Boolean onMode;
+        private Boolean onNick;
+        private Boolean onPart;
+        private Boolean onPrivmsg;
+        private Boolean onQuit;
+        private Boolean onReply;
+        private Boolean onTopic;
+        private String nickPassword;
+        private String password;
+        private Object sslContextParameters;
+        private Object trustManager;
+        private String username;
+
         /**
          * Hostname for the IRC chat server. The option is a java.lang.String
          * type.
          */
-        private String hostname;
+        public T hostname(String hostname) {
+            this.hostname = hostname;
+            return (T) this;
+        }
+
         /**
          * Port number for the IRC chat server. If no port is configured then a
          * default port of either 6667, 6668 or 6669 is used. The option is a
          * int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Whether to auto re-join when being kicked. The option is a boolean
          * type.
          */
-        private Boolean autoRejoin;
+        public T autoRejoin(boolean autoRejoin) {
+            this.autoRejoin = autoRejoin;
+            return (T) this;
+        }
+
         /**
          * Delay in milliseconds before sending commands after the connection is
          * established. The option is a long type.
          */
-        private Long commandTimeout;
+        public T commandTimeout(long commandTimeout) {
+            this.commandTimeout = commandTimeout;
+            return (T) this;
+        }
+
         /**
          * Sends NAMES command to channel after joining it. onReply has to be
          * true in order to process the result which will have the header value
          * irc.num = '353'. The option is a boolean type.
          */
-        private Boolean namesOnJoin;
+        public T namesOnJoin(boolean namesOnJoin) {
+            this.namesOnJoin = namesOnJoin;
+            return (T) this;
+        }
+
         /**
          * The nickname used in chat. The option is a java.lang.String type.
          */
-        private String nickname;
+        public T nickname(String nickname) {
+            this.nickname = nickname;
+            return (T) this;
+        }
+
         /**
          * Use persistent messages. The option is a boolean type.
          */
         @Deprecated
-        private Boolean persistent;
+        public T persistent(boolean persistent) {
+            this.persistent = persistent;
+            return (T) this;
+        }
+
         /**
          * The IRC user's actual name. The option is a java.lang.String type.
          */
-        private String realname;
+        public T realname(String realname) {
+            this.realname = realname;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Whether or not the server supports color codes. The option is a
          * boolean type.
          */
-        private Boolean colors;
+        public T colors(boolean colors) {
+            this.colors = colors;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Handle user join events. The option is a boolean type.
          */
-        private Boolean onJoin;
+        public T onJoin(boolean onJoin) {
+            this.onJoin = onJoin;
+            return (T) this;
+        }
+
         /**
          * Handle kick events. The option is a boolean type.
          */
-        private Boolean onKick;
+        public T onKick(boolean onKick) {
+            this.onKick = onKick;
+            return (T) this;
+        }
+
         /**
          * Handle mode change events. The option is a boolean type.
          */
-        private Boolean onMode;
+        public T onMode(boolean onMode) {
+            this.onMode = onMode;
+            return (T) this;
+        }
+
         /**
          * Handle nickname change events. The option is a boolean type.
          */
-        private Boolean onNick;
+        public T onNick(boolean onNick) {
+            this.onNick = onNick;
+            return (T) this;
+        }
+
         /**
          * Handle user part events. The option is a boolean type.
          */
-        private Boolean onPart;
+        public T onPart(boolean onPart) {
+            this.onPart = onPart;
+            return (T) this;
+        }
+
         /**
          * Handle private message events. The option is a boolean type.
          */
-        private Boolean onPrivmsg;
+        public T onPrivmsg(boolean onPrivmsg) {
+            this.onPrivmsg = onPrivmsg;
+            return (T) this;
+        }
+
         /**
          * Handle user quit events. The option is a boolean type.
          */
-        private Boolean onQuit;
+        public T onQuit(boolean onQuit) {
+            this.onQuit = onQuit;
+            return (T) this;
+        }
+
         /**
          * Whether or not to handle general responses to commands or
          * informational messages. The option is a boolean type.
          */
-        private Boolean onReply;
+        public T onReply(boolean onReply) {
+            this.onReply = onReply;
+            return (T) this;
+        }
+
         /**
          * Handle topic change events. The option is a boolean type.
          */
-        private Boolean onTopic;
+        public T onTopic(boolean onTopic) {
+            this.onTopic = onTopic;
+            return (T) this;
+        }
+
         /**
          * Your IRC server nickname password. The option is a java.lang.String
          * type.
          */
-        private String nickPassword;
+        public T nickPassword(String nickPassword) {
+            this.nickPassword = nickPassword;
+            return (T) this;
+        }
+
         /**
          * The IRC server password. The option is a java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Used for configuring security using SSL. Reference to a
          * org.apache.camel.support.jsse.SSLContextParameters in the Registry.
@@ -141,16 +258,27 @@ public class IrcEndpoint {
          * option. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
+
         /**
          * The trust manager used to verify the SSL server's certificate. The
          * option is a org.schwering.irc.lib.ssl.SSLTrustManager type.
          */
-        private Object trustManager;
+        public T trustManager(Object trustManager) {
+            this.trustManager = trustManager;
+            return (T) this;
+        }
+
         /**
          * The IRC server user name. The option is a java.lang.String type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public String getHostname() {
             return hostname;
@@ -355,7 +483,11 @@ public class IrcEndpoint {
         }
     }
 
-    public static class IrcConsumer extends IrcCommon {
+    public static class IrcConsumer extends IrcCommon<IrcConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -365,7 +497,11 @@ public class IrcEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public IrcConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (IrcConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -373,12 +509,19 @@ public class IrcEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public IrcConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (IrcConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public IrcConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (IrcConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -405,6 +548,6 @@ public class IrcEndpoint {
         }
     }
 
-    public static class IrcProducer extends IrcCommon {
+    public static class IrcProducer extends IrcCommon<IrcProducer> {
     }
 }

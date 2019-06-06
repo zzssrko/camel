@@ -30,37 +30,73 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public class WsEndpoint {
 
 
-    public static class WsCommon extends EndpointConfiguration {
+    public static class WsCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private URI httpUri;
+        private Boolean bridgeEndpoint;
+        private Integer bufferSize;
+        private HeaderFilterStrategy headerFilterStrategy;
+        private Boolean throwExceptionOnFailure;
+        private Boolean transferException;
+        private Boolean basicPropertyBinding;
+        private Object binding;
+        private Object clientConfig;
+        private Map<String, Object> clientConfigOptions;
+        private Boolean synchronous;
+        private Map<String, Object> clientConfigRealmOptions;
+        private Object sslContextParameters;
+
         /**
          * The URI to use such as http://hostname:port/path. The option is a
          * java.net.URI type.
          */
-        private URI httpUri;
+        public T httpUri(URI httpUri) {
+            this.httpUri = httpUri;
+            return (T) this;
+        }
+
         /**
          * If the option is true, then the Exchange.HTTP_URI header is ignored,
          * and use the endpoint's URI for request. You may also set the
          * throwExceptionOnFailure to be false to let the AhcProducer send all
          * the fault response back. The option is a boolean type.
          */
-        private Boolean bridgeEndpoint;
+        public T bridgeEndpoint(boolean bridgeEndpoint) {
+            this.bridgeEndpoint = bridgeEndpoint;
+            return (T) this;
+        }
+
         /**
          * The initial in-memory buffer size used when transferring data between
          * Camel and AHC Client. The option is a int type.
          */
-        private Integer bufferSize;
+        public T bufferSize(int bufferSize) {
+            this.bufferSize = bufferSize;
+            return (T) this;
+        }
+
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
-        private HeaderFilterStrategy headerFilterStrategy;
+        public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.headerFilterStrategy = headerFilterStrategy;
+            return (T) this;
+        }
+
         /**
          * Option to disable throwing the AhcOperationFailedException in case of
          * failed responses from the remote server. This allows you to get all
          * responses regardless of the HTTP status code. The option is a boolean
          * type.
          */
-        private Boolean throwExceptionOnFailure;
+        public T throwExceptionOnFailure(boolean throwExceptionOnFailure) {
+            this.throwExceptionOnFailure = throwExceptionOnFailure;
+            return (T) this;
+        }
+
         /**
          * If enabled and an Exchange failed processing on the consumer side,
          * and if the caused Exception was send back serialized in the response
@@ -73,43 +109,72 @@ public class WsEndpoint {
          * to Java and that can be a potential security risk. The option is a
          * boolean type.
          */
-        private Boolean transferException;
+        public T transferException(boolean transferException) {
+            this.transferException = transferException;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a custom AhcBinding which allows to control how to bind
          * between AHC and Camel. The option is a
          * org.apache.camel.component.ahc.AhcBinding type.
          */
-        private Object binding;
+        public T binding(Object binding) {
+            this.binding = binding;
+            return (T) this;
+        }
+
         /**
          * To configure the AsyncHttpClient to use a custom
          * com.ning.http.client.AsyncHttpClientConfig instance. The option is a
          * org.asynchttpclient.AsyncHttpClientConfig type.
          */
-        private Object clientConfig;
+        public T clientConfig(Object clientConfig) {
+            this.clientConfig = clientConfig;
+            return (T) this;
+        }
+
         /**
          * To configure the AsyncHttpClientConfig using the key/values from the
          * Map. The option is a java.util.Map<java.lang.String,java.lang.Object>
          * type.
          */
-        private Map<String, Object> clientConfigOptions;
+        public T clientConfigOptions(Map<String, Object> clientConfigOptions) {
+            this.clientConfigOptions = clientConfigOptions;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * To configure the AsyncHttpClientConfig Realm using the key/values
          * from the Map. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> clientConfigRealmOptions;
+        public T clientConfigRealmOptions(
+                Map<String, Object> clientConfigRealmOptions) {
+            this.clientConfigRealmOptions = clientConfigRealmOptions;
+            return (T) this;
+        }
+
         /**
          * Reference to a org.apache.camel.support.jsse.SSLContextParameters in
          * the Registry. This reference overrides any configured
@@ -119,7 +184,10 @@ public class WsEndpoint {
          * clientConfig option at the endpoint or component level. The option is
          * a org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
 
         public URI getHttpUri() {
             return httpUri;
@@ -229,12 +297,17 @@ public class WsEndpoint {
         }
     }
 
-    public static class WsConsumer extends WsCommon {
+    public static class WsConsumer extends WsCommon<WsConsumer> {
+        private Boolean sendMessageOnError;
+
         /**
          * Whether to send an message if the web-socket listener received an
          * error. The option is a boolean type.
          */
-        private Boolean sendMessageOnError;
+        public WsConsumer sendMessageOnError(boolean sendMessageOnError) {
+            this.sendMessageOnError = sendMessageOnError;
+            return (WsConsumer) this;
+        }
 
         public Boolean getSendMessageOnError() {
             return sendMessageOnError;
@@ -245,23 +318,38 @@ public class WsEndpoint {
         }
     }
 
-    public static class WsProducer extends WsCommon {
+    public static class WsProducer extends WsCommon<WsProducer> {
+        private Boolean useStreaming;
+        private Boolean connectionClose;
+        private Object cookieHandler;
+
         /**
          * To enable streaming to send data as multiple text fragments. The
          * option is a boolean type.
          */
-        private Boolean useStreaming;
+        public WsProducer useStreaming(boolean useStreaming) {
+            this.useStreaming = useStreaming;
+            return (WsProducer) this;
+        }
+
         /**
          * Define if the Connection Close header has to be added to HTTP
          * Request. This parameter is false by default. The option is a boolean
          * type.
          */
-        private Boolean connectionClose;
+        public WsProducer connectionClose(boolean connectionClose) {
+            this.connectionClose = connectionClose;
+            return (WsProducer) this;
+        }
+
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
          */
-        private Object cookieHandler;
+        public WsProducer cookieHandler(Object cookieHandler) {
+            this.cookieHandler = cookieHandler;
+            return (WsProducer) this;
+        }
 
         public Boolean getUseStreaming() {
             return useStreaming;

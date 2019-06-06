@@ -29,67 +29,129 @@ import org.apache.camel.spi.ExceptionHandler;
 public class AvroEndpoint {
 
 
-    public static class AvroCommon extends EndpointConfiguration {
+    public static class AvroCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private AvroTransport transport;
+        private Integer port;
+        private String host;
+        private String messageName;
+        private Object protocol;
+        private String protocolClassName;
+        private String protocolLocation;
+        private Boolean reflectionProtocol;
+        private Boolean singleParameter;
+        private String uriAuthority;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Transport to use, can be either http or netty. The option is a
          * org.apache.camel.component.avro.AvroTransport type.
          */
-        private AvroTransport transport;
+        public T transport(AvroTransport transport) {
+            this.transport = transport;
+            return (T) this;
+        }
+
         /**
          * Port number to use. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Hostname to use. The option is a java.lang.String type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * The name of the message to send. The option is a java.lang.String
          * type.
          */
-        private String messageName;
+        public T messageName(String messageName) {
+            this.messageName = messageName;
+            return (T) this;
+        }
+
         /**
          * Avro protocol to use. The option is a org.apache.avro.Protocol type.
          */
-        private Object protocol;
+        public T protocol(Object protocol) {
+            this.protocol = protocol;
+            return (T) this;
+        }
+
         /**
          * Avro protocol to use defined by the FQN class name. The option is a
          * java.lang.String type.
          */
-        private String protocolClassName;
+        public T protocolClassName(String protocolClassName) {
+            this.protocolClassName = protocolClassName;
+            return (T) this;
+        }
+
         /**
          * Avro protocol location. The option is a java.lang.String type.
          */
-        private String protocolLocation;
+        public T protocolLocation(String protocolLocation) {
+            this.protocolLocation = protocolLocation;
+            return (T) this;
+        }
+
         /**
          * If protocol object provided is reflection protocol. Should be used
          * only with protocol parameter because for protocolClassName protocol
          * type will be auto detected. The option is a boolean type.
          */
-        private Boolean reflectionProtocol;
+        public T reflectionProtocol(boolean reflectionProtocol) {
+            this.reflectionProtocol = reflectionProtocol;
+            return (T) this;
+        }
+
         /**
          * If true, consumer parameter won't be wrapped into array. Will fail if
          * protocol specifies more then 1 parameter for the message. The option
          * is a boolean type.
          */
-        private Boolean singleParameter;
+        public T singleParameter(boolean singleParameter) {
+            this.singleParameter = singleParameter;
+            return (T) this;
+        }
+
         /**
          * Authority to use (username and password). The option is a
          * java.lang.String type.
          */
-        private String uriAuthority;
+        public T uriAuthority(String uriAuthority) {
+            this.uriAuthority = uriAuthority;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public AvroTransport getTransport() {
             return transport;
@@ -188,7 +250,11 @@ public class AvroEndpoint {
         }
     }
 
-    public static class AvroConsumer extends AvroCommon {
+    public static class AvroConsumer extends AvroCommon<AvroConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -198,7 +264,11 @@ public class AvroEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public AvroConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (AvroConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -206,12 +276,19 @@ public class AvroEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public AvroConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (AvroConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public AvroConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (AvroConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -238,7 +315,7 @@ public class AvroEndpoint {
         }
     }
 
-    public static class AvroProducer extends AvroCommon {
+    public static class AvroProducer extends AvroCommon<AvroProducer> {
     }
 
     public static enum AvroTransport {

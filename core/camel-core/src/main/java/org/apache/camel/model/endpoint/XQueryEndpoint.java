@@ -36,83 +36,161 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class XQueryEndpoint {
 
 
-    public static class XQueryCommon extends EndpointConfiguration {
+    public static class XQueryCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String resourceUri;
+        private Boolean allowStAX;
+        private String headerName;
+        private Map<String, String> namespacePrefixes;
+        private ResultFormat resultsFormat;
+        private Class<Object> resultType;
+        private Boolean stripsAllWhiteSpace;
+        private Boolean basicPropertyBinding;
+        private Object configuration;
+        private Map<String, Object> configurationProperties;
+        private Object moduleURIResolver;
+        private Map<String, Object> parameters;
+        private Properties properties;
+        private Object staticQueryContext;
+        private Boolean synchronous;
+
         /**
          * The name of the template to load from classpath or file system. The
          * option is a java.lang.String type.
          */
-        private String resourceUri;
+        public T resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return (T) this;
+        }
+
         /**
          * Whether to allow using StAX mode. The option is a boolean type.
          */
-        private Boolean allowStAX;
+        public T allowStAX(boolean allowStAX) {
+            this.allowStAX = allowStAX;
+            return (T) this;
+        }
+
         /**
          * To use a Camel Message header as the input source instead of Message
          * body. The option is a java.lang.String type.
          */
-        private String headerName;
+        public T headerName(String headerName) {
+            this.headerName = headerName;
+            return (T) this;
+        }
+
         /**
          * Allows to control which namespace prefixes to use for a set of
          * namespace mappings. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
-        private Map<String, String> namespacePrefixes;
+        public T namespacePrefixes(Map<String, String> namespacePrefixes) {
+            this.namespacePrefixes = namespacePrefixes;
+            return (T) this;
+        }
+
         /**
          * What output result to use. The option is a
          * org.apache.camel.component.xquery.ResultFormat type.
          */
-        private ResultFormat resultsFormat;
+        public T resultsFormat(ResultFormat resultsFormat) {
+            this.resultsFormat = resultsFormat;
+            return (T) this;
+        }
+
         /**
          * What output result to use defined as a class. The option is a
          * java.lang.Class<?> type.
          */
-        private Class<Object> resultType;
+        public T resultType(Class<Object> resultType) {
+            this.resultType = resultType;
+            return (T) this;
+        }
+
         /**
          * Whether to strip all whitespaces. The option is a boolean type.
          */
-        private Boolean stripsAllWhiteSpace;
+        public T stripsAllWhiteSpace(boolean stripsAllWhiteSpace) {
+            this.stripsAllWhiteSpace = stripsAllWhiteSpace;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a custom Saxon configuration. The option is a
          * net.sf.saxon.Configuration type.
          */
-        private Object configuration;
+        public T configuration(Object configuration) {
+            this.configuration = configuration;
+            return (T) this;
+        }
+
         /**
          * To set custom Saxon configuration properties. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> configurationProperties;
+        public T configurationProperties(
+                Map<String, Object> configurationProperties) {
+            this.configurationProperties = configurationProperties;
+            return (T) this;
+        }
+
         /**
          * To use the custom ModuleURIResolver. The option is a
          * net.sf.saxon.lib.ModuleURIResolver type.
          */
-        private Object moduleURIResolver;
+        public T moduleURIResolver(Object moduleURIResolver) {
+            this.moduleURIResolver = moduleURIResolver;
+            return (T) this;
+        }
+
         /**
          * Additional parameters. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> parameters;
+        public T parameters(Map<String, Object> parameters) {
+            this.parameters = parameters;
+            return (T) this;
+        }
+
         /**
          * Properties to configure the serialization parameters. The option is a
          * java.util.Properties type.
          */
-        private Properties properties;
+        public T properties(Properties properties) {
+            this.properties = properties;
+            return (T) this;
+        }
+
         /**
          * To use a custom Saxon StaticQueryContext. The option is a
          * net.sf.saxon.query.StaticQueryContext type.
          */
-        private Object staticQueryContext;
+        public T staticQueryContext(Object staticQueryContext) {
+            this.staticQueryContext = staticQueryContext;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getResourceUri() {
             return resourceUri;
@@ -236,7 +314,26 @@ public class XQueryEndpoint {
         }
     }
 
-    public static class XQueryConsumer extends XQueryCommon {
+    public static class XQueryConsumer extends XQueryCommon<XQueryConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean sendEmptyMessageWhenIdle;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -246,13 +343,22 @@ public class XQueryEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public XQueryConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public XQueryConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -260,12 +366,20 @@ public class XQueryEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public XQueryConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public XQueryConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -273,18 +387,31 @@ public class XQueryEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public XQueryConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public XQueryConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public XQueryConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -293,66 +420,111 @@ public class XQueryEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public XQueryConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long delay;
+        public XQueryConsumer delay(long delay) {
+            this.delay = delay;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public XQueryConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public XQueryConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public XQueryConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public XQueryConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public XQueryConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public XQueryConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public XQueryConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public XQueryConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (XQueryConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public XQueryConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (XQueryConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -501,7 +673,7 @@ public class XQueryEndpoint {
         }
     }
 
-    public static class XQueryProducer extends XQueryCommon {
+    public static class XQueryProducer extends XQueryCommon<XQueryProducer> {
     }
 
     public static enum ResultFormat {

@@ -30,23 +30,44 @@ import org.apache.camel.spi.ExceptionHandler;
 public class RestApiEndpoint {
 
 
-    public static class RestApiCommon extends EndpointConfiguration {
+    public static class RestApiCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String path;
+        private String contextIdPattern;
+        private String apiComponentName;
+        private String componentName;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The base path. The option is a java.lang.String type.
          */
-        private String path;
+        public T path(String path) {
+            this.path = path;
+            return (T) this;
+        }
+
         /**
          * Optional CamelContext id pattern to only allow Rest APIs from rest
          * services within CamelContext's which name matches the pattern. The
          * option is a java.lang.String type.
          */
-        private String contextIdPattern;
+        public T contextIdPattern(String contextIdPattern) {
+            this.contextIdPattern = contextIdPattern;
+            return (T) this;
+        }
+
         /**
          * The Camel Rest API component to use for generating the API of the
          * REST services, such as swagger. The option is a java.lang.String
          * type.
          */
-        private String apiComponentName;
+        public T apiComponentName(String apiComponentName) {
+            this.apiComponentName = apiComponentName;
+            return (T) this;
+        }
+
         /**
          * The Camel Rest component to use for the REST transport, such as
          * restlet, spark-rest. If no component has been explicit configured,
@@ -55,19 +76,30 @@ public class RestApiEndpoint {
          * is registered in the registry. If either one is found, then that is
          * being used. The option is a java.lang.String type.
          */
-        private String componentName;
+        public T componentName(String componentName) {
+            this.componentName = componentName;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getPath() {
             return path;
@@ -118,7 +150,13 @@ public class RestApiEndpoint {
         }
     }
 
-    public static class RestApiConsumer extends RestApiCommon {
+    public static class RestApiConsumer
+            extends
+                RestApiCommon<RestApiConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -128,7 +166,11 @@ public class RestApiEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public RestApiConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (RestApiConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -136,12 +178,20 @@ public class RestApiEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public RestApiConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (RestApiConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public RestApiConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (RestApiConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -168,6 +218,8 @@ public class RestApiEndpoint {
         }
     }
 
-    public static class RestApiProducer extends RestApiCommon {
+    public static class RestApiProducer
+            extends
+                RestApiCommon<RestApiProducer> {
     }
 }

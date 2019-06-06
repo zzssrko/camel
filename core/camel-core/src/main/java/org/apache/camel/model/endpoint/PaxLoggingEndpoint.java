@@ -30,25 +30,42 @@ import org.apache.camel.spi.ExceptionHandler;
 public class PaxLoggingEndpoint {
 
 
-    public static class PaxLoggingCommon extends EndpointConfiguration {
+    public static class PaxLoggingCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String appender;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Appender is the name of the pax appender that need to be configured
          * in the PaxLogging service configuration. The option is a
          * java.lang.String type.
          */
-        private String appender;
+        public T appender(String appender) {
+            this.appender = appender;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getAppender() {
             return appender;
@@ -75,7 +92,13 @@ public class PaxLoggingEndpoint {
         }
     }
 
-    public static class PaxLoggingConsumer extends PaxLoggingCommon {
+    public static class PaxLoggingConsumer
+            extends
+                PaxLoggingCommon<PaxLoggingConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -85,7 +108,11 @@ public class PaxLoggingEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public PaxLoggingConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (PaxLoggingConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -93,12 +120,21 @@ public class PaxLoggingEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public PaxLoggingConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (PaxLoggingConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public PaxLoggingConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (PaxLoggingConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -125,6 +161,8 @@ public class PaxLoggingEndpoint {
         }
     }
 
-    public static class PaxLoggingProducer extends PaxLoggingCommon {
+    public static class PaxLoggingProducer
+            extends
+                PaxLoggingCommon<PaxLoggingProducer> {
     }
 }

@@ -28,7 +28,17 @@ import javax.annotation.Generated;
 public class LdapEndpoint {
 
 
-    public static class LdapCommon extends EndpointConfiguration {
+    public static class LdapCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String dirContextName;
+        private String base;
+        private Integer pageSize;
+        private String returnedAttributes;
+        private String scope;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Name of either a javax.naming.directory.DirContext, or
          * java.util.Hashtable, or Map bean to lookup in the registry. If the
@@ -40,11 +50,19 @@ public class LdapEndpoint {
          * those situations it can be better to use java.util.Hashtable or Map
          * instead. The option is a java.lang.String type.
          */
-        private String dirContextName;
+        public T dirContextName(String dirContextName) {
+            this.dirContextName = dirContextName;
+            return (T) this;
+        }
+
         /**
          * The base DN for searches. The option is a java.lang.String type.
          */
-        private String base;
+        public T base(String base) {
+            this.base = base;
+            return (T) this;
+        }
+
         /**
          * When specified the ldap module uses paging to retrieve all results
          * (most LDAP Servers throw an exception when trying to retrieve more
@@ -53,29 +71,48 @@ public class LdapEndpoint {
          * (otherwise an exception is thrown). The option is a java.lang.Integer
          * type.
          */
-        private Integer pageSize;
+        public T pageSize(Integer pageSize) {
+            this.pageSize = pageSize;
+            return (T) this;
+        }
+
         /**
          * Comma-separated list of attributes that should be set in each entry
          * of the result. The option is a java.lang.String type.
          */
-        private String returnedAttributes;
+        public T returnedAttributes(String returnedAttributes) {
+            this.returnedAttributes = returnedAttributes;
+            return (T) this;
+        }
+
         /**
          * Specifies how deeply to search the tree of entries, starting at the
          * base DN. The option is a java.lang.String type.
          */
-        private String scope;
+        public T scope(String scope) {
+            this.scope = scope;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getDirContextName() {
             return dirContextName;
@@ -134,9 +171,9 @@ public class LdapEndpoint {
         }
     }
 
-    public static class LdapConsumer extends LdapCommon {
+    public static class LdapConsumer extends LdapCommon<LdapConsumer> {
     }
 
-    public static class LdapProducer extends LdapCommon {
+    public static class LdapProducer extends LdapCommon<LdapProducer> {
     }
 }

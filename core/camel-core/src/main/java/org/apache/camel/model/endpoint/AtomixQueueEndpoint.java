@@ -32,84 +32,161 @@ import org.apache.camel.spi.ExceptionHandler;
 public class AtomixQueueEndpoint {
 
 
-    public static class AtomixQueueCommon extends EndpointConfiguration {
+    public static class AtomixQueueCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String resourceName;
+        private Object atomix;
+        private String configurationUri;
+        private Object defaultAction;
+        private List<Object> nodes;
+        private String resultHeader;
+        private Class<Object> transport;
+        private Boolean basicPropertyBinding;
+        private Properties defaultResourceConfig;
+        private Properties defaultResourceOptions;
+        private Boolean ephemeral;
+        private ReadConsistency readConsistency;
+        private Map<String, Properties> resourceConfigs;
+        private Map<String, Properties> resourceOptions;
+        private Boolean synchronous;
+
         /**
          * The distributed resource name. The option is a java.lang.String type.
          */
-        private String resourceName;
+        public T resourceName(String resourceName) {
+            this.resourceName = resourceName;
+            return (T) this;
+        }
+
         /**
          * The Atomix instance to use. The option is a io.atomix.Atomix type.
          */
-        private Object atomix;
+        public T atomix(Object atomix) {
+            this.atomix = atomix;
+            return (T) this;
+        }
+
         /**
          * The Atomix configuration uri. The option is a java.lang.String type.
          */
-        private String configurationUri;
+        public T configurationUri(String configurationUri) {
+            this.configurationUri = configurationUri;
+            return (T) this;
+        }
+
         /**
          * The default action. The option is a
          * org.apache.camel.component.atomix.client.queue.AtomixQueue.Action
          * type.
          */
-        private Object defaultAction;
+        public T defaultAction(Object defaultAction) {
+            this.defaultAction = defaultAction;
+            return (T) this;
+        }
+
         /**
          * The address of the nodes composing the cluster. The option is a
          * java.lang.String type.
          */
-        private List<Object> nodes;
+        public T nodes(List<Object> nodes) {
+            this.nodes = nodes;
+            return (T) this;
+        }
+
         /**
          * The header that wil carry the result. The option is a
          * java.lang.String type.
          */
-        private String resultHeader;
+        public T resultHeader(String resultHeader) {
+            this.resultHeader = resultHeader;
+            return (T) this;
+        }
+
         /**
          * Sets the Atomix transport. The option is a
          * io.atomix.catalyst.transport.Transport type.
          */
-        private Class<Object> transport;
+        public T transport(Class<Object> transport) {
+            this.transport = transport;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * The cluster wide default resource configuration. The option is a
          * java.util.Properties type.
          */
-        private Properties defaultResourceConfig;
+        public T defaultResourceConfig(Properties defaultResourceConfig) {
+            this.defaultResourceConfig = defaultResourceConfig;
+            return (T) this;
+        }
+
         /**
          * The local default resource options. The option is a
          * java.util.Properties type.
          */
-        private Properties defaultResourceOptions;
+        public T defaultResourceOptions(Properties defaultResourceOptions) {
+            this.defaultResourceOptions = defaultResourceOptions;
+            return (T) this;
+        }
+
         /**
          * Sets if the local member should join groups as PersistentMember or
          * not. If set to ephemeral the local member will receive an auto
          * generated ID thus the local one is ignored. The option is a boolean
          * type.
          */
-        private Boolean ephemeral;
+        public T ephemeral(boolean ephemeral) {
+            this.ephemeral = ephemeral;
+            return (T) this;
+        }
+
         /**
          * The read consistency level. The option is a
          * io.atomix.resource.ReadConsistency type.
          */
-        private ReadConsistency readConsistency;
+        public T readConsistency(ReadConsistency readConsistency) {
+            this.readConsistency = readConsistency;
+            return (T) this;
+        }
+
         /**
          * Cluster wide resources configuration. The option is a
          * java.util.Map<java.lang.String,java.util.Properties> type.
          */
-        private Map<String, Properties> resourceConfigs;
+        public T resourceConfigs(Map<String, Properties> resourceConfigs) {
+            this.resourceConfigs = resourceConfigs;
+            return (T) this;
+        }
+
         /**
          * Local resources configurations. The option is a
          * java.util.Map<java.lang.String,java.util.Properties> type.
          */
-        private Map<String, Properties> resourceOptions;
+        public T resourceOptions(Map<String, Properties> resourceOptions) {
+            this.resourceOptions = resourceOptions;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getResourceName() {
             return resourceName;
@@ -232,7 +309,13 @@ public class AtomixQueueEndpoint {
         }
     }
 
-    public static class AtomixQueueConsumer extends AtomixQueueCommon {
+    public static class AtomixQueueConsumer
+            extends
+                AtomixQueueCommon<AtomixQueueConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -242,7 +325,11 @@ public class AtomixQueueEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public AtomixQueueConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (AtomixQueueConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -250,12 +337,21 @@ public class AtomixQueueEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public AtomixQueueConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (AtomixQueueConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public AtomixQueueConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (AtomixQueueConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -282,7 +378,9 @@ public class AtomixQueueEndpoint {
         }
     }
 
-    public static class AtomixQueueProducer extends AtomixQueueCommon {
+    public static class AtomixQueueProducer
+            extends
+                AtomixQueueCommon<AtomixQueueProducer> {
     }
 
     public static enum ReadConsistency {

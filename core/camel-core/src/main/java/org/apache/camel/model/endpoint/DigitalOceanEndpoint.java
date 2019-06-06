@@ -28,67 +28,129 @@ import javax.annotation.Generated;
 public class DigitalOceanEndpoint {
 
 
-    public static class DigitalOceanCommon extends EndpointConfiguration {
+    public static class DigitalOceanCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private DigitalOceanOperations operation;
+        private Integer page;
+        private Integer perPage;
+        private DigitalOceanResources resource;
+        private Boolean basicPropertyBinding;
+        private Object digitalOceanClient;
+        private Boolean synchronous;
+        private String httpProxyHost;
+        private String httpProxyPassword;
+        private Integer httpProxyPort;
+        private String httpProxyUser;
+        private String oAuthToken;
+
         /**
          * The operation to perform to the given resource. The option is a
          * org.apache.camel.component.digitalocean.constants.DigitalOceanOperations type.
          */
-        private DigitalOceanOperations operation;
+        public T operation(DigitalOceanOperations operation) {
+            this.operation = operation;
+            return (T) this;
+        }
+
         /**
          * Use for pagination. Force the page number. The option is a
          * java.lang.Integer type.
          */
-        private Integer page;
+        public T page(Integer page) {
+            this.page = page;
+            return (T) this;
+        }
+
         /**
          * Use for pagination. Set the number of item per request. The maximum
          * number of results per page is 200. The option is a java.lang.Integer
          * type.
          */
-        private Integer perPage;
+        public T perPage(Integer perPage) {
+            this.perPage = perPage;
+            return (T) this;
+        }
+
         /**
          * The DigitalOcean resource type on which perform the operation. The
          * option is a
          * org.apache.camel.component.digitalocean.constants.DigitalOceanResources type.
          */
-        private DigitalOceanResources resource;
+        public T resource(DigitalOceanResources resource) {
+            this.resource = resource;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a existing configured DigitalOceanClient as client. The option
          * is a com.myjeeva.digitalocean.impl.DigitalOceanClient type.
          */
-        private Object digitalOceanClient;
+        public T digitalOceanClient(Object digitalOceanClient) {
+            this.digitalOceanClient = digitalOceanClient;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Set a proxy host if needed. The option is a java.lang.String type.
          */
-        private String httpProxyHost;
+        public T httpProxyHost(String httpProxyHost) {
+            this.httpProxyHost = httpProxyHost;
+            return (T) this;
+        }
+
         /**
          * Set a proxy password if needed. The option is a java.lang.String
          * type.
          */
-        private String httpProxyPassword;
+        public T httpProxyPassword(String httpProxyPassword) {
+            this.httpProxyPassword = httpProxyPassword;
+            return (T) this;
+        }
+
         /**
          * Set a proxy port if needed. The option is a java.lang.Integer type.
          */
-        private Integer httpProxyPort;
+        public T httpProxyPort(Integer httpProxyPort) {
+            this.httpProxyPort = httpProxyPort;
+            return (T) this;
+        }
+
         /**
          * Set a proxy host if needed. The option is a java.lang.String type.
          */
-        private String httpProxyUser;
+        public T httpProxyUser(String httpProxyUser) {
+            this.httpProxyUser = httpProxyUser;
+            return (T) this;
+        }
+
         /**
          * DigitalOcean OAuth Token. The option is a java.lang.String type.
          */
-        private String oAuthToken;
+        public T oAuthToken(String oAuthToken) {
+            this.oAuthToken = oAuthToken;
+            return (T) this;
+        }
 
         public DigitalOceanOperations getOperation() {
             return operation;
@@ -187,10 +249,14 @@ public class DigitalOceanEndpoint {
         }
     }
 
-    public static class DigitalOceanConsumer extends DigitalOceanCommon {
+    public static class DigitalOceanConsumer
+            extends
+                DigitalOceanCommon<DigitalOceanConsumer> {
     }
 
-    public static class DigitalOceanProducer extends DigitalOceanCommon {
+    public static class DigitalOceanProducer
+            extends
+                DigitalOceanCommon<DigitalOceanProducer> {
     }
 
     public static enum DigitalOceanOperations {

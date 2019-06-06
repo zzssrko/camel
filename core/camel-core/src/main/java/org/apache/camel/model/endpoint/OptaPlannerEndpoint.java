@@ -29,29 +29,51 @@ import org.apache.camel.spi.ExceptionHandler;
 public class OptaPlannerEndpoint {
 
 
-    public static class OptaPlannerCommon extends EndpointConfiguration {
+    public static class OptaPlannerCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String configFile;
+        private String solverId;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Specifies the location to the solver file. The option is a
          * java.lang.String type.
          */
-        private String configFile;
+        public T configFile(String configFile) {
+            this.configFile = configFile;
+            return (T) this;
+        }
+
         /**
          * Specifies the solverId to user for the solver instance key. The
          * option is a java.lang.String type.
          */
-        private String solverId;
+        public T solverId(String solverId) {
+            this.solverId = solverId;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getConfigFile() {
             return configFile;
@@ -86,7 +108,13 @@ public class OptaPlannerEndpoint {
         }
     }
 
-    public static class OptaPlannerConsumer extends OptaPlannerCommon {
+    public static class OptaPlannerConsumer
+            extends
+                OptaPlannerCommon<OptaPlannerConsumer> {
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -96,7 +124,11 @@ public class OptaPlannerEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public OptaPlannerConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (OptaPlannerConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -104,12 +136,21 @@ public class OptaPlannerEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public OptaPlannerConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (OptaPlannerConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public OptaPlannerConsumer exchangePattern(
+                ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (OptaPlannerConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -136,17 +177,29 @@ public class OptaPlannerEndpoint {
         }
     }
 
-    public static class OptaPlannerProducer extends OptaPlannerCommon {
+    public static class OptaPlannerProducer
+            extends
+                OptaPlannerCommon<OptaPlannerProducer> {
+        private Boolean async;
+        private Integer threadPoolSize;
+
         /**
          * Specifies to perform operations in async mode. The option is a
          * boolean type.
          */
-        private Boolean async;
+        public OptaPlannerProducer async(boolean async) {
+            this.async = async;
+            return (OptaPlannerProducer) this;
+        }
+
         /**
          * Specifies the thread pool size to use when async is true. The option
          * is a int type.
          */
-        private Integer threadPoolSize;
+        public OptaPlannerProducer threadPoolSize(int threadPoolSize) {
+            this.threadPoolSize = threadPoolSize;
+            return (OptaPlannerProducer) this;
+        }
 
         public Boolean getAsync() {
             return async;

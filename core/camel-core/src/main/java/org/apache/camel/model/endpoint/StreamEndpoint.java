@@ -31,36 +31,68 @@ import org.apache.camel.spi.ExceptionHandler;
 public class StreamEndpoint {
 
 
-    public static class StreamCommon extends EndpointConfiguration {
+    public static class StreamCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String kind;
+        private String encoding;
+        private String fileName;
+        private String url;
+        private Boolean basicPropertyBinding;
+        private Integer connectTimeout;
+        private Map<String, Object> httpHeaders;
+        private Integer readTimeout;
+        private Boolean synchronous;
+
         /**
          * Kind of stream to use such as System.in or System.out. The option is
          * a java.lang.String type.
          */
-        private String kind;
+        public T kind(String kind) {
+            this.kind = kind;
+            return (T) this;
+        }
+
         /**
          * You can configure the encoding (is a charset name) to use text-based
          * streams (for example, message body is a String object). If not
          * provided, Camel uses the JVM default Charset. The option is a
          * java.lang.String type.
          */
-        private String encoding;
+        public T encoding(String encoding) {
+            this.encoding = encoding;
+            return (T) this;
+        }
+
         /**
          * When using the stream:file URI format, this option specifies the
          * filename to stream to/from. The option is a java.lang.String type.
          */
-        private String fileName;
+        public T fileName(String fileName) {
+            this.fileName = fileName;
+            return (T) this;
+        }
+
         /**
          * When using the stream:url URI format, this option specifies the URL
          * to stream to/from. The input/output stream will be opened using the
          * JDK URLConnection facility. The option is a java.lang.String type.
          */
-        private String url;
+        public T url(String url) {
+            this.url = url;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets a specified timeout value, in milliseconds, to be used when
          * opening a communications link to the resource referenced by this
@@ -69,12 +101,20 @@ public class StreamEndpoint {
          * of zero is interpreted as an infinite timeout. The option is a int
          * type.
          */
-        private Integer connectTimeout;
+        public T connectTimeout(int connectTimeout) {
+            this.connectTimeout = connectTimeout;
+            return (T) this;
+        }
+
         /**
          * Optional http headers to use in request when using HTTP URL. The
          * option is a java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> httpHeaders;
+        public T httpHeaders(Map<String, Object> httpHeaders) {
+            this.httpHeaders = httpHeaders;
+            return (T) this;
+        }
+
         /**
          * Sets the read timeout to a specified timeout, in milliseconds. A
          * non-zero value specifies the timeout when reading from Input stream
@@ -83,13 +123,20 @@ public class StreamEndpoint {
          * java.net.SocketTimeoutException is raised. A timeout of zero is
          * interpreted as an infinite timeout. The option is a int type.
          */
-        private Integer readTimeout;
+        public T readTimeout(int readTimeout) {
+            this.readTimeout = readTimeout;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getKind() {
             return kind;
@@ -164,7 +211,20 @@ public class StreamEndpoint {
         }
     }
 
-    public static class StreamConsumer extends StreamCommon {
+    public static class StreamConsumer extends StreamCommon<StreamConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean fileWatcher;
+        private Integer groupLines;
+        private Object groupStrategy;
+        private Long initialPromptDelay;
+        private Long promptDelay;
+        private String promptMessage;
+        private Boolean retry;
+        private Boolean scanStream;
+        private Long scanStreamDelay;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -174,59 +234,99 @@ public class StreamEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public StreamConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (StreamConsumer) this;
+        }
+
         /**
          * To use JVM file watcher to listen for file change events to support
          * re-loading files that may be overwritten, somewhat like tail --retry.
          * The option is a boolean type.
          */
-        private Boolean fileWatcher;
+        public StreamConsumer fileWatcher(boolean fileWatcher) {
+            this.fileWatcher = fileWatcher;
+            return (StreamConsumer) this;
+        }
+
         /**
          * To group X number of lines in the consumer. For example to group 10
          * lines and therefore only spit out an Exchange with 10 lines, instead
          * of 1 Exchange per line. The option is a int type.
          */
-        private Integer groupLines;
+        public StreamConsumer groupLines(int groupLines) {
+            this.groupLines = groupLines;
+            return (StreamConsumer) this;
+        }
+
         /**
          * Allows to use a custom GroupStrategy to control how to group lines.
          * The option is a org.apache.camel.component.stream.GroupStrategy type.
          */
-        private Object groupStrategy;
+        public StreamConsumer groupStrategy(Object groupStrategy) {
+            this.groupStrategy = groupStrategy;
+            return (StreamConsumer) this;
+        }
+
         /**
          * Initial delay in milliseconds before showing the message prompt. This
          * delay occurs only once. Can be used during system startup to avoid
          * message prompts being written while other logging is done to the
          * system out. The option is a long type.
          */
-        private Long initialPromptDelay;
+        public StreamConsumer initialPromptDelay(long initialPromptDelay) {
+            this.initialPromptDelay = initialPromptDelay;
+            return (StreamConsumer) this;
+        }
+
         /**
          * Optional delay in milliseconds before showing the message prompt. The
          * option is a long type.
          */
-        private Long promptDelay;
+        public StreamConsumer promptDelay(long promptDelay) {
+            this.promptDelay = promptDelay;
+            return (StreamConsumer) this;
+        }
+
         /**
          * Message prompt to use when reading from stream:in; for example, you
          * could set this to Enter a command:. The option is a java.lang.String
          * type.
          */
-        private String promptMessage;
+        public StreamConsumer promptMessage(String promptMessage) {
+            this.promptMessage = promptMessage;
+            return (StreamConsumer) this;
+        }
+
         /**
          * Will retry opening the stream if it's overwritten, somewhat like tail
          * --retry If reading from files then you should also enable the
          * fileWatcher option, to make it work reliable. The option is a boolean
          * type.
          */
-        private Boolean retry;
+        public StreamConsumer retry(boolean retry) {
+            this.retry = retry;
+            return (StreamConsumer) this;
+        }
+
         /**
          * To be used for continuously reading a stream such as the unix tail
          * command. The option is a boolean type.
          */
-        private Boolean scanStream;
+        public StreamConsumer scanStream(boolean scanStream) {
+            this.scanStream = scanStream;
+            return (StreamConsumer) this;
+        }
+
         /**
          * Delay in milliseconds between read attempts when using scanStream.
          * The option is a long type.
          */
-        private Long scanStreamDelay;
+        public StreamConsumer scanStreamDelay(long scanStreamDelay) {
+            this.scanStreamDelay = scanStreamDelay;
+            return (StreamConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -234,12 +334,19 @@ public class StreamEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public StreamConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (StreamConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public StreamConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (StreamConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -338,14 +445,22 @@ public class StreamEndpoint {
         }
     }
 
-    public static class StreamProducer extends StreamCommon {
+    public static class StreamProducer extends StreamCommon<StreamProducer> {
+        private Integer autoCloseCount;
+        private Boolean closeOnDone;
+        private Long delay;
+
         /**
          * Number of messages to process before closing stream on Producer side.
          * Never close stream by default (only when Producer is stopped). If
          * more messages are sent, the stream is reopened for another
          * autoCloseCount batch. The option is a int type.
          */
-        private Integer autoCloseCount;
+        public StreamProducer autoCloseCount(int autoCloseCount) {
+            this.autoCloseCount = autoCloseCount;
+            return (StreamProducer) this;
+        }
+
         /**
          * This option is used in combination with Splitter and streaming to the
          * same file. The idea is to keep the stream open and only close when
@@ -353,12 +468,19 @@ public class StreamEndpoint {
          * you only stream to the same file, and not 2 or more files. The option
          * is a boolean type.
          */
-        private Boolean closeOnDone;
+        public StreamProducer closeOnDone(boolean closeOnDone) {
+            this.closeOnDone = closeOnDone;
+            return (StreamProducer) this;
+        }
+
         /**
          * Initial delay in milliseconds before producing the stream. The option
          * is a long type.
          */
-        private Long delay;
+        public StreamProducer delay(long delay) {
+            this.delay = delay;
+            return (StreamProducer) this;
+        }
 
         public Integer getAutoCloseCount() {
             return autoCloseCount;

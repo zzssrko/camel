@@ -27,31 +27,73 @@ import javax.annotation.Generated;
 public class PrinterEndpoint {
 
 
-    public static class PrinterCommon extends EndpointConfiguration {
+    public static class PrinterCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String hostname;
+        private Integer port;
+        private String printername;
+        private Integer copies;
+        private Object docFlavor;
+        private String flavor;
+        private String mediaSize;
+        private String mediaTray;
+        private String mimeType;
+        private String orientation;
+        private String printerPrefix;
+        private Boolean sendToPrinter;
+        private String sides;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Hostname of the printer. The option is a java.lang.String type.
          */
-        private String hostname;
+        public T hostname(String hostname) {
+            this.hostname = hostname;
+            return (T) this;
+        }
+
         /**
          * Port number of the printer. The option is a int type.
          */
-        private Integer port;
+        public T port(int port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Name of the printer. The option is a java.lang.String type.
          */
-        private String printername;
+        public T printername(String printername) {
+            this.printername = printername;
+            return (T) this;
+        }
+
         /**
          * Number of copies to print. The option is a int type.
          */
-        private Integer copies;
+        public T copies(int copies) {
+            this.copies = copies;
+            return (T) this;
+        }
+
         /**
          * Sets DocFlavor to use. The option is a javax.print.DocFlavor type.
          */
-        private Object docFlavor;
+        public T docFlavor(Object docFlavor) {
+            this.docFlavor = docFlavor;
+            return (T) this;
+        }
+
         /**
          * Sets DocFlavor to use. The option is a java.lang.String type.
          */
-        private String flavor;
+        public T flavor(String flavor) {
+            this.flavor = flavor;
+            return (T) this;
+        }
+
         /**
          * Sets the stationary as defined by enumeration names in the
          * javax.print.attribute.standard.MediaSizeName API. The default setting
@@ -59,50 +101,85 @@ public class PrinterEndpoint {
          * ignored, e.g. values of iso_a4 and ISO_A4 may be used. The option is
          * a java.lang.String type.
          */
-        private String mediaSize;
+        public T mediaSize(String mediaSize) {
+            this.mediaSize = mediaSize;
+            return (T) this;
+        }
+
         /**
          * Sets MediaTray supported by the javax.print.DocFlavor API, for
          * example upper,middle etc. The option is a java.lang.String type.
          */
-        private String mediaTray;
+        public T mediaTray(String mediaTray) {
+            this.mediaTray = mediaTray;
+            return (T) this;
+        }
+
         /**
          * Sets mimeTypes supported by the javax.print.DocFlavor API. The option
          * is a java.lang.String type.
          */
-        private String mimeType;
+        public T mimeType(String mimeType) {
+            this.mimeType = mimeType;
+            return (T) this;
+        }
+
         /**
          * Sets the page orientation. The option is a java.lang.String type.
          */
-        private String orientation;
+        public T orientation(String orientation) {
+            this.orientation = orientation;
+            return (T) this;
+        }
+
         /**
          * Sets the prefix name of the printer, it is useful when the printer
          * name does not start with //hostname/printer. The option is a
          * java.lang.String type.
          */
-        private String printerPrefix;
+        public T printerPrefix(String printerPrefix) {
+            this.printerPrefix = printerPrefix;
+            return (T) this;
+        }
+
         /**
          * etting this option to false prevents sending of the print data to the
          * printer. The option is a boolean type.
          */
-        private Boolean sendToPrinter;
+        public T sendToPrinter(boolean sendToPrinter) {
+            this.sendToPrinter = sendToPrinter;
+            return (T) this;
+        }
+
         /**
          * Sets one sided or two sided printing based on the
          * javax.print.attribute.standard.Sides API. The option is a
          * java.lang.String type.
          */
-        private String sides;
+        public T sides(String sides) {
+            this.sides = sides;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getHostname() {
             return hostname;
@@ -225,9 +302,13 @@ public class PrinterEndpoint {
         }
     }
 
-    public static class PrinterConsumer extends PrinterCommon {
+    public static class PrinterConsumer
+            extends
+                PrinterCommon<PrinterConsumer> {
     }
 
-    public static class PrinterProducer extends PrinterCommon {
+    public static class PrinterProducer
+            extends
+                PrinterCommon<PrinterProducer> {
     }
 }

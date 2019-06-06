@@ -28,26 +28,43 @@ import javax.annotation.Generated;
 public class LdifEndpoint {
 
 
-    public static class LdifCommon extends EndpointConfiguration {
+    public static class LdifCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String ldapConnectionName;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The name of the LdapConnection bean to pull from the registry. Note
          * that this must be of scope prototype to avoid it being shared among
          * threads or using a connection that has timed out. The option is a
          * java.lang.String type.
          */
-        private String ldapConnectionName;
+        public T ldapConnectionName(String ldapConnectionName) {
+            this.ldapConnectionName = ldapConnectionName;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getLdapConnectionName() {
             return ldapConnectionName;
@@ -74,9 +91,9 @@ public class LdifEndpoint {
         }
     }
 
-    public static class LdifConsumer extends LdifCommon {
+    public static class LdifConsumer extends LdifCommon<LdifConsumer> {
     }
 
-    public static class LdifProducer extends LdifCommon {
+    public static class LdifProducer extends LdifCommon<LdifProducer> {
     }
 }

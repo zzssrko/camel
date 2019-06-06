@@ -30,57 +30,109 @@ import org.apache.camel.spi.ExceptionHandler;
 public class CMISEndpoint {
 
 
-    public static class CMISCommon extends EndpointConfiguration {
+    public static class CMISCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String cmsUrl;
+        private Integer pageSize;
+        private Boolean readContent;
+        private Integer readCount;
+        private String repositoryId;
+        private Boolean basicPropertyBinding;
+        private Object sessionFacadeFactory;
+        private Boolean synchronous;
+        private String password;
+        private String username;
+
         /**
          * URL to the cmis repository. The option is a java.lang.String type.
          */
-        private String cmsUrl;
+        public T cmsUrl(String cmsUrl) {
+            this.cmsUrl = cmsUrl;
+            return (T) this;
+        }
+
         /**
          * Number of nodes to retrieve per page. The option is a int type.
          */
-        private Integer pageSize;
+        public T pageSize(int pageSize) {
+            this.pageSize = pageSize;
+            return (T) this;
+        }
+
         /**
          * If set to true, the content of document node will be retrieved in
          * addition to the properties. The option is a boolean type.
          */
-        private Boolean readContent;
+        public T readContent(boolean readContent) {
+            this.readContent = readContent;
+            return (T) this;
+        }
+
         /**
          * Max number of nodes to read. The option is a int type.
          */
-        private Integer readCount;
+        public T readCount(int readCount) {
+            this.readCount = readCount;
+            return (T) this;
+        }
+
         /**
          * The Id of the repository to use. If not specified the first available
          * repository is used. The option is a java.lang.String type.
          */
-        private String repositoryId;
+        public T repositoryId(String repositoryId) {
+            this.repositoryId = repositoryId;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a custom CMISSessionFacadeFactory to create the
          * CMISSessionFacade instances. The option is a
          * org.apache.camel.component.cmis.CMISSessionFacadeFactory type.
          */
-        private Object sessionFacadeFactory;
+        public T sessionFacadeFactory(Object sessionFacadeFactory) {
+            this.sessionFacadeFactory = sessionFacadeFactory;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Password for the cmis repository. The option is a java.lang.String
          * type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * Username for the cmis repository. The option is a java.lang.String
          * type.
          */
-        private String username;
+        public T username(String username) {
+            this.username = username;
+            return (T) this;
+        }
 
         public String getCmsUrl() {
             return cmsUrl;
@@ -163,7 +215,12 @@ public class CMISEndpoint {
         }
     }
 
-    public static class CMISConsumer extends CMISCommon {
+    public static class CMISConsumer extends CMISCommon<CMISConsumer> {
+        private Boolean bridgeErrorHandler;
+        private String query;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -173,14 +230,22 @@ public class CMISEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public CMISConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (CMISConsumer) this;
+        }
+
         /**
          * The cmis query to execute against the repository. If not specified,
          * the consumer will retrieve every node from the content repository by
          * iterating the content tree recursively. The option is a
          * java.lang.String type.
          */
-        private String query;
+        public CMISConsumer query(String query) {
+            this.query = query;
+            return (CMISConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -188,12 +253,19 @@ public class CMISEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public CMISConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (CMISConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public CMISConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (CMISConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -228,13 +300,18 @@ public class CMISEndpoint {
         }
     }
 
-    public static class CMISProducer extends CMISCommon {
+    public static class CMISProducer extends CMISCommon<CMISProducer> {
+        private Boolean queryMode;
+
         /**
          * If true, will execute the cmis query from the message body and return
          * result, otherwise will create a node in the cmis repository. The
          * option is a boolean type.
          */
-        private Boolean queryMode;
+        public CMISProducer queryMode(boolean queryMode) {
+            this.queryMode = queryMode;
+            return (CMISProducer) this;
+        }
 
         public Boolean getQueryMode() {
             return queryMode;

@@ -36,58 +36,110 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class FlatpackEndpoint {
 
 
-    public static class FlatpackCommon extends EndpointConfiguration {
+    public static class FlatpackCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private FlatpackType type;
+        private String resourceUri;
+        private Boolean allowShortLines;
+        private Character delimiter;
+        private Boolean ignoreExtraColumns;
+        private Boolean ignoreFirstRecord;
+        private Boolean splitRows;
+        private Character textQualifier;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Whether to use fixed or delimiter. The option is a
          * org.apache.camel.component.flatpack.FlatpackType type.
          */
-        private FlatpackType type;
+        public T type(FlatpackType type) {
+            this.type = type;
+            return (T) this;
+        }
+
         /**
          * URL for loading the flatpack mapping file from classpath or file
          * system. The option is a java.lang.String type.
          */
-        private String resourceUri;
+        public T resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return (T) this;
+        }
+
         /**
          * Allows for lines to be shorter than expected and ignores the extra
          * characters. The option is a boolean type.
          */
-        private Boolean allowShortLines;
+        public T allowShortLines(boolean allowShortLines) {
+            this.allowShortLines = allowShortLines;
+            return (T) this;
+        }
+
         /**
          * The default character delimiter for delimited files. The option is a
          * char type.
          */
-        private Character delimiter;
+        public T delimiter(char delimiter) {
+            this.delimiter = delimiter;
+            return (T) this;
+        }
+
         /**
          * Allows for lines to be longer than expected and ignores the extra
          * characters. The option is a boolean type.
          */
-        private Boolean ignoreExtraColumns;
+        public T ignoreExtraColumns(boolean ignoreExtraColumns) {
+            this.ignoreExtraColumns = ignoreExtraColumns;
+            return (T) this;
+        }
+
         /**
          * Whether the first line is ignored for delimited files (for the column
          * headers). The option is a boolean type.
          */
-        private Boolean ignoreFirstRecord;
+        public T ignoreFirstRecord(boolean ignoreFirstRecord) {
+            this.ignoreFirstRecord = ignoreFirstRecord;
+            return (T) this;
+        }
+
         /**
          * Sets the Component to send each row as a separate exchange once
          * parsed. The option is a boolean type.
          */
-        private Boolean splitRows;
+        public T splitRows(boolean splitRows) {
+            this.splitRows = splitRows;
+            return (T) this;
+        }
+
         /**
          * The text qualifier for delimited files. The option is a char type.
          */
-        private Character textQualifier;
+        public T textQualifier(char textQualifier) {
+            this.textQualifier = textQualifier;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public FlatpackType getType() {
             return type;
@@ -170,7 +222,28 @@ public class FlatpackEndpoint {
         }
     }
 
-    public static class FlatpackConsumer extends FlatpackCommon {
+    public static class FlatpackConsumer
+            extends
+                FlatpackCommon<FlatpackConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean sendEmptyMessageWhenIdle;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -180,13 +253,22 @@ public class FlatpackEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public FlatpackConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public FlatpackConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -194,12 +276,21 @@ public class FlatpackEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public FlatpackConsumer exceptionHandler(
+                ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public FlatpackConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -207,18 +298,31 @@ public class FlatpackEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public FlatpackConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public FlatpackConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public FlatpackConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -227,66 +331,112 @@ public class FlatpackEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public FlatpackConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long delay;
+        public FlatpackConsumer delay(long delay) {
+            this.delay = delay;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public FlatpackConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public FlatpackConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public FlatpackConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public FlatpackConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public FlatpackConsumer scheduler(
+                ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public FlatpackConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public FlatpackConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public FlatpackConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (FlatpackConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public FlatpackConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (FlatpackConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -435,7 +585,9 @@ public class FlatpackEndpoint {
         }
     }
 
-    public static class FlatpackProducer extends FlatpackCommon {
+    public static class FlatpackProducer
+            extends
+                FlatpackCommon<FlatpackProducer> {
     }
 
     public static enum FlatpackType {

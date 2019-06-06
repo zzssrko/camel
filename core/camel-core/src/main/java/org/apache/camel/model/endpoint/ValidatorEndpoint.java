@@ -27,34 +27,69 @@ import javax.annotation.Generated;
 public class ValidatorEndpoint {
 
 
-    public static class ValidatorCommon extends EndpointConfiguration {
+    public static class ValidatorCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String resourceUri;
+        private Boolean failOnNullBody;
+        private Boolean failOnNullHeader;
+        private String headerName;
+        private Boolean basicPropertyBinding;
+        private Object errorHandler;
+        private Object resourceResolver;
+        private Object resourceResolverFactory;
+        private Object schemaFactory;
+        private String schemaLanguage;
+        private Boolean synchronous;
+        private Boolean useSharedSchema;
+
         /**
          * URL to a local resource on the classpath,or a reference to lookup a
          * bean in the Registry, or a full URL to a remote resource or resource
          * on the file system which contains the XSD to validate against. The
          * option is a java.lang.String type.
          */
-        private String resourceUri;
+        public T resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return (T) this;
+        }
+
         /**
          * Whether to fail if no body exists. The option is a boolean type.
          */
-        private Boolean failOnNullBody;
+        public T failOnNullBody(boolean failOnNullBody) {
+            this.failOnNullBody = failOnNullBody;
+            return (T) this;
+        }
+
         /**
          * Whether to fail if no header exists when validating against a header.
          * The option is a boolean type.
          */
-        private Boolean failOnNullHeader;
+        public T failOnNullHeader(boolean failOnNullHeader) {
+            this.failOnNullHeader = failOnNullHeader;
+            return (T) this;
+        }
+
         /**
          * To validate against a header instead of the message body. The option
          * is a java.lang.String type.
          */
-        private String headerName;
+        public T headerName(String headerName) {
+            this.headerName = headerName;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * To use a custom
          * org.apache.camel.processor.validation.ValidatorErrorHandler. The
@@ -63,13 +98,21 @@ public class ValidatorEndpoint {
          * org.apache.camel.support.processor.validation.ValidatorErrorHandler
          * type.
          */
-        private Object errorHandler;
+        public T errorHandler(Object errorHandler) {
+            this.errorHandler = errorHandler;
+            return (T) this;
+        }
+
         /**
          * To use a custom LSResourceResolver. See also
          * setResourceResolverFactory(ValidatorResourceResolverFactory). The
          * option is a org.w3c.dom.ls.LSResourceResolver type.
          */
-        private Object resourceResolver;
+        public T resourceResolver(Object resourceResolver) {
+            this.resourceResolver = resourceResolver;
+            return (T) this;
+        }
+
         /**
          * For creating a resource resolver which depends on the endpoint
          * resource URI. Must not be used in combination with method
@@ -78,29 +121,48 @@ public class ValidatorEndpoint {
          * org.apache.camel.component.validator.ValidatorResourceResolverFactory
          * type.
          */
-        private Object resourceResolverFactory;
+        public T resourceResolverFactory(Object resourceResolverFactory) {
+            this.resourceResolverFactory = resourceResolverFactory;
+            return (T) this;
+        }
+
         /**
          * To use a custom javax.xml.validation.SchemaFactory. The option is a
          * javax.xml.validation.SchemaFactory type.
          */
-        private Object schemaFactory;
+        public T schemaFactory(Object schemaFactory) {
+            this.schemaFactory = schemaFactory;
+            return (T) this;
+        }
+
         /**
          * Configures the W3C XML Schema Namespace URI. The option is a
          * java.lang.String type.
          */
-        private String schemaLanguage;
+        public T schemaLanguage(String schemaLanguage) {
+            this.schemaLanguage = schemaLanguage;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Whether the Schema instance should be shared or not. This option is
          * introduced to work around a JDK 1.6.x bug. Xerces should not have
          * this issue. The option is a boolean type.
          */
-        private Boolean useSharedSchema;
+        public T useSharedSchema(boolean useSharedSchema) {
+            this.useSharedSchema = useSharedSchema;
+            return (T) this;
+        }
 
         public String getResourceUri() {
             return resourceUri;
@@ -199,9 +261,13 @@ public class ValidatorEndpoint {
         }
     }
 
-    public static class ValidatorConsumer extends ValidatorCommon {
+    public static class ValidatorConsumer
+            extends
+                ValidatorCommon<ValidatorConsumer> {
     }
 
-    public static class ValidatorProducer extends ValidatorCommon {
+    public static class ValidatorProducer
+            extends
+                ValidatorCommon<ValidatorProducer> {
     }
 }

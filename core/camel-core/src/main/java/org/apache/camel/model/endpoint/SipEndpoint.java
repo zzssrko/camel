@@ -32,202 +32,386 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SipEndpoint {
 
 
-    public static class SipCommon extends EndpointConfiguration {
+    public static class SipCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private URI uri;
+        private Boolean cacheConnections;
+        private String contentSubType;
+        private String contentType;
+        private String eventHeaderName;
+        private String eventId;
+        private String fromHost;
+        private Integer fromPort;
+        private String fromUser;
+        private Integer msgExpiration;
+        private Long receiveTimeoutMillis;
+        private String stackName;
+        private String toHost;
+        private Integer toPort;
+        private String toUser;
+        private String transport;
+        private Object addressFactory;
+        private Boolean basicPropertyBinding;
+        private Object callIdHeader;
+        private Object contactHeader;
+        private Object contentTypeHeader;
+        private Object eventHeader;
+        private Object expiresHeader;
+        private Object extensionHeader;
+        private Object fromHeader;
+        private Object headerFactory;
+        private Object listeningPoint;
+        private Object maxForwardsHeader;
+        private Integer maxMessageSize;
+        private Object messageFactory;
+        private Object sipFactory;
+        private Object sipStack;
+        private Object sipUri;
+        private Boolean synchronous;
+        private Object toHeader;
+        private List<Object> viaHeaders;
+        private String implementationDebugLogFile;
+        private String implementationServerLogFile;
+        private String implementationTraceLevel;
+        private Integer maxForwards;
+        private Boolean useRouterForAllUris;
+
         /**
          * URI of the SIP server to connect to (the username and password can be
          * included such as: john:secretmyserver:9999). The option is a
          * java.net.URI type.
          */
-        private URI uri;
+        public T uri(URI uri) {
+            this.uri = uri;
+            return (T) this;
+        }
+
         /**
          * Should connections be cached by the SipStack to reduce cost of
          * connection creation. This is useful if the connection is used for
          * long running conversations. The option is a boolean type.
          */
-        private Boolean cacheConnections;
+        public T cacheConnections(boolean cacheConnections) {
+            this.cacheConnections = cacheConnections;
+            return (T) this;
+        }
+
         /**
          * Setting for contentSubType can be set to any valid MimeSubType. The
          * option is a java.lang.String type.
          */
-        private String contentSubType;
+        public T contentSubType(String contentSubType) {
+            this.contentSubType = contentSubType;
+            return (T) this;
+        }
+
         /**
          * Setting for contentType can be set to any valid MimeType. The option
          * is a java.lang.String type.
          */
-        private String contentType;
+        public T contentType(String contentType) {
+            this.contentType = contentType;
+            return (T) this;
+        }
+
         /**
          * Setting for a String based event type. The option is a
          * java.lang.String type.
          */
-        private String eventHeaderName;
+        public T eventHeaderName(String eventHeaderName) {
+            this.eventHeaderName = eventHeaderName;
+            return (T) this;
+        }
+
         /**
          * Setting for a String based event Id. Mandatory setting unless a
          * registry based FromHeader is specified. The option is a
          * java.lang.String type.
          */
-        private String eventId;
+        public T eventId(String eventId) {
+            this.eventId = eventId;
+            return (T) this;
+        }
+
         /**
          * Hostname of the message originator. Mandatory setting unless a
          * registry based FromHeader is specified. The option is a
          * java.lang.String type.
          */
-        private String fromHost;
+        public T fromHost(String fromHost) {
+            this.fromHost = fromHost;
+            return (T) this;
+        }
+
         /**
          * Port of the message originator. Mandatory setting unless a registry
          * based FromHeader is specified. The option is a int type.
          */
-        private Integer fromPort;
+        public T fromPort(int fromPort) {
+            this.fromPort = fromPort;
+            return (T) this;
+        }
+
         /**
          * Username of the message originator. Mandatory setting unless a
          * registry based custom FromHeader is specified. The option is a
          * java.lang.String type.
          */
-        private String fromUser;
+        public T fromUser(String fromUser) {
+            this.fromUser = fromUser;
+            return (T) this;
+        }
+
         /**
          * The amount of time a message received at an endpoint is considered
          * valid. The option is a int type.
          */
-        private Integer msgExpiration;
+        public T msgExpiration(int msgExpiration) {
+            this.msgExpiration = msgExpiration;
+            return (T) this;
+        }
+
         /**
          * Setting for specifying amount of time to wait for a Response and/or
          * Acknowledgement can be received from another SIP stack. The option is
          * a long type.
          */
-        private Long receiveTimeoutMillis;
+        public T receiveTimeoutMillis(long receiveTimeoutMillis) {
+            this.receiveTimeoutMillis = receiveTimeoutMillis;
+            return (T) this;
+        }
+
         /**
          * Name of the SIP Stack instance associated with an SIP Endpoint. The
          * option is a java.lang.String type.
          */
-        private String stackName;
+        public T stackName(String stackName) {
+            this.stackName = stackName;
+            return (T) this;
+        }
+
         /**
          * Hostname of the message receiver. Mandatory setting unless a registry
          * based ToHeader is specified. The option is a java.lang.String type.
          */
-        private String toHost;
+        public T toHost(String toHost) {
+            this.toHost = toHost;
+            return (T) this;
+        }
+
         /**
          * Portname of the message receiver. Mandatory setting unless a registry
          * based ToHeader is specified. The option is a int type.
          */
-        private Integer toPort;
+        public T toPort(int toPort) {
+            this.toPort = toPort;
+            return (T) this;
+        }
+
         /**
          * Username of the message receiver. Mandatory setting unless a registry
          * based custom ToHeader is specified. The option is a java.lang.String
          * type.
          */
-        private String toUser;
+        public T toUser(String toUser) {
+            this.toUser = toUser;
+            return (T) this;
+        }
+
         /**
          * Setting for choice of transport protocol. Valid choices are tcp or
          * udp. The option is a java.lang.String type.
          */
-        private String transport;
+        public T transport(String transport) {
+            this.transport = transport;
+            return (T) this;
+        }
+
         /**
          * To use a custom AddressFactory. The option is a
          * javax.sip.address.AddressFactory type.
          */
-        private Object addressFactory;
+        public T addressFactory(Object addressFactory) {
+            this.addressFactory = addressFactory;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * A custom Header object containing call details. Must implement the
          * type javax.sip.header.CallIdHeader. The option is a
          * javax.sip.header.CallIdHeader type.
          */
-        private Object callIdHeader;
+        public T callIdHeader(Object callIdHeader) {
+            this.callIdHeader = callIdHeader;
+            return (T) this;
+        }
+
         /**
          * An optional custom Header object containing verbose contact details
          * (email, phone number etc). Must implement the type
          * javax.sip.header.ContactHeader. The option is a
          * javax.sip.header.ContactHeader type.
          */
-        private Object contactHeader;
+        public T contactHeader(Object contactHeader) {
+            this.contactHeader = contactHeader;
+            return (T) this;
+        }
+
         /**
          * A custom Header object containing message content details. Must
          * implement the type javax.sip.header.ContentTypeHeader. The option is
          * a javax.sip.header.ContentTypeHeader type.
          */
-        private Object contentTypeHeader;
+        public T contentTypeHeader(Object contentTypeHeader) {
+            this.contentTypeHeader = contentTypeHeader;
+            return (T) this;
+        }
+
         /**
          * A custom Header object containing event details. Must implement the
          * type javax.sip.header.EventHeader. The option is a
          * javax.sip.header.EventHeader type.
          */
-        private Object eventHeader;
+        public T eventHeader(Object eventHeader) {
+            this.eventHeader = eventHeader;
+            return (T) this;
+        }
+
         /**
          * A custom Header object containing message expiration details. Must
          * implement the type javax.sip.header.ExpiresHeader. The option is a
          * javax.sip.header.ExpiresHeader type.
          */
-        private Object expiresHeader;
+        public T expiresHeader(Object expiresHeader) {
+            this.expiresHeader = expiresHeader;
+            return (T) this;
+        }
+
         /**
          * A custom Header object containing user/application specific details.
          * Must implement the type javax.sip.header.ExtensionHeader. The option
          * is a javax.sip.header.ExtensionHeader type.
          */
-        private Object extensionHeader;
+        public T extensionHeader(Object extensionHeader) {
+            this.extensionHeader = extensionHeader;
+            return (T) this;
+        }
+
         /**
          * A custom Header object containing message originator settings. Must
          * implement the type javax.sip.header.FromHeader. The option is a
          * javax.sip.header.FromHeader type.
          */
-        private Object fromHeader;
+        public T fromHeader(Object fromHeader) {
+            this.fromHeader = fromHeader;
+            return (T) this;
+        }
+
         /**
          * To use a custom HeaderFactory. The option is a
          * javax.sip.header.HeaderFactory type.
          */
-        private Object headerFactory;
+        public T headerFactory(Object headerFactory) {
+            this.headerFactory = headerFactory;
+            return (T) this;
+        }
+
         /**
          * To use a custom ListeningPoint implementation. The option is a
          * javax.sip.ListeningPoint type.
          */
-        private Object listeningPoint;
+        public T listeningPoint(Object listeningPoint) {
+            this.listeningPoint = listeningPoint;
+            return (T) this;
+        }
+
         /**
          * A custom Header object containing details on maximum proxy forwards.
          * This header places a limit on the viaHeaders possible. Must implement
          * the type javax.sip.header.MaxForwardsHeader. The option is a
          * javax.sip.header.MaxForwardsHeader type.
          */
-        private Object maxForwardsHeader;
+        public T maxForwardsHeader(Object maxForwardsHeader) {
+            this.maxForwardsHeader = maxForwardsHeader;
+            return (T) this;
+        }
+
         /**
          * Setting for maximum allowed Message size in bytes. The option is a
          * int type.
          */
-        private Integer maxMessageSize;
+        public T maxMessageSize(int maxMessageSize) {
+            this.maxMessageSize = maxMessageSize;
+            return (T) this;
+        }
+
         /**
          * To use a custom MessageFactory. The option is a
          * javax.sip.message.MessageFactory type.
          */
-        private Object messageFactory;
+        public T messageFactory(Object messageFactory) {
+            this.messageFactory = messageFactory;
+            return (T) this;
+        }
+
         /**
          * To use a custom SipFactory to create the SipStack to be used. The
          * option is a javax.sip.SipFactory type.
          */
-        private Object sipFactory;
+        public T sipFactory(Object sipFactory) {
+            this.sipFactory = sipFactory;
+            return (T) this;
+        }
+
         /**
          * To use a custom SipStack. The option is a javax.sip.SipStack type.
          */
-        private Object sipStack;
+        public T sipStack(Object sipStack) {
+            this.sipStack = sipStack;
+            return (T) this;
+        }
+
         /**
          * To use a custom SipURI. If none configured, then the SipUri fallback
          * to use the options toUser toHost:toPort. The option is a
          * javax.sip.address.SipURI type.
          */
-        private Object sipUri;
+        public T sipUri(Object sipUri) {
+            this.sipUri = sipUri;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * A custom Header object containing message receiver settings. Must
          * implement the type javax.sip.header.ToHeader. The option is a
          * javax.sip.header.ToHeader type.
          */
-        private Object toHeader;
+        public T toHeader(Object toHeader) {
+            this.toHeader = toHeader;
+            return (T) this;
+        }
+
         /**
          * List of custom Header objects of the type javax.sip.header.ViaHeader.
          * Each ViaHeader containing a proxy address for request forwarding.
@@ -235,30 +419,53 @@ public class SipEndpoint {
          * request arrives at its listener). The option is a
          * java.util.List<javax.sip.header.ViaHeader> type.
          */
-        private List<Object> viaHeaders;
+        public T viaHeaders(List<Object> viaHeaders) {
+            this.viaHeaders = viaHeaders;
+            return (T) this;
+        }
+
         /**
          * Name of client debug log file to use for logging. The option is a
          * java.lang.String type.
          */
-        private String implementationDebugLogFile;
+        public T implementationDebugLogFile(String implementationDebugLogFile) {
+            this.implementationDebugLogFile = implementationDebugLogFile;
+            return (T) this;
+        }
+
         /**
          * Name of server log file to use for logging. The option is a
          * java.lang.String type.
          */
-        private String implementationServerLogFile;
+        public T implementationServerLogFile(String implementationServerLogFile) {
+            this.implementationServerLogFile = implementationServerLogFile;
+            return (T) this;
+        }
+
         /**
          * Logging level for tracing. The option is a java.lang.String type.
          */
-        private String implementationTraceLevel;
+        public T implementationTraceLevel(String implementationTraceLevel) {
+            this.implementationTraceLevel = implementationTraceLevel;
+            return (T) this;
+        }
+
         /**
          * Number of maximum proxy forwards. The option is a int type.
          */
-        private Integer maxForwards;
+        public T maxForwards(int maxForwards) {
+            this.maxForwards = maxForwards;
+            return (T) this;
+        }
+
         /**
          * This setting is used when requests are sent to the Presence Agent via
          * a proxy. The option is a boolean type.
          */
-        private Boolean useRouterForAllUris;
+        public T useRouterForAllUris(boolean useRouterForAllUris) {
+            this.useRouterForAllUris = useRouterForAllUris;
+            return (T) this;
+        }
 
         public URI getUri() {
             return uri;
@@ -591,7 +798,13 @@ public class SipEndpoint {
         }
     }
 
-    public static class SipConsumer extends SipCommon {
+    public static class SipConsumer extends SipCommon<SipConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean consumer;
+        private Boolean presenceAgent;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -601,20 +814,32 @@ public class SipEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public SipConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (SipConsumer) this;
+        }
+
         /**
          * This setting is used to determine whether the kind of header
          * (FromHeader,ToHeader etc) that needs to be created for this endpoint.
          * The option is a boolean type.
          */
-        private Boolean consumer;
+        public SipConsumer consumer(boolean consumer) {
+            this.consumer = consumer;
+            return (SipConsumer) this;
+        }
+
         /**
          * This setting is used to distinguish between a Presence Agent & a
          * consumer. This is due to the fact that the SIP Camel component ships
          * with a basic Presence Agent (for testing purposes only). Consumers
          * have to set this flag to true. The option is a boolean type.
          */
-        private Boolean presenceAgent;
+        public SipConsumer presenceAgent(boolean presenceAgent) {
+            this.presenceAgent = presenceAgent;
+            return (SipConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -622,12 +847,19 @@ public class SipEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public SipConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (SipConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public SipConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (SipConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -670,6 +902,6 @@ public class SipEndpoint {
         }
     }
 
-    public static class SipProducer extends SipCommon {
+    public static class SipProducer extends SipCommon<SipProducer> {
     }
 }

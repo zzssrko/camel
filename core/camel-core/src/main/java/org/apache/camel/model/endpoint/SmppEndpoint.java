@@ -30,34 +30,80 @@ import org.apache.camel.spi.ExceptionHandler;
 public class SmppEndpoint {
 
 
-    public static class SmppCommon extends EndpointConfiguration {
+    public static class SmppCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String host;
+        private Integer port;
+        private Long initialReconnectDelay;
+        private Integer maxReconnect;
+        private Long reconnectDelay;
+        private SmppSplittingPolicy splittingPolicy;
+        private String systemType;
+        private Boolean basicPropertyBinding;
+        private Integer enquireLinkTimer;
+        private Object sessionStateListener;
+        private Boolean synchronous;
+        private Integer transactionTimer;
+        private Byte alphabet;
+        private Byte dataCoding;
+        private String encoding;
+        private String httpProxyHost;
+        private String httpProxyPassword;
+        private Integer httpProxyPort;
+        private String httpProxyUsername;
+        private Map<String, String> proxyHeaders;
+        private String password;
+        private String systemId;
+        private Boolean usingSSL;
+
         /**
          * Hostname for the SMSC server to use. The option is a java.lang.String
          * type.
          */
-        private String host;
+        public T host(String host) {
+            this.host = host;
+            return (T) this;
+        }
+
         /**
          * Port number for the SMSC server to use. The option is a
          * java.lang.Integer type.
          */
-        private Integer port;
+        public T port(Integer port) {
+            this.port = port;
+            return (T) this;
+        }
+
         /**
          * Defines the initial delay in milliseconds after the consumer/producer
          * tries to reconnect to the SMSC, after the connection was lost. The
          * option is a long type.
          */
-        private Long initialReconnectDelay;
+        public T initialReconnectDelay(long initialReconnectDelay) {
+            this.initialReconnectDelay = initialReconnectDelay;
+            return (T) this;
+        }
+
         /**
          * Defines the maximum number of attempts to reconnect to the SMSC, if
          * SMSC returns a negative bind response. The option is a int type.
          */
-        private Integer maxReconnect;
+        public T maxReconnect(int maxReconnect) {
+            this.maxReconnect = maxReconnect;
+            return (T) this;
+        }
+
         /**
          * Defines the interval in milliseconds between the reconnect attempts,
          * if the connection to the SMSC was lost and the previous was not
          * succeed. The option is a long type.
          */
-        private Long reconnectDelay;
+        public T reconnectDelay(long reconnectDelay) {
+            this.reconnectDelay = reconnectDelay;
+            return (T) this;
+        }
+
         /**
          * You can specify a policy for handling long messages: ALLOW - the
          * default, long messages are split to 140 bytes per message TRUNCATE -
@@ -69,50 +115,82 @@ public class SmppEndpoint {
          * code signifying the message is too long. The option is a
          * org.apache.camel.component.smpp.SmppSplittingPolicy type.
          */
-        private SmppSplittingPolicy splittingPolicy;
+        public T splittingPolicy(SmppSplittingPolicy splittingPolicy) {
+            this.splittingPolicy = splittingPolicy;
+            return (T) this;
+        }
+
         /**
          * This parameter is used to categorize the type of ESME (External Short
          * Message Entity) that is binding to the SMSC (max. 13 characters). The
          * option is a java.lang.String type.
          */
-        private String systemType;
+        public T systemType(String systemType) {
+            this.systemType = systemType;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Defines the interval in milliseconds between the confidence checks.
          * The confidence check is used to test the communication path between
          * an ESME and an SMSC. The option is a java.lang.Integer type.
          */
-        private Integer enquireLinkTimer;
+        public T enquireLinkTimer(Integer enquireLinkTimer) {
+            this.enquireLinkTimer = enquireLinkTimer;
+            return (T) this;
+        }
+
         /**
          * You can refer to a org.jsmpp.session.SessionStateListener in the
          * Registry to receive callbacks when the session state changed. The
          * option is a org.jsmpp.session.SessionStateListener type.
          */
-        private Object sessionStateListener;
+        public T sessionStateListener(Object sessionStateListener) {
+            this.sessionStateListener = sessionStateListener;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * Defines the maximum period of inactivity allowed after a transaction,
          * after which an SMPP entity may assume that the session is no longer
          * active. This timer may be active on either communicating SMPP entity
          * (i.e. SMSC or ESME). The option is a java.lang.Integer type.
          */
-        private Integer transactionTimer;
+        public T transactionTimer(Integer transactionTimer) {
+            this.transactionTimer = transactionTimer;
+            return (T) this;
+        }
+
         /**
          * Defines encoding of data according the SMPP 3.4 specification,
          * section 5.2.19. 0: SMSC Default Alphabet 4: 8 bit Alphabet 8: UCS2
          * Alphabet. The option is a byte type.
          */
-        private Byte alphabet;
+        public T alphabet(byte alphabet) {
+            this.alphabet = alphabet;
+            return (T) this;
+        }
+
         /**
          * Defines the data coding according the SMPP 3.4 specification, section
          * 5.2.19. Example data encodings are: 0: SMSC Default Alphabet 3: Latin
@@ -120,58 +198,97 @@ public class SmppEndpoint {
          * (ISO/IEC-10646) 13: Extended Kanji JIS(X 0212-1990). The option is a
          * byte type.
          */
-        private Byte dataCoding;
+        public T dataCoding(byte dataCoding) {
+            this.dataCoding = dataCoding;
+            return (T) this;
+        }
+
         /**
          * Defines the encoding scheme of the short message user data. Only for
          * SubmitSm, ReplaceSm and SubmitMulti. The option is a java.lang.String
          * type.
          */
-        private String encoding;
+        public T encoding(String encoding) {
+            this.encoding = encoding;
+            return (T) this;
+        }
+
         /**
          * If you need to tunnel SMPP through a HTTP proxy, set this attribute
          * to the hostname or ip address of your HTTP proxy. The option is a
          * java.lang.String type.
          */
-        private String httpProxyHost;
+        public T httpProxyHost(String httpProxyHost) {
+            this.httpProxyHost = httpProxyHost;
+            return (T) this;
+        }
+
         /**
          * If your HTTP proxy requires basic authentication, set this attribute
          * to the password required for your HTTP proxy. The option is a
          * java.lang.String type.
          */
-        private String httpProxyPassword;
+        public T httpProxyPassword(String httpProxyPassword) {
+            this.httpProxyPassword = httpProxyPassword;
+            return (T) this;
+        }
+
         /**
          * If you need to tunnel SMPP through a HTTP proxy, set this attribute
          * to the port of your HTTP proxy. The option is a java.lang.Integer
          * type.
          */
-        private Integer httpProxyPort;
+        public T httpProxyPort(Integer httpProxyPort) {
+            this.httpProxyPort = httpProxyPort;
+            return (T) this;
+        }
+
         /**
          * If your HTTP proxy requires basic authentication, set this attribute
          * to the username required for your HTTP proxy. The option is a
          * java.lang.String type.
          */
-        private String httpProxyUsername;
+        public T httpProxyUsername(String httpProxyUsername) {
+            this.httpProxyUsername = httpProxyUsername;
+            return (T) this;
+        }
+
         /**
          * These headers will be passed to the proxy server while establishing
          * the connection. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
-        private Map<String, String> proxyHeaders;
+        public T proxyHeaders(Map<String, String> proxyHeaders) {
+            this.proxyHeaders = proxyHeaders;
+            return (T) this;
+        }
+
         /**
          * The password for connecting to SMSC server. The option is a
          * java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * The system id (username) for connecting to SMSC server. The option is
          * a java.lang.String type.
          */
-        private String systemId;
+        public T systemId(String systemId) {
+            this.systemId = systemId;
+            return (T) this;
+        }
+
         /**
          * Whether using SSL with the smpps protocol. The option is a boolean
          * type.
          */
-        private Boolean usingSSL;
+        public T usingSSL(boolean usingSSL) {
+            this.usingSSL = usingSSL;
+            return (T) this;
+        }
 
         public String getHost() {
             return host;
@@ -358,14 +475,23 @@ public class SmppEndpoint {
         }
     }
 
-    public static class SmppConsumer extends SmppCommon {
+    public static class SmppConsumer extends SmppCommon<SmppConsumer> {
+        private String addressRange;
+        private Boolean bridgeErrorHandler;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+
         /**
          * You can specify the address range for the SmppConsumer as defined in
          * section 5.2.7 of the SMPP 3.4 specification. The SmppConsumer will
          * receive messages only from SMSC's which target an address (MSISDN or
          * IP address) within this range. The option is a java.lang.String type.
          */
-        private String addressRange;
+        public SmppConsumer addressRange(String addressRange) {
+            this.addressRange = addressRange;
+            return (SmppConsumer) this;
+        }
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -375,7 +501,11 @@ public class SmppEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public SmppConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (SmppConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -383,12 +513,19 @@ public class SmppEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public SmppConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (SmppConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public SmppConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (SmppConsumer) this;
+        }
 
         public String getAddressRange() {
             return addressRange;
@@ -423,14 +560,33 @@ public class SmppEndpoint {
         }
     }
 
-    public static class SmppProducer extends SmppCommon {
+    public static class SmppProducer extends SmppCommon<SmppProducer> {
+        private String destAddr;
+        private Byte destAddrNpi;
+        private Byte destAddrTon;
+        private Boolean lazySessionCreation;
+        private Byte numberingPlanIndicator;
+        private Byte priorityFlag;
+        private Byte protocolId;
+        private Byte registeredDelivery;
+        private Byte replaceIfPresentFlag;
+        private String serviceType;
+        private String sourceAddr;
+        private Byte sourceAddrNpi;
+        private Byte sourceAddrTon;
+        private Byte typeOfNumber;
+
         /**
          * Defines the destination SME address. For mobile terminated messages,
          * this is the directory number of the recipient MS. Only for SubmitSm,
          * SubmitMulti, CancelSm and DataSm. The option is a java.lang.String
          * type.
          */
-        private String destAddr;
+        public SmppProducer destAddr(String destAddr) {
+            this.destAddr = destAddr;
+            return (SmppProducer) this;
+        }
+
         /**
          * Defines the type of number (TON) to be used in the SME destination
          * address parameters. Only for SubmitSm, SubmitMulti, CancelSm and
@@ -439,7 +595,11 @@ public class SmppEndpoint {
          * National 9: Private 10: ERMES 13: Internet (IP) 18: WAP Client Id (to
          * be defined by WAP Forum). The option is a byte type.
          */
-        private Byte destAddrNpi;
+        public SmppProducer destAddrNpi(byte destAddrNpi) {
+            this.destAddrNpi = destAddrNpi;
+            return (SmppProducer) this;
+        }
+
         /**
          * Defines the type of number (TON) to be used in the SME destination
          * address parameters. Only for SubmitSm, SubmitMulti, CancelSm and
@@ -447,7 +607,11 @@ public class SmppEndpoint {
          * International 2: National 3: Network Specific 4: Subscriber Number 5:
          * Alphanumeric 6: Abbreviated. The option is a byte type.
          */
-        private Byte destAddrTon;
+        public SmppProducer destAddrTon(byte destAddrTon) {
+            this.destAddrTon = destAddrTon;
+            return (SmppProducer) this;
+        }
+
         /**
          * Sessions can be lazily created to avoid exceptions, if the SMSC is
          * not available when the Camel producer is started. Camel will check
@@ -455,7 +619,11 @@ public class SmppEndpoint {
          * the first exchange. If they are present, Camel will use these data to
          * connect to the SMSC. The option is a boolean type.
          */
-        private Boolean lazySessionCreation;
+        public SmppProducer lazySessionCreation(boolean lazySessionCreation) {
+            this.lazySessionCreation = lazySessionCreation;
+            return (SmppProducer) this;
+        }
+
         /**
          * Defines the numeric plan indicator (NPI) to be used in the SME. The
          * following NPI values are defined: 0: Unknown 1: ISDN (E163/E164) 2:
@@ -463,18 +631,30 @@ public class SmppEndpoint {
          * Private 10: ERMES 13: Internet (IP) 18: WAP Client Id (to be defined
          * by WAP Forum). The option is a byte type.
          */
-        private Byte numberingPlanIndicator;
+        public SmppProducer numberingPlanIndicator(byte numberingPlanIndicator) {
+            this.numberingPlanIndicator = numberingPlanIndicator;
+            return (SmppProducer) this;
+        }
+
         /**
          * Allows the originating SME to assign a priority level to the short
          * message. Only for SubmitSm and SubmitMulti. Four Priority Levels are
          * supported: 0: Level 0 (lowest) priority 1: Level 1 priority 2: Level
          * 2 priority 3: Level 3 (highest) priority. The option is a byte type.
          */
-        private Byte priorityFlag;
+        public SmppProducer priorityFlag(byte priorityFlag) {
+            this.priorityFlag = priorityFlag;
+            return (SmppProducer) this;
+        }
+
         /**
          * The protocol id. The option is a byte type.
          */
-        private Byte protocolId;
+        public SmppProducer protocolId(byte protocolId) {
+            this.protocolId = protocolId;
+            return (SmppProducer) this;
+        }
+
         /**
          * Is used to request an SMSC delivery receipt and/or SME originated
          * acknowledgements. The following values are defined: 0: No SMSC
@@ -483,7 +663,11 @@ public class SmppEndpoint {
          * receipt requested where the final delivery outcome is delivery
          * failure. The option is a byte type.
          */
-        private Byte registeredDelivery;
+        public SmppProducer registeredDelivery(byte registeredDelivery) {
+            this.registeredDelivery = registeredDelivery;
+            return (SmppProducer) this;
+        }
+
         /**
          * Used to request the SMSC to replace a previously submitted message,
          * that is still pending delivery. The SMSC will replace an existing
@@ -492,7 +676,11 @@ public class SmppEndpoint {
          * replace if present flag values are defined: 0: Don't replace 1:
          * Replace. The option is a byte type.
          */
-        private Byte replaceIfPresentFlag;
+        public SmppProducer replaceIfPresentFlag(byte replaceIfPresentFlag) {
+            this.replaceIfPresentFlag = replaceIfPresentFlag;
+            return (SmppProducer) this;
+        }
+
         /**
          * The service type parameter can be used to indicate the SMS
          * Application service associated with the message. The following
@@ -501,12 +689,20 @@ public class SmppEndpoint {
          * WAP: Wireless Application Protocol USSD: Unstructured Supplementary
          * Services Data. The option is a java.lang.String type.
          */
-        private String serviceType;
+        public SmppProducer serviceType(String serviceType) {
+            this.serviceType = serviceType;
+            return (SmppProducer) this;
+        }
+
         /**
          * Defines the address of SME (Short Message Entity) which originated
          * this message. The option is a java.lang.String type.
          */
-        private String sourceAddr;
+        public SmppProducer sourceAddr(String sourceAddr) {
+            this.sourceAddr = sourceAddr;
+            return (SmppProducer) this;
+        }
+
         /**
          * Defines the numeric plan indicator (NPI) to be used in the SME
          * originator address parameters. The following NPI values are defined:
@@ -515,21 +711,32 @@ public class SmppEndpoint {
          * (IP) 18: WAP Client Id (to be defined by WAP Forum). The option is a
          * byte type.
          */
-        private Byte sourceAddrNpi;
+        public SmppProducer sourceAddrNpi(byte sourceAddrNpi) {
+            this.sourceAddrNpi = sourceAddrNpi;
+            return (SmppProducer) this;
+        }
+
         /**
          * Defines the type of number (TON) to be used in the SME originator
          * address parameters. The following TON values are defined: 0: Unknown
          * 1: International 2: National 3: Network Specific 4: Subscriber Number
          * 5: Alphanumeric 6: Abbreviated. The option is a byte type.
          */
-        private Byte sourceAddrTon;
+        public SmppProducer sourceAddrTon(byte sourceAddrTon) {
+            this.sourceAddrTon = sourceAddrTon;
+            return (SmppProducer) this;
+        }
+
         /**
          * Defines the type of number (TON) to be used in the SME. The following
          * TON values are defined: 0: Unknown 1: International 2: National 3:
          * Network Specific 4: Subscriber Number 5: Alphanumeric 6: Abbreviated.
          * The option is a byte type.
          */
-        private Byte typeOfNumber;
+        public SmppProducer typeOfNumber(byte typeOfNumber) {
+            this.typeOfNumber = typeOfNumber;
+            return (SmppProducer) this;
+        }
 
         public String getDestAddr() {
             return destAddr;

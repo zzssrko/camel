@@ -28,33 +28,62 @@ import javax.annotation.Generated;
 public class IgniteIdGenEndpoint {
 
 
-    public static class IgniteIdGenCommon extends EndpointConfiguration {
+    public static class IgniteIdGenCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String name;
+        private Boolean propagateIncomingBodyIfNoReturnValue;
+        private Boolean treatCollectionsAsCacheObjects;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * The sequence name. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option is a boolean type.
          */
-        private Boolean propagateIncomingBodyIfNoReturnValue;
+        public T propagateIncomingBodyIfNoReturnValue(
+                boolean propagateIncomingBodyIfNoReturnValue) {
+            this.propagateIncomingBodyIfNoReturnValue = propagateIncomingBodyIfNoReturnValue;
+            return (T) this;
+        }
+
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
-        private Boolean treatCollectionsAsCacheObjects;
+        public T treatCollectionsAsCacheObjects(
+                boolean treatCollectionsAsCacheObjects) {
+            this.treatCollectionsAsCacheObjects = treatCollectionsAsCacheObjects;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getName() {
             return name;
@@ -99,18 +128,34 @@ public class IgniteIdGenEndpoint {
         }
     }
 
-    public static class IgniteIdGenConsumer extends IgniteIdGenCommon {
+    public static class IgniteIdGenConsumer
+            extends
+                IgniteIdGenCommon<IgniteIdGenConsumer> {
     }
 
-    public static class IgniteIdGenProducer extends IgniteIdGenCommon {
+    public static class IgniteIdGenProducer
+            extends
+                IgniteIdGenCommon<IgniteIdGenProducer> {
+        private Integer batchSize;
+        private Long initialValue;
+        private IgniteIdGenOperation operation;
+
         /**
          * The batch size. The option is a java.lang.Integer type.
          */
-        private Integer batchSize;
+        public IgniteIdGenProducer batchSize(Integer batchSize) {
+            this.batchSize = batchSize;
+            return (IgniteIdGenProducer) this;
+        }
+
         /**
          * The initial value. The option is a java.lang.Long type.
          */
-        private Long initialValue;
+        public IgniteIdGenProducer initialValue(Long initialValue) {
+            this.initialValue = initialValue;
+            return (IgniteIdGenProducer) this;
+        }
+
         /**
          * The operation to invoke on the Ignite ID Generator. Superseded by the
          * IgniteConstants.IGNITE_IDGEN_OPERATION header in the IN message.
@@ -118,7 +163,10 @@ public class IgniteIdGenEndpoint {
          * INCREMENT_AND_GET. The option is a
          * org.apache.camel.component.ignite.idgen.IgniteIdGenOperation type.
          */
-        private IgniteIdGenOperation operation;
+        public IgniteIdGenProducer operation(IgniteIdGenOperation operation) {
+            this.operation = operation;
+            return (IgniteIdGenProducer) this;
+        }
 
         public Integer getBatchSize() {
             return batchSize;

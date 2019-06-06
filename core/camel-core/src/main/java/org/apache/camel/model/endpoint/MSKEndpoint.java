@@ -27,28 +27,50 @@ import javax.annotation.Generated;
 public class MSKEndpoint {
 
 
-    public static class MSKCommon extends EndpointConfiguration {
+    public static class MSKCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String label;
+        private String region;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Logical name. The option is a java.lang.String type.
          */
-        private String label;
+        public T label(String label) {
+            this.label = label;
+            return (T) this;
+        }
+
         /**
          * The region in which MSK client needs to work. The option is a
          * java.lang.String type.
          */
-        private String region;
+        public T region(String region) {
+            this.region = region;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getLabel() {
             return label;
@@ -83,38 +105,68 @@ public class MSKEndpoint {
         }
     }
 
-    public static class MSKConsumer extends MSKCommon {
+    public static class MSKConsumer extends MSKCommon<MSKConsumer> {
     }
 
-    public static class MSKProducer extends MSKCommon {
+    public static class MSKProducer extends MSKCommon<MSKProducer> {
+        private String accessKey;
+        private Object mskClient;
+        private MSKOperations operation;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String secretKey;
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public MSKProducer accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (MSKProducer) this;
+        }
+
         /**
          * To use a existing configured AWS MSK as client. The option is a
          * com.amazonaws.services.kafka.AWSKafka type.
          */
-        private Object mskClient;
+        public MSKProducer mskClient(Object mskClient) {
+            this.mskClient = mskClient;
+            return (MSKProducer) this;
+        }
+
         /**
          * The operation to perform. The option is a
          * org.apache.camel.component.aws.msk.MSKOperations type.
          */
-        private MSKOperations operation;
+        public MSKProducer operation(MSKOperations operation) {
+            this.operation = operation;
+            return (MSKProducer) this;
+        }
+
         /**
          * To define a proxy host when instantiating the MSK client. The option
          * is a java.lang.String type.
          */
-        private String proxyHost;
+        public MSKProducer proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (MSKProducer) this;
+        }
+
         /**
          * To define a proxy port when instantiating the MSK client. The option
          * is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public MSKProducer proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (MSKProducer) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public MSKProducer secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (MSKProducer) this;
+        }
 
         public String getAccessKey() {
             return accessKey;

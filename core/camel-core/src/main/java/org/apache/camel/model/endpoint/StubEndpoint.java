@@ -32,36 +32,63 @@ import org.apache.camel.spi.ExceptionHandler;
 public class StubEndpoint {
 
 
-    public static class StubCommon extends EndpointConfiguration {
+    public static class StubCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String name;
+        private Integer size;
+        private Boolean basicPropertyBinding;
+        private BlockingQueue queue;
+        private Boolean synchronous;
+
         /**
          * Name of queue. The option is a java.lang.String type.
          */
-        private String name;
+        public T name(String name) {
+            this.name = name;
+            return (T) this;
+        }
+
         /**
          * The maximum capacity of the SEDA queue (i.e., the number of messages
          * it can hold). Will by default use the defaultSize set on the SEDA
          * component. The option is a int type.
          */
-        private Integer size;
+        public T size(int size) {
+            this.size = size;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Define the queue instance which will be used by the endpoint. This
          * option is only for rare use-cases where you want to use a custom
          * queue instance. The option is a java.util.concurrent.BlockingQueue
          * type.
          */
-        private BlockingQueue queue;
+        public T queue(BlockingQueue queue) {
+            this.queue = queue;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getName() {
             return name;
@@ -104,7 +131,16 @@ public class StubEndpoint {
         }
     }
 
-    public static class StubConsumer extends StubCommon {
+    public static class StubConsumer extends StubCommon<StubConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Integer concurrentConsumers;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private Boolean limitConcurrentConsumers;
+        private Boolean multipleConsumers;
+        private Integer pollTimeout;
+        private Boolean purgeWhenStopping;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -114,12 +150,20 @@ public class StubEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public StubConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (StubConsumer) this;
+        }
+
         /**
          * Number of concurrent threads processing exchanges. The option is a
          * int type.
          */
-        private Integer concurrentConsumers;
+        public StubConsumer concurrentConsumers(int concurrentConsumers) {
+            this.concurrentConsumers = concurrentConsumers;
+            return (StubConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -127,19 +171,32 @@ public class StubEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public StubConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (StubConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public StubConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (StubConsumer) this;
+        }
+
         /**
          * Whether to limit the number of concurrentConsumers to the maximum of
          * 500. By default, an exception will be thrown if an endpoint is
          * configured with a greater number. You can disable that check by
          * turning this option off. The option is a boolean type.
          */
-        private Boolean limitConcurrentConsumers;
+        public StubConsumer limitConcurrentConsumers(
+                boolean limitConcurrentConsumers) {
+            this.limitConcurrentConsumers = limitConcurrentConsumers;
+            return (StubConsumer) this;
+        }
+
         /**
          * Specifies whether multiple consumers are allowed. If enabled, you can
          * use SEDA for Publish-Subscribe messaging. That is, you can send a
@@ -147,20 +204,31 @@ public class StubEndpoint {
          * the message. When enabled, this option should be specified on every
          * consumer endpoint. The option is a boolean type.
          */
-        private Boolean multipleConsumers;
+        public StubConsumer multipleConsumers(boolean multipleConsumers) {
+            this.multipleConsumers = multipleConsumers;
+            return (StubConsumer) this;
+        }
+
         /**
          * The timeout used when polling. When a timeout occurs, the consumer
          * can check whether it is allowed to continue running. Setting a lower
          * value allows the consumer to react more quickly upon shutdown. The
          * option is a int type.
          */
-        private Integer pollTimeout;
+        public StubConsumer pollTimeout(int pollTimeout) {
+            this.pollTimeout = pollTimeout;
+            return (StubConsumer) this;
+        }
+
         /**
          * Whether to purge the task queue when stopping the consumer/route.
          * This allows to stop faster, as any pending messages on the queue is
          * discarded. The option is a boolean type.
          */
-        private Boolean purgeWhenStopping;
+        public StubConsumer purgeWhenStopping(boolean purgeWhenStopping) {
+            this.purgeWhenStopping = purgeWhenStopping;
+            return (StubConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -227,7 +295,14 @@ public class StubEndpoint {
         }
     }
 
-    public static class StubProducer extends StubCommon {
+    public static class StubProducer extends StubCommon<StubProducer> {
+        private Boolean blockWhenFull;
+        private Boolean discardIfNoConsumers;
+        private Boolean failIfNoConsumers;
+        private Long offerTimeout;
+        private Long timeout;
+        private WaitForTaskToComplete waitForTaskToComplete;
+
         /**
          * Whether a thread that sends messages to a full SEDA queue will block
          * until the queue's capacity is no longer exhausted. By default, an
@@ -235,7 +310,11 @@ public class StubEndpoint {
          * this option, the calling thread will instead block and wait until the
          * message can be accepted. The option is a boolean type.
          */
-        private Boolean blockWhenFull;
+        public StubProducer blockWhenFull(boolean blockWhenFull) {
+            this.blockWhenFull = blockWhenFull;
+            return (StubProducer) this;
+        }
+
         /**
          * Whether the producer should discard the message (do not add the
          * message to the queue), when sending to a queue with no active
@@ -243,26 +322,42 @@ public class StubEndpoint {
          * failIfNoConsumers can be enabled at the same time. The option is a
          * boolean type.
          */
-        private Boolean discardIfNoConsumers;
+        public StubProducer discardIfNoConsumers(boolean discardIfNoConsumers) {
+            this.discardIfNoConsumers = discardIfNoConsumers;
+            return (StubProducer) this;
+        }
+
         /**
          * Whether the producer should fail by throwing an exception, when
          * sending to a queue with no active consumers. Only one of the options
          * discardIfNoConsumers and failIfNoConsumers can be enabled at the same
          * time. The option is a boolean type.
          */
-        private Boolean failIfNoConsumers;
+        public StubProducer failIfNoConsumers(boolean failIfNoConsumers) {
+            this.failIfNoConsumers = failIfNoConsumers;
+            return (StubProducer) this;
+        }
+
         /**
          * offerTimeout (in milliseconds) can be added to the block case when
          * queue is full. You can disable timeout by using 0 or a negative
          * value. The option is a long type.
          */
-        private Long offerTimeout;
+        public StubProducer offerTimeout(long offerTimeout) {
+            this.offerTimeout = offerTimeout;
+            return (StubProducer) this;
+        }
+
         /**
          * Timeout (in milliseconds) before a SEDA producer will stop waiting
          * for an asynchronous task to complete. You can disable timeout by
          * using 0 or a negative value. The option is a long type.
          */
-        private Long timeout;
+        public StubProducer timeout(long timeout) {
+            this.timeout = timeout;
+            return (StubProducer) this;
+        }
+
         /**
          * Option to specify whether the caller should wait for the async task
          * to complete or not before continuing. The following three options are
@@ -272,7 +367,11 @@ public class StubEndpoint {
          * IfReplyExpected. The option is a
          * org.apache.camel.WaitForTaskToComplete type.
          */
-        private WaitForTaskToComplete waitForTaskToComplete;
+        public StubProducer waitForTaskToComplete(
+                WaitForTaskToComplete waitForTaskToComplete) {
+            this.waitForTaskToComplete = waitForTaskToComplete;
+            return (StubProducer) this;
+        }
 
         public Boolean getBlockWhenFull() {
             return blockWhenFull;

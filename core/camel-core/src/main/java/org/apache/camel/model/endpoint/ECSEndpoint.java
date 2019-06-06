@@ -27,28 +27,50 @@ import javax.annotation.Generated;
 public class ECSEndpoint {
 
 
-    public static class ECSCommon extends EndpointConfiguration {
+    public static class ECSCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private String label;
+        private String region;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Logical name. The option is a java.lang.String type.
          */
-        private String label;
+        public T label(String label) {
+            this.label = label;
+            return (T) this;
+        }
+
         /**
          * The region in which ECS client needs to work. The option is a
          * java.lang.String type.
          */
-        private String region;
+        public T region(String region) {
+            this.region = region;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public String getLabel() {
             return label;
@@ -83,38 +105,68 @@ public class ECSEndpoint {
         }
     }
 
-    public static class ECSConsumer extends ECSCommon {
+    public static class ECSConsumer extends ECSCommon<ECSConsumer> {
     }
 
-    public static class ECSProducer extends ECSCommon {
+    public static class ECSProducer extends ECSCommon<ECSProducer> {
+        private String accessKey;
+        private Object ecsClient;
+        private ECSOperations operation;
+        private String proxyHost;
+        private Integer proxyPort;
+        private String secretKey;
+
         /**
          * Amazon AWS Access Key. The option is a java.lang.String type.
          */
-        private String accessKey;
+        public ECSProducer accessKey(String accessKey) {
+            this.accessKey = accessKey;
+            return (ECSProducer) this;
+        }
+
         /**
          * To use a existing configured AWS ECS as client. The option is a
          * com.amazonaws.services.ecs.AmazonECS type.
          */
-        private Object ecsClient;
+        public ECSProducer ecsClient(Object ecsClient) {
+            this.ecsClient = ecsClient;
+            return (ECSProducer) this;
+        }
+
         /**
          * The operation to perform. The option is a
          * org.apache.camel.component.aws.ecs.ECSOperations type.
          */
-        private ECSOperations operation;
+        public ECSProducer operation(ECSOperations operation) {
+            this.operation = operation;
+            return (ECSProducer) this;
+        }
+
         /**
          * To define a proxy host when instantiating the ECS client. The option
          * is a java.lang.String type.
          */
-        private String proxyHost;
+        public ECSProducer proxyHost(String proxyHost) {
+            this.proxyHost = proxyHost;
+            return (ECSProducer) this;
+        }
+
         /**
          * To define a proxy port when instantiating the ECS client. The option
          * is a java.lang.Integer type.
          */
-        private Integer proxyPort;
+        public ECSProducer proxyPort(Integer proxyPort) {
+            this.proxyPort = proxyPort;
+            return (ECSProducer) this;
+        }
+
         /**
          * Amazon AWS Secret Key. The option is a java.lang.String type.
          */
-        private String secretKey;
+        public ECSProducer secretKey(String secretKey) {
+            this.secretKey = secretKey;
+            return (ECSProducer) this;
+        }
 
         public String getAccessKey() {
             return accessKey;

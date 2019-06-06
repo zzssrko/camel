@@ -28,24 +28,41 @@ import javax.annotation.Generated;
 public class SagaEndpoint {
 
 
-    public static class SagaCommon extends EndpointConfiguration {
+    public static class SagaCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private Object action;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+
         /**
          * Action to execute (complete or compensate). The option is a
          * org.apache.camel.component.saga.SagaEndpoint.SagaEndpointAction type.
          */
-        private Object action;
+        public T action(Object action) {
+            this.action = action;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
 
         public Object getAction() {
             return action;
@@ -72,9 +89,9 @@ public class SagaEndpoint {
         }
     }
 
-    public static class SagaConsumer extends SagaCommon {
+    public static class SagaConsumer extends SagaCommon<SagaConsumer> {
     }
 
-    public static class SagaProducer extends SagaCommon {
+    public static class SagaProducer extends SagaCommon<SagaProducer> {
     }
 }

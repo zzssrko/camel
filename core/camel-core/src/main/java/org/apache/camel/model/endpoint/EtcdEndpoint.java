@@ -36,63 +36,120 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public class EtcdEndpoint {
 
 
-    public static class EtcdCommon extends EndpointConfiguration {
+    public static class EtcdCommon<T extends EndpointConfiguration>
+            extends
+                EndpointConfiguration<T> {
+        private EtcdNamespace namespace;
+        private String path;
+        private Boolean recursive;
+        private String servicePath;
+        private Long timeout;
+        private String uris;
+        private Boolean basicPropertyBinding;
+        private Boolean synchronous;
+        private String password;
+        private Object sslContextParameters;
+        private String userName;
+
         /**
          * The API namespace to use. The option is a
          * org.apache.camel.component.etcd.EtcdNamespace type.
          */
-        private EtcdNamespace namespace;
+        public T namespace(EtcdNamespace namespace) {
+            this.namespace = namespace;
+            return (T) this;
+        }
+
         /**
          * The path the endpoint refers to. The option is a java.lang.String
          * type.
          */
-        private String path;
+        public T path(String path) {
+            this.path = path;
+            return (T) this;
+        }
+
         /**
          * To apply an action recursively. The option is a boolean type.
          */
-        private Boolean recursive;
+        public T recursive(boolean recursive) {
+            this.recursive = recursive;
+            return (T) this;
+        }
+
         /**
          * The path to look for for service discovery. The option is a
          * java.lang.String type.
          */
-        private String servicePath;
+        public T servicePath(String servicePath) {
+            this.servicePath = servicePath;
+            return (T) this;
+        }
+
         /**
          * To set the maximum time an action could take to complete. The option
          * is a java.lang.Long type.
          */
-        private Long timeout;
+        public T timeout(Long timeout) {
+            this.timeout = timeout;
+            return (T) this;
+        }
+
         /**
          * To set the URIs the client connects. The option is a java.lang.String
          * type.
          */
-        private String uris;
+        public T uris(String uris) {
+            this.uris = uris;
+            return (T) this;
+        }
+
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
-        private Boolean basicPropertyBinding;
+        public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.basicPropertyBinding = basicPropertyBinding;
+            return (T) this;
+        }
+
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
-        private Boolean synchronous;
+        public T synchronous(boolean synchronous) {
+            this.synchronous = synchronous;
+            return (T) this;
+        }
+
         /**
          * The password to use for basic authentication. The option is a
          * java.lang.String type.
          */
-        private String password;
+        public T password(String password) {
+            this.password = password;
+            return (T) this;
+        }
+
         /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
-        private Object sslContextParameters;
+        public T sslContextParameters(Object sslContextParameters) {
+            this.sslContextParameters = sslContextParameters;
+            return (T) this;
+        }
+
         /**
          * The user name to use for basic authentication. The option is a
          * java.lang.String type.
          */
-        private String userName;
+        public T userName(String userName) {
+            this.userName = userName;
+            return (T) this;
+        }
 
         public EtcdNamespace getNamespace() {
             return namespace;
@@ -183,7 +240,28 @@ public class EtcdEndpoint {
         }
     }
 
-    public static class EtcdConsumer extends EtcdCommon {
+    public static class EtcdConsumer extends EtcdCommon<EtcdConsumer> {
+        private Boolean bridgeErrorHandler;
+        private Boolean sendEmptyExchangeOnTimeout;
+        private Boolean sendEmptyMessageWhenIdle;
+        private ExceptionHandler exceptionHandler;
+        private ExchangePattern exchangePattern;
+        private Long fromIndex;
+        private PollingConsumerPollStrategy pollStrategy;
+        private Integer backoffErrorThreshold;
+        private Integer backoffIdleThreshold;
+        private Integer backoffMultiplier;
+        private Long delay;
+        private Boolean greedy;
+        private Long initialDelay;
+        private LoggingLevel runLoggingLevel;
+        private ScheduledExecutorService scheduledExecutorService;
+        private ScheduledPollConsumerScheduler scheduler;
+        private Map<String, Object> schedulerProperties;
+        private Boolean startScheduler;
+        private TimeUnit timeUnit;
+        private Boolean useFixedDelay;
+
         /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
@@ -193,18 +271,32 @@ public class EtcdEndpoint {
          * with exceptions, that will be logged at WARN or ERROR level and
          * ignored. The option is a boolean type.
          */
-        private Boolean bridgeErrorHandler;
+        public EtcdConsumer bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.bridgeErrorHandler = bridgeErrorHandler;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * To send an empty message in case of timeout watching for a key. The
          * option is a boolean type.
          */
-        private Boolean sendEmptyExchangeOnTimeout;
+        public EtcdConsumer sendEmptyExchangeOnTimeout(
+                boolean sendEmptyExchangeOnTimeout) {
+            this.sendEmptyExchangeOnTimeout = sendEmptyExchangeOnTimeout;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
          */
-        private Boolean sendEmptyMessageWhenIdle;
+        public EtcdConsumer sendEmptyMessageWhenIdle(
+                boolean sendEmptyMessageWhenIdle) {
+            this.sendEmptyMessageWhenIdle = sendEmptyMessageWhenIdle;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
@@ -212,16 +304,28 @@ public class EtcdEndpoint {
          * logged at WARN or ERROR level and ignored. The option is a
          * org.apache.camel.spi.ExceptionHandler type.
          */
-        private ExceptionHandler exceptionHandler;
+        public EtcdConsumer exceptionHandler(ExceptionHandler exceptionHandler) {
+            this.exceptionHandler = exceptionHandler;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
-        private ExchangePattern exchangePattern;
+        public EtcdConsumer exchangePattern(ExchangePattern exchangePattern) {
+            this.exchangePattern = exchangePattern;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * The index to watch from. The option is a java.lang.Long type.
          */
-        private Long fromIndex;
+        public EtcdConsumer fromIndex(Long fromIndex) {
+            this.fromIndex = fromIndex;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
@@ -229,18 +333,31 @@ public class EtcdEndpoint {
          * been created and being routed in Camel. The option is a
          * org.apache.camel.spi.PollingConsumerPollStrategy type.
          */
-        private PollingConsumerPollStrategy pollStrategy;
+        public EtcdConsumer pollStrategy(
+                PollingConsumerPollStrategy pollStrategy) {
+            this.pollStrategy = pollStrategy;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
          */
-        private Integer backoffErrorThreshold;
+        public EtcdConsumer backoffErrorThreshold(int backoffErrorThreshold) {
+            this.backoffErrorThreshold = backoffErrorThreshold;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
-        private Integer backoffIdleThreshold;
+        public EtcdConsumer backoffIdleThreshold(int backoffIdleThreshold) {
+            this.backoffIdleThreshold = backoffIdleThreshold;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * To let the scheduled polling consumer backoff if there has been a
          * number of subsequent idles/errors in a row. The multiplier is then
@@ -249,66 +366,111 @@ public class EtcdEndpoint {
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
          * configured. The option is a int type.
          */
-        private Integer backoffMultiplier;
+        public EtcdConsumer backoffMultiplier(int backoffMultiplier) {
+            this.backoffMultiplier = backoffMultiplier;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long delay;
+        public EtcdConsumer delay(long delay) {
+            this.delay = delay;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
          * option is a boolean type.
          */
-        private Boolean greedy;
+        public EtcdConsumer greedy(boolean greedy) {
+            this.greedy = greedy;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
-        private Long initialDelay;
+        public EtcdConsumer initialDelay(long initialDelay) {
+            this.initialDelay = initialDelay;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
-        private LoggingLevel runLoggingLevel;
+        public EtcdConsumer runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.runLoggingLevel = runLoggingLevel;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option is a java.util.concurrent.ScheduledExecutorService
          * type.
          */
-        private ScheduledExecutorService scheduledExecutorService;
+        public EtcdConsumer scheduledExecutorService(
+                ScheduledExecutorService scheduledExecutorService) {
+            this.scheduledExecutorService = scheduledExecutorService;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
-        private ScheduledPollConsumerScheduler scheduler;
+        public EtcdConsumer scheduler(ScheduledPollConsumerScheduler scheduler) {
+            this.scheduler = scheduler;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
-        private Map<String, Object> schedulerProperties;
+        public EtcdConsumer schedulerProperties(
+                Map<String, Object> schedulerProperties) {
+            this.schedulerProperties = schedulerProperties;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
-        private Boolean startScheduler;
+        public EtcdConsumer startScheduler(boolean startScheduler) {
+            this.startScheduler = startScheduler;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
-        private TimeUnit timeUnit;
+        public EtcdConsumer timeUnit(TimeUnit timeUnit) {
+            this.timeUnit = timeUnit;
+            return (EtcdConsumer) this;
+        }
+
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
-        private Boolean useFixedDelay;
+        public EtcdConsumer useFixedDelay(boolean useFixedDelay) {
+            this.useFixedDelay = useFixedDelay;
+            return (EtcdConsumer) this;
+        }
 
         public Boolean getBridgeErrorHandler() {
             return bridgeErrorHandler;
@@ -474,12 +636,17 @@ public class EtcdEndpoint {
         }
     }
 
-    public static class EtcdProducer extends EtcdCommon {
+    public static class EtcdProducer extends EtcdCommon<EtcdProducer> {
+        private Integer timeToLive;
+
         /**
          * To set the lifespan of a key in milliseconds. The option is a
          * java.lang.Integer type.
          */
-        private Integer timeToLive;
+        public EtcdProducer timeToLive(Integer timeToLive) {
+            this.timeToLive = timeToLive;
+            return (EtcdProducer) this;
+        }
 
         public Integer getTimeToLive() {
             return timeToLive;
