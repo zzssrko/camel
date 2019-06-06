@@ -54,10 +54,17 @@ public class FileConsumeCharsetTest extends ContextTestSupport {
     protected RouteBuilder createRouteBuilder() throws Exception {
         return new RouteBuilder() {
             public void configure() throws Exception {
-                from("file://target/data/files/?initialDelay=0&delay=10&fileName=report.txt&delete=true&charset=UTF-8")
+                from(file("target/data/files/").initialDelay(0).delay(10).fileName(constant("report.txt")).delete(true).charset("UTF-8"))
                     .convertBodyTo(String.class)
-                    .to("mock:result");
+                    .to(mock("result"));
             }
         };
+    }
+
+    static org.apache.camel.model.endpoint.FileEndpoint.FileConsumer file(String path) {
+        return new org.apache.camel.model.endpoint.FileEndpoint.FileConsumer(path);
+    }
+    static org.apache.camel.model.endpoint.MockEndpoint.MockProducer mock(String name) {
+        return new org.apache.camel.model.endpoint.MockEndpoint.MockProducer(name);
     }
 }
