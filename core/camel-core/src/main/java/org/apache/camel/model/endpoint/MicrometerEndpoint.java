@@ -110,16 +110,6 @@ public class MicrometerEndpoint {
         }
     }
 
-    public static class MicrometerConsumer
-            extends
-                MicrometerCommon<MicrometerConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public MicrometerConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class MicrometerProducer
             extends
                 MicrometerCommon<MicrometerProducer>

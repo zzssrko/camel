@@ -88,16 +88,6 @@ public class EjbEndpoint {
         }
     }
 
-    public static class EjbConsumer
-            extends
-                EjbCommon<EjbConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public EjbConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class EjbProducer
             extends
                 EjbCommon<EjbProducer>

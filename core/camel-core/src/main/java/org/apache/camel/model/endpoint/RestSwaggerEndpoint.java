@@ -55,16 +55,6 @@ public class RestSwaggerEndpoint {
         }
     }
 
-    public static class RestSwaggerConsumer
-            extends
-                RestSwaggerCommon<RestSwaggerConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public RestSwaggerConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class RestSwaggerProducer
             extends
                 RestSwaggerCommon<RestSwaggerProducer>

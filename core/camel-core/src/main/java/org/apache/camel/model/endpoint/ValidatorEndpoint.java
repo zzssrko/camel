@@ -145,16 +145,6 @@ public class ValidatorEndpoint {
         }
     }
 
-    public static class ValidatorConsumer
-            extends
-                ValidatorCommon<ValidatorConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public ValidatorConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class ValidatorProducer
             extends
                 ValidatorCommon<ValidatorProducer>

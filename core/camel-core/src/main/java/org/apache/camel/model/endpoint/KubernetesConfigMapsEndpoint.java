@@ -198,16 +198,6 @@ public class KubernetesConfigMapsEndpoint {
         }
     }
 
-    public static class KubernetesConfigMapsConsumer
-            extends
-                KubernetesConfigMapsCommon<KubernetesConfigMapsConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public KubernetesConfigMapsConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class KubernetesConfigMapsProducer
             extends
                 KubernetesConfigMapsCommon<KubernetesConfigMapsProducer>

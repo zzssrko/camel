@@ -142,16 +142,6 @@ public class HazelcastAtomicnumberEndpoint {
         }
     }
 
-    public static class HazelcastAtomicnumberConsumer
-            extends
-                HazelcastAtomicnumberCommon<HazelcastAtomicnumberConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public HazelcastAtomicnumberConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class HazelcastAtomicnumberProducer
             extends
                 HazelcastAtomicnumberCommon<HazelcastAtomicnumberProducer>

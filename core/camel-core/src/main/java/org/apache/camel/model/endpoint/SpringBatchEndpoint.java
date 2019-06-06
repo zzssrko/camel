@@ -87,16 +87,6 @@ public class SpringBatchEndpoint {
         }
     }
 
-    public static class SpringBatchConsumer
-            extends
-                SpringBatchCommon<SpringBatchConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public SpringBatchConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class SpringBatchProducer
             extends
                 SpringBatchCommon<SpringBatchProducer>

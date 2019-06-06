@@ -169,16 +169,6 @@ public class GangliaEndpoint {
         }
     }
 
-    public static class GangliaConsumer
-            extends
-                GangliaCommon<GangliaConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public GangliaConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class GangliaProducer
             extends
                 GangliaCommon<GangliaProducer>

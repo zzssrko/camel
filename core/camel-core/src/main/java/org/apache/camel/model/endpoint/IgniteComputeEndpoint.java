@@ -82,16 +82,6 @@ public class IgniteComputeEndpoint {
         }
     }
 
-    public static class IgniteComputeConsumer
-            extends
-                IgniteComputeCommon<IgniteComputeConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public IgniteComputeConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class IgniteComputeProducer
             extends
                 IgniteComputeCommon<IgniteComputeProducer>

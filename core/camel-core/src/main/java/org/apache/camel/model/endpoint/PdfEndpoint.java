@@ -128,16 +128,6 @@ public class PdfEndpoint {
         }
     }
 
-    public static class PdfConsumer
-            extends
-                PdfCommon<PdfConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public PdfConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class PdfProducer
             extends
                 PdfCommon<PdfProducer>

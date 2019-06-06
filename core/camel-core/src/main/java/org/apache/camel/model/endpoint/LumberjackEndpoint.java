@@ -124,14 +124,4 @@ public class LumberjackEndpoint {
             return (LumberjackConsumer) this;
         }
     }
-
-    public static class LumberjackProducer
-            extends
-                LumberjackCommon<LumberjackProducer>
-            implements
-                EndpointDefinition.Producer {
-        public LumberjackProducer(String path) {
-            super(path);
-        }
-    }
 }

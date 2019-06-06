@@ -81,16 +81,6 @@ public class FopEndpoint {
         }
     }
 
-    public static class FopConsumer
-            extends
-                FopCommon<FopConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public FopConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class FopProducer
             extends
                 FopCommon<FopProducer>

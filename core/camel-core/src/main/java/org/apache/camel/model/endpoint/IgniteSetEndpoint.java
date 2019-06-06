@@ -80,16 +80,6 @@ public class IgniteSetEndpoint {
         }
     }
 
-    public static class IgniteSetConsumer
-            extends
-                IgniteSetCommon<IgniteSetConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public IgniteSetConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class IgniteSetProducer
             extends
                 IgniteSetCommon<IgniteSetProducer>

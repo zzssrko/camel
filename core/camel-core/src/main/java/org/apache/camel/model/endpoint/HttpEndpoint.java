@@ -247,16 +247,6 @@ public class HttpEndpoint {
         }
     }
 
-    public static class HttpConsumer
-            extends
-                HttpCommon<HttpConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public HttpConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class HttpProducer
             extends
                 HttpCommon<HttpProducer>

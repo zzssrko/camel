@@ -265,16 +265,6 @@ public class LogEndpoint {
         }
     }
 
-    public static class LogConsumer
-            extends
-                LogCommon<LogConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public LogConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class LogProducer
             extends
                 LogCommon<LogProducer>

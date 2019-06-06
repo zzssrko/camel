@@ -69,16 +69,6 @@ public class MQEndpoint {
         }
     }
 
-    public static class MQConsumer
-            extends
-                MQCommon<MQConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public MQConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class MQProducer
             extends
                 MQCommon<MQProducer>

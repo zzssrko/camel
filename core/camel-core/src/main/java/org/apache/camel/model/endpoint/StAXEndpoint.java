@@ -63,16 +63,6 @@ public class StAXEndpoint {
         }
     }
 
-    public static class StAXConsumer
-            extends
-                StAXCommon<StAXConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public StAXConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class StAXProducer
             extends
                 StAXCommon<StAXProducer>

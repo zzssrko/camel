@@ -50,6 +50,7 @@ import org.apache.camel.maven.packaging.srcgen.GenericType.BoundType;
 import org.apache.camel.maven.packaging.srcgen.JavaClass;
 import org.apache.camel.maven.packaging.srcgen.Method;
 import org.apache.camel.maven.packaging.srcgen.Property;
+import org.apache.camel.spi.UriEndpoint;
 import org.apache.camel.spi.UriParam;
 import org.apache.camel.spi.UriParams;
 import org.apache.camel.spi.UriPath;
@@ -225,25 +226,35 @@ public class EndpointDslMojo extends AbstractMojo {
                 .setBody("super(\"" + model.getScheme() + "\", path);");
         generateDummyClass(commonClass.getCanonicalName());
 
-        JavaClass consumerClass = javaClass.addNestedType().setPublic().setStatic(true);
-        consumerClass.setName(name.replace("Endpoint", "Consumer"));
-        consumerClass.extendSuperType(name.replace("Endpoint", "Common") + "<" + name.replace("Endpoint", "Consumer") + ">");
-        consumerClass.implementInterface("EndpointDefinition.Consumer");
-        consumerClass.addMethod().setConstructor(true).setPublic()
-                .setName(name.replace("Endpoint", "Consumer"))
-                .addParameter(String.class, "path")
-                .setBody("super(path);");
-        generateDummyClass(consumerClass.getCanonicalName());
+        JavaClass consumerClass;
+        if (realEndpointClass.getAnnotation(UriEndpoint.class).producerOnly()) {
+            consumerClass = null;
+        } else {
+            consumerClass = javaClass.addNestedType().setPublic().setStatic(true);
+            consumerClass.setName(name.replace("Endpoint", "Consumer"));
+            consumerClass.extendSuperType(name.replace("Endpoint", "Common") + "<" + name.replace("Endpoint", "Consumer") + ">");
+            consumerClass.implementInterface("EndpointDefinition.Consumer");
+            consumerClass.addMethod().setConstructor(true).setPublic()
+                    .setName(name.replace("Endpoint", "Consumer"))
+                    .addParameter(String.class, "path")
+                    .setBody("super(path);");
+            generateDummyClass(consumerClass.getCanonicalName());
+        }
 
-        JavaClass producerClass = javaClass.addNestedType().setPublic().setStatic(true);
-        producerClass.setName(name.replace("Endpoint", "Producer"));
-        producerClass.extendSuperType(name.replace("Endpoint", "Common") + "<" + name.replace("Endpoint", "Producer") + ">");
-        producerClass.implementInterface("EndpointDefinition.Producer");
-        producerClass.addMethod().setConstructor(true).setPublic()
-                .setName(name.replace("Endpoint", "Producer"))
-                .addParameter(String.class, "path")
-                .setBody("super(path);");
-        generateDummyClass(producerClass.getCanonicalName());
+        JavaClass producerClass;
+        if (realEndpointClass.getAnnotation(UriEndpoint.class).consumerOnly()) {
+            producerClass = null;
+        } else {
+            producerClass = javaClass.addNestedType().setPublic().setStatic(true);
+            producerClass.setName(name.replace("Endpoint", "Producer"));
+            producerClass.extendSuperType(name.replace("Endpoint", "Common") + "<" + name.replace("Endpoint", "Producer") + ">");
+            producerClass.implementInterface("EndpointDefinition.Producer");
+            producerClass.addMethod().setConstructor(true).setPublic()
+                    .setName(name.replace("Endpoint", "Producer"))
+                    .addParameter(String.class, "path")
+                    .setBody("super(path);");
+            generateDummyClass(producerClass.getCanonicalName());
+        }
 
         generateDummyClass(packageName + ".T");
 

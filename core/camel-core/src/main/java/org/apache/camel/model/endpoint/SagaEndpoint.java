@@ -63,16 +63,6 @@ public class SagaEndpoint {
         }
     }
 
-    public static class SagaConsumer
-            extends
-                SagaCommon<SagaConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public SagaConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class SagaProducer
             extends
                 SagaCommon<SagaProducer>

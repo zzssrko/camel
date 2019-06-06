@@ -119,16 +119,6 @@ public class CinderEndpoint {
         }
     }
 
-    public static class CinderConsumer
-            extends
-                CinderCommon<CinderConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public CinderConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class CinderProducer
             extends
                 CinderCommon<CinderProducer>

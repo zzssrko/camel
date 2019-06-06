@@ -122,16 +122,6 @@ public class DozerEndpoint {
         }
     }
 
-    public static class DozerConsumer
-            extends
-                DozerCommon<DozerConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public DozerConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class DozerProducer
             extends
                 DozerCommon<DozerProducer>

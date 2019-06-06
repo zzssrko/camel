@@ -160,16 +160,6 @@ public class SolrEndpoint {
         }
     }
 
-    public static class SolrConsumer
-            extends
-                SolrCommon<SolrConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public SolrConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class SolrProducer
             extends
                 SolrCommon<SolrProducer>

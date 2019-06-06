@@ -126,16 +126,6 @@ public class ExecEndpoint {
         }
     }
 
-    public static class ExecConsumer
-            extends
-                ExecCommon<ExecConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public ExecConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class ExecProducer
             extends
                 ExecCommon<ExecProducer>

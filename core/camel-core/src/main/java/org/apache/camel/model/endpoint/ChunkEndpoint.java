@@ -114,16 +114,6 @@ public class ChunkEndpoint {
         }
     }
 
-    public static class ChunkConsumer
-            extends
-                ChunkCommon<ChunkConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public ChunkConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class ChunkProducer
             extends
                 ChunkCommon<ChunkProducer>

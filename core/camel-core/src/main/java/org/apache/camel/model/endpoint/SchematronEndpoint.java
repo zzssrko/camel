@@ -86,16 +86,6 @@ public class SchematronEndpoint {
         }
     }
 
-    public static class SchematronConsumer
-            extends
-                SchematronCommon<SchematronConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public SchematronConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class SchematronProducer
             extends
                 SchematronCommon<SchematronProducer>

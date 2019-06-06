@@ -186,16 +186,6 @@ public class SnsEndpoint {
         }
     }
 
-    public static class SnsConsumer
-            extends
-                SnsCommon<SnsConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public SnsConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class SnsProducer
             extends
                 SnsCommon<SnsProducer>

@@ -109,16 +109,6 @@ public class LambdaEndpoint {
         }
     }
 
-    public static class LambdaConsumer
-            extends
-                LambdaCommon<LambdaConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public LambdaConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class LambdaProducer
             extends
                 LambdaCommon<LambdaProducer>

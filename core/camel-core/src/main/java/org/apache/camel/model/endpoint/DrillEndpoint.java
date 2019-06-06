@@ -95,16 +95,6 @@ public class DrillEndpoint {
         }
     }
 
-    public static class DrillConsumer
-            extends
-                DrillCommon<DrillConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public DrillConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class DrillProducer
             extends
                 DrillCommon<DrillProducer>

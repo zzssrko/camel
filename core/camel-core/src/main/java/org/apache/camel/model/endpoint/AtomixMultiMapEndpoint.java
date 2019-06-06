@@ -223,16 +223,6 @@ public class AtomixMultiMapEndpoint {
         }
     }
 
-    public static class AtomixMultiMapProducer
-            extends
-                AtomixMultiMapCommon<AtomixMultiMapProducer>
-            implements
-                EndpointDefinition.Producer {
-        public AtomixMultiMapProducer(String path) {
-            super(path);
-        }
-    }
-
     public static enum ReadConsistency {
         ATOMIC, ATOMIC_LEASE, SEQUENTIAL, LOCAL;
     }

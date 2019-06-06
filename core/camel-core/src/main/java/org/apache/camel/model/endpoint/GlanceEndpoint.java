@@ -112,16 +112,6 @@ public class GlanceEndpoint {
         }
     }
 
-    public static class GlanceConsumer
-            extends
-                GlanceCommon<GlanceConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public GlanceConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class GlanceProducer
             extends
                 GlanceCommon<GlanceProducer>

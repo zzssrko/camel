@@ -333,16 +333,6 @@ public class DdbStreamEndpoint {
         }
     }
 
-    public static class DdbStreamProducer
-            extends
-                DdbStreamCommon<DdbStreamProducer>
-            implements
-                EndpointDefinition.Producer {
-        public DdbStreamProducer(String path) {
-            super(path);
-        }
-    }
-
     public static enum ShardIteratorType {
         TRIM_HORIZON, LATEST, AT_SEQUENCE_NUMBER, AFTER_SEQUENCE_NUMBER;
     }

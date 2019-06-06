@@ -119,16 +119,6 @@ public class SwiftEndpoint {
         }
     }
 
-    public static class SwiftConsumer
-            extends
-                SwiftCommon<SwiftConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public SwiftConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class SwiftProducer
             extends
                 SwiftCommon<SwiftProducer>

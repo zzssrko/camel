@@ -100,16 +100,6 @@ public class JoltEndpoint {
         }
     }
 
-    public static class JoltConsumer
-            extends
-                JoltCommon<JoltConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public JoltConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class JoltProducer
             extends
                 JoltCommon<JoltProducer>

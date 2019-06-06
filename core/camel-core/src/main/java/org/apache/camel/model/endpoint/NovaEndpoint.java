@@ -119,16 +119,6 @@ public class NovaEndpoint {
         }
     }
 
-    public static class NovaConsumer
-            extends
-                NovaCommon<NovaConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public NovaConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class NovaProducer
             extends
                 NovaCommon<NovaProducer>

@@ -119,16 +119,6 @@ public class NeutronEndpoint {
         }
     }
 
-    public static class NeutronConsumer
-            extends
-                NeutronCommon<NeutronConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public NeutronConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class NeutronProducer
             extends
                 NeutronCommon<NeutronProducer>

@@ -263,14 +263,4 @@ public class SchedulerEndpoint {
             return (SchedulerConsumer) this;
         }
     }
-
-    public static class SchedulerProducer
-            extends
-                SchedulerCommon<SchedulerProducer>
-            implements
-                EndpointDefinition.Producer {
-        public SchedulerProducer(String path) {
-            super(path);
-        }
-    }
 }

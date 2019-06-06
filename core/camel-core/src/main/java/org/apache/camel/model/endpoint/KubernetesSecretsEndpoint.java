@@ -198,16 +198,6 @@ public class KubernetesSecretsEndpoint {
         }
     }
 
-    public static class KubernetesSecretsConsumer
-            extends
-                KubernetesSecretsCommon<KubernetesSecretsConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public KubernetesSecretsConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class KubernetesSecretsProducer
             extends
                 KubernetesSecretsCommon<KubernetesSecretsProducer>

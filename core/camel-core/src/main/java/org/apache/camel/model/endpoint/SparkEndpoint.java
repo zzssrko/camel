@@ -190,14 +190,4 @@ public class SparkEndpoint {
             return (SparkConsumer) this;
         }
     }
-
-    public static class SparkProducer
-            extends
-                SparkCommon<SparkProducer>
-            implements
-                EndpointDefinition.Producer {
-        public SparkProducer(String path) {
-            super(path);
-        }
-    }
 }

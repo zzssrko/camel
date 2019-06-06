@@ -143,16 +143,6 @@ public class SesEndpoint {
         }
     }
 
-    public static class SesConsumer
-            extends
-                SesCommon<SesConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public SesConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class SesProducer
             extends
                 SesCommon<SesProducer>

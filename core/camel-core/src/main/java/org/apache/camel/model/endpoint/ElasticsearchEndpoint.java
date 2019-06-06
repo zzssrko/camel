@@ -155,16 +155,6 @@ public class ElasticsearchEndpoint {
         }
     }
 
-    public static class ElasticsearchConsumer
-            extends
-                ElasticsearchCommon<ElasticsearchConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public ElasticsearchConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class ElasticsearchProducer
             extends
                 ElasticsearchCommon<ElasticsearchProducer>

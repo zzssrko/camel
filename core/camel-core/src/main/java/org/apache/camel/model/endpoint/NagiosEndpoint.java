@@ -118,16 +118,6 @@ public class NagiosEndpoint {
         }
     }
 
-    public static class NagiosConsumer
-            extends
-                NagiosCommon<NagiosConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public NagiosConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class NagiosProducer
             extends
                 NagiosCommon<NagiosProducer>

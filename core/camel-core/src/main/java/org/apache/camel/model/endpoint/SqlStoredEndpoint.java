@@ -115,16 +115,6 @@ public class SqlStoredEndpoint {
         }
     }
 
-    public static class SqlStoredConsumer
-            extends
-                SqlStoredCommon<SqlStoredConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public SqlStoredConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class SqlStoredProducer
             extends
                 SqlStoredCommon<SqlStoredProducer>

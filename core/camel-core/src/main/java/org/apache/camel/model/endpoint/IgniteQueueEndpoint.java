@@ -80,16 +80,6 @@ public class IgniteQueueEndpoint {
         }
     }
 
-    public static class IgniteQueueConsumer
-            extends
-                IgniteQueueCommon<IgniteQueueConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public IgniteQueueConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class IgniteQueueProducer
             extends
                 IgniteQueueCommon<IgniteQueueProducer>

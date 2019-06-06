@@ -88,16 +88,6 @@ public class ClassEndpoint {
         }
     }
 
-    public static class ClassConsumer
-            extends
-                ClassCommon<ClassConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public ClassConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class ClassProducer
             extends
                 ClassCommon<ClassProducer>

@@ -112,16 +112,6 @@ public class KeystoneEndpoint {
         }
     }
 
-    public static class KeystoneConsumer
-            extends
-                KeystoneCommon<KeystoneConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public KeystoneConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class KeystoneProducer
             extends
                 KeystoneCommon<KeystoneProducer>

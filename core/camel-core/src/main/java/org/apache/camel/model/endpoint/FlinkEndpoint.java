@@ -102,16 +102,6 @@ public class FlinkEndpoint {
         }
     }
 
-    public static class FlinkConsumer
-            extends
-                FlinkCommon<FlinkConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public FlinkConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class FlinkProducer
             extends
                 FlinkCommon<FlinkProducer>

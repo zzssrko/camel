@@ -133,16 +133,6 @@ public class DigitalOceanEndpoint {
         }
     }
 
-    public static class DigitalOceanConsumer
-            extends
-                DigitalOceanCommon<DigitalOceanConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public DigitalOceanConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class DigitalOceanProducer
             extends
                 DigitalOceanCommon<DigitalOceanProducer>

@@ -136,16 +136,6 @@ public class CwEndpoint {
         }
     }
 
-    public static class CwConsumer
-            extends
-                CwCommon<CwConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public CwConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class CwProducer
             extends
                 CwCommon<CwProducer>

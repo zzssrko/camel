@@ -239,16 +239,6 @@ public class DigitalSignatureEndpoint {
         }
     }
 
-    public static class DigitalSignatureConsumer
-            extends
-                DigitalSignatureCommon<DigitalSignatureConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public DigitalSignatureConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class DigitalSignatureProducer
             extends
                 DigitalSignatureCommon<DigitalSignatureProducer>

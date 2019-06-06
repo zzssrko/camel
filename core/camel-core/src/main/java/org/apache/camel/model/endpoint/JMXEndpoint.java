@@ -336,14 +336,4 @@ public class JMXEndpoint {
             return (JMXConsumer) this;
         }
     }
-
-    public static class JMXProducer
-            extends
-                JMXCommon<JMXProducer>
-            implements
-                EndpointDefinition.Producer {
-        public JMXProducer(String path) {
-            super(path);
-        }
-    }
 }

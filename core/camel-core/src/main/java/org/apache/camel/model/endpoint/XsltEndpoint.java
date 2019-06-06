@@ -212,16 +212,6 @@ public class XsltEndpoint {
         }
     }
 
-    public static class XsltConsumer
-            extends
-                XsltCommon<XsltConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public XsltConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class XsltProducer
             extends
                 XsltCommon<XsltProducer>

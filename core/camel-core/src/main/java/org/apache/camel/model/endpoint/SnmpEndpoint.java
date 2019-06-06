@@ -410,16 +410,6 @@ public class SnmpEndpoint {
         }
     }
 
-    public static class SnmpProducer
-            extends
-                SnmpCommon<SnmpProducer>
-            implements
-                EndpointDefinition.Producer {
-        public SnmpProducer(String path) {
-            super(path);
-        }
-    }
-
     public static enum SnmpActionType {
         TRAP, POLL, GET_NEXT;
     }

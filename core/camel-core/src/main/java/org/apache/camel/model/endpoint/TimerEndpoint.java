@@ -179,14 +179,4 @@ public class TimerEndpoint {
             return (TimerConsumer) this;
         }
     }
-
-    public static class TimerProducer
-            extends
-                TimerCommon<TimerProducer>
-            implements
-                EndpointDefinition.Producer {
-        public TimerProducer(String path) {
-            super(path);
-        }
-    }
 }

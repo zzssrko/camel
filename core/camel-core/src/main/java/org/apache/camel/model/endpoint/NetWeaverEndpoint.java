@@ -102,16 +102,6 @@ public class NetWeaverEndpoint {
         }
     }
 
-    public static class NetWeaverConsumer
-            extends
-                NetWeaverCommon<NetWeaverConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public NetWeaverConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class NetWeaverProducer
             extends
                 NetWeaverCommon<NetWeaverProducer>

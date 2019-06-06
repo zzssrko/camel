@@ -69,16 +69,6 @@ public class EKSEndpoint {
         }
     }
 
-    public static class EKSConsumer
-            extends
-                EKSCommon<EKSConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public EKSConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class EKSProducer
             extends
                 EKSCommon<EKSProducer>

@@ -107,14 +107,4 @@ public class ServiceEndpoint {
             return (ServiceConsumer) this;
         }
     }
-
-    public static class ServiceProducer
-            extends
-                ServiceCommon<ServiceProducer>
-            implements
-                EndpointDefinition.Producer {
-        public ServiceProducer(String path) {
-            super(path);
-        }
-    }
 }

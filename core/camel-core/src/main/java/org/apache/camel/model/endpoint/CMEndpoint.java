@@ -98,16 +98,6 @@ public class CMEndpoint {
         }
     }
 
-    public static class CMConsumer
-            extends
-                CMCommon<CMConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public CMConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class CMProducer
             extends
                 CMCommon<CMProducer>

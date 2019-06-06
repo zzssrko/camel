@@ -113,16 +113,6 @@ public class LanguageEndpoint {
         }
     }
 
-    public static class LanguageConsumer
-            extends
-                LanguageCommon<LanguageConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public LanguageConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class LanguageProducer
             extends
                 LanguageCommon<LanguageProducer>

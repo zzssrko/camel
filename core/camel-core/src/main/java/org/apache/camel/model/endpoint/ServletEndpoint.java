@@ -290,14 +290,4 @@ public class ServletEndpoint {
             return (ServletConsumer) this;
         }
     }
-
-    public static class ServletProducer
-            extends
-                ServletCommon<ServletProducer>
-            implements
-                EndpointDefinition.Producer {
-        public ServletProducer(String path) {
-            super(path);
-        }
-    }
 }

@@ -355,14 +355,4 @@ public class GoogleCalendarStreamEndpoint {
             return (GoogleCalendarStreamConsumer) this;
         }
     }
-
-    public static class GoogleCalendarStreamProducer
-            extends
-                GoogleCalendarStreamCommon<GoogleCalendarStreamProducer>
-            implements
-                EndpointDefinition.Producer {
-        public GoogleCalendarStreamProducer(String path) {
-            super(path);
-        }
-    }
 }

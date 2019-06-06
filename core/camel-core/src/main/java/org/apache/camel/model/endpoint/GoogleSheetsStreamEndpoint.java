@@ -362,14 +362,4 @@ public class GoogleSheetsStreamEndpoint {
             return (GoogleSheetsStreamConsumer) this;
         }
     }
-
-    public static class GoogleSheetsStreamProducer
-            extends
-                GoogleSheetsStreamCommon<GoogleSheetsStreamProducer>
-            implements
-                EndpointDefinition.Producer {
-        public GoogleSheetsStreamProducer(String path) {
-            super(path);
-        }
-    }
 }

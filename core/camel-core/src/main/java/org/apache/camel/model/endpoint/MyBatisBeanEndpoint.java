@@ -72,16 +72,6 @@ public class MyBatisBeanEndpoint {
         }
     }
 
-    public static class MyBatisBeanConsumer
-            extends
-                MyBatisBeanCommon<MyBatisBeanConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public MyBatisBeanConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class MyBatisBeanProducer
             extends
                 MyBatisBeanCommon<MyBatisBeanProducer>

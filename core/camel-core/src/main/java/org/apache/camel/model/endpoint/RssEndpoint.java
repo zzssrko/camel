@@ -320,14 +320,4 @@ public class RssEndpoint {
             return (RssConsumer) this;
         }
     }
-
-    public static class RssProducer
-            extends
-                RssCommon<RssProducer>
-            implements
-                EndpointDefinition.Producer {
-        public RssProducer(String path) {
-            super(path);
-        }
-    }
 }

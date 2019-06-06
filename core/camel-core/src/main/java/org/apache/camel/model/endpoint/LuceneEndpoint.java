@@ -108,16 +108,6 @@ public class LuceneEndpoint {
         }
     }
 
-    public static class LuceneConsumer
-            extends
-                LuceneCommon<LuceneConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public LuceneConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class LuceneProducer
             extends
                 LuceneCommon<LuceneProducer>

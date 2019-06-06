@@ -77,16 +77,6 @@ public class GoogleBigQuerySQLEndpoint {
         }
     }
 
-    public static class GoogleBigQuerySQLConsumer
-            extends
-                GoogleBigQuerySQLCommon<GoogleBigQuerySQLConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public GoogleBigQuerySQLConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class GoogleBigQuerySQLProducer
             extends
                 GoogleBigQuerySQLCommon<GoogleBigQuerySQLProducer>

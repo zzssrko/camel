@@ -70,16 +70,6 @@ public class DataFormatEndpoint {
         }
     }
 
-    public static class DataFormatConsumer
-            extends
-                DataFormatCommon<DataFormatConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public DataFormatConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class DataFormatProducer
             extends
                 DataFormatCommon<DataFormatProducer>

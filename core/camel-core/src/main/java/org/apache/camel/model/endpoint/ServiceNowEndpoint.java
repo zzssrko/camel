@@ -422,16 +422,6 @@ public class ServiceNowEndpoint {
         }
     }
 
-    public static class ServiceNowConsumer
-            extends
-                ServiceNowCommon<ServiceNowConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public ServiceNowConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class ServiceNowProducer
             extends
                 ServiceNowCommon<ServiceNowProducer>

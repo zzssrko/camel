@@ -136,14 +136,4 @@ public class RestApiEndpoint {
             return (RestApiConsumer) this;
         }
     }
-
-    public static class RestApiProducer
-            extends
-                RestApiCommon<RestApiProducer>
-            implements
-                EndpointDefinition.Producer {
-        public RestApiProducer(String path) {
-            super(path);
-        }
-    }
 }

@@ -334,14 +334,4 @@ public class GoogleMailStreamEndpoint {
             return (GoogleMailStreamConsumer) this;
         }
     }
-
-    public static class GoogleMailStreamProducer
-            extends
-                GoogleMailStreamCommon<GoogleMailStreamProducer>
-            implements
-                EndpointDefinition.Producer {
-        public GoogleMailStreamProducer(String path) {
-            super(path);
-        }
-    }
 }

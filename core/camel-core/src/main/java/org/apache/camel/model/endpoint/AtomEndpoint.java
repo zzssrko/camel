@@ -321,14 +321,4 @@ public class AtomEndpoint {
             return (AtomConsumer) this;
         }
     }
-
-    public static class AtomProducer
-            extends
-                AtomCommon<AtomProducer>
-            implements
-                EndpointDefinition.Producer {
-        public AtomProducer(String path) {
-            super(path);
-        }
-    }
 }

@@ -317,14 +317,4 @@ public class SjmsBatchEndpoint {
             return (SjmsBatchConsumer) this;
         }
     }
-
-    public static class SjmsBatchProducer
-            extends
-                SjmsBatchCommon<SjmsBatchProducer>
-            implements
-                EndpointDefinition.Producer {
-        public SjmsBatchProducer(String path) {
-            super(path);
-        }
-    }
 }

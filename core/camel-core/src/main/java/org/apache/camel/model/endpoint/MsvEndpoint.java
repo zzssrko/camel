@@ -145,16 +145,6 @@ public class MsvEndpoint {
         }
     }
 
-    public static class MsvConsumer
-            extends
-                MsvCommon<MsvConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public MsvConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class MsvProducer
             extends
                 MsvCommon<MsvProducer>

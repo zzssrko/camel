@@ -69,16 +69,6 @@ public class EC2Endpoint {
         }
     }
 
-    public static class EC2Consumer
-            extends
-                EC2Common<EC2Consumer>
-            implements
-                EndpointDefinition.Consumer {
-        public EC2Consumer(String path) {
-            super(path);
-        }
-    }
-
     public static class EC2Producer
             extends
                 EC2Common<EC2Producer>

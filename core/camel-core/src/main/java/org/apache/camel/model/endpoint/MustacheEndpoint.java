@@ -98,16 +98,6 @@ public class MustacheEndpoint {
         }
     }
 
-    public static class MustacheConsumer
-            extends
-                MustacheCommon<MustacheConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public MustacheConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class MustacheProducer
             extends
                 MustacheCommon<MustacheProducer>

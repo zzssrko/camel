@@ -117,16 +117,6 @@ public class MetricsEndpoint {
         }
     }
 
-    public static class MetricsConsumer
-            extends
-                MetricsCommon<MetricsConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public MetricsConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class MetricsProducer
             extends
                 MetricsCommon<MetricsProducer>

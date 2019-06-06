@@ -62,16 +62,6 @@ public class DnsEndpoint {
         }
     }
 
-    public static class DnsConsumer
-            extends
-                DnsCommon<DnsConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public DnsConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class DnsProducer
             extends
                 DnsCommon<DnsProducer>

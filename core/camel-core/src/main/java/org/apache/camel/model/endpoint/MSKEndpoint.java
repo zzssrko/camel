@@ -69,16 +69,6 @@ public class MSKEndpoint {
         }
     }
 
-    public static class MSKConsumer
-            extends
-                MSKCommon<MSKConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public MSKConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class MSKProducer
             extends
                 MSKCommon<MSKProducer>

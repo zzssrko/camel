@@ -109,14 +109,4 @@ public class PaxLoggingEndpoint {
             return (PaxLoggingConsumer) this;
         }
     }
-
-    public static class PaxLoggingProducer
-            extends
-                PaxLoggingCommon<PaxLoggingProducer>
-            implements
-                EndpointDefinition.Producer {
-        public PaxLoggingProducer(String path) {
-            super(path);
-        }
-    }
 }

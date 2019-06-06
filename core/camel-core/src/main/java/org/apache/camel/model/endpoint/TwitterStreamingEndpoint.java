@@ -466,16 +466,6 @@ public class TwitterStreamingEndpoint {
         }
     }
 
-    public static class TwitterStreamingProducer
-            extends
-                TwitterStreamingCommon<TwitterStreamingProducer>
-            implements
-                EndpointDefinition.Producer {
-        public TwitterStreamingProducer(String path) {
-            super(path);
-        }
-    }
-
     public static enum StreamingType {
         SAMPLE, FILTER, USER, UNKNOWN;
     }

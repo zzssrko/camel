@@ -198,16 +198,6 @@ public class KubernetesServiceAccountsEndpoint {
         }
     }
 
-    public static class KubernetesServiceAccountsConsumer
-            extends
-                KubernetesServiceAccountsCommon<KubernetesServiceAccountsConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public KubernetesServiceAccountsConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class KubernetesServiceAccountsProducer
             extends
                 KubernetesServiceAccountsCommon<KubernetesServiceAccountsProducer>

@@ -62,16 +62,6 @@ public class MockEndpoint {
         }
     }
 
-    public static class MockConsumer
-            extends
-                MockCommon<MockConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public MockConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class MockProducer
             extends
                 MockCommon<MockProducer>

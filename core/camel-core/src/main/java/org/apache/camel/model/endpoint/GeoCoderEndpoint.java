@@ -163,16 +163,6 @@ public class GeoCoderEndpoint {
         }
     }
 
-    public static class GeoCoderConsumer
-            extends
-                GeoCoderCommon<GeoCoderConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public GeoCoderConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class GeoCoderProducer
             extends
                 GeoCoderCommon<GeoCoderProducer>

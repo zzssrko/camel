@@ -98,16 +98,6 @@ public class VelocityEndpoint {
         }
     }
 
-    public static class VelocityConsumer
-            extends
-                VelocityCommon<VelocityConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public VelocityConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class VelocityProducer
             extends
                 VelocityCommon<VelocityProducer>

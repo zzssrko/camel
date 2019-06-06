@@ -103,16 +103,6 @@ public class InfluxDbEndpoint {
         }
     }
 
-    public static class InfluxDbConsumer
-            extends
-                InfluxDbCommon<InfluxDbConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public InfluxDbConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class InfluxDbProducer
             extends
                 InfluxDbCommon<InfluxDbProducer>

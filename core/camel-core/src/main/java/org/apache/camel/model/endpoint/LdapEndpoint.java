@@ -105,16 +105,6 @@ public class LdapEndpoint {
         }
     }
 
-    public static class LdapConsumer
-            extends
-                LdapCommon<LdapConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public LdapConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class LdapProducer
             extends
                 LdapCommon<LdapProducer>

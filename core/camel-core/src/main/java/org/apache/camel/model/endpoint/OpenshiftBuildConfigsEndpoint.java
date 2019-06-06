@@ -198,16 +198,6 @@ public class OpenshiftBuildConfigsEndpoint {
         }
     }
 
-    public static class OpenshiftBuildConfigsConsumer
-            extends
-                OpenshiftBuildConfigsCommon<OpenshiftBuildConfigsConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public OpenshiftBuildConfigsConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class OpenshiftBuildConfigsProducer
             extends
                 OpenshiftBuildConfigsCommon<OpenshiftBuildConfigsProducer>

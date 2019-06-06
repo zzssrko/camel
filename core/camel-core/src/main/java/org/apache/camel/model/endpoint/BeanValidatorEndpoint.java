@@ -103,16 +103,6 @@ public class BeanValidatorEndpoint {
         }
     }
 
-    public static class BeanValidatorConsumer
-            extends
-                BeanValidatorCommon<BeanValidatorConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public BeanValidatorConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class BeanValidatorProducer
             extends
                 BeanValidatorCommon<BeanValidatorProducer>

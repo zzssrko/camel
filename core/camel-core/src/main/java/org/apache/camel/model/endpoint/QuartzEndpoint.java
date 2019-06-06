@@ -245,14 +245,4 @@ public class QuartzEndpoint {
             return (QuartzConsumer) this;
         }
     }
-
-    public static class QuartzProducer
-            extends
-                QuartzCommon<QuartzProducer>
-            implements
-                EndpointDefinition.Producer {
-        public QuartzProducer(String path) {
-            super(path);
-        }
-    }
 }

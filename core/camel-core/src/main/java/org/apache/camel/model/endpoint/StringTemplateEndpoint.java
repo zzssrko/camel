@@ -88,16 +88,6 @@ public class StringTemplateEndpoint {
         }
     }
 
-    public static class StringTemplateConsumer
-            extends
-                StringTemplateCommon<StringTemplateConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public StringTemplateConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class StringTemplateProducer
             extends
                 StringTemplateCommon<StringTemplateProducer>

@@ -198,16 +198,6 @@ public class KubernetesResourcesQuotaEndpoint {
         }
     }
 
-    public static class KubernetesResourcesQuotaConsumer
-            extends
-                KubernetesResourcesQuotaCommon<KubernetesResourcesQuotaConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public KubernetesResourcesQuotaConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class KubernetesResourcesQuotaProducer
             extends
                 KubernetesResourcesQuotaCommon<KubernetesResourcesQuotaProducer>

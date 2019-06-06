@@ -186,16 +186,6 @@ public class JdbcEndpoint {
         }
     }
 
-    public static class JdbcConsumer
-            extends
-                JdbcCommon<JdbcConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public JdbcConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class JdbcProducer
             extends
                 JdbcCommon<JdbcProducer>

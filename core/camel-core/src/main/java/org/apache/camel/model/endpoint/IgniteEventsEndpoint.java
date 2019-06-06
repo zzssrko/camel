@@ -145,14 +145,4 @@ public class IgniteEventsEndpoint {
             return (IgniteEventsConsumer) this;
         }
     }
-
-    public static class IgniteEventsProducer
-            extends
-                IgniteEventsCommon<IgniteEventsProducer>
-            implements
-                EndpointDefinition.Producer {
-        public IgniteEventsProducer(String path) {
-            super(path);
-        }
-    }
 }

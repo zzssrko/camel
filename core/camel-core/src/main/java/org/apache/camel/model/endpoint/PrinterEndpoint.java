@@ -156,16 +156,6 @@ public class PrinterEndpoint {
         }
     }
 
-    public static class PrinterConsumer
-            extends
-                PrinterCommon<PrinterConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public PrinterConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class PrinterProducer
             extends
                 PrinterCommon<PrinterProducer>

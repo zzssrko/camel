@@ -99,16 +99,6 @@ public class TikaEndpoint {
         }
     }
 
-    public static class TikaConsumer
-            extends
-                TikaCommon<TikaConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public TikaConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class TikaProducer
             extends
                 TikaCommon<TikaProducer>

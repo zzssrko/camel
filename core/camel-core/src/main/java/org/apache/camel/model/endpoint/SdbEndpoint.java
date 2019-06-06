@@ -133,16 +133,6 @@ public class SdbEndpoint {
         }
     }
 
-    public static class SdbConsumer
-            extends
-                SdbCommon<SdbConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public SdbConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class SdbProducer
             extends
                 SdbCommon<SdbProducer>

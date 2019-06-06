@@ -198,16 +198,6 @@ public class KubernetesPersistentVolumesClaimsEndpoint {
         }
     }
 
-    public static class KubernetesPersistentVolumesClaimsConsumer
-            extends
-                KubernetesPersistentVolumesClaimsCommon<KubernetesPersistentVolumesClaimsConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public KubernetesPersistentVolumesClaimsConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class KubernetesPersistentVolumesClaimsProducer
             extends
                 KubernetesPersistentVolumesClaimsCommon<KubernetesPersistentVolumesClaimsProducer>

@@ -72,16 +72,6 @@ public class JingEndpoint {
         }
     }
 
-    public static class JingConsumer
-            extends
-                JingCommon<JingConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public JingConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class JingProducer
             extends
                 JingCommon<JingProducer>

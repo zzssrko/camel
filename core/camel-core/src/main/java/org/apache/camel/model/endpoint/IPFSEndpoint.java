@@ -70,16 +70,6 @@ public class IPFSEndpoint {
         }
     }
 
-    public static class IPFSConsumer
-            extends
-                IPFSCommon<IPFSConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public IPFSConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class IPFSProducer
             extends
                 IPFSCommon<IPFSProducer>

@@ -125,16 +125,6 @@ public class ControlBusEndpoint {
         }
     }
 
-    public static class ControlBusConsumer
-            extends
-                ControlBusCommon<ControlBusConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public ControlBusConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class ControlBusProducer
             extends
                 ControlBusCommon<ControlBusProducer>

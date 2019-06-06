@@ -98,16 +98,6 @@ public class DataSetTestEndpoint {
         }
     }
 
-    public static class DataSetTestConsumer
-            extends
-                DataSetTestCommon<DataSetTestConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public DataSetTestConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class DataSetTestProducer
             extends
                 DataSetTestCommon<DataSetTestProducer>

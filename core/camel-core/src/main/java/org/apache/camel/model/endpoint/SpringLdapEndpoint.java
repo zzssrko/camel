@@ -79,16 +79,6 @@ public class SpringLdapEndpoint {
         }
     }
 
-    public static class SpringLdapConsumer
-            extends
-                SpringLdapCommon<SpringLdapConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public SpringLdapConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class SpringLdapProducer
             extends
                 SpringLdapCommon<SpringLdapProducer>

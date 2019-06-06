@@ -69,16 +69,6 @@ public class IAMEndpoint {
         }
     }
 
-    public static class IAMConsumer
-            extends
-                IAMCommon<IAMConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public IAMConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class IAMProducer
             extends
                 IAMCommon<IAMProducer>

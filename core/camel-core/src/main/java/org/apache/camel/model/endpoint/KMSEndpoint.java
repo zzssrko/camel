@@ -69,16 +69,6 @@ public class KMSEndpoint {
         }
     }
 
-    public static class KMSConsumer
-            extends
-                KMSCommon<KMSConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public KMSConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class KMSProducer
             extends
                 KMSCommon<KMSProducer>

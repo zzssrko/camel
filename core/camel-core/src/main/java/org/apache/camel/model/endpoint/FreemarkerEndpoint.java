@@ -98,16 +98,6 @@ public class FreemarkerEndpoint {
         }
     }
 
-    public static class FreemarkerConsumer
-            extends
-                FreemarkerCommon<FreemarkerConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public FreemarkerConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class FreemarkerProducer
             extends
                 FreemarkerCommon<FreemarkerProducer>

@@ -117,14 +117,4 @@ public class ZooKeeperMasterEndpoint {
             return (ZooKeeperMasterConsumer) this;
         }
     }
-
-    public static class ZooKeeperMasterProducer
-            extends
-                ZooKeeperMasterCommon<ZooKeeperMasterProducer>
-            implements
-                EndpointDefinition.Producer {
-        public ZooKeeperMasterProducer(String path) {
-            super(path);
-        }
-    }
 }

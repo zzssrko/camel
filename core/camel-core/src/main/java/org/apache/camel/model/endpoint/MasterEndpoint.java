@@ -114,14 +114,4 @@ public class MasterEndpoint {
             return (MasterConsumer) this;
         }
     }
-
-    public static class MasterProducer
-            extends
-                MasterCommon<MasterProducer>
-            implements
-                EndpointDefinition.Producer {
-        public MasterProducer(String path) {
-            super(path);
-        }
-    }
 }

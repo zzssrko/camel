@@ -65,16 +65,6 @@ public class LdifEndpoint {
         }
     }
 
-    public static class LdifConsumer
-            extends
-                LdifCommon<LdifConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public LdifConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class LdifProducer
             extends
                 LdifCommon<LdifProducer>

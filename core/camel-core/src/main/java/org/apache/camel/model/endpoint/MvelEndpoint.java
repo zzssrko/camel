@@ -82,16 +82,6 @@ public class MvelEndpoint {
         }
     }
 
-    public static class MvelConsumer
-            extends
-                MvelCommon<MvelConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public MvelConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class MvelProducer
             extends
                 MvelCommon<MvelProducer>

@@ -168,16 +168,6 @@ public class AhcEndpoint {
         }
     }
 
-    public static class AhcConsumer
-            extends
-                AhcCommon<AhcConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public AhcConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class AhcProducer
             extends
                 AhcCommon<AhcProducer>

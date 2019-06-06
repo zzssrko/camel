@@ -88,16 +88,6 @@ public class BeanEndpoint {
         }
     }
 
-    public static class BeanConsumer
-            extends
-                BeanCommon<BeanConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public BeanConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class BeanProducer
             extends
                 BeanCommon<BeanProducer>

@@ -225,16 +225,6 @@ public class CryptoCmsEndpoint {
         }
     }
 
-    public static class CryptoCmsConsumer
-            extends
-                CryptoCmsCommon<CryptoCmsConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public CryptoCmsConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class CryptoCmsProducer
             extends
                 CryptoCmsCommon<CryptoCmsProducer>

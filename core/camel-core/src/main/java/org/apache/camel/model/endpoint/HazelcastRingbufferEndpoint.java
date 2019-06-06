@@ -142,16 +142,6 @@ public class HazelcastRingbufferEndpoint {
         }
     }
 
-    public static class HazelcastRingbufferConsumer
-            extends
-                HazelcastRingbufferCommon<HazelcastRingbufferConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public HazelcastRingbufferConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class HazelcastRingbufferProducer
             extends
                 HazelcastRingbufferCommon<HazelcastRingbufferProducer>

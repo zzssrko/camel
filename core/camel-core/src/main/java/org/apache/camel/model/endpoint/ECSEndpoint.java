@@ -69,16 +69,6 @@ public class ECSEndpoint {
         }
     }
 
-    public static class ECSConsumer
-            extends
-                ECSCommon<ECSConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public ECSConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class ECSProducer
             extends
                 ECSCommon<ECSProducer>

@@ -150,14 +150,4 @@ public class WebhookEndpoint {
             return (WebhookConsumer) this;
         }
     }
-
-    public static class WebhookProducer
-            extends
-                WebhookCommon<WebhookProducer>
-            implements
-                EndpointDefinition.Producer {
-        public WebhookProducer(String path) {
-            super(path);
-        }
-    }
 }

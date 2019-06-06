@@ -146,16 +146,6 @@ public class BonitaEndpoint {
         }
     }
 
-    public static class BonitaProducer
-            extends
-                BonitaCommon<BonitaProducer>
-            implements
-                EndpointDefinition.Producer {
-        public BonitaProducer(String path) {
-            super(path);
-        }
-    }
-
     public static enum BonitaOperation {
         startCase;
     }

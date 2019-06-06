@@ -63,16 +63,6 @@ public class GrapeEndpoint {
         }
     }
 
-    public static class GrapeConsumer
-            extends
-                GrapeCommon<GrapeConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public GrapeConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class GrapeProducer
             extends
                 GrapeCommon<GrapeProducer>

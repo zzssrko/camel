@@ -236,16 +236,6 @@ public class ScpEndpoint {
         }
     }
 
-    public static class ScpConsumer
-            extends
-                ScpCommon<ScpConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public ScpConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class ScpProducer
             extends
                 ScpCommon<ScpProducer>

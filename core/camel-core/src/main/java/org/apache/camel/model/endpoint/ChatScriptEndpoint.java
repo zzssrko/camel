@@ -93,16 +93,6 @@ public class ChatScriptEndpoint {
         }
     }
 
-    public static class ChatScriptConsumer
-            extends
-                ChatScriptCommon<ChatScriptConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public ChatScriptConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class ChatScriptProducer
             extends
                 ChatScriptCommon<ChatScriptProducer>

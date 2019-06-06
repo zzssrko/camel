@@ -95,16 +95,6 @@ public class XChangeEndpoint {
         }
     }
 
-    public static class XChangeConsumer
-            extends
-                XChangeCommon<XChangeConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public XChangeConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class XChangeProducer
             extends
                 XChangeCommon<XChangeProducer>

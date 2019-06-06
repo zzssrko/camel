@@ -117,16 +117,6 @@ public class JsonValidatorEndpoint {
         }
     }
 
-    public static class JsonValidatorConsumer
-            extends
-                JsonValidatorCommon<JsonValidatorConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public JsonValidatorConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class JsonValidatorProducer
             extends
                 JsonValidatorCommon<JsonValidatorProducer>

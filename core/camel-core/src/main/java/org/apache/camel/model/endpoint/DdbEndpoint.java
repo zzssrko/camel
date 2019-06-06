@@ -157,16 +157,6 @@ public class DdbEndpoint {
         }
     }
 
-    public static class DdbConsumer
-            extends
-                DdbCommon<DdbConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public DdbConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class DdbProducer
             extends
                 DdbCommon<DdbProducer>

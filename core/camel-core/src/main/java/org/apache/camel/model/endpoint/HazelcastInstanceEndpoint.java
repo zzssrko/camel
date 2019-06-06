@@ -215,16 +215,6 @@ public class HazelcastInstanceEndpoint {
         }
     }
 
-    public static class HazelcastInstanceProducer
-            extends
-                HazelcastInstanceCommon<HazelcastInstanceProducer>
-            implements
-                EndpointDefinition.Producer {
-        public HazelcastInstanceProducer(String path) {
-            super(path);
-        }
-    }
-
     public static enum HazelcastOperation {
         PUT, DELETE, GET, UPDATE, QUERY, GET_ALL, CLEAR, PUT_IF_ABSENT, ADD_ALL, REMOVE_ALL, RETAIN_ALL, EVICT, EVICT_ALL, VALUE_COUNT, CONTAINS_KEY, CONTAINS_VALUE, GET_KEYS, REMOVE_VALUE, INCREMENT, DECREMENT, SET_VALUE, DESTROY, COMPARE_AND_SET, GET_AND_ADD, ADD, OFFER, PEEK, POLL, REMAINING_CAPACITY, DRAIN_TO, REMOVE_IF, TAKE, PUBLISH, READ_ONCE_HEAD, READ_ONCE_TAIL, CAPACITY;
     }

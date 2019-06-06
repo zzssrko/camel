@@ -483,16 +483,6 @@ public class XmlSignatureEndpoint {
         }
     }
 
-    public static class XmlSignatureConsumer
-            extends
-                XmlSignatureCommon<XmlSignatureConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public XmlSignatureConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class XmlSignatureProducer
             extends
                 XmlSignatureCommon<XmlSignatureProducer>

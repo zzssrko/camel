@@ -109,16 +109,6 @@ public class KinesisFirehoseEndpoint {
         }
     }
 
-    public static class KinesisFirehoseConsumer
-            extends
-                KinesisFirehoseCommon<KinesisFirehoseConsumer>
-            implements
-                EndpointDefinition.Consumer {
-        public KinesisFirehoseConsumer(String path) {
-            super(path);
-        }
-    }
-
     public static class KinesisFirehoseProducer
             extends
                 KinesisFirehoseCommon<KinesisFirehoseProducer>
