@@ -282,12 +282,12 @@ public class JavaClass {
         if (isStatic) {
             sb2.append("static ");
         }
-        sb2.append("class ").append(name);
+        sb2.append(isClass ? "class " : "interface ").append(name);
         if (extendsName != null && !"java.lang.Object".equals(extendsName)) {
             sb2.append(" extends ").append(extendsName);
         }
         if (!implementNames.isEmpty()) {
-            sb2.append(" implements ")
+            sb2.append(isClass ? " implements " : " extends ")
                     .append(Strings.join(implementNames, ", "));
         }
         sb2.append(" {");
@@ -301,7 +301,7 @@ public class JavaClass {
             if (isStatic) {
                 sb.append("static ");
             }
-            sb.append("class ").append(name);
+            sb.append(isClass ? "class " : "interface ").append(name);
             if (extendsName != null && !"java.lang.Object".equals(extendsName)) {
                 sb.append("\n");
                 sb.append(indent).append("        extends\n");
@@ -309,7 +309,7 @@ public class JavaClass {
             }
             if (!implementNames.isEmpty()) {
                 sb.append("\n");
-                sb.append(indent).append("        implements\n");
+                sb.append(indent).append(isClass ? "        implements\n" : "        extends\n");
                 sb.append(indent).append("            ").append(Strings.join(implementNames, ", "));
             }
             sb.append(" {\n");
@@ -419,6 +419,9 @@ public class JavaClass {
         if (method.isPublic) {
             sb2.append("public ");
         }
+        if (method.isDefault) {
+            sb2.append("default ");
+        }
         if (!method.isConstructor) {
             sb2.append(method.returnType != null ? shortName(method.returnType) : "void");
             sb2.append(" ");
@@ -439,6 +442,9 @@ public class JavaClass {
             sb.append(indent);
             if (method.isPublic) {
                 sb.append("public ");
+            }
+            if (method.isDefault) {
+                sb.append("default ");
             }
             sb.append(shortName(method.returnType));
             sb.append(" ");

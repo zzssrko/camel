@@ -186,6 +186,7 @@ public class EndpointDslMojo extends AbstractMojo {
         final JavaClass javaClass = new JavaClass(getProjectClassLoader());
         javaClass.setPackage(packageName);
         javaClass.setName(endpointName);
+        javaClass.setClass(false);
         javaClass.addImport("org.apache.camel.model.EndpointDefinition");
 
         Map<String, JavaClass> enumClasses = new HashMap<>();
@@ -214,6 +215,13 @@ public class EndpointDslMojo extends AbstractMojo {
                     .addParameter(String.class, "path")
                     .setBody("super(path);");
             generateDummyClass(consumerClass.getCanonicalName());
+
+            javaClass.addMethod()
+                    .setPublic().setDefault()
+                    .setName("from" + endpointName.replace("Endpoint", ""))
+                    .addParameter(String.class, "path")
+                    .setReturnType(new GenericType(loadClass(consumerClass.getCanonicalName())))
+                    .setBody("return new " + consumerClass.getName() + "(path);");
         }
 
         JavaClass producerClass;
@@ -230,6 +238,13 @@ public class EndpointDslMojo extends AbstractMojo {
                     .addParameter(String.class, "path")
                     .setBody("super(path);");
             generateDummyClass(producerClass.getCanonicalName());
+
+            javaClass.addMethod()
+                    .setPublic().setDefault()
+                    .setName("to" + endpointName.replace("Endpoint", ""))
+                    .addParameter(String.class, "path")
+                    .setReturnType(new GenericType(loadClass(producerClass.getCanonicalName())))
+                    .setBody("return new " + producerClass.getName() + "(path);");
         }
 
         generateDummyClass(packageName + ".T");
