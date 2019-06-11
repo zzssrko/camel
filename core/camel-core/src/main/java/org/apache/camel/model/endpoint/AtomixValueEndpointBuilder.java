@@ -91,8 +91,7 @@ public interface AtomixValueEndpointBuilder {
         }
         /**
          * The address of the nodes composing the cluster. The option is a
-         * <code>java.util.List<io.atomix.catalyst.transport.Address></code>
-         * type.
+         * <code>java.util.List&lt;io.atomix.catalyst.transport.Address&gt;</code> type.
          */
         public T nodes(List<Object> nodes) {
             this.properties.put("nodes", nodes);
@@ -101,8 +100,7 @@ public interface AtomixValueEndpointBuilder {
         /**
          * The address of the nodes composing the cluster. The option will be
          * converted to a
-         * <code>java.util.List<io.atomix.catalyst.transport.Address></code>
-         * type.
+         * <code>java.util.List&lt;io.atomix.catalyst.transport.Address&gt;</code> type.
          */
         public T nodes(String nodes) {
             this.properties.put("nodes", nodes);
@@ -118,8 +116,7 @@ public interface AtomixValueEndpointBuilder {
         }
         /**
          * Sets the Atomix transport. The option is a
-         * <code>java.lang.Class<io.atomix.catalyst.transport.Transport></code>
-         * type.
+         * <code>java.lang.Class&lt;io.atomix.catalyst.transport.Transport&gt;</code> type.
          */
         public T transport(Class<Object> transport) {
             this.properties.put("transport", transport);
@@ -127,8 +124,7 @@ public interface AtomixValueEndpointBuilder {
         }
         /**
          * Sets the Atomix transport. The option will be converted to a
-         * <code>java.lang.Class<io.atomix.catalyst.transport.Transport></code>
-         * type.
+         * <code>java.lang.Class&lt;io.atomix.catalyst.transport.Transport&gt;</code> type.
          */
         public T transport(String transport) {
             this.properties.put("transport", transport);
@@ -237,8 +233,8 @@ public interface AtomixValueEndpointBuilder {
         }
         /**
          * Cluster wide resources configuration. The option is a
-         * <code>java.util.Map<java.lang.String, java.util.Properties></code>
-         * type.
+         * <code>java.util.Map&lt;java.lang.String,
+         * java.util.Properties&gt;</code> type.
          */
         public T resourceConfigs(Map<String, Properties> resourceConfigs) {
             this.properties.put("resourceConfigs", resourceConfigs);
@@ -246,8 +242,8 @@ public interface AtomixValueEndpointBuilder {
         }
         /**
          * Cluster wide resources configuration. The option will be converted to
-         * a <code>java.util.Map<java.lang.String, java.util.Properties></code>
-         * type.
+         * a <code>java.util.Map&lt;java.lang.String,
+         * java.util.Properties&gt;</code> type.
          */
         public T resourceConfigs(String resourceConfigs) {
             this.properties.put("resourceConfigs", resourceConfigs);
@@ -255,8 +251,8 @@ public interface AtomixValueEndpointBuilder {
         }
         /**
          * Local resources configurations. The option is a
-         * <code>java.util.Map<java.lang.String, java.util.Properties></code>
-         * type.
+         * <code>java.util.Map&lt;java.lang.String,
+         * java.util.Properties&gt;</code> type.
          */
         public T resourceOptions(Map<String, Properties> resourceOptions) {
             this.properties.put("resourceOptions", resourceOptions);
@@ -264,8 +260,8 @@ public interface AtomixValueEndpointBuilder {
         }
         /**
          * Local resources configurations. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.util.Properties></code>
-         * type.
+         * <code>java.util.Map&lt;java.lang.String,
+         * java.util.Properties&gt;</code> type.
          */
         public T resourceOptions(String resourceOptions) {
             this.properties.put("resourceOptions", resourceOptions);

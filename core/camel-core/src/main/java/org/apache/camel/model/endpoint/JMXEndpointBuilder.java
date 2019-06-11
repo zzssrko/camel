@@ -184,7 +184,8 @@ public interface JMXEndpointBuilder {
         /**
          * Properties for the object name. These values will be used if the
          * objectName param is not set. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public T objectProperties(Map<String, String> objectProperties) {
             this.properties.put("objectProperties", objectProperties);
@@ -193,7 +194,8 @@ public interface JMXEndpointBuilder {
         /**
          * Properties for the object name. These values will be used if the
          * objectName param is not set. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public T objectProperties(String objectProperties) {
             this.properties.put("objectProperties", objectProperties);

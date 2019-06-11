@@ -136,8 +136,8 @@ public interface InfinispanEndpointBuilder {
         }
         /**
          * Implementation specific properties for the CacheManager. The option
-         * is a <code>java.util.Map<java.lang.String, java.lang.String></code>
-         * type.
+         * is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.String&gt;</code> type.
          */
         public T configurationProperties(
                 Map<String, String> configurationProperties) {
@@ -146,8 +146,8 @@ public interface InfinispanEndpointBuilder {
         }
         /**
          * Implementation specific properties for the CacheManager. The option
-         * will be converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.String></code> type.
+         * will be converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.String&gt;</code> type.
          */
         public T configurationProperties(String configurationProperties) {
             this.properties.put("configurationProperties", configurationProperties);
@@ -333,7 +333,7 @@ public interface InfinispanEndpointBuilder {
          * TRANSACTION_COMPLETED, TRANSACTION_REGISTERED,
          * CACHE_ENTRY_INVALIDATED, DATA_REHASHED, TOPOLOGY_CHANGED,
          * PARTITION_STATUS_CHANGED. The option is a
-         * <code>java.util.Set<java.lang.String></code> type.
+         * <code>java.util.Set&lt;java.lang.String&gt;</code> type.
          */
         public InfinispanConsumerBuilder eventTypes(Set<String> eventTypes) {
             this.properties.put("eventTypes", eventTypes);
@@ -348,7 +348,7 @@ public interface InfinispanEndpointBuilder {
          * TRANSACTION_COMPLETED, TRANSACTION_REGISTERED,
          * CACHE_ENTRY_INVALIDATED, DATA_REHASHED, TOPOLOGY_CHANGED,
          * PARTITION_STATUS_CHANGED. The option will be converted to a
-         * <code>java.util.Set<java.lang.String></code> type.
+         * <code>java.util.Set&lt;java.lang.String&gt;</code> type.
          */
         public InfinispanConsumerBuilder eventTypes(String eventTypes) {
             this.properties.put("eventTypes", eventTypes);

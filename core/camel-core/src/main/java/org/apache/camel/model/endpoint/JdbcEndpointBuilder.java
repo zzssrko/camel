@@ -94,7 +94,8 @@ public interface JdbcEndpointBuilder {
         /**
          * Optional parameters to the java.sql.Statement. For example to set
          * maxRows, fetchSize etc. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T parameters(Map<String, Object> parameters) {
             this.properties.put("parameters", parameters);
@@ -103,7 +104,8 @@ public interface JdbcEndpointBuilder {
         /**
          * Optional parameters to the java.sql.Statement. For example to set
          * maxRows, fetchSize etc. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T parameters(String parameters) {
             this.properties.put("parameters", parameters);

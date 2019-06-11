@@ -80,7 +80,8 @@ public interface XQueryEndpointBuilder {
         /**
          * Allows to control which namespace prefixes to use for a set of
          * namespace mappings. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public T namespacePrefixes(Map<String, String> namespacePrefixes) {
             this.properties.put("namespacePrefixes", namespacePrefixes);
@@ -89,7 +90,8 @@ public interface XQueryEndpointBuilder {
         /**
          * Allows to control which namespace prefixes to use for a set of
          * namespace mappings. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public T namespacePrefixes(String namespacePrefixes) {
             this.properties.put("namespacePrefixes", namespacePrefixes);
@@ -113,7 +115,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * What output result to use defined as a class. The option is a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T resultType(Class<Object> resultType) {
             this.properties.put("resultType", resultType);
@@ -121,7 +123,8 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * What output result to use defined as a class. The option will be
-         * converted to a <code>java.lang.Class<java.lang.Object></code> type.
+         * converted to a <code>java.lang.Class&lt;java.lang.Object&gt;</code>
+         * type.
          */
         public T resultType(String resultType) {
             this.properties.put("resultType", resultType);
@@ -179,7 +182,8 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * To set custom Saxon configuration properties. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T configurationProperties(
                 Map<String, Object> configurationProperties) {
@@ -188,8 +192,8 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * To set custom Saxon configuration properties. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T configurationProperties(String configurationProperties) {
             this.properties.put("configurationProperties", configurationProperties);
@@ -213,7 +217,8 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Additional parameters. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T parameters(Map<String, Object> parameters) {
             this.properties.put("parameters", parameters);
@@ -221,7 +226,8 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Additional parameters. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T parameters(String parameters) {
             this.properties.put("parameters", parameters);
@@ -588,7 +594,8 @@ public interface XQueryEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public XQueryConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -598,8 +605,8 @@ public interface XQueryEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public XQueryConsumerBuilder schedulerProperties(
                 String schedulerProperties) {

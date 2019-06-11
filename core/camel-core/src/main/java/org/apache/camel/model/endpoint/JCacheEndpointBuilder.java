@@ -201,7 +201,7 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * The CacheLoader factory. The option is a
-         * <code>javax.cache.configuration.Factory<javax.cache.integration.CacheLoader></code> type.
+         * <code>javax.cache.configuration.Factory&lt;javax.cache.integration.CacheLoader&gt;</code> type.
          */
         public T cacheLoaderFactory(Object cacheLoaderFactory) {
             this.properties.put("cacheLoaderFactory", cacheLoaderFactory);
@@ -209,7 +209,7 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * The CacheLoader factory. The option will be converted to a
-         * <code>javax.cache.configuration.Factory<javax.cache.integration.CacheLoader></code> type.
+         * <code>javax.cache.configuration.Factory&lt;javax.cache.integration.CacheLoader&gt;</code> type.
          */
         public T cacheLoaderFactory(String cacheLoaderFactory) {
             this.properties.put("cacheLoaderFactory", cacheLoaderFactory);
@@ -217,7 +217,7 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * The CacheWriter factory. The option is a
-         * <code>javax.cache.configuration.Factory<javax.cache.integration.CacheWriter></code> type.
+         * <code>javax.cache.configuration.Factory&lt;javax.cache.integration.CacheWriter&gt;</code> type.
          */
         public T cacheWriterFactory(Object cacheWriterFactory) {
             this.properties.put("cacheWriterFactory", cacheWriterFactory);
@@ -225,7 +225,7 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * The CacheWriter factory. The option will be converted to a
-         * <code>javax.cache.configuration.Factory<javax.cache.integration.CacheWriter></code> type.
+         * <code>javax.cache.configuration.Factory&lt;javax.cache.integration.CacheWriter&gt;</code> type.
          */
         public T cacheWriterFactory(String cacheWriterFactory) {
             this.properties.put("cacheWriterFactory", cacheWriterFactory);
@@ -250,7 +250,7 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * The ExpiryPolicy factory. The option is a
-         * <code>javax.cache.configuration.Factory<javax.cache.expiry.ExpiryPolicy></code> type.
+         * <code>javax.cache.configuration.Factory&lt;javax.cache.expiry.ExpiryPolicy&gt;</code> type.
          */
         public T expiryPolicyFactory(Object expiryPolicyFactory) {
             this.properties.put("expiryPolicyFactory", expiryPolicyFactory);
@@ -258,7 +258,7 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * The ExpiryPolicy factory. The option will be converted to a
-         * <code>javax.cache.configuration.Factory<javax.cache.expiry.ExpiryPolicy></code> type.
+         * <code>javax.cache.configuration.Factory&lt;javax.cache.expiry.ExpiryPolicy&gt;</code> type.
          */
         public T expiryPolicyFactory(String expiryPolicyFactory) {
             this.properties.put("expiryPolicyFactory", expiryPolicyFactory);
@@ -323,7 +323,7 @@ public interface JCacheEndpointBuilder {
         /**
          * Events a consumer should filter. If using filteredEvents option, then
          * eventFilters one will be ignored. The option is a
-         * <code>java.util.List<javax.cache.event.EventType></code> type.
+         * <code>java.util.List&lt;javax.cache.event.EventType&gt;</code> type.
          */
         public JCacheConsumerBuilder filteredEvents(
                 List<EventType> filteredEvents) {
@@ -333,7 +333,7 @@ public interface JCacheEndpointBuilder {
         /**
          * Events a consumer should filter. If using filteredEvents option, then
          * eventFilters one will be ignored. The option will be converted to a
-         * <code>java.util.List<javax.cache.event.EventType></code> type.
+         * <code>java.util.List&lt;javax.cache.event.EventType&gt;</code> type.
          */
         public JCacheConsumerBuilder filteredEvents(String filteredEvents) {
             this.properties.put("filteredEvents", filteredEvents);
@@ -374,8 +374,7 @@ public interface JCacheEndpointBuilder {
         /**
          * The CacheEntryEventFilter. If using eventFilters option, then
          * filteredEvents one will be ignored. The option is a
-         * <code>java.util.List<javax.cache.event.CacheEntryEventFilter></code>
-         * type.
+         * <code>java.util.List&lt;javax.cache.event.CacheEntryEventFilter&gt;</code> type.
          */
         public JCacheConsumerBuilder eventFilters(List<Object> eventFilters) {
             this.properties.put("eventFilters", eventFilters);
@@ -384,8 +383,7 @@ public interface JCacheEndpointBuilder {
         /**
          * The CacheEntryEventFilter. If using eventFilters option, then
          * filteredEvents one will be ignored. The option will be converted to a
-         * <code>java.util.List<javax.cache.event.CacheEntryEventFilter></code>
-         * type.
+         * <code>java.util.List&lt;javax.cache.event.CacheEntryEventFilter&gt;</code> type.
          */
         public JCacheConsumerBuilder eventFilters(String eventFilters) {
             this.properties.put("eventFilters", eventFilters);

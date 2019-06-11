@@ -236,7 +236,7 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * The domain names. The option is a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T domainNames(List<String> domainNames) {
             this.properties.put("domainNames", domainNames);
@@ -244,7 +244,7 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * The domain names. The option will be converted to a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T domainNames(String domainNames) {
             this.properties.put("domainNames", domainNames);
@@ -441,7 +441,7 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * The ids of users. The option is a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T ids(List<String> ids) {
             this.properties.put("ids", ids);
@@ -449,7 +449,7 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * The ids of users. The option will be converted to a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T ids(String ids) {
             this.properties.put("ids", ids);
@@ -763,8 +763,8 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
-         * FQL queries. The option is a <code>java.util.Map<java.lang.String,
-         * java.lang.String></code> type.
+         * FQL queries. The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.String&gt;</code> type.
          */
         public T queries(Map<String, String> queries) {
             this.properties.put("queries", queries);
@@ -772,7 +772,8 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * FQL queries. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public T queries(String queries) {
             this.properties.put("queries", queries);
@@ -811,8 +812,8 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * To configure Reading using key/value pairs from the Map. The option
-         * is a <code>java.util.Map<java.lang.String, java.lang.Object></code>
-         * type.
+         * is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T readingOptions(Map<String, Object> readingOptions) {
             this.properties.put("readingOptions", readingOptions);
@@ -820,8 +821,8 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * To configure Reading using key/value pairs from the Map. The option
-         * will be converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * will be converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T readingOptions(String readingOptions) {
             this.properties.put("readingOptions", readingOptions);
@@ -968,7 +969,7 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * The IDs of the users to tag. The option is a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T toUserIds(List<String> toUserIds) {
             this.properties.put("toUserIds", toUserIds);
@@ -976,7 +977,7 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * The IDs of the users to tag. The option will be converted to a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T toUserIds(String toUserIds) {
             this.properties.put("toUserIds", toUserIds);
@@ -1008,7 +1009,7 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * The IDs of users to invite to event. The option is a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T userIds(List<String> userIds) {
             this.properties.put("userIds", userIds);
@@ -1016,7 +1017,7 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * The IDs of users to invite to event. The option will be converted to
-         * a <code>java.util.List<java.lang.String></code> type.
+         * a <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T userIds(String userIds) {
             this.properties.put("userIds", userIds);

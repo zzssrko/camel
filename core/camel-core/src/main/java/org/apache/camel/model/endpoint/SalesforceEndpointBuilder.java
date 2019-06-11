@@ -49,7 +49,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Query params for APEX method. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T apexQueryParams(Map<String, Object> apexQueryParams) {
             this.properties.put("apexQueryParams", apexQueryParams);
@@ -57,7 +58,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Query params for APEX method. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T apexQueryParams(String apexQueryParams) {
             this.properties.put("apexQueryParams", apexQueryParams);
@@ -194,7 +196,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Replay IDs to start from per channel name. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Long></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Long&gt;</code>
+         * type.
          */
         public T initialReplayIdMap(Map<String, Long> initialReplayIdMap) {
             this.properties.put("initialReplayIdMap", initialReplayIdMap);
@@ -202,8 +205,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Replay IDs to start from per channel name. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Long></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Long&gt;</code> type.
          */
         public T initialReplayIdMap(String initialReplayIdMap) {
             this.properties.put("initialReplayIdMap", initialReplayIdMap);

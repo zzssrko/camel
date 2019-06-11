@@ -166,7 +166,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * Specifies the level of permissions you want a calendar application to
          * have to a user account. See
          * https://developers.google.com/calendar/auth for more info. The option
-         * is a <code>java.util.List<java.lang.String></code> type.
+         * is a <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T scopes(List<String> scopes) {
             this.properties.put("scopes", scopes);
@@ -176,8 +176,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * Specifies the level of permissions you want a calendar application to
          * have to a user account. See
          * https://developers.google.com/calendar/auth for more info. The option
-         * will be converted to a <code>java.util.List<java.lang.String></code>
-         * type.
+         * will be converted to a
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T scopes(String scopes) {
             this.properties.put("scopes", scopes);
@@ -537,7 +537,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public GoogleCalendarStreamConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -547,8 +548,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder schedulerProperties(
                 String schedulerProperties) {

@@ -368,7 +368,8 @@ public interface UndertowEndpointBuilder {
          * defined in org.xnio.Options. To configure from endpoint uri, then
          * prefix each option with option., such as
          * option.close-abort=true&option.send-buffer=8192. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public UndertowProducerBuilder options(Map<String, Object> options) {
             this.properties.put("options", options);
@@ -379,8 +380,8 @@ public interface UndertowEndpointBuilder {
          * defined in org.xnio.Options. To configure from endpoint uri, then
          * prefix each option with option., such as
          * option.close-abort=true&option.send-buffer=8192. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public UndertowProducerBuilder options(String options) {
             this.properties.put("options", options);

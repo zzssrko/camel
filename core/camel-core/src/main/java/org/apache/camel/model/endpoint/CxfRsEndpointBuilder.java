@@ -58,7 +58,8 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * Set the feature list to the CxfRs endpoint. The option is a
-         * <code>java.util.List<org.apache.cxf.feature.Feature></code> type.
+         * <code>java.util.List&lt;org.apache.cxf.feature.Feature&gt;</code>
+         * type.
          */
         public T features(List<Object> features) {
             this.properties.put("features", features);
@@ -67,7 +68,8 @@ public interface CxfRsEndpointBuilder {
         /**
          * Set the feature list to the CxfRs endpoint. The option will be
          * converted to a
-         * <code>java.util.List<org.apache.cxf.feature.Feature></code> type.
+         * <code>java.util.List&lt;org.apache.cxf.feature.Feature&gt;</code>
+         * type.
          */
         public T features(String features) {
             this.properties.put("features", features);
@@ -123,7 +125,7 @@ public interface CxfRsEndpointBuilder {
          * Set custom JAX-RS provider(s) list to the CxfRs endpoint. You can
          * specify a string with a list of providers to lookup in the registy
          * separated by comma. The option is a
-         * <code>java.util.List<java.lang.Object></code> type.
+         * <code>java.util.List&lt;java.lang.Object&gt;</code> type.
          */
         public T providers(List<Object> providers) {
             this.properties.put("providers", providers);
@@ -133,7 +135,7 @@ public interface CxfRsEndpointBuilder {
          * Set custom JAX-RS provider(s) list to the CxfRs endpoint. You can
          * specify a string with a list of providers to lookup in the registy
          * separated by comma. The option will be converted to a
-         * <code>java.util.List<java.lang.Object></code> type.
+         * <code>java.util.List&lt;java.lang.Object&gt;</code> type.
          */
         public T providers(String providers) {
             this.properties.put("providers", providers);
@@ -142,7 +144,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * The resource classes which you want to export as REST service.
          * Multiple classes can be separated by comma. The option is a
-         * <code>java.util.List<java.lang.Class<java.lang.Object>></code> type.
+         * <code>java.util.List&lt;java.lang.Class&lt;java.lang.Object&gt;&gt;</code> type.
          */
         public T resourceClasses(List<Class<Object>> resourceClasses) {
             this.properties.put("resourceClasses", resourceClasses);
@@ -152,7 +154,7 @@ public interface CxfRsEndpointBuilder {
          * The resource classes which you want to export as REST service.
          * Multiple classes can be separated by comma. The option will be
          * converted to a
-         * <code>java.util.List<java.lang.Class<java.lang.Object>></code> type.
+         * <code>java.util.List&lt;java.lang.Class&lt;java.lang.Object&gt;&gt;</code> type.
          */
         public T resourceClasses(String resourceClasses) {
             this.properties.put("resourceClasses", resourceClasses);
@@ -161,7 +163,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * Sets the locations of the schema(s) which can be used to validate the
          * incoming XML or JAXB-driven JSON. The option is a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T schemaLocations(List<String> schemaLocations) {
             this.properties.put("schemaLocations", schemaLocations);
@@ -170,7 +172,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * Sets the locations of the schema(s) which can be used to validate the
          * incoming XML or JAXB-driven JSON. The option will be converted to a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T schemaLocations(String schemaLocations) {
             this.properties.put("schemaLocations", schemaLocations);
@@ -519,7 +521,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * The service beans which you want to export as REST service. Multiple
          * beans can be separated by comma. The option is a
-         * <code>java.util.List<java.lang.Object></code> type.
+         * <code>java.util.List&lt;java.lang.Object&gt;</code> type.
          */
         public CxfRsConsumerBuilder serviceBeans(List<Object> serviceBeans) {
             this.properties.put("serviceBeans", serviceBeans);
@@ -528,7 +530,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * The service beans which you want to export as REST service. Multiple
          * beans can be separated by comma. The option will be converted to a
-         * <code>java.util.List<java.lang.Object></code> type.
+         * <code>java.util.List&lt;java.lang.Object&gt;</code> type.
          */
         public CxfRsConsumerBuilder serviceBeans(String serviceBeans) {
             this.properties.put("serviceBeans", serviceBeans);

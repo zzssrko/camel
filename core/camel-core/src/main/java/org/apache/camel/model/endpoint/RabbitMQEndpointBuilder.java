@@ -325,7 +325,7 @@ public interface RabbitMQEndpointBuilder {
          * different prefix is required for each: Exchange: arg.exchange. Queue:
          * arg.queue. Binding: arg.binding. For example to declare a queue with
          * message ttl argument:
-         * http://localhost:5672/exchange/queueargs=arg.queue.x-message-ttl=60000. The option is a <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * http://localhost:5672/exchange/queueargs=arg.queue.x-message-ttl=60000. The option is a <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code> type.
          */
         public T args(Map<String, Object> args) {
             this.properties.put("args", args);
@@ -336,7 +336,7 @@ public interface RabbitMQEndpointBuilder {
          * different prefix is required for each: Exchange: arg.exchange. Queue:
          * arg.queue. Binding: arg.binding. For example to declare a queue with
          * message ttl argument:
-         * http://localhost:5672/exchange/queueargs=arg.queue.x-message-ttl=60000. The option will be converted to a <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * http://localhost:5672/exchange/queueargs=arg.queue.x-message-ttl=60000. The option will be converted to a <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code> type.
          */
         public T args(String args) {
             this.properties.put("args", args);
@@ -382,8 +382,8 @@ public interface RabbitMQEndpointBuilder {
         }
         /**
          * Connection client properties (client info used in negotiating with
-         * the server). The option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * the server). The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T clientProperties(Map<String, Object> clientProperties) {
             this.properties.put("clientProperties", clientProperties);
@@ -392,7 +392,8 @@ public interface RabbitMQEndpointBuilder {
         /**
          * Connection client properties (client info used in negotiating with
          * the server). The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T clientProperties(String clientProperties) {
             this.properties.put("clientProperties", clientProperties);

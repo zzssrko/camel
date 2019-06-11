@@ -145,9 +145,9 @@ public interface EhcacheEndpointBuilder {
         }
         /**
          * A map of cache configuration to be used to create caches. The option
-         * is a <code>java.util.Map<java.lang.String,
-         * org.ehcache.config.CacheConfiguration<java.lang.Object,
-         * java.lang.Object>></code> type.
+         * is a <code>java.util.Map&lt;java.lang.String,
+         * org.ehcache.config.CacheConfiguration&lt;java.lang.Object,
+         * java.lang.Object&gt;&gt;</code> type.
          */
         public T configurations(Map<String, Object> configurations) {
             this.properties.put("configurations", configurations);
@@ -155,9 +155,9 @@ public interface EhcacheEndpointBuilder {
         }
         /**
          * A map of cache configuration to be used to create caches. The option
-         * will be converted to a <code>java.util.Map<java.lang.String,
-         * org.ehcache.config.CacheConfiguration<java.lang.Object,
-         * java.lang.Object>></code> type.
+         * will be converted to a <code>java.util.Map&lt;java.lang.String,
+         * org.ehcache.config.CacheConfiguration&lt;java.lang.Object,
+         * java.lang.Object&gt;&gt;</code> type.
          */
         public T configurations(String configurations) {
             this.properties.put("configurations", configurations);
@@ -165,7 +165,7 @@ public interface EhcacheEndpointBuilder {
         }
         /**
          * The cache key type, default java.lang.Object. The option is a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T keyType(Class<Object> keyType) {
             this.properties.put("keyType", keyType);
@@ -173,7 +173,8 @@ public interface EhcacheEndpointBuilder {
         }
         /**
          * The cache key type, default java.lang.Object. The option will be
-         * converted to a <code>java.lang.Class<java.lang.Object></code> type.
+         * converted to a <code>java.lang.Class&lt;java.lang.Object&gt;</code>
+         * type.
          */
         public T keyType(String keyType) {
             this.properties.put("keyType", keyType);
@@ -199,7 +200,7 @@ public interface EhcacheEndpointBuilder {
         }
         /**
          * The cache value type, default java.lang.Object. The option is a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T valueType(Class<Object> valueType) {
             this.properties.put("valueType", valueType);
@@ -207,7 +208,8 @@ public interface EhcacheEndpointBuilder {
         }
         /**
          * The cache value type, default java.lang.Object. The option will be
-         * converted to a <code>java.lang.Class<java.lang.Object></code> type.
+         * converted to a <code>java.lang.Class&lt;java.lang.Object&gt;</code>
+         * type.
          */
         public T valueType(String valueType) {
             this.properties.put("valueType", valueType);
@@ -285,7 +287,7 @@ public interface EhcacheEndpointBuilder {
         }
         /**
          * Set the type of events to listen for. The option is a
-         * <code>java.util.Set<org.ehcache.event.EventType></code> type.
+         * <code>java.util.Set&lt;org.ehcache.event.EventType&gt;</code> type.
          */
         public EhcacheConsumerBuilder eventTypes(Set<EventType> eventTypes) {
             this.properties.put("eventTypes", eventTypes);
@@ -293,7 +295,7 @@ public interface EhcacheEndpointBuilder {
         }
         /**
          * Set the type of events to listen for. The option will be converted to
-         * a <code>java.util.Set<org.ehcache.event.EventType></code> type.
+         * a <code>java.util.Set&lt;org.ehcache.event.EventType&gt;</code> type.
          */
         public EhcacheConsumerBuilder eventTypes(String eventTypes) {
             this.properties.put("eventTypes", eventTypes);

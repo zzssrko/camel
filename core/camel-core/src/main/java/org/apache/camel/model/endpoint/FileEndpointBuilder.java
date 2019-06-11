@@ -622,7 +622,7 @@ public interface FileEndpointBuilder {
          * used when special conditions must be met before a file can be
          * consumed, such as a special ready file exists. If this option is set
          * then the readLock option does not apply. The option is a
-         * <code>org.apache.camel.component.file.GenericFileProcessStrategy<java.io.File></code> type.
+         * <code>org.apache.camel.component.file.GenericFileProcessStrategy&lt;java.io.File&gt;</code> type.
          */
         public FileConsumerBuilder processStrategy(Object processStrategy) {
             this.properties.put("processStrategy", processStrategy);
@@ -636,7 +636,7 @@ public interface FileEndpointBuilder {
          * consumed, such as a special ready file exists. If this option is set
          * then the readLock option does not apply. The option will be converted
          * to a
-         * <code>org.apache.camel.component.file.GenericFileProcessStrategy<java.io.File></code> type.
+         * <code>org.apache.camel.component.file.GenericFileProcessStrategy&lt;java.io.File&gt;</code> type.
          */
         public FileConsumerBuilder processStrategy(String processStrategy) {
             this.properties.put("processStrategy", processStrategy);
@@ -773,7 +773,7 @@ public interface FileEndpointBuilder {
          * Pluggable filter as a
          * org.apache.camel.component.file.GenericFileFilter class. Will skip
          * files if filter returns false in its accept() method. The option is a
-         * <code>org.apache.camel.component.file.GenericFileFilter<java.io.File></code> type.
+         * <code>org.apache.camel.component.file.GenericFileFilter&lt;java.io.File&gt;</code> type.
          */
         public FileConsumerBuilder filter(Object filter) {
             this.properties.put("filter", filter);
@@ -784,7 +784,7 @@ public interface FileEndpointBuilder {
          * org.apache.camel.component.file.GenericFileFilter class. Will skip
          * files if filter returns false in its accept() method. The option will
          * be converted to a
-         * <code>org.apache.camel.component.file.GenericFileFilter<java.io.File></code> type.
+         * <code>org.apache.camel.component.file.GenericFileFilter&lt;java.io.File&gt;</code> type.
          */
         public FileConsumerBuilder filter(String filter) {
             this.properties.put("filter", filter);
@@ -998,7 +998,7 @@ public interface FileEndpointBuilder {
          * Pluggable read-lock as a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy
          * implementation. The option is a
-         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy<java.io.File></code> type.
+         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy&lt;java.io.File&gt;</code> type.
          */
         public FileConsumerBuilder exclusiveReadLockStrategy(
                 Object exclusiveReadLockStrategy) {
@@ -1009,7 +1009,7 @@ public interface FileEndpointBuilder {
          * Pluggable read-lock as a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy
          * implementation. The option will be converted to a
-         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy<java.io.File></code> type.
+         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy&lt;java.io.File&gt;</code> type.
          */
         public FileConsumerBuilder exclusiveReadLockStrategy(
                 String exclusiveReadLockStrategy) {
@@ -1611,7 +1611,8 @@ public interface FileEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public FileConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -1621,8 +1622,8 @@ public interface FileEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public FileConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -1699,7 +1700,8 @@ public interface FileEndpointBuilder {
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
          * date. The option is a
-         * <code>java.util.Comparator<org.apache.camel.Exchange></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.Exchange&gt;</code>
+         * type.
          */
         public FileConsumerBuilder sortBy(Comparator<Exchange> sortBy) {
             this.properties.put("sortBy", sortBy);
@@ -1709,7 +1711,8 @@ public interface FileEndpointBuilder {
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
          * date. The option will be converted to a
-         * <code>java.util.Comparator<org.apache.camel.Exchange></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.Exchange&gt;</code>
+         * type.
          */
         public FileConsumerBuilder sortBy(String sortBy) {
             this.properties.put("sortBy", sortBy);
@@ -1717,7 +1720,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * Pluggable sorter as a java.util.Comparator class. The option is a
-         * <code>java.util.Comparator<org.apache.camel.component.file.GenericFile<java.io.File>></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.component.file.GenericFile&lt;java.io.File&gt;&gt;</code> type.
          */
         public FileConsumerBuilder sorter(Comparator<Object> sorter) {
             this.properties.put("sorter", sorter);
@@ -1726,7 +1729,7 @@ public interface FileEndpointBuilder {
         /**
          * Pluggable sorter as a java.util.Comparator class. The option will be
          * converted to a
-         * <code>java.util.Comparator<org.apache.camel.component.file.GenericFile<java.io.File>></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.component.file.GenericFile&lt;java.io.File&gt;&gt;</code> type.
          */
         public FileConsumerBuilder sorter(String sorter) {
             this.properties.put("sorter", sorter);

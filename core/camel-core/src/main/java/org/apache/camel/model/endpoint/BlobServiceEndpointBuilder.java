@@ -318,7 +318,8 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the blob meta-data. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public BlobServiceProducerBuilder blobMetadata(
                 Map<String, String> blobMetadata) {
@@ -327,7 +328,8 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the blob meta-data. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public BlobServiceProducerBuilder blobMetadata(String blobMetadata) {
             this.properties.put("blobMetadata", blobMetadata);

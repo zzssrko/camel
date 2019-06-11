@@ -66,7 +66,8 @@ public interface WordpressEndpointBuilder {
         }
         /**
          * The criteria to use with complex searches. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T criteria(Map<String, Object> criteria) {
             this.properties.put("criteria", criteria);
@@ -74,8 +75,8 @@ public interface WordpressEndpointBuilder {
         }
         /**
          * The criteria to use with complex searches. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T criteria(String criteria) {
             this.properties.put("criteria", criteria);

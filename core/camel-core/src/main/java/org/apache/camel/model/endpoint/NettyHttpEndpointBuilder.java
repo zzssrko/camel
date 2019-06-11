@@ -395,7 +395,8 @@ public interface NettyHttpEndpointBuilder {
          * For example option.child.keepAlive=false to set the netty option
          * child.keepAlive=false. See the Netty documentation for possible
          * options that can be used. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T options(Map<String, Object> options) {
             this.properties.put("options", options);
@@ -406,7 +407,8 @@ public interface NettyHttpEndpointBuilder {
          * For example option.child.keepAlive=false to set the netty option
          * child.keepAlive=false. See the Netty documentation for possible
          * options that can be used. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T options(String options) {
             this.properties.put("options", options);
@@ -587,7 +589,8 @@ public interface NettyHttpEndpointBuilder {
          * separated by comma, and have the values be looked up in the Registry.
          * Just remember to prefix the value with # so Camel knows it should
          * lookup. The option is a
-         * <code>java.util.List<io.netty.channel.ChannelHandler></code> type.
+         * <code>java.util.List&lt;io.netty.channel.ChannelHandler&gt;</code>
+         * type.
          */
         public T decoders(List<Object> decoders) {
             this.properties.put("decoders", decoders);
@@ -598,7 +601,8 @@ public interface NettyHttpEndpointBuilder {
          * separated by comma, and have the values be looked up in the Registry.
          * Just remember to prefix the value with # so Camel knows it should
          * lookup. The option will be converted to a
-         * <code>java.util.List<io.netty.channel.ChannelHandler></code> type.
+         * <code>java.util.List&lt;io.netty.channel.ChannelHandler&gt;</code>
+         * type.
          */
         public T decoders(String decoders) {
             this.properties.put("decoders", decoders);
@@ -629,7 +633,8 @@ public interface NettyHttpEndpointBuilder {
          * separated by comma, and have the values be looked up in the Registry.
          * Just remember to prefix the value with # so Camel knows it should
          * lookup. The option is a
-         * <code>java.util.List<io.netty.channel.ChannelHandler></code> type.
+         * <code>java.util.List&lt;io.netty.channel.ChannelHandler&gt;</code>
+         * type.
          */
         public T encoders(List<Object> encoders) {
             this.properties.put("encoders", encoders);
@@ -640,7 +645,8 @@ public interface NettyHttpEndpointBuilder {
          * separated by comma, and have the values be looked up in the Registry.
          * Just remember to prefix the value with # so Camel knows it should
          * lookup. The option will be converted to a
-         * <code>java.util.List<io.netty.channel.ChannelHandler></code> type.
+         * <code>java.util.List&lt;io.netty.channel.ChannelHandler&gt;</code>
+         * type.
          */
         public T encoders(String encoders) {
             this.properties.put("encoders", encoders);
@@ -1316,8 +1322,9 @@ public interface NettyHttpEndpointBuilder {
         }
         /**
          * To configure NettyHttpSecurityConfiguration using key/value pairs
-         * from the map. The option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * from the map. The option is a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public NettyHttpConsumerBuilder securityOptions(
                 Map<String, Object> securityOptions) {
@@ -1327,7 +1334,8 @@ public interface NettyHttpEndpointBuilder {
         /**
          * To configure NettyHttpSecurityConfiguration using key/value pairs
          * from the map. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public NettyHttpConsumerBuilder securityOptions(String securityOptions) {
             this.properties.put("securityOptions", securityOptions);

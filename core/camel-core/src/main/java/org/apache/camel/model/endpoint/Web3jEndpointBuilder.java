@@ -51,7 +51,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * Contract address or a list of addresses. The option is a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T addresses(List<String> addresses) {
             this.properties.put("addresses", addresses);
@@ -59,7 +59,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * Contract address or a list of addresses. The option will be converted
-         * to a <code>java.util.List<java.lang.String></code> type.
+         * to a <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T addresses(String addresses) {
             this.properties.put("addresses", addresses);
@@ -128,7 +128,8 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * A transaction privateFor nodes with public keys in a Quorum network.
-         * The option is a <code>java.util.List<java.lang.String></code> type.
+         * The option is a <code>java.util.List&lt;java.lang.String&gt;</code>
+         * type.
          */
         public T privateFor(List<String> privateFor) {
             this.properties.put("privateFor", privateFor);
@@ -137,7 +138,7 @@ public interface Web3jEndpointBuilder {
         /**
          * A transaction privateFor nodes with public keys in a Quorum network.
          * The option will be converted to a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T privateFor(String privateFor) {
             this.properties.put("privateFor", privateFor);
@@ -189,7 +190,7 @@ public interface Web3jEndpointBuilder {
         /**
          * Topics are order-dependent. Each topic can also be a list of topics.
          * Specify multiple topics separated by comma. The option is a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T topics(List<String> topics) {
             this.properties.put("topics", topics);
@@ -198,7 +199,8 @@ public interface Web3jEndpointBuilder {
         /**
          * Topics are order-dependent. Each topic can also be a list of topics.
          * Specify multiple topics separated by comma. The option will be
-         * converted to a <code>java.util.List<java.lang.String></code> type.
+         * converted to a <code>java.util.List&lt;java.lang.String&gt;</code>
+         * type.
          */
         public T topics(String topics) {
             this.properties.put("topics", topics);

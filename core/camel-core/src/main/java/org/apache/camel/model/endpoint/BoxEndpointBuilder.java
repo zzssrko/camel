@@ -116,7 +116,8 @@ public interface BoxEndpointBuilder {
         }
         /**
          * Custom HTTP params for settings like proxy host. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T httpParams(Map<String, Object> httpParams) {
             this.properties.put("httpParams", httpParams);
@@ -124,8 +125,8 @@ public interface BoxEndpointBuilder {
         }
         /**
          * Custom HTTP params for settings like proxy host. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T httpParams(String httpParams) {
             this.properties.put("httpParams", httpParams);

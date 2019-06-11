@@ -238,8 +238,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Defines both request and response models. The option is a
-         * <code>java.util.Map<java.lang.String,
-         * java.lang.Class<java.lang.Object>></code> type.
+         * <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Class&lt;java.lang.Object&gt;&gt;</code> type.
          */
         public T models(Map<String, Class<Object>> models) {
             this.properties.put("models", models);
@@ -247,8 +247,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Defines both request and response models. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Class<java.lang.Object>></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Class&lt;java.lang.Object&gt;&gt;</code> type.
          */
         public T models(String models) {
             this.properties.put("models", models);
@@ -294,8 +294,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Defines the request model. The option is a
-         * <code>java.util.Map<java.lang.String,
-         * java.lang.Class<java.lang.Object>></code> type.
+         * <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Class&lt;java.lang.Object&gt;&gt;</code> type.
          */
         public T requestModels(Map<String, Class<Object>> requestModels) {
             this.properties.put("requestModels", requestModels);
@@ -303,8 +303,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Defines the request model. The option will be converted to a
-         * <code>java.util.Map<java.lang.String,
-         * java.lang.Class<java.lang.Object>></code> type.
+         * <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Class&lt;java.lang.Object&gt;&gt;</code> type.
          */
         public T requestModels(String requestModels) {
             this.properties.put("requestModels", requestModels);
@@ -321,8 +321,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Defines the response model. The option is a
-         * <code>java.util.Map<java.lang.String,
-         * java.lang.Class<java.lang.Object>></code> type.
+         * <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Class&lt;java.lang.Object&gt;&gt;</code> type.
          */
         public T responseModels(Map<String, Class<Object>> responseModels) {
             this.properties.put("responseModels", responseModels);
@@ -330,8 +330,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Defines the response model. The option will be converted to a
-         * <code>java.util.Map<java.lang.String,
-         * java.lang.Class<java.lang.Object>></code> type.
+         * <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Class&lt;java.lang.Object&gt;&gt;</code> type.
          */
         public T responseModels(String responseModels) {
             this.properties.put("responseModels", responseModels);

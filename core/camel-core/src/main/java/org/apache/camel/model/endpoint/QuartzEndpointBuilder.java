@@ -202,7 +202,8 @@ public interface QuartzEndpointBuilder {
         }
         /**
          * To configure additional options on the job. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T jobParameters(Map<String, Object> jobParameters) {
             this.properties.put("jobParameters", jobParameters);
@@ -210,8 +211,8 @@ public interface QuartzEndpointBuilder {
         }
         /**
          * To configure additional options on the job. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T jobParameters(String jobParameters) {
             this.properties.put("jobParameters", jobParameters);
@@ -253,7 +254,8 @@ public interface QuartzEndpointBuilder {
         }
         /**
          * To configure additional options on the trigger. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T triggerParameters(Map<String, Object> triggerParameters) {
             this.properties.put("triggerParameters", triggerParameters);
@@ -261,8 +263,8 @@ public interface QuartzEndpointBuilder {
         }
         /**
          * To configure additional options on the trigger. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T triggerParameters(String triggerParameters) {
             this.properties.put("triggerParameters", triggerParameters);

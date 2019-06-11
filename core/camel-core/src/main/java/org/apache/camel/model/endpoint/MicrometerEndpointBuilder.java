@@ -62,8 +62,7 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Tags of metrics. The option is a
-         * <code>java.lang.Iterable<io.micrometer.core.instrument.Tag></code>
-         * type.
+         * <code>java.lang.Iterable&lt;io.micrometer.core.instrument.Tag&gt;</code> type.
          */
         public T tags(Iterable<Object> tags) {
             this.properties.put("tags", tags);
@@ -71,8 +70,7 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Tags of metrics. The option will be converted to a
-         * <code>java.lang.Iterable<io.micrometer.core.instrument.Tag></code>
-         * type.
+         * <code>java.lang.Iterable&lt;io.micrometer.core.instrument.Tag&gt;</code> type.
          */
         public T tags(String tags) {
             this.properties.put("tags", tags);

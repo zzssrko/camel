@@ -177,7 +177,7 @@ public interface MiloClientEndpointBuilder {
         /**
          * A set of allowed security policy URIs. Default is to accept all and
          * use the highest. The option is a
-         * <code>java.util.Set<java.lang.String></code> type.
+         * <code>java.util.Set&lt;java.lang.String&gt;</code> type.
          */
         public T allowedSecurityPolicies(Set<String> allowedSecurityPolicies) {
             this.properties.put("allowedSecurityPolicies", allowedSecurityPolicies);
@@ -186,7 +186,7 @@ public interface MiloClientEndpointBuilder {
         /**
          * A set of allowed security policy URIs. Default is to accept all and
          * use the highest. The option will be converted to a
-         * <code>java.util.Set<java.lang.String></code> type.
+         * <code>java.util.Set&lt;java.lang.String&gt;</code> type.
          */
         public T allowedSecurityPolicies(String allowedSecurityPolicies) {
             this.properties.put("allowedSecurityPolicies", allowedSecurityPolicies);

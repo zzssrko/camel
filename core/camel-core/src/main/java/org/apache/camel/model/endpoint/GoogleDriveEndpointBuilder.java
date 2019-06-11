@@ -140,7 +140,7 @@ public interface GoogleDriveEndpointBuilder {
          * Specifies the level of permissions you want a drive application to
          * have to a user account. See
          * https://developers.google.com/drive/web/scopes for more info. The
-         * option is a <code>java.util.List<java.lang.String></code> type.
+         * option is a <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T scopes(List<String> scopes) {
             this.properties.put("scopes", scopes);
@@ -151,7 +151,7 @@ public interface GoogleDriveEndpointBuilder {
          * have to a user account. See
          * https://developers.google.com/drive/web/scopes for more info. The
          * option will be converted to a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T scopes(String scopes) {
             this.properties.put("scopes", scopes);

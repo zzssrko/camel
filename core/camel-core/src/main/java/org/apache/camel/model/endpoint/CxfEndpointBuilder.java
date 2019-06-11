@@ -289,7 +289,8 @@ public interface CxfEndpointBuilder {
          * To set additional CXF options using the key/value pairs from the Map.
          * For example to turn on stacktraces in SOAP faults,
          * properties.faultStackTraceEnabled=true. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T properties(Map<String, Object> properties) {
             this.properties.put("properties", properties);
@@ -299,8 +300,8 @@ public interface CxfEndpointBuilder {
          * To set additional CXF options using the key/value pairs from the Map.
          * For example to turn on stacktraces in SOAP faults,
          * properties.faultStackTraceEnabled=true. The option will be converted
-         * to a <code>java.util.Map<java.lang.String, java.lang.Object></code>
-         * type.
+         * to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T properties(String properties) {
             this.properties.put("properties", properties);
@@ -441,7 +442,7 @@ public interface CxfEndpointBuilder {
         /**
          * The class name of the SEI (Service Endpoint Interface) class which
          * could have JSR181 annotation or not. The option is a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T serviceClass(Class<Object> serviceClass) {
             this.properties.put("serviceClass", serviceClass);
@@ -450,7 +451,7 @@ public interface CxfEndpointBuilder {
         /**
          * The class name of the SEI (Service Endpoint Interface) class which
          * could have JSR181 annotation or not. The option will be converted to
-         * a <code>java.lang.Class<java.lang.Object></code> type.
+         * a <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T serviceClass(String serviceClass) {
             this.properties.put("serviceClass", serviceClass);

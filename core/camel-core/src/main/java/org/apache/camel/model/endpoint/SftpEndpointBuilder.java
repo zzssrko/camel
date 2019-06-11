@@ -1099,7 +1099,7 @@ public interface SftpEndpointBuilder {
          * used when special conditions must be met before a file can be
          * consumed, such as a special ready file exists. If this option is set
          * then the readLock option does not apply. The option is a
-         * <code>org.apache.camel.component.file.GenericFileProcessStrategy<org.apache.camel.component.file.remote.SftpRemoteFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileProcessStrategy&lt;org.apache.camel.component.file.remote.SftpRemoteFile&gt;</code> type.
          */
         public SftpConsumerBuilder processStrategy(Object processStrategy) {
             this.properties.put("processStrategy", processStrategy);
@@ -1113,7 +1113,7 @@ public interface SftpEndpointBuilder {
          * consumed, such as a special ready file exists. If this option is set
          * then the readLock option does not apply. The option will be converted
          * to a
-         * <code>org.apache.camel.component.file.GenericFileProcessStrategy<org.apache.camel.component.file.remote.SftpRemoteFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileProcessStrategy&lt;org.apache.camel.component.file.remote.SftpRemoteFile&gt;</code> type.
          */
         public SftpConsumerBuilder processStrategy(String processStrategy) {
             this.properties.put("processStrategy", processStrategy);
@@ -1228,7 +1228,7 @@ public interface SftpEndpointBuilder {
          * Pluggable filter as a
          * org.apache.camel.component.file.GenericFileFilter class. Will skip
          * files if filter returns false in its accept() method. The option is a
-         * <code>org.apache.camel.component.file.GenericFileFilter<org.apache.camel.component.file.remote.SftpRemoteFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileFilter&lt;org.apache.camel.component.file.remote.SftpRemoteFile&gt;</code> type.
          */
         public SftpConsumerBuilder filter(Object filter) {
             this.properties.put("filter", filter);
@@ -1239,7 +1239,7 @@ public interface SftpEndpointBuilder {
          * org.apache.camel.component.file.GenericFileFilter class. Will skip
          * files if filter returns false in its accept() method. The option will
          * be converted to a
-         * <code>org.apache.camel.component.file.GenericFileFilter<org.apache.camel.component.file.remote.SftpRemoteFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileFilter&lt;org.apache.camel.component.file.remote.SftpRemoteFile&gt;</code> type.
          */
         public SftpConsumerBuilder filter(String filter) {
             this.properties.put("filter", filter);
@@ -1453,7 +1453,7 @@ public interface SftpEndpointBuilder {
          * Pluggable read-lock as a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy
          * implementation. The option is a
-         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy<org.apache.camel.component.file.remote.SftpRemoteFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy&lt;org.apache.camel.component.file.remote.SftpRemoteFile&gt;</code> type.
          */
         public SftpConsumerBuilder exclusiveReadLockStrategy(
                 Object exclusiveReadLockStrategy) {
@@ -1464,7 +1464,7 @@ public interface SftpEndpointBuilder {
          * Pluggable read-lock as a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy
          * implementation. The option will be converted to a
-         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy<org.apache.camel.component.file.remote.SftpRemoteFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy&lt;org.apache.camel.component.file.remote.SftpRemoteFile&gt;</code> type.
          */
         public SftpConsumerBuilder exclusiveReadLockStrategy(
                 String exclusiveReadLockStrategy) {
@@ -2066,7 +2066,8 @@ public interface SftpEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public SftpConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -2076,8 +2077,8 @@ public interface SftpEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public SftpConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -2154,7 +2155,8 @@ public interface SftpEndpointBuilder {
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
          * date. The option is a
-         * <code>java.util.Comparator<org.apache.camel.Exchange></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.Exchange&gt;</code>
+         * type.
          */
         public SftpConsumerBuilder sortBy(Comparator<Exchange> sortBy) {
             this.properties.put("sortBy", sortBy);
@@ -2164,7 +2166,8 @@ public interface SftpEndpointBuilder {
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
          * date. The option will be converted to a
-         * <code>java.util.Comparator<org.apache.camel.Exchange></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.Exchange&gt;</code>
+         * type.
          */
         public SftpConsumerBuilder sortBy(String sortBy) {
             this.properties.put("sortBy", sortBy);
@@ -2172,7 +2175,7 @@ public interface SftpEndpointBuilder {
         }
         /**
          * Pluggable sorter as a java.util.Comparator class. The option is a
-         * <code>java.util.Comparator<org.apache.camel.component.file.GenericFile<org.apache.camel.component.file.remote.SftpRemoteFile>></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.component.file.GenericFile&lt;org.apache.camel.component.file.remote.SftpRemoteFile&gt;&gt;</code> type.
          */
         public SftpConsumerBuilder sorter(Comparator<Object> sorter) {
             this.properties.put("sorter", sorter);
@@ -2181,7 +2184,7 @@ public interface SftpEndpointBuilder {
         /**
          * Pluggable sorter as a java.util.Comparator class. The option will be
          * converted to a
-         * <code>java.util.Comparator<org.apache.camel.component.file.GenericFile<org.apache.camel.component.file.remote.SftpRemoteFile>></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.component.file.GenericFile&lt;org.apache.camel.component.file.remote.SftpRemoteFile&gt;&gt;</code> type.
          */
         public SftpConsumerBuilder sorter(String sorter) {
             this.properties.put("sorter", sorter);

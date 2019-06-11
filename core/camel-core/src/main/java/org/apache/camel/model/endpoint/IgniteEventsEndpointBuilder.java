@@ -185,7 +185,7 @@ public interface IgniteEventsEndpointBuilder {
         /**
          * The event IDs to subscribe to as a Set directly where the IDs are the
          * different constants in org.apache.ignite.events.EventType. The option
-         * is a <code>java.util.Set<java.lang.Integer></code> type.
+         * is a <code>java.util.Set&lt;java.lang.Integer&gt;</code> type.
          */
         public IgniteEventsConsumerBuilder events(Set<Integer> events) {
             this.properties.put("events", events);
@@ -194,8 +194,8 @@ public interface IgniteEventsEndpointBuilder {
         /**
          * The event IDs to subscribe to as a Set directly where the IDs are the
          * different constants in org.apache.ignite.events.EventType. The option
-         * will be converted to a <code>java.util.Set<java.lang.Integer></code>
-         * type.
+         * will be converted to a
+         * <code>java.util.Set&lt;java.lang.Integer&gt;</code> type.
          */
         public IgniteEventsConsumerBuilder events(String events) {
             this.properties.put("events", events);

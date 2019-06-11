@@ -99,7 +99,8 @@ public interface XmlSignatureEndpointBuilder {
          * features off you must set the property value to Boolean#FALSE.
          * org.jcp.xml.dsig.validateManifests
          * javax.xml.crypto.dsig.cacheReference. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T cryptoContextProperties(
                 Map<String, Object> cryptoContextProperties) {
@@ -115,8 +116,8 @@ public interface XmlSignatureEndpointBuilder {
          * features off you must set the property value to Boolean#FALSE.
          * org.jcp.xml.dsig.validateManifests
          * javax.xml.crypto.dsig.cacheReference. The option will be converted to
-         * a <code>java.util.Map<java.lang.String, java.lang.Object></code>
-         * type.
+         * a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T cryptoContextProperties(String cryptoContextProperties) {
             this.properties.put("cryptoContextProperties", cryptoContextProperties);
@@ -512,7 +513,8 @@ public interface XmlSignatureEndpointBuilder {
          * http://www.w3.org/2000/09/xmldsig#enveloped-signature is added at
          * position 0 of the list. Use methods in XmlSignatureHelper to create
          * the transform methods. The option is a
-         * <code>java.util.List<javax.xml.crypto.AlgorithmMethod></code> type.
+         * <code>java.util.List&lt;javax.xml.crypto.AlgorithmMethod&gt;</code>
+         * type.
          */
         public T transformMethods(List<Object> transformMethods) {
             this.properties.put("transformMethods", transformMethods);
@@ -525,7 +527,8 @@ public interface XmlSignatureEndpointBuilder {
          * http://www.w3.org/2000/09/xmldsig#enveloped-signature is added at
          * position 0 of the list. Use methods in XmlSignatureHelper to create
          * the transform methods. The option will be converted to a
-         * <code>java.util.List<javax.xml.crypto.AlgorithmMethod></code> type.
+         * <code>java.util.List&lt;javax.xml.crypto.AlgorithmMethod&gt;</code>
+         * type.
          */
         public T transformMethods(String transformMethods) {
             this.properties.put("transformMethods", transformMethods);
@@ -544,7 +547,7 @@ public interface XmlSignatureEndpointBuilder {
          * setParentXpath(XPathFilterParameterSpec) for enveloped signature and
          * this parameter for detached signature must not be set in the same
          * configuration. The option is a
-         * <code>java.util.List<javax.xml.crypto.dsig.spec.XPathFilterParameterSpec></code> type.
+         * <code>java.util.List&lt;javax.xml.crypto.dsig.spec.XPathFilterParameterSpec&gt;</code> type.
          */
         public T xpathsToIdAttributes(List<Object> xpathsToIdAttributes) {
             this.properties.put("xpathsToIdAttributes", xpathsToIdAttributes);
@@ -563,7 +566,7 @@ public interface XmlSignatureEndpointBuilder {
          * setParentXpath(XPathFilterParameterSpec) for enveloped signature and
          * this parameter for detached signature must not be set in the same
          * configuration. The option will be converted to a
-         * <code>java.util.List<javax.xml.crypto.dsig.spec.XPathFilterParameterSpec></code> type.
+         * <code>java.util.List&lt;javax.xml.crypto.dsig.spec.XPathFilterParameterSpec&gt;</code> type.
          */
         public T xpathsToIdAttributes(String xpathsToIdAttributes) {
             this.properties.put("xpathsToIdAttributes", xpathsToIdAttributes);

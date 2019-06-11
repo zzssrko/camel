@@ -128,7 +128,8 @@ public interface LinkedInEndpointBuilder {
         /**
          * Custom HTTP parameters, for example, proxy host and port. Use
          * constants from AllClientPNames. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T httpParams(Map<String, Object> httpParams) {
             this.properties.put("httpParams", httpParams);
@@ -137,7 +138,8 @@ public interface LinkedInEndpointBuilder {
         /**
          * Custom HTTP parameters, for example, proxy host and port. Use
          * constants from AllClientPNames. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T httpParams(String httpParams) {
             this.properties.put("httpParams", httpParams);

@@ -343,7 +343,7 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * The potentialOwners when nominateTask operation is performed. The
-         * option is a <code>java.util.List<java.lang.String></code> type.
+         * option is a <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T entities(List<String> entities) {
             this.properties.put("entities", entities);
@@ -352,7 +352,7 @@ public interface JBPMEndpointBuilder {
         /**
          * The potentialOwners when nominateTask operation is performed. The
          * option will be converted to a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T entities(String entities) {
             this.properties.put("entities", entities);
@@ -376,8 +376,8 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * the variables that should be set for various operations. The option
-         * is a <code>java.util.Map<java.lang.String, java.lang.Object></code>
-         * type.
+         * is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T parameters(Map<String, Object> parameters) {
             this.properties.put("parameters", parameters);
@@ -385,8 +385,8 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * the variables that should be set for various operations. The option
-         * will be converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * will be converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T parameters(String parameters) {
             this.properties.put("parameters", parameters);
@@ -412,7 +412,7 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * The list of status to use when filtering tasks. The option is a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T statuses(List<String> statuses) {
             this.properties.put("statuses", statuses);
@@ -420,7 +420,8 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * The list of status to use when filtering tasks. The option will be
-         * converted to a <code>java.util.List<java.lang.String></code> type.
+         * converted to a <code>java.util.List&lt;java.lang.String&gt;</code>
+         * type.
          */
         public T statuses(String statuses) {
             this.properties.put("statuses", statuses);

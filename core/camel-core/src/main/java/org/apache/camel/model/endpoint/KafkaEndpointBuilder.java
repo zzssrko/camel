@@ -839,8 +839,8 @@ public interface KafkaEndpointBuilder {
          * The offset repository to use in order to locally store the offset of
          * each partition of the topic. Defining one will disable the
          * autocommit. The option is a
-         * <code>org.apache.camel.spi.StateRepository<java.lang.String,
-         * java.lang.String></code> type.
+         * <code>org.apache.camel.spi.StateRepository&lt;java.lang.String,
+         * java.lang.String&gt;</code> type.
          */
         public KafkaConsumerBuilder offsetRepository(
                 StateRepository<String, String> offsetRepository) {
@@ -851,8 +851,8 @@ public interface KafkaEndpointBuilder {
          * The offset repository to use in order to locally store the offset of
          * each partition of the topic. Defining one will disable the
          * autocommit. The option will be converted to a
-         * <code>org.apache.camel.spi.StateRepository<java.lang.String,
-         * java.lang.String></code> type.
+         * <code>org.apache.camel.spi.StateRepository&lt;java.lang.String,
+         * java.lang.String&gt;</code> type.
          */
         public KafkaConsumerBuilder offsetRepository(String offsetRepository) {
             this.properties.put("offsetRepository", offsetRepository);

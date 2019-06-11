@@ -299,7 +299,8 @@ public interface XsltEndpointBuilder {
          * net.sf.saxon.lib.ExtensionFunctionDefinition. You would need to add
          * camel-saxon to the classpath. The function is looked up in the
          * registry, where you can comma to separate multiple values to lookup.
-         * The option is a <code>java.util.List<java.lang.Object></code> type.
+         * The option is a <code>java.util.List&lt;java.lang.Object&gt;</code>
+         * type.
          */
         public T saxonExtensionFunctions(List<Object> saxonExtensionFunctions) {
             this.properties.put("saxonExtensionFunctions", saxonExtensionFunctions);
@@ -311,7 +312,7 @@ public interface XsltEndpointBuilder {
          * camel-saxon to the classpath. The function is looked up in the
          * registry, where you can comma to separate multiple values to lookup.
          * The option will be converted to a
-         * <code>java.util.List<java.lang.Object></code> type.
+         * <code>java.util.List&lt;java.lang.Object&gt;</code> type.
          */
         public T saxonExtensionFunctions(String saxonExtensionFunctions) {
             this.properties.put("saxonExtensionFunctions", saxonExtensionFunctions);

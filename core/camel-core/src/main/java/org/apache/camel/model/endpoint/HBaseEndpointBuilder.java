@@ -68,8 +68,7 @@ public interface HBaseEndpointBuilder {
         }
         /**
          * A list of filters to use. The option is a
-         * <code>java.util.List<org.apache.hadoop.hbase.filter.Filter></code>
-         * type.
+         * <code>java.util.List&lt;org.apache.hadoop.hbase.filter.Filter&gt;</code> type.
          */
         public T filters(List<Object> filters) {
             this.properties.put("filters", filters);
@@ -77,8 +76,7 @@ public interface HBaseEndpointBuilder {
         }
         /**
          * A list of filters to use. The option will be converted to a
-         * <code>java.util.List<org.apache.hadoop.hbase.filter.Filter></code>
-         * type.
+         * <code>java.util.List&lt;org.apache.hadoop.hbase.filter.Filter&gt;</code> type.
          */
         public T filters(String filters) {
             this.properties.put("filters", filters);
@@ -112,8 +110,8 @@ public interface HBaseEndpointBuilder {
          * number suffix for referring to more than one columns valueType - The
          * value type. Supports a number suffix for referring to more than one
          * columns. Supported operations: CamelHBaseGet, and CamelHBaseScan. The
-         * option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T rowMapping(Map<String, Object> rowMapping) {
             this.properties.put("rowMapping", rowMapping);
@@ -130,8 +128,9 @@ public interface HBaseEndpointBuilder {
          * number suffix for referring to more than one columns valueType - The
          * value type. Supports a number suffix for referring to more than one
          * columns. Supported operations: CamelHBaseGet, and CamelHBaseScan. The
-         * option will be converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T rowMapping(String rowMapping) {
             this.properties.put("rowMapping", rowMapping);

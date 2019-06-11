@@ -97,7 +97,7 @@ public interface SesEndpointBuilder {
         /**
          * List of reply-to email address(es) for the message, override it using
          * 'CamelAwsSesReplyToAddresses' header. The option is a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T replyToAddresses(List<String> replyToAddresses) {
             this.properties.put("replyToAddresses", replyToAddresses);
@@ -106,7 +106,7 @@ public interface SesEndpointBuilder {
         /**
          * List of reply-to email address(es) for the message, override it using
          * 'CamelAwsSesReplyToAddresses' header. The option will be converted to
-         * a <code>java.util.List<java.lang.String></code> type.
+         * a <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T replyToAddresses(String replyToAddresses) {
             this.properties.put("replyToAddresses", replyToAddresses);
@@ -132,7 +132,7 @@ public interface SesEndpointBuilder {
         /**
          * List of destination email address. Can be overriden with
          * 'CamelAwsSesTo' header. The option is a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T to(List<String> to) {
             this.properties.put("to", to);
@@ -141,7 +141,7 @@ public interface SesEndpointBuilder {
         /**
          * List of destination email address. Can be overriden with
          * 'CamelAwsSesTo' header. The option will be converted to a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T to(String to) {
             this.properties.put("to", to);

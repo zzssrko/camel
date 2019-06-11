@@ -351,8 +351,9 @@ public interface SmppEndpointBuilder {
         }
         /**
          * These headers will be passed to the proxy server while establishing
-         * the connection. The option is a <code>java.util.Map<java.lang.String,
-         * java.lang.String></code> type.
+         * the connection. The option is a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public T proxyHeaders(Map<String, String> proxyHeaders) {
             this.properties.put("proxyHeaders", proxyHeaders);
@@ -361,7 +362,8 @@ public interface SmppEndpointBuilder {
         /**
          * These headers will be passed to the proxy server while establishing
          * the connection. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public T proxyHeaders(String proxyHeaders) {
             this.properties.put("proxyHeaders", proxyHeaders);

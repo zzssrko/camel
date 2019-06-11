@@ -229,7 +229,7 @@ public interface CryptoCmsEndpointBuilder {
          * Recipient Info: reference to a bean which implements the interface
          * org.apache.camel.component.crypto.cms.api.TransRecipientInfo. The
          * option is a
-         * <code>java.util.List<org.apache.camel.component.crypto.cms.crypt.RecipientInfo></code> type.
+         * <code>java.util.List&lt;org.apache.camel.component.crypto.cms.crypt.RecipientInfo&gt;</code> type.
          */
         public T recipient(List<Object> recipient) {
             this.properties.put("recipient", recipient);
@@ -239,7 +239,7 @@ public interface CryptoCmsEndpointBuilder {
          * Recipient Info: reference to a bean which implements the interface
          * org.apache.camel.component.crypto.cms.api.TransRecipientInfo. The
          * option will be converted to a
-         * <code>java.util.List<org.apache.camel.component.crypto.cms.crypt.RecipientInfo></code> type.
+         * <code>java.util.List&lt;org.apache.camel.component.crypto.cms.crypt.RecipientInfo&gt;</code> type.
          */
         public T recipient(String recipient) {
             this.properties.put("recipient", recipient);
@@ -342,7 +342,7 @@ public interface CryptoCmsEndpointBuilder {
          * Signer information: reference to bean(s) which implements
          * org.apache.camel.component.crypto.cms.api.SignerInfo. Multiple values
          * can be separated by comma. The option is a
-         * <code>java.util.List<org.apache.camel.component.crypto.cms.sig.SignerInfo></code> type.
+         * <code>java.util.List&lt;org.apache.camel.component.crypto.cms.sig.SignerInfo&gt;</code> type.
          */
         public T signer(List<Object> signer) {
             this.properties.put("signer", signer);
@@ -352,7 +352,7 @@ public interface CryptoCmsEndpointBuilder {
          * Signer information: reference to bean(s) which implements
          * org.apache.camel.component.crypto.cms.api.SignerInfo. Multiple values
          * can be separated by comma. The option will be converted to a
-         * <code>java.util.List<org.apache.camel.component.crypto.cms.sig.SignerInfo></code> type.
+         * <code>java.util.List&lt;org.apache.camel.component.crypto.cms.sig.SignerInfo&gt;</code> type.
          */
         public T signer(String signer) {
             this.properties.put("signer", signer);

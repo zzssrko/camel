@@ -616,8 +616,8 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Configuration of the filter init parameters. These parameters will be
          * applied to the filter list before starting the jetty server. The
-         * option is a <code>java.util.Map<java.lang.String,
-         * java.lang.String></code> type.
+         * option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.String&gt;</code> type.
          */
         public JettyHttpConsumerBuilder9 filterInitParameters(
                 Map<String, String> filterInitParameters) {
@@ -627,8 +627,9 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Configuration of the filter init parameters. These parameters will be
          * applied to the filter list before starting the jetty server. The
-         * option will be converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.String></code> type.
+         * option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public JettyHttpConsumerBuilder9 filterInitParameters(
                 String filterInitParameters) {
@@ -638,7 +639,8 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Allows using a custom filters which is putted into a list and can be
          * find in the Registry. Multiple values can be separated by comma. The
-         * option is a <code>java.util.List<javax.servlet.Filter></code> type.
+         * option is a <code>java.util.List&lt;javax.servlet.Filter&gt;</code>
+         * type.
          */
         public JettyHttpConsumerBuilder9 filtersRef(List<Object> filtersRef) {
             this.properties.put("filtersRef", filtersRef);
@@ -648,7 +650,7 @@ public interface JettyHttpEndpointBuilder9 {
          * Allows using a custom filters which is putted into a list and can be
          * find in the Registry. Multiple values can be separated by comma. The
          * option will be converted to a
-         * <code>java.util.List<javax.servlet.Filter></code> type.
+         * <code>java.util.List&lt;javax.servlet.Filter&gt;</code> type.
          */
         public JettyHttpConsumerBuilder9 filtersRef(String filtersRef) {
             this.properties.put("filtersRef", filtersRef);
@@ -661,7 +663,8 @@ public interface JettyHttpEndpointBuilder9 {
          * handlers with different Jetty endpoints using the same port number.
          * The handlers is associated to the port number. If you need different
          * handlers, then use different port numbers. The option is a
-         * <code>java.util.List<org.eclipse.jetty.server.Handler></code> type.
+         * <code>java.util.List&lt;org.eclipse.jetty.server.Handler&gt;</code>
+         * type.
          */
         public JettyHttpConsumerBuilder9 handlers(List<Object> handlers) {
             this.properties.put("handlers", handlers);
@@ -675,7 +678,8 @@ public interface JettyHttpEndpointBuilder9 {
          * The handlers is associated to the port number. If you need different
          * handlers, then use different port numbers. The option will be
          * converted to a
-         * <code>java.util.List<org.eclipse.jetty.server.Handler></code> type.
+         * <code>java.util.List&lt;org.eclipse.jetty.server.Handler&gt;</code>
+         * type.
          */
         public JettyHttpConsumerBuilder9 handlers(String handlers) {
             this.properties.put("handlers", handlers);
@@ -1033,7 +1037,8 @@ public interface JettyHttpEndpointBuilder9 {
          * httpClient.timeout=30000 sets the request timeout to 30 seconds, in
          * case you want to timeout sooner if you have long running
          * request/response calls. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public JettyHttpProducerBuilder9 httpClientParameters(
                 Map<String, Object> httpClientParameters) {
@@ -1046,7 +1051,8 @@ public interface JettyHttpEndpointBuilder9 {
          * httpClient.timeout=30000 sets the request timeout to 30 seconds, in
          * case you want to timeout sooner if you have long running
          * request/response calls. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public JettyHttpProducerBuilder9 httpClientParameters(
                 String httpClientParameters) {

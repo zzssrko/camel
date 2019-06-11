@@ -290,8 +290,8 @@ public interface SqlEndpointBuilder {
         }
         /**
          * Configures the Spring JdbcTemplate with the key/values from the Map.
-         * The option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T templateOptions(Map<String, Object> templateOptions) {
             this.properties.put("templateOptions", templateOptions);
@@ -300,7 +300,8 @@ public interface SqlEndpointBuilder {
         /**
          * Configures the Spring JdbcTemplate with the key/values from the Map.
          * The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T templateOptions(String templateOptions) {
             this.properties.put("templateOptions", templateOptions);
@@ -789,7 +790,8 @@ public interface SqlEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public SqlConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -799,8 +801,8 @@ public interface SqlEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public SqlConsumerBuilder schedulerProperties(String schedulerProperties) {
             this.properties.put("schedulerProperties", schedulerProperties);

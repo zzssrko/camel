@@ -140,8 +140,8 @@ public interface SWFEndpointBuilder {
         }
         /**
          * To configure the ClientConfiguration using the key/values from the
-         * Map. The option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * Map. The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T clientConfigurationParameters(
                 Map<String, Object> clientConfigurationParameters) {
@@ -151,7 +151,8 @@ public interface SWFEndpointBuilder {
         /**
          * To configure the ClientConfiguration using the key/values from the
          * Map. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T clientConfigurationParameters(
                 String clientConfigurationParameters) {
@@ -160,8 +161,8 @@ public interface SWFEndpointBuilder {
         }
         /**
          * To configure the StartWorkflowOptions using the key/values from the
-         * Map. The option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * Map. The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T startWorkflowOptionsParameters(
                 Map<String, Object> startWorkflowOptionsParameters) {
@@ -171,7 +172,8 @@ public interface SWFEndpointBuilder {
         /**
          * To configure the StartWorkflowOptions using the key/values from the
          * Map. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T startWorkflowOptionsParameters(
                 String startWorkflowOptionsParameters) {
@@ -180,8 +182,8 @@ public interface SWFEndpointBuilder {
         }
         /**
          * To configure the AmazonSimpleWorkflowClient using the key/values from
-         * the Map. The option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * the Map. The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T sWClientParameters(Map<String, Object> sWClientParameters) {
             this.properties.put("sWClientParameters", sWClientParameters);
@@ -190,7 +192,8 @@ public interface SWFEndpointBuilder {
         /**
          * To configure the AmazonSimpleWorkflowClient using the key/values from
          * the Map. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T sWClientParameters(String sWClientParameters) {
             this.properties.put("sWClientParameters", sWClientParameters);

@@ -69,7 +69,7 @@ public interface PropertiesEndpointBuilder {
          * A list of locations to load properties. You can use comma to separate
          * multiple locations. This option will override any default locations
          * and only use the locations from this option. The option is a
-         * <code>java.util.List<org.apache.camel.component.properties.PropertiesLocation></code> type.
+         * <code>java.util.List&lt;org.apache.camel.component.properties.PropertiesLocation&gt;</code> type.
          */
         public T locations(List<Object> locations) {
             this.properties.put("locations", locations);
@@ -80,7 +80,7 @@ public interface PropertiesEndpointBuilder {
          * multiple locations. This option will override any default locations
          * and only use the locations from this option. The option will be
          * converted to a
-         * <code>java.util.List<org.apache.camel.component.properties.PropertiesLocation></code> type.
+         * <code>java.util.List&lt;org.apache.camel.component.properties.PropertiesLocation&gt;</code> type.
          */
         public T locations(String locations) {
             this.properties.put("locations", locations);

@@ -47,7 +47,7 @@ public interface JooqEndpointBuilder {
         }
         /**
          * JOOQ entity class. The option is a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T entityType(Class<Object> entityType) {
             this.properties.put("entityType", entityType);
@@ -55,7 +55,7 @@ public interface JooqEndpointBuilder {
         }
         /**
          * JOOQ entity class. The option will be converted to a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T entityType(String entityType) {
             this.properties.put("entityType", entityType);
@@ -419,7 +419,8 @@ public interface JooqEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public JooqConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -429,8 +430,8 @@ public interface JooqEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public JooqConsumerBuilder schedulerProperties(
                 String schedulerProperties) {

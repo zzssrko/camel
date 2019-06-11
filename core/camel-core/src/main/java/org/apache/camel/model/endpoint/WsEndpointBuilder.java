@@ -220,8 +220,8 @@ public interface WsEndpointBuilder {
         }
         /**
          * To configure the AsyncHttpClientConfig using the key/values from the
-         * Map. The option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * Map. The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T clientConfigOptions(Map<String, Object> clientConfigOptions) {
             this.properties.put("clientConfigOptions", clientConfigOptions);
@@ -230,7 +230,8 @@ public interface WsEndpointBuilder {
         /**
          * To configure the AsyncHttpClientConfig using the key/values from the
          * Map. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T clientConfigOptions(String clientConfigOptions) {
             this.properties.put("clientConfigOptions", clientConfigOptions);
@@ -256,8 +257,9 @@ public interface WsEndpointBuilder {
         }
         /**
          * To configure the AsyncHttpClientConfig Realm using the key/values
-         * from the Map. The option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * from the Map. The option is a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T clientConfigRealmOptions(
                 Map<String, Object> clientConfigRealmOptions) {
@@ -267,7 +269,8 @@ public interface WsEndpointBuilder {
         /**
          * To configure the AsyncHttpClientConfig Realm using the key/values
          * from the Map. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T clientConfigRealmOptions(String clientConfigRealmOptions) {
             this.properties.put("clientConfigRealmOptions", clientConfigRealmOptions);

@@ -439,7 +439,8 @@ public interface FtpsEndpointBuilder {
         /**
          * Used by FtpComponent to provide additional parameters for the
          * FTPClientConfig. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T ftpClientConfigParameters(
                 Map<String, Object> ftpClientConfigParameters) {
@@ -449,7 +450,8 @@ public interface FtpsEndpointBuilder {
         /**
          * Used by FtpComponent to provide additional parameters for the
          * FTPClientConfig. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T ftpClientConfigParameters(String ftpClientConfigParameters) {
             this.properties.put("ftpClientConfigParameters", ftpClientConfigParameters);
@@ -457,8 +459,8 @@ public interface FtpsEndpointBuilder {
         }
         /**
          * Used by FtpComponent to provide additional parameters for the
-         * FTPClient. The option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * FTPClient. The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T ftpClientParameters(Map<String, Object> ftpClientParameters) {
             this.properties.put("ftpClientParameters", ftpClientParameters);
@@ -467,7 +469,8 @@ public interface FtpsEndpointBuilder {
         /**
          * Used by FtpComponent to provide additional parameters for the
          * FTPClient. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T ftpClientParameters(String ftpClientParameters) {
             this.properties.put("ftpClientParameters", ftpClientParameters);
@@ -678,7 +681,8 @@ public interface FtpsEndpointBuilder {
         }
         /**
          * Set the key store parameters. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T ftpClientKeyStoreParameters(
                 Map<String, Object> ftpClientKeyStoreParameters) {
@@ -687,7 +691,8 @@ public interface FtpsEndpointBuilder {
         }
         /**
          * Set the key store parameters. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T ftpClientKeyStoreParameters(String ftpClientKeyStoreParameters) {
             this.properties.put("ftpClientKeyStoreParameters", ftpClientKeyStoreParameters);
@@ -695,7 +700,8 @@ public interface FtpsEndpointBuilder {
         }
         /**
          * Set the trust store parameters. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T ftpClientTrustStoreParameters(
                 Map<String, Object> ftpClientTrustStoreParameters) {
@@ -704,7 +710,8 @@ public interface FtpsEndpointBuilder {
         }
         /**
          * Set the trust store parameters. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T ftpClientTrustStoreParameters(
                 String ftpClientTrustStoreParameters) {
@@ -1208,7 +1215,7 @@ public interface FtpsEndpointBuilder {
          * used when special conditions must be met before a file can be
          * consumed, such as a special ready file exists. If this option is set
          * then the readLock option does not apply. The option is a
-         * <code>org.apache.camel.component.file.GenericFileProcessStrategy<org.apache.commons.net.ftp.FTPFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileProcessStrategy&lt;org.apache.commons.net.ftp.FTPFile&gt;</code> type.
          */
         public FtpsConsumerBuilder processStrategy(Object processStrategy) {
             this.properties.put("processStrategy", processStrategy);
@@ -1222,7 +1229,7 @@ public interface FtpsEndpointBuilder {
          * consumed, such as a special ready file exists. If this option is set
          * then the readLock option does not apply. The option will be converted
          * to a
-         * <code>org.apache.camel.component.file.GenericFileProcessStrategy<org.apache.commons.net.ftp.FTPFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileProcessStrategy&lt;org.apache.commons.net.ftp.FTPFile&gt;</code> type.
          */
         public FtpsConsumerBuilder processStrategy(String processStrategy) {
             this.properties.put("processStrategy", processStrategy);
@@ -1353,7 +1360,7 @@ public interface FtpsEndpointBuilder {
          * Pluggable filter as a
          * org.apache.camel.component.file.GenericFileFilter class. Will skip
          * files if filter returns false in its accept() method. The option is a
-         * <code>org.apache.camel.component.file.GenericFileFilter<org.apache.commons.net.ftp.FTPFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileFilter&lt;org.apache.commons.net.ftp.FTPFile&gt;</code> type.
          */
         public FtpsConsumerBuilder filter(Object filter) {
             this.properties.put("filter", filter);
@@ -1364,7 +1371,7 @@ public interface FtpsEndpointBuilder {
          * org.apache.camel.component.file.GenericFileFilter class. Will skip
          * files if filter returns false in its accept() method. The option will
          * be converted to a
-         * <code>org.apache.camel.component.file.GenericFileFilter<org.apache.commons.net.ftp.FTPFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileFilter&lt;org.apache.commons.net.ftp.FTPFile&gt;</code> type.
          */
         public FtpsConsumerBuilder filter(String filter) {
             this.properties.put("filter", filter);
@@ -1578,7 +1585,7 @@ public interface FtpsEndpointBuilder {
          * Pluggable read-lock as a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy
          * implementation. The option is a
-         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy<org.apache.commons.net.ftp.FTPFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy&lt;org.apache.commons.net.ftp.FTPFile&gt;</code> type.
          */
         public FtpsConsumerBuilder exclusiveReadLockStrategy(
                 Object exclusiveReadLockStrategy) {
@@ -1589,7 +1596,7 @@ public interface FtpsEndpointBuilder {
          * Pluggable read-lock as a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy
          * implementation. The option will be converted to a
-         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy<org.apache.commons.net.ftp.FTPFile></code> type.
+         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy&lt;org.apache.commons.net.ftp.FTPFile&gt;</code> type.
          */
         public FtpsConsumerBuilder exclusiveReadLockStrategy(
                 String exclusiveReadLockStrategy) {
@@ -2191,7 +2198,8 @@ public interface FtpsEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public FtpsConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -2201,8 +2209,8 @@ public interface FtpsEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public FtpsConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -2279,7 +2287,8 @@ public interface FtpsEndpointBuilder {
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
          * date. The option is a
-         * <code>java.util.Comparator<org.apache.camel.Exchange></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.Exchange&gt;</code>
+         * type.
          */
         public FtpsConsumerBuilder sortBy(Comparator<Exchange> sortBy) {
             this.properties.put("sortBy", sortBy);
@@ -2289,7 +2298,8 @@ public interface FtpsEndpointBuilder {
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
          * date. The option will be converted to a
-         * <code>java.util.Comparator<org.apache.camel.Exchange></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.Exchange&gt;</code>
+         * type.
          */
         public FtpsConsumerBuilder sortBy(String sortBy) {
             this.properties.put("sortBy", sortBy);
@@ -2297,7 +2307,7 @@ public interface FtpsEndpointBuilder {
         }
         /**
          * Pluggable sorter as a java.util.Comparator class. The option is a
-         * <code>java.util.Comparator<org.apache.camel.component.file.GenericFile<org.apache.commons.net.ftp.FTPFile>></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.component.file.GenericFile&lt;org.apache.commons.net.ftp.FTPFile&gt;&gt;</code> type.
          */
         public FtpsConsumerBuilder sorter(Comparator<Object> sorter) {
             this.properties.put("sorter", sorter);
@@ -2306,7 +2316,7 @@ public interface FtpsEndpointBuilder {
         /**
          * Pluggable sorter as a java.util.Comparator class. The option will be
          * converted to a
-         * <code>java.util.Comparator<org.apache.camel.component.file.GenericFile<org.apache.commons.net.ftp.FTPFile>></code> type.
+         * <code>java.util.Comparator&lt;org.apache.camel.component.file.GenericFile&lt;org.apache.commons.net.ftp.FTPFile&gt;&gt;</code> type.
          */
         public FtpsConsumerBuilder sorter(String sorter) {
             this.properties.put("sorter", sorter);

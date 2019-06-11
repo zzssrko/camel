@@ -82,7 +82,7 @@ public interface CaffeineCacheEndpointBuilder {
         }
         /**
          * The cache key type, default java.lang.Object. The option is a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T keyType(Class<Object> keyType) {
             this.properties.put("keyType", keyType);
@@ -90,7 +90,8 @@ public interface CaffeineCacheEndpointBuilder {
         }
         /**
          * The cache key type, default java.lang.Object. The option will be
-         * converted to a <code>java.lang.Class<java.lang.Object></code> type.
+         * converted to a <code>java.lang.Class&lt;java.lang.Object&gt;</code>
+         * type.
          */
         public T keyType(String keyType) {
             this.properties.put("keyType", keyType);
@@ -116,7 +117,7 @@ public interface CaffeineCacheEndpointBuilder {
         }
         /**
          * The cache value type, default java.lang.Object. The option is a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T valueType(Class<Object> valueType) {
             this.properties.put("valueType", valueType);
@@ -124,7 +125,8 @@ public interface CaffeineCacheEndpointBuilder {
         }
         /**
          * The cache value type, default java.lang.Object. The option will be
-         * converted to a <code>java.lang.Class<java.lang.Object></code> type.
+         * converted to a <code>java.lang.Class&lt;java.lang.Object&gt;</code>
+         * type.
          */
         public T valueType(String valueType) {
             this.properties.put("valueType", valueType);

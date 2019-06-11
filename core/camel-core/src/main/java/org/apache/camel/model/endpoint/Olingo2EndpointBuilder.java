@@ -160,7 +160,8 @@ public interface Olingo2EndpointBuilder {
         /**
          * Custom HTTP headers to inject into every request, this could include
          * OAuth tokens, etc. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public T httpHeaders(Map<String, String> httpHeaders) {
             this.properties.put("httpHeaders", httpHeaders);
@@ -169,7 +170,8 @@ public interface Olingo2EndpointBuilder {
         /**
          * Custom HTTP headers to inject into every request, this could include
          * OAuth tokens, etc. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public T httpHeaders(String httpHeaders) {
             this.properties.put("httpHeaders", httpHeaders);

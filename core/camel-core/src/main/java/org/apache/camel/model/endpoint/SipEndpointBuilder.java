@@ -571,7 +571,7 @@ public interface SipEndpointBuilder {
          * Each ViaHeader containing a proxy address for request forwarding.
          * (Note this header is automatically updated by each proxy when the
          * request arrives at its listener). The option is a
-         * <code>java.util.List<javax.sip.header.ViaHeader></code> type.
+         * <code>java.util.List&lt;javax.sip.header.ViaHeader&gt;</code> type.
          */
         public T viaHeaders(List<Object> viaHeaders) {
             this.properties.put("viaHeaders", viaHeaders);
@@ -582,7 +582,7 @@ public interface SipEndpointBuilder {
          * Each ViaHeader containing a proxy address for request forwarding.
          * (Note this header is automatically updated by each proxy when the
          * request arrives at its listener). The option will be converted to a
-         * <code>java.util.List<javax.sip.header.ViaHeader></code> type.
+         * <code>java.util.List&lt;javax.sip.header.ViaHeader&gt;</code> type.
          */
         public T viaHeaders(String viaHeaders) {
             this.properties.put("viaHeaders", viaHeaders);

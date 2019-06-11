@@ -54,7 +54,7 @@ public interface GuavaEventBusEndpointBuilder {
          * setting it to the java.lang.Object i.e. the consumer will capture all
          * messages incoming to the event bus. This option cannot be used
          * together with listenerInterface option. The option is a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T eventClass(Class<Object> eventClass) {
             this.properties.put("eventClass", eventClass);
@@ -67,7 +67,7 @@ public interface GuavaEventBusEndpointBuilder {
          * setting it to the java.lang.Object i.e. the consumer will capture all
          * messages incoming to the event bus. This option cannot be used
          * together with listenerInterface option. The option will be converted
-         * to a <code>java.lang.Class<java.lang.Object></code> type.
+         * to a <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T eventClass(String eventClass) {
             this.properties.put("eventClass", eventClass);
@@ -79,7 +79,8 @@ public interface GuavaEventBusEndpointBuilder {
          * registered as the EventBus listener. Particularly useful when
          * creating multi-event listeners and for handling DeadEvent properly.
          * This option cannot be used together with eventClass option. The
-         * option is a <code>java.lang.Class<java.lang.Object></code> type.
+         * option is a <code>java.lang.Class&lt;java.lang.Object&gt;</code>
+         * type.
          */
         public T listenerInterface(Class<Object> listenerInterface) {
             this.properties.put("listenerInterface", listenerInterface);
@@ -92,7 +93,7 @@ public interface GuavaEventBusEndpointBuilder {
          * creating multi-event listeners and for handling DeadEvent properly.
          * This option cannot be used together with eventClass option. The
          * option will be converted to a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T listenerInterface(String listenerInterface) {
             this.properties.put("listenerInterface", listenerInterface);

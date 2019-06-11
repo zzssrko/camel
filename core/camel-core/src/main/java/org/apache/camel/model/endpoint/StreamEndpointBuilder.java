@@ -121,8 +121,8 @@ public interface StreamEndpointBuilder {
         }
         /**
          * Optional http headers to use in request when using HTTP URL. The
-         * option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T httpHeaders(Map<String, Object> httpHeaders) {
             this.properties.put("httpHeaders", httpHeaders);
@@ -130,8 +130,9 @@ public interface StreamEndpointBuilder {
         }
         /**
          * Optional http headers to use in request when using HTTP URL. The
-         * option will be converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T httpHeaders(String httpHeaders) {
             this.properties.put("httpHeaders", httpHeaders);

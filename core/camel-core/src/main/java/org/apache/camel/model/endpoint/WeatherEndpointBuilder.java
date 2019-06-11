@@ -223,8 +223,8 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * List of id's of city/stations. You can separate multiple ids by
-         * comma. The option is a <code>java.util.List<java.lang.String></code>
-         * type.
+         * comma. The option is a
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T ids(List<String> ids) {
             this.properties.put("ids", ids);
@@ -233,7 +233,7 @@ public interface WeatherEndpointBuilder {
         /**
          * List of id's of city/stations. You can separate multiple ids by
          * comma. The option will be converted to a
-         * <code>java.util.List<java.lang.String></code> type.
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
          */
         public T ids(String ids) {
             this.properties.put("ids", ids);
@@ -707,7 +707,8 @@ public interface WeatherEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public WeatherConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -717,8 +718,8 @@ public interface WeatherEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public WeatherConsumerBuilder schedulerProperties(
                 String schedulerProperties) {

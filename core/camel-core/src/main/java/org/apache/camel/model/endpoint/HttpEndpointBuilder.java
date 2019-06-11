@@ -282,8 +282,8 @@ public interface HttpEndpointBuilder {
         }
         /**
          * To configure the HttpClient using the key/values from the Map. The
-         * option is a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T httpClientOptions(Map<String, Object> httpClientOptions) {
             this.properties.put("httpClientOptions", httpClientOptions);
@@ -291,8 +291,9 @@ public interface HttpEndpointBuilder {
         }
         /**
          * To configure the HttpClient using the key/values from the Map. The
-         * option will be converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T httpClientOptions(String httpClientOptions) {
             this.properties.put("httpClientOptions", httpClientOptions);

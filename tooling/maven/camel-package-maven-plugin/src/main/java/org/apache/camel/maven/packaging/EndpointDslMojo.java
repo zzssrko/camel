@@ -300,7 +300,9 @@ public class EndpointDslMojo extends AbstractMojo {
                 if (!desc.endsWith(".")) {
                     desc = desc + ".";
                 }
-                desc = desc + " The option is a <code>" + ogtype.toString() + "</code> type.";
+                desc = desc + " The option is a <code>" + ogtype.toString()
+                        .replaceAll("<", "&lt;")
+                        .replaceAll(">", "&gt;") + "</code> type.";
                 fluent.getJavaDoc().setFullText(desc);
             }
 
@@ -318,7 +320,9 @@ public class EndpointDslMojo extends AbstractMojo {
                     if (!desc.endsWith(".")) {
                         desc = desc + ".";
                     }
-                    desc = desc + " The option will be converted to a <code>" + ogtype.toString() + "</code> type.";
+                    desc = desc + " The option will be converted to a <code>" + ogtype.toString()
+                            .replaceAll("<", "&lt;")
+                            .replaceAll(">", "&gt;") + "</code> type.";
                     fluent.getJavaDoc().setFullText(desc);
                 }
             }

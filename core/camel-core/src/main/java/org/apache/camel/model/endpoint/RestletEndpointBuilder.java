@@ -174,7 +174,8 @@ public interface RestletEndpointBuilder {
         }
         /**
          * To configure the security realms of restlet as a map. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
+         * type.
          */
         public T restletRealm(Map<String, String> restletRealm) {
             this.properties.put("restletRealm", restletRealm);
@@ -182,8 +183,8 @@ public interface RestletEndpointBuilder {
         }
         /**
          * To configure the security realms of restlet as a map. The option will
-         * be converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.String></code> type.
+         * be converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.String&gt;</code> type.
          */
         public T restletRealm(String restletRealm) {
             this.properties.put("restletRealm", restletRealm);

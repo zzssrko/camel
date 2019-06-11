@@ -47,7 +47,7 @@ public interface JpaEndpointBuilder {
         }
         /**
          * The JPA annotated class to use as entity. The option is a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T entityType(Class<Object> entityType) {
             this.properties.put("entityType", entityType);
@@ -55,7 +55,8 @@ public interface JpaEndpointBuilder {
         }
         /**
          * The JPA annotated class to use as entity. The option will be
-         * converted to a <code>java.lang.Class<java.lang.Object></code> type.
+         * converted to a <code>java.lang.Class&lt;java.lang.Object&gt;</code>
+         * type.
          */
         public T entityType(String entityType) {
             this.properties.put("entityType", entityType);
@@ -125,7 +126,8 @@ public interface JpaEndpointBuilder {
          * it's used for producer, Simple expression can be used as a parameter
          * value. It allows you to retrieve parameter values from the message
          * body, header and etc. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T parameters(Map<String, Object> parameters) {
             this.properties.put("parameters", parameters);
@@ -139,7 +141,8 @@ public interface JpaEndpointBuilder {
          * it's used for producer, Simple expression can be used as a parameter
          * value. It allows you to retrieve parameter values from the message
          * body, header and etc. The option will be converted to a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T parameters(String parameters) {
             this.properties.put("parameters", parameters);
@@ -167,7 +170,7 @@ public interface JpaEndpointBuilder {
          * entityManager.createNativeQuery(nativeQuery)). Without this option,
          * we will return an object array. Only has an affect when using in
          * conjunction with native query when consuming data. The option is a
-         * <code>java.lang.Class<java.lang.Object></code> type.
+         * <code>java.lang.Class&lt;java.lang.Object&gt;</code> type.
          */
         public T resultClass(Class<Object> resultClass) {
             this.properties.put("resultClass", resultClass);
@@ -179,7 +182,8 @@ public interface JpaEndpointBuilder {
          * entityManager.createNativeQuery(nativeQuery)). Without this option,
          * we will return an object array. Only has an affect when using in
          * conjunction with native query when consuming data. The option will be
-         * converted to a <code>java.lang.Class<java.lang.Object></code> type.
+         * converted to a <code>java.lang.Class&lt;java.lang.Object&gt;</code>
+         * type.
          */
         public T resultClass(String resultClass) {
             this.properties.put("resultClass", resultClass);
@@ -225,7 +229,8 @@ public interface JpaEndpointBuilder {
         }
         /**
          * Additional properties for the entity manager to use. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public T entityManagerProperties(
                 Map<String, Object> entityManagerProperties) {
@@ -234,8 +239,8 @@ public interface JpaEndpointBuilder {
         }
         /**
          * Additional properties for the entity manager to use. The option will
-         * be converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * be converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public T entityManagerProperties(String entityManagerProperties) {
             this.properties.put("entityManagerProperties", entityManagerProperties);
@@ -333,7 +338,7 @@ public interface JpaEndpointBuilder {
         /**
          * To use a custom DeleteHandler to delete the row after the consumer is
          * done processing the exchange. The option is a
-         * <code>org.apache.camel.component.jpa.DeleteHandler<java.lang.Object></code> type.
+         * <code>org.apache.camel.component.jpa.DeleteHandler&lt;java.lang.Object&gt;</code> type.
          */
         public JpaConsumerBuilder deleteHandler(Object deleteHandler) {
             this.properties.put("deleteHandler", deleteHandler);
@@ -342,7 +347,7 @@ public interface JpaEndpointBuilder {
         /**
          * To use a custom DeleteHandler to delete the row after the consumer is
          * done processing the exchange. The option will be converted to a
-         * <code>org.apache.camel.component.jpa.DeleteHandler<java.lang.Object></code> type.
+         * <code>org.apache.camel.component.jpa.DeleteHandler&lt;java.lang.Object&gt;</code> type.
          */
         public JpaConsumerBuilder deleteHandler(String deleteHandler) {
             this.properties.put("deleteHandler", deleteHandler);
@@ -388,7 +393,7 @@ public interface JpaEndpointBuilder {
         /**
          * To use a custom Pre-DeleteHandler to delete the row after the
          * consumer has read the entity. The option is a
-         * <code>org.apache.camel.component.jpa.DeleteHandler<java.lang.Object></code> type.
+         * <code>org.apache.camel.component.jpa.DeleteHandler&lt;java.lang.Object&gt;</code> type.
          */
         public JpaConsumerBuilder preDeleteHandler(Object preDeleteHandler) {
             this.properties.put("preDeleteHandler", preDeleteHandler);
@@ -397,7 +402,7 @@ public interface JpaEndpointBuilder {
         /**
          * To use a custom Pre-DeleteHandler to delete the row after the
          * consumer has read the entity. The option will be converted to a
-         * <code>org.apache.camel.component.jpa.DeleteHandler<java.lang.Object></code> type.
+         * <code>org.apache.camel.component.jpa.DeleteHandler&lt;java.lang.Object&gt;</code> type.
          */
         public JpaConsumerBuilder preDeleteHandler(String preDeleteHandler) {
             this.properties.put("preDeleteHandler", preDeleteHandler);
@@ -712,7 +717,8 @@ public interface JpaEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
          */
         public JpaConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -722,8 +728,8 @@ public interface JpaEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map<java.lang.String,
-         * java.lang.Object></code> type.
+         * converted to a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
          */
         public JpaConsumerBuilder schedulerProperties(String schedulerProperties) {
             this.properties.put("schedulerProperties", schedulerProperties);
