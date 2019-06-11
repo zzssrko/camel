@@ -39,7 +39,7 @@ public interface AtmosEndpointBuilder {
             super("atmos", path);
         }
         /**
-         * Atmos name. The option is a java.lang.String type.
+         * Atmos name. The option is a <code>java.lang.String</code> type.
          */
         public T name(String name) {
             this.properties.put("name", name);
@@ -47,7 +47,8 @@ public interface AtmosEndpointBuilder {
         }
         /**
          * Operation to perform. The option is a
-         * org.apache.camel.component.atmos.util.AtmosOperation type.
+         * <code>org.apache.camel.component.atmos.util.AtmosOperation</code>
+         * type.
          */
         public T operation(AtmosOperation operation) {
             this.properties.put("operation", operation);
@@ -55,71 +56,79 @@ public interface AtmosEndpointBuilder {
         }
         /**
          * Operation to perform. The option will be converted to a
-         * org.apache.camel.component.atmos.util.AtmosOperation type.
+         * <code>org.apache.camel.component.atmos.util.AtmosOperation</code>
+         * type.
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * Atmos SSL validation. The option is a boolean type.
+         * Atmos SSL validation. The option is a <code>boolean</code> type.
          */
         public T enableSslValidation(boolean enableSslValidation) {
             this.properties.put("enableSslValidation", enableSslValidation);
             return (T) this;
         }
         /**
-         * Atmos SSL validation. The option will be converted to a boolean type.
+         * Atmos SSL validation. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T enableSslValidation(String enableSslValidation) {
             this.properties.put("enableSslValidation", enableSslValidation);
             return (T) this;
         }
         /**
-         * Atmos client fullTokenId. The option is a java.lang.String type.
+         * Atmos client fullTokenId. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T fullTokenId(String fullTokenId) {
             this.properties.put("fullTokenId", fullTokenId);
             return (T) this;
         }
         /**
-         * Local path to put files. The option is a java.lang.String type.
+         * Local path to put files. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T localPath(String localPath) {
             this.properties.put("localPath", localPath);
             return (T) this;
         }
         /**
-         * New path on Atmos when moving files. The option is a java.lang.String
-         * type.
+         * New path on Atmos when moving files. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T newRemotePath(String newRemotePath) {
             this.properties.put("newRemotePath", newRemotePath);
             return (T) this;
         }
         /**
-         * Search query on Atmos. The option is a java.lang.String type.
+         * Search query on Atmos. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T query(String query) {
             this.properties.put("query", query);
             return (T) this;
         }
         /**
-         * Where to put files on Atmos. The option is a java.lang.String type.
+         * Where to put files on Atmos. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T remotePath(String remotePath) {
             this.properties.put("remotePath", remotePath);
             return (T) this;
         }
         /**
-         * Atmos shared secret. The option is a java.lang.String type.
+         * Atmos shared secret. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);
             return (T) this;
         }
         /**
-         * Atomos server uri. The option is a java.lang.String type.
+         * Atomos server uri. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T uri(String uri) {
             this.properties.put("uri", uri);
@@ -128,7 +137,7 @@ public interface AtmosEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -137,7 +146,7 @@ public interface AtmosEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -146,7 +155,7 @@ public interface AtmosEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -155,7 +164,7 @@ public interface AtmosEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -178,7 +187,7 @@ public interface AtmosEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public AtmosConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -192,7 +201,7 @@ public interface AtmosEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public AtmosConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -203,7 +212,7 @@ public interface AtmosEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public AtmosConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -215,7 +224,8 @@ public interface AtmosEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public AtmosConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -223,7 +233,7 @@ public interface AtmosEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public AtmosConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -232,7 +242,8 @@ public interface AtmosEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public AtmosConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

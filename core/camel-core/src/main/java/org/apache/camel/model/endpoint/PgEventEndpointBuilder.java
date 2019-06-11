@@ -41,7 +41,7 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * To connect using hostname and port to the database. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T host(String host) {
             this.properties.put("host", host);
@@ -49,7 +49,7 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * To connect using hostname and port to the database. The option is a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T port(Integer port) {
             this.properties.put("port", port);
@@ -57,21 +57,22 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * To connect using hostname and port to the database. The option will
-         * be converted to a java.lang.Integer type.
+         * be converted to a <code>java.lang.Integer</code> type.
          */
         public T port(String port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * The database name. The option is a java.lang.String type.
+         * The database name. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T database(String database) {
             this.properties.put("database", database);
             return (T) this;
         }
         /**
-         * The channel name. The option is a java.lang.String type.
+         * The channel name. The option is a <code>java.lang.String</code> type.
          */
         public T channel(String channel) {
             this.properties.put("channel", channel);
@@ -79,7 +80,8 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * To connect using the given javax.sql.DataSource instead of using
-         * hostname and port. The option is a javax.sql.DataSource type.
+         * hostname and port. The option is a <code>javax.sql.DataSource</code>
+         * type.
          */
         public T datasource(Object datasource) {
             this.properties.put("datasource", datasource);
@@ -88,7 +90,7 @@ public interface PgEventEndpointBuilder {
         /**
          * To connect using the given javax.sql.DataSource instead of using
          * hostname and port. The option will be converted to a
-         * javax.sql.DataSource type.
+         * <code>javax.sql.DataSource</code> type.
          */
         public T datasource(String datasource) {
             this.properties.put("datasource", datasource);
@@ -97,7 +99,7 @@ public interface PgEventEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -106,7 +108,7 @@ public interface PgEventEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -115,7 +117,7 @@ public interface PgEventEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -124,21 +126,23 @@ public interface PgEventEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Password for login. The option is a java.lang.String type.
+         * Password for login. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T pass(String pass) {
             this.properties.put("pass", pass);
             return (T) this;
         }
         /**
-         * Username for login. The option is a java.lang.String type.
+         * Username for login. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T user(String user) {
             this.properties.put("user", user);
@@ -161,7 +165,7 @@ public interface PgEventEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public PgEventConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -175,7 +179,7 @@ public interface PgEventEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public PgEventConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -187,7 +191,7 @@ public interface PgEventEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public PgEventConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -199,7 +203,8 @@ public interface PgEventEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public PgEventConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -207,7 +212,7 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public PgEventConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -216,7 +221,8 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public PgEventConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

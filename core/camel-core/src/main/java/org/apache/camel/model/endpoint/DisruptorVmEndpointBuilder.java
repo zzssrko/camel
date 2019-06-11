@@ -41,7 +41,7 @@ public interface DisruptorVmEndpointBuilder {
             super("disruptor-vm", path);
         }
         /**
-         * Name of queue. The option is a java.lang.String type.
+         * Name of queue. The option is a <code>java.lang.String</code> type.
          */
         public T name(String name) {
             this.properties.put("name", name);
@@ -53,7 +53,7 @@ public interface DisruptorVmEndpointBuilder {
          * option, then its the first endpoint being created with the queue
          * name, that determines the size. To make sure all endpoints use same
          * size, then configure the size option on all of them, or the first
-         * endpoint being created. The option is a int type.
+         * endpoint being created. The option is a <code>int</code> type.
          */
         public T size(int size) {
             this.properties.put("size", size);
@@ -65,7 +65,8 @@ public interface DisruptorVmEndpointBuilder {
          * option, then its the first endpoint being created with the queue
          * name, that determines the size. To make sure all endpoints use same
          * size, then configure the size option on all of them, or the first
-         * endpoint being created. The option will be converted to a int type.
+         * endpoint being created. The option will be converted to a
+         * <code>int</code> type.
          */
         public T size(String size) {
             this.properties.put("size", size);
@@ -74,7 +75,7 @@ public interface DisruptorVmEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -83,7 +84,7 @@ public interface DisruptorVmEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -92,7 +93,7 @@ public interface DisruptorVmEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -101,7 +102,7 @@ public interface DisruptorVmEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -124,7 +125,7 @@ public interface DisruptorVmEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public DisruptorVmConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -138,7 +139,7 @@ public interface DisruptorVmEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public DisruptorVmConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -147,7 +148,7 @@ public interface DisruptorVmEndpointBuilder {
         }
         /**
          * Number of concurrent threads processing exchanges. The option is a
-         * int type.
+         * <code>int</code> type.
          */
         public DisruptorVmConsumerBuilder concurrentConsumers(
                 int concurrentConsumers) {
@@ -156,7 +157,7 @@ public interface DisruptorVmEndpointBuilder {
         }
         /**
          * Number of concurrent threads processing exchanges. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public DisruptorVmConsumerBuilder concurrentConsumers(
                 String concurrentConsumers) {
@@ -168,7 +169,7 @@ public interface DisruptorVmEndpointBuilder {
          * use Disruptor for Publish-Subscribe messaging. That is, you can send
          * a message to the queue and have each consumer receive a copy of the
          * message. When enabled, this option should be specified on every
-         * consumer endpoint. The option is a boolean type.
+         * consumer endpoint. The option is a <code>boolean</code> type.
          */
         public DisruptorVmConsumerBuilder multipleConsumers(
                 boolean multipleConsumers) {
@@ -180,7 +181,8 @@ public interface DisruptorVmEndpointBuilder {
          * use Disruptor for Publish-Subscribe messaging. That is, you can send
          * a message to the queue and have each consumer receive a copy of the
          * message. When enabled, this option should be specified on every
-         * consumer endpoint. The option will be converted to a boolean type.
+         * consumer endpoint. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public DisruptorVmConsumerBuilder multipleConsumers(
                 String multipleConsumers) {
@@ -191,7 +193,7 @@ public interface DisruptorVmEndpointBuilder {
          * Defines the strategy used by consumer threads to wait on new
          * exchanges to be published. The options allowed are:Blocking,
          * Sleeping, BusySpin and Yielding. The option is a
-         * org.apache.camel.component.disruptor.DisruptorWaitStrategy type.
+         * <code>org.apache.camel.component.disruptor.DisruptorWaitStrategy</code> type.
          */
         public DisruptorVmConsumerBuilder waitStrategy(
                 DisruptorWaitStrategy waitStrategy) {
@@ -202,7 +204,7 @@ public interface DisruptorVmEndpointBuilder {
          * Defines the strategy used by consumer threads to wait on new
          * exchanges to be published. The options allowed are:Blocking,
          * Sleeping, BusySpin and Yielding. The option will be converted to a
-         * org.apache.camel.component.disruptor.DisruptorWaitStrategy type.
+         * <code>org.apache.camel.component.disruptor.DisruptorWaitStrategy</code> type.
          */
         public DisruptorVmConsumerBuilder waitStrategy(String waitStrategy) {
             this.properties.put("waitStrategy", waitStrategy);
@@ -213,7 +215,7 @@ public interface DisruptorVmEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public DisruptorVmConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -225,7 +227,8 @@ public interface DisruptorVmEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public DisruptorVmConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -234,7 +237,7 @@ public interface DisruptorVmEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public DisruptorVmConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -243,7 +246,8 @@ public interface DisruptorVmEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public DisruptorVmConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -264,7 +268,8 @@ public interface DisruptorVmEndpointBuilder {
          * until the ringbuffer's capacity is no longer exhausted. By default,
          * the calling thread will block and wait until the message can be
          * accepted. By disabling this option, an exception will be thrown
-         * stating that the queue is full. The option is a boolean type.
+         * stating that the queue is full. The option is a <code>boolean</code>
+         * type.
          */
         public DisruptorVmProducerBuilder blockWhenFull(boolean blockWhenFull) {
             this.properties.put("blockWhenFull", blockWhenFull);
@@ -276,7 +281,7 @@ public interface DisruptorVmEndpointBuilder {
          * the calling thread will block and wait until the message can be
          * accepted. By disabling this option, an exception will be thrown
          * stating that the queue is full. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public DisruptorVmProducerBuilder blockWhenFull(String blockWhenFull) {
             this.properties.put("blockWhenFull", blockWhenFull);
@@ -287,7 +292,7 @@ public interface DisruptorVmEndpointBuilder {
          * are: Multi to allow multiple producers and Single to enable certain
          * optimizations only allowed when one concurrent producer (on one
          * thread or otherwise synchronized) is active. The option is a
-         * org.apache.camel.component.disruptor.DisruptorProducerType type.
+         * <code>org.apache.camel.component.disruptor.DisruptorProducerType</code> type.
          */
         public DisruptorVmProducerBuilder producerType(
                 DisruptorProducerType producerType) {
@@ -300,7 +305,7 @@ public interface DisruptorVmEndpointBuilder {
          * optimizations only allowed when one concurrent producer (on one
          * thread or otherwise synchronized) is active. The option will be
          * converted to a
-         * org.apache.camel.component.disruptor.DisruptorProducerType type.
+         * <code>org.apache.camel.component.disruptor.DisruptorProducerType</code> type.
          */
         public DisruptorVmProducerBuilder producerType(String producerType) {
             this.properties.put("producerType", producerType);
@@ -309,7 +314,7 @@ public interface DisruptorVmEndpointBuilder {
         /**
          * Timeout (in milliseconds) before a producer will stop waiting for an
          * asynchronous task to complete. You can disable timeout by using 0 or
-         * a negative value. The option is a long type.
+         * a negative value. The option is a <code>long</code> type.
          */
         public DisruptorVmProducerBuilder timeout(long timeout) {
             this.properties.put("timeout", timeout);
@@ -318,7 +323,8 @@ public interface DisruptorVmEndpointBuilder {
         /**
          * Timeout (in milliseconds) before a producer will stop waiting for an
          * asynchronous task to complete. You can disable timeout by using 0 or
-         * a negative value. The option will be converted to a long type.
+         * a negative value. The option will be converted to a <code>long</code>
+         * type.
          */
         public DisruptorVmProducerBuilder timeout(String timeout) {
             this.properties.put("timeout", timeout);
@@ -330,7 +336,7 @@ public interface DisruptorVmEndpointBuilder {
          * supported: Always, Never or IfReplyExpected. The first two values are
          * self-explanatory. The last value, IfReplyExpected, will only wait if
          * the message is Request Reply based. The option is a
-         * org.apache.camel.WaitForTaskToComplete type.
+         * <code>org.apache.camel.WaitForTaskToComplete</code> type.
          */
         public DisruptorVmProducerBuilder waitForTaskToComplete(
                 WaitForTaskToComplete waitForTaskToComplete) {
@@ -343,7 +349,7 @@ public interface DisruptorVmEndpointBuilder {
          * supported: Always, Never or IfReplyExpected. The first two values are
          * self-explanatory. The last value, IfReplyExpected, will only wait if
          * the message is Request Reply based. The option will be converted to a
-         * org.apache.camel.WaitForTaskToComplete type.
+         * <code>org.apache.camel.WaitForTaskToComplete</code> type.
          */
         public DisruptorVmProducerBuilder waitForTaskToComplete(
                 String waitForTaskToComplete) {

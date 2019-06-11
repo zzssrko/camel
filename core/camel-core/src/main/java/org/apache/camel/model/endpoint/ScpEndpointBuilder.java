@@ -38,28 +38,31 @@ public interface ScpEndpointBuilder {
             super("scp", path);
         }
         /**
-         * Hostname of the FTP server. The option is a java.lang.String type.
+         * Hostname of the FTP server. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * Port of the FTP server. The option is a int type.
+         * Port of the FTP server. The option is a <code>int</code> type.
          */
         public T port(int port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Port of the FTP server. The option will be converted to a int type.
+         * Port of the FTP server. The option will be converted to a
+         * <code>int</code> type.
          */
         public T port(String port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * The starting directory. The option is a java.lang.String type.
+         * The starting directory. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T directoryName(String directoryName) {
             this.properties.put("directoryName", directoryName);
@@ -69,7 +72,8 @@ public interface ScpEndpointBuilder {
          * Whether or not to disconnect from remote FTP server right after use.
          * Disconnect will only disconnect the current connection to the FTP
          * server. If you have a consumer which you want to stop, then you need
-         * to stop the consumer/route instead. The option is a boolean type.
+         * to stop the consumer/route instead. The option is a
+         * <code>boolean</code> type.
          */
         public T disconnect(boolean disconnect) {
             this.properties.put("disconnect", disconnect);
@@ -80,7 +84,7 @@ public interface ScpEndpointBuilder {
          * Disconnect will only disconnect the current connection to the FTP
          * server. If you have a consumer which you want to stop, then you need
          * to stop the consumer/route instead. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T disconnect(String disconnect) {
             this.properties.put("disconnect", disconnect);
@@ -88,7 +92,7 @@ public interface ScpEndpointBuilder {
         }
         /**
          * Allows you to set chmod on the stored file. For example chmod=664.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T chmod(String chmod) {
             this.properties.put("chmod", chmod);
@@ -111,7 +115,7 @@ public interface ScpEndpointBuilder {
          * CamelFileName header; the CamelOverruleFileName is a header that is
          * used only once, and makes it easier as this avoids to temporary store
          * CamelFileName and have to restore it afterwards. The option is a
-         * java.lang.String type.
+         * <code>org.apache.camel.Expression</code> type.
          */
         public T fileName(Expression fileName) {
             this.properties.put("fileName", fileName);
@@ -134,7 +138,7 @@ public interface ScpEndpointBuilder {
          * CamelFileName header; the CamelOverruleFileName is a header that is
          * used only once, and makes it easier as this avoids to temporary store
          * CamelFileName and have to restore it afterwards. The option will be
-         * converted to a java.lang.String type.
+         * converted to a <code>org.apache.camel.Expression</code> type.
          */
         public T fileName(String fileName) {
             this.properties.put("fileName", fileName);
@@ -142,7 +146,7 @@ public interface ScpEndpointBuilder {
         }
         /**
          * Sets whether to use strict host key checking. Possible values are:
-         * no, yes. The option is a java.lang.String type.
+         * no, yes. The option is a <code>java.lang.String</code> type.
          */
         public T strictHostKeyChecking(String strictHostKeyChecking) {
             this.properties.put("strictHostKeyChecking", strictHostKeyChecking);
@@ -151,7 +155,7 @@ public interface ScpEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -160,7 +164,7 @@ public interface ScpEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -168,8 +172,8 @@ public interface ScpEndpointBuilder {
         }
         /**
          * Sets the connect timeout for waiting for a connection to be
-         * established Used by both FTPClient and JSCH. The option is a int
-         * type.
+         * established Used by both FTPClient and JSCH. The option is a
+         * <code>int</code> type.
          */
         public T connectTimeout(int connectTimeout) {
             this.properties.put("connectTimeout", connectTimeout);
@@ -178,7 +182,7 @@ public interface ScpEndpointBuilder {
         /**
          * Sets the connect timeout for waiting for a connection to be
          * established Used by both FTPClient and JSCH. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public T connectTimeout(String connectTimeout) {
             this.properties.put("connectTimeout", connectTimeout);
@@ -189,7 +193,7 @@ public interface ScpEndpointBuilder {
          * 2.14.3/2.15.3/2.16 onwards. Is the SocketOptions.SO_TIMEOUT value in
          * millis. Recommended option is to set this to 300000 so as not have a
          * hanged connection. On SFTP this option is set as timeout on the JSCH
-         * Session instance. The option is a int type.
+         * Session instance. The option is a <code>int</code> type.
          */
         public T soTimeout(int soTimeout) {
             this.properties.put("soTimeout", soTimeout);
@@ -200,7 +204,8 @@ public interface ScpEndpointBuilder {
          * 2.14.3/2.15.3/2.16 onwards. Is the SocketOptions.SO_TIMEOUT value in
          * millis. Recommended option is to set this to 300000 so as not have a
          * hanged connection. On SFTP this option is set as timeout on the JSCH
-         * Session instance. The option will be converted to a int type.
+         * Session instance. The option will be converted to a <code>int</code>
+         * type.
          */
         public T soTimeout(String soTimeout) {
             this.properties.put("soTimeout", soTimeout);
@@ -209,7 +214,7 @@ public interface ScpEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -218,7 +223,7 @@ public interface ScpEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -226,7 +231,7 @@ public interface ScpEndpointBuilder {
         }
         /**
          * Sets the data timeout for waiting for reply Used only by FTPClient.
-         * The option is a int type.
+         * The option is a <code>int</code> type.
          */
         public T timeout(int timeout) {
             this.properties.put("timeout", timeout);
@@ -234,7 +239,7 @@ public interface ScpEndpointBuilder {
         }
         /**
          * Sets the data timeout for waiting for reply Used only by FTPClient.
-         * The option will be converted to a int type.
+         * The option will be converted to a <code>int</code> type.
          */
         public T timeout(String timeout) {
             this.properties.put("timeout", timeout);
@@ -243,15 +248,16 @@ public interface ScpEndpointBuilder {
         /**
          * Sets the known_hosts file, so that the jsch endpoint can do host key
          * verification. You can prefix with classpath: to load the file from
-         * classpath instead of file system. The option is a java.lang.String
-         * type.
+         * classpath instead of file system. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T knownHostsFile(String knownHostsFile) {
             this.properties.put("knownHostsFile", knownHostsFile);
             return (T) this;
         }
         /**
-         * Password to use for login. The option is a java.lang.String type.
+         * Password to use for login. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T password(String password) {
             this.properties.put("password", password);
@@ -263,7 +269,7 @@ public interface ScpEndpointBuilder {
          * JCraft JSCH. Some examples include:
          * gssapi-with-mic,publickey,keyboard-interactive,password If not
          * specified the JSCH and/or system defaults will be used. The option is
-         * a java.lang.String type.
+         * a <code>java.lang.String</code> type.
          */
         public T preferredAuthentications(String preferredAuthentications) {
             this.properties.put("preferredAuthentications", preferredAuthentications);
@@ -272,8 +278,8 @@ public interface ScpEndpointBuilder {
         /**
          * Set the private key bytes to that the endpoint can do private key
          * verification. This must be used only if privateKeyFile wasn't set.
-         * Otherwise the file will have the priority. The option is a byte[]
-         * type.
+         * Otherwise the file will have the priority. The option is a
+         * <code>byte[]</code> type.
          */
         public T privateKeyBytes(Byte[] privateKeyBytes) {
             this.properties.put("privateKeyBytes", privateKeyBytes);
@@ -283,7 +289,7 @@ public interface ScpEndpointBuilder {
          * Set the private key bytes to that the endpoint can do private key
          * verification. This must be used only if privateKeyFile wasn't set.
          * Otherwise the file will have the priority. The option will be
-         * converted to a byte[] type.
+         * converted to a <code>byte[]</code> type.
          */
         public T privateKeyBytes(String privateKeyBytes) {
             this.properties.put("privateKeyBytes", privateKeyBytes);
@@ -292,8 +298,8 @@ public interface ScpEndpointBuilder {
         /**
          * Set the private key file to that the endpoint can do private key
          * verification. You can prefix with classpath: to load the file from
-         * classpath instead of file system. The option is a java.lang.String
-         * type.
+         * classpath instead of file system. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T privateKeyFile(String privateKeyFile) {
             this.properties.put("privateKeyFile", privateKeyFile);
@@ -301,14 +307,16 @@ public interface ScpEndpointBuilder {
         }
         /**
          * Set the private key file passphrase to that the endpoint can do
-         * private key verification. The option is a java.lang.String type.
+         * private key verification. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T privateKeyFilePassphrase(String privateKeyFilePassphrase) {
             this.properties.put("privateKeyFilePassphrase", privateKeyFilePassphrase);
             return (T) this;
         }
         /**
-         * Username to use for login. The option is a java.lang.String type.
+         * Username to use for login. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -317,7 +325,7 @@ public interface ScpEndpointBuilder {
         /**
          * If knownHostFile has not been explicit configured, then use the host
          * file from System.getProperty(user.home) /.ssh/known_hosts. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T useUserKnownHostsFile(boolean useUserKnownHostsFile) {
             this.properties.put("useUserKnownHostsFile", useUserKnownHostsFile);
@@ -326,7 +334,7 @@ public interface ScpEndpointBuilder {
         /**
          * If knownHostFile has not been explicit configured, then use the host
          * file from System.getProperty(user.home) /.ssh/known_hosts. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T useUserKnownHostsFile(String useUserKnownHostsFile) {
             this.properties.put("useUserKnownHostsFile", useUserKnownHostsFile);
@@ -336,7 +344,7 @@ public interface ScpEndpointBuilder {
          * Set a comma separated list of ciphers that will be used in order of
          * preference. Possible cipher names are defined by JCraft JSCH. Some
          * examples include:
-         * aes128-ctr,aes128-cbc,3des-ctr,3des-cbc,blowfish-cbc,aes192-cbc,aes256-cbc. If not specified the default list from JSCH will be used. The option is a java.lang.String type.
+         * aes128-ctr,aes128-cbc,3des-ctr,3des-cbc,blowfish-cbc,aes192-cbc,aes256-cbc. If not specified the default list from JSCH will be used. The option is a <code>java.lang.String</code> type.
          */
         public T ciphers(String ciphers) {
             this.properties.put("ciphers", ciphers);
@@ -359,7 +367,7 @@ public interface ScpEndpointBuilder {
          * another directory they will be written in a single directory. Setting
          * this to true on the producer enforces that any file name in
          * CamelFileName header will be stripped for any leading paths. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public ScpProducerBuilder flatten(boolean flatten) {
             this.properties.put("flatten", flatten);
@@ -372,7 +380,7 @@ public interface ScpEndpointBuilder {
          * another directory they will be written in a single directory. Setting
          * this to true on the producer enforces that any file name in
          * CamelFileName header will be stripped for any leading paths. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public ScpProducerBuilder flatten(String flatten) {
             this.properties.put("flatten", flatten);
@@ -384,7 +392,7 @@ public interface ScpEndpointBuilder {
          * Camel to write files to outside directories (to be more secured out
          * of the box). You can turn this off to allow writing files to
          * directories outside the starting directory, such as parent or root
-         * folders. The option is a boolean type.
+         * folders. The option is a <code>boolean</code> type.
          */
         public ScpProducerBuilder jailStartingDirectory(
                 boolean jailStartingDirectory) {
@@ -397,7 +405,7 @@ public interface ScpEndpointBuilder {
          * Camel to write files to outside directories (to be more secured out
          * of the box). You can turn this off to allow writing files to
          * directories outside the starting directory, such as parent or root
-         * folders. The option will be converted to a boolean type.
+         * folders. The option will be converted to a <code>boolean</code> type.
          */
         public ScpProducerBuilder jailStartingDirectory(
                 String jailStartingDirectory) {
@@ -411,7 +419,7 @@ public interface ScpEndpointBuilder {
          * GenericFileWriteException of 'Cannot write null body to file.' will
          * be thrown. If the fileExist option is set to 'Override', then the
          * file will be truncated, and if set to append the file will remain
-         * unchanged. The option is a boolean type.
+         * unchanged. The option is a <code>boolean</code> type.
          */
         public ScpProducerBuilder allowNullBody(boolean allowNullBody) {
             this.properties.put("allowNullBody", allowNullBody);
@@ -424,7 +432,8 @@ public interface ScpEndpointBuilder {
          * GenericFileWriteException of 'Cannot write null body to file.' will
          * be thrown. If the fileExist option is set to 'Override', then the
          * file will be truncated, and if set to append the file will remain
-         * unchanged. The option will be converted to a boolean type.
+         * unchanged. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public ScpProducerBuilder allowNullBody(String allowNullBody) {
             this.properties.put("allowNullBody", allowNullBody);
@@ -434,7 +443,7 @@ public interface ScpEndpointBuilder {
          * Whether or not to disconnect from remote FTP server right after a
          * Batch upload is complete. disconnectOnBatchComplete will only
          * disconnect the current connection to the FTP server. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public ScpProducerBuilder disconnectOnBatchComplete(
                 boolean disconnectOnBatchComplete) {
@@ -445,7 +454,7 @@ public interface ScpEndpointBuilder {
          * Whether or not to disconnect from remote FTP server right after a
          * Batch upload is complete. disconnectOnBatchComplete will only
          * disconnect the current connection to the FTP server. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public ScpProducerBuilder disconnectOnBatchComplete(
                 String disconnectOnBatchComplete) {
@@ -457,8 +466,7 @@ public interface ScpEndpointBuilder {
          * token to use when fileExist=Move is configured. By default, there is
          * an implementation used if no custom strategy is provided. The option
          * is a
-         * org.apache.camel.component.file.strategy.FileMoveExistingStrategy
-         * type.
+         * <code>org.apache.camel.component.file.strategy.FileMoveExistingStrategy</code> type.
          */
         public ScpProducerBuilder moveExistingFileStrategy(
                 Object moveExistingFileStrategy) {
@@ -470,8 +478,7 @@ public interface ScpEndpointBuilder {
          * token to use when fileExist=Move is configured. By default, there is
          * an implementation used if no custom strategy is provided. The option
          * will be converted to a
-         * org.apache.camel.component.file.strategy.FileMoveExistingStrategy
-         * type.
+         * <code>org.apache.camel.component.file.strategy.FileMoveExistingStrategy</code> type.
          */
         public ScpProducerBuilder moveExistingFileStrategy(
                 String moveExistingFileStrategy) {

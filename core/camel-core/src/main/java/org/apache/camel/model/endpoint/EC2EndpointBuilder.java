@@ -37,7 +37,7 @@ public interface EC2EndpointBuilder {
             super("aws-ec2", path);
         }
         /**
-         * Logical name. The option is a java.lang.String type.
+         * Logical name. The option is a <code>java.lang.String</code> type.
          */
         public T label(String label) {
             this.properties.put("label", label);
@@ -45,7 +45,7 @@ public interface EC2EndpointBuilder {
         }
         /**
          * The region in which EC2 client needs to work. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -54,7 +54,7 @@ public interface EC2EndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -63,7 +63,7 @@ public interface EC2EndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -72,7 +72,7 @@ public interface EC2EndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -81,7 +81,7 @@ public interface EC2EndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -98,7 +98,8 @@ public interface EC2EndpointBuilder {
             super(path);
         }
         /**
-         * Amazon AWS Access Key. The option is a java.lang.String type.
+         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public EC2ProducerBuilder accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
@@ -106,7 +107,7 @@ public interface EC2EndpointBuilder {
         }
         /**
          * To use a existing configured AmazonEC2Client as client. The option is
-         * a com.amazonaws.services.ec2.AmazonEC2 type.
+         * a <code>com.amazonaws.services.ec2.AmazonEC2</code> type.
          */
         public EC2ProducerBuilder amazonEc2Client(Object amazonEc2Client) {
             this.properties.put("amazonEc2Client", amazonEc2Client);
@@ -114,7 +115,8 @@ public interface EC2EndpointBuilder {
         }
         /**
          * To use a existing configured AmazonEC2Client as client. The option
-         * will be converted to a com.amazonaws.services.ec2.AmazonEC2 type.
+         * will be converted to a
+         * <code>com.amazonaws.services.ec2.AmazonEC2</code> type.
          */
         public EC2ProducerBuilder amazonEc2Client(String amazonEc2Client) {
             this.properties.put("amazonEc2Client", amazonEc2Client);
@@ -125,7 +127,7 @@ public interface EC2EndpointBuilder {
          * startInstances, stopInstances, terminateInstances, describeInstances,
          * describeInstancesStatus, rebootInstances, monitorInstances,
          * unmonitorInstances, createTags or deleteTags. The option is a
-         * org.apache.camel.component.aws.ec2.EC2Operations type.
+         * <code>org.apache.camel.component.aws.ec2.EC2Operations</code> type.
          */
         public EC2ProducerBuilder operation(EC2Operations operation) {
             this.properties.put("operation", operation);
@@ -136,7 +138,8 @@ public interface EC2EndpointBuilder {
          * startInstances, stopInstances, terminateInstances, describeInstances,
          * describeInstancesStatus, rebootInstances, monitorInstances,
          * unmonitorInstances, createTags or deleteTags. The option will be
-         * converted to a org.apache.camel.component.aws.ec2.EC2Operations type.
+         * converted to a
+         * <code>org.apache.camel.component.aws.ec2.EC2Operations</code> type.
          */
         public EC2ProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
@@ -144,7 +147,7 @@ public interface EC2EndpointBuilder {
         }
         /**
          * To define a proxy host when instantiating the EC2 client. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public EC2ProducerBuilder proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
@@ -152,7 +155,7 @@ public interface EC2EndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the EC2 client. The option
-         * is a java.lang.Integer type.
+         * is a <code>java.lang.Integer</code> type.
          */
         public EC2ProducerBuilder proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -160,14 +163,15 @@ public interface EC2EndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the EC2 client. The option
-         * will be converted to a java.lang.Integer type.
+         * will be converted to a <code>java.lang.Integer</code> type.
          */
         public EC2ProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (EC2ProducerBuilder) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a java.lang.String type.
+         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public EC2ProducerBuilder secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);

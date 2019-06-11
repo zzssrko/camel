@@ -38,7 +38,8 @@ public interface SchematronEndpointBuilder {
         }
         /**
          * The path to the schematron rules file. Can either be in class path or
-         * location in the file system. The option is a java.lang.String type.
+         * location in the file system. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T path(String path) {
             this.properties.put("path", path);
@@ -46,7 +47,7 @@ public interface SchematronEndpointBuilder {
         }
         /**
          * Flag to abort the route and throw a schematron validation exception.
-         * The option is a boolean type.
+         * The option is a <code>boolean</code> type.
          */
         public T abort(boolean abort) {
             this.properties.put("abort", abort);
@@ -54,7 +55,7 @@ public interface SchematronEndpointBuilder {
         }
         /**
          * Flag to abort the route and throw a schematron validation exception.
-         * The option will be converted to a boolean type.
+         * The option will be converted to a <code>boolean</code> type.
          */
         public T abort(String abort) {
             this.properties.put("abort", abort);
@@ -62,7 +63,7 @@ public interface SchematronEndpointBuilder {
         }
         /**
          * To use the given schematron rules instead of loading from the path.
-         * The option is a javax.xml.transform.Templates type.
+         * The option is a <code>javax.xml.transform.Templates</code> type.
          */
         public T rules(Object rules) {
             this.properties.put("rules", rules);
@@ -70,7 +71,8 @@ public interface SchematronEndpointBuilder {
         }
         /**
          * To use the given schematron rules instead of loading from the path.
-         * The option will be converted to a javax.xml.transform.Templates type.
+         * The option will be converted to a
+         * <code>javax.xml.transform.Templates</code> type.
          */
         public T rules(String rules) {
             this.properties.put("rules", rules);
@@ -79,7 +81,7 @@ public interface SchematronEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -88,7 +90,7 @@ public interface SchematronEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -97,7 +99,7 @@ public interface SchematronEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -106,7 +108,7 @@ public interface SchematronEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -114,7 +116,8 @@ public interface SchematronEndpointBuilder {
         }
         /**
          * Set the URIResolver to be used for resolving schematron includes in
-         * the rules file. The option is a javax.xml.transform.URIResolver type.
+         * the rules file. The option is a
+         * <code>javax.xml.transform.URIResolver</code> type.
          */
         public T uriResolver(Object uriResolver) {
             this.properties.put("uriResolver", uriResolver);
@@ -123,7 +126,7 @@ public interface SchematronEndpointBuilder {
         /**
          * Set the URIResolver to be used for resolving schematron includes in
          * the rules file. The option will be converted to a
-         * javax.xml.transform.URIResolver type.
+         * <code>javax.xml.transform.URIResolver</code> type.
          */
         public T uriResolver(String uriResolver) {
             this.properties.put("uriResolver", uriResolver);

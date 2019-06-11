@@ -38,14 +38,16 @@ public interface CinderEndpointBuilder {
             super("openstack-cinder", path);
         }
         /**
-         * OpenStack host url. The option is a java.lang.String type.
+         * OpenStack host url. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * OpenStack API version. The option is a java.lang.String type.
+         * OpenStack API version. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T apiVersion(String apiVersion) {
             this.properties.put("apiVersion", apiVersion);
@@ -53,7 +55,7 @@ public interface CinderEndpointBuilder {
         }
         /**
          * OpenStack configuration. The option is a
-         * org.openstack4j.core.transport.Config type.
+         * <code>org.openstack4j.core.transport.Config</code> type.
          */
         public T config(Object config) {
             this.properties.put("config", config);
@@ -61,49 +63,54 @@ public interface CinderEndpointBuilder {
         }
         /**
          * OpenStack configuration. The option will be converted to a
-         * org.openstack4j.core.transport.Config type.
+         * <code>org.openstack4j.core.transport.Config</code> type.
          */
         public T config(String config) {
             this.properties.put("config", config);
             return (T) this;
         }
         /**
-         * Authentication domain. The option is a java.lang.String type.
+         * Authentication domain. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T domain(String domain) {
             this.properties.put("domain", domain);
             return (T) this;
         }
         /**
-         * The operation to do. The option is a java.lang.String type.
+         * The operation to do. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * OpenStack password. The option is a java.lang.String type.
+         * OpenStack password. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * The project ID. The option is a java.lang.String type.
+         * The project ID. The option is a <code>java.lang.String</code> type.
          */
         public T project(String project) {
             this.properties.put("project", project);
             return (T) this;
         }
         /**
-         * OpenStack Cinder subsystem. The option is a java.lang.String type.
+         * OpenStack Cinder subsystem. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T subsystem(String subsystem) {
             this.properties.put("subsystem", subsystem);
             return (T) this;
         }
         /**
-         * OpenStack username. The option is a java.lang.String type.
+         * OpenStack username. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -112,7 +119,7 @@ public interface CinderEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -121,7 +128,7 @@ public interface CinderEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -130,7 +137,7 @@ public interface CinderEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -139,7 +146,7 @@ public interface CinderEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

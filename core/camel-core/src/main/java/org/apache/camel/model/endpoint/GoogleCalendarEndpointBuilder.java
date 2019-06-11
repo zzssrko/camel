@@ -40,7 +40,7 @@ public interface GoogleCalendarEndpointBuilder {
         }
         /**
          * What kind of operation to perform. The option is a
-         * org.apache.camel.component.google.calendar.internal.GoogleCalendarApiName type.
+         * <code>org.apache.camel.component.google.calendar.internal.GoogleCalendarApiName</code> type.
          */
         public T apiName(GoogleCalendarApiName apiName) {
             this.properties.put("apiName", apiName);
@@ -48,7 +48,7 @@ public interface GoogleCalendarEndpointBuilder {
         }
         /**
          * What kind of operation to perform. The option will be converted to a
-         * org.apache.camel.component.google.calendar.internal.GoogleCalendarApiName type.
+         * <code>org.apache.camel.component.google.calendar.internal.GoogleCalendarApiName</code> type.
          */
         public T apiName(String apiName) {
             this.properties.put("apiName", apiName);
@@ -56,7 +56,7 @@ public interface GoogleCalendarEndpointBuilder {
         }
         /**
          * What sub operation to use for the selected operation. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T methodName(String methodName) {
             this.properties.put("methodName", methodName);
@@ -65,7 +65,7 @@ public interface GoogleCalendarEndpointBuilder {
         /**
          * OAuth 2 access token. This typically expires after an hour so
          * refreshToken is recommended for long term usage. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T accessToken(String accessToken) {
             this.properties.put("accessToken", accessToken);
@@ -73,7 +73,8 @@ public interface GoogleCalendarEndpointBuilder {
         }
         /**
          * Google calendar application name. Example would be
-         * camel-google-calendar/1.0. The option is a java.lang.String type.
+         * camel-google-calendar/1.0. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T applicationName(String applicationName) {
             this.properties.put("applicationName", applicationName);
@@ -81,7 +82,7 @@ public interface GoogleCalendarEndpointBuilder {
         }
         /**
          * Client ID of the calendar application. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T clientId(String clientId) {
             this.properties.put("clientId", clientId);
@@ -89,7 +90,7 @@ public interface GoogleCalendarEndpointBuilder {
         }
         /**
          * Client secret of the calendar application. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T clientSecret(String clientSecret) {
             this.properties.put("clientSecret", clientSecret);
@@ -97,7 +98,7 @@ public interface GoogleCalendarEndpointBuilder {
         }
         /**
          * The emailAddress of the Google Service Account. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T emailAddress(String emailAddress) {
             this.properties.put("emailAddress", emailAddress);
@@ -105,7 +106,7 @@ public interface GoogleCalendarEndpointBuilder {
         }
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T inBody(String inBody) {
             this.properties.put("inBody", inBody);
@@ -113,7 +114,8 @@ public interface GoogleCalendarEndpointBuilder {
         }
         /**
          * The name of the p12 file which has the private key to use with the
-         * Google Service Account. The option is a java.lang.String type.
+         * Google Service Account. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T p12FileName(String p12FileName) {
             this.properties.put("p12FileName", p12FileName);
@@ -123,7 +125,7 @@ public interface GoogleCalendarEndpointBuilder {
          * OAuth 2 refresh token. Using this, the Google Calendar component can
          * obtain a new accessToken whenever the current one expires - a
          * necessity if the application is long-lived. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T refreshToken(String refreshToken) {
             this.properties.put("refreshToken", refreshToken);
@@ -133,7 +135,7 @@ public interface GoogleCalendarEndpointBuilder {
          * Specifies the level of permissions you want a calendar application to
          * have to a user account. You can separate multiple scopes by comma.
          * See https://developers.google.com/google-apps/calendar/auth for more
-         * info. The option is a java.lang.String type.
+         * info. The option is a <code>java.lang.String</code> type.
          */
         public T scopes(String scopes) {
             this.properties.put("scopes", scopes);
@@ -142,7 +144,7 @@ public interface GoogleCalendarEndpointBuilder {
         /**
          * The email address of the user the application is trying to
          * impersonate in the service account flow. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T user(String user) {
             this.properties.put("user", user);
@@ -151,7 +153,7 @@ public interface GoogleCalendarEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -160,7 +162,7 @@ public interface GoogleCalendarEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -169,7 +171,7 @@ public interface GoogleCalendarEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -178,7 +180,7 @@ public interface GoogleCalendarEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -201,7 +203,7 @@ public interface GoogleCalendarEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public GoogleCalendarConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -215,7 +217,7 @@ public interface GoogleCalendarEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public GoogleCalendarConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -227,7 +229,7 @@ public interface GoogleCalendarEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public GoogleCalendarConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -239,7 +241,8 @@ public interface GoogleCalendarEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public GoogleCalendarConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -248,7 +251,7 @@ public interface GoogleCalendarEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GoogleCalendarConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -257,7 +260,8 @@ public interface GoogleCalendarEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GoogleCalendarConsumerBuilder exchangePattern(
                 String exchangePattern) {

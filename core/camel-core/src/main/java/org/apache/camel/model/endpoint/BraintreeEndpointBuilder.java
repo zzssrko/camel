@@ -42,7 +42,7 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * What kind of operation to perform. The option is a
-         * org.apache.camel.component.braintree.internal.BraintreeApiName type.
+         * <code>org.apache.camel.component.braintree.internal.BraintreeApiName</code> type.
          */
         public T apiName(BraintreeApiName apiName) {
             this.properties.put("apiName", apiName);
@@ -50,7 +50,7 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * What kind of operation to perform. The option will be converted to a
-         * org.apache.camel.component.braintree.internal.BraintreeApiName type.
+         * <code>org.apache.camel.component.braintree.internal.BraintreeApiName</code> type.
          */
         public T apiName(String apiName) {
             this.properties.put("apiName", apiName);
@@ -58,7 +58,7 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * What sub operation to use for the selected operation. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T methodName(String methodName) {
             this.properties.put("methodName", methodName);
@@ -66,7 +66,7 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * The environment Either SANDBOX or PRODUCTION. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T environment(String environment) {
             this.properties.put("environment", environment);
@@ -74,7 +74,7 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T inBody(String inBody) {
             this.properties.put("inBody", inBody);
@@ -82,7 +82,7 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * The merchant id provided by Braintree. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T merchantId(String merchantId) {
             this.properties.put("merchantId", merchantId);
@@ -90,7 +90,7 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * The private key provided by Braintree. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T privateKey(String privateKey) {
             this.properties.put("privateKey", privateKey);
@@ -98,7 +98,7 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * The public key provided by Braintree. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T publicKey(String publicKey) {
             this.properties.put("publicKey", publicKey);
@@ -108,7 +108,7 @@ public interface BraintreeEndpointBuilder {
          * The access token granted by a merchant to another in order to process
          * transactions on their behalf. Used in place of environment, merchant
          * id, public key and private key fields. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T accessToken(String accessToken) {
             this.properties.put("accessToken", accessToken);
@@ -117,7 +117,7 @@ public interface BraintreeEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -126,15 +126,15 @@ public interface BraintreeEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
         /**
-         * Set read timeout for http calls. The option is a java.lang.Integer
-         * type.
+         * Set read timeout for http calls. The option is a
+         * <code>java.lang.Integer</code> type.
          */
         public T httpReadTimeout(Integer httpReadTimeout) {
             this.properties.put("httpReadTimeout", httpReadTimeout);
@@ -142,7 +142,7 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * Set read timeout for http calls. The option will be converted to a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T httpReadTimeout(String httpReadTimeout) {
             this.properties.put("httpReadTimeout", httpReadTimeout);
@@ -151,7 +151,7 @@ public interface BraintreeEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -160,7 +160,7 @@ public interface BraintreeEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -168,7 +168,7 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * Set logging level for http calls, see java.util.logging.Level. The
-         * option is a java.lang.String type.
+         * option is a <code>java.util.logging.Level</code> type.
          */
         public T httpLogLevel(Level httpLogLevel) {
             this.properties.put("httpLogLevel", httpLogLevel);
@@ -176,29 +176,30 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * Set logging level for http calls, see java.util.logging.Level. The
-         * option will be converted to a java.lang.String type.
+         * option will be converted to a <code>java.util.logging.Level</code>
+         * type.
          */
         public T httpLogLevel(String httpLogLevel) {
             this.properties.put("httpLogLevel", httpLogLevel);
             return (T) this;
         }
         /**
-         * The proxy host. The option is a java.lang.String type.
+         * The proxy host. The option is a <code>java.lang.String</code> type.
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * The proxy port. The option is a java.lang.Integer type.
+         * The proxy port. The option is a <code>java.lang.Integer</code> type.
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * The proxy port. The option will be converted to a java.lang.Integer
-         * type.
+         * The proxy port. The option will be converted to a
+         * <code>java.lang.Integer</code> type.
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -221,7 +222,7 @@ public interface BraintreeEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public BraintreeConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -235,7 +236,7 @@ public interface BraintreeEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public BraintreeConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -247,7 +248,7 @@ public interface BraintreeEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public BraintreeConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -259,7 +260,8 @@ public interface BraintreeEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public BraintreeConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -267,7 +269,7 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public BraintreeConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -276,7 +278,8 @@ public interface BraintreeEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public BraintreeConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

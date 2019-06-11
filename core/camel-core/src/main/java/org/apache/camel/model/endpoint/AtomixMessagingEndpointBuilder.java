@@ -42,14 +42,16 @@ public interface AtomixMessagingEndpointBuilder {
             super("atomix-messaging", path);
         }
         /**
-         * The distributed resource name. The option is a java.lang.String type.
+         * The distributed resource name. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T resourceName(String resourceName) {
             this.properties.put("resourceName", resourceName);
             return (T) this;
         }
         /**
-         * The Atomix instance to use. The option is a io.atomix.Atomix type.
+         * The Atomix instance to use. The option is a
+         * <code>io.atomix.AtomixClient</code> type.
          */
         public T atomix(Object atomix) {
             this.properties.put("atomix", atomix);
@@ -57,7 +59,7 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The Atomix instance to use. The option will be converted to a
-         * io.atomix.Atomix type.
+         * <code>io.atomix.AtomixClient</code> type.
          */
         public T atomix(String atomix) {
             this.properties.put("atomix", atomix);
@@ -65,29 +67,31 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The broadcast type. The option is a
-         * org.apache.camel.component.atomix.client.messaging.AtomixMessaging.BroadcastType type.
+         * <code>org.apache.camel.component.atomix.client.messaging.AtomixMessaging$BroadcastType</code> type.
          */
-        public T broadcastType(Object broadcastType) {
+        public T broadcastType(BroadcastType broadcastType) {
             this.properties.put("broadcastType", broadcastType);
             return (T) this;
         }
         /**
          * The broadcast type. The option will be converted to a
-         * org.apache.camel.component.atomix.client.messaging.AtomixMessaging.BroadcastType type.
+         * <code>org.apache.camel.component.atomix.client.messaging.AtomixMessaging$BroadcastType</code> type.
          */
         public T broadcastType(String broadcastType) {
             this.properties.put("broadcastType", broadcastType);
             return (T) this;
         }
         /**
-         * The messaging channel name. The option is a java.lang.String type.
+         * The messaging channel name. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T channelName(String channelName) {
             this.properties.put("channelName", channelName);
             return (T) this;
         }
         /**
-         * The Atomix configuration uri. The option is a java.lang.String type.
+         * The Atomix configuration uri. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T configurationUri(String configurationUri) {
             this.properties.put("configurationUri", configurationUri);
@@ -95,22 +99,23 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The default action. The option is a
-         * org.apache.camel.component.atomix.client.messaging.AtomixMessaging.Action type.
+         * <code>org.apache.camel.component.atomix.client.messaging.AtomixMessaging$Action</code> type.
          */
-        public T defaultAction(Object defaultAction) {
+        public T defaultAction(Action defaultAction) {
             this.properties.put("defaultAction", defaultAction);
             return (T) this;
         }
         /**
          * The default action. The option will be converted to a
-         * org.apache.camel.component.atomix.client.messaging.AtomixMessaging.Action type.
+         * <code>org.apache.camel.component.atomix.client.messaging.AtomixMessaging$Action</code> type.
          */
         public T defaultAction(String defaultAction) {
             this.properties.put("defaultAction", defaultAction);
             return (T) this;
         }
         /**
-         * The Atomix Group member name. The option is a java.lang.String type.
+         * The Atomix Group member name. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T memberName(String memberName) {
             this.properties.put("memberName", memberName);
@@ -118,7 +123,8 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The address of the nodes composing the cluster. The option is a
-         * java.lang.String type.
+         * <code>java.util.List<io.atomix.catalyst.transport.Address></code>
+         * type.
          */
         public T nodes(List<Object> nodes) {
             this.properties.put("nodes", nodes);
@@ -126,7 +132,9 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The address of the nodes composing the cluster. The option will be
-         * converted to a java.lang.String type.
+         * converted to a
+         * <code>java.util.List<io.atomix.catalyst.transport.Address></code>
+         * type.
          */
         public T nodes(String nodes) {
             this.properties.put("nodes", nodes);
@@ -134,7 +142,7 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The header that wil carry the result. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T resultHeader(String resultHeader) {
             this.properties.put("resultHeader", resultHeader);
@@ -142,7 +150,8 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * Sets the Atomix transport. The option is a
-         * io.atomix.catalyst.transport.Transport type.
+         * <code>java.lang.Class<io.atomix.catalyst.transport.Transport></code>
+         * type.
          */
         public T transport(Class<Object> transport) {
             this.properties.put("transport", transport);
@@ -150,7 +159,8 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * Sets the Atomix transport. The option will be converted to a
-         * io.atomix.catalyst.transport.Transport type.
+         * <code>java.lang.Class<io.atomix.catalyst.transport.Transport></code>
+         * type.
          */
         public T transport(String transport) {
             this.properties.put("transport", transport);
@@ -159,7 +169,7 @@ public interface AtomixMessagingEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -168,7 +178,7 @@ public interface AtomixMessagingEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -176,7 +186,7 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The cluster wide default resource configuration. The option is a
-         * java.util.Properties type.
+         * <code>java.util.Properties</code> type.
          */
         public T defaultResourceConfig(Properties defaultResourceConfig) {
             this.properties.put("defaultResourceConfig", defaultResourceConfig);
@@ -184,7 +194,7 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The cluster wide default resource configuration. The option will be
-         * converted to a java.util.Properties type.
+         * converted to a <code>java.util.Properties</code> type.
          */
         public T defaultResourceConfig(String defaultResourceConfig) {
             this.properties.put("defaultResourceConfig", defaultResourceConfig);
@@ -192,7 +202,7 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The local default resource options. The option is a
-         * java.util.Properties type.
+         * <code>java.util.Properties</code> type.
          */
         public T defaultResourceOptions(Properties defaultResourceOptions) {
             this.properties.put("defaultResourceOptions", defaultResourceOptions);
@@ -200,7 +210,7 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The local default resource options. The option will be converted to a
-         * java.util.Properties type.
+         * <code>java.util.Properties</code> type.
          */
         public T defaultResourceOptions(String defaultResourceOptions) {
             this.properties.put("defaultResourceOptions", defaultResourceOptions);
@@ -209,8 +219,8 @@ public interface AtomixMessagingEndpointBuilder {
         /**
          * Sets if the local member should join groups as PersistentMember or
          * not. If set to ephemeral the local member will receive an auto
-         * generated ID thus the local one is ignored. The option is a boolean
-         * type.
+         * generated ID thus the local one is ignored. The option is a
+         * <code>boolean</code> type.
          */
         public T ephemeral(boolean ephemeral) {
             this.properties.put("ephemeral", ephemeral);
@@ -220,7 +230,7 @@ public interface AtomixMessagingEndpointBuilder {
          * Sets if the local member should join groups as PersistentMember or
          * not. If set to ephemeral the local member will receive an auto
          * generated ID thus the local one is ignored. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T ephemeral(String ephemeral) {
             this.properties.put("ephemeral", ephemeral);
@@ -228,7 +238,7 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The read consistency level. The option is a
-         * io.atomix.resource.ReadConsistency type.
+         * <code>io.atomix.resource.ReadConsistency</code> type.
          */
         public T readConsistency(ReadConsistency readConsistency) {
             this.properties.put("readConsistency", readConsistency);
@@ -236,7 +246,7 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * The read consistency level. The option will be converted to a
-         * io.atomix.resource.ReadConsistency type.
+         * <code>io.atomix.resource.ReadConsistency</code> type.
          */
         public T readConsistency(String readConsistency) {
             this.properties.put("readConsistency", readConsistency);
@@ -244,7 +254,8 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * Cluster wide resources configuration. The option is a
-         * java.util.Map<java.lang.String,java.util.Properties> type.
+         * <code>java.util.Map<java.lang.String, java.util.Properties></code>
+         * type.
          */
         public T resourceConfigs(Map<String, Properties> resourceConfigs) {
             this.properties.put("resourceConfigs", resourceConfigs);
@@ -252,7 +263,8 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * Cluster wide resources configuration. The option will be converted to
-         * a java.util.Map<java.lang.String,java.util.Properties> type.
+         * a <code>java.util.Map<java.lang.String, java.util.Properties></code>
+         * type.
          */
         public T resourceConfigs(String resourceConfigs) {
             this.properties.put("resourceConfigs", resourceConfigs);
@@ -260,7 +272,8 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * Local resources configurations. The option is a
-         * java.util.Map<java.lang.String,java.util.Properties> type.
+         * <code>java.util.Map<java.lang.String, java.util.Properties></code>
+         * type.
          */
         public T resourceOptions(Map<String, Properties> resourceOptions) {
             this.properties.put("resourceOptions", resourceOptions);
@@ -268,7 +281,8 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * Local resources configurations. The option will be converted to a
-         * java.util.Map<java.lang.String,java.util.Properties> type.
+         * <code>java.util.Map<java.lang.String, java.util.Properties></code>
+         * type.
          */
         public T resourceOptions(String resourceOptions) {
             this.properties.put("resourceOptions", resourceOptions);
@@ -277,7 +291,7 @@ public interface AtomixMessagingEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -286,7 +300,7 @@ public interface AtomixMessagingEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -309,7 +323,7 @@ public interface AtomixMessagingEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public AtomixMessagingConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -323,7 +337,7 @@ public interface AtomixMessagingEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public AtomixMessagingConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -335,7 +349,7 @@ public interface AtomixMessagingEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public AtomixMessagingConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -347,7 +361,8 @@ public interface AtomixMessagingEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public AtomixMessagingConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -356,7 +371,7 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public AtomixMessagingConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -365,7 +380,8 @@ public interface AtomixMessagingEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public AtomixMessagingConsumerBuilder exchangePattern(
                 String exchangePattern) {
@@ -382,6 +398,14 @@ public interface AtomixMessagingEndpointBuilder {
         public AtomixMessagingProducerBuilder(String path) {
             super(path);
         }
+    }
+
+    public static enum BroadcastType {
+        ALL, RANDOM;
+    }
+
+    public static enum Action {
+        DIRECT, BROADCAST;
     }
 
     public static enum ReadConsistency {

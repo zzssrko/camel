@@ -42,7 +42,8 @@ public interface SpringIntegrationEndpointBuilder {
          * The default channel name which is used by the Spring Integration
          * Spring context. It will equal to the inputChannel name for the Spring
          * Integration consumer and the outputChannel name for the Spring
-         * Integration provider. The option is a java.lang.String type.
+         * Integration provider. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T defaultChannel(String defaultChannel) {
             this.properties.put("defaultChannel", defaultChannel);
@@ -52,7 +53,7 @@ public interface SpringIntegrationEndpointBuilder {
          * The exchange pattern that the Spring integration endpoint should use.
          * If inOut=true then a reply channel is expected, either from the
          * Spring Integration Message header or configured on the endpoint. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public T inOut(boolean inOut) {
             this.properties.put("inOut", inOut);
@@ -62,7 +63,7 @@ public interface SpringIntegrationEndpointBuilder {
          * The exchange pattern that the Spring integration endpoint should use.
          * If inOut=true then a reply channel is expected, either from the
          * Spring Integration Message header or configured on the endpoint. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public T inOut(String inOut) {
             this.properties.put("inOut", inOut);
@@ -71,7 +72,7 @@ public interface SpringIntegrationEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -80,7 +81,7 @@ public interface SpringIntegrationEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -89,7 +90,7 @@ public interface SpringIntegrationEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -98,7 +99,7 @@ public interface SpringIntegrationEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -121,7 +122,7 @@ public interface SpringIntegrationEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public SpringIntegrationConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -135,7 +136,7 @@ public interface SpringIntegrationEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public SpringIntegrationConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -144,8 +145,8 @@ public interface SpringIntegrationEndpointBuilder {
         }
         /**
          * The Spring integration input channel name that this endpoint wants to
-         * consume from Spring integration. The option is a java.lang.String
-         * type.
+         * consume from Spring integration. The option is a
+         * <code>java.lang.String</code> type.
          */
         public SpringIntegrationConsumerBuilder inputChannel(String inputChannel) {
             this.properties.put("inputChannel", inputChannel);
@@ -156,7 +157,7 @@ public interface SpringIntegrationEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public SpringIntegrationConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -168,7 +169,8 @@ public interface SpringIntegrationEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public SpringIntegrationConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -177,7 +179,7 @@ public interface SpringIntegrationEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public SpringIntegrationConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -186,7 +188,8 @@ public interface SpringIntegrationEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public SpringIntegrationConsumerBuilder exchangePattern(
                 String exchangePattern) {
@@ -205,8 +208,8 @@ public interface SpringIntegrationEndpointBuilder {
         }
         /**
          * The Spring integration output channel name that is used to send
-         * messages to Spring integration. The option is a java.lang.String
-         * type.
+         * messages to Spring integration. The option is a
+         * <code>java.lang.String</code> type.
          */
         public SpringIntegrationProducerBuilder outputChannel(
                 String outputChannel) {

@@ -38,7 +38,8 @@ public interface DataFormatEndpointBuilder {
             super("dataformat", path);
         }
         /**
-         * Name of data format. The option is a java.lang.String type.
+         * Name of data format. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T name(String name) {
             this.properties.put("name", name);
@@ -46,7 +47,7 @@ public interface DataFormatEndpointBuilder {
         }
         /**
          * Operation to use either marshal or unmarshal. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
@@ -55,7 +56,7 @@ public interface DataFormatEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -64,7 +65,7 @@ public interface DataFormatEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -73,7 +74,7 @@ public interface DataFormatEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -82,7 +83,7 @@ public interface DataFormatEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

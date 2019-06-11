@@ -39,14 +39,15 @@ public interface SdbEndpointBuilder {
         }
         /**
          * The name of the domain currently worked with. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T domainName(String domainName) {
             this.properties.put("domainName", domainName);
             return (T) this;
         }
         /**
-         * Amazon AWS Access Key. The option is a java.lang.String type.
+         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
@@ -54,7 +55,7 @@ public interface SdbEndpointBuilder {
         }
         /**
          * To use the AmazonSimpleDB as the client. The option is a
-         * com.amazonaws.services.simpledb.AmazonSimpleDB type.
+         * <code>com.amazonaws.services.simpledb.AmazonSimpleDB</code> type.
          */
         public T amazonSDBClient(Object amazonSDBClient) {
             this.properties.put("amazonSDBClient", amazonSDBClient);
@@ -62,7 +63,8 @@ public interface SdbEndpointBuilder {
         }
         /**
          * To use the AmazonSimpleDB as the client. The option will be converted
-         * to a com.amazonaws.services.simpledb.AmazonSimpleDB type.
+         * to a <code>com.amazonaws.services.simpledb.AmazonSimpleDB</code>
+         * type.
          */
         public T amazonSDBClient(String amazonSDBClient) {
             this.properties.put("amazonSDBClient", amazonSDBClient);
@@ -70,7 +72,7 @@ public interface SdbEndpointBuilder {
         }
         /**
          * Determines whether or not strong consistency should be enforced when
-         * data is read. The option is a boolean type.
+         * data is read. The option is a <code>boolean</code> type.
          */
         public T consistentRead(boolean consistentRead) {
             this.properties.put("consistentRead", consistentRead);
@@ -78,7 +80,8 @@ public interface SdbEndpointBuilder {
         }
         /**
          * Determines whether or not strong consistency should be enforced when
-         * data is read. The option will be converted to a boolean type.
+         * data is read. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public T consistentRead(String consistentRead) {
             this.properties.put("consistentRead", consistentRead);
@@ -86,7 +89,7 @@ public interface SdbEndpointBuilder {
         }
         /**
          * The maximum number of domain names you want returned. The range is 1
-         * to 100. The option is a java.lang.Integer type.
+         * to 100. The option is a <code>java.lang.Integer</code> type.
          */
         public T maxNumberOfDomains(Integer maxNumberOfDomains) {
             this.properties.put("maxNumberOfDomains", maxNumberOfDomains);
@@ -94,7 +97,8 @@ public interface SdbEndpointBuilder {
         }
         /**
          * The maximum number of domain names you want returned. The range is 1
-         * to 100. The option will be converted to a java.lang.Integer type.
+         * to 100. The option will be converted to a
+         * <code>java.lang.Integer</code> type.
          */
         public T maxNumberOfDomains(String maxNumberOfDomains) {
             this.properties.put("maxNumberOfDomains", maxNumberOfDomains);
@@ -102,7 +106,7 @@ public interface SdbEndpointBuilder {
         }
         /**
          * Operation to perform. The option is a
-         * org.apache.camel.component.aws.sdb.SdbOperations type.
+         * <code>org.apache.camel.component.aws.sdb.SdbOperations</code> type.
          */
         public T operation(SdbOperations operation) {
             this.properties.put("operation", operation);
@@ -110,7 +114,7 @@ public interface SdbEndpointBuilder {
         }
         /**
          * Operation to perform. The option will be converted to a
-         * org.apache.camel.component.aws.sdb.SdbOperations type.
+         * <code>org.apache.camel.component.aws.sdb.SdbOperations</code> type.
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
@@ -118,7 +122,7 @@ public interface SdbEndpointBuilder {
         }
         /**
          * To define a proxy host when instantiating the SDB client. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
@@ -126,7 +130,7 @@ public interface SdbEndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the SDB client. The option
-         * is a java.lang.Integer type.
+         * is a <code>java.lang.Integer</code> type.
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -134,7 +138,7 @@ public interface SdbEndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the SDB client. The option
-         * will be converted to a java.lang.Integer type.
+         * will be converted to a <code>java.lang.Integer</code> type.
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -142,14 +146,15 @@ public interface SdbEndpointBuilder {
         }
         /**
          * The region in which SDB client needs to work. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T region(String region) {
             this.properties.put("region", region);
             return (T) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a java.lang.String type.
+         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);
@@ -158,7 +163,7 @@ public interface SdbEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -167,7 +172,7 @@ public interface SdbEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -176,7 +181,7 @@ public interface SdbEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -185,7 +190,7 @@ public interface SdbEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

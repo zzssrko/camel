@@ -48,7 +48,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * The statement name in the MyBatis XML mapping file which maps to the
          * query, insert, update or delete operation you wish to evaluate. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T statement(String statement) {
             this.properties.put("statement", statement);
@@ -57,7 +57,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -66,7 +66,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -75,7 +75,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -84,7 +84,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -107,7 +107,7 @@ public interface MyBatisEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -121,7 +121,7 @@ public interface MyBatisEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -135,7 +135,7 @@ public interface MyBatisEndpointBuilder {
          * By default, no maximum is set. Can be used to set a limit of e.g.
          * 1000 to avoid when starting up the server that there are thousands of
          * files. Set a value of 0 or negative to disable it. The option is a
-         * int type.
+         * <code>int</code> type.
          */
         public MyBatisConsumerBuilder maxMessagesPerPoll(int maxMessagesPerPoll) {
             this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
@@ -148,7 +148,7 @@ public interface MyBatisEndpointBuilder {
          * By default, no maximum is set. Can be used to set a limit of e.g.
          * 1000 to avoid when starting up the server that there are thousands of
          * files. Set a value of 0 or negative to disable it. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public MyBatisConsumerBuilder maxMessagesPerPoll(
                 String maxMessagesPerPoll) {
@@ -157,7 +157,7 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * Statement to run after data has been processed in the route. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public MyBatisConsumerBuilder onConsume(String onConsume) {
             this.properties.put("onConsume", onConsume);
@@ -165,7 +165,7 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * Whether allow empty resultset to be routed to the next hop. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder routeEmptyResultSet(
                 boolean routeEmptyResultSet) {
@@ -174,7 +174,7 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * Whether allow empty resultset to be routed to the next hop. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder routeEmptyResultSet(
                 String routeEmptyResultSet) {
@@ -184,7 +184,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -194,7 +194,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -204,7 +204,8 @@ public interface MyBatisEndpointBuilder {
         /**
          * Enables or disables transaction. If enabled then if processing an
          * exchange failed then the consumer break out processing any further
-         * exchanges to cause a rollback eager. The option is a boolean type.
+         * exchanges to cause a rollback eager. The option is a
+         * <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder transacted(boolean transacted) {
             this.properties.put("transacted", transacted);
@@ -214,15 +215,15 @@ public interface MyBatisEndpointBuilder {
          * Enables or disables transaction. If enabled then if processing an
          * exchange failed then the consumer break out processing any further
          * exchanges to cause a rollback eager. The option will be converted to
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder transacted(String transacted) {
             this.properties.put("transacted", transacted);
             return (MyBatisConsumerBuilder) this;
         }
         /**
-         * Process resultset individually or as a list. The option is a boolean
-         * type.
+         * Process resultset individually or as a list. The option is a
+         * <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder useIterator(boolean useIterator) {
             this.properties.put("useIterator", useIterator);
@@ -230,7 +231,7 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * Process resultset individually or as a list. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder useIterator(String useIterator) {
             this.properties.put("useIterator", useIterator);
@@ -241,7 +242,7 @@ public interface MyBatisEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public MyBatisConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -253,7 +254,8 @@ public interface MyBatisEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public MyBatisConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -261,7 +263,7 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public MyBatisConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -270,7 +272,8 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public MyBatisConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -281,7 +284,7 @@ public interface MyBatisEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public MyBatisConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -293,7 +296,8 @@ public interface MyBatisEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public MyBatisConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -301,7 +305,7 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * To use a custom MyBatisProcessingStrategy. The option is a
-         * org.apache.camel.component.mybatis.MyBatisProcessingStrategy type.
+         * <code>org.apache.camel.component.mybatis.MyBatisProcessingStrategy</code> type.
          */
         public MyBatisConsumerBuilder processingStrategy(
                 Object processingStrategy) {
@@ -311,7 +315,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * To use a custom MyBatisProcessingStrategy. The option will be
          * converted to a
-         * org.apache.camel.component.mybatis.MyBatisProcessingStrategy type.
+         * <code>org.apache.camel.component.mybatis.MyBatisProcessingStrategy</code> type.
          */
         public MyBatisConsumerBuilder processingStrategy(
                 String processingStrategy) {
@@ -321,7 +325,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public MyBatisConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -331,7 +335,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public MyBatisConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -340,7 +344,8 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public MyBatisConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -350,7 +355,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public MyBatisConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -363,7 +368,7 @@ public interface MyBatisEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public MyBatisConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -375,7 +380,7 @@ public interface MyBatisEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public MyBatisConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -384,7 +389,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public MyBatisConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -393,8 +398,8 @@ public interface MyBatisEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public MyBatisConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -403,7 +408,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -412,7 +417,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -421,7 +426,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public MyBatisConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -430,8 +435,8 @@ public interface MyBatisEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public MyBatisConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -440,7 +445,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public MyBatisConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -450,7 +455,8 @@ public interface MyBatisEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public MyBatisConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -459,8 +465,8 @@ public interface MyBatisEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public MyBatisConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -471,7 +477,7 @@ public interface MyBatisEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public MyBatisConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -481,7 +487,8 @@ public interface MyBatisEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public MyBatisConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -491,7 +498,8 @@ public interface MyBatisEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public MyBatisConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -500,7 +508,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public MyBatisConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -510,7 +518,8 @@ public interface MyBatisEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public MyBatisConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -518,8 +527,8 @@ public interface MyBatisEndpointBuilder {
             return (MyBatisConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -527,7 +536,7 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -535,7 +544,7 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public MyBatisConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -543,7 +552,7 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public MyBatisConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -551,8 +560,8 @@ public interface MyBatisEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -561,7 +570,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public MyBatisConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -581,7 +590,8 @@ public interface MyBatisEndpointBuilder {
          * The executor type to be used while executing statements. simple -
          * executor does nothing special. reuse - executor reuses prepared
          * statements. batch - executor reuses statements and batches updates.
-         * The option is a org.apache.ibatis.session.ExecutorType type.
+         * The option is a <code>org.apache.ibatis.session.ExecutorType</code>
+         * type.
          */
         public MyBatisProducerBuilder executorType(ExecutorType executorType) {
             this.properties.put("executorType", executorType);
@@ -592,7 +602,7 @@ public interface MyBatisEndpointBuilder {
          * executor does nothing special. reuse - executor reuses prepared
          * statements. batch - executor reuses statements and batches updates.
          * The option will be converted to a
-         * org.apache.ibatis.session.ExecutorType type.
+         * <code>org.apache.ibatis.session.ExecutorType</code> type.
          */
         public MyBatisProducerBuilder executorType(String executorType) {
             this.properties.put("executorType", executorType);
@@ -603,7 +613,7 @@ public interface MyBatisEndpointBuilder {
          * body. By default, inputHeader == null and the input parameters are
          * taken from the message body. If outputHeader is set, the value is
          * used and query parameters will be taken from the header instead of
-         * the body. The option is a java.lang.String type.
+         * the body. The option is a <code>java.lang.String</code> type.
          */
         public MyBatisProducerBuilder inputHeader(String inputHeader) {
             this.properties.put("inputHeader", inputHeader);
@@ -617,7 +627,7 @@ public interface MyBatisEndpointBuilder {
          * to store the query result and the original message body is preserved.
          * Setting outputHeader will also omit populating the default
          * CamelMyBatisResult header since it would be the same as outputHeader
-         * all the time. The option is a java.lang.String type.
+         * all the time. The option is a <code>java.lang.String</code> type.
          */
         public MyBatisProducerBuilder outputHeader(String outputHeader) {
             this.properties.put("outputHeader", outputHeader);
@@ -626,7 +636,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * Mandatory to specify for the producer to control which kind of
          * operation to invoke. The option is a
-         * org.apache.camel.component.mybatis.StatementType type.
+         * <code>org.apache.camel.component.mybatis.StatementType</code> type.
          */
         public MyBatisProducerBuilder statementType(StatementType statementType) {
             this.properties.put("statementType", statementType);
@@ -635,7 +645,7 @@ public interface MyBatisEndpointBuilder {
         /**
          * Mandatory to specify for the producer to control which kind of
          * operation to invoke. The option will be converted to a
-         * org.apache.camel.component.mybatis.StatementType type.
+         * <code>org.apache.camel.component.mybatis.StatementType</code> type.
          */
         public MyBatisProducerBuilder statementType(String statementType) {
             this.properties.put("statementType", statementType);

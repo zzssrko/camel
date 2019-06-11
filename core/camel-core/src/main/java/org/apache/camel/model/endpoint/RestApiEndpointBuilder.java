@@ -40,7 +40,7 @@ public interface RestApiEndpointBuilder {
             super("rest-api", path);
         }
         /**
-         * The base path. The option is a java.lang.String type.
+         * The base path. The option is a <code>java.lang.String</code> type.
          */
         public T path(String path) {
             this.properties.put("path", path);
@@ -49,7 +49,7 @@ public interface RestApiEndpointBuilder {
         /**
          * Optional CamelContext id pattern to only allow Rest APIs from rest
          * services within CamelContext's which name matches the pattern. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T contextIdPattern(String contextIdPattern) {
             this.properties.put("contextIdPattern", contextIdPattern);
@@ -57,8 +57,8 @@ public interface RestApiEndpointBuilder {
         }
         /**
          * The Camel Rest API component to use for generating the API of the
-         * REST services, such as swagger. The option is a java.lang.String
-         * type.
+         * REST services, such as swagger. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T apiComponentName(String apiComponentName) {
             this.properties.put("apiComponentName", apiComponentName);
@@ -70,7 +70,7 @@ public interface RestApiEndpointBuilder {
          * then Camel will lookup if there is a Camel component that integrates
          * with the Rest DSL, or if a org.apache.camel.spi.RestConsumerFactory
          * is registered in the registry. If either one is found, then that is
-         * being used. The option is a java.lang.String type.
+         * being used. The option is a <code>java.lang.String</code> type.
          */
         public T componentName(String componentName) {
             this.properties.put("componentName", componentName);
@@ -79,7 +79,7 @@ public interface RestApiEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -88,7 +88,7 @@ public interface RestApiEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -97,7 +97,7 @@ public interface RestApiEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -106,7 +106,7 @@ public interface RestApiEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -129,7 +129,7 @@ public interface RestApiEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public RestApiConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -143,7 +143,7 @@ public interface RestApiEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public RestApiConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -155,7 +155,7 @@ public interface RestApiEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public RestApiConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -167,7 +167,8 @@ public interface RestApiEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public RestApiConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -175,7 +176,7 @@ public interface RestApiEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public RestApiConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -184,7 +185,8 @@ public interface RestApiEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public RestApiConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

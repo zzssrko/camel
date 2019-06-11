@@ -42,7 +42,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Server url comes from the remaining endpoint. Use platform to connect
-         * to local JVM. The option is a java.lang.String type.
+         * to local JVM. The option is a <code>java.lang.String</code> type.
          */
         public T serverURL(String serverURL) {
             this.properties.put("serverURL", serverURL);
@@ -51,7 +51,8 @@ public interface JMXEndpointBuilder {
         /**
          * Format for the message body. Either xml or raw. If xml, the
          * notification is serialized to xml. If raw, then the raw java object
-         * is set as the body. The option is a java.lang.String type.
+         * is set as the body. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T format(String format) {
             this.properties.put("format", format);
@@ -59,7 +60,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * The frequency to poll the bean to check the monitor (monitor types
-         * only). The option is a long type.
+         * only). The option is a <code>long</code> type.
          */
         public T granularityPeriod(long granularityPeriod) {
             this.properties.put("granularityPeriod", granularityPeriod);
@@ -67,7 +68,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * The frequency to poll the bean to check the monitor (monitor types
-         * only). The option will be converted to a long type.
+         * only). The option will be converted to a <code>long</code> type.
          */
         public T granularityPeriod(String granularityPeriod) {
             this.properties.put("granularityPeriod", granularityPeriod);
@@ -75,7 +76,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * The type of monitor to create. One of string, gauge, counter (monitor
-         * types only). The option is a java.lang.String type.
+         * types only). The option is a <code>java.lang.String</code> type.
          */
         public T monitorType(String monitorType) {
             this.properties.put("monitorType", monitorType);
@@ -83,7 +84,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * The domain for the mbean you're connecting to. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T objectDomain(String objectDomain) {
             this.properties.put("objectDomain", objectDomain);
@@ -92,7 +93,7 @@ public interface JMXEndpointBuilder {
         /**
          * The name key for the mbean you're connecting to. This value is
          * mutually exclusive with the object properties that get passed. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T objectName(String objectName) {
             this.properties.put("objectName", objectName);
@@ -100,7 +101,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * The attribute to observe for the monitor bean or consumer. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T observedAttribute(String observedAttribute) {
             this.properties.put("observedAttribute", observedAttribute);
@@ -109,7 +110,7 @@ public interface JMXEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -118,7 +119,7 @@ public interface JMXEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -127,7 +128,8 @@ public interface JMXEndpointBuilder {
         /**
          * To use a custom shared thread pool for the consumers. By default each
          * consume has their own thread-pool to process and route notifications.
-         * The option is a java.util.concurrent.ExecutorService type.
+         * The option is a <code>java.util.concurrent.ExecutorService</code>
+         * type.
          */
         public T executorService(ExecutorService executorService) {
             this.properties.put("executorService", executorService);
@@ -137,7 +139,7 @@ public interface JMXEndpointBuilder {
          * To use a custom shared thread pool for the consumers. By default each
          * consume has their own thread-pool to process and route notifications.
          * The option will be converted to a
-         * java.util.concurrent.ExecutorService type.
+         * <code>java.util.concurrent.ExecutorService</code> type.
          */
         public T executorService(String executorService) {
             this.properties.put("executorService", executorService);
@@ -146,7 +148,7 @@ public interface JMXEndpointBuilder {
         /**
          * Value to handback to the listener when a notification is received.
          * This value will be put in the message header with the key
-         * jmx.handback. The option is a java.lang.Object type.
+         * jmx.handback. The option is a <code>java.lang.Object</code> type.
          */
         public T handback(Object handback) {
             this.properties.put("handback", handback);
@@ -155,8 +157,8 @@ public interface JMXEndpointBuilder {
         /**
          * Value to handback to the listener when a notification is received.
          * This value will be put in the message header with the key
-         * jmx.handback. The option will be converted to a java.lang.Object
-         * type.
+         * jmx.handback. The option will be converted to a
+         * <code>java.lang.Object</code> type.
          */
         public T handback(String handback) {
             this.properties.put("handback", handback);
@@ -164,7 +166,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Reference to a bean that implements the NotificationFilter. The
-         * option is a javax.management.NotificationFilter type.
+         * option is a <code>javax.management.NotificationFilter</code> type.
          */
         public T notificationFilter(Object notificationFilter) {
             this.properties.put("notificationFilter", notificationFilter);
@@ -172,8 +174,8 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Reference to a bean that implements the NotificationFilter. The
-         * option will be converted to a javax.management.NotificationFilter
-         * type.
+         * option will be converted to a
+         * <code>javax.management.NotificationFilter</code> type.
          */
         public T notificationFilter(String notificationFilter) {
             this.properties.put("notificationFilter", notificationFilter);
@@ -182,7 +184,7 @@ public interface JMXEndpointBuilder {
         /**
          * Properties for the object name. These values will be used if the
          * objectName param is not set. The option is a
-         * java.util.Map<java.lang.String,java.lang.String> type.
+         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
          */
         public T objectProperties(Map<String, String> objectProperties) {
             this.properties.put("objectProperties", objectProperties);
@@ -191,7 +193,7 @@ public interface JMXEndpointBuilder {
         /**
          * Properties for the object name. These values will be used if the
          * objectName param is not set. The option will be converted to a
-         * java.util.Map<java.lang.String,java.lang.String> type.
+         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
          */
         public T objectProperties(String objectProperties) {
             this.properties.put("objectProperties", objectProperties);
@@ -200,7 +202,7 @@ public interface JMXEndpointBuilder {
         /**
          * The number of seconds to wait before attempting to retry
          * establishment of the initial connection or attempt to reconnect a
-         * lost connection. The option is a int type.
+         * lost connection. The option is a <code>int</code> type.
          */
         public T reconnectDelay(int reconnectDelay) {
             this.properties.put("reconnectDelay", reconnectDelay);
@@ -209,7 +211,8 @@ public interface JMXEndpointBuilder {
         /**
          * The number of seconds to wait before attempting to retry
          * establishment of the initial connection or attempt to reconnect a
-         * lost connection. The option will be converted to a int type.
+         * lost connection. The option will be converted to a <code>int</code>
+         * type.
          */
         public T reconnectDelay(String reconnectDelay) {
             this.properties.put("reconnectDelay", reconnectDelay);
@@ -220,7 +223,7 @@ public interface JMXEndpointBuilder {
          * any connection failure occurs. The consumer will attempt to
          * re-establish the JMX connection every 'x' seconds until the
          * connection is made-- where 'x' is the configured reconnectionDelay.
-         * The option is a boolean type.
+         * The option is a <code>boolean</code> type.
          */
         public T reconnectOnConnectionFailure(
                 boolean reconnectOnConnectionFailure) {
@@ -232,7 +235,7 @@ public interface JMXEndpointBuilder {
          * any connection failure occurs. The consumer will attempt to
          * re-establish the JMX connection every 'x' seconds until the
          * connection is made-- where 'x' is the configured reconnectionDelay.
-         * The option will be converted to a boolean type.
+         * The option will be converted to a <code>boolean</code> type.
          */
         public T reconnectOnConnectionFailure(
                 String reconnectOnConnectionFailure) {
@@ -242,7 +245,7 @@ public interface JMXEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -251,7 +254,7 @@ public interface JMXEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -262,7 +265,7 @@ public interface JMXEndpointBuilder {
          * the JMX connection upon startup. If false, the consumer will attempt
          * to establish the JMX connection every 'x' seconds until the
          * connection is made -- where 'x' is the configured reconnectionDelay.
-         * The option is a boolean type.
+         * The option is a <code>boolean</code> type.
          */
         public T testConnectionOnStartup(boolean testConnectionOnStartup) {
             this.properties.put("testConnectionOnStartup", testConnectionOnStartup);
@@ -273,7 +276,7 @@ public interface JMXEndpointBuilder {
          * the JMX connection upon startup. If false, the consumer will attempt
          * to establish the JMX connection every 'x' seconds until the
          * connection is made -- where 'x' is the configured reconnectionDelay.
-         * The option will be converted to a boolean type.
+         * The option will be converted to a <code>boolean</code> type.
          */
         public T testConnectionOnStartup(String testConnectionOnStartup) {
             this.properties.put("testConnectionOnStartup", testConnectionOnStartup);
@@ -281,8 +284,8 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Initial threshold for the monitor. The value must exceed this before
-         * notifications are fired (counter monitor only). The option is a int
-         * type.
+         * notifications are fired (counter monitor only). The option is a
+         * <code>int</code> type.
          */
         public T initThreshold(int initThreshold) {
             this.properties.put("initThreshold", initThreshold);
@@ -291,7 +294,7 @@ public interface JMXEndpointBuilder {
         /**
          * Initial threshold for the monitor. The value must exceed this before
          * notifications are fired (counter monitor only). The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public T initThreshold(String initThreshold) {
             this.properties.put("initThreshold", initThreshold);
@@ -299,7 +302,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * The value at which the counter is reset to zero (counter monitor
-         * only). The option is a int type.
+         * only). The option is a <code>int</code> type.
          */
         public T modulus(int modulus) {
             this.properties.put("modulus", modulus);
@@ -307,7 +310,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * The value at which the counter is reset to zero (counter monitor
-         * only). The option will be converted to a int type.
+         * only). The option will be converted to a <code>int</code> type.
          */
         public T modulus(String modulus) {
             this.properties.put("modulus", modulus);
@@ -315,7 +318,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * The amount to increment the threshold after it's been exceeded
-         * (counter monitor only). The option is a int type.
+         * (counter monitor only). The option is a <code>int</code> type.
          */
         public T offset(int offset) {
             this.properties.put("offset", offset);
@@ -323,7 +326,8 @@ public interface JMXEndpointBuilder {
         }
         /**
          * The amount to increment the threshold after it's been exceeded
-         * (counter monitor only). The option will be converted to a int type.
+         * (counter monitor only). The option will be converted to a
+         * <code>int</code> type.
          */
         public T offset(String offset) {
             this.properties.put("offset", offset);
@@ -332,7 +336,7 @@ public interface JMXEndpointBuilder {
         /**
          * If true, then the value reported in the notification is the
          * difference from the threshold as opposed to the value itself (counter
-         * and gauge monitor only). The option is a boolean type.
+         * and gauge monitor only). The option is a <code>boolean</code> type.
          */
         public T differenceMode(boolean differenceMode) {
             this.properties.put("differenceMode", differenceMode);
@@ -341,8 +345,8 @@ public interface JMXEndpointBuilder {
         /**
          * If true, then the value reported in the notification is the
          * difference from the threshold as opposed to the value itself (counter
-         * and gauge monitor only). The option will be converted to a boolean
-         * type.
+         * and gauge monitor only). The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T differenceMode(String differenceMode) {
             this.properties.put("differenceMode", differenceMode);
@@ -350,7 +354,8 @@ public interface JMXEndpointBuilder {
         }
         /**
          * If true, the gauge will fire a notification when the high threshold
-         * is exceeded (gauge monitor only). The option is a boolean type.
+         * is exceeded (gauge monitor only). The option is a
+         * <code>boolean</code> type.
          */
         public T notifyHigh(boolean notifyHigh) {
             this.properties.put("notifyHigh", notifyHigh);
@@ -359,7 +364,7 @@ public interface JMXEndpointBuilder {
         /**
          * If true, the gauge will fire a notification when the high threshold
          * is exceeded (gauge monitor only). The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T notifyHigh(String notifyHigh) {
             this.properties.put("notifyHigh", notifyHigh);
@@ -367,7 +372,8 @@ public interface JMXEndpointBuilder {
         }
         /**
          * If true, the gauge will fire a notification when the low threshold is
-         * exceeded (gauge monitor only). The option is a boolean type.
+         * exceeded (gauge monitor only). The option is a <code>boolean</code>
+         * type.
          */
         public T notifyLow(boolean notifyLow) {
             this.properties.put("notifyLow", notifyLow);
@@ -376,7 +382,7 @@ public interface JMXEndpointBuilder {
         /**
          * If true, the gauge will fire a notification when the low threshold is
          * exceeded (gauge monitor only). The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T notifyLow(String notifyLow) {
             this.properties.put("notifyLow", notifyLow);
@@ -384,7 +390,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Value for the gauge's high threshold (gauge monitor only). The option
-         * is a java.lang.Double type.
+         * is a <code>java.lang.Double</code> type.
          */
         public T thresholdHigh(Double thresholdHigh) {
             this.properties.put("thresholdHigh", thresholdHigh);
@@ -392,7 +398,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Value for the gauge's high threshold (gauge monitor only). The option
-         * will be converted to a java.lang.Double type.
+         * will be converted to a <code>java.lang.Double</code> type.
          */
         public T thresholdHigh(String thresholdHigh) {
             this.properties.put("thresholdHigh", thresholdHigh);
@@ -400,7 +406,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Value for the gauge's low threshold (gauge monitor only). The option
-         * is a java.lang.Double type.
+         * is a <code>java.lang.Double</code> type.
          */
         public T thresholdLow(Double thresholdLow) {
             this.properties.put("thresholdLow", thresholdLow);
@@ -408,7 +414,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Value for the gauge's low threshold (gauge monitor only). The option
-         * will be converted to a java.lang.Double type.
+         * will be converted to a <code>java.lang.Double</code> type.
          */
         public T thresholdLow(String thresholdLow) {
             this.properties.put("thresholdLow", thresholdLow);
@@ -416,7 +422,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Credentials for making a remote connection. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T password(String password) {
             this.properties.put("password", password);
@@ -424,7 +430,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Credentials for making a remote connection. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T user(String user) {
             this.properties.put("user", user);
@@ -447,7 +453,7 @@ public interface JMXEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public JMXConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -460,7 +466,7 @@ public interface JMXEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public JMXConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -471,7 +477,7 @@ public interface JMXEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public JMXConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -483,7 +489,8 @@ public interface JMXEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public JMXConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -491,7 +498,7 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public JMXConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -500,7 +507,8 @@ public interface JMXEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public JMXConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -510,7 +518,8 @@ public interface JMXEndpointBuilder {
          * If true, will fire a notification when the string attribute differs
          * from the string to compare (string monitor or consumer). By default
          * the consumer will notify match if observed attribute and string to
-         * compare has been configured. The option is a boolean type.
+         * compare has been configured. The option is a <code>boolean</code>
+         * type.
          */
         public JMXConsumerBuilder notifyDiffer(boolean notifyDiffer) {
             this.properties.put("notifyDiffer", notifyDiffer);
@@ -521,7 +530,7 @@ public interface JMXEndpointBuilder {
          * from the string to compare (string monitor or consumer). By default
          * the consumer will notify match if observed attribute and string to
          * compare has been configured. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public JMXConsumerBuilder notifyDiffer(String notifyDiffer) {
             this.properties.put("notifyDiffer", notifyDiffer);
@@ -531,7 +540,8 @@ public interface JMXEndpointBuilder {
          * If true, will fire a notification when the string attribute matches
          * the string to compare (string monitor or consumer). By default the
          * consumer will notify match if observed attribute and string to
-         * compare has been configured. The option is a boolean type.
+         * compare has been configured. The option is a <code>boolean</code>
+         * type.
          */
         public JMXConsumerBuilder notifyMatch(boolean notifyMatch) {
             this.properties.put("notifyMatch", notifyMatch);
@@ -542,7 +552,7 @@ public interface JMXEndpointBuilder {
          * the string to compare (string monitor or consumer). By default the
          * consumer will notify match if observed attribute and string to
          * compare has been configured. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public JMXConsumerBuilder notifyMatch(String notifyMatch) {
             this.properties.put("notifyMatch", notifyMatch);
@@ -552,7 +562,7 @@ public interface JMXEndpointBuilder {
          * Value for attribute to compare (string monitor or consumer). By
          * default the consumer will notify match if observed attribute and
          * string to compare has been configured. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public JMXConsumerBuilder stringToCompare(String stringToCompare) {
             this.properties.put("stringToCompare", stringToCompare);

@@ -38,8 +38,8 @@ public interface ClassEndpointBuilder {
             super("class", path);
         }
         /**
-         * Sets the name of the bean to invoke. The option is a java.lang.String
-         * type.
+         * Sets the name of the bean to invoke. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T beanName(String beanName) {
             this.properties.put("beanName", beanName);
@@ -47,7 +47,7 @@ public interface ClassEndpointBuilder {
         }
         /**
          * Sets the name of the method to invoke on the bean. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T method(String method) {
             this.properties.put("method", method);
@@ -56,7 +56,7 @@ public interface ClassEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -65,7 +65,7 @@ public interface ClassEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -74,7 +74,8 @@ public interface ClassEndpointBuilder {
         /**
          * If enabled, Camel will cache the result of the first Registry
          * look-up. Cache can be enabled if the bean in the Registry is defined
-         * as a singleton scope. The option is a java.lang.Boolean type.
+         * as a singleton scope. The option is a <code>java.lang.Boolean</code>
+         * type.
          */
         public T cache(Boolean cache) {
             this.properties.put("cache", cache);
@@ -84,7 +85,7 @@ public interface ClassEndpointBuilder {
          * If enabled, Camel will cache the result of the first Registry
          * look-up. Cache can be enabled if the bean in the Registry is defined
          * as a singleton scope. The option will be converted to a
-         * java.lang.Boolean type.
+         * <code>java.lang.Boolean</code> type.
          */
         public T cache(String cache) {
             this.properties.put("cache", cache);
@@ -92,7 +93,8 @@ public interface ClassEndpointBuilder {
         }
         /**
          * Used for configuring additional properties on the bean. The option is
-         * a java.util.Map<java.lang.String,java.lang.Object> type.
+         * a <code>java.util.Map<java.lang.String, java.lang.Object></code>
+         * type.
          */
         public T parameters(Map<String, Object> parameters) {
             this.properties.put("parameters", parameters);
@@ -100,8 +102,8 @@ public interface ClassEndpointBuilder {
         }
         /**
          * Used for configuring additional properties on the bean. The option
-         * will be converted to a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * will be converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public T parameters(String parameters) {
             this.properties.put("parameters", parameters);
@@ -110,7 +112,7 @@ public interface ClassEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -119,7 +121,7 @@ public interface ClassEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

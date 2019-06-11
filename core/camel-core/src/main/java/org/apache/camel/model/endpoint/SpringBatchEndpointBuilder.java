@@ -39,7 +39,7 @@ public interface SpringBatchEndpointBuilder {
         }
         /**
          * The name of the Spring Batch job located in the registry. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T jobName(String jobName) {
             this.properties.put("jobName", jobName);
@@ -47,7 +47,7 @@ public interface SpringBatchEndpointBuilder {
         }
         /**
          * Explicitly defines if the jobName should be taken from the headers
-         * instead of the URI. The option is a boolean type.
+         * instead of the URI. The option is a <code>boolean</code> type.
          */
         public T jobFromHeader(boolean jobFromHeader) {
             this.properties.put("jobFromHeader", jobFromHeader);
@@ -55,7 +55,8 @@ public interface SpringBatchEndpointBuilder {
         }
         /**
          * Explicitly defines if the jobName should be taken from the headers
-         * instead of the URI. The option will be converted to a boolean type.
+         * instead of the URI. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T jobFromHeader(String jobFromHeader) {
             this.properties.put("jobFromHeader", jobFromHeader);
@@ -63,7 +64,7 @@ public interface SpringBatchEndpointBuilder {
         }
         /**
          * Explicitly specifies a JobLauncher to be used. The option is a
-         * org.springframework.batch.core.launch.JobLauncher type.
+         * <code>org.springframework.batch.core.launch.JobLauncher</code> type.
          */
         public T jobLauncher(Object jobLauncher) {
             this.properties.put("jobLauncher", jobLauncher);
@@ -71,8 +72,8 @@ public interface SpringBatchEndpointBuilder {
         }
         /**
          * Explicitly specifies a JobLauncher to be used. The option will be
-         * converted to a org.springframework.batch.core.launch.JobLauncher
-         * type.
+         * converted to a
+         * <code>org.springframework.batch.core.launch.JobLauncher</code> type.
          */
         public T jobLauncher(String jobLauncher) {
             this.properties.put("jobLauncher", jobLauncher);
@@ -80,7 +81,8 @@ public interface SpringBatchEndpointBuilder {
         }
         /**
          * Explicitly specifies a JobRegistry to be used. The option is a
-         * org.springframework.batch.core.configuration.JobRegistry type.
+         * <code>org.springframework.batch.core.configuration.JobRegistry</code>
+         * type.
          */
         public T jobRegistry(Object jobRegistry) {
             this.properties.put("jobRegistry", jobRegistry);
@@ -89,7 +91,8 @@ public interface SpringBatchEndpointBuilder {
         /**
          * Explicitly specifies a JobRegistry to be used. The option will be
          * converted to a
-         * org.springframework.batch.core.configuration.JobRegistry type.
+         * <code>org.springframework.batch.core.configuration.JobRegistry</code>
+         * type.
          */
         public T jobRegistry(String jobRegistry) {
             this.properties.put("jobRegistry", jobRegistry);
@@ -98,7 +101,7 @@ public interface SpringBatchEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -107,7 +110,7 @@ public interface SpringBatchEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -116,7 +119,7 @@ public interface SpringBatchEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -125,7 +128,7 @@ public interface SpringBatchEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

@@ -300,7 +300,7 @@ public class EndpointDslMojo extends AbstractMojo {
                 if (!desc.endsWith(".")) {
                     desc = desc + ".";
                 }
-                desc = desc + " The option is a " + option.getJavaType() + " type.";
+                desc = desc + " The option is a <code>" + ogtype.toString() + "</code> type.";
                 fluent.getJavaDoc().setFullText(desc);
             }
 
@@ -318,7 +318,7 @@ public class EndpointDslMojo extends AbstractMojo {
                     if (!desc.endsWith(".")) {
                         desc = desc + ".";
                     }
-                    desc = desc + " The option will be converted to a " + option.getJavaType() + " type.";
+                    desc = desc + " The option will be converted to a <code>" + ogtype.toString() + "</code> type.";
                     fluent.getJavaDoc().setFullText(desc);
                 }
             }
@@ -468,7 +468,7 @@ public class EndpointDslMojo extends AbstractMojo {
         if (type.equals("?")) {
             return new GenericType(Object.class, BoundType.Extends);
         }
-        if (loadClass(type).isEnum() && !Strings.isBlank(enums) && !isCamelCoreType(type)) {
+        if (loadClass(type).isEnum() && !isCamelCoreType(type)) {
             String enumClassName = type.substring(type.lastIndexOf('.') + 1);
             if (enumClassName.contains("$")) {
                 enumClassName = enumClassName.substring(enumClassName.indexOf('$') + 1);
@@ -478,8 +478,8 @@ public class EndpointDslMojo extends AbstractMojo {
                 enumClass = javaClass.addNestedType().setPublic().setStatic(true)
                                 .setName(enumClassName).setEnum(true);
                 enumClasses.put(enumClassName, enumClass);
-                for (String value : enums.split(",")) {
-                    enumClass.addValue(value
+                for (Object value : loadClass(type).getEnumConstants()) {
+                    enumClass.addValue(value.toString()
                             .replace('.', '_')
                             .replace('-', '_'));
                 }

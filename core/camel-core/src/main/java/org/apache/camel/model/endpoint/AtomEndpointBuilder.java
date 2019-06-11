@@ -46,7 +46,8 @@ public interface AtomEndpointBuilder {
             super("atom", path);
         }
         /**
-         * The URI to the feed to poll. The option is a java.lang.String type.
+         * The URI to the feed to poll. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T feedUri(String feedUri) {
             this.properties.put("feedUri", feedUri);
@@ -54,7 +55,7 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Sets whether to add the feed object as a header. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T feedHeader(boolean feedHeader) {
             this.properties.put("feedHeader", feedHeader);
@@ -62,7 +63,7 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Sets whether to add the feed object as a header. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T feedHeader(String feedHeader) {
             this.properties.put("feedHeader", feedHeader);
@@ -70,7 +71,7 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Sets whether to use filtering or not of the entries. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T filter(boolean filter) {
             this.properties.put("filter", filter);
@@ -78,7 +79,7 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Sets whether to use filtering or not of the entries. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public T filter(String filter) {
             this.properties.put("filter", filter);
@@ -87,7 +88,7 @@ public interface AtomEndpointBuilder {
         /**
          * Sets the timestamp to be used for filtering entries from the atom
          * feeds. This options is only in conjunction with the splitEntries. The
-         * option is a java.util.Date type.
+         * option is a <code>java.util.Date</code> type.
          */
         public T lastUpdate(Date lastUpdate) {
             this.properties.put("lastUpdate", lastUpdate);
@@ -96,7 +97,7 @@ public interface AtomEndpointBuilder {
         /**
          * Sets the timestamp to be used for filtering entries from the atom
          * feeds. This options is only in conjunction with the splitEntries. The
-         * option will be converted to a java.util.Date type.
+         * option will be converted to a <code>java.util.Date</code> type.
          */
         public T lastUpdate(String lastUpdate) {
             this.properties.put("lastUpdate", lastUpdate);
@@ -104,7 +105,7 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Sets the password to be used for basic authentication when polling
-         * from a HTTP feed. The option is a java.lang.String type.
+         * from a HTTP feed. The option is a <code>java.lang.String</code> type.
          */
         public T password(String password) {
             this.properties.put("password", password);
@@ -112,7 +113,7 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Sets whether to sort entries by published date. Only works when
-         * splitEntries = true. The option is a boolean type.
+         * splitEntries = true. The option is a <code>boolean</code> type.
          */
         public T sortEntries(boolean sortEntries) {
             this.properties.put("sortEntries", sortEntries);
@@ -120,7 +121,8 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Sets whether to sort entries by published date. Only works when
-         * splitEntries = true. The option will be converted to a boolean type.
+         * splitEntries = true. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T sortEntries(String sortEntries) {
             this.properties.put("sortEntries", sortEntries);
@@ -129,7 +131,7 @@ public interface AtomEndpointBuilder {
         /**
          * Sets whether or not entries should be sent individually or whether
          * the entire feed should be sent as a single message. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T splitEntries(boolean splitEntries) {
             this.properties.put("splitEntries", splitEntries);
@@ -138,7 +140,7 @@ public interface AtomEndpointBuilder {
         /**
          * Sets whether or not entries should be sent individually or whether
          * the entire feed should be sent as a single message. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public T splitEntries(String splitEntries) {
             this.properties.put("splitEntries", splitEntries);
@@ -148,7 +150,7 @@ public interface AtomEndpointBuilder {
          * Sets whether all entries identified in a single feed poll should be
          * delivered immediately. If true, only one entry is processed per
          * consumer.delay. Only applicable when splitEntries = true. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T throttleEntries(boolean throttleEntries) {
             this.properties.put("throttleEntries", throttleEntries);
@@ -158,7 +160,7 @@ public interface AtomEndpointBuilder {
          * Sets whether all entries identified in a single feed poll should be
          * delivered immediately. If true, only one entry is processed per
          * consumer.delay. Only applicable when splitEntries = true. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T throttleEntries(String throttleEntries) {
             this.properties.put("throttleEntries", throttleEntries);
@@ -166,7 +168,7 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Sets the username to be used for basic authentication when polling
-         * from a HTTP feed. The option is a java.lang.String type.
+         * from a HTTP feed. The option is a <code>java.lang.String</code> type.
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -175,7 +177,7 @@ public interface AtomEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -184,7 +186,7 @@ public interface AtomEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -193,7 +195,7 @@ public interface AtomEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -202,7 +204,7 @@ public interface AtomEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -225,7 +227,7 @@ public interface AtomEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public AtomConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -238,7 +240,7 @@ public interface AtomEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public AtomConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -247,7 +249,7 @@ public interface AtomEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public AtomConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -257,7 +259,7 @@ public interface AtomEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public AtomConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -269,7 +271,7 @@ public interface AtomEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public AtomConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -281,7 +283,8 @@ public interface AtomEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public AtomConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -289,7 +292,7 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public AtomConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -298,7 +301,8 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public AtomConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -309,7 +313,7 @@ public interface AtomEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public AtomConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -321,7 +325,8 @@ public interface AtomEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public AtomConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -330,7 +335,7 @@ public interface AtomEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public AtomConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -340,7 +345,7 @@ public interface AtomEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public AtomConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -349,7 +354,8 @@ public interface AtomEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public AtomConsumerBuilder backoffIdleThreshold(int backoffIdleThreshold) {
             this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
@@ -358,7 +364,7 @@ public interface AtomEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public AtomConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -371,7 +377,7 @@ public interface AtomEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public AtomConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -383,7 +389,7 @@ public interface AtomEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public AtomConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -392,7 +398,7 @@ public interface AtomEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public AtomConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -401,8 +407,8 @@ public interface AtomEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public AtomConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -411,7 +417,7 @@ public interface AtomEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public AtomConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -420,7 +426,7 @@ public interface AtomEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public AtomConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -429,7 +435,7 @@ public interface AtomEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public AtomConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -438,8 +444,8 @@ public interface AtomEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public AtomConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -448,7 +454,7 @@ public interface AtomEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public AtomConsumerBuilder runLoggingLevel(LoggingLevel runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -457,7 +463,8 @@ public interface AtomEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public AtomConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -466,8 +473,8 @@ public interface AtomEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public AtomConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -478,7 +485,7 @@ public interface AtomEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public AtomConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -488,7 +495,8 @@ public interface AtomEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public AtomConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -498,7 +506,8 @@ public interface AtomEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public AtomConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -507,7 +516,7 @@ public interface AtomEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public AtomConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -517,7 +526,8 @@ public interface AtomEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public AtomConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -525,8 +535,8 @@ public interface AtomEndpointBuilder {
             return (AtomConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public AtomConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -534,7 +544,7 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public AtomConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -542,7 +552,7 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public AtomConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -550,7 +560,7 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public AtomConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -558,8 +568,8 @@ public interface AtomEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public AtomConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -568,7 +578,7 @@ public interface AtomEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public AtomConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);

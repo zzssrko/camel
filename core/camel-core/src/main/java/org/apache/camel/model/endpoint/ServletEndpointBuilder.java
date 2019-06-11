@@ -56,8 +56,8 @@ public interface ServletEndpointBuilder {
          * multiple times. The http/http4 producer will by default cache the
          * response body stream. If setting this option to true, then the
          * producers will not cache the response body stream but use the
-         * response stream as-is as the message body. The option is a boolean
-         * type.
+         * response stream as-is as the message body. The option is a
+         * <code>boolean</code> type.
          */
         public T disableStreamCache(boolean disableStreamCache) {
             this.properties.put("disableStreamCache", disableStreamCache);
@@ -80,7 +80,7 @@ public interface ServletEndpointBuilder {
          * response body stream. If setting this option to true, then the
          * producers will not cache the response body stream but use the
          * response stream as-is as the message body. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T disableStreamCache(String disableStreamCache) {
             this.properties.put("disableStreamCache", disableStreamCache);
@@ -89,7 +89,7 @@ public interface ServletEndpointBuilder {
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
-         * org.apache.camel.spi.HeaderFilterStrategy type.
+         * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -98,7 +98,7 @@ public interface ServletEndpointBuilder {
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option will be converted to a
-         * org.apache.camel.spi.HeaderFilterStrategy type.
+         * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
          */
         public T headerFilterStrategy(String headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -107,7 +107,7 @@ public interface ServletEndpointBuilder {
         /**
          * To use a custom HttpBinding to control the mapping between Camel
          * message and HttpClient. The option is a
-         * org.apache.camel.http.common.HttpBinding type.
+         * <code>org.apache.camel.http.common.HttpBinding</code> type.
          */
         public T httpBinding(Object httpBinding) {
             this.properties.put("httpBinding", httpBinding);
@@ -116,7 +116,7 @@ public interface ServletEndpointBuilder {
         /**
          * To use a custom HttpBinding to control the mapping between Camel
          * message and HttpClient. The option will be converted to a
-         * org.apache.camel.http.common.HttpBinding type.
+         * <code>org.apache.camel.http.common.HttpBinding</code> type.
          */
         public T httpBinding(String httpBinding) {
             this.properties.put("httpBinding", httpBinding);
@@ -125,7 +125,7 @@ public interface ServletEndpointBuilder {
         /**
          * If this option is false the Servlet will disable the HTTP streaming
          * and set the content-length header on the response. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T chunked(boolean chunked) {
             this.properties.put("chunked", chunked);
@@ -134,7 +134,7 @@ public interface ServletEndpointBuilder {
         /**
          * If this option is false the Servlet will disable the HTTP streaming
          * and set the content-length header on the response. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T chunked(String chunked) {
             this.properties.put("chunked", chunked);
@@ -149,7 +149,7 @@ public interface ServletEndpointBuilder {
          * required to be serialized. This is by default turned off. If you
          * enable this then be aware that Java will deserialize the incoming
          * data from the request to Java and that can be a potential security
-         * risk. The option is a boolean type.
+         * risk. The option is a <code>boolean</code> type.
          */
         public T transferException(boolean transferException) {
             this.properties.put("transferException", transferException);
@@ -164,7 +164,7 @@ public interface ServletEndpointBuilder {
          * required to be serialized. This is by default turned off. If you
          * enable this then be aware that Java will deserialize the incoming
          * data from the request to Java and that can be a potential security
-         * risk. The option will be converted to a boolean type.
+         * risk. The option will be converted to a <code>boolean</code> type.
          */
         public T transferException(String transferException) {
             this.properties.put("transferException", transferException);
@@ -173,7 +173,7 @@ public interface ServletEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -182,7 +182,7 @@ public interface ServletEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -191,7 +191,7 @@ public interface ServletEndpointBuilder {
         /**
          * If this option is true then IN exchange Body of the exchange will be
          * mapped to HTTP body. Setting this to false will avoid the HTTP
-         * mapping. The option is a boolean type.
+         * mapping. The option is a <code>boolean</code> type.
          */
         public T mapHttpMessageBody(boolean mapHttpMessageBody) {
             this.properties.put("mapHttpMessageBody", mapHttpMessageBody);
@@ -200,7 +200,7 @@ public interface ServletEndpointBuilder {
         /**
          * If this option is true then IN exchange Body of the exchange will be
          * mapped to HTTP body. Setting this to false will avoid the HTTP
-         * mapping. The option will be converted to a boolean type.
+         * mapping. The option will be converted to a <code>boolean</code> type.
          */
         public T mapHttpMessageBody(String mapHttpMessageBody) {
             this.properties.put("mapHttpMessageBody", mapHttpMessageBody);
@@ -209,7 +209,8 @@ public interface ServletEndpointBuilder {
         /**
          * If this option is true then IN exchange Form Encoded body of the
          * exchange will be mapped to HTTP. Setting this to false will avoid the
-         * HTTP Form Encoded body mapping. The option is a boolean type.
+         * HTTP Form Encoded body mapping. The option is a <code>boolean</code>
+         * type.
          */
         public T mapHttpMessageFormUrlEncodedBody(
                 boolean mapHttpMessageFormUrlEncodedBody) {
@@ -220,7 +221,7 @@ public interface ServletEndpointBuilder {
          * If this option is true then IN exchange Form Encoded body of the
          * exchange will be mapped to HTTP. Setting this to false will avoid the
          * HTTP Form Encoded body mapping. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T mapHttpMessageFormUrlEncodedBody(
                 String mapHttpMessageFormUrlEncodedBody) {
@@ -230,7 +231,7 @@ public interface ServletEndpointBuilder {
         /**
          * If this option is true then IN exchange Headers of the exchange will
          * be mapped to HTTP headers. Setting this to false will avoid the HTTP
-         * Headers mapping. The option is a boolean type.
+         * Headers mapping. The option is a <code>boolean</code> type.
          */
         public T mapHttpMessageHeaders(boolean mapHttpMessageHeaders) {
             this.properties.put("mapHttpMessageHeaders", mapHttpMessageHeaders);
@@ -239,7 +240,8 @@ public interface ServletEndpointBuilder {
         /**
          * If this option is true then IN exchange Headers of the exchange will
          * be mapped to HTTP headers. Setting this to false will avoid the HTTP
-         * Headers mapping. The option will be converted to a boolean type.
+         * Headers mapping. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T mapHttpMessageHeaders(String mapHttpMessageHeaders) {
             this.properties.put("mapHttpMessageHeaders", mapHttpMessageHeaders);
@@ -248,7 +250,7 @@ public interface ServletEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -257,7 +259,7 @@ public interface ServletEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -274,15 +276,16 @@ public interface ServletEndpointBuilder {
             super(path);
         }
         /**
-         * The context-path to use. The option is a java.lang.String type.
+         * The context-path to use. The option is a
+         * <code>java.lang.String</code> type.
          */
         public ServletConsumerBuilder contextPath(String contextPath) {
             this.properties.put("contextPath", contextPath);
             return (ServletConsumerBuilder) this;
         }
         /**
-         * Configure the consumer to work in async mode. The option is a boolean
-         * type.
+         * Configure the consumer to work in async mode. The option is a
+         * <code>boolean</code> type.
          */
         public ServletConsumerBuilder async(boolean async) {
             this.properties.put("async", async);
@@ -290,7 +293,7 @@ public interface ServletEndpointBuilder {
         }
         /**
          * Configure the consumer to work in async mode. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public ServletConsumerBuilder async(String async) {
             this.properties.put("async", async);
@@ -303,7 +306,7 @@ public interface ServletEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public ServletConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -317,7 +320,7 @@ public interface ServletEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public ServletConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -327,7 +330,7 @@ public interface ServletEndpointBuilder {
         /**
          * Used to only allow consuming if the HttpMethod matches, such as
          * GET/POST/PUT etc. Multiple methods can be specified separated by
-         * comma. The option is a java.lang.String type.
+         * comma. The option is a <code>java.lang.String</code> type.
          */
         public ServletConsumerBuilder httpMethodRestrict(
                 String httpMethodRestrict) {
@@ -337,7 +340,7 @@ public interface ServletEndpointBuilder {
         /**
          * Whether or not the consumer should try to find a target consumer by
          * matching the URI prefix if no exact match is found. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public ServletConsumerBuilder matchOnUriPrefix(boolean matchOnUriPrefix) {
             this.properties.put("matchOnUriPrefix", matchOnUriPrefix);
@@ -346,7 +349,7 @@ public interface ServletEndpointBuilder {
         /**
          * Whether or not the consumer should try to find a target consumer by
          * matching the URI prefix if no exact match is found. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public ServletConsumerBuilder matchOnUriPrefix(String matchOnUriPrefix) {
             this.properties.put("matchOnUriPrefix", matchOnUriPrefix);
@@ -354,7 +357,7 @@ public interface ServletEndpointBuilder {
         }
         /**
          * To use a custom buffer size on the javax.servlet.ServletResponse. The
-         * option is a java.lang.Integer type.
+         * option is a <code>java.lang.Integer</code> type.
          */
         public ServletConsumerBuilder responseBufferSize(
                 Integer responseBufferSize) {
@@ -363,7 +366,7 @@ public interface ServletEndpointBuilder {
         }
         /**
          * To use a custom buffer size on the javax.servlet.ServletResponse. The
-         * option will be converted to a java.lang.Integer type.
+         * option will be converted to a <code>java.lang.Integer</code> type.
          */
         public ServletConsumerBuilder responseBufferSize(
                 String responseBufferSize) {
@@ -371,7 +374,8 @@ public interface ServletEndpointBuilder {
             return (ServletConsumerBuilder) this;
         }
         /**
-         * Name of the servlet to use. The option is a java.lang.String type.
+         * Name of the servlet to use. The option is a
+         * <code>java.lang.String</code> type.
          */
         public ServletConsumerBuilder servletName(String servletName) {
             this.properties.put("servletName", servletName);
@@ -383,7 +387,8 @@ public interface ServletEndpointBuilder {
          * disableStreamCache=false cannot work together. Remove
          * disableStreamCache to use AttachmentMultipartBinding. This is turn
          * off by default as this may require servlet specific configuration to
-         * enable this when using Servlet's. The option is a boolean type.
+         * enable this when using Servlet's. The option is a
+         * <code>boolean</code> type.
          */
         public ServletConsumerBuilder attachmentMultipartBinding(
                 boolean attachmentMultipartBinding) {
@@ -397,7 +402,7 @@ public interface ServletEndpointBuilder {
          * disableStreamCache to use AttachmentMultipartBinding. This is turn
          * off by default as this may require servlet specific configuration to
          * enable this when using Servlet's. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public ServletConsumerBuilder attachmentMultipartBinding(
                 String attachmentMultipartBinding) {
@@ -407,8 +412,8 @@ public interface ServletEndpointBuilder {
         /**
          * Whether to eager check whether the HTTP requests has content if the
          * content-length header is 0 or not present. This can be turned on in
-         * case HTTP clients do not send streamed data. The option is a boolean
-         * type.
+         * case HTTP clients do not send streamed data. The option is a
+         * <code>boolean</code> type.
          */
         public ServletConsumerBuilder eagerCheckContentAvailable(
                 boolean eagerCheckContentAvailable) {
@@ -419,7 +424,7 @@ public interface ServletEndpointBuilder {
          * Whether to eager check whether the HTTP requests has content if the
          * content-length header is 0 or not present. This can be turned on in
          * case HTTP clients do not send streamed data. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public ServletConsumerBuilder eagerCheckContentAvailable(
                 String eagerCheckContentAvailable) {
@@ -431,7 +436,7 @@ public interface ServletEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public ServletConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -443,7 +448,8 @@ public interface ServletEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public ServletConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -451,7 +457,7 @@ public interface ServletEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public ServletConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -460,7 +466,8 @@ public interface ServletEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public ServletConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -469,7 +476,7 @@ public interface ServletEndpointBuilder {
         /**
          * Whitelist of accepted filename extensions for accepting uploaded
          * files. Multiple extensions can be separated by comma, such as
-         * txt,xml. The option is a java.lang.String type.
+         * txt,xml. The option is a <code>java.lang.String</code> type.
          */
         public ServletConsumerBuilder fileNameExtWhitelist(
                 String fileNameExtWhitelist) {
@@ -478,7 +485,8 @@ public interface ServletEndpointBuilder {
         }
         /**
          * Specifies whether to enable HTTP OPTIONS for this Servlet consumer.
-         * By default OPTIONS is turned off. The option is a boolean type.
+         * By default OPTIONS is turned off. The option is a
+         * <code>boolean</code> type.
          */
         public ServletConsumerBuilder optionsEnabled(boolean optionsEnabled) {
             this.properties.put("optionsEnabled", optionsEnabled);
@@ -487,7 +495,7 @@ public interface ServletEndpointBuilder {
         /**
          * Specifies whether to enable HTTP OPTIONS for this Servlet consumer.
          * By default OPTIONS is turned off. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public ServletConsumerBuilder optionsEnabled(String optionsEnabled) {
             this.properties.put("optionsEnabled", optionsEnabled);
@@ -495,7 +503,8 @@ public interface ServletEndpointBuilder {
         }
         /**
          * Specifies whether to enable HTTP TRACE for this Servlet consumer. By
-         * default TRACE is turned off. The option is a boolean type.
+         * default TRACE is turned off. The option is a <code>boolean</code>
+         * type.
          */
         public ServletConsumerBuilder traceEnabled(boolean traceEnabled) {
             this.properties.put("traceEnabled", traceEnabled);
@@ -504,7 +513,7 @@ public interface ServletEndpointBuilder {
         /**
          * Specifies whether to enable HTTP TRACE for this Servlet consumer. By
          * default TRACE is turned off. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public ServletConsumerBuilder traceEnabled(String traceEnabled) {
             this.properties.put("traceEnabled", traceEnabled);

@@ -46,49 +46,54 @@ public interface CouchbaseEndpointBuilder {
             super("couchbase", path);
         }
         /**
-         * The protocol to use. The option is a java.lang.String type.
+         * The protocol to use. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T protocol(String protocol) {
             this.properties.put("protocol", protocol);
             return (T) this;
         }
         /**
-         * The hostname to use. The option is a java.lang.String type.
+         * The hostname to use. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T hostname(String hostname) {
             this.properties.put("hostname", hostname);
             return (T) this;
         }
         /**
-         * The port number to use. The option is a int type.
+         * The port number to use. The option is a <code>int</code> type.
          */
         public T port(int port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * The port number to use. The option will be converted to a int type.
+         * The port number to use. The option will be converted to a
+         * <code>int</code> type.
          */
         public T port(String port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * The bucket to use. The option is a java.lang.String type.
+         * The bucket to use. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T bucket(String bucket) {
             this.properties.put("bucket", bucket);
             return (T) this;
         }
         /**
-         * The key to use. The option is a java.lang.String type.
+         * The key to use. The option is a <code>java.lang.String</code> type.
          */
         public T key(String key) {
             this.properties.put("key", key);
             return (T) this;
         }
         /**
-         * The additional hosts. The option is a java.lang.String type.
+         * The additional hosts. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T additionalHosts(String additionalHosts) {
             this.properties.put("additionalHosts", additionalHosts);
@@ -97,7 +102,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -106,15 +111,15 @@ public interface CouchbaseEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
         /**
-         * Define the max delay during a reconnection. The option is a long
-         * type.
+         * Define the max delay during a reconnection. The option is a
+         * <code>long</code> type.
          */
         public T maxReconnectDelay(long maxReconnectDelay) {
             this.properties.put("maxReconnectDelay", maxReconnectDelay);
@@ -122,14 +127,15 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the max delay during a reconnection. The option will be
-         * converted to a long type.
+         * converted to a <code>long</code> type.
          */
         public T maxReconnectDelay(String maxReconnectDelay) {
             this.properties.put("maxReconnectDelay", maxReconnectDelay);
             return (T) this;
         }
         /**
-         * Define the observation polling interval. The option is a long type.
+         * Define the observation polling interval. The option is a
+         * <code>long</code> type.
          */
         public T obsPollInterval(long obsPollInterval) {
             this.properties.put("obsPollInterval", obsPollInterval);
@@ -137,14 +143,15 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the observation polling interval. The option will be converted
-         * to a long type.
+         * to a <code>long</code> type.
          */
         public T obsPollInterval(String obsPollInterval) {
             this.properties.put("obsPollInterval", obsPollInterval);
             return (T) this;
         }
         /**
-         * Define the observation timeout. The option is a long type.
+         * Define the observation timeout. The option is a <code>long</code>
+         * type.
          */
         public T obsTimeout(long obsTimeout) {
             this.properties.put("obsTimeout", obsTimeout);
@@ -152,7 +159,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the observation timeout. The option will be converted to a
-         * long type.
+         * <code>long</code> type.
          */
         public T obsTimeout(String obsTimeout) {
             this.properties.put("obsTimeout", obsTimeout);
@@ -160,7 +167,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the max time an operation can be in queue blocked. The option
-         * is a long type.
+         * is a <code>long</code> type.
          */
         public T opQueueMaxBlockTime(long opQueueMaxBlockTime) {
             this.properties.put("opQueueMaxBlockTime", opQueueMaxBlockTime);
@@ -168,36 +175,37 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the max time an operation can be in queue blocked. The option
-         * will be converted to a long type.
+         * will be converted to a <code>long</code> type.
          */
         public T opQueueMaxBlockTime(String opQueueMaxBlockTime) {
             this.properties.put("opQueueMaxBlockTime", opQueueMaxBlockTime);
             return (T) this;
         }
         /**
-         * Define the operation timeout. The option is a long type.
+         * Define the operation timeout. The option is a <code>long</code> type.
          */
         public T opTimeOut(long opTimeOut) {
             this.properties.put("opTimeOut", opTimeOut);
             return (T) this;
         }
         /**
-         * Define the operation timeout. The option will be converted to a long
-         * type.
+         * Define the operation timeout. The option will be converted to a
+         * <code>long</code> type.
          */
         public T opTimeOut(String opTimeOut) {
             this.properties.put("opTimeOut", opTimeOut);
             return (T) this;
         }
         /**
-         * Define the buffer size. The option is a int type.
+         * Define the buffer size. The option is a <code>int</code> type.
          */
         public T readBufferSize(int readBufferSize) {
             this.properties.put("readBufferSize", readBufferSize);
             return (T) this;
         }
         /**
-         * Define the buffer size. The option will be converted to a int type.
+         * Define the buffer size. The option will be converted to a
+         * <code>int</code> type.
          */
         public T readBufferSize(String readBufferSize) {
             this.properties.put("readBufferSize", readBufferSize);
@@ -205,7 +213,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define if we want to use optimization or not where possible. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public T shouldOptimize(boolean shouldOptimize) {
             this.properties.put("shouldOptimize", shouldOptimize);
@@ -213,7 +221,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define if we want to use optimization or not where possible. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public T shouldOptimize(String shouldOptimize) {
             this.properties.put("shouldOptimize", shouldOptimize);
@@ -222,7 +230,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -231,7 +239,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -239,7 +247,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the threshold for throwing a timeout Exception. The option is
-         * a int type.
+         * a <code>int</code> type.
          */
         public T timeoutExceptionThreshold(int timeoutExceptionThreshold) {
             this.properties.put("timeoutExceptionThreshold", timeoutExceptionThreshold);
@@ -247,21 +255,23 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the threshold for throwing a timeout Exception. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public T timeoutExceptionThreshold(String timeoutExceptionThreshold) {
             this.properties.put("timeoutExceptionThreshold", timeoutExceptionThreshold);
             return (T) this;
         }
         /**
-         * The password to use. The option is a java.lang.String type.
+         * The password to use. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * The username to use. The option is a java.lang.String type.
+         * The username to use. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -284,7 +294,7 @@ public interface CouchbaseEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -298,7 +308,7 @@ public interface CouchbaseEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -307,7 +317,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the consumer Processed strategy to use. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public CouchbaseConsumerBuilder consumerProcessedStrategy(
                 String consumerProcessedStrategy) {
@@ -316,7 +326,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define if this operation is descending or not. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder descending(boolean descending) {
             this.properties.put("descending", descending);
@@ -324,15 +334,15 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define if this operation is descending or not. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder descending(String descending) {
             this.properties.put("descending", descending);
             return (CouchbaseConsumerBuilder) this;
         }
         /**
-         * The design document name to use. The option is a java.lang.String
-         * type.
+         * The design document name to use. The option is a
+         * <code>java.lang.String</code> type.
          */
         public CouchbaseConsumerBuilder designDocumentName(
                 String designDocumentName) {
@@ -340,30 +350,31 @@ public interface CouchbaseEndpointBuilder {
             return (CouchbaseConsumerBuilder) this;
         }
         /**
-         * The output limit to use. The option is a int type.
+         * The output limit to use. The option is a <code>int</code> type.
          */
         public CouchbaseConsumerBuilder limit(int limit) {
             this.properties.put("limit", limit);
             return (CouchbaseConsumerBuilder) this;
         }
         /**
-         * The output limit to use. The option will be converted to a int type.
+         * The output limit to use. The option will be converted to a
+         * <code>int</code> type.
          */
         public CouchbaseConsumerBuilder limit(String limit) {
             this.properties.put("limit", limit);
             return (CouchbaseConsumerBuilder) this;
         }
         /**
-         * Define a range for the end key. The option is a java.lang.String
-         * type.
+         * Define a range for the end key. The option is a
+         * <code>java.lang.String</code> type.
          */
         public CouchbaseConsumerBuilder rangeEndKey(String rangeEndKey) {
             this.properties.put("rangeEndKey", rangeEndKey);
             return (CouchbaseConsumerBuilder) this;
         }
         /**
-         * Define a range for the start key. The option is a java.lang.String
-         * type.
+         * Define a range for the start key. The option is a
+         * <code>java.lang.String</code> type.
          */
         public CouchbaseConsumerBuilder rangeStartKey(String rangeStartKey) {
             this.properties.put("rangeStartKey", rangeStartKey);
@@ -372,7 +383,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -382,7 +393,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -390,21 +401,23 @@ public interface CouchbaseEndpointBuilder {
             return (CouchbaseConsumerBuilder) this;
         }
         /**
-         * Define the skip to use. The option is a int type.
+         * Define the skip to use. The option is a <code>int</code> type.
          */
         public CouchbaseConsumerBuilder skip(int skip) {
             this.properties.put("skip", skip);
             return (CouchbaseConsumerBuilder) this;
         }
         /**
-         * Define the skip to use. The option will be converted to a int type.
+         * Define the skip to use. The option will be converted to a
+         * <code>int</code> type.
          */
         public CouchbaseConsumerBuilder skip(String skip) {
             this.properties.put("skip", skip);
             return (CouchbaseConsumerBuilder) this;
         }
         /**
-         * The view name to use. The option is a java.lang.String type.
+         * The view name to use. The option is a <code>java.lang.String</code>
+         * type.
          */
         public CouchbaseConsumerBuilder viewName(String viewName) {
             this.properties.put("viewName", viewName);
@@ -415,7 +428,7 @@ public interface CouchbaseEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public CouchbaseConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -427,7 +440,8 @@ public interface CouchbaseEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public CouchbaseConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -435,7 +449,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public CouchbaseConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -444,7 +458,8 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public CouchbaseConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -455,7 +470,7 @@ public interface CouchbaseEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public CouchbaseConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -467,7 +482,8 @@ public interface CouchbaseEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public CouchbaseConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -476,7 +492,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public CouchbaseConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -486,7 +502,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public CouchbaseConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -495,7 +511,8 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public CouchbaseConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -505,7 +522,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public CouchbaseConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -518,7 +535,7 @@ public interface CouchbaseEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public CouchbaseConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -530,7 +547,7 @@ public interface CouchbaseEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public CouchbaseConsumerBuilder backoffMultiplier(
                 String backoffMultiplier) {
@@ -540,7 +557,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public CouchbaseConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -549,8 +566,8 @@ public interface CouchbaseEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public CouchbaseConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -559,7 +576,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -568,7 +585,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -577,7 +594,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public CouchbaseConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -586,8 +603,8 @@ public interface CouchbaseEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public CouchbaseConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -596,7 +613,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public CouchbaseConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -606,7 +623,8 @@ public interface CouchbaseEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public CouchbaseConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -615,8 +633,8 @@ public interface CouchbaseEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public CouchbaseConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -627,7 +645,7 @@ public interface CouchbaseEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public CouchbaseConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -637,7 +655,8 @@ public interface CouchbaseEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public CouchbaseConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -647,7 +666,8 @@ public interface CouchbaseEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public CouchbaseConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -656,7 +676,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public CouchbaseConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -666,7 +686,8 @@ public interface CouchbaseEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public CouchbaseConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -674,8 +695,8 @@ public interface CouchbaseEndpointBuilder {
             return (CouchbaseConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -683,7 +704,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -691,7 +712,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public CouchbaseConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -699,7 +720,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public CouchbaseConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -707,8 +728,8 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -717,7 +738,7 @@ public interface CouchbaseEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public CouchbaseConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -735,7 +756,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define if we want an autostart Id when we are doing an insert
-         * operation. The option is a boolean type.
+         * operation. The option is a <code>boolean</code> type.
          */
         public CouchbaseProducerBuilder autoStartIdForInserts(
                 boolean autoStartIdForInserts) {
@@ -744,7 +765,8 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define if we want an autostart Id when we are doing an insert
-         * operation. The option will be converted to a boolean type.
+         * operation. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public CouchbaseProducerBuilder autoStartIdForInserts(
                 String autoStartIdForInserts) {
@@ -752,29 +774,31 @@ public interface CouchbaseEndpointBuilder {
             return (CouchbaseProducerBuilder) this;
         }
         /**
-         * The operation to do. The option is a java.lang.String type.
+         * The operation to do. The option is a <code>java.lang.String</code>
+         * type.
          */
         public CouchbaseProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (CouchbaseProducerBuilder) this;
         }
         /**
-         * Where to persist the data. The option is a int type.
+         * Where to persist the data. The option is a <code>int</code> type.
          */
         public CouchbaseProducerBuilder persistTo(int persistTo) {
             this.properties.put("persistTo", persistTo);
             return (CouchbaseProducerBuilder) this;
         }
         /**
-         * Where to persist the data. The option will be converted to a int
-         * type.
+         * Where to persist the data. The option will be converted to a
+         * <code>int</code> type.
          */
         public CouchbaseProducerBuilder persistTo(String persistTo) {
             this.properties.put("persistTo", persistTo);
             return (CouchbaseProducerBuilder) this;
         }
         /**
-         * Define the number of retry attempts. The option is a int type.
+         * Define the number of retry attempts. The option is a <code>int</code>
+         * type.
          */
         public CouchbaseProducerBuilder producerRetryAttempts(
                 int producerRetryAttempts) {
@@ -783,7 +807,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the number of retry attempts. The option will be converted to
-         * a int type.
+         * a <code>int</code> type.
          */
         public CouchbaseProducerBuilder producerRetryAttempts(
                 String producerRetryAttempts) {
@@ -792,7 +816,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the retry pause between different attempts. The option is a
-         * int type.
+         * <code>int</code> type.
          */
         public CouchbaseProducerBuilder producerRetryPause(
                 int producerRetryPause) {
@@ -801,7 +825,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the retry pause between different attempts. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public CouchbaseProducerBuilder producerRetryPause(
                 String producerRetryPause) {
@@ -809,15 +833,15 @@ public interface CouchbaseEndpointBuilder {
             return (CouchbaseProducerBuilder) this;
         }
         /**
-         * Where to replicate the data. The option is a int type.
+         * Where to replicate the data. The option is a <code>int</code> type.
          */
         public CouchbaseProducerBuilder replicateTo(int replicateTo) {
             this.properties.put("replicateTo", replicateTo);
             return (CouchbaseProducerBuilder) this;
         }
         /**
-         * Where to replicate the data. The option will be converted to a int
-         * type.
+         * Where to replicate the data. The option will be converted to a
+         * <code>int</code> type.
          */
         public CouchbaseProducerBuilder replicateTo(String replicateTo) {
             this.properties.put("replicateTo", replicateTo);
@@ -825,7 +849,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the starting Id where we are doing an insert operation. The
-         * option is a long type.
+         * option is a <code>long</code> type.
          */
         public CouchbaseProducerBuilder startingIdForInsertsFrom(
                 long startingIdForInsertsFrom) {
@@ -834,7 +858,7 @@ public interface CouchbaseEndpointBuilder {
         }
         /**
          * Define the starting Id where we are doing an insert operation. The
-         * option will be converted to a long type.
+         * option will be converted to a <code>long</code> type.
          */
         public CouchbaseProducerBuilder startingIdForInsertsFrom(
                 String startingIdForInsertsFrom) {

@@ -37,21 +37,24 @@ public interface GoogleBigQueryEndpointBuilder {
             super("google-bigquery", path);
         }
         /**
-         * Google Cloud Project Id. The option is a java.lang.String type.
+         * Google Cloud Project Id. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T projectId(String projectId) {
             this.properties.put("projectId", projectId);
             return (T) this;
         }
         /**
-         * BigQuery Dataset Id. The option is a java.lang.String type.
+         * BigQuery Dataset Id. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T datasetId(String datasetId) {
             this.properties.put("datasetId", datasetId);
             return (T) this;
         }
         /**
-         * BigQuery table id. The option is a java.lang.String type.
+         * BigQuery table id. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T tableId(String tableId) {
             this.properties.put("tableId", tableId);
@@ -60,7 +63,7 @@ public interface GoogleBigQueryEndpointBuilder {
         /**
          * ConnectionFactory to obtain connection to Bigquery Service. If non
          * provided the default will be used. The option is a
-         * org.apache.camel.component.google.bigquery.GoogleBigQueryConnectionFactory type.
+         * <code>org.apache.camel.component.google.bigquery.GoogleBigQueryConnectionFactory</code> type.
          */
         public T connectionFactory(Object connectionFactory) {
             this.properties.put("connectionFactory", connectionFactory);
@@ -69,15 +72,15 @@ public interface GoogleBigQueryEndpointBuilder {
         /**
          * ConnectionFactory to obtain connection to Bigquery Service. If non
          * provided the default will be used. The option will be converted to a
-         * org.apache.camel.component.google.bigquery.GoogleBigQueryConnectionFactory type.
+         * <code>org.apache.camel.component.google.bigquery.GoogleBigQueryConnectionFactory</code> type.
          */
         public T connectionFactory(String connectionFactory) {
             this.properties.put("connectionFactory", connectionFactory);
             return (T) this;
         }
         /**
-         * Field name to use as insert id. The option is a java.lang.String
-         * type.
+         * Field name to use as insert id. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T useAsInsertId(String useAsInsertId) {
             this.properties.put("useAsInsertId", useAsInsertId);
@@ -86,7 +89,7 @@ public interface GoogleBigQueryEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -95,7 +98,7 @@ public interface GoogleBigQueryEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -104,7 +107,7 @@ public interface GoogleBigQueryEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -113,7 +116,7 @@ public interface GoogleBigQueryEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

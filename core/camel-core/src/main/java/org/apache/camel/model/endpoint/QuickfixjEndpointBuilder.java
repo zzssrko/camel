@@ -42,7 +42,7 @@ public interface QuickfixjEndpointBuilder {
         /**
          * The configFile is the name of the QuickFIX/J configuration to use for
          * the FIX engine (located as a resource found in your classpath). The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T configurationName(String configurationName) {
             this.properties.put("configurationName", configurationName);
@@ -54,7 +54,7 @@ public interface QuickfixjEndpointBuilder {
          * consumer configured in route definition. When false value is used,
          * the engine is started at the endpoint creation. When this parameter
          * is missing, the value of component's property lazyCreateEngines is
-         * being used. The option is a boolean type.
+         * being used. The option is a <code>boolean</code> type.
          */
         public T lazyCreateEngine(boolean lazyCreateEngine) {
             this.properties.put("lazyCreateEngine", lazyCreateEngine);
@@ -66,7 +66,8 @@ public interface QuickfixjEndpointBuilder {
          * consumer configured in route definition. When false value is used,
          * the engine is started at the endpoint creation. When this parameter
          * is missing, the value of component's property lazyCreateEngines is
-         * being used. The option will be converted to a boolean type.
+         * being used. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public T lazyCreateEngine(String lazyCreateEngine) {
             this.properties.put("lazyCreateEngine", lazyCreateEngine);
@@ -75,7 +76,7 @@ public interface QuickfixjEndpointBuilder {
         /**
          * The optional sessionID identifies a specific FIX session. The format
          * of the sessionID is:
-         * (BeginString):(SenderCompID)/(SenderSubID)/(SenderLocationID)-(TargetCompID)/(TargetSubID)/(TargetLocationID). The option is a quickfix.SessionID type.
+         * (BeginString):(SenderCompID)/(SenderSubID)/(SenderLocationID)-(TargetCompID)/(TargetSubID)/(TargetLocationID). The option is a <code>quickfix.SessionID</code> type.
          */
         public T sessionID(Object sessionID) {
             this.properties.put("sessionID", sessionID);
@@ -84,7 +85,7 @@ public interface QuickfixjEndpointBuilder {
         /**
          * The optional sessionID identifies a specific FIX session. The format
          * of the sessionID is:
-         * (BeginString):(SenderCompID)/(SenderSubID)/(SenderLocationID)-(TargetCompID)/(TargetSubID)/(TargetLocationID). The option will be converted to a quickfix.SessionID type.
+         * (BeginString):(SenderCompID)/(SenderSubID)/(SenderLocationID)-(TargetCompID)/(TargetSubID)/(TargetLocationID). The option will be converted to a <code>quickfix.SessionID</code> type.
          */
         public T sessionID(String sessionID) {
             this.properties.put("sessionID", sessionID);
@@ -93,7 +94,7 @@ public interface QuickfixjEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -102,7 +103,7 @@ public interface QuickfixjEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -111,7 +112,7 @@ public interface QuickfixjEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -120,7 +121,7 @@ public interface QuickfixjEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -143,7 +144,7 @@ public interface QuickfixjEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public QuickfixjConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -157,7 +158,7 @@ public interface QuickfixjEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public QuickfixjConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -169,7 +170,7 @@ public interface QuickfixjEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public QuickfixjConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -181,7 +182,8 @@ public interface QuickfixjEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public QuickfixjConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -189,7 +191,7 @@ public interface QuickfixjEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public QuickfixjConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -198,7 +200,8 @@ public interface QuickfixjEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public QuickfixjConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

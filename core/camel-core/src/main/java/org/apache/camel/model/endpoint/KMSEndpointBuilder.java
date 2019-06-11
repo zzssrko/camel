@@ -37,7 +37,7 @@ public interface KMSEndpointBuilder {
             super("aws-kms", path);
         }
         /**
-         * Logical name. The option is a java.lang.String type.
+         * Logical name. The option is a <code>java.lang.String</code> type.
          */
         public T label(String label) {
             this.properties.put("label", label);
@@ -45,7 +45,7 @@ public interface KMSEndpointBuilder {
         }
         /**
          * The region in which KMS client needs to work. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -54,7 +54,7 @@ public interface KMSEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -63,7 +63,7 @@ public interface KMSEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -72,7 +72,7 @@ public interface KMSEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -81,7 +81,7 @@ public interface KMSEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -98,7 +98,8 @@ public interface KMSEndpointBuilder {
             super(path);
         }
         /**
-         * Amazon AWS Access Key. The option is a java.lang.String type.
+         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public KMSProducerBuilder accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
@@ -106,7 +107,7 @@ public interface KMSEndpointBuilder {
         }
         /**
          * To use a existing configured AWS KMS as client. The option is a
-         * com.amazonaws.services.kms.AWSKMS type.
+         * <code>com.amazonaws.services.kms.AWSKMS</code> type.
          */
         public KMSProducerBuilder kmsClient(Object kmsClient) {
             this.properties.put("kmsClient", kmsClient);
@@ -114,7 +115,7 @@ public interface KMSEndpointBuilder {
         }
         /**
          * To use a existing configured AWS KMS as client. The option will be
-         * converted to a com.amazonaws.services.kms.AWSKMS type.
+         * converted to a <code>com.amazonaws.services.kms.AWSKMS</code> type.
          */
         public KMSProducerBuilder kmsClient(String kmsClient) {
             this.properties.put("kmsClient", kmsClient);
@@ -122,7 +123,7 @@ public interface KMSEndpointBuilder {
         }
         /**
          * The operation to perform. The option is a
-         * org.apache.camel.component.aws.kms.KMSOperations type.
+         * <code>org.apache.camel.component.aws.kms.KMSOperations</code> type.
          */
         public KMSProducerBuilder operation(KMSOperations operation) {
             this.properties.put("operation", operation);
@@ -130,7 +131,7 @@ public interface KMSEndpointBuilder {
         }
         /**
          * The operation to perform. The option will be converted to a
-         * org.apache.camel.component.aws.kms.KMSOperations type.
+         * <code>org.apache.camel.component.aws.kms.KMSOperations</code> type.
          */
         public KMSProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
@@ -138,7 +139,7 @@ public interface KMSEndpointBuilder {
         }
         /**
          * To define a proxy host when instantiating the KMS client. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public KMSProducerBuilder proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
@@ -146,7 +147,7 @@ public interface KMSEndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the KMS client. The option
-         * is a java.lang.Integer type.
+         * is a <code>java.lang.Integer</code> type.
          */
         public KMSProducerBuilder proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -154,14 +155,15 @@ public interface KMSEndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the KMS client. The option
-         * will be converted to a java.lang.Integer type.
+         * will be converted to a <code>java.lang.Integer</code> type.
          */
         public KMSProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (KMSProducerBuilder) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a java.lang.String type.
+         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public KMSProducerBuilder secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);

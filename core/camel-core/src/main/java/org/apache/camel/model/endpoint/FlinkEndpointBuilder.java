@@ -38,7 +38,7 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * Type of the endpoint (dataset, datastream). The option is a
-         * org.apache.camel.component.flink.EndpointType type.
+         * <code>org.apache.camel.component.flink.EndpointType</code> type.
          */
         public T endpointType(EndpointType endpointType) {
             this.properties.put("endpointType", endpointType);
@@ -46,7 +46,8 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * Type of the endpoint (dataset, datastream). The option will be
-         * converted to a org.apache.camel.component.flink.EndpointType type.
+         * converted to a
+         * <code>org.apache.camel.component.flink.EndpointType</code> type.
          */
         public T endpointType(String endpointType) {
             this.properties.put("endpointType", endpointType);
@@ -54,7 +55,7 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * Indicates if results should be collected or counted. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T collect(boolean collect) {
             this.properties.put("collect", collect);
@@ -62,7 +63,7 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * Indicates if results should be collected or counted. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public T collect(String collect) {
             this.properties.put("collect", collect);
@@ -70,7 +71,7 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * DataSet to compute against. The option is a
-         * org.apache.flink.api.java.DataSet type.
+         * <code>org.apache.flink.api.java.DataSet</code> type.
          */
         public T dataSet(Object dataSet) {
             this.properties.put("dataSet", dataSet);
@@ -78,7 +79,7 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * DataSet to compute against. The option will be converted to a
-         * org.apache.flink.api.java.DataSet type.
+         * <code>org.apache.flink.api.java.DataSet</code> type.
          */
         public T dataSet(String dataSet) {
             this.properties.put("dataSet", dataSet);
@@ -86,7 +87,7 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * Function performing action against a DataSet. The option is a
-         * org.apache.camel.component.flink.DataSetCallback type.
+         * <code>org.apache.camel.component.flink.DataSetCallback</code> type.
          */
         public T dataSetCallback(Object dataSetCallback) {
             this.properties.put("dataSetCallback", dataSetCallback);
@@ -94,7 +95,8 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * Function performing action against a DataSet. The option will be
-         * converted to a org.apache.camel.component.flink.DataSetCallback type.
+         * converted to a
+         * <code>org.apache.camel.component.flink.DataSetCallback</code> type.
          */
         public T dataSetCallback(String dataSetCallback) {
             this.properties.put("dataSetCallback", dataSetCallback);
@@ -102,7 +104,8 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * DataStream to compute against. The option is a
-         * org.apache.flink.streaming.api.datastream.DataStream type.
+         * <code>org.apache.flink.streaming.api.datastream.DataStream</code>
+         * type.
          */
         public T dataStream(Object dataStream) {
             this.properties.put("dataStream", dataStream);
@@ -110,7 +113,8 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * DataStream to compute against. The option will be converted to a
-         * org.apache.flink.streaming.api.datastream.DataStream type.
+         * <code>org.apache.flink.streaming.api.datastream.DataStream</code>
+         * type.
          */
         public T dataStream(String dataStream) {
             this.properties.put("dataStream", dataStream);
@@ -118,7 +122,8 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * Function performing action against a DataStream. The option is a
-         * org.apache.camel.component.flink.DataStreamCallback type.
+         * <code>org.apache.camel.component.flink.DataStreamCallback</code>
+         * type.
          */
         public T dataStreamCallback(Object dataStreamCallback) {
             this.properties.put("dataStreamCallback", dataStreamCallback);
@@ -126,7 +131,8 @@ public interface FlinkEndpointBuilder {
         }
         /**
          * Function performing action against a DataStream. The option will be
-         * converted to a org.apache.camel.component.flink.DataStreamCallback
+         * converted to a
+         * <code>org.apache.camel.component.flink.DataStreamCallback</code>
          * type.
          */
         public T dataStreamCallback(String dataStreamCallback) {
@@ -136,7 +142,7 @@ public interface FlinkEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -145,7 +151,7 @@ public interface FlinkEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -154,7 +160,7 @@ public interface FlinkEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -163,7 +169,7 @@ public interface FlinkEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

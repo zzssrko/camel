@@ -45,22 +45,23 @@ public interface SplunkEndpointBuilder {
             super("splunk", path);
         }
         /**
-         * Name has no purpose. The option is a java.lang.String type.
+         * Name has no purpose. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T name(String name) {
             this.properties.put("name", name);
             return (T) this;
         }
         /**
-         * Splunk app. The option is a java.lang.String type.
+         * Splunk app. The option is a <code>java.lang.String</code> type.
          */
         public T app(String app) {
             this.properties.put("app", app);
             return (T) this;
         }
         /**
-         * Timeout in MS when connecting to Splunk server. The option is a int
-         * type.
+         * Timeout in MS when connecting to Splunk server. The option is a
+         * <code>int</code> type.
          */
         public T connectionTimeout(int connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
@@ -68,42 +69,42 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Timeout in MS when connecting to Splunk server. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public T connectionTimeout(String connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
         /**
-         * Splunk host. The option is a java.lang.String type.
+         * Splunk host. The option is a <code>java.lang.String</code> type.
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * Splunk owner. The option is a java.lang.String type.
+         * Splunk owner. The option is a <code>java.lang.String</code> type.
          */
         public T owner(String owner) {
             this.properties.put("owner", owner);
             return (T) this;
         }
         /**
-         * Splunk port. The option is a int type.
+         * Splunk port. The option is a <code>int</code> type.
          */
         public T port(int port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Splunk port. The option will be converted to a int type.
+         * Splunk port. The option will be converted to a <code>int</code> type.
          */
         public T port(String port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Splunk scheme. The option is a java.lang.String type.
+         * Splunk scheme. The option is a <code>java.lang.String</code> type.
          */
         public T scheme(String scheme) {
             this.properties.put("scheme", scheme);
@@ -112,7 +113,7 @@ public interface SplunkEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -121,7 +122,7 @@ public interface SplunkEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -130,7 +131,7 @@ public interface SplunkEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -139,14 +140,15 @@ public interface SplunkEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Password for Splunk. The option is a java.lang.String type.
+         * Password for Splunk. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T password(String password) {
             this.properties.put("password", password);
@@ -154,7 +156,7 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Set the ssl protocol to use. The option is a
-         * com.splunk.SSLSecurityProtocol type.
+         * <code>com.splunk.SSLSecurityProtocol</code> type.
          */
         public T sslProtocol(SSLSecurityProtocol sslProtocol) {
             this.properties.put("sslProtocol", sslProtocol);
@@ -162,14 +164,15 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Set the ssl protocol to use. The option will be converted to a
-         * com.splunk.SSLSecurityProtocol type.
+         * <code>com.splunk.SSLSecurityProtocol</code> type.
          */
         public T sslProtocol(String sslProtocol) {
             this.properties.put("sslProtocol", sslProtocol);
             return (T) this;
         }
         /**
-         * Username for Splunk. The option is a java.lang.String type.
+         * Username for Splunk. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -178,7 +181,8 @@ public interface SplunkEndpointBuilder {
         /**
          * Use sun.net.www.protocol.https.Handler Https handler to establish the
          * Splunk Connection. Can be useful when running in application servers
-         * to avoid app. server https handling. The option is a boolean type.
+         * to avoid app. server https handling. The option is a
+         * <code>boolean</code> type.
          */
         public T useSunHttpsHandler(boolean useSunHttpsHandler) {
             this.properties.put("useSunHttpsHandler", useSunHttpsHandler);
@@ -188,7 +192,7 @@ public interface SplunkEndpointBuilder {
          * Use sun.net.www.protocol.https.Handler Https handler to establish the
          * Splunk Connection. Can be useful when running in application servers
          * to avoid app. server https handling. The option will be converted to
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public T useSunHttpsHandler(String useSunHttpsHandler) {
             this.properties.put("useSunHttpsHandler", useSunHttpsHandler);
@@ -211,7 +215,7 @@ public interface SplunkEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public SplunkConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -225,7 +229,7 @@ public interface SplunkEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public SplunkConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -234,7 +238,7 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * A number that indicates the maximum number of entities to return. The
-         * option is a int type.
+         * option is a <code>int</code> type.
          */
         public SplunkConsumerBuilder count(int count) {
             this.properties.put("count", count);
@@ -242,7 +246,7 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * A number that indicates the maximum number of entities to return. The
-         * option will be converted to a int type.
+         * option will be converted to a <code>int</code> type.
          */
         public SplunkConsumerBuilder count(String count) {
             this.properties.put("count", count);
@@ -250,7 +254,7 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Earliest time of the search time window. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public SplunkConsumerBuilder earliestTime(String earliestTime) {
             this.properties.put("earliestTime", earliestTime);
@@ -258,7 +262,7 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Initial start offset of the first search. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public SplunkConsumerBuilder initEarliestTime(String initEarliestTime) {
             this.properties.put("initEarliestTime", initEarliestTime);
@@ -266,7 +270,7 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Latest time of the search time window. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public SplunkConsumerBuilder latestTime(String latestTime) {
             this.properties.put("latestTime", latestTime);
@@ -274,14 +278,15 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * The name of the query saved in Splunk to run. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public SplunkConsumerBuilder savedSearch(String savedSearch) {
             this.properties.put("savedSearch", savedSearch);
             return (SplunkConsumerBuilder) this;
         }
         /**
-         * The Splunk query to run. The option is a java.lang.String type.
+         * The Splunk query to run. The option is a
+         * <code>java.lang.String</code> type.
          */
         public SplunkConsumerBuilder search(String search) {
             this.properties.put("search", search);
@@ -290,7 +295,7 @@ public interface SplunkEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public SplunkConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -300,7 +305,7 @@ public interface SplunkEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public SplunkConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -309,8 +314,8 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Sets streaming mode. Streaming mode sends exchanges as they are
-         * received, rather than in a batch. The option is a java.lang.Boolean
-         * type.
+         * received, rather than in a batch. The option is a
+         * <code>java.lang.Boolean</code> type.
          */
         public SplunkConsumerBuilder streaming(Boolean streaming) {
             this.properties.put("streaming", streaming);
@@ -319,7 +324,7 @@ public interface SplunkEndpointBuilder {
         /**
          * Sets streaming mode. Streaming mode sends exchanges as they are
          * received, rather than in a batch. The option will be converted to a
-         * java.lang.Boolean type.
+         * <code>java.lang.Boolean</code> type.
          */
         public SplunkConsumerBuilder streaming(String streaming) {
             this.properties.put("streaming", streaming);
@@ -330,7 +335,7 @@ public interface SplunkEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public SplunkConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -342,7 +347,8 @@ public interface SplunkEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public SplunkConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -350,7 +356,7 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public SplunkConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -359,7 +365,8 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public SplunkConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -370,7 +377,7 @@ public interface SplunkEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public SplunkConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -382,7 +389,8 @@ public interface SplunkEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public SplunkConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -391,7 +399,7 @@ public interface SplunkEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public SplunkConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -401,7 +409,7 @@ public interface SplunkEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public SplunkConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -410,7 +418,8 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public SplunkConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -420,7 +429,7 @@ public interface SplunkEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public SplunkConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -433,7 +442,7 @@ public interface SplunkEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public SplunkConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -445,7 +454,7 @@ public interface SplunkEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public SplunkConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -454,7 +463,7 @@ public interface SplunkEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public SplunkConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -463,8 +472,8 @@ public interface SplunkEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public SplunkConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -473,7 +482,7 @@ public interface SplunkEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public SplunkConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -482,7 +491,7 @@ public interface SplunkEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public SplunkConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -491,7 +500,7 @@ public interface SplunkEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public SplunkConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -500,8 +509,8 @@ public interface SplunkEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public SplunkConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -510,7 +519,7 @@ public interface SplunkEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public SplunkConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -520,7 +529,8 @@ public interface SplunkEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public SplunkConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -529,8 +539,8 @@ public interface SplunkEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public SplunkConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -541,7 +551,7 @@ public interface SplunkEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public SplunkConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -551,7 +561,8 @@ public interface SplunkEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public SplunkConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -561,7 +572,8 @@ public interface SplunkEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public SplunkConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -570,7 +582,7 @@ public interface SplunkEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public SplunkConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -580,7 +592,8 @@ public interface SplunkEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public SplunkConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -588,8 +601,8 @@ public interface SplunkEndpointBuilder {
             return (SplunkConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public SplunkConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -597,7 +610,7 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public SplunkConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -605,7 +618,7 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public SplunkConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -613,7 +626,7 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public SplunkConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -621,8 +634,8 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public SplunkConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -631,7 +644,7 @@ public interface SplunkEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public SplunkConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -649,21 +662,23 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Override the default Splunk event host field. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public SplunkProducerBuilder eventHost(String eventHost) {
             this.properties.put("eventHost", eventHost);
             return (SplunkProducerBuilder) this;
         }
         /**
-         * Splunk index to write to. The option is a java.lang.String type.
+         * Splunk index to write to. The option is a
+         * <code>java.lang.String</code> type.
          */
         public SplunkProducerBuilder index(String index) {
             this.properties.put("index", index);
             return (SplunkProducerBuilder) this;
         }
         /**
-         * Should the payload be inserted raw. The option is a boolean type.
+         * Should the payload be inserted raw. The option is a
+         * <code>boolean</code> type.
          */
         public SplunkProducerBuilder raw(boolean raw) {
             this.properties.put("raw", raw);
@@ -671,35 +686,38 @@ public interface SplunkEndpointBuilder {
         }
         /**
          * Should the payload be inserted raw. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public SplunkProducerBuilder raw(String raw) {
             this.properties.put("raw", raw);
             return (SplunkProducerBuilder) this;
         }
         /**
-         * Splunk source argument. The option is a java.lang.String type.
+         * Splunk source argument. The option is a <code>java.lang.String</code>
+         * type.
          */
         public SplunkProducerBuilder source(String source) {
             this.properties.put("source", source);
             return (SplunkProducerBuilder) this;
         }
         /**
-         * Splunk sourcetype argument. The option is a java.lang.String type.
+         * Splunk sourcetype argument. The option is a
+         * <code>java.lang.String</code> type.
          */
         public SplunkProducerBuilder sourceType(String sourceType) {
             this.properties.put("sourceType", sourceType);
             return (SplunkProducerBuilder) this;
         }
         /**
-         * Splunk tcp receiver port. The option is a int type.
+         * Splunk tcp receiver port. The option is a <code>int</code> type.
          */
         public SplunkProducerBuilder tcpReceiverPort(int tcpReceiverPort) {
             this.properties.put("tcpReceiverPort", tcpReceiverPort);
             return (SplunkProducerBuilder) this;
         }
         /**
-         * Splunk tcp receiver port. The option will be converted to a int type.
+         * Splunk tcp receiver port. The option will be converted to a
+         * <code>int</code> type.
          */
         public SplunkProducerBuilder tcpReceiverPort(String tcpReceiverPort) {
             this.properties.put("tcpReceiverPort", tcpReceiverPort);

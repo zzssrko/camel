@@ -37,7 +37,7 @@ public interface MSKEndpointBuilder {
             super("aws-msk", path);
         }
         /**
-         * Logical name. The option is a java.lang.String type.
+         * Logical name. The option is a <code>java.lang.String</code> type.
          */
         public T label(String label) {
             this.properties.put("label", label);
@@ -45,7 +45,7 @@ public interface MSKEndpointBuilder {
         }
         /**
          * The region in which MSK client needs to work. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -54,7 +54,7 @@ public interface MSKEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -63,7 +63,7 @@ public interface MSKEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -72,7 +72,7 @@ public interface MSKEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -81,7 +81,7 @@ public interface MSKEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -98,7 +98,8 @@ public interface MSKEndpointBuilder {
             super(path);
         }
         /**
-         * Amazon AWS Access Key. The option is a java.lang.String type.
+         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public MSKProducerBuilder accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
@@ -106,7 +107,7 @@ public interface MSKEndpointBuilder {
         }
         /**
          * To use a existing configured AWS MSK as client. The option is a
-         * com.amazonaws.services.kafka.AWSKafka type.
+         * <code>com.amazonaws.services.kafka.AWSKafka</code> type.
          */
         public MSKProducerBuilder mskClient(Object mskClient) {
             this.properties.put("mskClient", mskClient);
@@ -114,7 +115,8 @@ public interface MSKEndpointBuilder {
         }
         /**
          * To use a existing configured AWS MSK as client. The option will be
-         * converted to a com.amazonaws.services.kafka.AWSKafka type.
+         * converted to a <code>com.amazonaws.services.kafka.AWSKafka</code>
+         * type.
          */
         public MSKProducerBuilder mskClient(String mskClient) {
             this.properties.put("mskClient", mskClient);
@@ -122,7 +124,7 @@ public interface MSKEndpointBuilder {
         }
         /**
          * The operation to perform. The option is a
-         * org.apache.camel.component.aws.msk.MSKOperations type.
+         * <code>org.apache.camel.component.aws.msk.MSKOperations</code> type.
          */
         public MSKProducerBuilder operation(MSKOperations operation) {
             this.properties.put("operation", operation);
@@ -130,7 +132,7 @@ public interface MSKEndpointBuilder {
         }
         /**
          * The operation to perform. The option will be converted to a
-         * org.apache.camel.component.aws.msk.MSKOperations type.
+         * <code>org.apache.camel.component.aws.msk.MSKOperations</code> type.
          */
         public MSKProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
@@ -138,7 +140,7 @@ public interface MSKEndpointBuilder {
         }
         /**
          * To define a proxy host when instantiating the MSK client. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public MSKProducerBuilder proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
@@ -146,7 +148,7 @@ public interface MSKEndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the MSK client. The option
-         * is a java.lang.Integer type.
+         * is a <code>java.lang.Integer</code> type.
          */
         public MSKProducerBuilder proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -154,14 +156,15 @@ public interface MSKEndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the MSK client. The option
-         * will be converted to a java.lang.Integer type.
+         * will be converted to a <code>java.lang.Integer</code> type.
          */
         public MSKProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (MSKProducerBuilder) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a java.lang.String type.
+         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public MSKProducerBuilder secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);

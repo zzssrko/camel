@@ -40,7 +40,7 @@ public interface DrillEndpointBuilder {
         /**
          * ZooKeeper host name or IP address. Use local instead of a host name
          * or IP address to connect to the local Drillbit. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T host(String host) {
             this.properties.put("host", host);
@@ -48,14 +48,15 @@ public interface DrillEndpointBuilder {
         }
         /**
          * Cluster ID
-         * https://drill.apache.org/docs/using-the-jdbc-driver/#determining-the-cluster-id. The option is a java.lang.String type.
+         * https://drill.apache.org/docs/using-the-jdbc-driver/#determining-the-cluster-id. The option is a <code>java.lang.String</code> type.
          */
         public T clusterId(String clusterId) {
             this.properties.put("clusterId", clusterId);
             return (T) this;
         }
         /**
-         * Drill directory in ZooKeeper. The option is a java.lang.String type.
+         * Drill directory in ZooKeeper. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T directory(String directory) {
             this.properties.put("directory", directory);
@@ -64,7 +65,8 @@ public interface DrillEndpointBuilder {
         /**
          * Connection mode: zk: Zookeeper drillbit: Drillbit direct connection
          * https://drill.apache.org/docs/using-the-jdbc-driver/. The option is a
-         * org.apache.camel.component.drill.DrillConnectionMode type.
+         * <code>org.apache.camel.component.drill.DrillConnectionMode</code>
+         * type.
          */
         public T mode(DrillConnectionMode mode) {
             this.properties.put("mode", mode);
@@ -74,14 +76,16 @@ public interface DrillEndpointBuilder {
          * Connection mode: zk: Zookeeper drillbit: Drillbit direct connection
          * https://drill.apache.org/docs/using-the-jdbc-driver/. The option will
          * be converted to a
-         * org.apache.camel.component.drill.DrillConnectionMode type.
+         * <code>org.apache.camel.component.drill.DrillConnectionMode</code>
+         * type.
          */
         public T mode(String mode) {
             this.properties.put("mode", mode);
             return (T) this;
         }
         /**
-         * ZooKeeper port number. The option is a java.lang.Integer type.
+         * ZooKeeper port number. The option is a <code>java.lang.Integer</code>
+         * type.
          */
         public T port(Integer port) {
             this.properties.put("port", port);
@@ -89,7 +93,7 @@ public interface DrillEndpointBuilder {
         }
         /**
          * ZooKeeper port number. The option will be converted to a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T port(String port) {
             this.properties.put("port", port);
@@ -98,7 +102,7 @@ public interface DrillEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -107,7 +111,7 @@ public interface DrillEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -116,7 +120,7 @@ public interface DrillEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -125,7 +129,7 @@ public interface DrillEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

@@ -46,8 +46,8 @@ public interface Jt400EndpointBuilder {
             super("jt400", path);
         }
         /**
-         * Returns the ID of the AS/400 user. The option is a java.lang.String
-         * type.
+         * Returns the ID of the AS/400 user. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T userID(String userID) {
             this.properties.put("userID", userID);
@@ -55,7 +55,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Returns the password of the AS/400 user. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T password(String password) {
             this.properties.put("password", password);
@@ -63,7 +63,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Returns the name of the AS/400 system. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T systemName(String systemName) {
             this.properties.put("systemName", systemName);
@@ -71,8 +71,8 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Returns the fully qualified integrated file system path name of the
-         * target object of this endpoint. The option is a java.lang.String
-         * type.
+         * target object of this endpoint. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T objectPath(String objectPath) {
             this.properties.put("objectPath", objectPath);
@@ -80,7 +80,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Whether to work with data queues or remote program call. The option
-         * is a org.apache.camel.component.jt400.Jt400Type type.
+         * is a <code>org.apache.camel.component.jt400.Jt400Type</code> type.
          */
         public T type(Jt400Type type) {
             this.properties.put("type", type);
@@ -88,8 +88,8 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Whether to work with data queues or remote program call. The option
-         * will be converted to a org.apache.camel.component.jt400.Jt400Type
-         * type.
+         * will be converted to a
+         * <code>org.apache.camel.component.jt400.Jt400Type</code> type.
          */
         public T type(String type) {
             this.properties.put("type", type);
@@ -97,7 +97,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Sets the CCSID to use for the connection with the AS/400 system. The
-         * option is a int type.
+         * option is a <code>int</code> type.
          */
         public T ccsid(int ccsid) {
             this.properties.put("ccsid", ccsid);
@@ -105,7 +105,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Sets the CCSID to use for the connection with the AS/400 system. The
-         * option will be converted to a int type.
+         * option will be converted to a <code>int</code> type.
          */
         public T ccsid(String ccsid) {
             this.properties.put("ccsid", ccsid);
@@ -113,16 +113,16 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Sets the data format for sending messages. The option is a
-         * org.apache.camel.component.jt400.Jt400Configuration.Format type.
+         * <code>org.apache.camel.component.jt400.Jt400Configuration$Format</code> type.
          */
-        public T format(Object format) {
+        public T format(Format format) {
             this.properties.put("format", format);
             return (T) this;
         }
         /**
          * Sets the data format for sending messages. The option will be
          * converted to a
-         * org.apache.camel.component.jt400.Jt400Configuration.Format type.
+         * <code>org.apache.camel.component.jt400.Jt400Configuration$Format</code> type.
          */
         public T format(String format) {
             this.properties.put("format", format);
@@ -130,7 +130,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Sets whether AS/400 prompting is enabled in the environment running
-         * Camel. The option is a boolean type.
+         * Camel. The option is a <code>boolean</code> type.
          */
         public T guiAvailable(boolean guiAvailable) {
             this.properties.put("guiAvailable", guiAvailable);
@@ -138,7 +138,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Sets whether AS/400 prompting is enabled in the environment running
-         * Camel. The option will be converted to a boolean type.
+         * Camel. The option will be converted to a <code>boolean</code> type.
          */
         public T guiAvailable(String guiAvailable) {
             this.properties.put("guiAvailable", guiAvailable);
@@ -146,7 +146,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Whether to use keyed or non-keyed data queues. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T keyed(boolean keyed) {
             this.properties.put("keyed", keyed);
@@ -154,7 +154,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Whether to use keyed or non-keyed data queues. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T keyed(String keyed) {
             this.properties.put("keyed", keyed);
@@ -162,7 +162,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Specifies which fields (program parameters) are output parameters.
-         * The option is a java.lang.Integer[] type.
+         * The option is a <code>java.lang.Integer[]</code> type.
          */
         public T outputFieldsIdxArray(Integer[] outputFieldsIdxArray) {
             this.properties.put("outputFieldsIdxArray", outputFieldsIdxArray);
@@ -170,7 +170,8 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Specifies which fields (program parameters) are output parameters.
-         * The option will be converted to a java.lang.Integer[] type.
+         * The option will be converted to a <code>java.lang.Integer[]</code>
+         * type.
          */
         public T outputFieldsIdxArray(String outputFieldsIdxArray) {
             this.properties.put("outputFieldsIdxArray", outputFieldsIdxArray);
@@ -178,7 +179,8 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Specifies the fields (program parameters) length as in the AS/400
-         * program definition. The option is a java.lang.Integer[] type.
+         * program definition. The option is a <code>java.lang.Integer[]</code>
+         * type.
          */
         public T outputFieldsLengthArray(Integer[] outputFieldsLengthArray) {
             this.properties.put("outputFieldsLengthArray", outputFieldsLengthArray);
@@ -187,15 +189,15 @@ public interface Jt400EndpointBuilder {
         /**
          * Specifies the fields (program parameters) length as in the AS/400
          * program definition. The option will be converted to a
-         * java.lang.Integer[] type.
+         * <code>java.lang.Integer[]</code> type.
          */
         public T outputFieldsLengthArray(String outputFieldsLengthArray) {
             this.properties.put("outputFieldsLengthArray", outputFieldsLengthArray);
             return (T) this;
         }
         /**
-         * Search key for keyed data queues. The option is a java.lang.String
-         * type.
+         * Search key for keyed data queues. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T searchKey(String searchKey) {
             this.properties.put("searchKey", searchKey);
@@ -203,16 +205,16 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Search type such as EQ for equal etc. The option is a
-         * org.apache.camel.component.jt400.Jt400Configuration.SearchType type.
+         * <code>org.apache.camel.component.jt400.Jt400Configuration$SearchType</code> type.
          */
-        public T searchType(Object searchType) {
+        public T searchType(SearchType searchType) {
             this.properties.put("searchType", searchType);
             return (T) this;
         }
         /**
          * Search type such as EQ for equal etc. The option will be converted to
-         * a org.apache.camel.component.jt400.Jt400Configuration.SearchType
-         * type.
+         * a
+         * <code>org.apache.camel.component.jt400.Jt400Configuration$SearchType</code> type.
          */
         public T searchType(String searchType) {
             this.properties.put("searchType", searchType);
@@ -221,7 +223,7 @@ public interface Jt400EndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -230,7 +232,7 @@ public interface Jt400EndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -239,7 +241,7 @@ public interface Jt400EndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -248,7 +250,7 @@ public interface Jt400EndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -256,7 +258,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Procedure name from a service program to call. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T procedureName(String procedureName) {
             this.properties.put("procedureName", procedureName);
@@ -264,7 +266,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Whether connections to AS/400 are secured with SSL. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T secured(boolean secured) {
             this.properties.put("secured", secured);
@@ -272,7 +274,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Whether connections to AS/400 are secured with SSL. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public T secured(String secured) {
             this.properties.put("secured", secured);
@@ -295,7 +297,7 @@ public interface Jt400EndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public Jt400ConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -309,7 +311,7 @@ public interface Jt400EndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public Jt400ConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -317,7 +319,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Timeout in millis the consumer will wait while trying to read a new
-         * message of the data queue. The option is a int type.
+         * message of the data queue. The option is a <code>int</code> type.
          */
         public Jt400ConsumerBuilder readTimeout(int readTimeout) {
             this.properties.put("readTimeout", readTimeout);
@@ -325,8 +327,8 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Timeout in millis the consumer will wait while trying to read a new
-         * message of the data queue. The option will be converted to a int
-         * type.
+         * message of the data queue. The option will be converted to a
+         * <code>int</code> type.
          */
         public Jt400ConsumerBuilder readTimeout(String readTimeout) {
             this.properties.put("readTimeout", readTimeout);
@@ -335,7 +337,7 @@ public interface Jt400EndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public Jt400ConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -345,7 +347,7 @@ public interface Jt400EndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public Jt400ConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -357,7 +359,7 @@ public interface Jt400EndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public Jt400ConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -369,7 +371,8 @@ public interface Jt400EndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public Jt400ConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -377,7 +380,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public Jt400ConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -386,7 +389,8 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public Jt400ConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -397,7 +401,7 @@ public interface Jt400EndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public Jt400ConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -409,7 +413,8 @@ public interface Jt400EndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public Jt400ConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -418,7 +423,7 @@ public interface Jt400EndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public Jt400ConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -428,7 +433,7 @@ public interface Jt400EndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public Jt400ConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -437,7 +442,8 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public Jt400ConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -447,7 +453,7 @@ public interface Jt400EndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public Jt400ConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -460,7 +466,7 @@ public interface Jt400EndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public Jt400ConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -472,7 +478,7 @@ public interface Jt400EndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public Jt400ConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -481,7 +487,7 @@ public interface Jt400EndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public Jt400ConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -490,8 +496,8 @@ public interface Jt400EndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public Jt400ConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -500,7 +506,7 @@ public interface Jt400EndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public Jt400ConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -509,7 +515,7 @@ public interface Jt400EndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public Jt400ConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -518,7 +524,7 @@ public interface Jt400EndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public Jt400ConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -527,8 +533,8 @@ public interface Jt400EndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public Jt400ConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -537,7 +543,7 @@ public interface Jt400EndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public Jt400ConsumerBuilder runLoggingLevel(LoggingLevel runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -546,7 +552,8 @@ public interface Jt400EndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public Jt400ConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -555,8 +562,8 @@ public interface Jt400EndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public Jt400ConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -567,7 +574,7 @@ public interface Jt400EndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public Jt400ConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -577,7 +584,8 @@ public interface Jt400EndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public Jt400ConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -587,7 +595,8 @@ public interface Jt400EndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public Jt400ConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -596,7 +605,7 @@ public interface Jt400EndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public Jt400ConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -606,7 +615,8 @@ public interface Jt400EndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public Jt400ConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -614,8 +624,8 @@ public interface Jt400EndpointBuilder {
             return (Jt400ConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public Jt400ConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -623,7 +633,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public Jt400ConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -631,7 +641,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public Jt400ConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -639,7 +649,7 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public Jt400ConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -647,8 +657,8 @@ public interface Jt400EndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public Jt400ConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -657,7 +667,7 @@ public interface Jt400EndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public Jt400ConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -677,6 +687,14 @@ public interface Jt400EndpointBuilder {
 
     public static enum Jt400Type {
         DTAQ, PGM, SRVPGM;
+    }
+
+    public static enum Format {
+        text, binary;
+    }
+
+    public static enum SearchType {
+        EQ, NE, LT, LE, GT, GE;
     }
     public default Jt400ConsumerBuilder fromJt400(String path) {
         return new Jt400ConsumerBuilder(path);

@@ -43,7 +43,8 @@ public interface JoltEndpointBuilder {
          * protocols (classpath is default). ref will lookup the resource in the
          * registry. bean will call a method on a bean to be used as the
          * resource. For bean you can specify the method name after dot, eg
-         * bean:myBean.myMethod. The option is a java.lang.String type.
+         * bean:myBean.myMethod. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
@@ -51,7 +52,7 @@ public interface JoltEndpointBuilder {
         }
         /**
          * Sets whether to use resource content cache or not. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T contentCache(boolean contentCache) {
             this.properties.put("contentCache", contentCache);
@@ -59,7 +60,7 @@ public interface JoltEndpointBuilder {
         }
         /**
          * Sets whether to use resource content cache or not. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T contentCache(String contentCache) {
             this.properties.put("contentCache", contentCache);
@@ -67,7 +68,8 @@ public interface JoltEndpointBuilder {
         }
         /**
          * Specifies if the input is hydrated JSON or a JSON String. The option
-         * is a org.apache.camel.component.jolt.JoltInputOutputType type.
+         * is a <code>org.apache.camel.component.jolt.JoltInputOutputType</code>
+         * type.
          */
         public T inputType(JoltInputOutputType inputType) {
             this.properties.put("inputType", inputType);
@@ -76,7 +78,8 @@ public interface JoltEndpointBuilder {
         /**
          * Specifies if the input is hydrated JSON or a JSON String. The option
          * will be converted to a
-         * org.apache.camel.component.jolt.JoltInputOutputType type.
+         * <code>org.apache.camel.component.jolt.JoltInputOutputType</code>
+         * type.
          */
         public T inputType(String inputType) {
             this.properties.put("inputType", inputType);
@@ -84,7 +87,9 @@ public interface JoltEndpointBuilder {
         }
         /**
          * Specifies if the output should be hydrated JSON or a JSON String. The
-         * option is a org.apache.camel.component.jolt.JoltInputOutputType type.
+         * option is a
+         * <code>org.apache.camel.component.jolt.JoltInputOutputType</code>
+         * type.
          */
         public T outputType(JoltInputOutputType outputType) {
             this.properties.put("outputType", outputType);
@@ -93,7 +98,8 @@ public interface JoltEndpointBuilder {
         /**
          * Specifies if the output should be hydrated JSON or a JSON String. The
          * option will be converted to a
-         * org.apache.camel.component.jolt.JoltInputOutputType type.
+         * <code>org.apache.camel.component.jolt.JoltInputOutputType</code>
+         * type.
          */
         public T outputType(String outputType) {
             this.properties.put("outputType", outputType);
@@ -102,7 +108,7 @@ public interface JoltEndpointBuilder {
         /**
          * Specifies the Transform DSL of the endpoint resource. If none is
          * specified Chainr will be used. The option is a
-         * org.apache.camel.component.jolt.JoltTransformType type.
+         * <code>org.apache.camel.component.jolt.JoltTransformType</code> type.
          */
         public T transformDsl(JoltTransformType transformDsl) {
             this.properties.put("transformDsl", transformDsl);
@@ -111,7 +117,7 @@ public interface JoltEndpointBuilder {
         /**
          * Specifies the Transform DSL of the endpoint resource. If none is
          * specified Chainr will be used. The option will be converted to a
-         * org.apache.camel.component.jolt.JoltTransformType type.
+         * <code>org.apache.camel.component.jolt.JoltTransformType</code> type.
          */
         public T transformDsl(String transformDsl) {
             this.properties.put("transformDsl", transformDsl);
@@ -120,7 +126,7 @@ public interface JoltEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -129,7 +135,7 @@ public interface JoltEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -138,7 +144,7 @@ public interface JoltEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -147,7 +153,7 @@ public interface JoltEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

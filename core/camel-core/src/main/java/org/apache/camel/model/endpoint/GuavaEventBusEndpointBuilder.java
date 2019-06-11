@@ -41,7 +41,7 @@ public interface GuavaEventBusEndpointBuilder {
         }
         /**
          * To lookup the Guava EventBus from the registry with the given name.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T eventBusRef(String eventBusRef) {
             this.properties.put("eventBusRef", eventBusRef);
@@ -54,7 +54,7 @@ public interface GuavaEventBusEndpointBuilder {
          * setting it to the java.lang.Object i.e. the consumer will capture all
          * messages incoming to the event bus. This option cannot be used
          * together with listenerInterface option. The option is a
-         * java.lang.Class<?> type.
+         * <code>java.lang.Class<java.lang.Object></code> type.
          */
         public T eventClass(Class<Object> eventClass) {
             this.properties.put("eventClass", eventClass);
@@ -67,7 +67,7 @@ public interface GuavaEventBusEndpointBuilder {
          * setting it to the java.lang.Object i.e. the consumer will capture all
          * messages incoming to the event bus. This option cannot be used
          * together with listenerInterface option. The option will be converted
-         * to a java.lang.Class<?> type.
+         * to a <code>java.lang.Class<java.lang.Object></code> type.
          */
         public T eventClass(String eventClass) {
             this.properties.put("eventClass", eventClass);
@@ -79,7 +79,7 @@ public interface GuavaEventBusEndpointBuilder {
          * registered as the EventBus listener. Particularly useful when
          * creating multi-event listeners and for handling DeadEvent properly.
          * This option cannot be used together with eventClass option. The
-         * option is a java.lang.Class<?> type.
+         * option is a <code>java.lang.Class<java.lang.Object></code> type.
          */
         public T listenerInterface(Class<Object> listenerInterface) {
             this.properties.put("listenerInterface", listenerInterface);
@@ -91,7 +91,8 @@ public interface GuavaEventBusEndpointBuilder {
          * registered as the EventBus listener. Particularly useful when
          * creating multi-event listeners and for handling DeadEvent properly.
          * This option cannot be used together with eventClass option. The
-         * option will be converted to a java.lang.Class<?> type.
+         * option will be converted to a
+         * <code>java.lang.Class<java.lang.Object></code> type.
          */
         public T listenerInterface(String listenerInterface) {
             this.properties.put("listenerInterface", listenerInterface);
@@ -100,7 +101,7 @@ public interface GuavaEventBusEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -109,7 +110,7 @@ public interface GuavaEventBusEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -118,7 +119,7 @@ public interface GuavaEventBusEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -127,7 +128,7 @@ public interface GuavaEventBusEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -150,7 +151,7 @@ public interface GuavaEventBusEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public GuavaEventBusConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -164,7 +165,7 @@ public interface GuavaEventBusEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public GuavaEventBusConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -176,7 +177,7 @@ public interface GuavaEventBusEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public GuavaEventBusConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -188,7 +189,8 @@ public interface GuavaEventBusEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public GuavaEventBusConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -197,7 +199,7 @@ public interface GuavaEventBusEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GuavaEventBusConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -206,7 +208,8 @@ public interface GuavaEventBusEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GuavaEventBusConsumerBuilder exchangePattern(
                 String exchangePattern) {

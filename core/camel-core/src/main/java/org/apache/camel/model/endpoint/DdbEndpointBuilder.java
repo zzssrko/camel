@@ -39,7 +39,7 @@ public interface DdbEndpointBuilder {
         }
         /**
          * The name of the table currently worked with. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T tableName(String tableName) {
             this.properties.put("tableName", tableName);
@@ -47,7 +47,7 @@ public interface DdbEndpointBuilder {
         }
         /**
          * To use the AmazonDynamoDB as the client. The option is a
-         * com.amazonaws.services.dynamodbv2.AmazonDynamoDB type.
+         * <code>com.amazonaws.services.dynamodbv2.AmazonDynamoDB</code> type.
          */
         public T amazonDDBClient(Object amazonDDBClient) {
             this.properties.put("amazonDDBClient", amazonDDBClient);
@@ -55,7 +55,8 @@ public interface DdbEndpointBuilder {
         }
         /**
          * To use the AmazonDynamoDB as the client. The option will be converted
-         * to a com.amazonaws.services.dynamodbv2.AmazonDynamoDB type.
+         * to a <code>com.amazonaws.services.dynamodbv2.AmazonDynamoDB</code>
+         * type.
          */
         public T amazonDDBClient(String amazonDDBClient) {
             this.properties.put("amazonDDBClient", amazonDDBClient);
@@ -63,7 +64,7 @@ public interface DdbEndpointBuilder {
         }
         /**
          * Determines whether or not strong consistency should be enforced when
-         * data is read. The option is a boolean type.
+         * data is read. The option is a <code>boolean</code> type.
          */
         public T consistentRead(boolean consistentRead) {
             this.properties.put("consistentRead", consistentRead);
@@ -71,23 +72,24 @@ public interface DdbEndpointBuilder {
         }
         /**
          * Determines whether or not strong consistency should be enforced when
-         * data is read. The option will be converted to a boolean type.
+         * data is read. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public T consistentRead(String consistentRead) {
             this.properties.put("consistentRead", consistentRead);
             return (T) this;
         }
         /**
-         * Attribute name when creating table. The option is a java.lang.String
-         * type.
+         * Attribute name when creating table. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T keyAttributeName(String keyAttributeName) {
             this.properties.put("keyAttributeName", keyAttributeName);
             return (T) this;
         }
         /**
-         * Attribute type when creating table. The option is a java.lang.String
-         * type.
+         * Attribute type when creating table. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T keyAttributeType(String keyAttributeType) {
             this.properties.put("keyAttributeType", keyAttributeType);
@@ -95,7 +97,7 @@ public interface DdbEndpointBuilder {
         }
         /**
          * What operation to perform. The option is a
-         * org.apache.camel.component.aws.ddb.DdbOperations type.
+         * <code>org.apache.camel.component.aws.ddb.DdbOperations</code> type.
          */
         public T operation(DdbOperations operation) {
             this.properties.put("operation", operation);
@@ -103,7 +105,7 @@ public interface DdbEndpointBuilder {
         }
         /**
          * What operation to perform. The option will be converted to a
-         * org.apache.camel.component.aws.ddb.DdbOperations type.
+         * <code>org.apache.camel.component.aws.ddb.DdbOperations</code> type.
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
@@ -111,7 +113,7 @@ public interface DdbEndpointBuilder {
         }
         /**
          * To define a proxy host when instantiating the DDB client. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
@@ -119,7 +121,7 @@ public interface DdbEndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the DDB client. The option
-         * is a java.lang.Integer type.
+         * is a <code>java.lang.Integer</code> type.
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -127,7 +129,7 @@ public interface DdbEndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the DDB client. The option
-         * will be converted to a java.lang.Integer type.
+         * will be converted to a <code>java.lang.Integer</code> type.
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -135,7 +137,7 @@ public interface DdbEndpointBuilder {
         }
         /**
          * The provisioned throughput to reserve for reading resources from your
-         * table. The option is a java.lang.Long type.
+         * table. The option is a <code>java.lang.Long</code> type.
          */
         public T readCapacity(Long readCapacity) {
             this.properties.put("readCapacity", readCapacity);
@@ -143,7 +145,8 @@ public interface DdbEndpointBuilder {
         }
         /**
          * The provisioned throughput to reserve for reading resources from your
-         * table. The option will be converted to a java.lang.Long type.
+         * table. The option will be converted to a <code>java.lang.Long</code>
+         * type.
          */
         public T readCapacity(String readCapacity) {
             this.properties.put("readCapacity", readCapacity);
@@ -151,7 +154,7 @@ public interface DdbEndpointBuilder {
         }
         /**
          * The region in which DDB client needs to work. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -159,7 +162,7 @@ public interface DdbEndpointBuilder {
         }
         /**
          * The provisioned throughput to reserved for writing resources to your
-         * table. The option is a java.lang.Long type.
+         * table. The option is a <code>java.lang.Long</code> type.
          */
         public T writeCapacity(Long writeCapacity) {
             this.properties.put("writeCapacity", writeCapacity);
@@ -167,7 +170,8 @@ public interface DdbEndpointBuilder {
         }
         /**
          * The provisioned throughput to reserved for writing resources to your
-         * table. The option will be converted to a java.lang.Long type.
+         * table. The option will be converted to a <code>java.lang.Long</code>
+         * type.
          */
         public T writeCapacity(String writeCapacity) {
             this.properties.put("writeCapacity", writeCapacity);
@@ -176,7 +180,7 @@ public interface DdbEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -185,7 +189,7 @@ public interface DdbEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -194,7 +198,7 @@ public interface DdbEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -203,21 +207,23 @@ public interface DdbEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Amazon AWS Access Key. The option is a java.lang.String type.
+         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (T) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a java.lang.String type.
+         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);

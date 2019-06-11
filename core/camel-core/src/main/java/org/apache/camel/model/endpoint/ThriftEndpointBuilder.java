@@ -42,21 +42,22 @@ public interface ThriftEndpointBuilder {
         /**
          * The Thrift server host name. This is localhost or 0.0.0.0 (if not
          * defined) when being a consumer or remote server host name when using
-         * producer. The option is a java.lang.String type.
+         * producer. The option is a <code>java.lang.String</code> type.
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * The Thrift server port. The option is a int type.
+         * The Thrift server port. The option is a <code>int</code> type.
          */
         public T port(int port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * The Thrift server port. The option will be converted to a int type.
+         * The Thrift server port. The option will be converted to a
+         * <code>int</code> type.
          */
         public T port(String port) {
             this.properties.put("port", port);
@@ -64,7 +65,8 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * Fully qualified service name from the thrift descriptor file (package
-         * dot service definition name). The option is a java.lang.String type.
+         * dot service definition name). The option is a
+         * <code>java.lang.String</code> type.
          */
         public T service(String service) {
             this.properties.put("service", service);
@@ -72,7 +74,8 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * Protocol compression mechanism type. The option is a
-         * org.apache.camel.component.thrift.ThriftCompressionType type.
+         * <code>org.apache.camel.component.thrift.ThriftCompressionType</code>
+         * type.
          */
         public T compressionType(ThriftCompressionType compressionType) {
             this.properties.put("compressionType", compressionType);
@@ -80,7 +83,9 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * Protocol compression mechanism type. The option will be converted to
-         * a org.apache.camel.component.thrift.ThriftCompressionType type.
+         * a
+         * <code>org.apache.camel.component.thrift.ThriftCompressionType</code>
+         * type.
          */
         public T compressionType(String compressionType) {
             this.properties.put("compressionType", compressionType);
@@ -88,7 +93,8 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * Exchange protocol serialization type. The option is a
-         * org.apache.camel.component.thrift.ThriftExchangeProtocol type.
+         * <code>org.apache.camel.component.thrift.ThriftExchangeProtocol</code>
+         * type.
          */
         public T exchangeProtocol(ThriftExchangeProtocol exchangeProtocol) {
             this.properties.put("exchangeProtocol", exchangeProtocol);
@@ -96,7 +102,9 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * Exchange protocol serialization type. The option will be converted to
-         * a org.apache.camel.component.thrift.ThriftExchangeProtocol type.
+         * a
+         * <code>org.apache.camel.component.thrift.ThriftExchangeProtocol</code>
+         * type.
          */
         public T exchangeProtocol(String exchangeProtocol) {
             this.properties.put("exchangeProtocol", exchangeProtocol);
@@ -105,7 +113,7 @@ public interface ThriftEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -114,7 +122,7 @@ public interface ThriftEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -123,7 +131,7 @@ public interface ThriftEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -132,7 +140,7 @@ public interface ThriftEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -140,7 +148,8 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * Security negotiation type. The option is a
-         * org.apache.camel.component.thrift.ThriftNegotiationType type.
+         * <code>org.apache.camel.component.thrift.ThriftNegotiationType</code>
+         * type.
          */
         public T negotiationType(ThriftNegotiationType negotiationType) {
             this.properties.put("negotiationType", negotiationType);
@@ -148,7 +157,8 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * Security negotiation type. The option will be converted to a
-         * org.apache.camel.component.thrift.ThriftNegotiationType type.
+         * <code>org.apache.camel.component.thrift.ThriftNegotiationType</code>
+         * type.
          */
         public T negotiationType(String negotiationType) {
             this.properties.put("negotiationType", negotiationType);
@@ -156,7 +166,8 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * Configuration parameters for SSL/TLS security negotiation. The option
-         * is a org.apache.camel.support.jsse.SSLContextParameters type.
+         * is a <code>org.apache.camel.support.jsse.SSLContextParameters</code>
+         * type.
          */
         public T sslParameters(Object sslParameters) {
             this.properties.put("sslParameters", sslParameters);
@@ -165,7 +176,7 @@ public interface ThriftEndpointBuilder {
         /**
          * Configuration parameters for SSL/TLS security negotiation. The option
          * will be converted to a
-         * org.apache.camel.support.jsse.SSLContextParameters type.
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
          */
         public T sslParameters(String sslParameters) {
             this.properties.put("sslParameters", sslParameters);
@@ -188,7 +199,7 @@ public interface ThriftEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public ThriftConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -202,7 +213,7 @@ public interface ThriftEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public ThriftConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -210,23 +221,23 @@ public interface ThriftEndpointBuilder {
             return (ThriftConsumerBuilder) this;
         }
         /**
-         * Client timeout for consumers. The option is a int type.
+         * Client timeout for consumers. The option is a <code>int</code> type.
          */
         public ThriftConsumerBuilder clientTimeout(int clientTimeout) {
             this.properties.put("clientTimeout", clientTimeout);
             return (ThriftConsumerBuilder) this;
         }
         /**
-         * Client timeout for consumers. The option will be converted to a int
-         * type.
+         * Client timeout for consumers. The option will be converted to a
+         * <code>int</code> type.
          */
         public ThriftConsumerBuilder clientTimeout(String clientTimeout) {
             this.properties.put("clientTimeout", clientTimeout);
             return (ThriftConsumerBuilder) this;
         }
         /**
-         * The Thrift server consumer max thread pool size. The option is a int
-         * type.
+         * The Thrift server consumer max thread pool size. The option is a
+         * <code>int</code> type.
          */
         public ThriftConsumerBuilder maxPoolSize(int maxPoolSize) {
             this.properties.put("maxPoolSize", maxPoolSize);
@@ -234,7 +245,7 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * The Thrift server consumer max thread pool size. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public ThriftConsumerBuilder maxPoolSize(String maxPoolSize) {
             this.properties.put("maxPoolSize", maxPoolSize);
@@ -242,7 +253,7 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * The Thrift server consumer initial thread pool size. The option is a
-         * int type.
+         * <code>int</code> type.
          */
         public ThriftConsumerBuilder poolSize(int poolSize) {
             this.properties.put("poolSize", poolSize);
@@ -250,7 +261,7 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * The Thrift server consumer initial thread pool size. The option will
-         * be converted to a int type.
+         * be converted to a <code>int</code> type.
          */
         public ThriftConsumerBuilder poolSize(String poolSize) {
             this.properties.put("poolSize", poolSize);
@@ -261,7 +272,7 @@ public interface ThriftEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public ThriftConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -273,7 +284,8 @@ public interface ThriftEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public ThriftConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -281,7 +293,7 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public ThriftConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -290,7 +302,8 @@ public interface ThriftEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public ThriftConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -307,8 +320,8 @@ public interface ThriftEndpointBuilder {
             super(path);
         }
         /**
-         * The Thrift invoked method name. The option is a java.lang.String
-         * type.
+         * The Thrift invoked method name. The option is a
+         * <code>java.lang.String</code> type.
          */
         public ThriftProducerBuilder method(String method) {
             this.properties.put("method", method);

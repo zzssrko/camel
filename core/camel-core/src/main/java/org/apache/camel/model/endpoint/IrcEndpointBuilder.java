@@ -39,8 +39,8 @@ public interface IrcEndpointBuilder {
             super("irc", path);
         }
         /**
-         * Hostname for the IRC chat server. The option is a java.lang.String
-         * type.
+         * Hostname for the IRC chat server. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T hostname(String hostname) {
             this.properties.put("hostname", hostname);
@@ -49,7 +49,7 @@ public interface IrcEndpointBuilder {
         /**
          * Port number for the IRC chat server. If no port is configured then a
          * default port of either 6667, 6668 or 6669 is used. The option is a
-         * int type.
+         * <code>int</code> type.
          */
         public T port(int port) {
             this.properties.put("port", port);
@@ -58,15 +58,15 @@ public interface IrcEndpointBuilder {
         /**
          * Port number for the IRC chat server. If no port is configured then a
          * default port of either 6667, 6668 or 6669 is used. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public T port(String port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Whether to auto re-join when being kicked. The option is a boolean
-         * type.
+         * Whether to auto re-join when being kicked. The option is a
+         * <code>boolean</code> type.
          */
         public T autoRejoin(boolean autoRejoin) {
             this.properties.put("autoRejoin", autoRejoin);
@@ -74,7 +74,7 @@ public interface IrcEndpointBuilder {
         }
         /**
          * Whether to auto re-join when being kicked. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T autoRejoin(String autoRejoin) {
             this.properties.put("autoRejoin", autoRejoin);
@@ -82,7 +82,7 @@ public interface IrcEndpointBuilder {
         }
         /**
          * Delay in milliseconds before sending commands after the connection is
-         * established. The option is a long type.
+         * established. The option is a <code>long</code> type.
          */
         public T commandTimeout(long commandTimeout) {
             this.properties.put("commandTimeout", commandTimeout);
@@ -90,7 +90,8 @@ public interface IrcEndpointBuilder {
         }
         /**
          * Delay in milliseconds before sending commands after the connection is
-         * established. The option will be converted to a long type.
+         * established. The option will be converted to a <code>long</code>
+         * type.
          */
         public T commandTimeout(String commandTimeout) {
             this.properties.put("commandTimeout", commandTimeout);
@@ -99,7 +100,7 @@ public interface IrcEndpointBuilder {
         /**
          * Sends NAMES command to channel after joining it. onReply has to be
          * true in order to process the result which will have the header value
-         * irc.num = '353'. The option is a boolean type.
+         * irc.num = '353'. The option is a <code>boolean</code> type.
          */
         public T namesOnJoin(boolean namesOnJoin) {
             this.properties.put("namesOnJoin", namesOnJoin);
@@ -108,21 +109,23 @@ public interface IrcEndpointBuilder {
         /**
          * Sends NAMES command to channel after joining it. onReply has to be
          * true in order to process the result which will have the header value
-         * irc.num = '353'. The option will be converted to a boolean type.
+         * irc.num = '353'. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T namesOnJoin(String namesOnJoin) {
             this.properties.put("namesOnJoin", namesOnJoin);
             return (T) this;
         }
         /**
-         * The nickname used in chat. The option is a java.lang.String type.
+         * The nickname used in chat. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T nickname(String nickname) {
             this.properties.put("nickname", nickname);
             return (T) this;
         }
         /**
-         * Use persistent messages. The option is a boolean type.
+         * Use persistent messages. The option is a <code>boolean</code> type.
          */
         @Deprecated
         public T persistent(boolean persistent) {
@@ -130,8 +133,8 @@ public interface IrcEndpointBuilder {
             return (T) this;
         }
         /**
-         * Use persistent messages. The option will be converted to a boolean
-         * type.
+         * Use persistent messages. The option will be converted to a
+         * <code>boolean</code> type.
          */
         @Deprecated
         public T persistent(String persistent) {
@@ -139,7 +142,8 @@ public interface IrcEndpointBuilder {
             return (T) this;
         }
         /**
-         * The IRC user's actual name. The option is a java.lang.String type.
+         * The IRC user's actual name. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T realname(String realname) {
             this.properties.put("realname", realname);
@@ -148,7 +152,7 @@ public interface IrcEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -157,7 +161,7 @@ public interface IrcEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -165,7 +169,7 @@ public interface IrcEndpointBuilder {
         }
         /**
          * Whether or not the server supports color codes. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T colors(boolean colors) {
             this.properties.put("colors", colors);
@@ -173,7 +177,7 @@ public interface IrcEndpointBuilder {
         }
         /**
          * Whether or not the server supports color codes. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T colors(String colors) {
             this.properties.put("colors", colors);
@@ -182,7 +186,7 @@ public interface IrcEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -191,58 +195,60 @@ public interface IrcEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Handle user join events. The option is a boolean type.
+         * Handle user join events. The option is a <code>boolean</code> type.
          */
         public T onJoin(boolean onJoin) {
             this.properties.put("onJoin", onJoin);
             return (T) this;
         }
         /**
-         * Handle user join events. The option will be converted to a boolean
-         * type.
+         * Handle user join events. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T onJoin(String onJoin) {
             this.properties.put("onJoin", onJoin);
             return (T) this;
         }
         /**
-         * Handle kick events. The option is a boolean type.
+         * Handle kick events. The option is a <code>boolean</code> type.
          */
         public T onKick(boolean onKick) {
             this.properties.put("onKick", onKick);
             return (T) this;
         }
         /**
-         * Handle kick events. The option will be converted to a boolean type.
+         * Handle kick events. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T onKick(String onKick) {
             this.properties.put("onKick", onKick);
             return (T) this;
         }
         /**
-         * Handle mode change events. The option is a boolean type.
+         * Handle mode change events. The option is a <code>boolean</code> type.
          */
         public T onMode(boolean onMode) {
             this.properties.put("onMode", onMode);
             return (T) this;
         }
         /**
-         * Handle mode change events. The option will be converted to a boolean
-         * type.
+         * Handle mode change events. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T onMode(String onMode) {
             this.properties.put("onMode", onMode);
             return (T) this;
         }
         /**
-         * Handle nickname change events. The option is a boolean type.
+         * Handle nickname change events. The option is a <code>boolean</code>
+         * type.
          */
         public T onNick(boolean onNick) {
             this.properties.put("onNick", onNick);
@@ -250,29 +256,30 @@ public interface IrcEndpointBuilder {
         }
         /**
          * Handle nickname change events. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T onNick(String onNick) {
             this.properties.put("onNick", onNick);
             return (T) this;
         }
         /**
-         * Handle user part events. The option is a boolean type.
+         * Handle user part events. The option is a <code>boolean</code> type.
          */
         public T onPart(boolean onPart) {
             this.properties.put("onPart", onPart);
             return (T) this;
         }
         /**
-         * Handle user part events. The option will be converted to a boolean
-         * type.
+         * Handle user part events. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T onPart(String onPart) {
             this.properties.put("onPart", onPart);
             return (T) this;
         }
         /**
-         * Handle private message events. The option is a boolean type.
+         * Handle private message events. The option is a <code>boolean</code>
+         * type.
          */
         public T onPrivmsg(boolean onPrivmsg) {
             this.properties.put("onPrivmsg", onPrivmsg);
@@ -280,22 +287,22 @@ public interface IrcEndpointBuilder {
         }
         /**
          * Handle private message events. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T onPrivmsg(String onPrivmsg) {
             this.properties.put("onPrivmsg", onPrivmsg);
             return (T) this;
         }
         /**
-         * Handle user quit events. The option is a boolean type.
+         * Handle user quit events. The option is a <code>boolean</code> type.
          */
         public T onQuit(boolean onQuit) {
             this.properties.put("onQuit", onQuit);
             return (T) this;
         }
         /**
-         * Handle user quit events. The option will be converted to a boolean
-         * type.
+         * Handle user quit events. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T onQuit(String onQuit) {
             this.properties.put("onQuit", onQuit);
@@ -303,7 +310,7 @@ public interface IrcEndpointBuilder {
         }
         /**
          * Whether or not to handle general responses to commands or
-         * informational messages. The option is a boolean type.
+         * informational messages. The option is a <code>boolean</code> type.
          */
         public T onReply(boolean onReply) {
             this.properties.put("onReply", onReply);
@@ -311,38 +318,40 @@ public interface IrcEndpointBuilder {
         }
         /**
          * Whether or not to handle general responses to commands or
-         * informational messages. The option will be converted to a boolean
-         * type.
+         * informational messages. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T onReply(String onReply) {
             this.properties.put("onReply", onReply);
             return (T) this;
         }
         /**
-         * Handle topic change events. The option is a boolean type.
+         * Handle topic change events. The option is a <code>boolean</code>
+         * type.
          */
         public T onTopic(boolean onTopic) {
             this.properties.put("onTopic", onTopic);
             return (T) this;
         }
         /**
-         * Handle topic change events. The option will be converted to a boolean
-         * type.
+         * Handle topic change events. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T onTopic(String onTopic) {
             this.properties.put("onTopic", onTopic);
             return (T) this;
         }
         /**
-         * Your IRC server nickname password. The option is a java.lang.String
-         * type.
+         * Your IRC server nickname password. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T nickPassword(String nickPassword) {
             this.properties.put("nickPassword", nickPassword);
             return (T) this;
         }
         /**
-         * The IRC server password. The option is a java.lang.String type.
+         * The IRC server password. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T password(String password) {
             this.properties.put("password", password);
@@ -354,7 +363,7 @@ public interface IrcEndpointBuilder {
          * This reference overrides any configured SSLContextParameters at the
          * component level. Note that this setting overrides the trustManager
          * option. The option is a
-         * org.apache.camel.support.jsse.SSLContextParameters type.
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
          */
         public T sslContextParameters(Object sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -366,7 +375,7 @@ public interface IrcEndpointBuilder {
          * This reference overrides any configured SSLContextParameters at the
          * component level. Note that this setting overrides the trustManager
          * option. The option will be converted to a
-         * org.apache.camel.support.jsse.SSLContextParameters type.
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
          */
         public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -374,7 +383,8 @@ public interface IrcEndpointBuilder {
         }
         /**
          * The trust manager used to verify the SSL server's certificate. The
-         * option is a org.schwering.irc.lib.ssl.SSLTrustManager type.
+         * option is a <code>org.schwering.irc.lib.ssl.SSLTrustManager</code>
+         * type.
          */
         public T trustManager(Object trustManager) {
             this.properties.put("trustManager", trustManager);
@@ -383,14 +393,15 @@ public interface IrcEndpointBuilder {
         /**
          * The trust manager used to verify the SSL server's certificate. The
          * option will be converted to a
-         * org.schwering.irc.lib.ssl.SSLTrustManager type.
+         * <code>org.schwering.irc.lib.ssl.SSLTrustManager</code> type.
          */
         public T trustManager(String trustManager) {
             this.properties.put("trustManager", trustManager);
             return (T) this;
         }
         /**
-         * The IRC server user name. The option is a java.lang.String type.
+         * The IRC server user name. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -413,7 +424,7 @@ public interface IrcEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public IrcConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -426,7 +437,7 @@ public interface IrcEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public IrcConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -437,7 +448,7 @@ public interface IrcEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public IrcConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -449,7 +460,8 @@ public interface IrcEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public IrcConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -457,7 +469,7 @@ public interface IrcEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public IrcConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -466,7 +478,8 @@ public interface IrcEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public IrcConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

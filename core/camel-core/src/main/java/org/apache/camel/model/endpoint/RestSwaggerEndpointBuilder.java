@@ -40,7 +40,7 @@ public interface RestSwaggerEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -49,7 +49,7 @@ public interface RestSwaggerEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -58,7 +58,7 @@ public interface RestSwaggerEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -67,7 +67,7 @@ public interface RestSwaggerEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -97,7 +97,7 @@ public interface RestSwaggerEndpointBuilder {
          * and as such it can be cumbersome to setup TLS/SSL certificates for
          * https (such as setting a number of javax.net.ssl JVM system
          * properties). How to do that consult the JDK documentation for
-         * UrlHandler. The option is a java.net.URI type.
+         * UrlHandler. The option is a <code>java.net.URI</code> type.
          */
         public RestSwaggerProducerBuilder specificationUri(URI specificationUri) {
             this.properties.put("specificationUri", specificationUri);
@@ -117,7 +117,8 @@ public interface RestSwaggerEndpointBuilder {
          * and as such it can be cumbersome to setup TLS/SSL certificates for
          * https (such as setting a number of javax.net.ssl JVM system
          * properties). How to do that consult the JDK documentation for
-         * UrlHandler. The option will be converted to a java.net.URI type.
+         * UrlHandler. The option will be converted to a
+         * <code>java.net.URI</code> type.
          */
         public RestSwaggerProducerBuilder specificationUri(
                 String specificationUri) {
@@ -126,7 +127,7 @@ public interface RestSwaggerEndpointBuilder {
         }
         /**
          * ID of the operation from the Swagger specification. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public RestSwaggerProducerBuilder operationId(String operationId) {
             this.properties.put("operationId", operationId);
@@ -135,7 +136,7 @@ public interface RestSwaggerEndpointBuilder {
         /**
          * API basePath, for example /v2. Default is unset, if set overrides the
          * value present in Swagger specification and in the component
-         * configuration. The option is a java.lang.String type.
+         * configuration. The option is a <code>java.lang.String</code> type.
          */
         public RestSwaggerProducerBuilder basePath(String basePath) {
             this.properties.put("basePath", basePath);
@@ -147,7 +148,7 @@ public interface RestSwaggerEndpointBuilder {
          * RestProducerFactory service provider interface. If not set CLASSPATH
          * is searched for single component that implements RestProducerFactory
          * SPI. Overrides component configuration. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public RestSwaggerProducerBuilder componentName(String componentName) {
             this.properties.put("componentName", componentName);
@@ -159,7 +160,7 @@ public interface RestSwaggerEndpointBuilder {
          * application/xml; q=0.5 according to the RFC7231. This equates to the
          * value of Accept HTTP header. If set overrides any value found in the
          * Swagger specification and. in the component configuration. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public RestSwaggerProducerBuilder consumes(String consumes) {
             this.properties.put("consumes", consumes);
@@ -173,7 +174,7 @@ public interface RestSwaggerEndpointBuilder {
          * configuration is consulted first, rest-swagger next, and global
          * configuration last. If set overrides any value found in the Swagger
          * specification, RestConfiguration. Overrides all other configuration.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public RestSwaggerProducerBuilder host(String host) {
             this.properties.put("host", host);
@@ -184,7 +185,7 @@ public interface RestSwaggerEndpointBuilder {
          * application/json according to the RFC7231. This equates to the value
          * of Content-Type HTTP header. If set overrides any value present in
          * the Swagger specification. Overrides all other configuration. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public RestSwaggerProducerBuilder produces(String produces) {
             this.properties.put("produces", produces);

@@ -46,7 +46,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
             super("google-sheets-stream", path);
         }
         /**
-         * Sets the apiName. The option is a java.lang.String type.
+         * Sets the apiName. The option is a <code>java.lang.String</code> type.
          */
         public T apiName(String apiName) {
             this.properties.put("apiName", apiName);
@@ -55,7 +55,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * OAuth 2 access token. This typically expires after an hour so
          * refreshToken is recommended for long term usage. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T accessToken(String accessToken) {
             this.properties.put("accessToken", accessToken);
@@ -63,15 +63,16 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Google sheets application name. Example would be
-         * camel-google-sheets/1.0. The option is a java.lang.String type.
+         * camel-google-sheets/1.0. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T applicationName(String applicationName) {
             this.properties.put("applicationName", applicationName);
             return (T) this;
         }
         /**
-         * Client ID of the sheets application. The option is a java.lang.String
-         * type.
+         * Client ID of the sheets application. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T clientId(String clientId) {
             this.properties.put("clientId", clientId);
@@ -79,14 +80,15 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Client secret of the sheets application. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T clientSecret(String clientSecret) {
             this.properties.put("clientSecret", clientSecret);
             return (T) this;
         }
         /**
-         * True if grid data should be returned. The option is a boolean type.
+         * True if grid data should be returned. The option is a
+         * <code>boolean</code> type.
          */
         public T includeGridData(boolean includeGridData) {
             this.properties.put("includeGridData", includeGridData);
@@ -94,7 +96,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * True if grid data should be returned. The option will be converted to
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public T includeGridData(String includeGridData) {
             this.properties.put("includeGridData", includeGridData);
@@ -102,7 +104,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Specifies the major dimension that results should use.. The option is
-         * a java.lang.String type.
+         * a <code>java.lang.String</code> type.
          */
         public T majorDimension(String majorDimension) {
             this.properties.put("majorDimension", majorDimension);
@@ -111,7 +113,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * Specify the maximum number of returned results. This will limit the
          * number of rows in a returned value range data set or the number of
-         * returned value ranges in a batch request. The option is a int type.
+         * returned value ranges in a batch request. The option is a
+         * <code>int</code> type.
          */
         public T maxResults(int maxResults) {
             this.properties.put("maxResults", maxResults);
@@ -121,7 +124,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * Specify the maximum number of returned results. This will limit the
          * number of rows in a returned value range data set or the number of
          * returned value ranges in a batch request. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public T maxResults(String maxResults) {
             this.properties.put("maxResults", maxResults);
@@ -129,7 +132,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Specifies the range of rows and columns in a sheet to get data from.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T range(String range) {
             this.properties.put("range", range);
@@ -139,7 +142,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * OAuth 2 refresh token. Using this, the Google Calendar component can
          * obtain a new accessToken whenever the current one expires - a
          * necessity if the application is long-lived. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T refreshToken(String refreshToken) {
             this.properties.put("refreshToken", refreshToken);
@@ -149,7 +152,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * Specifies the level of permissions you want a sheets application to
          * have to a user account. See
          * https://developers.google.com/identity/protocols/googlescopes for
-         * more info. The option is a java.util.List<java.lang.String> type.
+         * more info. The option is a
+         * <code>java.util.List<java.lang.String></code> type.
          */
         public T scopes(List<String> scopes) {
             this.properties.put("scopes", scopes);
@@ -160,7 +164,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * have to a user account. See
          * https://developers.google.com/identity/protocols/googlescopes for
          * more info. The option will be converted to a
-         * java.util.List<java.lang.String> type.
+         * <code>java.util.List<java.lang.String></code> type.
          */
         public T scopes(String scopes) {
             this.properties.put("scopes", scopes);
@@ -168,7 +172,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Specifies the spreadsheet identifier that is used to identify the
-         * target to obtain. The option is a java.lang.String type.
+         * target to obtain. The option is a <code>java.lang.String</code> type.
          */
         public T spreadsheetId(String spreadsheetId) {
             this.properties.put("spreadsheetId", spreadsheetId);
@@ -176,7 +180,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Determines how values should be rendered in the output. The option is
-         * a java.lang.String type.
+         * a <code>java.lang.String</code> type.
          */
         public T valueRenderOption(String valueRenderOption) {
             this.properties.put("valueRenderOption", valueRenderOption);
@@ -185,7 +189,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -194,7 +198,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -203,7 +207,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -212,7 +216,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -235,7 +239,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -249,7 +253,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -259,7 +263,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -269,7 +273,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -281,7 +285,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -293,7 +297,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public GoogleSheetsStreamConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -302,7 +307,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -311,7 +316,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder exchangePattern(
                 String exchangePattern) {
@@ -323,7 +329,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -335,7 +341,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public GoogleSheetsStreamConsumerBuilder pollStrategy(
                 String pollStrategy) {
@@ -345,7 +352,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -355,7 +362,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -364,7 +371,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public GoogleSheetsStreamConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -374,7 +382,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -387,7 +395,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder backoffMultiplier(
                 int backoffMultiplier) {
@@ -400,7 +408,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder backoffMultiplier(
                 String backoffMultiplier) {
@@ -410,7 +418,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -419,8 +427,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -429,7 +437,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -438,7 +446,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -447,7 +455,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -456,8 +464,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder initialDelay(
                 String initialDelay) {
@@ -467,7 +475,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -477,7 +485,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public GoogleSheetsStreamConsumerBuilder runLoggingLevel(
                 String runLoggingLevel) {
@@ -487,8 +496,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -499,7 +508,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -509,7 +518,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public GoogleSheetsStreamConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -519,7 +529,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public GoogleSheetsStreamConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -528,7 +539,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public GoogleSheetsStreamConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -538,7 +549,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public GoogleSheetsStreamConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -546,8 +558,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
             return (GoogleSheetsStreamConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder startScheduler(
                 boolean startScheduler) {
@@ -556,7 +568,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder startScheduler(
                 String startScheduler) {
@@ -565,7 +577,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -573,7 +585,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -581,8 +593,8 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder useFixedDelay(
                 boolean useFixedDelay) {
@@ -592,7 +604,7 @@ public interface GoogleSheetsStreamEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public GoogleSheetsStreamConsumerBuilder useFixedDelay(
                 String useFixedDelay) {

@@ -40,7 +40,7 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * The protocol to use for communicating with the database. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T protocol(String protocol) {
             this.properties.put("protocol", protocol);
@@ -48,15 +48,15 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * Hostname of the running couchdb instance. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T hostname(String hostname) {
             this.properties.put("hostname", hostname);
             return (T) this;
         }
         /**
-         * Port number for the running couchdb instance. The option is a int
-         * type.
+         * Port number for the running couchdb instance. The option is a
+         * <code>int</code> type.
          */
         public T port(int port) {
             this.properties.put("port", port);
@@ -64,14 +64,15 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * Port number for the running couchdb instance. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public T port(String port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Name of the database to use. The option is a java.lang.String type.
+         * Name of the database to use. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T database(String database) {
             this.properties.put("database", database);
@@ -79,7 +80,7 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * Creates the database if it does not already exist. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T createDatabase(boolean createDatabase) {
             this.properties.put("createDatabase", createDatabase);
@@ -87,7 +88,7 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * Creates the database if it does not already exist. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T createDatabase(String createDatabase) {
             this.properties.put("createDatabase", createDatabase);
@@ -96,7 +97,7 @@ public interface CouchDbEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -105,7 +106,7 @@ public interface CouchDbEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -114,7 +115,7 @@ public interface CouchDbEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -123,7 +124,7 @@ public interface CouchDbEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -131,7 +132,7 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * Password for authenticated databases. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T password(String password) {
             this.properties.put("password", password);
@@ -139,7 +140,7 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * Username in case of authenticated databases. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -162,7 +163,7 @@ public interface CouchDbEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public CouchDbConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -176,7 +177,7 @@ public interface CouchDbEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public CouchDbConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -184,8 +185,8 @@ public interface CouchDbEndpointBuilder {
             return (CouchDbConsumerBuilder) this;
         }
         /**
-         * Document deletes are published as events. The option is a boolean
-         * type.
+         * Document deletes are published as events. The option is a
+         * <code>boolean</code> type.
          */
         public CouchDbConsumerBuilder deletes(boolean deletes) {
             this.properties.put("deletes", deletes);
@@ -193,7 +194,7 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * Document deletes are published as events. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public CouchDbConsumerBuilder deletes(String deletes) {
             this.properties.put("deletes", deletes);
@@ -201,7 +202,7 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * How often to send an empty message to keep socket alive in millis.
-         * The option is a long type.
+         * The option is a <code>long</code> type.
          */
         public CouchDbConsumerBuilder heartbeat(long heartbeat) {
             this.properties.put("heartbeat", heartbeat);
@@ -209,7 +210,7 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * How often to send an empty message to keep socket alive in millis.
-         * The option will be converted to a long type.
+         * The option will be converted to a <code>long</code> type.
          */
         public CouchDbConsumerBuilder heartbeat(String heartbeat) {
             this.properties.put("heartbeat", heartbeat);
@@ -218,7 +219,7 @@ public interface CouchDbEndpointBuilder {
         /**
          * Start tracking changes immediately after the given update sequence.
          * The default, null, will start monitoring from the latest sequence.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public CouchDbConsumerBuilder since(String since) {
             this.properties.put("since", since);
@@ -228,7 +229,8 @@ public interface CouchDbEndpointBuilder {
          * Specifies how many revisions are returned in the changes array. The
          * default, main_only, will only return the current winning revision;
          * all_docs will return all leaf revisions (including conflicts and
-         * deleted former conflicts.). The option is a java.lang.String type.
+         * deleted former conflicts.). The option is a
+         * <code>java.lang.String</code> type.
          */
         public CouchDbConsumerBuilder style(String style) {
             this.properties.put("style", style);
@@ -236,7 +238,7 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * Document inserts/updates are published as events. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public CouchDbConsumerBuilder updates(boolean updates) {
             this.properties.put("updates", updates);
@@ -244,7 +246,7 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * Document inserts/updates are published as events. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public CouchDbConsumerBuilder updates(String updates) {
             this.properties.put("updates", updates);
@@ -255,7 +257,7 @@ public interface CouchDbEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public CouchDbConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -267,7 +269,8 @@ public interface CouchDbEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public CouchDbConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -275,7 +278,7 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public CouchDbConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -284,7 +287,8 @@ public interface CouchDbEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public CouchDbConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

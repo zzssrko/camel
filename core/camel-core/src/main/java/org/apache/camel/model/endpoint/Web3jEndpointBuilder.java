@@ -43,7 +43,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * Sets the node address used to communicate. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T nodeAddress(String nodeAddress) {
             this.properties.put("nodeAddress", nodeAddress);
@@ -51,7 +51,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * Contract address or a list of addresses. The option is a
-         * java.util.List<java.lang.String> type.
+         * <code>java.util.List<java.lang.String></code> type.
          */
         public T addresses(List<String> addresses) {
             this.properties.put("addresses", addresses);
@@ -59,7 +59,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * Contract address or a list of addresses. The option will be converted
-         * to a java.util.List<java.lang.String> type.
+         * to a <code>java.util.List<java.lang.String></code> type.
          */
         public T addresses(String addresses) {
             this.properties.put("addresses", addresses);
@@ -67,7 +67,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The address the transaction is send from. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T fromAddress(String fromAddress) {
             this.properties.put("fromAddress", fromAddress);
@@ -76,7 +76,7 @@ public interface Web3jEndpointBuilder {
         /**
          * The block number, or the string latest for the last mined block or
          * pending, earliest for not yet mined transactions. The option is a
-         * org.web3j.protocol.core.DefaultBlockParameter type.
+         * <code>org.web3j.protocol.core.DefaultBlockParameter</code> type.
          */
         public T fromBlock(Object fromBlock) {
             this.properties.put("fromBlock", fromBlock);
@@ -85,7 +85,8 @@ public interface Web3jEndpointBuilder {
         /**
          * The block number, or the string latest for the last mined block or
          * pending, earliest for not yet mined transactions. The option will be
-         * converted to a org.web3j.protocol.core.DefaultBlockParameter type.
+         * converted to a
+         * <code>org.web3j.protocol.core.DefaultBlockParameter</code> type.
          */
         public T fromBlock(String fromBlock) {
             this.properties.put("fromBlock", fromBlock);
@@ -93,7 +94,8 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * If true it returns the full transaction objects, if false only the
-         * hashes of the transactions. The option is a boolean type.
+         * hashes of the transactions. The option is a <code>boolean</code>
+         * type.
          */
         public T fullTransactionObjects(boolean fullTransactionObjects) {
             this.properties.put("fullTransactionObjects", fullTransactionObjects);
@@ -101,8 +103,8 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * If true it returns the full transaction objects, if false only the
-         * hashes of the transactions. The option will be converted to a boolean
-         * type.
+         * hashes of the transactions. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T fullTransactionObjects(String fullTransactionObjects) {
             this.properties.put("fullTransactionObjects", fullTransactionObjects);
@@ -110,7 +112,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The maximum gas allowed in this block. The option is a
-         * java.math.BigInteger type.
+         * <code>java.math.BigInteger</code> type.
          */
         public T gasLimit(BigInteger gasLimit) {
             this.properties.put("gasLimit", gasLimit);
@@ -118,7 +120,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The maximum gas allowed in this block. The option will be converted
-         * to a java.math.BigInteger type.
+         * to a <code>java.math.BigInteger</code> type.
          */
         public T gasLimit(String gasLimit) {
             this.properties.put("gasLimit", gasLimit);
@@ -126,7 +128,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * A transaction privateFor nodes with public keys in a Quorum network.
-         * The option is a java.util.List<java.lang.String> type.
+         * The option is a <code>java.util.List<java.lang.String></code> type.
          */
         public T privateFor(List<String> privateFor) {
             this.properties.put("privateFor", privateFor);
@@ -134,15 +136,16 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * A transaction privateFor nodes with public keys in a Quorum network.
-         * The option will be converted to a java.util.List<java.lang.String>
-         * type.
+         * The option will be converted to a
+         * <code>java.util.List<java.lang.String></code> type.
          */
         public T privateFor(String privateFor) {
             this.properties.put("privateFor", privateFor);
             return (T) this;
         }
         /**
-         * If true, this will support Quorum API. The option is a boolean type.
+         * If true, this will support Quorum API. The option is a
+         * <code>boolean</code> type.
          */
         public T quorumAPI(boolean quorumAPI) {
             this.properties.put("quorumAPI", quorumAPI);
@@ -150,7 +153,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * If true, this will support Quorum API. The option will be converted
-         * to a boolean type.
+         * to a <code>boolean</code> type.
          */
         public T quorumAPI(String quorumAPI) {
             this.properties.put("quorumAPI", quorumAPI);
@@ -158,7 +161,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The address the transaction is directed to. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T toAddress(String toAddress) {
             this.properties.put("toAddress", toAddress);
@@ -167,7 +170,7 @@ public interface Web3jEndpointBuilder {
         /**
          * The block number, or the string latest for the last mined block or
          * pending, earliest for not yet mined transactions. The option is a
-         * org.web3j.protocol.core.DefaultBlockParameter type.
+         * <code>org.web3j.protocol.core.DefaultBlockParameter</code> type.
          */
         public T toBlock(Object toBlock) {
             this.properties.put("toBlock", toBlock);
@@ -176,7 +179,8 @@ public interface Web3jEndpointBuilder {
         /**
          * The block number, or the string latest for the last mined block or
          * pending, earliest for not yet mined transactions. The option will be
-         * converted to a org.web3j.protocol.core.DefaultBlockParameter type.
+         * converted to a
+         * <code>org.web3j.protocol.core.DefaultBlockParameter</code> type.
          */
         public T toBlock(String toBlock) {
             this.properties.put("toBlock", toBlock);
@@ -185,7 +189,7 @@ public interface Web3jEndpointBuilder {
         /**
          * Topics are order-dependent. Each topic can also be a list of topics.
          * Specify multiple topics separated by comma. The option is a
-         * java.lang.String type.
+         * <code>java.util.List<java.lang.String></code> type.
          */
         public T topics(List<String> topics) {
             this.properties.put("topics", topics);
@@ -194,7 +198,7 @@ public interface Web3jEndpointBuilder {
         /**
          * Topics are order-dependent. Each topic can also be a list of topics.
          * Specify multiple topics separated by comma. The option will be
-         * converted to a java.lang.String type.
+         * converted to a <code>java.util.List<java.lang.String></code> type.
          */
         public T topics(String topics) {
             this.properties.put("topics", topics);
@@ -202,7 +206,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The preconfigured Web3j object. The option is a
-         * org.web3j.protocol.Web3j type.
+         * <code>org.web3j.protocol.Web3j</code> type.
          */
         public T web3j(Object web3j) {
             this.properties.put("web3j", web3j);
@@ -210,7 +214,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The preconfigured Web3j object. The option will be converted to a
-         * org.web3j.protocol.Web3j type.
+         * <code>org.web3j.protocol.Web3j</code> type.
          */
         public T web3j(String web3j) {
             this.properties.put("web3j", web3j);
@@ -219,7 +223,7 @@ public interface Web3jEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -228,7 +232,7 @@ public interface Web3jEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -237,7 +241,7 @@ public interface Web3jEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -246,7 +250,7 @@ public interface Web3jEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -269,7 +273,7 @@ public interface Web3jEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public Web3jConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -283,7 +287,7 @@ public interface Web3jEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public Web3jConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -294,7 +298,7 @@ public interface Web3jEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public Web3jConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -306,7 +310,8 @@ public interface Web3jEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public Web3jConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -314,7 +319,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public Web3jConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -323,7 +328,8 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public Web3jConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -340,7 +346,7 @@ public interface Web3jEndpointBuilder {
             super(path);
         }
         /**
-         * Contract address. The option is a java.lang.String type.
+         * Contract address. The option is a <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder address(String address) {
             this.properties.put("address", address);
@@ -349,7 +355,7 @@ public interface Web3jEndpointBuilder {
         /**
          * The block number, or the string latest for the last mined block or
          * pending, earliest for not yet mined transactions. The option is a
-         * org.web3j.protocol.core.DefaultBlockParameter type.
+         * <code>org.web3j.protocol.core.DefaultBlockParameter</code> type.
          */
         public Web3jProducerBuilder atBlock(Object atBlock) {
             this.properties.put("atBlock", atBlock);
@@ -358,7 +364,8 @@ public interface Web3jEndpointBuilder {
         /**
          * The block number, or the string latest for the last mined block or
          * pending, earliest for not yet mined transactions. The option will be
-         * converted to a org.web3j.protocol.core.DefaultBlockParameter type.
+         * converted to a
+         * <code>org.web3j.protocol.core.DefaultBlockParameter</code> type.
          */
         public Web3jProducerBuilder atBlock(String atBlock) {
             this.properties.put("atBlock", atBlock);
@@ -366,7 +373,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * Hash of the block where this transaction was in. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder blockHash(String blockHash) {
             this.properties.put("blockHash", blockHash);
@@ -374,7 +381,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * A random hexadecimal(32 bytes) ID identifying the client. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder clientId(String clientId) {
             this.properties.put("clientId", clientId);
@@ -382,22 +389,24 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The compiled code of a contract OR the hash of the invoked method
-         * signature and encoded parameters. The option is a java.lang.String
-         * type.
+         * signature and encoded parameters. The option is a
+         * <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder data(String data) {
             this.properties.put("data", data);
             return (Web3jProducerBuilder) this;
         }
         /**
-         * The local database name. The option is a java.lang.String type.
+         * The local database name. The option is a
+         * <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder databaseName(String databaseName) {
             this.properties.put("databaseName", databaseName);
             return (Web3jProducerBuilder) this;
         }
         /**
-         * The filter id to use. The option is a java.math.BigInteger type.
+         * The filter id to use. The option is a
+         * <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder filterId(BigInteger filterId) {
             this.properties.put("filterId", filterId);
@@ -405,7 +414,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The filter id to use. The option will be converted to a
-         * java.math.BigInteger type.
+         * <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder filterId(String filterId) {
             this.properties.put("filterId", filterId);
@@ -413,7 +422,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * Gas price used for each paid gas. The option is a
-         * java.math.BigInteger type.
+         * <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder gasPrice(BigInteger gasPrice) {
             this.properties.put("gasPrice", gasPrice);
@@ -421,7 +430,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * Gas price used for each paid gas. The option will be converted to a
-         * java.math.BigInteger type.
+         * <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder gasPrice(String gasPrice) {
             this.properties.put("gasPrice", gasPrice);
@@ -429,7 +438,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * A hexadecimal string representation (32 bytes) of the hash rate. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder hashrate(String hashrate) {
             this.properties.put("hashrate", hashrate);
@@ -437,7 +446,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The header's pow-hash (256 bits) used for submitting a proof-of-work
-         * solution. The option is a java.lang.String type.
+         * solution. The option is a <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder headerPowHash(String headerPowHash) {
             this.properties.put("headerPowHash", headerPowHash);
@@ -445,7 +454,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The transactions/uncle index position in the block. The option is a
-         * java.math.BigInteger type.
+         * <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder index(BigInteger index) {
             this.properties.put("index", index);
@@ -453,14 +462,15 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The transactions/uncle index position in the block. The option will
-         * be converted to a java.math.BigInteger type.
+         * be converted to a <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder index(String index) {
             this.properties.put("index", index);
             return (Web3jProducerBuilder) this;
         }
         /**
-         * The key name in the database. The option is a java.lang.String type.
+         * The key name in the database. The option is a
+         * <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder keyName(String keyName) {
             this.properties.put("keyName", keyName);
@@ -468,7 +478,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The mix digest (256 bits) used for submitting a proof-of-work
-         * solution. The option is a java.lang.String type.
+         * solution. The option is a <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder mixDigest(String mixDigest) {
             this.properties.put("mixDigest", mixDigest);
@@ -476,14 +486,14 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The nonce found (64 bits) used for submitting a proof-of-work
-         * solution. The option is a java.lang.String type.
+         * solution. The option is a <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder nonce(String nonce) {
             this.properties.put("nonce", nonce);
             return (Web3jProducerBuilder) this;
         }
         /**
-         * Operation to use. The option is a java.lang.String type.
+         * Operation to use. The option is a <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
@@ -491,7 +501,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The transaction index position withing a block. The option is a
-         * java.math.BigInteger type.
+         * <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder position(BigInteger position) {
             this.properties.put("position", position);
@@ -499,7 +509,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The transaction index position withing a block. The option will be
-         * converted to a java.math.BigInteger type.
+         * converted to a <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder position(String position) {
             this.properties.put("position", position);
@@ -507,7 +517,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The priority of a whisper message. The option is a
-         * java.math.BigInteger type.
+         * <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder priority(BigInteger priority) {
             this.properties.put("priority", priority);
@@ -515,7 +525,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The priority of a whisper message. The option will be converted to a
-         * java.math.BigInteger type.
+         * <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder priority(String priority) {
             this.properties.put("priority", priority);
@@ -523,7 +533,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * Message to sign by calculating an Ethereum specific signature. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder sha3HashOfDataToSign(
                 String sha3HashOfDataToSign) {
@@ -533,7 +543,7 @@ public interface Web3jEndpointBuilder {
         /**
          * The signed transaction data for a new message call transaction or a
          * contract creation for signed transactions. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder signedTransactionData(
                 String signedTransactionData) {
@@ -541,7 +551,8 @@ public interface Web3jEndpointBuilder {
             return (Web3jProducerBuilder) this;
         }
         /**
-         * The source code to compile. The option is a java.lang.String type.
+         * The source code to compile. The option is a
+         * <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder sourceCode(String sourceCode) {
             this.properties.put("sourceCode", sourceCode);
@@ -549,7 +560,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The information about a transaction requested by transaction hash.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public Web3jProducerBuilder transactionHash(String transactionHash) {
             this.properties.put("transactionHash", transactionHash);
@@ -557,7 +568,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The time to live in seconds of a whisper message. The option is a
-         * java.math.BigInteger type.
+         * <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder ttl(BigInteger ttl) {
             this.properties.put("ttl", ttl);
@@ -565,7 +576,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The time to live in seconds of a whisper message. The option will be
-         * converted to a java.math.BigInteger type.
+         * converted to a <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder ttl(String ttl) {
             this.properties.put("ttl", ttl);
@@ -573,7 +584,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The value sent within a transaction. The option is a
-         * java.math.BigInteger type.
+         * <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder value(BigInteger value) {
             this.properties.put("value", value);
@@ -581,7 +592,7 @@ public interface Web3jEndpointBuilder {
         }
         /**
          * The value sent within a transaction. The option will be converted to
-         * a java.math.BigInteger type.
+         * a <code>java.math.BigInteger</code> type.
          */
         public Web3jProducerBuilder value(String value) {
             this.properties.put("value", value);

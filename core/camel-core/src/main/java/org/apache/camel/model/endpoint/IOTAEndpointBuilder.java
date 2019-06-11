@@ -39,7 +39,7 @@ public interface IOTAEndpointBuilder {
             super("iota", path);
         }
         /**
-         * Component name. The option is a java.lang.String type.
+         * Component name. The option is a <code>java.lang.String</code> type.
          */
         public T name(String name) {
             this.properties.put("name", name);
@@ -47,7 +47,7 @@ public interface IOTAEndpointBuilder {
         }
         /**
          * The depth determines how deep the tangle is analysed for getting
-         * Tips. The option is a java.lang.Integer type.
+         * Tips. The option is a <code>java.lang.Integer</code> type.
          */
         public T depth(Integer depth) {
             this.properties.put("depth", depth);
@@ -55,7 +55,8 @@ public interface IOTAEndpointBuilder {
         }
         /**
          * The depth determines how deep the tangle is analysed for getting
-         * Tips. The option will be converted to a java.lang.Integer type.
+         * Tips. The option will be converted to a
+         * <code>java.lang.Integer</code> type.
          */
         public T depth(String depth) {
             this.properties.put("depth", depth);
@@ -64,7 +65,8 @@ public interface IOTAEndpointBuilder {
         /**
          * The minWeightMagnitude is the minimum number of zeroes that a
          * proof-of-work output/transaction hash must end with to be considered
-         * valid by full nodes. The option is a java.lang.Integer type.
+         * valid by full nodes. The option is a <code>java.lang.Integer</code>
+         * type.
          */
         public T minWeightMagnitude(Integer minWeightMagnitude) {
             this.properties.put("minWeightMagnitude", minWeightMagnitude);
@@ -74,7 +76,7 @@ public interface IOTAEndpointBuilder {
          * The minWeightMagnitude is the minimum number of zeroes that a
          * proof-of-work output/transaction hash must end with to be considered
          * valid by full nodes. The option will be converted to a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T minWeightMagnitude(String minWeightMagnitude) {
             this.properties.put("minWeightMagnitude", minWeightMagnitude);
@@ -82,14 +84,15 @@ public interface IOTAEndpointBuilder {
         }
         /**
          * Supported operations are 'sendTransfer', 'getNewAddress'. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * Address security level. The option is a java.lang.Integer type.
+         * Address security level. The option is a
+         * <code>java.lang.Integer</code> type.
          */
         public T securityLevel(Integer securityLevel) {
             this.properties.put("securityLevel", securityLevel);
@@ -97,21 +100,21 @@ public interface IOTAEndpointBuilder {
         }
         /**
          * Address security level. The option will be converted to a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T securityLevel(String securityLevel) {
             this.properties.put("securityLevel", securityLevel);
             return (T) this;
         }
         /**
-         * TAG. The option is a java.lang.String type.
+         * TAG. The option is a <code>java.lang.String</code> type.
          */
         public T tag(String tag) {
             this.properties.put("tag", tag);
             return (T) this;
         }
         /**
-         * Node url. The option is a java.lang.String type.
+         * Node url. The option is a <code>java.lang.String</code> type.
          */
         public T url(String url) {
             this.properties.put("url", url);
@@ -120,7 +123,7 @@ public interface IOTAEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -129,7 +132,7 @@ public interface IOTAEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -138,7 +141,7 @@ public interface IOTAEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -147,7 +150,7 @@ public interface IOTAEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -170,7 +173,7 @@ public interface IOTAEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public IOTAConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -183,7 +186,7 @@ public interface IOTAEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public IOTAConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -194,7 +197,7 @@ public interface IOTAEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public IOTAConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -206,7 +209,8 @@ public interface IOTAEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public IOTAConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -214,7 +218,7 @@ public interface IOTAEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public IOTAConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -223,7 +227,8 @@ public interface IOTAEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public IOTAConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

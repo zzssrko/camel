@@ -38,7 +38,7 @@ public interface IgniteQueueEndpointBuilder {
             super("ignite-queue", path);
         }
         /**
-         * The queue name. The option is a java.lang.String type.
+         * The queue name. The option is a <code>java.lang.String</code> type.
          */
         public T name(String name) {
             this.properties.put("name", name);
@@ -46,7 +46,8 @@ public interface IgniteQueueEndpointBuilder {
         }
         /**
          * Sets whether to propagate the incoming body if the return type of the
-         * underlying Ignite operation is void. The option is a boolean type.
+         * underlying Ignite operation is void. The option is a
+         * <code>boolean</code> type.
          */
         public T propagateIncomingBodyIfNoReturnValue(
                 boolean propagateIncomingBodyIfNoReturnValue) {
@@ -56,7 +57,7 @@ public interface IgniteQueueEndpointBuilder {
         /**
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option will be converted to
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public T propagateIncomingBodyIfNoReturnValue(
                 String propagateIncomingBodyIfNoReturnValue) {
@@ -65,7 +66,8 @@ public interface IgniteQueueEndpointBuilder {
         }
         /**
          * Sets whether to treat Collections as cache objects or as Collections
-         * of items to insert/update/compute, etc. The option is a boolean type.
+         * of items to insert/update/compute, etc. The option is a
+         * <code>boolean</code> type.
          */
         public T treatCollectionsAsCacheObjects(
                 boolean treatCollectionsAsCacheObjects) {
@@ -75,7 +77,7 @@ public interface IgniteQueueEndpointBuilder {
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option will be converted
-         * to a boolean type.
+         * to a <code>boolean</code> type.
          */
         public T treatCollectionsAsCacheObjects(
                 String treatCollectionsAsCacheObjects) {
@@ -85,7 +87,7 @@ public interface IgniteQueueEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -94,7 +96,7 @@ public interface IgniteQueueEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -103,7 +105,7 @@ public interface IgniteQueueEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -112,7 +114,7 @@ public interface IgniteQueueEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -129,7 +131,8 @@ public interface IgniteQueueEndpointBuilder {
             super(path);
         }
         /**
-         * The queue capacity. Default: non-bounded. The option is a int type.
+         * The queue capacity. Default: non-bounded. The option is a
+         * <code>int</code> type.
          */
         public IgniteQueueProducerBuilder capacity(int capacity) {
             this.properties.put("capacity", capacity);
@@ -137,7 +140,7 @@ public interface IgniteQueueEndpointBuilder {
         }
         /**
          * The queue capacity. Default: non-bounded. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public IgniteQueueProducerBuilder capacity(String capacity) {
             this.properties.put("capacity", capacity);
@@ -147,7 +150,8 @@ public interface IgniteQueueEndpointBuilder {
          * The collection configuration. Default: empty configuration. You can
          * also conveniently set inner properties by using configuration.xyz=123
          * options. The option is a
-         * org.apache.ignite.configuration.CollectionConfiguration type.
+         * <code>org.apache.ignite.configuration.CollectionConfiguration</code>
+         * type.
          */
         public IgniteQueueProducerBuilder configuration(Object configuration) {
             this.properties.put("configuration", configuration);
@@ -157,7 +161,8 @@ public interface IgniteQueueEndpointBuilder {
          * The collection configuration. Default: empty configuration. You can
          * also conveniently set inner properties by using configuration.xyz=123
          * options. The option will be converted to a
-         * org.apache.ignite.configuration.CollectionConfiguration type.
+         * <code>org.apache.ignite.configuration.CollectionConfiguration</code>
+         * type.
          */
         public IgniteQueueProducerBuilder configuration(String configuration) {
             this.properties.put("configuration", configuration);
@@ -169,7 +174,7 @@ public interface IgniteQueueEndpointBuilder {
          * Possible values: CONTAINS, ADD, SIZE, REMOVE, ITERATOR, CLEAR,
          * RETAIN_ALL, ARRAY, DRAIN, ELEMENT, PEEK, OFFER, POLL, TAKE, PUT. The
          * option is a
-         * org.apache.camel.component.ignite.queue.IgniteQueueOperation type.
+         * <code>org.apache.camel.component.ignite.queue.IgniteQueueOperation</code> type.
          */
         public IgniteQueueProducerBuilder operation(
                 IgniteQueueOperation operation) {
@@ -182,7 +187,7 @@ public interface IgniteQueueEndpointBuilder {
          * Possible values: CONTAINS, ADD, SIZE, REMOVE, ITERATOR, CLEAR,
          * RETAIN_ALL, ARRAY, DRAIN, ELEMENT, PEEK, OFFER, POLL, TAKE, PUT. The
          * option will be converted to a
-         * org.apache.camel.component.ignite.queue.IgniteQueueOperation type.
+         * <code>org.apache.camel.component.ignite.queue.IgniteQueueOperation</code> type.
          */
         public IgniteQueueProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
@@ -190,7 +195,7 @@ public interface IgniteQueueEndpointBuilder {
         }
         /**
          * The queue timeout in milliseconds. Default: no timeout. The option is
-         * a java.lang.Long type.
+         * a <code>java.lang.Long</code> type.
          */
         public IgniteQueueProducerBuilder timeoutMillis(Long timeoutMillis) {
             this.properties.put("timeoutMillis", timeoutMillis);
@@ -198,7 +203,7 @@ public interface IgniteQueueEndpointBuilder {
         }
         /**
          * The queue timeout in milliseconds. Default: no timeout. The option
-         * will be converted to a java.lang.Long type.
+         * will be converted to a <code>java.lang.Long</code> type.
          */
         public IgniteQueueProducerBuilder timeoutMillis(String timeoutMillis) {
             this.properties.put("timeoutMillis", timeoutMillis);

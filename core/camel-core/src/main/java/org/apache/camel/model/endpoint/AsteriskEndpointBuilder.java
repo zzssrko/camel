@@ -39,29 +39,29 @@ public interface AsteriskEndpointBuilder {
             super("asterisk", path);
         }
         /**
-         * Logical name. The option is a java.lang.String type.
+         * Logical name. The option is a <code>java.lang.String</code> type.
          */
         public T name(String name) {
             this.properties.put("name", name);
             return (T) this;
         }
         /**
-         * The hostname of the asterisk server. The option is a java.lang.String
-         * type.
+         * The hostname of the asterisk server. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T hostname(String hostname) {
             this.properties.put("hostname", hostname);
             return (T) this;
         }
         /**
-         * Login password. The option is a java.lang.String type.
+         * Login password. The option is a <code>java.lang.String</code> type.
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * Login username. The option is a java.lang.String type.
+         * Login username. The option is a <code>java.lang.String</code> type.
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -70,7 +70,7 @@ public interface AsteriskEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -79,7 +79,7 @@ public interface AsteriskEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -88,7 +88,7 @@ public interface AsteriskEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -97,7 +97,7 @@ public interface AsteriskEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -120,7 +120,7 @@ public interface AsteriskEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public AsteriskConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -134,7 +134,7 @@ public interface AsteriskEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public AsteriskConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -146,7 +146,7 @@ public interface AsteriskEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public AsteriskConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -158,7 +158,8 @@ public interface AsteriskEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public AsteriskConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -166,7 +167,7 @@ public interface AsteriskEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public AsteriskConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -175,7 +176,8 @@ public interface AsteriskEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public AsteriskConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -194,7 +196,7 @@ public interface AsteriskEndpointBuilder {
         /**
          * What action to perform such as getting queue status, sip peers or
          * extension state. The option is a
-         * org.apache.camel.component.asterisk.AsteriskAction type.
+         * <code>org.apache.camel.component.asterisk.AsteriskAction</code> type.
          */
         public AsteriskProducerBuilder action(AsteriskAction action) {
             this.properties.put("action", action);
@@ -203,7 +205,7 @@ public interface AsteriskEndpointBuilder {
         /**
          * What action to perform such as getting queue status, sip peers or
          * extension state. The option will be converted to a
-         * org.apache.camel.component.asterisk.AsteriskAction type.
+         * <code>org.apache.camel.component.asterisk.AsteriskAction</code> type.
          */
         public AsteriskProducerBuilder action(String action) {
             this.properties.put("action", action);

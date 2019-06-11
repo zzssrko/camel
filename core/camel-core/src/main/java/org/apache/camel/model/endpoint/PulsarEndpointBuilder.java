@@ -41,7 +41,7 @@ public interface PulsarEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -50,7 +50,7 @@ public interface PulsarEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -59,7 +59,7 @@ public interface PulsarEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -68,7 +68,7 @@ public interface PulsarEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -91,7 +91,7 @@ public interface PulsarEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public PulsarConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -105,7 +105,7 @@ public interface PulsarEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public PulsarConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -114,7 +114,7 @@ public interface PulsarEndpointBuilder {
         }
         /**
          * Name of the consumer when subscription is EXCLUSIVE. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public PulsarConsumerBuilder consumerName(String consumerName) {
             this.properties.put("consumerName", consumerName);
@@ -122,7 +122,8 @@ public interface PulsarEndpointBuilder {
         }
         /**
          * Prefix to add to consumer names when a SHARED or FAILOVER
-         * subscription is used. The option is a java.lang.String type.
+         * subscription is used. The option is a <code>java.lang.String</code>
+         * type.
          */
         public PulsarConsumerBuilder consumerNamePrefix(
                 String consumerNamePrefix) {
@@ -130,8 +131,8 @@ public interface PulsarEndpointBuilder {
             return (PulsarConsumerBuilder) this;
         }
         /**
-         * Size of the consumer queue - defaults to 10. The option is a int
-         * type.
+         * Size of the consumer queue - defaults to 10. The option is a
+         * <code>int</code> type.
          */
         public PulsarConsumerBuilder consumerQueueSize(int consumerQueueSize) {
             this.properties.put("consumerQueueSize", consumerQueueSize);
@@ -139,14 +140,15 @@ public interface PulsarEndpointBuilder {
         }
         /**
          * Size of the consumer queue - defaults to 10. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public PulsarConsumerBuilder consumerQueueSize(String consumerQueueSize) {
             this.properties.put("consumerQueueSize", consumerQueueSize);
             return (PulsarConsumerBuilder) this;
         }
         /**
-         * Number of consumers - defaults to 1. The option is a int type.
+         * Number of consumers - defaults to 1. The option is a <code>int</code>
+         * type.
          */
         public PulsarConsumerBuilder numberOfConsumers(int numberOfConsumers) {
             this.properties.put("numberOfConsumers", numberOfConsumers);
@@ -154,15 +156,15 @@ public interface PulsarEndpointBuilder {
         }
         /**
          * Number of consumers - defaults to 1. The option will be converted to
-         * a int type.
+         * a <code>int</code> type.
          */
         public PulsarConsumerBuilder numberOfConsumers(String numberOfConsumers) {
             this.properties.put("numberOfConsumers", numberOfConsumers);
             return (PulsarConsumerBuilder) this;
         }
         /**
-         * Name of the subscription to use. The option is a java.lang.String
-         * type.
+         * Name of the subscription to use. The option is a
+         * <code>java.lang.String</code> type.
          */
         public PulsarConsumerBuilder subscriptionName(String subscriptionName) {
             this.properties.put("subscriptionName", subscriptionName);
@@ -171,8 +173,7 @@ public interface PulsarEndpointBuilder {
         /**
          * Type of the subscription EXCLUSIVESHAREDFAILOVER, defaults to
          * EXCLUSIVE. The option is a
-         * org.apache.camel.component.pulsar.utils.consumers.SubscriptionType
-         * type.
+         * <code>org.apache.camel.component.pulsar.utils.consumers.SubscriptionType</code> type.
          */
         public PulsarConsumerBuilder subscriptionType(
                 SubscriptionType subscriptionType) {
@@ -182,8 +183,7 @@ public interface PulsarEndpointBuilder {
         /**
          * Type of the subscription EXCLUSIVESHAREDFAILOVER, defaults to
          * EXCLUSIVE. The option will be converted to a
-         * org.apache.camel.component.pulsar.utils.consumers.SubscriptionType
-         * type.
+         * <code>org.apache.camel.component.pulsar.utils.consumers.SubscriptionType</code> type.
          */
         public PulsarConsumerBuilder subscriptionType(String subscriptionType) {
             this.properties.put("subscriptionType", subscriptionType);
@@ -194,7 +194,7 @@ public interface PulsarEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public PulsarConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -206,7 +206,8 @@ public interface PulsarEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public PulsarConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -214,7 +215,7 @@ public interface PulsarEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public PulsarConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -223,7 +224,8 @@ public interface PulsarEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public PulsarConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -241,14 +243,15 @@ public interface PulsarEndpointBuilder {
         }
         /**
          * The Topic's full URI path including type, tenant and namespace. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public PulsarProducerBuilder topic(String topic) {
             this.properties.put("topic", topic);
             return (PulsarProducerBuilder) this;
         }
         /**
-         * Name of the producer. The option is a java.lang.String type.
+         * Name of the producer. The option is a <code>java.lang.String</code>
+         * type.
          */
         public PulsarProducerBuilder producerName(String producerName) {
             this.properties.put("producerName", producerName);

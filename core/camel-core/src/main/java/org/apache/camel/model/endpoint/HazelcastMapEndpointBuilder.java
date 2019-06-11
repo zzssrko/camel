@@ -39,7 +39,8 @@ public interface HazelcastMapEndpointBuilder {
             super("hazelcast-map", path);
         }
         /**
-         * The name of the cache. The option is a java.lang.String type.
+         * The name of the cache. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T cacheName(String cacheName) {
             this.properties.put("cacheName", cacheName);
@@ -48,7 +49,8 @@ public interface HazelcastMapEndpointBuilder {
         /**
          * To specify a default operation to use, if no operation header has
          * been provided. The option is a
-         * org.apache.camel.component.hazelcast.HazelcastOperation type.
+         * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+         * type.
          */
         public T defaultOperation(HazelcastOperation defaultOperation) {
             this.properties.put("defaultOperation", defaultOperation);
@@ -57,7 +59,8 @@ public interface HazelcastMapEndpointBuilder {
         /**
          * To specify a default operation to use, if no operation header has
          * been provided. The option will be converted to a
-         * org.apache.camel.component.hazelcast.HazelcastOperation type.
+         * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+         * type.
          */
         public T defaultOperation(String defaultOperation) {
             this.properties.put("defaultOperation", defaultOperation);
@@ -65,7 +68,8 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * The hazelcast instance reference which can be used for hazelcast
-         * endpoint. The option is a com.hazelcast.core.HazelcastInstance type.
+         * endpoint. The option is a
+         * <code>com.hazelcast.core.HazelcastInstance</code> type.
          */
         public T hazelcastInstance(Object hazelcastInstance) {
             this.properties.put("hazelcastInstance", hazelcastInstance);
@@ -74,7 +78,7 @@ public interface HazelcastMapEndpointBuilder {
         /**
          * The hazelcast instance reference which can be used for hazelcast
          * endpoint. The option will be converted to a
-         * com.hazelcast.core.HazelcastInstance type.
+         * <code>com.hazelcast.core.HazelcastInstance</code> type.
          */
         public T hazelcastInstance(String hazelcastInstance) {
             this.properties.put("hazelcastInstance", hazelcastInstance);
@@ -84,7 +88,7 @@ public interface HazelcastMapEndpointBuilder {
          * The hazelcast instance reference name which can be used for hazelcast
          * endpoint. If you don't specify the instance reference, camel use the
          * default hazelcast instance from the camel-hazelcast instance. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T hazelcastInstanceName(String hazelcastInstanceName) {
             this.properties.put("hazelcastInstanceName", hazelcastInstanceName);
@@ -92,7 +96,7 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * Define if the endpoint will use a reliable Topic struct or not. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public T reliable(boolean reliable) {
             this.properties.put("reliable", reliable);
@@ -100,7 +104,7 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * Define if the endpoint will use a reliable Topic struct or not. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public T reliable(String reliable) {
             this.properties.put("reliable", reliable);
@@ -109,7 +113,7 @@ public interface HazelcastMapEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -118,7 +122,7 @@ public interface HazelcastMapEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -127,7 +131,7 @@ public interface HazelcastMapEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -136,7 +140,7 @@ public interface HazelcastMapEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -144,7 +148,7 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * To use concurrent consumers polling from the SEDA queue. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public T concurrentConsumers(int concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
@@ -152,7 +156,7 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * To use concurrent consumers polling from the SEDA queue. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public T concurrentConsumers(String concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
@@ -160,7 +164,7 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * Milliseconds before consumer continues polling after an error has
-         * occurred. The option is a int type.
+         * occurred. The option is a <code>int</code> type.
          */
         public T onErrorDelay(int onErrorDelay) {
             this.properties.put("onErrorDelay", onErrorDelay);
@@ -168,7 +172,7 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * Milliseconds before consumer continues polling after an error has
-         * occurred. The option will be converted to a int type.
+         * occurred. The option will be converted to a <code>int</code> type.
          */
         public T onErrorDelay(String onErrorDelay) {
             this.properties.put("onErrorDelay", onErrorDelay);
@@ -178,7 +182,7 @@ public interface HazelcastMapEndpointBuilder {
          * The timeout used when consuming from the SEDA queue. When a timeout
          * occurs, the consumer can check whether it is allowed to continue
          * running. Setting a lower value allows the consumer to react more
-         * quickly upon shutdown. The option is a int type.
+         * quickly upon shutdown. The option is a <code>int</code> type.
          */
         public T pollTimeout(int pollTimeout) {
             this.properties.put("pollTimeout", pollTimeout);
@@ -188,7 +192,8 @@ public interface HazelcastMapEndpointBuilder {
          * The timeout used when consuming from the SEDA queue. When a timeout
          * occurs, the consumer can check whether it is allowed to continue
          * running. Setting a lower value allows the consumer to react more
-         * quickly upon shutdown. The option will be converted to a int type.
+         * quickly upon shutdown. The option will be converted to a
+         * <code>int</code> type.
          */
         public T pollTimeout(String pollTimeout) {
             this.properties.put("pollTimeout", pollTimeout);
@@ -198,7 +203,7 @@ public interface HazelcastMapEndpointBuilder {
          * If set to true then the consumer runs in transaction mode, where the
          * messages in the seda queue will only be removed if the transaction
          * commits, which happens when the processing is complete. The option is
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public T transacted(boolean transacted) {
             this.properties.put("transacted", transacted);
@@ -208,7 +213,7 @@ public interface HazelcastMapEndpointBuilder {
          * If set to true then the consumer runs in transaction mode, where the
          * messages in the seda queue will only be removed if the transaction
          * commits, which happens when the processing is complete. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T transacted(String transacted) {
             this.properties.put("transacted", transacted);
@@ -217,7 +222,7 @@ public interface HazelcastMapEndpointBuilder {
         /**
          * If set to true the whole Exchange will be transfered. If header or
          * body contains not serializable objects, they will be skipped. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public T transferExchange(boolean transferExchange) {
             this.properties.put("transferExchange", transferExchange);
@@ -226,7 +231,7 @@ public interface HazelcastMapEndpointBuilder {
         /**
          * If set to true the whole Exchange will be transfered. If header or
          * body contains not serializable objects, they will be skipped. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public T transferExchange(String transferExchange) {
             this.properties.put("transferExchange", transferExchange);
@@ -249,7 +254,7 @@ public interface HazelcastMapEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public HazelcastMapConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -263,7 +268,7 @@ public interface HazelcastMapEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public HazelcastMapConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -272,7 +277,7 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * Define the polling timeout of the Queue consumer in Poll mode. The
-         * option is a long type.
+         * option is a <code>long</code> type.
          */
         public HazelcastMapConsumerBuilder pollingTimeout(long pollingTimeout) {
             this.properties.put("pollingTimeout", pollingTimeout);
@@ -280,15 +285,15 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * Define the polling timeout of the Queue consumer in Poll mode. The
-         * option will be converted to a long type.
+         * option will be converted to a <code>long</code> type.
          */
         public HazelcastMapConsumerBuilder pollingTimeout(String pollingTimeout) {
             this.properties.put("pollingTimeout", pollingTimeout);
             return (HazelcastMapConsumerBuilder) this;
         }
         /**
-         * Define the Pool size for Queue Consumer Executor. The option is a int
-         * type.
+         * Define the Pool size for Queue Consumer Executor. The option is a
+         * <code>int</code> type.
          */
         public HazelcastMapConsumerBuilder poolSize(int poolSize) {
             this.properties.put("poolSize", poolSize);
@@ -296,7 +301,7 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * Define the Pool size for Queue Consumer Executor. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public HazelcastMapConsumerBuilder poolSize(String poolSize) {
             this.properties.put("poolSize", poolSize);
@@ -304,8 +309,7 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * Define the Queue Consumer mode: Listen or Poll. The option is a
-         * org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode
-         * type.
+         * <code>org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode</code> type.
          */
         public HazelcastMapConsumerBuilder queueConsumerMode(
                 HazelcastQueueConsumerMode queueConsumerMode) {
@@ -315,8 +319,7 @@ public interface HazelcastMapEndpointBuilder {
         /**
          * Define the Queue Consumer mode: Listen or Poll. The option will be
          * converted to a
-         * org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode
-         * type.
+         * <code>org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode</code> type.
          */
         public HazelcastMapConsumerBuilder queueConsumerMode(
                 String queueConsumerMode) {
@@ -328,7 +331,7 @@ public interface HazelcastMapEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public HazelcastMapConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -340,7 +343,8 @@ public interface HazelcastMapEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public HazelcastMapConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -349,7 +353,7 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public HazelcastMapConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -358,7 +362,8 @@ public interface HazelcastMapEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public HazelcastMapConsumerBuilder exchangePattern(
                 String exchangePattern) {
@@ -378,11 +383,11 @@ public interface HazelcastMapEndpointBuilder {
     }
 
     public static enum HazelcastOperation {
-        PUT, DELETE, GET, UPDATE, QUERY, GET_ALL, CLEAR, PUT_IF_ABSENT, ADD_ALL, REMOVE_ALL, RETAIN_ALL, EVICT, EVICT_ALL, VALUE_COUNT, CONTAINS_KEY, CONTAINS_VALUE, GET_KEYS, REMOVE_VALUE, INCREMENT, DECREMENT, SET_VALUE, DESTROY, COMPARE_AND_SET, GET_AND_ADD, ADD, OFFER, PEEK, POLL, REMAINING_CAPACITY, DRAIN_TO, REMOVE_IF, TAKE, PUBLISH, READ_ONCE_HEAD, READ_ONCE_TAIL, CAPACITY;
+        put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
 
     public static enum HazelcastQueueConsumerMode {
-        LISTEN, POLL;
+        listen, poll;
     }
     public default HazelcastMapConsumerBuilder fromHazelcastMap(String path) {
         return new HazelcastMapConsumerBuilder(path);

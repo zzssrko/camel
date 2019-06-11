@@ -41,7 +41,8 @@ public interface BlobServiceEndpointBuilder {
             super("azure-blob", path);
         }
         /**
-         * Container or Blob compact Uri. The option is a java.lang.String type.
+         * Container or Blob compact Uri. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T containerOrBlobUri(String containerOrBlobUri) {
             this.properties.put("containerOrBlobUri", containerOrBlobUri);
@@ -49,7 +50,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * The blob service client. The option is a
-         * com.microsoft.azure.storage.blob.CloudBlob type.
+         * <code>com.microsoft.azure.storage.blob.CloudBlob</code> type.
          */
         public T azureBlobClient(Object azureBlobClient) {
             this.properties.put("azureBlobClient", azureBlobClient);
@@ -57,7 +58,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * The blob service client. The option will be converted to a
-         * com.microsoft.azure.storage.blob.CloudBlob type.
+         * <code>com.microsoft.azure.storage.blob.CloudBlob</code> type.
          */
         public T azureBlobClient(String azureBlobClient) {
             this.properties.put("azureBlobClient", azureBlobClient);
@@ -65,7 +66,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the blob offset for the upload or download operations, default is
-         * 0. The option is a java.lang.Long type.
+         * 0. The option is a <code>java.lang.Long</code> type.
          */
         public T blobOffset(Long blobOffset) {
             this.properties.put("blobOffset", blobOffset);
@@ -73,7 +74,8 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the blob offset for the upload or download operations, default is
-         * 0. The option will be converted to a java.lang.Long type.
+         * 0. The option will be converted to a <code>java.lang.Long</code>
+         * type.
          */
         public T blobOffset(String blobOffset) {
             this.properties.put("blobOffset", blobOffset);
@@ -81,7 +83,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set a blob type, 'blockblob' is default. The option is a
-         * org.apache.camel.component.azure.blob.BlobType type.
+         * <code>org.apache.camel.component.azure.blob.BlobType</code> type.
          */
         public T blobType(BlobType blobType) {
             this.properties.put("blobType", blobType);
@@ -89,7 +91,8 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set a blob type, 'blockblob' is default. The option will be converted
-         * to a org.apache.camel.component.azure.blob.BlobType type.
+         * to a <code>org.apache.camel.component.azure.blob.BlobType</code>
+         * type.
          */
         public T blobType(String blobType) {
             this.properties.put("blobType", blobType);
@@ -97,7 +100,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Close the stream after read or keep it open, default is true. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public T closeStreamAfterRead(boolean closeStreamAfterRead) {
             this.properties.put("closeStreamAfterRead", closeStreamAfterRead);
@@ -105,7 +108,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Close the stream after read or keep it open, default is true. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public T closeStreamAfterRead(String closeStreamAfterRead) {
             this.properties.put("closeStreamAfterRead", closeStreamAfterRead);
@@ -113,7 +116,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the storage credentials, required in most cases. The option is a
-         * com.microsoft.azure.storage.StorageCredentials type.
+         * <code>com.microsoft.azure.storage.StorageCredentials</code> type.
          */
         public T credentials(Object credentials) {
             this.properties.put("credentials", credentials);
@@ -121,8 +124,8 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the storage credentials, required in most cases. The option will
-         * be converted to a com.microsoft.azure.storage.StorageCredentials
-         * type.
+         * be converted to a
+         * <code>com.microsoft.azure.storage.StorageCredentials</code> type.
          */
         public T credentials(String credentials) {
             this.properties.put("credentials", credentials);
@@ -130,7 +133,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the data length for the download or page blob upload operations.
-         * The option is a java.lang.Long type.
+         * The option is a <code>java.lang.Long</code> type.
          */
         public T dataLength(Long dataLength) {
             this.properties.put("dataLength", dataLength);
@@ -138,7 +141,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the data length for the download or page blob upload operations.
-         * The option will be converted to a java.lang.Long type.
+         * The option will be converted to a <code>java.lang.Long</code> type.
          */
         public T dataLength(String dataLength) {
             this.properties.put("dataLength", dataLength);
@@ -146,7 +149,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the file directory where the downloaded blobs will be saved to.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T fileDir(String fileDir) {
             this.properties.put("fileDir", fileDir);
@@ -155,7 +158,7 @@ public interface BlobServiceEndpointBuilder {
         /**
          * Storage resources can be public for reading their content, if this
          * property is enabled then the credentials do not have to be set. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public T publicForRead(boolean publicForRead) {
             this.properties.put("publicForRead", publicForRead);
@@ -164,7 +167,7 @@ public interface BlobServiceEndpointBuilder {
         /**
          * Storage resources can be public for reading their content, if this
          * property is enabled then the credentials do not have to be set. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public T publicForRead(String publicForRead) {
             this.properties.put("publicForRead", publicForRead);
@@ -172,7 +175,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the minimum read size in bytes when reading the blob content. The
-         * option is a int type.
+         * option is a <code>int</code> type.
          */
         public T streamReadSize(int streamReadSize) {
             this.properties.put("streamReadSize", streamReadSize);
@@ -180,7 +183,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the minimum read size in bytes when reading the blob content. The
-         * option will be converted to a int type.
+         * option will be converted to a <code>int</code> type.
          */
         public T streamReadSize(String streamReadSize) {
             this.properties.put("streamReadSize", streamReadSize);
@@ -189,7 +192,7 @@ public interface BlobServiceEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -198,7 +201,7 @@ public interface BlobServiceEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -207,7 +210,7 @@ public interface BlobServiceEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -216,7 +219,7 @@ public interface BlobServiceEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -239,7 +242,7 @@ public interface BlobServiceEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public BlobServiceConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -253,7 +256,7 @@ public interface BlobServiceEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public BlobServiceConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -265,7 +268,7 @@ public interface BlobServiceEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public BlobServiceConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -277,7 +280,8 @@ public interface BlobServiceEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public BlobServiceConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -286,7 +290,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public BlobServiceConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -295,7 +299,8 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public BlobServiceConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -313,7 +318,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the blob meta-data. The option is a
-         * java.util.Map<java.lang.String,java.lang.String> type.
+         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
          */
         public BlobServiceProducerBuilder blobMetadata(
                 Map<String, String> blobMetadata) {
@@ -322,7 +327,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the blob meta-data. The option will be converted to a
-         * java.util.Map<java.lang.String,java.lang.String> type.
+         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
          */
         public BlobServiceProducerBuilder blobMetadata(String blobMetadata) {
             this.properties.put("blobMetadata", blobMetadata);
@@ -330,7 +335,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set a prefix which can be used for listing the blobs. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public BlobServiceProducerBuilder blobPrefix(String blobPrefix) {
             this.properties.put("blobPrefix", blobPrefix);
@@ -338,7 +343,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Close the stream after write or keep it open, default is true. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public BlobServiceProducerBuilder closeStreamAfterWrite(
                 boolean closeStreamAfterWrite) {
@@ -347,7 +352,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Close the stream after write or keep it open, default is true. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public BlobServiceProducerBuilder closeStreamAfterWrite(
                 String closeStreamAfterWrite) {
@@ -356,7 +361,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Blob service operation hint to the producer. The option is a
-         * org.apache.camel.component.azure.blob.BlobServiceOperations type.
+         * <code>org.apache.camel.component.azure.blob.BlobServiceOperations</code> type.
          */
         public BlobServiceProducerBuilder operation(
                 BlobServiceOperations operation) {
@@ -366,7 +371,7 @@ public interface BlobServiceEndpointBuilder {
         /**
          * Blob service operation hint to the producer. The option will be
          * converted to a
-         * org.apache.camel.component.azure.blob.BlobServiceOperations type.
+         * <code>org.apache.camel.component.azure.blob.BlobServiceOperations</code> type.
          */
         public BlobServiceProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
@@ -374,7 +379,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the size of the buffer for writing block and page blocks. The
-         * option is a int type.
+         * option is a <code>int</code> type.
          */
         public BlobServiceProducerBuilder streamWriteSize(int streamWriteSize) {
             this.properties.put("streamWriteSize", streamWriteSize);
@@ -382,7 +387,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Set the size of the buffer for writing block and page blocks. The
-         * option will be converted to a int type.
+         * option will be converted to a <code>int</code> type.
          */
         public BlobServiceProducerBuilder streamWriteSize(String streamWriteSize) {
             this.properties.put("streamWriteSize", streamWriteSize);
@@ -390,7 +395,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Specify if the flat or hierarchical blob listing should be used. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public BlobServiceProducerBuilder useFlatListing(boolean useFlatListing) {
             this.properties.put("useFlatListing", useFlatListing);
@@ -398,7 +403,7 @@ public interface BlobServiceEndpointBuilder {
         }
         /**
          * Specify if the flat or hierarchical blob listing should be used. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public BlobServiceProducerBuilder useFlatListing(String useFlatListing) {
             this.properties.put("useFlatListing", useFlatListing);

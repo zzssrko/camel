@@ -39,7 +39,7 @@ public interface DataSetEndpointBuilder {
         }
         /**
          * Name of DataSet to lookup in the registry. The option is a
-         * org.apache.camel.component.dataset.DataSet type.
+         * <code>org.apache.camel.component.dataset.DataSet</code> type.
          */
         public T name(Object name) {
             this.properties.put("name", name);
@@ -47,7 +47,8 @@ public interface DataSetEndpointBuilder {
         }
         /**
          * Name of DataSet to lookup in the registry. The option will be
-         * converted to a org.apache.camel.component.dataset.DataSet type.
+         * converted to a
+         * <code>org.apache.camel.component.dataset.DataSet</code> type.
          */
         public T name(String name) {
             this.properties.put("name", name);
@@ -60,7 +61,7 @@ public interface DataSetEndpointBuilder {
          * be verified, and will not be set if it is not present = strict = the
          * header value must be present and will be verified = lenient = the
          * header value will be verified if it is present, and will be set if it
-         * is not present. The option is a java.lang.String type.
+         * is not present. The option is a <code>java.lang.String</code> type.
          */
         public T dataSetIndex(String dataSetIndex) {
             this.properties.put("dataSetIndex", dataSetIndex);
@@ -69,7 +70,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -78,7 +79,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -87,7 +88,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -96,7 +97,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -114,7 +115,7 @@ public interface DataSetEndpointBuilder {
         }
         /**
          * Time period in millis to wait before starting sending messages. The
-         * option is a long type.
+         * option is a <code>long</code> type.
          */
         public DataSetConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -122,7 +123,7 @@ public interface DataSetEndpointBuilder {
         }
         /**
          * Time period in millis to wait before starting sending messages. The
-         * option will be converted to a long type.
+         * option will be converted to a <code>long</code> type.
          */
         public DataSetConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -130,7 +131,7 @@ public interface DataSetEndpointBuilder {
         }
         /**
          * Wait until the DataSet contains at least this number of messages. The
-         * option is a int type.
+         * option is a <code>int</code> type.
          */
         public DataSetConsumerBuilder minRate(int minRate) {
             this.properties.put("minRate", minRate);
@@ -138,7 +139,7 @@ public interface DataSetEndpointBuilder {
         }
         /**
          * Wait until the DataSet contains at least this number of messages. The
-         * option will be converted to a int type.
+         * option will be converted to a <code>int</code> type.
          */
         public DataSetConsumerBuilder minRate(String minRate) {
             this.properties.put("minRate", minRate);
@@ -146,7 +147,7 @@ public interface DataSetEndpointBuilder {
         }
         /**
          * Sets how many messages should be preloaded (sent) before the route
-         * completes its initialization. The option is a long type.
+         * completes its initialization. The option is a <code>long</code> type.
          */
         public DataSetConsumerBuilder preloadSize(long preloadSize) {
             this.properties.put("preloadSize", preloadSize);
@@ -154,8 +155,8 @@ public interface DataSetEndpointBuilder {
         }
         /**
          * Sets how many messages should be preloaded (sent) before the route
-         * completes its initialization. The option will be converted to a long
-         * type.
+         * completes its initialization. The option will be converted to a
+         * <code>long</code> type.
          */
         public DataSetConsumerBuilder preloadSize(String preloadSize) {
             this.properties.put("preloadSize", preloadSize);
@@ -164,7 +165,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Allows a delay to be specified which causes a delay when a message is
          * sent by the consumer (to simulate slow processing). The option is a
-         * long type.
+         * <code>long</code> type.
          */
         public DataSetConsumerBuilder produceDelay(long produceDelay) {
             this.properties.put("produceDelay", produceDelay);
@@ -173,7 +174,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Allows a delay to be specified which causes a delay when a message is
          * sent by the consumer (to simulate slow processing). The option will
-         * be converted to a long type.
+         * be converted to a <code>long</code> type.
          */
         public DataSetConsumerBuilder produceDelay(String produceDelay) {
             this.properties.put("produceDelay", produceDelay);
@@ -192,7 +193,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Allows a delay to be specified which causes a delay when a message is
          * consumed by the producer (to simulate slow processing). The option is
-         * a long type.
+         * a <code>long</code> type.
          */
         public DataSetProducerBuilder consumeDelay(long consumeDelay) {
             this.properties.put("consumeDelay", consumeDelay);
@@ -201,7 +202,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Allows a delay to be specified which causes a delay when a message is
          * consumed by the producer (to simulate slow processing). The option
-         * will be converted to a long type.
+         * will be converted to a <code>long</code> type.
          */
         public DataSetProducerBuilder consumeDelay(String consumeDelay) {
             this.properties.put("consumeDelay", consumeDelay);
@@ -215,8 +216,8 @@ public interface DataSetEndpointBuilder {
          * is satisfied when 5 or more message arrives. To ensure that exactly 5
          * messages arrives, then you would need to wait a little period to
          * ensure no further message arrives. This is what you can use this
-         * method for. By default this period is disabled. The option is a long
-         * type.
+         * method for. By default this period is disabled. The option is a
+         * <code>long</code> type.
          */
         public DataSetProducerBuilder assertPeriod(long assertPeriod) {
             this.properties.put("assertPeriod", assertPeriod);
@@ -231,7 +232,7 @@ public interface DataSetEndpointBuilder {
          * messages arrives, then you would need to wait a little period to
          * ensure no further message arrives. This is what you can use this
          * method for. By default this period is disabled. The option will be
-         * converted to a long type.
+         * converted to a <code>long</code> type.
          */
         public DataSetProducerBuilder assertPeriod(String assertPeriod) {
             this.properties.put("assertPeriod", assertPeriod);
@@ -249,7 +250,7 @@ public interface DataSetEndpointBuilder {
          * allows you to not use a fixed assert period, to speedup testing
          * times. If you want to assert that exactly n'th message arrives to
          * this mock endpoint, then see also the setAssertPeriod(long) method
-         * for further details. The option is a int type.
+         * for further details. The option is a <code>int</code> type.
          */
         public DataSetProducerBuilder expectedCount(int expectedCount) {
             this.properties.put("expectedCount", expectedCount);
@@ -267,7 +268,8 @@ public interface DataSetEndpointBuilder {
          * allows you to not use a fixed assert period, to speedup testing
          * times. If you want to assert that exactly n'th message arrives to
          * this mock endpoint, then see also the setAssertPeriod(long) method
-         * for further details. The option will be converted to a int type.
+         * for further details. The option will be converted to a
+         * <code>int</code> type.
          */
         public DataSetProducerBuilder expectedCount(String expectedCount) {
             this.properties.put("expectedCount", expectedCount);
@@ -275,7 +277,7 @@ public interface DataSetEndpointBuilder {
         }
         /**
          * A number that is used to turn on throughput logging based on groups
-         * of the size. The option is a int type.
+         * of the size. The option is a <code>int</code> type.
          */
         public DataSetProducerBuilder reportGroup(int reportGroup) {
             this.properties.put("reportGroup", reportGroup);
@@ -283,7 +285,7 @@ public interface DataSetEndpointBuilder {
         }
         /**
          * A number that is used to turn on throughput logging based on groups
-         * of the size. The option will be converted to a int type.
+         * of the size. The option will be converted to a <code>int</code> type.
          */
         public DataSetProducerBuilder reportGroup(String reportGroup) {
             this.properties.put("reportGroup", reportGroup);
@@ -292,7 +294,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Sets the minimum expected amount of time (in millis) the
          * assertIsSatisfied() will wait on a latch until it is satisfied. The
-         * option is a long type.
+         * option is a <code>long</code> type.
          */
         public DataSetProducerBuilder resultMinimumWaitTime(
                 long resultMinimumWaitTime) {
@@ -302,7 +304,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Sets the minimum expected amount of time (in millis) the
          * assertIsSatisfied() will wait on a latch until it is satisfied. The
-         * option will be converted to a long type.
+         * option will be converted to a <code>long</code> type.
          */
         public DataSetProducerBuilder resultMinimumWaitTime(
                 String resultMinimumWaitTime) {
@@ -311,8 +313,8 @@ public interface DataSetEndpointBuilder {
         }
         /**
          * Sets the maximum amount of time (in millis) the assertIsSatisfied()
-         * will wait on a latch until it is satisfied. The option is a long
-         * type.
+         * will wait on a latch until it is satisfied. The option is a
+         * <code>long</code> type.
          */
         public DataSetProducerBuilder resultWaitTime(long resultWaitTime) {
             this.properties.put("resultWaitTime", resultWaitTime);
@@ -321,7 +323,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Sets the maximum amount of time (in millis) the assertIsSatisfied()
          * will wait on a latch until it is satisfied. The option will be
-         * converted to a long type.
+         * converted to a <code>long</code> type.
          */
         public DataSetProducerBuilder resultWaitTime(String resultWaitTime) {
             this.properties.put("resultWaitTime", resultWaitTime);
@@ -341,7 +343,8 @@ public interface DataSetEndpointBuilder {
          * supported, for example the expectedBodiesReceived(Object...) sets a
          * expectation on the first number of bodies received. You can configure
          * both setRetainFirst(int) and setRetainLast(int) methods, to limit
-         * both the first and last received. The option is a int type.
+         * both the first and last received. The option is a <code>int</code>
+         * type.
          */
         public DataSetProducerBuilder retainFirst(int retainFirst) {
             this.properties.put("retainFirst", retainFirst);
@@ -362,7 +365,7 @@ public interface DataSetEndpointBuilder {
          * expectation on the first number of bodies received. You can configure
          * both setRetainFirst(int) and setRetainLast(int) methods, to limit
          * both the first and last received. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public DataSetProducerBuilder retainFirst(String retainFirst) {
             this.properties.put("retainFirst", retainFirst);
@@ -382,7 +385,7 @@ public interface DataSetEndpointBuilder {
          * for example the expectedBodiesReceived(Object...) sets a expectation
          * on the first number of bodies received. You can configure both
          * setRetainFirst(int) and setRetainLast(int) methods, to limit both the
-         * first and last received. The option is a int type.
+         * first and last received. The option is a <code>int</code> type.
          */
         public DataSetProducerBuilder retainLast(int retainLast) {
             this.properties.put("retainLast", retainLast);
@@ -402,7 +405,8 @@ public interface DataSetEndpointBuilder {
          * for example the expectedBodiesReceived(Object...) sets a expectation
          * on the first number of bodies received. You can configure both
          * setRetainFirst(int) and setRetainLast(int) methods, to limit both the
-         * first and last received. The option will be converted to a int type.
+         * first and last received. The option will be converted to a
+         * <code>int</code> type.
          */
         public DataSetProducerBuilder retainLast(String retainLast) {
             this.properties.put("retainLast", retainLast);
@@ -411,7 +415,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Allows a sleep to be specified to wait to check that this endpoint
          * really is empty when expectedMessageCount(int) is called with zero.
-         * The option is a long type.
+         * The option is a <code>long</code> type.
          */
         public DataSetProducerBuilder sleepForEmptyTest(long sleepForEmptyTest) {
             this.properties.put("sleepForEmptyTest", sleepForEmptyTest);
@@ -420,7 +424,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Allows a sleep to be specified to wait to check that this endpoint
          * really is empty when expectedMessageCount(int) is called with zero.
-         * The option will be converted to a long type.
+         * The option will be converted to a <code>long</code> type.
          */
         public DataSetProducerBuilder sleepForEmptyTest(String sleepForEmptyTest) {
             this.properties.put("sleepForEmptyTest", sleepForEmptyTest);
@@ -429,7 +433,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Sets whether to make a deep copy of the incoming Exchange when
          * received at this mock endpoint. Is by default true. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public DataSetProducerBuilder copyOnExchange(boolean copyOnExchange) {
             this.properties.put("copyOnExchange", copyOnExchange);
@@ -438,7 +442,7 @@ public interface DataSetEndpointBuilder {
         /**
          * Sets whether to make a deep copy of the incoming Exchange when
          * received at this mock endpoint. Is by default true. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public DataSetProducerBuilder copyOnExchange(String copyOnExchange) {
             this.properties.put("copyOnExchange", copyOnExchange);

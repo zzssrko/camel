@@ -39,7 +39,8 @@ public interface ServiceNowEndpointBuilder {
             super("servicenow", path);
         }
         /**
-         * The ServiceNow instance name. The option is a java.lang.String type.
+         * The ServiceNow instance name. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T instanceName(String instanceName) {
             this.properties.put("instanceName", instanceName);
@@ -49,7 +50,7 @@ public interface ServiceNowEndpointBuilder {
          * Set this parameter to true to return only scorecards where the
          * indicator Display field is selected. Set this parameter to all to
          * return scorecards with any Display field value. This parameter is
-         * true by default. The option is a java.lang.String type.
+         * true by default. The option is a <code>java.lang.String</code> type.
          */
         public T display(String display) {
             this.properties.put("display", display);
@@ -58,7 +59,7 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Return the display value (true), actual value (false), or both (all)
          * for reference fields (default: false). The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T displayValue(String displayValue) {
             this.properties.put("displayValue", displayValue);
@@ -66,7 +67,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * True to exclude Table API links for reference fields (default:
-         * false). The option is a java.lang.Boolean type.
+         * false). The option is a <code>java.lang.Boolean</code> type.
          */
         public T excludeReferenceLink(Boolean excludeReferenceLink) {
             this.properties.put("excludeReferenceLink", excludeReferenceLink);
@@ -74,7 +75,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * True to exclude Table API links for reference fields (default:
-         * false). The option will be converted to a java.lang.Boolean type.
+         * false). The option will be converted to a
+         * <code>java.lang.Boolean</code> type.
          */
         public T excludeReferenceLink(String excludeReferenceLink) {
             this.properties.put("excludeReferenceLink", excludeReferenceLink);
@@ -82,8 +84,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Set this parameter to true to return only scorecards that are
-         * favorites of the querying user. The option is a java.lang.Boolean
-         * type.
+         * favorites of the querying user. The option is a
+         * <code>java.lang.Boolean</code> type.
          */
         public T favorites(Boolean favorites) {
             this.properties.put("favorites", favorites);
@@ -92,7 +94,7 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Set this parameter to true to return only scorecards that are
          * favorites of the querying user. The option will be converted to a
-         * java.lang.Boolean type.
+         * <code>java.lang.Boolean</code> type.
          */
         public T favorites(String favorites) {
             this.properties.put("favorites", favorites);
@@ -102,8 +104,8 @@ public interface ServiceNowEndpointBuilder {
          * Set this parameter to true to always return all available aggregates
          * for an indicator, including when an aggregate has already been
          * applied. If a value is not specified, this parameter defaults to
-         * false and returns no aggregates. The option is a java.lang.Boolean
-         * type.
+         * false and returns no aggregates. The option is a
+         * <code>java.lang.Boolean</code> type.
          */
         public T includeAggregates(Boolean includeAggregates) {
             this.properties.put("includeAggregates", includeAggregates);
@@ -114,7 +116,7 @@ public interface ServiceNowEndpointBuilder {
          * for an indicator, including when an aggregate has already been
          * applied. If a value is not specified, this parameter defaults to
          * false and returns no aggregates. The option will be converted to a
-         * java.lang.Boolean type.
+         * <code>java.lang.Boolean</code> type.
          */
         public T includeAggregates(String includeAggregates) {
             this.properties.put("includeAggregates", includeAggregates);
@@ -124,7 +126,7 @@ public interface ServiceNowEndpointBuilder {
          * Set this parameter to true to return all available aggregates for an
          * indicator when no aggregate has been applied. If a value is not
          * specified, this parameter defaults to false and returns no
-         * aggregates. The option is a java.lang.Boolean type.
+         * aggregates. The option is a <code>java.lang.Boolean</code> type.
          */
         public T includeAvailableAggregates(Boolean includeAvailableAggregates) {
             this.properties.put("includeAvailableAggregates", includeAvailableAggregates);
@@ -134,7 +136,8 @@ public interface ServiceNowEndpointBuilder {
          * Set this parameter to true to return all available aggregates for an
          * indicator when no aggregate has been applied. If a value is not
          * specified, this parameter defaults to false and returns no
-         * aggregates. The option will be converted to a java.lang.Boolean type.
+         * aggregates. The option will be converted to a
+         * <code>java.lang.Boolean</code> type.
          */
         public T includeAvailableAggregates(String includeAvailableAggregates) {
             this.properties.put("includeAvailableAggregates", includeAvailableAggregates);
@@ -143,8 +146,8 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Set this parameter to true to return all available breakdowns for an
          * indicator. If a value is not specified, this parameter defaults to
-         * false and returns no breakdowns. The option is a java.lang.Boolean
-         * type.
+         * false and returns no breakdowns. The option is a
+         * <code>java.lang.Boolean</code> type.
          */
         public T includeAvailableBreakdowns(Boolean includeAvailableBreakdowns) {
             this.properties.put("includeAvailableBreakdowns", includeAvailableBreakdowns);
@@ -154,7 +157,7 @@ public interface ServiceNowEndpointBuilder {
          * Set this parameter to true to return all available breakdowns for an
          * indicator. If a value is not specified, this parameter defaults to
          * false and returns no breakdowns. The option will be converted to a
-         * java.lang.Boolean type.
+         * <code>java.lang.Boolean</code> type.
          */
         public T includeAvailableBreakdowns(String includeAvailableBreakdowns) {
             this.properties.put("includeAvailableBreakdowns", includeAvailableBreakdowns);
@@ -164,7 +167,7 @@ public interface ServiceNowEndpointBuilder {
          * Set this parameter to true to return all notes associated with the
          * score. The note element contains the note text as well as the author
          * and timestamp when the note was added. The option is a
-         * java.lang.Boolean type.
+         * <code>java.lang.Boolean</code> type.
          */
         public T includeScoreNotes(Boolean includeScoreNotes) {
             this.properties.put("includeScoreNotes", includeScoreNotes);
@@ -174,7 +177,7 @@ public interface ServiceNowEndpointBuilder {
          * Set this parameter to true to return all notes associated with the
          * score. The note element contains the note text as well as the author
          * and timestamp when the note was added. The option will be converted
-         * to a java.lang.Boolean type.
+         * to a <code>java.lang.Boolean</code> type.
          */
         public T includeScoreNotes(String includeScoreNotes) {
             this.properties.put("includeScoreNotes", includeScoreNotes);
@@ -183,8 +186,8 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Set this parameter to true to return all scores for a scorecard. If a
          * value is not specified, this parameter defaults to false and returns
-         * only the most recent score value. The option is a java.lang.Boolean
-         * type.
+         * only the most recent score value. The option is a
+         * <code>java.lang.Boolean</code> type.
          */
         public T includeScores(Boolean includeScores) {
             this.properties.put("includeScores", includeScores);
@@ -194,7 +197,7 @@ public interface ServiceNowEndpointBuilder {
          * Set this parameter to true to return all scores for a scorecard. If a
          * value is not specified, this parameter defaults to false and returns
          * only the most recent score value. The option will be converted to a
-         * java.lang.Boolean type.
+         * <code>java.lang.Boolean</code> type.
          */
         public T includeScores(String includeScores) {
             this.properties.put("includeScores", includeScores);
@@ -202,7 +205,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * True to set raw value of input fields (default: false). The option is
-         * a java.lang.Boolean type.
+         * a <code>java.lang.Boolean</code> type.
          */
         public T inputDisplayValue(Boolean inputDisplayValue) {
             this.properties.put("inputDisplayValue", inputDisplayValue);
@@ -210,7 +213,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * True to set raw value of input fields (default: false). The option
-         * will be converted to a java.lang.Boolean type.
+         * will be converted to a <code>java.lang.Boolean</code> type.
          */
         public T inputDisplayValue(String inputDisplayValue) {
             this.properties.put("inputDisplayValue", inputDisplayValue);
@@ -218,7 +221,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Set this parameter to true to return only scorecards for key
-         * indicators. The option is a java.lang.Boolean type.
+         * indicators. The option is a <code>java.lang.Boolean</code> type.
          */
         public T key(Boolean key) {
             this.properties.put("key", key);
@@ -226,7 +229,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Set this parameter to true to return only scorecards for key
-         * indicators. The option will be converted to a java.lang.Boolean type.
+         * indicators. The option will be converted to a
+         * <code>java.lang.Boolean</code> type.
          */
         public T key(String key) {
             this.properties.put("key", key);
@@ -234,7 +238,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Defines both request and response models. The option is a
-         * java.lang.String type.
+         * <code>java.util.Map<java.lang.String,
+         * java.lang.Class<java.lang.Object>></code> type.
          */
         public T models(Map<String, Class<Object>> models) {
             this.properties.put("models", models);
@@ -242,7 +247,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Defines both request and response models. The option will be
-         * converted to a java.lang.String type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Class<java.lang.Object>></code> type.
          */
         public T models(String models) {
             this.properties.put("models", models);
@@ -251,7 +257,7 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Enter the maximum number of scorecards each query can return. By
          * default this value is 10, and the maximum is 100. The option is a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T perPage(Integer perPage) {
             this.properties.put("perPage", perPage);
@@ -260,7 +266,7 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Enter the maximum number of scorecards each query can return. By
          * default this value is 10, and the maximum is 100. The option will be
-         * converted to a java.lang.Integer type.
+         * converted to a <code>java.lang.Integer</code> type.
          */
         public T perPage(String perPage) {
             this.properties.put("perPage", perPage);
@@ -269,7 +275,8 @@ public interface ServiceNowEndpointBuilder {
         /**
          * The ServiceNow release to target, default to Helsinki See
          * https://docs.servicenow.com. The option is a
-         * org.apache.camel.component.servicenow.ServiceNowRelease type.
+         * <code>org.apache.camel.component.servicenow.ServiceNowRelease</code>
+         * type.
          */
         public T release(ServiceNowRelease release) {
             this.properties.put("release", release);
@@ -278,14 +285,17 @@ public interface ServiceNowEndpointBuilder {
         /**
          * The ServiceNow release to target, default to Helsinki See
          * https://docs.servicenow.com. The option will be converted to a
-         * org.apache.camel.component.servicenow.ServiceNowRelease type.
+         * <code>org.apache.camel.component.servicenow.ServiceNowRelease</code>
+         * type.
          */
         public T release(String release) {
             this.properties.put("release", release);
             return (T) this;
         }
         /**
-         * Defines the request model. The option is a java.lang.String type.
+         * Defines the request model. The option is a
+         * <code>java.util.Map<java.lang.String,
+         * java.lang.Class<java.lang.Object>></code> type.
          */
         public T requestModels(Map<String, Class<Object>> requestModels) {
             this.properties.put("requestModels", requestModels);
@@ -293,7 +303,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Defines the request model. The option will be converted to a
-         * java.lang.String type.
+         * <code>java.util.Map<java.lang.String,
+         * java.lang.Class<java.lang.Object>></code> type.
          */
         public T requestModels(String requestModels) {
             this.properties.put("requestModels", requestModels);
@@ -301,14 +312,17 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * The default resource, can be overridden by header
-         * CamelServiceNowResource. The option is a java.lang.String type.
+         * CamelServiceNowResource. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T resource(String resource) {
             this.properties.put("resource", resource);
             return (T) this;
         }
         /**
-         * Defines the response model. The option is a java.lang.String type.
+         * Defines the response model. The option is a
+         * <code>java.util.Map<java.lang.String,
+         * java.lang.Class<java.lang.Object>></code> type.
          */
         public T responseModels(Map<String, Class<Object>> responseModels) {
             this.properties.put("responseModels", responseModels);
@@ -316,7 +330,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Defines the response model. The option will be converted to a
-         * java.lang.String type.
+         * <code>java.util.Map<java.lang.String,
+         * java.lang.Class<java.lang.Object>></code> type.
          */
         public T responseModels(String responseModels) {
             this.properties.put("responseModels", responseModels);
@@ -324,7 +339,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Specify the value to use when sorting results. By default, queries
-         * sort records by value. The option is a java.lang.String type.
+         * sort records by value. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T sortBy(String sortBy) {
             this.properties.put("sortBy", sortBy);
@@ -333,7 +349,8 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Specify the sort direction, ascending or descending. By default,
          * queries sort records in descending order. Use sysparm_sortdir=asc to
-         * sort in ascending order. The option is a java.lang.String type.
+         * sort in ascending order. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T sortDir(String sortDir) {
             this.properties.put("sortDir", sortDir);
@@ -341,7 +358,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * True to suppress auto generation of system fields (default: false).
-         * The option is a java.lang.Boolean type.
+         * The option is a <code>java.lang.Boolean</code> type.
          */
         public T suppressAutoSysField(Boolean suppressAutoSysField) {
             this.properties.put("suppressAutoSysField", suppressAutoSysField);
@@ -349,7 +366,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * True to suppress auto generation of system fields (default: false).
-         * The option will be converted to a java.lang.Boolean type.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
          */
         public T suppressAutoSysField(String suppressAutoSysField) {
             this.properties.put("suppressAutoSysField", suppressAutoSysField);
@@ -359,7 +377,7 @@ public interface ServiceNowEndpointBuilder {
          * Set this value to true to remove the Link header from the response.
          * The Link header allows you to request additional pages of data when
          * the number of records matching your query exceeds the query limit.
-         * The option is a java.lang.Boolean type.
+         * The option is a <code>java.lang.Boolean</code> type.
          */
         public T suppressPaginationHeader(Boolean suppressPaginationHeader) {
             this.properties.put("suppressPaginationHeader", suppressPaginationHeader);
@@ -369,7 +387,8 @@ public interface ServiceNowEndpointBuilder {
          * Set this value to true to remove the Link header from the response.
          * The Link header allows you to request additional pages of data when
          * the number of records matching your query exceeds the query limit.
-         * The option will be converted to a java.lang.Boolean type.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
          */
         public T suppressPaginationHeader(String suppressPaginationHeader) {
             this.properties.put("suppressPaginationHeader", suppressPaginationHeader);
@@ -377,7 +396,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * The default table, can be overridden by header CamelServiceNowTable.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T table(String table) {
             this.properties.put("table", table);
@@ -385,7 +404,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Set this parameter to true to return only scorecards that have a
-         * target. The option is a java.lang.Boolean type.
+         * target. The option is a <code>java.lang.Boolean</code> type.
          */
         public T target(Boolean target) {
             this.properties.put("target", target);
@@ -393,7 +412,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Set this parameter to true to return only scorecards that have a
-         * target. The option will be converted to a java.lang.Boolean type.
+         * target. The option will be converted to a
+         * <code>java.lang.Boolean</code> type.
          */
         public T target(String target) {
             this.properties.put("target", target);
@@ -401,7 +421,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Gets only those categories whose parent is a catalog. The option is a
-         * java.lang.Boolean type.
+         * <code>java.lang.Boolean</code> type.
          */
         public T topLevelOnly(Boolean topLevelOnly) {
             this.properties.put("topLevelOnly", topLevelOnly);
@@ -409,7 +429,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Gets only those categories whose parent is a catalog. The option will
-         * be converted to a java.lang.Boolean type.
+         * be converted to a <code>java.lang.Boolean</code> type.
          */
         public T topLevelOnly(String topLevelOnly) {
             this.properties.put("topLevelOnly", topLevelOnly);
@@ -417,7 +437,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * The ServiceNow REST API version, default latest. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T apiVersion(String apiVersion) {
             this.properties.put("apiVersion", apiVersion);
@@ -426,7 +446,7 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -435,7 +455,7 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -443,7 +463,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * The date format used for Json serialization/deserialization. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T dateFormat(String dateFormat) {
             this.properties.put("dateFormat", dateFormat);
@@ -451,7 +471,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * The date-time format used for Json serialization/deserialization. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T dateTimeFormat(String dateTimeFormat) {
             this.properties.put("dateTimeFormat", dateTimeFormat);
@@ -459,7 +479,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * To configure http-client. The option is a
-         * org.apache.cxf.transports.http.configuration.HTTPClientPolicy type.
+         * <code>org.apache.cxf.transports.http.configuration.HTTPClientPolicy</code> type.
          */
         public T httpClientPolicy(Object httpClientPolicy) {
             this.properties.put("httpClientPolicy", httpClientPolicy);
@@ -467,7 +487,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * To configure http-client. The option will be converted to a
-         * org.apache.cxf.transports.http.configuration.HTTPClientPolicy type.
+         * <code>org.apache.cxf.transports.http.configuration.HTTPClientPolicy</code> type.
          */
         public T httpClientPolicy(String httpClientPolicy) {
             this.properties.put("httpClientPolicy", httpClientPolicy);
@@ -475,7 +495,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Sets Jackson's ObjectMapper to use for request/reply. The option is a
-         * com.fasterxml.jackson.databind.ObjectMapper type.
+         * <code>com.fasterxml.jackson.databind.ObjectMapper</code> type.
          */
         public T mapper(Object mapper) {
             this.properties.put("mapper", mapper);
@@ -483,7 +503,8 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * Sets Jackson's ObjectMapper to use for request/reply. The option will
-         * be converted to a com.fasterxml.jackson.databind.ObjectMapper type.
+         * be converted to a
+         * <code>com.fasterxml.jackson.databind.ObjectMapper</code> type.
          */
         public T mapper(String mapper) {
             this.properties.put("mapper", mapper);
@@ -491,7 +512,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * To configure proxy authentication. The option is a
-         * org.apache.cxf.configuration.security.ProxyAuthorizationPolicy type.
+         * <code>org.apache.cxf.configuration.security.ProxyAuthorizationPolicy</code> type.
          */
         public T proxyAuthorizationPolicy(Object proxyAuthorizationPolicy) {
             this.properties.put("proxyAuthorizationPolicy", proxyAuthorizationPolicy);
@@ -499,7 +520,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * To configure proxy authentication. The option will be converted to a
-         * org.apache.cxf.configuration.security.ProxyAuthorizationPolicy type.
+         * <code>org.apache.cxf.configuration.security.ProxyAuthorizationPolicy</code> type.
          */
         public T proxyAuthorizationPolicy(String proxyAuthorizationPolicy) {
             this.properties.put("proxyAuthorizationPolicy", proxyAuthorizationPolicy);
@@ -508,7 +529,7 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Set this parameter to true to retrieve the target record when using
          * import set api. The import set result is then replaced by the target
-         * record. The option is a java.lang.Boolean type.
+         * record. The option is a <code>java.lang.Boolean</code> type.
          */
         public T retrieveTargetRecordOnImport(
                 Boolean retrieveTargetRecordOnImport) {
@@ -518,7 +539,8 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Set this parameter to true to retrieve the target record when using
          * import set api. The import set result is then replaced by the target
-         * record. The option will be converted to a java.lang.Boolean type.
+         * record. The option will be converted to a
+         * <code>java.lang.Boolean</code> type.
          */
         public T retrieveTargetRecordOnImport(
                 String retrieveTargetRecordOnImport) {
@@ -528,7 +550,7 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -537,7 +559,7 @@ public interface ServiceNowEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -545,21 +567,23 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * The time format used for Json serialization/deserialization. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T timeFormat(String timeFormat) {
             this.properties.put("timeFormat", timeFormat);
             return (T) this;
         }
         /**
-         * The proxy host name. The option is a java.lang.String type.
+         * The proxy host name. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * The proxy port number. The option is a java.lang.Integer type.
+         * The proxy port number. The option is a <code>java.lang.Integer</code>
+         * type.
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -567,35 +591,37 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * The proxy port number. The option will be converted to a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * The ServiceNow REST API url. The option is a java.lang.String type.
+         * The ServiceNow REST API url. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T apiUrl(String apiUrl) {
             this.properties.put("apiUrl", apiUrl);
             return (T) this;
         }
         /**
-         * OAuth2 ClientID. The option is a java.lang.String type.
+         * OAuth2 ClientID. The option is a <code>java.lang.String</code> type.
          */
         public T oauthClientId(String oauthClientId) {
             this.properties.put("oauthClientId", oauthClientId);
             return (T) this;
         }
         /**
-         * OAuth2 ClientSecret. The option is a java.lang.String type.
+         * OAuth2 ClientSecret. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T oauthClientSecret(String oauthClientSecret) {
             this.properties.put("oauthClientSecret", oauthClientSecret);
             return (T) this;
         }
         /**
-         * OAuth token Url. The option is a java.lang.String type.
+         * OAuth token Url. The option is a <code>java.lang.String</code> type.
          */
         public T oauthTokenUrl(String oauthTokenUrl) {
             this.properties.put("oauthTokenUrl", oauthTokenUrl);
@@ -603,23 +629,23 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * ServiceNow account password, MUST be provided. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * Password for proxy authentication. The option is a java.lang.String
-         * type.
+         * Password for proxy authentication. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T proxyPassword(String proxyPassword) {
             this.properties.put("proxyPassword", proxyPassword);
             return (T) this;
         }
         /**
-         * Username for proxy authentication. The option is a java.lang.String
-         * type.
+         * Username for proxy authentication. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T proxyUserName(String proxyUserName) {
             this.properties.put("proxyUserName", proxyUserName);
@@ -628,7 +654,8 @@ public interface ServiceNowEndpointBuilder {
         /**
          * To configure security using SSLContextParameters. See
          * http://camel.apache.org/camel-configuration-utilities.html. The
-         * option is a org.apache.camel.support.jsse.SSLContextParameters type.
+         * option is a
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
          */
         public T sslContextParameters(Object sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -638,7 +665,7 @@ public interface ServiceNowEndpointBuilder {
          * To configure security using SSLContextParameters. See
          * http://camel.apache.org/camel-configuration-utilities.html. The
          * option will be converted to a
-         * org.apache.camel.support.jsse.SSLContextParameters type.
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
          */
         public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -646,7 +673,7 @@ public interface ServiceNowEndpointBuilder {
         }
         /**
          * ServiceNow user account name, MUST be provided. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T userName(String userName) {
             this.properties.put("userName", userName);

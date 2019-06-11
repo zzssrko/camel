@@ -42,14 +42,15 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * To lookup an existing configured CxfRsEndpoint. Must used bean: as
-         * prefix. The option is a java.lang.String type.
+         * prefix. The option is a <code>java.lang.String</code> type.
          */
         public T beanId(String beanId) {
             this.properties.put("beanId", beanId);
             return (T) this;
         }
         /**
-         * The service publish address. The option is a java.lang.String type.
+         * The service publish address. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T address(String address) {
             this.properties.put("address", address);
@@ -57,7 +58,7 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * Set the feature list to the CxfRs endpoint. The option is a
-         * java.util.List<org.apache.cxf.feature.Feature> type.
+         * <code>java.util.List<org.apache.cxf.feature.Feature></code> type.
          */
         public T features(List<Object> features) {
             this.properties.put("features", features);
@@ -65,7 +66,8 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * Set the feature list to the CxfRs endpoint. The option will be
-         * converted to a java.util.List<org.apache.cxf.feature.Feature> type.
+         * converted to a
+         * <code>java.util.List<org.apache.cxf.feature.Feature></code> type.
          */
         public T features(String features) {
             this.properties.put("features", features);
@@ -73,7 +75,8 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * This option enables CXF Logging Feature which writes inbound and
-         * outbound REST messages to log. The option is a boolean type.
+         * outbound REST messages to log. The option is a <code>boolean</code>
+         * type.
          */
         public T loggingFeatureEnabled(boolean loggingFeatureEnabled) {
             this.properties.put("loggingFeatureEnabled", loggingFeatureEnabled);
@@ -82,7 +85,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * This option enables CXF Logging Feature which writes inbound and
          * outbound REST messages to log. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T loggingFeatureEnabled(String loggingFeatureEnabled) {
             this.properties.put("loggingFeatureEnabled", loggingFeatureEnabled);
@@ -90,7 +93,8 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * To limit the total size of number of bytes the logger will output
-         * when logging feature has been enabled. The option is a int type.
+         * when logging feature has been enabled. The option is a
+         * <code>int</code> type.
          */
         public T loggingSizeLimit(int loggingSizeLimit) {
             this.properties.put("loggingSizeLimit", loggingSizeLimit);
@@ -99,7 +103,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * To limit the total size of number of bytes the logger will output
          * when logging feature has been enabled. The option will be converted
-         * to a int type.
+         * to a <code>int</code> type.
          */
         public T loggingSizeLimit(String loggingSizeLimit) {
             this.properties.put("loggingSizeLimit", loggingSizeLimit);
@@ -109,7 +113,7 @@ public interface CxfRsEndpointBuilder {
          * This option is used to specify the model file which is useful for the
          * resource class without annotation. When using this option, then the
          * service class can be omitted, to emulate document-only endpoints. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T modelRef(String modelRef) {
             this.properties.put("modelRef", modelRef);
@@ -118,7 +122,8 @@ public interface CxfRsEndpointBuilder {
         /**
          * Set custom JAX-RS provider(s) list to the CxfRs endpoint. You can
          * specify a string with a list of providers to lookup in the registy
-         * separated by comma. The option is a java.lang.String type.
+         * separated by comma. The option is a
+         * <code>java.util.List<java.lang.Object></code> type.
          */
         public T providers(List<Object> providers) {
             this.properties.put("providers", providers);
@@ -128,7 +133,7 @@ public interface CxfRsEndpointBuilder {
          * Set custom JAX-RS provider(s) list to the CxfRs endpoint. You can
          * specify a string with a list of providers to lookup in the registy
          * separated by comma. The option will be converted to a
-         * java.lang.String type.
+         * <code>java.util.List<java.lang.Object></code> type.
          */
         public T providers(String providers) {
             this.properties.put("providers", providers);
@@ -137,7 +142,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * The resource classes which you want to export as REST service.
          * Multiple classes can be separated by comma. The option is a
-         * java.util.List<java.lang.Class<?>> type.
+         * <code>java.util.List<java.lang.Class<java.lang.Object>></code> type.
          */
         public T resourceClasses(List<Class<Object>> resourceClasses) {
             this.properties.put("resourceClasses", resourceClasses);
@@ -146,7 +151,8 @@ public interface CxfRsEndpointBuilder {
         /**
          * The resource classes which you want to export as REST service.
          * Multiple classes can be separated by comma. The option will be
-         * converted to a java.util.List<java.lang.Class<?>> type.
+         * converted to a
+         * <code>java.util.List<java.lang.Class<java.lang.Object>></code> type.
          */
         public T resourceClasses(String resourceClasses) {
             this.properties.put("resourceClasses", resourceClasses);
@@ -155,7 +161,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * Sets the locations of the schema(s) which can be used to validate the
          * incoming XML or JAXB-driven JSON. The option is a
-         * java.util.List<java.lang.String> type.
+         * <code>java.util.List<java.lang.String></code> type.
          */
         public T schemaLocations(List<String> schemaLocations) {
             this.properties.put("schemaLocations", schemaLocations);
@@ -164,7 +170,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * Sets the locations of the schema(s) which can be used to validate the
          * incoming XML or JAXB-driven JSON. The option will be converted to a
-         * java.util.List<java.lang.String> type.
+         * <code>java.util.List<java.lang.String></code> type.
          */
         public T schemaLocations(String schemaLocations) {
             this.properties.put("schemaLocations", schemaLocations);
@@ -172,7 +178,7 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * This option controls whether the PhaseInterceptorChain skips logging
-         * the Fault that it catches. The option is a boolean type.
+         * the Fault that it catches. The option is a <code>boolean</code> type.
          */
         public T skipFaultLogging(boolean skipFaultLogging) {
             this.properties.put("skipFaultLogging", skipFaultLogging);
@@ -180,8 +186,8 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * This option controls whether the PhaseInterceptorChain skips logging
-         * the Fault that it catches. The option will be converted to a boolean
-         * type.
+         * the Fault that it catches. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T skipFaultLogging(String skipFaultLogging) {
             this.properties.put("skipFaultLogging", skipFaultLogging);
@@ -190,7 +196,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -199,7 +205,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -208,7 +214,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * To use a custom CxfBinding to control the binding between Camel
          * Message and CXF Message. The option is a
-         * org.apache.camel.component.cxf.jaxrs.CxfRsBinding type.
+         * <code>org.apache.camel.component.cxf.jaxrs.CxfRsBinding</code> type.
          */
         public T binding(Object binding) {
             this.properties.put("binding", binding);
@@ -217,7 +223,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * To use a custom CxfBinding to control the binding between Camel
          * Message and CXF Message. The option will be converted to a
-         * org.apache.camel.component.cxf.jaxrs.CxfRsBinding type.
+         * <code>org.apache.camel.component.cxf.jaxrs.CxfRsBinding</code> type.
          */
         public T binding(String binding) {
             this.properties.put("binding", binding);
@@ -225,7 +231,7 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * To use a custom configured CXF Bus. The option is a
-         * org.apache.cxf.Bus type.
+         * <code>org.apache.cxf.Bus</code> type.
          */
         public T bus(Object bus) {
             this.properties.put("bus", bus);
@@ -233,7 +239,7 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * To use a custom configured CXF Bus. The option will be converted to a
-         * org.apache.cxf.Bus type.
+         * <code>org.apache.cxf.Bus</code> type.
          */
         public T bus(String bus) {
             this.properties.put("bus", bus);
@@ -242,7 +248,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * This option is used to set the CXF continuation timeout which could
          * be used in CxfConsumer by default when the CXF server is using Jetty
-         * or Servlet transport. The option is a long type.
+         * or Servlet transport. The option is a <code>long</code> type.
          */
         public T continuationTimeout(long continuationTimeout) {
             this.properties.put("continuationTimeout", continuationTimeout);
@@ -251,7 +257,8 @@ public interface CxfRsEndpointBuilder {
         /**
          * This option is used to set the CXF continuation timeout which could
          * be used in CxfConsumer by default when the CXF server is using Jetty
-         * or Servlet transport. The option will be converted to a long type.
+         * or Servlet transport. The option will be converted to a
+         * <code>long</code> type.
          */
         public T continuationTimeout(String continuationTimeout) {
             this.properties.put("continuationTimeout", continuationTimeout);
@@ -263,8 +270,8 @@ public interface CxfRsEndpointBuilder {
          * supports to configure the CXF endpoint in programmatic way. User can
          * configure the CXF server and client by implementing
          * configure{Server/Client} method of CxfEndpointConfigurer. The option
-         * is a org.apache.camel.component.cxf.jaxrs.CxfRsEndpointConfigurer
-         * type.
+         * is a
+         * <code>org.apache.camel.component.cxf.jaxrs.CxfRsEndpointConfigurer</code> type.
          */
         public T cxfRsEndpointConfigurer(Object cxfRsEndpointConfigurer) {
             this.properties.put("cxfRsEndpointConfigurer", cxfRsEndpointConfigurer);
@@ -277,7 +284,7 @@ public interface CxfRsEndpointBuilder {
          * configure the CXF server and client by implementing
          * configure{Server/Client} method of CxfEndpointConfigurer. The option
          * will be converted to a
-         * org.apache.camel.component.cxf.jaxrs.CxfRsEndpointConfigurer type.
+         * <code>org.apache.camel.component.cxf.jaxrs.CxfRsEndpointConfigurer</code> type.
          */
         public T cxfRsEndpointConfigurer(String cxfRsEndpointConfigurer) {
             this.properties.put("cxfRsEndpointConfigurer", cxfRsEndpointConfigurer);
@@ -285,7 +292,7 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * Will set the default bus when CXF endpoint create a bus by itself.
-         * The option is a boolean type.
+         * The option is a <code>boolean</code> type.
          */
         public T defaultBus(boolean defaultBus) {
             this.properties.put("defaultBus", defaultBus);
@@ -293,7 +300,7 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * Will set the default bus when CXF endpoint create a bus by itself.
-         * The option will be converted to a boolean type.
+         * The option will be converted to a <code>boolean</code> type.
          */
         public T defaultBus(String defaultBus) {
             this.properties.put("defaultBus", defaultBus);
@@ -302,7 +309,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
-         * org.apache.camel.spi.HeaderFilterStrategy type.
+         * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -311,7 +318,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option will be converted to a
-         * org.apache.camel.spi.HeaderFilterStrategy type.
+         * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
          */
         public T headerFilterStrategy(String headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -320,7 +327,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * When the option is true, Camel will perform the invocation of the
          * resource class instance and put the response object into the exchange
-         * for further processing. The option is a boolean type.
+         * for further processing. The option is a <code>boolean</code> type.
          */
         public T performInvocation(boolean performInvocation) {
             this.properties.put("performInvocation", performInvocation);
@@ -329,8 +336,8 @@ public interface CxfRsEndpointBuilder {
         /**
          * When the option is true, Camel will perform the invocation of the
          * resource class instance and put the response object into the exchange
-         * for further processing. The option will be converted to a boolean
-         * type.
+         * for further processing. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T performInvocation(String performInvocation) {
             this.properties.put("performInvocation", performInvocation);
@@ -341,7 +348,7 @@ public interface CxfRsEndpointBuilder {
          * SecurityContext contexts will be available to custom CXFRS processors
          * as typed Camel exchange properties. These contexts can be used to
          * analyze the current requests using JAX-RS API. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T propagateContexts(boolean propagateContexts) {
             this.properties.put("propagateContexts", propagateContexts);
@@ -352,7 +359,7 @@ public interface CxfRsEndpointBuilder {
          * SecurityContext contexts will be available to custom CXFRS processors
          * as typed Camel exchange properties. These contexts can be used to
          * analyze the current requests using JAX-RS API. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T propagateContexts(String propagateContexts) {
             this.properties.put("propagateContexts", propagateContexts);
@@ -361,7 +368,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -370,7 +377,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -402,7 +409,7 @@ public interface CxfRsEndpointBuilder {
          * processing it according to the contract defined by the JAX-RS method
          * signature. Custom: allows you to specify a custom binding through the
          * binding option. The option is a
-         * org.apache.camel.component.cxf.jaxrs.BindingStyle type.
+         * <code>org.apache.camel.component.cxf.jaxrs.BindingStyle</code> type.
          */
         public CxfRsConsumerBuilder bindingStyle(BindingStyle bindingStyle) {
             this.properties.put("bindingStyle", bindingStyle);
@@ -424,7 +431,7 @@ public interface CxfRsEndpointBuilder {
          * processing it according to the contract defined by the JAX-RS method
          * signature. Custom: allows you to specify a custom binding through the
          * binding option. The option will be converted to a
-         * org.apache.camel.component.cxf.jaxrs.BindingStyle type.
+         * <code>org.apache.camel.component.cxf.jaxrs.BindingStyle</code> type.
          */
         public CxfRsConsumerBuilder bindingStyle(String bindingStyle) {
             this.properties.put("bindingStyle", bindingStyle);
@@ -437,7 +444,7 @@ public interface CxfRsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public CxfRsConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -451,7 +458,7 @@ public interface CxfRsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public CxfRsConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -460,7 +467,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * This option can override the endpointUrl that published from the WADL
          * which can be accessed with resource address url plus _wadl. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public CxfRsConsumerBuilder publishedEndpointUrl(
                 String publishedEndpointUrl) {
@@ -472,7 +479,7 @@ public interface CxfRsEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public CxfRsConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -484,7 +491,8 @@ public interface CxfRsEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public CxfRsConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -492,7 +500,7 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public CxfRsConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -501,7 +509,8 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public CxfRsConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -510,7 +519,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * The service beans which you want to export as REST service. Multiple
          * beans can be separated by comma. The option is a
-         * java.util.List<java.lang.Object> type.
+         * <code>java.util.List<java.lang.Object></code> type.
          */
         public CxfRsConsumerBuilder serviceBeans(List<Object> serviceBeans) {
             this.properties.put("serviceBeans", serviceBeans);
@@ -519,7 +528,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * The service beans which you want to export as REST service. Multiple
          * beans can be separated by comma. The option will be converted to a
-         * java.util.List<java.lang.Object> type.
+         * <code>java.util.List<java.lang.Object></code> type.
          */
         public CxfRsConsumerBuilder serviceBeans(String serviceBeans) {
             this.properties.put("serviceBeans", serviceBeans);
@@ -537,7 +546,8 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
-         * a org.apache.camel.http.common.cookie.CookieHandler type.
+         * a <code>org.apache.camel.http.common.cookie.CookieHandler</code>
+         * type.
          */
         public CxfRsProducerBuilder cookieHandler(Object cookieHandler) {
             this.properties.put("cookieHandler", cookieHandler);
@@ -546,7 +556,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * Configure a cookie handler to maintain a HTTP session. The option
          * will be converted to a
-         * org.apache.camel.http.common.cookie.CookieHandler type.
+         * <code>org.apache.camel.http.common.cookie.CookieHandler</code> type.
          */
         public CxfRsProducerBuilder cookieHandler(String cookieHandler) {
             this.properties.put("cookieHandler", cookieHandler);
@@ -555,7 +565,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * The hostname verifier to be used. Use the # notation to reference a
          * HostnameVerifier from the registry. The option is a
-         * javax.net.ssl.HostnameVerifier type.
+         * <code>javax.net.ssl.HostnameVerifier</code> type.
          */
         public CxfRsProducerBuilder hostnameVerifier(Object hostnameVerifier) {
             this.properties.put("hostnameVerifier", hostnameVerifier);
@@ -564,7 +574,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * The hostname verifier to be used. Use the # notation to reference a
          * HostnameVerifier from the registry. The option will be converted to a
-         * javax.net.ssl.HostnameVerifier type.
+         * <code>javax.net.ssl.HostnameVerifier</code> type.
          */
         public CxfRsProducerBuilder hostnameVerifier(String hostnameVerifier) {
             this.properties.put("hostnameVerifier", hostnameVerifier);
@@ -573,7 +583,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * The Camel SSL setting reference. Use the # notation to reference the
          * SSL Context. The option is a
-         * org.apache.camel.support.jsse.SSLContextParameters type.
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
          */
         public CxfRsProducerBuilder sslContextParameters(
                 Object sslContextParameters) {
@@ -583,7 +593,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * The Camel SSL setting reference. Use the # notation to reference the
          * SSL Context. The option will be converted to a
-         * org.apache.camel.support.jsse.SSLContextParameters type.
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
          */
         public CxfRsProducerBuilder sslContextParameters(
                 String sslContextParameters) {
@@ -593,7 +603,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * This option tells the CxfRsProducer to inspect return codes and will
          * generate an Exception if the return code is larger than 207. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public CxfRsProducerBuilder throwExceptionOnFailure(
                 boolean throwExceptionOnFailure) {
@@ -603,7 +613,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * This option tells the CxfRsProducer to inspect return codes and will
          * generate an Exception if the return code is larger than 207. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public CxfRsProducerBuilder throwExceptionOnFailure(
                 String throwExceptionOnFailure) {
@@ -613,7 +623,8 @@ public interface CxfRsEndpointBuilder {
         /**
          * If it is true, the CxfRsProducer will use the HttpClientAPI to invoke
          * the service. If it is false, the CxfRsProducer will use the
-         * ProxyClientAPI to invoke the service. The option is a boolean type.
+         * ProxyClientAPI to invoke the service. The option is a
+         * <code>boolean</code> type.
          */
         public CxfRsProducerBuilder httpClientAPI(boolean httpClientAPI) {
             this.properties.put("httpClientAPI", httpClientAPI);
@@ -623,7 +634,7 @@ public interface CxfRsEndpointBuilder {
          * If it is true, the CxfRsProducer will use the HttpClientAPI to invoke
          * the service. If it is false, the CxfRsProducer will use the
          * ProxyClientAPI to invoke the service. The option will be converted to
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public CxfRsProducerBuilder httpClientAPI(String httpClientAPI) {
             this.properties.put("httpClientAPI", httpClientAPI);
@@ -631,8 +642,8 @@ public interface CxfRsEndpointBuilder {
         }
         /**
          * This option is used to tell CxfRsProducer to ignore the message body
-         * of the DELETE method when using HTTP API. The option is a boolean
-         * type.
+         * of the DELETE method when using HTTP API. The option is a
+         * <code>boolean</code> type.
          */
         public CxfRsProducerBuilder ignoreDeleteMethodMessageBody(
                 boolean ignoreDeleteMethodMessageBody) {
@@ -642,7 +653,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * This option is used to tell CxfRsProducer to ignore the message body
          * of the DELETE method when using HTTP API. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public CxfRsProducerBuilder ignoreDeleteMethodMessageBody(
                 String ignoreDeleteMethodMessageBody) {
@@ -652,7 +663,7 @@ public interface CxfRsEndpointBuilder {
         /**
          * This option allows you to configure the maximum size of the cache.
          * The implementation caches CXF clients or ClientFactoryBean in
-         * CxfProvider and CxfRsProvider. The option is a int type.
+         * CxfProvider and CxfRsProvider. The option is a <code>int</code> type.
          */
         public CxfRsProducerBuilder maxClientCacheSize(int maxClientCacheSize) {
             this.properties.put("maxClientCacheSize", maxClientCacheSize);
@@ -661,8 +672,8 @@ public interface CxfRsEndpointBuilder {
         /**
          * This option allows you to configure the maximum size of the cache.
          * The implementation caches CXF clients or ClientFactoryBean in
-         * CxfProvider and CxfRsProvider. The option will be converted to a int
-         * type.
+         * CxfProvider and CxfRsProvider. The option will be converted to a
+         * <code>int</code> type.
          */
         public CxfRsProducerBuilder maxClientCacheSize(String maxClientCacheSize) {
             this.properties.put("maxClientCacheSize", maxClientCacheSize);

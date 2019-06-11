@@ -46,8 +46,8 @@ public interface BeanstalkEndpointBuilder {
             super("beanstalk", path);
         }
         /**
-         * Connection settings host:port/tube. The option is a java.lang.String
-         * type.
+         * Connection settings host:port/tube. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T connectionSettings(String connectionSettings) {
             this.properties.put("connectionSettings", connectionSettings);
@@ -61,7 +61,8 @@ public interface BeanstalkEndpointBuilder {
          * in beanstalk.result message header kick expects the number of jobs to
          * kick in the message body and returns the number of jobs actually
          * kicked out in the message header beanstalk.result. The option is a
-         * org.apache.camel.component.beanstalk.BeanstalkCommand type.
+         * <code>org.apache.camel.component.beanstalk.BeanstalkCommand</code>
+         * type.
          */
         public T command(BeanstalkCommand command) {
             this.properties.put("command", command);
@@ -75,7 +76,8 @@ public interface BeanstalkEndpointBuilder {
          * in beanstalk.result message header kick expects the number of jobs to
          * kick in the message body and returns the number of jobs actually
          * kicked out in the message header beanstalk.result. The option will be
-         * converted to a org.apache.camel.component.beanstalk.BeanstalkCommand
+         * converted to a
+         * <code>org.apache.camel.component.beanstalk.BeanstalkCommand</code>
          * type.
          */
         public T command(String command) {
@@ -83,14 +85,15 @@ public interface BeanstalkEndpointBuilder {
             return (T) this;
         }
         /**
-         * Job delay in seconds. The option is a int type.
+         * Job delay in seconds. The option is a <code>int</code> type.
          */
         public T jobDelay(int jobDelay) {
             this.properties.put("jobDelay", jobDelay);
             return (T) this;
         }
         /**
-         * Job delay in seconds. The option will be converted to a int type.
+         * Job delay in seconds. The option will be converted to a
+         * <code>int</code> type.
          */
         public T jobDelay(String jobDelay) {
             this.properties.put("jobDelay", jobDelay);
@@ -98,7 +101,7 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Job priority. (0 is the highest, see Beanstalk protocol). The option
-         * is a long type.
+         * is a <code>long</code> type.
          */
         public T jobPriority(long jobPriority) {
             this.properties.put("jobPriority", jobPriority);
@@ -106,7 +109,7 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Job priority. (0 is the highest, see Beanstalk protocol). The option
-         * will be converted to a long type.
+         * will be converted to a <code>long</code> type.
          */
         public T jobPriority(String jobPriority) {
             this.properties.put("jobPriority", jobPriority);
@@ -114,8 +117,8 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Job time to run in seconds. (when 0, the beanstalkd daemon raises it
-         * to 1 automatically, see Beanstalk protocol). The option is a int
-         * type.
+         * to 1 automatically, see Beanstalk protocol). The option is a
+         * <code>int</code> type.
          */
         public T jobTimeToRun(int jobTimeToRun) {
             this.properties.put("jobTimeToRun", jobTimeToRun);
@@ -124,7 +127,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * Job time to run in seconds. (when 0, the beanstalkd daemon raises it
          * to 1 automatically, see Beanstalk protocol). The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public T jobTimeToRun(String jobTimeToRun) {
             this.properties.put("jobTimeToRun", jobTimeToRun);
@@ -133,7 +136,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -142,7 +145,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -151,7 +154,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -160,7 +163,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -178,7 +181,7 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Whether to wait for job to complete before ack the job from
-         * beanstalk. The option is a boolean type.
+         * beanstalk. The option is a <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder awaitJob(boolean awaitJob) {
             this.properties.put("awaitJob", awaitJob);
@@ -186,7 +189,8 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Whether to wait for job to complete before ack the job from
-         * beanstalk. The option will be converted to a boolean type.
+         * beanstalk. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public BeanstalkConsumerBuilder awaitJob(String awaitJob) {
             this.properties.put("awaitJob", awaitJob);
@@ -199,7 +203,7 @@ public interface BeanstalkEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -213,7 +217,7 @@ public interface BeanstalkEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -222,7 +226,8 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Command to use when processing failed. The option is a
-         * org.apache.camel.component.beanstalk.BeanstalkCommand type.
+         * <code>org.apache.camel.component.beanstalk.BeanstalkCommand</code>
+         * type.
          */
         public BeanstalkConsumerBuilder onFailure(BeanstalkCommand onFailure) {
             this.properties.put("onFailure", onFailure);
@@ -230,7 +235,9 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Command to use when processing failed. The option will be converted
-         * to a org.apache.camel.component.beanstalk.BeanstalkCommand type.
+         * to a
+         * <code>org.apache.camel.component.beanstalk.BeanstalkCommand</code>
+         * type.
          */
         public BeanstalkConsumerBuilder onFailure(String onFailure) {
             this.properties.put("onFailure", onFailure);
@@ -239,7 +246,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -249,7 +256,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -257,15 +264,15 @@ public interface BeanstalkEndpointBuilder {
             return (BeanstalkConsumerBuilder) this;
         }
         /**
-         * Whether to use blockIO. The option is a boolean type.
+         * Whether to use blockIO. The option is a <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder useBlockIO(boolean useBlockIO) {
             this.properties.put("useBlockIO", useBlockIO);
             return (BeanstalkConsumerBuilder) this;
         }
         /**
-         * Whether to use blockIO. The option will be converted to a boolean
-         * type.
+         * Whether to use blockIO. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder useBlockIO(String useBlockIO) {
             this.properties.put("useBlockIO", useBlockIO);
@@ -276,7 +283,7 @@ public interface BeanstalkEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public BeanstalkConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -288,7 +295,8 @@ public interface BeanstalkEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public BeanstalkConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -296,7 +304,7 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public BeanstalkConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -305,7 +313,8 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public BeanstalkConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -316,7 +325,7 @@ public interface BeanstalkEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public BeanstalkConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -328,7 +337,8 @@ public interface BeanstalkEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public BeanstalkConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -337,7 +347,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public BeanstalkConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -347,7 +357,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public BeanstalkConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -356,7 +366,8 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public BeanstalkConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -366,7 +377,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public BeanstalkConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -379,7 +390,7 @@ public interface BeanstalkEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public BeanstalkConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -391,7 +402,7 @@ public interface BeanstalkEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public BeanstalkConsumerBuilder backoffMultiplier(
                 String backoffMultiplier) {
@@ -401,7 +412,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public BeanstalkConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -410,8 +421,8 @@ public interface BeanstalkEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public BeanstalkConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -420,7 +431,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -429,7 +440,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -438,7 +449,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public BeanstalkConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -447,8 +458,8 @@ public interface BeanstalkEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public BeanstalkConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -457,7 +468,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public BeanstalkConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -467,7 +478,8 @@ public interface BeanstalkEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public BeanstalkConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -476,8 +488,8 @@ public interface BeanstalkEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public BeanstalkConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -488,7 +500,7 @@ public interface BeanstalkEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public BeanstalkConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -498,7 +510,8 @@ public interface BeanstalkEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public BeanstalkConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -508,7 +521,8 @@ public interface BeanstalkEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public BeanstalkConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -517,7 +531,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public BeanstalkConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -527,7 +541,8 @@ public interface BeanstalkEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public BeanstalkConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -535,8 +550,8 @@ public interface BeanstalkEndpointBuilder {
             return (BeanstalkConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -544,7 +559,7 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -552,7 +567,7 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public BeanstalkConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -560,7 +575,7 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public BeanstalkConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -568,8 +583,8 @@ public interface BeanstalkEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -578,7 +593,7 @@ public interface BeanstalkEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public BeanstalkConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);

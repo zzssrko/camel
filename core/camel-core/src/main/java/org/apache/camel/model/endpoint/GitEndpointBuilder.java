@@ -39,21 +39,24 @@ public interface GitEndpointBuilder {
             super("git", path);
         }
         /**
-         * Local repository path. The option is a java.lang.String type.
+         * Local repository path. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T localPath(String localPath) {
             this.properties.put("localPath", localPath);
             return (T) this;
         }
         /**
-         * The branch name to work on. The option is a java.lang.String type.
+         * The branch name to work on. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T branchName(String branchName) {
             this.properties.put("branchName", branchName);
             return (T) this;
         }
         /**
-         * Remote repository password. The option is a java.lang.String type.
+         * Remote repository password. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T password(String password) {
             this.properties.put("password", password);
@@ -61,28 +64,31 @@ public interface GitEndpointBuilder {
         }
         /**
          * The remote repository name to use in particular operation like pull.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T remoteName(String remoteName) {
             this.properties.put("remoteName", remoteName);
             return (T) this;
         }
         /**
-         * The remote repository path. The option is a java.lang.String type.
+         * The remote repository path. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T remotePath(String remotePath) {
             this.properties.put("remotePath", remotePath);
             return (T) this;
         }
         /**
-         * The tag name to work on. The option is a java.lang.String type.
+         * The tag name to work on. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T tagName(String tagName) {
             this.properties.put("tagName", tagName);
             return (T) this;
         }
         /**
-         * Remote repository username. The option is a java.lang.String type.
+         * Remote repository username. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -91,7 +97,7 @@ public interface GitEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -100,7 +106,7 @@ public interface GitEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -109,7 +115,7 @@ public interface GitEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -118,7 +124,7 @@ public interface GitEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -141,7 +147,7 @@ public interface GitEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public GitConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -154,7 +160,7 @@ public interface GitEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public GitConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -162,7 +168,7 @@ public interface GitEndpointBuilder {
         }
         /**
          * The consumer type. The option is a
-         * org.apache.camel.component.git.consumer.GitType type.
+         * <code>org.apache.camel.component.git.consumer.GitType</code> type.
          */
         public GitConsumerBuilder type(GitType type) {
             this.properties.put("type", type);
@@ -170,7 +176,7 @@ public interface GitEndpointBuilder {
         }
         /**
          * The consumer type. The option will be converted to a
-         * org.apache.camel.component.git.consumer.GitType type.
+         * <code>org.apache.camel.component.git.consumer.GitType</code> type.
          */
         public GitConsumerBuilder type(String type) {
             this.properties.put("type", type);
@@ -181,7 +187,7 @@ public interface GitEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public GitConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -193,7 +199,8 @@ public interface GitEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public GitConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -201,7 +208,7 @@ public interface GitEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GitConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -210,7 +217,8 @@ public interface GitEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GitConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -227,7 +235,8 @@ public interface GitEndpointBuilder {
             super(path);
         }
         /**
-         * The flag to manage empty git commits. The option is a boolean type.
+         * The flag to manage empty git commits. The option is a
+         * <code>boolean</code> type.
          */
         public GitProducerBuilder allowEmpty(boolean allowEmpty) {
             this.properties.put("allowEmpty", allowEmpty);
@@ -235,7 +244,7 @@ public interface GitEndpointBuilder {
         }
         /**
          * The flag to manage empty git commits. The option will be converted to
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public GitProducerBuilder allowEmpty(String allowEmpty) {
             this.properties.put("allowEmpty", allowEmpty);
@@ -243,7 +252,7 @@ public interface GitEndpointBuilder {
         }
         /**
          * The operation to do on the repository. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public GitProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
@@ -252,7 +261,7 @@ public interface GitEndpointBuilder {
     }
 
     public static enum GitType {
-        commit, tag, branch;
+        COMMIT, TAG, BRANCH;
     }
     public default GitConsumerBuilder fromGit(String path) {
         return new GitConsumerBuilder(path);

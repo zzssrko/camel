@@ -42,14 +42,15 @@ public interface GrpcEndpointBuilder {
         /**
          * The gRPC server host name. This is localhost or 0.0.0.0 when being a
          * consumer or remote server host name when using producer. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * The gRPC local or remote server port. The option is a int type.
+         * The gRPC local or remote server port. The option is a
+         * <code>int</code> type.
          */
         public T port(int port) {
             this.properties.put("port", port);
@@ -57,7 +58,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * The gRPC local or remote server port. The option will be converted to
-         * a int type.
+         * a <code>int</code> type.
          */
         public T port(String port) {
             this.properties.put("port", port);
@@ -66,14 +67,15 @@ public interface GrpcEndpointBuilder {
         /**
          * Fully qualified service name from the protocol buffer descriptor file
          * (package dot service definition name). The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T service(String service) {
             this.properties.put("service", service);
             return (T) this;
         }
         /**
-         * The HTTP/2 flow control window size (MiB). The option is a int type.
+         * The HTTP/2 flow control window size (MiB). The option is a
+         * <code>int</code> type.
          */
         public T flowControlWindow(int flowControlWindow) {
             this.properties.put("flowControlWindow", flowControlWindow);
@@ -81,7 +83,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * The HTTP/2 flow control window size (MiB). The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public T flowControlWindow(String flowControlWindow) {
             this.properties.put("flowControlWindow", flowControlWindow);
@@ -89,7 +91,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * The maximum message size allowed to be received/sent (MiB). The
-         * option is a int type.
+         * option is a <code>int</code> type.
          */
         public T maxMessageSize(int maxMessageSize) {
             this.properties.put("maxMessageSize", maxMessageSize);
@@ -97,7 +99,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * The maximum message size allowed to be received/sent (MiB). The
-         * option will be converted to a int type.
+         * option will be converted to a <code>int</code> type.
          */
         public T maxMessageSize(String maxMessageSize) {
             this.properties.put("maxMessageSize", maxMessageSize);
@@ -106,7 +108,7 @@ public interface GrpcEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -115,7 +117,7 @@ public interface GrpcEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -124,7 +126,7 @@ public interface GrpcEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -133,7 +135,7 @@ public interface GrpcEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -141,7 +143,8 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * Authentication method type in advance to the SSL/TLS negotiation. The
-         * option is a org.apache.camel.component.grpc.GrpcAuthType type.
+         * option is a <code>org.apache.camel.component.grpc.GrpcAuthType</code>
+         * type.
          */
         public T authenticationType(GrpcAuthType authenticationType) {
             this.properties.put("authenticationType", authenticationType);
@@ -150,7 +153,7 @@ public interface GrpcEndpointBuilder {
         /**
          * Authentication method type in advance to the SSL/TLS negotiation. The
          * option will be converted to a
-         * org.apache.camel.component.grpc.GrpcAuthType type.
+         * <code>org.apache.camel.component.grpc.GrpcAuthType</code> type.
          */
         public T authenticationType(String authenticationType) {
             this.properties.put("authenticationType", authenticationType);
@@ -158,7 +161,8 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * JSON Web Token sign algorithm. The option is a
-         * org.apache.camel.component.grpc.auth.jwt.JwtAlgorithm type.
+         * <code>org.apache.camel.component.grpc.auth.jwt.JwtAlgorithm</code>
+         * type.
          */
         public T jwtAlgorithm(JwtAlgorithm jwtAlgorithm) {
             this.properties.put("jwtAlgorithm", jwtAlgorithm);
@@ -166,28 +170,32 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * JSON Web Token sign algorithm. The option will be converted to a
-         * org.apache.camel.component.grpc.auth.jwt.JwtAlgorithm type.
+         * <code>org.apache.camel.component.grpc.auth.jwt.JwtAlgorithm</code>
+         * type.
          */
         public T jwtAlgorithm(String jwtAlgorithm) {
             this.properties.put("jwtAlgorithm", jwtAlgorithm);
             return (T) this;
         }
         /**
-         * JSON Web Token issuer. The option is a java.lang.String type.
+         * JSON Web Token issuer. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T jwtIssuer(String jwtIssuer) {
             this.properties.put("jwtIssuer", jwtIssuer);
             return (T) this;
         }
         /**
-         * JSON Web Token secret. The option is a java.lang.String type.
+         * JSON Web Token secret. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T jwtSecret(String jwtSecret) {
             this.properties.put("jwtSecret", jwtSecret);
             return (T) this;
         }
         /**
-         * JSON Web Token subject. The option is a java.lang.String type.
+         * JSON Web Token subject. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T jwtSubject(String jwtSubject) {
             this.properties.put("jwtSubject", jwtSubject);
@@ -195,7 +203,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * The X.509 certificate chain file resource in PEM format link. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T keyCertChainResource(String keyCertChainResource) {
             this.properties.put("keyCertChainResource", keyCertChainResource);
@@ -203,7 +211,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * The PKCS#8 private key file password. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T keyPassword(String keyPassword) {
             this.properties.put("keyPassword", keyPassword);
@@ -211,7 +219,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * The PKCS#8 private key file resource in PEM format link. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T keyResource(String keyResource) {
             this.properties.put("keyResource", keyResource);
@@ -219,7 +227,8 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * Identifies the security negotiation type used for HTTP/2
-         * communication. The option is a io.grpc.netty.NegotiationType type.
+         * communication. The option is a
+         * <code>io.grpc.netty.NegotiationType</code> type.
          */
         public T negotiationType(NegotiationType negotiationType) {
             this.properties.put("negotiationType", negotiationType);
@@ -228,7 +237,7 @@ public interface GrpcEndpointBuilder {
         /**
          * Identifies the security negotiation type used for HTTP/2
          * communication. The option will be converted to a
-         * io.grpc.netty.NegotiationType type.
+         * <code>io.grpc.netty.NegotiationType</code> type.
          */
         public T negotiationType(String negotiationType) {
             this.properties.put("negotiationType", negotiationType);
@@ -236,7 +245,8 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * Service Account key file in JSON format resource link supported by
-         * the Google Cloud SDK. The option is a java.lang.String type.
+         * the Google Cloud SDK. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T serviceAccountResource(String serviceAccountResource) {
             this.properties.put("serviceAccountResource", serviceAccountResource);
@@ -245,7 +255,7 @@ public interface GrpcEndpointBuilder {
         /**
          * The trusted certificates collection file resource in PEM format for
          * verifying the remote endpoint's certificate. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T trustCertCollectionResource(String trustCertCollectionResource) {
             this.properties.put("trustCertCollectionResource", trustCertCollectionResource);
@@ -268,7 +278,7 @@ public interface GrpcEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public GrpcConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -281,7 +291,7 @@ public interface GrpcEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public GrpcConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -295,7 +305,8 @@ public interface GrpcEndpointBuilder {
          * to the sender. If a propagation strategy is selected, request is sent
          * to the stream, and the response will be immediately sent back to the
          * sender. The option is a
-         * org.apache.camel.component.grpc.GrpcConsumerStrategy type.
+         * <code>org.apache.camel.component.grpc.GrpcConsumerStrategy</code>
+         * type.
          */
         public GrpcConsumerBuilder consumerStrategy(
                 GrpcConsumerStrategy consumerStrategy) {
@@ -310,7 +321,8 @@ public interface GrpcEndpointBuilder {
          * to the sender. If a propagation strategy is selected, request is sent
          * to the stream, and the response will be immediately sent back to the
          * sender. The option will be converted to a
-         * org.apache.camel.component.grpc.GrpcConsumerStrategy type.
+         * <code>org.apache.camel.component.grpc.GrpcConsumerStrategy</code>
+         * type.
          */
         public GrpcConsumerBuilder consumerStrategy(String consumerStrategy) {
             this.properties.put("consumerStrategy", consumerStrategy);
@@ -318,7 +330,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * Determines if onCompleted events should be pushed to the Camel route.
-         * The option is a boolean type.
+         * The option is a <code>boolean</code> type.
          */
         public GrpcConsumerBuilder forwardOnCompleted(boolean forwardOnCompleted) {
             this.properties.put("forwardOnCompleted", forwardOnCompleted);
@@ -326,7 +338,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * Determines if onCompleted events should be pushed to the Camel route.
-         * The option will be converted to a boolean type.
+         * The option will be converted to a <code>boolean</code> type.
          */
         public GrpcConsumerBuilder forwardOnCompleted(String forwardOnCompleted) {
             this.properties.put("forwardOnCompleted", forwardOnCompleted);
@@ -334,7 +346,8 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * Determines if onError events should be pushed to the Camel route.
-         * Exceptions will be set as message body. The option is a boolean type.
+         * Exceptions will be set as message body. The option is a
+         * <code>boolean</code> type.
          */
         public GrpcConsumerBuilder forwardOnError(boolean forwardOnError) {
             this.properties.put("forwardOnError", forwardOnError);
@@ -343,7 +356,7 @@ public interface GrpcEndpointBuilder {
         /**
          * Determines if onError events should be pushed to the Camel route.
          * Exceptions will be set as message body. The option will be converted
-         * to a boolean type.
+         * to a <code>boolean</code> type.
          */
         public GrpcConsumerBuilder forwardOnError(String forwardOnError) {
             this.properties.put("forwardOnError", forwardOnError);
@@ -351,7 +364,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * The maximum number of concurrent calls permitted for each incoming
-         * server connection. The option is a int type.
+         * server connection. The option is a <code>int</code> type.
          */
         public GrpcConsumerBuilder maxConcurrentCallsPerConnection(
                 int maxConcurrentCallsPerConnection) {
@@ -360,7 +373,8 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * The maximum number of concurrent calls permitted for each incoming
-         * server connection. The option will be converted to a int type.
+         * server connection. The option will be converted to a <code>int</code>
+         * type.
          */
         public GrpcConsumerBuilder maxConcurrentCallsPerConnection(
                 String maxConcurrentCallsPerConnection) {
@@ -372,7 +386,7 @@ public interface GrpcEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public GrpcConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -384,7 +398,8 @@ public interface GrpcEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public GrpcConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -392,7 +407,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GrpcConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -401,7 +416,8 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GrpcConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -418,7 +434,7 @@ public interface GrpcEndpointBuilder {
             super(path);
         }
         /**
-         * gRPC method name. The option is a java.lang.String type.
+         * gRPC method name. The option is a <code>java.lang.String</code> type.
          */
         public GrpcProducerBuilder method(String method) {
             this.properties.put("method", method);
@@ -430,7 +446,8 @@ public interface GrpcEndpointBuilder {
          * STREAMING mode all exchanges will be sent within the same request
          * (input and output of the recipient gRPC service must be of type
          * 'stream'). The option is a
-         * org.apache.camel.component.grpc.GrpcProducerStrategy type.
+         * <code>org.apache.camel.component.grpc.GrpcProducerStrategy</code>
+         * type.
          */
         public GrpcProducerBuilder producerStrategy(
                 GrpcProducerStrategy producerStrategy) {
@@ -443,7 +460,8 @@ public interface GrpcEndpointBuilder {
          * STREAMING mode all exchanges will be sent within the same request
          * (input and output of the recipient gRPC service must be of type
          * 'stream'). The option will be converted to a
-         * org.apache.camel.component.grpc.GrpcProducerStrategy type.
+         * <code>org.apache.camel.component.grpc.GrpcProducerStrategy</code>
+         * type.
          */
         public GrpcProducerBuilder producerStrategy(String producerStrategy) {
             this.properties.put("producerStrategy", producerStrategy);
@@ -451,7 +469,8 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * When using STREAMING client mode, it indicates the endpoint where
-         * responses should be forwarded. The option is a java.lang.String type.
+         * responses should be forwarded. The option is a
+         * <code>java.lang.String</code> type.
          */
         public GrpcProducerBuilder streamRepliesTo(String streamRepliesTo) {
             this.properties.put("streamRepliesTo", streamRepliesTo);
@@ -459,7 +478,7 @@ public interface GrpcEndpointBuilder {
         }
         /**
          * The user agent header passed to the server. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public GrpcProducerBuilder userAgent(String userAgent) {
             this.properties.put("userAgent", userAgent);

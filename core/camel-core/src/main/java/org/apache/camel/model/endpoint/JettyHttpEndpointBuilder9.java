@@ -46,7 +46,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * If this option is false the Servlet will disable the HTTP streaming
          * and set the content-length header on the response. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T chunked(boolean chunked) {
             this.properties.put("chunked", chunked);
@@ -55,7 +55,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * If this option is false the Servlet will disable the HTTP streaming
          * and set the content-length header on the response. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T chunked(String chunked) {
             this.properties.put("chunked", chunked);
@@ -77,8 +77,8 @@ public interface JettyHttpEndpointBuilder9 {
          * multiple times. The http/http4 producer will by default cache the
          * response body stream. If setting this option to true, then the
          * producers will not cache the response body stream but use the
-         * response stream as-is as the message body. The option is a boolean
-         * type.
+         * response stream as-is as the message body. The option is a
+         * <code>boolean</code> type.
          */
         public T disableStreamCache(boolean disableStreamCache) {
             this.properties.put("disableStreamCache", disableStreamCache);
@@ -101,7 +101,7 @@ public interface JettyHttpEndpointBuilder9 {
          * response body stream. If setting this option to true, then the
          * producers will not cache the response body stream but use the
          * response stream as-is as the message body. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T disableStreamCache(String disableStreamCache) {
             this.properties.put("disableStreamCache", disableStreamCache);
@@ -111,7 +111,7 @@ public interface JettyHttpEndpointBuilder9 {
          * Whether Jetty org.eclipse.jetty.servlets.MultiPartFilter is enabled
          * or not. You should set this value to false when bridging endpoints,
          * to ensure multipart requests is proxied/bridged as well. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T enableMultipartFilter(boolean enableMultipartFilter) {
             this.properties.put("enableMultipartFilter", enableMultipartFilter);
@@ -121,7 +121,7 @@ public interface JettyHttpEndpointBuilder9 {
          * Whether Jetty org.eclipse.jetty.servlets.MultiPartFilter is enabled
          * or not. You should set this value to false when bridging endpoints,
          * to ensure multipart requests is proxied/bridged as well. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T enableMultipartFilter(String enableMultipartFilter) {
             this.properties.put("enableMultipartFilter", enableMultipartFilter);
@@ -130,7 +130,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
-         * org.apache.camel.spi.HeaderFilterStrategy type.
+         * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -139,7 +139,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option will be converted to a
-         * org.apache.camel.spi.HeaderFilterStrategy type.
+         * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
          */
         public T headerFilterStrategy(String headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -154,7 +154,7 @@ public interface JettyHttpEndpointBuilder9 {
          * required to be serialized. This is by default turned off. If you
          * enable this then be aware that Java will deserialize the incoming
          * data from the request to Java and that can be a potential security
-         * risk. The option is a boolean type.
+         * risk. The option is a <code>boolean</code> type.
          */
         public T transferException(boolean transferException) {
             this.properties.put("transferException", transferException);
@@ -169,7 +169,7 @@ public interface JettyHttpEndpointBuilder9 {
          * required to be serialized. This is by default turned off. If you
          * enable this then be aware that Java will deserialize the incoming
          * data from the request to Java and that can be a potential security
-         * risk. The option will be converted to a boolean type.
+         * risk. The option will be converted to a <code>boolean</code> type.
          */
         public T transferException(String transferException) {
             this.properties.put("transferException", transferException);
@@ -178,7 +178,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * To use a custom HttpBinding to control the mapping between Camel
          * message and HttpClient. The option is a
-         * org.apache.camel.http.common.HttpBinding type.
+         * <code>org.apache.camel.http.common.HttpBinding</code> type.
          */
         public T httpBinding(Object httpBinding) {
             this.properties.put("httpBinding", httpBinding);
@@ -187,7 +187,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * To use a custom HttpBinding to control the mapping between Camel
          * message and HttpClient. The option will be converted to a
-         * org.apache.camel.http.common.HttpBinding type.
+         * <code>org.apache.camel.http.common.HttpBinding</code> type.
          */
         public T httpBinding(String httpBinding) {
             this.properties.put("httpBinding", httpBinding);
@@ -196,7 +196,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -205,7 +205,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -214,7 +214,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * If this option is true then IN exchange Body of the exchange will be
          * mapped to HTTP body. Setting this to false will avoid the HTTP
-         * mapping. The option is a boolean type.
+         * mapping. The option is a <code>boolean</code> type.
          */
         public T mapHttpMessageBody(boolean mapHttpMessageBody) {
             this.properties.put("mapHttpMessageBody", mapHttpMessageBody);
@@ -223,7 +223,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * If this option is true then IN exchange Body of the exchange will be
          * mapped to HTTP body. Setting this to false will avoid the HTTP
-         * mapping. The option will be converted to a boolean type.
+         * mapping. The option will be converted to a <code>boolean</code> type.
          */
         public T mapHttpMessageBody(String mapHttpMessageBody) {
             this.properties.put("mapHttpMessageBody", mapHttpMessageBody);
@@ -232,7 +232,8 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * If this option is true then IN exchange Form Encoded body of the
          * exchange will be mapped to HTTP. Setting this to false will avoid the
-         * HTTP Form Encoded body mapping. The option is a boolean type.
+         * HTTP Form Encoded body mapping. The option is a <code>boolean</code>
+         * type.
          */
         public T mapHttpMessageFormUrlEncodedBody(
                 boolean mapHttpMessageFormUrlEncodedBody) {
@@ -243,7 +244,7 @@ public interface JettyHttpEndpointBuilder9 {
          * If this option is true then IN exchange Form Encoded body of the
          * exchange will be mapped to HTTP. Setting this to false will avoid the
          * HTTP Form Encoded body mapping. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T mapHttpMessageFormUrlEncodedBody(
                 String mapHttpMessageFormUrlEncodedBody) {
@@ -253,7 +254,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * If this option is true then IN exchange Headers of the exchange will
          * be mapped to HTTP headers. Setting this to false will avoid the HTTP
-         * Headers mapping. The option is a boolean type.
+         * Headers mapping. The option is a <code>boolean</code> type.
          */
         public T mapHttpMessageHeaders(boolean mapHttpMessageHeaders) {
             this.properties.put("mapHttpMessageHeaders", mapHttpMessageHeaders);
@@ -262,7 +263,8 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * If this option is true then IN exchange Headers of the exchange will
          * be mapped to HTTP headers. Setting this to false will avoid the HTTP
-         * Headers mapping. The option will be converted to a boolean type.
+         * Headers mapping. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T mapHttpMessageHeaders(String mapHttpMessageHeaders) {
             this.properties.put("mapHttpMessageHeaders", mapHttpMessageHeaders);
@@ -271,7 +273,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -280,7 +282,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -288,7 +290,7 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * To configure security using SSLContextParameters. The option is a
-         * org.apache.camel.support.jsse.SSLContextParameters type.
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
          */
         public T sslContextParameters(Object sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -296,8 +298,8 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * To configure security using SSLContextParameters. The option will be
-         * converted to a org.apache.camel.support.jsse.SSLContextParameters
-         * type.
+         * converted to a
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
          */
         public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -314,8 +316,8 @@ public interface JettyHttpEndpointBuilder9 {
             super(path);
         }
         /**
-         * Configure the consumer to work in async mode. The option is a boolean
-         * type.
+         * Configure the consumer to work in async mode. The option is a
+         * <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 async(boolean async) {
             this.properties.put("async", async);
@@ -323,7 +325,7 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Configure the consumer to work in async mode. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 async(String async) {
             this.properties.put("async", async);
@@ -336,7 +338,7 @@ public interface JettyHttpEndpointBuilder9 {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -350,7 +352,7 @@ public interface JettyHttpEndpointBuilder9 {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -363,7 +365,7 @@ public interface JettyHttpEndpointBuilder9 {
          * never expire. If a timeout occurs then the request will be expired
          * and Jetty will return back a http error 503 to the client. This
          * option is only in use when using Jetty with the Asynchronous Routing
-         * Engine. The option is a java.lang.Long type.
+         * Engine. The option is a <code>java.lang.Long</code> type.
          */
         public JettyHttpConsumerBuilder9 continuationTimeout(
                 Long continuationTimeout) {
@@ -376,7 +378,8 @@ public interface JettyHttpEndpointBuilder9 {
          * never expire. If a timeout occurs then the request will be expired
          * and Jetty will return back a http error 503 to the client. This
          * option is only in use when using Jetty with the Asynchronous Routing
-         * Engine. The option will be converted to a java.lang.Long type.
+         * Engine. The option will be converted to a <code>java.lang.Long</code>
+         * type.
          */
         public JettyHttpConsumerBuilder9 continuationTimeout(
                 String continuationTimeout) {
@@ -385,7 +388,8 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * If the option is true, Jetty server will setup the CrossOriginFilter
-         * which supports the CORS out of box. The option is a boolean type.
+         * which supports the CORS out of box. The option is a
+         * <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 enableCORS(boolean enableCORS) {
             this.properties.put("enableCORS", enableCORS);
@@ -394,7 +398,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * If the option is true, Jetty server will setup the CrossOriginFilter
          * which supports the CORS out of box. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 enableCORS(String enableCORS) {
             this.properties.put("enableCORS", enableCORS);
@@ -403,7 +407,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * If this option is true, Jetty JMX support will be enabled for this
          * endpoint. See Jetty JMX support for more details. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 enableJmx(boolean enableJmx) {
             this.properties.put("enableJmx", enableJmx);
@@ -412,7 +416,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * If this option is true, Jetty JMX support will be enabled for this
          * endpoint. See Jetty JMX support for more details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 enableJmx(String enableJmx) {
             this.properties.put("enableJmx", enableJmx);
@@ -421,7 +425,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Used to only allow consuming if the HttpMethod matches, such as
          * GET/POST/PUT etc. Multiple methods can be specified separated by
-         * comma. The option is a java.lang.String type.
+         * comma. The option is a <code>java.lang.String</code> type.
          */
         public JettyHttpConsumerBuilder9 httpMethodRestrict(
                 String httpMethodRestrict) {
@@ -431,7 +435,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Whether or not the consumer should try to find a target consumer by
          * matching the URI prefix if no exact match is found. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 matchOnUriPrefix(
                 boolean matchOnUriPrefix) {
@@ -441,7 +445,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Whether or not the consumer should try to find a target consumer by
          * matching the URI prefix if no exact match is found. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 matchOnUriPrefix(
                 String matchOnUriPrefix) {
@@ -450,7 +454,7 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * To use a custom buffer size on the javax.servlet.ServletResponse. The
-         * option is a java.lang.Integer type.
+         * option is a <code>java.lang.Integer</code> type.
          */
         public JettyHttpConsumerBuilder9 responseBufferSize(
                 Integer responseBufferSize) {
@@ -459,7 +463,7 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * To use a custom buffer size on the javax.servlet.ServletResponse. The
-         * option will be converted to a java.lang.Integer type.
+         * option will be converted to a <code>java.lang.Integer</code> type.
          */
         public JettyHttpConsumerBuilder9 responseBufferSize(
                 String responseBufferSize) {
@@ -470,7 +474,8 @@ public interface JettyHttpEndpointBuilder9 {
          * If the option is true, jetty server will send the date header to the
          * client which sends the request. NOTE please make sure there is no any
          * other camel-jetty endpoint is share the same port, otherwise this
-         * option may not work as expected. The option is a boolean type.
+         * option may not work as expected. The option is a <code>boolean</code>
+         * type.
          */
         public JettyHttpConsumerBuilder9 sendDateHeader(boolean sendDateHeader) {
             this.properties.put("sendDateHeader", sendDateHeader);
@@ -481,7 +486,7 @@ public interface JettyHttpEndpointBuilder9 {
          * client which sends the request. NOTE please make sure there is no any
          * other camel-jetty endpoint is share the same port, otherwise this
          * option may not work as expected. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 sendDateHeader(String sendDateHeader) {
             this.properties.put("sendDateHeader", sendDateHeader);
@@ -492,7 +497,7 @@ public interface JettyHttpEndpointBuilder9 {
          * jetty version information to the client which sends the request. NOTE
          * please make sure there is no any other camel-jetty endpoint is share
          * the same port, otherwise this option may not work as expected. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 sendServerVersion(
                 boolean sendServerVersion) {
@@ -504,7 +509,7 @@ public interface JettyHttpEndpointBuilder9 {
          * jetty version information to the client which sends the request. NOTE
          * please make sure there is no any other camel-jetty endpoint is share
          * the same port, otherwise this option may not work as expected. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 sendServerVersion(
                 String sendServerVersion) {
@@ -513,7 +518,7 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Specifies whether to enable the session manager on the server side of
-         * Jetty. The option is a boolean type.
+         * Jetty. The option is a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 sessionSupport(boolean sessionSupport) {
             this.properties.put("sessionSupport", sessionSupport);
@@ -521,7 +526,7 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Specifies whether to enable the session manager on the server side of
-         * Jetty. The option will be converted to a boolean type.
+         * Jetty. The option will be converted to a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 sessionSupport(String sessionSupport) {
             this.properties.put("sessionSupport", sessionSupport);
@@ -529,7 +534,7 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Whether or not to use Jetty continuations for the Jetty Server. The
-         * option is a java.lang.Boolean type.
+         * option is a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 useContinuation(boolean useContinuation) {
             this.properties.put("useContinuation", useContinuation);
@@ -537,7 +542,7 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Whether or not to use Jetty continuations for the Jetty Server. The
-         * option will be converted to a java.lang.Boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 useContinuation(String useContinuation) {
             this.properties.put("useContinuation", useContinuation);
@@ -546,8 +551,8 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Whether to eager check whether the HTTP requests has content if the
          * content-length header is 0 or not present. This can be turned on in
-         * case HTTP clients do not send streamed data. The option is a boolean
-         * type.
+         * case HTTP clients do not send streamed data. The option is a
+         * <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 eagerCheckContentAvailable(
                 boolean eagerCheckContentAvailable) {
@@ -558,7 +563,7 @@ public interface JettyHttpEndpointBuilder9 {
          * Whether to eager check whether the HTTP requests has content if the
          * content-length header is 0 or not present. This can be turned on in
          * case HTTP clients do not send streamed data. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 eagerCheckContentAvailable(
                 String eagerCheckContentAvailable) {
@@ -570,7 +575,7 @@ public interface JettyHttpEndpointBuilder9 {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public JettyHttpConsumerBuilder9 exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -582,7 +587,8 @@ public interface JettyHttpEndpointBuilder9 {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public JettyHttpConsumerBuilder9 exceptionHandler(
                 String exceptionHandler) {
@@ -591,7 +597,7 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public JettyHttpConsumerBuilder9 exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -600,7 +606,8 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public JettyHttpConsumerBuilder9 exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -609,7 +616,8 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Configuration of the filter init parameters. These parameters will be
          * applied to the filter list before starting the jetty server. The
-         * option is a java.util.Map<java.lang.String,java.lang.String> type.
+         * option is a <code>java.util.Map<java.lang.String,
+         * java.lang.String></code> type.
          */
         public JettyHttpConsumerBuilder9 filterInitParameters(
                 Map<String, String> filterInitParameters) {
@@ -619,8 +627,8 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Configuration of the filter init parameters. These parameters will be
          * applied to the filter list before starting the jetty server. The
-         * option will be converted to a
-         * java.util.Map<java.lang.String,java.lang.String> type.
+         * option will be converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.String></code> type.
          */
         public JettyHttpConsumerBuilder9 filterInitParameters(
                 String filterInitParameters) {
@@ -630,7 +638,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Allows using a custom filters which is putted into a list and can be
          * find in the Registry. Multiple values can be separated by comma. The
-         * option is a java.lang.String type.
+         * option is a <code>java.util.List<javax.servlet.Filter></code> type.
          */
         public JettyHttpConsumerBuilder9 filtersRef(List<Object> filtersRef) {
             this.properties.put("filtersRef", filtersRef);
@@ -639,7 +647,8 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Allows using a custom filters which is putted into a list and can be
          * find in the Registry. Multiple values can be separated by comma. The
-         * option will be converted to a java.lang.String type.
+         * option will be converted to a
+         * <code>java.util.List<javax.servlet.Filter></code> type.
          */
         public JettyHttpConsumerBuilder9 filtersRef(String filtersRef) {
             this.properties.put("filtersRef", filtersRef);
@@ -652,7 +661,7 @@ public interface JettyHttpEndpointBuilder9 {
          * handlers with different Jetty endpoints using the same port number.
          * The handlers is associated to the port number. If you need different
          * handlers, then use different port numbers. The option is a
-         * java.lang.String type.
+         * <code>java.util.List<org.eclipse.jetty.server.Handler></code> type.
          */
         public JettyHttpConsumerBuilder9 handlers(List<Object> handlers) {
             this.properties.put("handlers", handlers);
@@ -665,7 +674,8 @@ public interface JettyHttpEndpointBuilder9 {
          * handlers with different Jetty endpoints using the same port number.
          * The handlers is associated to the port number. If you need different
          * handlers, then use different port numbers. The option will be
-         * converted to a java.lang.String type.
+         * converted to a
+         * <code>java.util.List<org.eclipse.jetty.server.Handler></code> type.
          */
         public JettyHttpConsumerBuilder9 handlers(String handlers) {
             this.properties.put("handlers", handlers);
@@ -675,7 +685,7 @@ public interface JettyHttpEndpointBuilder9 {
          * Option to disable throwing the HttpOperationFailedException in case
          * of failed responses from the remote server. This allows you to get
          * all responses regardless of the HTTP status code. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         @Deprecated
         public JettyHttpConsumerBuilder9 httpBindingRef(String httpBindingRef) {
@@ -685,7 +695,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Allows using a custom multipart filter. Note: setting
          * multipartFilterRef forces the value of enableMultipartFilter to true.
-         * The option is a javax.servlet.Filter type.
+         * The option is a <code>javax.servlet.Filter</code> type.
          */
         public JettyHttpConsumerBuilder9 multipartFilter(Object multipartFilter) {
             this.properties.put("multipartFilter", multipartFilter);
@@ -694,7 +704,8 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Allows using a custom multipart filter. Note: setting
          * multipartFilterRef forces the value of enableMultipartFilter to true.
-         * The option will be converted to a javax.servlet.Filter type.
+         * The option will be converted to a <code>javax.servlet.Filter</code>
+         * type.
          */
         public JettyHttpConsumerBuilder9 multipartFilter(String multipartFilter) {
             this.properties.put("multipartFilter", multipartFilter);
@@ -703,7 +714,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Allows using a custom multipart filter. Note: setting
          * multipartFilterRef forces the value of enableMultipartFilter to true.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         @Deprecated
         public JettyHttpConsumerBuilder9 multipartFilterRef(
@@ -713,7 +724,8 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Specifies whether to enable HTTP OPTIONS for this Servlet consumer.
-         * By default OPTIONS is turned off. The option is a boolean type.
+         * By default OPTIONS is turned off. The option is a
+         * <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 optionsEnabled(boolean optionsEnabled) {
             this.properties.put("optionsEnabled", optionsEnabled);
@@ -722,7 +734,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Specifies whether to enable HTTP OPTIONS for this Servlet consumer.
          * By default OPTIONS is turned off. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 optionsEnabled(String optionsEnabled) {
             this.properties.put("optionsEnabled", optionsEnabled);
@@ -730,7 +742,8 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Specifies whether to enable HTTP TRACE for this Servlet consumer. By
-         * default TRACE is turned off. The option is a boolean type.
+         * default TRACE is turned off. The option is a <code>boolean</code>
+         * type.
          */
         public JettyHttpConsumerBuilder9 traceEnabled(boolean traceEnabled) {
             this.properties.put("traceEnabled", traceEnabled);
@@ -739,7 +752,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Specifies whether to enable HTTP TRACE for this Servlet consumer. By
          * default TRACE is turned off. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public JettyHttpConsumerBuilder9 traceEnabled(String traceEnabled) {
             this.properties.put("traceEnabled", traceEnabled);
@@ -756,8 +769,8 @@ public interface JettyHttpEndpointBuilder9 {
             super(path);
         }
         /**
-         * The url of the HTTP endpoint to call. The option is a java.net.URI
-         * type.
+         * The url of the HTTP endpoint to call. The option is a
+         * <code>java.net.URI</code> type.
          */
         public JettyHttpProducerBuilder9 httpUri(URI httpUri) {
             this.properties.put("httpUri", httpUri);
@@ -765,7 +778,7 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * The url of the HTTP endpoint to call. The option will be converted to
-         * a java.net.URI type.
+         * a <code>java.net.URI</code> type.
          */
         public JettyHttpProducerBuilder9 httpUri(String httpUri) {
             this.properties.put("httpUri", httpUri);
@@ -775,7 +788,8 @@ public interface JettyHttpEndpointBuilder9 {
          * If the option is true, HttpProducer will ignore the Exchange.HTTP_URI
          * header, and use the endpoint's URI for request. You may also set the
          * option throwExceptionOnFailure to be false to let the HttpProducer
-         * send all the fault response back. The option is a boolean type.
+         * send all the fault response back. The option is a
+         * <code>boolean</code> type.
          */
         public JettyHttpProducerBuilder9 bridgeEndpoint(boolean bridgeEndpoint) {
             this.properties.put("bridgeEndpoint", bridgeEndpoint);
@@ -786,7 +800,7 @@ public interface JettyHttpEndpointBuilder9 {
          * header, and use the endpoint's URI for request. You may also set the
          * option throwExceptionOnFailure to be false to let the HttpProducer
          * send all the fault response back. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public JettyHttpProducerBuilder9 bridgeEndpoint(String bridgeEndpoint) {
             this.properties.put("bridgeEndpoint", bridgeEndpoint);
@@ -794,8 +808,8 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Specifies whether a Connection Close header must be added to HTTP
-         * Request. By default connectionClose is false. The option is a boolean
-         * type.
+         * Request. By default connectionClose is false. The option is a
+         * <code>boolean</code> type.
          */
         public JettyHttpProducerBuilder9 connectionClose(boolean connectionClose) {
             this.properties.put("connectionClose", connectionClose);
@@ -804,7 +818,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Specifies whether a Connection Close header must be added to HTTP
          * Request. By default connectionClose is false. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public JettyHttpProducerBuilder9 connectionClose(String connectionClose) {
             this.properties.put("connectionClose", connectionClose);
@@ -812,7 +826,8 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Configure a cookie handler to maintain a HTTP session. The option is
-         * a org.apache.camel.http.common.cookie.CookieHandler type.
+         * a <code>org.apache.camel.http.common.cookie.CookieHandler</code>
+         * type.
          */
         public JettyHttpProducerBuilder9 cookieHandler(Object cookieHandler) {
             this.properties.put("cookieHandler", cookieHandler);
@@ -821,7 +836,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Configure a cookie handler to maintain a HTTP session. The option
          * will be converted to a
-         * org.apache.camel.http.common.cookie.CookieHandler type.
+         * <code>org.apache.camel.http.common.cookie.CookieHandler</code> type.
          */
         public JettyHttpProducerBuilder9 cookieHandler(String cookieHandler) {
             this.properties.put("cookieHandler", cookieHandler);
@@ -831,7 +846,7 @@ public interface JettyHttpEndpointBuilder9 {
          * If this option is true then IN exchange headers will be copied to OUT
          * exchange headers according to copy strategy. Setting this to false,
          * allows to only include the headers from the HTTP response (not
-         * propagating IN headers). The option is a boolean type.
+         * propagating IN headers). The option is a <code>boolean</code> type.
          */
         public JettyHttpProducerBuilder9 copyHeaders(boolean copyHeaders) {
             this.properties.put("copyHeaders", copyHeaders);
@@ -841,8 +856,8 @@ public interface JettyHttpEndpointBuilder9 {
          * If this option is true then IN exchange headers will be copied to OUT
          * exchange headers according to copy strategy. Setting this to false,
          * allows to only include the headers from the HTTP response (not
-         * propagating IN headers). The option will be converted to a boolean
-         * type.
+         * propagating IN headers). The option will be converted to a
+         * <code>boolean</code> type.
          */
         public JettyHttpProducerBuilder9 copyHeaders(String copyHeaders) {
             this.properties.put("copyHeaders", copyHeaders);
@@ -853,7 +868,7 @@ public interface JettyHttpEndpointBuilder9 {
          * pool. This setting override any setting configured on component
          * level. Notice that both a min and max size must be configured. If not
          * set it default to max 254 threads used in Jettys thread pool. The
-         * option is a java.lang.Integer type.
+         * option is a <code>java.lang.Integer</code> type.
          */
         public JettyHttpProducerBuilder9 httpClientMaxThreads(
                 Integer httpClientMaxThreads) {
@@ -865,7 +880,7 @@ public interface JettyHttpEndpointBuilder9 {
          * pool. This setting override any setting configured on component
          * level. Notice that both a min and max size must be configured. If not
          * set it default to max 254 threads used in Jettys thread pool. The
-         * option will be converted to a java.lang.Integer type.
+         * option will be converted to a <code>java.lang.Integer</code> type.
          */
         public JettyHttpProducerBuilder9 httpClientMaxThreads(
                 String httpClientMaxThreads) {
@@ -877,7 +892,7 @@ public interface JettyHttpEndpointBuilder9 {
          * pool. This setting override any setting configured on component
          * level. Notice that both a min and max size must be configured. If not
          * set it default to min 8 threads used in Jettys thread pool. The
-         * option is a java.lang.Integer type.
+         * option is a <code>java.lang.Integer</code> type.
          */
         public JettyHttpProducerBuilder9 httpClientMinThreads(
                 Integer httpClientMinThreads) {
@@ -889,7 +904,7 @@ public interface JettyHttpEndpointBuilder9 {
          * pool. This setting override any setting configured on component
          * level. Notice that both a min and max size must be configured. If not
          * set it default to min 8 threads used in Jettys thread pool. The
-         * option will be converted to a java.lang.Integer type.
+         * option will be converted to a <code>java.lang.Integer</code> type.
          */
         public JettyHttpProducerBuilder9 httpClientMinThreads(
                 String httpClientMinThreads) {
@@ -899,7 +914,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Configure the HTTP method to use. The HttpMethod header cannot
          * override this option if set. The option is a
-         * org.apache.camel.http.common.HttpMethods type.
+         * <code>org.apache.camel.http.common.HttpMethods</code> type.
          */
         public JettyHttpProducerBuilder9 httpMethod(HttpMethods httpMethod) {
             this.properties.put("httpMethod", httpMethod);
@@ -908,7 +923,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * Configure the HTTP method to use. The HttpMethod header cannot
          * override this option if set. The option will be converted to a
-         * org.apache.camel.http.common.HttpMethods type.
+         * <code>org.apache.camel.http.common.HttpMethods</code> type.
          */
         public JettyHttpProducerBuilder9 httpMethod(String httpMethod) {
             this.properties.put("httpMethod", httpMethod);
@@ -916,7 +931,8 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * If this option is true, The http producer won't read response body
-         * and cache the input stream. The option is a boolean type.
+         * and cache the input stream. The option is a <code>boolean</code>
+         * type.
          */
         public JettyHttpProducerBuilder9 ignoreResponseBody(
                 boolean ignoreResponseBody) {
@@ -925,8 +941,8 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * If this option is true, The http producer won't read response body
-         * and cache the input stream. The option will be converted to a boolean
-         * type.
+         * and cache the input stream. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public JettyHttpProducerBuilder9 ignoreResponseBody(
                 String ignoreResponseBody) {
@@ -940,7 +956,7 @@ public interface JettyHttpEndpointBuilder9 {
          * the downstream server to reflect the URL called by the upstream
          * client, this allows applications which use the Host header to
          * generate accurate URL's for a proxied service. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public JettyHttpProducerBuilder9 preserveHostHeader(
                 boolean preserveHostHeader) {
@@ -954,7 +970,7 @@ public interface JettyHttpEndpointBuilder9 {
          * the downstream server to reflect the URL called by the upstream
          * client, this allows applications which use the Host header to
          * generate accurate URL's for a proxied service. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public JettyHttpProducerBuilder9 preserveHostHeader(
                 String preserveHostHeader) {
@@ -965,7 +981,7 @@ public interface JettyHttpEndpointBuilder9 {
          * Option to disable throwing the HttpOperationFailedException in case
          * of failed responses from the remote server. This allows you to get
          * all responses regardless of the HTTP status code. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public JettyHttpProducerBuilder9 throwExceptionOnFailure(
                 boolean throwExceptionOnFailure) {
@@ -976,7 +992,7 @@ public interface JettyHttpEndpointBuilder9 {
          * Option to disable throwing the HttpOperationFailedException in case
          * of failed responses from the remote server. This allows you to get
          * all responses regardless of the HTTP status code. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public JettyHttpProducerBuilder9 throwExceptionOnFailure(
                 String throwExceptionOnFailure) {
@@ -991,7 +1007,7 @@ public interface JettyHttpEndpointBuilder9 {
          * Camel will call the start method on the client to ensure its started
          * when this endpoint creates a producer. This options should only be
          * used in special circumstances. The option is a
-         * org.eclipse.jetty.client.HttpClient type.
+         * <code>org.eclipse.jetty.client.HttpClient</code> type.
          */
         public JettyHttpProducerBuilder9 httpClient(Object httpClient) {
             this.properties.put("httpClient", httpClient);
@@ -1005,7 +1021,7 @@ public interface JettyHttpEndpointBuilder9 {
          * Camel will call the start method on the client to ensure its started
          * when this endpoint creates a producer. This options should only be
          * used in special circumstances. The option will be converted to a
-         * org.eclipse.jetty.client.HttpClient type.
+         * <code>org.eclipse.jetty.client.HttpClient</code> type.
          */
         public JettyHttpProducerBuilder9 httpClient(String httpClient) {
             this.properties.put("httpClient", httpClient);
@@ -1017,7 +1033,7 @@ public interface JettyHttpEndpointBuilder9 {
          * httpClient.timeout=30000 sets the request timeout to 30 seconds, in
          * case you want to timeout sooner if you have long running
          * request/response calls. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public JettyHttpProducerBuilder9 httpClientParameters(
                 Map<String, Object> httpClientParameters) {
@@ -1030,7 +1046,7 @@ public interface JettyHttpEndpointBuilder9 {
          * httpClient.timeout=30000 sets the request timeout to 30 seconds, in
          * case you want to timeout sooner if you have long running
          * request/response calls. The option will be converted to a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public JettyHttpProducerBuilder9 httpClientParameters(
                 String httpClientParameters) {
@@ -1040,7 +1056,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * To use a custom JettyHttpBinding which be used to customize how a
          * response should be written for the producer. The option is a
-         * org.apache.camel.component.jetty.JettyHttpBinding type.
+         * <code>org.apache.camel.component.jetty.JettyHttpBinding</code> type.
          */
         public JettyHttpProducerBuilder9 jettyBinding(Object jettyBinding) {
             this.properties.put("jettyBinding", jettyBinding);
@@ -1049,8 +1065,8 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * To use a custom JettyHttpBinding which be used to customize how a
          * response should be written for the producer. The option will be
-         * converted to a org.apache.camel.component.jetty.JettyHttpBinding
-         * type.
+         * converted to a
+         * <code>org.apache.camel.component.jetty.JettyHttpBinding</code> type.
          */
         public JettyHttpProducerBuilder9 jettyBinding(String jettyBinding) {
             this.properties.put("jettyBinding", jettyBinding);
@@ -1059,7 +1075,7 @@ public interface JettyHttpEndpointBuilder9 {
         /**
          * To use a custom JettyHttpBinding which be used to customize how a
          * response should be written for the producer. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         @Deprecated
         public JettyHttpProducerBuilder9 jettyBindingRef(String jettyBindingRef) {
@@ -1070,8 +1086,8 @@ public interface JettyHttpEndpointBuilder9 {
          * The status codes which are considered a success response. The values
          * are inclusive. Multiple ranges can be defined, separated by comma,
          * e.g. 200-204,209,301-304. Each range must be a single number or
-         * from-to with the dash included. The option is a java.lang.String
-         * type.
+         * from-to with the dash included. The option is a
+         * <code>java.lang.String</code> type.
          */
         public JettyHttpProducerBuilder9 okStatusCodeRange(
                 String okStatusCodeRange) {
@@ -1082,7 +1098,7 @@ public interface JettyHttpEndpointBuilder9 {
          * Refers to a custom org.apache.camel.component.http.UrlRewrite which
          * allows you to rewrite urls when you bridge/proxy endpoints. See more
          * details at http://camel.apache.org/urlrewrite.html. The option is a
-         * org.apache.camel.http.common.UrlRewrite type.
+         * <code>org.apache.camel.http.common.UrlRewrite</code> type.
          */
         @Deprecated
         public JettyHttpProducerBuilder9 urlRewrite(Object urlRewrite) {
@@ -1093,7 +1109,8 @@ public interface JettyHttpEndpointBuilder9 {
          * Refers to a custom org.apache.camel.component.http.UrlRewrite which
          * allows you to rewrite urls when you bridge/proxy endpoints. See more
          * details at http://camel.apache.org/urlrewrite.html. The option will
-         * be converted to a org.apache.camel.http.common.UrlRewrite type.
+         * be converted to a
+         * <code>org.apache.camel.http.common.UrlRewrite</code> type.
          */
         @Deprecated
         public JettyHttpProducerBuilder9 urlRewrite(String urlRewrite) {
@@ -1101,29 +1118,32 @@ public interface JettyHttpEndpointBuilder9 {
             return (JettyHttpProducerBuilder9) this;
         }
         /**
-         * Proxy authentication scheme to use. The option is a java.lang.String
-         * type.
+         * Proxy authentication scheme to use. The option is a
+         * <code>java.lang.String</code> type.
          */
         public JettyHttpProducerBuilder9 proxyAuthScheme(String proxyAuthScheme) {
             this.properties.put("proxyAuthScheme", proxyAuthScheme);
             return (JettyHttpProducerBuilder9) this;
         }
         /**
-         * Proxy hostname to use. The option is a java.lang.String type.
+         * Proxy hostname to use. The option is a <code>java.lang.String</code>
+         * type.
          */
         public JettyHttpProducerBuilder9 proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (JettyHttpProducerBuilder9) this;
         }
         /**
-         * Proxy port to use. The option is a int type.
+         * Proxy port to use. The option is a <code>java.lang.Integer</code>
+         * type.
          */
         public JettyHttpProducerBuilder9 proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (JettyHttpProducerBuilder9) this;
         }
         /**
-         * Proxy port to use. The option will be converted to a int type.
+         * Proxy port to use. The option will be converted to a
+         * <code>java.lang.Integer</code> type.
          */
         public JettyHttpProducerBuilder9 proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -1131,7 +1151,7 @@ public interface JettyHttpEndpointBuilder9 {
         }
         /**
          * Authentication host to use with NTML. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public JettyHttpProducerBuilder9 authHost(String authHost) {
             this.properties.put("authHost", authHost);

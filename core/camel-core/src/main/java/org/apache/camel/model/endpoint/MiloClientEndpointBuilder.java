@@ -42,7 +42,8 @@ public interface MiloClientEndpointBuilder {
             super("milo-client", path);
         }
         /**
-         * The OPC UA server endpoint. The option is a java.lang.String type.
+         * The OPC UA server endpoint. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T endpointUri(String endpointUri) {
             this.properties.put("endpointUri", endpointUri);
@@ -50,14 +51,15 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * A virtual client id to force the creation of a new connection
-         * instance. The option is a java.lang.String type.
+         * instance. The option is a <code>java.lang.String</code> type.
          */
         public T clientId(String clientId) {
             this.properties.put("clientId", clientId);
             return (T) this;
         }
         /**
-         * Default await setting for writes. The option is a boolean type.
+         * Default await setting for writes. The option is a
+         * <code>boolean</code> type.
          */
         public T defaultAwaitWrites(boolean defaultAwaitWrites) {
             this.properties.put("defaultAwaitWrites", defaultAwaitWrites);
@@ -65,7 +67,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * Default await setting for writes. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T defaultAwaitWrites(String defaultAwaitWrites) {
             this.properties.put("defaultAwaitWrites", defaultAwaitWrites);
@@ -73,14 +75,15 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * A suffix for endpoint URI when discovering. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T discoveryEndpointSuffix(String discoveryEndpointSuffix) {
             this.properties.put("discoveryEndpointSuffix", discoveryEndpointSuffix);
             return (T) this;
         }
         /**
-         * An alternative discovery URI. The option is a java.lang.String type.
+         * An alternative discovery URI. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T discoveryEndpointUri(String discoveryEndpointUri) {
             this.properties.put("discoveryEndpointUri", discoveryEndpointUri);
@@ -88,7 +91,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The method definition (see Method ID). The option is a
-         * org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId type.
+         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
          */
         public T method(Object method) {
             this.properties.put("method", method);
@@ -96,8 +99,8 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The method definition (see Method ID). The option will be converted
-         * to a org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId
-         * type.
+         * to a
+         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
          */
         public T method(String method) {
             this.properties.put("method", method);
@@ -105,7 +108,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The node definition (see Node ID). The option is a
-         * org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId type.
+         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
          */
         public T node(Object node) {
             this.properties.put("node", node);
@@ -113,7 +116,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The node definition (see Node ID). The option will be converted to a
-         * org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId type.
+         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
          */
         public T node(String node) {
             this.properties.put("node", node);
@@ -121,7 +124,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The sampling interval in milliseconds. The option is a
-         * java.lang.Double type.
+         * <code>java.lang.Double</code> type.
          */
         public T samplingInterval(Double samplingInterval) {
             this.properties.put("samplingInterval", samplingInterval);
@@ -129,7 +132,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The sampling interval in milliseconds. The option will be converted
-         * to a java.lang.Double type.
+         * to a <code>java.lang.Double</code> type.
          */
         public T samplingInterval(String samplingInterval) {
             this.properties.put("samplingInterval", samplingInterval);
@@ -138,7 +141,7 @@ public interface MiloClientEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -147,7 +150,7 @@ public interface MiloClientEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -156,7 +159,7 @@ public interface MiloClientEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -165,7 +168,7 @@ public interface MiloClientEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -173,7 +176,8 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * A set of allowed security policy URIs. Default is to accept all and
-         * use the highest. The option is a java.lang.String type.
+         * use the highest. The option is a
+         * <code>java.util.Set<java.lang.String></code> type.
          */
         public T allowedSecurityPolicies(Set<String> allowedSecurityPolicies) {
             this.properties.put("allowedSecurityPolicies", allowedSecurityPolicies);
@@ -181,30 +185,32 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * A set of allowed security policy URIs. Default is to accept all and
-         * use the highest. The option will be converted to a java.lang.String
-         * type.
+         * use the highest. The option will be converted to a
+         * <code>java.util.Set<java.lang.String></code> type.
          */
         public T allowedSecurityPolicies(String allowedSecurityPolicies) {
             this.properties.put("allowedSecurityPolicies", allowedSecurityPolicies);
             return (T) this;
         }
         /**
-         * The application name. The option is a java.lang.String type.
+         * The application name. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T applicationName(String applicationName) {
             this.properties.put("applicationName", applicationName);
             return (T) this;
         }
         /**
-         * The application URI. The option is a java.lang.String type.
+         * The application URI. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T applicationUri(String applicationUri) {
             this.properties.put("applicationUri", applicationUri);
             return (T) this;
         }
         /**
-         * Channel lifetime in milliseconds. The option is a java.lang.Long
-         * type.
+         * Channel lifetime in milliseconds. The option is a
+         * <code>java.lang.Long</code> type.
          */
         public T channelLifetime(Long channelLifetime) {
             this.properties.put("channelLifetime", channelLifetime);
@@ -212,7 +218,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * Channel lifetime in milliseconds. The option will be converted to a
-         * java.lang.Long type.
+         * <code>java.lang.Long</code> type.
          */
         public T channelLifetime(String channelLifetime) {
             this.properties.put("channelLifetime", channelLifetime);
@@ -220,28 +226,30 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The name of the key in the keystore file. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T keyAlias(String keyAlias) {
             this.properties.put("keyAlias", keyAlias);
             return (T) this;
         }
         /**
-         * The key password. The option is a java.lang.String type.
+         * The key password. The option is a <code>java.lang.String</code> type.
          */
         public T keyPassword(String keyPassword) {
             this.properties.put("keyPassword", keyPassword);
             return (T) this;
         }
         /**
-         * The keystore password. The option is a java.lang.String type.
+         * The keystore password. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T keyStorePassword(String keyStorePassword) {
             this.properties.put("keyStorePassword", keyStorePassword);
             return (T) this;
         }
         /**
-         * The key store type. The option is a java.lang.String type.
+         * The key store type. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T keyStoreType(String keyStoreType) {
             this.properties.put("keyStoreType", keyStoreType);
@@ -249,7 +257,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The URL where the key should be loaded from. The option is a
-         * java.net.URL type.
+         * <code>java.net.URL</code> type.
          */
         public T keyStoreUrl(URL keyStoreUrl) {
             this.properties.put("keyStoreUrl", keyStoreUrl);
@@ -257,7 +265,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The URL where the key should be loaded from. The option will be
-         * converted to a java.net.URL type.
+         * converted to a <code>java.net.URL</code> type.
          */
         public T keyStoreUrl(String keyStoreUrl) {
             this.properties.put("keyStoreUrl", keyStoreUrl);
@@ -265,7 +273,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The maximum number of pending publish requests. The option is a
-         * java.lang.Long type.
+         * <code>java.lang.Long</code> type.
          */
         public T maxPendingPublishRequests(Long maxPendingPublishRequests) {
             this.properties.put("maxPendingPublishRequests", maxPendingPublishRequests);
@@ -273,7 +281,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The maximum number of pending publish requests. The option will be
-         * converted to a java.lang.Long type.
+         * converted to a <code>java.lang.Long</code> type.
          */
         public T maxPendingPublishRequests(String maxPendingPublishRequests) {
             this.properties.put("maxPendingPublishRequests", maxPendingPublishRequests);
@@ -281,7 +289,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The maximum number of bytes a response message may have. The option
-         * is a java.lang.Long type.
+         * is a <code>java.lang.Long</code> type.
          */
         public T maxResponseMessageSize(Long maxResponseMessageSize) {
             this.properties.put("maxResponseMessageSize", maxResponseMessageSize);
@@ -289,7 +297,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * The maximum number of bytes a response message may have. The option
-         * will be converted to a java.lang.Long type.
+         * will be converted to a <code>java.lang.Long</code> type.
          */
         public T maxResponseMessageSize(String maxResponseMessageSize) {
             this.properties.put("maxResponseMessageSize", maxResponseMessageSize);
@@ -297,7 +305,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * Override the server reported endpoint host with the host from the
-         * endpoint URI. The option is a boolean type.
+         * endpoint URI. The option is a <code>boolean</code> type.
          */
         public T overrideHost(boolean overrideHost) {
             this.properties.put("overrideHost", overrideHost);
@@ -305,21 +313,23 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * Override the server reported endpoint host with the host from the
-         * endpoint URI. The option will be converted to a boolean type.
+         * endpoint URI. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public T overrideHost(String overrideHost) {
             this.properties.put("overrideHost", overrideHost);
             return (T) this;
         }
         /**
-         * The product URI. The option is a java.lang.String type.
+         * The product URI. The option is a <code>java.lang.String</code> type.
          */
         public T productUri(String productUri) {
             this.properties.put("productUri", productUri);
             return (T) this;
         }
         /**
-         * Request timeout in milliseconds. The option is a java.lang.Long type.
+         * Request timeout in milliseconds. The option is a
+         * <code>java.lang.Long</code> type.
          */
         public T requestTimeout(Long requestTimeout) {
             this.properties.put("requestTimeout", requestTimeout);
@@ -327,21 +337,22 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * Request timeout in milliseconds. The option will be converted to a
-         * java.lang.Long type.
+         * <code>java.lang.Long</code> type.
          */
         public T requestTimeout(String requestTimeout) {
             this.properties.put("requestTimeout", requestTimeout);
             return (T) this;
         }
         /**
-         * Session name. The option is a java.lang.String type.
+         * Session name. The option is a <code>java.lang.String</code> type.
          */
         public T sessionName(String sessionName) {
             this.properties.put("sessionName", sessionName);
             return (T) this;
         }
         /**
-         * Session timeout in milliseconds. The option is a java.lang.Long type.
+         * Session timeout in milliseconds. The option is a
+         * <code>java.lang.Long</code> type.
          */
         public T sessionTimeout(Long sessionTimeout) {
             this.properties.put("sessionTimeout", sessionTimeout);
@@ -349,7 +360,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * Session timeout in milliseconds. The option will be converted to a
-         * java.lang.Long type.
+         * <code>java.lang.Long</code> type.
          */
         public T sessionTimeout(String sessionTimeout) {
             this.properties.put("sessionTimeout", sessionTimeout);
@@ -372,7 +383,7 @@ public interface MiloClientEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public MiloClientConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -386,7 +397,7 @@ public interface MiloClientEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public MiloClientConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -398,7 +409,7 @@ public interface MiloClientEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public MiloClientConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -410,7 +421,8 @@ public interface MiloClientEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public MiloClientConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -419,7 +431,7 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public MiloClientConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -428,7 +440,8 @@ public interface MiloClientEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public MiloClientConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

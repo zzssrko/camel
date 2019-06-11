@@ -42,7 +42,7 @@ public interface SedaEndpointBuilder {
             super("seda", path);
         }
         /**
-         * Name of queue. The option is a java.lang.String type.
+         * Name of queue. The option is a <code>java.lang.String</code> type.
          */
         public T name(String name) {
             this.properties.put("name", name);
@@ -51,7 +51,7 @@ public interface SedaEndpointBuilder {
         /**
          * The maximum capacity of the SEDA queue (i.e., the number of messages
          * it can hold). Will by default use the defaultSize set on the SEDA
-         * component. The option is a int type.
+         * component. The option is a <code>int</code> type.
          */
         public T size(int size) {
             this.properties.put("size", size);
@@ -60,7 +60,7 @@ public interface SedaEndpointBuilder {
         /**
          * The maximum capacity of the SEDA queue (i.e., the number of messages
          * it can hold). Will by default use the defaultSize set on the SEDA
-         * component. The option will be converted to a int type.
+         * component. The option will be converted to a <code>int</code> type.
          */
         public T size(String size) {
             this.properties.put("size", size);
@@ -69,7 +69,7 @@ public interface SedaEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -78,7 +78,7 @@ public interface SedaEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -87,8 +87,8 @@ public interface SedaEndpointBuilder {
         /**
          * Define the queue instance which will be used by the endpoint. This
          * option is only for rare use-cases where you want to use a custom
-         * queue instance. The option is a java.util.concurrent.BlockingQueue
-         * type.
+         * queue instance. The option is a
+         * <code>java.util.concurrent.BlockingQueue</code> type.
          */
         public T queue(BlockingQueue queue) {
             this.properties.put("queue", queue);
@@ -98,7 +98,7 @@ public interface SedaEndpointBuilder {
          * Define the queue instance which will be used by the endpoint. This
          * option is only for rare use-cases where you want to use a custom
          * queue instance. The option will be converted to a
-         * java.util.concurrent.BlockingQueue type.
+         * <code>java.util.concurrent.BlockingQueue</code> type.
          */
         public T queue(String queue) {
             this.properties.put("queue", queue);
@@ -107,7 +107,7 @@ public interface SedaEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -116,7 +116,7 @@ public interface SedaEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -139,7 +139,7 @@ public interface SedaEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public SedaConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -152,7 +152,7 @@ public interface SedaEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public SedaConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -160,7 +160,7 @@ public interface SedaEndpointBuilder {
         }
         /**
          * Number of concurrent threads processing exchanges. The option is a
-         * int type.
+         * <code>int</code> type.
          */
         public SedaConsumerBuilder concurrentConsumers(int concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
@@ -168,7 +168,7 @@ public interface SedaEndpointBuilder {
         }
         /**
          * Number of concurrent threads processing exchanges. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public SedaConsumerBuilder concurrentConsumers(
                 String concurrentConsumers) {
@@ -180,7 +180,7 @@ public interface SedaEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public SedaConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -192,7 +192,8 @@ public interface SedaEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public SedaConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -200,7 +201,7 @@ public interface SedaEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public SedaConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -209,7 +210,8 @@ public interface SedaEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public SedaConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -219,7 +221,7 @@ public interface SedaEndpointBuilder {
          * Whether to limit the number of concurrentConsumers to the maximum of
          * 500. By default, an exception will be thrown if an endpoint is
          * configured with a greater number. You can disable that check by
-         * turning this option off. The option is a boolean type.
+         * turning this option off. The option is a <code>boolean</code> type.
          */
         public SedaConsumerBuilder limitConcurrentConsumers(
                 boolean limitConcurrentConsumers) {
@@ -230,8 +232,8 @@ public interface SedaEndpointBuilder {
          * Whether to limit the number of concurrentConsumers to the maximum of
          * 500. By default, an exception will be thrown if an endpoint is
          * configured with a greater number. You can disable that check by
-         * turning this option off. The option will be converted to a boolean
-         * type.
+         * turning this option off. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public SedaConsumerBuilder limitConcurrentConsumers(
                 String limitConcurrentConsumers) {
@@ -243,7 +245,7 @@ public interface SedaEndpointBuilder {
          * use SEDA for Publish-Subscribe messaging. That is, you can send a
          * message to the SEDA queue and have each consumer receive a copy of
          * the message. When enabled, this option should be specified on every
-         * consumer endpoint. The option is a boolean type.
+         * consumer endpoint. The option is a <code>boolean</code> type.
          */
         public SedaConsumerBuilder multipleConsumers(boolean multipleConsumers) {
             this.properties.put("multipleConsumers", multipleConsumers);
@@ -254,7 +256,8 @@ public interface SedaEndpointBuilder {
          * use SEDA for Publish-Subscribe messaging. That is, you can send a
          * message to the SEDA queue and have each consumer receive a copy of
          * the message. When enabled, this option should be specified on every
-         * consumer endpoint. The option will be converted to a boolean type.
+         * consumer endpoint. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public SedaConsumerBuilder multipleConsumers(String multipleConsumers) {
             this.properties.put("multipleConsumers", multipleConsumers);
@@ -264,7 +267,7 @@ public interface SedaEndpointBuilder {
          * The timeout used when polling. When a timeout occurs, the consumer
          * can check whether it is allowed to continue running. Setting a lower
          * value allows the consumer to react more quickly upon shutdown. The
-         * option is a int type.
+         * option is a <code>int</code> type.
          */
         public SedaConsumerBuilder pollTimeout(int pollTimeout) {
             this.properties.put("pollTimeout", pollTimeout);
@@ -274,7 +277,7 @@ public interface SedaEndpointBuilder {
          * The timeout used when polling. When a timeout occurs, the consumer
          * can check whether it is allowed to continue running. Setting a lower
          * value allows the consumer to react more quickly upon shutdown. The
-         * option will be converted to a int type.
+         * option will be converted to a <code>int</code> type.
          */
         public SedaConsumerBuilder pollTimeout(String pollTimeout) {
             this.properties.put("pollTimeout", pollTimeout);
@@ -283,7 +286,7 @@ public interface SedaEndpointBuilder {
         /**
          * Whether to purge the task queue when stopping the consumer/route.
          * This allows to stop faster, as any pending messages on the queue is
-         * discarded. The option is a boolean type.
+         * discarded. The option is a <code>boolean</code> type.
          */
         public SedaConsumerBuilder purgeWhenStopping(boolean purgeWhenStopping) {
             this.properties.put("purgeWhenStopping", purgeWhenStopping);
@@ -292,7 +295,8 @@ public interface SedaEndpointBuilder {
         /**
          * Whether to purge the task queue when stopping the consumer/route.
          * This allows to stop faster, as any pending messages on the queue is
-         * discarded. The option will be converted to a boolean type.
+         * discarded. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public SedaConsumerBuilder purgeWhenStopping(String purgeWhenStopping) {
             this.properties.put("purgeWhenStopping", purgeWhenStopping);
@@ -313,7 +317,7 @@ public interface SedaEndpointBuilder {
          * until the queue's capacity is no longer exhausted. By default, an
          * exception will be thrown stating that the queue is full. By enabling
          * this option, the calling thread will instead block and wait until the
-         * message can be accepted. The option is a boolean type.
+         * message can be accepted. The option is a <code>boolean</code> type.
          */
         public SedaProducerBuilder blockWhenFull(boolean blockWhenFull) {
             this.properties.put("blockWhenFull", blockWhenFull);
@@ -324,8 +328,8 @@ public interface SedaEndpointBuilder {
          * until the queue's capacity is no longer exhausted. By default, an
          * exception will be thrown stating that the queue is full. By enabling
          * this option, the calling thread will instead block and wait until the
-         * message can be accepted. The option will be converted to a boolean
-         * type.
+         * message can be accepted. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public SedaProducerBuilder blockWhenFull(String blockWhenFull) {
             this.properties.put("blockWhenFull", blockWhenFull);
@@ -336,7 +340,7 @@ public interface SedaEndpointBuilder {
          * message to the queue), when sending to a queue with no active
          * consumers. Only one of the options discardIfNoConsumers and
          * failIfNoConsumers can be enabled at the same time. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public SedaProducerBuilder discardIfNoConsumers(
                 boolean discardIfNoConsumers) {
@@ -348,7 +352,7 @@ public interface SedaEndpointBuilder {
          * message to the queue), when sending to a queue with no active
          * consumers. Only one of the options discardIfNoConsumers and
          * failIfNoConsumers can be enabled at the same time. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public SedaProducerBuilder discardIfNoConsumers(
                 String discardIfNoConsumers) {
@@ -359,7 +363,7 @@ public interface SedaEndpointBuilder {
          * Whether the producer should fail by throwing an exception, when
          * sending to a queue with no active consumers. Only one of the options
          * discardIfNoConsumers and failIfNoConsumers can be enabled at the same
-         * time. The option is a boolean type.
+         * time. The option is a <code>boolean</code> type.
          */
         public SedaProducerBuilder failIfNoConsumers(boolean failIfNoConsumers) {
             this.properties.put("failIfNoConsumers", failIfNoConsumers);
@@ -369,7 +373,7 @@ public interface SedaEndpointBuilder {
          * Whether the producer should fail by throwing an exception, when
          * sending to a queue with no active consumers. Only one of the options
          * discardIfNoConsumers and failIfNoConsumers can be enabled at the same
-         * time. The option will be converted to a boolean type.
+         * time. The option will be converted to a <code>boolean</code> type.
          */
         public SedaProducerBuilder failIfNoConsumers(String failIfNoConsumers) {
             this.properties.put("failIfNoConsumers", failIfNoConsumers);
@@ -378,7 +382,7 @@ public interface SedaEndpointBuilder {
         /**
          * offerTimeout (in milliseconds) can be added to the block case when
          * queue is full. You can disable timeout by using 0 or a negative
-         * value. The option is a long type.
+         * value. The option is a <code>long</code> type.
          */
         public SedaProducerBuilder offerTimeout(long offerTimeout) {
             this.properties.put("offerTimeout", offerTimeout);
@@ -387,7 +391,7 @@ public interface SedaEndpointBuilder {
         /**
          * offerTimeout (in milliseconds) can be added to the block case when
          * queue is full. You can disable timeout by using 0 or a negative
-         * value. The option will be converted to a long type.
+         * value. The option will be converted to a <code>long</code> type.
          */
         public SedaProducerBuilder offerTimeout(String offerTimeout) {
             this.properties.put("offerTimeout", offerTimeout);
@@ -396,7 +400,7 @@ public interface SedaEndpointBuilder {
         /**
          * Timeout (in milliseconds) before a SEDA producer will stop waiting
          * for an asynchronous task to complete. You can disable timeout by
-         * using 0 or a negative value. The option is a long type.
+         * using 0 or a negative value. The option is a <code>long</code> type.
          */
         public SedaProducerBuilder timeout(long timeout) {
             this.properties.put("timeout", timeout);
@@ -405,8 +409,8 @@ public interface SedaEndpointBuilder {
         /**
          * Timeout (in milliseconds) before a SEDA producer will stop waiting
          * for an asynchronous task to complete. You can disable timeout by
-         * using 0 or a negative value. The option will be converted to a long
-         * type.
+         * using 0 or a negative value. The option will be converted to a
+         * <code>long</code> type.
          */
         public SedaProducerBuilder timeout(String timeout) {
             this.properties.put("timeout", timeout);
@@ -419,7 +423,7 @@ public interface SedaEndpointBuilder {
          * self-explanatory. The last value, IfReplyExpected, will only wait if
          * the message is Request Reply based. The default option is
          * IfReplyExpected. The option is a
-         * org.apache.camel.WaitForTaskToComplete type.
+         * <code>org.apache.camel.WaitForTaskToComplete</code> type.
          */
         public SedaProducerBuilder waitForTaskToComplete(
                 WaitForTaskToComplete waitForTaskToComplete) {
@@ -433,7 +437,7 @@ public interface SedaEndpointBuilder {
          * self-explanatory. The last value, IfReplyExpected, will only wait if
          * the message is Request Reply based. The default option is
          * IfReplyExpected. The option will be converted to a
-         * org.apache.camel.WaitForTaskToComplete type.
+         * <code>org.apache.camel.WaitForTaskToComplete</code> type.
          */
         public SedaProducerBuilder waitForTaskToComplete(
                 String waitForTaskToComplete) {

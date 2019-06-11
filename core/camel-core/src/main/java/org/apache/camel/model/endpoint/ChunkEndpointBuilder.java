@@ -42,7 +42,8 @@ public interface ChunkEndpointBuilder {
          * protocols (classpath is default). ref will lookup the resource in the
          * registry. bean will call a method on a bean to be used as the
          * resource. For bean you can specify the method name after dot, eg
-         * bean:myBean.myMethod. The option is a java.lang.String type.
+         * bean:myBean.myMethod. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
@@ -50,7 +51,7 @@ public interface ChunkEndpointBuilder {
         }
         /**
          * Sets whether to use resource content cache or not. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T contentCache(boolean contentCache) {
             this.properties.put("contentCache", contentCache);
@@ -58,15 +59,15 @@ public interface ChunkEndpointBuilder {
         }
         /**
          * Sets whether to use resource content cache or not. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T contentCache(String contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
         /**
-         * Define the encoding of the body. The option is a java.lang.String
-         * type.
+         * Define the encoding of the body. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T encoding(String encoding) {
             this.properties.put("encoding", encoding);
@@ -74,31 +75,31 @@ public interface ChunkEndpointBuilder {
         }
         /**
          * Define the file extension of the template. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T extension(String extension) {
             this.properties.put("extension", extension);
             return (T) this;
         }
         /**
-         * Define the themes folder to scan. The option is a java.lang.String
-         * type.
+         * Define the themes folder to scan. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T themeFolder(String themeFolder) {
             this.properties.put("themeFolder", themeFolder);
             return (T) this;
         }
         /**
-         * Define the theme layer to elaborate. The option is a java.lang.String
-         * type.
+         * Define the theme layer to elaborate. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T themeLayer(String themeLayer) {
             this.properties.put("themeLayer", themeLayer);
             return (T) this;
         }
         /**
-         * Define the themes subfolder to scan. The option is a java.lang.String
-         * type.
+         * Define the themes subfolder to scan. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T themeSubfolder(String themeSubfolder) {
             this.properties.put("themeSubfolder", themeSubfolder);
@@ -107,7 +108,7 @@ public interface ChunkEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -116,7 +117,7 @@ public interface ChunkEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -125,7 +126,7 @@ public interface ChunkEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -134,7 +135,7 @@ public interface ChunkEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

@@ -47,14 +47,15 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * The name of the template to load from classpath or file system. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
         /**
-         * Whether to allow using StAX mode. The option is a boolean type.
+         * Whether to allow using StAX mode. The option is a
+         * <code>boolean</code> type.
          */
         public T allowStAX(boolean allowStAX) {
             this.properties.put("allowStAX", allowStAX);
@@ -62,7 +63,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Whether to allow using StAX mode. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T allowStAX(String allowStAX) {
             this.properties.put("allowStAX", allowStAX);
@@ -70,7 +71,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * To use a Camel Message header as the input source instead of Message
-         * body. The option is a java.lang.String type.
+         * body. The option is a <code>java.lang.String</code> type.
          */
         public T headerName(String headerName) {
             this.properties.put("headerName", headerName);
@@ -79,7 +80,7 @@ public interface XQueryEndpointBuilder {
         /**
          * Allows to control which namespace prefixes to use for a set of
          * namespace mappings. The option is a
-         * java.util.Map<java.lang.String,java.lang.String> type.
+         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
          */
         public T namespacePrefixes(Map<String, String> namespacePrefixes) {
             this.properties.put("namespacePrefixes", namespacePrefixes);
@@ -88,7 +89,7 @@ public interface XQueryEndpointBuilder {
         /**
          * Allows to control which namespace prefixes to use for a set of
          * namespace mappings. The option will be converted to a
-         * java.util.Map<java.lang.String,java.lang.String> type.
+         * <code>java.util.Map<java.lang.String, java.lang.String></code> type.
          */
         public T namespacePrefixes(String namespacePrefixes) {
             this.properties.put("namespacePrefixes", namespacePrefixes);
@@ -96,7 +97,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * What output result to use. The option is a
-         * org.apache.camel.component.xquery.ResultFormat type.
+         * <code>org.apache.camel.component.xquery.ResultFormat</code> type.
          */
         public T resultsFormat(ResultFormat resultsFormat) {
             this.properties.put("resultsFormat", resultsFormat);
@@ -104,7 +105,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * What output result to use. The option will be converted to a
-         * org.apache.camel.component.xquery.ResultFormat type.
+         * <code>org.apache.camel.component.xquery.ResultFormat</code> type.
          */
         public T resultsFormat(String resultsFormat) {
             this.properties.put("resultsFormat", resultsFormat);
@@ -112,7 +113,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * What output result to use defined as a class. The option is a
-         * java.lang.Class<?> type.
+         * <code>java.lang.Class<java.lang.Object></code> type.
          */
         public T resultType(Class<Object> resultType) {
             this.properties.put("resultType", resultType);
@@ -120,14 +121,15 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * What output result to use defined as a class. The option will be
-         * converted to a java.lang.Class<?> type.
+         * converted to a <code>java.lang.Class<java.lang.Object></code> type.
          */
         public T resultType(String resultType) {
             this.properties.put("resultType", resultType);
             return (T) this;
         }
         /**
-         * Whether to strip all whitespaces. The option is a boolean type.
+         * Whether to strip all whitespaces. The option is a
+         * <code>boolean</code> type.
          */
         public T stripsAllWhiteSpace(boolean stripsAllWhiteSpace) {
             this.properties.put("stripsAllWhiteSpace", stripsAllWhiteSpace);
@@ -135,7 +137,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Whether to strip all whitespaces. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T stripsAllWhiteSpace(String stripsAllWhiteSpace) {
             this.properties.put("stripsAllWhiteSpace", stripsAllWhiteSpace);
@@ -144,7 +146,7 @@ public interface XQueryEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -153,7 +155,7 @@ public interface XQueryEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -161,7 +163,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * To use a custom Saxon configuration. The option is a
-         * net.sf.saxon.Configuration type.
+         * <code>net.sf.saxon.Configuration</code> type.
          */
         public T configuration(Object configuration) {
             this.properties.put("configuration", configuration);
@@ -169,7 +171,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * To use a custom Saxon configuration. The option will be converted to
-         * a net.sf.saxon.Configuration type.
+         * a <code>net.sf.saxon.Configuration</code> type.
          */
         public T configuration(String configuration) {
             this.properties.put("configuration", configuration);
@@ -177,7 +179,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * To set custom Saxon configuration properties. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public T configurationProperties(
                 Map<String, Object> configurationProperties) {
@@ -186,7 +188,8 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * To set custom Saxon configuration properties. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public T configurationProperties(String configurationProperties) {
             this.properties.put("configurationProperties", configurationProperties);
@@ -194,7 +197,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * To use the custom ModuleURIResolver. The option is a
-         * net.sf.saxon.lib.ModuleURIResolver type.
+         * <code>net.sf.saxon.lib.ModuleURIResolver</code> type.
          */
         public T moduleURIResolver(Object moduleURIResolver) {
             this.properties.put("moduleURIResolver", moduleURIResolver);
@@ -202,7 +205,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * To use the custom ModuleURIResolver. The option will be converted to
-         * a net.sf.saxon.lib.ModuleURIResolver type.
+         * a <code>net.sf.saxon.lib.ModuleURIResolver</code> type.
          */
         public T moduleURIResolver(String moduleURIResolver) {
             this.properties.put("moduleURIResolver", moduleURIResolver);
@@ -210,7 +213,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Additional parameters. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public T parameters(Map<String, Object> parameters) {
             this.properties.put("parameters", parameters);
@@ -218,7 +221,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Additional parameters. The option will be converted to a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public T parameters(String parameters) {
             this.properties.put("parameters", parameters);
@@ -226,7 +229,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Properties to configure the serialization parameters. The option is a
-         * java.util.Properties type.
+         * <code>java.util.Properties</code> type.
          */
         public T properties(Properties properties) {
             this.properties.put("properties", properties);
@@ -234,7 +237,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Properties to configure the serialization parameters. The option will
-         * be converted to a java.util.Properties type.
+         * be converted to a <code>java.util.Properties</code> type.
          */
         public T properties(String properties) {
             this.properties.put("properties", properties);
@@ -242,7 +245,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * To use a custom Saxon StaticQueryContext. The option is a
-         * net.sf.saxon.query.StaticQueryContext type.
+         * <code>net.sf.saxon.query.StaticQueryContext</code> type.
          */
         public T staticQueryContext(Object staticQueryContext) {
             this.properties.put("staticQueryContext", staticQueryContext);
@@ -250,7 +253,8 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * To use a custom Saxon StaticQueryContext. The option will be
-         * converted to a net.sf.saxon.query.StaticQueryContext type.
+         * converted to a <code>net.sf.saxon.query.StaticQueryContext</code>
+         * type.
          */
         public T staticQueryContext(String staticQueryContext) {
             this.properties.put("staticQueryContext", staticQueryContext);
@@ -259,7 +263,7 @@ public interface XQueryEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -268,7 +272,7 @@ public interface XQueryEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -291,7 +295,7 @@ public interface XQueryEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public XQueryConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -305,7 +309,7 @@ public interface XQueryEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public XQueryConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -315,7 +319,7 @@ public interface XQueryEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public XQueryConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -325,7 +329,7 @@ public interface XQueryEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public XQueryConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -337,7 +341,7 @@ public interface XQueryEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public XQueryConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -349,7 +353,8 @@ public interface XQueryEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public XQueryConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -357,7 +362,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public XQueryConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -366,7 +371,8 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public XQueryConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -377,7 +383,7 @@ public interface XQueryEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public XQueryConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -389,7 +395,8 @@ public interface XQueryEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public XQueryConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -398,7 +405,7 @@ public interface XQueryEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public XQueryConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -408,7 +415,7 @@ public interface XQueryEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public XQueryConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -417,7 +424,8 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public XQueryConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -427,7 +435,7 @@ public interface XQueryEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public XQueryConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -440,7 +448,7 @@ public interface XQueryEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public XQueryConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -452,7 +460,7 @@ public interface XQueryEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public XQueryConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -461,7 +469,7 @@ public interface XQueryEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public XQueryConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -470,8 +478,8 @@ public interface XQueryEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public XQueryConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -480,7 +488,7 @@ public interface XQueryEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public XQueryConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -489,7 +497,7 @@ public interface XQueryEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public XQueryConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -498,7 +506,7 @@ public interface XQueryEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public XQueryConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -507,8 +515,8 @@ public interface XQueryEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public XQueryConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -517,7 +525,7 @@ public interface XQueryEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public XQueryConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -527,7 +535,8 @@ public interface XQueryEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public XQueryConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -536,8 +545,8 @@ public interface XQueryEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public XQueryConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -548,7 +557,7 @@ public interface XQueryEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public XQueryConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -558,7 +567,8 @@ public interface XQueryEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public XQueryConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -568,7 +578,8 @@ public interface XQueryEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public XQueryConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -577,7 +588,7 @@ public interface XQueryEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public XQueryConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -587,7 +598,8 @@ public interface XQueryEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public XQueryConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -595,8 +607,8 @@ public interface XQueryEndpointBuilder {
             return (XQueryConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public XQueryConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -604,7 +616,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public XQueryConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -612,7 +624,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public XQueryConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -620,7 +632,7 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public XQueryConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -628,8 +640,8 @@ public interface XQueryEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public XQueryConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -638,7 +650,7 @@ public interface XQueryEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public XQueryConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);

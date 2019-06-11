@@ -43,7 +43,7 @@ public interface ClientEndpointBuilder {
         }
         /**
          * The object information address. The option is a
-         * org.apache.camel.component.iec60870.ObjectAddress type.
+         * <code>org.apache.camel.component.iec60870.ObjectAddress</code> type.
          */
         public T uriPath(Object uriPath) {
             this.properties.put("uriPath", uriPath);
@@ -51,14 +51,15 @@ public interface ClientEndpointBuilder {
         }
         /**
          * The object information address. The option will be converted to a
-         * org.apache.camel.component.iec60870.ObjectAddress type.
+         * <code>org.apache.camel.component.iec60870.ObjectAddress</code> type.
          */
         public T uriPath(String uriPath) {
             this.properties.put("uriPath", uriPath);
             return (T) this;
         }
         /**
-         * Data module options. The option is a DataModuleOptions type.
+         * Data module options. The option is a
+         * <code>org.eclipse.neoscada.protocol.iec60870.client.data.DataModuleOptions</code> type.
          */
         public T dataModuleOptions(Object dataModuleOptions) {
             this.properties.put("dataModuleOptions", dataModuleOptions);
@@ -66,21 +67,24 @@ public interface ClientEndpointBuilder {
         }
         /**
          * Data module options. The option will be converted to a
-         * DataModuleOptions type.
+         * <code>org.eclipse.neoscada.protocol.iec60870.client.data.DataModuleOptions</code> type.
          */
         public T dataModuleOptions(String dataModuleOptions) {
             this.properties.put("dataModuleOptions", dataModuleOptions);
             return (T) this;
         }
         /**
-         * Protocol options. The option is a ProtocolOptions type.
+         * Protocol options. The option is a
+         * <code>org.eclipse.neoscada.protocol.iec60870.ProtocolOptions</code>
+         * type.
          */
         public T protocolOptions(Object protocolOptions) {
             this.properties.put("protocolOptions", protocolOptions);
             return (T) this;
         }
         /**
-         * Protocol options. The option will be converted to a ProtocolOptions
+         * Protocol options. The option will be converted to a
+         * <code>org.eclipse.neoscada.protocol.iec60870.ProtocolOptions</code>
          * type.
          */
         public T protocolOptions(String protocolOptions) {
@@ -90,7 +94,7 @@ public interface ClientEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -99,7 +103,7 @@ public interface ClientEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -108,7 +112,7 @@ public interface ClientEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -117,14 +121,15 @@ public interface ClientEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Parameter W - Acknowledgment window. The option is a short type.
+         * Parameter W - Acknowledgment window. The option is a
+         * <code>short</code> type.
          */
         public T acknowledgeWindow(short acknowledgeWindow) {
             this.properties.put("acknowledgeWindow", acknowledgeWindow);
@@ -132,7 +137,7 @@ public interface ClientEndpointBuilder {
         }
         /**
          * Parameter W - Acknowledgment window. The option will be converted to
-         * a short type.
+         * a <code>short</code> type.
          */
         public T acknowledgeWindow(String acknowledgeWindow) {
             this.properties.put("acknowledgeWindow", acknowledgeWindow);
@@ -140,7 +145,8 @@ public interface ClientEndpointBuilder {
         }
         /**
          * The common ASDU address size. May be either SIZE_1 or SIZE_2. The
-         * option is a org.eclipse.neoscada.protocol.iec60870.ASDUAddressType
+         * option is a
+         * <code>org.eclipse.neoscada.protocol.iec60870.ASDUAddressType</code>
          * type.
          */
         public T adsuAddressType(ASDUAddressType adsuAddressType) {
@@ -150,7 +156,8 @@ public interface ClientEndpointBuilder {
         /**
          * The common ASDU address size. May be either SIZE_1 or SIZE_2. The
          * option will be converted to a
-         * org.eclipse.neoscada.protocol.iec60870.ASDUAddressType type.
+         * <code>org.eclipse.neoscada.protocol.iec60870.ASDUAddressType</code>
+         * type.
          */
         public T adsuAddressType(String adsuAddressType) {
             this.properties.put("adsuAddressType", adsuAddressType);
@@ -159,7 +166,7 @@ public interface ClientEndpointBuilder {
         /**
          * The cause of transmission type. May be either SIZE_1 or SIZE_2. The
          * option is a
-         * org.eclipse.neoscada.protocol.iec60870.CauseOfTransmissionType type.
+         * <code>org.eclipse.neoscada.protocol.iec60870.CauseOfTransmissionType</code> type.
          */
         public T causeOfTransmissionType(
                 CauseOfTransmissionType causeOfTransmissionType) {
@@ -169,7 +176,7 @@ public interface ClientEndpointBuilder {
         /**
          * The cause of transmission type. May be either SIZE_1 or SIZE_2. The
          * option will be converted to a
-         * org.eclipse.neoscada.protocol.iec60870.CauseOfTransmissionType type.
+         * <code>org.eclipse.neoscada.protocol.iec60870.CauseOfTransmissionType</code> type.
          */
         public T causeOfTransmissionType(String causeOfTransmissionType) {
             this.properties.put("causeOfTransmissionType", causeOfTransmissionType);
@@ -178,8 +185,7 @@ public interface ClientEndpointBuilder {
         /**
          * The information address size. May be either SIZE_1, SIZE_2 or SIZE_3.
          * The option is a
-         * org.eclipse.neoscada.protocol.iec60870.InformationObjectAddressType
-         * type.
+         * <code>org.eclipse.neoscada.protocol.iec60870.InformationObjectAddressType</code> type.
          */
         public T informationObjectAddressType(
                 InformationObjectAddressType informationObjectAddressType) {
@@ -189,8 +195,7 @@ public interface ClientEndpointBuilder {
         /**
          * The information address size. May be either SIZE_1, SIZE_2 or SIZE_3.
          * The option will be converted to a
-         * org.eclipse.neoscada.protocol.iec60870.InformationObjectAddressType
-         * type.
+         * <code>org.eclipse.neoscada.protocol.iec60870.InformationObjectAddressType</code> type.
          */
         public T informationObjectAddressType(
                 String informationObjectAddressType) {
@@ -199,7 +204,7 @@ public interface ClientEndpointBuilder {
         }
         /**
          * Parameter K - Maximum number of un-acknowledged messages. The option
-         * is a short type.
+         * is a <code>short</code> type.
          */
         public T maxUnacknowledged(short maxUnacknowledged) {
             this.properties.put("maxUnacknowledged", maxUnacknowledged);
@@ -207,59 +212,60 @@ public interface ClientEndpointBuilder {
         }
         /**
          * Parameter K - Maximum number of un-acknowledged messages. The option
-         * will be converted to a short type.
+         * will be converted to a <code>short</code> type.
          */
         public T maxUnacknowledged(String maxUnacknowledged) {
             this.properties.put("maxUnacknowledged", maxUnacknowledged);
             return (T) this;
         }
         /**
-         * Timeout T1 in milliseconds. The option is a int type.
+         * Timeout T1 in milliseconds. The option is a <code>int</code> type.
          */
         public T timeout1(int timeout1) {
             this.properties.put("timeout1", timeout1);
             return (T) this;
         }
         /**
-         * Timeout T1 in milliseconds. The option will be converted to a int
-         * type.
+         * Timeout T1 in milliseconds. The option will be converted to a
+         * <code>int</code> type.
          */
         public T timeout1(String timeout1) {
             this.properties.put("timeout1", timeout1);
             return (T) this;
         }
         /**
-         * Timeout T2 in milliseconds. The option is a int type.
+         * Timeout T2 in milliseconds. The option is a <code>int</code> type.
          */
         public T timeout2(int timeout2) {
             this.properties.put("timeout2", timeout2);
             return (T) this;
         }
         /**
-         * Timeout T2 in milliseconds. The option will be converted to a int
-         * type.
+         * Timeout T2 in milliseconds. The option will be converted to a
+         * <code>int</code> type.
          */
         public T timeout2(String timeout2) {
             this.properties.put("timeout2", timeout2);
             return (T) this;
         }
         /**
-         * Timeout T3 in milliseconds. The option is a int type.
+         * Timeout T3 in milliseconds. The option is a <code>int</code> type.
          */
         public T timeout3(int timeout3) {
             this.properties.put("timeout3", timeout3);
             return (T) this;
         }
         /**
-         * Timeout T3 in milliseconds. The option will be converted to a int
-         * type.
+         * Timeout T3 in milliseconds. The option will be converted to a
+         * <code>int</code> type.
          */
         public T timeout3(String timeout3) {
             this.properties.put("timeout3", timeout3);
             return (T) this;
         }
         /**
-         * Whether to include the source address. The option is a boolean type.
+         * Whether to include the source address. The option is a
+         * <code>boolean</code> type.
          */
         public T causeSourceAddress(boolean causeSourceAddress) {
             this.properties.put("causeSourceAddress", causeSourceAddress);
@@ -267,7 +273,7 @@ public interface ClientEndpointBuilder {
         }
         /**
          * Whether to include the source address. The option will be converted
-         * to a boolean type.
+         * to a <code>boolean</code> type.
          */
         public T causeSourceAddress(String causeSourceAddress) {
             this.properties.put("causeSourceAddress", causeSourceAddress);
@@ -275,7 +281,7 @@ public interface ClientEndpointBuilder {
         }
         /**
          * Whether background scan transmissions should be ignored. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T ignoreBackgroundScan(boolean ignoreBackgroundScan) {
             this.properties.put("ignoreBackgroundScan", ignoreBackgroundScan);
@@ -283,14 +289,15 @@ public interface ClientEndpointBuilder {
         }
         /**
          * Whether background scan transmissions should be ignored. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T ignoreBackgroundScan(String ignoreBackgroundScan) {
             this.properties.put("ignoreBackgroundScan", ignoreBackgroundScan);
             return (T) this;
         }
         /**
-         * Whether to ignore or respect DST. The option is a boolean type.
+         * Whether to ignore or respect DST. The option is a
+         * <code>boolean</code> type.
          */
         public T ignoreDaylightSavingTime(boolean ignoreDaylightSavingTime) {
             this.properties.put("ignoreDaylightSavingTime", ignoreDaylightSavingTime);
@@ -298,7 +305,7 @@ public interface ClientEndpointBuilder {
         }
         /**
          * Whether to ignore or respect DST. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T ignoreDaylightSavingTime(String ignoreDaylightSavingTime) {
             this.properties.put("ignoreDaylightSavingTime", ignoreDaylightSavingTime);
@@ -306,7 +313,7 @@ public interface ClientEndpointBuilder {
         }
         /**
          * The timezone to use. May be any Java time zone string. The option is
-         * a java.util.TimeZone type.
+         * a <code>java.util.TimeZone</code> type.
          */
         public T timeZone(TimeZone timeZone) {
             this.properties.put("timeZone", timeZone);
@@ -314,7 +321,7 @@ public interface ClientEndpointBuilder {
         }
         /**
          * The timezone to use. May be any Java time zone string. The option
-         * will be converted to a java.util.TimeZone type.
+         * will be converted to a <code>java.util.TimeZone</code> type.
          */
         public T timeZone(String timeZone) {
             this.properties.put("timeZone", timeZone);
@@ -322,7 +329,7 @@ public interface ClientEndpointBuilder {
         }
         /**
          * An identifier grouping connection instances. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T connectionId(String connectionId) {
             this.properties.put("connectionId", connectionId);
@@ -345,7 +352,7 @@ public interface ClientEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public ClientConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -359,7 +366,7 @@ public interface ClientEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public ClientConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -371,7 +378,7 @@ public interface ClientEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public ClientConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -383,7 +390,8 @@ public interface ClientEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public ClientConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -391,7 +399,7 @@ public interface ClientEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public ClientConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -400,7 +408,8 @@ public interface ClientEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public ClientConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -419,15 +428,15 @@ public interface ClientEndpointBuilder {
     }
 
     public static enum ASDUAddressType {
-        SIZE_1,  SIZE_2;
+        SIZE_1, SIZE_2;
     }
 
     public static enum CauseOfTransmissionType {
-        SIZE_1,  SIZE_2;
+        SIZE_1, SIZE_2;
     }
 
     public static enum InformationObjectAddressType {
-        SIZE_1,  SIZE_2,  SIZE_3;
+        SIZE_1, SIZE_2, SIZE_3;
     }
     public default ClientConsumerBuilder fromClient(String path) {
         return new ClientConsumerBuilder(path);

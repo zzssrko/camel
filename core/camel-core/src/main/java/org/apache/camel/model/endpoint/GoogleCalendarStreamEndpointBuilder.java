@@ -47,8 +47,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
             super("google-calendar-stream", path);
         }
         /**
-         * Specifies an index for the endpoint. The option is a java.lang.String
-         * type.
+         * Specifies an index for the endpoint. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T index(String index) {
             this.properties.put("index", index);
@@ -57,7 +57,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * OAuth 2 access token. This typically expires after an hour so
          * refreshToken is recommended for long term usage. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T accessToken(String accessToken) {
             this.properties.put("accessToken", accessToken);
@@ -65,14 +65,16 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Google Calendar application name. Example would be
-         * camel-google-calendar/1.0. The option is a java.lang.String type.
+         * camel-google-calendar/1.0. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T applicationName(String applicationName) {
             this.properties.put("applicationName", applicationName);
             return (T) this;
         }
         /**
-         * The calendarId to be used. The option is a java.lang.String type.
+         * The calendarId to be used. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T calendarId(String calendarId) {
             this.properties.put("calendarId", calendarId);
@@ -80,7 +82,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Client ID of the calendar application. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T clientId(String clientId) {
             this.properties.put("clientId", clientId);
@@ -88,7 +90,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Client secret of the calendar application. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T clientSecret(String clientSecret) {
             this.properties.put("clientSecret", clientSecret);
@@ -96,7 +98,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Take into account the lastUpdate of the last event polled as start
-         * date for the next poll. The option is a boolean type.
+         * date for the next poll. The option is a <code>boolean</code> type.
          */
         public T considerLastUpdate(boolean considerLastUpdate) {
             this.properties.put("considerLastUpdate", considerLastUpdate);
@@ -104,8 +106,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Take into account the lastUpdate of the last event polled as start
-         * date for the next poll. The option will be converted to a boolean
-         * type.
+         * date for the next poll. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T considerLastUpdate(String considerLastUpdate) {
             this.properties.put("considerLastUpdate", considerLastUpdate);
@@ -113,7 +115,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Consume events in the selected calendar from now on. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T consumeFromNow(boolean consumeFromNow) {
             this.properties.put("consumeFromNow", consumeFromNow);
@@ -121,30 +123,30 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Consume events in the selected calendar from now on. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public T consumeFromNow(String consumeFromNow) {
             this.properties.put("consumeFromNow", consumeFromNow);
             return (T) this;
         }
         /**
-         * Max results to be returned. The option is a int type.
+         * Max results to be returned. The option is a <code>int</code> type.
          */
         public T maxResults(int maxResults) {
             this.properties.put("maxResults", maxResults);
             return (T) this;
         }
         /**
-         * Max results to be returned. The option will be converted to a int
-         * type.
+         * Max results to be returned. The option will be converted to a
+         * <code>int</code> type.
          */
         public T maxResults(String maxResults) {
             this.properties.put("maxResults", maxResults);
             return (T) this;
         }
         /**
-         * The query to execute on calendar. The option is a java.lang.String
-         * type.
+         * The query to execute on calendar. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T query(String query) {
             this.properties.put("query", query);
@@ -154,7 +156,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * OAuth 2 refresh token. Using this, the Google Calendar component can
          * obtain a new accessToken whenever the current one expires - a
          * necessity if the application is long-lived. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T refreshToken(String refreshToken) {
             this.properties.put("refreshToken", refreshToken);
@@ -164,7 +166,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * Specifies the level of permissions you want a calendar application to
          * have to a user account. See
          * https://developers.google.com/calendar/auth for more info. The option
-         * is a java.util.List<java.lang.String> type.
+         * is a <code>java.util.List<java.lang.String></code> type.
          */
         public T scopes(List<String> scopes) {
             this.properties.put("scopes", scopes);
@@ -174,7 +176,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * Specifies the level of permissions you want a calendar application to
          * have to a user account. See
          * https://developers.google.com/calendar/auth for more info. The option
-         * will be converted to a java.util.List<java.lang.String> type.
+         * will be converted to a <code>java.util.List<java.lang.String></code>
+         * type.
          */
         public T scopes(String scopes) {
             this.properties.put("scopes", scopes);
@@ -183,7 +186,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -192,7 +195,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -201,7 +204,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -210,7 +213,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -233,7 +236,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -247,7 +250,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -257,7 +260,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -267,7 +270,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -279,7 +282,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -291,7 +294,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public GoogleCalendarStreamConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -300,7 +304,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -309,7 +313,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder exchangePattern(
                 String exchangePattern) {
@@ -321,7 +326,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -333,7 +338,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public GoogleCalendarStreamConsumerBuilder pollStrategy(
                 String pollStrategy) {
@@ -343,7 +349,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -353,7 +359,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -362,7 +368,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public GoogleCalendarStreamConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -372,7 +379,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -385,7 +392,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder backoffMultiplier(
                 int backoffMultiplier) {
@@ -398,7 +405,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder backoffMultiplier(
                 String backoffMultiplier) {
@@ -408,7 +415,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -417,8 +424,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -427,7 +434,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -436,7 +443,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -445,7 +452,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder initialDelay(
                 long initialDelay) {
@@ -455,8 +462,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder initialDelay(
                 String initialDelay) {
@@ -466,7 +473,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -476,7 +483,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public GoogleCalendarStreamConsumerBuilder runLoggingLevel(
                 String runLoggingLevel) {
@@ -486,8 +494,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -498,7 +506,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -508,7 +516,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public GoogleCalendarStreamConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -518,7 +527,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public GoogleCalendarStreamConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -527,7 +537,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public GoogleCalendarStreamConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -537,7 +547,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public GoogleCalendarStreamConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -545,8 +556,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
             return (GoogleCalendarStreamConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder startScheduler(
                 boolean startScheduler) {
@@ -555,7 +566,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder startScheduler(
                 String startScheduler) {
@@ -564,7 +575,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -572,7 +583,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -580,8 +591,8 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder useFixedDelay(
                 boolean useFixedDelay) {
@@ -591,7 +602,7 @@ public interface GoogleCalendarStreamEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public GoogleCalendarStreamConsumerBuilder useFixedDelay(
                 String useFixedDelay) {

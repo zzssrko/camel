@@ -40,7 +40,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * The zookeeper server hosts (multiple servers can be separated by
-         * comma). The option is a java.lang.String type.
+         * comma). The option is a <code>java.lang.String</code> type.
          */
         public T serverUrls(String serverUrls) {
             this.properties.put("serverUrls", serverUrls);
@@ -48,14 +48,14 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * The node in the ZooKeeper server (aka znode). The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T path(String path) {
             this.properties.put("path", path);
             return (T) this;
         }
         /**
-         * Not in use. The option is a boolean type.
+         * Not in use. The option is a <code>boolean</code> type.
          */
         @Deprecated
         public T awaitExistence(boolean awaitExistence) {
@@ -63,7 +63,8 @@ public interface ZooKeeperEndpointBuilder {
             return (T) this;
         }
         /**
-         * Not in use. The option will be converted to a boolean type.
+         * Not in use. The option will be converted to a <code>boolean</code>
+         * type.
          */
         @Deprecated
         public T awaitExistence(String awaitExistence) {
@@ -72,7 +73,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * Whether the children of the node should be listed. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T listChildren(boolean listChildren) {
             this.properties.put("listChildren", listChildren);
@@ -80,7 +81,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * Whether the children of the node should be listed. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T listChildren(String listChildren) {
             this.properties.put("listChildren", listChildren);
@@ -88,7 +89,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * The time interval to wait on connection before timing out. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public T timeout(int timeout) {
             this.properties.put("timeout", timeout);
@@ -96,7 +97,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * The time interval to wait on connection before timing out. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public T timeout(String timeout) {
             this.properties.put("timeout", timeout);
@@ -105,7 +106,7 @@ public interface ZooKeeperEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -114,7 +115,7 @@ public interface ZooKeeperEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -123,7 +124,7 @@ public interface ZooKeeperEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -132,7 +133,7 @@ public interface ZooKeeperEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -150,7 +151,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * The time interval to backoff for after an error before retrying. The
-         * option is a long type.
+         * option is a <code>long</code> type.
          */
         public ZooKeeperConsumerBuilder backoff(long backoff) {
             this.properties.put("backoff", backoff);
@@ -158,7 +159,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * The time interval to backoff for after an error before retrying. The
-         * option will be converted to a long type.
+         * option will be converted to a <code>long</code> type.
          */
         public ZooKeeperConsumerBuilder backoff(String backoff) {
             this.properties.put("backoff", backoff);
@@ -171,7 +172,7 @@ public interface ZooKeeperEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public ZooKeeperConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -185,7 +186,7 @@ public interface ZooKeeperEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public ZooKeeperConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -194,7 +195,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * Should changes to the znode be 'watched' and repeatedly processed.
-         * The option is a boolean type.
+         * The option is a <code>boolean</code> type.
          */
         public ZooKeeperConsumerBuilder repeat(boolean repeat) {
             this.properties.put("repeat", repeat);
@@ -202,7 +203,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * Should changes to the znode be 'watched' and repeatedly processed.
-         * The option will be converted to a boolean type.
+         * The option will be converted to a <code>boolean</code> type.
          */
         public ZooKeeperConsumerBuilder repeat(String repeat) {
             this.properties.put("repeat", repeat);
@@ -210,7 +211,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * Upon the delete of a znode, should an empty message be send to the
-         * consumer. The option is a boolean type.
+         * consumer. The option is a <code>boolean</code> type.
          */
         public ZooKeeperConsumerBuilder sendEmptyMessageOnDelete(
                 boolean sendEmptyMessageOnDelete) {
@@ -219,7 +220,8 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * Upon the delete of a znode, should an empty message be send to the
-         * consumer. The option will be converted to a boolean type.
+         * consumer. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public ZooKeeperConsumerBuilder sendEmptyMessageOnDelete(
                 String sendEmptyMessageOnDelete) {
@@ -231,7 +233,7 @@ public interface ZooKeeperEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public ZooKeeperConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -243,7 +245,8 @@ public interface ZooKeeperEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public ZooKeeperConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -251,7 +254,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public ZooKeeperConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -260,7 +263,8 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public ZooKeeperConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -278,7 +282,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * Should the endpoint create the node if it does not currently exist.
-         * The option is a boolean type.
+         * The option is a <code>boolean</code> type.
          */
         public ZooKeeperProducerBuilder create(boolean create) {
             this.properties.put("create", create);
@@ -286,7 +290,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * Should the endpoint create the node if it does not currently exist.
-         * The option will be converted to a boolean type.
+         * The option will be converted to a <code>boolean</code> type.
          */
         public ZooKeeperProducerBuilder create(String create) {
             this.properties.put("create", create);
@@ -294,7 +298,7 @@ public interface ZooKeeperEndpointBuilder {
         }
         /**
          * The create mode that should be used for the newly created node. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public ZooKeeperProducerBuilder createMode(String createMode) {
             this.properties.put("createMode", createMode);

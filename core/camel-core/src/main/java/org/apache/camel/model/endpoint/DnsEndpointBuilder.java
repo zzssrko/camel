@@ -38,7 +38,7 @@ public interface DnsEndpointBuilder {
         }
         /**
          * The type of the lookup. The option is a
-         * org.apache.camel.component.dns.DnsType type.
+         * <code>org.apache.camel.component.dns.DnsType</code> type.
          */
         public T dnsType(DnsType dnsType) {
             this.properties.put("dnsType", dnsType);
@@ -46,7 +46,7 @@ public interface DnsEndpointBuilder {
         }
         /**
          * The type of the lookup. The option will be converted to a
-         * org.apache.camel.component.dns.DnsType type.
+         * <code>org.apache.camel.component.dns.DnsType</code> type.
          */
         public T dnsType(String dnsType) {
             this.properties.put("dnsType", dnsType);
@@ -55,7 +55,7 @@ public interface DnsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -64,7 +64,7 @@ public interface DnsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -73,7 +73,7 @@ public interface DnsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -82,7 +82,7 @@ public interface DnsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

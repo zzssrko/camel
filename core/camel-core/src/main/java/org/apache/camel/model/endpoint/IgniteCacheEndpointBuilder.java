@@ -40,7 +40,7 @@ public interface IgniteCacheEndpointBuilder {
             super("ignite-cache", path);
         }
         /**
-         * The cache name. The option is a java.lang.String type.
+         * The cache name. The option is a <code>java.lang.String</code> type.
          */
         public T cacheName(String cacheName) {
             this.properties.put("cacheName", cacheName);
@@ -48,7 +48,8 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * Sets whether to propagate the incoming body if the return type of the
-         * underlying Ignite operation is void. The option is a boolean type.
+         * underlying Ignite operation is void. The option is a
+         * <code>boolean</code> type.
          */
         public T propagateIncomingBodyIfNoReturnValue(
                 boolean propagateIncomingBodyIfNoReturnValue) {
@@ -58,7 +59,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * Sets whether to propagate the incoming body if the return type of the
          * underlying Ignite operation is void. The option will be converted to
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public T propagateIncomingBodyIfNoReturnValue(
                 String propagateIncomingBodyIfNoReturnValue) {
@@ -67,7 +68,8 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * Sets whether to treat Collections as cache objects or as Collections
-         * of items to insert/update/compute, etc. The option is a boolean type.
+         * of items to insert/update/compute, etc. The option is a
+         * <code>boolean</code> type.
          */
         public T treatCollectionsAsCacheObjects(
                 boolean treatCollectionsAsCacheObjects) {
@@ -77,7 +79,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option will be converted
-         * to a boolean type.
+         * to a <code>boolean</code> type.
          */
         public T treatCollectionsAsCacheObjects(
                 String treatCollectionsAsCacheObjects) {
@@ -87,7 +89,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -96,7 +98,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -105,7 +107,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -114,7 +116,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -132,7 +134,7 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * Whether auto unsubscribe is enabled in the Continuous Query Consumer.
-         * The option is a boolean type.
+         * The option is a <code>boolean</code> type.
          */
         public IgniteCacheConsumerBuilder autoUnsubscribe(
                 boolean autoUnsubscribe) {
@@ -141,7 +143,7 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * Whether auto unsubscribe is enabled in the Continuous Query Consumer.
-         * The option will be converted to a boolean type.
+         * The option will be converted to a <code>boolean</code> type.
          */
         public IgniteCacheConsumerBuilder autoUnsubscribe(String autoUnsubscribe) {
             this.properties.put("autoUnsubscribe", autoUnsubscribe);
@@ -154,7 +156,7 @@ public interface IgniteCacheEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public IgniteCacheConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -168,7 +170,7 @@ public interface IgniteCacheEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public IgniteCacheConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -178,7 +180,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * Whether to process existing results that match the query. Used on
          * initialization of the Continuous Query Consumer. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public IgniteCacheConsumerBuilder fireExistingQueryResults(
                 boolean fireExistingQueryResults) {
@@ -188,7 +190,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * Whether to process existing results that match the query. Used on
          * initialization of the Continuous Query Consumer. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public IgniteCacheConsumerBuilder fireExistingQueryResults(
                 String fireExistingQueryResults) {
@@ -198,7 +200,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * Whether to pack each update in an individual Exchange, even if
          * multiple updates are received in one batch. Only used by the
-         * Continuous Query Consumer. The option is a boolean type.
+         * Continuous Query Consumer. The option is a <code>boolean</code> type.
          */
         public IgniteCacheConsumerBuilder oneExchangePerUpdate(
                 boolean oneExchangePerUpdate) {
@@ -208,8 +210,8 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * Whether to pack each update in an individual Exchange, even if
          * multiple updates are received in one batch. Only used by the
-         * Continuous Query Consumer. The option will be converted to a boolean
-         * type.
+         * Continuous Query Consumer. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public IgniteCacheConsumerBuilder oneExchangePerUpdate(
                 String oneExchangePerUpdate) {
@@ -218,7 +220,7 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * The page size. Only used by the Continuous Query Consumer. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public IgniteCacheConsumerBuilder pageSize(int pageSize) {
             this.properties.put("pageSize", pageSize);
@@ -226,7 +228,7 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * The page size. Only used by the Continuous Query Consumer. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public IgniteCacheConsumerBuilder pageSize(String pageSize) {
             this.properties.put("pageSize", pageSize);
@@ -235,7 +237,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * The remote filter, only used by the Continuous Query Consumer. The
          * option is a
-         * org.apache.ignite.cache.CacheEntryEventSerializableFilter<java.lang.Object,java.lang.Object> type.
+         * <code>org.apache.ignite.cache.CacheEntryEventSerializableFilter<java.lang.Object, java.lang.Object></code> type.
          */
         public IgniteCacheConsumerBuilder remoteFilter(Object remoteFilter) {
             this.properties.put("remoteFilter", remoteFilter);
@@ -244,7 +246,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * The remote filter, only used by the Continuous Query Consumer. The
          * option will be converted to a
-         * org.apache.ignite.cache.CacheEntryEventSerializableFilter<java.lang.Object,java.lang.Object> type.
+         * <code>org.apache.ignite.cache.CacheEntryEventSerializableFilter<java.lang.Object, java.lang.Object></code> type.
          */
         public IgniteCacheConsumerBuilder remoteFilter(String remoteFilter) {
             this.properties.put("remoteFilter", remoteFilter);
@@ -252,7 +254,7 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * The time interval for the Continuous Query Consumer. The option is a
-         * long type.
+         * <code>long</code> type.
          */
         public IgniteCacheConsumerBuilder timeInterval(long timeInterval) {
             this.properties.put("timeInterval", timeInterval);
@@ -260,7 +262,7 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * The time interval for the Continuous Query Consumer. The option will
-         * be converted to a long type.
+         * be converted to a <code>long</code> type.
          */
         public IgniteCacheConsumerBuilder timeInterval(String timeInterval) {
             this.properties.put("timeInterval", timeInterval);
@@ -271,7 +273,7 @@ public interface IgniteCacheEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public IgniteCacheConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -283,7 +285,8 @@ public interface IgniteCacheEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public IgniteCacheConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -292,7 +295,7 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public IgniteCacheConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -301,7 +304,8 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public IgniteCacheConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -320,7 +324,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * The Query to execute, only needed for operations that require it, and
          * for the Continuous Query Consumer. The option is a
-         * org.apache.ignite.cache.query.Query<javax.cache.Cache.Entry<java.lang.Object,java.lang.Object>> type.
+         * <code>org.apache.ignite.cache.query.Query<javax.cache.Cache$Entry<java.lang.Object, java.lang.Object>></code> type.
          */
         public IgniteCacheProducerBuilder query(Object query) {
             this.properties.put("query", query);
@@ -329,7 +333,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * The Query to execute, only needed for operations that require it, and
          * for the Continuous Query Consumer. The option will be converted to a
-         * org.apache.ignite.cache.query.Query<javax.cache.Cache.Entry<java.lang.Object,java.lang.Object>> type.
+         * <code>org.apache.ignite.cache.query.Query<javax.cache.Cache$Entry<java.lang.Object, java.lang.Object>></code> type.
          */
         public IgniteCacheProducerBuilder query(String query) {
             this.properties.put("query", query);
@@ -338,7 +342,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * The CachePeekMode, only needed for operations that require it
          * (IgniteCacheOperation#SIZE). The option is a
-         * org.apache.ignite.cache.CachePeekMode type.
+         * <code>org.apache.ignite.cache.CachePeekMode</code> type.
          */
         public IgniteCacheProducerBuilder cachePeekMode(
                 CachePeekMode cachePeekMode) {
@@ -348,7 +352,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * The CachePeekMode, only needed for operations that require it
          * (IgniteCacheOperation#SIZE). The option will be converted to a
-         * org.apache.ignite.cache.CachePeekMode type.
+         * <code>org.apache.ignite.cache.CachePeekMode</code> type.
          */
         public IgniteCacheProducerBuilder cachePeekMode(String cachePeekMode) {
             this.properties.put("cachePeekMode", cachePeekMode);
@@ -356,7 +360,7 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * Whether to fail the initialization if the cache doesn't exist. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public IgniteCacheProducerBuilder failIfInexistentCache(
                 boolean failIfInexistentCache) {
@@ -365,7 +369,7 @@ public interface IgniteCacheEndpointBuilder {
         }
         /**
          * Whether to fail the initialization if the cache doesn't exist. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public IgniteCacheProducerBuilder failIfInexistentCache(
                 String failIfInexistentCache) {
@@ -375,7 +379,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * The cache operation to invoke. Possible values: GET, PUT, REMOVE,
          * SIZE, REBALANCE, QUERY, CLEAR. The option is a
-         * org.apache.camel.component.ignite.cache.IgniteCacheOperation type.
+         * <code>org.apache.camel.component.ignite.cache.IgniteCacheOperation</code> type.
          */
         public IgniteCacheProducerBuilder operation(
                 IgniteCacheOperation operation) {
@@ -385,7 +389,7 @@ public interface IgniteCacheEndpointBuilder {
         /**
          * The cache operation to invoke. Possible values: GET, PUT, REMOVE,
          * SIZE, REBALANCE, QUERY, CLEAR. The option will be converted to a
-         * org.apache.camel.component.ignite.cache.IgniteCacheOperation type.
+         * <code>org.apache.camel.component.ignite.cache.IgniteCacheOperation</code> type.
          */
         public IgniteCacheProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);

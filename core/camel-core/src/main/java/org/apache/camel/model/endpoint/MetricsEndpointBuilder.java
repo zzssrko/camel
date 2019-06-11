@@ -39,7 +39,7 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Type of metrics. The option is a
-         * org.apache.camel.component.metrics.MetricsType type.
+         * <code>org.apache.camel.component.metrics.MetricsType</code> type.
          */
         public T metricsType(MetricsType metricsType) {
             this.properties.put("metricsType", metricsType);
@@ -47,14 +47,14 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Type of metrics. The option will be converted to a
-         * org.apache.camel.component.metrics.MetricsType type.
+         * <code>org.apache.camel.component.metrics.MetricsType</code> type.
          */
         public T metricsType(String metricsType) {
             this.properties.put("metricsType", metricsType);
             return (T) this;
         }
         /**
-         * Name of metrics. The option is a java.lang.String type.
+         * Name of metrics. The option is a <code>java.lang.String</code> type.
          */
         public T metricsName(String metricsName) {
             this.properties.put("metricsName", metricsName);
@@ -62,7 +62,8 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Action when using timer type. The option is a
-         * org.apache.camel.component.metrics.MetricsTimerAction type.
+         * <code>org.apache.camel.component.metrics.MetricsTimerAction</code>
+         * type.
          */
         public T action(MetricsTimerAction action) {
             this.properties.put("action", action);
@@ -70,7 +71,8 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Action when using timer type. The option will be converted to a
-         * org.apache.camel.component.metrics.MetricsTimerAction type.
+         * <code>org.apache.camel.component.metrics.MetricsTimerAction</code>
+         * type.
          */
         public T action(String action) {
             this.properties.put("action", action);
@@ -78,7 +80,7 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Decrement value when using counter type. The option is a
-         * java.lang.Long type.
+         * <code>java.lang.Long</code> type.
          */
         public T decrement(Long decrement) {
             this.properties.put("decrement", decrement);
@@ -86,7 +88,7 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Decrement value when using counter type. The option will be converted
-         * to a java.lang.Long type.
+         * to a <code>java.lang.Long</code> type.
          */
         public T decrement(String decrement) {
             this.properties.put("decrement", decrement);
@@ -94,7 +96,7 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Increment value when using counter type. The option is a
-         * java.lang.Long type.
+         * <code>java.lang.Long</code> type.
          */
         public T increment(Long increment) {
             this.properties.put("increment", increment);
@@ -102,14 +104,15 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Increment value when using counter type. The option will be converted
-         * to a java.lang.Long type.
+         * to a <code>java.lang.Long</code> type.
          */
         public T increment(String increment) {
             this.properties.put("increment", increment);
             return (T) this;
         }
         /**
-         * Mark when using meter type. The option is a java.lang.Long type.
+         * Mark when using meter type. The option is a
+         * <code>java.lang.Long</code> type.
          */
         public T mark(Long mark) {
             this.properties.put("mark", mark);
@@ -117,15 +120,15 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Mark when using meter type. The option will be converted to a
-         * java.lang.Long type.
+         * <code>java.lang.Long</code> type.
          */
         public T mark(String mark) {
             this.properties.put("mark", mark);
             return (T) this;
         }
         /**
-         * Subject value when using gauge type. The option is a java.lang.Object
-         * type.
+         * Subject value when using gauge type. The option is a
+         * <code>java.lang.Object</code> type.
          */
         public T subject(Object subject) {
             this.properties.put("subject", subject);
@@ -133,15 +136,15 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Subject value when using gauge type. The option will be converted to
-         * a java.lang.Object type.
+         * a <code>java.lang.Object</code> type.
          */
         public T subject(String subject) {
             this.properties.put("subject", subject);
             return (T) this;
         }
         /**
-         * Value value when using histogram type. The option is a java.lang.Long
-         * type.
+         * Value value when using histogram type. The option is a
+         * <code>java.lang.Long</code> type.
          */
         public T value(Long value) {
             this.properties.put("value", value);
@@ -149,7 +152,7 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Value value when using histogram type. The option will be converted
-         * to a java.lang.Long type.
+         * to a <code>java.lang.Long</code> type.
          */
         public T value(String value) {
             this.properties.put("value", value);
@@ -158,7 +161,7 @@ public interface MetricsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -167,7 +170,7 @@ public interface MetricsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -176,7 +179,7 @@ public interface MetricsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -185,7 +188,7 @@ public interface MetricsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -204,7 +207,7 @@ public interface MetricsEndpointBuilder {
     }
 
     public static enum MetricsType {
-        GAUGE, COUNTER, HISTOGRAM, METER, TIMER;
+        gauge, counter, histogram, meter, timer;
     }
 
     public static enum MetricsTimerAction {

@@ -47,7 +47,8 @@ public interface YammerEndpointBuilder {
         }
         /**
          * The function to use. The option is a
-         * org.apache.camel.component.yammer.YammerFunctionType type.
+         * <code>org.apache.camel.component.yammer.YammerFunctionType</code>
+         * type.
          */
         public T function(YammerFunctionType function) {
             this.properties.put("function", function);
@@ -55,7 +56,8 @@ public interface YammerEndpointBuilder {
         }
         /**
          * The function to use. The option will be converted to a
-         * org.apache.camel.component.yammer.YammerFunctionType type.
+         * <code>org.apache.camel.component.yammer.YammerFunctionType</code>
+         * type.
          */
         public T function(String function) {
             this.properties.put("function", function);
@@ -63,7 +65,7 @@ public interface YammerEndpointBuilder {
         }
         /**
          * Set to true if you want to use raw JSON rather than converting to
-         * POJOs. The option is a boolean type.
+         * POJOs. The option is a <code>boolean</code> type.
          */
         public T useJson(boolean useJson) {
             this.properties.put("useJson", useJson);
@@ -71,7 +73,7 @@ public interface YammerEndpointBuilder {
         }
         /**
          * Set to true if you want to use raw JSON rather than converting to
-         * POJOs. The option will be converted to a boolean type.
+         * POJOs. The option will be converted to a <code>boolean</code> type.
          */
         public T useJson(String useJson) {
             this.properties.put("useJson", useJson);
@@ -80,7 +82,7 @@ public interface YammerEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -89,7 +91,7 @@ public interface YammerEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -98,7 +100,7 @@ public interface YammerEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -107,28 +109,29 @@ public interface YammerEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * The access token. The option is a java.lang.String type.
+         * The access token. The option is a <code>java.lang.String</code> type.
          */
         public T accessToken(String accessToken) {
             this.properties.put("accessToken", accessToken);
             return (T) this;
         }
         /**
-         * The consumer key. The option is a java.lang.String type.
+         * The consumer key. The option is a <code>java.lang.String</code> type.
          */
         public T consumerKey(String consumerKey) {
             this.properties.put("consumerKey", consumerKey);
             return (T) this;
         }
         /**
-         * The consumer secret. The option is a java.lang.String type.
+         * The consumer secret. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T consumerSecret(String consumerSecret) {
             this.properties.put("consumerSecret", consumerSecret);
@@ -151,7 +154,7 @@ public interface YammerEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public YammerConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -165,7 +168,7 @@ public interface YammerEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public YammerConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -173,7 +176,8 @@ public interface YammerEndpointBuilder {
             return (YammerConsumerBuilder) this;
         }
         /**
-         * Delay between polling in millis. The option is a long type.
+         * Delay between polling in millis. The option is a <code>long</code>
+         * type.
          */
         public YammerConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -181,7 +185,7 @@ public interface YammerEndpointBuilder {
         }
         /**
          * Delay between polling in millis. The option will be converted to a
-         * long type.
+         * <code>long</code> type.
          */
         public YammerConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -189,7 +193,7 @@ public interface YammerEndpointBuilder {
         }
         /**
          * Return only the specified number of messages. Works for threaded=true
-         * and threaded=extended. The option is a int type.
+         * and threaded=extended. The option is a <code>int</code> type.
          */
         public YammerConsumerBuilder limit(int limit) {
             this.properties.put("limit", limit);
@@ -197,7 +201,8 @@ public interface YammerEndpointBuilder {
         }
         /**
          * Return only the specified number of messages. Works for threaded=true
-         * and threaded=extended. The option will be converted to a int type.
+         * and threaded=extended. The option will be converted to a
+         * <code>int</code> type.
          */
         public YammerConsumerBuilder limit(String limit) {
             this.properties.put("limit", limit);
@@ -209,7 +214,7 @@ public interface YammerEndpointBuilder {
          * looking at messages, and the most recent message returned is 3516,
          * you can make a request with the parameter newerThan=3516 to ensure
          * that you do not get duplicate copies of messages already on your
-         * page. The option is a long type.
+         * page. The option is a <code>long</code> type.
          */
         public YammerConsumerBuilder newerThan(long newerThan) {
             this.properties.put("newerThan", newerThan);
@@ -221,7 +226,7 @@ public interface YammerEndpointBuilder {
          * looking at messages, and the most recent message returned is 3516,
          * you can make a request with the parameter newerThan=3516 to ensure
          * that you do not get duplicate copies of messages already on your
-         * page. The option will be converted to a long type.
+         * page. The option will be converted to a <code>long</code> type.
          */
         public YammerConsumerBuilder newerThan(String newerThan) {
             this.properties.put("newerThan", newerThan);
@@ -232,7 +237,8 @@ public interface YammerEndpointBuilder {
          * string. This is useful for paginating messages. For example, if
          * you're currently viewing 20 messages and the oldest is number 2912,
          * you could append olderThan=2912 to your request to get the 20
-         * messages prior to those you're seeing. The option is a long type.
+         * messages prior to those you're seeing. The option is a
+         * <code>long</code> type.
          */
         public YammerConsumerBuilder olderThan(long olderThan) {
             this.properties.put("olderThan", olderThan);
@@ -244,7 +250,7 @@ public interface YammerEndpointBuilder {
          * you're currently viewing 20 messages and the oldest is number 2912,
          * you could append olderThan=2912 to your request to get the 20
          * messages prior to those you're seeing. The option will be converted
-         * to a long type.
+         * to a <code>long</code> type.
          */
         public YammerConsumerBuilder olderThan(String olderThan) {
             this.properties.put("olderThan", olderThan);
@@ -253,7 +259,7 @@ public interface YammerEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public YammerConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -263,7 +269,7 @@ public interface YammerEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public YammerConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -276,14 +282,14 @@ public interface YammerEndpointBuilder {
          * collapsed. threaded=extended will return the thread starter messages
          * in order of most recently active as well as the two most recent
          * messages, as they are viewed in the default view on the Yammer web
-         * interface. The option is a java.lang.String type.
+         * interface. The option is a <code>java.lang.String</code> type.
          */
         public YammerConsumerBuilder threaded(String threaded) {
             this.properties.put("threaded", threaded);
             return (YammerConsumerBuilder) this;
         }
         /**
-         * The user id. The option is a java.lang.String type.
+         * The user id. The option is a <code>java.lang.String</code> type.
          */
         public YammerConsumerBuilder userId(String userId) {
             this.properties.put("userId", userId);
@@ -294,7 +300,7 @@ public interface YammerEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public YammerConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -306,7 +312,8 @@ public interface YammerEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public YammerConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -314,7 +321,7 @@ public interface YammerEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public YammerConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -323,7 +330,8 @@ public interface YammerEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public YammerConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -334,7 +342,7 @@ public interface YammerEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public YammerConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -346,7 +354,8 @@ public interface YammerEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public YammerConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -355,7 +364,7 @@ public interface YammerEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public YammerConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -365,7 +374,7 @@ public interface YammerEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public YammerConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -374,7 +383,8 @@ public interface YammerEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public YammerConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -384,7 +394,7 @@ public interface YammerEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public YammerConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -397,7 +407,7 @@ public interface YammerEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public YammerConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -409,7 +419,7 @@ public interface YammerEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public YammerConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -418,7 +428,7 @@ public interface YammerEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public YammerConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -427,7 +437,7 @@ public interface YammerEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public YammerConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -436,7 +446,7 @@ public interface YammerEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public YammerConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -445,8 +455,8 @@ public interface YammerEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public YammerConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -455,7 +465,7 @@ public interface YammerEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public YammerConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -465,7 +475,8 @@ public interface YammerEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public YammerConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -474,8 +485,8 @@ public interface YammerEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public YammerConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -486,7 +497,7 @@ public interface YammerEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public YammerConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -496,7 +507,8 @@ public interface YammerEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public YammerConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -506,7 +518,8 @@ public interface YammerEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public YammerConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -515,7 +528,7 @@ public interface YammerEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public YammerConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -525,7 +538,8 @@ public interface YammerEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public YammerConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -533,8 +547,8 @@ public interface YammerEndpointBuilder {
             return (YammerConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public YammerConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -542,7 +556,7 @@ public interface YammerEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public YammerConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -550,7 +564,7 @@ public interface YammerEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public YammerConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -558,7 +572,7 @@ public interface YammerEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public YammerConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -566,8 +580,8 @@ public interface YammerEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public YammerConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -576,7 +590,7 @@ public interface YammerEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public YammerConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);

@@ -40,7 +40,7 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * What command to execute such as blobstore or compute. The option is a
-         * org.apache.camel.component.jclouds.JcloudsCommand type.
+         * <code>org.apache.camel.component.jclouds.JcloudsCommand</code> type.
          */
         public T command(JcloudsCommand command) {
             this.properties.put("command", command);
@@ -48,8 +48,8 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * What command to execute such as blobstore or compute. The option will
-         * be converted to a org.apache.camel.component.jclouds.JcloudsCommand
-         * type.
+         * be converted to a
+         * <code>org.apache.camel.component.jclouds.JcloudsCommand</code> type.
          */
         public T command(String command) {
             this.properties.put("command", command);
@@ -57,7 +57,8 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * The name of the cloud provider that provides the target service (e.g.
-         * aws-s3 or aws_ec2). The option is a java.lang.String type.
+         * aws-s3 or aws_ec2). The option is a <code>java.lang.String</code>
+         * type.
          */
         public T providerId(String providerId) {
             this.properties.put("providerId", providerId);
@@ -66,7 +67,7 @@ public interface JcloudsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -75,7 +76,7 @@ public interface JcloudsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -84,7 +85,7 @@ public interface JcloudsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -93,15 +94,15 @@ public interface JcloudsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * The name of the blob container. The option is a java.lang.String
-         * type.
+         * The name of the blob container. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T container(String container) {
             this.properties.put("container", container);
@@ -124,7 +125,7 @@ public interface JcloudsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public JcloudsConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -138,7 +139,7 @@ public interface JcloudsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public JcloudsConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -150,7 +151,7 @@ public interface JcloudsEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public JcloudsConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -162,7 +163,8 @@ public interface JcloudsEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public JcloudsConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -170,7 +172,7 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public JcloudsConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -179,15 +181,16 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public JcloudsConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (JcloudsConsumerBuilder) this;
         }
         /**
-         * An optional directory name to use. The option is a java.lang.String
-         * type.
+         * An optional directory name to use. The option is a
+         * <code>java.lang.String</code> type.
          */
         public JcloudsConsumerBuilder directory(String directory) {
             this.properties.put("directory", directory);
@@ -204,7 +207,8 @@ public interface JcloudsEndpointBuilder {
             super(path);
         }
         /**
-         * The name of the blob. The option is a java.lang.String type.
+         * The name of the blob. The option is a <code>java.lang.String</code>
+         * type.
          */
         public JcloudsProducerBuilder blobName(String blobName) {
             this.properties.put("blobName", blobName);
@@ -212,8 +216,8 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * The group that will be assigned to the newly created node. Values
-         * depend on the actual cloud provider. The option is a java.lang.String
-         * type.
+         * depend on the actual cloud provider. The option is a
+         * <code>java.lang.String</code> type.
          */
         public JcloudsProducerBuilder group(String group) {
             this.properties.put("group", group);
@@ -221,7 +225,8 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * The hardware that will be used for creating a node. Values depend on
-         * the actual cloud provider. The option is a java.lang.String type.
+         * the actual cloud provider. The option is a
+         * <code>java.lang.String</code> type.
          */
         public JcloudsProducerBuilder hardwareId(String hardwareId) {
             this.properties.put("hardwareId", hardwareId);
@@ -229,7 +234,8 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * The imageId that will be used for creating a node. Values depend on
-         * the actual cloud provider. The option is a java.lang.String type.
+         * the actual cloud provider. The option is a
+         * <code>java.lang.String</code> type.
          */
         public JcloudsProducerBuilder imageId(String imageId) {
             this.properties.put("imageId", imageId);
@@ -237,7 +243,8 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * The location that will be used for creating a node. Values depend on
-         * the actual cloud provider. The option is a java.lang.String type.
+         * the actual cloud provider. The option is a
+         * <code>java.lang.String</code> type.
          */
         public JcloudsProducerBuilder locationId(String locationId) {
             this.properties.put("locationId", locationId);
@@ -245,7 +252,7 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * The id of the node that will run the script or destroyed. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public JcloudsProducerBuilder nodeId(String nodeId) {
             this.properties.put("nodeId", nodeId);
@@ -253,7 +260,7 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * To filter by node status to only select running nodes etc. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public JcloudsProducerBuilder nodeState(String nodeState) {
             this.properties.put("nodeState", nodeState);
@@ -261,7 +268,7 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * Specifies the type of operation that will be performed to the
-         * blobstore. The option is a java.lang.String type.
+         * blobstore. The option is a <code>java.lang.String</code> type.
          */
         public JcloudsProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
@@ -269,7 +276,7 @@ public interface JcloudsEndpointBuilder {
         }
         /**
          * The user on the target node that will run the script. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public JcloudsProducerBuilder user(String user) {
             this.properties.put("user", user);

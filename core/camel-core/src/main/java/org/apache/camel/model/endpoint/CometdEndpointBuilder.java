@@ -40,21 +40,22 @@ public interface CometdEndpointBuilder {
             super("cometd", path);
         }
         /**
-         * Hostname. The option is a java.lang.String type.
+         * Hostname. The option is a <code>java.lang.String</code> type.
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * Host port number. The option is a int type.
+         * Host port number. The option is a <code>int</code> type.
          */
         public T port(int port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Host port number. The option will be converted to a int type.
+         * Host port number. The option will be converted to a <code>int</code>
+         * type.
          */
         public T port(String port) {
             this.properties.put("port", port);
@@ -62,7 +63,7 @@ public interface CometdEndpointBuilder {
         }
         /**
          * The channelName represents a topic that can be subscribed to by the
-         * Camel endpoints. The option is a java.lang.String type.
+         * Camel endpoints. The option is a <code>java.lang.String</code> type.
          */
         public T channelName(String channelName) {
             this.properties.put("channelName", channelName);
@@ -70,7 +71,7 @@ public interface CometdEndpointBuilder {
         }
         /**
          * The origins domain that support to cross, if the crosssOriginFilterOn
-         * is true. The option is a java.lang.String type.
+         * is true. The option is a <code>java.lang.String</code> type.
          */
         public T allowedOrigins(String allowedOrigins) {
             this.properties.put("allowedOrigins", allowedOrigins);
@@ -81,7 +82,7 @@ public interface CometdEndpointBuilder {
          * protocol file: or classpath: depending if you want that the component
          * loads the resource from file system or classpath. Classpath is
          * required for OSGI deployment where the resources are packaged in the
-         * jar. The option is a java.lang.String type.
+         * jar. The option is a <code>java.lang.String</code> type.
          */
         public T baseResource(String baseResource) {
             this.properties.put("baseResource", baseResource);
@@ -89,7 +90,7 @@ public interface CometdEndpointBuilder {
         }
         /**
          * If true, the server will support for cross-domain filtering. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public T crossOriginFilterOn(boolean crossOriginFilterOn) {
             this.properties.put("crossOriginFilterOn", crossOriginFilterOn);
@@ -97,7 +98,7 @@ public interface CometdEndpointBuilder {
         }
         /**
          * If true, the server will support for cross-domain filtering. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public T crossOriginFilterOn(String crossOriginFilterOn) {
             this.properties.put("crossOriginFilterOn", crossOriginFilterOn);
@@ -105,7 +106,8 @@ public interface CometdEndpointBuilder {
         }
         /**
          * The filterPath will be used by the CrossOriginFilter, if the
-         * crosssOriginFilterOn is true. The option is a java.lang.String type.
+         * crosssOriginFilterOn is true. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T filterPath(String filterPath) {
             this.properties.put("filterPath", filterPath);
@@ -113,7 +115,7 @@ public interface CometdEndpointBuilder {
         }
         /**
          * The client side poll timeout in milliseconds. How long a client will
-         * wait between reconnects. The option is a int type.
+         * wait between reconnects. The option is a <code>int</code> type.
          */
         public T interval(int interval) {
             this.properties.put("interval", interval);
@@ -121,7 +123,8 @@ public interface CometdEndpointBuilder {
         }
         /**
          * The client side poll timeout in milliseconds. How long a client will
-         * wait between reconnects. The option will be converted to a int type.
+         * wait between reconnects. The option will be converted to a
+         * <code>int</code> type.
          */
         public T interval(String interval) {
             this.properties.put("interval", interval);
@@ -130,7 +133,7 @@ public interface CometdEndpointBuilder {
         /**
          * If true, the server will accept JSON wrapped in a comment and will
          * generate JSON wrapped in a comment. This is a defence against Ajax
-         * Hijacking. The option is a boolean type.
+         * Hijacking. The option is a <code>boolean</code> type.
          */
         public T jsonCommented(boolean jsonCommented) {
             this.properties.put("jsonCommented", jsonCommented);
@@ -139,14 +142,16 @@ public interface CometdEndpointBuilder {
         /**
          * If true, the server will accept JSON wrapped in a comment and will
          * generate JSON wrapped in a comment. This is a defence against Ajax
-         * Hijacking. The option will be converted to a boolean type.
+         * Hijacking. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public T jsonCommented(String jsonCommented) {
             this.properties.put("jsonCommented", jsonCommented);
             return (T) this;
         }
         /**
-         * Logging level. 0=none, 1=info, 2=debug. The option is a int type.
+         * Logging level. 0=none, 1=info, 2=debug. The option is a
+         * <code>int</code> type.
          */
         public T logLevel(int logLevel) {
             this.properties.put("logLevel", logLevel);
@@ -154,7 +159,7 @@ public interface CometdEndpointBuilder {
         }
         /**
          * Logging level. 0=none, 1=info, 2=debug. The option will be converted
-         * to a int type.
+         * to a <code>int</code> type.
          */
         public T logLevel(String logLevel) {
             this.properties.put("logLevel", logLevel);
@@ -163,7 +168,7 @@ public interface CometdEndpointBuilder {
         /**
          * The max client side poll timeout in milliseconds. A client will be
          * removed if a connection is not received in this time. The option is a
-         * int type.
+         * <code>int</code> type.
          */
         public T maxInterval(int maxInterval) {
             this.properties.put("maxInterval", maxInterval);
@@ -172,7 +177,7 @@ public interface CometdEndpointBuilder {
         /**
          * The max client side poll timeout in milliseconds. A client will be
          * removed if a connection is not received in this time. The option will
-         * be converted to a int type.
+         * be converted to a <code>int</code> type.
          */
         public T maxInterval(String maxInterval) {
             this.properties.put("maxInterval", maxInterval);
@@ -180,7 +185,7 @@ public interface CometdEndpointBuilder {
         }
         /**
          * The client side poll timeout, if multiple connections are detected
-         * from the same browser. The option is a int type.
+         * from the same browser. The option is a <code>int</code> type.
          */
         public T multiFrameInterval(int multiFrameInterval) {
             this.properties.put("multiFrameInterval", multiFrameInterval);
@@ -188,7 +193,8 @@ public interface CometdEndpointBuilder {
         }
         /**
          * The client side poll timeout, if multiple connections are detected
-         * from the same browser. The option will be converted to a int type.
+         * from the same browser. The option will be converted to a
+         * <code>int</code> type.
          */
         public T multiFrameInterval(String multiFrameInterval) {
             this.properties.put("multiFrameInterval", multiFrameInterval);
@@ -197,7 +203,7 @@ public interface CometdEndpointBuilder {
         /**
          * The server side poll timeout in milliseconds. This is how long the
          * server will hold a reconnect request before responding. The option is
-         * a int type.
+         * a <code>int</code> type.
          */
         public T timeout(int timeout) {
             this.properties.put("timeout", timeout);
@@ -206,7 +212,7 @@ public interface CometdEndpointBuilder {
         /**
          * The server side poll timeout in milliseconds. This is how long the
          * server will hold a reconnect request before responding. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public T timeout(String timeout) {
             this.properties.put("timeout", timeout);
@@ -215,7 +221,7 @@ public interface CometdEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -224,7 +230,7 @@ public interface CometdEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -233,7 +239,7 @@ public interface CometdEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -242,7 +248,7 @@ public interface CometdEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -265,7 +271,7 @@ public interface CometdEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public CometdConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -279,7 +285,7 @@ public interface CometdEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public CometdConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -289,7 +295,7 @@ public interface CometdEndpointBuilder {
         /**
          * Whether to include the server session headers in the Camel message
          * when creating a Camel Message for incoming requests. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public CometdConsumerBuilder sessionHeadersEnabled(
                 boolean sessionHeadersEnabled) {
@@ -299,7 +305,7 @@ public interface CometdEndpointBuilder {
         /**
          * Whether to include the server session headers in the Camel message
          * when creating a Camel Message for incoming requests. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public CometdConsumerBuilder sessionHeadersEnabled(
                 String sessionHeadersEnabled) {
@@ -311,7 +317,7 @@ public interface CometdEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public CometdConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -323,7 +329,8 @@ public interface CometdEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public CometdConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -331,7 +338,7 @@ public interface CometdEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public CometdConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -340,7 +347,8 @@ public interface CometdEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public CometdConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -360,7 +368,7 @@ public interface CometdEndpointBuilder {
          * Whether to disconnect local sessions after publishing a message to
          * its channel. Disconnecting local session is needed as they are not
          * swept by default by CometD, and therefore you can run out of memory.
-         * The option is a boolean type.
+         * The option is a <code>boolean</code> type.
          */
         public CometdProducerBuilder disconnectLocalSession(
                 boolean disconnectLocalSession) {
@@ -371,7 +379,7 @@ public interface CometdEndpointBuilder {
          * Whether to disconnect local sessions after publishing a message to
          * its channel. Disconnecting local session is needed as they are not
          * swept by default by CometD, and therefore you can run out of memory.
-         * The option will be converted to a boolean type.
+         * The option will be converted to a <code>boolean</code> type.
          */
         public CometdProducerBuilder disconnectLocalSession(
                 String disconnectLocalSession) {

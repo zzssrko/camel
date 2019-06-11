@@ -46,7 +46,8 @@ public interface KinesisEndpointBuilder {
             super("aws-kinesis", path);
         }
         /**
-         * Name of the stream. The option is a java.lang.String type.
+         * Name of the stream. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T streamName(String streamName) {
             this.properties.put("streamName", streamName);
@@ -54,7 +55,8 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * Amazon Kinesis client to use for all requests for this endpoint. The
-         * option is a com.amazonaws.services.kinesis.AmazonKinesis type.
+         * option is a <code>com.amazonaws.services.kinesis.AmazonKinesis</code>
+         * type.
          */
         public T amazonKinesisClient(Object amazonKinesisClient) {
             this.properties.put("amazonKinesisClient", amazonKinesisClient);
@@ -63,7 +65,7 @@ public interface KinesisEndpointBuilder {
         /**
          * Amazon Kinesis client to use for all requests for this endpoint. The
          * option will be converted to a
-         * com.amazonaws.services.kinesis.AmazonKinesis type.
+         * <code>com.amazonaws.services.kinesis.AmazonKinesis</code> type.
          */
         public T amazonKinesisClient(String amazonKinesisClient) {
             this.properties.put("amazonKinesisClient", amazonKinesisClient);
@@ -71,7 +73,7 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * To define a proxy host when instantiating the DDBStreams client. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
@@ -79,7 +81,7 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the DDBStreams client. The
-         * option is a java.lang.Integer type.
+         * option is a <code>java.lang.Integer</code> type.
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -87,7 +89,7 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * To define a proxy port when instantiating the DDBStreams client. The
-         * option will be converted to a java.lang.Integer type.
+         * option will be converted to a <code>java.lang.Integer</code> type.
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -95,7 +97,7 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * The region in which Kinesis client needs to work. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -104,7 +106,7 @@ public interface KinesisEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -113,7 +115,7 @@ public interface KinesisEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -122,7 +124,7 @@ public interface KinesisEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -131,21 +133,23 @@ public interface KinesisEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Amazon AWS Access Key. The option is a java.lang.String type.
+         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (T) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a java.lang.String type.
+         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);
@@ -168,7 +172,7 @@ public interface KinesisEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public KinesisConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -182,7 +186,7 @@ public interface KinesisEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public KinesisConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -191,7 +195,8 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * Defines where in the Kinesis stream to start getting records. The
-         * option is a com.amazonaws.services.kinesis.model.ShardIteratorType
+         * option is a
+         * <code>com.amazonaws.services.kinesis.model.ShardIteratorType</code>
          * type.
          */
         public KinesisConsumerBuilder iteratorType(
@@ -202,7 +207,8 @@ public interface KinesisEndpointBuilder {
         /**
          * Defines where in the Kinesis stream to start getting records. The
          * option will be converted to a
-         * com.amazonaws.services.kinesis.model.ShardIteratorType type.
+         * <code>com.amazonaws.services.kinesis.model.ShardIteratorType</code>
+         * type.
          */
         public KinesisConsumerBuilder iteratorType(String iteratorType) {
             this.properties.put("iteratorType", iteratorType);
@@ -210,7 +216,7 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * Maximum number of records that will be fetched in each poll. The
-         * option is a int type.
+         * option is a <code>int</code> type.
          */
         public KinesisConsumerBuilder maxResultsPerRequest(
                 int maxResultsPerRequest) {
@@ -219,7 +225,7 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * Maximum number of records that will be fetched in each poll. The
-         * option will be converted to a int type.
+         * option will be converted to a <code>int</code> type.
          */
         public KinesisConsumerBuilder maxResultsPerRequest(
                 String maxResultsPerRequest) {
@@ -229,7 +235,7 @@ public interface KinesisEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public KinesisConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -239,7 +245,7 @@ public interface KinesisEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public KinesisConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -249,7 +255,7 @@ public interface KinesisEndpointBuilder {
         /**
          * The sequence number to start polling from. Required if iteratorType
          * is set to AFTER_SEQUENCE_NUMBER or AT_SEQUENCE_NUMBER. The option is
-         * a java.lang.String type.
+         * a <code>java.lang.String</code> type.
          */
         public KinesisConsumerBuilder sequenceNumber(String sequenceNumber) {
             this.properties.put("sequenceNumber", sequenceNumber);
@@ -262,8 +268,7 @@ public interface KinesisEndpointBuilder {
          * silent there will be no logging and the consumer will start from the
          * beginning,in case of fail a ReachedClosedStateException will be
          * raised. The option is a
-         * org.apache.camel.component.aws.kinesis.KinesisShardClosedStrategyEnum
-         * type.
+         * <code>org.apache.camel.component.aws.kinesis.KinesisShardClosedStrategyEnum</code> type.
          */
         public KinesisConsumerBuilder shardClosed(
                 KinesisShardClosedStrategyEnum shardClosed) {
@@ -277,8 +282,7 @@ public interface KinesisEndpointBuilder {
          * silent there will be no logging and the consumer will start from the
          * beginning,in case of fail a ReachedClosedStateException will be
          * raised. The option will be converted to a
-         * org.apache.camel.component.aws.kinesis.KinesisShardClosedStrategyEnum
-         * type.
+         * <code>org.apache.camel.component.aws.kinesis.KinesisShardClosedStrategyEnum</code> type.
          */
         public KinesisConsumerBuilder shardClosed(String shardClosed) {
             this.properties.put("shardClosed", shardClosed);
@@ -286,7 +290,7 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * Defines which shardId in the Kinesis stream to get records from. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public KinesisConsumerBuilder shardId(String shardId) {
             this.properties.put("shardId", shardId);
@@ -297,7 +301,7 @@ public interface KinesisEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public KinesisConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -309,7 +313,8 @@ public interface KinesisEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public KinesisConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -317,7 +322,7 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public KinesisConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -326,7 +331,8 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public KinesisConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -337,7 +343,7 @@ public interface KinesisEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public KinesisConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -349,7 +355,8 @@ public interface KinesisEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public KinesisConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -358,7 +365,7 @@ public interface KinesisEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public KinesisConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -368,7 +375,7 @@ public interface KinesisEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public KinesisConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -377,7 +384,8 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public KinesisConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -387,7 +395,7 @@ public interface KinesisEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public KinesisConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -400,7 +408,7 @@ public interface KinesisEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public KinesisConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -412,7 +420,7 @@ public interface KinesisEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public KinesisConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -421,7 +429,7 @@ public interface KinesisEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public KinesisConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -430,8 +438,8 @@ public interface KinesisEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public KinesisConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -440,7 +448,7 @@ public interface KinesisEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public KinesisConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -449,7 +457,7 @@ public interface KinesisEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public KinesisConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -458,7 +466,7 @@ public interface KinesisEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public KinesisConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -467,8 +475,8 @@ public interface KinesisEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public KinesisConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -477,7 +485,7 @@ public interface KinesisEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public KinesisConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -487,7 +495,8 @@ public interface KinesisEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public KinesisConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -496,8 +505,8 @@ public interface KinesisEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public KinesisConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -508,7 +517,7 @@ public interface KinesisEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public KinesisConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -518,7 +527,8 @@ public interface KinesisEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public KinesisConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -528,7 +538,8 @@ public interface KinesisEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public KinesisConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -537,7 +548,7 @@ public interface KinesisEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public KinesisConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -547,7 +558,8 @@ public interface KinesisEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public KinesisConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -555,8 +567,8 @@ public interface KinesisEndpointBuilder {
             return (KinesisConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public KinesisConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -564,7 +576,7 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public KinesisConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -572,7 +584,7 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public KinesisConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -580,7 +592,7 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public KinesisConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -588,8 +600,8 @@ public interface KinesisEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public KinesisConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -598,7 +610,7 @@ public interface KinesisEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public KinesisConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);

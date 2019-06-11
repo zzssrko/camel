@@ -45,8 +45,8 @@ public interface GoogleMailStreamEndpointBuilder {
             super("google-mail-stream", path);
         }
         /**
-         * Specifies an index for the endpoint. The option is a java.lang.String
-         * type.
+         * Specifies an index for the endpoint. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T index(String index) {
             this.properties.put("index", index);
@@ -55,7 +55,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * OAuth 2 access token. This typically expires after an hour so
          * refreshToken is recommended for long term usage. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T accessToken(String accessToken) {
             this.properties.put("accessToken", accessToken);
@@ -63,15 +63,15 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * Google mail application name. Example would be camel-google-mail/1.0.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T applicationName(String applicationName) {
             this.properties.put("applicationName", applicationName);
             return (T) this;
         }
         /**
-         * Client ID of the mail application. The option is a java.lang.String
-         * type.
+         * Client ID of the mail application. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T clientId(String clientId) {
             this.properties.put("clientId", clientId);
@@ -79,7 +79,7 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * Client secret of the mail application. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T clientSecret(String clientSecret) {
             this.properties.put("clientSecret", clientSecret);
@@ -87,7 +87,7 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * Comma separated list of labels to take into account. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T labels(String labels) {
             this.properties.put("labels", labels);
@@ -95,7 +95,7 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * Mark the message as read once it has been consumed. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T markAsRead(boolean markAsRead) {
             this.properties.put("markAsRead", markAsRead);
@@ -103,30 +103,30 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * Mark the message as read once it has been consumed. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public T markAsRead(String markAsRead) {
             this.properties.put("markAsRead", markAsRead);
             return (T) this;
         }
         /**
-         * Max results to be returned. The option is a long type.
+         * Max results to be returned. The option is a <code>long</code> type.
          */
         public T maxResults(long maxResults) {
             this.properties.put("maxResults", maxResults);
             return (T) this;
         }
         /**
-         * Max results to be returned. The option will be converted to a long
-         * type.
+         * Max results to be returned. The option will be converted to a
+         * <code>long</code> type.
          */
         public T maxResults(String maxResults) {
             this.properties.put("maxResults", maxResults);
             return (T) this;
         }
         /**
-         * The query to execute on gmail box. The option is a java.lang.String
-         * type.
+         * The query to execute on gmail box. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T query(String query) {
             this.properties.put("query", query);
@@ -136,7 +136,7 @@ public interface GoogleMailStreamEndpointBuilder {
          * OAuth 2 refresh token. Using this, the Google Calendar component can
          * obtain a new accessToken whenever the current one expires - a
          * necessity if the application is long-lived. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T refreshToken(String refreshToken) {
             this.properties.put("refreshToken", refreshToken);
@@ -145,7 +145,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -154,7 +154,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -163,7 +163,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -172,7 +172,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -195,7 +195,7 @@ public interface GoogleMailStreamEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public GoogleMailStreamConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -209,7 +209,7 @@ public interface GoogleMailStreamEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public GoogleMailStreamConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -219,7 +219,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public GoogleMailStreamConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -229,7 +229,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public GoogleMailStreamConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -241,7 +241,7 @@ public interface GoogleMailStreamEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public GoogleMailStreamConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -253,7 +253,8 @@ public interface GoogleMailStreamEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public GoogleMailStreamConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -262,7 +263,7 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GoogleMailStreamConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -271,7 +272,8 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GoogleMailStreamConsumerBuilder exchangePattern(
                 String exchangePattern) {
@@ -283,7 +285,7 @@ public interface GoogleMailStreamEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public GoogleMailStreamConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -295,7 +297,8 @@ public interface GoogleMailStreamEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public GoogleMailStreamConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -304,7 +307,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public GoogleMailStreamConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -314,7 +317,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public GoogleMailStreamConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -323,7 +326,8 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public GoogleMailStreamConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -333,7 +337,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public GoogleMailStreamConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -346,7 +350,7 @@ public interface GoogleMailStreamEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public GoogleMailStreamConsumerBuilder backoffMultiplier(
                 int backoffMultiplier) {
@@ -359,7 +363,7 @@ public interface GoogleMailStreamEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public GoogleMailStreamConsumerBuilder backoffMultiplier(
                 String backoffMultiplier) {
@@ -369,7 +373,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public GoogleMailStreamConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -378,8 +382,8 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public GoogleMailStreamConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -388,7 +392,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public GoogleMailStreamConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -397,7 +401,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public GoogleMailStreamConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -406,7 +410,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public GoogleMailStreamConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -415,8 +419,8 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public GoogleMailStreamConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -425,7 +429,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public GoogleMailStreamConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -435,7 +439,8 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public GoogleMailStreamConsumerBuilder runLoggingLevel(
                 String runLoggingLevel) {
@@ -445,8 +450,8 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public GoogleMailStreamConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -457,7 +462,7 @@ public interface GoogleMailStreamEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public GoogleMailStreamConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -467,7 +472,8 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public GoogleMailStreamConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -477,7 +483,8 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public GoogleMailStreamConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -486,7 +493,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public GoogleMailStreamConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -496,7 +503,8 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public GoogleMailStreamConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -504,8 +512,8 @@ public interface GoogleMailStreamEndpointBuilder {
             return (GoogleMailStreamConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public GoogleMailStreamConsumerBuilder startScheduler(
                 boolean startScheduler) {
@@ -514,7 +522,7 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public GoogleMailStreamConsumerBuilder startScheduler(
                 String startScheduler) {
@@ -523,7 +531,7 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public GoogleMailStreamConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -531,7 +539,7 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public GoogleMailStreamConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -539,8 +547,8 @@ public interface GoogleMailStreamEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public GoogleMailStreamConsumerBuilder useFixedDelay(
                 boolean useFixedDelay) {
@@ -550,7 +558,7 @@ public interface GoogleMailStreamEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public GoogleMailStreamConsumerBuilder useFixedDelay(
                 String useFixedDelay) {

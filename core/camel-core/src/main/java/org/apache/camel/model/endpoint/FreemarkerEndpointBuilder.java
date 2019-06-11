@@ -42,7 +42,8 @@ public interface FreemarkerEndpointBuilder {
          * protocols (classpath is default). ref will lookup the resource in the
          * registry. bean will call a method on a bean to be used as the
          * resource. For bean you can specify the method name after dot, eg
-         * bean:myBean.myMethod. The option is a java.lang.String type.
+         * bean:myBean.myMethod. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
@@ -50,7 +51,7 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Sets the Freemarker configuration to use. The option is a
-         * freemarker.template.Configuration type.
+         * <code>freemarker.template.Configuration</code> type.
          */
         public T configuration(Object configuration) {
             this.properties.put("configuration", configuration);
@@ -58,7 +59,7 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Sets the Freemarker configuration to use. The option will be
-         * converted to a freemarker.template.Configuration type.
+         * converted to a <code>freemarker.template.Configuration</code> type.
          */
         public T configuration(String configuration) {
             this.properties.put("configuration", configuration);
@@ -66,7 +67,7 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Sets whether to use resource content cache or not. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T contentCache(boolean contentCache) {
             this.properties.put("contentCache", contentCache);
@@ -74,7 +75,7 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Sets whether to use resource content cache or not. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T contentCache(String contentCache) {
             this.properties.put("contentCache", contentCache);
@@ -82,7 +83,7 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Sets the encoding to be used for loading the template file. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T encoding(String encoding) {
             this.properties.put("encoding", encoding);
@@ -90,7 +91,7 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Number of seconds the loaded template resource will remain in the
-         * cache. The option is a int type.
+         * cache. The option is a <code>int</code> type.
          */
         public T templateUpdateDelay(int templateUpdateDelay) {
             this.properties.put("templateUpdateDelay", templateUpdateDelay);
@@ -98,7 +99,7 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Number of seconds the loaded template resource will remain in the
-         * cache. The option will be converted to a int type.
+         * cache. The option will be converted to a <code>int</code> type.
          */
         public T templateUpdateDelay(String templateUpdateDelay) {
             this.properties.put("templateUpdateDelay", templateUpdateDelay);
@@ -107,7 +108,7 @@ public interface FreemarkerEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -116,7 +117,7 @@ public interface FreemarkerEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -125,7 +126,7 @@ public interface FreemarkerEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -134,7 +135,7 @@ public interface FreemarkerEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

@@ -41,7 +41,7 @@ public interface Mina2EndpointBuilder {
             super("mina", path);
         }
         /**
-         * Protocol to use. The option is a java.lang.String type.
+         * Protocol to use. The option is a <code>java.lang.String</code> type.
          */
         public T protocol(String protocol) {
             this.properties.put("protocol", protocol);
@@ -50,21 +50,21 @@ public interface Mina2EndpointBuilder {
         /**
          * Hostname to use. Use localhost or 0.0.0.0 for local server as
          * consumer. For producer use the hostname or ip address of the remote
-         * server. The option is a java.lang.String type.
+         * server. The option is a <code>java.lang.String</code> type.
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * Port number. The option is a int type.
+         * Port number. The option is a <code>int</code> type.
          */
         public T port(int port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Port number. The option will be converted to a int type.
+         * Port number. The option will be converted to a <code>int</code> type.
          */
         public T port(String port) {
             this.properties.put("port", port);
@@ -73,7 +73,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Whether or not to disconnect(close) from Mina session right after
          * use. Can be used for both consumer and producer. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T disconnect(boolean disconnect) {
             this.properties.put("disconnect", disconnect);
@@ -82,7 +82,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Whether or not to disconnect(close) from Mina session right after
          * use. Can be used for both consumer and producer. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T disconnect(String disconnect) {
             this.properties.put("disconnect", disconnect);
@@ -91,7 +91,7 @@ public interface Mina2EndpointBuilder {
         /**
          * You can enable the Apache MINA logging filter. Apache MINA uses slf4j
          * logging at INFO level to log all input and output. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T minaLogger(boolean minaLogger) {
             this.properties.put("minaLogger", minaLogger);
@@ -100,7 +100,7 @@ public interface Mina2EndpointBuilder {
         /**
          * You can enable the Apache MINA logging filter. Apache MINA uses slf4j
          * logging at INFO level to log all input and output. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T minaLogger(String minaLogger) {
             this.properties.put("minaLogger", minaLogger);
@@ -108,7 +108,7 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * Setting to set endpoint as one-way or request-response. The option is
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public T sync(boolean sync) {
             this.properties.put("sync", sync);
@@ -116,7 +116,7 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * Setting to set endpoint as one-way or request-response. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T sync(String sync) {
             this.properties.put("sync", sync);
@@ -125,7 +125,7 @@ public interface Mina2EndpointBuilder {
         /**
          * You can configure the timeout that specifies how long to wait for a
          * response from a remote server. The timeout unit is in milliseconds,
-         * so 60000 is 60 seconds. The option is a long type.
+         * so 60000 is 60 seconds. The option is a <code>long</code> type.
          */
         public T timeout(long timeout) {
             this.properties.put("timeout", timeout);
@@ -134,7 +134,8 @@ public interface Mina2EndpointBuilder {
         /**
          * You can configure the timeout that specifies how long to wait for a
          * response from a remote server. The timeout unit is in milliseconds,
-         * so 60000 is 60 seconds. The option will be converted to a long type.
+         * so 60000 is 60 seconds. The option will be converted to a
+         * <code>long</code> type.
          */
         public T timeout(String timeout) {
             this.properties.put("timeout", timeout);
@@ -142,7 +143,8 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * Maximum amount of time it should take to send data to the MINA
-         * session. Default is 10000 milliseconds. The option is a long type.
+         * session. Default is 10000 milliseconds. The option is a
+         * <code>long</code> type.
          */
         public T writeTimeout(long writeTimeout) {
             this.properties.put("writeTimeout", writeTimeout);
@@ -151,7 +153,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Maximum amount of time it should take to send data to the MINA
          * session. Default is 10000 milliseconds. The option will be converted
-         * to a long type.
+         * to a <code>long</code> type.
          */
         public T writeTimeout(String writeTimeout) {
             this.properties.put("writeTimeout", writeTimeout);
@@ -160,7 +162,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -169,7 +171,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -177,7 +179,7 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * Number of worker threads in the worker pool for TCP and UDP. The
-         * option is a int type.
+         * option is a <code>int</code> type.
          */
         public T maximumPoolSize(int maximumPoolSize) {
             this.properties.put("maximumPoolSize", maximumPoolSize);
@@ -185,7 +187,7 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * Number of worker threads in the worker pool for TCP and UDP. The
-         * option will be converted to a int type.
+         * option will be converted to a <code>int</code> type.
          */
         public T maximumPoolSize(String maximumPoolSize) {
             this.properties.put("maximumPoolSize", maximumPoolSize);
@@ -193,7 +195,8 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * Whether to use ordered thread pool, to ensure events are processed
-         * orderly on the same channel. The option is a boolean type.
+         * orderly on the same channel. The option is a <code>boolean</code>
+         * type.
          */
         public T orderedThreadPoolExecutor(boolean orderedThreadPoolExecutor) {
             this.properties.put("orderedThreadPoolExecutor", orderedThreadPoolExecutor);
@@ -202,7 +205,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Whether to use ordered thread pool, to ensure events are processed
          * orderly on the same channel. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T orderedThreadPoolExecutor(String orderedThreadPoolExecutor) {
             this.properties.put("orderedThreadPoolExecutor", orderedThreadPoolExecutor);
@@ -211,7 +214,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -220,7 +223,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -232,7 +235,8 @@ public interface Mina2EndpointBuilder {
          * body, Out body, fault body, In headers, Out headers, fault headers,
          * exchange properties, exchange exception. This requires that the
          * objects are serializable. Camel will exclude any non-serializable
-         * objects and log it at WARN level. The option is a boolean type.
+         * objects and log it at WARN level. The option is a
+         * <code>boolean</code> type.
          */
         public T transferExchange(boolean transferExchange) {
             this.properties.put("transferExchange", transferExchange);
@@ -245,7 +249,7 @@ public interface Mina2EndpointBuilder {
          * exchange properties, exchange exception. This requires that the
          * objects are serializable. Camel will exclude any non-serializable
          * objects and log it at WARN level. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T transferExchange(String transferExchange) {
             this.properties.put("transferExchange", transferExchange);
@@ -257,7 +261,7 @@ public interface Mina2EndpointBuilder {
          * the mina component from installing a default codec as the first
          * element in the filter chain. This is useful in scenarios where
          * another filter must be the first in the filter chain, like the SSL
-         * filter. The option is a boolean type.
+         * filter. The option is a <code>boolean</code> type.
          */
         public T allowDefaultCodec(boolean allowDefaultCodec) {
             this.properties.put("allowDefaultCodec", allowDefaultCodec);
@@ -269,7 +273,7 @@ public interface Mina2EndpointBuilder {
          * the mina component from installing a default codec as the first
          * element in the filter chain. This is useful in scenarios where
          * another filter must be the first in the filter chain, like the SSL
-         * filter. The option will be converted to a boolean type.
+         * filter. The option will be converted to a <code>boolean</code> type.
          */
         public T allowDefaultCodec(String allowDefaultCodec) {
             this.properties.put("allowDefaultCodec", allowDefaultCodec);
@@ -277,7 +281,7 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * To use a custom minda codec implementation. The option is a
-         * org.apache.mina.filter.codec.ProtocolCodecFactory type.
+         * <code>org.apache.mina.filter.codec.ProtocolCodecFactory</code> type.
          */
         public T codec(Object codec) {
             this.properties.put("codec", codec);
@@ -285,8 +289,8 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * To use a custom minda codec implementation. The option will be
-         * converted to a org.apache.mina.filter.codec.ProtocolCodecFactory
-         * type.
+         * converted to a
+         * <code>org.apache.mina.filter.codec.ProtocolCodecFactory</code> type.
          */
         public T codec(String codec) {
             this.properties.put("codec", codec);
@@ -295,7 +299,7 @@ public interface Mina2EndpointBuilder {
         /**
          * To set the textline protocol decoder max line length. By default the
          * default value of Mina itself is used which are 1024. The option is a
-         * int type.
+         * <code>int</code> type.
          */
         public T decoderMaxLineLength(int decoderMaxLineLength) {
             this.properties.put("decoderMaxLineLength", decoderMaxLineLength);
@@ -304,7 +308,7 @@ public interface Mina2EndpointBuilder {
         /**
          * To set the textline protocol decoder max line length. By default the
          * default value of Mina itself is used which are 1024. The option will
-         * be converted to a int type.
+         * be converted to a <code>int</code> type.
          */
         public T decoderMaxLineLength(String decoderMaxLineLength) {
             this.properties.put("decoderMaxLineLength", decoderMaxLineLength);
@@ -313,7 +317,7 @@ public interface Mina2EndpointBuilder {
         /**
          * To set the textline protocol encoder max line length. By default the
          * default value of Mina itself is used which are Integer.MAX_VALUE. The
-         * option is a int type.
+         * option is a <code>int</code> type.
          */
         public T encoderMaxLineLength(int encoderMaxLineLength) {
             this.properties.put("encoderMaxLineLength", encoderMaxLineLength);
@@ -322,7 +326,7 @@ public interface Mina2EndpointBuilder {
         /**
          * To set the textline protocol encoder max line length. By default the
          * default value of Mina itself is used which are Integer.MAX_VALUE. The
-         * option will be converted to a int type.
+         * option will be converted to a <code>int</code> type.
          */
         public T encoderMaxLineLength(String encoderMaxLineLength) {
             this.properties.put("encoderMaxLineLength", encoderMaxLineLength);
@@ -331,7 +335,8 @@ public interface Mina2EndpointBuilder {
         /**
          * You can configure the encoding (a charset name) to use for the TCP
          * textline codec and the UDP protocol. If not provided, Camel will use
-         * the JVM default Charset. The option is a java.lang.String type.
+         * the JVM default Charset. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T encoding(String encoding) {
             this.properties.put("encoding", encoding);
@@ -339,7 +344,7 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * You can set a list of Mina IoFilters to use. The option is a
-         * java.util.List<org.apache.mina.core.filterchain.IoFilter> type.
+         * <code>java.util.List<org.apache.mina.core.filterchain.IoFilter></code> type.
          */
         public T filters(List<Object> filters) {
             this.properties.put("filters", filters);
@@ -348,7 +353,7 @@ public interface Mina2EndpointBuilder {
         /**
          * You can set a list of Mina IoFilters to use. The option will be
          * converted to a
-         * java.util.List<org.apache.mina.core.filterchain.IoFilter> type.
+         * <code>java.util.List<org.apache.mina.core.filterchain.IoFilter></code> type.
          */
         public T filters(String filters) {
             this.properties.put("filters", filters);
@@ -358,7 +363,7 @@ public interface Mina2EndpointBuilder {
          * Only used for TCP. If no codec is specified, you can use this flag to
          * indicate a text line based codec; if not specified or the value is
          * false, then Object Serialization is assumed over TCP. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T textline(boolean textline) {
             this.properties.put("textline", textline);
@@ -368,7 +373,7 @@ public interface Mina2EndpointBuilder {
          * Only used for TCP. If no codec is specified, you can use this flag to
          * indicate a text line based codec; if not specified or the value is
          * false, then Object Serialization is assumed over TCP. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public T textline(String textline) {
             this.properties.put("textline", textline);
@@ -378,7 +383,8 @@ public interface Mina2EndpointBuilder {
          * Only used for TCP and if textline=true. Sets the text line delimiter
          * to use. If none provided, Camel will use DEFAULT. This delimiter is
          * used to mark the end of text. The option is a
-         * org.apache.camel.component.mina2.Mina2TextLineDelimiter type.
+         * <code>org.apache.camel.component.mina2.Mina2TextLineDelimiter</code>
+         * type.
          */
         public T textlineDelimiter(Mina2TextLineDelimiter textlineDelimiter) {
             this.properties.put("textlineDelimiter", textlineDelimiter);
@@ -388,14 +394,16 @@ public interface Mina2EndpointBuilder {
          * Only used for TCP and if textline=true. Sets the text line delimiter
          * to use. If none provided, Camel will use DEFAULT. This delimiter is
          * used to mark the end of text. The option will be converted to a
-         * org.apache.camel.component.mina2.Mina2TextLineDelimiter type.
+         * <code>org.apache.camel.component.mina2.Mina2TextLineDelimiter</code>
+         * type.
          */
         public T textlineDelimiter(String textlineDelimiter) {
             this.properties.put("textlineDelimiter", textlineDelimiter);
             return (T) this;
         }
         /**
-         * Whether to auto start SSL handshake. The option is a boolean type.
+         * Whether to auto start SSL handshake. The option is a
+         * <code>boolean</code> type.
          */
         public T autoStartTls(boolean autoStartTls) {
             this.properties.put("autoStartTls", autoStartTls);
@@ -403,7 +411,7 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * Whether to auto start SSL handshake. The option will be converted to
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public T autoStartTls(String autoStartTls) {
             this.properties.put("autoStartTls", autoStartTls);
@@ -411,7 +419,7 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * To configure SSL security. The option is a
-         * org.apache.camel.support.jsse.SSLContextParameters type.
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
          */
         public T sslContextParameters(Object sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -419,7 +427,7 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * To configure SSL security. The option will be converted to a
-         * org.apache.camel.support.jsse.SSLContextParameters type.
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
          */
         public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -442,7 +450,7 @@ public interface Mina2EndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public Mina2ConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -456,7 +464,7 @@ public interface Mina2EndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public Mina2ConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -464,7 +472,7 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * If the clientMode is true, mina consumer will connect the address as
-         * a TCP client. The option is a boolean type.
+         * a TCP client. The option is a <code>boolean</code> type.
          */
         public Mina2ConsumerBuilder clientMode(boolean clientMode) {
             this.properties.put("clientMode", clientMode);
@@ -472,7 +480,8 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * If the clientMode is true, mina consumer will connect the address as
-         * a TCP client. The option will be converted to a boolean type.
+         * a TCP client. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public Mina2ConsumerBuilder clientMode(String clientMode) {
             this.properties.put("clientMode", clientMode);
@@ -481,7 +490,7 @@ public interface Mina2EndpointBuilder {
         /**
          * If sync is enabled then this option dictates MinaConsumer if it
          * should disconnect where there is no reply to send back. The option is
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public Mina2ConsumerBuilder disconnectOnNoReply(
                 boolean disconnectOnNoReply) {
@@ -491,7 +500,7 @@ public interface Mina2EndpointBuilder {
         /**
          * If sync is enabled then this option dictates MinaConsumer if it
          * should disconnect where there is no reply to send back. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public Mina2ConsumerBuilder disconnectOnNoReply(
                 String disconnectOnNoReply) {
@@ -503,7 +512,7 @@ public interface Mina2EndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public Mina2ConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -515,7 +524,8 @@ public interface Mina2EndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public Mina2ConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -523,7 +533,7 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public Mina2ConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -532,7 +542,8 @@ public interface Mina2EndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public Mina2ConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -541,7 +552,7 @@ public interface Mina2EndpointBuilder {
         /**
          * If sync is enabled this option dictates MinaConsumer which logging
          * level to use when logging a there is no reply to send back. The
-         * option is a org.apache.camel.LoggingLevel type.
+         * option is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public Mina2ConsumerBuilder noReplyLogLevel(LoggingLevel noReplyLogLevel) {
             this.properties.put("noReplyLogLevel", noReplyLogLevel);
@@ -550,7 +561,8 @@ public interface Mina2EndpointBuilder {
         /**
          * If sync is enabled this option dictates MinaConsumer which logging
          * level to use when logging a there is no reply to send back. The
-         * option will be converted to a org.apache.camel.LoggingLevel type.
+         * option will be converted to a
+         * <code>org.apache.camel.LoggingLevel</code> type.
          */
         public Mina2ConsumerBuilder noReplyLogLevel(String noReplyLogLevel) {
             this.properties.put("noReplyLogLevel", noReplyLogLevel);
@@ -569,7 +581,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Whether to create the InetAddress once and reuse. Setting this to
          * false allows to pickup DNS changes in the network. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public Mina2ProducerBuilder cachedAddress(boolean cachedAddress) {
             this.properties.put("cachedAddress", cachedAddress);
@@ -578,7 +590,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Whether to create the InetAddress once and reuse. Setting this to
          * false allows to pickup DNS changes in the network. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public Mina2ProducerBuilder cachedAddress(String cachedAddress) {
             this.properties.put("cachedAddress", cachedAddress);
@@ -587,7 +599,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Sessions can be lazily created to avoid exceptions, if the remote
          * server is not up and running when the Camel producer is started. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public Mina2ProducerBuilder lazySessionCreation(
                 boolean lazySessionCreation) {
@@ -597,7 +609,7 @@ public interface Mina2EndpointBuilder {
         /**
          * Sessions can be lazily created to avoid exceptions, if the remote
          * server is not up and running when the Camel producer is started. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public Mina2ProducerBuilder lazySessionCreation(
                 String lazySessionCreation) {

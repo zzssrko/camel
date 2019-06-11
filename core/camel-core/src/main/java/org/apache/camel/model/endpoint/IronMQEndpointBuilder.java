@@ -46,7 +46,8 @@ public interface IronMQEndpointBuilder {
             super("ironmq", path);
         }
         /**
-         * The name of the IronMQ queue. The option is a java.lang.String type.
+         * The name of the IronMQ queue. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T queueName(String queueName) {
             this.properties.put("queueName", queueName);
@@ -54,7 +55,7 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * Reference to a io.iron.ironmq.Client in the Registry. The option is a
-         * io.iron.ironmq.Client type.
+         * <code>io.iron.ironmq.Client</code> type.
          */
         public T client(Object client) {
             this.properties.put("client", client);
@@ -62,7 +63,7 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * Reference to a io.iron.ironmq.Client in the Registry. The option will
-         * be converted to a io.iron.ironmq.Client type.
+         * be converted to a <code>io.iron.ironmq.Client</code> type.
          */
         public T client(String client) {
             this.properties.put("client", client);
@@ -72,7 +73,7 @@ public interface IronMQEndpointBuilder {
          * IronMq Cloud url. Urls for public clusters:
          * https://mq-aws-us-east-1-1.iron.io (US) and
          * https://mq-aws-eu-west-1-1.iron.io (EU). The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T ironMQCloud(String ironMQCloud) {
             this.properties.put("ironMQCloud", ironMQCloud);
@@ -82,7 +83,7 @@ public interface IronMQEndpointBuilder {
          * Should message headers be preserved when publishing messages. This
          * will add the Camel headers to the Iron MQ message as a json payload
          * with a header list, and a message body. Useful when Camel is both
-         * consumer and producer. The option is a boolean type.
+         * consumer and producer. The option is a <code>boolean</code> type.
          */
         public T preserveHeaders(boolean preserveHeaders) {
             this.properties.put("preserveHeaders", preserveHeaders);
@@ -92,22 +93,22 @@ public interface IronMQEndpointBuilder {
          * Should message headers be preserved when publishing messages. This
          * will add the Camel headers to the Iron MQ message as a json payload
          * with a header list, and a message body. Useful when Camel is both
-         * consumer and producer. The option will be converted to a boolean
-         * type.
+         * consumer and producer. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T preserveHeaders(String preserveHeaders) {
             this.properties.put("preserveHeaders", preserveHeaders);
             return (T) this;
         }
         /**
-         * IronMQ projectId. The option is a java.lang.String type.
+         * IronMQ projectId. The option is a <code>java.lang.String</code> type.
          */
         public T projectId(String projectId) {
             this.properties.put("projectId", projectId);
             return (T) this;
         }
         /**
-         * IronMQ token. The option is a java.lang.String type.
+         * IronMQ token. The option is a <code>java.lang.String</code> type.
          */
         public T token(String token) {
             this.properties.put("token", token);
@@ -116,7 +117,7 @@ public interface IronMQEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -125,7 +126,7 @@ public interface IronMQEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -134,7 +135,7 @@ public interface IronMQEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -143,7 +144,7 @@ public interface IronMQEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -163,8 +164,8 @@ public interface IronMQEndpointBuilder {
          * Should messages be deleted in one batch. This will limit the number
          * of api requests since messages are deleted in one request, instead of
          * one pr. exchange. If enabled care should be taken that the consumer
-         * is idempotent when processing exchanges. The option is a boolean
-         * type.
+         * is idempotent when processing exchanges. The option is a
+         * <code>boolean</code> type.
          */
         public IronMQConsumerBuilder batchDelete(boolean batchDelete) {
             this.properties.put("batchDelete", batchDelete);
@@ -175,7 +176,7 @@ public interface IronMQEndpointBuilder {
          * of api requests since messages are deleted in one request, instead of
          * one pr. exchange. If enabled care should be taken that the consumer
          * is idempotent when processing exchanges. The option will be converted
-         * to a boolean type.
+         * to a <code>boolean</code> type.
          */
         public IronMQConsumerBuilder batchDelete(String batchDelete) {
             this.properties.put("batchDelete", batchDelete);
@@ -188,7 +189,7 @@ public interface IronMQEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public IronMQConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -202,7 +203,7 @@ public interface IronMQEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public IronMQConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -210,7 +211,8 @@ public interface IronMQEndpointBuilder {
             return (IronMQConsumerBuilder) this;
         }
         /**
-         * The number of concurrent consumers. The option is a int type.
+         * The number of concurrent consumers. The option is a <code>int</code>
+         * type.
          */
         public IronMQConsumerBuilder concurrentConsumers(int concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
@@ -218,7 +220,7 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * The number of concurrent consumers. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public IronMQConsumerBuilder concurrentConsumers(
                 String concurrentConsumers) {
@@ -227,7 +229,7 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * Number of messages to poll pr. call. Maximum is 100. The option is a
-         * int type.
+         * <code>int</code> type.
          */
         public IronMQConsumerBuilder maxMessagesPerPoll(int maxMessagesPerPoll) {
             this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
@@ -235,7 +237,7 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * Number of messages to poll pr. call. Maximum is 100. The option will
-         * be converted to a int type.
+         * be converted to a <code>int</code> type.
          */
         public IronMQConsumerBuilder maxMessagesPerPoll(
                 String maxMessagesPerPoll) {
@@ -245,7 +247,7 @@ public interface IronMQEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public IronMQConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -255,7 +257,7 @@ public interface IronMQEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public IronMQConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -264,7 +266,7 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * After timeout (in seconds), item will be placed back onto the queue.
-         * The option is a int type.
+         * The option is a <code>int</code> type.
          */
         public IronMQConsumerBuilder timeout(int timeout) {
             this.properties.put("timeout", timeout);
@@ -272,7 +274,7 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * After timeout (in seconds), item will be placed back onto the queue.
-         * The option will be converted to a int type.
+         * The option will be converted to a <code>int</code> type.
          */
         public IronMQConsumerBuilder timeout(String timeout) {
             this.properties.put("timeout", timeout);
@@ -281,7 +283,7 @@ public interface IronMQEndpointBuilder {
         /**
          * Time in seconds to wait for a message to become available. This
          * enables long polling. Default is 0 (does not wait), maximum is 30.
-         * The option is a int type.
+         * The option is a <code>int</code> type.
          */
         public IronMQConsumerBuilder wait(int wait) {
             this.properties.put("wait", wait);
@@ -290,7 +292,7 @@ public interface IronMQEndpointBuilder {
         /**
          * Time in seconds to wait for a message to become available. This
          * enables long polling. Default is 0 (does not wait), maximum is 30.
-         * The option will be converted to a int type.
+         * The option will be converted to a <code>int</code> type.
          */
         public IronMQConsumerBuilder wait(String wait) {
             this.properties.put("wait", wait);
@@ -301,7 +303,7 @@ public interface IronMQEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public IronMQConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -313,7 +315,8 @@ public interface IronMQEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public IronMQConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -321,7 +324,7 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public IronMQConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -330,7 +333,8 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public IronMQConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -341,7 +345,7 @@ public interface IronMQEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public IronMQConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -353,7 +357,8 @@ public interface IronMQEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public IronMQConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -362,7 +367,7 @@ public interface IronMQEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public IronMQConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -372,7 +377,7 @@ public interface IronMQEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public IronMQConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -381,7 +386,8 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public IronMQConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -391,7 +397,7 @@ public interface IronMQEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public IronMQConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -404,7 +410,7 @@ public interface IronMQEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public IronMQConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -416,7 +422,7 @@ public interface IronMQEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public IronMQConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -425,7 +431,7 @@ public interface IronMQEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public IronMQConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -434,8 +440,8 @@ public interface IronMQEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public IronMQConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -444,7 +450,7 @@ public interface IronMQEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public IronMQConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -453,7 +459,7 @@ public interface IronMQEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public IronMQConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -462,7 +468,7 @@ public interface IronMQEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public IronMQConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -471,8 +477,8 @@ public interface IronMQEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public IronMQConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -481,7 +487,7 @@ public interface IronMQEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public IronMQConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -491,7 +497,8 @@ public interface IronMQEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public IronMQConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -500,8 +507,8 @@ public interface IronMQEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public IronMQConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -512,7 +519,7 @@ public interface IronMQEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public IronMQConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -522,7 +529,8 @@ public interface IronMQEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public IronMQConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -532,7 +540,8 @@ public interface IronMQEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public IronMQConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -541,7 +550,7 @@ public interface IronMQEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public IronMQConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -551,7 +560,8 @@ public interface IronMQEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public IronMQConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -559,8 +569,8 @@ public interface IronMQEndpointBuilder {
             return (IronMQConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public IronMQConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -568,7 +578,7 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public IronMQConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -576,7 +586,7 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public IronMQConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -584,7 +594,7 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public IronMQConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -592,8 +602,8 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public IronMQConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -602,7 +612,7 @@ public interface IronMQEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public IronMQConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -620,7 +630,8 @@ public interface IronMQEndpointBuilder {
         }
         /**
          * The item will not be available on the queue until this many seconds
-         * have passed. Default is 0 seconds. The option is a int type.
+         * have passed. Default is 0 seconds. The option is a <code>int</code>
+         * type.
          */
         public IronMQProducerBuilder visibilityDelay(int visibilityDelay) {
             this.properties.put("visibilityDelay", visibilityDelay);
@@ -629,7 +640,7 @@ public interface IronMQEndpointBuilder {
         /**
          * The item will not be available on the queue until this many seconds
          * have passed. Default is 0 seconds. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public IronMQProducerBuilder visibilityDelay(String visibilityDelay) {
             this.properties.put("visibilityDelay", visibilityDelay);

@@ -40,15 +40,16 @@ public interface KubernetesNamespacesEndpointBuilder {
             super("kubernetes-namespaces", path);
         }
         /**
-         * Kubernetes Master url. The option is a java.lang.String type.
+         * Kubernetes Master url. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T masterUrl(String masterUrl) {
             this.properties.put("masterUrl", masterUrl);
             return (T) this;
         }
         /**
-         * The Kubernetes API Version to use. The option is a java.lang.String
-         * type.
+         * The Kubernetes API Version to use. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T apiVersion(String apiVersion) {
             this.properties.put("apiVersion", apiVersion);
@@ -56,7 +57,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * The dns domain, used for ServiceCall EIP. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T dnsDomain(String dnsDomain) {
             this.properties.put("dnsDomain", dnsDomain);
@@ -64,7 +65,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * Default KubernetesClient to use if provided. The option is a
-         * io.fabric8.kubernetes.client.KubernetesClient type.
+         * <code>io.fabric8.kubernetes.client.KubernetesClient</code> type.
          */
         public T kubernetesClient(Object kubernetesClient) {
             this.properties.put("kubernetesClient", kubernetesClient);
@@ -72,7 +73,8 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * Default KubernetesClient to use if provided. The option will be
-         * converted to a io.fabric8.kubernetes.client.KubernetesClient type.
+         * converted to a
+         * <code>io.fabric8.kubernetes.client.KubernetesClient</code> type.
          */
         public T kubernetesClient(String kubernetesClient) {
             this.properties.put("kubernetesClient", kubernetesClient);
@@ -80,7 +82,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * The port name, used for ServiceCall EIP. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T portName(String portName) {
             this.properties.put("portName", portName);
@@ -88,7 +90,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * The port protocol, used for ServiceCall EIP. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T portProtocol(String portProtocol) {
             this.properties.put("portProtocol", portProtocol);
@@ -97,7 +99,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -106,7 +108,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -114,7 +116,8 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * Connection timeout in milliseconds to use when making requests to the
-         * Kubernetes API server. The option is a java.lang.Integer type.
+         * Kubernetes API server. The option is a <code>java.lang.Integer</code>
+         * type.
          */
         public T connectionTimeout(Integer connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
@@ -123,7 +126,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         /**
          * Connection timeout in milliseconds to use when making requests to the
          * Kubernetes API server. The option will be converted to a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T connectionTimeout(String connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
@@ -132,7 +135,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -141,35 +144,37 @@ public interface KubernetesNamespacesEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * The CA Cert Data. The option is a java.lang.String type.
+         * The CA Cert Data. The option is a <code>java.lang.String</code> type.
          */
         public T caCertData(String caCertData) {
             this.properties.put("caCertData", caCertData);
             return (T) this;
         }
         /**
-         * The CA Cert File. The option is a java.lang.String type.
+         * The CA Cert File. The option is a <code>java.lang.String</code> type.
          */
         public T caCertFile(String caCertFile) {
             this.properties.put("caCertFile", caCertFile);
             return (T) this;
         }
         /**
-         * The Client Cert Data. The option is a java.lang.String type.
+         * The Client Cert Data. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T clientCertData(String clientCertData) {
             this.properties.put("clientCertData", clientCertData);
             return (T) this;
         }
         /**
-         * The Client Cert File. The option is a java.lang.String type.
+         * The Client Cert File. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T clientCertFile(String clientCertFile) {
             this.properties.put("clientCertFile", clientCertFile);
@@ -177,43 +182,46 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * The Key Algorithm used by the client. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T clientKeyAlgo(String clientKeyAlgo) {
             this.properties.put("clientKeyAlgo", clientKeyAlgo);
             return (T) this;
         }
         /**
-         * The Client Key data. The option is a java.lang.String type.
+         * The Client Key data. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T clientKeyData(String clientKeyData) {
             this.properties.put("clientKeyData", clientKeyData);
             return (T) this;
         }
         /**
-         * The Client Key file. The option is a java.lang.String type.
+         * The Client Key file. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T clientKeyFile(String clientKeyFile) {
             this.properties.put("clientKeyFile", clientKeyFile);
             return (T) this;
         }
         /**
-         * The Client Key Passphrase. The option is a java.lang.String type.
+         * The Client Key Passphrase. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T clientKeyPassphrase(String clientKeyPassphrase) {
             this.properties.put("clientKeyPassphrase", clientKeyPassphrase);
             return (T) this;
         }
         /**
-         * The Auth Token. The option is a java.lang.String type.
+         * The Auth Token. The option is a <code>java.lang.String</code> type.
          */
         public T oauthToken(String oauthToken) {
             this.properties.put("oauthToken", oauthToken);
             return (T) this;
         }
         /**
-         * Password to connect to Kubernetes. The option is a java.lang.String
-         * type.
+         * Password to connect to Kubernetes. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T password(String password) {
             this.properties.put("password", password);
@@ -221,7 +229,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * Define if the certs we used are trusted anyway or not. The option is
-         * a java.lang.Boolean type.
+         * a <code>java.lang.Boolean</code> type.
          */
         public T trustCerts(Boolean trustCerts) {
             this.properties.put("trustCerts", trustCerts);
@@ -229,15 +237,15 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * Define if the certs we used are trusted anyway or not. The option
-         * will be converted to a java.lang.Boolean type.
+         * will be converted to a <code>java.lang.Boolean</code> type.
          */
         public T trustCerts(String trustCerts) {
             this.properties.put("trustCerts", trustCerts);
             return (T) this;
         }
         /**
-         * Username to connect to Kubernetes. The option is a java.lang.String
-         * type.
+         * Username to connect to Kubernetes. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -260,7 +268,7 @@ public interface KubernetesNamespacesEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public KubernetesNamespacesConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -274,7 +282,7 @@ public interface KubernetesNamespacesEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public KubernetesNamespacesConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -283,7 +291,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * The Consumer Label key when watching at some resources. The option is
-         * a java.lang.String type.
+         * a <code>java.lang.String</code> type.
          */
         public KubernetesNamespacesConsumerBuilder labelKey(String labelKey) {
             this.properties.put("labelKey", labelKey);
@@ -291,28 +299,29 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * The Consumer Label value when watching at some resources. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public KubernetesNamespacesConsumerBuilder labelValue(String labelValue) {
             this.properties.put("labelValue", labelValue);
             return (KubernetesNamespacesConsumerBuilder) this;
         }
         /**
-         * The namespace. The option is a java.lang.String type.
+         * The namespace. The option is a <code>java.lang.String</code> type.
          */
         public KubernetesNamespacesConsumerBuilder namespace(String namespace) {
             this.properties.put("namespace", namespace);
             return (KubernetesNamespacesConsumerBuilder) this;
         }
         /**
-         * The Consumer pool size. The option is a int type.
+         * The Consumer pool size. The option is a <code>int</code> type.
          */
         public KubernetesNamespacesConsumerBuilder poolSize(int poolSize) {
             this.properties.put("poolSize", poolSize);
             return (KubernetesNamespacesConsumerBuilder) this;
         }
         /**
-         * The Consumer pool size. The option will be converted to a int type.
+         * The Consumer pool size. The option will be converted to a
+         * <code>int</code> type.
          */
         public KubernetesNamespacesConsumerBuilder poolSize(String poolSize) {
             this.properties.put("poolSize", poolSize);
@@ -320,7 +329,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * The Consumer Resource Name we would like to watch. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public KubernetesNamespacesConsumerBuilder resourceName(
                 String resourceName) {
@@ -332,7 +341,7 @@ public interface KubernetesNamespacesEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public KubernetesNamespacesConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -344,7 +353,8 @@ public interface KubernetesNamespacesEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public KubernetesNamespacesConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -353,7 +363,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public KubernetesNamespacesConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -362,7 +372,8 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public KubernetesNamespacesConsumerBuilder exchangePattern(
                 String exchangePattern) {
@@ -381,7 +392,7 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
         /**
          * Producer operation to do on Kubernetes. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public KubernetesNamespacesProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);

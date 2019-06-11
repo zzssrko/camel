@@ -39,7 +39,7 @@ public interface DozerEndpointBuilder {
         }
         /**
          * A human readable name of the mapping. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T name(String name) {
             this.properties.put("name", name);
@@ -52,7 +52,7 @@ public interface DozerEndpointBuilder {
          * fine-grained control over how Dozer is configured. Remember to use a
          * # prefix in the value to indicate that the bean is in the Camel
          * registry (e.g. #myDozerConfig). The option is a
-         * org.apache.camel.converter.dozer.DozerBeanMapperConfiguration type.
+         * <code>org.apache.camel.converter.dozer.DozerBeanMapperConfiguration</code> type.
          */
         public T mappingConfiguration(Object mappingConfiguration) {
             this.properties.put("mappingConfiguration", mappingConfiguration);
@@ -65,7 +65,7 @@ public interface DozerEndpointBuilder {
          * fine-grained control over how Dozer is configured. Remember to use a
          * # prefix in the value to indicate that the bean is in the Camel
          * registry (e.g. #myDozerConfig). The option will be converted to a
-         * org.apache.camel.converter.dozer.DozerBeanMapperConfiguration type.
+         * <code>org.apache.camel.converter.dozer.DozerBeanMapperConfiguration</code> type.
          */
         public T mappingConfiguration(String mappingConfiguration) {
             this.properties.put("mappingConfiguration", mappingConfiguration);
@@ -75,7 +75,7 @@ public interface DozerEndpointBuilder {
          * The location of a Dozer configuration file. The file is loaded from
          * the classpath by default, but you can use file:, classpath:, or http:
          * to load the configuration from a specific location. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T mappingFile(String mappingFile) {
             this.properties.put("mappingFile", mappingFile);
@@ -84,7 +84,7 @@ public interface DozerEndpointBuilder {
         /**
          * The id of a dataFormat defined within the Camel Context to use for
          * marshalling the mapping output to a non-Java type. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T marshalId(String marshalId) {
             this.properties.put("marshalId", marshalId);
@@ -93,8 +93,8 @@ public interface DozerEndpointBuilder {
         /**
          * Fully-qualified class name for the source type used in the mapping.
          * If specified, the input to the mapping is converted to the specified
-         * type before being mapped with Dozer. The option is a java.lang.String
-         * type.
+         * type before being mapped with Dozer. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T sourceModel(String sourceModel) {
             this.properties.put("sourceModel", sourceModel);
@@ -102,7 +102,7 @@ public interface DozerEndpointBuilder {
         }
         /**
          * Fully-qualified class name for the target type used in the mapping.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T targetModel(String targetModel) {
             this.properties.put("targetModel", targetModel);
@@ -111,7 +111,7 @@ public interface DozerEndpointBuilder {
         /**
          * The id of a dataFormat defined within the Camel Context to use for
          * unmarshalling the mapping input from a non-Java type. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T unmarshalId(String unmarshalId) {
             this.properties.put("unmarshalId", unmarshalId);
@@ -120,7 +120,7 @@ public interface DozerEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -129,7 +129,7 @@ public interface DozerEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -138,7 +138,7 @@ public interface DozerEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -147,7 +147,7 @@ public interface DozerEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

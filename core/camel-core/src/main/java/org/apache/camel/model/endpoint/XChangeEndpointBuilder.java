@@ -38,15 +38,16 @@ public interface XChangeEndpointBuilder {
             super("xchange", path);
         }
         /**
-         * The exchange to connect to. The option is a java.lang.String type.
+         * The exchange to connect to. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T name(String name) {
             this.properties.put("name", name);
             return (T) this;
         }
         /**
-         * The currency. The option is a org.knowm.xchange.currency.Currency
-         * type.
+         * The currency. The option is a
+         * <code>org.knowm.xchange.currency.Currency</code> type.
          */
         public T currency(Object currency) {
             this.properties.put("currency", currency);
@@ -54,7 +55,7 @@ public interface XChangeEndpointBuilder {
         }
         /**
          * The currency. The option will be converted to a
-         * org.knowm.xchange.currency.Currency type.
+         * <code>org.knowm.xchange.currency.Currency</code> type.
          */
         public T currency(String currency) {
             this.properties.put("currency", currency);
@@ -62,7 +63,7 @@ public interface XChangeEndpointBuilder {
         }
         /**
          * The currency pair. The option is a
-         * org.knowm.xchange.currency.CurrencyPair type.
+         * <code>org.knowm.xchange.currency.CurrencyPair</code> type.
          */
         public T currencyPair(Object currencyPair) {
             this.properties.put("currencyPair", currencyPair);
@@ -70,7 +71,7 @@ public interface XChangeEndpointBuilder {
         }
         /**
          * The currency pair. The option will be converted to a
-         * org.knowm.xchange.currency.CurrencyPair type.
+         * <code>org.knowm.xchange.currency.CurrencyPair</code> type.
          */
         public T currencyPair(String currencyPair) {
             this.properties.put("currencyPair", currencyPair);
@@ -78,17 +79,15 @@ public interface XChangeEndpointBuilder {
         }
         /**
          * The method to execute. The option is a
-         * org.apache.camel.component.xchange.XChangeConfiguration.XChangeMethod
-         * type.
+         * <code>org.apache.camel.component.xchange.XChangeConfiguration$XChangeMethod</code> type.
          */
-        public T method(Object method) {
+        public T method(XChangeMethod method) {
             this.properties.put("method", method);
             return (T) this;
         }
         /**
          * The method to execute. The option will be converted to a
-         * org.apache.camel.component.xchange.XChangeConfiguration.XChangeMethod
-         * type.
+         * <code>org.apache.camel.component.xchange.XChangeConfiguration$XChangeMethod</code> type.
          */
         public T method(String method) {
             this.properties.put("method", method);
@@ -96,15 +95,15 @@ public interface XChangeEndpointBuilder {
         }
         /**
          * The service to call. The option is a
-         * org.apache.camel.component.xchange.XChangeConfiguration.XChangeService type.
+         * <code>org.apache.camel.component.xchange.XChangeConfiguration$XChangeService</code> type.
          */
-        public T service(Object service) {
+        public T service(XChangeService service) {
             this.properties.put("service", service);
             return (T) this;
         }
         /**
          * The service to call. The option will be converted to a
-         * org.apache.camel.component.xchange.XChangeConfiguration.XChangeService type.
+         * <code>org.apache.camel.component.xchange.XChangeConfiguration$XChangeService</code> type.
          */
         public T service(String service) {
             this.properties.put("service", service);
@@ -113,7 +112,7 @@ public interface XChangeEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -122,7 +121,7 @@ public interface XChangeEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -131,7 +130,7 @@ public interface XChangeEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -140,7 +139,7 @@ public interface XChangeEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -156,6 +155,14 @@ public interface XChangeEndpointBuilder {
         public XChangeProducerBuilder(String path) {
             super(path);
         }
+    }
+
+    public static enum XChangeMethod {
+        balances, fundingHistory, wallets, currencies, currencyMetaData, currencyPairs, currencyPairMetaData, ticker;
+    }
+
+    public static enum XChangeService {
+        marketdata, metadata, account;
     }
     public default XChangeProducerBuilder toXChange(String path) {
         return new XChangeProducerBuilder(path);

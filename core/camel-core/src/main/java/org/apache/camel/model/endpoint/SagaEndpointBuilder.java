@@ -39,16 +39,16 @@ public interface SagaEndpointBuilder {
         }
         /**
          * Action to execute (complete or compensate). The option is a
-         * org.apache.camel.component.saga.SagaEndpoint.SagaEndpointAction type.
+         * <code>org.apache.camel.component.saga.SagaEndpoint$SagaEndpointAction</code> type.
          */
-        public T action(Object action) {
+        public T action(SagaEndpointAction action) {
             this.properties.put("action", action);
             return (T) this;
         }
         /**
          * Action to execute (complete or compensate). The option will be
          * converted to a
-         * org.apache.camel.component.saga.SagaEndpoint.SagaEndpointAction type.
+         * <code>org.apache.camel.component.saga.SagaEndpoint$SagaEndpointAction</code> type.
          */
         public T action(String action) {
             this.properties.put("action", action);
@@ -57,7 +57,7 @@ public interface SagaEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -66,7 +66,7 @@ public interface SagaEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -75,7 +75,7 @@ public interface SagaEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -84,7 +84,7 @@ public interface SagaEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -100,6 +100,10 @@ public interface SagaEndpointBuilder {
         public SagaProducerBuilder(String path) {
             super(path);
         }
+    }
+
+    public static enum SagaEndpointAction {
+        COMPLETE, COMPENSATE;
     }
     public default SagaProducerBuilder toSaga(String path) {
         return new SagaProducerBuilder(path);

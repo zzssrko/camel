@@ -46,7 +46,8 @@ public interface WeatherEndpointBuilder {
             super("weather", path);
         }
         /**
-         * The name value is not used. The option is a java.lang.String type.
+         * The name value is not used. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T name(String name) {
             this.properties.put("name", name);
@@ -54,7 +55,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * APPID ID used to authenticate the user connected to the API Server.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T appid(String appid) {
             this.properties.put("appid", appid);
@@ -63,7 +64,7 @@ public interface WeatherEndpointBuilder {
         /**
          * To store the weather result in this header instead of the message
          * body. This is useable if you want to keep current message body as-is.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T headerName(String headerName) {
             this.properties.put("headerName", headerName);
@@ -71,7 +72,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Language of the response. The option is a
-         * org.apache.camel.component.weather.WeatherLanguage type.
+         * <code>org.apache.camel.component.weather.WeatherLanguage</code> type.
          */
         public T language(WeatherLanguage language) {
             this.properties.put("language", language);
@@ -79,7 +80,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Language of the response. The option will be converted to a
-         * org.apache.camel.component.weather.WeatherLanguage type.
+         * <code>org.apache.camel.component.weather.WeatherLanguage</code> type.
          */
         public T language(String language) {
             this.properties.put("language", language);
@@ -87,7 +88,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * The output format of the weather data. The option is a
-         * org.apache.camel.component.weather.WeatherMode type.
+         * <code>org.apache.camel.component.weather.WeatherMode</code> type.
          */
         public T mode(WeatherMode mode) {
             this.properties.put("mode", mode);
@@ -95,7 +96,8 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * The output format of the weather data. The option will be converted
-         * to a org.apache.camel.component.weather.WeatherMode type.
+         * to a <code>org.apache.camel.component.weather.WeatherMode</code>
+         * type.
          */
         public T mode(String mode) {
             this.properties.put("mode", mode);
@@ -105,7 +107,8 @@ public interface WeatherEndpointBuilder {
          * If null, the current weather will be returned, else use values of 5,
          * 7, 14 days. Only the numeric value for the forecast period is
          * actually parsed, so spelling, capitalisation of the time period is up
-         * to you (its ignored). The option is a java.lang.String type.
+         * to you (its ignored). The option is a <code>java.lang.String</code>
+         * type.
          */
         public T period(String period) {
             this.properties.put("period", period);
@@ -113,7 +116,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * The units for temperature measurement. The option is a
-         * org.apache.camel.component.weather.WeatherUnits type.
+         * <code>org.apache.camel.component.weather.WeatherUnits</code> type.
          */
         public T units(WeatherUnits units) {
             this.properties.put("units", units);
@@ -121,7 +124,8 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * The units for temperature measurement. The option will be converted
-         * to a org.apache.camel.component.weather.WeatherUnits type.
+         * to a <code>org.apache.camel.component.weather.WeatherUnits</code>
+         * type.
          */
         public T units(String units) {
             this.properties.put("units", units);
@@ -130,7 +134,7 @@ public interface WeatherEndpointBuilder {
         /**
          * The API to be use (current, forecast/3 hour, forecast daily,
          * station). The option is a
-         * org.apache.camel.component.weather.WeatherApi type.
+         * <code>org.apache.camel.component.weather.WeatherApi</code> type.
          */
         public T weatherApi(WeatherApi weatherApi) {
             this.properties.put("weatherApi", weatherApi);
@@ -139,7 +143,7 @@ public interface WeatherEndpointBuilder {
         /**
          * The API to be use (current, forecast/3 hour, forecast daily,
          * station). The option will be converted to a
-         * org.apache.camel.component.weather.WeatherApi type.
+         * <code>org.apache.camel.component.weather.WeatherApi</code> type.
          */
         public T weatherApi(String weatherApi) {
             this.properties.put("weatherApi", weatherApi);
@@ -148,7 +152,7 @@ public interface WeatherEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -157,7 +161,7 @@ public interface WeatherEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -165,7 +169,9 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * To use a custom HttpConnectionManager to manage connections. The
-         * option is a org.apache.commons.httpclient.HttpConnectionManager type.
+         * option is a
+         * <code>org.apache.commons.httpclient.HttpConnectionManager</code>
+         * type.
          */
         public T httpConnectionManager(Object httpConnectionManager) {
             this.properties.put("httpConnectionManager", httpConnectionManager);
@@ -174,7 +180,8 @@ public interface WeatherEndpointBuilder {
         /**
          * To use a custom HttpConnectionManager to manage connections. The
          * option will be converted to a
-         * org.apache.commons.httpclient.HttpConnectionManager type.
+         * <code>org.apache.commons.httpclient.HttpConnectionManager</code>
+         * type.
          */
         public T httpConnectionManager(String httpConnectionManager) {
             this.properties.put("httpConnectionManager", httpConnectionManager);
@@ -183,7 +190,7 @@ public interface WeatherEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -192,15 +199,15 @@ public interface WeatherEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Number of results to be found. The option is a java.lang.Integer
-         * type.
+         * Number of results to be found. The option is a
+         * <code>java.lang.Integer</code> type.
          */
         public T cnt(Integer cnt) {
             this.properties.put("cnt", cnt);
@@ -208,7 +215,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Number of results to be found. The option will be converted to a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T cnt(String cnt) {
             this.properties.put("cnt", cnt);
@@ -216,7 +223,8 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * List of id's of city/stations. You can separate multiple ids by
-         * comma. The option is a java.lang.String type.
+         * comma. The option is a <code>java.util.List<java.lang.String></code>
+         * type.
          */
         public T ids(List<String> ids) {
             this.properties.put("ids", ids);
@@ -224,7 +232,8 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * List of id's of city/stations. You can separate multiple ids by
-         * comma. The option will be converted to a java.lang.String type.
+         * comma. The option will be converted to a
+         * <code>java.util.List<java.lang.String></code> type.
          */
         public T ids(String ids) {
             this.properties.put("ids", ids);
@@ -233,7 +242,7 @@ public interface WeatherEndpointBuilder {
         /**
          * Latitude of location. You can use lat and lon options instead of
          * location. For boxed queries this is the bottom latitude. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T lat(String lat) {
             this.properties.put("lat", lat);
@@ -247,8 +256,8 @@ public interface WeatherEndpointBuilder {
          * well will return more accurate data. If you specify current as the
          * location then the component will try to get the current latitude and
          * longitude and use that to get the weather details. You can use lat
-         * and lon options instead of location. The option is a java.lang.String
-         * type.
+         * and lon options instead of location. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T location(String location) {
             this.properties.put("location", location);
@@ -257,7 +266,7 @@ public interface WeatherEndpointBuilder {
         /**
          * Longitude of location. You can use lat and lon options instead of
          * location. For boxed queries this is the left longtitude. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T lon(String lon) {
             this.properties.put("lon", lon);
@@ -265,8 +274,8 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * For boxed queries this is the right longtitude. Needs to be used in
-         * combination with topLat and zoom. The option is a java.lang.String
-         * type.
+         * combination with topLat and zoom. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T rightLon(String rightLon) {
             this.properties.put("rightLon", rightLon);
@@ -274,15 +283,16 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * For boxed queries this is the top latitude. Needs to be used in
-         * combination with rightLon and zoom. The option is a java.lang.String
-         * type.
+         * combination with rightLon and zoom. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T topLat(String topLat) {
             this.properties.put("topLat", topLat);
             return (T) this;
         }
         /**
-         * Zip-code, e.g. 94040,us. The option is a java.lang.String type.
+         * Zip-code, e.g. 94040,us. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T zip(String zip) {
             this.properties.put("zip", zip);
@@ -290,7 +300,8 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * For boxed queries this is the zoom. Needs to be used in combination
-         * with rightLon and topLat. The option is a java.lang.Integer type.
+         * with rightLon and topLat. The option is a
+         * <code>java.lang.Integer</code> type.
          */
         public T zoom(Integer zoom) {
             this.properties.put("zoom", zoom);
@@ -299,7 +310,7 @@ public interface WeatherEndpointBuilder {
         /**
          * For boxed queries this is the zoom. Needs to be used in combination
          * with rightLon and topLat. The option will be converted to a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T zoom(String zoom) {
             this.properties.put("zoom", zoom);
@@ -307,7 +318,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Domain for proxy NTLM authentication. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T proxyAuthDomain(String proxyAuthDomain) {
             this.properties.put("proxyAuthDomain", proxyAuthDomain);
@@ -315,7 +326,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Optional host for proxy NTLM authentication. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T proxyAuthHost(String proxyAuthHost) {
             this.properties.put("proxyAuthHost", proxyAuthHost);
@@ -323,37 +334,39 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Authentication method for proxy, either as Basic, Digest or NTLM. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T proxyAuthMethod(String proxyAuthMethod) {
             this.properties.put("proxyAuthMethod", proxyAuthMethod);
             return (T) this;
         }
         /**
-         * Password for proxy authentication. The option is a java.lang.String
-         * type.
+         * Password for proxy authentication. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T proxyAuthPassword(String proxyAuthPassword) {
             this.properties.put("proxyAuthPassword", proxyAuthPassword);
             return (T) this;
         }
         /**
-         * Username for proxy authentication. The option is a java.lang.String
-         * type.
+         * Username for proxy authentication. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T proxyAuthUsername(String proxyAuthUsername) {
             this.properties.put("proxyAuthUsername", proxyAuthUsername);
             return (T) this;
         }
         /**
-         * The proxy host name. The option is a java.lang.String type.
+         * The proxy host name. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * The proxy port number. The option is a java.lang.Integer type.
+         * The proxy port number. The option is a <code>java.lang.Integer</code>
+         * type.
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -361,7 +374,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * The proxy port number. The option will be converted to a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -369,7 +382,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * The geolocation service now needs an accessKey to be used. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T geolocationAccessKey(String geolocationAccessKey) {
             this.properties.put("geolocationAccessKey", geolocationAccessKey);
@@ -377,7 +390,8 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * The geolocation service now needs to specify the IP associated to the
-         * accessKey you're using. The option is a java.lang.String type.
+         * accessKey you're using. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T geolocationRequestHostIP(String geolocationRequestHostIP) {
             this.properties.put("geolocationRequestHostIP", geolocationRequestHostIP);
@@ -400,7 +414,7 @@ public interface WeatherEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public WeatherConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -414,7 +428,7 @@ public interface WeatherEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public WeatherConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -424,7 +438,7 @@ public interface WeatherEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public WeatherConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -434,7 +448,7 @@ public interface WeatherEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public WeatherConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -446,7 +460,7 @@ public interface WeatherEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public WeatherConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -458,7 +472,8 @@ public interface WeatherEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public WeatherConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -466,7 +481,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public WeatherConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -475,7 +490,8 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public WeatherConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -486,7 +502,7 @@ public interface WeatherEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public WeatherConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -498,7 +514,8 @@ public interface WeatherEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public WeatherConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -507,7 +524,7 @@ public interface WeatherEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public WeatherConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -517,7 +534,7 @@ public interface WeatherEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public WeatherConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -526,7 +543,8 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public WeatherConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -536,7 +554,7 @@ public interface WeatherEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public WeatherConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -549,7 +567,7 @@ public interface WeatherEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public WeatherConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -561,7 +579,7 @@ public interface WeatherEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public WeatherConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -570,7 +588,7 @@ public interface WeatherEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public WeatherConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -579,8 +597,8 @@ public interface WeatherEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public WeatherConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -589,7 +607,7 @@ public interface WeatherEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public WeatherConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -598,7 +616,7 @@ public interface WeatherEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public WeatherConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -607,7 +625,7 @@ public interface WeatherEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public WeatherConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -616,8 +634,8 @@ public interface WeatherEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public WeatherConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -626,7 +644,7 @@ public interface WeatherEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public WeatherConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -636,7 +654,8 @@ public interface WeatherEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public WeatherConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -645,8 +664,8 @@ public interface WeatherEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public WeatherConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -657,7 +676,7 @@ public interface WeatherEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public WeatherConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -667,7 +686,8 @@ public interface WeatherEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public WeatherConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -677,7 +697,8 @@ public interface WeatherEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public WeatherConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -686,7 +707,7 @@ public interface WeatherEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public WeatherConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -696,7 +717,8 @@ public interface WeatherEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public WeatherConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -704,8 +726,8 @@ public interface WeatherEndpointBuilder {
             return (WeatherConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public WeatherConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -713,7 +735,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public WeatherConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -721,7 +743,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public WeatherConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -729,7 +751,7 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public WeatherConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -737,8 +759,8 @@ public interface WeatherEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public WeatherConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -747,7 +769,7 @@ public interface WeatherEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public WeatherConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);

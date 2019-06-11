@@ -38,14 +38,15 @@ public interface ChatScriptEndpointBuilder {
         }
         /**
          * Hostname or IP of the server on which CS server is running. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * Port on which ChatScript is listening to. The option is a int type.
+         * Port on which ChatScript is listening to. The option is a
+         * <code>int</code> type.
          */
         public T port(int port) {
             this.properties.put("port", port);
@@ -53,7 +54,7 @@ public interface ChatScriptEndpointBuilder {
         }
         /**
          * Port on which ChatScript is listening to. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public T port(String port) {
             this.properties.put("port", port);
@@ -61,7 +62,7 @@ public interface ChatScriptEndpointBuilder {
         }
         /**
          * Name of the Bot in CS to converse with. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T botName(String botName) {
             this.properties.put("botName", botName);
@@ -70,7 +71,7 @@ public interface ChatScriptEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -79,7 +80,7 @@ public interface ChatScriptEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -88,7 +89,7 @@ public interface ChatScriptEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -97,7 +98,7 @@ public interface ChatScriptEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -105,7 +106,7 @@ public interface ChatScriptEndpointBuilder {
         }
         /**
          * Issues :reset command to start a new conversation everytime. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public T resetchat(boolean resetchat) {
             this.properties.put("resetchat", resetchat);
@@ -113,7 +114,7 @@ public interface ChatScriptEndpointBuilder {
         }
         /**
          * Issues :reset command to start a new conversation everytime. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public T resetchat(String resetchat) {
             this.properties.put("resetchat", resetchat);
@@ -121,7 +122,8 @@ public interface ChatScriptEndpointBuilder {
         }
         /**
          * Username who initializes the CS conversation. To be set when chat is
-         * initialized from camel route. The option is a java.lang.String type.
+         * initialized from camel route. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T chatUserName(String chatUserName) {
             this.properties.put("chatUserName", chatUserName);

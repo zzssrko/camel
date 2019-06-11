@@ -41,7 +41,7 @@ public interface SalesforceEndpointBuilder {
             super("salesforce", path);
         }
         /**
-         * APEX method name. The option is a java.lang.String type.
+         * APEX method name. The option is a <code>java.lang.String</code> type.
          */
         public T apexMethod(String apexMethod) {
             this.properties.put("apexMethod", apexMethod);
@@ -49,7 +49,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Query params for APEX method. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public T apexQueryParams(Map<String, Object> apexQueryParams) {
             this.properties.put("apexQueryParams", apexQueryParams);
@@ -57,14 +57,14 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Query params for APEX method. The option will be converted to a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public T apexQueryParams(String apexQueryParams) {
             this.properties.put("apexQueryParams", apexQueryParams);
             return (T) this;
         }
         /**
-         * APEX method URL. The option is a java.lang.String type.
+         * APEX method URL. The option is a <code>java.lang.String</code> type.
          */
         public T apexUrl(String apexUrl) {
             this.properties.put("apexUrl", apexUrl);
@@ -73,7 +73,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Salesforce API version, defaults to
          * SalesforceEndpointConfig.DEFAULT_VERSION. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T apiVersion(String apiVersion) {
             this.properties.put("apiVersion", apiVersion);
@@ -81,7 +81,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Backoff interval increment for Streaming connection restart attempts
-         * for failures beyond CometD auto-reconnect. The option is a long type.
+         * for failures beyond CometD auto-reconnect. The option is a
+         * <code>long</code> type.
          */
         public T backoffIncrement(long backoffIncrement) {
             this.properties.put("backoffIncrement", backoffIncrement);
@@ -90,14 +91,15 @@ public interface SalesforceEndpointBuilder {
         /**
          * Backoff interval increment for Streaming connection restart attempts
          * for failures beyond CometD auto-reconnect. The option will be
-         * converted to a long type.
+         * converted to a <code>long</code> type.
          */
         public T backoffIncrement(String backoffIncrement) {
             this.properties.put("backoffIncrement", backoffIncrement);
             return (T) this;
         }
         /**
-         * Bulk API Batch ID. The option is a java.lang.String type.
+         * Bulk API Batch ID. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T batchId(String batchId) {
             this.properties.put("batchId", batchId);
@@ -105,8 +107,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Bulk API content type, one of XML, CSV, ZIP_XML, ZIP_CSV. The option
-         * is a org.apache.camel.component.salesforce.api.dto.bulk.ContentType
-         * type.
+         * is a
+         * <code>org.apache.camel.component.salesforce.api.dto.bulk.ContentType</code> type.
          */
         public T contentType(ContentType contentType) {
             this.properties.put("contentType", contentType);
@@ -115,7 +117,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Bulk API content type, one of XML, CSV, ZIP_XML, ZIP_CSV. The option
          * will be converted to a
-         * org.apache.camel.component.salesforce.api.dto.bulk.ContentType type.
+         * <code>org.apache.camel.component.salesforce.api.dto.bulk.ContentType</code> type.
          */
         public T contentType(String contentType) {
             this.properties.put("contentType", contentType);
@@ -123,7 +125,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Default replayId setting if no value is found in initialReplayIdMap.
-         * The option is a java.lang.Long type.
+         * The option is a <code>java.lang.Long</code> type.
          */
         public T defaultReplayId(Long defaultReplayId) {
             this.properties.put("defaultReplayId", defaultReplayId);
@@ -131,7 +133,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Default replayId setting if no value is found in initialReplayIdMap.
-         * The option will be converted to a java.lang.Long type.
+         * The option will be converted to a <code>java.lang.Long</code> type.
          */
         public T defaultReplayId(String defaultReplayId) {
             this.properties.put("defaultReplayId", defaultReplayId);
@@ -140,7 +142,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Payload format to use for Salesforce API calls, either JSON or XML,
          * defaults to JSON. The option is a
-         * org.apache.camel.component.salesforce.internal.PayloadFormat type.
+         * <code>org.apache.camel.component.salesforce.internal.PayloadFormat</code> type.
          */
         public T format(PayloadFormat format) {
             this.properties.put("format", format);
@@ -149,7 +151,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Payload format to use for Salesforce API calls, either JSON or XML,
          * defaults to JSON. The option will be converted to a
-         * org.apache.camel.component.salesforce.internal.PayloadFormat type.
+         * <code>org.apache.camel.component.salesforce.internal.PayloadFormat</code> type.
          */
         public T format(String format) {
             this.properties.put("format", format);
@@ -157,7 +159,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Custom Jetty Http Client to use to connect to Salesforce. The option
-         * is a org.apache.camel.component.salesforce.SalesforceHttpClient type.
+         * is a
+         * <code>org.apache.camel.component.salesforce.SalesforceHttpClient</code> type.
          */
         public T httpClient(Object httpClient) {
             this.properties.put("httpClient", httpClient);
@@ -166,7 +169,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Custom Jetty Http Client to use to connect to Salesforce. The option
          * will be converted to a
-         * org.apache.camel.component.salesforce.SalesforceHttpClient type.
+         * <code>org.apache.camel.component.salesforce.SalesforceHttpClient</code> type.
          */
         public T httpClient(String httpClient) {
             this.properties.put("httpClient", httpClient);
@@ -174,7 +177,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Include details in Salesforce1 Analytics report, defaults to false.
-         * The option is a java.lang.Boolean type.
+         * The option is a <code>java.lang.Boolean</code> type.
          */
         public T includeDetails(Boolean includeDetails) {
             this.properties.put("includeDetails", includeDetails);
@@ -182,7 +185,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Include details in Salesforce1 Analytics report, defaults to false.
-         * The option will be converted to a java.lang.Boolean type.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
          */
         public T includeDetails(String includeDetails) {
             this.properties.put("includeDetails", includeDetails);
@@ -190,7 +194,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Replay IDs to start from per channel name. The option is a
-         * java.util.Map<java.lang.String,java.lang.Long> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Long></code> type.
          */
         public T initialReplayIdMap(Map<String, Long> initialReplayIdMap) {
             this.properties.put("initialReplayIdMap", initialReplayIdMap);
@@ -198,7 +202,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Replay IDs to start from per channel name. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Long> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Long></code> type.
          */
         public T initialReplayIdMap(String initialReplayIdMap) {
             this.properties.put("initialReplayIdMap", initialReplayIdMap);
@@ -206,14 +211,14 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Salesforce1 Analytics report execution instance ID. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T instanceId(String instanceId) {
             this.properties.put("instanceId", instanceId);
             return (T) this;
         }
         /**
-         * Bulk API Job ID. The option is a java.lang.String type.
+         * Bulk API Job ID. The option is a <code>java.lang.String</code> type.
          */
         public T jobId(String jobId) {
             this.properties.put("jobId", jobId);
@@ -221,8 +226,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Limit on number of returned records. Applicable to some of the API,
-         * check the Salesforce documentation. The option is a java.lang.Integer
-         * type.
+         * check the Salesforce documentation. The option is a
+         * <code>java.lang.Integer</code> type.
          */
         public T limit(Integer limit) {
             this.properties.put("limit", limit);
@@ -231,7 +236,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Limit on number of returned records. Applicable to some of the API,
          * check the Salesforce documentation. The option will be converted to a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T limit(String limit) {
             this.properties.put("limit", limit);
@@ -239,7 +244,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Maximum backoff interval for Streaming connection restart attempts
-         * for failures beyond CometD auto-reconnect. The option is a long type.
+         * for failures beyond CometD auto-reconnect. The option is a
+         * <code>long</code> type.
          */
         public T maxBackoff(long maxBackoff) {
             this.properties.put("maxBackoff", maxBackoff);
@@ -248,7 +254,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Maximum backoff interval for Streaming connection restart attempts
          * for failures beyond CometD auto-reconnect. The option will be
-         * converted to a long type.
+         * converted to a <code>long</code> type.
          */
         public T maxBackoff(String maxBackoff) {
             this.properties.put("maxBackoff", maxBackoff);
@@ -259,7 +265,8 @@ public interface SalesforceEndpointBuilder {
          * API. Should the body be set to NULL NotFoundBehaviour#NULL or should
          * a exception be signaled on the exchange NotFoundBehaviour#EXCEPTION -
          * the default. The option is a
-         * org.apache.camel.component.salesforce.NotFoundBehaviour type.
+         * <code>org.apache.camel.component.salesforce.NotFoundBehaviour</code>
+         * type.
          */
         public T notFoundBehaviour(NotFoundBehaviour notFoundBehaviour) {
             this.properties.put("notFoundBehaviour", notFoundBehaviour);
@@ -270,7 +277,8 @@ public interface SalesforceEndpointBuilder {
          * API. Should the body be set to NULL NotFoundBehaviour#NULL or should
          * a exception be signaled on the exchange NotFoundBehaviour#EXCEPTION -
          * the default. The option will be converted to a
-         * org.apache.camel.component.salesforce.NotFoundBehaviour type.
+         * <code>org.apache.camel.component.salesforce.NotFoundBehaviour</code>
+         * type.
          */
         public T notFoundBehaviour(String notFoundBehaviour) {
             this.properties.put("notFoundBehaviour", notFoundBehaviour);
@@ -279,7 +287,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Notify for fields, options are ALL, REFERENCED, SELECT, WHERE. The
          * option is a
-         * org.apache.camel.component.salesforce.internal.dto.NotifyForFieldsEnum type.
+         * <code>org.apache.camel.component.salesforce.internal.dto.NotifyForFieldsEnum</code> type.
          */
         public T notifyForFields(NotifyForFieldsEnum notifyForFields) {
             this.properties.put("notifyForFields", notifyForFields);
@@ -288,7 +296,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Notify for fields, options are ALL, REFERENCED, SELECT, WHERE. The
          * option will be converted to a
-         * org.apache.camel.component.salesforce.internal.dto.NotifyForFieldsEnum type.
+         * <code>org.apache.camel.component.salesforce.internal.dto.NotifyForFieldsEnum</code> type.
          */
         public T notifyForFields(String notifyForFields) {
             this.properties.put("notifyForFields", notifyForFields);
@@ -296,7 +304,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Notify for create operation, defaults to false (API version = 29.0).
-         * The option is a java.lang.Boolean type.
+         * The option is a <code>java.lang.Boolean</code> type.
          */
         public T notifyForOperationCreate(Boolean notifyForOperationCreate) {
             this.properties.put("notifyForOperationCreate", notifyForOperationCreate);
@@ -304,7 +312,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Notify for create operation, defaults to false (API version = 29.0).
-         * The option will be converted to a java.lang.Boolean type.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
          */
         public T notifyForOperationCreate(String notifyForOperationCreate) {
             this.properties.put("notifyForOperationCreate", notifyForOperationCreate);
@@ -312,7 +321,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Notify for delete operation, defaults to false (API version = 29.0).
-         * The option is a java.lang.Boolean type.
+         * The option is a <code>java.lang.Boolean</code> type.
          */
         public T notifyForOperationDelete(Boolean notifyForOperationDelete) {
             this.properties.put("notifyForOperationDelete", notifyForOperationDelete);
@@ -320,7 +329,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Notify for delete operation, defaults to false (API version = 29.0).
-         * The option will be converted to a java.lang.Boolean type.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
          */
         public T notifyForOperationDelete(String notifyForOperationDelete) {
             this.properties.put("notifyForOperationDelete", notifyForOperationDelete);
@@ -329,7 +339,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Notify for operations, options are ALL, CREATE, EXTENDED, UPDATE (API
          * version 29.0). The option is a
-         * org.apache.camel.component.salesforce.internal.dto.NotifyForOperationsEnum type.
+         * <code>org.apache.camel.component.salesforce.internal.dto.NotifyForOperationsEnum</code> type.
          */
         public T notifyForOperations(NotifyForOperationsEnum notifyForOperations) {
             this.properties.put("notifyForOperations", notifyForOperations);
@@ -338,7 +348,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Notify for operations, options are ALL, CREATE, EXTENDED, UPDATE (API
          * version 29.0). The option will be converted to a
-         * org.apache.camel.component.salesforce.internal.dto.NotifyForOperationsEnum type.
+         * <code>org.apache.camel.component.salesforce.internal.dto.NotifyForOperationsEnum</code> type.
          */
         public T notifyForOperations(String notifyForOperations) {
             this.properties.put("notifyForOperations", notifyForOperations);
@@ -346,7 +356,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Notify for un-delete operation, defaults to false (API version =
-         * 29.0). The option is a java.lang.Boolean type.
+         * 29.0). The option is a <code>java.lang.Boolean</code> type.
          */
         public T notifyForOperationUndelete(Boolean notifyForOperationUndelete) {
             this.properties.put("notifyForOperationUndelete", notifyForOperationUndelete);
@@ -354,7 +364,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Notify for un-delete operation, defaults to false (API version =
-         * 29.0). The option will be converted to a java.lang.Boolean type.
+         * 29.0). The option will be converted to a
+         * <code>java.lang.Boolean</code> type.
          */
         public T notifyForOperationUndelete(String notifyForOperationUndelete) {
             this.properties.put("notifyForOperationUndelete", notifyForOperationUndelete);
@@ -362,7 +373,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Notify for update operation, defaults to false (API version = 29.0).
-         * The option is a java.lang.Boolean type.
+         * The option is a <code>java.lang.Boolean</code> type.
          */
         public T notifyForOperationUpdate(Boolean notifyForOperationUpdate) {
             this.properties.put("notifyForOperationUpdate", notifyForOperationUpdate);
@@ -370,7 +381,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Notify for update operation, defaults to false (API version = 29.0).
-         * The option will be converted to a java.lang.Boolean type.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
          */
         public T notifyForOperationUpdate(String notifyForOperationUpdate) {
             this.properties.put("notifyForOperationUpdate", notifyForOperationUpdate);
@@ -379,7 +391,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Custom Jackson ObjectMapper to use when serializing/deserializing
          * Salesforce objects. The option is a
-         * com.fasterxml.jackson.databind.ObjectMapper type.
+         * <code>com.fasterxml.jackson.databind.ObjectMapper</code> type.
          */
         public T objectMapper(Object objectMapper) {
             this.properties.put("objectMapper", objectMapper);
@@ -388,7 +400,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Custom Jackson ObjectMapper to use when serializing/deserializing
          * Salesforce objects. The option will be converted to a
-         * com.fasterxml.jackson.databind.ObjectMapper type.
+         * <code>com.fasterxml.jackson.databind.ObjectMapper</code> type.
          */
         public T objectMapper(String objectMapper) {
             this.properties.put("objectMapper", objectMapper);
@@ -397,7 +409,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Use raw payload String for request and response (either JSON or XML
          * depending on format), instead of DTOs, false by default. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T rawPayload(boolean rawPayload) {
             this.properties.put("rawPayload", rawPayload);
@@ -406,15 +418,15 @@ public interface SalesforceEndpointBuilder {
         /**
          * Use raw payload String for request and response (either JSON or XML
          * depending on format), instead of DTOs, false by default. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T rawPayload(String rawPayload) {
             this.properties.put("rawPayload", rawPayload);
             return (T) this;
         }
         /**
-         * Salesforce1 Analytics report Id. The option is a java.lang.String
-         * type.
+         * Salesforce1 Analytics report Id. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T reportId(String reportId) {
             this.properties.put("reportId", reportId);
@@ -422,7 +434,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Salesforce1 Analytics report metadata for filtering. The option is a
-         * org.apache.camel.component.salesforce.api.dto.analytics.reports.ReportMetadata type.
+         * <code>org.apache.camel.component.salesforce.api.dto.analytics.reports.ReportMetadata</code> type.
          */
         public T reportMetadata(Object reportMetadata) {
             this.properties.put("reportMetadata", reportMetadata);
@@ -431,14 +443,15 @@ public interface SalesforceEndpointBuilder {
         /**
          * Salesforce1 Analytics report metadata for filtering. The option will
          * be converted to a
-         * org.apache.camel.component.salesforce.api.dto.analytics.reports.ReportMetadata type.
+         * <code>org.apache.camel.component.salesforce.api.dto.analytics.reports.ReportMetadata</code> type.
          */
         public T reportMetadata(String reportMetadata) {
             this.properties.put("reportMetadata", reportMetadata);
             return (T) this;
         }
         /**
-         * Bulk API Result ID. The option is a java.lang.String type.
+         * Bulk API Result ID. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T resultId(String resultId) {
             this.properties.put("resultId", resultId);
@@ -446,8 +459,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Should the NULL values of given DTO be serialized with empty (NULL)
-         * values. This affects only JSON data format. The option is a boolean
-         * type.
+         * values. This affects only JSON data format. The option is a
+         * <code>boolean</code> type.
          */
         public T serializeNulls(boolean serializeNulls) {
             this.properties.put("serializeNulls", serializeNulls);
@@ -456,14 +469,15 @@ public interface SalesforceEndpointBuilder {
         /**
          * Should the NULL values of given DTO be serialized with empty (NULL)
          * values. This affects only JSON data format. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public T serializeNulls(String serializeNulls) {
             this.properties.put("serializeNulls", serializeNulls);
             return (T) this;
         }
         /**
-         * SObject blob field name. The option is a java.lang.String type.
+         * SObject blob field name. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T sObjectBlobFieldName(String sObjectBlobFieldName) {
             this.properties.put("sObjectBlobFieldName", sObjectBlobFieldName);
@@ -471,37 +485,40 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Fully qualified SObject class name, usually generated using
-         * camel-salesforce-maven-plugin. The option is a java.lang.String type.
+         * camel-salesforce-maven-plugin. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T sObjectClass(String sObjectClass) {
             this.properties.put("sObjectClass", sObjectClass);
             return (T) this;
         }
         /**
-         * SObject fields to retrieve. The option is a java.lang.String type.
+         * SObject fields to retrieve. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T sObjectFields(String sObjectFields) {
             this.properties.put("sObjectFields", sObjectFields);
             return (T) this;
         }
         /**
-         * SObject ID if required by API. The option is a java.lang.String type.
+         * SObject ID if required by API. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T sObjectId(String sObjectId) {
             this.properties.put("sObjectId", sObjectId);
             return (T) this;
         }
         /**
-         * SObject external ID field name. The option is a java.lang.String
-         * type.
+         * SObject external ID field name. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T sObjectIdName(String sObjectIdName) {
             this.properties.put("sObjectIdName", sObjectIdName);
             return (T) this;
         }
         /**
-         * SObject external ID field value. The option is a java.lang.String
-         * type.
+         * SObject external ID field value. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T sObjectIdValue(String sObjectIdValue) {
             this.properties.put("sObjectIdValue", sObjectIdValue);
@@ -509,21 +526,23 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * SObject name if required or supported by API. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T sObjectName(String sObjectName) {
             this.properties.put("sObjectName", sObjectName);
             return (T) this;
         }
         /**
-         * Salesforce SOQL query string. The option is a java.lang.String type.
+         * Salesforce SOQL query string. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T sObjectQuery(String sObjectQuery) {
             this.properties.put("sObjectQuery", sObjectQuery);
             return (T) this;
         }
         /**
-         * Salesforce SOSL search string. The option is a java.lang.String type.
+         * Salesforce SOSL search string. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T sObjectSearch(String sObjectSearch) {
             this.properties.put("sObjectSearch", sObjectSearch);
@@ -531,7 +550,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Whether to update an existing Push Topic when using the Streaming
-         * API, defaults to false. The option is a boolean type.
+         * API, defaults to false. The option is a <code>boolean</code> type.
          */
         public T updateTopic(boolean updateTopic) {
             this.properties.put("updateTopic", updateTopic);
@@ -539,8 +558,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Whether to update an existing Push Topic when using the Streaming
-         * API, defaults to false. The option will be converted to a boolean
-         * type.
+         * API, defaults to false. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public T updateTopic(String updateTopic) {
             this.properties.put("updateTopic", updateTopic);
@@ -549,7 +568,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -558,7 +577,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -567,7 +586,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -576,7 +595,7 @@ public interface SalesforceEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -594,7 +613,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * The name of the topic/channel to use. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public SalesforceConsumerBuilder topicName(String topicName) {
             this.properties.put("topicName", topicName);
@@ -607,7 +626,7 @@ public interface SalesforceEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public SalesforceConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -621,7 +640,7 @@ public interface SalesforceEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public SalesforceConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -630,7 +649,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * The replayId value to use when subscribing. The option is a
-         * java.lang.Long type.
+         * <code>java.lang.Long</code> type.
          */
         public SalesforceConsumerBuilder replayId(Long replayId) {
             this.properties.put("replayId", replayId);
@@ -638,7 +657,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * The replayId value to use when subscribing. The option will be
-         * converted to a java.lang.Long type.
+         * converted to a <code>java.lang.Long</code> type.
          */
         public SalesforceConsumerBuilder replayId(String replayId) {
             this.properties.put("replayId", replayId);
@@ -649,7 +668,7 @@ public interface SalesforceEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public SalesforceConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -661,7 +680,8 @@ public interface SalesforceEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public SalesforceConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -670,7 +690,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public SalesforceConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -679,7 +699,8 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public SalesforceConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -697,7 +718,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * The operation to use. The option is a
-         * org.apache.camel.component.salesforce.internal.OperationName type.
+         * <code>org.apache.camel.component.salesforce.internal.OperationName</code> type.
          */
         public SalesforceProducerBuilder operationName(
                 OperationName operationName) {
@@ -706,7 +727,7 @@ public interface SalesforceEndpointBuilder {
         }
         /**
          * The operation to use. The option will be converted to a
-         * org.apache.camel.component.salesforce.internal.OperationName type.
+         * <code>org.apache.camel.component.salesforce.internal.OperationName</code> type.
          */
         public SalesforceProducerBuilder operationName(String operationName) {
             this.properties.put("operationName", operationName);
@@ -715,7 +736,7 @@ public interface SalesforceEndpointBuilder {
     }
 
     public static enum OperationName {
-        getVersions, getResources, getGlobalObjects, getBasicInfo, getDescription, getSObject, createSObject, updateSObject, deleteSObject, getSObjectWithId, upsertSObject, deleteSObjectWithId, getBlobField, query, queryMore, queryAll, search, apexCall, recent, createJob, getJob, closeJob, abortJob, createBatch, getBatch, getAllBatches, getRequest, getResults, createBatchQuery, getQueryResultIds, getQueryResult, getRecentReports, getReportDescription, executeSyncReport, executeAsyncReport, getReportInstances, getReportResults, limits, approval, approvals, composite_tree, composite_batch, composite;
+        GET_VERSIONS, GET_RESOURCES, GET_GLOBAL_OBJECTS, GET_BASIC_INFO, GET_DESCRIPTION, GET_SOBJECT, CREATE_SOBJECT, UPDATE_SOBJECT, DELETE_SOBJECT, GET_SOBJECT_WITH_ID, UPSERT_SOBJECT, DELETE_SOBJECT_WITH_ID, GET_BLOB_FIELD, QUERY, QUERY_MORE, QUERY_ALL, SEARCH, APEX_CALL, RECENT, CREATE_JOB, GET_JOB, CLOSE_JOB, ABORT_JOB, CREATE_BATCH, GET_BATCH, GET_ALL_BATCHES, GET_REQUEST, GET_RESULTS, CREATE_BATCH_QUERY, GET_QUERY_RESULT_IDS, GET_QUERY_RESULT, GET_RECENT_REPORTS, GET_REPORT_DESCRIPTION, EXECUTE_SYNCREPORT, EXECUTE_ASYNCREPORT, GET_REPORT_INSTANCES, GET_REPORT_RESULTS, LIMITS, APPROVAL, APPROVALS, COMPOSITE_TREE, COMPOSITE_BATCH, COMPOSITE;
     }
 
     public static enum ContentType {

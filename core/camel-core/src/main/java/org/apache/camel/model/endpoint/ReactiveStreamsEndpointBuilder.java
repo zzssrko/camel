@@ -40,7 +40,7 @@ public interface ReactiveStreamsEndpointBuilder {
         }
         /**
          * Name of the stream channel used by the endpoint to exchange messages.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T stream(String stream) {
             this.properties.put("stream", stream);
@@ -49,7 +49,7 @@ public interface ReactiveStreamsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -58,7 +58,7 @@ public interface ReactiveStreamsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -67,7 +67,7 @@ public interface ReactiveStreamsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -76,7 +76,7 @@ public interface ReactiveStreamsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -99,7 +99,7 @@ public interface ReactiveStreamsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public ReactiveStreamsConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -113,7 +113,7 @@ public interface ReactiveStreamsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public ReactiveStreamsConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -122,7 +122,7 @@ public interface ReactiveStreamsEndpointBuilder {
         }
         /**
          * Number of threads used to process exchanges in the Camel route. The
-         * option is a int type.
+         * option is a <code>int</code> type.
          */
         public ReactiveStreamsConsumerBuilder concurrentConsumers(
                 int concurrentConsumers) {
@@ -131,7 +131,7 @@ public interface ReactiveStreamsEndpointBuilder {
         }
         /**
          * Number of threads used to process exchanges in the Camel route. The
-         * option will be converted to a int type.
+         * option will be converted to a <code>int</code> type.
          */
         public ReactiveStreamsConsumerBuilder concurrentConsumers(
                 String concurrentConsumers) {
@@ -147,7 +147,7 @@ public interface ReactiveStreamsEndpointBuilder {
          * maxInflightExchanges, only after all items of the previous batch have
          * been processed. If set to 1, the subscriber can request a new item
          * each time an exchange is processed (chatty). Any intermediate value
-         * can be used. The option is a double type.
+         * can be used. The option is a <code>double</code> type.
          */
         public ReactiveStreamsConsumerBuilder exchangesRefillLowWatermark(
                 double exchangesRefillLowWatermark) {
@@ -163,7 +163,8 @@ public interface ReactiveStreamsEndpointBuilder {
          * maxInflightExchanges, only after all items of the previous batch have
          * been processed. If set to 1, the subscriber can request a new item
          * each time an exchange is processed (chatty). Any intermediate value
-         * can be used. The option will be converted to a double type.
+         * can be used. The option will be converted to a <code>double</code>
+         * type.
          */
         public ReactiveStreamsConsumerBuilder exchangesRefillLowWatermark(
                 String exchangesRefillLowWatermark) {
@@ -172,7 +173,7 @@ public interface ReactiveStreamsEndpointBuilder {
         }
         /**
          * Determines if onComplete events should be pushed to the Camel route.
-         * The option is a boolean type.
+         * The option is a <code>boolean</code> type.
          */
         public ReactiveStreamsConsumerBuilder forwardOnComplete(
                 boolean forwardOnComplete) {
@@ -181,7 +182,7 @@ public interface ReactiveStreamsEndpointBuilder {
         }
         /**
          * Determines if onComplete events should be pushed to the Camel route.
-         * The option will be converted to a boolean type.
+         * The option will be converted to a <code>boolean</code> type.
          */
         public ReactiveStreamsConsumerBuilder forwardOnComplete(
                 String forwardOnComplete) {
@@ -190,7 +191,8 @@ public interface ReactiveStreamsEndpointBuilder {
         }
         /**
          * Determines if onError events should be pushed to the Camel route.
-         * Exceptions will be set as message body. The option is a boolean type.
+         * Exceptions will be set as message body. The option is a
+         * <code>boolean</code> type.
          */
         public ReactiveStreamsConsumerBuilder forwardOnError(
                 boolean forwardOnError) {
@@ -200,7 +202,7 @@ public interface ReactiveStreamsEndpointBuilder {
         /**
          * Determines if onError events should be pushed to the Camel route.
          * Exceptions will be set as message body. The option will be converted
-         * to a boolean type.
+         * to a <code>boolean</code> type.
          */
         public ReactiveStreamsConsumerBuilder forwardOnError(
                 String forwardOnError) {
@@ -211,7 +213,7 @@ public interface ReactiveStreamsEndpointBuilder {
          * Maximum number of exchanges concurrently being processed by Camel.
          * This parameter controls backpressure on the stream. Setting a
          * non-positive value will disable backpressure. The option is a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public ReactiveStreamsConsumerBuilder maxInflightExchanges(
                 Integer maxInflightExchanges) {
@@ -222,7 +224,7 @@ public interface ReactiveStreamsEndpointBuilder {
          * Maximum number of exchanges concurrently being processed by Camel.
          * This parameter controls backpressure on the stream. Setting a
          * non-positive value will disable backpressure. The option will be
-         * converted to a java.lang.Integer type.
+         * converted to a <code>java.lang.Integer</code> type.
          */
         public ReactiveStreamsConsumerBuilder maxInflightExchanges(
                 String maxInflightExchanges) {
@@ -234,7 +236,7 @@ public interface ReactiveStreamsEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public ReactiveStreamsConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -246,7 +248,8 @@ public interface ReactiveStreamsEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public ReactiveStreamsConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -255,7 +258,7 @@ public interface ReactiveStreamsEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public ReactiveStreamsConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -264,7 +267,8 @@ public interface ReactiveStreamsEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public ReactiveStreamsConsumerBuilder exchangePattern(
                 String exchangePattern) {
@@ -284,7 +288,7 @@ public interface ReactiveStreamsEndpointBuilder {
         /**
          * The backpressure strategy to use when pushing events to a slow
          * subscriber. The option is a
-         * org.apache.camel.component.reactive.streams.ReactiveStreamsBackpressureStrategy type.
+         * <code>org.apache.camel.component.reactive.streams.ReactiveStreamsBackpressureStrategy</code> type.
          */
         public ReactiveStreamsProducerBuilder backpressureStrategy(
                 ReactiveStreamsBackpressureStrategy backpressureStrategy) {
@@ -294,7 +298,7 @@ public interface ReactiveStreamsEndpointBuilder {
         /**
          * The backpressure strategy to use when pushing events to a slow
          * subscriber. The option will be converted to a
-         * org.apache.camel.component.reactive.streams.ReactiveStreamsBackpressureStrategy type.
+         * <code>org.apache.camel.component.reactive.streams.ReactiveStreamsBackpressureStrategy</code> type.
          */
         public ReactiveStreamsProducerBuilder backpressureStrategy(
                 String backpressureStrategy) {

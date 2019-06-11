@@ -40,8 +40,7 @@ public interface GoogleSheetsEndpointBuilder {
         }
         /**
          * What kind of operation to perform. The option is a
-         * org.apache.camel.component.google.sheets.internal.GoogleSheetsApiName
-         * type.
+         * <code>org.apache.camel.component.google.sheets.internal.GoogleSheetsApiName</code> type.
          */
         public T apiName(GoogleSheetsApiName apiName) {
             this.properties.put("apiName", apiName);
@@ -49,8 +48,7 @@ public interface GoogleSheetsEndpointBuilder {
         }
         /**
          * What kind of operation to perform. The option will be converted to a
-         * org.apache.camel.component.google.sheets.internal.GoogleSheetsApiName
-         * type.
+         * <code>org.apache.camel.component.google.sheets.internal.GoogleSheetsApiName</code> type.
          */
         public T apiName(String apiName) {
             this.properties.put("apiName", apiName);
@@ -58,7 +56,7 @@ public interface GoogleSheetsEndpointBuilder {
         }
         /**
          * What sub operation to use for the selected operation. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T methodName(String methodName) {
             this.properties.put("methodName", methodName);
@@ -67,7 +65,7 @@ public interface GoogleSheetsEndpointBuilder {
         /**
          * OAuth 2 access token. This typically expires after an hour so
          * refreshToken is recommended for long term usage. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T accessToken(String accessToken) {
             this.properties.put("accessToken", accessToken);
@@ -75,15 +73,16 @@ public interface GoogleSheetsEndpointBuilder {
         }
         /**
          * Google Sheets application name. Example would be
-         * camel-google-sheets/1.0. The option is a java.lang.String type.
+         * camel-google-sheets/1.0. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T applicationName(String applicationName) {
             this.properties.put("applicationName", applicationName);
             return (T) this;
         }
         /**
-         * Client ID of the sheets application. The option is a java.lang.String
-         * type.
+         * Client ID of the sheets application. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T clientId(String clientId) {
             this.properties.put("clientId", clientId);
@@ -91,7 +90,7 @@ public interface GoogleSheetsEndpointBuilder {
         }
         /**
          * Client secret of the sheets application. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T clientSecret(String clientSecret) {
             this.properties.put("clientSecret", clientSecret);
@@ -99,7 +98,7 @@ public interface GoogleSheetsEndpointBuilder {
         }
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
-         * The option is a java.lang.String type.
+         * The option is a <code>java.lang.String</code> type.
          */
         public T inBody(String inBody) {
             this.properties.put("inBody", inBody);
@@ -109,7 +108,7 @@ public interface GoogleSheetsEndpointBuilder {
          * OAuth 2 refresh token. Using this, the Google Sheets component can
          * obtain a new accessToken whenever the current one expires - a
          * necessity if the application is long-lived. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T refreshToken(String refreshToken) {
             this.properties.put("refreshToken", refreshToken);
@@ -118,7 +117,7 @@ public interface GoogleSheetsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -127,7 +126,7 @@ public interface GoogleSheetsEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -136,7 +135,7 @@ public interface GoogleSheetsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -145,7 +144,7 @@ public interface GoogleSheetsEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -168,7 +167,7 @@ public interface GoogleSheetsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public GoogleSheetsConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -182,7 +181,7 @@ public interface GoogleSheetsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public GoogleSheetsConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -194,7 +193,7 @@ public interface GoogleSheetsEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public GoogleSheetsConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -206,7 +205,8 @@ public interface GoogleSheetsEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public GoogleSheetsConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -215,7 +215,7 @@ public interface GoogleSheetsEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GoogleSheetsConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -224,7 +224,8 @@ public interface GoogleSheetsEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public GoogleSheetsConsumerBuilder exchangePattern(
                 String exchangePattern) {

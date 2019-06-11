@@ -51,7 +51,8 @@ public interface FileEndpointBuilder {
             super("file", path);
         }
         /**
-         * The starting directory. The option is a java.io.File type.
+         * The starting directory. The option is a <code>java.io.File</code>
+         * type.
          */
         public T directoryName(File directoryName) {
             this.properties.put("directoryName", directoryName);
@@ -59,7 +60,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * The starting directory. The option will be converted to a
-         * java.io.File type.
+         * <code>java.io.File</code> type.
          */
         public T directoryName(String directoryName) {
             this.properties.put("directoryName", directoryName);
@@ -74,7 +75,7 @@ public interface FileEndpointBuilder {
          * file as well. Do mind that when writing the file Camel may have to
          * read the message content into memory to be able to convert the data
          * into the configured charset, so do not use this if you have big
-         * messages. The option is a java.lang.String type.
+         * messages. The option is a <code>java.lang.String</code> type.
          */
         public T charset(String charset) {
             this.properties.put("charset", charset);
@@ -91,7 +92,7 @@ public interface FileEndpointBuilder {
          * a fixed name. Or you can use dynamic placeholders.The done file is
          * always expected in the same folder as the original file. Only
          * ${file.name} and ${file.name.noext} is supported as dynamic
-         * placeholders. The option is a java.lang.String type.
+         * placeholders. The option is a <code>java.lang.String</code> type.
          */
         public T doneFileName(String doneFileName) {
             this.properties.put("doneFileName", doneFileName);
@@ -114,7 +115,7 @@ public interface FileEndpointBuilder {
          * CamelFileName header; the CamelOverruleFileName is a header that is
          * used only once, and makes it easier as this avoids to temporary store
          * CamelFileName and have to restore it afterwards. The option is a
-         * java.lang.String type.
+         * <code>org.apache.camel.Expression</code> type.
          */
         public T fileName(Expression fileName) {
             this.properties.put("fileName", fileName);
@@ -137,7 +138,7 @@ public interface FileEndpointBuilder {
          * CamelFileName header; the CamelOverruleFileName is a header that is
          * used only once, and makes it easier as this avoids to temporary store
          * CamelFileName and have to restore it afterwards. The option will be
-         * converted to a java.lang.String type.
+         * converted to a <code>org.apache.camel.Expression</code> type.
          */
         public T fileName(String fileName) {
             this.properties.put("fileName", fileName);
@@ -147,7 +148,7 @@ public interface FileEndpointBuilder {
          * Automatically create missing directories in the file's pathname. For
          * the file consumer, that means creating the starting directory. For
          * the file producer, it means the directory the files should be written
-         * to. The option is a boolean type.
+         * to. The option is a <code>boolean</code> type.
          */
         public T autoCreate(boolean autoCreate) {
             this.properties.put("autoCreate", autoCreate);
@@ -157,7 +158,7 @@ public interface FileEndpointBuilder {
          * Automatically create missing directories in the file's pathname. For
          * the file consumer, that means creating the starting directory. For
          * the file producer, it means the directory the files should be written
-         * to. The option will be converted to a boolean type.
+         * to. The option will be converted to a <code>boolean</code> type.
          */
         public T autoCreate(String autoCreate) {
             this.properties.put("autoCreate", autoCreate);
@@ -166,7 +167,7 @@ public interface FileEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -175,22 +176,22 @@ public interface FileEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
         /**
-         * Write buffer sized in bytes. The option is a int type.
+         * Write buffer sized in bytes. The option is a <code>int</code> type.
          */
         public T bufferSize(int bufferSize) {
             this.properties.put("bufferSize", bufferSize);
             return (T) this;
         }
         /**
-         * Write buffer sized in bytes. The option will be converted to a int
-         * type.
+         * Write buffer sized in bytes. The option will be converted to a
+         * <code>int</code> type.
          */
         public T bufferSize(String bufferSize) {
             this.properties.put("bufferSize", bufferSize);
@@ -199,7 +200,7 @@ public interface FileEndpointBuilder {
         /**
          * Whether to fallback and do a copy and delete file, in case the file
          * could not be renamed directly. This option is not available for the
-         * FTP component. The option is a boolean type.
+         * FTP component. The option is a <code>boolean</code> type.
          */
         public T copyAndDeleteOnRenameFail(boolean copyAndDeleteOnRenameFail) {
             this.properties.put("copyAndDeleteOnRenameFail", copyAndDeleteOnRenameFail);
@@ -208,7 +209,8 @@ public interface FileEndpointBuilder {
         /**
          * Whether to fallback and do a copy and delete file, in case the file
          * could not be renamed directly. This option is not available for the
-         * FTP component. The option will be converted to a boolean type.
+         * FTP component. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public T copyAndDeleteOnRenameFail(String copyAndDeleteOnRenameFail) {
             this.properties.put("copyAndDeleteOnRenameFail", copyAndDeleteOnRenameFail);
@@ -220,7 +222,8 @@ public interface FileEndpointBuilder {
          * unreliable (e.g. across different file systems or networks). This
          * option takes precedence over the copyAndDeleteOnRenameFail parameter
          * that will automatically fall back to the copy and delete strategy,
-         * but only after additional delays. The option is a boolean type.
+         * but only after additional delays. The option is a
+         * <code>boolean</code> type.
          */
         public T renameUsingCopy(boolean renameUsingCopy) {
             this.properties.put("renameUsingCopy", renameUsingCopy);
@@ -233,7 +236,7 @@ public interface FileEndpointBuilder {
          * option takes precedence over the copyAndDeleteOnRenameFail parameter
          * that will automatically fall back to the copy and delete strategy,
          * but only after additional delays. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T renameUsingCopy(String renameUsingCopy) {
             this.properties.put("renameUsingCopy", renameUsingCopy);
@@ -242,7 +245,7 @@ public interface FileEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -251,7 +254,7 @@ public interface FileEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -274,7 +277,7 @@ public interface FileEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public FileConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -287,7 +290,7 @@ public interface FileEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -295,7 +298,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * If true, the file will be deleted after it is processed successfully.
-         * The option is a boolean type.
+         * The option is a <code>boolean</code> type.
          */
         public FileConsumerBuilder delete(boolean delete) {
             this.properties.put("delete", delete);
@@ -303,7 +306,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * If true, the file will be deleted after it is processed successfully.
-         * The option will be converted to a boolean type.
+         * The option will be converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder delete(String delete) {
             this.properties.put("delete", delete);
@@ -314,7 +317,7 @@ public interface FileEndpointBuilder {
          * example, to move files into a .error subdirectory use: .error. Note:
          * When moving the files to the fail location Camel will handle the
          * error and will not pick up the file again. The option is a
-         * java.lang.String type.
+         * <code>org.apache.camel.Expression</code> type.
          */
         public FileConsumerBuilder moveFailed(Expression moveFailed) {
             this.properties.put("moveFailed", moveFailed);
@@ -325,7 +328,7 @@ public interface FileEndpointBuilder {
          * example, to move files into a .error subdirectory use: .error. Note:
          * When moving the files to the fail location Camel will handle the
          * error and will not pick up the file again. The option will be
-         * converted to a java.lang.String type.
+         * converted to a <code>org.apache.camel.Expression</code> type.
          */
         public FileConsumerBuilder moveFailed(String moveFailed) {
             this.properties.put("moveFailed", moveFailed);
@@ -335,7 +338,7 @@ public interface FileEndpointBuilder {
          * If true, the file is not moved or deleted in any way. This option is
          * good for readonly data, or for ETL type requirements. If noop=true,
          * Camel will set idempotent=true as well, to avoid consuming the same
-         * files over and over again. The option is a boolean type.
+         * files over and over again. The option is a <code>boolean</code> type.
          */
         public FileConsumerBuilder noop(boolean noop) {
             this.properties.put("noop", noop);
@@ -345,8 +348,8 @@ public interface FileEndpointBuilder {
          * If true, the file is not moved or deleted in any way. This option is
          * good for readonly data, or for ETL type requirements. If noop=true,
          * Camel will set idempotent=true as well, to avoid consuming the same
-         * files over and over again. The option will be converted to a boolean
-         * type.
+         * files over and over again. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder noop(String noop) {
             this.properties.put("noop", noop);
@@ -356,7 +359,7 @@ public interface FileEndpointBuilder {
          * Expression (such as File Language) used to dynamically set the
          * filename when moving it before processing. For example to move
          * in-progress files into the order directory set this value to order.
-         * The option is a java.lang.String type.
+         * The option is a <code>org.apache.camel.Expression</code> type.
          */
         public FileConsumerBuilder preMove(Expression preMove) {
             this.properties.put("preMove", preMove);
@@ -366,7 +369,8 @@ public interface FileEndpointBuilder {
          * Expression (such as File Language) used to dynamically set the
          * filename when moving it before processing. For example to move
          * in-progress files into the order directory set this value to order.
-         * The option will be converted to a java.lang.String type.
+         * The option will be converted to a
+         * <code>org.apache.camel.Expression</code> type.
          */
         public FileConsumerBuilder preMove(String preMove) {
             this.properties.put("preMove", preMove);
@@ -378,7 +382,8 @@ public interface FileEndpointBuilder {
          * system. You may want to do this in case you need to operate on the
          * files in a sorted order. The pre-sort is executed before the consumer
          * starts to filter, and accept files to process by Camel. This option
-         * is default=false meaning disabled. The option is a boolean type.
+         * is default=false meaning disabled. The option is a
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder preSort(boolean preSort) {
             this.properties.put("preSort", preSort);
@@ -391,7 +396,7 @@ public interface FileEndpointBuilder {
          * files in a sorted order. The pre-sort is executed before the consumer
          * starts to filter, and accept files to process by Camel. This option
          * is default=false meaning disabled. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder preSort(String preSort) {
             this.properties.put("preSort", preSort);
@@ -399,7 +404,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * If a directory, will look for files in all the sub-directories as
-         * well. The option is a boolean type.
+         * well. The option is a <code>boolean</code> type.
          */
         public FileConsumerBuilder recursive(boolean recursive) {
             this.properties.put("recursive", recursive);
@@ -407,7 +412,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * If a directory, will look for files in all the sub-directories as
-         * well. The option will be converted to a boolean type.
+         * well. The option will be converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder recursive(String recursive) {
             this.properties.put("recursive", recursive);
@@ -416,7 +421,7 @@ public interface FileEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -426,7 +431,7 @@ public interface FileEndpointBuilder {
         /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -435,8 +440,8 @@ public interface FileEndpointBuilder {
         }
         /**
          * Similar to the startingDirectoryMustExist option but this applies
-         * during polling (after starting the consumer). The option is a boolean
-         * type.
+         * during polling (after starting the consumer). The option is a
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder directoryMustExist(boolean directoryMustExist) {
             this.properties.put("directoryMustExist", directoryMustExist);
@@ -445,7 +450,7 @@ public interface FileEndpointBuilder {
         /**
          * Similar to the startingDirectoryMustExist option but this applies
          * during polling (after starting the consumer). The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder directoryMustExist(String directoryMustExist) {
             this.properties.put("directoryMustExist", directoryMustExist);
@@ -456,7 +461,7 @@ public interface FileEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public FileConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -468,7 +473,8 @@ public interface FileEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public FileConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -476,7 +482,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public FileConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -485,7 +491,8 @@ public interface FileEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public FileConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -495,7 +502,7 @@ public interface FileEndpointBuilder {
          * To define which file attributes of interest. Like
          * posix:permissions,posix:owner,basic:lastAccessTime, it supports basic
          * wildcard like posix:, basic:lastAccessTime. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public FileConsumerBuilder extendedAttributes(String extendedAttributes) {
             this.properties.put("extendedAttributes", extendedAttributes);
@@ -506,7 +513,7 @@ public interface FileEndpointBuilder {
          * org.apache.camel.spi.IdempotentRepository. The in-progress repository
          * is used to account the current in progress files being consumed. By
          * default a memory based repository is used. The option is a
-         * org.apache.camel.spi.IdempotentRepository type.
+         * <code>org.apache.camel.spi.IdempotentRepository</code> type.
          */
         public FileConsumerBuilder inProgressRepository(
                 IdempotentRepository inProgressRepository) {
@@ -518,7 +525,8 @@ public interface FileEndpointBuilder {
          * org.apache.camel.spi.IdempotentRepository. The in-progress repository
          * is used to account the current in progress files being consumed. By
          * default a memory based repository is used. The option will be
-         * converted to a org.apache.camel.spi.IdempotentRepository type.
+         * converted to a <code>org.apache.camel.spi.IdempotentRepository</code>
+         * type.
          */
         public FileConsumerBuilder inProgressRepository(
                 String inProgressRepository) {
@@ -530,7 +538,7 @@ public interface FileEndpointBuilder {
          * remote file content directly in local files, to avoid loading the
          * content into memory. This is beneficial, if you consume a very big
          * remote file and thus can conserve memory. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public FileConsumerBuilder localWorkDirectory(String localWorkDirectory) {
             this.properties.put("localWorkDirectory", localWorkDirectory);
@@ -541,7 +549,7 @@ public interface FileEndpointBuilder {
          * thrown exceptions that happens during the file on completion process
          * where the consumer does either a commit or rollback. The default
          * implementation will log any exception at WARN level and ignore. The
-         * option is a org.apache.camel.spi.ExceptionHandler type.
+         * option is a <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public FileConsumerBuilder onCompletionExceptionHandler(
                 ExceptionHandler onCompletionExceptionHandler) {
@@ -553,8 +561,8 @@ public interface FileEndpointBuilder {
          * thrown exceptions that happens during the file on completion process
          * where the consumer does either a commit or rollback. The default
          * implementation will log any exception at WARN level and ignore. The
-         * option will be converted to a org.apache.camel.spi.ExceptionHandler
-         * type.
+         * option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public FileConsumerBuilder onCompletionExceptionHandler(
                 String onCompletionExceptionHandler) {
@@ -566,7 +574,7 @@ public interface FileEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option is a
-         * org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
          */
         public FileConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -578,7 +586,8 @@ public interface FileEndpointBuilder {
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
          * been created and being routed in Camel. The option will be converted
-         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
+         * type.
          */
         public FileConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -588,8 +597,8 @@ public interface FileEndpointBuilder {
          * Whether to enable probing of the content type. If enable then the
          * consumer uses Files#probeContentType(java.nio.file.Path) to determine
          * the content-type of the file, and store that as a header with key
-         * Exchange#FILE_CONTENT_TYPE on the Message. The option is a boolean
-         * type.
+         * Exchange#FILE_CONTENT_TYPE on the Message. The option is a
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder probeContentType(boolean probeContentType) {
             this.properties.put("probeContentType", probeContentType);
@@ -600,7 +609,7 @@ public interface FileEndpointBuilder {
          * consumer uses Files#probeContentType(java.nio.file.Path) to determine
          * the content-type of the file, and store that as a header with key
          * Exchange#FILE_CONTENT_TYPE on the Message. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder probeContentType(String probeContentType) {
             this.properties.put("probeContentType", probeContentType);
@@ -613,7 +622,7 @@ public interface FileEndpointBuilder {
          * used when special conditions must be met before a file can be
          * consumed, such as a special ready file exists. If this option is set
          * then the readLock option does not apply. The option is a
-         * org.apache.camel.component.file.GenericFileProcessStrategy<T> type.
+         * <code>org.apache.camel.component.file.GenericFileProcessStrategy<java.io.File></code> type.
          */
         public FileConsumerBuilder processStrategy(Object processStrategy) {
             this.properties.put("processStrategy", processStrategy);
@@ -626,8 +635,8 @@ public interface FileEndpointBuilder {
          * used when special conditions must be met before a file can be
          * consumed, such as a special ready file exists. If this option is set
          * then the readLock option does not apply. The option will be converted
-         * to a org.apache.camel.component.file.GenericFileProcessStrategy<T>
-         * type.
+         * to a
+         * <code>org.apache.camel.component.file.GenericFileProcessStrategy<java.io.File></code> type.
          */
         public FileConsumerBuilder processStrategy(String processStrategy) {
             this.properties.put("processStrategy", processStrategy);
@@ -639,7 +648,7 @@ public interface FileEndpointBuilder {
          * normally auto created if it doesn't exist. You can disable autoCreate
          * and enable this to ensure the starting directory must exist. Will
          * thrown an exception if the directory doesn't exist. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder startingDirectoryMustExist(
                 boolean startingDirectoryMustExist) {
@@ -652,7 +661,7 @@ public interface FileEndpointBuilder {
          * normally auto created if it doesn't exist. You can disable autoCreate
          * and enable this to ensure the starting directory must exist. Will
          * thrown an exception if the directory doesn't exist. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder startingDirectoryMustExist(
                 String startingDirectoryMustExist) {
@@ -664,7 +673,7 @@ public interface FileEndpointBuilder {
          * startingDirectoryMustExist parameter must be set to true in order to
          * verify that the directory exists. Will thrown an exception if the
          * directory doesn't have read and write permissions. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder startingDirectoryMustHaveAccess(
                 boolean startingDirectoryMustHaveAccess) {
@@ -676,7 +685,7 @@ public interface FileEndpointBuilder {
          * startingDirectoryMustExist parameter must be set to true in order to
          * verify that the directory exists. Will thrown an exception if the
          * directory doesn't have read and write permissions. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder startingDirectoryMustHaveAccess(
                 String startingDirectoryMustHaveAccess) {
@@ -687,14 +696,15 @@ public interface FileEndpointBuilder {
          * Ant style filter exclusion. If both antInclude and antExclude are
          * used, antExclude takes precedence over antInclude. Multiple
          * exclusions may be specified in comma-delimited format. The option is
-         * a java.lang.String type.
+         * a <code>java.lang.String</code> type.
          */
         public FileConsumerBuilder antExclude(String antExclude) {
             this.properties.put("antExclude", antExclude);
             return (FileConsumerBuilder) this;
         }
         /**
-         * Sets case sensitive flag on ant filter. The option is a boolean type.
+         * Sets case sensitive flag on ant filter. The option is a
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder antFilterCaseSensitive(
                 boolean antFilterCaseSensitive) {
@@ -703,7 +713,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * Sets case sensitive flag on ant filter. The option will be converted
-         * to a boolean type.
+         * to a <code>boolean</code> type.
          */
         public FileConsumerBuilder antFilterCaseSensitive(
                 String antFilterCaseSensitive) {
@@ -712,7 +722,8 @@ public interface FileEndpointBuilder {
         }
         /**
          * Ant style filter inclusion. Multiple inclusions may be specified in
-         * comma-delimited format. The option is a java.lang.String type.
+         * comma-delimited format. The option is a <code>java.lang.String</code>
+         * type.
          */
         public FileConsumerBuilder antInclude(String antInclude) {
             this.properties.put("antInclude", antInclude);
@@ -725,7 +736,7 @@ public interface FileEndpointBuilder {
          * Setting this option to false allows for sorting all files first, and
          * then limit the poll. Mind that this requires a higher memory usage as
          * all file details are in memory to perform the sorting. The option is
-         * a boolean type.
+         * a <code>boolean</code> type.
          */
         public FileConsumerBuilder eagerMaxMessagesPerPoll(
                 boolean eagerMaxMessagesPerPoll) {
@@ -739,7 +750,7 @@ public interface FileEndpointBuilder {
          * Setting this option to false allows for sorting all files first, and
          * then limit the poll. Mind that this requires a higher memory usage as
          * all file details are in memory to perform the sorting. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder eagerMaxMessagesPerPoll(
                 String eagerMaxMessagesPerPoll) {
@@ -751,7 +762,8 @@ public interface FileEndpointBuilder {
          * (matching is case in-senstive). Notice if you use symbols such as
          * plus sign and others you would need to configure this using the RAW()
          * syntax if configuring this as an endpoint uri. See more details at
-         * configuring endpoint uris. The option is a java.lang.String type.
+         * configuring endpoint uris. The option is a
+         * <code>java.lang.String</code> type.
          */
         public FileConsumerBuilder exclude(String exclude) {
             this.properties.put("exclude", exclude);
@@ -761,7 +773,7 @@ public interface FileEndpointBuilder {
          * Pluggable filter as a
          * org.apache.camel.component.file.GenericFileFilter class. Will skip
          * files if filter returns false in its accept() method. The option is a
-         * org.apache.camel.component.file.GenericFileFilter<T> type.
+         * <code>org.apache.camel.component.file.GenericFileFilter<java.io.File></code> type.
          */
         public FileConsumerBuilder filter(Object filter) {
             this.properties.put("filter", filter);
@@ -772,7 +784,7 @@ public interface FileEndpointBuilder {
          * org.apache.camel.component.file.GenericFileFilter class. Will skip
          * files if filter returns false in its accept() method. The option will
          * be converted to a
-         * org.apache.camel.component.file.GenericFileFilter<T> type.
+         * <code>org.apache.camel.component.file.GenericFileFilter<java.io.File></code> type.
          */
         public FileConsumerBuilder filter(String filter) {
             this.properties.put("filter", filter);
@@ -781,7 +793,8 @@ public interface FileEndpointBuilder {
         /**
          * Filters the directory based on Simple language. For example to filter
          * on current date, you can use a simple date pattern such as
-         * ${date:now:yyyMMdd}. The option is a java.lang.String type.
+         * ${date:now:yyyMMdd}. The option is a
+         * <code>org.apache.camel.Predicate</code> type.
          */
         public FileConsumerBuilder filterDirectory(Predicate filterDirectory) {
             this.properties.put("filterDirectory", filterDirectory);
@@ -791,7 +804,7 @@ public interface FileEndpointBuilder {
          * Filters the directory based on Simple language. For example to filter
          * on current date, you can use a simple date pattern such as
          * ${date:now:yyyMMdd}. The option will be converted to a
-         * java.lang.String type.
+         * <code>org.apache.camel.Predicate</code> type.
          */
         public FileConsumerBuilder filterDirectory(String filterDirectory) {
             this.properties.put("filterDirectory", filterDirectory);
@@ -800,7 +813,7 @@ public interface FileEndpointBuilder {
         /**
          * Filters the file based on Simple language. For example to filter on
          * file size, you can use ${file:size} 5000. The option is a
-         * java.lang.String type.
+         * <code>org.apache.camel.Predicate</code> type.
          */
         public FileConsumerBuilder filterFile(Predicate filterFile) {
             this.properties.put("filterFile", filterFile);
@@ -809,7 +822,7 @@ public interface FileEndpointBuilder {
         /**
          * Filters the file based on Simple language. For example to filter on
          * file size, you can use ${file:size} 5000. The option will be
-         * converted to a java.lang.String type.
+         * converted to a <code>org.apache.camel.Predicate</code> type.
          */
         public FileConsumerBuilder filterFile(String filterFile) {
             this.properties.put("filterFile", filterFile);
@@ -820,7 +833,7 @@ public interface FileEndpointBuilder {
          * already processed files. Will by default use a memory based LRUCache
          * that holds 1000 entries. If noop=true then idempotent will be enabled
          * as well to avoid consuming the same files over and over again. The
-         * option is a java.lang.Boolean type.
+         * option is a <code>java.lang.Boolean</code> type.
          */
         public FileConsumerBuilder idempotent(Boolean idempotent) {
             this.properties.put("idempotent", idempotent);
@@ -831,7 +844,7 @@ public interface FileEndpointBuilder {
          * already processed files. Will by default use a memory based LRUCache
          * that holds 1000 entries. If noop=true then idempotent will be enabled
          * as well to avoid consuming the same files over and over again. The
-         * option will be converted to a java.lang.Boolean type.
+         * option will be converted to a <code>java.lang.Boolean</code> type.
          */
         public FileConsumerBuilder idempotent(String idempotent) {
             this.properties.put("idempotent", idempotent);
@@ -842,7 +855,7 @@ public interface FileEndpointBuilder {
          * file is used. You can use the File Language, for example to use the
          * file name and file size, you can do:
          * idempotentKey=${file:name}-${file:size}. The option is a
-         * java.lang.String type.
+         * <code>org.apache.camel.Expression</code> type.
          */
         public FileConsumerBuilder idempotentKey(Expression idempotentKey) {
             this.properties.put("idempotentKey", idempotentKey);
@@ -853,7 +866,7 @@ public interface FileEndpointBuilder {
          * file is used. You can use the File Language, for example to use the
          * file name and file size, you can do:
          * idempotentKey=${file:name}-${file:size}. The option will be converted
-         * to a java.lang.String type.
+         * to a <code>org.apache.camel.Expression</code> type.
          */
         public FileConsumerBuilder idempotentKey(String idempotentKey) {
             this.properties.put("idempotentKey", idempotentKey);
@@ -863,7 +876,7 @@ public interface FileEndpointBuilder {
          * A pluggable repository org.apache.camel.spi.IdempotentRepository
          * which by default use MemoryMessageIdRepository if none is specified
          * and idempotent is true. The option is a
-         * org.apache.camel.spi.IdempotentRepository type.
+         * <code>org.apache.camel.spi.IdempotentRepository</code> type.
          */
         public FileConsumerBuilder idempotentRepository(
                 IdempotentRepository idempotentRepository) {
@@ -874,7 +887,7 @@ public interface FileEndpointBuilder {
          * A pluggable repository org.apache.camel.spi.IdempotentRepository
          * which by default use MemoryMessageIdRepository if none is specified
          * and idempotent is true. The option will be converted to a
-         * org.apache.camel.spi.IdempotentRepository type.
+         * <code>org.apache.camel.spi.IdempotentRepository</code> type.
          */
         public FileConsumerBuilder idempotentRepository(
                 String idempotentRepository) {
@@ -886,7 +899,8 @@ public interface FileEndpointBuilder {
          * (matching is case in-sensitive). Notice if you use symbols such as
          * plus sign and others you would need to configure this using the RAW()
          * syntax if configuring this as an endpoint uri. See more details at
-         * configuring endpoint uris. The option is a java.lang.String type.
+         * configuring endpoint uris. The option is a
+         * <code>java.lang.String</code> type.
          */
         public FileConsumerBuilder include(String include) {
             this.properties.put("include", include);
@@ -894,7 +908,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * The maximum depth to traverse when recursively processing a
-         * directory. The option is a int type.
+         * directory. The option is a <code>int</code> type.
          */
         public FileConsumerBuilder maxDepth(int maxDepth) {
             this.properties.put("maxDepth", maxDepth);
@@ -902,7 +916,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * The maximum depth to traverse when recursively processing a
-         * directory. The option will be converted to a int type.
+         * directory. The option will be converted to a <code>int</code> type.
          */
         public FileConsumerBuilder maxDepth(String maxDepth) {
             this.properties.put("maxDepth", maxDepth);
@@ -917,8 +931,8 @@ public interface FileEndpointBuilder {
          * example if you have 100000 files and use maxMessagesPerPoll=500, then
          * only the first 500 files will be picked up, and then sorted. You can
          * use the eagerMaxMessagesPerPoll option and set this to false to allow
-         * to scan all files first and then sort afterwards. The option is a int
-         * type.
+         * to scan all files first and then sort afterwards. The option is a
+         * <code>int</code> type.
          */
         public FileConsumerBuilder maxMessagesPerPoll(int maxMessagesPerPoll) {
             this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
@@ -934,7 +948,7 @@ public interface FileEndpointBuilder {
          * only the first 500 files will be picked up, and then sorted. You can
          * use the eagerMaxMessagesPerPoll option and set this to false to allow
          * to scan all files first and then sort afterwards. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public FileConsumerBuilder maxMessagesPerPoll(String maxMessagesPerPoll) {
             this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
@@ -943,7 +957,8 @@ public interface FileEndpointBuilder {
         /**
          * The minimum depth to start processing when recursively processing a
          * directory. Using minDepth=1 means the base directory. Using
-         * minDepth=2 means the first sub directory. The option is a int type.
+         * minDepth=2 means the first sub directory. The option is a
+         * <code>int</code> type.
          */
         public FileConsumerBuilder minDepth(int minDepth) {
             this.properties.put("minDepth", minDepth);
@@ -953,7 +968,7 @@ public interface FileEndpointBuilder {
          * The minimum depth to start processing when recursively processing a
          * directory. Using minDepth=1 means the base directory. Using
          * minDepth=2 means the first sub directory. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public FileConsumerBuilder minDepth(String minDepth) {
             this.properties.put("minDepth", minDepth);
@@ -962,7 +977,8 @@ public interface FileEndpointBuilder {
         /**
          * Expression (such as Simple Language) used to dynamically set the
          * filename when moving it after processing. To move files into a .done
-         * subdirectory just enter .done. The option is a java.lang.String type.
+         * subdirectory just enter .done. The option is a
+         * <code>org.apache.camel.Expression</code> type.
          */
         public FileConsumerBuilder move(Expression move) {
             this.properties.put("move", move);
@@ -972,7 +988,7 @@ public interface FileEndpointBuilder {
          * Expression (such as Simple Language) used to dynamically set the
          * filename when moving it after processing. To move files into a .done
          * subdirectory just enter .done. The option will be converted to a
-         * java.lang.String type.
+         * <code>org.apache.camel.Expression</code> type.
          */
         public FileConsumerBuilder move(String move) {
             this.properties.put("move", move);
@@ -982,7 +998,7 @@ public interface FileEndpointBuilder {
          * Pluggable read-lock as a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy
          * implementation. The option is a
-         * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy<T> type.
+         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy<java.io.File></code> type.
          */
         public FileConsumerBuilder exclusiveReadLockStrategy(
                 Object exclusiveReadLockStrategy) {
@@ -993,7 +1009,7 @@ public interface FileEndpointBuilder {
          * Pluggable read-lock as a
          * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy
          * implementation. The option will be converted to a
-         * org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy<T> type.
+         * <code>org.apache.camel.component.file.GenericFileExclusiveReadLockStrategy<java.io.File></code> type.
          */
         public FileConsumerBuilder exclusiveReadLockStrategy(
                 String exclusiveReadLockStrategy) {
@@ -1038,7 +1054,7 @@ public interface FileEndpointBuilder {
          * system need to support distributed file locks, and so on. Using the
          * idempotent read lock can support clustering if the idempotent
          * repository supports clustering, such as Hazelcast Component or
-         * Infinispan. The option is a java.lang.String type.
+         * Infinispan. The option is a <code>java.lang.String</code> type.
          */
         public FileConsumerBuilder readLock(String readLock) {
             this.properties.put("readLock", readLock);
@@ -1055,7 +1071,8 @@ public interface FileEndpointBuilder {
          * a rule of thumb is to have a timeout that is at least 2 or more times
          * higher than the readLockCheckInterval. This is needed to ensure that
          * amble time is allowed for the read lock process to try to grab the
-         * lock before the timeout was hit. The option is a long type.
+         * lock before the timeout was hit. The option is a <code>long</code>
+         * type.
          */
         public FileConsumerBuilder readLockCheckInterval(
                 long readLockCheckInterval) {
@@ -1074,7 +1091,7 @@ public interface FileEndpointBuilder {
          * higher than the readLockCheckInterval. This is needed to ensure that
          * amble time is allowed for the read lock process to try to grab the
          * lock before the timeout was hit. The option will be converted to a
-         * long type.
+         * <code>long</code> type.
          */
         public FileConsumerBuilder readLockCheckInterval(
                 String readLockCheckInterval) {
@@ -1088,7 +1105,7 @@ public interface FileEndpointBuilder {
          * turning this option to false then any orphaned lock file will cause
          * Camel to not attempt to pickup that file, this could also be due
          * another node is concurrently reading files from the same shared
-         * directory. The option is a boolean type.
+         * directory. The option is a <code>boolean</code> type.
          */
         public FileConsumerBuilder readLockDeleteOrphanLockFiles(
                 boolean readLockDeleteOrphanLockFiles) {
@@ -1102,7 +1119,8 @@ public interface FileEndpointBuilder {
          * turning this option to false then any orphaned lock file will cause
          * Camel to not attempt to pickup that file, this could also be due
          * another node is concurrently reading files from the same shared
-         * directory. The option will be converted to a boolean type.
+         * directory. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public FileConsumerBuilder readLockDeleteOrphanLockFiles(
                 String readLockDeleteOrphanLockFiles) {
@@ -1112,7 +1130,7 @@ public interface FileEndpointBuilder {
         /**
          * Whether the delayed release task should be synchronous or
          * asynchronous. See more details at the readLockIdempotentReleaseDelay
-         * option. The option is a boolean type.
+         * option. The option is a <code>boolean</code> type.
          */
         public FileConsumerBuilder readLockIdempotentReleaseAsync(
                 boolean readLockIdempotentReleaseAsync) {
@@ -1122,7 +1140,7 @@ public interface FileEndpointBuilder {
         /**
          * Whether the delayed release task should be synchronous or
          * asynchronous. See more details at the readLockIdempotentReleaseDelay
-         * option. The option will be converted to a boolean type.
+         * option. The option will be converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder readLockIdempotentReleaseAsync(
                 String readLockIdempotentReleaseAsync) {
@@ -1137,7 +1155,8 @@ public interface FileEndpointBuilder {
          * are a lot of files to process. This option is not in-use if you use a
          * shared thread pool by configuring the
          * readLockIdempotentReleaseExecutorService option. See more details at
-         * the readLockIdempotentReleaseDelay option. The option is a int type.
+         * the readLockIdempotentReleaseDelay option. The option is a
+         * <code>int</code> type.
          */
         public FileConsumerBuilder readLockIdempotentReleaseAsyncPoolSize(
                 int readLockIdempotentReleaseAsyncPoolSize) {
@@ -1153,7 +1172,7 @@ public interface FileEndpointBuilder {
          * shared thread pool by configuring the
          * readLockIdempotentReleaseExecutorService option. See more details at
          * the readLockIdempotentReleaseDelay option. The option will be
-         * converted to a int type.
+         * converted to a <code>int</code> type.
          */
         public FileConsumerBuilder readLockIdempotentReleaseAsyncPoolSize(
                 String readLockIdempotentReleaseAsyncPoolSize) {
@@ -1168,7 +1187,8 @@ public interface FileEndpointBuilder {
          * potentially scan and acquire the same file, due to race-conditions.
          * By expanding the time-window of the release tasks helps prevents
          * these situations. Note delaying is only needed if you have configured
-         * readLockRemoveOnCommit to true. The option is a int type.
+         * readLockRemoveOnCommit to true. The option is a <code>int</code>
+         * type.
          */
         public FileConsumerBuilder readLockIdempotentReleaseDelay(
                 int readLockIdempotentReleaseDelay) {
@@ -1183,8 +1203,8 @@ public interface FileEndpointBuilder {
          * potentially scan and acquire the same file, due to race-conditions.
          * By expanding the time-window of the release tasks helps prevents
          * these situations. Note delaying is only needed if you have configured
-         * readLockRemoveOnCommit to true. The option will be converted to a int
-         * type.
+         * readLockRemoveOnCommit to true. The option will be converted to a
+         * <code>int</code> type.
          */
         public FileConsumerBuilder readLockIdempotentReleaseDelay(
                 String readLockIdempotentReleaseDelay) {
@@ -1194,7 +1214,8 @@ public interface FileEndpointBuilder {
         /**
          * To use a custom and shared thread pool for asynchronous release
          * tasks. See more details at the readLockIdempotentReleaseDelay option.
-         * The option is a java.util.concurrent.ScheduledExecutorService type.
+         * The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public FileConsumerBuilder readLockIdempotentReleaseExecutorService(
                 ScheduledExecutorService readLockIdempotentReleaseExecutorService) {
@@ -1205,7 +1226,7 @@ public interface FileEndpointBuilder {
          * To use a custom and shared thread pool for asynchronous release
          * tasks. See more details at the readLockIdempotentReleaseDelay option.
          * The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public FileConsumerBuilder readLockIdempotentReleaseExecutorService(
                 String readLockIdempotentReleaseExecutorService) {
@@ -1218,7 +1239,7 @@ public interface FileEndpointBuilder {
          * not have any logging. This option is only applicable for readLock of
          * types: changed, fileLock, idempotent, idempotent-changed,
          * idempotent-rename, rename. The option is a
-         * org.apache.camel.LoggingLevel type.
+         * <code>org.apache.camel.LoggingLevel</code> type.
          */
         public FileConsumerBuilder readLockLoggingLevel(
                 LoggingLevel readLockLoggingLevel) {
@@ -1231,7 +1252,7 @@ public interface FileEndpointBuilder {
          * not have any logging. This option is only applicable for readLock of
          * types: changed, fileLock, idempotent, idempotent-changed,
          * idempotent-rename, rename. The option will be converted to a
-         * org.apache.camel.LoggingLevel type.
+         * <code>org.apache.camel.LoggingLevel</code> type.
          */
         public FileConsumerBuilder readLockLoggingLevel(
                 String readLockLoggingLevel) {
@@ -1244,7 +1265,7 @@ public interface FileEndpointBuilder {
          * against other processes picking up the same files. This behavior can
          * be turned off by setting this option to false. For example if you do
          * not want to write marker files to the file systems by the Camel
-         * application. The option is a boolean type.
+         * application. The option is a <code>boolean</code> type.
          */
         public FileConsumerBuilder readLockMarkerFile(boolean readLockMarkerFile) {
             this.properties.put("readLockMarkerFile", readLockMarkerFile);
@@ -1256,7 +1277,8 @@ public interface FileEndpointBuilder {
          * against other processes picking up the same files. This behavior can
          * be turned off by setting this option to false. For example if you do
          * not want to write marker files to the file systems by the Camel
-         * application. The option will be converted to a boolean type.
+         * application. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public FileConsumerBuilder readLockMarkerFile(String readLockMarkerFile) {
             this.properties.put("readLockMarkerFile", readLockMarkerFile);
@@ -1268,7 +1290,7 @@ public interface FileEndpointBuilder {
          * the read lock. For example use readLockMinAge=300s to require the
          * file is at last 5 minutes old. This can speedup the changed read lock
          * as it will only attempt to acquire files which are at least that
-         * given age. The option is a long type.
+         * given age. The option is a <code>long</code> type.
          */
         public FileConsumerBuilder readLockMinAge(long readLockMinAge) {
             this.properties.put("readLockMinAge", readLockMinAge);
@@ -1280,7 +1302,7 @@ public interface FileEndpointBuilder {
          * the read lock. For example use readLockMinAge=300s to require the
          * file is at last 5 minutes old. This can speedup the changed read lock
          * as it will only attempt to acquire files which are at least that
-         * given age. The option will be converted to a long type.
+         * given age. The option will be converted to a <code>long</code> type.
          */
         public FileConsumerBuilder readLockMinAge(String readLockMinAge) {
             this.properties.put("readLockMinAge", readLockMinAge);
@@ -1291,7 +1313,7 @@ public interface FileEndpointBuilder {
          * configure a minimum file length. By default Camel expects the file to
          * contain data, and thus the default value is 1. You can set this
          * option to zero, to allow consuming zero-length files. The option is a
-         * long type.
+         * <code>long</code> type.
          */
         public FileConsumerBuilder readLockMinLength(long readLockMinLength) {
             this.properties.put("readLockMinLength", readLockMinLength);
@@ -1302,7 +1324,7 @@ public interface FileEndpointBuilder {
          * configure a minimum file length. By default Camel expects the file to
          * contain data, and thus the default value is 1. You can set this
          * option to zero, to allow consuming zero-length files. The option will
-         * be converted to a long type.
+         * be converted to a <code>long</code> type.
          */
         public FileConsumerBuilder readLockMinLength(String readLockMinLength) {
             this.properties.put("readLockMinLength", readLockMinLength);
@@ -1318,7 +1340,7 @@ public interface FileEndpointBuilder {
          * strategies that you can configure to evict the file name entry after
          * X minutes - this ensures no problems with race conditions. See more
          * details at the readLockIdempotentReleaseDelay option. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder readLockRemoveOnCommit(
                 boolean readLockRemoveOnCommit) {
@@ -1335,7 +1357,7 @@ public interface FileEndpointBuilder {
          * strategies that you can configure to evict the file name entry after
          * X minutes - this ensures no problems with race conditions. See more
          * details at the readLockIdempotentReleaseDelay option. The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder readLockRemoveOnCommit(
                 String readLockRemoveOnCommit) {
@@ -1347,7 +1369,7 @@ public interface FileEndpointBuilder {
          * specify whether to remove the file name entry from the idempotent
          * repository when processing the file failed and a rollback happens. If
          * this option is false, then the file name entry is confirmed (as if
-         * the file did a commit). The option is a boolean type.
+         * the file did a commit). The option is a <code>boolean</code> type.
          */
         public FileConsumerBuilder readLockRemoveOnRollback(
                 boolean readLockRemoveOnRollback) {
@@ -1359,8 +1381,8 @@ public interface FileEndpointBuilder {
          * specify whether to remove the file name entry from the idempotent
          * repository when processing the file failed and a rollback happens. If
          * this option is false, then the file name entry is confirmed (as if
-         * the file did a commit). The option will be converted to a boolean
-         * type.
+         * the file did a commit). The option will be converted to a
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder readLockRemoveOnRollback(
                 String readLockRemoveOnRollback) {
@@ -1379,7 +1401,8 @@ public interface FileEndpointBuilder {
          * a rule of thumb is to have a timeout that is at least 2 or more times
          * higher than the readLockCheckInterval. This is needed to ensure that
          * amble time is allowed for the read lock process to try to grab the
-         * lock before the timeout was hit. The option is a long type.
+         * lock before the timeout was hit. The option is a <code>long</code>
+         * type.
          */
         public FileConsumerBuilder readLockTimeout(long readLockTimeout) {
             this.properties.put("readLockTimeout", readLockTimeout);
@@ -1398,7 +1421,7 @@ public interface FileEndpointBuilder {
          * higher than the readLockCheckInterval. This is needed to ensure that
          * amble time is allowed for the read lock process to try to grab the
          * lock before the timeout was hit. The option will be converted to a
-         * long type.
+         * <code>long</code> type.
          */
         public FileConsumerBuilder readLockTimeout(String readLockTimeout) {
             this.properties.put("readLockTimeout", readLockTimeout);
@@ -1407,7 +1430,7 @@ public interface FileEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * is a int type.
+         * is a <code>int</code> type.
          */
         public FileConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -1417,7 +1440,7 @@ public interface FileEndpointBuilder {
         /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a int type.
+         * will be converted to a <code>int</code> type.
          */
         public FileConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -1426,7 +1449,8 @@ public interface FileEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a int type.
+         * backoffMultipler should kick-in. The option is a <code>int</code>
+         * type.
          */
         public FileConsumerBuilder backoffIdleThreshold(int backoffIdleThreshold) {
             this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
@@ -1435,7 +1459,7 @@ public interface FileEndpointBuilder {
         /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option will be converted to a
-         * int type.
+         * <code>int</code> type.
          */
         public FileConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -1448,7 +1472,7 @@ public interface FileEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a int type.
+         * configured. The option is a <code>int</code> type.
          */
         public FileConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -1460,7 +1484,7 @@ public interface FileEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a int type.
+         * configured. The option will be converted to a <code>int</code> type.
          */
         public FileConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -1469,7 +1493,7 @@ public interface FileEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public FileConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -1478,8 +1502,8 @@ public interface FileEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public FileConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -1488,7 +1512,7 @@ public interface FileEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public FileConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -1497,7 +1521,7 @@ public interface FileEndpointBuilder {
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
          * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -1506,7 +1530,7 @@ public interface FileEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a long type.
+         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
          */
         public FileConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -1515,8 +1539,8 @@ public interface FileEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a long
-         * type.
+         * seconds), and 1h (1 hour). The option will be converted to a
+         * <code>long</code> type.
          */
         public FileConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -1525,7 +1549,7 @@ public interface FileEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * is a org.apache.camel.LoggingLevel type.
+         * is a <code>org.apache.camel.LoggingLevel</code> type.
          */
         public FileConsumerBuilder runLoggingLevel(LoggingLevel runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -1534,7 +1558,8 @@ public interface FileEndpointBuilder {
         /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
-         * will be converted to a org.apache.camel.LoggingLevel type.
+         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
+         * type.
          */
         public FileConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -1543,8 +1568,8 @@ public interface FileEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a java.util.concurrent.ScheduledExecutorService
-         * type.
+         * pool. The option is a
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public FileConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -1555,7 +1580,7 @@ public interface FileEndpointBuilder {
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
          * pool. The option will be converted to a
-         * java.util.concurrent.ScheduledExecutorService type.
+         * <code>java.util.concurrent.ScheduledExecutorService</code> type.
          */
         public FileConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -1565,7 +1590,8 @@ public interface FileEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public FileConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -1575,7 +1601,8 @@ public interface FileEndpointBuilder {
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option will be converted to a
-         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
+         * type.
          */
         public FileConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -1584,7 +1611,7 @@ public interface FileEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option is a
-         * java.util.Map<java.lang.String,java.lang.Object> type.
+         * <code>java.util.Map<java.lang.String, java.lang.Object></code> type.
          */
         public FileConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -1594,7 +1621,8 @@ public interface FileEndpointBuilder {
         /**
          * To configure additional properties when using a custom scheduler or
          * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         * converted to a <code>java.util.Map<java.lang.String,
+         * java.lang.Object></code> type.
          */
         public FileConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -1602,8 +1630,8 @@ public interface FileEndpointBuilder {
             return (FileConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a boolean
-         * type.
+         * Whether the scheduler should be auto started. The option is a
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -1611,7 +1639,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * Whether the scheduler should be auto started. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
@@ -1619,7 +1647,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option is a
-         * java.util.concurrent.TimeUnit type.
+         * <code>java.util.concurrent.TimeUnit</code> type.
          */
         public FileConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -1627,7 +1655,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * Time unit for initialDelay and delay options. The option will be
-         * converted to a java.util.concurrent.TimeUnit type.
+         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
          */
         public FileConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -1635,8 +1663,8 @@ public interface FileEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a boolean
-         * type.
+         * ScheduledExecutorService in JDK for details. The option is a
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -1645,7 +1673,7 @@ public interface FileEndpointBuilder {
         /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -1653,7 +1681,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * To shuffle the list of files (sort in random order). The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public FileConsumerBuilder shuffle(boolean shuffle) {
             this.properties.put("shuffle", shuffle);
@@ -1661,7 +1689,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * To shuffle the list of files (sort in random order). The option will
-         * be converted to a boolean type.
+         * be converted to a <code>boolean</code> type.
          */
         public FileConsumerBuilder shuffle(String shuffle) {
             this.properties.put("shuffle", shuffle);
@@ -1670,7 +1698,8 @@ public interface FileEndpointBuilder {
         /**
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
-         * date. The option is a java.lang.String type.
+         * date. The option is a
+         * <code>java.util.Comparator<org.apache.camel.Exchange></code> type.
          */
         public FileConsumerBuilder sortBy(Comparator<Exchange> sortBy) {
             this.properties.put("sortBy", sortBy);
@@ -1679,7 +1708,8 @@ public interface FileEndpointBuilder {
         /**
          * Built-in sort by using the File Language. Supports nested sorts, so
          * you can have a sort by file name and as a 2nd group sort by modified
-         * date. The option will be converted to a java.lang.String type.
+         * date. The option will be converted to a
+         * <code>java.util.Comparator<org.apache.camel.Exchange></code> type.
          */
         public FileConsumerBuilder sortBy(String sortBy) {
             this.properties.put("sortBy", sortBy);
@@ -1687,8 +1717,7 @@ public interface FileEndpointBuilder {
         }
         /**
          * Pluggable sorter as a java.util.Comparator class. The option is a
-         * java.util.Comparator<org.apache.camel.component.file.GenericFile<T>>
-         * type.
+         * <code>java.util.Comparator<org.apache.camel.component.file.GenericFile<java.io.File>></code> type.
          */
         public FileConsumerBuilder sorter(Comparator<Object> sorter) {
             this.properties.put("sorter", sorter);
@@ -1697,8 +1726,7 @@ public interface FileEndpointBuilder {
         /**
          * Pluggable sorter as a java.util.Comparator class. The option will be
          * converted to a
-         * java.util.Comparator<org.apache.camel.component.file.GenericFile<T>>
-         * type.
+         * <code>java.util.Comparator<org.apache.camel.component.file.GenericFile<java.io.File>></code> type.
          */
         public FileConsumerBuilder sorter(String sorter) {
             this.properties.put("sorter", sorter);
@@ -1730,7 +1758,7 @@ public interface FileEndpointBuilder {
          * renaming the file from the temporary name to the actual name, without
          * doing any exists check. This check may be faster on some file systems
          * and especially FTP servers. The option is a
-         * org.apache.camel.component.file.GenericFileExist type.
+         * <code>org.apache.camel.component.file.GenericFileExist</code> type.
          */
         public FileProducerBuilder fileExist(GenericFileExist fileExist) {
             this.properties.put("fileExist", fileExist);
@@ -1752,7 +1780,7 @@ public interface FileEndpointBuilder {
          * renaming the file from the temporary name to the actual name, without
          * doing any exists check. This check may be faster on some file systems
          * and especially FTP servers. The option will be converted to a
-         * org.apache.camel.component.file.GenericFileExist type.
+         * <code>org.apache.camel.component.file.GenericFileExist</code> type.
          */
         public FileProducerBuilder fileExist(String fileExist) {
             this.properties.put("fileExist", fileExist);
@@ -1765,7 +1793,7 @@ public interface FileEndpointBuilder {
          * another directory they will be written in a single directory. Setting
          * this to true on the producer enforces that any file name in
          * CamelFileName header will be stripped for any leading paths. The
-         * option is a boolean type.
+         * option is a <code>boolean</code> type.
          */
         public FileProducerBuilder flatten(boolean flatten) {
             this.properties.put("flatten", flatten);
@@ -1778,7 +1806,7 @@ public interface FileEndpointBuilder {
          * another directory they will be written in a single directory. Setting
          * this to true on the producer enforces that any file name in
          * CamelFileName header will be stripped for any leading paths. The
-         * option will be converted to a boolean type.
+         * option will be converted to a <code>boolean</code> type.
          */
         public FileProducerBuilder flatten(String flatten) {
             this.properties.put("flatten", flatten);
@@ -1790,7 +1818,7 @@ public interface FileEndpointBuilder {
          * Camel to write files to outside directories (to be more secured out
          * of the box). You can turn this off to allow writing files to
          * directories outside the starting directory, such as parent or root
-         * folders. The option is a boolean type.
+         * folders. The option is a <code>boolean</code> type.
          */
         public FileProducerBuilder jailStartingDirectory(
                 boolean jailStartingDirectory) {
@@ -1803,7 +1831,7 @@ public interface FileEndpointBuilder {
          * Camel to write files to outside directories (to be more secured out
          * of the box). You can turn this off to allow writing files to
          * directories outside the starting directory, such as parent or root
-         * folders. The option will be converted to a boolean type.
+         * folders. The option will be converted to a <code>boolean</code> type.
          */
         public FileProducerBuilder jailStartingDirectory(
                 String jailStartingDirectory) {
@@ -1819,7 +1847,7 @@ public interface FileEndpointBuilder {
          * file:parent. Notice the file:parent is not supported by the FTP
          * component, as the FTP component can only move any existing files to a
          * relative directory based on current dir as base. The option is a
-         * java.lang.String type.
+         * <code>org.apache.camel.Expression</code> type.
          */
         public FileProducerBuilder moveExisting(Expression moveExisting) {
             this.properties.put("moveExisting", moveExisting);
@@ -1834,7 +1862,7 @@ public interface FileEndpointBuilder {
          * file:parent. Notice the file:parent is not supported by the FTP
          * component, as the FTP component can only move any existing files to a
          * relative directory based on current dir as base. The option will be
-         * converted to a java.lang.String type.
+         * converted to a <code>org.apache.camel.Expression</code> type.
          */
         public FileProducerBuilder moveExisting(String moveExisting) {
             this.properties.put("moveExisting", moveExisting);
@@ -1847,7 +1875,7 @@ public interface FileEndpointBuilder {
          * location in the option 'fileName', not the target directory in the
          * base uri. For example if option fileName includes a directory prefix:
          * dir/finalFilename then tempFileName is relative to that subdirectory
-         * dir. The option is a java.lang.String type.
+         * dir. The option is a <code>org.apache.camel.Expression</code> type.
          */
         public FileProducerBuilder tempFileName(Expression tempFileName) {
             this.properties.put("tempFileName", tempFileName);
@@ -1860,7 +1888,8 @@ public interface FileEndpointBuilder {
          * location in the option 'fileName', not the target directory in the
          * base uri. For example if option fileName includes a directory prefix:
          * dir/finalFilename then tempFileName is relative to that subdirectory
-         * dir. The option will be converted to a java.lang.String type.
+         * dir. The option will be converted to a
+         * <code>org.apache.camel.Expression</code> type.
          */
         public FileProducerBuilder tempFileName(String tempFileName) {
             this.properties.put("tempFileName", tempFileName);
@@ -1871,8 +1900,8 @@ public interface FileEndpointBuilder {
          * then, after the write is complete, rename it to the real name. Can be
          * used to identify files being written and also avoid consumers (not
          * using exclusive read locks) reading in progress files. Is often used
-         * by FTP when uploading big files. The option is a java.lang.String
-         * type.
+         * by FTP when uploading big files. The option is a
+         * <code>java.lang.String</code> type.
          */
         public FileProducerBuilder tempPrefix(String tempPrefix) {
             this.properties.put("tempPrefix", tempPrefix);
@@ -1885,7 +1914,7 @@ public interface FileEndpointBuilder {
          * GenericFileWriteException of 'Cannot write null body to file.' will
          * be thrown. If the fileExist option is set to 'Override', then the
          * file will be truncated, and if set to append the file will remain
-         * unchanged. The option is a boolean type.
+         * unchanged. The option is a <code>boolean</code> type.
          */
         public FileProducerBuilder allowNullBody(boolean allowNullBody) {
             this.properties.put("allowNullBody", allowNullBody);
@@ -1898,7 +1927,8 @@ public interface FileEndpointBuilder {
          * GenericFileWriteException of 'Cannot write null body to file.' will
          * be thrown. If the fileExist option is set to 'Override', then the
          * file will be truncated, and if set to append the file will remain
-         * unchanged. The option will be converted to a boolean type.
+         * unchanged. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public FileProducerBuilder allowNullBody(String allowNullBody) {
             this.properties.put("allowNullBody", allowNullBody);
@@ -1907,7 +1937,8 @@ public interface FileEndpointBuilder {
         /**
          * Specify the file permissions which is sent by the producer, the chmod
          * value must be between 000 and 777; If there is a leading digit like
-         * in 0755 we will ignore it. The option is a java.lang.String type.
+         * in 0755 we will ignore it. The option is a
+         * <code>java.lang.String</code> type.
          */
         public FileProducerBuilder chmod(String chmod) {
             this.properties.put("chmod", chmod);
@@ -1917,7 +1948,7 @@ public interface FileEndpointBuilder {
          * Specify the directory permissions used when the producer creates
          * missing directories, the chmod value must be between 000 and 777; If
          * there is a leading digit like in 0755 we will ignore it. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public FileProducerBuilder chmodDirectory(String chmodDirectory) {
             this.properties.put("chmodDirectory", chmodDirectory);
@@ -1936,7 +1967,8 @@ public interface FileEndpointBuilder {
          * enabled, and an existing file exists. If this option
          * copyAndDeleteOnRenameFails false, then an exception will be thrown if
          * an existing file existed, if its true, then the existing file is
-         * deleted before the move operation. The option is a boolean type.
+         * deleted before the move operation. The option is a
+         * <code>boolean</code> type.
          */
         public FileProducerBuilder eagerDeleteTargetFile(
                 boolean eagerDeleteTargetFile) {
@@ -1957,7 +1989,7 @@ public interface FileEndpointBuilder {
          * copyAndDeleteOnRenameFails false, then an exception will be thrown if
          * an existing file existed, if its true, then the existing file is
          * deleted before the move operation. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public FileProducerBuilder eagerDeleteTargetFile(
                 String eagerDeleteTargetFile) {
@@ -1968,7 +2000,7 @@ public interface FileEndpointBuilder {
          * Whether to force syncing writes to the file system. You can turn this
          * off if you do not want this level of guarantee, for example if
          * writing to logs / audit logs etc; this would yield better
-         * performance. The option is a boolean type.
+         * performance. The option is a <code>boolean</code> type.
          */
         public FileProducerBuilder forceWrites(boolean forceWrites) {
             this.properties.put("forceWrites", forceWrites);
@@ -1978,7 +2010,8 @@ public interface FileEndpointBuilder {
          * Whether to force syncing writes to the file system. You can turn this
          * off if you do not want this level of guarantee, for example if
          * writing to logs / audit logs etc; this would yield better
-         * performance. The option will be converted to a boolean type.
+         * performance. The option will be converted to a <code>boolean</code>
+         * type.
          */
         public FileProducerBuilder forceWrites(String forceWrites) {
             this.properties.put("forceWrites", forceWrites);
@@ -1991,7 +2024,7 @@ public interface FileEndpointBuilder {
          * with the timestamp. If the timestamp exists and the option is enabled
          * it will set this timestamp on the written file. Note: This option
          * only applies to the file producer. You cannot use this option with
-         * any of the ftp producers. The option is a boolean type.
+         * any of the ftp producers. The option is a <code>boolean</code> type.
          */
         public FileProducerBuilder keepLastModified(boolean keepLastModified) {
             this.properties.put("keepLastModified", keepLastModified);
@@ -2004,8 +2037,8 @@ public interface FileEndpointBuilder {
          * with the timestamp. If the timestamp exists and the option is enabled
          * it will set this timestamp on the written file. Note: This option
          * only applies to the file producer. You cannot use this option with
-         * any of the ftp producers. The option will be converted to a boolean
-         * type.
+         * any of the ftp producers. The option will be converted to a
+         * <code>boolean</code> type.
          */
         public FileProducerBuilder keepLastModified(String keepLastModified) {
             this.properties.put("keepLastModified", keepLastModified);
@@ -2016,8 +2049,7 @@ public interface FileEndpointBuilder {
          * token to use when fileExist=Move is configured. By default, there is
          * an implementation used if no custom strategy is provided. The option
          * is a
-         * org.apache.camel.component.file.strategy.FileMoveExistingStrategy
-         * type.
+         * <code>org.apache.camel.component.file.strategy.FileMoveExistingStrategy</code> type.
          */
         public FileProducerBuilder moveExistingFileStrategy(
                 Object moveExistingFileStrategy) {
@@ -2029,8 +2061,7 @@ public interface FileEndpointBuilder {
          * token to use when fileExist=Move is configured. By default, there is
          * an implementation used if no custom strategy is provided. The option
          * will be converted to a
-         * org.apache.camel.component.file.strategy.FileMoveExistingStrategy
-         * type.
+         * <code>org.apache.camel.component.file.strategy.FileMoveExistingStrategy</code> type.
          */
         public FileProducerBuilder moveExistingFileStrategy(
                 String moveExistingFileStrategy) {

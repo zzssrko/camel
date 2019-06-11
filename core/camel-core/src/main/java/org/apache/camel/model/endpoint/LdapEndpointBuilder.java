@@ -46,14 +46,15 @@ public interface LdapEndpointBuilder {
          * used as given. The latter may not be possible in all situations where
          * the javax.naming.directory.DirContext must not be shared, and in
          * those situations it can be better to use java.util.Hashtable or Map
-         * instead. The option is a java.lang.String type.
+         * instead. The option is a <code>java.lang.String</code> type.
          */
         public T dirContextName(String dirContextName) {
             this.properties.put("dirContextName", dirContextName);
             return (T) this;
         }
         /**
-         * The base DN for searches. The option is a java.lang.String type.
+         * The base DN for searches. The option is a
+         * <code>java.lang.String</code> type.
          */
         public T base(String base) {
             this.properties.put("base", base);
@@ -64,8 +65,8 @@ public interface LdapEndpointBuilder {
          * (most LDAP Servers throw an exception when trying to retrieve more
          * than 1000 entries in one query). To be able to use this a LdapContext
          * (subclass of DirContext) has to be passed in as ldapServerBean
-         * (otherwise an exception is thrown). The option is a java.lang.Integer
-         * type.
+         * (otherwise an exception is thrown). The option is a
+         * <code>java.lang.Integer</code> type.
          */
         public T pageSize(Integer pageSize) {
             this.properties.put("pageSize", pageSize);
@@ -77,7 +78,7 @@ public interface LdapEndpointBuilder {
          * than 1000 entries in one query). To be able to use this a LdapContext
          * (subclass of DirContext) has to be passed in as ldapServerBean
          * (otherwise an exception is thrown). The option will be converted to a
-         * java.lang.Integer type.
+         * <code>java.lang.Integer</code> type.
          */
         public T pageSize(String pageSize) {
             this.properties.put("pageSize", pageSize);
@@ -85,7 +86,7 @@ public interface LdapEndpointBuilder {
         }
         /**
          * Comma-separated list of attributes that should be set in each entry
-         * of the result. The option is a java.lang.String type.
+         * of the result. The option is a <code>java.lang.String</code> type.
          */
         public T returnedAttributes(String returnedAttributes) {
             this.properties.put("returnedAttributes", returnedAttributes);
@@ -93,7 +94,7 @@ public interface LdapEndpointBuilder {
         }
         /**
          * Specifies how deeply to search the tree of entries, starting at the
-         * base DN. The option is a java.lang.String type.
+         * base DN. The option is a <code>java.lang.String</code> type.
          */
         public T scope(String scope) {
             this.properties.put("scope", scope);
@@ -102,7 +103,7 @@ public interface LdapEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -111,7 +112,7 @@ public interface LdapEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -120,7 +121,7 @@ public interface LdapEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -129,7 +130,7 @@ public interface LdapEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

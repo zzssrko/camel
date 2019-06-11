@@ -39,22 +39,22 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Type of metrics. The option is a
-         * io.micrometer.core.instrument.Meter.Type type.
+         * <code>io.micrometer.core.instrument.Meter$Type</code> type.
          */
-        public T metricsType(Object metricsType) {
+        public T metricsType(Type metricsType) {
             this.properties.put("metricsType", metricsType);
             return (T) this;
         }
         /**
          * Type of metrics. The option will be converted to a
-         * io.micrometer.core.instrument.Meter.Type type.
+         * <code>io.micrometer.core.instrument.Meter$Type</code> type.
          */
         public T metricsType(String metricsType) {
             this.properties.put("metricsType", metricsType);
             return (T) this;
         }
         /**
-         * Name of metrics. The option is a java.lang.String type.
+         * Name of metrics. The option is a <code>java.lang.String</code> type.
          */
         public T metricsName(String metricsName) {
             this.properties.put("metricsName", metricsName);
@@ -62,7 +62,8 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Tags of metrics. The option is a
-         * java.lang.Iterable<io.micrometer.core.instrument.Tag> type.
+         * <code>java.lang.Iterable<io.micrometer.core.instrument.Tag></code>
+         * type.
          */
         public T tags(Iterable<Object> tags) {
             this.properties.put("tags", tags);
@@ -70,7 +71,8 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Tags of metrics. The option will be converted to a
-         * java.lang.Iterable<io.micrometer.core.instrument.Tag> type.
+         * <code>java.lang.Iterable<io.micrometer.core.instrument.Tag></code>
+         * type.
          */
         public T tags(String tags) {
             this.properties.put("tags", tags);
@@ -78,7 +80,7 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Action expression when using timer type. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T action(String action) {
             this.properties.put("action", action);
@@ -86,7 +88,7 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Decrement value expression when using counter type. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T decrement(String decrement) {
             this.properties.put("decrement", decrement);
@@ -94,7 +96,7 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Increment value expression when using counter type. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T increment(String increment) {
             this.properties.put("increment", increment);
@@ -102,7 +104,7 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Value expression when using histogram type. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T value(String value) {
             this.properties.put("value", value);
@@ -111,7 +113,7 @@ public interface MicrometerEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -120,7 +122,7 @@ public interface MicrometerEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -129,7 +131,7 @@ public interface MicrometerEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -138,7 +140,7 @@ public interface MicrometerEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -154,6 +156,10 @@ public interface MicrometerEndpointBuilder {
         public MicrometerProducerBuilder(String path) {
             super(path);
         }
+    }
+
+    public static enum Type {
+        COUNTER, GAUGE, LONG_TASK_TIMER, TIMER, DISTRIBUTION_SUMMARY, OTHER;
     }
     public default MicrometerProducerBuilder toMicrometer(String path) {
         return new MicrometerProducerBuilder(path);

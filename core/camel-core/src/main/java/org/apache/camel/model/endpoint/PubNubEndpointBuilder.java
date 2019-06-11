@@ -41,7 +41,7 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * The channel used for subscribing/publishing events. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T channel(String channel) {
             this.properties.put("channel", channel);
@@ -49,7 +49,7 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * UUID to be used as a device identifier, a default UUID is generated
-         * if not passed. The option is a java.lang.String type.
+         * if not passed. The option is a <code>java.lang.String</code> type.
          */
         public T uuid(String uuid) {
             this.properties.put("uuid", uuid);
@@ -58,7 +58,7 @@ public interface PubNubEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -67,7 +67,7 @@ public interface PubNubEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -75,7 +75,7 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * Reference to a Pubnub client in the registry. The option is a
-         * com.pubnub.api.PubNub type.
+         * <code>com.pubnub.api.PubNub</code> type.
          */
         public T pubnub(Object pubnub) {
             this.properties.put("pubnub", pubnub);
@@ -83,7 +83,7 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * Reference to a Pubnub client in the registry. The option will be
-         * converted to a com.pubnub.api.PubNub type.
+         * converted to a <code>com.pubnub.api.PubNub</code> type.
          */
         public T pubnub(String pubnub) {
             this.properties.put("pubnub", pubnub);
@@ -92,7 +92,7 @@ public interface PubNubEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -101,7 +101,7 @@ public interface PubNubEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -109,7 +109,8 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * If Access Manager is utilized, client will use this authKey in all
-         * restricted requests. The option is a java.lang.String type.
+         * restricted requests. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T authKey(String authKey) {
             this.properties.put("authKey", authKey);
@@ -117,7 +118,7 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * If cipher is passed, all communicatons to/from PubNub will be
-         * encrypted. The option is a java.lang.String type.
+         * encrypted. The option is a <code>java.lang.String</code> type.
          */
         public T cipherKey(String cipherKey) {
             this.properties.put("cipherKey", cipherKey);
@@ -125,7 +126,8 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * The publish key obtained from your PubNub account. Required when
-         * publishing messages. The option is a java.lang.String type.
+         * publishing messages. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T publishKey(String publishKey) {
             this.properties.put("publishKey", publishKey);
@@ -133,14 +135,15 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * The secret key used for message signing. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);
             return (T) this;
         }
         /**
-         * Use SSL for secure transmission. The option is a boolean type.
+         * Use SSL for secure transmission. The option is a <code>boolean</code>
+         * type.
          */
         public T secure(boolean secure) {
             this.properties.put("secure", secure);
@@ -148,7 +151,7 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * Use SSL for secure transmission. The option will be converted to a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public T secure(String secure) {
             this.properties.put("secure", secure);
@@ -157,7 +160,7 @@ public interface PubNubEndpointBuilder {
         /**
          * The subscribe key obtained from your PubNub account. Required when
          * subscribing to channels or listening for presence events. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T subscribeKey(String subscribeKey) {
             this.properties.put("subscribeKey", subscribeKey);
@@ -180,7 +183,7 @@ public interface PubNubEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public PubNubConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -194,7 +197,7 @@ public interface PubNubEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public PubNubConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -203,7 +206,7 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * Also subscribe to related presence information. The option is a
-         * boolean type.
+         * <code>boolean</code> type.
          */
         public PubNubConsumerBuilder withPresence(boolean withPresence) {
             this.properties.put("withPresence", withPresence);
@@ -211,7 +214,7 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * Also subscribe to related presence information. The option will be
-         * converted to a boolean type.
+         * converted to a <code>boolean</code> type.
          */
         public PubNubConsumerBuilder withPresence(String withPresence) {
             this.properties.put("withPresence", withPresence);
@@ -222,7 +225,7 @@ public interface PubNubEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public PubNubConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -234,7 +237,8 @@ public interface PubNubEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public PubNubConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -242,7 +246,7 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public PubNubConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -251,7 +255,8 @@ public interface PubNubEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public PubNubConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -279,8 +284,8 @@ public interface PubNubEndpointBuilder {
          * key/value pairs specific to a subscriber uuid. State information is
          * supplied as a JSON object of key/value pairs SETSTATE: Used to set
          * key/value pairs specific to a subscriber uuid GETHISTORY: Fetches
-         * historical messages of a channel. The option is a java.lang.String
-         * type.
+         * historical messages of a channel. The option is a
+         * <code>java.lang.String</code> type.
          */
         public PubNubProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);

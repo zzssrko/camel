@@ -40,21 +40,22 @@ public interface RestEndpointBuilder {
             super("rest", path);
         }
         /**
-         * HTTP method to use. The option is a java.lang.String type.
+         * HTTP method to use. The option is a <code>java.lang.String</code>
+         * type.
          */
         public T method(String method) {
             this.properties.put("method", method);
             return (T) this;
         }
         /**
-         * The base path. The option is a java.lang.String type.
+         * The base path. The option is a <code>java.lang.String</code> type.
          */
         public T path(String path) {
             this.properties.put("path", path);
             return (T) this;
         }
         /**
-         * The uri template. The option is a java.lang.String type.
+         * The uri template. The option is a <code>java.lang.String</code> type.
          */
         public T uriTemplate(String uriTemplate) {
             this.properties.put("uriTemplate", uriTemplate);
@@ -66,7 +67,7 @@ public interface RestEndpointBuilder {
          * then Camel will lookup if there is a Camel component that integrates
          * with the Rest DSL, or if a org.apache.camel.spi.RestConsumerFactory
          * is registered in the registry. If either one is found, then that is
-         * being used. The option is a java.lang.String type.
+         * being used. The option is a <code>java.lang.String</code> type.
          */
         public T componentName(String componentName) {
             this.properties.put("componentName", componentName);
@@ -75,7 +76,7 @@ public interface RestEndpointBuilder {
         /**
          * Media type such as: 'text/xml', or 'application/json' this REST
          * service accepts. By default we accept all kinds of types. The option
-         * is a java.lang.String type.
+         * is a <code>java.lang.String</code> type.
          */
         public T consumes(String consumes) {
             this.properties.put("consumes", consumes);
@@ -83,7 +84,7 @@ public interface RestEndpointBuilder {
         }
         /**
          * To declare the incoming POJO binding type as a FQN class name. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T inType(String inType) {
             this.properties.put("inType", inType);
@@ -91,7 +92,7 @@ public interface RestEndpointBuilder {
         }
         /**
          * To declare the outgoing POJO binding type as a FQN class name. The
-         * option is a java.lang.String type.
+         * option is a <code>java.lang.String</code> type.
          */
         public T outType(String outType) {
             this.properties.put("outType", outType);
@@ -99,7 +100,7 @@ public interface RestEndpointBuilder {
         }
         /**
          * Media type such as: 'text/xml', or 'application/json' this REST
-         * service returns. The option is a java.lang.String type.
+         * service returns. The option is a <code>java.lang.String</code> type.
          */
         public T produces(String produces) {
             this.properties.put("produces", produces);
@@ -107,7 +108,7 @@ public interface RestEndpointBuilder {
         }
         /**
          * Name of the route this REST services creates. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public T routeId(String routeId) {
             this.properties.put("routeId", routeId);
@@ -116,7 +117,7 @@ public interface RestEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -125,7 +126,7 @@ public interface RestEndpointBuilder {
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -134,7 +135,7 @@ public interface RestEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * is a boolean type.
+         * is a <code>boolean</code> type.
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -143,7 +144,7 @@ public interface RestEndpointBuilder {
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a boolean type.
+         * will be converted to a <code>boolean</code> type.
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -166,7 +167,7 @@ public interface RestEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a boolean type.
+         * ignored. The option is a <code>boolean</code> type.
          */
         public RestConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -179,7 +180,7 @@ public interface RestEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a boolean type.
+         * ignored. The option will be converted to a <code>boolean</code> type.
          */
         public RestConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -187,7 +188,7 @@ public interface RestEndpointBuilder {
         }
         /**
          * Human description to document this REST service. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public RestConsumerBuilder description(String description) {
             this.properties.put("description", description);
@@ -198,7 +199,7 @@ public interface RestEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option is a
-         * org.apache.camel.spi.ExceptionHandler type.
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
          */
         public RestConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -210,7 +211,8 @@ public interface RestEndpointBuilder {
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
          * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
          */
         public RestConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
@@ -218,7 +220,7 @@ public interface RestEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a org.apache.camel.ExchangePattern type.
+         * option is a <code>org.apache.camel.ExchangePattern</code> type.
          */
         public RestConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -227,7 +229,8 @@ public interface RestEndpointBuilder {
         }
         /**
          * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a org.apache.camel.ExchangePattern type.
+         * option will be converted to a
+         * <code>org.apache.camel.ExchangePattern</code> type.
          */
         public RestConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -246,7 +249,7 @@ public interface RestEndpointBuilder {
         /**
          * The swagger api doc resource to use. The resource is loaded from
          * classpath by default and must be in JSon format. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public RestProducerBuilder apiDoc(String apiDoc) {
             this.properties.put("apiDoc", apiDoc);
@@ -257,7 +260,8 @@ public interface RestEndpointBuilder {
          * other than 'off' the producer will try to convert the body of the
          * incoming message from inType to the json or xml, and the response
          * from json or xml to outType. The option is a
-         * org.apache.camel.spi.RestConfiguration.RestBindingMode type.
+         * <code>org.apache.camel.spi.RestConfiguration$RestBindingMode</code>
+         * type.
          */
         public RestProducerBuilder bindingMode(RestBindingMode bindingMode) {
             this.properties.put("bindingMode", bindingMode);
@@ -268,7 +272,8 @@ public interface RestEndpointBuilder {
          * other than 'off' the producer will try to convert the body of the
          * incoming message from inType to the json or xml, and the response
          * from json or xml to outType. The option will be converted to a
-         * org.apache.camel.spi.RestConfiguration.RestBindingMode type.
+         * <code>org.apache.camel.spi.RestConfiguration$RestBindingMode</code>
+         * type.
          */
         public RestProducerBuilder bindingMode(String bindingMode) {
             this.properties.put("bindingMode", bindingMode);
@@ -276,7 +281,7 @@ public interface RestEndpointBuilder {
         }
         /**
          * Host and port of HTTP service to use (override host in swagger
-         * schema). The option is a java.lang.String type.
+         * schema). The option is a <code>java.lang.String</code> type.
          */
         public RestProducerBuilder host(String host) {
             this.properties.put("host", host);
@@ -284,7 +289,7 @@ public interface RestEndpointBuilder {
         }
         /**
          * Query parameters for the HTTP service to call. The option is a
-         * java.lang.String type.
+         * <code>java.lang.String</code> type.
          */
         public RestProducerBuilder queryParameters(String queryParameters) {
             this.properties.put("queryParameters", queryParameters);
