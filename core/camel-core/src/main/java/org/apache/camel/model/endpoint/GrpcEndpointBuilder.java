@@ -56,6 +56,14 @@ public interface GrpcEndpointBuilder {
             return (T) this;
         }
         /**
+         * The gRPC local or remote server port. The option will be converted to
+         * a int type.
+         */
+        public T port(String port) {
+            this.properties.put("port", port);
+            return (T) this;
+        }
+        /**
          * Fully qualified service name from the protocol buffer descriptor file
          * (package dot service definition name). The option is a
          * java.lang.String type.
@@ -72,10 +80,26 @@ public interface GrpcEndpointBuilder {
             return (T) this;
         }
         /**
+         * The HTTP/2 flow control window size (MiB). The option will be
+         * converted to a int type.
+         */
+        public T flowControlWindow(String flowControlWindow) {
+            this.properties.put("flowControlWindow", flowControlWindow);
+            return (T) this;
+        }
+        /**
          * The maximum message size allowed to be received/sent (MiB). The
          * option is a int type.
          */
         public T maxMessageSize(int maxMessageSize) {
+            this.properties.put("maxMessageSize", maxMessageSize);
+            return (T) this;
+        }
+        /**
+         * The maximum message size allowed to be received/sent (MiB). The
+         * option will be converted to a int type.
+         */
+        public T maxMessageSize(String maxMessageSize) {
             this.properties.put("maxMessageSize", maxMessageSize);
             return (T) this;
         }
@@ -89,11 +113,29 @@ public interface GrpcEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -106,10 +148,27 @@ public interface GrpcEndpointBuilder {
             return (T) this;
         }
         /**
+         * Authentication method type in advance to the SSL/TLS negotiation. The
+         * option will be converted to a
+         * org.apache.camel.component.grpc.GrpcAuthType type.
+         */
+        public T authenticationType(String authenticationType) {
+            this.properties.put("authenticationType", authenticationType);
+            return (T) this;
+        }
+        /**
          * JSON Web Token sign algorithm. The option is a
          * org.apache.camel.component.grpc.auth.jwt.JwtAlgorithm type.
          */
         public T jwtAlgorithm(JwtAlgorithm jwtAlgorithm) {
+            this.properties.put("jwtAlgorithm", jwtAlgorithm);
+            return (T) this;
+        }
+        /**
+         * JSON Web Token sign algorithm. The option will be converted to a
+         * org.apache.camel.component.grpc.auth.jwt.JwtAlgorithm type.
+         */
+        public T jwtAlgorithm(String jwtAlgorithm) {
             this.properties.put("jwtAlgorithm", jwtAlgorithm);
             return (T) this;
         }
@@ -167,6 +226,15 @@ public interface GrpcEndpointBuilder {
             return (T) this;
         }
         /**
+         * Identifies the security negotiation type used for HTTP/2
+         * communication. The option will be converted to a
+         * io.grpc.netty.NegotiationType type.
+         */
+        public T negotiationType(String negotiationType) {
+            this.properties.put("negotiationType", negotiationType);
+            return (T) this;
+        }
+        /**
          * Service Account key file in JSON format resource link supported by
          * the Google Cloud SDK. The option is a java.lang.String type.
          */
@@ -207,6 +275,19 @@ public interface GrpcEndpointBuilder {
             return (GrpcConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public GrpcConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (GrpcConsumerBuilder) this;
+        }
+        /**
          * This option specifies the top-level strategy for processing service
          * requests and responses in streaming mode. If an aggregation strategy
          * is selected, all requests will be accumulated in the list, then
@@ -222,10 +303,32 @@ public interface GrpcEndpointBuilder {
             return (GrpcConsumerBuilder) this;
         }
         /**
+         * This option specifies the top-level strategy for processing service
+         * requests and responses in streaming mode. If an aggregation strategy
+         * is selected, all requests will be accumulated in the list, then
+         * transferred to the flow, and the accumulated responses will be sent
+         * to the sender. If a propagation strategy is selected, request is sent
+         * to the stream, and the response will be immediately sent back to the
+         * sender. The option will be converted to a
+         * org.apache.camel.component.grpc.GrpcConsumerStrategy type.
+         */
+        public GrpcConsumerBuilder consumerStrategy(String consumerStrategy) {
+            this.properties.put("consumerStrategy", consumerStrategy);
+            return (GrpcConsumerBuilder) this;
+        }
+        /**
          * Determines if onCompleted events should be pushed to the Camel route.
          * The option is a boolean type.
          */
         public GrpcConsumerBuilder forwardOnCompleted(boolean forwardOnCompleted) {
+            this.properties.put("forwardOnCompleted", forwardOnCompleted);
+            return (GrpcConsumerBuilder) this;
+        }
+        /**
+         * Determines if onCompleted events should be pushed to the Camel route.
+         * The option will be converted to a boolean type.
+         */
+        public GrpcConsumerBuilder forwardOnCompleted(String forwardOnCompleted) {
             this.properties.put("forwardOnCompleted", forwardOnCompleted);
             return (GrpcConsumerBuilder) this;
         }
@@ -238,11 +341,29 @@ public interface GrpcEndpointBuilder {
             return (GrpcConsumerBuilder) this;
         }
         /**
+         * Determines if onError events should be pushed to the Camel route.
+         * Exceptions will be set as message body. The option will be converted
+         * to a boolean type.
+         */
+        public GrpcConsumerBuilder forwardOnError(String forwardOnError) {
+            this.properties.put("forwardOnError", forwardOnError);
+            return (GrpcConsumerBuilder) this;
+        }
+        /**
          * The maximum number of concurrent calls permitted for each incoming
          * server connection. The option is a int type.
          */
         public GrpcConsumerBuilder maxConcurrentCallsPerConnection(
                 int maxConcurrentCallsPerConnection) {
+            this.properties.put("maxConcurrentCallsPerConnection", maxConcurrentCallsPerConnection);
+            return (GrpcConsumerBuilder) this;
+        }
+        /**
+         * The maximum number of concurrent calls permitted for each incoming
+         * server connection. The option will be converted to a int type.
+         */
+        public GrpcConsumerBuilder maxConcurrentCallsPerConnection(
+                String maxConcurrentCallsPerConnection) {
             this.properties.put("maxConcurrentCallsPerConnection", maxConcurrentCallsPerConnection);
             return (GrpcConsumerBuilder) this;
         }
@@ -259,11 +380,30 @@ public interface GrpcEndpointBuilder {
             return (GrpcConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public GrpcConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (GrpcConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GrpcConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (GrpcConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public GrpcConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (GrpcConsumerBuilder) this;
         }
@@ -294,6 +434,18 @@ public interface GrpcEndpointBuilder {
          */
         public GrpcProducerBuilder producerStrategy(
                 GrpcProducerStrategy producerStrategy) {
+            this.properties.put("producerStrategy", producerStrategy);
+            return (GrpcProducerBuilder) this;
+        }
+        /**
+         * The mode used to communicate with a remote gRPC server. In SIMPLE
+         * mode a single exchange is translated into a remote procedure call. In
+         * STREAMING mode all exchanges will be sent within the same request
+         * (input and output of the recipient gRPC service must be of type
+         * 'stream'). The option will be converted to a
+         * org.apache.camel.component.grpc.GrpcProducerStrategy type.
+         */
+        public GrpcProducerBuilder producerStrategy(String producerStrategy) {
             this.properties.put("producerStrategy", producerStrategy);
             return (GrpcProducerBuilder) this;
         }

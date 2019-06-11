@@ -61,11 +61,29 @@ public interface SjmsBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * The aggregation strategy to use, which merges all the batched
+         * messages into a single message. The option will be converted to a
+         * org.apache.camel.AggregationStrategy type.
+         */
+        public T aggregationStrategy(String aggregationStrategy) {
+            this.properties.put("aggregationStrategy", aggregationStrategy);
+            return (T) this;
+        }
+        /**
          * Whether to allow sending messages with no body. If this option is
          * false and the message body is null, then an JMSException is thrown.
          * The option is a boolean type.
          */
         public T allowNullBody(boolean allowNullBody) {
+            this.properties.put("allowNullBody", allowNullBody);
+            return (T) this;
+        }
+        /**
+         * Whether to allow sending messages with no body. If this option is
+         * false and the message body is null, then an JMSException is thrown.
+         * The option will be converted to a boolean type.
+         */
+        public T allowNullBody(String allowNullBody) {
             this.properties.put("allowNullBody", allowNullBody);
             return (T) this;
         }
@@ -82,6 +100,18 @@ public interface SjmsBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * The completion interval in millis, which causes batches to be
+         * completed in a scheduled fixed rate every interval. The batch may be
+         * empty if the timeout triggered and there was no messages in the
+         * batch. Notice you cannot use both completion timeout and completion
+         * interval at the same time, only one can be configured. The option
+         * will be converted to a int type.
+         */
+        public T completionInterval(String completionInterval) {
+            this.properties.put("completionInterval", completionInterval);
+            return (T) this;
+        }
+        /**
          * The completion predicate, which causes batches to be completed when
          * the predicate evaluates as true. The predicate can also be configured
          * using the simple language using the string syntax. You may want to
@@ -94,10 +124,30 @@ public interface SjmsBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * The completion predicate, which causes batches to be completed when
+         * the predicate evaluates as true. The predicate can also be configured
+         * using the simple language using the string syntax. You may want to
+         * set the option eagerCheckCompletion to true to let the predicate
+         * match the incoming message, as otherwise it matches the aggregated
+         * message. The option will be converted to a java.lang.String type.
+         */
+        public T completionPredicate(String completionPredicate) {
+            this.properties.put("completionPredicate", completionPredicate);
+            return (T) this;
+        }
+        /**
          * The number of messages consumed at which the batch will be completed.
          * The option is a int type.
          */
         public T completionSize(int completionSize) {
+            this.properties.put("completionSize", completionSize);
+            return (T) this;
+        }
+        /**
+         * The number of messages consumed at which the batch will be completed.
+         * The option will be converted to a int type.
+         */
+        public T completionSize(String completionSize) {
             this.properties.put("completionSize", completionSize);
             return (T) this;
         }
@@ -113,9 +163,29 @@ public interface SjmsBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * The timeout in millis from receipt of the first first message when
+         * the batch will be completed. The batch may be empty if the timeout
+         * triggered and there was no messages in the batch. Notice you cannot
+         * use both completion timeout and completion interval at the same time,
+         * only one can be configured. The option will be converted to a int
+         * type.
+         */
+        public T completionTimeout(String completionTimeout) {
+            this.properties.put("completionTimeout", completionTimeout);
+            return (T) this;
+        }
+        /**
          * The number of JMS sessions to consume from. The option is a int type.
          */
         public T consumerCount(int consumerCount) {
+            this.properties.put("consumerCount", consumerCount);
+            return (T) this;
+        }
+        /**
+         * The number of JMS sessions to consume from. The option will be
+         * converted to a int type.
+         */
+        public T consumerCount(String consumerCount) {
             this.properties.put("consumerCount", consumerCount);
             return (T) this;
         }
@@ -126,6 +196,17 @@ public interface SjmsBatchEndpointBuilder {
          * the aggregated Exchange. The option is a boolean type.
          */
         public T eagerCheckCompletion(boolean eagerCheckCompletion) {
+            this.properties.put("eagerCheckCompletion", eagerCheckCompletion);
+            return (T) this;
+        }
+        /**
+         * Use eager completion checking which means that the
+         * completionPredicate will use the incoming Exchange. As opposed to
+         * without eager completion checking the completionPredicate will use
+         * the aggregated Exchange. The option will be converted to a boolean
+         * type.
+         */
+        public T eagerCheckCompletion(String eagerCheckCompletion) {
             this.properties.put("eagerCheckCompletion", eagerCheckCompletion);
             return (T) this;
         }
@@ -141,12 +222,33 @@ public interface SjmsBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to include all JMSXxxx properties when mapping from JMS to
+         * Camel Message. Setting this to true will include properties such as
+         * JMSXAppID, and JMSXUserID etc. Note: If you are using a custom
+         * headerFilterStrategy then this option does not apply. The option will
+         * be converted to a boolean type.
+         */
+        public T includeAllJMSXProperties(String includeAllJMSXProperties) {
+            this.properties.put("includeAllJMSXProperties", includeAllJMSXProperties);
+            return (T) this;
+        }
+        /**
          * Specifies whether Camel should auto map the received JMS message to a
          * suited payload type, such as javax.jms.TextMessage to a String etc.
          * See section about how mapping works below for more details. The
          * option is a boolean type.
          */
         public T mapJmsMessage(boolean mapJmsMessage) {
+            this.properties.put("mapJmsMessage", mapJmsMessage);
+            return (T) this;
+        }
+        /**
+         * Specifies whether Camel should auto map the received JMS message to a
+         * suited payload type, such as javax.jms.TextMessage to a String etc.
+         * See section about how mapping works below for more details. The
+         * option will be converted to a boolean type.
+         */
+        public T mapJmsMessage(String mapJmsMessage) {
             this.properties.put("mapJmsMessage", mapJmsMessage);
             return (T) this;
         }
@@ -160,6 +262,15 @@ public interface SjmsBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * The duration in milliseconds of each poll for messages.
+         * completionTimeOut will be used if it is shorter and a batch has
+         * started. The option will be converted to a int type.
+         */
+        public T pollDuration(String pollDuration) {
+            this.properties.put("pollDuration", pollDuration);
+            return (T) this;
+        }
+        /**
          * If using completion timeout or interval, then the batch may be empty
          * if the timeout triggered and there was no messages in the batch. If
          * this option is true and the batch is empty then an empty message is
@@ -167,6 +278,17 @@ public interface SjmsBatchEndpointBuilder {
          * boolean type.
          */
         public T sendEmptyMessageWhenIdle(boolean sendEmptyMessageWhenIdle) {
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
+            return (T) this;
+        }
+        /**
+         * If using completion timeout or interval, then the batch may be empty
+         * if the timeout triggered and there was no messages in the batch. If
+         * this option is true and the batch is empty then an empty message is
+         * added to the batch so an empty message is routed. The option will be
+         * converted to a boolean type.
+         */
+        public T sendEmptyMessageWhenIdle(String sendEmptyMessageWhenIdle) {
             this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
             return (T) this;
         }
@@ -188,6 +310,23 @@ public interface SjmsBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to startup the consumer message listener asynchronously, when
+         * starting a route. For example if a JmsConsumer cannot get a
+         * connection to a remote JMS broker, then it may block while retrying
+         * and/or failover. This will cause Camel to block while starting
+         * routes. By setting this option to true, you will let routes startup,
+         * while the JmsConsumer connects to the JMS broker using a dedicated
+         * thread in asynchronous mode. If this option is used, then beware that
+         * if the connection could not be established, then an exception is
+         * logged at WARN level, and the consumer will not be able to receive
+         * messages; You can then restart the route to retry. The option will be
+         * converted to a boolean type.
+         */
+        public T asyncStartListener(String asyncStartListener) {
+            this.properties.put("asyncStartListener", asyncStartListener);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -197,11 +336,29 @@ public interface SjmsBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
+            return (T) this;
+        }
+        /**
+         * To use a custom HeaderFilterStrategy to filter header to and from
+         * Camel message. The option will be converted to a
+         * org.apache.camel.spi.HeaderFilterStrategy type.
+         */
+        public T headerFilterStrategy(String headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
@@ -222,6 +379,22 @@ public interface SjmsBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Pluggable strategy for encoding and decoding JMS keys so they can be
+         * compliant with the JMS specification. Camel provides two
+         * implementations out of the box: default and passthrough. The default
+         * strategy will safely marshal dots and hyphens (. and -). The
+         * passthrough strategy leaves the key as is. Can be used for JMS
+         * brokers which do not care whether JMS header keys contain illegal
+         * characters. You can provide your own implementation of the
+         * org.apache.camel.component.jms.JmsKeyFormatStrategy and refer to it
+         * using the # notation. The option will be converted to a
+         * org.apache.camel.component.sjms.jms.JmsKeyFormatStrategy type.
+         */
+        public T jmsKeyFormatStrategy(String jmsKeyFormatStrategy) {
+            this.properties.put("jmsKeyFormatStrategy", jmsKeyFormatStrategy);
+            return (T) this;
+        }
+        /**
          * The delay in millis between attempts to re-establish a valid session.
          * If this is a positive value the SjmsBatchConsumer will attempt to
          * create a new session if it sees an IllegalStateException during
@@ -236,12 +409,37 @@ public interface SjmsBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * The delay in millis between attempts to re-establish a valid session.
+         * If this is a positive value the SjmsBatchConsumer will attempt to
+         * create a new session if it sees an IllegalStateException during
+         * message consumption. This delay value allows you to pause between
+         * attempts to prevent spamming the logs. If this is a negative value
+         * (default is -1) then the SjmsBatchConsumer will behave as it always
+         * has before - that is it will bail out and the route will shut down if
+         * it sees an IllegalStateException. The option will be converted to a
+         * int type.
+         */
+        public T keepAliveDelay(String keepAliveDelay) {
+            this.properties.put("keepAliveDelay", keepAliveDelay);
+            return (T) this;
+        }
+        /**
          * To use the given MessageCreatedStrategy which are invoked when Camel
          * creates new instances of javax.jms.Message objects when Camel is
          * sending a JMS message. The option is a
          * org.apache.camel.component.sjms.jms.MessageCreatedStrategy type.
          */
         public T messageCreatedStrategy(Object messageCreatedStrategy) {
+            this.properties.put("messageCreatedStrategy", messageCreatedStrategy);
+            return (T) this;
+        }
+        /**
+         * To use the given MessageCreatedStrategy which are invoked when Camel
+         * creates new instances of javax.jms.Message objects when Camel is
+         * sending a JMS message. The option will be converted to a
+         * org.apache.camel.component.sjms.jms.MessageCreatedStrategy type.
+         */
+        public T messageCreatedStrategy(String messageCreatedStrategy) {
             this.properties.put("messageCreatedStrategy", messageCreatedStrategy);
             return (T) this;
         }
@@ -255,11 +453,29 @@ public interface SjmsBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Specifies the interval between recovery attempts, i.e. when a
+         * connection is being refreshed, in milliseconds. The default is 5000
+         * ms, that is, 5 seconds. The option will be converted to a int type.
+         */
+        public T recoveryInterval(String recoveryInterval) {
+            this.properties.put("recoveryInterval", recoveryInterval);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -272,6 +488,18 @@ public interface SjmsBatchEndpointBuilder {
          */
         public T timeoutCheckerExecutorService(
                 ScheduledExecutorService timeoutCheckerExecutorService) {
+            this.properties.put("timeoutCheckerExecutorService", timeoutCheckerExecutorService);
+            return (T) this;
+        }
+        /**
+         * If using the completionInterval option a background thread is created
+         * to trigger the completion interval. Set this option to provide a
+         * custom thread pool to be used rather than creating a new thread for
+         * every consumer. The option will be converted to a
+         * java.util.concurrent.ScheduledExecutorService type.
+         */
+        public T timeoutCheckerExecutorService(
+                String timeoutCheckerExecutorService) {
             this.properties.put("timeoutCheckerExecutorService", timeoutCheckerExecutorService);
             return (T) this;
         }
@@ -300,6 +528,20 @@ public interface SjmsBatchEndpointBuilder {
             return (SjmsBatchConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public SjmsBatchConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (SjmsBatchConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -312,11 +554,30 @@ public interface SjmsBatchEndpointBuilder {
             return (SjmsBatchConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public SjmsBatchConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (SjmsBatchConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SjmsBatchConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (SjmsBatchConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public SjmsBatchConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (SjmsBatchConsumerBuilder) this;
         }

@@ -52,6 +52,16 @@ public interface DigitalSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set the Crypto operation from that supplied after the crypto scheme
+         * in the endpoint uri e.g. crypto:sign sets sign as the operation. The
+         * option will be converted to a
+         * org.apache.camel.component.crypto.CryptoOperation type.
+         */
+        public T cryptoOperation(String cryptoOperation) {
+            this.properties.put("cryptoOperation", cryptoOperation);
+            return (T) this;
+        }
+        /**
          * The logical name of this operation. The option is a java.lang.String
          * type.
          */
@@ -100,6 +110,19 @@ public interface DigitalSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets the KeyStore that can contain keys and Certficates for use in
+         * signing and verifying exchanges. A KeyStore is typically used with an
+         * alias, either one supplied in the Route definition or dynamically via
+         * the message header CamelSignatureKeyStoreAlias. If no alias is
+         * supplied and there is only a single entry in the Keystore, then this
+         * single entry will be used. The option will be converted to a
+         * java.security.KeyStore type.
+         */
+        public T keystore(String keystore) {
+            this.properties.put("keystore", keystore);
+            return (T) this;
+        }
+        /**
          * Sets the reference name for a Keystore that can be found in the
          * registry. The option is a java.lang.String type.
          */
@@ -112,6 +135,14 @@ public interface DigitalSignatureEndpointBuilder {
          * option is a java.security.PrivateKey type.
          */
         public T privateKey(PrivateKey privateKey) {
+            this.properties.put("privateKey", privateKey);
+            return (T) this;
+        }
+        /**
+         * Set the PrivateKey that should be used to sign the exchange. The
+         * option will be converted to a java.security.PrivateKey type.
+         */
+        public T privateKey(String privateKey) {
             this.properties.put("privateKey", privateKey);
             return (T) this;
         }
@@ -166,10 +197,27 @@ public interface DigitalSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Set the size of the buffer used to read in the Exchange payload data.
          * The option is a java.lang.Integer type.
          */
         public T bufferSize(Integer bufferSize) {
+            this.properties.put("bufferSize", bufferSize);
+            return (T) this;
+        }
+        /**
+         * Set the size of the buffer used to read in the Exchange payload data.
+         * The option will be converted to a java.lang.Integer type.
+         */
+        public T bufferSize(String bufferSize) {
             this.properties.put("bufferSize", bufferSize);
             return (T) this;
         }
@@ -183,12 +231,32 @@ public interface DigitalSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set the Certificate that should be used to verify the signature in
+         * the exchange based on its payload. The option will be converted to a
+         * java.security.cert.Certificate type.
+         */
+        public T certificate(String certificate) {
+            this.properties.put("certificate", certificate);
+            return (T) this;
+        }
+        /**
          * Determines if the Signature specific headers be cleared after signing
          * and verification. Defaults to true, and should only be made otherwise
          * at your extreme peril as vital private information such as Keys and
          * passwords may escape if unset. The option is a boolean type.
          */
         public T clearHeaders(boolean clearHeaders) {
+            this.properties.put("clearHeaders", clearHeaders);
+            return (T) this;
+        }
+        /**
+         * Determines if the Signature specific headers be cleared after signing
+         * and verification. Defaults to true, and should only be made otherwise
+         * at your extreme peril as vital private information such as Keys and
+         * passwords may escape if unset. The option will be converted to a
+         * boolean type.
+         */
+        public T clearHeaders(String clearHeaders) {
             this.properties.put("clearHeaders", clearHeaders);
             return (T) this;
         }
@@ -207,6 +275,20 @@ public interface DigitalSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets the KeyStore that can contain keys and Certficates for use in
+         * signing and verifying exchanges based on the given
+         * KeyStoreParameters. A KeyStore is typically used with an alias,
+         * either one supplied in the Route definition or dynamically via the
+         * message header CamelSignatureKeyStoreAlias. If no alias is supplied
+         * and there is only a single entry in the Keystore, then this single
+         * entry will be used. The option will be converted to a
+         * org.apache.camel.support.jsse.KeyStoreParameters type.
+         */
+        public T keyStoreParameters(String keyStoreParameters) {
+            this.properties.put("keyStoreParameters", keyStoreParameters);
+            return (T) this;
+        }
+        /**
          * Set the PublicKey that should be used to verify the signature in the
          * exchange. The option is a java.security.PublicKey type.
          */
@@ -215,10 +297,27 @@ public interface DigitalSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set the PublicKey that should be used to verify the signature in the
+         * exchange. The option will be converted to a java.security.PublicKey
+         * type.
+         */
+        public T publicKey(String publicKey) {
+            this.properties.put("publicKey", publicKey);
+            return (T) this;
+        }
+        /**
          * Set the SecureRandom used to initialize the Signature service. The
          * option is a java.security.SecureRandom type.
          */
         public T secureRandom(SecureRandom secureRandom) {
+            this.properties.put("secureRandom", secureRandom);
+            return (T) this;
+        }
+        /**
+         * Set the SecureRandom used to initialize the Signature service. The
+         * option will be converted to a java.security.SecureRandom type.
+         */
+        public T secureRandom(String secureRandom) {
             this.properties.put("secureRandom", secureRandom);
             return (T) this;
         }
@@ -232,10 +331,27 @@ public interface DigitalSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * Sets the password used to access an aliased PrivateKey in the
          * KeyStore. The option is a java.lang.String type.
          */
         public T password(Character[] password) {
+            this.properties.put("password", password);
+            return (T) this;
+        }
+        /**
+         * Sets the password used to access an aliased PrivateKey in the
+         * KeyStore. The option will be converted to a java.lang.String type.
+         */
+        public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }

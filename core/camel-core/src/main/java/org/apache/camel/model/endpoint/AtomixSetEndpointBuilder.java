@@ -56,6 +56,14 @@ public interface AtomixSetEndpointBuilder {
             return (T) this;
         }
         /**
+         * The Atomix instance to use. The option will be converted to a
+         * io.atomix.Atomix type.
+         */
+        public T atomix(String atomix) {
+            this.properties.put("atomix", atomix);
+            return (T) this;
+        }
+        /**
          * The Atomix configuration uri. The option is a java.lang.String type.
          */
         public T configurationUri(String configurationUri) {
@@ -71,10 +79,26 @@ public interface AtomixSetEndpointBuilder {
             return (T) this;
         }
         /**
+         * The default action. The option will be converted to a
+         * org.apache.camel.component.atomix.client.set.AtomixSet.Action type.
+         */
+        public T defaultAction(String defaultAction) {
+            this.properties.put("defaultAction", defaultAction);
+            return (T) this;
+        }
+        /**
          * The address of the nodes composing the cluster. The option is a
          * java.lang.String type.
          */
         public T nodes(List<Object> nodes) {
+            this.properties.put("nodes", nodes);
+            return (T) this;
+        }
+        /**
+         * The address of the nodes composing the cluster. The option will be
+         * converted to a java.lang.String type.
+         */
+        public T nodes(String nodes) {
             this.properties.put("nodes", nodes);
             return (T) this;
         }
@@ -95,9 +119,24 @@ public interface AtomixSetEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets the Atomix transport. The option will be converted to a
+         * io.atomix.catalyst.transport.Transport type.
+         */
+        public T transport(String transport) {
+            this.properties.put("transport", transport);
+            return (T) this;
+        }
+        /**
          * The resource ttl. The option is a long type.
          */
         public T ttl(long ttl) {
+            this.properties.put("ttl", ttl);
+            return (T) this;
+        }
+        /**
+         * The resource ttl. The option will be converted to a long type.
+         */
+        public T ttl(String ttl) {
             this.properties.put("ttl", ttl);
             return (T) this;
         }
@@ -111,6 +150,15 @@ public interface AtomixSetEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * The cluster wide default resource configuration. The option is a
          * java.util.Properties type.
          */
@@ -119,10 +167,26 @@ public interface AtomixSetEndpointBuilder {
             return (T) this;
         }
         /**
+         * The cluster wide default resource configuration. The option will be
+         * converted to a java.util.Properties type.
+         */
+        public T defaultResourceConfig(String defaultResourceConfig) {
+            this.properties.put("defaultResourceConfig", defaultResourceConfig);
+            return (T) this;
+        }
+        /**
          * The local default resource options. The option is a
          * java.util.Properties type.
          */
         public T defaultResourceOptions(Properties defaultResourceOptions) {
+            this.properties.put("defaultResourceOptions", defaultResourceOptions);
+            return (T) this;
+        }
+        /**
+         * The local default resource options. The option will be converted to a
+         * java.util.Properties type.
+         */
+        public T defaultResourceOptions(String defaultResourceOptions) {
             this.properties.put("defaultResourceOptions", defaultResourceOptions);
             return (T) this;
         }
@@ -137,10 +201,28 @@ public interface AtomixSetEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets if the local member should join groups as PersistentMember or
+         * not. If set to ephemeral the local member will receive an auto
+         * generated ID thus the local one is ignored. The option will be
+         * converted to a boolean type.
+         */
+        public T ephemeral(String ephemeral) {
+            this.properties.put("ephemeral", ephemeral);
+            return (T) this;
+        }
+        /**
          * The read consistency level. The option is a
          * io.atomix.resource.ReadConsistency type.
          */
         public T readConsistency(ReadConsistency readConsistency) {
+            this.properties.put("readConsistency", readConsistency);
+            return (T) this;
+        }
+        /**
+         * The read consistency level. The option will be converted to a
+         * io.atomix.resource.ReadConsistency type.
+         */
+        public T readConsistency(String readConsistency) {
             this.properties.put("readConsistency", readConsistency);
             return (T) this;
         }
@@ -153,10 +235,26 @@ public interface AtomixSetEndpointBuilder {
             return (T) this;
         }
         /**
+         * Cluster wide resources configuration. The option will be converted to
+         * a java.util.Map<java.lang.String,java.util.Properties> type.
+         */
+        public T resourceConfigs(String resourceConfigs) {
+            this.properties.put("resourceConfigs", resourceConfigs);
+            return (T) this;
+        }
+        /**
          * Local resources configurations. The option is a
          * java.util.Map<java.lang.String,java.util.Properties> type.
          */
         public T resourceOptions(Map<String, Properties> resourceOptions) {
+            this.properties.put("resourceOptions", resourceOptions);
+            return (T) this;
+        }
+        /**
+         * Local resources configurations. The option will be converted to a
+         * java.util.Map<java.lang.String,java.util.Properties> type.
+         */
+        public T resourceOptions(String resourceOptions) {
             this.properties.put("resourceOptions", resourceOptions);
             return (T) this;
         }
@@ -166,6 +264,15 @@ public interface AtomixSetEndpointBuilder {
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -194,6 +301,20 @@ public interface AtomixSetEndpointBuilder {
             return (AtomixSetConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public AtomixSetConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (AtomixSetConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -206,11 +327,30 @@ public interface AtomixSetEndpointBuilder {
             return (AtomixSetConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public AtomixSetConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (AtomixSetConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public AtomixSetConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (AtomixSetConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public AtomixSetConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (AtomixSetConsumerBuilder) this;
         }

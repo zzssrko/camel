@@ -65,10 +65,27 @@ public interface PubNubEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Reference to a Pubnub client in the registry. The option is a
          * com.pubnub.api.PubNub type.
          */
         public T pubnub(Object pubnub) {
+            this.properties.put("pubnub", pubnub);
+            return (T) this;
+        }
+        /**
+         * Reference to a Pubnub client in the registry. The option will be
+         * converted to a com.pubnub.api.PubNub type.
+         */
+        public T pubnub(String pubnub) {
             this.properties.put("pubnub", pubnub);
             return (T) this;
         }
@@ -78,6 +95,15 @@ public interface PubNubEndpointBuilder {
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -121,6 +147,14 @@ public interface PubNubEndpointBuilder {
             return (T) this;
         }
         /**
+         * Use SSL for secure transmission. The option will be converted to a
+         * boolean type.
+         */
+        public T secure(String secure) {
+            this.properties.put("secure", secure);
+            return (T) this;
+        }
+        /**
          * The subscribe key obtained from your PubNub account. Required when
          * subscribing to channels or listening for presence events. The option
          * is a java.lang.String type.
@@ -154,10 +188,32 @@ public interface PubNubEndpointBuilder {
             return (PubNubConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public PubNubConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (PubNubConsumerBuilder) this;
+        }
+        /**
          * Also subscribe to related presence information. The option is a
          * boolean type.
          */
         public PubNubConsumerBuilder withPresence(boolean withPresence) {
+            this.properties.put("withPresence", withPresence);
+            return (PubNubConsumerBuilder) this;
+        }
+        /**
+         * Also subscribe to related presence information. The option will be
+         * converted to a boolean type.
+         */
+        public PubNubConsumerBuilder withPresence(String withPresence) {
             this.properties.put("withPresence", withPresence);
             return (PubNubConsumerBuilder) this;
         }
@@ -174,11 +230,30 @@ public interface PubNubEndpointBuilder {
             return (PubNubConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public PubNubConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (PubNubConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public PubNubConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (PubNubConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public PubNubConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (PubNubConsumerBuilder) this;
         }

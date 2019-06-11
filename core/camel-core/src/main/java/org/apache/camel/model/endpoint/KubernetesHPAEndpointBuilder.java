@@ -71,6 +71,14 @@ public interface KubernetesHPAEndpointBuilder {
             return (T) this;
         }
         /**
+         * Default KubernetesClient to use if provided. The option will be
+         * converted to a io.fabric8.kubernetes.client.KubernetesClient type.
+         */
+        public T kubernetesClient(String kubernetesClient) {
+            this.properties.put("kubernetesClient", kubernetesClient);
+            return (T) this;
+        }
+        /**
          * The port name, used for ServiceCall EIP. The option is a
          * java.lang.String type.
          */
@@ -96,10 +104,28 @@ public interface KubernetesHPAEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Connection timeout in milliseconds to use when making requests to the
          * Kubernetes API server. The option is a java.lang.Integer type.
          */
         public T connectionTimeout(Integer connectionTimeout) {
+            this.properties.put("connectionTimeout", connectionTimeout);
+            return (T) this;
+        }
+        /**
+         * Connection timeout in milliseconds to use when making requests to the
+         * Kubernetes API server. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T connectionTimeout(String connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
@@ -109,6 +135,15 @@ public interface KubernetesHPAEndpointBuilder {
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -193,6 +228,14 @@ public interface KubernetesHPAEndpointBuilder {
             return (T) this;
         }
         /**
+         * Define if the certs we used are trusted anyway or not. The option
+         * will be converted to a java.lang.Boolean type.
+         */
+        public T trustCerts(String trustCerts) {
+            this.properties.put("trustCerts", trustCerts);
+            return (T) this;
+        }
+        /**
          * Username to connect to Kubernetes. The option is a java.lang.String
          * type.
          */
@@ -221,6 +264,20 @@ public interface KubernetesHPAEndpointBuilder {
          */
         public KubernetesHPAConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (KubernetesHPAConsumerBuilder) this;
+        }
+        /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public KubernetesHPAConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (KubernetesHPAConsumerBuilder) this;
         }
@@ -255,6 +312,13 @@ public interface KubernetesHPAEndpointBuilder {
             return (KubernetesHPAConsumerBuilder) this;
         }
         /**
+         * The Consumer pool size. The option will be converted to a int type.
+         */
+        public KubernetesHPAConsumerBuilder poolSize(String poolSize) {
+            this.properties.put("poolSize", poolSize);
+            return (KubernetesHPAConsumerBuilder) this;
+        }
+        /**
          * The Consumer Resource Name we would like to watch. The option is a
          * java.lang.String type.
          */
@@ -275,11 +339,32 @@ public interface KubernetesHPAEndpointBuilder {
             return (KubernetesHPAConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public KubernetesHPAConsumerBuilder exceptionHandler(
+                String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (KubernetesHPAConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public KubernetesHPAConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (KubernetesHPAConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public KubernetesHPAConsumerBuilder exchangePattern(
+                String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (KubernetesHPAConsumerBuilder) this;
         }

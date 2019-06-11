@@ -62,6 +62,14 @@ public interface GeoCoderEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to only enrich the Exchange with headers, and leave the body
+         * as-is. The option will be converted to a boolean type.
+         */
+        public T headersOnly(String headersOnly) {
+            this.properties.put("headersOnly", headersOnly);
+            return (T) this;
+        }
+        /**
          * The language to use. The option is a java.lang.String type.
          */
         public T language(String language) {
@@ -78,11 +86,29 @@ public interface GeoCoderEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -137,6 +163,14 @@ public interface GeoCoderEndpointBuilder {
          * The proxy port number. The option is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (T) this;
+        }
+        /**
+         * The proxy port number. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }

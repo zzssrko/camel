@@ -52,6 +52,13 @@ public interface ScpEndpointBuilder {
             return (T) this;
         }
         /**
+         * Port of the FTP server. The option will be converted to a int type.
+         */
+        public T port(String port) {
+            this.properties.put("port", port);
+            return (T) this;
+        }
+        /**
          * The starting directory. The option is a java.lang.String type.
          */
         public T directoryName(String directoryName) {
@@ -65,6 +72,17 @@ public interface ScpEndpointBuilder {
          * to stop the consumer/route instead. The option is a boolean type.
          */
         public T disconnect(boolean disconnect) {
+            this.properties.put("disconnect", disconnect);
+            return (T) this;
+        }
+        /**
+         * Whether or not to disconnect from remote FTP server right after use.
+         * Disconnect will only disconnect the current connection to the FTP
+         * server. If you have a consumer which you want to stop, then you need
+         * to stop the consumer/route instead. The option will be converted to a
+         * boolean type.
+         */
+        public T disconnect(String disconnect) {
             this.properties.put("disconnect", disconnect);
             return (T) this;
         }
@@ -100,6 +118,29 @@ public interface ScpEndpointBuilder {
             return (T) this;
         }
         /**
+         * Use Expression such as File Language to dynamically set the filename.
+         * For consumers, it's used as a filename filter. For producers, it's
+         * used to evaluate the filename to write. If an expression is set, it
+         * take precedence over the CamelFileName header. (Note: The header
+         * itself can also be an Expression). The expression options support
+         * both String and Expression types. If the expression is a String type,
+         * it is always evaluated using the File Language. If the expression is
+         * an Expression type, the specified Expression type is used - this
+         * allows you, for instance, to use OGNL expressions. For the consumer,
+         * you can use it to filter filenames, so you can for instance consume
+         * today's file using the File Language syntax:
+         * mydata-${date:now:yyyyMMdd}.txt. The producers support the
+         * CamelOverruleFileName header which takes precedence over any existing
+         * CamelFileName header; the CamelOverruleFileName is a header that is
+         * used only once, and makes it easier as this avoids to temporary store
+         * CamelFileName and have to restore it afterwards. The option will be
+         * converted to a java.lang.String type.
+         */
+        public T fileName(String fileName) {
+            this.properties.put("fileName", fileName);
+            return (T) this;
+        }
+        /**
          * Sets whether to use strict host key checking. Possible values are:
          * no, yes. The option is a java.lang.String type.
          */
@@ -117,11 +158,29 @@ public interface ScpEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets the connect timeout for waiting for a connection to be
          * established Used by both FTPClient and JSCH. The option is a int
          * type.
          */
         public T connectTimeout(int connectTimeout) {
+            this.properties.put("connectTimeout", connectTimeout);
+            return (T) this;
+        }
+        /**
+         * Sets the connect timeout for waiting for a connection to be
+         * established Used by both FTPClient and JSCH. The option will be
+         * converted to a int type.
+         */
+        public T connectTimeout(String connectTimeout) {
             this.properties.put("connectTimeout", connectTimeout);
             return (T) this;
         }
@@ -137,6 +196,17 @@ public interface ScpEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets the so timeout FTP and FTPS Only for Camel 2.4. SFTP for Camel
+         * 2.14.3/2.15.3/2.16 onwards. Is the SocketOptions.SO_TIMEOUT value in
+         * millis. Recommended option is to set this to 300000 so as not have a
+         * hanged connection. On SFTP this option is set as timeout on the JSCH
+         * Session instance. The option will be converted to a int type.
+         */
+        public T soTimeout(String soTimeout) {
+            this.properties.put("soTimeout", soTimeout);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
@@ -146,10 +216,27 @@ public interface ScpEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * Sets the data timeout for waiting for reply Used only by FTPClient.
          * The option is a int type.
          */
         public T timeout(int timeout) {
+            this.properties.put("timeout", timeout);
+            return (T) this;
+        }
+        /**
+         * Sets the data timeout for waiting for reply Used only by FTPClient.
+         * The option will be converted to a int type.
+         */
+        public T timeout(String timeout) {
             this.properties.put("timeout", timeout);
             return (T) this;
         }
@@ -193,6 +280,16 @@ public interface ScpEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set the private key bytes to that the endpoint can do private key
+         * verification. This must be used only if privateKeyFile wasn't set.
+         * Otherwise the file will have the priority. The option will be
+         * converted to a byte[] type.
+         */
+        public T privateKeyBytes(String privateKeyBytes) {
+            this.properties.put("privateKeyBytes", privateKeyBytes);
+            return (T) this;
+        }
+        /**
          * Set the private key file to that the endpoint can do private key
          * verification. You can prefix with classpath: to load the file from
          * classpath instead of file system. The option is a java.lang.String
@@ -223,6 +320,15 @@ public interface ScpEndpointBuilder {
          * is a boolean type.
          */
         public T useUserKnownHostsFile(boolean useUserKnownHostsFile) {
+            this.properties.put("useUserKnownHostsFile", useUserKnownHostsFile);
+            return (T) this;
+        }
+        /**
+         * If knownHostFile has not been explicit configured, then use the host
+         * file from System.getProperty(user.home) /.ssh/known_hosts. The option
+         * will be converted to a boolean type.
+         */
+        public T useUserKnownHostsFile(String useUserKnownHostsFile) {
             this.properties.put("useUserKnownHostsFile", useUserKnownHostsFile);
             return (T) this;
         }
@@ -260,6 +366,19 @@ public interface ScpEndpointBuilder {
             return (ScpProducerBuilder) this;
         }
         /**
+         * Flatten is used to flatten the file name path to strip any leading
+         * paths, so it's just the file name. This allows you to consume
+         * recursively into sub-directories, but when you eg write the files to
+         * another directory they will be written in a single directory. Setting
+         * this to true on the producer enforces that any file name in
+         * CamelFileName header will be stripped for any leading paths. The
+         * option will be converted to a boolean type.
+         */
+        public ScpProducerBuilder flatten(String flatten) {
+            this.properties.put("flatten", flatten);
+            return (ScpProducerBuilder) this;
+        }
+        /**
          * Used for jailing (restricting) writing files to the starting
          * directory (and sub) only. This is enabled by default to not allow
          * Camel to write files to outside directories (to be more secured out
@@ -269,6 +388,19 @@ public interface ScpEndpointBuilder {
          */
         public ScpProducerBuilder jailStartingDirectory(
                 boolean jailStartingDirectory) {
+            this.properties.put("jailStartingDirectory", jailStartingDirectory);
+            return (ScpProducerBuilder) this;
+        }
+        /**
+         * Used for jailing (restricting) writing files to the starting
+         * directory (and sub) only. This is enabled by default to not allow
+         * Camel to write files to outside directories (to be more secured out
+         * of the box). You can turn this off to allow writing files to
+         * directories outside the starting directory, such as parent or root
+         * folders. The option will be converted to a boolean type.
+         */
+        public ScpProducerBuilder jailStartingDirectory(
+                String jailStartingDirectory) {
             this.properties.put("jailStartingDirectory", jailStartingDirectory);
             return (ScpProducerBuilder) this;
         }
@@ -286,6 +418,19 @@ public interface ScpEndpointBuilder {
             return (ScpProducerBuilder) this;
         }
         /**
+         * Used to specify if a null body is allowed during file writing. If set
+         * to true then an empty file will be created, when set to false, and
+         * attempting to send a null body to the file component, a
+         * GenericFileWriteException of 'Cannot write null body to file.' will
+         * be thrown. If the fileExist option is set to 'Override', then the
+         * file will be truncated, and if set to append the file will remain
+         * unchanged. The option will be converted to a boolean type.
+         */
+        public ScpProducerBuilder allowNullBody(String allowNullBody) {
+            this.properties.put("allowNullBody", allowNullBody);
+            return (ScpProducerBuilder) this;
+        }
+        /**
          * Whether or not to disconnect from remote FTP server right after a
          * Batch upload is complete. disconnectOnBatchComplete will only
          * disconnect the current connection to the FTP server. The option is a
@@ -293,6 +438,17 @@ public interface ScpEndpointBuilder {
          */
         public ScpProducerBuilder disconnectOnBatchComplete(
                 boolean disconnectOnBatchComplete) {
+            this.properties.put("disconnectOnBatchComplete", disconnectOnBatchComplete);
+            return (ScpProducerBuilder) this;
+        }
+        /**
+         * Whether or not to disconnect from remote FTP server right after a
+         * Batch upload is complete. disconnectOnBatchComplete will only
+         * disconnect the current connection to the FTP server. The option will
+         * be converted to a boolean type.
+         */
+        public ScpProducerBuilder disconnectOnBatchComplete(
+                String disconnectOnBatchComplete) {
             this.properties.put("disconnectOnBatchComplete", disconnectOnBatchComplete);
             return (ScpProducerBuilder) this;
         }
@@ -306,6 +462,19 @@ public interface ScpEndpointBuilder {
          */
         public ScpProducerBuilder moveExistingFileStrategy(
                 Object moveExistingFileStrategy) {
+            this.properties.put("moveExistingFileStrategy", moveExistingFileStrategy);
+            return (ScpProducerBuilder) this;
+        }
+        /**
+         * Strategy (Custom Strategy) used to move file with special naming
+         * token to use when fileExist=Move is configured. By default, there is
+         * an implementation used if no custom strategy is provided. The option
+         * will be converted to a
+         * org.apache.camel.component.file.strategy.FileMoveExistingStrategy
+         * type.
+         */
+        public ScpProducerBuilder moveExistingFileStrategy(
+                String moveExistingFileStrategy) {
             this.properties.put("moveExistingFileStrategy", moveExistingFileStrategy);
             return (ScpProducerBuilder) this;
         }

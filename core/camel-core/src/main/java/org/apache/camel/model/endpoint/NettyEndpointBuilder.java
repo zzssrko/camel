@@ -67,11 +67,27 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * The host port number. The option will be converted to a int type.
+         */
+        public T port(String port) {
+            this.properties.put("port", port);
+            return (T) this;
+        }
+        /**
          * Whether or not to disconnect(close) from Netty Channel right after
          * use. Can be used for both consumer and producer. The option is a
          * boolean type.
          */
         public T disconnect(boolean disconnect) {
+            this.properties.put("disconnect", disconnect);
+            return (T) this;
+        }
+        /**
+         * Whether or not to disconnect(close) from Netty Channel right after
+         * use. Can be used for both consumer and producer. The option will be
+         * converted to a boolean type.
+         */
+        public T disconnect(String disconnect) {
             this.properties.put("disconnect", disconnect);
             return (T) this;
         }
@@ -84,10 +100,26 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * Setting to ensure socket is not closed due to inactivity. The option
+         * will be converted to a boolean type.
+         */
+        public T keepAlive(String keepAlive) {
+            this.properties.put("keepAlive", keepAlive);
+            return (T) this;
+        }
+        /**
          * Setting to facilitate socket multiplexing. The option is a boolean
          * type.
          */
         public T reuseAddress(boolean reuseAddress) {
+            this.properties.put("reuseAddress", reuseAddress);
+            return (T) this;
+        }
+        /**
+         * Setting to facilitate socket multiplexing. The option will be
+         * converted to a boolean type.
+         */
+        public T reuseAddress(String reuseAddress) {
             this.properties.put("reuseAddress", reuseAddress);
             return (T) this;
         }
@@ -108,6 +140,22 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * This option allows producers and consumers (in client mode) to reuse
+         * the same Netty Channel for the lifecycle of processing the Exchange.
+         * This is useful if you need to call a server multiple times in a Camel
+         * route and want to use the same network connection. When using this,
+         * the channel is not returned to the connection pool until the Exchange
+         * is done; or disconnected if the disconnect option is set to true. The
+         * reused Channel is stored on the Exchange as an exchange property with
+         * the key NettyConstants#NETTY_CHANNEL which allows you to obtain the
+         * channel during routing and use it as well. The option will be
+         * converted to a boolean type.
+         */
+        public T reuseChannel(String reuseChannel) {
+            this.properties.put("reuseChannel", reuseChannel);
+            return (T) this;
+        }
+        /**
          * Setting to set endpoint as one-way or request-response. The option is
          * a boolean type.
          */
@@ -116,10 +164,26 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * Setting to set endpoint as one-way or request-response. The option
+         * will be converted to a boolean type.
+         */
+        public T sync(String sync) {
+            this.properties.put("sync", sync);
+            return (T) this;
+        }
+        /**
          * Setting to improve TCP protocol performance. The option is a boolean
          * type.
          */
         public T tcpNoDelay(boolean tcpNoDelay) {
+            this.properties.put("tcpNoDelay", tcpNoDelay);
+            return (T) this;
+        }
+        /**
+         * Setting to improve TCP protocol performance. The option will be
+         * converted to a boolean type.
+         */
+        public T tcpNoDelay(String tcpNoDelay) {
             this.properties.put("tcpNoDelay", tcpNoDelay);
             return (T) this;
         }
@@ -134,11 +198,31 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * Only used for TCP when transferExchange is true. When set to true,
+         * serializable objects in headers and properties will be added to the
+         * exchange. Otherwise Camel will exclude any non-serializable objects
+         * and log it at WARN level. The option will be converted to a boolean
+         * type.
+         */
+        public T allowSerializedHeaders(String allowSerializedHeaders) {
+            this.properties.put("allowSerializedHeaders", allowSerializedHeaders);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
@@ -153,10 +237,28 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom configured NettyServerBootstrapConfiguration for
+         * configuring this endpoint. The option will be converted to a
+         * org.apache.camel.component.netty4.NettyServerBootstrapConfiguration
+         * type.
+         */
+        public T bootstrapConfiguration(String bootstrapConfiguration) {
+            this.properties.put("bootstrapConfiguration", bootstrapConfiguration);
+            return (T) this;
+        }
+        /**
          * To use a explicit ChannelGroup. The option is a
          * io.netty.channel.group.ChannelGroup type.
          */
         public T channelGroup(Object channelGroup) {
+            this.properties.put("channelGroup", channelGroup);
+            return (T) this;
+        }
+        /**
+         * To use a explicit ChannelGroup. The option will be converted to a
+         * io.netty.channel.group.ChannelGroup type.
+         */
+        public T channelGroup(String channelGroup) {
             this.properties.put("channelGroup", channelGroup);
             return (T) this;
         }
@@ -173,6 +275,18 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to use native transport instead of NIO. Native transport
+         * takes advantage of the host operating system and is only supported on
+         * some platforms. You need to add the netty JAR for the host operating
+         * system you are using. See more details at:
+         * http://netty.io/wiki/native-transports.html. The option will be
+         * converted to a boolean type.
+         */
+        public T nativeTransport(String nativeTransport) {
+            this.properties.put("nativeTransport", nativeTransport);
+            return (T) this;
+        }
+        /**
          * Allows to configure additional netty options using option. as prefix.
          * For example option.child.keepAlive=false to set the netty option
          * child.keepAlive=false. See the Netty documentation for possible
@@ -180,6 +294,17 @@ public interface NettyEndpointBuilder {
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T options(Map<String, Object> options) {
+            this.properties.put("options", options);
+            return (T) this;
+        }
+        /**
+         * Allows to configure additional netty options using option. as prefix.
+         * For example option.child.keepAlive=false to set the netty option
+         * child.keepAlive=false. See the Netty documentation for possible
+         * options that can be used. The option will be converted to a
+         * java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public T options(String options) {
             this.properties.put("options", options);
             return (T) this;
         }
@@ -192,10 +317,27 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * The TCP/UDP buffer sizes to be used during inbound communication.
+         * Size is bytes. The option will be converted to a int type.
+         */
+        public T receiveBufferSize(String receiveBufferSize) {
+            this.properties.put("receiveBufferSize", receiveBufferSize);
+            return (T) this;
+        }
+        /**
          * Configures the buffer size predictor. See details at Jetty
          * documentation and this mail thread. The option is a int type.
          */
         public T receiveBufferSizePredictor(int receiveBufferSizePredictor) {
+            this.properties.put("receiveBufferSizePredictor", receiveBufferSizePredictor);
+            return (T) this;
+        }
+        /**
+         * Configures the buffer size predictor. See details at Jetty
+         * documentation and this mail thread. The option will be converted to a
+         * int type.
+         */
+        public T receiveBufferSizePredictor(String receiveBufferSizePredictor) {
             this.properties.put("receiveBufferSizePredictor", receiveBufferSizePredictor);
             return (T) this;
         }
@@ -208,11 +350,28 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * The TCP/UDP buffer sizes to be used during outbound communication.
+         * Size is bytes. The option will be converted to a int type.
+         */
+        public T sendBufferSize(String sendBufferSize) {
+            this.properties.put("sendBufferSize", sendBufferSize);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -229,10 +388,32 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * Only used for TCP. You can transfer the exchange over the wire
+         * instead of just the body. The following fields are transferred: In
+         * body, Out body, fault body, In headers, Out headers, fault headers,
+         * exchange properties, exchange exception. This requires that the
+         * objects are serializable. Camel will exclude any non-serializable
+         * objects and log it at WARN level. The option will be converted to a
+         * boolean type.
+         */
+        public T transferExchange(String transferExchange) {
+            this.properties.put("transferExchange", transferExchange);
+            return (T) this;
+        }
+        /**
          * For UDP only. If enabled the using byte array codec instead of Java
          * serialization protocol. The option is a boolean type.
          */
         public T udpByteArrayCodec(boolean udpByteArrayCodec) {
+            this.properties.put("udpByteArrayCodec", udpByteArrayCodec);
+            return (T) this;
+        }
+        /**
+         * For UDP only. If enabled the using byte array codec instead of Java
+         * serialization protocol. The option will be converted to a boolean
+         * type.
+         */
+        public T udpByteArrayCodec(String udpByteArrayCodec) {
             this.properties.put("udpByteArrayCodec", udpByteArrayCodec);
             return (T) this;
         }
@@ -243,6 +424,16 @@ public interface NettyEndpointBuilder {
          * is a int type.
          */
         public T workerCount(int workerCount) {
+            this.properties.put("workerCount", workerCount);
+            return (T) this;
+        }
+        /**
+         * When netty works on nio mode, it uses default workerCount parameter
+         * from Netty, which is cpu_core_threads x 2. User can use this
+         * operation to override the default workerCount from Netty. The option
+         * will be converted to a int type.
+         */
+        public T workerCount(String workerCount) {
             this.properties.put("workerCount", workerCount);
             return (T) this;
         }
@@ -258,6 +449,17 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a explicit EventLoopGroup as the boss thread pool. For example
+         * to share a thread pool with multiple consumers or producers. By
+         * default each consumer or producer has their own worker pool with 2 x
+         * cpu count core threads. The option will be converted to a
+         * io.netty.channel.EventLoopGroup type.
+         */
+        public T workerGroup(String workerGroup) {
+            this.properties.put("workerGroup", workerGroup);
+            return (T) this;
+        }
+        /**
          * The netty component installs a default codec if both, encoder/decoder
          * is null and textline is false. Setting allowDefaultCodec to false
          * prevents the netty component from installing a default codec as the
@@ -268,10 +470,30 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * The netty component installs a default codec if both, encoder/decoder
+         * is null and textline is false. Setting allowDefaultCodec to false
+         * prevents the netty component from installing a default codec as the
+         * first element in the filter chain. The option will be converted to a
+         * boolean type.
+         */
+        public T allowDefaultCodec(String allowDefaultCodec) {
+            this.properties.put("allowDefaultCodec", allowDefaultCodec);
+            return (T) this;
+        }
+        /**
          * Whether or not to auto append missing end delimiter when sending
          * using the textline codec. The option is a boolean type.
          */
         public T autoAppendDelimiter(boolean autoAppendDelimiter) {
+            this.properties.put("autoAppendDelimiter", autoAppendDelimiter);
+            return (T) this;
+        }
+        /**
+         * Whether or not to auto append missing end delimiter when sending
+         * using the textline codec. The option will be converted to a boolean
+         * type.
+         */
+        public T autoAppendDelimiter(String autoAppendDelimiter) {
             this.properties.put("autoAppendDelimiter", autoAppendDelimiter);
             return (T) this;
         }
@@ -286,10 +508,28 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * A custom ChannelHandler class that can be used to perform special
+         * marshalling of inbound payloads. The option will be converted to a
+         * io.netty.channel.ChannelHandler type.
+         */
+        @Deprecated
+        public T decoder(String decoder) {
+            this.properties.put("decoder", decoder);
+            return (T) this;
+        }
+        /**
          * The max line length to use for the textline codec. The option is a
          * int type.
          */
         public T decoderMaxLineLength(int decoderMaxLineLength) {
+            this.properties.put("decoderMaxLineLength", decoderMaxLineLength);
+            return (T) this;
+        }
+        /**
+         * The max line length to use for the textline codec. The option will be
+         * converted to a int type.
+         */
+        public T decoderMaxLineLength(String decoderMaxLineLength) {
             this.properties.put("decoderMaxLineLength", decoderMaxLineLength);
             return (T) this;
         }
@@ -304,11 +544,30 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * A list of decoders to be used. You can use a String which have values
+         * separated by comma, and have the values be looked up in the Registry.
+         * Just remember to prefix the value with # so Camel knows it should
+         * lookup. The option will be converted to a java.lang.String type.
+         */
+        public T decoders(String decoders) {
+            this.properties.put("decoders", decoders);
+            return (T) this;
+        }
+        /**
          * The delimiter to use for the textline codec. Possible values are LINE
          * and NULL. The option is a
          * org.apache.camel.component.netty4.TextLineDelimiter type.
          */
         public T delimiter(TextLineDelimiter delimiter) {
+            this.properties.put("delimiter", delimiter);
+            return (T) this;
+        }
+        /**
+         * The delimiter to use for the textline codec. Possible values are LINE
+         * and NULL. The option will be converted to a
+         * org.apache.camel.component.netty4.TextLineDelimiter type.
+         */
+        public T delimiter(String delimiter) {
             this.properties.put("delimiter", delimiter);
             return (T) this;
         }
@@ -323,12 +582,32 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * A custom ChannelHandler class that can be used to perform special
+         * marshalling of outbound payloads. The option will be converted to a
+         * io.netty.channel.ChannelHandler type.
+         */
+        @Deprecated
+        public T encoder(String encoder) {
+            this.properties.put("encoder", encoder);
+            return (T) this;
+        }
+        /**
          * A list of encoders to be used. You can use a String which have values
          * separated by comma, and have the values be looked up in the Registry.
          * Just remember to prefix the value with # so Camel knows it should
          * lookup. The option is a java.lang.String type.
          */
         public T encoders(List<Object> encoders) {
+            this.properties.put("encoders", encoders);
+            return (T) this;
+        }
+        /**
+         * A list of encoders to be used. You can use a String which have values
+         * separated by comma, and have the values be looked up in the Registry.
+         * Just remember to prefix the value with # so Camel knows it should
+         * lookup. The option will be converted to a java.lang.String type.
+         */
+        public T encoders(String encoders) {
             this.properties.put("encoders", encoders);
             return (T) this;
         }
@@ -352,6 +631,16 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * Only used for TCP. If no codec is specified, you can use this flag to
+         * indicate a text line based codec; if not specified or the value is
+         * false, then Object Serialization is assumed over TCP. The option will
+         * be converted to a boolean type.
+         */
+        public T textline(String textline) {
+            this.properties.put("textline", textline);
+            return (T) this;
+        }
+        /**
          * Which protocols to enable when using SSL. The option is a
          * java.lang.String type.
          */
@@ -364,6 +653,14 @@ public interface NettyEndpointBuilder {
          * option is a java.io.File type.
          */
         public T keyStoreFile(File keyStoreFile) {
+            this.properties.put("keyStoreFile", keyStoreFile);
+            return (T) this;
+        }
+        /**
+         * Client side certificate keystore to be used for encryption. The
+         * option will be converted to a java.io.File type.
+         */
+        public T keyStoreFile(String keyStoreFile) {
             this.properties.put("keyStoreFile", keyStoreFile);
             return (T) this;
         }
@@ -410,12 +707,30 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * Setting to specify whether SSL encryption is applied to this
+         * endpoint. The option will be converted to a boolean type.
+         */
+        public T ssl(String ssl) {
+            this.properties.put("ssl", ssl);
+            return (T) this;
+        }
+        /**
          * When enabled and in SSL mode, then the Netty consumer will enrich the
          * Camel Message with headers having information about the client
          * certificate such as subject name, issuer name, serial number, and the
          * valid date range. The option is a boolean type.
          */
         public T sslClientCertHeaders(boolean sslClientCertHeaders) {
+            this.properties.put("sslClientCertHeaders", sslClientCertHeaders);
+            return (T) this;
+        }
+        /**
+         * When enabled and in SSL mode, then the Netty consumer will enrich the
+         * Camel Message with headers having information about the client
+         * certificate such as subject name, issuer name, serial number, and the
+         * valid date range. The option will be converted to a boolean type.
+         */
+        public T sslClientCertHeaders(String sslClientCertHeaders) {
             this.properties.put("sslClientCertHeaders", sslClientCertHeaders);
             return (T) this;
         }
@@ -428,6 +743,15 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * To configure security using SSLContextParameters. The option will be
+         * converted to a org.apache.camel.support.jsse.SSLContextParameters
+         * type.
+         */
+        public T sslContextParameters(String sslContextParameters) {
+            this.properties.put("sslContextParameters", sslContextParameters);
+            return (T) this;
+        }
+        /**
          * Reference to a class that could be used to return an SSL Handler. The
          * option is a io.netty.handler.ssl.SslHandler type.
          */
@@ -436,10 +760,26 @@ public interface NettyEndpointBuilder {
             return (T) this;
         }
         /**
+         * Reference to a class that could be used to return an SSL Handler. The
+         * option will be converted to a io.netty.handler.ssl.SslHandler type.
+         */
+        public T sslHandler(String sslHandler) {
+            this.properties.put("sslHandler", sslHandler);
+            return (T) this;
+        }
+        /**
          * Server side certificate keystore to be used for encryption. The
          * option is a java.io.File type.
          */
         public T trustStoreFile(File trustStoreFile) {
+            this.properties.put("trustStoreFile", trustStoreFile);
+            return (T) this;
+        }
+        /**
+         * Server side certificate keystore to be used for encryption. The
+         * option will be converted to a java.io.File type.
+         */
+        public T trustStoreFile(String trustStoreFile) {
             this.properties.put("trustStoreFile", trustStoreFile);
             return (T) this;
         }
@@ -478,9 +818,30 @@ public interface NettyEndpointBuilder {
             return (NettyConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public NettyConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
          * Setting to choose Multicast over UDP. The option is a boolean type.
          */
         public NettyConsumerBuilder broadcast(boolean broadcast) {
+            this.properties.put("broadcast", broadcast);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
+         * Setting to choose Multicast over UDP. The option will be converted to
+         * a boolean type.
+         */
+        public NettyConsumerBuilder broadcast(String broadcast) {
             this.properties.put("broadcast", broadcast);
             return (NettyConsumerBuilder) this;
         }
@@ -489,6 +850,14 @@ public interface NettyEndpointBuilder {
          * a TCP client. The option is a boolean type.
          */
         public NettyConsumerBuilder clientMode(boolean clientMode) {
+            this.properties.put("clientMode", clientMode);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
+         * If the clientMode is true, netty consumer will connect the address as
+         * a TCP client. The option will be converted to a boolean type.
+         */
+        public NettyConsumerBuilder clientMode(String clientMode) {
             this.properties.put("clientMode", clientMode);
             return (NettyConsumerBuilder) this;
         }
@@ -502,10 +871,28 @@ public interface NettyEndpointBuilder {
             return (NettyConsumerBuilder) this;
         }
         /**
+         * Used only in clientMode in consumer, the consumer will attempt to
+         * reconnect on disconnection if this is enabled. The option will be
+         * converted to a boolean type.
+         */
+        public NettyConsumerBuilder reconnect(String reconnect) {
+            this.properties.put("reconnect", reconnect);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
          * Used if reconnect and clientMode is enabled. The interval in milli
          * seconds to attempt reconnection. The option is a int type.
          */
         public NettyConsumerBuilder reconnectInterval(int reconnectInterval) {
+            this.properties.put("reconnectInterval", reconnectInterval);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
+         * Used if reconnect and clientMode is enabled. The interval in milli
+         * seconds to attempt reconnection. The option will be converted to a
+         * int type.
+         */
+        public NettyConsumerBuilder reconnectInterval(String reconnectInterval) {
             this.properties.put("reconnectInterval", reconnectInterval);
             return (NettyConsumerBuilder) this;
         }
@@ -521,11 +908,33 @@ public interface NettyEndpointBuilder {
             return (NettyConsumerBuilder) this;
         }
         /**
+         * Allows to configure a backlog for netty consumer (server). Note the
+         * backlog is just a best effort depending on the OS. Setting this
+         * option to a value such as 200, 500 or 1000, tells the TCP stack how
+         * long the accept queue can be If this option is not configured, then
+         * the backlog depends on OS setting. The option will be converted to a
+         * int type.
+         */
+        public NettyConsumerBuilder backlog(String backlog) {
+            this.properties.put("backlog", backlog);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
          * When netty works on nio mode, it uses default bossCount parameter
          * from Netty, which is 1. User can use this operation to override the
          * default bossCount from Netty. The option is a int type.
          */
         public NettyConsumerBuilder bossCount(int bossCount) {
+            this.properties.put("bossCount", bossCount);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
+         * When netty works on nio mode, it uses default bossCount parameter
+         * from Netty, which is 1. User can use this operation to override the
+         * default bossCount from Netty. The option will be converted to a int
+         * type.
+         */
+        public NettyConsumerBuilder bossCount(String bossCount) {
             this.properties.put("bossCount", bossCount);
             return (NettyConsumerBuilder) this;
         }
@@ -539,12 +948,31 @@ public interface NettyEndpointBuilder {
             return (NettyConsumerBuilder) this;
         }
         /**
+         * Set the BossGroup which could be used for handling the new connection
+         * of the server side across the NettyEndpoint. The option will be
+         * converted to a io.netty.channel.EventLoopGroup type.
+         */
+        public NettyConsumerBuilder bossGroup(String bossGroup) {
+            this.properties.put("bossGroup", bossGroup);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
          * If sync is enabled then this option dictates NettyConsumer if it
          * should disconnect where there is no reply to send back. The option is
          * a boolean type.
          */
         public NettyConsumerBuilder disconnectOnNoReply(
                 boolean disconnectOnNoReply) {
+            this.properties.put("disconnectOnNoReply", disconnectOnNoReply);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
+         * If sync is enabled then this option dictates NettyConsumer if it
+         * should disconnect where there is no reply to send back. The option
+         * will be converted to a boolean type.
+         */
+        public NettyConsumerBuilder disconnectOnNoReply(
+                String disconnectOnNoReply) {
             this.properties.put("disconnectOnNoReply", disconnectOnNoReply);
             return (NettyConsumerBuilder) this;
         }
@@ -561,6 +989,17 @@ public interface NettyEndpointBuilder {
             return (NettyConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public NettyConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
@@ -570,11 +1009,29 @@ public interface NettyEndpointBuilder {
             return (NettyConsumerBuilder) this;
         }
         /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public NettyConsumerBuilder exchangePattern(String exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
          * To use a custom NettyServerBootstrapFactory. The option is a
          * org.apache.camel.component.netty4.NettyServerBootstrapFactory type.
          */
         public NettyConsumerBuilder nettyServerBootstrapFactory(
                 Object nettyServerBootstrapFactory) {
+            this.properties.put("nettyServerBootstrapFactory", nettyServerBootstrapFactory);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
+         * To use a custom NettyServerBootstrapFactory. The option will be
+         * converted to a
+         * org.apache.camel.component.netty4.NettyServerBootstrapFactory type.
+         */
+        public NettyConsumerBuilder nettyServerBootstrapFactory(
+                String nettyServerBootstrapFactory) {
             this.properties.put("nettyServerBootstrapFactory", nettyServerBootstrapFactory);
             return (NettyConsumerBuilder) this;
         }
@@ -597,6 +1054,15 @@ public interface NettyEndpointBuilder {
             return (NettyConsumerBuilder) this;
         }
         /**
+         * If sync is enabled this option dictates NettyConsumer which logging
+         * level to use when logging a there is no reply to send back. The
+         * option will be converted to a org.apache.camel.LoggingLevel type.
+         */
+        public NettyConsumerBuilder noReplyLogLevel(String noReplyLogLevel) {
+            this.properties.put("noReplyLogLevel", noReplyLogLevel);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
          * If the server (NettyConsumer) catches an
          * java.nio.channels.ClosedChannelException then its logged using this
          * logging level. This is used to avoid logging the closed channel
@@ -606,6 +1072,19 @@ public interface NettyEndpointBuilder {
          */
         public NettyConsumerBuilder serverClosedChannelExceptionCaughtLogLevel(
                 LoggingLevel serverClosedChannelExceptionCaughtLogLevel) {
+            this.properties.put("serverClosedChannelExceptionCaughtLogLevel", serverClosedChannelExceptionCaughtLogLevel);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
+         * If the server (NettyConsumer) catches an
+         * java.nio.channels.ClosedChannelException then its logged using this
+         * logging level. This is used to avoid logging the closed channel
+         * exceptions, as clients can disconnect abruptly and then cause a flood
+         * of closed exceptions in the Netty server. The option will be
+         * converted to a org.apache.camel.LoggingLevel type.
+         */
+        public NettyConsumerBuilder serverClosedChannelExceptionCaughtLogLevel(
+                String serverClosedChannelExceptionCaughtLogLevel) {
             this.properties.put("serverClosedChannelExceptionCaughtLogLevel", serverClosedChannelExceptionCaughtLogLevel);
             return (NettyConsumerBuilder) this;
         }
@@ -620,11 +1099,31 @@ public interface NettyEndpointBuilder {
             return (NettyConsumerBuilder) this;
         }
         /**
+         * If the server (NettyConsumer) catches an exception then its logged
+         * using this logging level. The option will be converted to a
+         * org.apache.camel.LoggingLevel type.
+         */
+        public NettyConsumerBuilder serverExceptionCaughtLogLevel(
+                String serverExceptionCaughtLogLevel) {
+            this.properties.put("serverExceptionCaughtLogLevel", serverExceptionCaughtLogLevel);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
          * To use a custom ServerInitializerFactory. The option is a
          * org.apache.camel.component.netty4.ServerInitializerFactory type.
          */
         public NettyConsumerBuilder serverInitializerFactory(
                 Object serverInitializerFactory) {
+            this.properties.put("serverInitializerFactory", serverInitializerFactory);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
+         * To use a custom ServerInitializerFactory. The option will be
+         * converted to a
+         * org.apache.camel.component.netty4.ServerInitializerFactory type.
+         */
+        public NettyConsumerBuilder serverInitializerFactory(
+                String serverInitializerFactory) {
             this.properties.put("serverInitializerFactory", serverInitializerFactory);
             return (NettyConsumerBuilder) this;
         }
@@ -638,10 +1137,28 @@ public interface NettyEndpointBuilder {
             return (NettyConsumerBuilder) this;
         }
         /**
+         * Whether to use ordered thread pool, to ensure events are processed
+         * orderly on the same channel. The option will be converted to a
+         * boolean type.
+         */
+        public NettyConsumerBuilder usingExecutorService(
+                String usingExecutorService) {
+            this.properties.put("usingExecutorService", usingExecutorService);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
          * Configures whether the server needs client authentication when using
          * SSL. The option is a boolean type.
          */
         public NettyConsumerBuilder needClientAuth(boolean needClientAuth) {
+            this.properties.put("needClientAuth", needClientAuth);
+            return (NettyConsumerBuilder) this;
+        }
+        /**
+         * Configures whether the server needs client authentication when using
+         * SSL. The option will be converted to a boolean type.
+         */
+        public NettyConsumerBuilder needClientAuth(String needClientAuth) {
             this.properties.put("needClientAuth", needClientAuth);
             return (NettyConsumerBuilder) this;
         }
@@ -664,6 +1181,14 @@ public interface NettyEndpointBuilder {
             return (NettyProducerBuilder) this;
         }
         /**
+         * Time to wait for a socket connection to be available. Value is in
+         * milliseconds. The option will be converted to a int type.
+         */
+        public NettyProducerBuilder connectTimeout(String connectTimeout) {
+            this.properties.put("connectTimeout", connectTimeout);
+            return (NettyProducerBuilder) this;
+        }
+        /**
          * Allows to use a timeout for the Netty producer when calling a remote
          * server. By default no timeout is in use. The value is in milli
          * seconds, so eg 30000 is 30 seconds. The requestTimeout is using
@@ -675,11 +1200,32 @@ public interface NettyEndpointBuilder {
             return (NettyProducerBuilder) this;
         }
         /**
+         * Allows to use a timeout for the Netty producer when calling a remote
+         * server. By default no timeout is in use. The value is in milli
+         * seconds, so eg 30000 is 30 seconds. The requestTimeout is using
+         * Netty's ReadTimeoutHandler to trigger the timeout. The option will be
+         * converted to a long type.
+         */
+        public NettyProducerBuilder requestTimeout(String requestTimeout) {
+            this.properties.put("requestTimeout", requestTimeout);
+            return (NettyProducerBuilder) this;
+        }
+        /**
          * To use a custom ClientInitializerFactory. The option is a
          * org.apache.camel.component.netty4.ClientInitializerFactory type.
          */
         public NettyProducerBuilder clientInitializerFactory(
                 Object clientInitializerFactory) {
+            this.properties.put("clientInitializerFactory", clientInitializerFactory);
+            return (NettyProducerBuilder) this;
+        }
+        /**
+         * To use a custom ClientInitializerFactory. The option will be
+         * converted to a
+         * org.apache.camel.component.netty4.ClientInitializerFactory type.
+         */
+        public NettyProducerBuilder clientInitializerFactory(
+                String clientInitializerFactory) {
             this.properties.put("clientInitializerFactory", clientInitializerFactory);
             return (NettyProducerBuilder) this;
         }
@@ -705,12 +1251,44 @@ public interface NettyEndpointBuilder {
             return (NettyProducerBuilder) this;
         }
         /**
+         * To use a custom correlation manager to manage how request and reply
+         * messages are mapped when using request/reply with the netty producer.
+         * This should only be used if you have a way to map requests together
+         * with replies such as if there is correlation ids in both the request
+         * and reply messages. This can be used if you want to multiplex
+         * concurrent messages on the same channel (aka connection) in netty.
+         * When doing this you must have a way to correlate the request and
+         * reply messages so you can store the right reply on the inflight Camel
+         * Exchange before its continued routed. We recommend extending the
+         * TimeoutCorrelationManagerSupport when you build custom correlation
+         * managers. This provides support for timeout and other complexities
+         * you otherwise would need to implement as well. See also the
+         * producerPoolEnabled option for more details. The option will be
+         * converted to a
+         * org.apache.camel.component.netty4.NettyCamelStateCorrelationManager
+         * type.
+         */
+        public NettyProducerBuilder correlationManager(String correlationManager) {
+            this.properties.put("correlationManager", correlationManager);
+            return (NettyProducerBuilder) this;
+        }
+        /**
          * Channels can be lazily created to avoid exceptions, if the remote
          * server is not up and running when the Camel producer is started. The
          * option is a boolean type.
          */
         public NettyProducerBuilder lazyChannelCreation(
                 boolean lazyChannelCreation) {
+            this.properties.put("lazyChannelCreation", lazyChannelCreation);
+            return (NettyProducerBuilder) this;
+        }
+        /**
+         * Channels can be lazily created to avoid exceptions, if the remote
+         * server is not up and running when the Camel producer is started. The
+         * option will be converted to a boolean type.
+         */
+        public NettyProducerBuilder lazyChannelCreation(
+                String lazyChannelCreation) {
             this.properties.put("lazyChannelCreation", lazyChannelCreation);
             return (NettyProducerBuilder) this;
         }
@@ -734,6 +1312,25 @@ public interface NettyEndpointBuilder {
             return (NettyProducerBuilder) this;
         }
         /**
+         * Whether producer pool is enabled or not. Important: If you turn this
+         * off then a single shared connection is used for the producer, also if
+         * you are doing request/reply. That means there is a potential issue
+         * with interleaved responses if replies comes back out-of-order.
+         * Therefore you need to have a correlation id in both the request and
+         * reply messages so you can properly correlate the replies to the Camel
+         * callback that is responsible for continue processing the message in
+         * Camel. To do this you need to implement
+         * NettyCamelStateCorrelationManager as correlation manager and
+         * configure it via the correlationManager option. See also the
+         * correlationManager option for more details. The option will be
+         * converted to a boolean type.
+         */
+        public NettyProducerBuilder producerPoolEnabled(
+                String producerPoolEnabled) {
+            this.properties.put("producerPoolEnabled", producerPoolEnabled);
+            return (NettyProducerBuilder) this;
+        }
+        /**
          * Sets the cap on the number of objects that can be allocated by the
          * pool (checked out to clients, or idle awaiting checkout) at a given
          * time. Use a negative value for no limit. The option is a int type.
@@ -744,10 +1341,30 @@ public interface NettyEndpointBuilder {
             return (NettyProducerBuilder) this;
         }
         /**
+         * Sets the cap on the number of objects that can be allocated by the
+         * pool (checked out to clients, or idle awaiting checkout) at a given
+         * time. Use a negative value for no limit. The option will be converted
+         * to a int type.
+         */
+        public NettyProducerBuilder producerPoolMaxActive(
+                String producerPoolMaxActive) {
+            this.properties.put("producerPoolMaxActive", producerPoolMaxActive);
+            return (NettyProducerBuilder) this;
+        }
+        /**
          * Sets the cap on the number of idle instances in the pool. The option
          * is a int type.
          */
         public NettyProducerBuilder producerPoolMaxIdle(int producerPoolMaxIdle) {
+            this.properties.put("producerPoolMaxIdle", producerPoolMaxIdle);
+            return (NettyProducerBuilder) this;
+        }
+        /**
+         * Sets the cap on the number of idle instances in the pool. The option
+         * will be converted to a int type.
+         */
+        public NettyProducerBuilder producerPoolMaxIdle(
+                String producerPoolMaxIdle) {
             this.properties.put("producerPoolMaxIdle", producerPoolMaxIdle);
             return (NettyProducerBuilder) this;
         }
@@ -762,11 +1379,31 @@ public interface NettyEndpointBuilder {
             return (NettyProducerBuilder) this;
         }
         /**
+         * Sets the minimum amount of time (value in millis) an object may sit
+         * idle in the pool before it is eligible for eviction by the idle
+         * object evictor. The option will be converted to a long type.
+         */
+        public NettyProducerBuilder producerPoolMinEvictableIdle(
+                String producerPoolMinEvictableIdle) {
+            this.properties.put("producerPoolMinEvictableIdle", producerPoolMinEvictableIdle);
+            return (NettyProducerBuilder) this;
+        }
+        /**
          * Sets the minimum number of instances allowed in the producer pool
          * before the evictor thread (if active) spawns new objects. The option
          * is a int type.
          */
         public NettyProducerBuilder producerPoolMinIdle(int producerPoolMinIdle) {
+            this.properties.put("producerPoolMinIdle", producerPoolMinIdle);
+            return (NettyProducerBuilder) this;
+        }
+        /**
+         * Sets the minimum number of instances allowed in the producer pool
+         * before the evictor thread (if active) spawns new objects. The option
+         * will be converted to a int type.
+         */
+        public NettyProducerBuilder producerPoolMinIdle(
+                String producerPoolMinIdle) {
             this.properties.put("producerPoolMinIdle", producerPoolMinIdle);
             return (NettyProducerBuilder) this;
         }
@@ -782,10 +1419,30 @@ public interface NettyEndpointBuilder {
             return (NettyProducerBuilder) this;
         }
         /**
+         * This option supports connection less udp sending which is a real fire
+         * and forget. A connected udp send receive the PortUnreachableException
+         * if no one is listen on the receiving port. The option will be
+         * converted to a boolean type.
+         */
+        public NettyProducerBuilder udpConnectionlessSending(
+                String udpConnectionlessSending) {
+            this.properties.put("udpConnectionlessSending", udpConnectionlessSending);
+            return (NettyProducerBuilder) this;
+        }
+        /**
          * If the useByteBuf is true, netty producer will turn the message body
          * into ByteBuf before sending it out. The option is a boolean type.
          */
         public NettyProducerBuilder useByteBuf(boolean useByteBuf) {
+            this.properties.put("useByteBuf", useByteBuf);
+            return (NettyProducerBuilder) this;
+        }
+        /**
+         * If the useByteBuf is true, netty producer will turn the message body
+         * into ByteBuf before sending it out. The option will be converted to a
+         * boolean type.
+         */
+        public NettyProducerBuilder useByteBuf(String useByteBuf) {
             this.properties.put("useByteBuf", useByteBuf);
             return (NettyProducerBuilder) this;
         }

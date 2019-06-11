@@ -71,6 +71,14 @@ public interface MongoDbEndpointBuilder {
             return (T) this;
         }
         /**
+         * Create collection during initialisation if it doesn't exist. Default
+         * is true. The option will be converted to a boolean type.
+         */
+        public T createCollection(String createCollection) {
+            this.properties.put("createCollection", createCollection);
+            return (T) this;
+        }
+        /**
          * Sets the name of the MongoDB database to target. The option is a
          * java.lang.String type.
          */
@@ -88,6 +96,15 @@ public interface MongoDbEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets the operation this endpoint will execute against MongoDB. For
+         * possible values, see MongoDbOperation. The option will be converted
+         * to a org.apache.camel.component.mongodb3.MongoDbOperation type.
+         */
+        public T operation(String operation) {
+            this.properties.put("operation", operation);
+            return (T) this;
+        }
+        /**
          * Convert the output of the producer to the selected type :
          * DocumentList Document or MongoIterable. DocumentList or MongoIterable
          * applies to findAll and aggregate. Document applies to all other
@@ -99,11 +116,31 @@ public interface MongoDbEndpointBuilder {
             return (T) this;
         }
         /**
+         * Convert the output of the producer to the selected type :
+         * DocumentList Document or MongoIterable. DocumentList or MongoIterable
+         * applies to findAll and aggregate. Document applies to all other
+         * operations. The option will be converted to a
+         * org.apache.camel.component.mongodb3.MongoDbOutputType type.
+         */
+        public T outputType(String outputType) {
+            this.properties.put("outputType", outputType);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
@@ -121,6 +158,19 @@ public interface MongoDbEndpointBuilder {
             return (T) this;
         }
         /**
+         * MongoDB tailable cursors will block until new data arrives. If no new
+         * data is inserted, after some time the cursor will be automatically
+         * freed and closed by the MongoDB server. The client is expected to
+         * regenerate the cursor if needed. This value specifies the time to
+         * wait before attempting to fetch a new cursor, and if the attempt
+         * fails, how long before the next attempt is made. Default value is
+         * 1000ms. The option will be converted to a long type.
+         */
+        public T cursorRegenerationDelay(String cursorRegenerationDelay) {
+            this.properties.put("cursorRegenerationDelay", cursorRegenerationDelay);
+            return (T) this;
+        }
+        /**
          * Sets whether this endpoint will attempt to dynamically resolve the
          * target database and collection from the incoming Exchange properties.
          * Can be used to override at runtime the database and collection
@@ -129,6 +179,18 @@ public interface MongoDbEndpointBuilder {
          * performance hit. The option is a boolean type.
          */
         public T dynamicity(boolean dynamicity) {
+            this.properties.put("dynamicity", dynamicity);
+            return (T) this;
+        }
+        /**
+         * Sets whether this endpoint will attempt to dynamically resolve the
+         * target database and collection from the incoming Exchange properties.
+         * Can be used to override at runtime the database and collection
+         * specified on the otherwise static endpoint URI. It is disabled by
+         * default to boost performance. Enabling it will take a minimal
+         * performance hit. The option will be converted to a boolean type.
+         */
+        public T dynamicity(String dynamicity) {
             this.properties.put("dynamicity", dynamicity);
             return (T) this;
         }
@@ -142,12 +204,31 @@ public interface MongoDbEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * In write operations, it determines whether instead of returning
          * WriteResult as the body of the OUT message, we transfer the IN
          * message to the OUT and attach the WriteResult as a header. The option
          * is a boolean type.
          */
         public T writeResultAsHeader(boolean writeResultAsHeader) {
+            this.properties.put("writeResultAsHeader", writeResultAsHeader);
+            return (T) this;
+        }
+        /**
+         * In write operations, it determines whether instead of returning
+         * WriteResult as the body of the OUT message, we transfer the IN
+         * message to the OUT and attach the WriteResult as a header. The option
+         * will be converted to a boolean type.
+         */
+        public T writeResultAsHeader(String writeResultAsHeader) {
             this.properties.put("writeResultAsHeader", writeResultAsHeader);
             return (T) this;
         }
@@ -167,6 +248,17 @@ public interface MongoDbEndpointBuilder {
          * where it last stopped slurping records. The option is a boolean type.
          */
         public T persistentTailTracking(boolean persistentTailTracking) {
+            this.properties.put("persistentTailTracking", persistentTailTracking);
+            return (T) this;
+        }
+        /**
+         * Enable persistent tail tracking, which is a mechanism to keep track
+         * of the last consumed message across system restarts. The next time
+         * the system is up, the endpoint will recover the cursor from the point
+         * where it last stopped slurping records. The option will be converted
+         * to a boolean type.
+         */
+        public T persistentTailTracking(String persistentTailTracking) {
             this.properties.put("persistentTailTracking", persistentTailTracking);
             return (T) this;
         }
@@ -238,6 +330,20 @@ public interface MongoDbEndpointBuilder {
             return (MongoDbConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public MongoDbConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (MongoDbConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -250,11 +356,30 @@ public interface MongoDbEndpointBuilder {
             return (MongoDbConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public MongoDbConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (MongoDbConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public MongoDbConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (MongoDbConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public MongoDbConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (MongoDbConsumerBuilder) this;
         }

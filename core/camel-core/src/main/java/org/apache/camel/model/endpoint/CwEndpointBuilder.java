@@ -53,6 +53,15 @@ public interface CwEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use the AmazonCloudWatch as the client. The option will be
+         * converted to a com.amazonaws.services.cloudwatch.AmazonCloudWatch
+         * type.
+         */
+        public T amazonCwClient(String amazonCwClient) {
+            this.properties.put("amazonCwClient", amazonCwClient);
+            return (T) this;
+        }
+        /**
          * The metric name. The option is a java.lang.String type.
          */
         public T name(String name) {
@@ -76,6 +85,14 @@ public interface CwEndpointBuilder {
             return (T) this;
         }
         /**
+         * To define a proxy port when instantiating the CW client. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public T proxyPort(String proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (T) this;
+        }
+        /**
          * The region in which CW client needs to work. The option is a
          * java.lang.String type.
          */
@@ -87,6 +104,14 @@ public interface CwEndpointBuilder {
          * The metric timestamp. The option is a java.util.Date type.
          */
         public T timestamp(Date timestamp) {
+            this.properties.put("timestamp", timestamp);
+            return (T) this;
+        }
+        /**
+         * The metric timestamp. The option will be converted to a
+         * java.util.Date type.
+         */
+        public T timestamp(String timestamp) {
             this.properties.put("timestamp", timestamp);
             return (T) this;
         }
@@ -105,6 +130,14 @@ public interface CwEndpointBuilder {
             return (T) this;
         }
         /**
+         * The metric value. The option will be converted to a java.lang.Double
+         * type.
+         */
+        public T value(String value) {
+            this.properties.put("value", value);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -114,11 +147,29 @@ public interface CwEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

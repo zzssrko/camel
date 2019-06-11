@@ -54,6 +54,14 @@ public interface SpringBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Explicitly defines if the jobName should be taken from the headers
+         * instead of the URI. The option will be converted to a boolean type.
+         */
+        public T jobFromHeader(String jobFromHeader) {
+            this.properties.put("jobFromHeader", jobFromHeader);
+            return (T) this;
+        }
+        /**
          * Explicitly specifies a JobLauncher to be used. The option is a
          * org.springframework.batch.core.launch.JobLauncher type.
          */
@@ -62,10 +70,28 @@ public interface SpringBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Explicitly specifies a JobLauncher to be used. The option will be
+         * converted to a org.springframework.batch.core.launch.JobLauncher
+         * type.
+         */
+        public T jobLauncher(String jobLauncher) {
+            this.properties.put("jobLauncher", jobLauncher);
+            return (T) this;
+        }
+        /**
          * Explicitly specifies a JobRegistry to be used. The option is a
          * org.springframework.batch.core.configuration.JobRegistry type.
          */
         public T jobRegistry(Object jobRegistry) {
+            this.properties.put("jobRegistry", jobRegistry);
+            return (T) this;
+        }
+        /**
+         * Explicitly specifies a JobRegistry to be used. The option will be
+         * converted to a
+         * org.springframework.batch.core.configuration.JobRegistry type.
+         */
+        public T jobRegistry(String jobRegistry) {
             this.properties.put("jobRegistry", jobRegistry);
             return (T) this;
         }
@@ -79,11 +105,29 @@ public interface SpringBatchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

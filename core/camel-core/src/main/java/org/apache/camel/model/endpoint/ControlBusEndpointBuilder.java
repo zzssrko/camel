@@ -58,6 +58,16 @@ public interface ControlBusEndpointBuilder {
             return (T) this;
         }
         /**
+         * Allows you to specify the name of a Language to use for evaluating
+         * the message body. If there is any result from the evaluation, then
+         * the result is put in the message body. The option will be converted
+         * to a org.apache.camel.spi.Language type.
+         */
+        public T language(String language) {
+            this.properties.put("language", language);
+            return (T) this;
+        }
+        /**
          * To denote an action that can be either: start, stop, or status. To
          * either start or stop a route, or to get the status of the route as
          * output in the message body. You can use suspend and resume from Camel
@@ -83,6 +93,16 @@ public interface ControlBusEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to execute the control bus task asynchronously. Important: If
+         * this option is enabled, then any result from the task is not set on
+         * the Exchange. This is only possible if executing tasks synchronously.
+         * The option will be converted to a boolean type.
+         */
+        public T async(String async) {
+            this.properties.put("async", async);
+            return (T) this;
+        }
+        /**
          * Logging level used for logging when task is done, or if any
          * exceptions occurred during processing the task. The option is a
          * org.apache.camel.LoggingLevel type.
@@ -92,10 +112,27 @@ public interface ControlBusEndpointBuilder {
             return (T) this;
         }
         /**
+         * Logging level used for logging when task is done, or if any
+         * exceptions occurred during processing the task. The option will be
+         * converted to a org.apache.camel.LoggingLevel type.
+         */
+        public T loggingLevel(String loggingLevel) {
+            this.properties.put("loggingLevel", loggingLevel);
+            return (T) this;
+        }
+        /**
          * The delay in millis to use when restarting a route. The option is a
          * int type.
          */
         public T restartDelay(int restartDelay) {
+            this.properties.put("restartDelay", restartDelay);
+            return (T) this;
+        }
+        /**
+         * The delay in millis to use when restarting a route. The option will
+         * be converted to a int type.
+         */
+        public T restartDelay(String restartDelay) {
             this.properties.put("restartDelay", restartDelay);
             return (T) this;
         }
@@ -117,11 +154,29 @@ public interface ControlBusEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

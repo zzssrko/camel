@@ -63,11 +63,30 @@ public interface EjbEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * If enabled, Camel will cache the result of the first Registry
          * look-up. Cache can be enabled if the bean in the Registry is defined
          * as a singleton scope. The option is a java.lang.Boolean type.
          */
         public T cache(Boolean cache) {
+            this.properties.put("cache", cache);
+            return (T) this;
+        }
+        /**
+         * If enabled, Camel will cache the result of the first Registry
+         * look-up. Cache can be enabled if the bean in the Registry is defined
+         * as a singleton scope. The option will be converted to a
+         * java.lang.Boolean type.
+         */
+        public T cache(String cache) {
             this.properties.put("cache", cache);
             return (T) this;
         }
@@ -80,11 +99,29 @@ public interface EjbEndpointBuilder {
             return (T) this;
         }
         /**
+         * Used for configuring additional properties on the bean. The option
+         * will be converted to a
+         * java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public T parameters(String parameters) {
+            this.properties.put("parameters", parameters);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

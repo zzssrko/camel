@@ -46,10 +46,27 @@ public interface DigitalOceanEndpointBuilder {
             return (T) this;
         }
         /**
+         * The operation to perform to the given resource. The option will be
+         * converted to a
+         * org.apache.camel.component.digitalocean.constants.DigitalOceanOperations type.
+         */
+        public T operation(String operation) {
+            this.properties.put("operation", operation);
+            return (T) this;
+        }
+        /**
          * Use for pagination. Force the page number. The option is a
          * java.lang.Integer type.
          */
         public T page(Integer page) {
+            this.properties.put("page", page);
+            return (T) this;
+        }
+        /**
+         * Use for pagination. Force the page number. The option will be
+         * converted to a java.lang.Integer type.
+         */
+        public T page(String page) {
             this.properties.put("page", page);
             return (T) this;
         }
@@ -63,11 +80,29 @@ public interface DigitalOceanEndpointBuilder {
             return (T) this;
         }
         /**
+         * Use for pagination. Set the number of item per request. The maximum
+         * number of results per page is 200. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T perPage(String perPage) {
+            this.properties.put("perPage", perPage);
+            return (T) this;
+        }
+        /**
          * The DigitalOcean resource type on which perform the operation. The
          * option is a
          * org.apache.camel.component.digitalocean.constants.DigitalOceanResources type.
          */
         public T resource(DigitalOceanResources resource) {
+            this.properties.put("resource", resource);
+            return (T) this;
+        }
+        /**
+         * The DigitalOcean resource type on which perform the operation. The
+         * option will be converted to a
+         * org.apache.camel.component.digitalocean.constants.DigitalOceanResources type.
+         */
+        public T resource(String resource) {
             this.properties.put("resource", resource);
             return (T) this;
         }
@@ -81,10 +116,28 @@ public interface DigitalOceanEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * To use a existing configured DigitalOceanClient as client. The option
          * is a com.myjeeva.digitalocean.impl.DigitalOceanClient type.
          */
         public T digitalOceanClient(Object digitalOceanClient) {
+            this.properties.put("digitalOceanClient", digitalOceanClient);
+            return (T) this;
+        }
+        /**
+         * To use a existing configured DigitalOceanClient as client. The option
+         * will be converted to a
+         * com.myjeeva.digitalocean.impl.DigitalOceanClient type.
+         */
+        public T digitalOceanClient(String digitalOceanClient) {
             this.properties.put("digitalOceanClient", digitalOceanClient);
             return (T) this;
         }
@@ -94,6 +147,15 @@ public interface DigitalOceanEndpointBuilder {
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -116,6 +178,14 @@ public interface DigitalOceanEndpointBuilder {
          * Set a proxy port if needed. The option is a java.lang.Integer type.
          */
         public T httpProxyPort(Integer httpProxyPort) {
+            this.properties.put("httpProxyPort", httpProxyPort);
+            return (T) this;
+        }
+        /**
+         * Set a proxy port if needed. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T httpProxyPort(String httpProxyPort) {
             this.properties.put("httpProxyPort", httpProxyPort);
             return (T) this;
         }

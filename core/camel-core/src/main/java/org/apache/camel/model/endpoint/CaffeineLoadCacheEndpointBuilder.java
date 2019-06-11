@@ -55,6 +55,14 @@ public interface CaffeineLoadCacheEndpointBuilder {
             return (T) this;
         }
         /**
+         * Configure if a cache need to be created if it does exist or can't be
+         * pre-configured. The option will be converted to a boolean type.
+         */
+        public T createCacheIfNotExist(String createCacheIfNotExist) {
+            this.properties.put("createCacheIfNotExist", createCacheIfNotExist);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -64,10 +72,27 @@ public interface CaffeineLoadCacheEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * The cache key type, default java.lang.Object. The option is a
          * java.lang.String type.
          */
         public T keyType(Class<Object> keyType) {
+            this.properties.put("keyType", keyType);
+            return (T) this;
+        }
+        /**
+         * The cache key type, default java.lang.Object. The option will be
+         * converted to a java.lang.String type.
+         */
+        public T keyType(String keyType) {
             this.properties.put("keyType", keyType);
             return (T) this;
         }
@@ -81,10 +106,27 @@ public interface CaffeineLoadCacheEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * The cache value type, default java.lang.Object. The option is a
          * java.lang.String type.
          */
         public T valueType(Class<Object> valueType) {
+            this.properties.put("valueType", valueType);
+            return (T) this;
+        }
+        /**
+         * The cache value type, default java.lang.Object. The option will be
+         * converted to a java.lang.String type.
+         */
+        public T valueType(String valueType) {
             this.properties.put("valueType", valueType);
             return (T) this;
         }
@@ -113,6 +155,20 @@ public interface CaffeineLoadCacheEndpointBuilder {
             return (CaffeineLoadCacheConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public CaffeineLoadCacheConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (CaffeineLoadCacheConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -125,11 +181,32 @@ public interface CaffeineLoadCacheEndpointBuilder {
             return (CaffeineLoadCacheConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public CaffeineLoadCacheConsumerBuilder exceptionHandler(
+                String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (CaffeineLoadCacheConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public CaffeineLoadCacheConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (CaffeineLoadCacheConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public CaffeineLoadCacheConsumerBuilder exchangePattern(
+                String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (CaffeineLoadCacheConsumerBuilder) this;
         }
@@ -161,10 +238,27 @@ public interface CaffeineLoadCacheEndpointBuilder {
             return (CaffeineLoadCacheProducerBuilder) this;
         }
         /**
+         * To configure an already instantiated cache to be used. The option
+         * will be converted to a com.github.benmanes.caffeine.cache.Cache type.
+         */
+        public CaffeineLoadCacheProducerBuilder cache(String cache) {
+            this.properties.put("cache", cache);
+            return (CaffeineLoadCacheProducerBuilder) this;
+        }
+        /**
          * To configure a CacheLoader in case of a LoadCache use. The option is
          * a com.github.benmanes.caffeine.cache.CacheLoader type.
          */
         public CaffeineLoadCacheProducerBuilder cacheLoader(Object cacheLoader) {
+            this.properties.put("cacheLoader", cacheLoader);
+            return (CaffeineLoadCacheProducerBuilder) this;
+        }
+        /**
+         * To configure a CacheLoader in case of a LoadCache use. The option
+         * will be converted to a com.github.benmanes.caffeine.cache.CacheLoader
+         * type.
+         */
+        public CaffeineLoadCacheProducerBuilder cacheLoader(String cacheLoader) {
             this.properties.put("cacheLoader", cacheLoader);
             return (CaffeineLoadCacheProducerBuilder) this;
         }
@@ -178,11 +272,28 @@ public interface CaffeineLoadCacheEndpointBuilder {
             return (CaffeineLoadCacheProducerBuilder) this;
         }
         /**
+         * Set the eviction Type for this cache. The option will be converted to
+         * a org.apache.camel.component.caffeine.EvictionType type.
+         */
+        public CaffeineLoadCacheProducerBuilder evictionType(String evictionType) {
+            this.properties.put("evictionType", evictionType);
+            return (CaffeineLoadCacheProducerBuilder) this;
+        }
+        /**
          * Set the expire After Access Time in case of time based Eviction (in
          * seconds). The option is a int type.
          */
         public CaffeineLoadCacheProducerBuilder expireAfterAccessTime(
                 int expireAfterAccessTime) {
+            this.properties.put("expireAfterAccessTime", expireAfterAccessTime);
+            return (CaffeineLoadCacheProducerBuilder) this;
+        }
+        /**
+         * Set the expire After Access Time in case of time based Eviction (in
+         * seconds). The option will be converted to a int type.
+         */
+        public CaffeineLoadCacheProducerBuilder expireAfterAccessTime(
+                String expireAfterAccessTime) {
             this.properties.put("expireAfterAccessTime", expireAfterAccessTime);
             return (CaffeineLoadCacheProducerBuilder) this;
         }
@@ -196,10 +307,28 @@ public interface CaffeineLoadCacheEndpointBuilder {
             return (CaffeineLoadCacheProducerBuilder) this;
         }
         /**
+         * Set the expire After Access Write in case of time based Eviction (in
+         * seconds). The option will be converted to a int type.
+         */
+        public CaffeineLoadCacheProducerBuilder expireAfterWriteTime(
+                String expireAfterWriteTime) {
+            this.properties.put("expireAfterWriteTime", expireAfterWriteTime);
+            return (CaffeineLoadCacheProducerBuilder) this;
+        }
+        /**
          * Set the initial Capacity for the cache. The option is a int type.
          */
         public CaffeineLoadCacheProducerBuilder initialCapacity(
                 int initialCapacity) {
+            this.properties.put("initialCapacity", initialCapacity);
+            return (CaffeineLoadCacheProducerBuilder) this;
+        }
+        /**
+         * Set the initial Capacity for the cache. The option will be converted
+         * to a int type.
+         */
+        public CaffeineLoadCacheProducerBuilder initialCapacity(
+                String initialCapacity) {
             this.properties.put("initialCapacity", initialCapacity);
             return (CaffeineLoadCacheProducerBuilder) this;
         }
@@ -213,9 +342,26 @@ public interface CaffeineLoadCacheEndpointBuilder {
             return (CaffeineLoadCacheProducerBuilder) this;
         }
         /**
+         * To configure the default action key. If a key is set in the message
+         * header, then the key from the header takes precedence. The option
+         * will be converted to a java.lang.Object type.
+         */
+        public CaffeineLoadCacheProducerBuilder key(String key) {
+            this.properties.put("key", key);
+            return (CaffeineLoadCacheProducerBuilder) this;
+        }
+        /**
          * Set the maximum size for the cache. The option is a int type.
          */
         public CaffeineLoadCacheProducerBuilder maximumSize(int maximumSize) {
+            this.properties.put("maximumSize", maximumSize);
+            return (CaffeineLoadCacheProducerBuilder) this;
+        }
+        /**
+         * Set the maximum size for the cache. The option will be converted to a
+         * int type.
+         */
+        public CaffeineLoadCacheProducerBuilder maximumSize(String maximumSize) {
             this.properties.put("maximumSize", maximumSize);
             return (CaffeineLoadCacheProducerBuilder) this;
         }
@@ -229,6 +375,16 @@ public interface CaffeineLoadCacheEndpointBuilder {
             return (CaffeineLoadCacheProducerBuilder) this;
         }
         /**
+         * Set a specific removal Listener for the cache. The option will be
+         * converted to a com.github.benmanes.caffeine.cache.RemovalListener
+         * type.
+         */
+        public CaffeineLoadCacheProducerBuilder removalListener(
+                String removalListener) {
+            this.properties.put("removalListener", removalListener);
+            return (CaffeineLoadCacheProducerBuilder) this;
+        }
+        /**
          * Set a specific Stats Counter for the cache stats. The option is a
          * com.github.benmanes.caffeine.cache.stats.StatsCounter type.
          */
@@ -237,10 +393,27 @@ public interface CaffeineLoadCacheEndpointBuilder {
             return (CaffeineLoadCacheProducerBuilder) this;
         }
         /**
+         * Set a specific Stats Counter for the cache stats. The option will be
+         * converted to a com.github.benmanes.caffeine.cache.stats.StatsCounter
+         * type.
+         */
+        public CaffeineLoadCacheProducerBuilder statsCounter(String statsCounter) {
+            this.properties.put("statsCounter", statsCounter);
+            return (CaffeineLoadCacheProducerBuilder) this;
+        }
+        /**
          * To enable stats on the cache. The option is a boolean type.
          */
         public CaffeineLoadCacheProducerBuilder statsEnabled(
                 boolean statsEnabled) {
+            this.properties.put("statsEnabled", statsEnabled);
+            return (CaffeineLoadCacheProducerBuilder) this;
+        }
+        /**
+         * To enable stats on the cache. The option will be converted to a
+         * boolean type.
+         */
+        public CaffeineLoadCacheProducerBuilder statsEnabled(String statsEnabled) {
             this.properties.put("statsEnabled", statsEnabled);
             return (CaffeineLoadCacheProducerBuilder) this;
         }

@@ -72,6 +72,18 @@ public interface LdapEndpointBuilder {
             return (T) this;
         }
         /**
+         * When specified the ldap module uses paging to retrieve all results
+         * (most LDAP Servers throw an exception when trying to retrieve more
+         * than 1000 entries in one query). To be able to use this a LdapContext
+         * (subclass of DirContext) has to be passed in as ldapServerBean
+         * (otherwise an exception is thrown). The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T pageSize(String pageSize) {
+            this.properties.put("pageSize", pageSize);
+            return (T) this;
+        }
+        /**
          * Comma-separated list of attributes that should be set in each entry
          * of the result. The option is a java.lang.String type.
          */
@@ -97,11 +109,29 @@ public interface LdapEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

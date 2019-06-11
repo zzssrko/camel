@@ -54,6 +54,15 @@ public interface KinesisFirehoseEndpointBuilder {
             return (T) this;
         }
         /**
+         * Amazon Kinesis Firehose client to use for all requests for this
+         * endpoint. The option will be converted to a
+         * com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehose type.
+         */
+        public T amazonKinesisFirehoseClient(String amazonKinesisFirehoseClient) {
+            this.properties.put("amazonKinesisFirehoseClient", amazonKinesisFirehoseClient);
+            return (T) this;
+        }
+        /**
          * To define a proxy host when instantiating the DDBStreams client. The
          * option is a java.lang.String type.
          */
@@ -66,6 +75,14 @@ public interface KinesisFirehoseEndpointBuilder {
          * option is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (T) this;
+        }
+        /**
+         * To define a proxy port when instantiating the DDBStreams client. The
+         * option will be converted to a java.lang.Integer type.
+         */
+        public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
@@ -87,11 +104,29 @@ public interface KinesisFirehoseEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

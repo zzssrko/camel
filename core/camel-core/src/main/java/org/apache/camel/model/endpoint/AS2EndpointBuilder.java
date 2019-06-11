@@ -50,6 +50,14 @@ public interface AS2EndpointBuilder {
             return (T) this;
         }
         /**
+         * What kind of operation to perform. The option will be converted to a
+         * org.apache.camel.component.as2.internal.AS2ApiName type.
+         */
+        public T apiName(String apiName) {
+            this.properties.put("apiName", apiName);
+            return (T) this;
+        }
+        /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
@@ -72,6 +80,17 @@ public interface AS2EndpointBuilder {
          * a org.apache.camel.component.as2.api.AS2MessageStructure type.
          */
         public T as2MessageStructure(AS2MessageStructure as2MessageStructure) {
+            this.properties.put("as2MessageStructure", as2MessageStructure);
+            return (T) this;
+        }
+        /**
+         * The structure of AS2 Message. One of: PLAIN - No encryption, no
+         * signature, SIGNED - No encryption, signature, ENCRYPTED - Encryption,
+         * no signature, ENCRYPTED_SIGNED - Encryption, signature. The option
+         * will be converted to a
+         * org.apache.camel.component.as2.api.AS2MessageStructure type.
+         */
+        public T as2MessageStructure(String as2MessageStructure) {
             this.properties.put("as2MessageStructure", as2MessageStructure);
             return (T) this;
         }
@@ -109,10 +128,27 @@ public interface AS2EndpointBuilder {
             return (T) this;
         }
         /**
+         * The algorithm used to compress EDI message. The option will be
+         * converted to a
+         * org.apache.camel.component.as2.api.AS2CompressionAlgorithm type.
+         */
+        public T compressionAlgorithm(String compressionAlgorithm) {
+            this.properties.put("compressionAlgorithm", compressionAlgorithm);
+            return (T) this;
+        }
+        /**
          * The key used to encrypt the EDI message. The option is a
          * java.security.PrivateKey type.
          */
         public T decryptingPrivateKey(PrivateKey decryptingPrivateKey) {
+            this.properties.put("decryptingPrivateKey", decryptingPrivateKey);
+            return (T) this;
+        }
+        /**
+         * The key used to encrypt the EDI message. The option will be converted
+         * to a java.security.PrivateKey type.
+         */
+        public T decryptingPrivateKey(String decryptingPrivateKey) {
             this.properties.put("decryptingPrivateKey", decryptingPrivateKey);
             return (T) this;
         }
@@ -143,10 +179,28 @@ public interface AS2EndpointBuilder {
             return (T) this;
         }
         /**
+         * The content type of EDI message. One of application/edifact,
+         * application/edi-x12, application/edi-consent. The option will be
+         * converted to a org.apache.http.entity.ContentType type.
+         */
+        public T ediMessageType(String ediMessageType) {
+            this.properties.put("ediMessageType", ediMessageType);
+            return (T) this;
+        }
+        /**
          * The algorithm used to encrypt EDI message. The option is a
          * org.apache.camel.component.as2.api.AS2EncryptionAlgorithm type.
          */
         public T encryptingAlgorithm(AS2EncryptionAlgorithm encryptingAlgorithm) {
+            this.properties.put("encryptingAlgorithm", encryptingAlgorithm);
+            return (T) this;
+        }
+        /**
+         * The algorithm used to encrypt EDI message. The option will be
+         * converted to a
+         * org.apache.camel.component.as2.api.AS2EncryptionAlgorithm type.
+         */
+        public T encryptingAlgorithm(String encryptingAlgorithm) {
             this.properties.put("encryptingAlgorithm", encryptingAlgorithm);
             return (T) this;
         }
@@ -156,6 +210,14 @@ public interface AS2EndpointBuilder {
          */
         public T encryptingCertificateChain(
                 Certificate[] encryptingCertificateChain) {
+            this.properties.put("encryptingCertificateChain", encryptingCertificateChain);
+            return (T) this;
+        }
+        /**
+         * The chain of certificates used to encrypt EDI message. The option
+         * will be converted to a java.security.cert.Certificate[] type.
+         */
+        public T encryptingCertificateChain(String encryptingCertificateChain) {
             this.properties.put("encryptingCertificateChain", encryptingCertificateChain);
             return (T) this;
         }
@@ -215,11 +277,29 @@ public interface AS2EndpointBuilder {
             return (T) this;
         }
         /**
+         * The port number of server. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T serverPortNumber(String serverPortNumber) {
+            this.properties.put("serverPortNumber", serverPortNumber);
+            return (T) this;
+        }
+        /**
          * The list of algorithms, in order of preference, requested to generate
          * a message integrity check (MIC) returned in message dispostion
          * notification (MDN). The option is a java.lang.String[] type.
          */
         public T signedReceiptMicAlgorithms(String[] signedReceiptMicAlgorithms) {
+            this.properties.put("signedReceiptMicAlgorithms", signedReceiptMicAlgorithms);
+            return (T) this;
+        }
+        /**
+         * The list of algorithms, in order of preference, requested to generate
+         * a message integrity check (MIC) returned in message dispostion
+         * notification (MDN). The option will be converted to a
+         * java.lang.String[] type.
+         */
+        public T signedReceiptMicAlgorithms(String signedReceiptMicAlgorithms) {
             this.properties.put("signedReceiptMicAlgorithms", signedReceiptMicAlgorithms);
             return (T) this;
         }
@@ -232,6 +312,14 @@ public interface AS2EndpointBuilder {
             return (T) this;
         }
         /**
+         * The algorithm used to sign EDI message. The option will be converted
+         * to a org.apache.camel.component.as2.api.AS2SignatureAlgorithm type.
+         */
+        public T signingAlgorithm(String signingAlgorithm) {
+            this.properties.put("signingAlgorithm", signingAlgorithm);
+            return (T) this;
+        }
+        /**
          * The chain of certificates used to sign EDI message. The option is a
          * java.security.cert.Certificate[] type.
          */
@@ -240,10 +328,26 @@ public interface AS2EndpointBuilder {
             return (T) this;
         }
         /**
+         * The chain of certificates used to sign EDI message. The option will
+         * be converted to a java.security.cert.Certificate[] type.
+         */
+        public T signingCertificateChain(String signingCertificateChain) {
+            this.properties.put("signingCertificateChain", signingCertificateChain);
+            return (T) this;
+        }
+        /**
          * The key used to sign the EDI message. The option is a
          * java.security.PrivateKey type.
          */
         public T signingPrivateKey(PrivateKey signingPrivateKey) {
+            this.properties.put("signingPrivateKey", signingPrivateKey);
+            return (T) this;
+        }
+        /**
+         * The key used to sign the EDI message. The option will be converted to
+         * a java.security.PrivateKey type.
+         */
+        public T signingPrivateKey(String signingPrivateKey) {
             this.properties.put("signingPrivateKey", signingPrivateKey);
             return (T) this;
         }
@@ -272,6 +376,14 @@ public interface AS2EndpointBuilder {
             return (T) this;
         }
         /**
+         * The port number of target host. -1 indicates the scheme default port.
+         * The option will be converted to a java.lang.Integer type.
+         */
+        public T targetPortNumber(String targetPortNumber) {
+            this.properties.put("targetPortNumber", targetPortNumber);
+            return (T) this;
+        }
+        /**
          * The value included in the User-Agent message header identifying the
          * AS2 user agent. The option is a java.lang.String type.
          */
@@ -289,11 +401,29 @@ public interface AS2EndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -321,6 +451,19 @@ public interface AS2EndpointBuilder {
             return (AS2ConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public AS2ConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (AS2ConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -333,11 +476,30 @@ public interface AS2EndpointBuilder {
             return (AS2ConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public AS2ConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (AS2ConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public AS2ConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (AS2ConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public AS2ConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (AS2ConsumerBuilder) this;
         }

@@ -49,10 +49,29 @@ public interface JiraEndpointBuilder {
             return (T) this;
         }
         /**
+         * Operation to perform. Consumers: NewIssues, NewComments. Producers:
+         * AddIssue, AttachFile, DeleteIssue, TransitionIssue, UpdateIssue,
+         * Watchers. See this class javadoc description for more information.
+         * The option will be converted to a
+         * org.apache.camel.component.jira.JiraType type.
+         */
+        public T type(String type) {
+            this.properties.put("type", type);
+            return (T) this;
+        }
+        /**
          * Time in milliseconds to elapse for the next poll. The option is a
          * java.lang.Integer type.
          */
         public T delay(Integer delay) {
+            this.properties.put("delay", delay);
+            return (T) this;
+        }
+        /**
+         * Time in milliseconds to elapse for the next poll. The option will be
+         * converted to a java.lang.Integer type.
+         */
+        public T delay(String delay) {
             this.properties.put("delay", delay);
             return (T) this;
         }
@@ -74,11 +93,29 @@ public interface JiraEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -159,6 +196,19 @@ public interface JiraEndpointBuilder {
             return (JiraConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public JiraConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (JiraConsumerBuilder) this;
+        }
+        /**
          * JQL is the query language from JIRA which allows you to retrieve the
          * data you want. For example jql=project=MyProject Where MyProject is
          * the product key in Jira. It is important to use the RAW() and set the
@@ -179,6 +229,14 @@ public interface JiraEndpointBuilder {
             return (JiraConsumerBuilder) this;
         }
         /**
+         * Max number of issues to search for. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public JiraConsumerBuilder maxResults(String maxResults) {
+            this.properties.put("maxResults", maxResults);
+            return (JiraConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -191,11 +249,30 @@ public interface JiraEndpointBuilder {
             return (JiraConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public JiraConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (JiraConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public JiraConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (JiraConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public JiraConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (JiraConsumerBuilder) this;
         }

@@ -49,6 +49,15 @@ public interface DropboxEndpointBuilder {
             return (T) this;
         }
         /**
+         * The specific action (typically is a CRUD action) to perform on
+         * Dropbox remote folder. The option will be converted to a
+         * org.apache.camel.component.dropbox.util.DropboxOperation type.
+         */
+        public T operation(String operation) {
+            this.properties.put("operation", operation);
+            return (T) this;
+        }
+        /**
          * The access token to make API requests for a specific Dropbox user.
          * The option is a java.lang.String type.
          */
@@ -61,6 +70,14 @@ public interface DropboxEndpointBuilder {
          * is a com.dropbox.core.v2.DbxClientV2 type.
          */
         public T client(Object client) {
+            this.properties.put("client", client);
+            return (T) this;
+        }
+        /**
+         * To use an existing DbxClient instance as DropBox client. The option
+         * will be converted to a com.dropbox.core.v2.DbxClientV2 type.
+         */
+        public T client(String client) {
             this.properties.put("client", client);
             return (T) this;
         }
@@ -118,6 +135,17 @@ public interface DropboxEndpointBuilder {
             return (T) this;
         }
         /**
+         * Which mode to upload. in case of add the new file will be renamed if
+         * a file with the same name already exists on dropbox. in case of force
+         * if a file with the same name already exists on dropbox, this will be
+         * overwritten. The option will be converted to a
+         * org.apache.camel.component.dropbox.util.DropboxUploadMode type.
+         */
+        public T uploadMode(String uploadMode) {
+            this.properties.put("uploadMode", uploadMode);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -127,11 +155,29 @@ public interface DropboxEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -160,6 +206,20 @@ public interface DropboxEndpointBuilder {
             return (DropboxConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public DropboxConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (DropboxConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -172,11 +232,30 @@ public interface DropboxEndpointBuilder {
             return (DropboxConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public DropboxConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (DropboxConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public DropboxConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (DropboxConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public DropboxConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (DropboxConsumerBuilder) this;
         }

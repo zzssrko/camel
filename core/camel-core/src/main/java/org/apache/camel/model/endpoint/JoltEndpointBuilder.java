@@ -58,6 +58,14 @@ public interface JoltEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether to use resource content cache or not. The option will be
+         * converted to a boolean type.
+         */
+        public T contentCache(String contentCache) {
+            this.properties.put("contentCache", contentCache);
+            return (T) this;
+        }
+        /**
          * Specifies if the input is hydrated JSON or a JSON String. The option
          * is a org.apache.camel.component.jolt.JoltInputOutputType type.
          */
@@ -66,10 +74,28 @@ public interface JoltEndpointBuilder {
             return (T) this;
         }
         /**
+         * Specifies if the input is hydrated JSON or a JSON String. The option
+         * will be converted to a
+         * org.apache.camel.component.jolt.JoltInputOutputType type.
+         */
+        public T inputType(String inputType) {
+            this.properties.put("inputType", inputType);
+            return (T) this;
+        }
+        /**
          * Specifies if the output should be hydrated JSON or a JSON String. The
          * option is a org.apache.camel.component.jolt.JoltInputOutputType type.
          */
         public T outputType(JoltInputOutputType outputType) {
+            this.properties.put("outputType", outputType);
+            return (T) this;
+        }
+        /**
+         * Specifies if the output should be hydrated JSON or a JSON String. The
+         * option will be converted to a
+         * org.apache.camel.component.jolt.JoltInputOutputType type.
+         */
+        public T outputType(String outputType) {
             this.properties.put("outputType", outputType);
             return (T) this;
         }
@@ -83,6 +109,15 @@ public interface JoltEndpointBuilder {
             return (T) this;
         }
         /**
+         * Specifies the Transform DSL of the endpoint resource. If none is
+         * specified Chainr will be used. The option will be converted to a
+         * org.apache.camel.component.jolt.JoltTransformType type.
+         */
+        public T transformDsl(String transformDsl) {
+            this.properties.put("transformDsl", transformDsl);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -92,11 +127,29 @@ public interface JoltEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

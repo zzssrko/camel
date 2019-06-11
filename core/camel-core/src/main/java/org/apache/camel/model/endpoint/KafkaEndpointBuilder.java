@@ -81,6 +81,15 @@ public interface KafkaEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom HeaderFilterStrategy to filter header to and from
+         * Camel message. The option will be converted to a
+         * org.apache.camel.spi.HeaderFilterStrategy type.
+         */
+        public T headerFilterStrategy(String headerFilterStrategy) {
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
+            return (T) this;
+        }
+        /**
          * The maximum amount of time in milliseconds to wait when reconnecting
          * to a broker that has repeatedly failed to connect. If provided, the
          * backoff per host will increase exponentially for each consecutive
@@ -89,6 +98,18 @@ public interface KafkaEndpointBuilder {
          * option is a java.lang.Integer type.
          */
         public T reconnectBackoffMaxMs(Integer reconnectBackoffMaxMs) {
+            this.properties.put("reconnectBackoffMaxMs", reconnectBackoffMaxMs);
+            return (T) this;
+        }
+        /**
+         * The maximum amount of time in milliseconds to wait when reconnecting
+         * to a broker that has repeatedly failed to connect. If provided, the
+         * backoff per host will increase exponentially for each consecutive
+         * connection failure, up to this maximum. After calculating the backoff
+         * increase, 20% random jitter is added to avoid connection storms. The
+         * option will be converted to a java.lang.Integer type.
+         */
+        public T reconnectBackoffMaxMs(String reconnectBackoffMaxMs) {
             this.properties.put("reconnectBackoffMaxMs", reconnectBackoffMaxMs);
             return (T) this;
         }
@@ -102,11 +123,29 @@ public interface KafkaEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -129,6 +168,15 @@ public interface KafkaEndpointBuilder {
          */
         public T kerberosBeforeReloginMinTime(
                 Integer kerberosBeforeReloginMinTime) {
+            this.properties.put("kerberosBeforeReloginMinTime", kerberosBeforeReloginMinTime);
+            return (T) this;
+        }
+        /**
+         * Login thread sleep time between refresh attempts. The option will be
+         * converted to a java.lang.Integer type.
+         */
+        public T kerberosBeforeReloginMinTime(
+                String kerberosBeforeReloginMinTime) {
             this.properties.put("kerberosBeforeReloginMinTime", kerberosBeforeReloginMinTime);
             return (T) this;
         }
@@ -164,12 +212,30 @@ public interface KafkaEndpointBuilder {
             return (T) this;
         }
         /**
+         * Percentage of random jitter added to the renewal time. The option
+         * will be converted to a java.lang.Double type.
+         */
+        public T kerberosRenewJitter(String kerberosRenewJitter) {
+            this.properties.put("kerberosRenewJitter", kerberosRenewJitter);
+            return (T) this;
+        }
+        /**
          * Login thread will sleep until the specified window factor of time
          * from last refresh to ticket's expiry has been reached, at which time
          * it will try to renew the ticket. The option is a java.lang.Double
          * type.
          */
         public T kerberosRenewWindowFactor(Double kerberosRenewWindowFactor) {
+            this.properties.put("kerberosRenewWindowFactor", kerberosRenewWindowFactor);
+            return (T) this;
+        }
+        /**
+         * Login thread will sleep until the specified window factor of time
+         * from last refresh to ticket's expiry has been reached, at which time
+         * it will try to renew the ticket. The option will be converted to a
+         * java.lang.Double type.
+         */
+        public T kerberosRenewWindowFactor(String kerberosRenewWindowFactor) {
             this.properties.put("kerberosRenewWindowFactor", kerberosRenewWindowFactor);
             return (T) this;
         }
@@ -226,6 +292,16 @@ public interface KafkaEndpointBuilder {
          * option is a org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
+            this.properties.put("sslContextParameters", sslContextParameters);
+            return (T) this;
+        }
+        /**
+         * SSL configuration using a Camel SSLContextParameters object. If
+         * configured it's applied before the other SSL endpoint parameters. The
+         * option will be converted to a
+         * org.apache.camel.support.jsse.SSLContextParameters type.
+         */
+        public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
@@ -333,6 +409,17 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * Whether to allow doing manual commits via KafkaManualCommit. If this
+         * option is enabled then an instance of KafkaManualCommit is stored on
+         * the Exchange message header, which allows end users to access this
+         * API and perform manual offset commits via the Kafka consumer. The
+         * option will be converted to a boolean type.
+         */
+        public KafkaConsumerBuilder allowManualCommit(String allowManualCommit) {
+            this.properties.put("allowManualCommit", allowManualCommit);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * If true, periodically commit to ZooKeeper the offset of messages
          * already fetched by the consumer. This committed offset will be used
          * when the process fails as the position from which the new consumer
@@ -343,11 +430,30 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * If true, periodically commit to ZooKeeper the offset of messages
+         * already fetched by the consumer. This committed offset will be used
+         * when the process fails as the position from which the new consumer
+         * will begin. The option will be converted to a java.lang.Boolean type.
+         */
+        public KafkaConsumerBuilder autoCommitEnable(String autoCommitEnable) {
+            this.properties.put("autoCommitEnable", autoCommitEnable);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * The frequency in ms that the consumer offsets are committed to
          * zookeeper. The option is a java.lang.Integer type.
          */
         public KafkaConsumerBuilder autoCommitIntervalMs(
                 Integer autoCommitIntervalMs) {
+            this.properties.put("autoCommitIntervalMs", autoCommitIntervalMs);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
+         * The frequency in ms that the consumer offsets are committed to
+         * zookeeper. The option will be converted to a java.lang.Integer type.
+         */
+        public KafkaConsumerBuilder autoCommitIntervalMs(
+                String autoCommitIntervalMs) {
             this.properties.put("autoCommitIntervalMs", autoCommitIntervalMs);
             return (KafkaConsumerBuilder) this;
         }
@@ -389,6 +495,22 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * This options controls what happens when a consumer is processing an
+         * exchange and it fails. If the option is false then the consumer
+         * continues to the next message and processes it. If the option is true
+         * then the consumer breaks out, and will seek back to offset of the
+         * message that caused a failure, and then re-attempt to process this
+         * message. However this can lead to endless processing of the same
+         * message if its bound to fail every time, eg a poison message.
+         * Therefore its recommended to deal with that for example by using
+         * Camel's error handler. The option will be converted to a boolean
+         * type.
+         */
+        public KafkaConsumerBuilder breakOnFirstError(String breakOnFirstError) {
+            this.properties.put("breakOnFirstError", breakOnFirstError);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
          * pickup incoming messages, or the likes, will now be processed as a
@@ -403,12 +525,36 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public KafkaConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * Automatically check the CRC32 of the records consumed. This ensures
          * no on-the-wire or on-disk corruption to the messages occurred. This
          * check adds some overhead, so it may be disabled in cases seeking
          * extreme performance. The option is a java.lang.Boolean type.
          */
         public KafkaConsumerBuilder checkCrcs(Boolean checkCrcs) {
+            this.properties.put("checkCrcs", checkCrcs);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
+         * Automatically check the CRC32 of the records consumed. This ensures
+         * no on-the-wire or on-disk corruption to the messages occurred. This
+         * check adds some overhead, so it may be disabled in cases seeking
+         * extreme performance. The option will be converted to a
+         * java.lang.Boolean type.
+         */
+        public KafkaConsumerBuilder checkCrcs(String checkCrcs) {
             this.properties.put("checkCrcs", checkCrcs);
             return (KafkaConsumerBuilder) this;
         }
@@ -425,6 +571,18 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * The configuration controls the maximum amount of time the client will
+         * wait for the response of a request. If the response is not received
+         * before the timeout elapses the client will resend the request if
+         * necessary or fail the request if retries are exhausted. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public KafkaConsumerBuilder consumerRequestTimeoutMs(
+                String consumerRequestTimeoutMs) {
+            this.properties.put("consumerRequestTimeoutMs", consumerRequestTimeoutMs);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * The number of consumers that connect to kafka server. The option is a
          * int type.
          */
@@ -433,10 +591,26 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * The number of consumers that connect to kafka server. The option will
+         * be converted to a int type.
+         */
+        public KafkaConsumerBuilder consumersCount(String consumersCount) {
+            this.properties.put("consumersCount", consumersCount);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * Number of concurrent consumers on the consumer. The option is a int
          * type.
          */
         public KafkaConsumerBuilder consumerStreams(int consumerStreams) {
+            this.properties.put("consumerStreams", consumerStreams);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
+         * Number of concurrent consumers on the consumer. The option will be
+         * converted to a int type.
+         */
+        public KafkaConsumerBuilder consumerStreams(String consumerStreams) {
             this.properties.put("consumerStreams", consumerStreams);
             return (KafkaConsumerBuilder) this;
         }
@@ -455,6 +629,20 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * The maximum amount of data the server should return for a fetch
+         * request This is not an absolute maximum, if the first message in the
+         * first non-empty partition of the fetch is larger than this value, the
+         * message will still be returned to ensure that the consumer can make
+         * progress. The maximum message size accepted by the broker is defined
+         * via message.max.bytes (broker config) or max.message.bytes (topic
+         * config). Note that the consumer performs multiple fetches in
+         * parallel. The option will be converted to a java.lang.Integer type.
+         */
+        public KafkaConsumerBuilder fetchMaxBytes(String fetchMaxBytes) {
+            this.properties.put("fetchMaxBytes", fetchMaxBytes);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * The minimum amount of data the server should return for a fetch
          * request. If insufficient data is available the request will wait for
          * that much data to accumulate before answering the request. The option
@@ -465,11 +653,31 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * The minimum amount of data the server should return for a fetch
+         * request. If insufficient data is available the request will wait for
+         * that much data to accumulate before answering the request. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public KafkaConsumerBuilder fetchMinBytes(String fetchMinBytes) {
+            this.properties.put("fetchMinBytes", fetchMinBytes);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * The maximum amount of time the server will block before answering the
          * fetch request if there isn't sufficient data to immediately satisfy
          * fetch.min.bytes. The option is a java.lang.Integer type.
          */
         public KafkaConsumerBuilder fetchWaitMaxMs(Integer fetchWaitMaxMs) {
+            this.properties.put("fetchWaitMaxMs", fetchWaitMaxMs);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
+         * The maximum amount of time the server will block before answering the
+         * fetch request if there isn't sufficient data to immediately satisfy
+         * fetch.min.bytes. The option will be converted to a java.lang.Integer
+         * type.
+         */
+        public KafkaConsumerBuilder fetchWaitMaxMs(String fetchWaitMaxMs) {
             this.properties.put("fetchWaitMaxMs", fetchWaitMaxMs);
             return (KafkaConsumerBuilder) this;
         }
@@ -500,12 +708,37 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * The expected time between heartbeats to the consumer coordinator when
+         * using Kafka's group management facilities. Heartbeats are used to
+         * ensure that the consumer's session stays active and to facilitate
+         * rebalancing when new consumers join or leave the group. The value
+         * must be set lower than session.timeout.ms, but typically should be
+         * set no higher than 1/3 of that value. It can be adjusted even lower
+         * to control the expected time for normal rebalances. The option will
+         * be converted to a java.lang.Integer type.
+         */
+        public KafkaConsumerBuilder heartbeatIntervalMs(
+                String heartbeatIntervalMs) {
+            this.properties.put("heartbeatIntervalMs", heartbeatIntervalMs);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * Sets custom KafkaHeaderDeserializer for deserialization kafka headers
          * values to camel headers values. The option is a
          * org.apache.camel.component.kafka.serde.KafkaHeaderDeserializer type.
          */
         public KafkaConsumerBuilder kafkaHeaderDeserializer(
                 Object kafkaHeaderDeserializer) {
+            this.properties.put("kafkaHeaderDeserializer", kafkaHeaderDeserializer);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
+         * Sets custom KafkaHeaderDeserializer for deserialization kafka headers
+         * values to camel headers values. The option will be converted to a
+         * org.apache.camel.component.kafka.serde.KafkaHeaderDeserializer type.
+         */
+        public KafkaConsumerBuilder kafkaHeaderDeserializer(
+                String kafkaHeaderDeserializer) {
             this.properties.put("kafkaHeaderDeserializer", kafkaHeaderDeserializer);
             return (KafkaConsumerBuilder) this;
         }
@@ -532,6 +765,21 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * The maximum amount of data per-partition the server will return. The
+         * maximum total memory used for a request will be #partitions
+         * max.partition.fetch.bytes. This size must be at least as large as the
+         * maximum message size the server allows or else it is possible for the
+         * producer to send messages larger than the consumer can fetch. If that
+         * happens, the consumer can get stuck trying to fetch a large message
+         * on a certain partition. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public KafkaConsumerBuilder maxPartitionFetchBytes(
+                String maxPartitionFetchBytes) {
+            this.properties.put("maxPartitionFetchBytes", maxPartitionFetchBytes);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * The maximum delay between invocations of poll() when using consumer
          * group management. This places an upper bound on the amount of time
          * that the consumer can be idle before fetching more records. If poll()
@@ -545,10 +793,31 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * The maximum delay between invocations of poll() when using consumer
+         * group management. This places an upper bound on the amount of time
+         * that the consumer can be idle before fetching more records. If poll()
+         * is not called before expiration of this timeout, then the consumer is
+         * considered failed and the group will rebalance in order to reassign
+         * the partitions to another member. The option will be converted to a
+         * java.lang.Long type.
+         */
+        public KafkaConsumerBuilder maxPollIntervalMs(String maxPollIntervalMs) {
+            this.properties.put("maxPollIntervalMs", maxPollIntervalMs);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * The maximum number of records returned in a single call to poll().
          * The option is a java.lang.Integer type.
          */
         public KafkaConsumerBuilder maxPollRecords(Integer maxPollRecords) {
+            this.properties.put("maxPollRecords", maxPollRecords);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
+         * The maximum number of records returned in a single call to poll().
+         * The option will be converted to a java.lang.Integer type.
+         */
+        public KafkaConsumerBuilder maxPollRecords(String maxPollRecords) {
             this.properties.put("maxPollRecords", maxPollRecords);
             return (KafkaConsumerBuilder) this;
         }
@@ -560,6 +829,16 @@ public interface KafkaEndpointBuilder {
          */
         public KafkaConsumerBuilder offsetRepository(
                 StateRepository<String, String> offsetRepository) {
+            this.properties.put("offsetRepository", offsetRepository);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
+         * The offset repository to use in order to locally store the offset of
+         * each partition of the topic. Defining one will disable the
+         * autocommit. The option will be converted to a
+         * org.apache.camel.spi.StateRepository<java.lang.String,java.lang.String> type.
+         */
+        public KafkaConsumerBuilder offsetRepository(String offsetRepository) {
             this.properties.put("offsetRepository", offsetRepository);
             return (KafkaConsumerBuilder) this;
         }
@@ -577,6 +856,14 @@ public interface KafkaEndpointBuilder {
          * java.lang.Long type.
          */
         public KafkaConsumerBuilder pollTimeoutMs(Long pollTimeoutMs) {
+            this.properties.put("pollTimeoutMs", pollTimeoutMs);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
+         * The timeout used when polling the KafkaConsumer. The option will be
+         * converted to a java.lang.Long type.
+         */
+        public KafkaConsumerBuilder pollTimeoutMs(String pollTimeoutMs) {
             this.properties.put("pollTimeoutMs", pollTimeoutMs);
             return (KafkaConsumerBuilder) this;
         }
@@ -599,6 +886,15 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * The timeout used to detect failures when using Kafka's group
+         * management facilities. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public KafkaConsumerBuilder sessionTimeoutMs(String sessionTimeoutMs) {
+            this.properties.put("sessionTimeoutMs", sessionTimeoutMs);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * This enables the use of a specific Avro reader for use with the
          * Confluent Platform schema registry and the
          * io.confluent.kafka.serializers.KafkaAvroDeserializer. This option is
@@ -611,11 +907,31 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * This enables the use of a specific Avro reader for use with the
+         * Confluent Platform schema registry and the
+         * io.confluent.kafka.serializers.KafkaAvroDeserializer. This option is
+         * only available in the Confluent Platform (not standard Apache Kafka).
+         * The option will be converted to a boolean type.
+         */
+        public KafkaConsumerBuilder specificAvroReader(String specificAvroReader) {
+            this.properties.put("specificAvroReader", specificAvroReader);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * Whether the topic is a pattern (regular expression). This can be used
          * to subscribe to dynamic number of topics matching the pattern. The
          * option is a boolean type.
          */
         public KafkaConsumerBuilder topicIsPattern(boolean topicIsPattern) {
+            this.properties.put("topicIsPattern", topicIsPattern);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
+         * Whether the topic is a pattern (regular expression). This can be used
+         * to subscribe to dynamic number of topics matching the pattern. The
+         * option will be converted to a boolean type.
+         */
+        public KafkaConsumerBuilder topicIsPattern(String topicIsPattern) {
             this.properties.put("topicIsPattern", topicIsPattern);
             return (KafkaConsumerBuilder) this;
         }
@@ -640,11 +956,30 @@ public interface KafkaEndpointBuilder {
             return (KafkaConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public KafkaConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public KafkaConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (KafkaConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public KafkaConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (KafkaConsumerBuilder) this;
         }
@@ -668,6 +1003,15 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * If the option is true, then KafkaProducer will ignore the
+         * KafkaConstants.TOPIC header setting of the inbound message. The
+         * option will be converted to a boolean type.
+         */
+        public KafkaProducerBuilder bridgeEndpoint(String bridgeEndpoint) {
+            this.properties.put("bridgeEndpoint", bridgeEndpoint);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * The total bytes of memory the producer can use to buffer records
          * waiting to be sent to the server. If records are sent faster than
          * they can be delivered to the server the producer will either block or
@@ -684,6 +1028,22 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * The total bytes of memory the producer can use to buffer records
+         * waiting to be sent to the server. If records are sent faster than
+         * they can be delivered to the server the producer will either block or
+         * throw an exception based on the preference specified by
+         * block.on.buffer.full.This setting should correspond roughly to the
+         * total memory the producer will use, but is not a hard bound since not
+         * all memory the producer uses is used for buffering. Some additional
+         * memory will be used for compression (if compression is enabled) as
+         * well as for maintaining in-flight requests. The option will be
+         * converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder bufferMemorySize(String bufferMemorySize) {
+            this.properties.put("bufferMemorySize", bufferMemorySize);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * If the option is true, then KafkaProducer will detect if the message
          * is attempted to be sent back to the same topic it may come from, if
          * the message was original from a kafka consumer. If the
@@ -696,6 +1056,22 @@ public interface KafkaEndpointBuilder {
          */
         public KafkaProducerBuilder circularTopicDetection(
                 boolean circularTopicDetection) {
+            this.properties.put("circularTopicDetection", circularTopicDetection);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
+         * If the option is true, then KafkaProducer will detect if the message
+         * is attempted to be sent back to the same topic it may come from, if
+         * the message was original from a kafka consumer. If the
+         * KafkaConstants.TOPIC header is the same as the original kafka
+         * consumer topic, then the header setting is ignored, and the topic of
+         * the producer endpoint is used. In other words this avoids sending the
+         * same message back to where it came from. This option is not in use if
+         * the option bridgeEndpoint is set to true. The option will be
+         * converted to a boolean type.
+         */
+        public KafkaProducerBuilder circularTopicDetection(
+                String circularTopicDetection) {
             this.properties.put("circularTopicDetection", circularTopicDetection);
             return (KafkaProducerBuilder) this;
         }
@@ -718,6 +1094,16 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * Close idle connections after the number of milliseconds specified by
+         * this config. The option will be converted to a java.lang.Integer
+         * type.
+         */
+        public KafkaProducerBuilder connectionMaxIdleMs(
+                String connectionMaxIdleMs) {
+            this.properties.put("connectionMaxIdleMs", connectionMaxIdleMs);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * If set to 'true' the producer will ensure that exactly one copy of
          * each message is written in the stream. If 'false', producer retries
          * may write duplicates of the retried message in the stream. If set to
@@ -730,12 +1116,34 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * If set to 'true' the producer will ensure that exactly one copy of
+         * each message is written in the stream. If 'false', producer retries
+         * may write duplicates of the retried message in the stream. If set to
+         * true this option will require max.in.flight.requests.per.connection
+         * to be set to 1 and retries cannot be zero and additionally acks must
+         * be set to 'all'. The option will be converted to a boolean type.
+         */
+        public KafkaProducerBuilder enableIdempotence(String enableIdempotence) {
+            this.properties.put("enableIdempotence", enableIdempotence);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * Sets custom KafkaHeaderDeserializer for serialization camel headers
          * values to kafka headers values. The option is a
          * org.apache.camel.component.kafka.serde.KafkaHeaderSerializer type.
          */
         public KafkaProducerBuilder kafkaHeaderSerializer(
                 Object kafkaHeaderSerializer) {
+            this.properties.put("kafkaHeaderSerializer", kafkaHeaderSerializer);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
+         * Sets custom KafkaHeaderDeserializer for serialization camel headers
+         * values to kafka headers values. The option will be converted to a
+         * org.apache.camel.component.kafka.serde.KafkaHeaderSerializer type.
+         */
+        public KafkaProducerBuilder kafkaHeaderSerializer(
+                String kafkaHeaderSerializer) {
             this.properties.put("kafkaHeaderSerializer", kafkaHeaderSerializer);
             return (KafkaProducerBuilder) this;
         }
@@ -782,6 +1190,31 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * The producer groups together any records that arrive in between
+         * request transmissions into a single batched request. Normally this
+         * occurs only under load when records arrive faster than they can be
+         * sent out. However in some circumstances the client may want to reduce
+         * the number of requests even under moderate load. This setting
+         * accomplishes this by adding a small amount of artificial delaythat
+         * is, rather than immediately sending out a record the producer will
+         * wait for up to the given delay to allow other records to be sent so
+         * that the sends can be batched together. This can be thought of as
+         * analogous to Nagle's algorithm in TCP. This setting gives the upper
+         * bound on the delay for batching: once we get batch.size worth of
+         * records for a partition it will be sent immediately regardless of
+         * this setting, however if we have fewer than this many bytes
+         * accumulated for this partition we will 'linger' for the specified
+         * time waiting for more records to show up. This setting defaults to 0
+         * (i.e. no delay). Setting linger.ms=5, for example, would have the
+         * effect of reducing the number of requests sent but would add up to
+         * 5ms of latency to records sent in the absense of load. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder lingerMs(String lingerMs) {
+            this.properties.put("lingerMs", lingerMs);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * The configuration controls how long sending to kafka will block.
          * These methods can be blocked for multiple reasons. For e.g: buffer
          * full, metadata unavailable.This configuration imposes maximum limit
@@ -792,6 +1225,20 @@ public interface KafkaEndpointBuilder {
          * java.lang.Integer type.
          */
         public KafkaProducerBuilder maxBlockMs(Integer maxBlockMs) {
+            this.properties.put("maxBlockMs", maxBlockMs);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
+         * The configuration controls how long sending to kafka will block.
+         * These methods can be blocked for multiple reasons. For e.g: buffer
+         * full, metadata unavailable.This configuration imposes maximum limit
+         * on the total time spent in fetching metadata, serialization of key
+         * and value, partitioning and allocation of buffer memory when doing a
+         * send(). In case of partitionsFor(), this configuration imposes a
+         * maximum time threshold on waiting for metadata. The option will be
+         * converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder maxBlockMs(String maxBlockMs) {
             this.properties.put("maxBlockMs", maxBlockMs);
             return (KafkaProducerBuilder) this;
         }
@@ -808,6 +1255,17 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * The maximum number of unacknowledged requests the client will send on
+         * a single connection before blocking. Note that if this setting is set
+         * to be greater than 1 and there are failed sends, there is a risk of
+         * message re-ordering due to retries (i.e., if retries are enabled).
+         * The option will be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder maxInFlightRequest(String maxInFlightRequest) {
+            this.properties.put("maxInFlightRequest", maxInFlightRequest);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * The maximum size of a request. This is also effectively a cap on the
          * maximum record size. Note that the server has its own cap on record
          * size which may be different from this. This setting will limit the
@@ -820,12 +1278,34 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * The maximum size of a request. This is also effectively a cap on the
+         * maximum record size. Note that the server has its own cap on record
+         * size which may be different from this. This setting will limit the
+         * number of record batches the producer will send in a single request
+         * to avoid sending huge requests. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public KafkaProducerBuilder maxRequestSize(String maxRequestSize) {
+            this.properties.put("maxRequestSize", maxRequestSize);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * The period of time in milliseconds after which we force a refresh of
          * metadata even if we haven't seen any partition leadership changes to
          * proactively discover any new brokers or partitions. The option is a
          * java.lang.Integer type.
          */
         public KafkaProducerBuilder metadataMaxAgeMs(Integer metadataMaxAgeMs) {
+            this.properties.put("metadataMaxAgeMs", metadataMaxAgeMs);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
+         * The period of time in milliseconds after which we force a refresh of
+         * metadata even if we haven't seen any partition leadership changes to
+         * proactively discover any new brokers or partitions. The option will
+         * be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder metadataMaxAgeMs(String metadataMaxAgeMs) {
             this.properties.put("metadataMaxAgeMs", metadataMaxAgeMs);
             return (KafkaProducerBuilder) this;
         }
@@ -849,10 +1329,27 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * The number of samples maintained to compute metrics. The option will
+         * be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder metricsSampleWindowMs(
+                String metricsSampleWindowMs) {
+            this.properties.put("metricsSampleWindowMs", metricsSampleWindowMs);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * The number of samples maintained to compute metrics. The option is a
          * java.lang.Integer type.
          */
         public KafkaProducerBuilder noOfMetricsSample(Integer noOfMetricsSample) {
+            this.properties.put("noOfMetricsSample", noOfMetricsSample);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
+         * The number of samples maintained to compute metrics. The option will
+         * be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder noOfMetricsSample(String noOfMetricsSample) {
             this.properties.put("noOfMetricsSample", noOfMetricsSample);
             return (KafkaProducerBuilder) this;
         }
@@ -876,6 +1373,16 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * The partition to which the record will be sent (or null if no
+         * partition was specified). If this option has been configured then it
+         * take precedence over header KafkaConstants#PARTITION_KEY. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder partitionKey(String partitionKey) {
+            this.properties.put("partitionKey", partitionKey);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * The producer will attempt to batch records together into fewer
          * requests whenever multiple records are being sent to the same
          * partition. This helps performance on both the client and the server.
@@ -894,6 +1401,24 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * The producer will attempt to batch records together into fewer
+         * requests whenever multiple records are being sent to the same
+         * partition. This helps performance on both the client and the server.
+         * This configuration controls the default batch size in bytes. No
+         * attempt will be made to batch records larger than this size.Requests
+         * sent to brokers will contain multiple batches, one for each partition
+         * with data available to be sent.A small batch size will make batching
+         * less common and may reduce throughput (a batch size of zero will
+         * disable batching entirely). A very large batch size may use memory a
+         * bit more wastefully as we will always allocate a buffer of the
+         * specified batch size in anticipation of additional records. The
+         * option will be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder producerBatchSize(String producerBatchSize) {
+            this.properties.put("producerBatchSize", producerBatchSize);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * The maximum number of unsent messages that can be queued up the
          * producer when using async mode before either the producer must be
          * blocked or data must be dropped. The option is a java.lang.Integer
@@ -905,11 +1430,30 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * The maximum number of unsent messages that can be queued up the
+         * producer when using async mode before either the producer must be
+         * blocked or data must be dropped. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public KafkaProducerBuilder queueBufferingMaxMessages(
+                String queueBufferingMaxMessages) {
+            this.properties.put("queueBufferingMaxMessages", queueBufferingMaxMessages);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * The size of the TCP receive buffer (SO_RCVBUF) to use when reading
          * data. The option is a java.lang.Integer type.
          */
         public KafkaProducerBuilder receiveBufferBytes(
                 Integer receiveBufferBytes) {
+            this.properties.put("receiveBufferBytes", receiveBufferBytes);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
+         * The size of the TCP receive buffer (SO_RCVBUF) to use when reading
+         * data. The option will be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder receiveBufferBytes(String receiveBufferBytes) {
             this.properties.put("receiveBufferBytes", receiveBufferBytes);
             return (KafkaProducerBuilder) this;
         }
@@ -925,12 +1469,33 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * The amount of time to wait before attempting to reconnect to a given
+         * host. This avoids repeatedly connecting to a host in a tight loop.
+         * This backoff applies to all requests sent by the consumer to the
+         * broker. The option will be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder reconnectBackoffMs(String reconnectBackoffMs) {
+            this.properties.put("reconnectBackoffMs", reconnectBackoffMs);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * Whether the producer should store the RecordMetadata results from
          * sending to Kafka. The results are stored in a List containing the
          * RecordMetadata metadata's. The list is stored on a header with the
          * key KafkaConstants#KAFKA_RECORDMETA. The option is a boolean type.
          */
         public KafkaProducerBuilder recordMetadata(boolean recordMetadata) {
+            this.properties.put("recordMetadata", recordMetadata);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
+         * Whether the producer should store the RecordMetadata results from
+         * sending to Kafka. The results are stored in a List containing the
+         * RecordMetadata metadata's. The list is stored on a header with the
+         * key KafkaConstants#KAFKA_RECORDMETA. The option will be converted to
+         * a boolean type.
+         */
+        public KafkaProducerBuilder recordMetadata(String recordMetadata) {
             this.properties.put("recordMetadata", recordMetadata);
             return (KafkaProducerBuilder) this;
         }
@@ -970,6 +1535,15 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * The amount of time the broker will wait trying to meet the
+         * request.required.acks requirement before sending back an error to the
+         * client. The option will be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder requestTimeoutMs(String requestTimeoutMs) {
+            this.properties.put("requestTimeoutMs", requestTimeoutMs);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * Setting a value greater than zero will cause the client to resend any
          * record whose send fails with a potentially transient error. Note that
          * this retry is no different than if the client resent the record upon
@@ -980,6 +1554,20 @@ public interface KafkaEndpointBuilder {
          * java.lang.Integer type.
          */
         public KafkaProducerBuilder retries(Integer retries) {
+            this.properties.put("retries", retries);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
+         * Setting a value greater than zero will cause the client to resend any
+         * record whose send fails with a potentially transient error. Note that
+         * this retry is no different than if the client resent the record upon
+         * receiving the error. Allowing retries will potentially change the
+         * ordering of records because if two records are sent to a single
+         * partition, and the first fails and is retried but the second
+         * succeeds, then the second record may appear first. The option will be
+         * converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder retries(String retries) {
             this.properties.put("retries", retries);
             return (KafkaProducerBuilder) this;
         }
@@ -995,9 +1583,28 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * Before each retry, the producer refreshes the metadata of relevant
+         * topics to see if a new leader has been elected. Since leader election
+         * takes a bit of time, this property specifies the amount of time that
+         * the producer waits before refreshing the metadata. The option will be
+         * converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder retryBackoffMs(String retryBackoffMs) {
+            this.properties.put("retryBackoffMs", retryBackoffMs);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * Socket write buffer size. The option is a java.lang.Integer type.
          */
         public KafkaProducerBuilder sendBufferBytes(Integer sendBufferBytes) {
+            this.properties.put("sendBufferBytes", sendBufferBytes);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
+         * Socket write buffer size. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public KafkaProducerBuilder sendBufferBytes(String sendBufferBytes) {
             this.properties.put("sendBufferBytes", sendBufferBytes);
             return (KafkaProducerBuilder) this;
         }
@@ -1020,6 +1627,16 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * To use a custom worker pool for continue routing Exchange after kafka
+         * server has acknowledge the message that was sent to it from
+         * KafkaProducer using asynchronous non-blocking processing. The option
+         * will be converted to a java.util.concurrent.ExecutorService type.
+         */
+        public KafkaProducerBuilder workerPool(String workerPool) {
+            this.properties.put("workerPool", workerPool);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * Number of core threads for the worker pool for continue routing
          * Exchange after kafka server has acknowledge the message that was sent
          * to it from KafkaProducer using asynchronous non-blocking processing.
@@ -1031,12 +1648,32 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
         /**
+         * Number of core threads for the worker pool for continue routing
+         * Exchange after kafka server has acknowledge the message that was sent
+         * to it from KafkaProducer using asynchronous non-blocking processing.
+         * The option will be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder workerPoolCoreSize(String workerPoolCoreSize) {
+            this.properties.put("workerPoolCoreSize", workerPoolCoreSize);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
          * Maximum number of threads for the worker pool for continue routing
          * Exchange after kafka server has acknowledge the message that was sent
          * to it from KafkaProducer using asynchronous non-blocking processing.
          * The option is a java.lang.Integer type.
          */
         public KafkaProducerBuilder workerPoolMaxSize(Integer workerPoolMaxSize) {
+            this.properties.put("workerPoolMaxSize", workerPoolMaxSize);
+            return (KafkaProducerBuilder) this;
+        }
+        /**
+         * Maximum number of threads for the worker pool for continue routing
+         * Exchange after kafka server has acknowledge the message that was sent
+         * to it from KafkaProducer using asynchronous non-blocking processing.
+         * The option will be converted to a java.lang.Integer type.
+         */
+        public KafkaProducerBuilder workerPoolMaxSize(String workerPoolMaxSize) {
             this.properties.put("workerPoolMaxSize", workerPoolMaxSize);
             return (KafkaProducerBuilder) this;
         }

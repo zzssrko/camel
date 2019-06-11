@@ -62,10 +62,27 @@ public interface GooglePubsubEndpointBuilder {
             return (T) this;
         }
         /**
+         * AUTO = exchange gets ack'ed/nack'ed on completion. NONE = downstream
+         * process has to ack/nack explicitly. The option will be converted to a
+         * org.apache.camel.component.google.pubsub.GooglePubsubConstants.AckMode type.
+         */
+        public T ackMode(String ackMode) {
+            this.properties.put("ackMode", ackMode);
+            return (T) this;
+        }
+        /**
          * The number of parallel streams consuming from the subscription. The
          * option is a java.lang.Integer type.
          */
         public T concurrentConsumers(Integer concurrentConsumers) {
+            this.properties.put("concurrentConsumers", concurrentConsumers);
+            return (T) this;
+        }
+        /**
+         * The number of parallel streams consuming from the subscription. The
+         * option will be converted to a java.lang.Integer type.
+         */
+        public T concurrentConsumers(String concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
             return (T) this;
         }
@@ -75,6 +92,15 @@ public interface GooglePubsubEndpointBuilder {
          * org.apache.camel.component.google.pubsub.GooglePubsubConnectionFactory type.
          */
         public T connectionFactory(Object connectionFactory) {
+            this.properties.put("connectionFactory", connectionFactory);
+            return (T) this;
+        }
+        /**
+         * ConnectionFactory to obtain connection to PubSub Service. If non
+         * provided the default will be used. The option will be converted to a
+         * org.apache.camel.component.google.pubsub.GooglePubsubConnectionFactory type.
+         */
+        public T connectionFactory(String connectionFactory) {
             this.properties.put("connectionFactory", connectionFactory);
             return (T) this;
         }
@@ -95,6 +121,14 @@ public interface GooglePubsubEndpointBuilder {
             return (T) this;
         }
         /**
+         * The max number of messages to receive from the server in a single API
+         * call. The option will be converted to a java.lang.Integer type.
+         */
+        public T maxMessagesPerPoll(String maxMessagesPerPoll) {
+            this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -104,11 +138,29 @@ public interface GooglePubsubEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -137,6 +189,20 @@ public interface GooglePubsubEndpointBuilder {
             return (GooglePubsubConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public GooglePubsubConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (GooglePubsubConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -149,11 +215,32 @@ public interface GooglePubsubEndpointBuilder {
             return (GooglePubsubConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public GooglePubsubConsumerBuilder exceptionHandler(
+                String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (GooglePubsubConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GooglePubsubConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (GooglePubsubConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public GooglePubsubConsumerBuilder exchangePattern(
+                String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (GooglePubsubConsumerBuilder) this;
         }

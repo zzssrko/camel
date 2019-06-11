@@ -77,10 +77,27 @@ public interface GoraEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Hadoop Configuration. The option is a
          * org.apache.hadoop.conf.Configuration type.
          */
         public T hadoopConfiguration(Object hadoopConfiguration) {
+            this.properties.put("hadoopConfiguration", hadoopConfiguration);
+            return (T) this;
+        }
+        /**
+         * Hadoop Configuration. The option will be converted to a
+         * org.apache.hadoop.conf.Configuration type.
+         */
+        public T hadoopConfiguration(String hadoopConfiguration) {
             this.properties.put("hadoopConfiguration", hadoopConfiguration);
             return (T) this;
         }
@@ -90,6 +107,15 @@ public interface GoraEndpointBuilder {
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -117,9 +143,31 @@ public interface GoraEndpointBuilder {
             return (GoraConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public GoraConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
          * Number of concurrent consumers. The option is a int type.
          */
         public GoraConsumerBuilder concurrentConsumers(int concurrentConsumers) {
+            this.properties.put("concurrentConsumers", concurrentConsumers);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
+         * Number of concurrent consumers. The option will be converted to a int
+         * type.
+         */
+        public GoraConsumerBuilder concurrentConsumers(
+                String concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
             return (GoraConsumerBuilder) this;
         }
@@ -131,9 +179,23 @@ public interface GoraEndpointBuilder {
             return (GoraConsumerBuilder) this;
         }
         /**
+         * The End Key. The option will be converted to a java.lang.Object type.
+         */
+        public GoraConsumerBuilder endKey(String endKey) {
+            this.properties.put("endKey", endKey);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
          * The End Time. The option is a long type.
          */
         public GoraConsumerBuilder endTime(long endTime) {
+            this.properties.put("endTime", endTime);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
+         * The End Time. The option will be converted to a long type.
+         */
+        public GoraConsumerBuilder endTime(String endTime) {
             this.properties.put("endTime", endTime);
             return (GoraConsumerBuilder) this;
         }
@@ -145,9 +207,25 @@ public interface GoraEndpointBuilder {
             return (GoraConsumerBuilder) this;
         }
         /**
+         * The Fields. The option will be converted to a
+         * com.google.common.base.Strings type.
+         */
+        public GoraConsumerBuilder fields(String fields) {
+            this.properties.put("fields", fields);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
          * The Key Range From. The option is a java.lang.Object type.
          */
         public GoraConsumerBuilder keyRangeFrom(Object keyRangeFrom) {
+            this.properties.put("keyRangeFrom", keyRangeFrom);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
+         * The Key Range From. The option will be converted to a
+         * java.lang.Object type.
+         */
+        public GoraConsumerBuilder keyRangeFrom(String keyRangeFrom) {
             this.properties.put("keyRangeFrom", keyRangeFrom);
             return (GoraConsumerBuilder) this;
         }
@@ -159,9 +237,24 @@ public interface GoraEndpointBuilder {
             return (GoraConsumerBuilder) this;
         }
         /**
+         * The Key Range To. The option will be converted to a java.lang.Object
+         * type.
+         */
+        public GoraConsumerBuilder keyRangeTo(String keyRangeTo) {
+            this.properties.put("keyRangeTo", keyRangeTo);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
          * The Limit. The option is a long type.
          */
         public GoraConsumerBuilder limit(long limit) {
+            this.properties.put("limit", limit);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
+         * The Limit. The option will be converted to a long type.
+         */
+        public GoraConsumerBuilder limit(String limit) {
             this.properties.put("limit", limit);
             return (GoraConsumerBuilder) this;
         }
@@ -173,9 +266,24 @@ public interface GoraEndpointBuilder {
             return (GoraConsumerBuilder) this;
         }
         /**
+         * The Start Key. The option will be converted to a java.lang.Object
+         * type.
+         */
+        public GoraConsumerBuilder startKey(String startKey) {
+            this.properties.put("startKey", startKey);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
          * The Start Time. The option is a long type.
          */
         public GoraConsumerBuilder startTime(long startTime) {
+            this.properties.put("startTime", startTime);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
+         * The Start Time. The option will be converted to a long type.
+         */
+        public GoraConsumerBuilder startTime(String startTime) {
             this.properties.put("startTime", startTime);
             return (GoraConsumerBuilder) this;
         }
@@ -187,6 +295,13 @@ public interface GoraEndpointBuilder {
             return (GoraConsumerBuilder) this;
         }
         /**
+         * The Time Range From. The option will be converted to a long type.
+         */
+        public GoraConsumerBuilder timeRangeFrom(String timeRangeFrom) {
+            this.properties.put("timeRangeFrom", timeRangeFrom);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
          * The Time Range To. The option is a long type.
          */
         public GoraConsumerBuilder timeRangeTo(long timeRangeTo) {
@@ -194,9 +309,23 @@ public interface GoraEndpointBuilder {
             return (GoraConsumerBuilder) this;
         }
         /**
+         * The Time Range To. The option will be converted to a long type.
+         */
+        public GoraConsumerBuilder timeRangeTo(String timeRangeTo) {
+            this.properties.put("timeRangeTo", timeRangeTo);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
          * The Timestamp. The option is a long type.
          */
         public GoraConsumerBuilder timestamp(long timestamp) {
+            this.properties.put("timestamp", timestamp);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
+         * The Timestamp. The option will be converted to a long type.
+         */
+        public GoraConsumerBuilder timestamp(String timestamp) {
             this.properties.put("timestamp", timestamp);
             return (GoraConsumerBuilder) this;
         }
@@ -213,11 +342,30 @@ public interface GoraEndpointBuilder {
             return (GoraConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public GoraConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GoraConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (GoraConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public GoraConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (GoraConsumerBuilder) this;
         }
@@ -236,6 +384,15 @@ public interface GoraEndpointBuilder {
          */
         public GoraProducerBuilder flushOnEveryOperation(
                 boolean flushOnEveryOperation) {
+            this.properties.put("flushOnEveryOperation", flushOnEveryOperation);
+            return (GoraProducerBuilder) this;
+        }
+        /**
+         * Flush on every operation. The option will be converted to a boolean
+         * type.
+         */
+        public GoraProducerBuilder flushOnEveryOperation(
+                String flushOnEveryOperation) {
             this.properties.put("flushOnEveryOperation", flushOnEveryOperation);
             return (GoraProducerBuilder) this;
         }

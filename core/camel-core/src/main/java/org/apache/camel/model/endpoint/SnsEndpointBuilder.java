@@ -54,10 +54,26 @@ public interface SnsEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use the AmazonSNS as the client. The option will be converted to a
+         * com.amazonaws.services.sns.AmazonSNS type.
+         */
+        public T amazonSNSClient(String amazonSNSClient) {
+            this.properties.put("amazonSNSClient", amazonSNSClient);
+            return (T) this;
+        }
+        /**
          * An SQS Client to use as bridge between SNS and SQS. The option is a
          * com.amazonaws.services.sqs.AmazonSQS type.
          */
         public T amazonSQSClient(Object amazonSQSClient) {
+            this.properties.put("amazonSQSClient", amazonSQSClient);
+            return (T) this;
+        }
+        /**
+         * An SQS Client to use as bridge between SNS and SQS. The option will
+         * be converted to a com.amazonaws.services.sqs.AmazonSQS type.
+         */
+        public T amazonSQSClient(String amazonSQSClient) {
             this.properties.put("amazonSQSClient", amazonSQSClient);
             return (T) this;
         }
@@ -69,10 +85,27 @@ public interface SnsEndpointBuilder {
             return (T) this;
         }
         /**
+         * Setting the autocreation of the topic. The option will be converted
+         * to a boolean type.
+         */
+        public T autoCreateTopic(String autoCreateTopic) {
+            this.properties.put("autoCreateTopic", autoCreateTopic);
+            return (T) this;
+        }
+        /**
          * To use a custom HeaderFilterStrategy to map headers to/from Camel.
          * The option is a org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
+            return (T) this;
+        }
+        /**
+         * To use a custom HeaderFilterStrategy to map headers to/from Camel.
+         * The option will be converted to a
+         * org.apache.camel.spi.HeaderFilterStrategy type.
+         */
+        public T headerFilterStrategy(String headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
@@ -116,6 +149,14 @@ public interface SnsEndpointBuilder {
             return (T) this;
         }
         /**
+         * To define a proxy port when instantiating the SNS client. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public T proxyPort(String proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (T) this;
+        }
+        /**
          * The queueUrl to subscribe to. The option is a java.lang.String type.
          */
         public T queueUrl(String queueUrl) {
@@ -139,6 +180,14 @@ public interface SnsEndpointBuilder {
             return (T) this;
         }
         /**
+         * Define if Server Side Encryption is enabled or not on the topic. The
+         * option will be converted to a boolean type.
+         */
+        public T serverSideEncryptionEnabled(String serverSideEncryptionEnabled) {
+            this.properties.put("serverSideEncryptionEnabled", serverSideEncryptionEnabled);
+            return (T) this;
+        }
+        /**
          * The subject which is used if the message header 'CamelAwsSnsSubject'
          * is not present. The option is a java.lang.String type.
          */
@@ -155,6 +204,14 @@ public interface SnsEndpointBuilder {
             return (T) this;
         }
         /**
+         * Define if the subscription between SNS Topic and SQS must be done or
+         * not. The option will be converted to a boolean type.
+         */
+        public T subscribeSNStoSQS(String subscribeSNStoSQS) {
+            this.properties.put("subscribeSNStoSQS", subscribeSNStoSQS);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -164,11 +221,29 @@ public interface SnsEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

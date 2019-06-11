@@ -53,6 +53,15 @@ public interface SesEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use the AmazonSimpleEmailService as the client. The option will be
+         * converted to a
+         * com.amazonaws.services.simpleemail.AmazonSimpleEmailService type.
+         */
+        public T amazonSESClient(String amazonSESClient) {
+            this.properties.put("amazonSESClient", amazonSESClient);
+            return (T) this;
+        }
+        /**
          * To define a proxy host when instantiating the SES client. The option
          * is a java.lang.String type.
          */
@@ -65,6 +74,14 @@ public interface SesEndpointBuilder {
          * is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (T) this;
+        }
+        /**
+         * To define a proxy port when instantiating the SES client. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
@@ -82,6 +99,15 @@ public interface SesEndpointBuilder {
          * java.util.List<java.lang.String> type.
          */
         public T replyToAddresses(List<String> replyToAddresses) {
+            this.properties.put("replyToAddresses", replyToAddresses);
+            return (T) this;
+        }
+        /**
+         * List of reply-to email address(es) for the message, override it using
+         * 'CamelAwsSesReplyToAddresses' header. The option will be converted to
+         * a java.util.List<java.lang.String> type.
+         */
+        public T replyToAddresses(String replyToAddresses) {
             this.properties.put("replyToAddresses", replyToAddresses);
             return (T) this;
         }
@@ -112,6 +138,15 @@ public interface SesEndpointBuilder {
             return (T) this;
         }
         /**
+         * List of destination email address. Can be overriden with
+         * 'CamelAwsSesTo' header. The option will be converted to a
+         * java.util.List<java.lang.String> type.
+         */
+        public T to(String to) {
+            this.properties.put("to", to);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -121,11 +156,29 @@ public interface SesEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

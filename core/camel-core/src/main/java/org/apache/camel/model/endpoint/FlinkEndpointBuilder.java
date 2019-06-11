@@ -45,10 +45,26 @@ public interface FlinkEndpointBuilder {
             return (T) this;
         }
         /**
+         * Type of the endpoint (dataset, datastream). The option will be
+         * converted to a org.apache.camel.component.flink.EndpointType type.
+         */
+        public T endpointType(String endpointType) {
+            this.properties.put("endpointType", endpointType);
+            return (T) this;
+        }
+        /**
          * Indicates if results should be collected or counted. The option is a
          * boolean type.
          */
         public T collect(boolean collect) {
+            this.properties.put("collect", collect);
+            return (T) this;
+        }
+        /**
+         * Indicates if results should be collected or counted. The option will
+         * be converted to a boolean type.
+         */
+        public T collect(String collect) {
             this.properties.put("collect", collect);
             return (T) this;
         }
@@ -61,10 +77,26 @@ public interface FlinkEndpointBuilder {
             return (T) this;
         }
         /**
+         * DataSet to compute against. The option will be converted to a
+         * org.apache.flink.api.java.DataSet type.
+         */
+        public T dataSet(String dataSet) {
+            this.properties.put("dataSet", dataSet);
+            return (T) this;
+        }
+        /**
          * Function performing action against a DataSet. The option is a
          * org.apache.camel.component.flink.DataSetCallback type.
          */
         public T dataSetCallback(Object dataSetCallback) {
+            this.properties.put("dataSetCallback", dataSetCallback);
+            return (T) this;
+        }
+        /**
+         * Function performing action against a DataSet. The option will be
+         * converted to a org.apache.camel.component.flink.DataSetCallback type.
+         */
+        public T dataSetCallback(String dataSetCallback) {
             this.properties.put("dataSetCallback", dataSetCallback);
             return (T) this;
         }
@@ -77,10 +109,27 @@ public interface FlinkEndpointBuilder {
             return (T) this;
         }
         /**
+         * DataStream to compute against. The option will be converted to a
+         * org.apache.flink.streaming.api.datastream.DataStream type.
+         */
+        public T dataStream(String dataStream) {
+            this.properties.put("dataStream", dataStream);
+            return (T) this;
+        }
+        /**
          * Function performing action against a DataStream. The option is a
          * org.apache.camel.component.flink.DataStreamCallback type.
          */
         public T dataStreamCallback(Object dataStreamCallback) {
+            this.properties.put("dataStreamCallback", dataStreamCallback);
+            return (T) this;
+        }
+        /**
+         * Function performing action against a DataStream. The option will be
+         * converted to a org.apache.camel.component.flink.DataStreamCallback
+         * type.
+         */
+        public T dataStreamCallback(String dataStreamCallback) {
             this.properties.put("dataStreamCallback", dataStreamCallback);
             return (T) this;
         }
@@ -94,11 +143,29 @@ public interface FlinkEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

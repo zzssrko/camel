@@ -48,6 +48,14 @@ public interface Olingo2EndpointBuilder {
             return (T) this;
         }
         /**
+         * What kind of operation to perform. The option will be converted to a
+         * org.apache.camel.component.olingo2.internal.Olingo2ApiName type.
+         */
+        public T apiName(String apiName) {
+            this.properties.put("apiName", apiName);
+            return (T) this;
+        }
+        /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
@@ -60,6 +68,14 @@ public interface Olingo2EndpointBuilder {
          * (30 seconds). The option is a int type.
          */
         public T connectTimeout(int connectTimeout) {
+            this.properties.put("connectTimeout", connectTimeout);
+            return (T) this;
+        }
+        /**
+         * HTTP connection creation timeout in milliseconds, defaults to 30,000
+         * (30 seconds). The option will be converted to a int type.
+         */
+        public T connectTimeout(String connectTimeout) {
             this.properties.put("connectTimeout", connectTimeout);
             return (T) this;
         }
@@ -81,6 +97,15 @@ public interface Olingo2EndpointBuilder {
             return (T) this;
         }
         /**
+         * Set this to true to filter out results that have already been
+         * communicated by this component. The option will be converted to a
+         * boolean type.
+         */
+        public T filterAlreadySeen(String filterAlreadySeen) {
+            this.properties.put("filterAlreadySeen", filterAlreadySeen);
+            return (T) this;
+        }
+        /**
          * Custom HTTP async client builder for more complex HTTP client
          * configuration, overrides connectionTimeout, socketTimeout, proxy and
          * sslContext. Note that a socketTimeout MUST be specified in the
@@ -89,6 +114,18 @@ public interface Olingo2EndpointBuilder {
          * type.
          */
         public T httpAsyncClientBuilder(Object httpAsyncClientBuilder) {
+            this.properties.put("httpAsyncClientBuilder", httpAsyncClientBuilder);
+            return (T) this;
+        }
+        /**
+         * Custom HTTP async client builder for more complex HTTP client
+         * configuration, overrides connectionTimeout, socketTimeout, proxy and
+         * sslContext. Note that a socketTimeout MUST be specified in the
+         * builder, otherwise OData requests could block indefinitely. The
+         * option will be converted to a
+         * org.apache.http.impl.nio.client.HttpAsyncClientBuilder type.
+         */
+        public T httpAsyncClientBuilder(String httpAsyncClientBuilder) {
             this.properties.put("httpAsyncClientBuilder", httpAsyncClientBuilder);
             return (T) this;
         }
@@ -104,11 +141,32 @@ public interface Olingo2EndpointBuilder {
             return (T) this;
         }
         /**
+         * Custom HTTP client builder for more complex HTTP client
+         * configuration, overrides connectionTimeout, socketTimeout, proxy and
+         * sslContext. Note that a socketTimeout MUST be specified in the
+         * builder, otherwise OData requests could block indefinitely. The
+         * option will be converted to a
+         * org.apache.http.impl.client.HttpClientBuilder type.
+         */
+        public T httpClientBuilder(String httpClientBuilder) {
+            this.properties.put("httpClientBuilder", httpClientBuilder);
+            return (T) this;
+        }
+        /**
          * Custom HTTP headers to inject into every request, this could include
          * OAuth tokens, etc. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
         public T httpHeaders(Map<String, String> httpHeaders) {
+            this.properties.put("httpHeaders", httpHeaders);
+            return (T) this;
+        }
+        /**
+         * Custom HTTP headers to inject into every request, this could include
+         * OAuth tokens, etc. The option will be converted to a
+         * java.util.Map<java.lang.String,java.lang.String> type.
+         */
+        public T httpHeaders(String httpHeaders) {
             this.properties.put("httpHeaders", httpHeaders);
             return (T) this;
         }
@@ -125,6 +183,14 @@ public interface Olingo2EndpointBuilder {
          * org.apache.http.HttpHost type.
          */
         public T proxy(Object proxy) {
+            this.properties.put("proxy", proxy);
+            return (T) this;
+        }
+        /**
+         * HTTP proxy server configuration. The option will be converted to a
+         * org.apache.http.HttpHost type.
+         */
+        public T proxy(String proxy) {
             this.properties.put("proxy", proxy);
             return (T) this;
         }
@@ -146,10 +212,27 @@ public interface Olingo2EndpointBuilder {
             return (T) this;
         }
         /**
+         * HTTP request timeout in milliseconds, defaults to 30,000 (30
+         * seconds). The option will be converted to a int type.
+         */
+        public T socketTimeout(String socketTimeout) {
+            this.properties.put("socketTimeout", socketTimeout);
+            return (T) this;
+        }
+        /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
+            this.properties.put("sslContextParameters", sslContextParameters);
+            return (T) this;
+        }
+        /**
+         * To configure security using SSLContextParameters. The option will be
+         * converted to a org.apache.camel.support.jsse.SSLContextParameters
+         * type.
+         */
+        public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
@@ -163,11 +246,29 @@ public interface Olingo2EndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -196,6 +297,20 @@ public interface Olingo2EndpointBuilder {
             return (Olingo2ConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public Olingo2ConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (Olingo2ConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -208,11 +323,30 @@ public interface Olingo2EndpointBuilder {
             return (Olingo2ConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public Olingo2ConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (Olingo2ConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public Olingo2ConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (Olingo2ConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public Olingo2ConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (Olingo2ConsumerBuilder) this;
         }

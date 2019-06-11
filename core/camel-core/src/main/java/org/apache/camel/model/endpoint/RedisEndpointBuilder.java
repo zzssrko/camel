@@ -54,6 +54,14 @@ public interface RedisEndpointBuilder {
             return (T) this;
         }
         /**
+         * Redis server port number. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T port(String port) {
+            this.properties.put("port", port);
+            return (T) this;
+        }
+        /**
          * List of topic names or name patterns to subscribe to. Multiple names
          * can be separated by comma. The option is a java.lang.String type.
          */
@@ -72,6 +80,16 @@ public interface RedisEndpointBuilder {
             return (T) this;
         }
         /**
+         * Default command, which can be overridden by message header. Notice
+         * the consumer only supports the following commands: PSUBSCRIBE and
+         * SUBSCRIBE. The option will be converted to a
+         * org.apache.camel.component.redis.Command type.
+         */
+        public T command(String command) {
+            this.properties.put("command", command);
+            return (T) this;
+        }
+        /**
          * Reference to a pre-configured RedisConnectionFactory instance to use.
          * The option is a
          * org.springframework.data.redis.connection.RedisConnectionFactory
@@ -82,10 +100,29 @@ public interface RedisEndpointBuilder {
             return (T) this;
         }
         /**
+         * Reference to a pre-configured RedisConnectionFactory instance to use.
+         * The option will be converted to a
+         * org.springframework.data.redis.connection.RedisConnectionFactory
+         * type.
+         */
+        public T connectionFactory(String connectionFactory) {
+            this.properties.put("connectionFactory", connectionFactory);
+            return (T) this;
+        }
+        /**
          * Reference to a pre-configured RedisTemplate instance to use. The
          * option is a org.springframework.data.redis.core.RedisTemplate type.
          */
         public T redisTemplate(Object redisTemplate) {
+            this.properties.put("redisTemplate", redisTemplate);
+            return (T) this;
+        }
+        /**
+         * Reference to a pre-configured RedisTemplate instance to use. The
+         * option will be converted to a
+         * org.springframework.data.redis.core.RedisTemplate type.
+         */
+        public T redisTemplate(String redisTemplate) {
             this.properties.put("redisTemplate", redisTemplate);
             return (T) this;
         }
@@ -99,6 +136,15 @@ public interface RedisEndpointBuilder {
             return (T) this;
         }
         /**
+         * Reference to a pre-configured RedisSerializer instance to use. The
+         * option will be converted to a
+         * org.springframework.data.redis.serializer.RedisSerializer type.
+         */
+        public T serializer(String serializer) {
+            this.properties.put("serializer", serializer);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -108,11 +154,29 @@ public interface RedisEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -141,6 +205,19 @@ public interface RedisEndpointBuilder {
             return (RedisConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public RedisConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (RedisConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -149,6 +226,17 @@ public interface RedisEndpointBuilder {
          */
         public RedisConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (RedisConsumerBuilder) this;
+        }
+        /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public RedisConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (RedisConsumerBuilder) this;
         }
@@ -162,12 +250,30 @@ public interface RedisEndpointBuilder {
             return (RedisConsumerBuilder) this;
         }
         /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public RedisConsumerBuilder exchangePattern(String exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (RedisConsumerBuilder) this;
+        }
+        /**
          * Reference to a pre-configured RedisMessageListenerContainer instance
          * to use. The option is a
          * org.springframework.data.redis.listener.RedisMessageListenerContainer
          * type.
          */
         public RedisConsumerBuilder listenerContainer(Object listenerContainer) {
+            this.properties.put("listenerContainer", listenerContainer);
+            return (RedisConsumerBuilder) this;
+        }
+        /**
+         * Reference to a pre-configured RedisMessageListenerContainer instance
+         * to use. The option will be converted to a
+         * org.springframework.data.redis.listener.RedisMessageListenerContainer
+         * type.
+         */
+        public RedisConsumerBuilder listenerContainer(String listenerContainer) {
             this.properties.put("listenerContainer", listenerContainer);
             return (RedisConsumerBuilder) this;
         }

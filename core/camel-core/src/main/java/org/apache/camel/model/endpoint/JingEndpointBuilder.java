@@ -55,6 +55,16 @@ public interface JingEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to validate using RelaxNG compact syntax or not. By default
+         * this is false for using RelaxNG XML Syntax (rng) And true is for
+         * using RelaxNG Compact Syntax (rnc). The option will be converted to a
+         * boolean type.
+         */
+        public T compactSyntax(String compactSyntax) {
+            this.properties.put("compactSyntax", compactSyntax);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -64,11 +74,29 @@ public interface JingEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

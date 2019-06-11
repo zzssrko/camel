@@ -62,9 +62,26 @@ public interface S3EndpointBuilder {
             return (T) this;
         }
         /**
+         * Reference to a com.amazonaws.services.s3.AmazonS3 in the
+         * link:registry.htmlRegistry. The option will be converted to a
+         * com.amazonaws.services.s3.AmazonS3 type.
+         */
+        public T amazonS3Client(String amazonS3Client) {
+            this.properties.put("amazonS3Client", amazonS3Client);
+            return (T) this;
+        }
+        /**
          * Setting the autocreation of the bucket. The option is a boolean type.
          */
         public T autoCreateBucket(boolean autoCreateBucket) {
+            this.properties.put("autoCreateBucket", autoCreateBucket);
+            return (T) this;
+        }
+        /**
+         * Setting the autocreation of the bucket. The option will be converted
+         * to a boolean type.
+         */
+        public T autoCreateBucket(String autoCreateBucket) {
             this.properties.put("autoCreateBucket", autoCreateBucket);
             return (T) this;
         }
@@ -73,6 +90,14 @@ public interface S3EndpointBuilder {
          * is a boolean type.
          */
         public T pathStyleAccess(boolean pathStyleAccess) {
+            this.properties.put("pathStyleAccess", pathStyleAccess);
+            return (T) this;
+        }
+        /**
+         * Whether or not the S3 client should use path style access. The option
+         * will be converted to a boolean type.
+         */
+        public T pathStyleAccess(String pathStyleAccess) {
             this.properties.put("pathStyleAccess", pathStyleAccess);
             return (T) this;
         }
@@ -102,6 +127,14 @@ public interface S3EndpointBuilder {
             return (T) this;
         }
         /**
+         * Specify a proxy port to be used inside the client definition. The
+         * option will be converted to a java.lang.Integer type.
+         */
+        public T proxyPort(String proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (T) this;
+        }
+        /**
          * The region in which S3 client needs to work. The option is a
          * java.lang.String type.
          */
@@ -119,6 +152,15 @@ public interface S3EndpointBuilder {
             return (T) this;
         }
         /**
+         * Set whether the S3 client should expect to load credentials on an EC2
+         * instance or to expect static credentials to be passed in. The option
+         * will be converted to a boolean type.
+         */
+        public T useIAMCredentials(String useIAMCredentials) {
+            this.properties.put("useIAMCredentials", useIAMCredentials);
+            return (T) this;
+        }
+        /**
          * The encryption materials to use in case of Symmetric/Asymmetric
          * client usage. The option is a
          * com.amazonaws.services.s3.model.EncryptionMaterials type.
@@ -128,10 +170,27 @@ public interface S3EndpointBuilder {
             return (T) this;
         }
         /**
+         * The encryption materials to use in case of Symmetric/Asymmetric
+         * client usage. The option will be converted to a
+         * com.amazonaws.services.s3.model.EncryptionMaterials type.
+         */
+        public T encryptionMaterials(String encryptionMaterials) {
+            this.properties.put("encryptionMaterials", encryptionMaterials);
+            return (T) this;
+        }
+        /**
          * Define if encryption must be used or not. The option is a boolean
          * type.
          */
         public T useEncryption(boolean useEncryption) {
+            this.properties.put("useEncryption", useEncryption);
+            return (T) this;
+        }
+        /**
+         * Define if encryption must be used or not. The option will be
+         * converted to a boolean type.
+         */
+        public T useEncryption(String useEncryption) {
             this.properties.put("useEncryption", useEncryption);
             return (T) this;
         }
@@ -145,11 +204,29 @@ public interface S3EndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -162,6 +239,14 @@ public interface S3EndpointBuilder {
             return (T) this;
         }
         /**
+         * Define if Accelerate Mode enabled is true or false. The option will
+         * be converted to a boolean type.
+         */
+        public T accelerateModeEnabled(String accelerateModeEnabled) {
+            this.properties.put("accelerateModeEnabled", accelerateModeEnabled);
+            return (T) this;
+        }
+        /**
          * Define if disabled Chunked Encoding is true or false. The option is a
          * boolean type.
          */
@@ -170,10 +255,26 @@ public interface S3EndpointBuilder {
             return (T) this;
         }
         /**
+         * Define if disabled Chunked Encoding is true or false. The option will
+         * be converted to a boolean type.
+         */
+        public T chunkedEncodingDisabled(String chunkedEncodingDisabled) {
+            this.properties.put("chunkedEncodingDisabled", chunkedEncodingDisabled);
+            return (T) this;
+        }
+        /**
          * Define if Dualstack enabled is true or false. The option is a boolean
          * type.
          */
         public T dualstackEnabled(boolean dualstackEnabled) {
+            this.properties.put("dualstackEnabled", dualstackEnabled);
+            return (T) this;
+        }
+        /**
+         * Define if Dualstack enabled is true or false. The option will be
+         * converted to a boolean type.
+         */
+        public T dualstackEnabled(String dualstackEnabled) {
             this.properties.put("dualstackEnabled", dualstackEnabled);
             return (T) this;
         }
@@ -187,10 +288,27 @@ public interface S3EndpointBuilder {
             return (T) this;
         }
         /**
+         * Define if Force Global Bucket Access enabled is true or false. The
+         * option will be converted to a boolean type.
+         */
+        public T forceGlobalBucketAccessEnabled(
+                String forceGlobalBucketAccessEnabled) {
+            this.properties.put("forceGlobalBucketAccessEnabled", forceGlobalBucketAccessEnabled);
+            return (T) this;
+        }
+        /**
          * Define if Payload Signing enabled is true or false. The option is a
          * boolean type.
          */
         public T payloadSigningEnabled(boolean payloadSigningEnabled) {
+            this.properties.put("payloadSigningEnabled", payloadSigningEnabled);
+            return (T) this;
+        }
+        /**
+         * Define if Payload Signing enabled is true or false. The option will
+         * be converted to a boolean type.
+         */
+        public T payloadSigningEnabled(String payloadSigningEnabled) {
             this.properties.put("payloadSigningEnabled", payloadSigningEnabled);
             return (T) this;
         }
@@ -232,6 +350,19 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public S3ConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * Delete objects from S3 after they have been retrieved. The delete is
          * only performed if the Exchange is committed. If a rollback occurs,
          * the object is not deleted. If this option is false, then the same
@@ -242,6 +373,20 @@ public interface S3EndpointBuilder {
          * option is a boolean type.
          */
         public S3ConsumerBuilder deleteAfterRead(boolean deleteAfterRead) {
+            this.properties.put("deleteAfterRead", deleteAfterRead);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
+         * Delete objects from S3 after they have been retrieved. The delete is
+         * only performed if the Exchange is committed. If a rollback occurs,
+         * the object is not deleted. If this option is false, then the same
+         * objects will be retrieve over and over again on the polls. Therefore
+         * you need to use the Idempotent Consumer EIP in the route to filter
+         * out duplicates. You can filter using the S3Constants#BUCKET_NAME and
+         * S3Constants#KEY headers, or only the S3Constants#KEY header. The
+         * option will be converted to a boolean type.
+         */
+        public S3ConsumerBuilder deleteAfterRead(String deleteAfterRead) {
             this.properties.put("deleteAfterRead", deleteAfterRead);
             return (S3ConsumerBuilder) this;
         }
@@ -276,10 +421,32 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * If it is true, the exchange body will be set to a stream to the
+         * contents of the file. If false, the headers will be set with the S3
+         * object metadata, but the body will be null. This option is strongly
+         * related to autocloseBody option. In case of setting includeBody to
+         * true and autocloseBody to false, it will be up to the caller to close
+         * the S3Object stream. Setting autocloseBody to true, will close the
+         * S3Object stream automatically. The option will be converted to a
+         * boolean type.
+         */
+        public S3ConsumerBuilder includeBody(String includeBody) {
+            this.properties.put("includeBody", includeBody);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * Set the maxConnections parameter in the S3 client configuration. The
          * option is a int type.
          */
         public S3ConsumerBuilder maxConnections(int maxConnections) {
+            this.properties.put("maxConnections", maxConnections);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
+         * Set the maxConnections parameter in the S3 client configuration. The
+         * option will be converted to a int type.
+         */
+        public S3ConsumerBuilder maxConnections(String maxConnections) {
             this.properties.put("maxConnections", maxConnections);
             return (S3ConsumerBuilder) this;
         }
@@ -289,6 +456,15 @@ public interface S3EndpointBuilder {
          * disable it as unlimited. The option is a int type.
          */
         public S3ConsumerBuilder maxMessagesPerPoll(int maxMessagesPerPoll) {
+            this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
+         * Gets the maximum number of messages as a limit to poll at each
+         * polling. Is default unlimited, but use 0 or negative number to
+         * disable it as unlimited. The option will be converted to a int type.
+         */
+        public S3ConsumerBuilder maxMessagesPerPoll(String maxMessagesPerPoll) {
             this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
             return (S3ConsumerBuilder) this;
         }
@@ -312,6 +488,16 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * If the polling consumer did not poll any files, you can enable this
+         * option to send an empty message (no body) instead. The option will be
+         * converted to a boolean type.
+         */
+        public S3ConsumerBuilder sendEmptyMessageWhenIdle(
+                String sendEmptyMessageWhenIdle) {
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * If this option is true and includeBody is true, then the
          * S3Object.close() method will be called on exchange completion. This
          * option is strongly related to includeBody option. In case of setting
@@ -321,6 +507,19 @@ public interface S3EndpointBuilder {
          * type.
          */
         public S3ConsumerBuilder autocloseBody(boolean autocloseBody) {
+            this.properties.put("autocloseBody", autocloseBody);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
+         * If this option is true and includeBody is true, then the
+         * S3Object.close() method will be called on exchange completion. This
+         * option is strongly related to includeBody option. In case of setting
+         * includeBody to true and autocloseBody to false, it will be up to the
+         * caller to close the S3Object stream. Setting autocloseBody to true,
+         * will close the S3Object stream automatically. The option will be
+         * converted to a boolean type.
+         */
+        public S3ConsumerBuilder autocloseBody(String autocloseBody) {
             this.properties.put("autocloseBody", autocloseBody);
             return (S3ConsumerBuilder) this;
         }
@@ -337,10 +536,29 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public S3ConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public S3ConsumerBuilder exchangePattern(ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public S3ConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (S3ConsumerBuilder) this;
         }
@@ -357,6 +575,17 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
+         * you to provide your custom implementation to control error handling
+         * usually occurred during the poll operation before an Exchange have
+         * been created and being routed in Camel. The option will be converted
+         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         */
+        public S3ConsumerBuilder pollStrategy(String pollStrategy) {
+            this.properties.put("pollStrategy", pollStrategy);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * The number of subsequent error polls (failed due some error) that
          * should happen before the backoffMultipler should kick-in. The option
          * is a int type.
@@ -366,10 +595,30 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * The number of subsequent error polls (failed due some error) that
+         * should happen before the backoffMultipler should kick-in. The option
+         * will be converted to a int type.
+         */
+        public S3ConsumerBuilder backoffErrorThreshold(
+                String backoffErrorThreshold) {
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public S3ConsumerBuilder backoffIdleThreshold(int backoffIdleThreshold) {
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
+         * The number of subsequent idle polls that should happen before the
+         * backoffMultipler should kick-in. The option will be converted to a
+         * int type.
+         */
+        public S3ConsumerBuilder backoffIdleThreshold(
+                String backoffIdleThreshold) {
             this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (S3ConsumerBuilder) this;
         }
@@ -386,11 +635,33 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * To let the scheduled polling consumer backoff if there has been a
+         * number of subsequent idles/errors in a row. The multiplier is then
+         * the number of polls that will be skipped before the next actual
+         * attempt is happening again. When this option is in use then
+         * backoffIdleThreshold and/or backoffErrorThreshold must also be
+         * configured. The option will be converted to a int type.
+         */
+        public S3ConsumerBuilder backoffMultiplier(String backoffMultiplier) {
+            this.properties.put("backoffMultiplier", backoffMultiplier);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
          */
         public S3ConsumerBuilder delay(long delay) {
+            this.properties.put("delay", delay);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
+         * Milliseconds before the next poll. You can also specify time values
+         * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
+         * seconds), and 1h (1 hour). The option will be converted to a long
+         * type.
+         */
+        public S3ConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
             return (S3ConsumerBuilder) this;
         }
@@ -404,6 +675,15 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * If greedy is enabled, then the ScheduledPollConsumer will run
+         * immediately again, if the previous run polled 1 or more messages. The
+         * option will be converted to a boolean type.
+         */
+        public S3ConsumerBuilder greedy(String greedy) {
+            this.properties.put("greedy", greedy);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
          * seconds), and 1h (1 hour). The option is a long type.
@@ -413,11 +693,30 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * Milliseconds before the first poll starts. You can also specify time
+         * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
+         * seconds), and 1h (1 hour). The option will be converted to a long
+         * type.
+         */
+        public S3ConsumerBuilder initialDelay(String initialDelay) {
+            this.properties.put("initialDelay", initialDelay);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public S3ConsumerBuilder runLoggingLevel(LoggingLevel runLoggingLevel) {
+            this.properties.put("runLoggingLevel", runLoggingLevel);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
+         * The consumer logs a start/complete log line when it polls. This
+         * option allows you to configure the logging level for that. The option
+         * will be converted to a org.apache.camel.LoggingLevel type.
+         */
+        public S3ConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
             return (S3ConsumerBuilder) this;
         }
@@ -433,12 +732,32 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * Allows for configuring a custom/shared thread pool to use for the
+         * consumer. By default each consumer has its own single threaded thread
+         * pool. The option will be converted to a
+         * java.util.concurrent.ScheduledExecutorService type.
+         */
+        public S3ConsumerBuilder scheduledExecutorService(
+                String scheduledExecutorService) {
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public S3ConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
+            this.properties.put("scheduler", scheduler);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
+         * To use a cron scheduler from either camel-spring or camel-quartz2
+         * component. The option will be converted to a
+         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         */
+        public S3ConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
             return (S3ConsumerBuilder) this;
         }
@@ -453,10 +772,27 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * To configure additional properties when using a custom scheduler or
+         * any of the Quartz2, Spring based scheduler. The option will be
+         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public S3ConsumerBuilder schedulerProperties(String schedulerProperties) {
+            this.properties.put("schedulerProperties", schedulerProperties);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
         public S3ConsumerBuilder startScheduler(boolean startScheduler) {
+            this.properties.put("startScheduler", startScheduler);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
+         * Whether the scheduler should be auto started. The option will be
+         * converted to a boolean type.
+         */
+        public S3ConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (S3ConsumerBuilder) this;
         }
@@ -469,11 +805,28 @@ public interface S3EndpointBuilder {
             return (S3ConsumerBuilder) this;
         }
         /**
+         * Time unit for initialDelay and delay options. The option will be
+         * converted to a java.util.concurrent.TimeUnit type.
+         */
+        public S3ConsumerBuilder timeUnit(String timeUnit) {
+            this.properties.put("timeUnit", timeUnit);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
          * Controls if fixed delay or fixed rate is used. See
          * ScheduledExecutorService in JDK for details. The option is a boolean
          * type.
          */
         public S3ConsumerBuilder useFixedDelay(boolean useFixedDelay) {
+            this.properties.put("useFixedDelay", useFixedDelay);
+            return (S3ConsumerBuilder) this;
+        }
+        /**
+         * Controls if fixed delay or fixed rate is used. See
+         * ScheduledExecutorService in JDK for details. The option will be
+         * converted to a boolean type.
+         */
+        public S3ConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
             return (S3ConsumerBuilder) this;
         }
@@ -496,11 +849,28 @@ public interface S3EndpointBuilder {
             return (S3ProducerBuilder) this;
         }
         /**
+         * Delete file object after the S3 file has been uploaded. The option
+         * will be converted to a boolean type.
+         */
+        public S3ProducerBuilder deleteAfterWrite(String deleteAfterWrite) {
+            this.properties.put("deleteAfterWrite", deleteAfterWrite);
+            return (S3ProducerBuilder) this;
+        }
+        /**
          * If it is true, camel will upload the file with multi part format, the
          * part size is decided by the option of partSize. The option is a
          * boolean type.
          */
         public S3ProducerBuilder multiPartUpload(boolean multiPartUpload) {
+            this.properties.put("multiPartUpload", multiPartUpload);
+            return (S3ProducerBuilder) this;
+        }
+        /**
+         * If it is true, camel will upload the file with multi part format, the
+         * part size is decided by the option of partSize. The option will be
+         * converted to a boolean type.
+         */
+        public S3ProducerBuilder multiPartUpload(String multiPartUpload) {
             this.properties.put("multiPartUpload", multiPartUpload);
             return (S3ProducerBuilder) this;
         }
@@ -513,10 +883,27 @@ public interface S3EndpointBuilder {
             return (S3ProducerBuilder) this;
         }
         /**
+         * The operation to do in case the user don't want to do only an upload.
+         * The option will be converted to a
+         * org.apache.camel.component.aws.s3.S3Operations type.
+         */
+        public S3ProducerBuilder operation(String operation) {
+            this.properties.put("operation", operation);
+            return (S3ProducerBuilder) this;
+        }
+        /**
          * Setup the partSize which is used in multi part upload, the default
          * size is 25M. The option is a long type.
          */
         public S3ProducerBuilder partSize(long partSize) {
+            this.properties.put("partSize", partSize);
+            return (S3ProducerBuilder) this;
+        }
+        /**
+         * Setup the partSize which is used in multi part upload, the default
+         * size is 25M. The option will be converted to a long type.
+         */
+        public S3ProducerBuilder partSize(String partSize) {
             this.properties.put("partSize", partSize);
             return (S3ProducerBuilder) this;
         }
@@ -551,6 +938,14 @@ public interface S3EndpointBuilder {
          * Define if KMS must be used or not. The option is a boolean type.
          */
         public S3ProducerBuilder useAwsKMS(boolean useAwsKMS) {
+            this.properties.put("useAwsKMS", useAwsKMS);
+            return (S3ProducerBuilder) this;
+        }
+        /**
+         * Define if KMS must be used or not. The option will be converted to a
+         * boolean type.
+         */
+        public S3ProducerBuilder useAwsKMS(String useAwsKMS) {
             this.properties.put("useAwsKMS", useAwsKMS);
             return (S3ProducerBuilder) this;
         }

@@ -47,11 +47,29 @@ public interface FopEndpointBuilder {
             return (T) this;
         }
         /**
+         * The primary output format is PDF but other output formats are also
+         * supported. The option will be converted to a
+         * org.apache.camel.component.fop.FopOutputType type.
+         */
+        public T outputType(String outputType) {
+            this.properties.put("outputType", outputType);
+            return (T) this;
+        }
+        /**
          * Allows to use a custom configured or implementation of
          * org.apache.fop.apps.FopFactory. The option is a
          * org.apache.fop.apps.FopFactory type.
          */
         public T fopFactory(Object fopFactory) {
+            this.properties.put("fopFactory", fopFactory);
+            return (T) this;
+        }
+        /**
+         * Allows to use a custom configured or implementation of
+         * org.apache.fop.apps.FopFactory. The option will be converted to a
+         * org.apache.fop.apps.FopFactory type.
+         */
+        public T fopFactory(String fopFactory) {
             this.properties.put("fopFactory", fopFactory);
             return (T) this;
         }
@@ -73,11 +91,29 @@ public interface FopEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

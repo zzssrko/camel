@@ -48,11 +48,30 @@ public interface SoroushBotEndpointBuilder {
             return (T) this;
         }
         /**
+         * The endpoint type. Support getMessage as consumer and
+         * sendMessage,uploadFile,downloadFile as producer. The option will be
+         * converted to a org.apache.camel.component.soroushbot.models.Endpoint
+         * type.
+         */
+        public T endpoint(String endpoint) {
+            this.properties.put("endpoint", endpoint);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
@@ -66,12 +85,31 @@ public interface SoroushBotEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * Automatically download SoroushMessage.fileUrl and
          * SoroushMessage.thumbnailUrl if exists for the message and store them
          * in SoroushMessage.file and SoroushMessage.thumbnail field. The option
          * is a java.lang.Boolean type.
          */
         public T autoDownload(Boolean autoDownload) {
+            this.properties.put("autoDownload", autoDownload);
+            return (T) this;
+        }
+        /**
+         * Automatically download SoroushMessage.fileUrl and
+         * SoroushMessage.thumbnailUrl if exists for the message and store them
+         * in SoroushMessage.file and SoroushMessage.thumbnail field. The option
+         * will be converted to a java.lang.Boolean type.
+         */
+        public T autoDownload(String autoDownload) {
             this.properties.put("autoDownload", autoDownload);
             return (T) this;
         }
@@ -87,6 +125,17 @@ public interface SoroushBotEndpointBuilder {
             return (T) this;
         }
         /**
+         * The timeout in millisecond to reconnect the existing getMessage
+         * connection to ensure that the connection is always live and does not
+         * dead without notifying the bot. this value should not be changed. The
+         * option will be converted to a long type.
+         */
+        public T reconnectIdleConnectionTimeout(
+                String reconnectIdleConnectionTimeout) {
+            this.properties.put("reconnectIdleConnectionTimeout", reconnectIdleConnectionTimeout);
+            return (T) this;
+        }
+        /**
          * If true, when downloading an attached file, thumbnail will be
          * downloaded if provided in the message. Otherwise, only the file will
          * be downloaded. The option is a java.lang.Boolean type.
@@ -96,11 +145,31 @@ public interface SoroushBotEndpointBuilder {
             return (T) this;
         }
         /**
+         * If true, when downloading an attached file, thumbnail will be
+         * downloaded if provided in the message. Otherwise, only the file will
+         * be downloaded. The option will be converted to a java.lang.Boolean
+         * type.
+         */
+        public T downloadThumbnail(String downloadThumbnail) {
+            this.properties.put("downloadThumbnail", downloadThumbnail);
+            return (T) this;
+        }
+        /**
          * Force to download SoroushMessage.fileUrl(SoroushMessage.thumbnailUrl)
          * if exists, even if the SoroushMessage.file(SoroushMessage.thumbnail)
          * was not null in that message. The option is a java.lang.Boolean type.
          */
         public T forceDownload(Boolean forceDownload) {
+            this.properties.put("forceDownload", forceDownload);
+            return (T) this;
+        }
+        /**
+         * Force to download SoroushMessage.fileUrl(SoroushMessage.thumbnailUrl)
+         * if exists, even if the SoroushMessage.file(SoroushMessage.thumbnail)
+         * was not null in that message. The option will be converted to a
+         * java.lang.Boolean type.
+         */
+        public T forceDownload(String forceDownload) {
             this.properties.put("forceDownload", forceDownload);
             return (T) this;
         }
@@ -126,11 +195,29 @@ public interface SoroushBotEndpointBuilder {
             return (T) this;
         }
         /**
+         * Connection timeout in ms when connecting to soroush API. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public T connectionTimeout(String connectionTimeout) {
+            this.properties.put("connectionTimeout", connectionTimeout);
+            return (T) this;
+        }
+        /**
          * Maximum connection retry when fail to connect to soroush API, if the
          * quota is reached, MaximumConnectionRetryReachedException is thrown
          * for that message. The option is a java.lang.Integer type.
          */
         public T maxConnectionRetry(Integer maxConnectionRetry) {
+            this.properties.put("maxConnectionRetry", maxConnectionRetry);
+            return (T) this;
+        }
+        /**
+         * Maximum connection retry when fail to connect to soroush API, if the
+         * quota is reached, MaximumConnectionRetryReachedException is thrown
+         * for that message. The option will be converted to a java.lang.Integer
+         * type.
+         */
+        public T maxConnectionRetry(String maxConnectionRetry) {
             this.properties.put("maxConnectionRetry", maxConnectionRetry);
             return (T) this;
         }
@@ -143,10 +230,27 @@ public interface SoroushBotEndpointBuilder {
             return (T) this;
         }
         /**
+         * Maximum amount of time (in millisecond) a thread wait before retrying
+         * failed request. The option will be converted to a java.lang.Long
+         * type.
+         */
+        public T maxRetryWaitingTime(String maxRetryWaitingTime) {
+            this.properties.put("maxRetryWaitingTime", maxRetryWaitingTime);
+            return (T) this;
+        }
+        /**
          * Coefficient to compute back off time when using Exponential Back Off
          * strategy. The option is a java.lang.Long type.
          */
         public T retryExponentialCoefficient(Long retryExponentialCoefficient) {
+            this.properties.put("retryExponentialCoefficient", retryExponentialCoefficient);
+            return (T) this;
+        }
+        /**
+         * Coefficient to compute back off time when using Exponential Back Off
+         * strategy. The option will be converted to a java.lang.Long type.
+         */
+        public T retryExponentialCoefficient(String retryExponentialCoefficient) {
             this.properties.put("retryExponentialCoefficient", retryExponentialCoefficient);
             return (T) this;
         }
@@ -159,6 +263,15 @@ public interface SoroushBotEndpointBuilder {
             return (T) this;
         }
         /**
+         * The amount of time (in millisecond) which adds to waiting time when
+         * using Linear back off strategy. The option will be converted to a
+         * java.lang.Long type.
+         */
+        public T retryLinearIncrement(String retryLinearIncrement) {
+            this.properties.put("retryLinearIncrement", retryLinearIncrement);
+            return (T) this;
+        }
+        /**
          * Waiting time before retry failed request (Millisecond). If
          * backOffStrategy is not Fixed this is the based value for computing
          * back off waiting time. the first retry is always happen immediately
@@ -166,6 +279,17 @@ public interface SoroushBotEndpointBuilder {
          * The option is a java.lang.Long type.
          */
         public T retryWaitingTime(Long retryWaitingTime) {
+            this.properties.put("retryWaitingTime", retryWaitingTime);
+            return (T) this;
+        }
+        /**
+         * Waiting time before retry failed request (Millisecond). If
+         * backOffStrategy is not Fixed this is the based value for computing
+         * back off waiting time. the first retry is always happen immediately
+         * after failure and retryWaitingTime do not apply to the first retry.
+         * The option will be converted to a java.lang.Long type.
+         */
+        public T retryWaitingTime(String retryWaitingTime) {
             this.properties.put("retryWaitingTime", retryWaitingTime);
             return (T) this;
         }
@@ -190,12 +314,34 @@ public interface SoroushBotEndpointBuilder {
             return (T) this;
         }
         /**
+         * Automatically upload attachments when a message goes to the
+         * sendMessage endpoint and the SoroushMessage.file
+         * (SoroushMessage.thumbnail) has been set and
+         * SoroushMessage.fileUrl(SoroushMessage.thumbnailUrl) is null. The
+         * option will be converted to a java.lang.Boolean type.
+         */
+        public T autoUploadFile(String autoUploadFile) {
+            this.properties.put("autoUploadFile", autoUploadFile);
+            return (T) this;
+        }
+        /**
          * Force to upload SoroushMessage.file(SoroushMessage.thumbnail) if
          * exists, even if the
          * SoroushMessage.fileUrl(SoroushMessage.thumbnailUrl) is not null in
          * the message. The option is a java.lang.Boolean type.
          */
         public T forceUpload(Boolean forceUpload) {
+            this.properties.put("forceUpload", forceUpload);
+            return (T) this;
+        }
+        /**
+         * Force to upload SoroushMessage.file(SoroushMessage.thumbnail) if
+         * exists, even if the
+         * SoroushMessage.fileUrl(SoroushMessage.thumbnailUrl) is not null in
+         * the message. The option will be converted to a java.lang.Boolean
+         * type.
+         */
+        public T forceUpload(String forceUpload) {
             this.properties.put("forceUpload", forceUpload);
             return (T) this;
         }
@@ -224,6 +370,20 @@ public interface SoroushBotEndpointBuilder {
             return (SoroushBotConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public SoroushBotConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (SoroushBotConsumerBuilder) this;
+        }
+        /**
          * Number of Thread created by consumer in the route. if you use this
          * method for parallelism, it is guaranteed that messages from same user
          * always execute in the same thread and therefore messages from the
@@ -233,6 +393,19 @@ public interface SoroushBotEndpointBuilder {
          */
         public SoroushBotConsumerBuilder concurrentConsumers(
                 Integer concurrentConsumers) {
+            this.properties.put("concurrentConsumers", concurrentConsumers);
+            return (SoroushBotConsumerBuilder) this;
+        }
+        /**
+         * Number of Thread created by consumer in the route. if you use this
+         * method for parallelism, it is guaranteed that messages from same user
+         * always execute in the same thread and therefore messages from the
+         * same user are processed sequentially. Default value notice: using
+         * SoroushBotSingleThreadConsumer. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public SoroushBotConsumerBuilder concurrentConsumers(
+                String concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
             return (SoroushBotConsumerBuilder) this;
         }
@@ -251,6 +424,21 @@ public interface SoroushBotEndpointBuilder {
             return (SoroushBotConsumerBuilder) this;
         }
         /**
+         * Maximum capacity of each queue when concurrentConsumers is greater
+         * than 1. if a queue become full, every message that should go to that
+         * queue will be dropped. If bridgeErrorHandler is set to true, an
+         * exchange with CongestionException is directed to ErrorHandler. You
+         * can then processed the error using
+         * onException(CongestionException.class) route. Default value notice:
+         * infinite capacity. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public SoroushBotConsumerBuilder queueCapacityPerThread(
+                String queueCapacityPerThread) {
+            this.properties.put("queueCapacityPerThread", queueCapacityPerThread);
+            return (SoroushBotConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -263,11 +451,31 @@ public interface SoroushBotEndpointBuilder {
             return (SoroushBotConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public SoroushBotConsumerBuilder exceptionHandler(
+                String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (SoroushBotConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SoroushBotConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (SoroushBotConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public SoroushBotConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (SoroushBotConsumerBuilder) this;
         }

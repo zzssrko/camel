@@ -72,10 +72,26 @@ public interface WordpressEndpointBuilder {
             return (T) this;
         }
         /**
+         * The criteria to use with complex searches. The option will be
+         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public T criteria(String criteria) {
+            this.properties.put("criteria", criteria);
+            return (T) this;
+        }
+        /**
          * Whether to bypass trash and force deletion. The option is a
          * java.lang.Boolean type.
          */
         public T force(Boolean force) {
+            this.properties.put("force", force);
+            return (T) this;
+        }
+        /**
+         * Whether to bypass trash and force deletion. The option will be
+         * converted to a java.lang.Boolean type.
+         */
+        public T force(String force) {
             this.properties.put("force", force);
             return (T) this;
         }
@@ -85,6 +101,15 @@ public interface WordpressEndpointBuilder {
          * java.lang.Integer type.
          */
         public T id(Integer id) {
+            this.properties.put("id", id);
+            return (T) this;
+        }
+        /**
+         * The entity ID. Should be passed when the operation performed requires
+         * a specific entity, e.g. deleting a post. The option will be converted
+         * to a java.lang.Integer type.
+         */
+        public T id(String id) {
             this.properties.put("id", id);
             return (T) this;
         }
@@ -100,6 +125,14 @@ public interface WordpressEndpointBuilder {
          * org.apache.camel.component.wordpress.api.model.SearchCriteria type.
          */
         public T searchCriteria(Object searchCriteria) {
+            this.properties.put("searchCriteria", searchCriteria);
+            return (T) this;
+        }
+        /**
+         * Search criteria. The option will be converted to a
+         * org.apache.camel.component.wordpress.api.model.SearchCriteria type.
+         */
+        public T searchCriteria(String searchCriteria) {
             this.properties.put("searchCriteria", searchCriteria);
             return (T) this;
         }
@@ -129,11 +162,29 @@ public interface WordpressEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -162,6 +213,20 @@ public interface WordpressEndpointBuilder {
             return (WordpressConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public WordpressConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (WordpressConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -174,11 +239,30 @@ public interface WordpressEndpointBuilder {
             return (WordpressConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public WordpressConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (WordpressConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public WordpressConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (WordpressConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public WordpressConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (WordpressConsumerBuilder) this;
         }

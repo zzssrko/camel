@@ -53,10 +53,26 @@ public interface XChangeEndpointBuilder {
             return (T) this;
         }
         /**
+         * The currency. The option will be converted to a
+         * org.knowm.xchange.currency.Currency type.
+         */
+        public T currency(String currency) {
+            this.properties.put("currency", currency);
+            return (T) this;
+        }
+        /**
          * The currency pair. The option is a
          * org.knowm.xchange.currency.CurrencyPair type.
          */
         public T currencyPair(Object currencyPair) {
+            this.properties.put("currencyPair", currencyPair);
+            return (T) this;
+        }
+        /**
+         * The currency pair. The option will be converted to a
+         * org.knowm.xchange.currency.CurrencyPair type.
+         */
+        public T currencyPair(String currencyPair) {
             this.properties.put("currencyPair", currencyPair);
             return (T) this;
         }
@@ -70,10 +86,27 @@ public interface XChangeEndpointBuilder {
             return (T) this;
         }
         /**
+         * The method to execute. The option will be converted to a
+         * org.apache.camel.component.xchange.XChangeConfiguration.XChangeMethod
+         * type.
+         */
+        public T method(String method) {
+            this.properties.put("method", method);
+            return (T) this;
+        }
+        /**
          * The service to call. The option is a
          * org.apache.camel.component.xchange.XChangeConfiguration.XChangeService type.
          */
         public T service(Object service) {
+            this.properties.put("service", service);
+            return (T) this;
+        }
+        /**
+         * The service to call. The option will be converted to a
+         * org.apache.camel.component.xchange.XChangeConfiguration.XChangeService type.
+         */
+        public T service(String service) {
             this.properties.put("service", service);
             return (T) this;
         }
@@ -87,11 +120,29 @@ public interface XChangeEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

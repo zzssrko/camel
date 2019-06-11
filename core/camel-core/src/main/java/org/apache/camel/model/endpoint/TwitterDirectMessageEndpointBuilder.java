@@ -63,11 +63,29 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -95,6 +113,15 @@ public interface TwitterDirectMessageEndpointBuilder {
          * java.lang.Integer type.
          */
         public T httpProxyPort(Integer httpProxyPort) {
+            this.properties.put("httpProxyPort", httpProxyPort);
+            return (T) this;
+        }
+        /**
+         * The http proxy port which can be used for the camel-twitter. Can also
+         * be configured on the TwitterComponent level instead. The option will
+         * be converted to a java.lang.Integer type.
+         */
+        public T httpProxyPort(String httpProxyPort) {
             this.properties.put("httpProxyPort", httpProxyPort);
             return (T) this;
         }
@@ -164,6 +191,20 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public TwitterDirectMessageConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * If the polling consumer did not poll any files, you can enable this
          * option to send an empty message (no body) instead. The option is a
          * boolean type.
@@ -174,10 +215,29 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * If the polling consumer did not poll any files, you can enable this
+         * option to send an empty message (no body) instead. The option will be
+         * converted to a boolean type.
+         */
+        public TwitterDirectMessageConsumerBuilder sendEmptyMessageWhenIdle(
+                String sendEmptyMessageWhenIdle) {
+            this.properties.put("sendEmptyMessageWhenIdle", sendEmptyMessageWhenIdle);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * Endpoint type to use. Only streaming supports event type. The option
          * is a org.apache.camel.component.twitter.data.EndpointType type.
          */
         public TwitterDirectMessageConsumerBuilder type(EndpointType type) {
+            this.properties.put("type", type);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * Endpoint type to use. Only streaming supports event type. The option
+         * will be converted to a
+         * org.apache.camel.component.twitter.data.EndpointType type.
+         */
+        public TwitterDirectMessageConsumerBuilder type(String type) {
             this.properties.put("type", type);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -206,11 +266,32 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public TwitterDirectMessageConsumerBuilder exceptionHandler(
+                String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public TwitterDirectMessageConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public TwitterDirectMessageConsumerBuilder exchangePattern(
+                String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -224,11 +305,31 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * Used for enabling full text from twitter (eg receive tweets that
+         * contains more than 140 characters). The option will be converted to a
+         * boolean type.
+         */
+        public TwitterDirectMessageConsumerBuilder extendedMode(
+                String extendedMode) {
+            this.properties.put("extendedMode", extendedMode);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * Used by the non-stream geography search to search by latitude. You
          * need to configure all the following options: longitude, latitude,
          * radius, and distanceMetric. The option is a java.lang.Double type.
          */
         public TwitterDirectMessageConsumerBuilder latitude(Double latitude) {
+            this.properties.put("latitude", latitude);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * Used by the non-stream geography search to search by latitude. You
+         * need to configure all the following options: longitude, latitude,
+         * radius, and distanceMetric. The option will be converted to a
+         * java.lang.Double type.
+         */
+        public TwitterDirectMessageConsumerBuilder latitude(String latitude) {
             this.properties.put("latitude", latitude);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -252,6 +353,16 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * Used by the non-stream geography search to search by longitude. You
+         * need to configure all the following options: longitude, latitude,
+         * radius, and distanceMetric. The option will be converted to a
+         * java.lang.Double type.
+         */
+        public TwitterDirectMessageConsumerBuilder longitude(String longitude) {
+            this.properties.put("longitude", longitude);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
@@ -260,6 +371,18 @@ public interface TwitterDirectMessageEndpointBuilder {
          */
         public TwitterDirectMessageConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
+            this.properties.put("pollStrategy", pollStrategy);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
+         * you to provide your custom implementation to control error handling
+         * usually occurred during the poll operation before an Exchange have
+         * been created and being routed in Camel. The option will be converted
+         * to a org.apache.camel.spi.PollingConsumerPollStrategy type.
+         */
+        public TwitterDirectMessageConsumerBuilder pollStrategy(
+                String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -273,11 +396,30 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * Used by the non-stream geography search to search by radius. You need
+         * to configure all the following options: longitude, latitude, radius,
+         * and distanceMetric. The option will be converted to a
+         * java.lang.Double type.
+         */
+        public TwitterDirectMessageConsumerBuilder radius(String radius) {
+            this.properties.put("radius", radius);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * To use a custom instance of TwitterStream. The option is a
          * twitter4j.TwitterStream type.
          */
         public TwitterDirectMessageConsumerBuilder twitterStream(
                 Object twitterStream) {
+            this.properties.put("twitterStream", twitterStream);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * To use a custom instance of TwitterStream. The option will be
+         * converted to a twitter4j.TwitterStream type.
+         */
+        public TwitterDirectMessageConsumerBuilder twitterStream(
+                String twitterStream) {
             this.properties.put("twitterStream", twitterStream);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -290,11 +432,28 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * Limiting number of results per page. The option will be converted to
+         * a java.lang.Integer type.
+         */
+        public TwitterDirectMessageConsumerBuilder count(String count) {
+            this.properties.put("count", count);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * Filter out old tweets, that has previously been polled. This state is
          * stored in memory only, and based on last tweet id. The option is a
          * boolean type.
          */
         public TwitterDirectMessageConsumerBuilder filterOld(boolean filterOld) {
+            this.properties.put("filterOld", filterOld);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * Filter out old tweets, that has previously been polled. This state is
+         * stored in memory only, and based on last tweet id. The option will be
+         * converted to a boolean type.
+         */
+        public TwitterDirectMessageConsumerBuilder filterOld(String filterOld) {
             this.properties.put("filterOld", filterOld);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -316,11 +475,29 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * The number of pages result which you want camel-twitter to consume.
+         * The option will be converted to a java.lang.Integer type.
+         */
+        public TwitterDirectMessageConsumerBuilder numberOfPages(
+                String numberOfPages) {
+            this.properties.put("numberOfPages", numberOfPages);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * The last tweet id which will be used for pulling the tweets. It is
          * useful when the camel route is restarted after a long running. The
          * option is a long type.
          */
         public TwitterDirectMessageConsumerBuilder sinceId(long sinceId) {
+            this.properties.put("sinceId", sinceId);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * The last tweet id which will be used for pulling the tweets. It is
+         * useful when the camel route is restarted after a long running. The
+         * option will be converted to a long type.
+         */
+        public TwitterDirectMessageConsumerBuilder sinceId(String sinceId) {
             this.properties.put("sinceId", sinceId);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -343,11 +520,31 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * The number of subsequent error polls (failed due some error) that
+         * should happen before the backoffMultipler should kick-in. The option
+         * will be converted to a int type.
+         */
+        public TwitterDirectMessageConsumerBuilder backoffErrorThreshold(
+                String backoffErrorThreshold) {
+            this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * The number of subsequent idle polls that should happen before the
          * backoffMultipler should kick-in. The option is a int type.
          */
         public TwitterDirectMessageConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
+            this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * The number of subsequent idle polls that should happen before the
+         * backoffMultipler should kick-in. The option will be converted to a
+         * int type.
+         */
+        public TwitterDirectMessageConsumerBuilder backoffIdleThreshold(
+                String backoffIdleThreshold) {
             this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -365,9 +562,30 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * To let the scheduled polling consumer backoff if there has been a
+         * number of subsequent idles/errors in a row. The multiplier is then
+         * the number of polls that will be skipped before the next actual
+         * attempt is happening again. When this option is in use then
+         * backoffIdleThreshold and/or backoffErrorThreshold must also be
+         * configured. The option will be converted to a int type.
+         */
+        public TwitterDirectMessageConsumerBuilder backoffMultiplier(
+                String backoffMultiplier) {
+            this.properties.put("backoffMultiplier", backoffMultiplier);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * Milliseconds before the next poll. The option is a long type.
          */
         public TwitterDirectMessageConsumerBuilder delay(long delay) {
+            this.properties.put("delay", delay);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * Milliseconds before the next poll. The option will be converted to a
+         * long type.
+         */
+        public TwitterDirectMessageConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -377,6 +595,15 @@ public interface TwitterDirectMessageEndpointBuilder {
          * option is a boolean type.
          */
         public TwitterDirectMessageConsumerBuilder greedy(boolean greedy) {
+            this.properties.put("greedy", greedy);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * If greedy is enabled, then the ScheduledPollConsumer will run
+         * immediately again, if the previous run polled 1 or more messages. The
+         * option will be converted to a boolean type.
+         */
+        public TwitterDirectMessageConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -391,12 +618,33 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * Milliseconds before the first poll starts. You can also specify time
+         * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
+         * seconds), and 1h (1 hour). The option will be converted to a long
+         * type.
+         */
+        public TwitterDirectMessageConsumerBuilder initialDelay(
+                String initialDelay) {
+            this.properties.put("initialDelay", initialDelay);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * The consumer logs a start/complete log line when it polls. This
          * option allows you to configure the logging level for that. The option
          * is a org.apache.camel.LoggingLevel type.
          */
         public TwitterDirectMessageConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
+            this.properties.put("runLoggingLevel", runLoggingLevel);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * The consumer logs a start/complete log line when it polls. This
+         * option allows you to configure the logging level for that. The option
+         * will be converted to a org.apache.camel.LoggingLevel type.
+         */
+        public TwitterDirectMessageConsumerBuilder runLoggingLevel(
+                String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -412,12 +660,32 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * Allows for configuring a custom/shared thread pool to use for the
+         * consumer. By default each consumer has its own single threaded thread
+         * pool. The option will be converted to a
+         * java.util.concurrent.ScheduledExecutorService type.
+         */
+        public TwitterDirectMessageConsumerBuilder scheduledExecutorService(
+                String scheduledExecutorService) {
+            this.properties.put("scheduledExecutorService", scheduledExecutorService);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
          * component. The option is a
          * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
          */
         public TwitterDirectMessageConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
+            this.properties.put("scheduler", scheduler);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * To use a cron scheduler from either camel-spring or camel-quartz2
+         * component. The option will be converted to a
+         * org.apache.camel.spi.ScheduledPollConsumerScheduler type.
+         */
+        public TwitterDirectMessageConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -432,6 +700,16 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * To configure additional properties when using a custom scheduler or
+         * any of the Quartz2, Spring based scheduler. The option will be
+         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public TwitterDirectMessageConsumerBuilder schedulerProperties(
+                String schedulerProperties) {
+            this.properties.put("schedulerProperties", schedulerProperties);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * Whether the scheduler should be auto started. The option is a boolean
          * type.
          */
@@ -441,10 +719,27 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * Whether the scheduler should be auto started. The option will be
+         * converted to a boolean type.
+         */
+        public TwitterDirectMessageConsumerBuilder startScheduler(
+                String startScheduler) {
+            this.properties.put("startScheduler", startScheduler);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * Time unit for initialDelay and delay options. The option is a
          * java.util.concurrent.TimeUnit type.
          */
         public TwitterDirectMessageConsumerBuilder timeUnit(TimeUnit timeUnit) {
+            this.properties.put("timeUnit", timeUnit);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * Time unit for initialDelay and delay options. The option will be
+         * converted to a java.util.concurrent.TimeUnit type.
+         */
+        public TwitterDirectMessageConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
             return (TwitterDirectMessageConsumerBuilder) this;
         }
@@ -459,10 +754,28 @@ public interface TwitterDirectMessageEndpointBuilder {
             return (TwitterDirectMessageConsumerBuilder) this;
         }
         /**
+         * Controls if fixed delay or fixed rate is used. See
+         * ScheduledExecutorService in JDK for details. The option will be
+         * converted to a boolean type.
+         */
+        public TwitterDirectMessageConsumerBuilder useFixedDelay(
+                String useFixedDelay) {
+            this.properties.put("useFixedDelay", useFixedDelay);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
          * Sorts by id, so the oldest are first, and newest last. The option is
          * a boolean type.
          */
         public TwitterDirectMessageConsumerBuilder sortById(boolean sortById) {
+            this.properties.put("sortById", sortById);
+            return (TwitterDirectMessageConsumerBuilder) this;
+        }
+        /**
+         * Sorts by id, so the oldest are first, and newest last. The option
+         * will be converted to a boolean type.
+         */
+        public TwitterDirectMessageConsumerBuilder sortById(String sortById) {
             this.properties.put("sortById", sortById);
             return (TwitterDirectMessageConsumerBuilder) this;
         }

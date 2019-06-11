@@ -61,11 +61,29 @@ public interface EKSEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -95,10 +113,26 @@ public interface EKSEndpointBuilder {
             return (EKSProducerBuilder) this;
         }
         /**
+         * To use a existing configured AWS EKS as client. The option will be
+         * converted to a com.amazonaws.services.eks.AmazonEKS type.
+         */
+        public EKSProducerBuilder eksClient(String eksClient) {
+            this.properties.put("eksClient", eksClient);
+            return (EKSProducerBuilder) this;
+        }
+        /**
          * The operation to perform. The option is a
          * org.apache.camel.component.aws.eks.EKSOperations type.
          */
         public EKSProducerBuilder operation(EKSOperations operation) {
+            this.properties.put("operation", operation);
+            return (EKSProducerBuilder) this;
+        }
+        /**
+         * The operation to perform. The option will be converted to a
+         * org.apache.camel.component.aws.eks.EKSOperations type.
+         */
+        public EKSProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (EKSProducerBuilder) this;
         }
@@ -115,6 +149,14 @@ public interface EKSEndpointBuilder {
          * is a java.lang.Integer type.
          */
         public EKSProducerBuilder proxyPort(Integer proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (EKSProducerBuilder) this;
+        }
+        /**
+         * To define a proxy port when instantiating the EKS client. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public EKSProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (EKSProducerBuilder) this;
         }

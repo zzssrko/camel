@@ -64,6 +64,14 @@ public interface RestletEndpointBuilder {
             return (T) this;
         }
         /**
+         * The port number of the restlet service. The option will be converted
+         * to a int type.
+         */
+        public T port(String port) {
+            this.properties.put("port", port);
+            return (T) this;
+        }
+        /**
          * The resource pattern such as /customer/{id}. The option is a
          * java.lang.String type.
          */
@@ -81,11 +89,30 @@ public interface RestletEndpointBuilder {
             return (T) this;
         }
         /**
+         * On a producer endpoint, specifies the request method to use. On a
+         * consumer endpoint, specifies that the endpoint consumes only
+         * restletMethod requests. The option will be converted to a
+         * org.restlet.data.Method type.
+         */
+        public T restletMethod(String restletMethod) {
+            this.properties.put("restletMethod", restletMethod);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
@@ -99,11 +126,29 @@ public interface RestletEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom HeaderFilterStrategy to filter header to and from
+         * Camel message. The option will be converted to a
+         * org.apache.camel.spi.HeaderFilterStrategy type.
+         */
+        public T headerFilterStrategy(String headerFilterStrategy) {
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
+            return (T) this;
+        }
+        /**
          * To use a custom RestletBinding to bind between Restlet and Camel
          * message. The option is a
          * org.apache.camel.component.restlet.RestletBinding type.
          */
         public T restletBinding(Object restletBinding) {
+            this.properties.put("restletBinding", restletBinding);
+            return (T) this;
+        }
+        /**
+         * To use a custom RestletBinding to bind between Restlet and Camel
+         * message. The option will be converted to a
+         * org.apache.camel.component.restlet.RestletBinding type.
+         */
+        public T restletBinding(String restletBinding) {
             this.properties.put("restletBinding", restletBinding);
             return (T) this;
         }
@@ -117,6 +162,15 @@ public interface RestletEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * To configure the security realms of restlet as a map. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
@@ -125,10 +179,28 @@ public interface RestletEndpointBuilder {
             return (T) this;
         }
         /**
+         * To configure the security realms of restlet as a map. The option will
+         * be converted to a java.util.Map<java.lang.String,java.lang.String>
+         * type.
+         */
+        public T restletRealm(String restletRealm) {
+            this.properties.put("restletRealm", restletRealm);
+            return (T) this;
+        }
+        /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
+            this.properties.put("sslContextParameters", sslContextParameters);
+            return (T) this;
+        }
+        /**
+         * To configure security using SSLContextParameters. The option will be
+         * converted to a org.apache.camel.support.jsse.SSLContextParameters
+         * type.
+         */
+        public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
@@ -157,6 +229,20 @@ public interface RestletEndpointBuilder {
             return (RestletConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public RestletConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (RestletConsumerBuilder) this;
+        }
+        /**
          * Specify one or more methods separated by commas (e.g.
          * restletMethods=post,put) to be serviced by a restlet consumer
          * endpoint. If both restletMethod and restletMethods options are
@@ -165,6 +251,18 @@ public interface RestletEndpointBuilder {
          * option is a java.lang.String type.
          */
         public RestletConsumerBuilder restletMethods(Object[] restletMethods) {
+            this.properties.put("restletMethods", restletMethods);
+            return (RestletConsumerBuilder) this;
+        }
+        /**
+         * Specify one or more methods separated by commas (e.g.
+         * restletMethods=post,put) to be serviced by a restlet consumer
+         * endpoint. If both restletMethod and restletMethods options are
+         * specified, the restletMethod setting is ignored. The possible methods
+         * are: ALL,CONNECT,DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT,TRACE. The
+         * option will be converted to a java.lang.String type.
+         */
+        public RestletConsumerBuilder restletMethods(String restletMethods) {
             this.properties.put("restletMethods", restletMethods);
             return (RestletConsumerBuilder) this;
         }
@@ -187,6 +285,24 @@ public interface RestletEndpointBuilder {
             return (RestletConsumerBuilder) this;
         }
         /**
+         * Determines whether or not the raw input stream from Restlet is cached
+         * or not (Camel will read the stream into a in memory/overflow to file,
+         * Stream caching) cache. By default Camel will cache the Restlet input
+         * stream to support reading it multiple times to ensure Camel can
+         * retrieve all data from the stream. However you can set this option to
+         * true when you for example need to access the raw stream, such as
+         * streaming it directly to a file or other persistent store.
+         * DefaultRestletBinding will copy the request input stream into a
+         * stream cache and put it into message body if this option is false to
+         * support reading the stream multiple times. The option will be
+         * converted to a boolean type.
+         */
+        public RestletConsumerBuilder disableStreamCache(
+                String disableStreamCache) {
+            this.properties.put("disableStreamCache", disableStreamCache);
+            return (RestletConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -199,11 +315,30 @@ public interface RestletEndpointBuilder {
             return (RestletConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public RestletConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (RestletConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public RestletConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (RestletConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public RestletConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (RestletConsumerBuilder) this;
         }
@@ -226,10 +361,27 @@ public interface RestletEndpointBuilder {
             return (RestletProducerBuilder) this;
         }
         /**
+         * The Client will give up connection if the connection is timeout, 0
+         * for unlimited wait. The option will be converted to a int type.
+         */
+        public RestletProducerBuilder connectTimeout(String connectTimeout) {
+            this.properties.put("connectTimeout", connectTimeout);
+            return (RestletProducerBuilder) this;
+        }
+        /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
          */
         public RestletProducerBuilder cookieHandler(Object cookieHandler) {
+            this.properties.put("cookieHandler", cookieHandler);
+            return (RestletProducerBuilder) this;
+        }
+        /**
+         * Configure a cookie handler to maintain a HTTP session. The option
+         * will be converted to a
+         * org.apache.camel.http.common.cookie.CookieHandler type.
+         */
+        public RestletProducerBuilder cookieHandler(String cookieHandler) {
             this.properties.put("cookieHandler", cookieHandler);
             return (RestletProducerBuilder) this;
         }
@@ -242,12 +394,31 @@ public interface RestletEndpointBuilder {
             return (RestletProducerBuilder) this;
         }
         /**
+         * The Client socket receive timeout, 0 for unlimited wait. The option
+         * will be converted to a int type.
+         */
+        public RestletProducerBuilder socketTimeout(String socketTimeout) {
+            this.properties.put("socketTimeout", socketTimeout);
+            return (RestletProducerBuilder) this;
+        }
+        /**
          * Whether to throw exception on a producer failure. If this option is
          * false then the http status code is set as a message header which can
          * be checked if it has an error value. The option is a boolean type.
          */
         public RestletProducerBuilder throwExceptionOnFailure(
                 boolean throwExceptionOnFailure) {
+            this.properties.put("throwExceptionOnFailure", throwExceptionOnFailure);
+            return (RestletProducerBuilder) this;
+        }
+        /**
+         * Whether to throw exception on a producer failure. If this option is
+         * false then the http status code is set as a message header which can
+         * be checked if it has an error value. The option will be converted to
+         * a boolean type.
+         */
+        public RestletProducerBuilder throwExceptionOnFailure(
+                String throwExceptionOnFailure) {
             this.properties.put("throwExceptionOnFailure", throwExceptionOnFailure);
             return (RestletProducerBuilder) this;
         }
@@ -266,6 +437,20 @@ public interface RestletEndpointBuilder {
             return (RestletProducerBuilder) this;
         }
         /**
+         * Whether to auto close the stream representation as response from
+         * calling a REST service using the restlet producer. If the response is
+         * streaming and the option streamRepresentation is enabled then you may
+         * want to auto close the InputStream from the streaming response to
+         * ensure the input stream is closed when the Camel Exchange is done
+         * being routed. However if you need to read the stream outside a Camel
+         * route, you may need to not auto close the stream. The option will be
+         * converted to a boolean type.
+         */
+        public RestletProducerBuilder autoCloseStream(String autoCloseStream) {
+            this.properties.put("autoCloseStream", autoCloseStream);
+            return (RestletProducerBuilder) this;
+        }
+        /**
          * Whether to support stream representation as response from calling a
          * REST service using the restlet producer. If the response is streaming
          * then this option can be enabled to use an java.io.InputStream as the
@@ -277,6 +462,22 @@ public interface RestletEndpointBuilder {
          */
         public RestletProducerBuilder streamRepresentation(
                 boolean streamRepresentation) {
+            this.properties.put("streamRepresentation", streamRepresentation);
+            return (RestletProducerBuilder) this;
+        }
+        /**
+         * Whether to support stream representation as response from calling a
+         * REST service using the restlet producer. If the response is streaming
+         * then this option can be enabled to use an java.io.InputStream as the
+         * message body on the Camel Message body. If using this option you may
+         * want to enable the autoCloseStream option as well to ensure the input
+         * stream is closed when the Camel Exchange is done being routed.
+         * However if you need to read the stream outside a Camel route, you may
+         * need to not auto close the stream. The option will be converted to a
+         * boolean type.
+         */
+        public RestletProducerBuilder streamRepresentation(
+                String streamRepresentation) {
             this.properties.put("streamRepresentation", streamRepresentation);
             return (RestletProducerBuilder) this;
         }

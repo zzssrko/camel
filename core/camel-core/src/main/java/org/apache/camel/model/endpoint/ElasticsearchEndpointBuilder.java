@@ -53,6 +53,14 @@ public interface ElasticsearchEndpointBuilder {
             return (T) this;
         }
         /**
+         * The time in ms to wait before connection will timeout. The option
+         * will be converted to a int type.
+         */
+        public T connectionTimeout(String connectionTimeout) {
+            this.properties.put("connectionTimeout", connectionTimeout);
+            return (T) this;
+        }
+        /**
          * Disconnect after it finish calling the producer. The option is a
          * boolean type.
          */
@@ -61,9 +69,24 @@ public interface ElasticsearchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Disconnect after it finish calling the producer. The option will be
+         * converted to a boolean type.
+         */
+        public T disconnect(String disconnect) {
+            this.properties.put("disconnect", disconnect);
+            return (T) this;
+        }
+        /**
          * Enable SSL. The option is a boolean type.
          */
         public T enableSSL(boolean enableSSL) {
+            this.properties.put("enableSSL", enableSSL);
+            return (T) this;
+        }
+        /**
+         * Enable SSL. The option will be converted to a boolean type.
+         */
+        public T enableSSL(String enableSSL) {
             this.properties.put("enableSSL", enableSSL);
             return (T) this;
         }
@@ -99,10 +122,26 @@ public interface ElasticsearchEndpointBuilder {
             return (T) this;
         }
         /**
+         * The time in ms before retry. The option will be converted to a int
+         * type.
+         */
+        public T maxRetryTimeout(String maxRetryTimeout) {
+            this.properties.put("maxRetryTimeout", maxRetryTimeout);
+            return (T) this;
+        }
+        /**
          * What operation to perform. The option is a
          * org.apache.camel.component.elasticsearch.ElasticsearchOperation type.
          */
         public T operation(ElasticsearchOperation operation) {
+            this.properties.put("operation", operation);
+            return (T) this;
+        }
+        /**
+         * What operation to perform. The option will be converted to a
+         * org.apache.camel.component.elasticsearch.ElasticsearchOperation type.
+         */
+        public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
@@ -115,10 +154,26 @@ public interface ElasticsearchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Time in ms during which elasticsearch will keep search context alive.
+         * The option will be converted to a int type.
+         */
+        public T scrollKeepAliveMs(String scrollKeepAliveMs) {
+            this.properties.put("scrollKeepAliveMs", scrollKeepAliveMs);
+            return (T) this;
+        }
+        /**
          * The timeout in ms to wait before the socket will timeout. The option
          * is a int type.
          */
         public T socketTimeout(int socketTimeout) {
+            this.properties.put("socketTimeout", socketTimeout);
+            return (T) this;
+        }
+        /**
+         * The timeout in ms to wait before the socket will timeout. The option
+         * will be converted to a int type.
+         */
+        public T socketTimeout(String socketTimeout) {
             this.properties.put("socketTimeout", socketTimeout);
             return (T) this;
         }
@@ -130,10 +185,25 @@ public interface ElasticsearchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Enable scroll usage. The option will be converted to a boolean type.
+         */
+        public T useScroll(String useScroll) {
+            this.properties.put("useScroll", useScroll);
+            return (T) this;
+        }
+        /**
          * Index creation waits for the write consistency number of shards to be
          * available. The option is a int type.
          */
         public T waitForActiveShards(int waitForActiveShards) {
+            this.properties.put("waitForActiveShards", waitForActiveShards);
+            return (T) this;
+        }
+        /**
+         * Index creation waits for the write consistency number of shards to be
+         * available. The option will be converted to a int type.
+         */
+        public T waitForActiveShards(String waitForActiveShards) {
             this.properties.put("waitForActiveShards", waitForActiveShards);
             return (T) this;
         }
@@ -147,11 +217,29 @@ public interface ElasticsearchEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

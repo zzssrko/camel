@@ -57,12 +57,31 @@ public interface PropertiesEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to silently ignore if a location cannot be located, such as a
+         * properties file not found. The option will be converted to a boolean
+         * type.
+         */
+        public T ignoreMissingLocation(String ignoreMissingLocation) {
+            this.properties.put("ignoreMissingLocation", ignoreMissingLocation);
+            return (T) this;
+        }
+        /**
          * A list of locations to load properties. You can use comma to separate
          * multiple locations. This option will override any default locations
          * and only use the locations from this option. The option is a
          * java.lang.String type.
          */
         public T locations(List<Object> locations) {
+            this.properties.put("locations", locations);
+            return (T) this;
+        }
+        /**
+         * A list of locations to load properties. You can use comma to separate
+         * multiple locations. This option will override any default locations
+         * and only use the locations from this option. The option will be
+         * converted to a java.lang.String type.
+         */
+        public T locations(String locations) {
             this.properties.put("locations", locations);
             return (T) this;
         }
@@ -76,11 +95,29 @@ public interface PropertiesEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -109,6 +146,20 @@ public interface PropertiesEndpointBuilder {
             return (PropertiesConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public PropertiesConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (PropertiesConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -121,11 +172,31 @@ public interface PropertiesEndpointBuilder {
             return (PropertiesConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public PropertiesConsumerBuilder exceptionHandler(
+                String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (PropertiesConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public PropertiesConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (PropertiesConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public PropertiesConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (PropertiesConsumerBuilder) this;
         }

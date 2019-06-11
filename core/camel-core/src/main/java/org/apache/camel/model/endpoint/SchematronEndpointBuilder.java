@@ -53,10 +53,26 @@ public interface SchematronEndpointBuilder {
             return (T) this;
         }
         /**
+         * Flag to abort the route and throw a schematron validation exception.
+         * The option will be converted to a boolean type.
+         */
+        public T abort(String abort) {
+            this.properties.put("abort", abort);
+            return (T) this;
+        }
+        /**
          * To use the given schematron rules instead of loading from the path.
          * The option is a javax.xml.transform.Templates type.
          */
         public T rules(Object rules) {
+            this.properties.put("rules", rules);
+            return (T) this;
+        }
+        /**
+         * To use the given schematron rules instead of loading from the path.
+         * The option will be converted to a javax.xml.transform.Templates type.
+         */
+        public T rules(String rules) {
             this.properties.put("rules", rules);
             return (T) this;
         }
@@ -70,6 +86,15 @@ public interface SchematronEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
@@ -79,10 +104,28 @@ public interface SchematronEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * Set the URIResolver to be used for resolving schematron includes in
          * the rules file. The option is a javax.xml.transform.URIResolver type.
          */
         public T uriResolver(Object uriResolver) {
+            this.properties.put("uriResolver", uriResolver);
+            return (T) this;
+        }
+        /**
+         * Set the URIResolver to be used for resolving schematron includes in
+         * the rules file. The option will be converted to a
+         * javax.xml.transform.URIResolver type.
+         */
+        public T uriResolver(String uriResolver) {
             this.properties.put("uriResolver", uriResolver);
             return (T) this;
         }

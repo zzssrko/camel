@@ -72,11 +72,29 @@ public interface NsqEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -89,10 +107,27 @@ public interface NsqEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set secure option indicating TLS is required. The option will be
+         * converted to a boolean type.
+         */
+        public T secure(String secure) {
+            this.properties.put("secure", secure);
+            return (T) this;
+        }
+        /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
+            this.properties.put("sslContextParameters", sslContextParameters);
+            return (T) this;
+        }
+        /**
+         * To configure security using SSLContextParameters. The option will be
+         * converted to a org.apache.camel.support.jsse.SSLContextParameters
+         * type.
+         */
+        public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
@@ -116,6 +151,15 @@ public interface NsqEndpointBuilder {
             return (NsqConsumerBuilder) this;
         }
         /**
+         * Automatically finish the NSQ message when it is retrieved from the
+         * quese and before the Exchange is processed. The option will be
+         * converted to a java.lang.Boolean type.
+         */
+        public NsqConsumerBuilder autoFinish(String autoFinish) {
+            this.properties.put("autoFinish", autoFinish);
+            return (NsqConsumerBuilder) this;
+        }
+        /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
          * pickup incoming messages, or the likes, will now be processed as a
@@ -125,6 +169,19 @@ public interface NsqEndpointBuilder {
          * ignored. The option is a boolean type.
          */
         public NsqConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (NsqConsumerBuilder) this;
+        }
+        /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public NsqConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (NsqConsumerBuilder) this;
         }
@@ -144,9 +201,25 @@ public interface NsqEndpointBuilder {
             return (NsqConsumerBuilder) this;
         }
         /**
+         * The lookup retry interval. The option will be converted to a long
+         * type.
+         */
+        public NsqConsumerBuilder lookupInterval(String lookupInterval) {
+            this.properties.put("lookupInterval", lookupInterval);
+            return (NsqConsumerBuilder) this;
+        }
+        /**
          * The port of the nsqdlookupd server. The option is a int type.
          */
         public NsqConsumerBuilder lookupServerPort(int lookupServerPort) {
+            this.properties.put("lookupServerPort", lookupServerPort);
+            return (NsqConsumerBuilder) this;
+        }
+        /**
+         * The port of the nsqdlookupd server. The option will be converted to a
+         * int type.
+         */
+        public NsqConsumerBuilder lookupServerPort(String lookupServerPort) {
             this.properties.put("lookupServerPort", lookupServerPort);
             return (NsqConsumerBuilder) this;
         }
@@ -158,6 +231,14 @@ public interface NsqEndpointBuilder {
             return (NsqConsumerBuilder) this;
         }
         /**
+         * The NSQ message timeout for a consumer. The option will be converted
+         * to a long type.
+         */
+        public NsqConsumerBuilder messageTimeout(String messageTimeout) {
+            this.properties.put("messageTimeout", messageTimeout);
+            return (NsqConsumerBuilder) this;
+        }
+        /**
          * Consumer pool size. The option is a int type.
          */
         public NsqConsumerBuilder poolSize(int poolSize) {
@@ -165,9 +246,23 @@ public interface NsqEndpointBuilder {
             return (NsqConsumerBuilder) this;
         }
         /**
+         * Consumer pool size. The option will be converted to a int type.
+         */
+        public NsqConsumerBuilder poolSize(String poolSize) {
+            this.properties.put("poolSize", poolSize);
+            return (NsqConsumerBuilder) this;
+        }
+        /**
          * The requeue interval. The option is a long type.
          */
         public NsqConsumerBuilder requeueInterval(long requeueInterval) {
+            this.properties.put("requeueInterval", requeueInterval);
+            return (NsqConsumerBuilder) this;
+        }
+        /**
+         * The requeue interval. The option will be converted to a long type.
+         */
+        public NsqConsumerBuilder requeueInterval(String requeueInterval) {
             this.properties.put("requeueInterval", requeueInterval);
             return (NsqConsumerBuilder) this;
         }
@@ -184,11 +279,30 @@ public interface NsqEndpointBuilder {
             return (NsqConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public NsqConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (NsqConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public NsqConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (NsqConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public NsqConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (NsqConsumerBuilder) this;
         }
@@ -206,6 +320,14 @@ public interface NsqEndpointBuilder {
          * The port of the nsqd server. The option is a int type.
          */
         public NsqProducerBuilder port(int port) {
+            this.properties.put("port", port);
+            return (NsqProducerBuilder) this;
+        }
+        /**
+         * The port of the nsqd server. The option will be converted to a int
+         * type.
+         */
+        public NsqProducerBuilder port(String port) {
             this.properties.put("port", port);
             return (NsqProducerBuilder) this;
         }

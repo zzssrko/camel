@@ -56,11 +56,29 @@ public interface DirectEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -89,6 +107,20 @@ public interface DirectEndpointBuilder {
             return (DirectConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public DirectConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (DirectConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -101,11 +133,30 @@ public interface DirectEndpointBuilder {
             return (DirectConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public DirectConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (DirectConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public DirectConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (DirectConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public DirectConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (DirectConsumerBuilder) this;
         }
@@ -129,6 +180,16 @@ public interface DirectEndpointBuilder {
             return (DirectProducerBuilder) this;
         }
         /**
+         * If sending a message to a direct endpoint which has no active
+         * consumer, then we can tell the producer to block and wait for the
+         * consumer to become active. The option will be converted to a boolean
+         * type.
+         */
+        public DirectProducerBuilder block(String block) {
+            this.properties.put("block", block);
+            return (DirectProducerBuilder) this;
+        }
+        /**
          * Whether the producer should fail by throwing an exception, when
          * sending to a DIRECT endpoint with no active consumers. The option is
          * a boolean type.
@@ -138,10 +199,27 @@ public interface DirectEndpointBuilder {
             return (DirectProducerBuilder) this;
         }
         /**
+         * Whether the producer should fail by throwing an exception, when
+         * sending to a DIRECT endpoint with no active consumers. The option
+         * will be converted to a boolean type.
+         */
+        public DirectProducerBuilder failIfNoConsumers(String failIfNoConsumers) {
+            this.properties.put("failIfNoConsumers", failIfNoConsumers);
+            return (DirectProducerBuilder) this;
+        }
+        /**
          * The timeout value to use if block is enabled. The option is a long
          * type.
          */
         public DirectProducerBuilder timeout(long timeout) {
+            this.properties.put("timeout", timeout);
+            return (DirectProducerBuilder) this;
+        }
+        /**
+         * The timeout value to use if block is enabled. The option will be
+         * converted to a long type.
+         */
+        public DirectProducerBuilder timeout(String timeout) {
             this.properties.put("timeout", timeout);
             return (DirectProducerBuilder) this;
         }

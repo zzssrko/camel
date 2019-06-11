@@ -54,11 +54,31 @@ public interface IgniteIdGenEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether to propagate the incoming body if the return type of the
+         * underlying Ignite operation is void. The option will be converted to
+         * a boolean type.
+         */
+        public T propagateIncomingBodyIfNoReturnValue(
+                String propagateIncomingBodyIfNoReturnValue) {
+            this.properties.put("propagateIncomingBodyIfNoReturnValue", propagateIncomingBodyIfNoReturnValue);
+            return (T) this;
+        }
+        /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
         public T treatCollectionsAsCacheObjects(
                 boolean treatCollectionsAsCacheObjects) {
+            this.properties.put("treatCollectionsAsCacheObjects", treatCollectionsAsCacheObjects);
+            return (T) this;
+        }
+        /**
+         * Sets whether to treat Collections as cache objects or as Collections
+         * of items to insert/update/compute, etc. The option will be converted
+         * to a boolean type.
+         */
+        public T treatCollectionsAsCacheObjects(
+                String treatCollectionsAsCacheObjects) {
             this.properties.put("treatCollectionsAsCacheObjects", treatCollectionsAsCacheObjects);
             return (T) this;
         }
@@ -72,11 +92,29 @@ public interface IgniteIdGenEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -98,9 +136,25 @@ public interface IgniteIdGenEndpointBuilder {
             return (IgniteIdGenProducerBuilder) this;
         }
         /**
+         * The batch size. The option will be converted to a java.lang.Integer
+         * type.
+         */
+        public IgniteIdGenProducerBuilder batchSize(String batchSize) {
+            this.properties.put("batchSize", batchSize);
+            return (IgniteIdGenProducerBuilder) this;
+        }
+        /**
          * The initial value. The option is a java.lang.Long type.
          */
         public IgniteIdGenProducerBuilder initialValue(Long initialValue) {
+            this.properties.put("initialValue", initialValue);
+            return (IgniteIdGenProducerBuilder) this;
+        }
+        /**
+         * The initial value. The option will be converted to a java.lang.Long
+         * type.
+         */
+        public IgniteIdGenProducerBuilder initialValue(String initialValue) {
             this.properties.put("initialValue", initialValue);
             return (IgniteIdGenProducerBuilder) this;
         }
@@ -113,6 +167,17 @@ public interface IgniteIdGenEndpointBuilder {
          */
         public IgniteIdGenProducerBuilder operation(
                 IgniteIdGenOperation operation) {
+            this.properties.put("operation", operation);
+            return (IgniteIdGenProducerBuilder) this;
+        }
+        /**
+         * The operation to invoke on the Ignite ID Generator. Superseded by the
+         * IgniteConstants.IGNITE_IDGEN_OPERATION header in the IN message.
+         * Possible values: ADD_AND_GET, GET, GET_AND_ADD, GET_AND_INCREMENT,
+         * INCREMENT_AND_GET. The option will be converted to a
+         * org.apache.camel.component.ignite.idgen.IgniteIdGenOperation type.
+         */
+        public IgniteIdGenProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (IgniteIdGenProducerBuilder) this;
         }

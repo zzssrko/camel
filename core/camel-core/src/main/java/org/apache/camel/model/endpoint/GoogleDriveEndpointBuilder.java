@@ -50,6 +50,15 @@ public interface GoogleDriveEndpointBuilder {
             return (T) this;
         }
         /**
+         * What kind of operation to perform. The option will be converted to a
+         * org.apache.camel.component.google.drive.internal.GoogleDriveApiName
+         * type.
+         */
+        public T apiName(String apiName) {
+            this.properties.put("apiName", apiName);
+            return (T) this;
+        }
+        /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
@@ -81,6 +90,17 @@ public interface GoogleDriveEndpointBuilder {
          * type.
          */
         public T clientFactory(Object clientFactory) {
+            this.properties.put("clientFactory", clientFactory);
+            return (T) this;
+        }
+        /**
+         * To use the GoogleCalendarClientFactory as factory for creating the
+         * client. Will by default use BatchGoogleDriveClientFactory. The option
+         * will be converted to a
+         * org.apache.camel.component.google.drive.GoogleDriveClientFactory
+         * type.
+         */
+        public T clientFactory(String clientFactory) {
             this.properties.put("clientFactory", clientFactory);
             return (T) this;
         }
@@ -129,6 +149,16 @@ public interface GoogleDriveEndpointBuilder {
             return (T) this;
         }
         /**
+         * Specifies the level of permissions you want a drive application to
+         * have to a user account. See
+         * https://developers.google.com/drive/web/scopes for more info. The
+         * option will be converted to a java.util.List<java.lang.String> type.
+         */
+        public T scopes(String scopes) {
+            this.properties.put("scopes", scopes);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -138,11 +168,29 @@ public interface GoogleDriveEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -171,6 +219,20 @@ public interface GoogleDriveEndpointBuilder {
             return (GoogleDriveConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public GoogleDriveConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (GoogleDriveConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -183,11 +245,31 @@ public interface GoogleDriveEndpointBuilder {
             return (GoogleDriveConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public GoogleDriveConsumerBuilder exceptionHandler(
+                String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (GoogleDriveConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public GoogleDriveConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (GoogleDriveConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public GoogleDriveConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (GoogleDriveConsumerBuilder) this;
         }

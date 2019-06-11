@@ -46,6 +46,14 @@ public interface MetricsEndpointBuilder {
             return (T) this;
         }
         /**
+         * Type of metrics. The option will be converted to a
+         * org.apache.camel.component.metrics.MetricsType type.
+         */
+        public T metricsType(String metricsType) {
+            this.properties.put("metricsType", metricsType);
+            return (T) this;
+        }
+        /**
          * Name of metrics. The option is a java.lang.String type.
          */
         public T metricsName(String metricsName) {
@@ -61,10 +69,26 @@ public interface MetricsEndpointBuilder {
             return (T) this;
         }
         /**
+         * Action when using timer type. The option will be converted to a
+         * org.apache.camel.component.metrics.MetricsTimerAction type.
+         */
+        public T action(String action) {
+            this.properties.put("action", action);
+            return (T) this;
+        }
+        /**
          * Decrement value when using counter type. The option is a
          * java.lang.Long type.
          */
         public T decrement(Long decrement) {
+            this.properties.put("decrement", decrement);
+            return (T) this;
+        }
+        /**
+         * Decrement value when using counter type. The option will be converted
+         * to a java.lang.Long type.
+         */
+        public T decrement(String decrement) {
             this.properties.put("decrement", decrement);
             return (T) this;
         }
@@ -77,9 +101,25 @@ public interface MetricsEndpointBuilder {
             return (T) this;
         }
         /**
+         * Increment value when using counter type. The option will be converted
+         * to a java.lang.Long type.
+         */
+        public T increment(String increment) {
+            this.properties.put("increment", increment);
+            return (T) this;
+        }
+        /**
          * Mark when using meter type. The option is a java.lang.Long type.
          */
         public T mark(Long mark) {
+            this.properties.put("mark", mark);
+            return (T) this;
+        }
+        /**
+         * Mark when using meter type. The option will be converted to a
+         * java.lang.Long type.
+         */
+        public T mark(String mark) {
             this.properties.put("mark", mark);
             return (T) this;
         }
@@ -92,10 +132,26 @@ public interface MetricsEndpointBuilder {
             return (T) this;
         }
         /**
+         * Subject value when using gauge type. The option will be converted to
+         * a java.lang.Object type.
+         */
+        public T subject(String subject) {
+            this.properties.put("subject", subject);
+            return (T) this;
+        }
+        /**
          * Value value when using histogram type. The option is a java.lang.Long
          * type.
          */
         public T value(Long value) {
+            this.properties.put("value", value);
+            return (T) this;
+        }
+        /**
+         * Value value when using histogram type. The option will be converted
+         * to a java.lang.Long type.
+         */
+        public T value(String value) {
             this.properties.put("value", value);
             return (T) this;
         }
@@ -109,11 +165,29 @@ public interface MetricsEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

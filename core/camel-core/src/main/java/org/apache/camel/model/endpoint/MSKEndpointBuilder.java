@@ -61,11 +61,29 @@ public interface MSKEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -95,10 +113,26 @@ public interface MSKEndpointBuilder {
             return (MSKProducerBuilder) this;
         }
         /**
+         * To use a existing configured AWS MSK as client. The option will be
+         * converted to a com.amazonaws.services.kafka.AWSKafka type.
+         */
+        public MSKProducerBuilder mskClient(String mskClient) {
+            this.properties.put("mskClient", mskClient);
+            return (MSKProducerBuilder) this;
+        }
+        /**
          * The operation to perform. The option is a
          * org.apache.camel.component.aws.msk.MSKOperations type.
          */
         public MSKProducerBuilder operation(MSKOperations operation) {
+            this.properties.put("operation", operation);
+            return (MSKProducerBuilder) this;
+        }
+        /**
+         * The operation to perform. The option will be converted to a
+         * org.apache.camel.component.aws.msk.MSKOperations type.
+         */
+        public MSKProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (MSKProducerBuilder) this;
         }
@@ -115,6 +149,14 @@ public interface MSKEndpointBuilder {
          * is a java.lang.Integer type.
          */
         public MSKProducerBuilder proxyPort(Integer proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (MSKProducerBuilder) this;
+        }
+        /**
+         * To define a proxy port when instantiating the MSK client. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public MSKProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (MSKProducerBuilder) this;
         }

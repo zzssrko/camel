@@ -52,9 +52,25 @@ public interface NagiosEndpointBuilder {
             return (T) this;
         }
         /**
+         * The port number of the host. The option will be converted to a int
+         * type.
+         */
+        public T port(String port) {
+            this.properties.put("port", port);
+            return (T) this;
+        }
+        /**
          * Connection timeout in millis. The option is a int type.
          */
         public T connectionTimeout(int connectionTimeout) {
+            this.properties.put("connectionTimeout", connectionTimeout);
+            return (T) this;
+        }
+        /**
+         * Connection timeout in millis. The option will be converted to a int
+         * type.
+         */
+        public T connectionTimeout(String connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
@@ -69,9 +85,27 @@ public interface NagiosEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether or not to use synchronous when sending a passive check.
+         * Setting it to false will allow Camel to continue routing the message
+         * and the passive check message will be send asynchronously. The option
+         * will be converted to a boolean type.
+         */
+        public T sendSync(String sendSync) {
+            this.properties.put("sendSync", sendSync);
+            return (T) this;
+        }
+        /**
          * Sending timeout in millis. The option is a int type.
          */
         public T timeout(int timeout) {
+            this.properties.put("timeout", timeout);
+            return (T) this;
+        }
+        /**
+         * Sending timeout in millis. The option will be converted to a int
+         * type.
+         */
+        public T timeout(String timeout) {
             this.properties.put("timeout", timeout);
             return (T) this;
         }
@@ -85,11 +119,29 @@ public interface NagiosEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -102,11 +154,28 @@ public interface NagiosEndpointBuilder {
             return (T) this;
         }
         /**
+         * To specify an encryption method. The option will be converted to a
+         * com.googlecode.jsendnsca.encryption.Encryption type.
+         */
+        public T encryption(String encryption) {
+            this.properties.put("encryption", encryption);
+            return (T) this;
+        }
+        /**
          * To specify an encryption method. The option is a
          * org.apache.camel.component.nagios.NagiosEncryptionMethod type.
          */
         @Deprecated
         public T encryptionMethod(NagiosEncryptionMethod encryptionMethod) {
+            this.properties.put("encryptionMethod", encryptionMethod);
+            return (T) this;
+        }
+        /**
+         * To specify an encryption method. The option will be converted to a
+         * org.apache.camel.component.nagios.NagiosEncryptionMethod type.
+         */
+        @Deprecated
+        public T encryptionMethod(String encryptionMethod) {
             this.properties.put("encryptionMethod", encryptionMethod);
             return (T) this;
         }

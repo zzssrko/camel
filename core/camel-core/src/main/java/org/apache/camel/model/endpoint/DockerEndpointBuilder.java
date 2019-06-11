@@ -47,6 +47,14 @@ public interface DockerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Which operation to use. The option will be converted to a
+         * org.apache.camel.component.docker.DockerOperation type.
+         */
+        public T operation(String operation) {
+            this.properties.put("operation", operation);
+            return (T) this;
+        }
+        /**
          * Email address associated with the user. The option is a
          * java.lang.String type.
          */
@@ -69,10 +77,26 @@ public interface DockerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Docker port. The option will be converted to a java.lang.Integer
+         * type.
+         */
+        public T port(String port) {
+            this.properties.put("port", port);
+            return (T) this;
+        }
+        /**
          * Request timeout for response (in seconds). The option is a
          * java.lang.Integer type.
          */
         public T requestTimeout(Integer requestTimeout) {
+            this.properties.put("requestTimeout", requestTimeout);
+            return (T) this;
+        }
+        /**
+         * Request timeout for response (in seconds). The option will be
+         * converted to a java.lang.Integer type.
+         */
+        public T requestTimeout(String requestTimeout) {
             this.properties.put("requestTimeout", requestTimeout);
             return (T) this;
         }
@@ -82,6 +106,15 @@ public interface DockerEndpointBuilder {
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
@@ -101,9 +134,25 @@ public interface DockerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to follow redirect filter. The option will be converted to a
+         * boolean type.
+         */
+        public T followRedirectFilter(String followRedirectFilter) {
+            this.properties.put("followRedirectFilter", followRedirectFilter);
+            return (T) this;
+        }
+        /**
          * Whether to use logging filter. The option is a boolean type.
          */
         public T loggingFilter(boolean loggingFilter) {
+            this.properties.put("loggingFilter", loggingFilter);
+            return (T) this;
+        }
+        /**
+         * Whether to use logging filter. The option will be converted to a
+         * boolean type.
+         */
+        public T loggingFilter(String loggingFilter) {
             this.properties.put("loggingFilter", loggingFilter);
             return (T) this;
         }
@@ -115,9 +164,25 @@ public interface DockerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Maximum route connections. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T maxPerRouteConnections(String maxPerRouteConnections) {
+            this.properties.put("maxPerRouteConnections", maxPerRouteConnections);
+            return (T) this;
+        }
+        /**
          * Maximum total connections. The option is a java.lang.Integer type.
          */
         public T maxTotalConnections(Integer maxTotalConnections) {
+            this.properties.put("maxTotalConnections", maxTotalConnections);
+            return (T) this;
+        }
+        /**
+         * Maximum total connections. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T maxTotalConnections(String maxTotalConnections) {
             this.properties.put("maxTotalConnections", maxTotalConnections);
             return (T) this;
         }
@@ -137,11 +202,28 @@ public interface DockerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Socket connection mode. The option will be converted to a boolean
+         * type.
+         */
+        public T socket(String socket) {
+            this.properties.put("socket", socket);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -168,9 +250,24 @@ public interface DockerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Use HTTPS communication. The option will be converted to a boolean
+         * type.
+         */
+        public T secure(String secure) {
+            this.properties.put("secure", secure);
+            return (T) this;
+        }
+        /**
          * Check TLS. The option is a boolean type.
          */
         public T tlsVerify(boolean tlsVerify) {
+            this.properties.put("tlsVerify", tlsVerify);
+            return (T) this;
+        }
+        /**
+         * Check TLS. The option will be converted to a boolean type.
+         */
+        public T tlsVerify(String tlsVerify) {
             this.properties.put("tlsVerify", tlsVerify);
             return (T) this;
         }
@@ -207,6 +304,20 @@ public interface DockerEndpointBuilder {
             return (DockerConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public DockerConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (DockerConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -219,11 +330,30 @@ public interface DockerEndpointBuilder {
             return (DockerConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public DockerConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (DockerConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public DockerConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (DockerConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public DockerConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (DockerConsumerBuilder) this;
         }

@@ -54,11 +54,31 @@ public interface IgniteSetEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether to propagate the incoming body if the return type of the
+         * underlying Ignite operation is void. The option will be converted to
+         * a boolean type.
+         */
+        public T propagateIncomingBodyIfNoReturnValue(
+                String propagateIncomingBodyIfNoReturnValue) {
+            this.properties.put("propagateIncomingBodyIfNoReturnValue", propagateIncomingBodyIfNoReturnValue);
+            return (T) this;
+        }
+        /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
         public T treatCollectionsAsCacheObjects(
                 boolean treatCollectionsAsCacheObjects) {
+            this.properties.put("treatCollectionsAsCacheObjects", treatCollectionsAsCacheObjects);
+            return (T) this;
+        }
+        /**
+         * Sets whether to treat Collections as cache objects or as Collections
+         * of items to insert/update/compute, etc. The option will be converted
+         * to a boolean type.
+         */
+        public T treatCollectionsAsCacheObjects(
+                String treatCollectionsAsCacheObjects) {
             this.properties.put("treatCollectionsAsCacheObjects", treatCollectionsAsCacheObjects);
             return (T) this;
         }
@@ -72,11 +92,29 @@ public interface IgniteSetEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -101,6 +139,16 @@ public interface IgniteSetEndpointBuilder {
             return (IgniteSetProducerBuilder) this;
         }
         /**
+         * The collection configuration. Default: empty configuration. You can
+         * also conveniently set inner properties by using configuration.xyz=123
+         * options. The option will be converted to a
+         * org.apache.ignite.configuration.CollectionConfiguration type.
+         */
+        public IgniteSetProducerBuilder configuration(String configuration) {
+            this.properties.put("configuration", configuration);
+            return (IgniteSetProducerBuilder) this;
+        }
+        /**
          * The operation to invoke on the Ignite Set. Superseded by the
          * IgniteConstants.IGNITE_SETS_OPERATION header in the IN message.
          * Possible values: CONTAINS, ADD, SIZE, REMOVE, ITERATOR, CLEAR,
@@ -108,6 +156,18 @@ public interface IgniteSetEndpointBuilder {
          * org.apache.camel.component.ignite.set.IgniteSetOperation type.
          */
         public IgniteSetProducerBuilder operation(IgniteSetOperation operation) {
+            this.properties.put("operation", operation);
+            return (IgniteSetProducerBuilder) this;
+        }
+        /**
+         * The operation to invoke on the Ignite Set. Superseded by the
+         * IgniteConstants.IGNITE_SETS_OPERATION header in the IN message.
+         * Possible values: CONTAINS, ADD, SIZE, REMOVE, ITERATOR, CLEAR,
+         * RETAIN_ALL, ARRAY.The set operation to perform. The option will be
+         * converted to a
+         * org.apache.camel.component.ignite.set.IgniteSetOperation type.
+         */
+        public IgniteSetProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (IgniteSetProducerBuilder) this;
         }

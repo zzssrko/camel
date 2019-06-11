@@ -61,11 +61,29 @@ public interface EC2EndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -95,6 +113,14 @@ public interface EC2EndpointBuilder {
             return (EC2ProducerBuilder) this;
         }
         /**
+         * To use a existing configured AmazonEC2Client as client. The option
+         * will be converted to a com.amazonaws.services.ec2.AmazonEC2 type.
+         */
+        public EC2ProducerBuilder amazonEc2Client(String amazonEc2Client) {
+            this.properties.put("amazonEc2Client", amazonEc2Client);
+            return (EC2ProducerBuilder) this;
+        }
+        /**
          * The operation to perform. It can be createAndRunInstances,
          * startInstances, stopInstances, terminateInstances, describeInstances,
          * describeInstancesStatus, rebootInstances, monitorInstances,
@@ -102,6 +128,17 @@ public interface EC2EndpointBuilder {
          * org.apache.camel.component.aws.ec2.EC2Operations type.
          */
         public EC2ProducerBuilder operation(EC2Operations operation) {
+            this.properties.put("operation", operation);
+            return (EC2ProducerBuilder) this;
+        }
+        /**
+         * The operation to perform. It can be createAndRunInstances,
+         * startInstances, stopInstances, terminateInstances, describeInstances,
+         * describeInstancesStatus, rebootInstances, monitorInstances,
+         * unmonitorInstances, createTags or deleteTags. The option will be
+         * converted to a org.apache.camel.component.aws.ec2.EC2Operations type.
+         */
+        public EC2ProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (EC2ProducerBuilder) this;
         }
@@ -118,6 +155,14 @@ public interface EC2EndpointBuilder {
          * is a java.lang.Integer type.
          */
         public EC2ProducerBuilder proxyPort(Integer proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (EC2ProducerBuilder) this;
+        }
+        /**
+         * To define a proxy port when instantiating the EC2 client. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public EC2ProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (EC2ProducerBuilder) this;
         }

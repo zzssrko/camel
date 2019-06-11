@@ -47,6 +47,14 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to sign or verify. The option will be converted to a
+         * org.apache.camel.component.xmlsecurity.XmlCommand type.
+         */
+        public T command(String command) {
+            this.properties.put("command", command);
+            return (T) this;
+        }
+        /**
          * The name part in the URI can be chosen by the user to distinguish
          * between different signer/verifier endpoints within the camel context.
          * The option is a java.lang.String type.
@@ -74,6 +82,15 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Determines if the XML signature specific headers be cleared after
+         * signing and verification. Defaults to true. The option will be
+         * converted to a java.lang.Boolean type.
+         */
+        public T clearHeaders(String clearHeaders) {
+            this.properties.put("clearHeaders", clearHeaders);
+            return (T) this;
+        }
+        /**
          * Sets the crypto context properties. See {link
          * XMLCryptoContext#setProperty(String, Object)}. Possible properties
          * are defined in XMLSignContext an XMLValidateContext (see Supported
@@ -90,11 +107,35 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets the crypto context properties. See {link
+         * XMLCryptoContext#setProperty(String, Object)}. Possible properties
+         * are defined in XMLSignContext an XMLValidateContext (see Supported
+         * Properties). The following properties are set by default to the value
+         * Boolean#TRUE for the XML validation. If you want to switch these
+         * features off you must set the property value to Boolean#FALSE.
+         * org.jcp.xml.dsig.validateManifests
+         * javax.xml.crypto.dsig.cacheReference. The option will be converted to
+         * a java.util.Map<java.lang.String,?> type.
+         */
+        public T cryptoContextProperties(String cryptoContextProperties) {
+            this.properties.put("cryptoContextProperties", cryptoContextProperties);
+            return (T) this;
+        }
+        /**
          * Disallows that the incoming XML document contains DTD DOCTYPE
          * declaration. The default value is Boolean#TRUE. The option is a
          * java.lang.Boolean type.
          */
         public T disallowDoctypeDecl(Boolean disallowDoctypeDecl) {
+            this.properties.put("disallowDoctypeDecl", disallowDoctypeDecl);
+            return (T) this;
+        }
+        /**
+         * Disallows that the incoming XML document contains DTD DOCTYPE
+         * declaration. The default value is Boolean#TRUE. The option will be
+         * converted to a java.lang.Boolean type.
+         */
+        public T disallowDoctypeDecl(String disallowDoctypeDecl) {
             this.properties.put("disallowDoctypeDecl", disallowDoctypeDecl);
             return (T) this;
         }
@@ -105,6 +146,16 @@ public interface XmlSignatureEndpointBuilder {
          * is a java.lang.Boolean type.
          */
         public T omitXmlDeclaration(Boolean omitXmlDeclaration) {
+            this.properties.put("omitXmlDeclaration", omitXmlDeclaration);
+            return (T) this;
+        }
+        /**
+         * Indicator whether the XML declaration in the outgoing message body
+         * should be omitted. Default value is false. Can be overwritten by the
+         * header XmlSignatureConstants#HEADER_OMIT_XML_DECLARATION. The option
+         * will be converted to a java.lang.Boolean type.
+         */
+        public T omitXmlDeclaration(String omitXmlDeclaration) {
             this.properties.put("omitXmlDeclaration", omitXmlDeclaration);
             return (T) this;
         }
@@ -140,11 +191,29 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -160,6 +229,18 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * If you want to restrict the remote access via reference URIs, you can
+         * set an own dereferencer. Optional parameter. If not set the provider
+         * default dereferencer is used which can resolve URI fragments, HTTP,
+         * file and XPpointer URIs. Attention: The implementation is provider
+         * dependent!. The option will be converted to a
+         * javax.xml.crypto.URIDereferencer type.
+         */
+        public T uriDereferencer(String uriDereferencer) {
+            this.properties.put("uriDereferencer", uriDereferencer);
+            return (T) this;
+        }
+        /**
          * In order to protect the KeyInfo element from tampering you can add a
          * reference to the signed info element so that it is protected via the
          * signature value. The default value is true. Only relevant when a
@@ -167,6 +248,17 @@ public interface XmlSignatureEndpointBuilder {
          * The option is a java.lang.Boolean type.
          */
         public T addKeyInfoReference(Boolean addKeyInfoReference) {
+            this.properties.put("addKeyInfoReference", addKeyInfoReference);
+            return (T) this;
+        }
+        /**
+         * In order to protect the KeyInfo element from tampering you can add a
+         * reference to the signed info element so that it is protected via the
+         * signature value. The default value is true. Only relevant when a
+         * KeyInfo is returned by KeyAccessor. and KeyInfo#getId() is not null.
+         * The option will be converted to a java.lang.Boolean type.
+         */
+        public T addKeyInfoReference(String addKeyInfoReference) {
             this.properties.put("addKeyInfoReference", addKeyInfoReference);
             return (T) this;
         }
@@ -179,6 +271,18 @@ public interface XmlSignatureEndpointBuilder {
          * option is a javax.xml.crypto.AlgorithmMethod type.
          */
         public T canonicalizationMethod(Object canonicalizationMethod) {
+            this.properties.put("canonicalizationMethod", canonicalizationMethod);
+            return (T) this;
+        }
+        /**
+         * Canonicalization method used to canonicalize the SignedInfo element
+         * before the digest is calculated. You can use the helper methods
+         * XmlSignatureHelper.getCanonicalizationMethod(String algorithm) or
+         * getCanonicalizationMethod(String algorithm, List
+         * inclusiveNamespacePrefixes) to create a canonicalization method. The
+         * option will be converted to a javax.xml.crypto.AlgorithmMethod type.
+         */
+        public T canonicalizationMethod(String canonicalizationMethod) {
             this.properties.put("canonicalizationMethod", canonicalizationMethod);
             return (T) this;
         }
@@ -240,6 +344,19 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * For the signing process, a private key is necessary. You specify a
+         * key accessor bean which provides this private key. The key accessor
+         * bean must implement the KeyAccessor interface. The package
+         * org.apache.camel.component.xmlsecurity.api contains the default
+         * implementation class DefaultKeyAccessor which reads the private key
+         * from a Java keystore. The option will be converted to a
+         * org.apache.camel.component.xmlsecurity.api.KeyAccessor type.
+         */
+        public T keyAccessor(String keyAccessor) {
+            this.properties.put("keyAccessor", keyAccessor);
+            return (T) this;
+        }
+        /**
          * Local name of the parent element to which the XML signature element
          * will be added. Only relevant for enveloped XML signature.
          * Alternatively you can also use
@@ -279,6 +396,21 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets the XPath to find the parent node in the enveloped case. Either
+         * you specify the parent node via this method or the local name and
+         * namespace of the parent with the methods setParentLocalName(String)
+         * and setParentNamespace(String). Default value is null. The value must
+         * be null for enveloping and detached XML signature. If the parameters
+         * parentXpath and parentLocalName are specified in the same
+         * configuration then an exception is thrown. The option will be
+         * converted to a javax.xml.crypto.dsig.spec.XPathFilterParameterSpec
+         * type.
+         */
+        public T parentXpath(String parentXpath) {
+            this.properties.put("parentXpath", parentXpath);
+            return (T) this;
+        }
+        /**
          * Indicator whether the message body contains plain text. The default
          * value is false, indicating that the message body contains XML. The
          * value can be overwritten by the header
@@ -286,6 +418,17 @@ public interface XmlSignatureEndpointBuilder {
          * java.lang.Boolean type.
          */
         public T plainText(Boolean plainText) {
+            this.properties.put("plainText", plainText);
+            return (T) this;
+        }
+        /**
+         * Indicator whether the message body contains plain text. The default
+         * value is false, indicating that the message body contains XML. The
+         * value can be overwritten by the header
+         * XmlSignatureConstants#HEADER_MESSAGE_IS_PLAIN_TEXT. The option will
+         * be converted to a java.lang.Boolean type.
+         */
+        public T plainText(String plainText) {
             this.properties.put("plainText", plainText);
             return (T) this;
         }
@@ -323,6 +466,18 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * For adding additional References and Objects to the XML signature
+         * which contain additional properties, you can provide a bean which
+         * implements the XmlSignatureProperties interface. The option will be
+         * converted to a
+         * org.apache.camel.component.xmlsecurity.api.XmlSignatureProperties
+         * type.
+         */
+        public T properties(String properties) {
+            this.properties.put("properties", properties);
+            return (T) this;
+        }
+        /**
          * Signature algorithm. Default value is
          * http://www.w3.org/2000/09/xmldsig#rsa-sha1. The option is a
          * java.lang.String type.
@@ -355,6 +510,19 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Transforms which are executed on the message body before the digest
+         * is calculated. By default, C14n is added and in the case of enveloped
+         * signature (see option parentLocalName) also
+         * http://www.w3.org/2000/09/xmldsig#enveloped-signature is added at
+         * position 0 of the list. Use methods in XmlSignatureHelper to create
+         * the transform methods. The option will be converted to a
+         * java.util.List<javax.xml.crypto.AlgorithmMethod> type.
+         */
+        public T transformMethods(String transformMethods) {
+            this.properties.put("transformMethods", transformMethods);
+            return (T) this;
+        }
+        /**
          * Define the elements which are signed in the detached case via XPATH
          * expressions to ID attributes (attributes of type ID). For each
          * element found via the XPATH expression a detached signature is
@@ -375,10 +543,38 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Define the elements which are signed in the detached case via XPATH
+         * expressions to ID attributes (attributes of type ID). For each
+         * element found via the XPATH expression a detached signature is
+         * created whose reference URI contains the corresponding attribute
+         * value (preceded by '#'). The signature becomes the last sibling of
+         * the signed element. Elements with deeper hierarchy level are signed
+         * first. You can also set the XPATH list dynamically via the header
+         * XmlSignatureConstants#HEADER_XPATHS_TO_ID_ATTRIBUTES. The parameter
+         * setParentLocalName(String) or
+         * setParentXpath(XPathFilterParameterSpec) for enveloped signature and
+         * this parameter for detached signature must not be set in the same
+         * configuration. The option will be converted to a
+         * java.util.List<javax.xml.crypto.dsig.spec.XPathFilterParameterSpec>
+         * type.
+         */
+        public T xpathsToIdAttributes(String xpathsToIdAttributes) {
+            this.properties.put("xpathsToIdAttributes", xpathsToIdAttributes);
+            return (T) this;
+        }
+        /**
          * Provides the key for validating the XML signature. The option is a
          * javax.xml.crypto.KeySelector type.
          */
         public T keySelector(Object keySelector) {
+            this.properties.put("keySelector", keySelector);
+            return (T) this;
+        }
+        /**
+         * Provides the key for validating the XML signature. The option will be
+         * converted to a javax.xml.crypto.KeySelector type.
+         */
+        public T keySelector(String keySelector) {
             this.properties.put("keySelector", keySelector);
             return (T) this;
         }
@@ -390,6 +586,17 @@ public interface XmlSignatureEndpointBuilder {
          * option is a java.lang.String type.
          */
         public T outputNodeSearch(Object outputNodeSearch) {
+            this.properties.put("outputNodeSearch", outputNodeSearch);
+            return (T) this;
+        }
+        /**
+         * Sets the output node search value for determining the node from the
+         * XML signature document which shall be set to the output message body.
+         * The class of the value depends on the type of the output node search.
+         * The output node search is forwarded to XmlSignature2Message. The
+         * option will be converted to a java.lang.String type.
+         */
+        public T outputNodeSearch(String outputNodeSearch) {
             this.properties.put("outputNodeSearch", outputNodeSearch);
             return (T) this;
         }
@@ -420,10 +627,33 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Indicator whether the XML signature elements (elements with local
+         * name Signature and namesapce http://www.w3.org/2000/09/xmldsig#)
+         * shall be removed from the document set to the output message.
+         * Normally, this is only necessary, if the XML signature is enveloped.
+         * The default value is Boolean#FALSE. This parameter is forwarded to
+         * XmlSignature2Message. This indicator has no effect if the output node
+         * search is of type
+         * DefaultXmlSignature2Message#OUTPUT_NODE_SEARCH_TYPE_DEFAULT.F. The
+         * option will be converted to a java.lang.Boolean type.
+         */
+        public T removeSignatureElements(String removeSignatureElements) {
+            this.properties.put("removeSignatureElements", removeSignatureElements);
+            return (T) this;
+        }
+        /**
          * Enables secure validation. If true then secure validation is enabled.
          * The option is a java.lang.Boolean type.
          */
         public T secureValidation(Boolean secureValidation) {
+            this.properties.put("secureValidation", secureValidation);
+            return (T) this;
+        }
+        /**
+         * Enables secure validation. If true then secure validation is enabled.
+         * The option will be converted to a java.lang.Boolean type.
+         */
+        public T secureValidation(String secureValidation) {
             this.properties.put("secureValidation", secureValidation);
             return (T) this;
         }
@@ -440,6 +670,23 @@ public interface XmlSignatureEndpointBuilder {
          * type.
          */
         public T validationFailedHandler(Object validationFailedHandler) {
+            this.properties.put("validationFailedHandler", validationFailedHandler);
+            return (T) this;
+        }
+        /**
+         * Handles the different validation failed situations. The default
+         * implementation throws specific exceptions for the different
+         * situations (All exceptions have the package name
+         * org.apache.camel.component.xmlsecurity.api and are a sub-class of
+         * XmlSignatureInvalidException. If the signature value validation
+         * fails, a XmlSignatureInvalidValueException is thrown. If a reference
+         * validation fails, a XmlSignatureInvalidContentHashException is
+         * thrown. For more detailed information, see the JavaDoc. The option
+         * will be converted to a
+         * org.apache.camel.component.xmlsecurity.api.ValidationFailedHandler
+         * type.
+         */
+        public T validationFailedHandler(String validationFailedHandler) {
             this.properties.put("validationFailedHandler", validationFailedHandler);
             return (T) this;
         }
@@ -473,6 +720,35 @@ public interface XmlSignatureEndpointBuilder {
             return (T) this;
         }
         /**
+         * Bean which maps the XML signature to the output-message after the
+         * validation. How this mapping should be done can be configured by the
+         * options outputNodeSearchType, outputNodeSearch, and
+         * removeSignatureElements. The default implementation offers three
+         * possibilities which are related to the three output node search types
+         * Default, ElementName, and XPath. The default implementation
+         * determines a node which is then serialized and set to the body of the
+         * output message If the search type is ElementName then the output node
+         * (which must be in this case an element) is determined by the local
+         * name and namespace defined in the search value (see option
+         * outputNodeSearch). If the search type is XPath then the output node
+         * is determined by the XPath specified in the search value (in this
+         * case the output node can be of type Element, TextNode or Document).
+         * If the output node search type is Default then the following rules
+         * apply: In the enveloped XML signature case (there is a reference with
+         * URI= and transform
+         * http://www.w3.org/2000/09/xmldsig#enveloped-signature), the incoming
+         * XML document without the Signature element is set to the output
+         * message body. In the non-enveloped XML signature case, the message
+         * body is determined from a referenced Object; this is explained in
+         * more detail in chapter Output Node Determination in Enveloping XML
+         * Signature Case. The option will be converted to a
+         * org.apache.camel.component.xmlsecurity.api.XmlSignature2Message type.
+         */
+        public T xmlSignature2Message(String xmlSignature2Message) {
+            this.properties.put("xmlSignature2Message", xmlSignature2Message);
+            return (T) this;
+        }
+        /**
          * This interface allows the application to check the XML signature
          * before the validation is executed. This step is recommended in
          * http://www.w3.org/TR/xmldsig-bestpractices/#check-what-is-signed. The
@@ -480,6 +756,17 @@ public interface XmlSignatureEndpointBuilder {
          * org.apache.camel.component.xmlsecurity.api.XmlSignatureChecker type.
          */
         public T xmlSignatureChecker(Object xmlSignatureChecker) {
+            this.properties.put("xmlSignatureChecker", xmlSignatureChecker);
+            return (T) this;
+        }
+        /**
+         * This interface allows the application to check the XML signature
+         * before the validation is executed. This step is recommended in
+         * http://www.w3.org/TR/xmldsig-bestpractices/#check-what-is-signed. The
+         * option will be converted to a
+         * org.apache.camel.component.xmlsecurity.api.XmlSignatureChecker type.
+         */
+        public T xmlSignatureChecker(String xmlSignatureChecker) {
             this.properties.put("xmlSignatureChecker", xmlSignatureChecker);
             return (T) this;
         }

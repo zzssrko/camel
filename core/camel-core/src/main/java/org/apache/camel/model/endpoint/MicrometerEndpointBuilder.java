@@ -46,6 +46,14 @@ public interface MicrometerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Type of metrics. The option will be converted to a
+         * io.micrometer.core.instrument.Meter.Type type.
+         */
+        public T metricsType(String metricsType) {
+            this.properties.put("metricsType", metricsType);
+            return (T) this;
+        }
+        /**
          * Name of metrics. The option is a java.lang.String type.
          */
         public T metricsName(String metricsName) {
@@ -57,6 +65,14 @@ public interface MicrometerEndpointBuilder {
          * java.lang.Iterable<io.micrometer.core.instrument.Tag> type.
          */
         public T tags(Iterable<Object> tags) {
+            this.properties.put("tags", tags);
+            return (T) this;
+        }
+        /**
+         * Tags of metrics. The option will be converted to a
+         * java.lang.Iterable<io.micrometer.core.instrument.Tag> type.
+         */
+        public T tags(String tags) {
             this.properties.put("tags", tags);
             return (T) this;
         }
@@ -102,11 +118,29 @@ public interface MicrometerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

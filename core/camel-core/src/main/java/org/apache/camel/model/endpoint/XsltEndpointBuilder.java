@@ -59,6 +59,14 @@ public interface XsltEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to allow using StAX as the javax.xml.transform.Source. The
+         * option will be converted to a boolean type.
+         */
+        public T allowStAX(String allowStAX) {
+            this.properties.put("allowStAX", allowStAX);
+            return (T) this;
+        }
+        /**
          * Cache for the resource content (the stylesheet file) when it is
          * loaded. If set to false Camel will reload the stylesheet file on each
          * message processing. This is good for development. A cached stylesheet
@@ -66,6 +74,18 @@ public interface XsltEndpointBuilder {
          * clearCachedStylesheet operation. The option is a boolean type.
          */
         public T contentCache(boolean contentCache) {
+            this.properties.put("contentCache", contentCache);
+            return (T) this;
+        }
+        /**
+         * Cache for the resource content (the stylesheet file) when it is
+         * loaded. If set to false Camel will reload the stylesheet file on each
+         * message processing. This is good for development. A cached stylesheet
+         * can be forced to reload at runtime via JMX using the
+         * clearCachedStylesheet operation. The option will be converted to a
+         * boolean type.
+         */
+        public T contentCache(String contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
@@ -80,10 +100,29 @@ public interface XsltEndpointBuilder {
             return (T) this;
         }
         /**
+         * If you have output=file then this option dictates whether or not the
+         * output file should be deleted when the Exchange is done processing.
+         * For example suppose the output file is a temporary file, then it can
+         * be a good idea to delete it after use. The option will be converted
+         * to a boolean type.
+         */
+        public T deleteOutputFile(String deleteOutputFile) {
+            this.properties.put("deleteOutputFile", deleteOutputFile);
+            return (T) this;
+        }
+        /**
          * Whether or not to throw an exception if the input body is null. The
          * option is a boolean type.
          */
         public T failOnNullBody(boolean failOnNullBody) {
+            this.properties.put("failOnNullBody", failOnNullBody);
+            return (T) this;
+        }
+        /**
+         * Whether or not to throw an exception if the input body is null. The
+         * option will be converted to a boolean type.
+         */
+        public T failOnNullBody(String failOnNullBody) {
             this.properties.put("failOnNullBody", failOnNullBody);
             return (T) this;
         }
@@ -102,11 +141,35 @@ public interface XsltEndpointBuilder {
             return (T) this;
         }
         /**
+         * Option to specify which output type to use. Possible values are:
+         * string, bytes, DOM, file. The first three options are all in memory
+         * based, where as file is streamed directly to a java.io.File. For file
+         * you must specify the filename in the IN header with the key
+         * Exchange.XSLT_FILE_NAME which is also CamelXsltFileName. Also any
+         * paths leading to the filename must be created beforehand, otherwise
+         * an exception is thrown at runtime. The option will be converted to a
+         * org.apache.camel.component.xslt.XsltOutput type.
+         */
+        public T output(String output) {
+            this.properties.put("output", output);
+            return (T) this;
+        }
+        /**
          * Whether to use Saxon as the transformerFactoryClass. If enabled then
          * the class net.sf.saxon.TransformerFactoryImpl. You would need to add
          * Saxon to the classpath. The option is a boolean type.
          */
         public T saxon(boolean saxon) {
+            this.properties.put("saxon", saxon);
+            return (T) this;
+        }
+        /**
+         * Whether to use Saxon as the transformerFactoryClass. If enabled then
+         * the class net.sf.saxon.TransformerFactoryImpl. You would need to add
+         * Saxon to the classpath. The option will be converted to a boolean
+         * type.
+         */
+        public T saxon(String saxon) {
             this.properties.put("saxon", saxon);
             return (T) this;
         }
@@ -120,6 +183,15 @@ public interface XsltEndpointBuilder {
             return (T) this;
         }
         /**
+         * The number of javax.xml.transform.Transformer object that are cached
+         * for reuse to avoid calls to Template.newTransformer(). The option
+         * will be converted to a int type.
+         */
+        public T transformerCacheSize(String transformerCacheSize) {
+            this.properties.put("transformerCacheSize", transformerCacheSize);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -129,11 +201,29 @@ public interface XsltEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * To use a custom org.xml.sax.EntityResolver with
          * javax.xml.transform.sax.SAXSource. The option is a
          * org.xml.sax.EntityResolver type.
          */
         public T entityResolver(Object entityResolver) {
+            this.properties.put("entityResolver", entityResolver);
+            return (T) this;
+        }
+        /**
+         * To use a custom org.xml.sax.EntityResolver with
+         * javax.xml.transform.sax.SAXSource. The option will be converted to a
+         * org.xml.sax.EntityResolver type.
+         */
+        public T entityResolver(String entityResolver) {
             this.properties.put("entityResolver", entityResolver);
             return (T) this;
         }
@@ -150,6 +240,18 @@ public interface XsltEndpointBuilder {
             return (T) this;
         }
         /**
+         * Allows to configure to use a custom
+         * javax.xml.transform.ErrorListener. Beware when doing this then the
+         * default error listener which captures any errors or fatal errors and
+         * store information on the Exchange as properties is not in use. So
+         * only use this option for special use-cases. The option will be
+         * converted to a javax.xml.transform.ErrorListener type.
+         */
+        public T errorListener(String errorListener) {
+            this.properties.put("errorListener", errorListener);
+            return (T) this;
+        }
+        /**
          * Allows you to use a custom
          * org.apache.camel.builder.xml.ResultHandlerFactory which is capable of
          * using custom org.apache.camel.builder.xml.ResultHandler types. The
@@ -161,10 +263,29 @@ public interface XsltEndpointBuilder {
             return (T) this;
         }
         /**
+         * Allows you to use a custom
+         * org.apache.camel.builder.xml.ResultHandlerFactory which is capable of
+         * using custom org.apache.camel.builder.xml.ResultHandler types. The
+         * option will be converted to a
+         * org.apache.camel.component.xslt.ResultHandlerFactory type.
+         */
+        public T resultHandlerFactory(String resultHandlerFactory) {
+            this.properties.put("resultHandlerFactory", resultHandlerFactory);
+            return (T) this;
+        }
+        /**
          * To use a custom Saxon configuration. The option is a java.lang.Object
          * type.
          */
         public T saxonConfiguration(Object saxonConfiguration) {
+            this.properties.put("saxonConfiguration", saxonConfiguration);
+            return (T) this;
+        }
+        /**
+         * To use a custom Saxon configuration. The option will be converted to
+         * a java.lang.Object type.
+         */
+        public T saxonConfiguration(String saxonConfiguration) {
             this.properties.put("saxonConfiguration", saxonConfiguration);
             return (T) this;
         }
@@ -180,6 +301,17 @@ public interface XsltEndpointBuilder {
             return (T) this;
         }
         /**
+         * Allows you to use a custom
+         * net.sf.saxon.lib.ExtensionFunctionDefinition. You would need to add
+         * camel-saxon to the classpath. The function is looked up in the
+         * registry, where you can comma to separate multiple values to lookup.
+         * The option will be converted to a java.lang.String type.
+         */
+        public T saxonExtensionFunctions(String saxonExtensionFunctions) {
+            this.properties.put("saxonExtensionFunctions", saxonExtensionFunctions);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
@@ -189,10 +321,27 @@ public interface XsltEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * To use a custom XSLT transformer factory. The option is a
          * javax.xml.transform.TransformerFactory type.
          */
         public T transformerFactory(Object transformerFactory) {
+            this.properties.put("transformerFactory", transformerFactory);
+            return (T) this;
+        }
+        /**
+         * To use a custom XSLT transformer factory. The option will be
+         * converted to a javax.xml.transform.TransformerFactory type.
+         */
+        public T transformerFactory(String transformerFactory) {
             this.properties.put("transformerFactory", transformerFactory);
             return (T) this;
         }
@@ -209,6 +358,14 @@ public interface XsltEndpointBuilder {
          * javax.xml.transform.URIResolver type.
          */
         public T uriResolver(Object uriResolver) {
+            this.properties.put("uriResolver", uriResolver);
+            return (T) this;
+        }
+        /**
+         * To use a custom javax.xml.transform.URIResolver. The option will be
+         * converted to a javax.xml.transform.URIResolver type.
+         */
+        public T uriResolver(String uriResolver) {
             this.properties.put("uriResolver", uriResolver);
             return (T) this;
         }

@@ -58,6 +58,14 @@ public interface Web3jEndpointBuilder {
             return (T) this;
         }
         /**
+         * Contract address or a list of addresses. The option will be converted
+         * to a java.util.List<java.lang.String> type.
+         */
+        public T addresses(String addresses) {
+            this.properties.put("addresses", addresses);
+            return (T) this;
+        }
+        /**
          * The address the transaction is send from. The option is a
          * java.lang.String type.
          */
@@ -75,10 +83,28 @@ public interface Web3jEndpointBuilder {
             return (T) this;
         }
         /**
+         * The block number, or the string latest for the last mined block or
+         * pending, earliest for not yet mined transactions. The option will be
+         * converted to a org.web3j.protocol.core.DefaultBlockParameter type.
+         */
+        public T fromBlock(String fromBlock) {
+            this.properties.put("fromBlock", fromBlock);
+            return (T) this;
+        }
+        /**
          * If true it returns the full transaction objects, if false only the
          * hashes of the transactions. The option is a boolean type.
          */
         public T fullTransactionObjects(boolean fullTransactionObjects) {
+            this.properties.put("fullTransactionObjects", fullTransactionObjects);
+            return (T) this;
+        }
+        /**
+         * If true it returns the full transaction objects, if false only the
+         * hashes of the transactions. The option will be converted to a boolean
+         * type.
+         */
+        public T fullTransactionObjects(String fullTransactionObjects) {
             this.properties.put("fullTransactionObjects", fullTransactionObjects);
             return (T) this;
         }
@@ -91,6 +117,14 @@ public interface Web3jEndpointBuilder {
             return (T) this;
         }
         /**
+         * The maximum gas allowed in this block. The option will be converted
+         * to a java.math.BigInteger type.
+         */
+        public T gasLimit(String gasLimit) {
+            this.properties.put("gasLimit", gasLimit);
+            return (T) this;
+        }
+        /**
          * A transaction privateFor nodes with public keys in a Quorum network.
          * The option is a java.util.List<java.lang.String> type.
          */
@@ -99,9 +133,26 @@ public interface Web3jEndpointBuilder {
             return (T) this;
         }
         /**
+         * A transaction privateFor nodes with public keys in a Quorum network.
+         * The option will be converted to a java.util.List<java.lang.String>
+         * type.
+         */
+        public T privateFor(String privateFor) {
+            this.properties.put("privateFor", privateFor);
+            return (T) this;
+        }
+        /**
          * If true, this will support Quorum API. The option is a boolean type.
          */
         public T quorumAPI(boolean quorumAPI) {
+            this.properties.put("quorumAPI", quorumAPI);
+            return (T) this;
+        }
+        /**
+         * If true, this will support Quorum API. The option will be converted
+         * to a boolean type.
+         */
+        public T quorumAPI(String quorumAPI) {
             this.properties.put("quorumAPI", quorumAPI);
             return (T) this;
         }
@@ -123,6 +174,15 @@ public interface Web3jEndpointBuilder {
             return (T) this;
         }
         /**
+         * The block number, or the string latest for the last mined block or
+         * pending, earliest for not yet mined transactions. The option will be
+         * converted to a org.web3j.protocol.core.DefaultBlockParameter type.
+         */
+        public T toBlock(String toBlock) {
+            this.properties.put("toBlock", toBlock);
+            return (T) this;
+        }
+        /**
          * Topics are order-dependent. Each topic can also be a list of topics.
          * Specify multiple topics separated by comma. The option is a
          * java.lang.String type.
@@ -132,10 +192,27 @@ public interface Web3jEndpointBuilder {
             return (T) this;
         }
         /**
+         * Topics are order-dependent. Each topic can also be a list of topics.
+         * Specify multiple topics separated by comma. The option will be
+         * converted to a java.lang.String type.
+         */
+        public T topics(String topics) {
+            this.properties.put("topics", topics);
+            return (T) this;
+        }
+        /**
          * The preconfigured Web3j object. The option is a
          * org.web3j.protocol.Web3j type.
          */
         public T web3j(Object web3j) {
+            this.properties.put("web3j", web3j);
+            return (T) this;
+        }
+        /**
+         * The preconfigured Web3j object. The option will be converted to a
+         * org.web3j.protocol.Web3j type.
+         */
+        public T web3j(String web3j) {
             this.properties.put("web3j", web3j);
             return (T) this;
         }
@@ -149,11 +226,29 @@ public interface Web3jEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -182,6 +277,19 @@ public interface Web3jEndpointBuilder {
             return (Web3jConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public Web3jConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (Web3jConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -194,11 +302,30 @@ public interface Web3jEndpointBuilder {
             return (Web3jConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public Web3jConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (Web3jConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public Web3jConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (Web3jConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public Web3jConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (Web3jConsumerBuilder) this;
         }
@@ -225,6 +352,15 @@ public interface Web3jEndpointBuilder {
          * org.web3j.protocol.core.DefaultBlockParameter type.
          */
         public Web3jProducerBuilder atBlock(Object atBlock) {
+            this.properties.put("atBlock", atBlock);
+            return (Web3jProducerBuilder) this;
+        }
+        /**
+         * The block number, or the string latest for the last mined block or
+         * pending, earliest for not yet mined transactions. The option will be
+         * converted to a org.web3j.protocol.core.DefaultBlockParameter type.
+         */
+        public Web3jProducerBuilder atBlock(String atBlock) {
             this.properties.put("atBlock", atBlock);
             return (Web3jProducerBuilder) this;
         }
@@ -268,10 +404,26 @@ public interface Web3jEndpointBuilder {
             return (Web3jProducerBuilder) this;
         }
         /**
+         * The filter id to use. The option will be converted to a
+         * java.math.BigInteger type.
+         */
+        public Web3jProducerBuilder filterId(String filterId) {
+            this.properties.put("filterId", filterId);
+            return (Web3jProducerBuilder) this;
+        }
+        /**
          * Gas price used for each paid gas. The option is a
          * java.math.BigInteger type.
          */
         public Web3jProducerBuilder gasPrice(BigInteger gasPrice) {
+            this.properties.put("gasPrice", gasPrice);
+            return (Web3jProducerBuilder) this;
+        }
+        /**
+         * Gas price used for each paid gas. The option will be converted to a
+         * java.math.BigInteger type.
+         */
+        public Web3jProducerBuilder gasPrice(String gasPrice) {
             this.properties.put("gasPrice", gasPrice);
             return (Web3jProducerBuilder) this;
         }
@@ -296,6 +448,14 @@ public interface Web3jEndpointBuilder {
          * java.math.BigInteger type.
          */
         public Web3jProducerBuilder index(BigInteger index) {
+            this.properties.put("index", index);
+            return (Web3jProducerBuilder) this;
+        }
+        /**
+         * The transactions/uncle index position in the block. The option will
+         * be converted to a java.math.BigInteger type.
+         */
+        public Web3jProducerBuilder index(String index) {
             this.properties.put("index", index);
             return (Web3jProducerBuilder) this;
         }
@@ -338,10 +498,26 @@ public interface Web3jEndpointBuilder {
             return (Web3jProducerBuilder) this;
         }
         /**
+         * The transaction index position withing a block. The option will be
+         * converted to a java.math.BigInteger type.
+         */
+        public Web3jProducerBuilder position(String position) {
+            this.properties.put("position", position);
+            return (Web3jProducerBuilder) this;
+        }
+        /**
          * The priority of a whisper message. The option is a
          * java.math.BigInteger type.
          */
         public Web3jProducerBuilder priority(BigInteger priority) {
+            this.properties.put("priority", priority);
+            return (Web3jProducerBuilder) this;
+        }
+        /**
+         * The priority of a whisper message. The option will be converted to a
+         * java.math.BigInteger type.
+         */
+        public Web3jProducerBuilder priority(String priority) {
             this.properties.put("priority", priority);
             return (Web3jProducerBuilder) this;
         }
@@ -388,10 +564,26 @@ public interface Web3jEndpointBuilder {
             return (Web3jProducerBuilder) this;
         }
         /**
+         * The time to live in seconds of a whisper message. The option will be
+         * converted to a java.math.BigInteger type.
+         */
+        public Web3jProducerBuilder ttl(String ttl) {
+            this.properties.put("ttl", ttl);
+            return (Web3jProducerBuilder) this;
+        }
+        /**
          * The value sent within a transaction. The option is a
          * java.math.BigInteger type.
          */
         public Web3jProducerBuilder value(BigInteger value) {
+            this.properties.put("value", value);
+            return (Web3jProducerBuilder) this;
+        }
+        /**
+         * The value sent within a transaction. The option will be converted to
+         * a java.math.BigInteger type.
+         */
+        public Web3jProducerBuilder value(String value) {
             this.properties.put("value", value);
             return (Web3jProducerBuilder) this;
         }

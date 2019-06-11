@@ -55,6 +55,15 @@ public interface NetWeaverEndpointBuilder {
             return (T) this;
         }
         /**
+         * If the JSON Map contains only a single entry, then flattern by
+         * storing that single entry value as the message body. The option will
+         * be converted to a boolean type.
+         */
+        public T flatternMap(String flatternMap) {
+            this.properties.put("flatternMap", flatternMap);
+            return (T) this;
+        }
+        /**
          * Whether to return data in JSON format. If this option is false, then
          * XML is returned in Atom format. The option is a boolean type.
          */
@@ -63,10 +72,27 @@ public interface NetWeaverEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to return data in JSON format. If this option is false, then
+         * XML is returned in Atom format. The option will be converted to a
+         * boolean type.
+         */
+        public T json(String json) {
+            this.properties.put("json", json);
+            return (T) this;
+        }
+        /**
          * To transform the JSON from a String to a Map in the message body. The
          * option is a boolean type.
          */
         public T jsonAsMap(boolean jsonAsMap) {
+            this.properties.put("jsonAsMap", jsonAsMap);
+            return (T) this;
+        }
+        /**
+         * To transform the JSON from a String to a Map in the message body. The
+         * option will be converted to a boolean type.
+         */
+        public T jsonAsMap(String jsonAsMap) {
             this.properties.put("jsonAsMap", jsonAsMap);
             return (T) this;
         }
@@ -94,11 +120,29 @@ public interface NetWeaverEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

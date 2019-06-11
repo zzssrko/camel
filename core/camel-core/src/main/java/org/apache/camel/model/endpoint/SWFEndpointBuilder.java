@@ -56,12 +56,31 @@ public interface SWFEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use the given AmazonSimpleWorkflowClient as client. The option
+         * will be converted to a
+         * com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow type.
+         */
+        public T amazonSWClient(String amazonSWClient) {
+            this.properties.put("amazonSWClient", amazonSWClient);
+            return (T) this;
+        }
+        /**
          * An instance of
          * com.amazonaws.services.simpleworkflow.flow.DataConverter to use for
          * serializing/deserializing the data. The option is a
          * com.amazonaws.services.simpleworkflow.flow.DataConverter type.
          */
         public T dataConverter(Object dataConverter) {
+            this.properties.put("dataConverter", dataConverter);
+            return (T) this;
+        }
+        /**
+         * An instance of
+         * com.amazonaws.services.simpleworkflow.flow.DataConverter to use for
+         * serializing/deserializing the data. The option will be converted to a
+         * com.amazonaws.services.simpleworkflow.flow.DataConverter type.
+         */
+        public T dataConverter(String dataConverter) {
             this.properties.put("dataConverter", dataConverter);
             return (T) this;
         }
@@ -105,12 +124,31 @@ public interface SWFEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * To configure the ClientConfiguration using the key/values from the
          * Map. The option is a java.util.Map<java.lang.String,java.lang.Object>
          * type.
          */
         public T clientConfigurationParameters(
                 Map<String, Object> clientConfigurationParameters) {
+            this.properties.put("clientConfigurationParameters", clientConfigurationParameters);
+            return (T) this;
+        }
+        /**
+         * To configure the ClientConfiguration using the key/values from the
+         * Map. The option will be converted to a
+         * java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public T clientConfigurationParameters(
+                String clientConfigurationParameters) {
             this.properties.put("clientConfigurationParameters", clientConfigurationParameters);
             return (T) this;
         }
@@ -125,6 +163,16 @@ public interface SWFEndpointBuilder {
             return (T) this;
         }
         /**
+         * To configure the StartWorkflowOptions using the key/values from the
+         * Map. The option will be converted to a
+         * java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public T startWorkflowOptionsParameters(
+                String startWorkflowOptionsParameters) {
+            this.properties.put("startWorkflowOptionsParameters", startWorkflowOptionsParameters);
+            return (T) this;
+        }
+        /**
          * To configure the AmazonSimpleWorkflowClient using the key/values from
          * the Map. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
@@ -134,11 +182,29 @@ public interface SWFEndpointBuilder {
             return (T) this;
         }
         /**
+         * To configure the AmazonSimpleWorkflowClient using the key/values from
+         * the Map. The option will be converted to a
+         * java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public T sWClientParameters(String sWClientParameters) {
+            this.properties.put("sWClientParameters", sWClientParameters);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -180,6 +246,19 @@ public interface SWFEndpointBuilder {
             return (SWFConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public SWFConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (SWFConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -192,11 +271,30 @@ public interface SWFEndpointBuilder {
             return (SWFConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public SWFConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (SWFConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SWFConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (SWFConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public SWFConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (SWFConsumerBuilder) this;
         }
@@ -218,6 +316,15 @@ public interface SWFEndpointBuilder {
             return (SWFConsumerBuilder) this;
         }
         /**
+         * Maximum number of threads in work pool for activity. The option will
+         * be converted to a int type.
+         */
+        public SWFConsumerBuilder activityThreadPoolSize(
+                String activityThreadPoolSize) {
+            this.properties.put("activityThreadPoolSize", activityThreadPoolSize);
+            return (SWFConsumerBuilder) this;
+        }
+        /**
          * Activity execution options. The option is a
          * com.amazonaws.services.simpleworkflow.flow.worker.ActivityTypeExecutionOptions type.
          */
@@ -227,11 +334,29 @@ public interface SWFEndpointBuilder {
             return (SWFConsumerBuilder) this;
         }
         /**
+         * Activity execution options. The option will be converted to a
+         * com.amazonaws.services.simpleworkflow.flow.worker.ActivityTypeExecutionOptions type.
+         */
+        public SWFConsumerBuilder activityTypeExecutionOptions(
+                String activityTypeExecutionOptions) {
+            this.properties.put("activityTypeExecutionOptions", activityTypeExecutionOptions);
+            return (SWFConsumerBuilder) this;
+        }
+        /**
          * Activity registration options. The option is a
          * com.amazonaws.services.simpleworkflow.flow.worker.ActivityTypeRegistrationOptions type.
          */
         public SWFConsumerBuilder activityTypeRegistrationOptions(
                 Object activityTypeRegistrationOptions) {
+            this.properties.put("activityTypeRegistrationOptions", activityTypeRegistrationOptions);
+            return (SWFConsumerBuilder) this;
+        }
+        /**
+         * Activity registration options. The option will be converted to a
+         * com.amazonaws.services.simpleworkflow.flow.worker.ActivityTypeRegistrationOptions type.
+         */
+        public SWFConsumerBuilder activityTypeRegistrationOptions(
+                String activityTypeRegistrationOptions) {
             this.properties.put("activityTypeRegistrationOptions", activityTypeRegistrationOptions);
             return (SWFConsumerBuilder) this;
         }
@@ -252,6 +377,15 @@ public interface SWFEndpointBuilder {
             this.properties.put("workflowTypeRegistrationOptions", workflowTypeRegistrationOptions);
             return (SWFConsumerBuilder) this;
         }
+        /**
+         * Workflow registration options. The option will be converted to a
+         * com.amazonaws.services.simpleworkflow.flow.WorkflowTypeRegistrationOptions type.
+         */
+        public SWFConsumerBuilder workflowTypeRegistrationOptions(
+                String workflowTypeRegistrationOptions) {
+            this.properties.put("workflowTypeRegistrationOptions", workflowTypeRegistrationOptions);
+            return (SWFConsumerBuilder) this;
+        }
     }
 
     public static class SWFProducerBuilder
@@ -269,6 +403,16 @@ public interface SWFEndpointBuilder {
          */
         public SWFProducerBuilder activitySchedulingOptions(
                 Object activitySchedulingOptions) {
+            this.properties.put("activitySchedulingOptions", activitySchedulingOptions);
+            return (SWFProducerBuilder) this;
+        }
+        /**
+         * Activity scheduling options. The option will be converted to a
+         * com.amazonaws.services.simpleworkflow.flow.ActivitySchedulingOptions
+         * type.
+         */
+        public SWFProducerBuilder activitySchedulingOptions(
+                String activitySchedulingOptions) {
             this.properties.put("activitySchedulingOptions", activitySchedulingOptions);
             return (SWFProducerBuilder) this;
         }

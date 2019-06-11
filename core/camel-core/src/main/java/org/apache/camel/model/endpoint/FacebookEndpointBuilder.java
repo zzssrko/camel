@@ -58,6 +58,14 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * The unique URL of the achievement. The option will be converted to a
+         * java.net.URL type.
+         */
+        public T achievementURL(String achievementURL) {
+            this.properties.put("achievementURL", achievementURL);
+            return (T) this;
+        }
+        /**
          * The album ID. The option is a java.lang.String type.
          */
         public T albumId(String albumId) {
@@ -69,6 +77,14 @@ public interface FacebookEndpointBuilder {
          * facebook4j.AlbumUpdate type.
          */
         public T albumUpdate(Object albumUpdate) {
+            this.properties.put("albumUpdate", albumUpdate);
+            return (T) this;
+        }
+        /**
+         * The facebook Album to be created or updated. The option will be
+         * converted to a facebook4j.AlbumUpdate type.
+         */
+        public T albumUpdate(String albumUpdate) {
             this.properties.put("albumUpdate", albumUpdate);
             return (T) this;
         }
@@ -89,6 +105,14 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * Location latitude and longitude. The option will be converted to a
+         * facebook4j.GeoLocation type.
+         */
+        public T center(String center) {
+            this.properties.put("center", center);
+            return (T) this;
+        }
+        /**
          * The checkin ID. The option is a java.lang.String type.
          */
         public T checkinId(String checkinId) {
@@ -101,6 +125,16 @@ public interface FacebookEndpointBuilder {
          */
         @Deprecated
         public T checkinUpdate(Object checkinUpdate) {
+            this.properties.put("checkinUpdate", checkinUpdate);
+            return (T) this;
+        }
+        /**
+         * The checkin to be created. Deprecated, instead create a Post with an
+         * attached location. The option will be converted to a
+         * facebook4j.CheckinUpdate type.
+         */
+        @Deprecated
+        public T checkinUpdate(String checkinUpdate) {
             this.properties.put("checkinUpdate", checkinUpdate);
             return (T) this;
         }
@@ -134,10 +168,26 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * The facebook Comment to be created or updated. The option will be
+         * converted to a facebook4j.CommentUpdate type.
+         */
+        public T commentUpdate(String commentUpdate) {
+            this.properties.put("commentUpdate", commentUpdate);
+            return (T) this;
+        }
+        /**
          * Enables deubg output. Effective only with the embedded logger. The
          * option is a java.lang.Boolean type.
          */
         public T debugEnabled(Boolean debugEnabled) {
+            this.properties.put("debugEnabled", debugEnabled);
+            return (T) this;
+        }
+        /**
+         * Enables deubg output. Effective only with the embedded logger. The
+         * option will be converted to a java.lang.Boolean type.
+         */
+        public T debugEnabled(String debugEnabled) {
             this.properties.put("debugEnabled", debugEnabled);
             return (T) this;
         }
@@ -152,6 +202,14 @@ public interface FacebookEndpointBuilder {
          * Distance in meters. The option is a java.lang.Integer type.
          */
         public T distance(Integer distance) {
+            this.properties.put("distance", distance);
+            return (T) this;
+        }
+        /**
+         * Distance in meters. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T distance(String distance) {
             this.properties.put("distance", distance);
             return (T) this;
         }
@@ -178,6 +236,14 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * The domain names. The option will be converted to a
+         * java.util.List<java.lang.String> type.
+         */
+        public T domainNames(String domainNames) {
+            this.properties.put("domainNames", domainNames);
+            return (T) this;
+        }
+        /**
          * The event ID. The option is a java.lang.String type.
          */
         public T eventId(String eventId) {
@@ -189,6 +255,14 @@ public interface FacebookEndpointBuilder {
          * facebook4j.EventUpdate type.
          */
         public T eventUpdate(Object eventUpdate) {
+            this.properties.put("eventUpdate", eventUpdate);
+            return (T) this;
+        }
+        /**
+         * The event to be created or updated. The option will be converted to a
+         * facebook4j.EventUpdate type.
+         */
+        public T eventUpdate(String eventUpdate) {
             this.properties.put("eventUpdate", eventUpdate);
             return (T) this;
         }
@@ -235,10 +309,26 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * Use Facebook GZIP encoding. The option will be converted to a
+         * java.lang.Boolean type.
+         */
+        public T gzipEnabled(String gzipEnabled) {
+            this.properties.put("gzipEnabled", gzipEnabled);
+            return (T) this;
+        }
+        /**
          * Http connection timeout in milliseconds. The option is a
          * java.lang.Integer type.
          */
         public T httpConnectionTimeout(Integer httpConnectionTimeout) {
+            this.properties.put("httpConnectionTimeout", httpConnectionTimeout);
+            return (T) this;
+        }
+        /**
+         * Http connection timeout in milliseconds. The option will be converted
+         * to a java.lang.Integer type.
+         */
+        public T httpConnectionTimeout(String httpConnectionTimeout) {
             this.properties.put("httpConnectionTimeout", httpConnectionTimeout);
             return (T) this;
         }
@@ -251,10 +341,26 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * HTTP maximum connections per route. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T httpDefaultMaxPerRoute(String httpDefaultMaxPerRoute) {
+            this.properties.put("httpDefaultMaxPerRoute", httpDefaultMaxPerRoute);
+            return (T) this;
+        }
+        /**
          * HTTP maximum total connections. The option is a java.lang.Integer
          * type.
          */
         public T httpMaxTotalConnections(Integer httpMaxTotalConnections) {
+            this.properties.put("httpMaxTotalConnections", httpMaxTotalConnections);
+            return (T) this;
+        }
+        /**
+         * HTTP maximum total connections. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T httpMaxTotalConnections(String httpMaxTotalConnections) {
             this.properties.put("httpMaxTotalConnections", httpMaxTotalConnections);
             return (T) this;
         }
@@ -267,9 +373,25 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * Http read timeout in milliseconds. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T httpReadTimeout(String httpReadTimeout) {
+            this.properties.put("httpReadTimeout", httpReadTimeout);
+            return (T) this;
+        }
+        /**
          * Number of HTTP retries. The option is a java.lang.Integer type.
          */
         public T httpRetryCount(Integer httpRetryCount) {
+            this.properties.put("httpRetryCount", httpRetryCount);
+            return (T) this;
+        }
+        /**
+         * Number of HTTP retries. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T httpRetryCount(String httpRetryCount) {
             this.properties.put("httpRetryCount", httpRetryCount);
             return (T) this;
         }
@@ -282,6 +404,14 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * HTTP retry interval in seconds. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T httpRetryIntervalSeconds(String httpRetryIntervalSeconds) {
+            this.properties.put("httpRetryIntervalSeconds", httpRetryIntervalSeconds);
+            return (T) this;
+        }
+        /**
          * HTTP streaming read timeout in milliseconds. The option is a
          * java.lang.Integer type.
          */
@@ -290,10 +420,26 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * HTTP streaming read timeout in milliseconds. The option will be
+         * converted to a java.lang.Integer type.
+         */
+        public T httpStreamingReadTimeout(String httpStreamingReadTimeout) {
+            this.properties.put("httpStreamingReadTimeout", httpStreamingReadTimeout);
+            return (T) this;
+        }
+        /**
          * The ids of users. The option is a java.util.List<java.lang.String>
          * type.
          */
         public T ids(List<String> ids) {
+            this.properties.put("ids", ids);
+            return (T) this;
+        }
+        /**
+         * The ids of users. The option will be converted to a
+         * java.util.List<java.lang.String> type.
+         */
+        public T ids(String ids) {
             this.properties.put("ids", ids);
             return (T) this;
         }
@@ -314,9 +460,26 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * Enables notifications that the user has already read in addition to
+         * unread ones. The option will be converted to a java.lang.Boolean
+         * type.
+         */
+        public T includeRead(String includeRead) {
+            this.properties.put("includeRead", includeRead);
+            return (T) this;
+        }
+        /**
          * Whether hidden. The option is a java.lang.Boolean type.
          */
         public T isHidden(Boolean isHidden) {
+            this.properties.put("isHidden", isHidden);
+            return (T) this;
+        }
+        /**
+         * Whether hidden. The option will be converted to a java.lang.Boolean
+         * type.
+         */
+        public T isHidden(String isHidden) {
             this.properties.put("isHidden", isHidden);
             return (T) this;
         }
@@ -329,9 +492,24 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * If set to true, raw JSON forms will be stored in DataObjectFactory.
+         * The option will be converted to a java.lang.Boolean type.
+         */
+        public T jsonStoreEnabled(String jsonStoreEnabled) {
+            this.properties.put("jsonStoreEnabled", jsonStoreEnabled);
+            return (T) this;
+        }
+        /**
          * Link URL. The option is a java.net.URL type.
          */
         public T link(URL link) {
+            this.properties.put("link", link);
+            return (T) this;
+        }
+        /**
+         * Link URL. The option will be converted to a java.net.URL type.
+         */
+        public T link(String link) {
             this.properties.put("link", link);
             return (T) this;
         }
@@ -350,10 +528,26 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * Desired FQL locale. The option will be converted to a
+         * java.util.Locale type.
+         */
+        public T locale(String locale) {
+            this.properties.put("locale", locale);
+            return (T) this;
+        }
+        /**
          * If set to true, Facebook4J mbean will be registerd. The option is a
          * java.lang.Boolean type.
          */
         public T mbeanEnabled(Boolean mbeanEnabled) {
+            this.properties.put("mbeanEnabled", mbeanEnabled);
+            return (T) this;
+        }
+        /**
+         * If set to true, Facebook4J mbean will be registerd. The option will
+         * be converted to a java.lang.Boolean type.
+         */
+        public T mbeanEnabled(String mbeanEnabled) {
             this.properties.put("mbeanEnabled", mbeanEnabled);
             return (T) this;
         }
@@ -466,6 +660,14 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * The picture id. The option will be converted to a java.lang.Integer
+         * type.
+         */
+        public T pictureId(String pictureId) {
+            this.properties.put("pictureId", pictureId);
+            return (T) this;
+        }
+        /**
          * The picture2 id. The option is a java.lang.Integer type.
          */
         public T pictureId2(Integer pictureId2) {
@@ -473,9 +675,25 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * The picture2 id. The option will be converted to a java.lang.Integer
+         * type.
+         */
+        public T pictureId2(String pictureId2) {
+            this.properties.put("pictureId2", pictureId2);
+            return (T) this;
+        }
+        /**
          * The picture size. The option is a facebook4j.PictureSize type.
          */
         public T pictureSize(PictureSize pictureSize) {
+            this.properties.put("pictureSize", pictureSize);
+            return (T) this;
+        }
+        /**
+         * The picture size. The option will be converted to a
+         * facebook4j.PictureSize type.
+         */
+        public T pictureSize(String pictureSize) {
             this.properties.put("pictureSize", pictureSize);
             return (T) this;
         }
@@ -502,6 +720,14 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * The post to create or update. The option will be converted to a
+         * facebook4j.PostUpdate type.
+         */
+        public T postUpdate(String postUpdate) {
+            this.properties.put("postUpdate", postUpdate);
+            return (T) this;
+        }
+        /**
          * Prettify JSON debug output if set to true. The option is a
          * java.lang.Boolean type.
          */
@@ -510,10 +736,26 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * Prettify JSON debug output if set to true. The option will be
+         * converted to a java.lang.Boolean type.
+         */
+        public T prettyDebugEnabled(String prettyDebugEnabled) {
+            this.properties.put("prettyDebugEnabled", prettyDebugEnabled);
+            return (T) this;
+        }
+        /**
          * FQL queries. The option is a
          * java.util.Map<java.lang.String,java.lang.String> type.
          */
         public T queries(Map<String, String> queries) {
+            this.properties.put("queries", queries);
+            return (T) this;
+        }
+        /**
+         * FQL queries. The option will be converted to a
+         * java.util.Map<java.lang.String,java.lang.String> type.
+         */
+        public T queries(String queries) {
             this.properties.put("queries", queries);
             return (T) this;
         }
@@ -541,10 +783,27 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * Optional reading parameters. See Reading Options(#reading). The
+         * option will be converted to a facebook4j.Reading type.
+         */
+        public T reading(String reading) {
+            this.properties.put("reading", reading);
+            return (T) this;
+        }
+        /**
          * To configure Reading using key/value pairs from the Map. The option
          * is a java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T readingOptions(Map<String, Object> readingOptions) {
+            this.properties.put("readingOptions", readingOptions);
+            return (T) this;
+        }
+        /**
+         * To configure Reading using key/value pairs from the Map. The option
+         * will be converted to a
+         * java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public T readingOptions(String readingOptions) {
             this.properties.put("readingOptions", readingOptions);
             return (T) this;
         }
@@ -563,6 +822,14 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * The numeric score with value. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T scoreValue(String scoreValue) {
+            this.properties.put("scoreValue", scoreValue);
+            return (T) this;
+        }
+        /**
          * The picture size, one of large, normal, small or square. The option
          * is a facebook4j.PictureSize type.
          */
@@ -571,10 +838,26 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * The picture size, one of large, normal, small or square. The option
+         * will be converted to a facebook4j.PictureSize type.
+         */
+        public T size(String size) {
+            this.properties.put("size", size);
+            return (T) this;
+        }
+        /**
          * The media content from either a java.io.File or java.io.Inputstream.
          * The option is a facebook4j.Media type.
          */
         public T source(Object source) {
+            this.properties.put("source", source);
+            return (T) this;
+        }
+        /**
+         * The media content from either a java.io.File or java.io.Inputstream.
+         * The option will be converted to a facebook4j.Media type.
+         */
+        public T source(String source) {
             this.properties.put("source", source);
             return (T) this;
         }
@@ -600,6 +883,14 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * Photo tag information. The option will be converted to a
+         * facebook4j.TagUpdate type.
+         */
+        public T tagUpdate(String tagUpdate) {
+            this.properties.put("tagUpdate", tagUpdate);
+            return (T) this;
+        }
+        /**
          * Test user 1. The option is a facebook4j.TestUser type.
          */
         public T testUser1(Object testUser1) {
@@ -607,9 +898,25 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * Test user 1. The option will be converted to a facebook4j.TestUser
+         * type.
+         */
+        public T testUser1(String testUser1) {
+            this.properties.put("testUser1", testUser1);
+            return (T) this;
+        }
+        /**
          * Test user 2. The option is a facebook4j.TestUser type.
          */
         public T testUser2(Object testUser2) {
+            this.properties.put("testUser2", testUser2);
+            return (T) this;
+        }
+        /**
+         * Test user 2. The option will be converted to a facebook4j.TestUser
+         * type.
+         */
+        public T testUser2(String testUser2) {
             this.properties.put("testUser2", testUser2);
             return (T) this;
         }
@@ -643,6 +950,14 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * The IDs of the users to tag. The option will be converted to a
+         * java.util.List<java.lang.String> type.
+         */
+        public T toUserIds(String toUserIds) {
+            this.properties.put("toUserIds", toUserIds);
+            return (T) this;
+        }
+        /**
          * The Facebook user ID. The option is a java.lang.String type.
          */
         public T userId(String userId) {
@@ -672,6 +987,14 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * The IDs of users to invite to event. The option will be converted to
+         * a java.util.List<java.lang.String> type.
+         */
+        public T userIds(String userIds) {
+            this.properties.put("userIds", userIds);
+            return (T) this;
+        }
+        /**
          * The test user locale. The option is a java.lang.String type.
          */
         public T userLocale(String userLocale) {
@@ -682,6 +1005,13 @@ public interface FacebookEndpointBuilder {
          * Use SSL. The option is a java.lang.Boolean type.
          */
         public T useSSL(Boolean useSSL) {
+            this.properties.put("useSSL", useSSL);
+            return (T) this;
+        }
+        /**
+         * Use SSL. The option will be converted to a java.lang.Boolean type.
+         */
+        public T useSSL(String useSSL) {
             this.properties.put("useSSL", useSSL);
             return (T) this;
         }
@@ -709,11 +1039,29 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -735,6 +1083,14 @@ public interface FacebookEndpointBuilder {
          * HTTP proxy server port. The option is a java.lang.Integer type.
          */
         public T httpProxyPort(Integer httpProxyPort) {
+            this.properties.put("httpProxyPort", httpProxyPort);
+            return (T) this;
+        }
+        /**
+         * HTTP proxy server port. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T httpProxyPort(String httpProxyPort) {
             this.properties.put("httpProxyPort", httpProxyPort);
             return (T) this;
         }
@@ -814,6 +1170,20 @@ public interface FacebookEndpointBuilder {
             return (FacebookConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public FacebookConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (FacebookConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -826,11 +1196,30 @@ public interface FacebookEndpointBuilder {
             return (FacebookConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public FacebookConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (FacebookConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public FacebookConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (FacebookConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public FacebookConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (FacebookConsumerBuilder) this;
         }

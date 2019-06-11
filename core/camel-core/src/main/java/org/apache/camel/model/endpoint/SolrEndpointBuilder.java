@@ -53,10 +53,26 @@ public interface SolrEndpointBuilder {
             return (T) this;
         }
         /**
+         * Server side must support gzip or deflate for this to have any effect.
+         * The option will be converted to a java.lang.Boolean type.
+         */
+        public T allowCompression(String allowCompression) {
+            this.properties.put("allowCompression", allowCompression);
+            return (T) this;
+        }
+        /**
          * connectionTimeout on the underlying HttpConnectionManager. The option
          * is a java.lang.Integer type.
          */
         public T connectionTimeout(Integer connectionTimeout) {
+            this.properties.put("connectionTimeout", connectionTimeout);
+            return (T) this;
+        }
+        /**
+         * connectionTimeout on the underlying HttpConnectionManager. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public T connectionTimeout(String connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
@@ -70,10 +86,27 @@ public interface SolrEndpointBuilder {
             return (T) this;
         }
         /**
+         * maxConnectionsPerHost on the underlying HttpConnectionManager. The
+         * option will be converted to a java.lang.Integer type.
+         */
+        public T defaultMaxConnectionsPerHost(
+                String defaultMaxConnectionsPerHost) {
+            this.properties.put("defaultMaxConnectionsPerHost", defaultMaxConnectionsPerHost);
+            return (T) this;
+        }
+        /**
          * indicates whether redirects are used to get to the Solr server. The
          * option is a java.lang.Boolean type.
          */
         public T followRedirects(Boolean followRedirects) {
+            this.properties.put("followRedirects", followRedirects);
+            return (T) this;
+        }
+        /**
+         * indicates whether redirects are used to get to the Solr server. The
+         * option will be converted to a java.lang.Boolean type.
+         */
+        public T followRedirects(String followRedirects) {
             this.properties.put("followRedirects", followRedirects);
             return (T) this;
         }
@@ -86,10 +119,26 @@ public interface SolrEndpointBuilder {
             return (T) this;
         }
         /**
+         * Maximum number of retries to attempt in the event of transient
+         * errors. The option will be converted to a java.lang.Integer type.
+         */
+        public T maxRetries(String maxRetries) {
+            this.properties.put("maxRetries", maxRetries);
+            return (T) this;
+        }
+        /**
          * maxTotalConnection on the underlying HttpConnectionManager. The
          * option is a java.lang.Integer type.
          */
         public T maxTotalConnections(Integer maxTotalConnections) {
+            this.properties.put("maxTotalConnections", maxTotalConnections);
+            return (T) this;
+        }
+        /**
+         * maxTotalConnection on the underlying HttpConnectionManager. The
+         * option will be converted to a java.lang.Integer type.
+         */
+        public T maxTotalConnections(String maxTotalConnections) {
             this.properties.put("maxTotalConnections", maxTotalConnections);
             return (T) this;
         }
@@ -111,6 +160,15 @@ public interface SolrEndpointBuilder {
             return (T) this;
         }
         /**
+         * Read timeout on the underlying HttpConnectionManager. This is
+         * desirable for queries, but probably not for indexing. The option will
+         * be converted to a java.lang.Integer type.
+         */
+        public T soTimeout(String soTimeout) {
+            this.properties.put("soTimeout", soTimeout);
+            return (T) this;
+        }
+        /**
          * Set the queue size for the StreamingUpdateSolrServer. The option is a
          * int type.
          */
@@ -119,10 +177,26 @@ public interface SolrEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set the queue size for the StreamingUpdateSolrServer. The option will
+         * be converted to a int type.
+         */
+        public T streamingQueueSize(String streamingQueueSize) {
+            this.properties.put("streamingQueueSize", streamingQueueSize);
+            return (T) this;
+        }
+        /**
          * Set the number of threads for the StreamingUpdateSolrServer. The
          * option is a int type.
          */
         public T streamingThreadCount(int streamingThreadCount) {
+            this.properties.put("streamingThreadCount", streamingThreadCount);
+            return (T) this;
+        }
+        /**
+         * Set the number of threads for the StreamingUpdateSolrServer. The
+         * option will be converted to a int type.
+         */
+        public T streamingThreadCount(String streamingThreadCount) {
             this.properties.put("streamingThreadCount", streamingThreadCount);
             return (T) this;
         }
@@ -136,11 +210,29 @@ public interface SolrEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

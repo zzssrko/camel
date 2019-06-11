@@ -53,6 +53,14 @@ public interface HazelcastAtomicnumberEndpointBuilder {
             return (T) this;
         }
         /**
+         * Define if the endpoint will use a reliable Topic struct or not. The
+         * option will be converted to a boolean type.
+         */
+        public T reliable(String reliable) {
+            this.properties.put("reliable", reliable);
+            return (T) this;
+        }
+        /**
          * To specify a default operation to use, if no operation header has
          * been provided. The option is a
          * org.apache.camel.component.hazelcast.HazelcastOperation type.
@@ -62,10 +70,28 @@ public interface HazelcastAtomicnumberEndpointBuilder {
             return (T) this;
         }
         /**
+         * To specify a default operation to use, if no operation header has
+         * been provided. The option will be converted to a
+         * org.apache.camel.component.hazelcast.HazelcastOperation type.
+         */
+        public T defaultOperation(String defaultOperation) {
+            this.properties.put("defaultOperation", defaultOperation);
+            return (T) this;
+        }
+        /**
          * The hazelcast instance reference which can be used for hazelcast
          * endpoint. The option is a com.hazelcast.core.HazelcastInstance type.
          */
         public T hazelcastInstance(Object hazelcastInstance) {
+            this.properties.put("hazelcastInstance", hazelcastInstance);
+            return (T) this;
+        }
+        /**
+         * The hazelcast instance reference which can be used for hazelcast
+         * endpoint. The option will be converted to a
+         * com.hazelcast.core.HazelcastInstance type.
+         */
+        public T hazelcastInstance(String hazelcastInstance) {
             this.properties.put("hazelcastInstance", hazelcastInstance);
             return (T) this;
         }
@@ -89,11 +115,29 @@ public interface HazelcastAtomicnumberEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -106,10 +150,26 @@ public interface HazelcastAtomicnumberEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use concurrent consumers polling from the SEDA queue. The option
+         * will be converted to a int type.
+         */
+        public T concurrentConsumers(String concurrentConsumers) {
+            this.properties.put("concurrentConsumers", concurrentConsumers);
+            return (T) this;
+        }
+        /**
          * Milliseconds before consumer continues polling after an error has
          * occurred. The option is a int type.
          */
         public T onErrorDelay(int onErrorDelay) {
+            this.properties.put("onErrorDelay", onErrorDelay);
+            return (T) this;
+        }
+        /**
+         * Milliseconds before consumer continues polling after an error has
+         * occurred. The option will be converted to a int type.
+         */
+        public T onErrorDelay(String onErrorDelay) {
             this.properties.put("onErrorDelay", onErrorDelay);
             return (T) this;
         }
@@ -124,6 +184,16 @@ public interface HazelcastAtomicnumberEndpointBuilder {
             return (T) this;
         }
         /**
+         * The timeout used when consuming from the SEDA queue. When a timeout
+         * occurs, the consumer can check whether it is allowed to continue
+         * running. Setting a lower value allows the consumer to react more
+         * quickly upon shutdown. The option will be converted to a int type.
+         */
+        public T pollTimeout(String pollTimeout) {
+            this.properties.put("pollTimeout", pollTimeout);
+            return (T) this;
+        }
+        /**
          * If set to true then the consumer runs in transaction mode, where the
          * messages in the seda queue will only be removed if the transaction
          * commits, which happens when the processing is complete. The option is
@@ -134,11 +204,30 @@ public interface HazelcastAtomicnumberEndpointBuilder {
             return (T) this;
         }
         /**
+         * If set to true then the consumer runs in transaction mode, where the
+         * messages in the seda queue will only be removed if the transaction
+         * commits, which happens when the processing is complete. The option
+         * will be converted to a boolean type.
+         */
+        public T transacted(String transacted) {
+            this.properties.put("transacted", transacted);
+            return (T) this;
+        }
+        /**
          * If set to true the whole Exchange will be transfered. If header or
          * body contains not serializable objects, they will be skipped. The
          * option is a boolean type.
          */
         public T transferExchange(boolean transferExchange) {
+            this.properties.put("transferExchange", transferExchange);
+            return (T) this;
+        }
+        /**
+         * If set to true the whole Exchange will be transfered. If header or
+         * body contains not serializable objects, they will be skipped. The
+         * option will be converted to a boolean type.
+         */
+        public T transferExchange(String transferExchange) {
             this.properties.put("transferExchange", transferExchange);
             return (T) this;
         }

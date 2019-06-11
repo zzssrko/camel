@@ -54,6 +54,14 @@ public interface XmppEndpointBuilder {
             return (T) this;
         }
         /**
+         * Port number for the chat server. The option will be converted to a
+         * int type.
+         */
+        public T port(String port) {
+            this.properties.put("port", port);
+            return (T) this;
+        }
+        /**
          * JID (Jabber ID) of person to receive messages. room parameter has
          * precedence over participant. The option is a java.lang.String type.
          */
@@ -65,6 +73,14 @@ public interface XmppEndpointBuilder {
          * Whether to login the user. The option is a boolean type.
          */
         public T login(boolean login) {
+            this.properties.put("login", login);
+            return (T) this;
+        }
+        /**
+         * Whether to login the user. The option will be converted to a boolean
+         * type.
+         */
+        public T login(String login) {
             this.properties.put("login", login);
             return (T) this;
         }
@@ -82,6 +98,14 @@ public interface XmppEndpointBuilder {
          * boolean type.
          */
         public T pubsub(boolean pubsub) {
+            this.properties.put("pubsub", pubsub);
+            return (T) this;
+        }
+        /**
+         * Accept pubsub packets on input, default is false. The option will be
+         * converted to a boolean type.
+         */
+        public T pubsub(String pubsub) {
             this.properties.put("pubsub", pubsub);
             return (T) this;
         }
@@ -122,10 +146,32 @@ public interface XmppEndpointBuilder {
             return (T) this;
         }
         /**
+         * Specifies whether to test the connection on startup. This is used to
+         * ensure that the XMPP client has a valid connection to the XMPP server
+         * when the route starts. Camel throws an exception on startup if a
+         * connection cannot be established. When this option is set to false,
+         * Camel will attempt to establish a lazy connection when needed by a
+         * producer, and will poll for a consumer connection until the
+         * connection is established. Default is true. The option will be
+         * converted to a boolean type.
+         */
+        public T testConnectionOnStartup(String testConnectionOnStartup) {
+            this.properties.put("testConnectionOnStartup", testConnectionOnStartup);
+            return (T) this;
+        }
+        /**
          * If true, an attempt to create an account will be made. Default is
          * false. The option is a boolean type.
          */
         public T createAccount(boolean createAccount) {
+            this.properties.put("createAccount", createAccount);
+            return (T) this;
+        }
+        /**
+         * If true, an attempt to create an account will be made. Default is
+         * false. The option will be converted to a boolean type.
+         */
+        public T createAccount(String createAccount) {
             this.properties.put("createAccount", createAccount);
             return (T) this;
         }
@@ -147,12 +193,31 @@ public interface XmppEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * To use an existing connection configuration. Currently
          * org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration is only
          * supported (XMPP over TCP). The option is a
          * org.jivesoftware.smack.ConnectionConfiguration type.
          */
         public T connectionConfig(Object connectionConfig) {
+            this.properties.put("connectionConfig", connectionConfig);
+            return (T) this;
+        }
+        /**
+         * To use an existing connection configuration. Currently
+         * org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration is only
+         * supported (XMPP over TCP). The option will be converted to a
+         * org.jivesoftware.smack.ConnectionConfiguration type.
+         */
+        public T connectionConfig(String connectionConfig) {
             this.properties.put("connectionConfig", connectionConfig);
             return (T) this;
         }
@@ -166,11 +231,29 @@ public interface XmppEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
+            return (T) this;
+        }
+        /**
+         * To use a custom HeaderFilterStrategy to filter header to and from
+         * Camel message. The option will be converted to a
+         * org.apache.camel.spi.HeaderFilterStrategy type.
+         */
+        public T headerFilterStrategy(String headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
@@ -213,6 +296,19 @@ public interface XmppEndpointBuilder {
             return (XmppConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public XmppConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (XmppConsumerBuilder) this;
+        }
+        /**
          * The amount of time in seconds between polls (in seconds) to verify
          * the health of the XMPP connection, or between attempts to establish
          * an initial consumer connection. Camel will try to re-establish a
@@ -224,11 +320,32 @@ public interface XmppEndpointBuilder {
             return (XmppConsumerBuilder) this;
         }
         /**
+         * The amount of time in seconds between polls (in seconds) to verify
+         * the health of the XMPP connection, or between attempts to establish
+         * an initial consumer connection. Camel will try to re-establish a
+         * connection if it has become inactive. Default is 10 seconds. The
+         * option will be converted to a int type.
+         */
+        public XmppConsumerBuilder connectionPollDelay(
+                String connectionPollDelay) {
+            this.properties.put("connectionPollDelay", connectionPollDelay);
+            return (XmppConsumerBuilder) this;
+        }
+        /**
          * Set a doc header on the IN message containing a Document form of the
          * incoming packet; default is true if presence or pubsub are true,
          * otherwise false. The option is a boolean type.
          */
         public XmppConsumerBuilder doc(boolean doc) {
+            this.properties.put("doc", doc);
+            return (XmppConsumerBuilder) this;
+        }
+        /**
+         * Set a doc header on the IN message containing a Document form of the
+         * incoming packet; default is true if presence or pubsub are true,
+         * otherwise false. The option will be converted to a boolean type.
+         */
+        public XmppConsumerBuilder doc(String doc) {
             this.properties.put("doc", doc);
             return (XmppConsumerBuilder) this;
         }
@@ -245,11 +362,30 @@ public interface XmppEndpointBuilder {
             return (XmppConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public XmppConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (XmppConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public XmppConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (XmppConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public XmppConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (XmppConsumerBuilder) this;
         }

@@ -51,6 +51,14 @@ public interface PrinterEndpointBuilder {
             return (T) this;
         }
         /**
+         * Port number of the printer. The option will be converted to a int
+         * type.
+         */
+        public T port(String port) {
+            this.properties.put("port", port);
+            return (T) this;
+        }
+        /**
          * Name of the printer. The option is a java.lang.String type.
          */
         public T printername(String printername) {
@@ -65,9 +73,25 @@ public interface PrinterEndpointBuilder {
             return (T) this;
         }
         /**
+         * Number of copies to print. The option will be converted to a int
+         * type.
+         */
+        public T copies(String copies) {
+            this.properties.put("copies", copies);
+            return (T) this;
+        }
+        /**
          * Sets DocFlavor to use. The option is a javax.print.DocFlavor type.
          */
         public T docFlavor(Object docFlavor) {
+            this.properties.put("docFlavor", docFlavor);
+            return (T) this;
+        }
+        /**
+         * Sets DocFlavor to use. The option will be converted to a
+         * javax.print.DocFlavor type.
+         */
+        public T docFlavor(String docFlavor) {
             this.properties.put("docFlavor", docFlavor);
             return (T) this;
         }
@@ -130,6 +154,14 @@ public interface PrinterEndpointBuilder {
             return (T) this;
         }
         /**
+         * etting this option to false prevents sending of the print data to the
+         * printer. The option will be converted to a boolean type.
+         */
+        public T sendToPrinter(String sendToPrinter) {
+            this.properties.put("sendToPrinter", sendToPrinter);
+            return (T) this;
+        }
+        /**
          * Sets one sided or two sided printing based on the
          * javax.print.attribute.standard.Sides API. The option is a
          * java.lang.String type.
@@ -148,11 +180,29 @@ public interface PrinterEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

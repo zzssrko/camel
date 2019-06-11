@@ -69,6 +69,14 @@ public interface KubernetesPersistentVolumesClaimsEndpointBuilder {
             return (T) this;
         }
         /**
+         * Default KubernetesClient to use if provided. The option will be
+         * converted to a io.fabric8.kubernetes.client.KubernetesClient type.
+         */
+        public T kubernetesClient(String kubernetesClient) {
+            this.properties.put("kubernetesClient", kubernetesClient);
+            return (T) this;
+        }
+        /**
          * The port name, used for ServiceCall EIP. The option is a
          * java.lang.String type.
          */
@@ -94,10 +102,28 @@ public interface KubernetesPersistentVolumesClaimsEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Connection timeout in milliseconds to use when making requests to the
          * Kubernetes API server. The option is a java.lang.Integer type.
          */
         public T connectionTimeout(Integer connectionTimeout) {
+            this.properties.put("connectionTimeout", connectionTimeout);
+            return (T) this;
+        }
+        /**
+         * Connection timeout in milliseconds to use when making requests to the
+         * Kubernetes API server. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T connectionTimeout(String connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
@@ -107,6 +133,15 @@ public interface KubernetesPersistentVolumesClaimsEndpointBuilder {
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -187,6 +222,14 @@ public interface KubernetesPersistentVolumesClaimsEndpointBuilder {
          * a java.lang.Boolean type.
          */
         public T trustCerts(Boolean trustCerts) {
+            this.properties.put("trustCerts", trustCerts);
+            return (T) this;
+        }
+        /**
+         * Define if the certs we used are trusted anyway or not. The option
+         * will be converted to a java.lang.Boolean type.
+         */
+        public T trustCerts(String trustCerts) {
             this.properties.put("trustCerts", trustCerts);
             return (T) this;
         }

@@ -57,9 +57,25 @@ public interface JsonValidatorEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether to use resource content cache or not. The option will be
+         * converted to a boolean type.
+         */
+        public T contentCache(String contentCache) {
+            this.properties.put("contentCache", contentCache);
+            return (T) this;
+        }
+        /**
          * Whether to fail if no body exists. The option is a boolean type.
          */
         public T failOnNullBody(boolean failOnNullBody) {
+            this.properties.put("failOnNullBody", failOnNullBody);
+            return (T) this;
+        }
+        /**
+         * Whether to fail if no body exists. The option will be converted to a
+         * boolean type.
+         */
+        public T failOnNullBody(String failOnNullBody) {
             this.properties.put("failOnNullBody", failOnNullBody);
             return (T) this;
         }
@@ -68,6 +84,14 @@ public interface JsonValidatorEndpointBuilder {
          * The option is a boolean type.
          */
         public T failOnNullHeader(boolean failOnNullHeader) {
+            this.properties.put("failOnNullHeader", failOnNullHeader);
+            return (T) this;
+        }
+        /**
+         * Whether to fail if no header exists when validating against a header.
+         * The option will be converted to a boolean type.
+         */
+        public T failOnNullHeader(String failOnNullHeader) {
             this.properties.put("failOnNullHeader", failOnNullHeader);
             return (T) this;
         }
@@ -89,12 +113,32 @@ public interface JsonValidatorEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * To use a custom ValidatorErrorHandler. The default error handler
          * captures the errors and throws an exception. The option is a
          * org.apache.camel.component.jsonvalidator.JsonValidatorErrorHandler
          * type.
          */
         public T errorHandler(Object errorHandler) {
+            this.properties.put("errorHandler", errorHandler);
+            return (T) this;
+        }
+        /**
+         * To use a custom ValidatorErrorHandler. The default error handler
+         * captures the errors and throws an exception. The option will be
+         * converted to a
+         * org.apache.camel.component.jsonvalidator.JsonValidatorErrorHandler
+         * type.
+         */
+        public T errorHandler(String errorHandler) {
             this.properties.put("errorHandler", errorHandler);
             return (T) this;
         }
@@ -109,11 +153,30 @@ public interface JsonValidatorEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom schema loader allowing for adding custom format
+         * validation. The default implementation will create a schema loader
+         * with draft v4 support. The option will be converted to a
+         * org.apache.camel.component.jsonvalidator.JsonSchemaLoader type.
+         */
+        public T schemaLoader(String schemaLoader) {
+            this.properties.put("schemaLoader", schemaLoader);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

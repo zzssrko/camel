@@ -46,9 +46,25 @@ public interface TikaEndpointBuilder {
             return (T) this;
         }
         /**
+         * Tika Operation. parse or detect. The option will be converted to a
+         * org.apache.camel.component.tika.TikaOperation type.
+         */
+        public T operation(String operation) {
+            this.properties.put("operation", operation);
+            return (T) this;
+        }
+        /**
          * Tika Config. The option is a org.apache.tika.config.TikaConfig type.
          */
         public T tikaConfig(Object tikaConfig) {
+            this.properties.put("tikaConfig", tikaConfig);
+            return (T) this;
+        }
+        /**
+         * Tika Config. The option will be converted to a
+         * org.apache.tika.config.TikaConfig type.
+         */
+        public T tikaConfig(String tikaConfig) {
             this.properties.put("tikaConfig", tikaConfig);
             return (T) this;
         }
@@ -82,6 +98,18 @@ public interface TikaEndpointBuilder {
             return (T) this;
         }
         /**
+         * Tika Output Format. Supported output formats. xml: Returns Parsed
+         * Content as XML. html: Returns Parsed Content as HTML. text: Returns
+         * Parsed Content as Text. textMain: Uses the boilerpipe library to
+         * automatically extract the main content from a web page. The option
+         * will be converted to a
+         * org.apache.camel.component.tika.TikaParseOutputFormat type.
+         */
+        public T tikaParseOutputFormat(String tikaParseOutputFormat) {
+            this.properties.put("tikaParseOutputFormat", tikaParseOutputFormat);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -91,11 +119,29 @@ public interface TikaEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

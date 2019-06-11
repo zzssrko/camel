@@ -65,6 +65,18 @@ public interface CMEndpointBuilder {
             return (T) this;
         }
         /**
+         * If it is a multipart message forces the max number. Message can be
+         * truncated. Technically the gateway will first check if a message is
+         * larger than 160 characters, if so, the message will be cut into
+         * multiple 153 characters parts limited by these parameters. The option
+         * will be converted to a
+         * (@javax.validation.constraints.Min(1L),@javax.validation.constraints.Max(8L) :: int) type.
+         */
+        public T defaultMaxNumberOfParts(String defaultMaxNumberOfParts) {
+            this.properties.put("defaultMaxNumberOfParts", defaultMaxNumberOfParts);
+            return (T) this;
+        }
+        /**
          * The unique token to use. The option is a
          * (@javax.validation.constraints.NotNull :: java.lang.String) type.
          */
@@ -81,6 +93,14 @@ public interface CMEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to test the connection to the SMS Gateway on startup. The
+         * option will be converted to a boolean type.
+         */
+        public T testConnectionOnStartup(String testConnectionOnStartup) {
+            this.properties.put("testConnectionOnStartup", testConnectionOnStartup);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -90,11 +110,29 @@ public interface CMEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

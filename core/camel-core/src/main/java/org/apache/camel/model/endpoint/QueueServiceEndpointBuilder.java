@@ -55,10 +55,27 @@ public interface QueueServiceEndpointBuilder {
             return (T) this;
         }
         /**
+         * The queue service client. The option will be converted to a
+         * com.microsoft.azure.storage.queue.CloudQueue type.
+         */
+        public T azureQueueClient(String azureQueueClient) {
+            this.properties.put("azureQueueClient", azureQueueClient);
+            return (T) this;
+        }
+        /**
          * Set the storage credentials, required in most cases. The option is a
          * com.microsoft.azure.storage.StorageCredentials type.
          */
         public T credentials(Object credentials) {
+            this.properties.put("credentials", credentials);
+            return (T) this;
+        }
+        /**
+         * Set the storage credentials, required in most cases. The option will
+         * be converted to a com.microsoft.azure.storage.StorageCredentials
+         * type.
+         */
+        public T credentials(String credentials) {
             this.properties.put("credentials", credentials);
             return (T) this;
         }
@@ -72,11 +89,29 @@ public interface QueueServiceEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -105,6 +140,20 @@ public interface QueueServiceEndpointBuilder {
             return (QueueServiceConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public QueueServiceConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (QueueServiceConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -117,11 +166,32 @@ public interface QueueServiceEndpointBuilder {
             return (QueueServiceConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public QueueServiceConsumerBuilder exceptionHandler(
+                String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (QueueServiceConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public QueueServiceConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (QueueServiceConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public QueueServiceConsumerBuilder exchangePattern(
+                String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (QueueServiceConsumerBuilder) this;
         }
@@ -144,10 +214,28 @@ public interface QueueServiceEndpointBuilder {
             return (QueueServiceProducerBuilder) this;
         }
         /**
+         * Message Time To Live in seconds. The option will be converted to a
+         * int type.
+         */
+        public QueueServiceProducerBuilder messageTimeToLive(
+                String messageTimeToLive) {
+            this.properties.put("messageTimeToLive", messageTimeToLive);
+            return (QueueServiceProducerBuilder) this;
+        }
+        /**
          * Message Visibility Delay in seconds. The option is a int type.
          */
         public QueueServiceProducerBuilder messageVisibilityDelay(
                 int messageVisibilityDelay) {
+            this.properties.put("messageVisibilityDelay", messageVisibilityDelay);
+            return (QueueServiceProducerBuilder) this;
+        }
+        /**
+         * Message Visibility Delay in seconds. The option will be converted to
+         * a int type.
+         */
+        public QueueServiceProducerBuilder messageVisibilityDelay(
+                String messageVisibilityDelay) {
             this.properties.put("messageVisibilityDelay", messageVisibilityDelay);
             return (QueueServiceProducerBuilder) this;
         }
@@ -157,6 +245,15 @@ public interface QueueServiceEndpointBuilder {
          */
         public QueueServiceProducerBuilder operation(
                 QueueServiceOperations operation) {
+            this.properties.put("operation", operation);
+            return (QueueServiceProducerBuilder) this;
+        }
+        /**
+         * Queue service operation hint to the producer. The option will be
+         * converted to a
+         * org.apache.camel.component.azure.queue.QueueServiceOperations type.
+         */
+        public QueueServiceProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (QueueServiceProducerBuilder) this;
         }

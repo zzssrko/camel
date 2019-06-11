@@ -51,11 +51,30 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * URI of the SIP server to connect to (the username and password can be
+         * included such as: john:secretmyserver:9999). The option will be
+         * converted to a java.net.URI type.
+         */
+        public T uri(String uri) {
+            this.properties.put("uri", uri);
+            return (T) this;
+        }
+        /**
          * Should connections be cached by the SipStack to reduce cost of
          * connection creation. This is useful if the connection is used for
          * long running conversations. The option is a boolean type.
          */
         public T cacheConnections(boolean cacheConnections) {
+            this.properties.put("cacheConnections", cacheConnections);
+            return (T) this;
+        }
+        /**
+         * Should connections be cached by the SipStack to reduce cost of
+         * connection creation. This is useful if the connection is used for
+         * long running conversations. The option will be converted to a boolean
+         * type.
+         */
+        public T cacheConnections(String cacheConnections) {
             this.properties.put("cacheConnections", cacheConnections);
             return (T) this;
         }
@@ -110,6 +129,15 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * Port of the message originator. Mandatory setting unless a registry
+         * based FromHeader is specified. The option will be converted to a int
+         * type.
+         */
+        public T fromPort(String fromPort) {
+            this.properties.put("fromPort", fromPort);
+            return (T) this;
+        }
+        /**
          * Username of the message originator. Mandatory setting unless a
          * registry based custom FromHeader is specified. The option is a
          * java.lang.String type.
@@ -127,11 +155,28 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * The amount of time a message received at an endpoint is considered
+         * valid. The option will be converted to a int type.
+         */
+        public T msgExpiration(String msgExpiration) {
+            this.properties.put("msgExpiration", msgExpiration);
+            return (T) this;
+        }
+        /**
          * Setting for specifying amount of time to wait for a Response and/or
          * Acknowledgement can be received from another SIP stack. The option is
          * a long type.
          */
         public T receiveTimeoutMillis(long receiveTimeoutMillis) {
+            this.properties.put("receiveTimeoutMillis", receiveTimeoutMillis);
+            return (T) this;
+        }
+        /**
+         * Setting for specifying amount of time to wait for a Response and/or
+         * Acknowledgement can be received from another SIP stack. The option
+         * will be converted to a long type.
+         */
+        public T receiveTimeoutMillis(String receiveTimeoutMillis) {
             this.properties.put("receiveTimeoutMillis", receiveTimeoutMillis);
             return (T) this;
         }
@@ -156,6 +201,15 @@ public interface SipEndpointBuilder {
          * based ToHeader is specified. The option is a int type.
          */
         public T toPort(int toPort) {
+            this.properties.put("toPort", toPort);
+            return (T) this;
+        }
+        /**
+         * Portname of the message receiver. Mandatory setting unless a registry
+         * based ToHeader is specified. The option will be converted to a int
+         * type.
+         */
+        public T toPort(String toPort) {
             this.properties.put("toPort", toPort);
             return (T) this;
         }
@@ -185,6 +239,14 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom AddressFactory. The option will be converted to a
+         * javax.sip.address.AddressFactory type.
+         */
+        public T addressFactory(String addressFactory) {
+            this.properties.put("addressFactory", addressFactory);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -194,11 +256,29 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * A custom Header object containing call details. Must implement the
          * type javax.sip.header.CallIdHeader. The option is a
          * javax.sip.header.CallIdHeader type.
          */
         public T callIdHeader(Object callIdHeader) {
+            this.properties.put("callIdHeader", callIdHeader);
+            return (T) this;
+        }
+        /**
+         * A custom Header object containing call details. Must implement the
+         * type javax.sip.header.CallIdHeader. The option will be converted to a
+         * javax.sip.header.CallIdHeader type.
+         */
+        public T callIdHeader(String callIdHeader) {
             this.properties.put("callIdHeader", callIdHeader);
             return (T) this;
         }
@@ -213,11 +293,30 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * An optional custom Header object containing verbose contact details
+         * (email, phone number etc). Must implement the type
+         * javax.sip.header.ContactHeader. The option will be converted to a
+         * javax.sip.header.ContactHeader type.
+         */
+        public T contactHeader(String contactHeader) {
+            this.properties.put("contactHeader", contactHeader);
+            return (T) this;
+        }
+        /**
          * A custom Header object containing message content details. Must
          * implement the type javax.sip.header.ContentTypeHeader. The option is
          * a javax.sip.header.ContentTypeHeader type.
          */
         public T contentTypeHeader(Object contentTypeHeader) {
+            this.properties.put("contentTypeHeader", contentTypeHeader);
+            return (T) this;
+        }
+        /**
+         * A custom Header object containing message content details. Must
+         * implement the type javax.sip.header.ContentTypeHeader. The option
+         * will be converted to a javax.sip.header.ContentTypeHeader type.
+         */
+        public T contentTypeHeader(String contentTypeHeader) {
             this.properties.put("contentTypeHeader", contentTypeHeader);
             return (T) this;
         }
@@ -231,11 +330,29 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * A custom Header object containing event details. Must implement the
+         * type javax.sip.header.EventHeader. The option will be converted to a
+         * javax.sip.header.EventHeader type.
+         */
+        public T eventHeader(String eventHeader) {
+            this.properties.put("eventHeader", eventHeader);
+            return (T) this;
+        }
+        /**
          * A custom Header object containing message expiration details. Must
          * implement the type javax.sip.header.ExpiresHeader. The option is a
          * javax.sip.header.ExpiresHeader type.
          */
         public T expiresHeader(Object expiresHeader) {
+            this.properties.put("expiresHeader", expiresHeader);
+            return (T) this;
+        }
+        /**
+         * A custom Header object containing message expiration details. Must
+         * implement the type javax.sip.header.ExpiresHeader. The option will be
+         * converted to a javax.sip.header.ExpiresHeader type.
+         */
+        public T expiresHeader(String expiresHeader) {
             this.properties.put("expiresHeader", expiresHeader);
             return (T) this;
         }
@@ -249,11 +366,29 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * A custom Header object containing user/application specific details.
+         * Must implement the type javax.sip.header.ExtensionHeader. The option
+         * will be converted to a javax.sip.header.ExtensionHeader type.
+         */
+        public T extensionHeader(String extensionHeader) {
+            this.properties.put("extensionHeader", extensionHeader);
+            return (T) this;
+        }
+        /**
          * A custom Header object containing message originator settings. Must
          * implement the type javax.sip.header.FromHeader. The option is a
          * javax.sip.header.FromHeader type.
          */
         public T fromHeader(Object fromHeader) {
+            this.properties.put("fromHeader", fromHeader);
+            return (T) this;
+        }
+        /**
+         * A custom Header object containing message originator settings. Must
+         * implement the type javax.sip.header.FromHeader. The option will be
+         * converted to a javax.sip.header.FromHeader type.
+         */
+        public T fromHeader(String fromHeader) {
             this.properties.put("fromHeader", fromHeader);
             return (T) this;
         }
@@ -266,10 +401,26 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom HeaderFactory. The option will be converted to a
+         * javax.sip.header.HeaderFactory type.
+         */
+        public T headerFactory(String headerFactory) {
+            this.properties.put("headerFactory", headerFactory);
+            return (T) this;
+        }
+        /**
          * To use a custom ListeningPoint implementation. The option is a
          * javax.sip.ListeningPoint type.
          */
         public T listeningPoint(Object listeningPoint) {
+            this.properties.put("listeningPoint", listeningPoint);
+            return (T) this;
+        }
+        /**
+         * To use a custom ListeningPoint implementation. The option will be
+         * converted to a javax.sip.ListeningPoint type.
+         */
+        public T listeningPoint(String listeningPoint) {
             this.properties.put("listeningPoint", listeningPoint);
             return (T) this;
         }
@@ -284,10 +435,28 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * A custom Header object containing details on maximum proxy forwards.
+         * This header places a limit on the viaHeaders possible. Must implement
+         * the type javax.sip.header.MaxForwardsHeader. The option will be
+         * converted to a javax.sip.header.MaxForwardsHeader type.
+         */
+        public T maxForwardsHeader(String maxForwardsHeader) {
+            this.properties.put("maxForwardsHeader", maxForwardsHeader);
+            return (T) this;
+        }
+        /**
          * Setting for maximum allowed Message size in bytes. The option is a
          * int type.
          */
         public T maxMessageSize(int maxMessageSize) {
+            this.properties.put("maxMessageSize", maxMessageSize);
+            return (T) this;
+        }
+        /**
+         * Setting for maximum allowed Message size in bytes. The option will be
+         * converted to a int type.
+         */
+        public T maxMessageSize(String maxMessageSize) {
             this.properties.put("maxMessageSize", maxMessageSize);
             return (T) this;
         }
@@ -300,6 +469,14 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom MessageFactory. The option will be converted to a
+         * javax.sip.message.MessageFactory type.
+         */
+        public T messageFactory(String messageFactory) {
+            this.properties.put("messageFactory", messageFactory);
+            return (T) this;
+        }
+        /**
          * To use a custom SipFactory to create the SipStack to be used. The
          * option is a javax.sip.SipFactory type.
          */
@@ -308,9 +485,25 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom SipFactory to create the SipStack to be used. The
+         * option will be converted to a javax.sip.SipFactory type.
+         */
+        public T sipFactory(String sipFactory) {
+            this.properties.put("sipFactory", sipFactory);
+            return (T) this;
+        }
+        /**
          * To use a custom SipStack. The option is a javax.sip.SipStack type.
          */
         public T sipStack(Object sipStack) {
+            this.properties.put("sipStack", sipStack);
+            return (T) this;
+        }
+        /**
+         * To use a custom SipStack. The option will be converted to a
+         * javax.sip.SipStack type.
+         */
+        public T sipStack(String sipStack) {
             this.properties.put("sipStack", sipStack);
             return (T) this;
         }
@@ -324,11 +517,29 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom SipURI. If none configured, then the SipUri fallback
+         * to use the options toUser toHost:toPort. The option will be converted
+         * to a javax.sip.address.SipURI type.
+         */
+        public T sipUri(String sipUri) {
+            this.properties.put("sipUri", sipUri);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -342,6 +553,15 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * A custom Header object containing message receiver settings. Must
+         * implement the type javax.sip.header.ToHeader. The option will be
+         * converted to a javax.sip.header.ToHeader type.
+         */
+        public T toHeader(String toHeader) {
+            this.properties.put("toHeader", toHeader);
+            return (T) this;
+        }
+        /**
          * List of custom Header objects of the type javax.sip.header.ViaHeader.
          * Each ViaHeader containing a proxy address for request forwarding.
          * (Note this header is automatically updated by each proxy when the
@@ -349,6 +569,17 @@ public interface SipEndpointBuilder {
          * java.util.List<javax.sip.header.ViaHeader> type.
          */
         public T viaHeaders(List<Object> viaHeaders) {
+            this.properties.put("viaHeaders", viaHeaders);
+            return (T) this;
+        }
+        /**
+         * List of custom Header objects of the type javax.sip.header.ViaHeader.
+         * Each ViaHeader containing a proxy address for request forwarding.
+         * (Note this header is automatically updated by each proxy when the
+         * request arrives at its listener). The option will be converted to a
+         * java.util.List<javax.sip.header.ViaHeader> type.
+         */
+        public T viaHeaders(String viaHeaders) {
             this.properties.put("viaHeaders", viaHeaders);
             return (T) this;
         }
@@ -383,10 +614,26 @@ public interface SipEndpointBuilder {
             return (T) this;
         }
         /**
+         * Number of maximum proxy forwards. The option will be converted to a
+         * int type.
+         */
+        public T maxForwards(String maxForwards) {
+            this.properties.put("maxForwards", maxForwards);
+            return (T) this;
+        }
+        /**
          * This setting is used when requests are sent to the Presence Agent via
          * a proxy. The option is a boolean type.
          */
         public T useRouterForAllUris(boolean useRouterForAllUris) {
+            this.properties.put("useRouterForAllUris", useRouterForAllUris);
+            return (T) this;
+        }
+        /**
+         * This setting is used when requests are sent to the Presence Agent via
+         * a proxy. The option will be converted to a boolean type.
+         */
+        public T useRouterForAllUris(String useRouterForAllUris) {
             this.properties.put("useRouterForAllUris", useRouterForAllUris);
             return (T) this;
         }
@@ -414,11 +661,33 @@ public interface SipEndpointBuilder {
             return (SipConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public SipConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (SipConsumerBuilder) this;
+        }
+        /**
          * This setting is used to determine whether the kind of header
          * (FromHeader,ToHeader etc) that needs to be created for this endpoint.
          * The option is a boolean type.
          */
         public SipConsumerBuilder consumer(boolean consumer) {
+            this.properties.put("consumer", consumer);
+            return (SipConsumerBuilder) this;
+        }
+        /**
+         * This setting is used to determine whether the kind of header
+         * (FromHeader,ToHeader etc) that needs to be created for this endpoint.
+         * The option will be converted to a boolean type.
+         */
+        public SipConsumerBuilder consumer(String consumer) {
             this.properties.put("consumer", consumer);
             return (SipConsumerBuilder) this;
         }
@@ -429,6 +698,17 @@ public interface SipEndpointBuilder {
          * have to set this flag to true. The option is a boolean type.
          */
         public SipConsumerBuilder presenceAgent(boolean presenceAgent) {
+            this.properties.put("presenceAgent", presenceAgent);
+            return (SipConsumerBuilder) this;
+        }
+        /**
+         * This setting is used to distinguish between a Presence Agent & a
+         * consumer. This is due to the fact that the SIP Camel component ships
+         * with a basic Presence Agent (for testing purposes only). Consumers
+         * have to set this flag to true. The option will be converted to a
+         * boolean type.
+         */
+        public SipConsumerBuilder presenceAgent(String presenceAgent) {
             this.properties.put("presenceAgent", presenceAgent);
             return (SipConsumerBuilder) this;
         }
@@ -445,11 +725,30 @@ public interface SipEndpointBuilder {
             return (SipConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public SipConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (SipConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public SipConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (SipConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public SipConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (SipConsumerBuilder) this;
         }

@@ -61,6 +61,15 @@ public interface ExecEndpointBuilder {
             return (T) this;
         }
         /**
+         * A reference to a org.apache.commons.exec.ExecBinding in the Registry.
+         * The option will be converted to a
+         * org.apache.camel.component.exec.ExecBinding type.
+         */
+        public T binding(String binding) {
+            this.properties.put("binding", binding);
+            return (T) this;
+        }
+        /**
          * A reference to a org.apache.commons.exec.ExecCommandExecutor in the
          * Registry that customizes the command execution. The default command
          * executor utilizes the commons-exec library, which adds a shutdown
@@ -68,6 +77,17 @@ public interface ExecEndpointBuilder {
          * org.apache.camel.component.exec.ExecCommandExecutor type.
          */
         public T commandExecutor(Object commandExecutor) {
+            this.properties.put("commandExecutor", commandExecutor);
+            return (T) this;
+        }
+        /**
+         * A reference to a org.apache.commons.exec.ExecCommandExecutor in the
+         * Registry that customizes the command execution. The default command
+         * executor utilizes the commons-exec library, which adds a shutdown
+         * hook for every executed command. The option will be converted to a
+         * org.apache.camel.component.exec.ExecCommandExecutor type.
+         */
+        public T commandExecutor(String commandExecutor) {
             this.properties.put("commandExecutor", commandExecutor);
             return (T) this;
         }
@@ -91,11 +111,31 @@ public interface ExecEndpointBuilder {
             return (T) this;
         }
         /**
+         * The timeout, in milliseconds, after which the executable should be
+         * terminated. If execution has not completed within the timeout, the
+         * component will send a termination request. The option will be
+         * converted to a long type.
+         */
+        public T timeout(String timeout) {
+            this.properties.put("timeout", timeout);
+            return (T) this;
+        }
+        /**
          * A boolean indicating that when stdout is empty, this component will
          * populate the Camel Message Body with stderr. This behavior is
          * disabled (false) by default. The option is a boolean type.
          */
         public T useStderrOnEmptyStdout(boolean useStderrOnEmptyStdout) {
+            this.properties.put("useStderrOnEmptyStdout", useStderrOnEmptyStdout);
+            return (T) this;
+        }
+        /**
+         * A boolean indicating that when stdout is empty, this component will
+         * populate the Camel Message Body with stderr. This behavior is
+         * disabled (false) by default. The option will be converted to a
+         * boolean type.
+         */
+        public T useStderrOnEmptyStdout(String useStderrOnEmptyStdout) {
             this.properties.put("useStderrOnEmptyStdout", useStderrOnEmptyStdout);
             return (T) this;
         }
@@ -118,11 +158,29 @@ public interface ExecEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

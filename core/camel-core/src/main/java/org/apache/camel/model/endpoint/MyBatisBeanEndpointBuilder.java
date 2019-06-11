@@ -64,11 +64,29 @@ public interface MyBatisBeanEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -89,6 +107,17 @@ public interface MyBatisBeanEndpointBuilder {
          * The option is a org.apache.ibatis.session.ExecutorType type.
          */
         public MyBatisBeanProducerBuilder executorType(ExecutorType executorType) {
+            this.properties.put("executorType", executorType);
+            return (MyBatisBeanProducerBuilder) this;
+        }
+        /**
+         * The executor type to be used while executing statements. simple -
+         * executor does nothing special. reuse - executor reuses prepared
+         * statements. batch - executor reuses statements and batches updates.
+         * The option will be converted to a
+         * org.apache.ibatis.session.ExecutorType type.
+         */
+        public MyBatisBeanProducerBuilder executorType(String executorType) {
             this.properties.put("executorType", executorType);
             return (MyBatisBeanProducerBuilder) this;
         }

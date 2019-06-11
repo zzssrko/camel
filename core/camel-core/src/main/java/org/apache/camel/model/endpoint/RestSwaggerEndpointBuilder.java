@@ -47,11 +47,29 @@ public interface RestSwaggerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -82,6 +100,27 @@ public interface RestSwaggerEndpointBuilder {
          * UrlHandler. The option is a java.net.URI type.
          */
         public RestSwaggerProducerBuilder specificationUri(URI specificationUri) {
+            this.properties.put("specificationUri", specificationUri);
+            return (RestSwaggerProducerBuilder) this;
+        }
+        /**
+         * Path to the Swagger specification file. The scheme, host base path
+         * are taken from this specification, but these can be overridden with
+         * properties on the component or endpoint level. If not given the
+         * component tries to load swagger.json resource from the classpath.
+         * Note that the host defined on the component and endpoint of this
+         * Component should contain the scheme, hostname and optionally the port
+         * in the URI syntax (i.e. http://api.example.com:8080). Overrides
+         * component configuration. The Swagger specification can be loaded from
+         * different sources by prefixing with file: classpath: http: https:.
+         * Support for https is limited to using the JDK installed UrlHandler,
+         * and as such it can be cumbersome to setup TLS/SSL certificates for
+         * https (such as setting a number of javax.net.ssl JVM system
+         * properties). How to do that consult the JDK documentation for
+         * UrlHandler. The option will be converted to a java.net.URI type.
+         */
+        public RestSwaggerProducerBuilder specificationUri(
+                String specificationUri) {
             this.properties.put("specificationUri", specificationUri);
             return (RestSwaggerProducerBuilder) this;
         }

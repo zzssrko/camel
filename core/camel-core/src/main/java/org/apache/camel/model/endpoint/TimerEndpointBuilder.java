@@ -60,10 +60,29 @@ public interface TimerEndpointBuilder {
             return (T) this;
         }
         /**
+         * The number of milliseconds to wait before the first event is
+         * generated. Should not be used in conjunction with the time option.
+         * The default value is 1000. You can also specify time values using
+         * units, such as 60s (60 seconds), 5m30s (5 minutes and 30 seconds),
+         * and 1h (1 hour). The option will be converted to a long type.
+         */
+        public T delay(String delay) {
+            this.properties.put("delay", delay);
+            return (T) this;
+        }
+        /**
          * Events take place at approximately regular intervals, separated by
          * the specified period. The option is a boolean type.
          */
         public T fixedRate(boolean fixedRate) {
+            this.properties.put("fixedRate", fixedRate);
+            return (T) this;
+        }
+        /**
+         * Events take place at approximately regular intervals, separated by
+         * the specified period. The option will be converted to a boolean type.
+         */
+        public T fixedRate(String fixedRate) {
             this.properties.put("fixedRate", fixedRate);
             return (T) this;
         }
@@ -78,12 +97,33 @@ public interface TimerEndpointBuilder {
             return (T) this;
         }
         /**
+         * If greater than 0, generate periodic events every period
+         * milliseconds. The default value is 1000. You can also specify time
+         * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
+         * seconds), and 1h (1 hour). The option will be converted to a long
+         * type.
+         */
+        public T period(String period) {
+            this.properties.put("period", period);
+            return (T) this;
+        }
+        /**
          * Specifies a maximum limit of number of fires. So if you set it to 1,
          * the timer will only fire once. If you set it to 5, it will only fire
          * five times. A value of zero or negative means fire forever. The
          * option is a long type.
          */
         public T repeatCount(long repeatCount) {
+            this.properties.put("repeatCount", repeatCount);
+            return (T) this;
+        }
+        /**
+         * Specifies a maximum limit of number of fires. So if you set it to 1,
+         * the timer will only fire once. If you set it to 5, it will only fire
+         * five times. A value of zero or negative means fire forever. The
+         * option will be converted to a long type.
+         */
+        public T repeatCount(String repeatCount) {
             this.properties.put("repeatCount", repeatCount);
             return (T) this;
         }
@@ -97,11 +137,29 @@ public interface TimerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Specifies whether or not the thread associated with the timer
          * endpoint runs as a daemon. The default value is true. The option is a
          * boolean type.
          */
         public T daemon(boolean daemon) {
+            this.properties.put("daemon", daemon);
+            return (T) this;
+        }
+        /**
+         * Specifies whether or not the thread associated with the timer
+         * endpoint runs as a daemon. The default value is true. The option will
+         * be converted to a boolean type.
+         */
+        public T daemon(String daemon) {
             this.properties.put("daemon", daemon);
             return (T) this;
         }
@@ -123,6 +181,15 @@ public interface TimerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * A java.util.Date the first event should be generated. If using the
          * URI, the pattern expected is: yyyy-MM-dd HH:mm:ss or
          * yyyy-MM-dd'T'HH:mm:ss. The option is a java.util.Date type.
@@ -132,9 +199,27 @@ public interface TimerEndpointBuilder {
             return (T) this;
         }
         /**
+         * A java.util.Date the first event should be generated. If using the
+         * URI, the pattern expected is: yyyy-MM-dd HH:mm:ss or
+         * yyyy-MM-dd'T'HH:mm:ss. The option will be converted to a
+         * java.util.Date type.
+         */
+        public T time(String time) {
+            this.properties.put("time", time);
+            return (T) this;
+        }
+        /**
          * To use a custom Timer. The option is a java.util.Timer type.
          */
         public T timer(Timer timer) {
+            this.properties.put("timer", timer);
+            return (T) this;
+        }
+        /**
+         * To use a custom Timer. The option will be converted to a
+         * java.util.Timer type.
+         */
+        public T timer(String timer) {
             this.properties.put("timer", timer);
             return (T) this;
         }
@@ -163,6 +248,19 @@ public interface TimerEndpointBuilder {
             return (TimerConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public TimerConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (TimerConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -175,11 +273,30 @@ public interface TimerEndpointBuilder {
             return (TimerConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public TimerConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (TimerConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public TimerConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (TimerConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public TimerConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (TimerConsumerBuilder) this;
         }

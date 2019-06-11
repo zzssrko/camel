@@ -49,6 +49,14 @@ public interface BoxEndpointBuilder {
             return (T) this;
         }
         /**
+         * What kind of operation to perform. The option will be converted to a
+         * org.apache.camel.component.box.internal.BoxApiName type.
+         */
+        public T apiName(String apiName) {
+            this.properties.put("apiName", apiName);
+            return (T) this;
+        }
+        /**
          * What sub operation to use for the selected operation. The option is a
          * java.lang.String type.
          */
@@ -97,10 +105,27 @@ public interface BoxEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Custom HTTP params for settings like proxy host. The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T httpParams(Map<String, Object> httpParams) {
+            this.properties.put("httpParams", httpParams);
+            return (T) this;
+        }
+        /**
+         * Custom HTTP params for settings like proxy host. The option will be
+         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public T httpParams(String httpParams) {
             this.properties.put("httpParams", httpParams);
             return (T) this;
         }
@@ -114,10 +139,27 @@ public interface BoxEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * Custom Access Token Cache for storing and retrieving access tokens.
          * The option is a com.box.sdk.IAccessTokenCache type.
          */
         public T accessTokenCache(Object accessTokenCache) {
+            this.properties.put("accessTokenCache", accessTokenCache);
+            return (T) this;
+        }
+        /**
+         * Custom Access Token Cache for storing and retrieving access tokens.
+         * The option will be converted to a com.box.sdk.IAccessTokenCache type.
+         */
+        public T accessTokenCache(String accessTokenCache) {
             this.properties.put("accessTokenCache", accessTokenCache);
             return (T) this;
         }
@@ -138,10 +180,27 @@ public interface BoxEndpointBuilder {
             return (T) this;
         }
         /**
+         * The type of encryption algorithm for JWT. Supported Algorithms:
+         * RSA_SHA_256 RSA_SHA_384 RSA_SHA_512. The option will be converted to
+         * a com.box.sdk.EncryptionAlgorithm type.
+         */
+        public T encryptionAlgorithm(String encryptionAlgorithm) {
+            this.properties.put("encryptionAlgorithm", encryptionAlgorithm);
+            return (T) this;
+        }
+        /**
          * The maximum number of access tokens in cache. The option is a int
          * type.
          */
         public T maxCacheEntries(int maxCacheEntries) {
+            this.properties.put("maxCacheEntries", maxCacheEntries);
+            return (T) this;
+        }
+        /**
+         * The maximum number of access tokens in cache. The option will be
+         * converted to a int type.
+         */
+        public T maxCacheEntries(String maxCacheEntries) {
             this.properties.put("maxCacheEntries", maxCacheEntries);
             return (T) this;
         }
@@ -188,6 +247,15 @@ public interface BoxEndpointBuilder {
             return (T) this;
         }
         /**
+         * To configure security using SSLContextParameters. The option will be
+         * converted to a org.apache.camel.support.jsse.SSLContextParameters
+         * type.
+         */
+        public T sslContextParameters(String sslContextParameters) {
+            this.properties.put("sslContextParameters", sslContextParameters);
+            return (T) this;
+        }
+        /**
          * Box user name, MUST be provided. The option is a java.lang.String
          * type.
          */
@@ -227,6 +295,19 @@ public interface BoxEndpointBuilder {
             return (BoxConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public BoxConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (BoxConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -239,11 +320,30 @@ public interface BoxEndpointBuilder {
             return (BoxConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public BoxConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (BoxConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public BoxConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (BoxConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public BoxConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (BoxConsumerBuilder) this;
         }

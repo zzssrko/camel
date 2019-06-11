@@ -61,10 +61,28 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * If this option is set, camel-rabbitmq will try to create connection
+         * based on the setting of option addresses. The addresses value is a
+         * string which looks like server1:12345, server2:12345. The option will
+         * be converted to a com.rabbitmq.client.Address[] type.
+         */
+        public T addresses(String addresses) {
+            this.properties.put("addresses", addresses);
+            return (T) this;
+        }
+        /**
          * If it is true, the exchange will be deleted when it is no longer in
          * use. The option is a boolean type.
          */
         public T autoDelete(boolean autoDelete) {
+            this.properties.put("autoDelete", autoDelete);
+            return (T) this;
+        }
+        /**
+         * If it is true, the exchange will be deleted when it is no longer in
+         * use. The option will be converted to a boolean type.
+         */
+        public T autoDelete(String autoDelete) {
             this.properties.put("autoDelete", autoDelete);
             return (T) this;
         }
@@ -75,6 +93,16 @@ public interface RabbitMQEndpointBuilder {
          * com.rabbitmq.client.ConnectionFactory type.
          */
         public T connectionFactory(Object connectionFactory) {
+            this.properties.put("connectionFactory", connectionFactory);
+            return (T) this;
+        }
+        /**
+         * To use a custom RabbitMQ connection factory. When this option is set,
+         * all connection options (connectionTimeout, requestedChannelMax...)
+         * set on URI are not used. The option will be converted to a
+         * com.rabbitmq.client.ConnectionFactory type.
+         */
+        public T connectionFactory(String connectionFactory) {
             this.properties.put("connectionFactory", connectionFactory);
             return (T) this;
         }
@@ -120,10 +148,28 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * If the option is true, camel declare the exchange and queue name and
+         * bind them together. If the option is false, camel won't declare the
+         * exchange and queue name on the server. The option will be converted
+         * to a boolean type.
+         */
+        public T declare(String declare) {
+            this.properties.put("declare", declare);
+            return (T) this;
+        }
+        /**
          * If we are declaring a durable exchange (the exchange will survive a
          * server restart). The option is a boolean type.
          */
         public T durable(boolean durable) {
+            this.properties.put("durable", durable);
+            return (T) this;
+        }
+        /**
+         * If we are declaring a durable exchange (the exchange will survive a
+         * server restart). The option will be converted to a boolean type.
+         */
+        public T durable(String durable) {
             this.properties.put("durable", durable);
             return (T) this;
         }
@@ -145,6 +191,15 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * Exclusive queues may only be accessed by the current connection, and
+         * are deleted when that connection closes. The option will be converted
+         * to a boolean type.
+         */
+        public T exclusive(String exclusive) {
+            this.properties.put("exclusive", exclusive);
+            return (T) this;
+        }
+        /**
          * The hostname of the running rabbitmq instance or cluster. The option
          * is a java.lang.String type.
          */
@@ -161,10 +216,27 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * Passive queues depend on the queue already to be available at
+         * RabbitMQ. The option will be converted to a boolean type.
+         */
+        public T passive(String passive) {
+            this.properties.put("passive", passive);
+            return (T) this;
+        }
+        /**
          * Port number for the host with the running rabbitmq instance or
          * cluster. Default value is 5672. The option is a int type.
          */
         public T portNumber(int portNumber) {
+            this.properties.put("portNumber", portNumber);
+            return (T) this;
+        }
+        /**
+         * Port number for the host with the running rabbitmq instance or
+         * cluster. Default value is 5672. The option will be converted to a int
+         * type.
+         */
+        public T portNumber(String portNumber) {
             this.properties.put("portNumber", portNumber);
             return (T) this;
         }
@@ -194,10 +266,26 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * This can be used if we need to declare the queue but not the
+         * exchange. The option will be converted to a boolean type.
+         */
+        public T skipExchangeDeclare(String skipExchangeDeclare) {
+            this.properties.put("skipExchangeDeclare", skipExchangeDeclare);
+            return (T) this;
+        }
+        /**
          * If true the queue will not be bound to the exchange after declaring
          * it. The option is a boolean type.
          */
         public T skipQueueBind(boolean skipQueueBind) {
+            this.properties.put("skipQueueBind", skipQueueBind);
+            return (T) this;
+        }
+        /**
+         * If true the queue will not be bound to the exchange after declaring
+         * it. The option will be converted to a boolean type.
+         */
+        public T skipQueueBind(String skipQueueBind) {
             this.properties.put("skipQueueBind", skipQueueBind);
             return (T) this;
         }
@@ -207,6 +295,15 @@ public interface RabbitMQEndpointBuilder {
          * is a boolean type.
          */
         public T skipQueueDeclare(boolean skipQueueDeclare) {
+            this.properties.put("skipQueueDeclare", skipQueueDeclare);
+            return (T) this;
+        }
+        /**
+         * If true the producer will not declare and bind a queue. This can be
+         * used for directing messages via an existing routing key. The option
+         * will be converted to a boolean type.
+         */
+        public T skipQueueDeclare(String skipQueueDeclare) {
             this.properties.put("skipQueueDeclare", skipQueueDeclare);
             return (T) this;
         }
@@ -229,12 +326,33 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * Specify arguments for configuring the different RabbitMQ concepts, a
+         * different prefix is required for each: Exchange: arg.exchange. Queue:
+         * arg.queue. Binding: arg.binding. For example to declare a queue with
+         * message ttl argument:
+         * http://localhost:5672/exchange/queueargs=arg.queue.x-message-ttl=60000. The option will be converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public T args(String args) {
+            this.properties.put("args", args);
+            return (T) this;
+        }
+        /**
          * Enables connection automatic recovery (uses connection implementation
          * that performs automatic recovery when connection shutdown is not
          * initiated by the application). The option is a java.lang.Boolean
          * type.
          */
         public T automaticRecoveryEnabled(Boolean automaticRecoveryEnabled) {
+            this.properties.put("automaticRecoveryEnabled", automaticRecoveryEnabled);
+            return (T) this;
+        }
+        /**
+         * Enables connection automatic recovery (uses connection implementation
+         * that performs automatic recovery when connection shutdown is not
+         * initiated by the application). The option will be converted to a
+         * java.lang.Boolean type.
+         */
+        public T automaticRecoveryEnabled(String automaticRecoveryEnabled) {
             this.properties.put("automaticRecoveryEnabled", automaticRecoveryEnabled);
             return (T) this;
         }
@@ -248,6 +366,15 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Connection client properties (client info used in negotiating with
          * the server). The option is a
          * java.util.Map<java.lang.String,java.lang.Object> type.
@@ -257,9 +384,25 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * Connection client properties (client info used in negotiating with
+         * the server). The option will be converted to a
+         * java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public T clientProperties(String clientProperties) {
+            this.properties.put("clientProperties", clientProperties);
+            return (T) this;
+        }
+        /**
          * Connection timeout. The option is a int type.
          */
         public T connectionTimeout(int connectionTimeout) {
+            this.properties.put("connectionTimeout", connectionTimeout);
+            return (T) this;
+        }
+        /**
+         * Connection timeout. The option will be converted to a int type.
+         */
+        public T connectionTimeout(String connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
@@ -273,10 +416,27 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * Network recovery interval in milliseconds (interval used when
+         * recovering from network failure). The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T networkRecoveryInterval(String networkRecoveryInterval) {
+            this.properties.put("networkRecoveryInterval", networkRecoveryInterval);
+            return (T) this;
+        }
+        /**
          * Connection requested channel max (max number of channels offered).
          * The option is a int type.
          */
         public T requestedChannelMax(int requestedChannelMax) {
+            this.properties.put("requestedChannelMax", requestedChannelMax);
+            return (T) this;
+        }
+        /**
+         * Connection requested channel max (max number of channels offered).
+         * The option will be converted to a int type.
+         */
+        public T requestedChannelMax(String requestedChannelMax) {
             this.properties.put("requestedChannelMax", requestedChannelMax);
             return (T) this;
         }
@@ -289,6 +449,14 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * Connection requested frame max (max size of frame offered). The
+         * option will be converted to a int type.
+         */
+        public T requestedFrameMax(String requestedFrameMax) {
+            this.properties.put("requestedFrameMax", requestedFrameMax);
+            return (T) this;
+        }
+        /**
          * Connection requested heartbeat (heart-beat in seconds offered). The
          * option is a int type.
          */
@@ -297,10 +465,27 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * Connection requested heartbeat (heart-beat in seconds offered). The
+         * option will be converted to a int type.
+         */
+        public T requestedHeartbeat(String requestedHeartbeat) {
+            this.properties.put("requestedHeartbeat", requestedHeartbeat);
+            return (T) this;
+        }
+        /**
          * Set timeout for waiting for a reply when using the InOut Exchange
          * Pattern (in milliseconds). The option is a long type.
          */
         public T requestTimeout(long requestTimeout) {
+            this.properties.put("requestTimeout", requestTimeout);
+            return (T) this;
+        }
+        /**
+         * Set timeout for waiting for a reply when using the InOut Exchange
+         * Pattern (in milliseconds). The option will be converted to a long
+         * type.
+         */
+        public T requestTimeout(String requestTimeout) {
             this.properties.put("requestTimeout", requestTimeout);
             return (T) this;
         }
@@ -314,11 +499,29 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set requestTimeoutCheckerInterval for inOut exchange. The option will
+         * be converted to a long type.
+         */
+        public T requestTimeoutCheckerInterval(
+                String requestTimeoutCheckerInterval) {
+            this.properties.put("requestTimeoutCheckerInterval", requestTimeoutCheckerInterval);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -331,10 +534,27 @@ public interface RabbitMQEndpointBuilder {
             return (T) this;
         }
         /**
+         * Enables connection topology recovery (should topology recovery be
+         * performed). The option will be converted to a java.lang.Boolean type.
+         */
+        public T topologyRecoveryEnabled(String topologyRecoveryEnabled) {
+            this.properties.put("topologyRecoveryEnabled", topologyRecoveryEnabled);
+            return (T) this;
+        }
+        /**
          * When true and an inOut Exchange failed on the consumer side send the
          * caused Exception back in the response. The option is a boolean type.
          */
         public T transferException(boolean transferException) {
+            this.properties.put("transferException", transferException);
+            return (T) this;
+        }
+        /**
+         * When true and an inOut Exchange failed on the consumer side send the
+         * caused Exception back in the response. The option will be converted
+         * to a boolean type.
+         */
+        public T transferException(String transferException) {
             this.properties.put("transferException", transferException);
             return (T) this;
         }
@@ -359,6 +579,15 @@ public interface RabbitMQEndpointBuilder {
          * be effective. The option is a javax.net.ssl.TrustManager type.
          */
         public T trustManager(Object trustManager) {
+            this.properties.put("trustManager", trustManager);
+            return (T) this;
+        }
+        /**
+         * Configure SSL trust manager, SSL should be enabled for this option to
+         * be effective. The option will be converted to a
+         * javax.net.ssl.TrustManager type.
+         */
+        public T trustManager(String trustManager) {
             this.properties.put("trustManager", trustManager);
             return (T) this;
         }
@@ -389,6 +618,14 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQConsumerBuilder) this;
         }
         /**
+         * If messages should be auto acknowledged. The option will be converted
+         * to a boolean type.
+         */
+        public RabbitMQConsumerBuilder autoAck(String autoAck) {
+            this.properties.put("autoAck", autoAck);
+            return (RabbitMQConsumerBuilder) this;
+        }
+        /**
          * Allows for bridging the consumer to the Camel routing Error Handler,
          * which mean any exceptions occurred while the consumer is trying to
          * pickup incoming messages, or the likes, will now be processed as a
@@ -403,12 +640,36 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public RabbitMQConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (RabbitMQConsumerBuilder) this;
+        }
+        /**
          * Number of concurrent consumers when consuming from broker. (eg
          * similar as to the same option for the JMS component). The option is a
          * int type.
          */
         public RabbitMQConsumerBuilder concurrentConsumers(
                 int concurrentConsumers) {
+            this.properties.put("concurrentConsumers", concurrentConsumers);
+            return (RabbitMQConsumerBuilder) this;
+        }
+        /**
+         * Number of concurrent consumers when consuming from broker. (eg
+         * similar as to the same option for the JMS component). The option will
+         * be converted to a int type.
+         */
+        public RabbitMQConsumerBuilder concurrentConsumers(
+                String concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
             return (RabbitMQConsumerBuilder) this;
         }
@@ -424,6 +685,17 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQConsumerBuilder) this;
         }
         /**
+         * Request exclusive access to the queue (meaning only this consumer can
+         * access the queue). This is useful when you want a long-lived shared
+         * queue to be temporarily accessible by just one consumer. The option
+         * will be converted to a boolean type.
+         */
+        public RabbitMQConsumerBuilder exclusiveConsumer(
+                String exclusiveConsumer) {
+            this.properties.put("exclusiveConsumer", exclusiveConsumer);
+            return (RabbitMQConsumerBuilder) this;
+        }
+        /**
          * The maximum number of messages that the server will deliver, 0 if
          * unlimited. You need to specify the option of prefetchSize,
          * prefetchCount, prefetchGlobal at the same time. The option is a int
@@ -434,11 +706,30 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQConsumerBuilder) this;
         }
         /**
+         * The maximum number of messages that the server will deliver, 0 if
+         * unlimited. You need to specify the option of prefetchSize,
+         * prefetchCount, prefetchGlobal at the same time. The option will be
+         * converted to a int type.
+         */
+        public RabbitMQConsumerBuilder prefetchCount(String prefetchCount) {
+            this.properties.put("prefetchCount", prefetchCount);
+            return (RabbitMQConsumerBuilder) this;
+        }
+        /**
          * Enables the quality of service on the RabbitMQConsumer side. You need
          * to specify the option of prefetchSize, prefetchCount, prefetchGlobal
          * at the same time. The option is a boolean type.
          */
         public RabbitMQConsumerBuilder prefetchEnabled(boolean prefetchEnabled) {
+            this.properties.put("prefetchEnabled", prefetchEnabled);
+            return (RabbitMQConsumerBuilder) this;
+        }
+        /**
+         * Enables the quality of service on the RabbitMQConsumer side. You need
+         * to specify the option of prefetchSize, prefetchCount, prefetchGlobal
+         * at the same time. The option will be converted to a boolean type.
+         */
+        public RabbitMQConsumerBuilder prefetchEnabled(String prefetchEnabled) {
             this.properties.put("prefetchEnabled", prefetchEnabled);
             return (RabbitMQConsumerBuilder) this;
         }
@@ -453,12 +744,32 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQConsumerBuilder) this;
         }
         /**
+         * If the settings should be applied to the entire channel rather than
+         * each consumer You need to specify the option of prefetchSize,
+         * prefetchCount, prefetchGlobal at the same time. The option will be
+         * converted to a boolean type.
+         */
+        public RabbitMQConsumerBuilder prefetchGlobal(String prefetchGlobal) {
+            this.properties.put("prefetchGlobal", prefetchGlobal);
+            return (RabbitMQConsumerBuilder) this;
+        }
+        /**
          * The maximum amount of content (measured in octets) that the server
          * will deliver, 0 if unlimited. You need to specify the option of
          * prefetchSize, prefetchCount, prefetchGlobal at the same time. The
          * option is a int type.
          */
         public RabbitMQConsumerBuilder prefetchSize(int prefetchSize) {
+            this.properties.put("prefetchSize", prefetchSize);
+            return (RabbitMQConsumerBuilder) this;
+        }
+        /**
+         * The maximum amount of content (measured in octets) that the server
+         * will deliver, 0 if unlimited. You need to specify the option of
+         * prefetchSize, prefetchCount, prefetchGlobal at the same time. The
+         * option will be converted to a int type.
+         */
+        public RabbitMQConsumerBuilder prefetchSize(String prefetchSize) {
             this.properties.put("prefetchSize", prefetchSize);
             return (RabbitMQConsumerBuilder) this;
         }
@@ -475,6 +786,17 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public RabbitMQConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (RabbitMQConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
@@ -484,11 +806,28 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQConsumerBuilder) this;
         }
         /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public RabbitMQConsumerBuilder exchangePattern(String exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (RabbitMQConsumerBuilder) this;
+        }
+        /**
          * The consumer uses a Thread Pool Executor with a fixed number of
          * threads. This setting allows you to set that number of threads. The
          * option is a int type.
          */
         public RabbitMQConsumerBuilder threadPoolSize(int threadPoolSize) {
+            this.properties.put("threadPoolSize", threadPoolSize);
+            return (RabbitMQConsumerBuilder) this;
+        }
+        /**
+         * The consumer uses a Thread Pool Executor with a fixed number of
+         * threads. This setting allows you to set that number of threads. The
+         * option will be converted to a int type.
+         */
+        public RabbitMQConsumerBuilder threadPoolSize(String threadPoolSize) {
             this.properties.put("threadPoolSize", threadPoolSize);
             return (RabbitMQConsumerBuilder) this;
         }
@@ -510,6 +849,14 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQProducerBuilder) this;
         }
         /**
+         * Allow pass null values to header. The option will be converted to a
+         * boolean type.
+         */
+        public RabbitMQProducerBuilder allowNullHeaders(String allowNullHeaders) {
+            this.properties.put("allowNullHeaders", allowNullHeaders);
+            return (RabbitMQProducerBuilder) this;
+        }
+        /**
          * If the bridgeEndpoint is true, the producer will ignore the message
          * header of rabbitmq.EXCHANGE_NAME and rabbitmq.ROUTING_KEY. The option
          * is a boolean type.
@@ -519,10 +866,28 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQProducerBuilder) this;
         }
         /**
+         * If the bridgeEndpoint is true, the producer will ignore the message
+         * header of rabbitmq.EXCHANGE_NAME and rabbitmq.ROUTING_KEY. The option
+         * will be converted to a boolean type.
+         */
+        public RabbitMQProducerBuilder bridgeEndpoint(String bridgeEndpoint) {
+            this.properties.put("bridgeEndpoint", bridgeEndpoint);
+            return (RabbitMQProducerBuilder) this;
+        }
+        /**
          * Get maximum number of opened channel in pool. The option is a int
          * type.
          */
         public RabbitMQProducerBuilder channelPoolMaxSize(int channelPoolMaxSize) {
+            this.properties.put("channelPoolMaxSize", channelPoolMaxSize);
+            return (RabbitMQProducerBuilder) this;
+        }
+        /**
+         * Get maximum number of opened channel in pool. The option will be
+         * converted to a int type.
+         */
+        public RabbitMQProducerBuilder channelPoolMaxSize(
+                String channelPoolMaxSize) {
             this.properties.put("channelPoolMaxSize", channelPoolMaxSize);
             return (RabbitMQProducerBuilder) this;
         }
@@ -536,6 +901,15 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQProducerBuilder) this;
         }
         /**
+         * Set the maximum number of milliseconds to wait for a channel from the
+         * pool. The option will be converted to a long type.
+         */
+        public RabbitMQProducerBuilder channelPoolMaxWait(
+                String channelPoolMaxWait) {
+            this.properties.put("channelPoolMaxWait", channelPoolMaxWait);
+            return (RabbitMQProducerBuilder) this;
+        }
+        /**
          * When true, an exception will be thrown when the message cannot be
          * delivered (basic.return) and the message is marked as mandatory.
          * PublisherAcknowledgement will also be activated in this case. See
@@ -544,6 +918,18 @@ public interface RabbitMQEndpointBuilder {
          */
         public RabbitMQProducerBuilder guaranteedDeliveries(
                 boolean guaranteedDeliveries) {
+            this.properties.put("guaranteedDeliveries", guaranteedDeliveries);
+            return (RabbitMQProducerBuilder) this;
+        }
+        /**
+         * When true, an exception will be thrown when the message cannot be
+         * delivered (basic.return) and the message is marked as mandatory.
+         * PublisherAcknowledgement will also be activated in this case. See
+         * also publisher acknowledgements - When will messages be confirmed.
+         * The option will be converted to a boolean type.
+         */
+        public RabbitMQProducerBuilder guaranteedDeliveries(
+                String guaranteedDeliveries) {
             this.properties.put("guaranteedDeliveries", guaranteedDeliveries);
             return (RabbitMQProducerBuilder) this;
         }
@@ -562,6 +948,19 @@ public interface RabbitMQEndpointBuilder {
         }
         /**
          * This flag tells the server how to react if the message cannot be
+         * routed to a queue consumer immediately. If this flag is set, the
+         * server will return an undeliverable message with a Return method. If
+         * this flag is zero, the server will queue the message, but with no
+         * guarantee that it will ever be consumed. If the header is present
+         * rabbitmq.IMMEDIATE it will override this option. The option will be
+         * converted to a boolean type.
+         */
+        public RabbitMQProducerBuilder immediate(String immediate) {
+            this.properties.put("immediate", immediate);
+            return (RabbitMQProducerBuilder) this;
+        }
+        /**
+         * This flag tells the server how to react if the message cannot be
          * routed to a queue. If this flag is set, the server will return an
          * unroutable message with a Return method. If this flag is zero, the
          * server silently drops the message. If the header is present
@@ -569,6 +968,18 @@ public interface RabbitMQEndpointBuilder {
          * boolean type.
          */
         public RabbitMQProducerBuilder mandatory(boolean mandatory) {
+            this.properties.put("mandatory", mandatory);
+            return (RabbitMQProducerBuilder) this;
+        }
+        /**
+         * This flag tells the server how to react if the message cannot be
+         * routed to a queue. If this flag is set, the server will return an
+         * unroutable message with a Return method. If this flag is zero, the
+         * server silently drops the message. If the header is present
+         * rabbitmq.MANDATORY it will override this option. The option will be
+         * converted to a boolean type.
+         */
+        public RabbitMQProducerBuilder mandatory(String mandatory) {
             this.properties.put("mandatory", mandatory);
             return (RabbitMQProducerBuilder) this;
         }
@@ -582,11 +993,30 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQProducerBuilder) this;
         }
         /**
+         * When true, the message will be published with publisher
+         * acknowledgements turned on. The option will be converted to a boolean
+         * type.
+         */
+        public RabbitMQProducerBuilder publisherAcknowledgements(
+                String publisherAcknowledgements) {
+            this.properties.put("publisherAcknowledgements", publisherAcknowledgements);
+            return (RabbitMQProducerBuilder) this;
+        }
+        /**
          * The amount of time in milliseconds to wait for a basic.ack response
          * from RabbitMQ server. The option is a long type.
          */
         public RabbitMQProducerBuilder publisherAcknowledgementsTimeout(
                 long publisherAcknowledgementsTimeout) {
+            this.properties.put("publisherAcknowledgementsTimeout", publisherAcknowledgementsTimeout);
+            return (RabbitMQProducerBuilder) this;
+        }
+        /**
+         * The amount of time in milliseconds to wait for a basic.ack response
+         * from RabbitMQ server. The option will be converted to a long type.
+         */
+        public RabbitMQProducerBuilder publisherAcknowledgementsTimeout(
+                String publisherAcknowledgementsTimeout) {
             this.properties.put("publisherAcknowledgementsTimeout", publisherAcknowledgementsTimeout);
             return (RabbitMQProducerBuilder) this;
         }

@@ -51,11 +51,28 @@ public interface UndertowEndpointBuilder {
             return (T) this;
         }
         /**
+         * The url of the HTTP endpoint to use. The option will be converted to
+         * a java.net.URI type.
+         */
+        public T httpURI(String httpURI) {
+            this.properties.put("httpURI", httpURI);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
@@ -69,11 +86,29 @@ public interface UndertowEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom HeaderFilterStrategy to filter header to and from
+         * Camel message. The option will be converted to a
+         * org.apache.camel.spi.HeaderFilterStrategy type.
+         */
+        public T headerFilterStrategy(String headerFilterStrategy) {
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -87,10 +122,28 @@ public interface UndertowEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom UndertowHttpBinding to control the mapping between
+         * Camel message and undertow. The option will be converted to a
+         * org.apache.camel.component.undertow.UndertowHttpBinding type.
+         */
+        public T undertowHttpBinding(String undertowHttpBinding) {
+            this.properties.put("undertowHttpBinding", undertowHttpBinding);
+            return (T) this;
+        }
+        /**
          * To configure security using SSLContextParameters. The option is a
          * org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
+            this.properties.put("sslContextParameters", sslContextParameters);
+            return (T) this;
+        }
+        /**
+         * To configure security using SSLContextParameters. The option will be
+         * converted to a org.apache.camel.support.jsse.SSLContextParameters
+         * type.
+         */
+        public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
@@ -119,6 +172,20 @@ public interface UndertowEndpointBuilder {
             return (UndertowConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public UndertowConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (UndertowConsumerBuilder) this;
+        }
+        /**
          * Used to only allow consuming if the HttpMethod matches, such as
          * GET/POST/PUT etc. Multiple methods can be specified separated by
          * comma. The option is a java.lang.String type.
@@ -138,10 +205,28 @@ public interface UndertowEndpointBuilder {
             return (UndertowConsumerBuilder) this;
         }
         /**
+         * Whether or not the consumer should try to find a target consumer by
+         * matching the URI prefix if no exact match is found. The option will
+         * be converted to a java.lang.Boolean type.
+         */
+        public UndertowConsumerBuilder matchOnUriPrefix(String matchOnUriPrefix) {
+            this.properties.put("matchOnUriPrefix", matchOnUriPrefix);
+            return (UndertowConsumerBuilder) this;
+        }
+        /**
          * Specifies whether to enable HTTP OPTIONS for this Servlet consumer.
          * By default OPTIONS is turned off. The option is a boolean type.
          */
         public UndertowConsumerBuilder optionsEnabled(boolean optionsEnabled) {
+            this.properties.put("optionsEnabled", optionsEnabled);
+            return (UndertowConsumerBuilder) this;
+        }
+        /**
+         * Specifies whether to enable HTTP OPTIONS for this Servlet consumer.
+         * By default OPTIONS is turned off. The option will be converted to a
+         * boolean type.
+         */
+        public UndertowConsumerBuilder optionsEnabled(String optionsEnabled) {
             this.properties.put("optionsEnabled", optionsEnabled);
             return (UndertowConsumerBuilder) this;
         }
@@ -158,11 +243,30 @@ public interface UndertowEndpointBuilder {
             return (UndertowConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public UndertowConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (UndertowConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public UndertowConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (UndertowConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public UndertowConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (UndertowConsumerBuilder) this;
         }
@@ -178,12 +282,34 @@ public interface UndertowEndpointBuilder {
             return (UndertowConsumerBuilder) this;
         }
         /**
+         * if true, the consumer will post notifications to the route when a new
+         * WebSocket peer connects, disconnects, etc. See
+         * UndertowConstants.EVENT_TYPE and EventType. The option will be
+         * converted to a boolean type.
+         */
+        public UndertowConsumerBuilder fireWebSocketChannelEvents(
+                String fireWebSocketChannelEvents) {
+            this.properties.put("fireWebSocketChannelEvents", fireWebSocketChannelEvents);
+            return (UndertowConsumerBuilder) this;
+        }
+        /**
          * if true, text and binary messages coming through a WebSocket will be
          * wrapped as java.io.Reader and java.io.InputStream respectively before
          * they are passed to an Exchange; otherwise they will be passed as
          * String and byte respectively. The option is a boolean type.
          */
         public UndertowConsumerBuilder useStreaming(boolean useStreaming) {
+            this.properties.put("useStreaming", useStreaming);
+            return (UndertowConsumerBuilder) this;
+        }
+        /**
+         * if true, text and binary messages coming through a WebSocket will be
+         * wrapped as java.io.Reader and java.io.InputStream respectively before
+         * they are passed to an Exchange; otherwise they will be passed as
+         * String and byte respectively. The option will be converted to a
+         * boolean type.
+         */
+        public UndertowConsumerBuilder useStreaming(String useStreaming) {
             this.properties.put("useStreaming", useStreaming);
             return (UndertowConsumerBuilder) this;
         }
@@ -206,10 +332,27 @@ public interface UndertowEndpointBuilder {
             return (UndertowProducerBuilder) this;
         }
         /**
+         * Configure a cookie handler to maintain a HTTP session. The option
+         * will be converted to a
+         * org.apache.camel.http.common.cookie.CookieHandler type.
+         */
+        public UndertowProducerBuilder cookieHandler(String cookieHandler) {
+            this.properties.put("cookieHandler", cookieHandler);
+            return (UndertowProducerBuilder) this;
+        }
+        /**
          * Setting to ensure socket is not closed due to inactivity. The option
          * is a java.lang.Boolean type.
          */
         public UndertowProducerBuilder keepAlive(Boolean keepAlive) {
+            this.properties.put("keepAlive", keepAlive);
+            return (UndertowProducerBuilder) this;
+        }
+        /**
+         * Setting to ensure socket is not closed due to inactivity. The option
+         * will be converted to a java.lang.Boolean type.
+         */
+        public UndertowProducerBuilder keepAlive(String keepAlive) {
             this.properties.put("keepAlive", keepAlive);
             return (UndertowProducerBuilder) this;
         }
@@ -225,10 +368,29 @@ public interface UndertowEndpointBuilder {
             return (UndertowProducerBuilder) this;
         }
         /**
+         * Sets additional channel options. The options that can be used are
+         * defined in org.xnio.Options. To configure from endpoint uri, then
+         * prefix each option with option., such as
+         * option.close-abort=true&option.send-buffer=8192. The option will be
+         * converted to a java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public UndertowProducerBuilder options(String options) {
+            this.properties.put("options", options);
+            return (UndertowProducerBuilder) this;
+        }
+        /**
          * Setting to facilitate socket multiplexing. The option is a
          * java.lang.Boolean type.
          */
         public UndertowProducerBuilder reuseAddresses(Boolean reuseAddresses) {
+            this.properties.put("reuseAddresses", reuseAddresses);
+            return (UndertowProducerBuilder) this;
+        }
+        /**
+         * Setting to facilitate socket multiplexing. The option will be
+         * converted to a java.lang.Boolean type.
+         */
+        public UndertowProducerBuilder reuseAddresses(String reuseAddresses) {
             this.properties.put("reuseAddresses", reuseAddresses);
             return (UndertowProducerBuilder) this;
         }
@@ -241,6 +403,14 @@ public interface UndertowEndpointBuilder {
             return (UndertowProducerBuilder) this;
         }
         /**
+         * Setting to improve TCP protocol performance. The option will be
+         * converted to a java.lang.Boolean type.
+         */
+        public UndertowProducerBuilder tcpNoDelay(String tcpNoDelay) {
+            this.properties.put("tcpNoDelay", tcpNoDelay);
+            return (UndertowProducerBuilder) this;
+        }
+        /**
          * Option to disable throwing the HttpOperationFailedException in case
          * of failed responses from the remote server. This allows you to get
          * all responses regardless of the HTTP status code. The option is a
@@ -248,6 +418,17 @@ public interface UndertowEndpointBuilder {
          */
         public UndertowProducerBuilder throwExceptionOnFailure(
                 Boolean throwExceptionOnFailure) {
+            this.properties.put("throwExceptionOnFailure", throwExceptionOnFailure);
+            return (UndertowProducerBuilder) this;
+        }
+        /**
+         * Option to disable throwing the HttpOperationFailedException in case
+         * of failed responses from the remote server. This allows you to get
+         * all responses regardless of the HTTP status code. The option will be
+         * converted to a java.lang.Boolean type.
+         */
+        public UndertowProducerBuilder throwExceptionOnFailure(
+                String throwExceptionOnFailure) {
             this.properties.put("throwExceptionOnFailure", throwExceptionOnFailure);
             return (UndertowProducerBuilder) this;
         }
@@ -268,11 +449,36 @@ public interface UndertowEndpointBuilder {
             return (UndertowProducerBuilder) this;
         }
         /**
+         * If enabled and an Exchange failed processing on the consumer side and
+         * if the caused Exception was send back serialized in the response as a
+         * application/x-java-serialized-object content type. On the producer
+         * side the exception will be deserialized and thrown as is instead of
+         * the HttpOperationFailedException. The caused exception is required to
+         * be serialized. This is by default turned off. If you enable this then
+         * be aware that Java will deserialize the incoming data from the
+         * request to Java and that can be a potential security risk. The option
+         * will be converted to a java.lang.Boolean type.
+         */
+        public UndertowProducerBuilder transferException(
+                String transferException) {
+            this.properties.put("transferException", transferException);
+            return (UndertowProducerBuilder) this;
+        }
+        /**
          * Timeout in milliseconds when sending to a websocket channel. The
          * default timeout is 30000 (30 seconds). The option is a
          * java.lang.Integer type.
          */
         public UndertowProducerBuilder sendTimeout(Integer sendTimeout) {
+            this.properties.put("sendTimeout", sendTimeout);
+            return (UndertowProducerBuilder) this;
+        }
+        /**
+         * Timeout in milliseconds when sending to a websocket channel. The
+         * default timeout is 30000 (30 seconds). The option will be converted
+         * to a java.lang.Integer type.
+         */
+        public UndertowProducerBuilder sendTimeout(String sendTimeout) {
             this.properties.put("sendTimeout", sendTimeout);
             return (UndertowProducerBuilder) this;
         }
@@ -283,6 +489,16 @@ public interface UndertowEndpointBuilder {
          * java.lang.Boolean type.
          */
         public UndertowProducerBuilder sendToAll(Boolean sendToAll) {
+            this.properties.put("sendToAll", sendToAll);
+            return (UndertowProducerBuilder) this;
+        }
+        /**
+         * To send to all websocket subscribers. Can be used to configure on
+         * endpoint level, instead of having to use the
+         * UndertowConstants.SEND_TO_ALL header on the message. The option will
+         * be converted to a java.lang.Boolean type.
+         */
+        public UndertowProducerBuilder sendToAll(String sendToAll) {
             this.properties.put("sendToAll", sendToAll);
             return (UndertowProducerBuilder) this;
         }

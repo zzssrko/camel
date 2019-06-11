@@ -60,10 +60,28 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * SSL connections perform blocking operations against internal thread
+         * pool unless you call the setBlockingExecutor method to configure that
+         * executor they will use instead. The option will be converted to a
+         * java.util.concurrent.Executor type.
+         */
+        public T blockingExecutor(String blockingExecutor) {
+            this.properties.put("blockingExecutor", blockingExecutor);
+            return (T) this;
+        }
+        /**
          * The default retain policy to be used on messages sent to the MQTT
          * broker. The option is a boolean type.
          */
         public T byDefaultRetain(boolean byDefaultRetain) {
+            this.properties.put("byDefaultRetain", byDefaultRetain);
+            return (T) this;
+        }
+        /**
+         * The default retain policy to be used on messages sent to the MQTT
+         * broker. The option will be converted to a boolean type.
+         */
+        public T byDefaultRetain(String byDefaultRetain) {
             this.properties.put("byDefaultRetain", byDefaultRetain);
             return (T) this;
         }
@@ -73,6 +91,15 @@ public interface MQTTEndpointBuilder {
          * true. The option is a boolean type.
          */
         public T cleanSession(boolean cleanSession) {
+            this.properties.put("cleanSession", cleanSession);
+            return (T) this;
+        }
+        /**
+         * Set to false if you want the MQTT server to persist topic
+         * subscriptions and ack positions across client sessions. Defaults to
+         * true. The option will be converted to a boolean type.
+         */
+        public T cleanSession(String cleanSession) {
             this.properties.put("cleanSession", cleanSession);
             return (T) this;
         }
@@ -98,10 +125,29 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * The maximum number of reconnect attempts before an error is reported
+         * back to the client on the first attempt by the client to connect to a
+         * server. Set to -1 to use unlimited attempts. Defaults to -1. The
+         * option will be converted to a long type.
+         */
+        public T connectAttemptsMax(String connectAttemptsMax) {
+            this.properties.put("connectAttemptsMax", connectAttemptsMax);
+            return (T) this;
+        }
+        /**
          * Delay in seconds the Component will wait for a connection to be
          * established to the MQTT broker. The option is a int type.
          */
         public T connectWaitInSeconds(int connectWaitInSeconds) {
+            this.properties.put("connectWaitInSeconds", connectWaitInSeconds);
+            return (T) this;
+        }
+        /**
+         * Delay in seconds the Component will wait for a connection to be
+         * established to the MQTT broker. The option will be converted to a int
+         * type.
+         */
+        public T connectWaitInSeconds(String connectWaitInSeconds) {
             this.properties.put("connectWaitInSeconds", connectWaitInSeconds);
             return (T) this;
         }
@@ -114,6 +160,15 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * The number of seconds the Component will wait for a valid disconnect
+         * on stop() from the MQTT broker. The option will be converted to a int
+         * type.
+         */
+        public T disconnectWaitInSeconds(String disconnectWaitInSeconds) {
+            this.properties.put("disconnectWaitInSeconds", disconnectWaitInSeconds);
+            return (T) this;
+        }
+        /**
          * A HawtDispatch dispatch queue is used to synchronize access to the
          * connection. If an explicit queue is not configured via the
          * setDispatchQueue method, then a new queue will be created for the
@@ -122,6 +177,19 @@ public interface MQTTEndpointBuilder {
          * option is a org.fusesource.hawtdispatch.DispatchQueue type.
          */
         public T dispatchQueue(Object dispatchQueue) {
+            this.properties.put("dispatchQueue", dispatchQueue);
+            return (T) this;
+        }
+        /**
+         * A HawtDispatch dispatch queue is used to synchronize access to the
+         * connection. If an explicit queue is not configured via the
+         * setDispatchQueue method, then a new queue will be created for the
+         * connection. Setting an explicit queue might be handy if you want
+         * multiple connection to share the same queue for synchronization. The
+         * option will be converted to a
+         * org.fusesource.hawtdispatch.DispatchQueue type.
+         */
+        public T dispatchQueue(String dispatchQueue) {
             this.properties.put("dispatchQueue", dispatchQueue);
             return (T) this;
         }
@@ -146,10 +214,29 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * Configures the Keep Alive timer in seconds. Defines the maximum time
+         * interval between messages received from a client. It enables the
+         * server to detect that the network connection to a client has dropped,
+         * without having to wait for the long TCP/IP timeout. The option will
+         * be converted to a short type.
+         */
+        public T keepAlive(String keepAlive) {
+            this.properties.put("keepAlive", keepAlive);
+            return (T) this;
+        }
+        /**
          * The local InetAddress and port to use. The option is a java.net.URI
          * type.
          */
         public T localAddress(URI localAddress) {
+            this.properties.put("localAddress", localAddress);
+            return (T) this;
+        }
+        /**
+         * The local InetAddress and port to use. The option will be converted
+         * to a java.net.URI type.
+         */
+        public T localAddress(String localAddress) {
             this.properties.put("localAddress", localAddress);
             return (T) this;
         }
@@ -164,11 +251,31 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets the maximum bytes per second that this transport will receive
+         * data at. This setting throttles reads so that the rate is not
+         * exceeded. Defaults to 0 which disables throttling. The option will be
+         * converted to a int type.
+         */
+        public T maxReadRate(String maxReadRate) {
+            this.properties.put("maxReadRate", maxReadRate);
+            return (T) this;
+        }
+        /**
          * Sets the maximum bytes per second that this transport will send data
          * at. This setting throttles writes so that the rate is not exceeded.
          * Defaults to 0 which disables throttling. The option is a int type.
          */
         public T maxWriteRate(int maxWriteRate) {
+            this.properties.put("maxWriteRate", maxWriteRate);
+            return (T) this;
+        }
+        /**
+         * Sets the maximum bytes per second that this transport will send data
+         * at. This setting throttles writes so that the rate is not exceeded.
+         * Defaults to 0 which disables throttling. The option will be converted
+         * to a int type.
+         */
+        public T maxWriteRate(String maxWriteRate) {
             this.properties.put("maxWriteRate", maxWriteRate);
             return (T) this;
         }
@@ -225,12 +332,30 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets the size of the internal socket receive buffer. Defaults to
+         * 65536 (64k). The option will be converted to a int type.
+         */
+        public T receiveBufferSize(String receiveBufferSize) {
+            this.properties.put("receiveBufferSize", receiveBufferSize);
+            return (T) this;
+        }
+        /**
          * The maximum number of reconnect attempts before an error is reported
          * back to the client after a server connection had previously been
          * established. Set to -1 to use unlimited attempts. Defaults to -1. The
          * option is a long type.
          */
         public T reconnectAttemptsMax(long reconnectAttemptsMax) {
+            this.properties.put("reconnectAttemptsMax", reconnectAttemptsMax);
+            return (T) this;
+        }
+        /**
+         * The maximum number of reconnect attempts before an error is reported
+         * back to the client after a server connection had previously been
+         * established. Set to -1 to use unlimited attempts. Defaults to -1. The
+         * option will be converted to a long type.
+         */
+        public T reconnectAttemptsMax(String reconnectAttemptsMax) {
             this.properties.put("reconnectAttemptsMax", reconnectAttemptsMax);
             return (T) this;
         }
@@ -244,10 +369,27 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * The Exponential backoff be used between reconnect attempts. Set to 1
+         * to disable exponential backoff. Defaults to 2. The option will be
+         * converted to a double type.
+         */
+        public T reconnectBackOffMultiplier(String reconnectBackOffMultiplier) {
+            this.properties.put("reconnectBackOffMultiplier", reconnectBackOffMultiplier);
+            return (T) this;
+        }
+        /**
          * How long to wait in ms before the first reconnect attempt. Defaults
          * to 10. The option is a long type.
          */
         public T reconnectDelay(long reconnectDelay) {
+            this.properties.put("reconnectDelay", reconnectDelay);
+            return (T) this;
+        }
+        /**
+         * How long to wait in ms before the first reconnect attempt. Defaults
+         * to 10. The option will be converted to a long type.
+         */
+        public T reconnectDelay(String reconnectDelay) {
             this.properties.put("reconnectDelay", reconnectDelay);
             return (T) this;
         }
@@ -260,10 +402,26 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * The maximum amount of time in ms to wait between reconnect attempts.
+         * Defaults to 30,000. The option will be converted to a long type.
+         */
+        public T reconnectDelayMax(String reconnectDelayMax) {
+            this.properties.put("reconnectDelayMax", reconnectDelayMax);
+            return (T) this;
+        }
+        /**
          * Sets the size of the internal socket send buffer. Defaults to 65536
          * (64k). The option is a int type.
          */
         public T sendBufferSize(int sendBufferSize) {
+            this.properties.put("sendBufferSize", sendBufferSize);
+            return (T) this;
+        }
+        /**
+         * Sets the size of the internal socket send buffer. Defaults to 65536
+         * (64k). The option will be converted to a int type.
+         */
+        public T sendBufferSize(String sendBufferSize) {
             this.properties.put("sendBufferSize", sendBufferSize);
             return (T) this;
         }
@@ -277,10 +435,27 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * The maximum time the Component will wait for a receipt from the MQTT
+         * broker to acknowledge a published message before throwing an
+         * exception. The option will be converted to a int type.
+         */
+        public T sendWaitInSeconds(String sendWaitInSeconds) {
+            this.properties.put("sendWaitInSeconds", sendWaitInSeconds);
+            return (T) this;
+        }
+        /**
          * To configure security using SSLContext configuration. The option is a
          * javax.net.ssl.SSLContext type.
          */
         public T sslContext(Object sslContext) {
+            this.properties.put("sslContext", sslContext);
+            return (T) this;
+        }
+        /**
+         * To configure security using SSLContext configuration. The option will
+         * be converted to a javax.net.ssl.SSLContext type.
+         */
+        public T sslContext(String sslContext) {
             this.properties.put("sslContext", sslContext);
             return (T) this;
         }
@@ -318,6 +493,16 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets traffic class or type-of-service octet in the IP header for
+         * packets sent from the transport. Defaults to 8 which means the
+         * traffic should be optimized for throughput. The option will be
+         * converted to a int type.
+         */
+        public T trafficClass(String trafficClass) {
+            this.properties.put("trafficClass", trafficClass);
+            return (T) this;
+        }
+        /**
          * Set to 3.1.1 to use MQTT version 3.1.1. Otherwise defaults to the 3.1
          * protocol version. The option is a java.lang.String type.
          */
@@ -342,10 +527,28 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets the quality of service to use for the Will message. Defaults to
+         * AT_MOST_ONCE. The option will be converted to a
+         * org.fusesource.mqtt.client.QoS type.
+         */
+        public T willQos(String willQos) {
+            this.properties.put("willQos", willQos);
+            return (T) this;
+        }
+        /**
          * Set to true if you want the Will to be published with the retain
          * option. The option is a org.fusesource.mqtt.client.QoS type.
          */
         public T willRetain(QoS willRetain) {
+            this.properties.put("willRetain", willRetain);
+            return (T) this;
+        }
+        /**
+         * Set to true if you want the Will to be published with the retain
+         * option. The option will be converted to a
+         * org.fusesource.mqtt.client.QoS type.
+         */
+        public T willRetain(String willRetain) {
             this.properties.put("willRetain", willRetain);
             return (T) this;
         }
@@ -368,11 +571,29 @@ public interface MQTTEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -400,6 +621,19 @@ public interface MQTTEndpointBuilder {
             return (MQTTConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public MQTTConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (MQTTConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -412,11 +646,30 @@ public interface MQTTEndpointBuilder {
             return (MQTTConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public MQTTConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (MQTTConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public MQTTConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (MQTTConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public MQTTConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (MQTTConsumerBuilder) this;
         }
@@ -437,6 +690,16 @@ public interface MQTTEndpointBuilder {
          */
         public MQTTProducerBuilder lazySessionCreation(
                 boolean lazySessionCreation) {
+            this.properties.put("lazySessionCreation", lazySessionCreation);
+            return (MQTTProducerBuilder) this;
+        }
+        /**
+         * Sessions can be lazily created to avoid exceptions, if the remote
+         * server is not up and running when the Camel producer is started. The
+         * option will be converted to a boolean type.
+         */
+        public MQTTProducerBuilder lazySessionCreation(
+                String lazySessionCreation) {
             this.properties.put("lazySessionCreation", lazySessionCreation);
             return (MQTTProducerBuilder) this;
         }

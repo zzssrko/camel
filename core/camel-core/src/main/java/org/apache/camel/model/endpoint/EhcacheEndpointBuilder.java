@@ -56,10 +56,26 @@ public interface EhcacheEndpointBuilder {
             return (T) this;
         }
         /**
+         * The cache manager. The option will be converted to a
+         * org.ehcache.CacheManager type.
+         */
+        public T cacheManager(String cacheManager) {
+            this.properties.put("cacheManager", cacheManager);
+            return (T) this;
+        }
+        /**
          * The cache manager configuration. The option is a
          * org.ehcache.config.Configuration type.
          */
         public T cacheManagerConfiguration(Object cacheManagerConfiguration) {
+            this.properties.put("cacheManagerConfiguration", cacheManagerConfiguration);
+            return (T) this;
+        }
+        /**
+         * The cache manager configuration. The option will be converted to a
+         * org.ehcache.config.Configuration type.
+         */
+        public T cacheManagerConfiguration(String cacheManagerConfiguration) {
             this.properties.put("cacheManagerConfiguration", cacheManagerConfiguration);
             return (T) this;
         }
@@ -80,6 +96,14 @@ public interface EhcacheEndpointBuilder {
             return (T) this;
         }
         /**
+         * Configure if a cache need to be created if it does exist or can't be
+         * pre-configured. The option will be converted to a boolean type.
+         */
+        public T createCacheIfNotExist(String createCacheIfNotExist) {
+            this.properties.put("createCacheIfNotExist", createCacheIfNotExist);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -89,10 +113,28 @@ public interface EhcacheEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * The default cache configuration to be used to create caches. The
          * option is a org.ehcache.config.CacheConfiguration<?,?> type.
          */
         public T configuration(Object configuration) {
+            this.properties.put("configuration", configuration);
+            return (T) this;
+        }
+        /**
+         * The default cache configuration to be used to create caches. The
+         * option will be converted to a
+         * org.ehcache.config.CacheConfiguration<?,?> type.
+         */
+        public T configuration(String configuration) {
             this.properties.put("configuration", configuration);
             return (T) this;
         }
@@ -106,10 +148,27 @@ public interface EhcacheEndpointBuilder {
             return (T) this;
         }
         /**
+         * A map of cache configuration to be used to create caches. The option
+         * will be converted to a
+         * java.util.Map<java.lang.String,org.ehcache.config.CacheConfiguration<?,?>> type.
+         */
+        public T configurations(String configurations) {
+            this.properties.put("configurations", configurations);
+            return (T) this;
+        }
+        /**
          * The cache key type, default java.lang.Object. The option is a
          * java.lang.String type.
          */
         public T keyType(Class<Object> keyType) {
+            this.properties.put("keyType", keyType);
+            return (T) this;
+        }
+        /**
+         * The cache key type, default java.lang.Object. The option will be
+         * converted to a java.lang.String type.
+         */
+        public T keyType(String keyType) {
             this.properties.put("keyType", keyType);
             return (T) this;
         }
@@ -123,10 +182,27 @@ public interface EhcacheEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * The cache value type, default java.lang.Object. The option is a
          * java.lang.String type.
          */
         public T valueType(Class<Object> valueType) {
+            this.properties.put("valueType", valueType);
+            return (T) this;
+        }
+        /**
+         * The cache value type, default java.lang.Object. The option will be
+         * converted to a java.lang.String type.
+         */
+        public T valueType(String valueType) {
             this.properties.put("valueType", valueType);
             return (T) this;
         }
@@ -155,10 +231,32 @@ public interface EhcacheEndpointBuilder {
             return (EhcacheConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public EhcacheConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (EhcacheConsumerBuilder) this;
+        }
+        /**
          * Set the delivery mode (synchronous, asynchronous). The option is a
          * org.ehcache.event.EventFiring type.
          */
         public EhcacheConsumerBuilder eventFiring(EventFiring eventFiring) {
+            this.properties.put("eventFiring", eventFiring);
+            return (EhcacheConsumerBuilder) this;
+        }
+        /**
+         * Set the delivery mode (synchronous, asynchronous). The option will be
+         * converted to a org.ehcache.event.EventFiring type.
+         */
+        public EhcacheConsumerBuilder eventFiring(String eventFiring) {
             this.properties.put("eventFiring", eventFiring);
             return (EhcacheConsumerBuilder) this;
         }
@@ -171,10 +269,26 @@ public interface EhcacheEndpointBuilder {
             return (EhcacheConsumerBuilder) this;
         }
         /**
+         * Set the delivery mode (ordered, unordered). The option will be
+         * converted to a org.ehcache.event.EventOrdering type.
+         */
+        public EhcacheConsumerBuilder eventOrdering(String eventOrdering) {
+            this.properties.put("eventOrdering", eventOrdering);
+            return (EhcacheConsumerBuilder) this;
+        }
+        /**
          * Set the type of events to listen for. The option is a
          * java.util.Set<org.ehcache.event.EventType> type.
          */
         public EhcacheConsumerBuilder eventTypes(Set<EventType> eventTypes) {
+            this.properties.put("eventTypes", eventTypes);
+            return (EhcacheConsumerBuilder) this;
+        }
+        /**
+         * Set the type of events to listen for. The option will be converted to
+         * a java.util.Set<org.ehcache.event.EventType> type.
+         */
+        public EhcacheConsumerBuilder eventTypes(String eventTypes) {
             this.properties.put("eventTypes", eventTypes);
             return (EhcacheConsumerBuilder) this;
         }
@@ -191,11 +305,30 @@ public interface EhcacheEndpointBuilder {
             return (EhcacheConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public EhcacheConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (EhcacheConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public EhcacheConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (EhcacheConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public EhcacheConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (EhcacheConsumerBuilder) this;
         }
@@ -224,6 +357,15 @@ public interface EhcacheEndpointBuilder {
          * a java.lang.Object type.
          */
         public EhcacheProducerBuilder key(Object key) {
+            this.properties.put("key", key);
+            return (EhcacheProducerBuilder) this;
+        }
+        /**
+         * To configure the default action key. If a key is set in the message
+         * header, then the key from the header takes precedence. The option
+         * will be converted to a java.lang.Object type.
+         */
+        public EhcacheProducerBuilder key(String key) {
             this.properties.put("key", key);
             return (EhcacheProducerBuilder) this;
         }

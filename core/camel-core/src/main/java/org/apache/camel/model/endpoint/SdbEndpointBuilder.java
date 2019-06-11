@@ -61,10 +61,26 @@ public interface SdbEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use the AmazonSimpleDB as the client. The option will be converted
+         * to a com.amazonaws.services.simpledb.AmazonSimpleDB type.
+         */
+        public T amazonSDBClient(String amazonSDBClient) {
+            this.properties.put("amazonSDBClient", amazonSDBClient);
+            return (T) this;
+        }
+        /**
          * Determines whether or not strong consistency should be enforced when
          * data is read. The option is a boolean type.
          */
         public T consistentRead(boolean consistentRead) {
+            this.properties.put("consistentRead", consistentRead);
+            return (T) this;
+        }
+        /**
+         * Determines whether or not strong consistency should be enforced when
+         * data is read. The option will be converted to a boolean type.
+         */
+        public T consistentRead(String consistentRead) {
             this.properties.put("consistentRead", consistentRead);
             return (T) this;
         }
@@ -77,10 +93,26 @@ public interface SdbEndpointBuilder {
             return (T) this;
         }
         /**
+         * The maximum number of domain names you want returned. The range is 1
+         * to 100. The option will be converted to a java.lang.Integer type.
+         */
+        public T maxNumberOfDomains(String maxNumberOfDomains) {
+            this.properties.put("maxNumberOfDomains", maxNumberOfDomains);
+            return (T) this;
+        }
+        /**
          * Operation to perform. The option is a
          * org.apache.camel.component.aws.sdb.SdbOperations type.
          */
         public T operation(SdbOperations operation) {
+            this.properties.put("operation", operation);
+            return (T) this;
+        }
+        /**
+         * Operation to perform. The option will be converted to a
+         * org.apache.camel.component.aws.sdb.SdbOperations type.
+         */
+        public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
@@ -97,6 +129,14 @@ public interface SdbEndpointBuilder {
          * is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (T) this;
+        }
+        /**
+         * To define a proxy port when instantiating the SDB client. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
@@ -125,11 +165,29 @@ public interface SdbEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

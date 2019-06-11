@@ -73,11 +73,28 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * True to exclude Table API links for reference fields (default:
+         * false). The option will be converted to a java.lang.Boolean type.
+         */
+        public T excludeReferenceLink(String excludeReferenceLink) {
+            this.properties.put("excludeReferenceLink", excludeReferenceLink);
+            return (T) this;
+        }
+        /**
          * Set this parameter to true to return only scorecards that are
          * favorites of the querying user. The option is a java.lang.Boolean
          * type.
          */
         public T favorites(Boolean favorites) {
+            this.properties.put("favorites", favorites);
+            return (T) this;
+        }
+        /**
+         * Set this parameter to true to return only scorecards that are
+         * favorites of the querying user. The option will be converted to a
+         * java.lang.Boolean type.
+         */
+        public T favorites(String favorites) {
             this.properties.put("favorites", favorites);
             return (T) this;
         }
@@ -93,12 +110,33 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set this parameter to true to always return all available aggregates
+         * for an indicator, including when an aggregate has already been
+         * applied. If a value is not specified, this parameter defaults to
+         * false and returns no aggregates. The option will be converted to a
+         * java.lang.Boolean type.
+         */
+        public T includeAggregates(String includeAggregates) {
+            this.properties.put("includeAggregates", includeAggregates);
+            return (T) this;
+        }
+        /**
          * Set this parameter to true to return all available aggregates for an
          * indicator when no aggregate has been applied. If a value is not
          * specified, this parameter defaults to false and returns no
          * aggregates. The option is a java.lang.Boolean type.
          */
         public T includeAvailableAggregates(Boolean includeAvailableAggregates) {
+            this.properties.put("includeAvailableAggregates", includeAvailableAggregates);
+            return (T) this;
+        }
+        /**
+         * Set this parameter to true to return all available aggregates for an
+         * indicator when no aggregate has been applied. If a value is not
+         * specified, this parameter defaults to false and returns no
+         * aggregates. The option will be converted to a java.lang.Boolean type.
+         */
+        public T includeAvailableAggregates(String includeAvailableAggregates) {
             this.properties.put("includeAvailableAggregates", includeAvailableAggregates);
             return (T) this;
         }
@@ -113,12 +151,32 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set this parameter to true to return all available breakdowns for an
+         * indicator. If a value is not specified, this parameter defaults to
+         * false and returns no breakdowns. The option will be converted to a
+         * java.lang.Boolean type.
+         */
+        public T includeAvailableBreakdowns(String includeAvailableBreakdowns) {
+            this.properties.put("includeAvailableBreakdowns", includeAvailableBreakdowns);
+            return (T) this;
+        }
+        /**
          * Set this parameter to true to return all notes associated with the
          * score. The note element contains the note text as well as the author
          * and timestamp when the note was added. The option is a
          * java.lang.Boolean type.
          */
         public T includeScoreNotes(Boolean includeScoreNotes) {
+            this.properties.put("includeScoreNotes", includeScoreNotes);
+            return (T) this;
+        }
+        /**
+         * Set this parameter to true to return all notes associated with the
+         * score. The note element contains the note text as well as the author
+         * and timestamp when the note was added. The option will be converted
+         * to a java.lang.Boolean type.
+         */
+        public T includeScoreNotes(String includeScoreNotes) {
             this.properties.put("includeScoreNotes", includeScoreNotes);
             return (T) this;
         }
@@ -133,10 +191,28 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set this parameter to true to return all scores for a scorecard. If a
+         * value is not specified, this parameter defaults to false and returns
+         * only the most recent score value. The option will be converted to a
+         * java.lang.Boolean type.
+         */
+        public T includeScores(String includeScores) {
+            this.properties.put("includeScores", includeScores);
+            return (T) this;
+        }
+        /**
          * True to set raw value of input fields (default: false). The option is
          * a java.lang.Boolean type.
          */
         public T inputDisplayValue(Boolean inputDisplayValue) {
+            this.properties.put("inputDisplayValue", inputDisplayValue);
+            return (T) this;
+        }
+        /**
+         * True to set raw value of input fields (default: false). The option
+         * will be converted to a java.lang.Boolean type.
+         */
+        public T inputDisplayValue(String inputDisplayValue) {
             this.properties.put("inputDisplayValue", inputDisplayValue);
             return (T) this;
         }
@@ -149,10 +225,26 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set this parameter to true to return only scorecards for key
+         * indicators. The option will be converted to a java.lang.Boolean type.
+         */
+        public T key(String key) {
+            this.properties.put("key", key);
+            return (T) this;
+        }
+        /**
          * Defines both request and response models. The option is a
          * java.lang.String type.
          */
         public T models(Map<String, Class<Object>> models) {
+            this.properties.put("models", models);
+            return (T) this;
+        }
+        /**
+         * Defines both request and response models. The option will be
+         * converted to a java.lang.String type.
+         */
+        public T models(String models) {
             this.properties.put("models", models);
             return (T) this;
         }
@@ -166,6 +258,15 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * Enter the maximum number of scorecards each query can return. By
+         * default this value is 10, and the maximum is 100. The option will be
+         * converted to a java.lang.Integer type.
+         */
+        public T perPage(String perPage) {
+            this.properties.put("perPage", perPage);
+            return (T) this;
+        }
+        /**
          * The ServiceNow release to target, default to Helsinki See
          * https://docs.servicenow.com. The option is a
          * org.apache.camel.component.servicenow.ServiceNowRelease type.
@@ -175,9 +276,26 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * The ServiceNow release to target, default to Helsinki See
+         * https://docs.servicenow.com. The option will be converted to a
+         * org.apache.camel.component.servicenow.ServiceNowRelease type.
+         */
+        public T release(String release) {
+            this.properties.put("release", release);
+            return (T) this;
+        }
+        /**
          * Defines the request model. The option is a java.lang.String type.
          */
         public T requestModels(Map<String, Class<Object>> requestModels) {
+            this.properties.put("requestModels", requestModels);
+            return (T) this;
+        }
+        /**
+         * Defines the request model. The option will be converted to a
+         * java.lang.String type.
+         */
+        public T requestModels(String requestModels) {
             this.properties.put("requestModels", requestModels);
             return (T) this;
         }
@@ -193,6 +311,14 @@ public interface ServiceNowEndpointBuilder {
          * Defines the response model. The option is a java.lang.String type.
          */
         public T responseModels(Map<String, Class<Object>> responseModels) {
+            this.properties.put("responseModels", responseModels);
+            return (T) this;
+        }
+        /**
+         * Defines the response model. The option will be converted to a
+         * java.lang.String type.
+         */
+        public T responseModels(String responseModels) {
             this.properties.put("responseModels", responseModels);
             return (T) this;
         }
@@ -222,12 +348,30 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * True to suppress auto generation of system fields (default: false).
+         * The option will be converted to a java.lang.Boolean type.
+         */
+        public T suppressAutoSysField(String suppressAutoSysField) {
+            this.properties.put("suppressAutoSysField", suppressAutoSysField);
+            return (T) this;
+        }
+        /**
          * Set this value to true to remove the Link header from the response.
          * The Link header allows you to request additional pages of data when
          * the number of records matching your query exceeds the query limit.
          * The option is a java.lang.Boolean type.
          */
         public T suppressPaginationHeader(Boolean suppressPaginationHeader) {
+            this.properties.put("suppressPaginationHeader", suppressPaginationHeader);
+            return (T) this;
+        }
+        /**
+         * Set this value to true to remove the Link header from the response.
+         * The Link header allows you to request additional pages of data when
+         * the number of records matching your query exceeds the query limit.
+         * The option will be converted to a java.lang.Boolean type.
+         */
+        public T suppressPaginationHeader(String suppressPaginationHeader) {
             this.properties.put("suppressPaginationHeader", suppressPaginationHeader);
             return (T) this;
         }
@@ -248,10 +392,26 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set this parameter to true to return only scorecards that have a
+         * target. The option will be converted to a java.lang.Boolean type.
+         */
+        public T target(String target) {
+            this.properties.put("target", target);
+            return (T) this;
+        }
+        /**
          * Gets only those categories whose parent is a catalog. The option is a
          * java.lang.Boolean type.
          */
         public T topLevelOnly(Boolean topLevelOnly) {
+            this.properties.put("topLevelOnly", topLevelOnly);
+            return (T) this;
+        }
+        /**
+         * Gets only those categories whose parent is a catalog. The option will
+         * be converted to a java.lang.Boolean type.
+         */
+        public T topLevelOnly(String topLevelOnly) {
             this.properties.put("topLevelOnly", topLevelOnly);
             return (T) this;
         }
@@ -269,6 +429,15 @@ public interface ServiceNowEndpointBuilder {
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
@@ -297,6 +466,14 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * To configure http-client. The option will be converted to a
+         * org.apache.cxf.transports.http.configuration.HTTPClientPolicy type.
+         */
+        public T httpClientPolicy(String httpClientPolicy) {
+            this.properties.put("httpClientPolicy", httpClientPolicy);
+            return (T) this;
+        }
+        /**
          * Sets Jackson's ObjectMapper to use for request/reply. The option is a
          * com.fasterxml.jackson.databind.ObjectMapper type.
          */
@@ -305,10 +482,26 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets Jackson's ObjectMapper to use for request/reply. The option will
+         * be converted to a com.fasterxml.jackson.databind.ObjectMapper type.
+         */
+        public T mapper(String mapper) {
+            this.properties.put("mapper", mapper);
+            return (T) this;
+        }
+        /**
          * To configure proxy authentication. The option is a
          * org.apache.cxf.configuration.security.ProxyAuthorizationPolicy type.
          */
         public T proxyAuthorizationPolicy(Object proxyAuthorizationPolicy) {
+            this.properties.put("proxyAuthorizationPolicy", proxyAuthorizationPolicy);
+            return (T) this;
+        }
+        /**
+         * To configure proxy authentication. The option will be converted to a
+         * org.apache.cxf.configuration.security.ProxyAuthorizationPolicy type.
+         */
+        public T proxyAuthorizationPolicy(String proxyAuthorizationPolicy) {
             this.properties.put("proxyAuthorizationPolicy", proxyAuthorizationPolicy);
             return (T) this;
         }
@@ -323,11 +516,30 @@ public interface ServiceNowEndpointBuilder {
             return (T) this;
         }
         /**
+         * Set this parameter to true to retrieve the target record when using
+         * import set api. The import set result is then replaced by the target
+         * record. The option will be converted to a java.lang.Boolean type.
+         */
+        public T retrieveTargetRecordOnImport(
+                String retrieveTargetRecordOnImport) {
+            this.properties.put("retrieveTargetRecordOnImport", retrieveTargetRecordOnImport);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -350,6 +562,14 @@ public interface ServiceNowEndpointBuilder {
          * The proxy port number. The option is a java.lang.Integer type.
          */
         public T proxyPort(Integer proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (T) this;
+        }
+        /**
+         * The proxy port number. The option will be converted to a
+         * java.lang.Integer type.
+         */
+        public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
@@ -411,6 +631,16 @@ public interface ServiceNowEndpointBuilder {
          * option is a org.apache.camel.support.jsse.SSLContextParameters type.
          */
         public T sslContextParameters(Object sslContextParameters) {
+            this.properties.put("sslContextParameters", sslContextParameters);
+            return (T) this;
+        }
+        /**
+         * To configure security using SSLContextParameters. See
+         * http://camel.apache.org/camel-configuration-utilities.html. The
+         * option will be converted to a
+         * org.apache.camel.support.jsse.SSLContextParameters type.
+         */
+        public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }

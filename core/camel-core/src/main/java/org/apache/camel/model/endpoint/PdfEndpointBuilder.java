@@ -46,9 +46,25 @@ public interface PdfEndpointBuilder {
             return (T) this;
         }
         /**
+         * Operation type. The option will be converted to a
+         * org.apache.camel.component.pdf.PdfOperation type.
+         */
+        public T operation(String operation) {
+            this.properties.put("operation", operation);
+            return (T) this;
+        }
+        /**
          * Font. The option is a org.apache.pdfbox.pdmodel.font.PDFont type.
          */
         public T font(Object font) {
+            this.properties.put("font", font);
+            return (T) this;
+        }
+        /**
+         * Font. The option will be converted to a
+         * org.apache.pdfbox.pdmodel.font.PDFont type.
+         */
+        public T font(String font) {
             this.properties.put("font", font);
             return (T) this;
         }
@@ -60,9 +76,23 @@ public interface PdfEndpointBuilder {
             return (T) this;
         }
         /**
+         * Font size in pixels. The option will be converted to a float type.
+         */
+        public T fontSize(String fontSize) {
+            this.properties.put("fontSize", fontSize);
+            return (T) this;
+        }
+        /**
          * Margin bottom in pixels. The option is a int type.
          */
         public T marginBottom(int marginBottom) {
+            this.properties.put("marginBottom", marginBottom);
+            return (T) this;
+        }
+        /**
+         * Margin bottom in pixels. The option will be converted to a int type.
+         */
+        public T marginBottom(String marginBottom) {
             this.properties.put("marginBottom", marginBottom);
             return (T) this;
         }
@@ -74,9 +104,23 @@ public interface PdfEndpointBuilder {
             return (T) this;
         }
         /**
+         * Margin left in pixels. The option will be converted to a int type.
+         */
+        public T marginLeft(String marginLeft) {
+            this.properties.put("marginLeft", marginLeft);
+            return (T) this;
+        }
+        /**
          * Margin right in pixels. The option is a int type.
          */
         public T marginRight(int marginRight) {
+            this.properties.put("marginRight", marginRight);
+            return (T) this;
+        }
+        /**
+         * Margin right in pixels. The option will be converted to a int type.
+         */
+        public T marginRight(String marginRight) {
             this.properties.put("marginRight", marginRight);
             return (T) this;
         }
@@ -88,10 +132,25 @@ public interface PdfEndpointBuilder {
             return (T) this;
         }
         /**
+         * Margin top in pixels. The option will be converted to a int type.
+         */
+        public T marginTop(String marginTop) {
+            this.properties.put("marginTop", marginTop);
+            return (T) this;
+        }
+        /**
          * Page size. The option is a
          * org.apache.pdfbox.pdmodel.common.PDRectangle type.
          */
         public T pageSize(Object pageSize) {
+            this.properties.put("pageSize", pageSize);
+            return (T) this;
+        }
+        /**
+         * Page size. The option will be converted to a
+         * org.apache.pdfbox.pdmodel.common.PDRectangle type.
+         */
+        public T pageSize(String pageSize) {
             this.properties.put("pageSize", pageSize);
             return (T) this;
         }
@@ -111,6 +170,20 @@ public interface PdfEndpointBuilder {
             return (T) this;
         }
         /**
+         * Text processing to use. autoFormatting: Text is getting sliced by
+         * words, then max amount of words that fits in the line will be written
+         * into pdf document. With this strategy all words that doesn't fit in
+         * the line will be moved to the new line. lineTermination: Builds set
+         * of classes for line-termination writing strategy. Text getting sliced
+         * by line termination symbol and then it will be written regardless it
+         * fits in the line or not. The option will be converted to a
+         * org.apache.camel.component.pdf.TextProcessingFactory type.
+         */
+        public T textProcessingFactory(String textProcessingFactory) {
+            this.properties.put("textProcessingFactory", textProcessingFactory);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -120,11 +193,29 @@ public interface PdfEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

@@ -63,11 +63,43 @@ public interface HttpEndpointBuilder {
             return (T) this;
         }
         /**
+         * Determines whether or not the raw input stream from Servlet is cached
+         * or not (Camel will read the stream into a in memory/overflow to file,
+         * Stream caching) cache. By default Camel will cache the Servlet input
+         * stream to support reading it multiple times to ensure it Camel can
+         * retrieve all data from the stream. However you can set this option to
+         * true when you for example need to access the raw stream, such as
+         * streaming it directly to a file or other persistent store.
+         * DefaultHttpBinding will copy the request input stream into a stream
+         * cache and put it into message body if this option is false to support
+         * reading the stream multiple times. If you use Servlet to bridge/proxy
+         * an endpoint then consider enabling this option to improve
+         * performance, in case you do not need to read the message payload
+         * multiple times. The http/http4 producer will by default cache the
+         * response body stream. If setting this option to true, then the
+         * producers will not cache the response body stream but use the
+         * response stream as-is as the message body. The option will be
+         * converted to a boolean type.
+         */
+        public T disableStreamCache(String disableStreamCache) {
+            this.properties.put("disableStreamCache", disableStreamCache);
+            return (T) this;
+        }
+        /**
          * To use a custom HeaderFilterStrategy to filter header to and from
          * Camel message. The option is a
          * org.apache.camel.spi.HeaderFilterStrategy type.
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
+            this.properties.put("headerFilterStrategy", headerFilterStrategy);
+            return (T) this;
+        }
+        /**
+         * To use a custom HeaderFilterStrategy to filter header to and from
+         * Camel message. The option will be converted to a
+         * org.apache.camel.spi.HeaderFilterStrategy type.
+         */
+        public T headerFilterStrategy(String headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
             return (T) this;
         }
@@ -81,11 +113,29 @@ public interface HttpEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom HttpBinding to control the mapping between Camel
+         * message and HttpClient. The option will be converted to a
+         * org.apache.camel.http.common.HttpBinding type.
+         */
+        public T httpBinding(String httpBinding) {
+            this.properties.put("httpBinding", httpBinding);
+            return (T) this;
+        }
+        /**
          * If this option is false the Servlet will disable the HTTP streaming
          * and set the content-length header on the response. The option is a
          * boolean type.
          */
         public T chunked(boolean chunked) {
+            this.properties.put("chunked", chunked);
+            return (T) this;
+        }
+        /**
+         * If this option is false the Servlet will disable the HTTP streaming
+         * and set the content-length header on the response. The option will be
+         * converted to a boolean type.
+         */
+        public T chunked(String chunked) {
             this.properties.put("chunked", chunked);
             return (T) this;
         }
@@ -105,11 +155,35 @@ public interface HttpEndpointBuilder {
             return (T) this;
         }
         /**
+         * If enabled and an Exchange failed processing on the consumer side,
+         * and if the caused Exception was send back serialized in the response
+         * as a application/x-java-serialized-object content type. On the
+         * producer side the exception will be deserialized and thrown as is,
+         * instead of the HttpOperationFailedException. The caused exception is
+         * required to be serialized. This is by default turned off. If you
+         * enable this then be aware that Java will deserialize the incoming
+         * data from the request to Java and that can be a potential security
+         * risk. The option will be converted to a boolean type.
+         */
+        public T transferException(String transferException) {
+            this.properties.put("transferException", transferException);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
@@ -124,11 +198,30 @@ public interface HttpEndpointBuilder {
             return (T) this;
         }
         /**
+         * Provide access to the http client request parameters used on new
+         * RequestConfig instances used by producers or consumers of this
+         * endpoint. The option will be converted to a
+         * org.apache.http.impl.client.HttpClientBuilder type.
+         */
+        public T clientBuilder(String clientBuilder) {
+            this.properties.put("clientBuilder", clientBuilder);
+            return (T) this;
+        }
+        /**
          * To use a custom HttpClientConnectionManager to manage connections.
          * The option is a org.apache.http.conn.HttpClientConnectionManager
          * type.
          */
         public T clientConnectionManager(Object clientConnectionManager) {
+            this.properties.put("clientConnectionManager", clientConnectionManager);
+            return (T) this;
+        }
+        /**
+         * To use a custom HttpClientConnectionManager to manage connections.
+         * The option will be converted to a
+         * org.apache.http.conn.HttpClientConnectionManager type.
+         */
+        public T clientConnectionManager(String clientConnectionManager) {
             this.properties.put("clientConnectionManager", clientConnectionManager);
             return (T) this;
         }
@@ -141,10 +234,26 @@ public interface HttpEndpointBuilder {
             return (T) this;
         }
         /**
+         * The maximum number of connections per route. The option will be
+         * converted to a int type.
+         */
+        public T connectionsPerRoute(String connectionsPerRoute) {
+            this.properties.put("connectionsPerRoute", connectionsPerRoute);
+            return (T) this;
+        }
+        /**
          * Sets a custom HttpClient to be used by the producer. The option is a
          * org.apache.http.client.HttpClient type.
          */
         public T httpClient(Object httpClient) {
+            this.properties.put("httpClient", httpClient);
+            return (T) this;
+        }
+        /**
+         * Sets a custom HttpClient to be used by the producer. The option will
+         * be converted to a org.apache.http.client.HttpClient type.
+         */
+        public T httpClient(String httpClient) {
             this.properties.put("httpClient", httpClient);
             return (T) this;
         }
@@ -159,10 +268,29 @@ public interface HttpEndpointBuilder {
             return (T) this;
         }
         /**
+         * Register a custom configuration strategy for new HttpClient instances
+         * created by producers or consumers such as to configure authentication
+         * mechanisms etc. The option will be converted to a
+         * org.apache.camel.component.http4.HttpClientConfigurer type.
+         */
+        public T httpClientConfigurer(String httpClientConfigurer) {
+            this.properties.put("httpClientConfigurer", httpClientConfigurer);
+            return (T) this;
+        }
+        /**
          * To configure the HttpClient using the key/values from the Map. The
          * option is a java.util.Map<java.lang.String,java.lang.Object> type.
          */
         public T httpClientOptions(Map<String, Object> httpClientOptions) {
+            this.properties.put("httpClientOptions", httpClientOptions);
+            return (T) this;
+        }
+        /**
+         * To configure the HttpClient using the key/values from the Map. The
+         * option will be converted to a
+         * java.util.Map<java.lang.String,java.lang.Object> type.
+         */
+        public T httpClientOptions(String httpClientOptions) {
             this.properties.put("httpClientOptions", httpClientOptions);
             return (T) this;
         }
@@ -175,11 +303,28 @@ public interface HttpEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom HttpContext instance. The option will be converted to
+         * a org.apache.http.protocol.HttpContext type.
+         */
+        public T httpContext(String httpContext) {
+            this.properties.put("httpContext", httpContext);
+            return (T) this;
+        }
+        /**
          * If this option is true then IN exchange Body of the exchange will be
          * mapped to HTTP body. Setting this to false will avoid the HTTP
          * mapping. The option is a boolean type.
          */
         public T mapHttpMessageBody(boolean mapHttpMessageBody) {
+            this.properties.put("mapHttpMessageBody", mapHttpMessageBody);
+            return (T) this;
+        }
+        /**
+         * If this option is true then IN exchange Body of the exchange will be
+         * mapped to HTTP body. Setting this to false will avoid the HTTP
+         * mapping. The option will be converted to a boolean type.
+         */
+        public T mapHttpMessageBody(String mapHttpMessageBody) {
             this.properties.put("mapHttpMessageBody", mapHttpMessageBody);
             return (T) this;
         }
@@ -194,6 +339,17 @@ public interface HttpEndpointBuilder {
             return (T) this;
         }
         /**
+         * If this option is true then IN exchange Form Encoded body of the
+         * exchange will be mapped to HTTP. Setting this to false will avoid the
+         * HTTP Form Encoded body mapping. The option will be converted to a
+         * boolean type.
+         */
+        public T mapHttpMessageFormUrlEncodedBody(
+                String mapHttpMessageFormUrlEncodedBody) {
+            this.properties.put("mapHttpMessageFormUrlEncodedBody", mapHttpMessageFormUrlEncodedBody);
+            return (T) this;
+        }
+        /**
          * If this option is true then IN exchange Headers of the exchange will
          * be mapped to HTTP headers. Setting this to false will avoid the HTTP
          * Headers mapping. The option is a boolean type.
@@ -203,9 +359,26 @@ public interface HttpEndpointBuilder {
             return (T) this;
         }
         /**
+         * If this option is true then IN exchange Headers of the exchange will
+         * be mapped to HTTP headers. Setting this to false will avoid the HTTP
+         * Headers mapping. The option will be converted to a boolean type.
+         */
+        public T mapHttpMessageHeaders(String mapHttpMessageHeaders) {
+            this.properties.put("mapHttpMessageHeaders", mapHttpMessageHeaders);
+            return (T) this;
+        }
+        /**
          * The maximum number of connections. The option is a int type.
          */
         public T maxTotalConnections(int maxTotalConnections) {
+            this.properties.put("maxTotalConnections", maxTotalConnections);
+            return (T) this;
+        }
+        /**
+         * The maximum number of connections. The option will be converted to a
+         * int type.
+         */
+        public T maxTotalConnections(String maxTotalConnections) {
             this.properties.put("maxTotalConnections", maxTotalConnections);
             return (T) this;
         }
@@ -219,10 +392,27 @@ public interface HttpEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * To use System Properties as fallback for configuration. The option is
          * a boolean type.
          */
         public T useSystemProperties(boolean useSystemProperties) {
+            this.properties.put("useSystemProperties", useSystemProperties);
+            return (T) this;
+        }
+        /**
+         * To use System Properties as fallback for configuration. The option
+         * will be converted to a boolean type.
+         */
+        public T useSystemProperties(String useSystemProperties) {
             this.properties.put("useSystemProperties", useSystemProperties);
             return (T) this;
         }
@@ -239,11 +429,32 @@ public interface HttpEndpointBuilder {
             return (T) this;
         }
         /**
+         * To configure security using SSLContextParameters. Important: Only one
+         * instance of org.apache.camel.util.jsse.SSLContextParameters is
+         * supported per HttpComponent. If you need to use 2 or more different
+         * instances, you need to define a new HttpComponent per instance you
+         * need. The option will be converted to a
+         * org.apache.camel.support.jsse.SSLContextParameters type.
+         */
+        public T sslContextParameters(String sslContextParameters) {
+            this.properties.put("sslContextParameters", sslContextParameters);
+            return (T) this;
+        }
+        /**
          * To use a custom X509HostnameVerifier such as DefaultHostnameVerifier
          * or org.apache.http.conn.ssl.NoopHostnameVerifier. The option is a
          * javax.net.ssl.HostnameVerifier type.
          */
         public T x509HostnameVerifier(Object x509HostnameVerifier) {
+            this.properties.put("x509HostnameVerifier", x509HostnameVerifier);
+            return (T) this;
+        }
+        /**
+         * To use a custom X509HostnameVerifier such as DefaultHostnameVerifier
+         * or org.apache.http.conn.ssl.NoopHostnameVerifier. The option will be
+         * converted to a javax.net.ssl.HostnameVerifier type.
+         */
+        public T x509HostnameVerifier(String x509HostnameVerifier) {
             this.properties.put("x509HostnameVerifier", x509HostnameVerifier);
             return (T) this;
         }
@@ -266,11 +477,29 @@ public interface HttpEndpointBuilder {
             return (HttpProducerBuilder) this;
         }
         /**
+         * The url of the HTTP endpoint to call. The option will be converted to
+         * a java.net.URI type.
+         */
+        public HttpProducerBuilder httpUri(String httpUri) {
+            this.properties.put("httpUri", httpUri);
+            return (HttpProducerBuilder) this;
+        }
+        /**
          * If this option is true, camel-http4 sends preemptive basic
          * authentication to the server. The option is a boolean type.
          */
         public HttpProducerBuilder authenticationPreemptive(
                 boolean authenticationPreemptive) {
+            this.properties.put("authenticationPreemptive", authenticationPreemptive);
+            return (HttpProducerBuilder) this;
+        }
+        /**
+         * If this option is true, camel-http4 sends preemptive basic
+         * authentication to the server. The option will be converted to a
+         * boolean type.
+         */
+        public HttpProducerBuilder authenticationPreemptive(
+                String authenticationPreemptive) {
             this.properties.put("authenticationPreemptive", authenticationPreemptive);
             return (HttpProducerBuilder) this;
         }
@@ -281,6 +510,17 @@ public interface HttpEndpointBuilder {
          * send all the fault response back. The option is a boolean type.
          */
         public HttpProducerBuilder bridgeEndpoint(boolean bridgeEndpoint) {
+            this.properties.put("bridgeEndpoint", bridgeEndpoint);
+            return (HttpProducerBuilder) this;
+        }
+        /**
+         * If the option is true, HttpProducer will ignore the Exchange.HTTP_URI
+         * header, and use the endpoint's URI for request. You may also set the
+         * option throwExceptionOnFailure to be false to let the HttpProducer
+         * send all the fault response back. The option will be converted to a
+         * boolean type.
+         */
+        public HttpProducerBuilder bridgeEndpoint(String bridgeEndpoint) {
             this.properties.put("bridgeEndpoint", bridgeEndpoint);
             return (HttpProducerBuilder) this;
         }
@@ -296,11 +536,31 @@ public interface HttpEndpointBuilder {
             return (HttpProducerBuilder) this;
         }
         /**
+         * Whether to clear expired cookies before sending the HTTP request.
+         * This ensures the cookies store does not keep growing by adding new
+         * cookies which is newer removed when they are expired. The option will
+         * be converted to a boolean type.
+         */
+        public HttpProducerBuilder clearExpiredCookies(
+                String clearExpiredCookies) {
+            this.properties.put("clearExpiredCookies", clearExpiredCookies);
+            return (HttpProducerBuilder) this;
+        }
+        /**
          * Specifies whether a Connection Close header must be added to HTTP
          * Request. By default connectionClose is false. The option is a boolean
          * type.
          */
         public HttpProducerBuilder connectionClose(boolean connectionClose) {
+            this.properties.put("connectionClose", connectionClose);
+            return (HttpProducerBuilder) this;
+        }
+        /**
+         * Specifies whether a Connection Close header must be added to HTTP
+         * Request. By default connectionClose is false. The option will be
+         * converted to a boolean type.
+         */
+        public HttpProducerBuilder connectionClose(String connectionClose) {
             this.properties.put("connectionClose", connectionClose);
             return (HttpProducerBuilder) this;
         }
@@ -319,12 +579,37 @@ public interface HttpEndpointBuilder {
             return (HttpProducerBuilder) this;
         }
         /**
+         * To use a custom CookieStore. By default the BasicCookieStore is used
+         * which is an in-memory only cookie store. Notice if
+         * bridgeEndpoint=true then the cookie store is forced to be a noop
+         * cookie store as cookie shouldn't be stored as we are just bridging
+         * (eg acting as a proxy). If a cookieHandler is set then the cookie
+         * store is also forced to be a noop cookie store as cookie handling is
+         * then performed by the cookieHandler. The option will be converted to
+         * a org.apache.http.client.CookieStore type.
+         */
+        public HttpProducerBuilder cookieStore(String cookieStore) {
+            this.properties.put("cookieStore", cookieStore);
+            return (HttpProducerBuilder) this;
+        }
+        /**
          * If this option is true then IN exchange headers will be copied to OUT
          * exchange headers according to copy strategy. Setting this to false,
          * allows to only include the headers from the HTTP response (not
          * propagating IN headers). The option is a boolean type.
          */
         public HttpProducerBuilder copyHeaders(boolean copyHeaders) {
+            this.properties.put("copyHeaders", copyHeaders);
+            return (HttpProducerBuilder) this;
+        }
+        /**
+         * If this option is true then IN exchange headers will be copied to OUT
+         * exchange headers according to copy strategy. Setting this to false,
+         * allows to only include the headers from the HTTP response (not
+         * propagating IN headers). The option will be converted to a boolean
+         * type.
+         */
+        public HttpProducerBuilder copyHeaders(String copyHeaders) {
             this.properties.put("copyHeaders", copyHeaders);
             return (HttpProducerBuilder) this;
         }
@@ -339,6 +624,16 @@ public interface HttpEndpointBuilder {
             return (HttpProducerBuilder) this;
         }
         /**
+         * Whether the HTTP DELETE should include the message body or not. By
+         * default HTTP DELETE do not include any HTTP message. However in some
+         * rare cases users may need to be able to include the message body. The
+         * option will be converted to a boolean type.
+         */
+        public HttpProducerBuilder deleteWithBody(String deleteWithBody) {
+            this.properties.put("deleteWithBody", deleteWithBody);
+            return (HttpProducerBuilder) this;
+        }
+        /**
          * Configure the HTTP method to use. The HttpMethod header cannot
          * override this option if set. The option is a
          * org.apache.camel.http.common.HttpMethods type.
@@ -348,10 +643,28 @@ public interface HttpEndpointBuilder {
             return (HttpProducerBuilder) this;
         }
         /**
+         * Configure the HTTP method to use. The HttpMethod header cannot
+         * override this option if set. The option will be converted to a
+         * org.apache.camel.http.common.HttpMethods type.
+         */
+        public HttpProducerBuilder httpMethod(String httpMethod) {
+            this.properties.put("httpMethod", httpMethod);
+            return (HttpProducerBuilder) this;
+        }
+        /**
          * If this option is true, The http producer won't read response body
          * and cache the input stream. The option is a boolean type.
          */
         public HttpProducerBuilder ignoreResponseBody(boolean ignoreResponseBody) {
+            this.properties.put("ignoreResponseBody", ignoreResponseBody);
+            return (HttpProducerBuilder) this;
+        }
+        /**
+         * If this option is true, The http producer won't read response body
+         * and cache the input stream. The option will be converted to a boolean
+         * type.
+         */
+        public HttpProducerBuilder ignoreResponseBody(String ignoreResponseBody) {
             this.properties.put("ignoreResponseBody", ignoreResponseBody);
             return (HttpProducerBuilder) this;
         }
@@ -369,6 +682,19 @@ public interface HttpEndpointBuilder {
             return (HttpProducerBuilder) this;
         }
         /**
+         * If the option is true, HttpProducer will set the Host header to the
+         * value contained in the current exchange Host header, useful in
+         * reverse proxy applications where you want the Host header received by
+         * the downstream server to reflect the URL called by the upstream
+         * client, this allows applications which use the Host header to
+         * generate accurate URL's for a proxied service. The option will be
+         * converted to a boolean type.
+         */
+        public HttpProducerBuilder preserveHostHeader(String preserveHostHeader) {
+            this.properties.put("preserveHostHeader", preserveHostHeader);
+            return (HttpProducerBuilder) this;
+        }
+        /**
          * Option to disable throwing the HttpOperationFailedException in case
          * of failed responses from the remote server. This allows you to get
          * all responses regardless of the HTTP status code. The option is a
@@ -380,10 +706,30 @@ public interface HttpEndpointBuilder {
             return (HttpProducerBuilder) this;
         }
         /**
+         * Option to disable throwing the HttpOperationFailedException in case
+         * of failed responses from the remote server. This allows you to get
+         * all responses regardless of the HTTP status code. The option will be
+         * converted to a boolean type.
+         */
+        public HttpProducerBuilder throwExceptionOnFailure(
+                String throwExceptionOnFailure) {
+            this.properties.put("throwExceptionOnFailure", throwExceptionOnFailure);
+            return (HttpProducerBuilder) this;
+        }
+        /**
          * Configure a cookie handler to maintain a HTTP session. The option is
          * a org.apache.camel.http.common.cookie.CookieHandler type.
          */
         public HttpProducerBuilder cookieHandler(Object cookieHandler) {
+            this.properties.put("cookieHandler", cookieHandler);
+            return (HttpProducerBuilder) this;
+        }
+        /**
+         * Configure a cookie handler to maintain a HTTP session. The option
+         * will be converted to a
+         * org.apache.camel.http.common.cookie.CookieHandler type.
+         */
+        public HttpProducerBuilder cookieHandler(String cookieHandler) {
             this.properties.put("cookieHandler", cookieHandler);
             return (HttpProducerBuilder) this;
         }
@@ -406,6 +752,17 @@ public interface HttpEndpointBuilder {
          */
         @Deprecated
         public HttpProducerBuilder urlRewrite(Object urlRewrite) {
+            this.properties.put("urlRewrite", urlRewrite);
+            return (HttpProducerBuilder) this;
+        }
+        /**
+         * Refers to a custom org.apache.camel.component.http.UrlRewrite which
+         * allows you to rewrite urls when you bridge/proxy endpoints. See more
+         * details at http://camel.apache.org/urlrewrite.html. The option will
+         * be converted to a org.apache.camel.http.common.UrlRewrite type.
+         */
+        @Deprecated
+        public HttpProducerBuilder urlRewrite(String urlRewrite) {
             this.properties.put("urlRewrite", urlRewrite);
             return (HttpProducerBuilder) this;
         }
@@ -447,6 +804,14 @@ public interface HttpEndpointBuilder {
             return (HttpProducerBuilder) this;
         }
         /**
+         * Proxy authentication port. The option will be converted to a int
+         * type.
+         */
+        public HttpProducerBuilder proxyAuthPort(String proxyAuthPort) {
+            this.properties.put("proxyAuthPort", proxyAuthPort);
+            return (HttpProducerBuilder) this;
+        }
+        /**
          * Proxy authentication scheme to use. The option is a java.lang.String
          * type.
          */
@@ -472,6 +837,13 @@ public interface HttpEndpointBuilder {
          * Proxy port to use. The option is a int type.
          */
         public HttpProducerBuilder proxyPort(int proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (HttpProducerBuilder) this;
+        }
+        /**
+         * Proxy port to use. The option will be converted to a int type.
+         */
+        public HttpProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (HttpProducerBuilder) this;
         }

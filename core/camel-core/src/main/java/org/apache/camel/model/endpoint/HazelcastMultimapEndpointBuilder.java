@@ -56,10 +56,28 @@ public interface HazelcastMultimapEndpointBuilder {
             return (T) this;
         }
         /**
+         * To specify a default operation to use, if no operation header has
+         * been provided. The option will be converted to a
+         * org.apache.camel.component.hazelcast.HazelcastOperation type.
+         */
+        public T defaultOperation(String defaultOperation) {
+            this.properties.put("defaultOperation", defaultOperation);
+            return (T) this;
+        }
+        /**
          * The hazelcast instance reference which can be used for hazelcast
          * endpoint. The option is a com.hazelcast.core.HazelcastInstance type.
          */
         public T hazelcastInstance(Object hazelcastInstance) {
+            this.properties.put("hazelcastInstance", hazelcastInstance);
+            return (T) this;
+        }
+        /**
+         * The hazelcast instance reference which can be used for hazelcast
+         * endpoint. The option will be converted to a
+         * com.hazelcast.core.HazelcastInstance type.
+         */
+        public T hazelcastInstance(String hazelcastInstance) {
             this.properties.put("hazelcastInstance", hazelcastInstance);
             return (T) this;
         }
@@ -82,11 +100,28 @@ public interface HazelcastMultimapEndpointBuilder {
             return (T) this;
         }
         /**
+         * Define if the endpoint will use a reliable Topic struct or not. The
+         * option will be converted to a boolean type.
+         */
+        public T reliable(String reliable) {
+            this.properties.put("reliable", reliable);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
@@ -100,6 +135,15 @@ public interface HazelcastMultimapEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * To use concurrent consumers polling from the SEDA queue. The option
          * is a int type.
          */
@@ -108,10 +152,26 @@ public interface HazelcastMultimapEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use concurrent consumers polling from the SEDA queue. The option
+         * will be converted to a int type.
+         */
+        public T concurrentConsumers(String concurrentConsumers) {
+            this.properties.put("concurrentConsumers", concurrentConsumers);
+            return (T) this;
+        }
+        /**
          * Milliseconds before consumer continues polling after an error has
          * occurred. The option is a int type.
          */
         public T onErrorDelay(int onErrorDelay) {
+            this.properties.put("onErrorDelay", onErrorDelay);
+            return (T) this;
+        }
+        /**
+         * Milliseconds before consumer continues polling after an error has
+         * occurred. The option will be converted to a int type.
+         */
+        public T onErrorDelay(String onErrorDelay) {
             this.properties.put("onErrorDelay", onErrorDelay);
             return (T) this;
         }
@@ -126,6 +186,16 @@ public interface HazelcastMultimapEndpointBuilder {
             return (T) this;
         }
         /**
+         * The timeout used when consuming from the SEDA queue. When a timeout
+         * occurs, the consumer can check whether it is allowed to continue
+         * running. Setting a lower value allows the consumer to react more
+         * quickly upon shutdown. The option will be converted to a int type.
+         */
+        public T pollTimeout(String pollTimeout) {
+            this.properties.put("pollTimeout", pollTimeout);
+            return (T) this;
+        }
+        /**
          * If set to true then the consumer runs in transaction mode, where the
          * messages in the seda queue will only be removed if the transaction
          * commits, which happens when the processing is complete. The option is
@@ -136,11 +206,30 @@ public interface HazelcastMultimapEndpointBuilder {
             return (T) this;
         }
         /**
+         * If set to true then the consumer runs in transaction mode, where the
+         * messages in the seda queue will only be removed if the transaction
+         * commits, which happens when the processing is complete. The option
+         * will be converted to a boolean type.
+         */
+        public T transacted(String transacted) {
+            this.properties.put("transacted", transacted);
+            return (T) this;
+        }
+        /**
          * If set to true the whole Exchange will be transfered. If header or
          * body contains not serializable objects, they will be skipped. The
          * option is a boolean type.
          */
         public T transferExchange(boolean transferExchange) {
+            this.properties.put("transferExchange", transferExchange);
+            return (T) this;
+        }
+        /**
+         * If set to true the whole Exchange will be transfered. If header or
+         * body contains not serializable objects, they will be skipped. The
+         * option will be converted to a boolean type.
+         */
+        public T transferExchange(String transferExchange) {
             this.properties.put("transferExchange", transferExchange);
             return (T) this;
         }
@@ -169,11 +258,34 @@ public interface HazelcastMultimapEndpointBuilder {
             return (HazelcastMultimapConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public HazelcastMultimapConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (HazelcastMultimapConsumerBuilder) this;
+        }
+        /**
          * Define the polling timeout of the Queue consumer in Poll mode. The
          * option is a long type.
          */
         public HazelcastMultimapConsumerBuilder pollingTimeout(
                 long pollingTimeout) {
+            this.properties.put("pollingTimeout", pollingTimeout);
+            return (HazelcastMultimapConsumerBuilder) this;
+        }
+        /**
+         * Define the polling timeout of the Queue consumer in Poll mode. The
+         * option will be converted to a long type.
+         */
+        public HazelcastMultimapConsumerBuilder pollingTimeout(
+                String pollingTimeout) {
             this.properties.put("pollingTimeout", pollingTimeout);
             return (HazelcastMultimapConsumerBuilder) this;
         }
@@ -186,12 +298,31 @@ public interface HazelcastMultimapEndpointBuilder {
             return (HazelcastMultimapConsumerBuilder) this;
         }
         /**
+         * Define the Pool size for Queue Consumer Executor. The option will be
+         * converted to a int type.
+         */
+        public HazelcastMultimapConsumerBuilder poolSize(String poolSize) {
+            this.properties.put("poolSize", poolSize);
+            return (HazelcastMultimapConsumerBuilder) this;
+        }
+        /**
          * Define the Queue Consumer mode: Listen or Poll. The option is a
          * org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode
          * type.
          */
         public HazelcastMultimapConsumerBuilder queueConsumerMode(
                 HazelcastQueueConsumerMode queueConsumerMode) {
+            this.properties.put("queueConsumerMode", queueConsumerMode);
+            return (HazelcastMultimapConsumerBuilder) this;
+        }
+        /**
+         * Define the Queue Consumer mode: Listen or Poll. The option will be
+         * converted to a
+         * org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode
+         * type.
+         */
+        public HazelcastMultimapConsumerBuilder queueConsumerMode(
+                String queueConsumerMode) {
             this.properties.put("queueConsumerMode", queueConsumerMode);
             return (HazelcastMultimapConsumerBuilder) this;
         }
@@ -208,11 +339,32 @@ public interface HazelcastMultimapEndpointBuilder {
             return (HazelcastMultimapConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public HazelcastMultimapConsumerBuilder exceptionHandler(
+                String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (HazelcastMultimapConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public HazelcastMultimapConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (HazelcastMultimapConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public HazelcastMultimapConsumerBuilder exchangePattern(
+                String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (HazelcastMultimapConsumerBuilder) this;
         }

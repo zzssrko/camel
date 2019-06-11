@@ -53,10 +53,26 @@ public interface SqlStoredEndpointBuilder {
             return (T) this;
         }
         /**
+         * Enables or disables batch mode. The option will be converted to a
+         * boolean type.
+         */
+        public T batch(String batch) {
+            this.properties.put("batch", batch);
+            return (T) this;
+        }
+        /**
          * Sets the DataSource to use to communicate with the database. The
          * option is a javax.sql.DataSource type.
          */
         public T dataSource(Object dataSource) {
+            this.properties.put("dataSource", dataSource);
+            return (T) this;
+        }
+        /**
+         * Sets the DataSource to use to communicate with the database. The
+         * option will be converted to a javax.sql.DataSource type.
+         */
+        public T dataSource(String dataSource) {
             this.properties.put("dataSource", dataSource);
             return (T) this;
         }
@@ -68,11 +84,28 @@ public interface SqlStoredEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether this call is for a function. The option will be converted to
+         * a boolean type.
+         */
+        public T function(String function) {
+            this.properties.put("function", function);
+            return (T) this;
+        }
+        /**
          * If set, will ignore the results of the template and use the existing
          * IN message as the OUT message for the continuation of processing. The
          * option is a boolean type.
          */
         public T noop(boolean noop) {
+            this.properties.put("noop", noop);
+            return (T) this;
+        }
+        /**
+         * If set, will ignore the results of the template and use the existing
+         * IN message as the OUT message for the continuation of processing. The
+         * option will be converted to a boolean type.
+         */
+        public T noop(String noop) {
             this.properties.put("noop", noop);
             return (T) this;
         }
@@ -98,6 +131,15 @@ public interface SqlStoredEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to use the message body as the template and then headers for
+         * parameters. If this option is enabled then the template in the uri is
+         * not used. The option will be converted to a boolean type.
+         */
+        public T useMessageBodyForTemplate(String useMessageBodyForTemplate) {
+            this.properties.put("useMessageBodyForTemplate", useMessageBodyForTemplate);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -107,11 +149,29 @@ public interface SqlStoredEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

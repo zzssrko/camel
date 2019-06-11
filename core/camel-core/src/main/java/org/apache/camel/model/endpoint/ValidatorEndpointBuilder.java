@@ -54,10 +54,26 @@ public interface ValidatorEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether to fail if no body exists. The option will be converted to a
+         * boolean type.
+         */
+        public T failOnNullBody(String failOnNullBody) {
+            this.properties.put("failOnNullBody", failOnNullBody);
+            return (T) this;
+        }
+        /**
          * Whether to fail if no header exists when validating against a header.
          * The option is a boolean type.
          */
         public T failOnNullHeader(boolean failOnNullHeader) {
+            this.properties.put("failOnNullHeader", failOnNullHeader);
+            return (T) this;
+        }
+        /**
+         * Whether to fail if no header exists when validating against a header.
+         * The option will be converted to a boolean type.
+         */
+        public T failOnNullHeader(String failOnNullHeader) {
             this.properties.put("failOnNullHeader", failOnNullHeader);
             return (T) this;
         }
@@ -79,6 +95,15 @@ public interface ValidatorEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * To use a custom
          * org.apache.camel.processor.validation.ValidatorErrorHandler. The
          * default error handler captures the errors and throws an exception.
@@ -91,11 +116,32 @@ public interface ValidatorEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom
+         * org.apache.camel.processor.validation.ValidatorErrorHandler. The
+         * default error handler captures the errors and throws an exception.
+         * The option will be converted to a
+         * org.apache.camel.support.processor.validation.ValidatorErrorHandler
+         * type.
+         */
+        public T errorHandler(String errorHandler) {
+            this.properties.put("errorHandler", errorHandler);
+            return (T) this;
+        }
+        /**
          * To use a custom LSResourceResolver. See also
          * setResourceResolverFactory(ValidatorResourceResolverFactory). The
          * option is a org.w3c.dom.ls.LSResourceResolver type.
          */
         public T resourceResolver(Object resourceResolver) {
+            this.properties.put("resourceResolver", resourceResolver);
+            return (T) this;
+        }
+        /**
+         * To use a custom LSResourceResolver. See also
+         * setResourceResolverFactory(ValidatorResourceResolverFactory). The
+         * option will be converted to a org.w3c.dom.ls.LSResourceResolver type.
+         */
+        public T resourceResolver(String resourceResolver) {
             this.properties.put("resourceResolver", resourceResolver);
             return (T) this;
         }
@@ -112,10 +158,31 @@ public interface ValidatorEndpointBuilder {
             return (T) this;
         }
         /**
+         * For creating a resource resolver which depends on the endpoint
+         * resource URI. Must not be used in combination with method
+         * setResourceResolver(LSResourceResolver). If not set then
+         * DefaultValidatorResourceResolverFactory is used. The option will be
+         * converted to a
+         * org.apache.camel.component.validator.ValidatorResourceResolverFactory
+         * type.
+         */
+        public T resourceResolverFactory(String resourceResolverFactory) {
+            this.properties.put("resourceResolverFactory", resourceResolverFactory);
+            return (T) this;
+        }
+        /**
          * To use a custom javax.xml.validation.SchemaFactory. The option is a
          * javax.xml.validation.SchemaFactory type.
          */
         public T schemaFactory(Object schemaFactory) {
+            this.properties.put("schemaFactory", schemaFactory);
+            return (T) this;
+        }
+        /**
+         * To use a custom javax.xml.validation.SchemaFactory. The option will
+         * be converted to a javax.xml.validation.SchemaFactory type.
+         */
+        public T schemaFactory(String schemaFactory) {
             this.properties.put("schemaFactory", schemaFactory);
             return (T) this;
         }
@@ -137,11 +204,29 @@ public interface ValidatorEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
          * Whether the Schema instance should be shared or not. This option is
          * introduced to work around a JDK 1.6.x bug. Xerces should not have
          * this issue. The option is a boolean type.
          */
         public T useSharedSchema(boolean useSharedSchema) {
+            this.properties.put("useSharedSchema", useSharedSchema);
+            return (T) this;
+        }
+        /**
+         * Whether the Schema instance should be shared or not. This option is
+         * introduced to work around a JDK 1.6.x bug. Xerces should not have
+         * this issue. The option will be converted to a boolean type.
+         */
+        public T useSharedSchema(String useSharedSchema) {
             this.properties.put("useSharedSchema", useSharedSchema);
             return (T) this;
         }

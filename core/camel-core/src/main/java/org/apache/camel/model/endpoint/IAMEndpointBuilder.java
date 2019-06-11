@@ -61,11 +61,29 @@ public interface IAMEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -96,10 +114,28 @@ public interface IAMEndpointBuilder {
             return (IAMProducerBuilder) this;
         }
         /**
+         * To use a existing configured AWS IAM as client. The option will be
+         * converted to a
+         * com.amazonaws.services.identitymanagement.AmazonIdentityManagement
+         * type.
+         */
+        public IAMProducerBuilder iamClient(String iamClient) {
+            this.properties.put("iamClient", iamClient);
+            return (IAMProducerBuilder) this;
+        }
+        /**
          * The operation to perform. The option is a
          * org.apache.camel.component.aws.iam.IAMOperations type.
          */
         public IAMProducerBuilder operation(IAMOperations operation) {
+            this.properties.put("operation", operation);
+            return (IAMProducerBuilder) this;
+        }
+        /**
+         * The operation to perform. The option will be converted to a
+         * org.apache.camel.component.aws.iam.IAMOperations type.
+         */
+        public IAMProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (IAMProducerBuilder) this;
         }
@@ -116,6 +152,14 @@ public interface IAMEndpointBuilder {
          * is a java.lang.Integer type.
          */
         public IAMProducerBuilder proxyPort(Integer proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (IAMProducerBuilder) this;
+        }
+        /**
+         * To define a proxy port when instantiating the IAM client. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public IAMProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (IAMProducerBuilder) this;
         }

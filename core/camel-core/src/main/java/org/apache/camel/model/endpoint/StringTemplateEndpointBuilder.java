@@ -57,6 +57,14 @@ public interface StringTemplateEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether to use resource content cache or not. The option will be
+         * converted to a boolean type.
+         */
+        public T contentCache(String contentCache) {
+            this.properties.put("contentCache", contentCache);
+            return (T) this;
+        }
+        /**
          * The variable start delimiter. The option is a char type.
          */
         public T delimiterStart(char delimiterStart) {
@@ -64,9 +72,25 @@ public interface StringTemplateEndpointBuilder {
             return (T) this;
         }
         /**
+         * The variable start delimiter. The option will be converted to a char
+         * type.
+         */
+        public T delimiterStart(String delimiterStart) {
+            this.properties.put("delimiterStart", delimiterStart);
+            return (T) this;
+        }
+        /**
          * The variable end delimiter. The option is a char type.
          */
         public T delimiterStop(char delimiterStop) {
+            this.properties.put("delimiterStop", delimiterStop);
+            return (T) this;
+        }
+        /**
+         * The variable end delimiter. The option will be converted to a char
+         * type.
+         */
+        public T delimiterStop(String delimiterStop) {
             this.properties.put("delimiterStop", delimiterStop);
             return (T) this;
         }
@@ -80,11 +104,29 @@ public interface StringTemplateEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

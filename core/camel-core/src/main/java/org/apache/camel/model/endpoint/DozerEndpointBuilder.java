@@ -59,6 +59,19 @@ public interface DozerEndpointBuilder {
             return (T) this;
         }
         /**
+         * The name of a DozerBeanMapperConfiguration bean in the Camel registry
+         * which should be used for configuring the Dozer mapping. This is an
+         * alternative to the mappingFile option that can be used for
+         * fine-grained control over how Dozer is configured. Remember to use a
+         * # prefix in the value to indicate that the bean is in the Camel
+         * registry (e.g. #myDozerConfig). The option will be converted to a
+         * org.apache.camel.converter.dozer.DozerBeanMapperConfiguration type.
+         */
+        public T mappingConfiguration(String mappingConfiguration) {
+            this.properties.put("mappingConfiguration", mappingConfiguration);
+            return (T) this;
+        }
+        /**
          * The location of a Dozer configuration file. The file is loaded from
          * the classpath by default, but you can use file:, classpath:, or http:
          * to load the configuration from a specific location. The option is a
@@ -114,11 +127,29 @@ public interface DozerEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

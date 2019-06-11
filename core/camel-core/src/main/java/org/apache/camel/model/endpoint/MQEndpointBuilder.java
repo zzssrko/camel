@@ -61,11 +61,29 @@ public interface MQEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -95,11 +113,28 @@ public interface MQEndpointBuilder {
             return (MQProducerBuilder) this;
         }
         /**
+         * To use a existing configured AmazonMQClient as client. The option
+         * will be converted to a com.amazonaws.services.mq.AmazonMQ type.
+         */
+        public MQProducerBuilder amazonMqClient(String amazonMqClient) {
+            this.properties.put("amazonMqClient", amazonMqClient);
+            return (MQProducerBuilder) this;
+        }
+        /**
          * The operation to perform. It can be
          * listBrokers,createBroker,deleteBroker. The option is a
          * org.apache.camel.component.aws.mq.MQOperations type.
          */
         public MQProducerBuilder operation(MQOperations operation) {
+            this.properties.put("operation", operation);
+            return (MQProducerBuilder) this;
+        }
+        /**
+         * The operation to perform. It can be
+         * listBrokers,createBroker,deleteBroker. The option will be converted
+         * to a org.apache.camel.component.aws.mq.MQOperations type.
+         */
+        public MQProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (MQProducerBuilder) this;
         }
@@ -116,6 +151,14 @@ public interface MQEndpointBuilder {
          * is a java.lang.Integer type.
          */
         public MQProducerBuilder proxyPort(Integer proxyPort) {
+            this.properties.put("proxyPort", proxyPort);
+            return (MQProducerBuilder) this;
+        }
+        /**
+         * To define a proxy port when instantiating the MQ client. The option
+         * will be converted to a java.lang.Integer type.
+         */
+        public MQProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (MQProducerBuilder) this;
         }

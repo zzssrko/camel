@@ -53,6 +53,14 @@ public interface LuceneEndpointBuilder {
             return (T) this;
         }
         /**
+         * Operation to do such as insert or query. The option will be converted
+         * to a org.apache.camel.component.lucene.LuceneOperation type.
+         */
+        public T operation(String operation) {
+            this.properties.put("operation", operation);
+            return (T) this;
+        }
+        /**
          * An Analyzer builds TokenStreams, which analyze text. It thus
          * represents a policy for extracting index terms from text. The value
          * for analyzer can be any class that extends the abstract class
@@ -61,6 +69,18 @@ public interface LuceneEndpointBuilder {
          * org.apache.lucene.analysis.Analyzer type.
          */
         public T analyzer(Object analyzer) {
+            this.properties.put("analyzer", analyzer);
+            return (T) this;
+        }
+        /**
+         * An Analyzer builds TokenStreams, which analyze text. It thus
+         * represents a policy for extracting index terms from text. The value
+         * for analyzer can be any class that extends the abstract class
+         * org.apache.lucene.analysis.Analyzer. Lucene also offers a rich set of
+         * analyzers out of the box. The option will be converted to a
+         * org.apache.lucene.analysis.Analyzer type.
+         */
+        public T analyzer(String analyzer) {
             this.properties.put("analyzer", analyzer);
             return (T) this;
         }
@@ -74,10 +94,27 @@ public interface LuceneEndpointBuilder {
             return (T) this;
         }
         /**
+         * A file system directory in which index files are created upon
+         * analysis of the document by the specified analyzer. The option will
+         * be converted to a java.io.File type.
+         */
+        public T indexDir(String indexDir) {
+            this.properties.put("indexDir", indexDir);
+            return (T) this;
+        }
+        /**
          * An integer value that limits the result set of the search operation.
          * The option is a int type.
          */
         public T maxHits(int maxHits) {
+            this.properties.put("maxHits", maxHits);
+            return (T) this;
+        }
+        /**
+         * An integer value that limits the result set of the search operation.
+         * The option will be converted to a int type.
+         */
+        public T maxHits(String maxHits) {
             this.properties.put("maxHits", maxHits);
             return (T) this;
         }
@@ -91,6 +128,15 @@ public interface LuceneEndpointBuilder {
             return (T) this;
         }
         /**
+         * An optional directory containing files to be used to be analyzed and
+         * added to the index at producer startup. The option will be converted
+         * to a java.io.File type.
+         */
+        public T srcDir(String srcDir) {
+            this.properties.put("srcDir", srcDir);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -100,11 +146,29 @@ public interface LuceneEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }

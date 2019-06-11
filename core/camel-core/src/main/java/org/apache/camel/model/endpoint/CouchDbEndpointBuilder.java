@@ -63,6 +63,14 @@ public interface CouchDbEndpointBuilder {
             return (T) this;
         }
         /**
+         * Port number for the running couchdb instance. The option will be
+         * converted to a int type.
+         */
+        public T port(String port) {
+            this.properties.put("port", port);
+            return (T) this;
+        }
+        /**
          * Name of the database to use. The option is a java.lang.String type.
          */
         public T database(String database) {
@@ -78,6 +86,14 @@ public interface CouchDbEndpointBuilder {
             return (T) this;
         }
         /**
+         * Creates the database if it does not already exist. The option will be
+         * converted to a boolean type.
+         */
+        public T createDatabase(String createDatabase) {
+            this.properties.put("createDatabase", createDatabase);
+            return (T) this;
+        }
+        /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
          * the newer property binding with additional capabilities. The option
          * is a boolean type.
@@ -87,11 +103,29 @@ public interface CouchDbEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -136,6 +170,20 @@ public interface CouchDbEndpointBuilder {
             return (CouchDbConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public CouchDbConsumerBuilder bridgeErrorHandler(
+                String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (CouchDbConsumerBuilder) this;
+        }
+        /**
          * Document deletes are published as events. The option is a boolean
          * type.
          */
@@ -144,10 +192,26 @@ public interface CouchDbEndpointBuilder {
             return (CouchDbConsumerBuilder) this;
         }
         /**
+         * Document deletes are published as events. The option will be
+         * converted to a boolean type.
+         */
+        public CouchDbConsumerBuilder deletes(String deletes) {
+            this.properties.put("deletes", deletes);
+            return (CouchDbConsumerBuilder) this;
+        }
+        /**
          * How often to send an empty message to keep socket alive in millis.
          * The option is a long type.
          */
         public CouchDbConsumerBuilder heartbeat(long heartbeat) {
+            this.properties.put("heartbeat", heartbeat);
+            return (CouchDbConsumerBuilder) this;
+        }
+        /**
+         * How often to send an empty message to keep socket alive in millis.
+         * The option will be converted to a long type.
+         */
+        public CouchDbConsumerBuilder heartbeat(String heartbeat) {
             this.properties.put("heartbeat", heartbeat);
             return (CouchDbConsumerBuilder) this;
         }
@@ -179,6 +243,14 @@ public interface CouchDbEndpointBuilder {
             return (CouchDbConsumerBuilder) this;
         }
         /**
+         * Document inserts/updates are published as events. The option will be
+         * converted to a boolean type.
+         */
+        public CouchDbConsumerBuilder updates(String updates) {
+            this.properties.put("updates", updates);
+            return (CouchDbConsumerBuilder) this;
+        }
+        /**
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
@@ -191,11 +263,30 @@ public interface CouchDbEndpointBuilder {
             return (CouchDbConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public CouchDbConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (CouchDbConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public CouchDbConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (CouchDbConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public CouchDbConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (CouchDbConsumerBuilder) this;
         }

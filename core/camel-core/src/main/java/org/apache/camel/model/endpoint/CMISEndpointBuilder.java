@@ -54,6 +54,14 @@ public interface CMISEndpointBuilder {
             return (T) this;
         }
         /**
+         * Number of nodes to retrieve per page. The option will be converted to
+         * a int type.
+         */
+        public T pageSize(String pageSize) {
+            this.properties.put("pageSize", pageSize);
+            return (T) this;
+        }
+        /**
          * If set to true, the content of document node will be retrieved in
          * addition to the properties. The option is a boolean type.
          */
@@ -62,9 +70,26 @@ public interface CMISEndpointBuilder {
             return (T) this;
         }
         /**
+         * If set to true, the content of document node will be retrieved in
+         * addition to the properties. The option will be converted to a boolean
+         * type.
+         */
+        public T readContent(String readContent) {
+            this.properties.put("readContent", readContent);
+            return (T) this;
+        }
+        /**
          * Max number of nodes to read. The option is a int type.
          */
         public T readCount(int readCount) {
+            this.properties.put("readCount", readCount);
+            return (T) this;
+        }
+        /**
+         * Max number of nodes to read. The option will be converted to a int
+         * type.
+         */
+        public T readCount(String readCount) {
             this.properties.put("readCount", readCount);
             return (T) this;
         }
@@ -86,6 +111,15 @@ public interface CMISEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * To use a custom CMISSessionFacadeFactory to create the
          * CMISSessionFacade instances. The option is a
          * org.apache.camel.component.cmis.CMISSessionFacadeFactory type.
@@ -95,11 +129,29 @@ public interface CMISEndpointBuilder {
             return (T) this;
         }
         /**
+         * To use a custom CMISSessionFacadeFactory to create the
+         * CMISSessionFacade instances. The option will be converted to a
+         * org.apache.camel.component.cmis.CMISSessionFacadeFactory type.
+         */
+        public T sessionFacadeFactory(String sessionFacadeFactory) {
+            this.properties.put("sessionFacadeFactory", sessionFacadeFactory);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -143,6 +195,19 @@ public interface CMISEndpointBuilder {
             return (CMISConsumerBuilder) this;
         }
         /**
+         * Allows for bridging the consumer to the Camel routing Error Handler,
+         * which mean any exceptions occurred while the consumer is trying to
+         * pickup incoming messages, or the likes, will now be processed as a
+         * message and handled by the routing Error Handler. By default the
+         * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
+         * with exceptions, that will be logged at WARN or ERROR level and
+         * ignored. The option will be converted to a boolean type.
+         */
+        public CMISConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
+            this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
+            return (CMISConsumerBuilder) this;
+        }
+        /**
          * The cmis query to execute against the repository. If not specified,
          * the consumer will retrieve every node from the content repository by
          * iterating the content tree recursively. The option is a
@@ -165,11 +230,30 @@ public interface CMISEndpointBuilder {
             return (CMISConsumerBuilder) this;
         }
         /**
+         * To let the consumer use a custom ExceptionHandler. Notice if the
+         * option bridgeErrorHandler is enabled then this option is not in use.
+         * By default the consumer will deal with exceptions, that will be
+         * logged at WARN or ERROR level and ignored. The option will be
+         * converted to a org.apache.camel.spi.ExceptionHandler type.
+         */
+        public CMISConsumerBuilder exceptionHandler(String exceptionHandler) {
+            this.properties.put("exceptionHandler", exceptionHandler);
+            return (CMISConsumerBuilder) this;
+        }
+        /**
          * Sets the exchange pattern when the consumer creates an exchange. The
          * option is a org.apache.camel.ExchangePattern type.
          */
         public CMISConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
+            this.properties.put("exchangePattern", exchangePattern);
+            return (CMISConsumerBuilder) this;
+        }
+        /**
+         * Sets the exchange pattern when the consumer creates an exchange. The
+         * option will be converted to a org.apache.camel.ExchangePattern type.
+         */
+        public CMISConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (CMISConsumerBuilder) this;
         }
@@ -189,6 +273,15 @@ public interface CMISEndpointBuilder {
          * option is a boolean type.
          */
         public CMISProducerBuilder queryMode(boolean queryMode) {
+            this.properties.put("queryMode", queryMode);
+            return (CMISProducerBuilder) this;
+        }
+        /**
+         * If true, will execute the cmis query from the message body and return
+         * result, otherwise will create a node in the cmis repository. The
+         * option will be converted to a boolean type.
+         */
+        public CMISProducerBuilder queryMode(String queryMode) {
             this.properties.put("queryMode", queryMode);
             return (CMISProducerBuilder) this;
         }

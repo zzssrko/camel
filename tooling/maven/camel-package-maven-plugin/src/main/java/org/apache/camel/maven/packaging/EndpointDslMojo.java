@@ -303,6 +303,25 @@ public class EndpointDslMojo extends AbstractMojo {
                 desc = desc + " The option is a " + option.getJavaType() + " type.";
                 fluent.getJavaDoc().setFullText(desc);
             }
+
+            if (ogtype.getRawClass() != String.class) {
+                fluent = target.addMethod().setPublic().setName(option.getName())
+                        .setReturnType(new GenericType(loadClass(fluentBuilderTypeName)) )
+                        .addParameter(new GenericType(String.class), option.getName())
+                        .setBody("this.properties.put(\"" + option.getName() + "\", " + option.getName() + ");\n" +
+                                "return (" + fluentBuilderTypeShortName + ") this;\n");
+                if ("true".equals(option.getDeprecated())) {
+                    fluent.addAnnotation(Deprecated.class);
+                }
+                if (!Strings.isBlank(option.getDescription())) {
+                    String desc = option.getDescription();
+                    if (!desc.endsWith(".")) {
+                        desc = desc + ".";
+                    }
+                    desc = desc + " The option will be converted to a " + option.getJavaType() + " type.";
+                    fluent.getJavaDoc().setFullText(desc);
+                }
+            }
         }
 
         javaClass.removeImport("T");

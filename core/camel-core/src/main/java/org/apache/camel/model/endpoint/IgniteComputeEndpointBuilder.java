@@ -56,11 +56,31 @@ public interface IgniteComputeEndpointBuilder {
             return (T) this;
         }
         /**
+         * Sets whether to propagate the incoming body if the return type of the
+         * underlying Ignite operation is void. The option will be converted to
+         * a boolean type.
+         */
+        public T propagateIncomingBodyIfNoReturnValue(
+                String propagateIncomingBodyIfNoReturnValue) {
+            this.properties.put("propagateIncomingBodyIfNoReturnValue", propagateIncomingBodyIfNoReturnValue);
+            return (T) this;
+        }
+        /**
          * Sets whether to treat Collections as cache objects or as Collections
          * of items to insert/update/compute, etc. The option is a boolean type.
          */
         public T treatCollectionsAsCacheObjects(
                 boolean treatCollectionsAsCacheObjects) {
+            this.properties.put("treatCollectionsAsCacheObjects", treatCollectionsAsCacheObjects);
+            return (T) this;
+        }
+        /**
+         * Sets whether to treat Collections as cache objects or as Collections
+         * of items to insert/update/compute, etc. The option will be converted
+         * to a boolean type.
+         */
+        public T treatCollectionsAsCacheObjects(
+                String treatCollectionsAsCacheObjects) {
             this.properties.put("treatCollectionsAsCacheObjects", treatCollectionsAsCacheObjects);
             return (T) this;
         }
@@ -74,11 +94,29 @@ public interface IgniteComputeEndpointBuilder {
             return (T) this;
         }
         /**
+         * Whether the endpoint should use basic property binding (Camel 2.x) or
+         * the newer property binding with additional capabilities. The option
+         * will be converted to a boolean type.
+         */
+        public T basicPropertyBinding(String basicPropertyBinding) {
+            this.properties.put("basicPropertyBinding", basicPropertyBinding);
+            return (T) this;
+        }
+        /**
          * Sets whether synchronous processing should be strictly used, or Camel
          * is allowed to use asynchronous processing (if supported). The option
          * is a boolean type.
          */
         public T synchronous(boolean synchronous) {
+            this.properties.put("synchronous", synchronous);
+            return (T) this;
+        }
+        /**
+         * Sets whether synchronous processing should be strictly used, or Camel
+         * is allowed to use asynchronous processing (if supported). The option
+         * will be converted to a boolean type.
+         */
+        public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
@@ -99,6 +137,16 @@ public interface IgniteComputeEndpointBuilder {
          */
         public IgniteComputeProducerBuilder clusterGroupExpression(
                 Object clusterGroupExpression) {
+            this.properties.put("clusterGroupExpression", clusterGroupExpression);
+            return (IgniteComputeProducerBuilder) this;
+        }
+        /**
+         * An expression that returns the Cluster Group for the IgniteCompute
+         * instance. The option will be converted to a
+         * org.apache.camel.component.ignite.ClusterGroupExpression type.
+         */
+        public IgniteComputeProducerBuilder clusterGroupExpression(
+                String clusterGroupExpression) {
             this.properties.put("clusterGroupExpression", clusterGroupExpression);
             return (IgniteComputeProducerBuilder) this;
         }
@@ -125,6 +173,18 @@ public interface IgniteComputeEndpointBuilder {
             return (IgniteComputeProducerBuilder) this;
         }
         /**
+         * The compute operation to perform. Possible values: CALL, BROADCAST,
+         * APPLY, EXECUTE, RUN, AFFINITY_CALL, AFFINITY_RUN. The component
+         * expects different payload types depending on the operation. The
+         * option will be converted to a
+         * org.apache.camel.component.ignite.compute.IgniteComputeExecutionType
+         * type.
+         */
+        public IgniteComputeProducerBuilder executionType(String executionType) {
+            this.properties.put("executionType", executionType);
+            return (IgniteComputeProducerBuilder) this;
+        }
+        /**
          * The task name, only applicable if using the
          * IgniteComputeExecutionType#EXECUTE execution type. The option is a
          * java.lang.String type.
@@ -139,6 +199,15 @@ public interface IgniteComputeEndpointBuilder {
          * java.lang.Long type.
          */
         public IgniteComputeProducerBuilder timeoutMillis(Long timeoutMillis) {
+            this.properties.put("timeoutMillis", timeoutMillis);
+            return (IgniteComputeProducerBuilder) this;
+        }
+        /**
+         * The timeout interval for triggered jobs, in milliseconds, which will
+         * be set via IgniteCompute#withTimeout(long). The option will be
+         * converted to a java.lang.Long type.
+         */
+        public IgniteComputeProducerBuilder timeoutMillis(String timeoutMillis) {
             this.properties.put("timeoutMillis", timeoutMillis);
             return (IgniteComputeProducerBuilder) this;
         }
