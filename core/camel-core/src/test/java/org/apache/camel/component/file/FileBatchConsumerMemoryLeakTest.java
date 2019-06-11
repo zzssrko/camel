@@ -18,7 +18,7 @@ package org.apache.camel.component.file;
 import org.apache.camel.ContextTestSupport;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.builder.EndpointRouteBuilder;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -29,7 +29,7 @@ import org.junit.Test;
 @Ignore("Manual test")
 public class FileBatchConsumerMemoryLeakTest extends ContextTestSupport {
 
-    private String fileUrl = "file://target/data/filesorter/";
+    private String fileUrl = "target/data/filesorter/";
 
     @Override
     @Before
@@ -67,17 +67,17 @@ public class FileBatchConsumerMemoryLeakTest extends ContextTestSupport {
         for (int c = 0; c < 100; c++) {
             template.sendBodyAndHeader(fileUrl + "c", "test", Exchange.FILE_NAME, c + ".dat");
         }
-        context.addRoutes(new RouteBuilder() {
+        context.addRoutes(new EndpointRouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from(fileUrl + "c/?sortBy=ignoreCase:file:name")
+                from(fromFile(fileUrl + "/c/").sortBy("ignoreCase:file:name"))
                         .process(new Processor() {
                             public void process(Exchange exchange) throws Exception {
                                 StringBuilder buf = new StringBuilder(10000000);
                                 buf.setLength(1000000);
                                 exchange.getIn().setBody(buf.toString());
                             }
-                        }).to("file:target/data/filesorter/archiv");
+                        }).to(toFile("target/data/filesorter/archiv"));
             }
         });
         context.start();

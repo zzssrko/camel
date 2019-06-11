@@ -19,6 +19,7 @@ import java.io.File;
 
 import org.apache.camel.ContextTestSupport;
 import org.apache.camel.Exchange;
+import org.apache.camel.builder.EndpointRouteBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.junit.Before;
@@ -56,10 +57,11 @@ public class FileAbsolutePathIssueTest extends ContextTestSupport {
 
     @Override
     protected RouteBuilder createRouteBuilder() throws Exception {
-        return new RouteBuilder() {
+        return new EndpointRouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from(uri).to("mock:result");
+                from(fromFile(start).initialDelay(0).delay(10).move(done + "/${file:name}"))
+                        .to(toMock("result"));
             }
         };
     }
