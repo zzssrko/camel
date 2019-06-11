@@ -27,6 +27,7 @@ import org.apache.camel.Endpoint;
 import org.apache.camel.ExtendedCamelContext;
 import org.apache.camel.Route;
 import org.apache.camel.RoutesBuilder;
+import org.apache.camel.model.EndpointConsumerBuilder;
 import org.apache.camel.model.FromDefinition;
 import org.apache.camel.model.InterceptDefinition;
 import org.apache.camel.model.InterceptFromDefinition;
@@ -36,7 +37,6 @@ import org.apache.camel.model.OnCompletionDefinition;
 import org.apache.camel.model.OnExceptionDefinition;
 import org.apache.camel.model.RouteDefinition;
 import org.apache.camel.model.RoutesDefinition;
-import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.model.rest.RestConfigurationDefinition;
 import org.apache.camel.model.rest.RestDefinition;
 import org.apache.camel.model.rest.RestsDefinition;
@@ -241,7 +241,7 @@ public abstract class RouteBuilder extends BuilderSupport implements RoutesBuild
         return answer;
     }
 
-    public RouteDefinition from(EndpointDefinition.Consumer endpointDefinition) {
+    public RouteDefinition from(EndpointConsumerBuilder endpointDefinition) {
         getRouteCollection().setCamelContext(getContext());
         RouteDefinition answer = getRouteCollection().from(endpointDefinition);
         configureRoute(answer);

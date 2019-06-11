@@ -21,7 +21,9 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import org.apache.camel.ExchangePattern;
-import org.apache.camel.model.EndpointDefinition;
+import org.apache.camel.model.AbstractEndpointBuilder;
+import org.apache.camel.model.EndpointConsumerBuilder;
+import org.apache.camel.model.EndpointProducerBuilder;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.HeaderFilterStrategy;
 
@@ -35,9 +37,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface JettyHttpEndpoint9 {
 
 
-    public static class JettyHttpCommon9<T extends EndpointDefinition>
+    public static class JettyHttpCommon9<T extends AbstractEndpointBuilder>
             extends
-                EndpointDefinition<T> {
+            AbstractEndpointBuilder<T> {
         JettyHttpCommon9(String path) {
             super("jetty", path);
         }
@@ -176,7 +178,7 @@ public interface JettyHttpEndpoint9 {
             extends
                 JettyHttpCommon9<JettyHttpConsumer9>
             implements
-                EndpointDefinition.Consumer {
+            EndpointConsumerBuilder {
         public JettyHttpConsumer9(String path) {
             super(path);
         }
@@ -409,7 +411,7 @@ public interface JettyHttpEndpoint9 {
             extends
                 JettyHttpCommon9<JettyHttpProducer9>
             implements
-                EndpointDefinition.Producer {
+            EndpointProducerBuilder {
         public JettyHttpProducer9(String path) {
             super(path);
         }

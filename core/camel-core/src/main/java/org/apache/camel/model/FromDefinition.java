@@ -37,7 +37,7 @@ public class FromDefinition extends OptionalIdentifiedDefinition<FromDefinition>
     @XmlTransient
     private Endpoint endpoint;
     @XmlTransient
-    private EndpointDefinition.Consumer endpointDefinition;
+    private EndpointConsumerBuilder endpointConsumerBuilder;
 
     public FromDefinition() {
     }
@@ -50,8 +50,8 @@ public class FromDefinition extends OptionalIdentifiedDefinition<FromDefinition>
         setEndpoint(endpoint);
     }
 
-    public FromDefinition(EndpointDefinition.Consumer endpointDefinition) {
-        this.endpointDefinition = endpointDefinition;
+    public FromDefinition(EndpointConsumerBuilder endpointConsumerBuilder) {
+        this.endpointConsumerBuilder = endpointConsumerBuilder;
     }
 
     @Override
@@ -117,12 +117,12 @@ public class FromDefinition extends OptionalIdentifiedDefinition<FromDefinition>
         }
     }
 
-    public EndpointDefinition.Consumer getEndpointDefinition() {
-        return endpointDefinition;
+    public EndpointConsumerBuilder getEndpointConsumerBuilder() {
+        return endpointConsumerBuilder;
     }
 
-    public void setEndpointDefinition(EndpointDefinition.Consumer endpointDefinition) {
-        this.endpointDefinition = endpointDefinition;
+    public void setEndpointConsumerBuilder(EndpointConsumerBuilder endpointConsumerBuilder) {
+        this.endpointConsumerBuilder = endpointConsumerBuilder;
     }
 
     // Implementation methods

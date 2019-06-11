@@ -46,8 +46,8 @@ public class ToDefinition extends SendDefinition<ToDefinition> {
         setEndpoint(endpoint);
     }
 
-    public ToDefinition(EndpointDefinition.Producer endpointDefinition) {
-        setEndpointDefinition(endpointDefinition);
+    public ToDefinition(EndpointProducerBuilder endpointDefinition) {
+        setEndpointProducerBuilder(endpointDefinition);
     }
 
     public ToDefinition(String uri, ExchangePattern pattern) {

@@ -168,7 +168,7 @@ public class RouteDefinition extends ProcessorDefinition<RouteDefinition> {
         return this;
     }
 
-    public RouteDefinition from(EndpointDefinition.Consumer endpoint) {
+    public RouteDefinition from(EndpointConsumerBuilder endpoint) {
         setInput(new FromDefinition(endpoint));
         return this;
     }

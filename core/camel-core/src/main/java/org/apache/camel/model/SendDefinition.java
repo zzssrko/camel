@@ -23,7 +23,6 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.camel.Endpoint;
 import org.apache.camel.ExchangePattern;
-import org.apache.camel.model.EndpointDefinition.Producer;
 import org.apache.camel.spi.Metadata;
 
 /**
@@ -36,7 +35,7 @@ public abstract class SendDefinition<Type extends ProcessorDefinition<Type>> ext
     @XmlTransient
     protected Endpoint endpoint;
     @XmlTransient
-    protected EndpointDefinition.Producer endpointDefinition;
+    protected EndpointProducerBuilder endpointProducerBuilder;
 
     public SendDefinition() {
     }
@@ -86,12 +85,12 @@ public abstract class SendDefinition<Type extends ProcessorDefinition<Type>> ext
         }
     }
 
-    public Producer getEndpointDefinition() {
-        return endpointDefinition;
+    public EndpointProducerBuilder getEndpointProducerBuilder() {
+        return endpointProducerBuilder;
     }
 
-    public void setEndpointDefinition(Producer endpointDefinition) {
-        this.endpointDefinition = endpointDefinition;
+    public void setEndpointProducerBuilder(EndpointProducerBuilder endpointProducerBuilder) {
+        this.endpointProducerBuilder = endpointProducerBuilder;
     }
 
     public ExchangePattern getPattern() {

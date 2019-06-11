@@ -31,6 +31,7 @@ import org.apache.camel.RuntimeCamelException;
 import org.apache.camel.builder.AdviceWithRouteBuilder;
 import org.apache.camel.builder.AdviceWithTask;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.model.EndpointConsumerBuilder;
 import org.apache.camel.model.Model;
 import org.apache.camel.model.ModelHelper;
 import org.apache.camel.model.ProcessorDefinition;
@@ -38,7 +39,6 @@ import org.apache.camel.model.ProcessorDefinitionHelper;
 import org.apache.camel.model.PropertyDefinition;
 import org.apache.camel.model.RouteDefinition;
 import org.apache.camel.model.RoutesDefinition;
-import org.apache.camel.model.EndpointDefinition;
 import org.apache.camel.processor.ContractAdvice;
 import org.apache.camel.processor.interceptor.HandleFault;
 import org.apache.camel.reifier.rest.RestBindingReifier;
@@ -327,7 +327,7 @@ public class RouteReifier extends ProcessorReifier<RouteDefinition> {
         // resolve endpoint
         Endpoint endpoint = definition.getInput().getEndpoint();
         if (endpoint == null) {
-            EndpointDefinition.Consumer def = definition.getInput().getEndpointDefinition();
+            EndpointConsumerBuilder def = definition.getInput().getEndpointConsumerBuilder();
             if (def != null) {
                 endpoint = def.resolve(routeContext);
             } else {

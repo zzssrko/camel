@@ -187,14 +187,16 @@ public class EndpointDslMojo extends AbstractMojo {
         javaClass.setPackage(packageName);
         javaClass.setName(endpointName);
         javaClass.setClass(false);
-        javaClass.addImport("org.apache.camel.model.EndpointDefinition");
+        javaClass.addImport("org.apache.camel.model.AbstractEndpointBuilder");
+        javaClass.addImport("org.apache.camel.model.EndpointConsumerBuilder");
+        javaClass.addImport("org.apache.camel.model.EndpointProducerBuilder");
 
         Map<String, JavaClass> enumClasses = new HashMap<>();
 
         String commonName = endpointName.replace("Endpoint", "Common");
         JavaClass commonClass = javaClass.addNestedType().setPublic().setStatic(true);
-        commonClass.setName(commonName + "<T extends EndpointDefinition>");
-        commonClass.extendSuperType("EndpointDefinition<T>");
+        commonClass.setName(commonName + "<T extends AbstractEndpointBuilder>");
+        commonClass.extendSuperType("AbstractEndpointBuilder<T>");
         commonClass.addMethod().setConstructor(true)
                 .setName(commonName)
                 .addParameter(String.class, "path")
@@ -209,7 +211,7 @@ public class EndpointDslMojo extends AbstractMojo {
             consumerClass = javaClass.addNestedType().setPublic().setStatic(true);
             consumerClass.setName(consumerName);
             consumerClass.extendSuperType(commonName + "<" + consumerName + ">");
-            consumerClass.implementInterface("EndpointDefinition.Consumer");
+            consumerClass.implementInterface("EndpointConsumerBuilder");
             consumerClass.addMethod().setConstructor(true).setPublic()
                     .setName(consumerName)
                     .addParameter(String.class, "path")
@@ -218,7 +220,7 @@ public class EndpointDslMojo extends AbstractMojo {
 
             javaClass.addMethod()
                     .setPublic().setDefault()
-                    .setName("from" + endpointName.replace("Endpoint", ""))
+                    .setName("from" + endpointName.replace("EndpointBuilder", ""))
                     .addParameter(String.class, "path")
                     .setReturnType(new GenericType(loadClass(consumerClass.getCanonicalName())))
                     .setBody("return new " + consumerClass.getName() + "(path);");
@@ -232,7 +234,7 @@ public class EndpointDslMojo extends AbstractMojo {
             producerClass = javaClass.addNestedType().setPublic().setStatic(true);
             producerClass.setName(producerName);
             producerClass.extendSuperType(commonName + "<" + producerName + ">");
-            producerClass.implementInterface("EndpointDefinition.Producer");
+            producerClass.implementInterface("EndpointProducerBuilder");
             producerClass.addMethod().setConstructor(true).setPublic()
                     .setName(producerName)
                     .addParameter(String.class, "path")
@@ -241,7 +243,7 @@ public class EndpointDslMojo extends AbstractMojo {
 
             javaClass.addMethod()
                     .setPublic().setDefault()
-                    .setName("to" + endpointName.replace("Endpoint", ""))
+                    .setName("to" + endpointName.replace("EndpointBuilder", ""))
                     .addParameter(String.class, "path")
                     .setReturnType(new GenericType(loadClass(producerClass.getCanonicalName())))
                     .setBody("return new " + producerClass.getName() + "(path);");
@@ -311,15 +313,15 @@ public class EndpointDslMojo extends AbstractMojo {
 
     private String getEndpointName(String type) {
         int pos = type.lastIndexOf(".");
-        String name = type.substring(pos + 1).replace("Component", "Endpoint");
+        String name = type.substring(pos + 1).replace("Component", "EndpointBuilder");
         //
         // HACKS
         //
         switch (type) {
             case "org.apache.camel.component.atmosphere.websocket.WebsocketComponent":
-                return "AtmosphereWebsocketEndpoint";
+                return "AtmosphereWebsocketEndpointBuilder";
             case "org.apache.camel.component.zookeepermaster.MasterComponent":
-                return "ZooKeeperMasterEndpoint";
+                return "ZooKeeperMasterEndpointBuilder";
             default:
                 return name;
         }

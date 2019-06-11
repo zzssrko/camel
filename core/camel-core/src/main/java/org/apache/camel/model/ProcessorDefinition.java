@@ -364,7 +364,7 @@ public abstract class ProcessorDefinition<Type extends ProcessorDefinition<Type>
     }
 
     @SuppressWarnings("unchecked")
-    public Type to(EndpointDefinition.Producer endpoint) {
+    public Type to(EndpointProducerBuilder endpoint) {
         addOutput(new ToDefinition(endpoint));
         return (Type) this;
     }

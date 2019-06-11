@@ -71,6 +71,14 @@ public interface RouteContext extends RuntimeConfiguration, EndpointAware {
      */
     Endpoint resolveEndpoint(String uri, String ref);
 
+    /**
+     * Resolves an endpoint from the scheme, path and properties
+     *
+     * @param scheme     the URI scheme
+     * @param path       the endpoint path
+     * @param properties the endpoint properties
+     * @return the resolved endpoint
+     */
     Endpoint resolveEndpoint(String scheme, String path, Map<String, Object> properties);
 
     /**
