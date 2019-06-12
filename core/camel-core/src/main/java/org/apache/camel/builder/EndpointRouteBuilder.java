@@ -16,11 +16,11 @@
  */
 package org.apache.camel.builder;
 
-import org.apache.camel.model.endpoint.EndpointBuilder;
+import org.apache.camel.model.endpoint.EndpointBuilderFactory;
 
 /**
  * A route builder which gives access to the endpoint DSL
  */
-public abstract class EndpointRouteBuilder extends RouteBuilder implements EndpointBuilder {
+public abstract class EndpointRouteBuilder extends RouteBuilder implements EndpointBuilderFactory {
 
 }

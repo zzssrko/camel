@@ -49,4 +49,7 @@ public class AbstractEndpointBuilder<T extends AbstractEndpointBuilder> {
         return getUri();
     }
 
+    public void setProperty(String key, Object value) {
+        this.properties.put(key, value);
+    }
 }

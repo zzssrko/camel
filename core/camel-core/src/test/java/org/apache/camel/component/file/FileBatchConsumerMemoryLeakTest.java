@@ -70,14 +70,14 @@ public class FileBatchConsumerMemoryLeakTest extends ContextTestSupport {
         context.addRoutes(new EndpointRouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from(fromFile(fileUrl + "/c/").sortBy("ignoreCase:file:name"))
+                from(file(fileUrl + "/c/").sortBy("ignoreCase:file:name"))
                         .process(new Processor() {
                             public void process(Exchange exchange) throws Exception {
                                 StringBuilder buf = new StringBuilder(10000000);
                                 buf.setLength(1000000);
                                 exchange.getIn().setBody(buf.toString());
                             }
-                        }).to(toFile("target/data/filesorter/archiv"));
+                        }).to(file("target/data/filesorter/archiv"));
             }
         });
         context.start();

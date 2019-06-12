@@ -26,4 +26,6 @@ public interface EndpointConsumerBuilder {
 
     String getUri();
 
+    void setProperty(String name, Object value);
+
 }

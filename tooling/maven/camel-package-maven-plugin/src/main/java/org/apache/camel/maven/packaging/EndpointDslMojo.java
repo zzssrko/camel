@@ -179,13 +179,14 @@ public class EndpointDslMojo extends AbstractMojo {
 
     private void createEndpointDsl(String packageName, ComponentModel model, String overrideComponentName) throws MojoFailureException {
         String componentClassName = model.getJavaType();
-        String endpointName = getEndpointName(componentClassName);
+        String builderName = getEndpointName(componentClassName);
+        String methodName = getMethodName(componentClassName);
         Class<?> realComponentClass = loadClass(componentClassName);
         Class<?> realEndpointClass = loadClass(findEndpointClassName(componentClassName));
 
         final JavaClass javaClass = new JavaClass(getProjectClassLoader());
         javaClass.setPackage(packageName);
-        javaClass.setName(endpointName);
+        javaClass.setName(builderName + "Factory");
         javaClass.setClass(false);
         javaClass.addImport("org.apache.camel.model.AbstractEndpointBuilder");
         javaClass.addImport("org.apache.camel.model.EndpointConsumerBuilder");
@@ -193,69 +194,94 @@ public class EndpointDslMojo extends AbstractMojo {
 
         Map<String, JavaClass> enumClasses = new HashMap<>();
 
-        String commonName = endpointName.replace("Endpoint", "Common");
-        JavaClass commonClass = javaClass.addNestedType().setPublic().setStatic(true);
-        commonClass.setName(commonName + "<T extends AbstractEndpointBuilder>");
-        commonClass.extendSuperType("AbstractEndpointBuilder<T>");
-        commonClass.addMethod().setConstructor(true)
-                .setName(commonName)
-                .addParameter(String.class, "path")
-                .setBody("super(\"" + model.getScheme() + "\", path);");
-        generateDummyClass(commonClass.getCanonicalName());
-        commonClass.getJavaDoc().setText("Base class for the " + model.getTitle() + " component builders.");
+        boolean advanced = false;
+        for (EndpointOptionModel option : model.getEndpointOptions()) {
+            if (option.getLabel().contains("advanced")) {
+                advanced = true;
+            }
+        }
 
-        JavaClass consumerClass;
-        if (realEndpointClass.getAnnotation(UriEndpoint.class).producerOnly()) {
-            consumerClass = null;
-        } else {
-            String consumerName = endpointName.replace("Endpoint", "Consumer");
-            consumerClass = javaClass.addNestedType().setPublic().setStatic(true);
+        JavaClass consumerClass = null;
+        JavaClass advancedConsumerClass = null;
+        JavaClass producerClass = null;
+        JavaClass advancedProducerClass = null;
+
+        if (!realEndpointClass.getAnnotation(UriEndpoint.class).producerOnly()
+            && !realEndpointClass.getAnnotation(UriEndpoint.class).consumerOnly())
+        {
+            String consumerName = builderName.replace("Endpoint", "EndpointConsumer");
+            consumerClass = javaClass.addNestedType().setPublic().setClass(false);
             consumerClass.setName(consumerName);
-            consumerClass.extendSuperType(commonName + "<" + consumerName + ">");
             consumerClass.implementInterface("EndpointConsumerBuilder");
-            consumerClass.addMethod().setConstructor(true).setPublic()
-                    .setName(consumerName)
-                    .addParameter(String.class, "path")
-                    .setBody("super(path);");
             generateDummyClass(consumerClass.getCanonicalName());
             consumerClass.getJavaDoc().setText("Builder for endpoint consumers for the " + model.getTitle() + " component.");
 
-            Method method = javaClass.addMethod()
-                    .setPublic().setDefault()
-                    .setName("from" + endpointName.replace("EndpointBuilder", ""))
-                    .addParameter(String.class, "path")
-                    .setReturnType(new GenericType(loadClass(consumerClass.getCanonicalName())))
-                    .setBody("return new " + consumerClass.getName() + "(path);");
-            method.getJavaDoc().setText(
-                    (StringHelper.isEmpty(model.getDescription()) ? "" : model.getDescription() + " ")
-                            + "Creates a builder to build a consumer endpoint for the " + model.getTitle() + " component.");
-        }
+            if (advanced) {
+                advancedConsumerClass = javaClass.addNestedType().setPublic().setClass(false);
+                advancedConsumerClass.setName("Advanced" + consumerName);
+                advancedConsumerClass.implementInterface("EndpointConsumerBuilder");
+                generateDummyClass(advancedConsumerClass.getCanonicalName());
+                advancedConsumerClass.getJavaDoc().setText("Advanced builder for endpoint consumers for the " + model.getTitle() + " component.");
 
-        JavaClass producerClass;
-        if (realEndpointClass.getAnnotation(UriEndpoint.class).consumerOnly()) {
-            producerClass = null;
-        } else {
-            String producerName = endpointName.replace("Endpoint", "Producer");
-            producerClass = javaClass.addNestedType().setPublic().setStatic(true);
+                consumerClass.addMethod().setName("advanced").setReturnType(loadClass(advancedConsumerClass.getCanonicalName()))
+                        .setPublic().setDefault().setBody("return (Advanced" + consumerName + ") this;");
+                advancedConsumerClass.addMethod().setName("basic").setReturnType(loadClass(consumerClass.getCanonicalName()))
+                        .setPublic().setDefault().setBody("return (" + consumerName + ") this;");
+            }
+
+            String producerName = builderName.replace("Endpoint", "EndpointProducer");
+            producerClass = javaClass.addNestedType().setPublic().setStatic(true).setClass(false);
             producerClass.setName(producerName);
-            producerClass.extendSuperType(commonName + "<" + producerName + ">");
             producerClass.implementInterface("EndpointProducerBuilder");
-            producerClass.addMethod().setConstructor(true).setPublic()
-                    .setName(producerName)
-                    .addParameter(String.class, "path")
-                    .setBody("super(path);");
             generateDummyClass(producerClass.getCanonicalName());
             producerClass.getJavaDoc().setText("Builder for endpoint producers for the " + model.getTitle() + " component.");
 
-            Method method = javaClass.addMethod()
-                    .setPublic().setDefault()
-                    .setName("to" + endpointName.replace("EndpointBuilder", ""))
-                    .addParameter(String.class, "path")
-                    .setReturnType(new GenericType(loadClass(producerClass.getCanonicalName())))
-                    .setBody("return new " + producerClass.getName() + "(path);");
-            method.getJavaDoc().setText(
-                    (StringHelper.isEmpty(model.getDescription()) ? "" : model.getDescription() + " ")
-                            + "Creates a builder to build a producer endpoint for the " + model.getTitle() + " component.");
+            if (advanced) {
+                advancedProducerClass = javaClass.addNestedType().setPublic().setClass(false);
+                advancedProducerClass.setName("Advanced" + producerName);
+                advancedProducerClass.implementInterface("EndpointProducerBuilder");
+                generateDummyClass(advancedProducerClass.getCanonicalName());
+                advancedProducerClass.getJavaDoc().setText("Advanced builder for endpoint producers for the " + model.getTitle() + " component.");
+
+                producerClass.addMethod().setName("advanced").setReturnType(loadClass(advancedProducerClass.getCanonicalName()))
+                        .setPublic().setDefault().setBody("return (Advanced" + producerName + ") this;");
+                advancedProducerClass.addMethod().setName("basic").setReturnType(loadClass(producerClass.getCanonicalName()))
+                        .setPublic().setDefault().setBody("return (" + producerName + ") this;");
+            }
+        }
+
+        JavaClass builderClass;
+        JavaClass advancedBuilderClass = null;
+        builderClass = javaClass.addNestedType().setPublic().setStatic(true).setClass(false);
+        builderClass.setName(builderName);
+        if (realEndpointClass.getAnnotation(UriEndpoint.class).producerOnly()) {
+            builderClass.implementInterface("EndpointProducerBuilder");
+        } else if (realEndpointClass.getAnnotation(UriEndpoint.class).consumerOnly()) {
+            builderClass.implementInterface("EndpointConsumerBuilder");
+        } else {
+            builderClass.implementInterface(consumerClass.getName());
+            builderClass.implementInterface(producerClass.getName());
+        }
+        generateDummyClass(builderClass.getCanonicalName());
+        builderClass.getJavaDoc().setText("Builder for endpoint for the " + model.getTitle() + " component.");
+        if (advanced) {
+            advancedBuilderClass = javaClass.addNestedType().setPublic().setStatic(true).setClass(false);
+            advancedBuilderClass.setName("Advanced" + builderName);
+            if (realEndpointClass.getAnnotation(UriEndpoint.class).producerOnly()) {
+                advancedBuilderClass.implementInterface("EndpointProducerBuilder");
+            } else if (realEndpointClass.getAnnotation(UriEndpoint.class).consumerOnly()) {
+                advancedBuilderClass.implementInterface("EndpointConsumerBuilder");
+            } else {
+                advancedBuilderClass.implementInterface(advancedConsumerClass.getName());
+                advancedBuilderClass.implementInterface(advancedProducerClass.getName());
+            }
+            generateDummyClass(advancedBuilderClass.getCanonicalName());
+            advancedBuilderClass.getJavaDoc().setText("Advanced builder for endpoint for the " + model.getTitle() + " component.");
+
+            builderClass.addMethod().setName("advanced").setReturnType(loadClass(advancedBuilderClass.getCanonicalName()))
+                    .setPublic().setDefault().setBody("return (Advanced" + builderName + ") this;");
+            advancedBuilderClass.addMethod().setName("basic").setReturnType(loadClass(builderClass.getCanonicalName()))
+                    .setPublic().setDefault().setBody("return (" + builderName + ") this;");
         }
 
         generateDummyClass(packageName + ".T");
@@ -271,16 +297,31 @@ public class EndpointDslMojo extends AbstractMojo {
 
         for (EndpointOptionModel option : model.getEndpointOptions()) {
 
-            JavaClass target = commonClass;
+            List<JavaClass> targets = new ArrayList<>();
             if (option.getLabel() != null) {
                 if (option.getLabel().contains("producer")) {
-                    target = producerClass;
+                    if (option.getLabel().contains("advanced")) {
+                        targets.add(advancedProducerClass);
+                    } else {
+                        targets.add(producerClass);
+                    }
                 } else if (option.getLabel().contains("consumer")) {
-                    target = consumerClass;
+                    if (option.getLabel().contains("advanced")) {
+                        targets.add(advancedConsumerClass);
+                    } else {
+                        targets.add(consumerClass);
+                    }
+                } else {
+                    if (option.getLabel().contains("advanced")) {
+                        targets.add(advancedConsumerClass);
+                        targets.add(advancedProducerClass);
+                        targets.add(advancedBuilderClass);
+                    } else {
+                        targets.add(consumerClass);
+                        targets.add(producerClass);
+                        targets.add(builderClass);
+                    }
                 }
-            }
-            if (target == null) {
-                throw new IllegalArgumentException("Illegal label " + option.getLabel() + " for option " + option.getName());
             }
 
             GenericType ogtype;
@@ -293,35 +334,15 @@ public class EndpointDslMojo extends AbstractMojo {
                 throw new RuntimeException(e);
             }
 
-
-            String fluentBuilderTypeName = target == commonClass ? packageName + ".T" : target.getCanonicalName();
-            String fluentBuilderTypeShortName = target == commonClass ? "T" : target.getName();
-            Method fluent = target.addMethod().setPublic().setName(option.getName())
-                    .setReturnType(new GenericType(loadClass(fluentBuilderTypeName)) )
-                    .addParameter(isPrimitive(ogtype.toString()) ? ogtype : gtype, option.getName())
-                    .setBody("this.properties.put(\"" + option.getName() + "\", " + option.getName() + ");\n" +
-                             "return (" + fluentBuilderTypeShortName + ") this;\n");
-            if ("true".equals(option.getDeprecated())) {
-                fluent.addAnnotation(Deprecated.class);
-            }
-            if (!Strings.isBlank(option.getDescription())) {
-                String desc = option.getDescription();
-                if (!desc.endsWith(".")) {
-                    desc += ".";
+            for (JavaClass target : targets) {
+                if (target == null) {
+                    continue;
                 }
-                desc += "\nThe option is a <code>" + ogtype.toString()
-                        .replaceAll("<", "&lt;")
-                        .replaceAll(">", "&gt;") + "</code> type.";
-                desc += "\n@group " + option.getGroup();
-                fluent.getJavaDoc().setFullText(desc);
-            }
-
-            if (ogtype.getRawClass() != String.class) {
-                fluent = target.addMethod().setPublic().setName(option.getName())
-                        .setReturnType(new GenericType(loadClass(fluentBuilderTypeName)) )
-                        .addParameter(new GenericType(String.class), option.getName())
-                        .setBody("this.properties.put(\"" + option.getName() + "\", " + option.getName() + ");\n" +
-                                "return (" + fluentBuilderTypeShortName + ") this;\n");
+                Method fluent = target.addMethod().setPublic().setDefault().setName(option.getName())
+                        .setReturnType(new GenericType(loadClass(target.getCanonicalName())))
+                        .addParameter(isPrimitive(ogtype.toString()) ? ogtype : gtype, option.getName())
+                        .setBody("setProperty(\"" + option.getName() + "\", " + option.getName() + ");\n" +
+                                "return this;\n");
                 if ("true".equals(option.getDeprecated())) {
                     fluent.addAnnotation(Deprecated.class);
                 }
@@ -330,19 +351,72 @@ public class EndpointDslMojo extends AbstractMojo {
                     if (!desc.endsWith(".")) {
                         desc += ".";
                     }
-                    desc+= "\nThe option will be converted to a <code>" + ogtype.toString()
+                    desc += "\nThe option is a <code>" + ogtype.toString()
                             .replaceAll("<", "&lt;")
                             .replaceAll(">", "&gt;") + "</code> type.";
                     desc += "\n@group " + option.getGroup();
                     fluent.getJavaDoc().setFullText(desc);
+                }
+
+                if (ogtype.getRawClass() != String.class) {
+                    fluent = target.addMethod().setPublic().setDefault().setName(option.getName())
+                            .setReturnType(new GenericType(loadClass(target.getCanonicalName())))
+                            .addParameter(new GenericType(String.class), option.getName())
+                            .setBody("setProperty(\"" + option.getName() + "\", " + option.getName() + ");\n" +
+                                    "return this;\n");
+                    if ("true".equals(option.getDeprecated())) {
+                        fluent.addAnnotation(Deprecated.class);
+                    }
+                    if (!Strings.isBlank(option.getDescription())) {
+                        String desc = option.getDescription();
+                        if (!desc.endsWith(".")) {
+                            desc += ".";
+                        }
+                        desc += "\nThe option will be converted to a <code>" + ogtype.toString()
+                                .replaceAll("<", "&lt;")
+                                .replaceAll(">", "&gt;") + "</code> type.";
+                        desc += "\n@group " + option.getGroup();
+                        fluent.getJavaDoc().setFullText(desc);
+                    }
                 }
             }
         }
 
         javaClass.removeImport("T");
 
-        String fileName = packageName.replaceAll("\\.", "\\/") + "/" + endpointName + ".java";
+        Method method = javaClass.addMethod()
+                .setPublic().setDefault()
+                .setName(methodName)
+                .addParameter(String.class, "path")
+                .setReturnType(new GenericType(loadClass(builderClass.getCanonicalName())))
+                .setBody(
+                        "class " + builderName + "Impl extends AbstractEndpointBuilder implements " + builderName + ", Advanced" + builderName + " {\n" +
+                        "    public " + builderName + "Impl(String path) {\n" +
+                        "        super(\"" + model.getScheme() + "\", path);\n" +
+                        "    }\n" +
+                        "}\n" +
+                        "return new " + builderName + "Impl(path);\n");
+        method.getJavaDoc().setText(
+                (StringHelper.isEmpty(model.getDescription()) ? "" : model.getDescription() + " ")
+                        + "Creates a builder to build endpoints for the " + model.getTitle() + " component.");
+
+
+        String fileName = packageName.replaceAll("\\.", "\\/") + "/" + builderName + "Factory.java";
         writeSourceIfChanged(javaClass, fileName, false);
+    }
+
+    private String getMethodName(String type) {
+        String builderName = getEndpointName(type);
+        String methodName = builderName.replace("EndpointBuilder", "");
+        methodName = methodName.substring(0, 1).toLowerCase() + methodName.substring(1);
+        switch (type) {
+            case "org.apache.camel.component.rest.RestComponent":
+                return "restEndpoint";
+            case "org.apache.camel.component.beanclass.ClassComponent":
+                return "classEndpoint";
+            default:
+                return methodName;
+        }
     }
 
     private String getEndpointName(String type) {

@@ -60,8 +60,8 @@ public class FileAbsolutePathIssueTest extends ContextTestSupport {
         return new EndpointRouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from(fromFile(start).initialDelay(0).delay(10).move(done + "/${file:name}"))
-                        .to(toMock("result"));
+                from(file(start).initialDelay(0).delay(10).move(done + "/${file:name}"))
+                        .to(mock("result"));
             }
         };
     }

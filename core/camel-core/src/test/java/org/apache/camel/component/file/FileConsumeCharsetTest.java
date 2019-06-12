@@ -22,7 +22,6 @@ import org.apache.camel.Exchange;
 import org.apache.camel.builder.EndpointRouteBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.model.endpoint.EndpointBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -57,9 +56,9 @@ public class FileConsumeCharsetTest extends ContextTestSupport
     protected RouteBuilder createRouteBuilder() throws Exception {
         return new EndpointRouteBuilder() {
             public void configure() throws Exception {
-                from(fromFile("target/data/files/").initialDelay(0).delay(10).fileName(constant("report.txt")).delete(true).charset("UTF-8"))
+                from(file("target/data/files/").initialDelay(0).delay(10).fileName(constant("report.txt")).delete(true).charset("UTF-8"))
                     .convertBodyTo(String.class)
-                    .to(toMock("result"));
+                    .to(mock("result"));
             }
         };
     }
