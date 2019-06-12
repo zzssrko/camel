@@ -41,48 +41,54 @@ public interface InfluxDbEndpointBuilder {
             super("influxdb", path);
         }
         /**
-         * Connection to the influx database, of class InfluxDB.class. The
-         * option is a <code>java.lang.String</code> type.
+         * Connection to the influx database, of class InfluxDB.class.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T connectionBean(String connectionBean) {
             this.properties.put("connectionBean", connectionBean);
             return (T) this;
         }
         /**
-         * Define if this operation is a batch operation or not. The option is a
-         * <code>boolean</code> type.
+         * Define if this operation is a batch operation or not.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T batch(boolean batch) {
             this.properties.put("batch", batch);
             return (T) this;
         }
         /**
-         * Define if this operation is a batch operation or not. The option will
-         * be converted to a <code>boolean</code> type.
+         * Define if this operation is a batch operation or not.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T batch(String batch) {
             this.properties.put("batch", batch);
             return (T) this;
         }
         /**
-         * The name of the database where the time series will be stored. The
-         * option is a <code>java.lang.String</code> type.
+         * The name of the database where the time series will be stored.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T databaseName(String databaseName) {
             this.properties.put("databaseName", databaseName);
             return (T) this;
         }
         /**
-         * Define if this operation is an insert or a query. The option is a
-         * <code>java.lang.String</code> type.
+         * Define if this operation is an insert or a query.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * Define the query in case of operation query. The option is a
-         * <code>java.lang.String</code> type.
+         * Define the query in case of operation query.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T query(String query) {
             this.properties.put("query", query);
@@ -90,7 +96,9 @@ public interface InfluxDbEndpointBuilder {
         }
         /**
          * The string that defines the retention policy to the data created by
-         * the endpoint. The option is a <code>java.lang.String</code> type.
+         * the endpoint.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T retentionPolicy(String retentionPolicy) {
             this.properties.put("retentionPolicy", retentionPolicy);
@@ -98,8 +106,9 @@ public interface InfluxDbEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -107,8 +116,9 @@ public interface InfluxDbEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -116,8 +126,9 @@ public interface InfluxDbEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -125,8 +136,9 @@ public interface InfluxDbEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

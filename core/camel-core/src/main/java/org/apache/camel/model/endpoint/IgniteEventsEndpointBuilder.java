@@ -44,8 +44,9 @@ public interface IgniteEventsEndpointBuilder {
             super("ignite-events", path);
         }
         /**
-         * The endpoint ID (not used). The option is a
-         * <code>java.lang.String</code> type.
+         * The endpoint ID (not used).
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T endpointId(String endpointId) {
             this.properties.put("endpointId", endpointId);
@@ -53,8 +54,9 @@ public interface IgniteEventsEndpointBuilder {
         }
         /**
          * Sets whether to propagate the incoming body if the return type of the
-         * underlying Ignite operation is void. The option is a
-         * <code>boolean</code> type.
+         * underlying Ignite operation is void.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public T propagateIncomingBodyIfNoReturnValue(
                 boolean propagateIncomingBodyIfNoReturnValue) {
@@ -63,8 +65,9 @@ public interface IgniteEventsEndpointBuilder {
         }
         /**
          * Sets whether to propagate the incoming body if the return type of the
-         * underlying Ignite operation is void. The option will be converted to
-         * a <code>boolean</code> type.
+         * underlying Ignite operation is void.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public T propagateIncomingBodyIfNoReturnValue(
                 String propagateIncomingBodyIfNoReturnValue) {
@@ -73,8 +76,9 @@ public interface IgniteEventsEndpointBuilder {
         }
         /**
          * Sets whether to treat Collections as cache objects or as Collections
-         * of items to insert/update/compute, etc. The option is a
-         * <code>boolean</code> type.
+         * of items to insert/update/compute, etc.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public T treatCollectionsAsCacheObjects(
                 boolean treatCollectionsAsCacheObjects) {
@@ -83,8 +87,9 @@ public interface IgniteEventsEndpointBuilder {
         }
         /**
          * Sets whether to treat Collections as cache objects or as Collections
-         * of items to insert/update/compute, etc. The option will be converted
-         * to a <code>boolean</code> type.
+         * of items to insert/update/compute, etc.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public T treatCollectionsAsCacheObjects(
                 String treatCollectionsAsCacheObjects) {
@@ -93,8 +98,9 @@ public interface IgniteEventsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -102,8 +108,9 @@ public interface IgniteEventsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -111,8 +118,9 @@ public interface IgniteEventsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -120,8 +128,9 @@ public interface IgniteEventsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -147,7 +156,9 @@ public interface IgniteEventsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public IgniteEventsConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -161,7 +172,9 @@ public interface IgniteEventsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public IgniteEventsConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -169,9 +182,11 @@ public interface IgniteEventsEndpointBuilder {
             return (IgniteEventsConsumerBuilder) this;
         }
         /**
-         * The cluster group expression. The option is a
+         * The cluster group expression.
+         * The option is a
          * <code>org.apache.camel.component.ignite.ClusterGroupExpression</code>
          * type.
+         * @group consumer
          */
         public IgniteEventsConsumerBuilder clusterGroupExpression(
                 Object clusterGroupExpression) {
@@ -179,9 +194,11 @@ public interface IgniteEventsEndpointBuilder {
             return (IgniteEventsConsumerBuilder) this;
         }
         /**
-         * The cluster group expression. The option will be converted to a
+         * The cluster group expression.
+         * The option will be converted to a
          * <code>org.apache.camel.component.ignite.ClusterGroupExpression</code>
          * type.
+         * @group consumer
          */
         public IgniteEventsConsumerBuilder clusterGroupExpression(
                 String clusterGroupExpression) {
@@ -190,8 +207,10 @@ public interface IgniteEventsEndpointBuilder {
         }
         /**
          * The event IDs to subscribe to as a Set directly where the IDs are the
-         * different constants in org.apache.ignite.events.EventType. The option
-         * is a <code>java.util.Set&lt;java.lang.Integer&gt;</code> type.
+         * different constants in org.apache.ignite.events.EventType.
+         * The option is a <code>java.util.Set&lt;java.lang.Integer&gt;</code>
+         * type.
+         * @group consumer
          */
         public IgniteEventsConsumerBuilder events(Set<Integer> events) {
             this.properties.put("events", events);
@@ -199,9 +218,10 @@ public interface IgniteEventsEndpointBuilder {
         }
         /**
          * The event IDs to subscribe to as a Set directly where the IDs are the
-         * different constants in org.apache.ignite.events.EventType. The option
-         * will be converted to a
+         * different constants in org.apache.ignite.events.EventType.
+         * The option will be converted to a
          * <code>java.util.Set&lt;java.lang.Integer&gt;</code> type.
+         * @group consumer
          */
         public IgniteEventsConsumerBuilder events(String events) {
             this.properties.put("events", events);
@@ -211,8 +231,10 @@ public interface IgniteEventsEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public IgniteEventsConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -223,9 +245,10 @@ public interface IgniteEventsEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public IgniteEventsConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -233,8 +256,9 @@ public interface IgniteEventsEndpointBuilder {
             return (IgniteEventsConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public IgniteEventsConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -242,9 +266,10 @@ public interface IgniteEventsEndpointBuilder {
             return (IgniteEventsConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public IgniteEventsConsumerBuilder exchangePattern(
                 String exchangePattern) {

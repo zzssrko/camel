@@ -41,123 +41,150 @@ public interface PdfEndpointBuilder {
             super("pdf", path);
         }
         /**
-         * Operation type. The option is a
+         * Operation type.
+         * The option is a
          * <code>org.apache.camel.component.pdf.PdfOperation</code> type.
+         * @group producer
          */
         public T operation(PdfOperation operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * Operation type. The option will be converted to a
+         * Operation type.
+         * The option will be converted to a
          * <code>org.apache.camel.component.pdf.PdfOperation</code> type.
+         * @group producer
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * Font. The option is a
-         * <code>org.apache.pdfbox.pdmodel.font.PDFont</code> type.
+         * Font.
+         * The option is a <code>org.apache.pdfbox.pdmodel.font.PDFont</code>
+         * type.
+         * @group producer
          */
         public T font(Object font) {
             this.properties.put("font", font);
             return (T) this;
         }
         /**
-         * Font. The option will be converted to a
+         * Font.
+         * The option will be converted to a
          * <code>org.apache.pdfbox.pdmodel.font.PDFont</code> type.
+         * @group producer
          */
         public T font(String font) {
             this.properties.put("font", font);
             return (T) this;
         }
         /**
-         * Font size in pixels. The option is a <code>float</code> type.
+         * Font size in pixels.
+         * The option is a <code>float</code> type.
+         * @group producer
          */
         public T fontSize(float fontSize) {
             this.properties.put("fontSize", fontSize);
             return (T) this;
         }
         /**
-         * Font size in pixels. The option will be converted to a
-         * <code>float</code> type.
+         * Font size in pixels.
+         * The option will be converted to a <code>float</code> type.
+         * @group producer
          */
         public T fontSize(String fontSize) {
             this.properties.put("fontSize", fontSize);
             return (T) this;
         }
         /**
-         * Margin bottom in pixels. The option is a <code>int</code> type.
+         * Margin bottom in pixels.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T marginBottom(int marginBottom) {
             this.properties.put("marginBottom", marginBottom);
             return (T) this;
         }
         /**
-         * Margin bottom in pixels. The option will be converted to a
-         * <code>int</code> type.
+         * Margin bottom in pixels.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T marginBottom(String marginBottom) {
             this.properties.put("marginBottom", marginBottom);
             return (T) this;
         }
         /**
-         * Margin left in pixels. The option is a <code>int</code> type.
+         * Margin left in pixels.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T marginLeft(int marginLeft) {
             this.properties.put("marginLeft", marginLeft);
             return (T) this;
         }
         /**
-         * Margin left in pixels. The option will be converted to a
-         * <code>int</code> type.
+         * Margin left in pixels.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T marginLeft(String marginLeft) {
             this.properties.put("marginLeft", marginLeft);
             return (T) this;
         }
         /**
-         * Margin right in pixels. The option is a <code>int</code> type.
+         * Margin right in pixels.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T marginRight(int marginRight) {
             this.properties.put("marginRight", marginRight);
             return (T) this;
         }
         /**
-         * Margin right in pixels. The option will be converted to a
-         * <code>int</code> type.
+         * Margin right in pixels.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T marginRight(String marginRight) {
             this.properties.put("marginRight", marginRight);
             return (T) this;
         }
         /**
-         * Margin top in pixels. The option is a <code>int</code> type.
+         * Margin top in pixels.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T marginTop(int marginTop) {
             this.properties.put("marginTop", marginTop);
             return (T) this;
         }
         /**
-         * Margin top in pixels. The option will be converted to a
-         * <code>int</code> type.
+         * Margin top in pixels.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T marginTop(String marginTop) {
             this.properties.put("marginTop", marginTop);
             return (T) this;
         }
         /**
-         * Page size. The option is a
+         * Page size.
+         * The option is a
          * <code>org.apache.pdfbox.pdmodel.common.PDRectangle</code> type.
+         * @group producer
          */
         public T pageSize(Object pageSize) {
             this.properties.put("pageSize", pageSize);
             return (T) this;
         }
         /**
-         * Page size. The option will be converted to a
+         * Page size.
+         * The option will be converted to a
          * <code>org.apache.pdfbox.pdmodel.common.PDRectangle</code> type.
+         * @group producer
          */
         public T pageSize(String pageSize) {
             this.properties.put("pageSize", pageSize);
@@ -170,9 +197,11 @@ public interface PdfEndpointBuilder {
          * the line will be moved to the new line. lineTermination: Builds set
          * of classes for line-termination writing strategy. Text getting sliced
          * by line termination symbol and then it will be written regardless it
-         * fits in the line or not. The option is a
+         * fits in the line or not.
+         * The option is a
          * <code>org.apache.camel.component.pdf.TextProcessingFactory</code>
          * type.
+         * @group producer
          */
         public T textProcessingFactory(
                 TextProcessingFactory textProcessingFactory) {
@@ -186,9 +215,11 @@ public interface PdfEndpointBuilder {
          * the line will be moved to the new line. lineTermination: Builds set
          * of classes for line-termination writing strategy. Text getting sliced
          * by line termination symbol and then it will be written regardless it
-         * fits in the line or not. The option will be converted to a
+         * fits in the line or not.
+         * The option will be converted to a
          * <code>org.apache.camel.component.pdf.TextProcessingFactory</code>
          * type.
+         * @group producer
          */
         public T textProcessingFactory(String textProcessingFactory) {
             this.properties.put("textProcessingFactory", textProcessingFactory);
@@ -196,8 +227,9 @@ public interface PdfEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -205,8 +237,9 @@ public interface PdfEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -214,8 +247,9 @@ public interface PdfEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -223,8 +257,9 @@ public interface PdfEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

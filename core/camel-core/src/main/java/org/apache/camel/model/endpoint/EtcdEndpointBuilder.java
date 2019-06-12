@@ -49,72 +49,83 @@ public interface EtcdEndpointBuilder {
             super("etcd", path);
         }
         /**
-         * The API namespace to use. The option is a
+         * The API namespace to use.
+         * The option is a
          * <code>org.apache.camel.component.etcd.EtcdNamespace</code> type.
+         * @group common
          */
         public T namespace(EtcdNamespace namespace) {
             this.properties.put("namespace", namespace);
             return (T) this;
         }
         /**
-         * The API namespace to use. The option will be converted to a
+         * The API namespace to use.
+         * The option will be converted to a
          * <code>org.apache.camel.component.etcd.EtcdNamespace</code> type.
+         * @group common
          */
         public T namespace(String namespace) {
             this.properties.put("namespace", namespace);
             return (T) this;
         }
         /**
-         * The path the endpoint refers to. The option is a
-         * <code>java.lang.String</code> type.
+         * The path the endpoint refers to.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T path(String path) {
             this.properties.put("path", path);
             return (T) this;
         }
         /**
-         * To apply an action recursively. The option is a <code>boolean</code>
-         * type.
+         * To apply an action recursively.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T recursive(boolean recursive) {
             this.properties.put("recursive", recursive);
             return (T) this;
         }
         /**
-         * To apply an action recursively. The option will be converted to a
-         * <code>boolean</code> type.
+         * To apply an action recursively.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T recursive(String recursive) {
             this.properties.put("recursive", recursive);
             return (T) this;
         }
         /**
-         * The path to look for for service discovery. The option is a
-         * <code>java.lang.String</code> type.
+         * The path to look for for service discovery.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T servicePath(String servicePath) {
             this.properties.put("servicePath", servicePath);
             return (T) this;
         }
         /**
-         * To set the maximum time an action could take to complete. The option
-         * is a <code>java.lang.Long</code> type.
+         * To set the maximum time an action could take to complete.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T timeout(Long timeout) {
             this.properties.put("timeout", timeout);
             return (T) this;
         }
         /**
-         * To set the maximum time an action could take to complete. The option
-         * will be converted to a <code>java.lang.Long</code> type.
+         * To set the maximum time an action could take to complete.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T timeout(String timeout) {
             this.properties.put("timeout", timeout);
             return (T) this;
         }
         /**
-         * To set the URIs the client connects. The option is a
-         * <code>java.lang.String</code> type.
+         * To set the URIs the client connects.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T uris(String uris) {
             this.properties.put("uris", uris);
@@ -122,8 +133,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -131,8 +143,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -140,8 +153,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -149,41 +163,47 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * The password to use for basic authentication. The option is a
-         * <code>java.lang.String</code> type.
+         * The password to use for basic authentication.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * To configure security using SSLContextParameters. The option is a
+         * To configure security using SSLContextParameters.
+         * The option is a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group security
          */
         public T sslContextParameters(Object sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
         /**
-         * To configure security using SSLContextParameters. The option will be
-         * converted to a
+         * To configure security using SSLContextParameters.
+         * The option will be converted to a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group security
          */
         public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
         /**
-         * The user name to use for basic authentication. The option is a
-         * <code>java.lang.String</code> type.
+         * The user name to use for basic authentication.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T userName(String userName) {
             this.properties.put("userName", userName);
@@ -209,7 +229,9 @@ public interface EtcdEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public EtcdConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -222,15 +244,18 @@ public interface EtcdEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public EtcdConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (EtcdConsumerBuilder) this;
         }
         /**
-         * To send an empty message in case of timeout watching for a key. The
-         * option is a <code>boolean</code> type.
+         * To send an empty message in case of timeout watching for a key.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public EtcdConsumerBuilder sendEmptyExchangeOnTimeout(
                 boolean sendEmptyExchangeOnTimeout) {
@@ -238,8 +263,9 @@ public interface EtcdEndpointBuilder {
             return (EtcdConsumerBuilder) this;
         }
         /**
-         * To send an empty message in case of timeout watching for a key. The
-         * option will be converted to a <code>boolean</code> type.
+         * To send an empty message in case of timeout watching for a key.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public EtcdConsumerBuilder sendEmptyExchangeOnTimeout(
                 String sendEmptyExchangeOnTimeout) {
@@ -248,8 +274,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option is a
-         * <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public EtcdConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -258,8 +285,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option will be
-         * converted to a <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public EtcdConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -270,8 +298,10 @@ public interface EtcdEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public EtcdConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -282,17 +312,19 @@ public interface EtcdEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public EtcdConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (EtcdConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public EtcdConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -300,25 +332,28 @@ public interface EtcdEndpointBuilder {
             return (EtcdConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public EtcdConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (EtcdConsumerBuilder) this;
         }
         /**
-         * The index to watch from. The option is a <code>java.lang.Long</code>
-         * type.
+         * The index to watch from.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group consumer (advanced)
          */
         public EtcdConsumerBuilder fromIndex(Long fromIndex) {
             this.properties.put("fromIndex", fromIndex);
             return (EtcdConsumerBuilder) this;
         }
         /**
-         * The index to watch from. The option will be converted to a
-         * <code>java.lang.Long</code> type.
+         * The index to watch from.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group consumer (advanced)
          */
         public EtcdConsumerBuilder fromIndex(String fromIndex) {
             this.properties.put("fromIndex", fromIndex);
@@ -328,8 +363,10 @@ public interface EtcdEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option is a
+         * been created and being routed in Camel.
+         * The option is a
          * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public EtcdConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -340,9 +377,10 @@ public interface EtcdEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option will be converted
-         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
-         * type.
+         * been created and being routed in Camel.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public EtcdConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -350,8 +388,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * is a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -360,8 +399,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -370,8 +410,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a <code>int</code>
-         * type.
+         * backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder backoffIdleThreshold(int backoffIdleThreshold) {
             this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
@@ -379,8 +420,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option will be converted to a
-         * <code>int</code> type.
+         * backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -393,7 +435,9 @@ public interface EtcdEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a <code>int</code> type.
+         * configured.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -405,7 +449,9 @@ public interface EtcdEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a <code>int</code> type.
+         * configured.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -414,7 +460,9 @@ public interface EtcdEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -423,8 +471,9 @@ public interface EtcdEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -432,8 +481,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option is a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -441,8 +491,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -451,7 +502,9 @@ public interface EtcdEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -460,8 +513,9 @@ public interface EtcdEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -469,8 +523,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * is a <code>org.apache.camel.LoggingLevel</code> type.
+         * option allows you to configure the logging level for that.
+         * The option is a <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder runLoggingLevel(LoggingLevel runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -478,9 +533,10 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
-         * type.
+         * option allows you to configure the logging level for that.
+         * The option will be converted to a
+         * <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -489,8 +545,10 @@ public interface EtcdEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a
+         * pool.
+         * The option is a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -500,8 +558,10 @@ public interface EtcdEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option will be converted to a
+         * pool.
+         * The option will be converted to a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -510,9 +570,11 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option is a
+         * component.
+         * The option is a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -521,9 +583,11 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option will be converted to a
+         * component.
+         * The option will be converted to a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -531,9 +595,10 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
-         * type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -542,9 +607,11 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map&lt;java.lang.String,
-         * java.lang.Object&gt;</code> type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -552,32 +619,37 @@ public interface EtcdEndpointBuilder {
             return (EtcdConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a
-         * <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (EtcdConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option will be
-         * converted to a <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (EtcdConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option is a
-         * <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option is a <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
             return (EtcdConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option will be
-         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option will be converted to a
+         * <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -585,8 +657,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a
-         * <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -594,8 +667,9 @@ public interface EtcdEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public EtcdConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -615,16 +689,19 @@ public interface EtcdEndpointBuilder {
             super(path);
         }
         /**
-         * To set the lifespan of a key in milliseconds. The option is a
-         * <code>java.lang.Integer</code> type.
+         * To set the lifespan of a key in milliseconds.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public EtcdProducerBuilder timeToLive(Integer timeToLive) {
             this.properties.put("timeToLive", timeToLive);
             return (EtcdProducerBuilder) this;
         }
         /**
-         * To set the lifespan of a key in milliseconds. The option will be
-         * converted to a <code>java.lang.Integer</code> type.
+         * To set the lifespan of a key in milliseconds.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public EtcdProducerBuilder timeToLive(String timeToLive) {
             this.properties.put("timeToLive", timeToLive);

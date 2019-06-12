@@ -41,8 +41,9 @@ public interface LanguageEndpointBuilder {
             super("language", path);
         }
         /**
-         * Sets the name of the language to use. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the name of the language to use.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T languageName(String languageName) {
             this.properties.put("languageName", languageName);
@@ -50,8 +51,9 @@ public interface LanguageEndpointBuilder {
         }
         /**
          * Path to the resource, or a reference to lookup a bean in the Registry
-         * to use as the resource. The option is a <code>java.lang.String</code>
-         * type.
+         * to use as the resource.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
@@ -59,8 +61,9 @@ public interface LanguageEndpointBuilder {
         }
         /**
          * Whether the script is binary content or text content. By default the
-         * script is read as text content (eg java.lang.String). The option is a
-         * <code>boolean</code> type.
+         * script is read as text content (eg java.lang.String).
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T binary(boolean binary) {
             this.properties.put("binary", binary);
@@ -68,8 +71,9 @@ public interface LanguageEndpointBuilder {
         }
         /**
          * Whether the script is binary content or text content. By default the
-         * script is read as text content (eg java.lang.String). The option will
-         * be converted to a <code>boolean</code> type.
+         * script is read as text content (eg java.lang.String).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T binary(String binary) {
             this.properties.put("binary", binary);
@@ -78,8 +82,9 @@ public interface LanguageEndpointBuilder {
         /**
          * Whether to cache the compiled script and reuse Notice reusing the
          * script can cause side effects from processing one Camel
-         * org.apache.camel.Exchange to the next org.apache.camel.Exchange. The
-         * option is a <code>boolean</code> type.
+         * org.apache.camel.Exchange to the next org.apache.camel.Exchange.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T cacheScript(boolean cacheScript) {
             this.properties.put("cacheScript", cacheScript);
@@ -88,32 +93,36 @@ public interface LanguageEndpointBuilder {
         /**
          * Whether to cache the compiled script and reuse Notice reusing the
          * script can cause side effects from processing one Camel
-         * org.apache.camel.Exchange to the next org.apache.camel.Exchange. The
-         * option will be converted to a <code>boolean</code> type.
+         * org.apache.camel.Exchange to the next org.apache.camel.Exchange.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T cacheScript(String cacheScript) {
             this.properties.put("cacheScript", cacheScript);
             return (T) this;
         }
         /**
-         * Sets whether to use resource content cache or not. The option is a
-         * <code>boolean</code> type.
+         * Sets whether to use resource content cache or not.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(boolean contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
         /**
-         * Sets whether to use resource content cache or not. The option will be
-         * converted to a <code>boolean</code> type.
+         * Sets whether to use resource content cache or not.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(String contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
         /**
-         * Sets the script to execute. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the script to execute.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T script(String script) {
             this.properties.put("script", script);
@@ -121,8 +130,9 @@ public interface LanguageEndpointBuilder {
         }
         /**
          * Whether or not the result of the script should be used as message
-         * body. This options is default true. The option is a
-         * <code>boolean</code> type.
+         * body. This options is default true.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T transform(boolean transform) {
             this.properties.put("transform", transform);
@@ -130,8 +140,9 @@ public interface LanguageEndpointBuilder {
         }
         /**
          * Whether or not the result of the script should be used as message
-         * body. This options is default true. The option will be converted to a
-         * <code>boolean</code> type.
+         * body. This options is default true.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T transform(String transform) {
             this.properties.put("transform", transform);
@@ -139,8 +150,9 @@ public interface LanguageEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -148,8 +160,9 @@ public interface LanguageEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -157,8 +170,9 @@ public interface LanguageEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -166,8 +180,9 @@ public interface LanguageEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

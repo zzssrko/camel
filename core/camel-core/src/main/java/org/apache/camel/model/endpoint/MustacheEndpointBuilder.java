@@ -45,48 +45,54 @@ public interface MustacheEndpointBuilder {
          * protocols (classpath is default). ref will lookup the resource in the
          * registry. bean will call a method on a bean to be used as the
          * resource. For bean you can specify the method name after dot, eg
-         * bean:myBean.myMethod. The option is a <code>java.lang.String</code>
-         * type.
+         * bean:myBean.myMethod.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
         /**
-         * Sets whether to use resource content cache or not. The option is a
-         * <code>boolean</code> type.
+         * Sets whether to use resource content cache or not.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(boolean contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
         /**
-         * Sets whether to use resource content cache or not. The option will be
-         * converted to a <code>boolean</code> type.
+         * Sets whether to use resource content cache or not.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(String contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
         /**
-         * Character encoding of the resource content. The option is a
-         * <code>java.lang.String</code> type.
+         * Character encoding of the resource content.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T encoding(String encoding) {
             this.properties.put("encoding", encoding);
             return (T) this;
         }
         /**
-         * Characters used to mark template code end. The option is a
-         * <code>java.lang.String</code> type.
+         * Characters used to mark template code end.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T endDelimiter(String endDelimiter) {
             this.properties.put("endDelimiter", endDelimiter);
             return (T) this;
         }
         /**
-         * Characters used to mark template code beginning. The option is a
-         * <code>java.lang.String</code> type.
+         * Characters used to mark template code beginning.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T startDelimiter(String startDelimiter) {
             this.properties.put("startDelimiter", startDelimiter);
@@ -94,8 +100,9 @@ public interface MustacheEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -103,8 +110,9 @@ public interface MustacheEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -112,8 +120,9 @@ public interface MustacheEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -121,8 +130,9 @@ public interface MustacheEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

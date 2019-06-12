@@ -40,15 +40,18 @@ public interface MQEndpointBuilder {
             super("aws-mq", path);
         }
         /**
-         * Logical name. The option is a <code>java.lang.String</code> type.
+         * Logical name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T label(String label) {
             this.properties.put("label", label);
             return (T) this;
         }
         /**
-         * The region in which MQ client needs to work. The option is a
-         * <code>java.lang.String</code> type.
+         * The region in which MQ client needs to work.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -56,8 +59,9 @@ public interface MQEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -65,8 +69,9 @@ public interface MQEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -74,8 +79,9 @@ public interface MQEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -83,8 +89,9 @@ public interface MQEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -104,25 +111,28 @@ public interface MQEndpointBuilder {
             super(path);
         }
         /**
-         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Access Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public MQProducerBuilder accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (MQProducerBuilder) this;
         }
         /**
-         * To use a existing configured AmazonMQClient as client. The option is
-         * a <code>com.amazonaws.services.mq.AmazonMQ</code> type.
+         * To use a existing configured AmazonMQClient as client.
+         * The option is a <code>com.amazonaws.services.mq.AmazonMQ</code> type.
+         * @group producer
          */
         public MQProducerBuilder amazonMqClient(Object amazonMqClient) {
             this.properties.put("amazonMqClient", amazonMqClient);
             return (MQProducerBuilder) this;
         }
         /**
-         * To use a existing configured AmazonMQClient as client. The option
-         * will be converted to a
+         * To use a existing configured AmazonMQClient as client.
+         * The option will be converted to a
          * <code>com.amazonaws.services.mq.AmazonMQ</code> type.
+         * @group producer
          */
         public MQProducerBuilder amazonMqClient(String amazonMqClient) {
             this.properties.put("amazonMqClient", amazonMqClient);
@@ -130,8 +140,10 @@ public interface MQEndpointBuilder {
         }
         /**
          * The operation to perform. It can be
-         * listBrokers,createBroker,deleteBroker. The option is a
+         * listBrokers,createBroker,deleteBroker.
+         * The option is a
          * <code>org.apache.camel.component.aws.mq.MQOperations</code> type.
+         * @group producer
          */
         public MQProducerBuilder operation(MQOperations operation) {
             this.properties.put("operation", operation);
@@ -139,41 +151,47 @@ public interface MQEndpointBuilder {
         }
         /**
          * The operation to perform. It can be
-         * listBrokers,createBroker,deleteBroker. The option will be converted
-         * to a <code>org.apache.camel.component.aws.mq.MQOperations</code>
-         * type.
+         * listBrokers,createBroker,deleteBroker.
+         * The option will be converted to a
+         * <code>org.apache.camel.component.aws.mq.MQOperations</code> type.
+         * @group producer
          */
         public MQProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (MQProducerBuilder) this;
         }
         /**
-         * To define a proxy host when instantiating the MQ client. The option
-         * is a <code>java.lang.String</code> type.
+         * To define a proxy host when instantiating the MQ client.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public MQProducerBuilder proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (MQProducerBuilder) this;
         }
         /**
-         * To define a proxy port when instantiating the MQ client. The option
-         * is a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the MQ client.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public MQProducerBuilder proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (MQProducerBuilder) this;
         }
         /**
-         * To define a proxy port when instantiating the MQ client. The option
-         * will be converted to a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the MQ client.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public MQProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (MQProducerBuilder) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Secret Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public MQProducerBuilder secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);

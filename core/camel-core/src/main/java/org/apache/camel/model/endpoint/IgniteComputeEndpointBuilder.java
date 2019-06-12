@@ -43,8 +43,9 @@ public interface IgniteComputeEndpointBuilder {
             super("ignite-compute", path);
         }
         /**
-         * The endpoint ID (not used). The option is a
-         * <code>java.lang.String</code> type.
+         * The endpoint ID (not used).
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T endpointId(String endpointId) {
             this.properties.put("endpointId", endpointId);
@@ -52,8 +53,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * Sets whether to propagate the incoming body if the return type of the
-         * underlying Ignite operation is void. The option is a
-         * <code>boolean</code> type.
+         * underlying Ignite operation is void.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T propagateIncomingBodyIfNoReturnValue(
                 boolean propagateIncomingBodyIfNoReturnValue) {
@@ -62,8 +64,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * Sets whether to propagate the incoming body if the return type of the
-         * underlying Ignite operation is void. The option will be converted to
-         * a <code>boolean</code> type.
+         * underlying Ignite operation is void.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T propagateIncomingBodyIfNoReturnValue(
                 String propagateIncomingBodyIfNoReturnValue) {
@@ -72,8 +75,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * Sets whether to treat Collections as cache objects or as Collections
-         * of items to insert/update/compute, etc. The option is a
-         * <code>boolean</code> type.
+         * of items to insert/update/compute, etc.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T treatCollectionsAsCacheObjects(
                 boolean treatCollectionsAsCacheObjects) {
@@ -82,8 +86,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * Sets whether to treat Collections as cache objects or as Collections
-         * of items to insert/update/compute, etc. The option will be converted
-         * to a <code>boolean</code> type.
+         * of items to insert/update/compute, etc.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T treatCollectionsAsCacheObjects(
                 String treatCollectionsAsCacheObjects) {
@@ -92,8 +97,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -101,8 +107,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -110,8 +117,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -119,8 +127,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -141,9 +150,11 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * An expression that returns the Cluster Group for the IgniteCompute
-         * instance. The option is a
+         * instance.
+         * The option is a
          * <code>org.apache.camel.component.ignite.ClusterGroupExpression</code>
          * type.
+         * @group producer
          */
         public IgniteComputeProducerBuilder clusterGroupExpression(
                 Object clusterGroupExpression) {
@@ -152,9 +163,11 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * An expression that returns the Cluster Group for the IgniteCompute
-         * instance. The option will be converted to a
+         * instance.
+         * The option will be converted to a
          * <code>org.apache.camel.component.ignite.ClusterGroupExpression</code>
          * type.
+         * @group producer
          */
         public IgniteComputeProducerBuilder clusterGroupExpression(
                 String clusterGroupExpression) {
@@ -163,8 +176,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * The name of the compute job, which will be set via
-         * IgniteCompute#withName(String). The option is a
-         * <code>java.lang.String</code> type.
+         * IgniteCompute#withName(String).
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public IgniteComputeProducerBuilder computeName(String computeName) {
             this.properties.put("computeName", computeName);
@@ -173,9 +187,10 @@ public interface IgniteComputeEndpointBuilder {
         /**
          * The compute operation to perform. Possible values: CALL, BROADCAST,
          * APPLY, EXECUTE, RUN, AFFINITY_CALL, AFFINITY_RUN. The component
-         * expects different payload types depending on the operation. The
-         * option is a
+         * expects different payload types depending on the operation.
+         * The option is a
          * <code>org.apache.camel.component.ignite.compute.IgniteComputeExecutionType</code> type.
+         * @group producer
          */
         public IgniteComputeProducerBuilder executionType(
                 IgniteComputeExecutionType executionType) {
@@ -185,9 +200,10 @@ public interface IgniteComputeEndpointBuilder {
         /**
          * The compute operation to perform. Possible values: CALL, BROADCAST,
          * APPLY, EXECUTE, RUN, AFFINITY_CALL, AFFINITY_RUN. The component
-         * expects different payload types depending on the operation. The
-         * option will be converted to a
+         * expects different payload types depending on the operation.
+         * The option will be converted to a
          * <code>org.apache.camel.component.ignite.compute.IgniteComputeExecutionType</code> type.
+         * @group producer
          */
         public IgniteComputeProducerBuilder executionType(String executionType) {
             this.properties.put("executionType", executionType);
@@ -195,8 +211,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * The task name, only applicable if using the
-         * IgniteComputeExecutionType#EXECUTE execution type. The option is a
-         * <code>java.lang.String</code> type.
+         * IgniteComputeExecutionType#EXECUTE execution type.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public IgniteComputeProducerBuilder taskName(String taskName) {
             this.properties.put("taskName", taskName);
@@ -204,8 +221,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * The timeout interval for triggered jobs, in milliseconds, which will
-         * be set via IgniteCompute#withTimeout(long). The option is a
-         * <code>java.lang.Long</code> type.
+         * be set via IgniteCompute#withTimeout(long).
+         * The option is a <code>java.lang.Long</code> type.
+         * @group producer
          */
         public IgniteComputeProducerBuilder timeoutMillis(Long timeoutMillis) {
             this.properties.put("timeoutMillis", timeoutMillis);
@@ -213,8 +231,9 @@ public interface IgniteComputeEndpointBuilder {
         }
         /**
          * The timeout interval for triggered jobs, in milliseconds, which will
-         * be set via IgniteCompute#withTimeout(long). The option will be
-         * converted to a <code>java.lang.Long</code> type.
+         * be set via IgniteCompute#withTimeout(long).
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group producer
          */
         public IgniteComputeProducerBuilder timeoutMillis(String timeoutMillis) {
             this.properties.put("timeoutMillis", timeoutMillis);

@@ -43,26 +43,31 @@ public interface TwilioEndpointBuilder {
             super("twilio", path);
         }
         /**
-         * What kind of operation to perform. The option is a
+         * What kind of operation to perform.
+         * The option is a
          * <code>org.apache.camel.component.twilio.internal.TwilioApiName</code>
          * type.
+         * @group common
          */
         public T apiName(TwilioApiName apiName) {
             this.properties.put("apiName", apiName);
             return (T) this;
         }
         /**
-         * What kind of operation to perform. The option will be converted to a
+         * What kind of operation to perform.
+         * The option will be converted to a
          * <code>org.apache.camel.component.twilio.internal.TwilioApiName</code>
          * type.
+         * @group common
          */
         public T apiName(String apiName) {
             this.properties.put("apiName", apiName);
             return (T) this;
         }
         /**
-         * What sub operation to use for the selected operation. The option is a
-         * <code>java.lang.String</code> type.
+         * What sub operation to use for the selected operation.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T methodName(String methodName) {
             this.properties.put("methodName", methodName);
@@ -71,6 +76,7 @@ public interface TwilioEndpointBuilder {
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T inBody(String inBody) {
             this.properties.put("inBody", inBody);
@@ -78,8 +84,9 @@ public interface TwilioEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -87,8 +94,9 @@ public interface TwilioEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -96,8 +104,9 @@ public interface TwilioEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -105,8 +114,9 @@ public interface TwilioEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -132,7 +142,9 @@ public interface TwilioEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public TwilioConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -146,7 +158,9 @@ public interface TwilioEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public TwilioConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -157,8 +171,10 @@ public interface TwilioEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public TwilioConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -169,17 +185,19 @@ public interface TwilioEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public TwilioConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (TwilioConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public TwilioConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -187,9 +205,10 @@ public interface TwilioEndpointBuilder {
             return (TwilioConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public TwilioConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

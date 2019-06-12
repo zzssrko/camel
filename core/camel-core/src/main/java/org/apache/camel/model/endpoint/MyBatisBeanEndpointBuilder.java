@@ -42,8 +42,9 @@ public interface MyBatisBeanEndpointBuilder {
         }
         /**
          * Name of the bean with the MyBatis annotations. This can either by a
-         * type alias or a FQN class name. The option is a
-         * <code>java.lang.String</code> type.
+         * type alias or a FQN class name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T beanName(String beanName) {
             this.properties.put("beanName", beanName);
@@ -52,6 +53,7 @@ public interface MyBatisBeanEndpointBuilder {
         /**
          * Name of the method on the bean that has the SQL query to be executed.
          * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T methodName(String methodName) {
             this.properties.put("methodName", methodName);
@@ -59,8 +61,9 @@ public interface MyBatisBeanEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -68,8 +71,9 @@ public interface MyBatisBeanEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -77,8 +81,9 @@ public interface MyBatisBeanEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -86,8 +91,9 @@ public interface MyBatisBeanEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -112,6 +118,7 @@ public interface MyBatisBeanEndpointBuilder {
          * statements. batch - executor reuses statements and batches updates.
          * The option is a <code>org.apache.ibatis.session.ExecutorType</code>
          * type.
+         * @group producer
          */
         public MyBatisBeanProducerBuilder executorType(ExecutorType executorType) {
             this.properties.put("executorType", executorType);
@@ -123,6 +130,7 @@ public interface MyBatisBeanEndpointBuilder {
          * statements. batch - executor reuses statements and batches updates.
          * The option will be converted to a
          * <code>org.apache.ibatis.session.ExecutorType</code> type.
+         * @group producer
          */
         public MyBatisBeanProducerBuilder executorType(String executorType) {
             this.properties.put("executorType", executorType);
@@ -133,7 +141,9 @@ public interface MyBatisBeanEndpointBuilder {
          * body. By default, inputHeader == null and the input parameters are
          * taken from the message body. If outputHeader is set, the value is
          * used and query parameters will be taken from the header instead of
-         * the body. The option is a <code>java.lang.String</code> type.
+         * the body.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public MyBatisBeanProducerBuilder inputHeader(String inputHeader) {
             this.properties.put("inputHeader", inputHeader);
@@ -147,7 +157,9 @@ public interface MyBatisBeanEndpointBuilder {
          * to store the query result and the original message body is preserved.
          * Setting outputHeader will also omit populating the default
          * CamelMyBatisResult header since it would be the same as outputHeader
-         * all the time. The option is a <code>java.lang.String</code> type.
+         * all the time.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public MyBatisBeanProducerBuilder outputHeader(String outputHeader) {
             this.properties.put("outputHeader", outputHeader);

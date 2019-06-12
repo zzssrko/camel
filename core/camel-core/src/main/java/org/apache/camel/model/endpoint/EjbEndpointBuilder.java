@@ -41,16 +41,18 @@ public interface EjbEndpointBuilder {
             super("ejb", path);
         }
         /**
-         * Sets the name of the bean to invoke. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the name of the bean to invoke.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T beanName(String beanName) {
             this.properties.put("beanName", beanName);
             return (T) this;
         }
         /**
-         * Sets the name of the method to invoke on the bean. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the name of the method to invoke on the bean.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T method(String method) {
             this.properties.put("method", method);
@@ -58,8 +60,9 @@ public interface EjbEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -67,8 +70,9 @@ public interface EjbEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -77,8 +81,9 @@ public interface EjbEndpointBuilder {
         /**
          * If enabled, Camel will cache the result of the first Registry
          * look-up. Cache can be enabled if the bean in the Registry is defined
-         * as a singleton scope. The option is a <code>java.lang.Boolean</code>
-         * type.
+         * as a singleton scope.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group advanced
          */
         public T cache(Boolean cache) {
             this.properties.put("cache", cache);
@@ -87,26 +92,31 @@ public interface EjbEndpointBuilder {
         /**
          * If enabled, Camel will cache the result of the first Registry
          * look-up. Cache can be enabled if the bean in the Registry is defined
-         * as a singleton scope. The option will be converted to a
-         * <code>java.lang.Boolean</code> type.
+         * as a singleton scope.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group advanced
          */
         public T cache(String cache) {
             this.properties.put("cache", cache);
             return (T) this;
         }
         /**
-         * Used for configuring additional properties on the bean. The option is
-         * a <code>java.util.Map&lt;java.lang.String,
+         * Used for configuring additional properties on the bean.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
          * java.lang.Object&gt;</code> type.
+         * @group advanced
          */
         public T parameters(Map<String, Object> parameters) {
             this.properties.put("parameters", parameters);
             return (T) this;
         }
         /**
-         * Used for configuring additional properties on the bean. The option
-         * will be converted to a <code>java.util.Map&lt;java.lang.String,
-         * java.lang.Object&gt;</code> type.
+         * Used for configuring additional properties on the bean.
+         * The option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
+         * @group advanced
          */
         public T parameters(String parameters) {
             this.properties.put("parameters", parameters);
@@ -114,8 +124,9 @@ public interface EjbEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -123,8 +134,9 @@ public interface EjbEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

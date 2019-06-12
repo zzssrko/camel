@@ -44,8 +44,9 @@ public interface PropertiesEndpointBuilder {
             super("properties", path);
         }
         /**
-         * Property key to use as placeholder. The option is a
-         * <code>java.lang.String</code> type.
+         * Property key to use as placeholder.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T key(String key) {
             this.properties.put("key", key);
@@ -53,7 +54,9 @@ public interface PropertiesEndpointBuilder {
         }
         /**
          * Whether to silently ignore if a location cannot be located, such as a
-         * properties file not found. The option is a <code>boolean</code> type.
+         * properties file not found.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T ignoreMissingLocation(boolean ignoreMissingLocation) {
             this.properties.put("ignoreMissingLocation", ignoreMissingLocation);
@@ -61,8 +64,9 @@ public interface PropertiesEndpointBuilder {
         }
         /**
          * Whether to silently ignore if a location cannot be located, such as a
-         * properties file not found. The option will be converted to a
-         * <code>boolean</code> type.
+         * properties file not found.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T ignoreMissingLocation(String ignoreMissingLocation) {
             this.properties.put("ignoreMissingLocation", ignoreMissingLocation);
@@ -71,8 +75,10 @@ public interface PropertiesEndpointBuilder {
         /**
          * A list of locations to load properties. You can use comma to separate
          * multiple locations. This option will override any default locations
-         * and only use the locations from this option. The option is a
+         * and only use the locations from this option.
+         * The option is a
          * <code>java.util.List&lt;org.apache.camel.component.properties.PropertiesLocation&gt;</code> type.
+         * @group common
          */
         public T locations(List<Object> locations) {
             this.properties.put("locations", locations);
@@ -81,9 +87,10 @@ public interface PropertiesEndpointBuilder {
         /**
          * A list of locations to load properties. You can use comma to separate
          * multiple locations. This option will override any default locations
-         * and only use the locations from this option. The option will be
-         * converted to a
+         * and only use the locations from this option.
+         * The option will be converted to a
          * <code>java.util.List&lt;org.apache.camel.component.properties.PropertiesLocation&gt;</code> type.
+         * @group common
          */
         public T locations(String locations) {
             this.properties.put("locations", locations);
@@ -91,8 +98,9 @@ public interface PropertiesEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -100,8 +108,9 @@ public interface PropertiesEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -109,8 +118,9 @@ public interface PropertiesEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -118,8 +128,9 @@ public interface PropertiesEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -145,7 +156,9 @@ public interface PropertiesEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public PropertiesConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -159,7 +172,9 @@ public interface PropertiesEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public PropertiesConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -170,8 +185,10 @@ public interface PropertiesEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public PropertiesConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -182,9 +199,10 @@ public interface PropertiesEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public PropertiesConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -192,8 +210,9 @@ public interface PropertiesEndpointBuilder {
             return (PropertiesConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public PropertiesConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -201,9 +220,10 @@ public interface PropertiesEndpointBuilder {
             return (PropertiesConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public PropertiesConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

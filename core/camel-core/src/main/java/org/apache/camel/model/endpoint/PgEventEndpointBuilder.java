@@ -43,39 +43,46 @@ public interface PgEventEndpointBuilder {
             super("pgevent", path);
         }
         /**
-         * To connect using hostname and port to the database. The option is a
-         * <code>java.lang.String</code> type.
+         * To connect using hostname and port to the database.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * To connect using hostname and port to the database. The option is a
-         * <code>java.lang.Integer</code> type.
+         * To connect using hostname and port to the database.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T port(Integer port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * To connect using hostname and port to the database. The option will
-         * be converted to a <code>java.lang.Integer</code> type.
+         * To connect using hostname and port to the database.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T port(String port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * The database name. The option is a <code>java.lang.String</code>
-         * type.
+         * The database name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T database(String database) {
             this.properties.put("database", database);
             return (T) this;
         }
         /**
-         * The channel name. The option is a <code>java.lang.String</code> type.
+         * The channel name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T channel(String channel) {
             this.properties.put("channel", channel);
@@ -83,8 +90,9 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * To connect using the given javax.sql.DataSource instead of using
-         * hostname and port. The option is a <code>javax.sql.DataSource</code>
-         * type.
+         * hostname and port.
+         * The option is a <code>javax.sql.DataSource</code> type.
+         * @group common
          */
         public T datasource(Object datasource) {
             this.properties.put("datasource", datasource);
@@ -92,8 +100,10 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * To connect using the given javax.sql.DataSource instead of using
-         * hostname and port. The option will be converted to a
-         * <code>javax.sql.DataSource</code> type.
+         * hostname and port.
+         * The option will be converted to a <code>javax.sql.DataSource</code>
+         * type.
+         * @group common
          */
         public T datasource(String datasource) {
             this.properties.put("datasource", datasource);
@@ -101,8 +111,9 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -110,8 +121,9 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -119,8 +131,9 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -128,24 +141,27 @@ public interface PgEventEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Password for login. The option is a <code>java.lang.String</code>
-         * type.
+         * Password for login.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T pass(String pass) {
             this.properties.put("pass", pass);
             return (T) this;
         }
         /**
-         * Username for login. The option is a <code>java.lang.String</code>
-         * type.
+         * Username for login.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T user(String user) {
             this.properties.put("user", user);
@@ -171,7 +187,9 @@ public interface PgEventEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public PgEventConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -185,7 +203,9 @@ public interface PgEventEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public PgEventConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -196,8 +216,10 @@ public interface PgEventEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public PgEventConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -208,17 +230,19 @@ public interface PgEventEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public PgEventConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (PgEventConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public PgEventConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -226,9 +250,10 @@ public interface PgEventEndpointBuilder {
             return (PgEventConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public PgEventConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

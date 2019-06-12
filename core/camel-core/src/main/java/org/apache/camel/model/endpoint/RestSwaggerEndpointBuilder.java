@@ -42,8 +42,9 @@ public interface RestSwaggerEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -51,8 +52,9 @@ public interface RestSwaggerEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -60,8 +62,9 @@ public interface RestSwaggerEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -69,8 +72,9 @@ public interface RestSwaggerEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -103,7 +107,9 @@ public interface RestSwaggerEndpointBuilder {
          * and as such it can be cumbersome to setup TLS/SSL certificates for
          * https (such as setting a number of javax.net.ssl JVM system
          * properties). How to do that consult the JDK documentation for
-         * UrlHandler. The option is a <code>java.net.URI</code> type.
+         * UrlHandler.
+         * The option is a <code>java.net.URI</code> type.
+         * @group producer
          */
         public RestSwaggerProducerBuilder specificationUri(URI specificationUri) {
             this.properties.put("specificationUri", specificationUri);
@@ -123,8 +129,9 @@ public interface RestSwaggerEndpointBuilder {
          * and as such it can be cumbersome to setup TLS/SSL certificates for
          * https (such as setting a number of javax.net.ssl JVM system
          * properties). How to do that consult the JDK documentation for
-         * UrlHandler. The option will be converted to a
-         * <code>java.net.URI</code> type.
+         * UrlHandler.
+         * The option will be converted to a <code>java.net.URI</code> type.
+         * @group producer
          */
         public RestSwaggerProducerBuilder specificationUri(
                 String specificationUri) {
@@ -132,8 +139,9 @@ public interface RestSwaggerEndpointBuilder {
             return (RestSwaggerProducerBuilder) this;
         }
         /**
-         * ID of the operation from the Swagger specification. The option is a
-         * <code>java.lang.String</code> type.
+         * ID of the operation from the Swagger specification.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public RestSwaggerProducerBuilder operationId(String operationId) {
             this.properties.put("operationId", operationId);
@@ -142,7 +150,9 @@ public interface RestSwaggerEndpointBuilder {
         /**
          * API basePath, for example /v2. Default is unset, if set overrides the
          * value present in Swagger specification and in the component
-         * configuration. The option is a <code>java.lang.String</code> type.
+         * configuration.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public RestSwaggerProducerBuilder basePath(String basePath) {
             this.properties.put("basePath", basePath);
@@ -153,8 +163,9 @@ public interface RestSwaggerEndpointBuilder {
          * compnent must be present in Camel registry and it must implement
          * RestProducerFactory service provider interface. If not set CLASSPATH
          * is searched for single component that implements RestProducerFactory
-         * SPI. Overrides component configuration. The option is a
-         * <code>java.lang.String</code> type.
+         * SPI. Overrides component configuration.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public RestSwaggerProducerBuilder componentName(String componentName) {
             this.properties.put("componentName", componentName);
@@ -165,8 +176,9 @@ public interface RestSwaggerEndpointBuilder {
          * type, like application/json or multiple types as application/json,
          * application/xml; q=0.5 according to the RFC7231. This equates to the
          * value of Accept HTTP header. If set overrides any value found in the
-         * Swagger specification and. in the component configuration. The option
-         * is a <code>java.lang.String</code> type.
+         * Swagger specification and. in the component configuration.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public RestSwaggerProducerBuilder consumes(String consumes) {
             this.properties.put("consumes", consumes);
@@ -181,6 +193,7 @@ public interface RestSwaggerEndpointBuilder {
          * configuration last. If set overrides any value found in the Swagger
          * specification, RestConfiguration. Overrides all other configuration.
          * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public RestSwaggerProducerBuilder host(String host) {
             this.properties.put("host", host);
@@ -190,8 +203,9 @@ public interface RestSwaggerEndpointBuilder {
          * What payload type this component is producing. For example
          * application/json according to the RFC7231. This equates to the value
          * of Content-Type HTTP header. If set overrides any value present in
-         * the Swagger specification. Overrides all other configuration. The
-         * option is a <code>java.lang.String</code> type.
+         * the Swagger specification. Overrides all other configuration.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public RestSwaggerProducerBuilder produces(String produces) {
             this.properties.put("produces", produces);

@@ -44,24 +44,29 @@ public interface GoogleDriveEndpointBuilder {
             super("google-drive", path);
         }
         /**
-         * What kind of operation to perform. The option is a
+         * What kind of operation to perform.
+         * The option is a
          * <code>org.apache.camel.component.google.drive.internal.GoogleDriveApiName</code> type.
+         * @group common
          */
         public T apiName(GoogleDriveApiName apiName) {
             this.properties.put("apiName", apiName);
             return (T) this;
         }
         /**
-         * What kind of operation to perform. The option will be converted to a
+         * What kind of operation to perform.
+         * The option will be converted to a
          * <code>org.apache.camel.component.google.drive.internal.GoogleDriveApiName</code> type.
+         * @group common
          */
         public T apiName(String apiName) {
             this.properties.put("apiName", apiName);
             return (T) this;
         }
         /**
-         * What sub operation to use for the selected operation. The option is a
-         * <code>java.lang.String</code> type.
+         * What sub operation to use for the selected operation.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T methodName(String methodName) {
             this.properties.put("methodName", methodName);
@@ -69,8 +74,9 @@ public interface GoogleDriveEndpointBuilder {
         }
         /**
          * OAuth 2 access token. This typically expires after an hour so
-         * refreshToken is recommended for long term usage. The option is a
-         * <code>java.lang.String</code> type.
+         * refreshToken is recommended for long term usage.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T accessToken(String accessToken) {
             this.properties.put("accessToken", accessToken);
@@ -78,8 +84,9 @@ public interface GoogleDriveEndpointBuilder {
         }
         /**
          * Google drive application name. Example would be
-         * camel-google-drive/1.0. The option is a <code>java.lang.String</code>
-         * type.
+         * camel-google-drive/1.0.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T applicationName(String applicationName) {
             this.properties.put("applicationName", applicationName);
@@ -87,9 +94,10 @@ public interface GoogleDriveEndpointBuilder {
         }
         /**
          * To use the GoogleCalendarClientFactory as factory for creating the
-         * client. Will by default use BatchGoogleDriveClientFactory. The option
-         * is a
+         * client. Will by default use BatchGoogleDriveClientFactory.
+         * The option is a
          * <code>org.apache.camel.component.google.drive.GoogleDriveClientFactory</code> type.
+         * @group common
          */
         public T clientFactory(Object clientFactory) {
             this.properties.put("clientFactory", clientFactory);
@@ -97,25 +105,28 @@ public interface GoogleDriveEndpointBuilder {
         }
         /**
          * To use the GoogleCalendarClientFactory as factory for creating the
-         * client. Will by default use BatchGoogleDriveClientFactory. The option
-         * will be converted to a
+         * client. Will by default use BatchGoogleDriveClientFactory.
+         * The option will be converted to a
          * <code>org.apache.camel.component.google.drive.GoogleDriveClientFactory</code> type.
+         * @group common
          */
         public T clientFactory(String clientFactory) {
             this.properties.put("clientFactory", clientFactory);
             return (T) this;
         }
         /**
-         * Client ID of the drive application. The option is a
-         * <code>java.lang.String</code> type.
+         * Client ID of the drive application.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T clientId(String clientId) {
             this.properties.put("clientId", clientId);
             return (T) this;
         }
         /**
-         * Client secret of the drive application. The option is a
-         * <code>java.lang.String</code> type.
+         * Client secret of the drive application.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T clientSecret(String clientSecret) {
             this.properties.put("clientSecret", clientSecret);
@@ -124,6 +135,7 @@ public interface GoogleDriveEndpointBuilder {
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T inBody(String inBody) {
             this.properties.put("inBody", inBody);
@@ -132,8 +144,9 @@ public interface GoogleDriveEndpointBuilder {
         /**
          * OAuth 2 refresh token. Using this, the Google Calendar component can
          * obtain a new accessToken whenever the current one expires - a
-         * necessity if the application is long-lived. The option is a
-         * <code>java.lang.String</code> type.
+         * necessity if the application is long-lived.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T refreshToken(String refreshToken) {
             this.properties.put("refreshToken", refreshToken);
@@ -142,8 +155,10 @@ public interface GoogleDriveEndpointBuilder {
         /**
          * Specifies the level of permissions you want a drive application to
          * have to a user account. See
-         * https://developers.google.com/drive/web/scopes for more info. The
-         * option is a <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * https://developers.google.com/drive/web/scopes for more info.
+         * The option is a <code>java.util.List&lt;java.lang.String&gt;</code>
+         * type.
+         * @group common
          */
         public T scopes(List<String> scopes) {
             this.properties.put("scopes", scopes);
@@ -152,9 +167,10 @@ public interface GoogleDriveEndpointBuilder {
         /**
          * Specifies the level of permissions you want a drive application to
          * have to a user account. See
-         * https://developers.google.com/drive/web/scopes for more info. The
-         * option will be converted to a
+         * https://developers.google.com/drive/web/scopes for more info.
+         * The option will be converted to a
          * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * @group common
          */
         public T scopes(String scopes) {
             this.properties.put("scopes", scopes);
@@ -162,8 +178,9 @@ public interface GoogleDriveEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -171,8 +188,9 @@ public interface GoogleDriveEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -180,8 +198,9 @@ public interface GoogleDriveEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -189,8 +208,9 @@ public interface GoogleDriveEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -216,7 +236,9 @@ public interface GoogleDriveEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public GoogleDriveConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -230,7 +252,9 @@ public interface GoogleDriveEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public GoogleDriveConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -241,8 +265,10 @@ public interface GoogleDriveEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public GoogleDriveConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -253,9 +279,10 @@ public interface GoogleDriveEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public GoogleDriveConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -263,8 +290,9 @@ public interface GoogleDriveEndpointBuilder {
             return (GoogleDriveConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public GoogleDriveConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -272,9 +300,10 @@ public interface GoogleDriveEndpointBuilder {
             return (GoogleDriveConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public GoogleDriveConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

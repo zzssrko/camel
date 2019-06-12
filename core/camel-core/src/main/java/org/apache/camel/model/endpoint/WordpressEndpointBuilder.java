@@ -43,8 +43,9 @@ public interface WordpressEndpointBuilder {
             super("wordpress", path);
         }
         /**
-         * The endpoint operation. The option is a <code>java.lang.String</code>
-         * type.
+         * The endpoint operation.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
@@ -52,50 +53,58 @@ public interface WordpressEndpointBuilder {
         }
         /**
          * The second part of an endpoint operation. Needed only when endpoint
-         * semantic is not enough, like wordpress:post:delete. The option is a
-         * <code>java.lang.String</code> type.
+         * semantic is not enough, like wordpress:post:delete.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T operationDetail(String operationDetail) {
             this.properties.put("operationDetail", operationDetail);
             return (T) this;
         }
         /**
-         * The Wordpress REST API version. The option is a
-         * <code>java.lang.String</code> type.
+         * The Wordpress REST API version.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T apiVersion(String apiVersion) {
             this.properties.put("apiVersion", apiVersion);
             return (T) this;
         }
         /**
-         * The criteria to use with complex searches. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
-         * type.
+         * The criteria to use with complex searches.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
+         * @group common
          */
         public T criteria(Map<String, Object> criteria) {
             this.properties.put("criteria", criteria);
             return (T) this;
         }
         /**
-         * The criteria to use with complex searches. The option will be
-         * converted to a <code>java.util.Map&lt;java.lang.String,
-         * java.lang.Object&gt;</code> type.
+         * The criteria to use with complex searches.
+         * The option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
+         * @group common
          */
         public T criteria(String criteria) {
             this.properties.put("criteria", criteria);
             return (T) this;
         }
         /**
-         * Whether to bypass trash and force deletion. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * Whether to bypass trash and force deletion.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group common
          */
         public T force(Boolean force) {
             this.properties.put("force", force);
             return (T) this;
         }
         /**
-         * Whether to bypass trash and force deletion. The option will be
-         * converted to a <code>java.lang.Boolean</code> type.
+         * Whether to bypass trash and force deletion.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group common
          */
         public T force(String force) {
             this.properties.put("force", force);
@@ -103,8 +112,9 @@ public interface WordpressEndpointBuilder {
         }
         /**
          * The entity ID. Should be passed when the operation performed requires
-         * a specific entity, e.g. deleting a post. The option is a
-         * <code>java.lang.Integer</code> type.
+         * a specific entity, e.g. deleting a post.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T id(Integer id) {
             this.properties.put("id", id);
@@ -112,32 +122,39 @@ public interface WordpressEndpointBuilder {
         }
         /**
          * The entity ID. Should be passed when the operation performed requires
-         * a specific entity, e.g. deleting a post. The option will be converted
-         * to a <code>java.lang.Integer</code> type.
+         * a specific entity, e.g. deleting a post.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T id(String id) {
             this.properties.put("id", id);
             return (T) this;
         }
         /**
-         * Password from authorized user. The option is a
-         * <code>java.lang.String</code> type.
+         * Password from authorized user.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * Search criteria. The option is a
+         * Search criteria.
+         * The option is a
          * <code>org.apache.camel.component.wordpress.api.model.SearchCriteria</code> type.
+         * @group common
          */
         public T searchCriteria(Object searchCriteria) {
             this.properties.put("searchCriteria", searchCriteria);
             return (T) this;
         }
         /**
-         * Search criteria. The option will be converted to a
+         * Search criteria.
+         * The option will be converted to a
          * <code>org.apache.camel.component.wordpress.api.model.SearchCriteria</code> type.
+         * @group common
          */
         public T searchCriteria(String searchCriteria) {
             this.properties.put("searchCriteria", searchCriteria);
@@ -145,16 +162,18 @@ public interface WordpressEndpointBuilder {
         }
         /**
          * The Wordpress API URL from your site, e.g.
-         * http://myblog.com/wp-json/. The option is a
-         * <code>java.lang.String</code> type.
+         * http://myblog.com/wp-json/.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T url(String url) {
             this.properties.put("url", url);
             return (T) this;
         }
         /**
-         * Authorized user to perform writing operations. The option is a
-         * <code>java.lang.String</code> type.
+         * Authorized user to perform writing operations.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T user(String user) {
             this.properties.put("user", user);
@@ -162,8 +181,9 @@ public interface WordpressEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -171,8 +191,9 @@ public interface WordpressEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -180,8 +201,9 @@ public interface WordpressEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -189,8 +211,9 @@ public interface WordpressEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -216,7 +239,9 @@ public interface WordpressEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public WordpressConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -230,7 +255,9 @@ public interface WordpressEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public WordpressConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -241,8 +268,10 @@ public interface WordpressEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public WordpressConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -253,17 +282,19 @@ public interface WordpressEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public WordpressConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (WordpressConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public WordpressConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -271,9 +302,10 @@ public interface WordpressEndpointBuilder {
             return (WordpressConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public WordpressConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

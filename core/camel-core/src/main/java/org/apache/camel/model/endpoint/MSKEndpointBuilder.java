@@ -40,15 +40,18 @@ public interface MSKEndpointBuilder {
             super("aws-msk", path);
         }
         /**
-         * Logical name. The option is a <code>java.lang.String</code> type.
+         * Logical name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T label(String label) {
             this.properties.put("label", label);
             return (T) this;
         }
         /**
-         * The region in which MSK client needs to work. The option is a
-         * <code>java.lang.String</code> type.
+         * The region in which MSK client needs to work.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -56,8 +59,9 @@ public interface MSKEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -65,8 +69,9 @@ public interface MSKEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -74,8 +79,9 @@ public interface MSKEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -83,8 +89,9 @@ public interface MSKEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -104,73 +111,86 @@ public interface MSKEndpointBuilder {
             super(path);
         }
         /**
-         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Access Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public MSKProducerBuilder accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (MSKProducerBuilder) this;
         }
         /**
-         * To use a existing configured AWS MSK as client. The option is a
-         * <code>com.amazonaws.services.kafka.AWSKafka</code> type.
+         * To use a existing configured AWS MSK as client.
+         * The option is a <code>com.amazonaws.services.kafka.AWSKafka</code>
+         * type.
+         * @group producer
          */
         public MSKProducerBuilder mskClient(Object mskClient) {
             this.properties.put("mskClient", mskClient);
             return (MSKProducerBuilder) this;
         }
         /**
-         * To use a existing configured AWS MSK as client. The option will be
-         * converted to a <code>com.amazonaws.services.kafka.AWSKafka</code>
-         * type.
+         * To use a existing configured AWS MSK as client.
+         * The option will be converted to a
+         * <code>com.amazonaws.services.kafka.AWSKafka</code> type.
+         * @group producer
          */
         public MSKProducerBuilder mskClient(String mskClient) {
             this.properties.put("mskClient", mskClient);
             return (MSKProducerBuilder) this;
         }
         /**
-         * The operation to perform. The option is a
+         * The operation to perform.
+         * The option is a
          * <code>org.apache.camel.component.aws.msk.MSKOperations</code> type.
+         * @group producer
          */
         public MSKProducerBuilder operation(MSKOperations operation) {
             this.properties.put("operation", operation);
             return (MSKProducerBuilder) this;
         }
         /**
-         * The operation to perform. The option will be converted to a
+         * The operation to perform.
+         * The option will be converted to a
          * <code>org.apache.camel.component.aws.msk.MSKOperations</code> type.
+         * @group producer
          */
         public MSKProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (MSKProducerBuilder) this;
         }
         /**
-         * To define a proxy host when instantiating the MSK client. The option
-         * is a <code>java.lang.String</code> type.
+         * To define a proxy host when instantiating the MSK client.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public MSKProducerBuilder proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (MSKProducerBuilder) this;
         }
         /**
-         * To define a proxy port when instantiating the MSK client. The option
-         * is a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the MSK client.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public MSKProducerBuilder proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (MSKProducerBuilder) this;
         }
         /**
-         * To define a proxy port when instantiating the MSK client. The option
-         * will be converted to a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the MSK client.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public MSKProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (MSKProducerBuilder) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Secret Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public MSKProducerBuilder secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);

@@ -41,71 +41,85 @@ public interface MicrometerEndpointBuilder {
             super("micrometer", path);
         }
         /**
-         * Type of metrics. The option is a
-         * <code>io.micrometer.core.instrument.Meter$Type</code> type.
+         * Type of metrics.
+         * The option is a <code>io.micrometer.core.instrument.Meter$Type</code>
+         * type.
+         * @group producer
          */
         public T metricsType(Type metricsType) {
             this.properties.put("metricsType", metricsType);
             return (T) this;
         }
         /**
-         * Type of metrics. The option will be converted to a
+         * Type of metrics.
+         * The option will be converted to a
          * <code>io.micrometer.core.instrument.Meter$Type</code> type.
+         * @group producer
          */
         public T metricsType(String metricsType) {
             this.properties.put("metricsType", metricsType);
             return (T) this;
         }
         /**
-         * Name of metrics. The option is a <code>java.lang.String</code> type.
+         * Name of metrics.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T metricsName(String metricsName) {
             this.properties.put("metricsName", metricsName);
             return (T) this;
         }
         /**
-         * Tags of metrics. The option is a
+         * Tags of metrics.
+         * The option is a
          * <code>java.lang.Iterable&lt;io.micrometer.core.instrument.Tag&gt;</code> type.
+         * @group producer
          */
         public T tags(Iterable<Object> tags) {
             this.properties.put("tags", tags);
             return (T) this;
         }
         /**
-         * Tags of metrics. The option will be converted to a
+         * Tags of metrics.
+         * The option will be converted to a
          * <code>java.lang.Iterable&lt;io.micrometer.core.instrument.Tag&gt;</code> type.
+         * @group producer
          */
         public T tags(String tags) {
             this.properties.put("tags", tags);
             return (T) this;
         }
         /**
-         * Action expression when using timer type. The option is a
-         * <code>java.lang.String</code> type.
+         * Action expression when using timer type.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T action(String action) {
             this.properties.put("action", action);
             return (T) this;
         }
         /**
-         * Decrement value expression when using counter type. The option is a
-         * <code>java.lang.String</code> type.
+         * Decrement value expression when using counter type.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T decrement(String decrement) {
             this.properties.put("decrement", decrement);
             return (T) this;
         }
         /**
-         * Increment value expression when using counter type. The option is a
-         * <code>java.lang.String</code> type.
+         * Increment value expression when using counter type.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T increment(String increment) {
             this.properties.put("increment", increment);
             return (T) this;
         }
         /**
-         * Value expression when using histogram type. The option is a
-         * <code>java.lang.String</code> type.
+         * Value expression when using histogram type.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T value(String value) {
             this.properties.put("value", value);
@@ -113,8 +127,9 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -122,8 +137,9 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -131,8 +147,9 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -140,8 +157,9 @@ public interface MicrometerEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

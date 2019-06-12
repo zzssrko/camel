@@ -41,72 +41,89 @@ public interface XChangeEndpointBuilder {
             super("xchange", path);
         }
         /**
-         * The exchange to connect to. The option is a
-         * <code>java.lang.String</code> type.
+         * The exchange to connect to.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T name(String name) {
             this.properties.put("name", name);
             return (T) this;
         }
         /**
-         * The currency. The option is a
-         * <code>org.knowm.xchange.currency.Currency</code> type.
+         * The currency.
+         * The option is a <code>org.knowm.xchange.currency.Currency</code>
+         * type.
+         * @group producer
          */
         public T currency(Object currency) {
             this.properties.put("currency", currency);
             return (T) this;
         }
         /**
-         * The currency. The option will be converted to a
+         * The currency.
+         * The option will be converted to a
          * <code>org.knowm.xchange.currency.Currency</code> type.
+         * @group producer
          */
         public T currency(String currency) {
             this.properties.put("currency", currency);
             return (T) this;
         }
         /**
-         * The currency pair. The option is a
-         * <code>org.knowm.xchange.currency.CurrencyPair</code> type.
+         * The currency pair.
+         * The option is a <code>org.knowm.xchange.currency.CurrencyPair</code>
+         * type.
+         * @group producer
          */
         public T currencyPair(Object currencyPair) {
             this.properties.put("currencyPair", currencyPair);
             return (T) this;
         }
         /**
-         * The currency pair. The option will be converted to a
+         * The currency pair.
+         * The option will be converted to a
          * <code>org.knowm.xchange.currency.CurrencyPair</code> type.
+         * @group producer
          */
         public T currencyPair(String currencyPair) {
             this.properties.put("currencyPair", currencyPair);
             return (T) this;
         }
         /**
-         * The method to execute. The option is a
+         * The method to execute.
+         * The option is a
          * <code>org.apache.camel.component.xchange.XChangeConfiguration$XChangeMethod</code> type.
+         * @group producer
          */
         public T method(XChangeMethod method) {
             this.properties.put("method", method);
             return (T) this;
         }
         /**
-         * The method to execute. The option will be converted to a
+         * The method to execute.
+         * The option will be converted to a
          * <code>org.apache.camel.component.xchange.XChangeConfiguration$XChangeMethod</code> type.
+         * @group producer
          */
         public T method(String method) {
             this.properties.put("method", method);
             return (T) this;
         }
         /**
-         * The service to call. The option is a
+         * The service to call.
+         * The option is a
          * <code>org.apache.camel.component.xchange.XChangeConfiguration$XChangeService</code> type.
+         * @group producer
          */
         public T service(XChangeService service) {
             this.properties.put("service", service);
             return (T) this;
         }
         /**
-         * The service to call. The option will be converted to a
+         * The service to call.
+         * The option will be converted to a
          * <code>org.apache.camel.component.xchange.XChangeConfiguration$XChangeService</code> type.
+         * @group producer
          */
         public T service(String service) {
             this.properties.put("service", service);
@@ -114,8 +131,9 @@ public interface XChangeEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -123,8 +141,9 @@ public interface XChangeEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -132,8 +151,9 @@ public interface XChangeEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -141,8 +161,9 @@ public interface XChangeEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

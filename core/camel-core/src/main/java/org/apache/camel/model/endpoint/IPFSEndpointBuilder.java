@@ -42,23 +42,28 @@ public interface IPFSEndpointBuilder {
             super("ipfs", path);
         }
         /**
-         * The ipfs command. The option is a <code>java.lang.String</code> type.
+         * The ipfs command.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T ipfsCmd(String ipfsCmd) {
             this.properties.put("ipfsCmd", ipfsCmd);
             return (T) this;
         }
         /**
-         * The ipfs output directory. The option is a
-         * <code>java.nio.file.Path</code> type.
+         * The ipfs output directory.
+         * The option is a <code>java.nio.file.Path</code> type.
+         * @group producer
          */
         public T outdir(Path outdir) {
             this.properties.put("outdir", outdir);
             return (T) this;
         }
         /**
-         * The ipfs output directory. The option will be converted to a
-         * <code>java.nio.file.Path</code> type.
+         * The ipfs output directory.
+         * The option will be converted to a <code>java.nio.file.Path</code>
+         * type.
+         * @group producer
          */
         public T outdir(String outdir) {
             this.properties.put("outdir", outdir);
@@ -66,8 +71,9 @@ public interface IPFSEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -75,8 +81,9 @@ public interface IPFSEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -84,8 +91,9 @@ public interface IPFSEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -93,8 +101,9 @@ public interface IPFSEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

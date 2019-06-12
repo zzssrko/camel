@@ -45,8 +45,10 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Option to provide a custom MessageFilter. For example when you want
-         * to process your headers or attachments by your own. The option is a
+         * to process your headers or attachments by your own.
+         * The option is a
          * <code>org.apache.camel.component.spring.ws.filter.MessageFilter</code> type.
+         * @group common
          */
         public T messageFilter(Object messageFilter) {
             this.properties.put("messageFilter", messageFilter);
@@ -54,9 +56,10 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Option to provide a custom MessageFilter. For example when you want
-         * to process your headers or attachments by your own. The option will
-         * be converted to a
+         * to process your headers or attachments by your own.
+         * The option will be converted to a
          * <code>org.apache.camel.component.spring.ws.filter.MessageFilter</code> type.
+         * @group common
          */
         public T messageFilter(String messageFilter) {
             this.properties.put("messageFilter", messageFilter);
@@ -64,8 +67,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -73,8 +77,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -82,8 +87,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -91,25 +97,29 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * To configure security using SSLContextParameters. The option is a
+         * To configure security using SSLContextParameters.
+         * The option is a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group security
          */
         public T sslContextParameters(Object sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
         /**
-         * To configure security using SSLContextParameters. The option will be
-         * converted to a
+         * To configure security using SSLContextParameters.
+         * The option will be converted to a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group security
          */
         public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -143,6 +153,7 @@ public interface SpringWebserviceEndpointBuilder {
          * like PayloadRootQNameEndpointMapping, SoapActionEndpointMapping, etc.
          * The option is a
          * <code>org.apache.camel.component.spring.ws.type.EndpointMappingType</code> type.
+         * @group consumer
          */
         public SpringWebserviceConsumerBuilder type(EndpointMappingType type) {
             this.properties.put("type", type);
@@ -163,14 +174,16 @@ public interface SpringWebserviceEndpointBuilder {
          * like PayloadRootQNameEndpointMapping, SoapActionEndpointMapping, etc.
          * The option will be converted to a
          * <code>org.apache.camel.component.spring.ws.type.EndpointMappingType</code> type.
+         * @group consumer
          */
         public SpringWebserviceConsumerBuilder type(String type) {
             this.properties.put("type", type);
             return (SpringWebserviceConsumerBuilder) this;
         }
         /**
-         * Endpoint mapping key if endpoint mapping is used. The option is a
-         * <code>java.lang.String</code> type.
+         * Endpoint mapping key if endpoint mapping is used.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public SpringWebserviceConsumerBuilder lookupKey(String lookupKey) {
             this.properties.put("lookupKey", lookupKey);
@@ -183,7 +196,9 @@ public interface SpringWebserviceEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public SpringWebserviceConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -197,7 +212,9 @@ public interface SpringWebserviceEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public SpringWebserviceConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -208,9 +225,10 @@ public interface SpringWebserviceEndpointBuilder {
          * Spring org.springframework.ws.server.endpoint.MessageEndpoint for
          * dispatching messages received by Spring-WS to a Camel endpoint, to
          * integrate with existing (legacy) endpoint mappings like
-         * PayloadRootQNameEndpointMapping, SoapActionEndpointMapping, etc. The
-         * option is a
+         * PayloadRootQNameEndpointMapping, SoapActionEndpointMapping, etc.
+         * The option is a
          * <code>org.apache.camel.component.spring.ws.bean.CamelEndpointDispatcher</code> type.
+         * @group consumer
          */
         public SpringWebserviceConsumerBuilder endpointDispatcher(
                 Object endpointDispatcher) {
@@ -221,9 +239,10 @@ public interface SpringWebserviceEndpointBuilder {
          * Spring org.springframework.ws.server.endpoint.MessageEndpoint for
          * dispatching messages received by Spring-WS to a Camel endpoint, to
          * integrate with existing (legacy) endpoint mappings like
-         * PayloadRootQNameEndpointMapping, SoapActionEndpointMapping, etc. The
-         * option will be converted to a
+         * PayloadRootQNameEndpointMapping, SoapActionEndpointMapping, etc.
+         * The option will be converted to a
          * <code>org.apache.camel.component.spring.ws.bean.CamelEndpointDispatcher</code> type.
+         * @group consumer
          */
         public SpringWebserviceConsumerBuilder endpointDispatcher(
                 String endpointDispatcher) {
@@ -237,8 +256,10 @@ public interface SpringWebserviceEndpointBuilder {
          * registry to serve all Camel/Spring-WS endpoints. This bean is
          * auto-discovered by the MessageDispatcher and used to map requests to
          * Camel endpoints based on characteristics specified on the endpoint
-         * (like root QName, SOAP action, etc). The option is a
+         * (like root QName, SOAP action, etc).
+         * The option is a
          * <code>org.apache.camel.component.spring.ws.bean.CamelSpringWSEndpointMapping</code> type.
+         * @group consumer
          */
         public SpringWebserviceConsumerBuilder endpointMapping(
                 Object endpointMapping) {
@@ -252,9 +273,10 @@ public interface SpringWebserviceEndpointBuilder {
          * registry to serve all Camel/Spring-WS endpoints. This bean is
          * auto-discovered by the MessageDispatcher and used to map requests to
          * Camel endpoints based on characteristics specified on the endpoint
-         * (like root QName, SOAP action, etc). The option will be converted to
-         * a
+         * (like root QName, SOAP action, etc).
+         * The option will be converted to a
          * <code>org.apache.camel.component.spring.ws.bean.CamelSpringWSEndpointMapping</code> type.
+         * @group consumer
          */
         public SpringWebserviceConsumerBuilder endpointMapping(
                 String endpointMapping) {
@@ -263,8 +285,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * The XPath expression to use when option type=xpathresult. Then this
-         * option is required to be configured. The option is a
-         * <code>java.lang.String</code> type.
+         * option is required to be configured.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public SpringWebserviceConsumerBuilder expression(String expression) {
             this.properties.put("expression", expression);
@@ -274,8 +297,10 @@ public interface SpringWebserviceEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public SpringWebserviceConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -286,9 +311,10 @@ public interface SpringWebserviceEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public SpringWebserviceConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -296,8 +322,9 @@ public interface SpringWebserviceEndpointBuilder {
             return (SpringWebserviceConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public SpringWebserviceConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -305,9 +332,10 @@ public interface SpringWebserviceEndpointBuilder {
             return (SpringWebserviceConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public SpringWebserviceConsumerBuilder exchangePattern(
                 String exchangePattern) {
@@ -328,8 +356,9 @@ public interface SpringWebserviceEndpointBuilder {
             super(path);
         }
         /**
-         * The default Web Service endpoint uri to use for the producer. The
-         * option is a <code>java.lang.String</code> type.
+         * The default Web Service endpoint uri to use for the producer.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder webServiceEndpointUri(
                 String webServiceEndpointUri) {
@@ -341,8 +370,9 @@ public interface SpringWebserviceEndpointBuilder {
          * attachments from the actual service layer. If the invoked service
          * appends or rewrites the soap attachments this option when set to
          * true, allows the modified soap attachments to be overwritten in
-         * in/out message attachments. The option is a <code>boolean</code>
-         * type.
+         * in/out message attachments.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder allowResponseAttachmentOverride(
                 boolean allowResponseAttachmentOverride) {
@@ -354,8 +384,9 @@ public interface SpringWebserviceEndpointBuilder {
          * attachments from the actual service layer. If the invoked service
          * appends or rewrites the soap attachments this option when set to
          * true, allows the modified soap attachments to be overwritten in
-         * in/out message attachments. The option will be converted to a
-         * <code>boolean</code> type.
+         * in/out message attachments.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder allowResponseAttachmentOverride(
                 String allowResponseAttachmentOverride) {
@@ -367,7 +398,9 @@ public interface SpringWebserviceEndpointBuilder {
          * header info from the actual service layer. If the invoked service
          * appends or rewrites the soap header this option when set to true,
          * allows the modified soap header to be overwritten in in/out message
-         * headers. The option is a <code>boolean</code> type.
+         * headers.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder allowResponseHeaderOverride(
                 boolean allowResponseHeaderOverride) {
@@ -379,7 +412,9 @@ public interface SpringWebserviceEndpointBuilder {
          * header info from the actual service layer. If the invoked service
          * appends or rewrites the soap header this option when set to true,
          * allows the modified soap header to be overwritten in in/out message
-         * headers. The option will be converted to a <code>boolean</code> type.
+         * headers.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder allowResponseHeaderOverride(
                 String allowResponseHeaderOverride) {
@@ -388,8 +423,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Signifies the value for the faultAction response WS-Addressing Fault
-         * Action header that is provided by the method. The option is a
-         * <code>java.net.URI</code> type.
+         * Action header that is provided by the method.
+         * The option is a <code>java.net.URI</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder faultAction(URI faultAction) {
             this.properties.put("faultAction", faultAction);
@@ -397,8 +433,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Signifies the value for the faultAction response WS-Addressing Fault
-         * Action header that is provided by the method. The option will be
-         * converted to a <code>java.net.URI</code> type.
+         * Action header that is provided by the method.
+         * The option will be converted to a <code>java.net.URI</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder faultAction(String faultAction) {
             this.properties.put("faultAction", faultAction);
@@ -406,8 +443,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Signifies the value for the faultAction response WS-Addressing
-         * FaultTo header that is provided by the method. The option is a
-         * <code>java.net.URI</code> type.
+         * FaultTo header that is provided by the method.
+         * The option is a <code>java.net.URI</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder faultTo(URI faultTo) {
             this.properties.put("faultTo", faultTo);
@@ -415,8 +453,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Signifies the value for the faultAction response WS-Addressing
-         * FaultTo header that is provided by the method. The option will be
-         * converted to a <code>java.net.URI</code> type.
+         * FaultTo header that is provided by the method.
+         * The option will be converted to a <code>java.net.URI</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder faultTo(String faultTo) {
             this.properties.put("faultTo", faultTo);
@@ -427,6 +466,7 @@ public interface SpringWebserviceEndpointBuilder {
          * you want Apache Axiom to handle web service messages instead of SAAJ.
          * The option is a
          * <code>org.springframework.ws.WebServiceMessageFactory</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder messageFactory(
                 Object messageFactory) {
@@ -438,6 +478,7 @@ public interface SpringWebserviceEndpointBuilder {
          * you want Apache Axiom to handle web service messages instead of SAAJ.
          * The option will be converted to a
          * <code>org.springframework.ws.WebServiceMessageFactory</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder messageFactory(
                 String messageFactory) {
@@ -446,8 +487,10 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Option to provide a custom MessageIdStrategy to control generation of
-         * unique message ids. The option is a
+         * unique message ids.
+         * The option is a
          * <code>org.springframework.ws.soap.addressing.messageid.MessageIdStrategy</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder messageIdStrategy(
                 Object messageIdStrategy) {
@@ -456,8 +499,10 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Option to provide a custom MessageIdStrategy to control generation of
-         * unique message ids. The option will be converted to a
+         * unique message ids.
+         * The option will be converted to a
          * <code>org.springframework.ws.soap.addressing.messageid.MessageIdStrategy</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder messageIdStrategy(
                 String messageIdStrategy) {
@@ -466,9 +511,11 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Option to provide a custom WebServiceMessageSender. For example to
-         * perform authentication or use alternative transports. The option is a
+         * perform authentication or use alternative transports.
+         * The option is a
          * <code>org.springframework.ws.transport.WebServiceMessageSender</code>
          * type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder messageSender(
                 Object messageSender) {
@@ -477,10 +524,11 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Option to provide a custom WebServiceMessageSender. For example to
-         * perform authentication or use alternative transports. The option will
-         * be converted to a
+         * perform authentication or use alternative transports.
+         * The option will be converted to a
          * <code>org.springframework.ws.transport.WebServiceMessageSender</code>
          * type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder messageSender(
                 String messageSender) {
@@ -489,8 +537,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Signifies the value for the response WS-Addressing Action header that
-         * is provided by the method. The option is a <code>java.net.URI</code>
-         * type.
+         * is provided by the method.
+         * The option is a <code>java.net.URI</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder outputAction(URI outputAction) {
             this.properties.put("outputAction", outputAction);
@@ -498,8 +547,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Signifies the value for the response WS-Addressing Action header that
-         * is provided by the method. The option will be converted to a
-         * <code>java.net.URI</code> type.
+         * is provided by the method.
+         * The option will be converted to a <code>java.net.URI</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder outputAction(String outputAction) {
             this.properties.put("outputAction", outputAction);
@@ -507,8 +557,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Signifies the value for the replyTo response WS-Addressing ReplyTo
-         * header that is provided by the method. The option is a
-         * <code>java.net.URI</code> type.
+         * header that is provided by the method.
+         * The option is a <code>java.net.URI</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder replyTo(URI replyTo) {
             this.properties.put("replyTo", replyTo);
@@ -516,8 +567,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * Signifies the value for the replyTo response WS-Addressing ReplyTo
-         * header that is provided by the method. The option will be converted
-         * to a <code>java.net.URI</code> type.
+         * header that is provided by the method.
+         * The option will be converted to a <code>java.net.URI</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder replyTo(String replyTo) {
             this.properties.put("replyTo", replyTo);
@@ -525,7 +577,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
         /**
          * SOAP action to include inside a SOAP request when accessing remote
-         * web services. The option is a <code>java.lang.String</code> type.
+         * web services.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder soapAction(String soapAction) {
             this.properties.put("soapAction", soapAction);
@@ -543,8 +597,9 @@ public interface SpringWebserviceEndpointBuilder {
          * that you will handle your own timeout configuration. The built-in
          * message sender HttpComponentsMessageSender is considered instead of
          * CommonsHttpMessageSender which has been deprecated, see
-         * HttpComponentsMessageSender.setReadTimeout(). The option is a
-         * <code>int</code> type.
+         * HttpComponentsMessageSender.setReadTimeout().
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder timeout(int timeout) {
             this.properties.put("timeout", timeout);
@@ -562,8 +617,9 @@ public interface SpringWebserviceEndpointBuilder {
          * that you will handle your own timeout configuration. The built-in
          * message sender HttpComponentsMessageSender is considered instead of
          * CommonsHttpMessageSender which has been deprecated, see
-         * HttpComponentsMessageSender.setReadTimeout(). The option will be
-         * converted to a <code>int</code> type.
+         * HttpComponentsMessageSender.setReadTimeout().
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder timeout(String timeout) {
             this.properties.put("timeout", timeout);
@@ -573,9 +629,11 @@ public interface SpringWebserviceEndpointBuilder {
          * Option to provide a custom WebServiceTemplate. This allows for full
          * control over client-side web services handling; like adding a custom
          * interceptor or specifying a fault resolver, message sender or message
-         * factory. The option is a
+         * factory.
+         * The option is a
          * <code>org.springframework.ws.client.core.WebServiceTemplate</code>
          * type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder webServiceTemplate(
                 Object webServiceTemplate) {
@@ -586,9 +644,11 @@ public interface SpringWebserviceEndpointBuilder {
          * Option to provide a custom WebServiceTemplate. This allows for full
          * control over client-side web services handling; like adding a custom
          * interceptor or specifying a fault resolver, message sender or message
-         * factory. The option will be converted to a
+         * factory.
+         * The option will be converted to a
          * <code>org.springframework.ws.client.core.WebServiceTemplate</code>
          * type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder webServiceTemplate(
                 String webServiceTemplate) {
@@ -598,8 +658,9 @@ public interface SpringWebserviceEndpointBuilder {
         /**
          * WS-Addressing 1.0 action header to include when accessing web
          * services. The To header is set to the address of the web service as
-         * specified in the endpoint URI (default Spring-WS behavior). The
-         * option is a <code>java.net.URI</code> type.
+         * specified in the endpoint URI (default Spring-WS behavior).
+         * The option is a <code>java.net.URI</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder wsAddressingAction(
                 URI wsAddressingAction) {
@@ -609,8 +670,9 @@ public interface SpringWebserviceEndpointBuilder {
         /**
          * WS-Addressing 1.0 action header to include when accessing web
          * services. The To header is set to the address of the web service as
-         * specified in the endpoint URI (default Spring-WS behavior). The
-         * option will be converted to a <code>java.net.URI</code> type.
+         * specified in the endpoint URI (default Spring-WS behavior).
+         * The option will be converted to a <code>java.net.URI</code> type.
+         * @group producer
          */
         public SpringWebserviceProducerBuilder wsAddressingAction(
                 String wsAddressingAction) {

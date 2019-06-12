@@ -41,102 +41,120 @@ public interface CwEndpointBuilder {
             super("aws-cw", path);
         }
         /**
-         * The metric namespace. The option is a <code>java.lang.String</code>
-         * type.
+         * The metric namespace.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T namespace(String namespace) {
             this.properties.put("namespace", namespace);
             return (T) this;
         }
         /**
-         * To use the AmazonCloudWatch as the client. The option is a
+         * To use the AmazonCloudWatch as the client.
+         * The option is a
          * <code>com.amazonaws.services.cloudwatch.AmazonCloudWatch</code> type.
+         * @group producer
          */
         public T amazonCwClient(Object amazonCwClient) {
             this.properties.put("amazonCwClient", amazonCwClient);
             return (T) this;
         }
         /**
-         * To use the AmazonCloudWatch as the client. The option will be
-         * converted to a
+         * To use the AmazonCloudWatch as the client.
+         * The option will be converted to a
          * <code>com.amazonaws.services.cloudwatch.AmazonCloudWatch</code> type.
+         * @group producer
          */
         public T amazonCwClient(String amazonCwClient) {
             this.properties.put("amazonCwClient", amazonCwClient);
             return (T) this;
         }
         /**
-         * The metric name. The option is a <code>java.lang.String</code> type.
+         * The metric name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T name(String name) {
             this.properties.put("name", name);
             return (T) this;
         }
         /**
-         * To define a proxy host when instantiating the CW client. The option
-         * is a <code>java.lang.String</code> type.
+         * To define a proxy host when instantiating the CW client.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the CW client. The option
-         * is a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the CW client.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the CW client. The option
-         * will be converted to a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the CW client.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * The region in which CW client needs to work. The option is a
-         * <code>java.lang.String</code> type.
+         * The region in which CW client needs to work.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T region(String region) {
             this.properties.put("region", region);
             return (T) this;
         }
         /**
-         * The metric timestamp. The option is a <code>java.util.Date</code>
-         * type.
+         * The metric timestamp.
+         * The option is a <code>java.util.Date</code> type.
+         * @group producer
          */
         public T timestamp(Date timestamp) {
             this.properties.put("timestamp", timestamp);
             return (T) this;
         }
         /**
-         * The metric timestamp. The option will be converted to a
-         * <code>java.util.Date</code> type.
+         * The metric timestamp.
+         * The option will be converted to a <code>java.util.Date</code> type.
+         * @group producer
          */
         public T timestamp(String timestamp) {
             this.properties.put("timestamp", timestamp);
             return (T) this;
         }
         /**
-         * The metric unit. The option is a <code>java.lang.String</code> type.
+         * The metric unit.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T unit(String unit) {
             this.properties.put("unit", unit);
             return (T) this;
         }
         /**
-         * The metric value. The option is a <code>java.lang.Double</code> type.
+         * The metric value.
+         * The option is a <code>java.lang.Double</code> type.
+         * @group producer
          */
         public T value(Double value) {
             this.properties.put("value", value);
             return (T) this;
         }
         /**
-         * The metric value. The option will be converted to a
-         * <code>java.lang.Double</code> type.
+         * The metric value.
+         * The option will be converted to a <code>java.lang.Double</code> type.
+         * @group producer
          */
         public T value(String value) {
             this.properties.put("value", value);
@@ -144,8 +162,9 @@ public interface CwEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -153,8 +172,9 @@ public interface CwEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -162,8 +182,9 @@ public interface CwEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -171,24 +192,27 @@ public interface CwEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Access Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (T) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Secret Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);

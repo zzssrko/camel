@@ -45,24 +45,29 @@ public interface JCacheEndpointBuilder {
             super("jcache", path);
         }
         /**
-         * The name of the cache. The option is a <code>java.lang.String</code>
-         * type.
+         * The name of the cache.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T cacheName(String cacheName) {
             this.properties.put("cacheName", cacheName);
             return (T) this;
         }
         /**
-         * A Configuration for the Cache. The option is a
-         * <code>javax.cache.configuration.Configuration</code> type.
+         * A Configuration for the Cache.
+         * The option is a <code>javax.cache.configuration.Configuration</code>
+         * type.
+         * @group common
          */
         public T cacheConfiguration(Object cacheConfiguration) {
             this.properties.put("cacheConfiguration", cacheConfiguration);
             return (T) this;
         }
         /**
-         * A Configuration for the Cache. The option will be converted to a
+         * A Configuration for the Cache.
+         * The option will be converted to a
          * <code>javax.cache.configuration.Configuration</code> type.
+         * @group common
          */
         public T cacheConfiguration(String cacheConfiguration) {
             this.properties.put("cacheConfiguration", cacheConfiguration);
@@ -70,7 +75,9 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * The Properties for the javax.cache.spi.CachingProvider to create the
-         * CacheManager. The option is a <code>java.util.Properties</code> type.
+         * CacheManager.
+         * The option is a <code>java.util.Properties</code> type.
+         * @group common
          */
         public T cacheConfigurationProperties(
                 Properties cacheConfigurationProperties) {
@@ -79,8 +86,10 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * The Properties for the javax.cache.spi.CachingProvider to create the
-         * CacheManager. The option will be converted to a
-         * <code>java.util.Properties</code> type.
+         * CacheManager.
+         * The option will be converted to a <code>java.util.Properties</code>
+         * type.
+         * @group common
          */
         public T cacheConfigurationProperties(
                 String cacheConfigurationProperties) {
@@ -89,64 +98,72 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * The fully qualified class name of the
-         * javax.cache.spi.CachingProvider. The option is a
-         * <code>java.lang.String</code> type.
+         * javax.cache.spi.CachingProvider.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T cachingProvider(String cachingProvider) {
             this.properties.put("cachingProvider", cachingProvider);
             return (T) this;
         }
         /**
-         * An implementation specific URI for the CacheManager. The option is a
-         * <code>java.lang.String</code> type.
+         * An implementation specific URI for the CacheManager.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T configurationUri(String configurationUri) {
             this.properties.put("configurationUri", configurationUri);
             return (T) this;
         }
         /**
-         * Whether management gathering is enabled. The option is a
-         * <code>boolean</code> type.
+         * Whether management gathering is enabled.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T managementEnabled(boolean managementEnabled) {
             this.properties.put("managementEnabled", managementEnabled);
             return (T) this;
         }
         /**
-         * Whether management gathering is enabled. The option will be converted
-         * to a <code>boolean</code> type.
+         * Whether management gathering is enabled.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T managementEnabled(String managementEnabled) {
             this.properties.put("managementEnabled", managementEnabled);
             return (T) this;
         }
         /**
-         * If read-through caching should be used. The option is a
-         * <code>boolean</code> type.
+         * If read-through caching should be used.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T readThrough(boolean readThrough) {
             this.properties.put("readThrough", readThrough);
             return (T) this;
         }
         /**
-         * If read-through caching should be used. The option will be converted
-         * to a <code>boolean</code> type.
+         * If read-through caching should be used.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T readThrough(String readThrough) {
             this.properties.put("readThrough", readThrough);
             return (T) this;
         }
         /**
-         * Whether statistics gathering is enabled. The option is a
-         * <code>boolean</code> type.
+         * Whether statistics gathering is enabled.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T statisticsEnabled(boolean statisticsEnabled) {
             this.properties.put("statisticsEnabled", statisticsEnabled);
             return (T) this;
         }
         /**
-         * Whether statistics gathering is enabled. The option will be converted
-         * to a <code>boolean</code> type.
+         * Whether statistics gathering is enabled.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T statisticsEnabled(String statisticsEnabled) {
             this.properties.put("statisticsEnabled", statisticsEnabled);
@@ -155,6 +172,7 @@ public interface JCacheEndpointBuilder {
         /**
          * If cache should use store-by-value or store-by-reference semantics.
          * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T storeByValue(boolean storeByValue) {
             this.properties.put("storeByValue", storeByValue);
@@ -163,22 +181,25 @@ public interface JCacheEndpointBuilder {
         /**
          * If cache should use store-by-value or store-by-reference semantics.
          * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T storeByValue(String storeByValue) {
             this.properties.put("storeByValue", storeByValue);
             return (T) this;
         }
         /**
-         * If write-through caching should be used. The option is a
-         * <code>boolean</code> type.
+         * If write-through caching should be used.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T writeThrough(boolean writeThrough) {
             this.properties.put("writeThrough", writeThrough);
             return (T) this;
         }
         /**
-         * If write-through caching should be used. The option will be converted
-         * to a <code>boolean</code> type.
+         * If write-through caching should be used.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T writeThrough(String writeThrough) {
             this.properties.put("writeThrough", writeThrough);
@@ -186,8 +207,9 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -195,40 +217,49 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
         /**
-         * The CacheLoader factory. The option is a
+         * The CacheLoader factory.
+         * The option is a
          * <code>javax.cache.configuration.Factory&lt;javax.cache.integration.CacheLoader&gt;</code> type.
+         * @group advanced
          */
         public T cacheLoaderFactory(Object cacheLoaderFactory) {
             this.properties.put("cacheLoaderFactory", cacheLoaderFactory);
             return (T) this;
         }
         /**
-         * The CacheLoader factory. The option will be converted to a
+         * The CacheLoader factory.
+         * The option will be converted to a
          * <code>javax.cache.configuration.Factory&lt;javax.cache.integration.CacheLoader&gt;</code> type.
+         * @group advanced
          */
         public T cacheLoaderFactory(String cacheLoaderFactory) {
             this.properties.put("cacheLoaderFactory", cacheLoaderFactory);
             return (T) this;
         }
         /**
-         * The CacheWriter factory. The option is a
+         * The CacheWriter factory.
+         * The option is a
          * <code>javax.cache.configuration.Factory&lt;javax.cache.integration.CacheWriter&gt;</code> type.
+         * @group advanced
          */
         public T cacheWriterFactory(Object cacheWriterFactory) {
             this.properties.put("cacheWriterFactory", cacheWriterFactory);
             return (T) this;
         }
         /**
-         * The CacheWriter factory. The option will be converted to a
+         * The CacheWriter factory.
+         * The option will be converted to a
          * <code>javax.cache.configuration.Factory&lt;javax.cache.integration.CacheWriter&gt;</code> type.
+         * @group advanced
          */
         public T cacheWriterFactory(String cacheWriterFactory) {
             this.properties.put("cacheWriterFactory", cacheWriterFactory);
@@ -236,7 +267,9 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * Configure if a cache need to be created if it does exist or can't be
-         * pre-configured. The option is a <code>boolean</code> type.
+         * pre-configured.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T createCacheIfNotExists(boolean createCacheIfNotExists) {
             this.properties.put("createCacheIfNotExists", createCacheIfNotExists);
@@ -244,24 +277,29 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * Configure if a cache need to be created if it does exist or can't be
-         * pre-configured. The option will be converted to a
-         * <code>boolean</code> type.
+         * pre-configured.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T createCacheIfNotExists(String createCacheIfNotExists) {
             this.properties.put("createCacheIfNotExists", createCacheIfNotExists);
             return (T) this;
         }
         /**
-         * The ExpiryPolicy factory. The option is a
+         * The ExpiryPolicy factory.
+         * The option is a
          * <code>javax.cache.configuration.Factory&lt;javax.cache.expiry.ExpiryPolicy&gt;</code> type.
+         * @group advanced
          */
         public T expiryPolicyFactory(Object expiryPolicyFactory) {
             this.properties.put("expiryPolicyFactory", expiryPolicyFactory);
             return (T) this;
         }
         /**
-         * The ExpiryPolicy factory. The option will be converted to a
+         * The ExpiryPolicy factory.
+         * The option will be converted to a
          * <code>javax.cache.configuration.Factory&lt;javax.cache.expiry.ExpiryPolicy&gt;</code> type.
+         * @group advanced
          */
         public T expiryPolicyFactory(String expiryPolicyFactory) {
             this.properties.put("expiryPolicyFactory", expiryPolicyFactory);
@@ -269,8 +307,9 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * Configure if a camel-cache should try to find implementations of
-         * jcache api in runtimes like OSGi. The option is a
-         * <code>boolean</code> type.
+         * jcache api in runtimes like OSGi.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T lookupProviders(boolean lookupProviders) {
             this.properties.put("lookupProviders", lookupProviders);
@@ -278,8 +317,9 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * Configure if a camel-cache should try to find implementations of
-         * jcache api in runtimes like OSGi. The option will be converted to a
-         * <code>boolean</code> type.
+         * jcache api in runtimes like OSGi.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T lookupProviders(String lookupProviders) {
             this.properties.put("lookupProviders", lookupProviders);
@@ -305,7 +345,9 @@ public interface JCacheEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public JCacheConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -319,7 +361,9 @@ public interface JCacheEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public JCacheConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -328,8 +372,10 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * Events a consumer should filter. If using filteredEvents option, then
-         * eventFilters one will be ignored. The option is a
+         * eventFilters one will be ignored.
+         * The option is a
          * <code>java.util.List&lt;javax.cache.event.EventType&gt;</code> type.
+         * @group consumer
          */
         public JCacheConsumerBuilder filteredEvents(
                 List<EventType> filteredEvents) {
@@ -338,40 +384,46 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * Events a consumer should filter. If using filteredEvents option, then
-         * eventFilters one will be ignored. The option will be converted to a
+         * eventFilters one will be ignored.
+         * The option will be converted to a
          * <code>java.util.List&lt;javax.cache.event.EventType&gt;</code> type.
+         * @group consumer
          */
         public JCacheConsumerBuilder filteredEvents(String filteredEvents) {
             this.properties.put("filteredEvents", filteredEvents);
             return (JCacheConsumerBuilder) this;
         }
         /**
-         * if the old value is required for events. The option is a
-         * <code>boolean</code> type.
+         * if the old value is required for events.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public JCacheConsumerBuilder oldValueRequired(boolean oldValueRequired) {
             this.properties.put("oldValueRequired", oldValueRequired);
             return (JCacheConsumerBuilder) this;
         }
         /**
-         * if the old value is required for events. The option will be converted
-         * to a <code>boolean</code> type.
+         * if the old value is required for events.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public JCacheConsumerBuilder oldValueRequired(String oldValueRequired) {
             this.properties.put("oldValueRequired", oldValueRequired);
             return (JCacheConsumerBuilder) this;
         }
         /**
-         * if the event listener should block the thread causing the event. The
-         * option is a <code>boolean</code> type.
+         * if the event listener should block the thread causing the event.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public JCacheConsumerBuilder synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
             return (JCacheConsumerBuilder) this;
         }
         /**
-         * if the event listener should block the thread causing the event. The
-         * option will be converted to a <code>boolean</code> type.
+         * if the event listener should block the thread causing the event.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public JCacheConsumerBuilder synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -379,8 +431,10 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * The CacheEntryEventFilter. If using eventFilters option, then
-         * filteredEvents one will be ignored. The option is a
+         * filteredEvents one will be ignored.
+         * The option is a
          * <code>java.util.List&lt;javax.cache.event.CacheEntryEventFilter&gt;</code> type.
+         * @group consumer (advanced)
          */
         public JCacheConsumerBuilder eventFilters(List<Object> eventFilters) {
             this.properties.put("eventFilters", eventFilters);
@@ -388,8 +442,10 @@ public interface JCacheEndpointBuilder {
         }
         /**
          * The CacheEntryEventFilter. If using eventFilters option, then
-         * filteredEvents one will be ignored. The option will be converted to a
+         * filteredEvents one will be ignored.
+         * The option will be converted to a
          * <code>java.util.List&lt;javax.cache.event.CacheEntryEventFilter&gt;</code> type.
+         * @group consumer (advanced)
          */
         public JCacheConsumerBuilder eventFilters(String eventFilters) {
             this.properties.put("eventFilters", eventFilters);
@@ -399,8 +455,10 @@ public interface JCacheEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public JCacheConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -411,17 +469,19 @@ public interface JCacheEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public JCacheConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (JCacheConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public JCacheConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -429,9 +489,10 @@ public interface JCacheEndpointBuilder {
             return (JCacheConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public JCacheConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -453,7 +514,9 @@ public interface JCacheEndpointBuilder {
         /**
          * To configure using a cache operation by default. If an operation in
          * the message header, then the operation from the header takes
-         * precedence. The option is a <code>java.lang.String</code> type.
+         * precedence.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public JCacheProducerBuilder action(String action) {
             this.properties.put("action", action);

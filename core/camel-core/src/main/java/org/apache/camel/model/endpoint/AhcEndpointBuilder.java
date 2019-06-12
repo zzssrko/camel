@@ -43,16 +43,18 @@ public interface AhcEndpointBuilder {
             super("ahc", path);
         }
         /**
-         * The URI to use such as http://hostname:port/path. The option is a
-         * <code>java.net.URI</code> type.
+         * The URI to use such as http://hostname:port/path.
+         * The option is a <code>java.net.URI</code> type.
+         * @group producer
          */
         public T httpUri(URI httpUri) {
             this.properties.put("httpUri", httpUri);
             return (T) this;
         }
         /**
-         * The URI to use such as http://hostname:port/path. The option will be
-         * converted to a <code>java.net.URI</code> type.
+         * The URI to use such as http://hostname:port/path.
+         * The option will be converted to a <code>java.net.URI</code> type.
+         * @group producer
          */
         public T httpUri(String httpUri) {
             this.properties.put("httpUri", httpUri);
@@ -62,7 +64,9 @@ public interface AhcEndpointBuilder {
          * If the option is true, then the Exchange.HTTP_URI header is ignored,
          * and use the endpoint's URI for request. You may also set the
          * throwExceptionOnFailure to be false to let the AhcProducer send all
-         * the fault response back. The option is a <code>boolean</code> type.
+         * the fault response back.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T bridgeEndpoint(boolean bridgeEndpoint) {
             this.properties.put("bridgeEndpoint", bridgeEndpoint);
@@ -72,8 +76,9 @@ public interface AhcEndpointBuilder {
          * If the option is true, then the Exchange.HTTP_URI header is ignored,
          * and use the endpoint's URI for request. You may also set the
          * throwExceptionOnFailure to be false to let the AhcProducer send all
-         * the fault response back. The option will be converted to a
-         * <code>boolean</code> type.
+         * the fault response back.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T bridgeEndpoint(String bridgeEndpoint) {
             this.properties.put("bridgeEndpoint", bridgeEndpoint);
@@ -81,7 +86,9 @@ public interface AhcEndpointBuilder {
         }
         /**
          * The initial in-memory buffer size used when transferring data between
-         * Camel and AHC Client. The option is a <code>int</code> type.
+         * Camel and AHC Client.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T bufferSize(int bufferSize) {
             this.properties.put("bufferSize", bufferSize);
@@ -89,8 +96,9 @@ public interface AhcEndpointBuilder {
         }
         /**
          * The initial in-memory buffer size used when transferring data between
-         * Camel and AHC Client. The option will be converted to a
-         * <code>int</code> type.
+         * Camel and AHC Client.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T bufferSize(String bufferSize) {
             this.properties.put("bufferSize", bufferSize);
@@ -98,8 +106,10 @@ public interface AhcEndpointBuilder {
         }
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
-         * Camel message. The option is a
+         * Camel message.
+         * The option is a
          * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
+         * @group producer
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -107,8 +117,10 @@ public interface AhcEndpointBuilder {
         }
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
-         * Camel message. The option will be converted to a
+         * Camel message.
+         * The option will be converted to a
          * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
+         * @group producer
          */
         public T headerFilterStrategy(String headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -117,8 +129,9 @@ public interface AhcEndpointBuilder {
         /**
          * Option to disable throwing the AhcOperationFailedException in case of
          * failed responses from the remote server. This allows you to get all
-         * responses regardless of the HTTP status code. The option is a
-         * <code>boolean</code> type.
+         * responses regardless of the HTTP status code.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T throwExceptionOnFailure(boolean throwExceptionOnFailure) {
             this.properties.put("throwExceptionOnFailure", throwExceptionOnFailure);
@@ -127,8 +140,9 @@ public interface AhcEndpointBuilder {
         /**
          * Option to disable throwing the AhcOperationFailedException in case of
          * failed responses from the remote server. This allows you to get all
-         * responses regardless of the HTTP status code. The option will be
-         * converted to a <code>boolean</code> type.
+         * responses regardless of the HTTP status code.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T throwExceptionOnFailure(String throwExceptionOnFailure) {
             this.properties.put("throwExceptionOnFailure", throwExceptionOnFailure);
@@ -143,8 +157,9 @@ public interface AhcEndpointBuilder {
          * AhcOperationFailedException. The caused exception is required to be
          * serialized. This is by default turned off. If you enable this then be
          * aware that Java will deserialize the incoming data from the request
-         * to Java and that can be a potential security risk. The option is a
-         * <code>boolean</code> type.
+         * to Java and that can be a potential security risk.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T transferException(boolean transferException) {
             this.properties.put("transferException", transferException);
@@ -159,8 +174,9 @@ public interface AhcEndpointBuilder {
          * AhcOperationFailedException. The caused exception is required to be
          * serialized. This is by default turned off. If you enable this then be
          * aware that Java will deserialize the incoming data from the request
-         * to Java and that can be a potential security risk. The option will be
-         * converted to a <code>boolean</code> type.
+         * to Java and that can be a potential security risk.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T transferException(String transferException) {
             this.properties.put("transferException", transferException);
@@ -168,8 +184,9 @@ public interface AhcEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -177,8 +194,9 @@ public interface AhcEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -186,8 +204,10 @@ public interface AhcEndpointBuilder {
         }
         /**
          * To use a custom AhcBinding which allows to control how to bind
-         * between AHC and Camel. The option is a
+         * between AHC and Camel.
+         * The option is a
          * <code>org.apache.camel.component.ahc.AhcBinding</code> type.
+         * @group advanced
          */
         public T binding(Object binding) {
             this.properties.put("binding", binding);
@@ -195,8 +215,10 @@ public interface AhcEndpointBuilder {
         }
         /**
          * To use a custom AhcBinding which allows to control how to bind
-         * between AHC and Camel. The option will be converted to a
+         * between AHC and Camel.
+         * The option will be converted to a
          * <code>org.apache.camel.component.ahc.AhcBinding</code> type.
+         * @group advanced
          */
         public T binding(String binding) {
             this.properties.put("binding", binding);
@@ -204,8 +226,10 @@ public interface AhcEndpointBuilder {
         }
         /**
          * To configure the AsyncHttpClient to use a custom
-         * com.ning.http.client.AsyncHttpClientConfig instance. The option is a
+         * com.ning.http.client.AsyncHttpClientConfig instance.
+         * The option is a
          * <code>org.asynchttpclient.AsyncHttpClientConfig</code> type.
+         * @group advanced
          */
         public T clientConfig(Object clientConfig) {
             this.properties.put("clientConfig", clientConfig);
@@ -213,9 +237,10 @@ public interface AhcEndpointBuilder {
         }
         /**
          * To configure the AsyncHttpClient to use a custom
-         * com.ning.http.client.AsyncHttpClientConfig instance. The option will
-         * be converted to a
+         * com.ning.http.client.AsyncHttpClientConfig instance.
+         * The option will be converted to a
          * <code>org.asynchttpclient.AsyncHttpClientConfig</code> type.
+         * @group advanced
          */
         public T clientConfig(String clientConfig) {
             this.properties.put("clientConfig", clientConfig);
@@ -223,8 +248,10 @@ public interface AhcEndpointBuilder {
         }
         /**
          * To configure the AsyncHttpClientConfig using the key/values from the
-         * Map. The option is a <code>java.util.Map&lt;java.lang.String,
+         * Map.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
          * java.lang.Object&gt;</code> type.
+         * @group advanced
          */
         public T clientConfigOptions(Map<String, Object> clientConfigOptions) {
             this.properties.put("clientConfigOptions", clientConfigOptions);
@@ -232,9 +259,11 @@ public interface AhcEndpointBuilder {
         }
         /**
          * To configure the AsyncHttpClientConfig using the key/values from the
-         * Map. The option will be converted to a
+         * Map.
+         * The option will be converted to a
          * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
          * type.
+         * @group advanced
          */
         public T clientConfigOptions(String clientConfigOptions) {
             this.properties.put("clientConfigOptions", clientConfigOptions);
@@ -242,8 +271,9 @@ public interface AhcEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -251,8 +281,9 @@ public interface AhcEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -260,9 +291,10 @@ public interface AhcEndpointBuilder {
         }
         /**
          * To configure the AsyncHttpClientConfig Realm using the key/values
-         * from the Map. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
-         * type.
+         * from the Map.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
+         * @group security
          */
         public T clientConfigRealmOptions(
                 Map<String, Object> clientConfigRealmOptions) {
@@ -271,9 +303,11 @@ public interface AhcEndpointBuilder {
         }
         /**
          * To configure the AsyncHttpClientConfig Realm using the key/values
-         * from the Map. The option will be converted to a
+         * from the Map.
+         * The option will be converted to a
          * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
          * type.
+         * @group security
          */
         public T clientConfigRealmOptions(String clientConfigRealmOptions) {
             this.properties.put("clientConfigRealmOptions", clientConfigRealmOptions);
@@ -285,9 +319,10 @@ public interface AhcEndpointBuilder {
          * SSLContextParameters at the component level. See Using the JSSE
          * Configuration Utility. Note that configuring this option will
          * override any SSL/TLS configuration options provided through the
-         * clientConfig option at the endpoint or component level. The option is
-         * a <code>org.apache.camel.support.jsse.SSLContextParameters</code>
-         * type.
+         * clientConfig option at the endpoint or component level.
+         * The option is a
+         * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group security
          */
         public T sslContextParameters(Object sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -299,9 +334,10 @@ public interface AhcEndpointBuilder {
          * SSLContextParameters at the component level. See Using the JSSE
          * Configuration Utility. Note that configuring this option will
          * override any SSL/TLS configuration options provided through the
-         * clientConfig option at the endpoint or component level. The option
-         * will be converted to a
+         * clientConfig option at the endpoint or component level.
+         * The option will be converted to a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group security
          */
         public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -322,8 +358,9 @@ public interface AhcEndpointBuilder {
         }
         /**
          * Define if the Connection Close header has to be added to HTTP
-         * Request. This parameter is false by default. The option is a
-         * <code>boolean</code> type.
+         * Request. This parameter is false by default.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public AhcProducerBuilder connectionClose(boolean connectionClose) {
             this.properties.put("connectionClose", connectionClose);
@@ -331,26 +368,29 @@ public interface AhcEndpointBuilder {
         }
         /**
          * Define if the Connection Close header has to be added to HTTP
-         * Request. This parameter is false by default. The option will be
-         * converted to a <code>boolean</code> type.
+         * Request. This parameter is false by default.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public AhcProducerBuilder connectionClose(String connectionClose) {
             this.properties.put("connectionClose", connectionClose);
             return (AhcProducerBuilder) this;
         }
         /**
-         * Configure a cookie handler to maintain a HTTP session. The option is
-         * a <code>org.apache.camel.http.common.cookie.CookieHandler</code>
-         * type.
+         * Configure a cookie handler to maintain a HTTP session.
+         * The option is a
+         * <code>org.apache.camel.http.common.cookie.CookieHandler</code> type.
+         * @group producer
          */
         public AhcProducerBuilder cookieHandler(Object cookieHandler) {
             this.properties.put("cookieHandler", cookieHandler);
             return (AhcProducerBuilder) this;
         }
         /**
-         * Configure a cookie handler to maintain a HTTP session. The option
-         * will be converted to a
+         * Configure a cookie handler to maintain a HTTP session.
+         * The option will be converted to a
          * <code>org.apache.camel.http.common.cookie.CookieHandler</code> type.
+         * @group producer
          */
         public AhcProducerBuilder cookieHandler(String cookieHandler) {
             this.properties.put("cookieHandler", cookieHandler);

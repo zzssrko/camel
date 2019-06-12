@@ -42,57 +42,67 @@ public interface SnsEndpointBuilder {
             super("aws-sns", path);
         }
         /**
-         * Topic name or ARN. The option is a <code>java.lang.String</code>
-         * type.
+         * Topic name or ARN.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T topicNameOrArn(String topicNameOrArn) {
             this.properties.put("topicNameOrArn", topicNameOrArn);
             return (T) this;
         }
         /**
-         * To use the AmazonSNS as the client. The option is a
-         * <code>com.amazonaws.services.sns.AmazonSNS</code> type.
+         * To use the AmazonSNS as the client.
+         * The option is a <code>com.amazonaws.services.sns.AmazonSNS</code>
+         * type.
+         * @group producer
          */
         public T amazonSNSClient(Object amazonSNSClient) {
             this.properties.put("amazonSNSClient", amazonSNSClient);
             return (T) this;
         }
         /**
-         * To use the AmazonSNS as the client. The option will be converted to a
+         * To use the AmazonSNS as the client.
+         * The option will be converted to a
          * <code>com.amazonaws.services.sns.AmazonSNS</code> type.
+         * @group producer
          */
         public T amazonSNSClient(String amazonSNSClient) {
             this.properties.put("amazonSNSClient", amazonSNSClient);
             return (T) this;
         }
         /**
-         * An SQS Client to use as bridge between SNS and SQS. The option is a
-         * <code>com.amazonaws.services.sqs.AmazonSQS</code> type.
+         * An SQS Client to use as bridge between SNS and SQS.
+         * The option is a <code>com.amazonaws.services.sqs.AmazonSQS</code>
+         * type.
+         * @group producer
          */
         public T amazonSQSClient(Object amazonSQSClient) {
             this.properties.put("amazonSQSClient", amazonSQSClient);
             return (T) this;
         }
         /**
-         * An SQS Client to use as bridge between SNS and SQS. The option will
-         * be converted to a <code>com.amazonaws.services.sqs.AmazonSQS</code>
-         * type.
+         * An SQS Client to use as bridge between SNS and SQS.
+         * The option will be converted to a
+         * <code>com.amazonaws.services.sqs.AmazonSQS</code> type.
+         * @group producer
          */
         public T amazonSQSClient(String amazonSQSClient) {
             this.properties.put("amazonSQSClient", amazonSQSClient);
             return (T) this;
         }
         /**
-         * Setting the autocreation of the topic. The option is a
-         * <code>boolean</code> type.
+         * Setting the autocreation of the topic.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T autoCreateTopic(boolean autoCreateTopic) {
             this.properties.put("autoCreateTopic", autoCreateTopic);
             return (T) this;
         }
         /**
-         * Setting the autocreation of the topic. The option will be converted
-         * to a <code>boolean</code> type.
+         * Setting the autocreation of the topic.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T autoCreateTopic(String autoCreateTopic) {
             this.properties.put("autoCreateTopic", autoCreateTopic);
@@ -102,6 +112,7 @@ public interface SnsEndpointBuilder {
          * To use a custom HeaderFilterStrategy to map headers to/from Camel.
          * The option is a
          * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
+         * @group producer
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -111,6 +122,7 @@ public interface SnsEndpointBuilder {
          * To use a custom HeaderFilterStrategy to map headers to/from Camel.
          * The option will be converted to a
          * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
+         * @group producer
          */
         public T headerFilterStrategy(String headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -118,79 +130,91 @@ public interface SnsEndpointBuilder {
         }
         /**
          * The ID of an AWS-managed customer master key (CMK) for Amazon SNS or
-         * a custom CMK. The option is a <code>java.lang.String</code> type.
+         * a custom CMK.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T kmsMasterKeyId(String kmsMasterKeyId) {
             this.properties.put("kmsMasterKeyId", kmsMasterKeyId);
             return (T) this;
         }
         /**
-         * The message structure to use such as json. The option is a
-         * <code>java.lang.String</code> type.
+         * The message structure to use such as json.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T messageStructure(String messageStructure) {
             this.properties.put("messageStructure", messageStructure);
             return (T) this;
         }
         /**
-         * The policy for this queue. The option is a
-         * <code>java.lang.String</code> type.
+         * The policy for this queue.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T policy(String policy) {
             this.properties.put("policy", policy);
             return (T) this;
         }
         /**
-         * To define a proxy host when instantiating the SNS client. The option
-         * is a <code>java.lang.String</code> type.
+         * To define a proxy host when instantiating the SNS client.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the SNS client. The option
-         * is a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the SNS client.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the SNS client. The option
-         * will be converted to a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the SNS client.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * The queueUrl to subscribe to. The option is a
-         * <code>java.lang.String</code> type.
+         * The queueUrl to subscribe to.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T queueUrl(String queueUrl) {
             this.properties.put("queueUrl", queueUrl);
             return (T) this;
         }
         /**
-         * The region in which SNS client needs to work. The option is a
-         * <code>java.lang.String</code> type.
+         * The region in which SNS client needs to work.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T region(String region) {
             this.properties.put("region", region);
             return (T) this;
         }
         /**
-         * Define if Server Side Encryption is enabled or not on the topic. The
-         * option is a <code>boolean</code> type.
+         * Define if Server Side Encryption is enabled or not on the topic.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T serverSideEncryptionEnabled(boolean serverSideEncryptionEnabled) {
             this.properties.put("serverSideEncryptionEnabled", serverSideEncryptionEnabled);
             return (T) this;
         }
         /**
-         * Define if Server Side Encryption is enabled or not on the topic. The
-         * option will be converted to a <code>boolean</code> type.
+         * Define if Server Side Encryption is enabled or not on the topic.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T serverSideEncryptionEnabled(String serverSideEncryptionEnabled) {
             this.properties.put("serverSideEncryptionEnabled", serverSideEncryptionEnabled);
@@ -198,7 +222,9 @@ public interface SnsEndpointBuilder {
         }
         /**
          * The subject which is used if the message header 'CamelAwsSnsSubject'
-         * is not present. The option is a <code>java.lang.String</code> type.
+         * is not present.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T subject(String subject) {
             this.properties.put("subject", subject);
@@ -206,7 +232,9 @@ public interface SnsEndpointBuilder {
         }
         /**
          * Define if the subscription between SNS Topic and SQS must be done or
-         * not. The option is a <code>boolean</code> type.
+         * not.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T subscribeSNStoSQS(boolean subscribeSNStoSQS) {
             this.properties.put("subscribeSNStoSQS", subscribeSNStoSQS);
@@ -214,7 +242,9 @@ public interface SnsEndpointBuilder {
         }
         /**
          * Define if the subscription between SNS Topic and SQS must be done or
-         * not. The option will be converted to a <code>boolean</code> type.
+         * not.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T subscribeSNStoSQS(String subscribeSNStoSQS) {
             this.properties.put("subscribeSNStoSQS", subscribeSNStoSQS);
@@ -222,8 +252,9 @@ public interface SnsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -231,8 +262,9 @@ public interface SnsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -240,8 +272,9 @@ public interface SnsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -249,24 +282,27 @@ public interface SnsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Access Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (T) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Secret Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);

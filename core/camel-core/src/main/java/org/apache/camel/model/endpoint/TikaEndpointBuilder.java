@@ -41,40 +41,48 @@ public interface TikaEndpointBuilder {
             super("tika", path);
         }
         /**
-         * Tika Operation. parse or detect. The option is a
+         * Tika Operation. parse or detect.
+         * The option is a
          * <code>org.apache.camel.component.tika.TikaOperation</code> type.
+         * @group producer
          */
         public T operation(TikaOperation operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * Tika Operation. parse or detect. The option will be converted to a
+         * Tika Operation. parse or detect.
+         * The option will be converted to a
          * <code>org.apache.camel.component.tika.TikaOperation</code> type.
+         * @group producer
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * Tika Config. The option is a
-         * <code>org.apache.tika.config.TikaConfig</code> type.
+         * Tika Config.
+         * The option is a <code>org.apache.tika.config.TikaConfig</code> type.
+         * @group producer
          */
         public T tikaConfig(Object tikaConfig) {
             this.properties.put("tikaConfig", tikaConfig);
             return (T) this;
         }
         /**
-         * Tika Config. The option will be converted to a
+         * Tika Config.
+         * The option will be converted to a
          * <code>org.apache.tika.config.TikaConfig</code> type.
+         * @group producer
          */
         public T tikaConfig(String tikaConfig) {
             this.properties.put("tikaConfig", tikaConfig);
             return (T) this;
         }
         /**
-         * Tika Config Uri: The URI of tika-config.xml. The option is a
-         * <code>java.lang.String</code> type.
+         * Tika Config Uri: The URI of tika-config.xml.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T tikaConfigUri(String tikaConfigUri) {
             this.properties.put("tikaConfigUri", tikaConfigUri);
@@ -82,8 +90,9 @@ public interface TikaEndpointBuilder {
         }
         /**
          * Tika Parse Output Encoding - Used to specify the character encoding
-         * of the parsed output. Defaults to Charset.defaultCharset() . The
-         * option is a <code>java.lang.String</code> type.
+         * of the parsed output. Defaults to Charset.defaultCharset() .
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T tikaParseOutputEncoding(String tikaParseOutputEncoding) {
             this.properties.put("tikaParseOutputEncoding", tikaParseOutputEncoding);
@@ -93,9 +102,11 @@ public interface TikaEndpointBuilder {
          * Tika Output Format. Supported output formats. xml: Returns Parsed
          * Content as XML. html: Returns Parsed Content as HTML. text: Returns
          * Parsed Content as Text. textMain: Uses the boilerpipe library to
-         * automatically extract the main content from a web page. The option is
-         * a <code>org.apache.camel.component.tika.TikaParseOutputFormat</code>
+         * automatically extract the main content from a web page.
+         * The option is a
+         * <code>org.apache.camel.component.tika.TikaParseOutputFormat</code>
          * type.
+         * @group producer
          */
         public T tikaParseOutputFormat(
                 TikaParseOutputFormat tikaParseOutputFormat) {
@@ -106,10 +117,11 @@ public interface TikaEndpointBuilder {
          * Tika Output Format. Supported output formats. xml: Returns Parsed
          * Content as XML. html: Returns Parsed Content as HTML. text: Returns
          * Parsed Content as Text. textMain: Uses the boilerpipe library to
-         * automatically extract the main content from a web page. The option
-         * will be converted to a
+         * automatically extract the main content from a web page.
+         * The option will be converted to a
          * <code>org.apache.camel.component.tika.TikaParseOutputFormat</code>
          * type.
+         * @group producer
          */
         public T tikaParseOutputFormat(String tikaParseOutputFormat) {
             this.properties.put("tikaParseOutputFormat", tikaParseOutputFormat);
@@ -117,8 +129,9 @@ public interface TikaEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -126,8 +139,9 @@ public interface TikaEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -135,8 +149,9 @@ public interface TikaEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -144,8 +159,9 @@ public interface TikaEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

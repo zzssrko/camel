@@ -41,25 +41,29 @@ public interface LuceneEndpointBuilder {
             super("lucene", path);
         }
         /**
-         * The URL to the lucene server. The option is a
-         * <code>java.lang.String</code> type.
+         * The URL to the lucene server.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * Operation to do such as insert or query. The option is a
+         * Operation to do such as insert or query.
+         * The option is a
          * <code>org.apache.camel.component.lucene.LuceneOperation</code> type.
+         * @group producer
          */
         public T operation(LuceneOperation operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * Operation to do such as insert or query. The option will be converted
-         * to a <code>org.apache.camel.component.lucene.LuceneOperation</code>
-         * type.
+         * Operation to do such as insert or query.
+         * The option will be converted to a
+         * <code>org.apache.camel.component.lucene.LuceneOperation</code> type.
+         * @group producer
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
@@ -70,8 +74,10 @@ public interface LuceneEndpointBuilder {
          * represents a policy for extracting index terms from text. The value
          * for analyzer can be any class that extends the abstract class
          * org.apache.lucene.analysis.Analyzer. Lucene also offers a rich set of
-         * analyzers out of the box. The option is a
-         * <code>org.apache.lucene.analysis.Analyzer</code> type.
+         * analyzers out of the box.
+         * The option is a <code>org.apache.lucene.analysis.Analyzer</code>
+         * type.
+         * @group producer
          */
         public T analyzer(Object analyzer) {
             this.properties.put("analyzer", analyzer);
@@ -82,8 +88,10 @@ public interface LuceneEndpointBuilder {
          * represents a policy for extracting index terms from text. The value
          * for analyzer can be any class that extends the abstract class
          * org.apache.lucene.analysis.Analyzer. Lucene also offers a rich set of
-         * analyzers out of the box. The option will be converted to a
+         * analyzers out of the box.
+         * The option will be converted to a
          * <code>org.apache.lucene.analysis.Analyzer</code> type.
+         * @group producer
          */
         public T analyzer(String analyzer) {
             this.properties.put("analyzer", analyzer);
@@ -91,8 +99,9 @@ public interface LuceneEndpointBuilder {
         }
         /**
          * A file system directory in which index files are created upon
-         * analysis of the document by the specified analyzer. The option is a
-         * <code>java.io.File</code> type.
+         * analysis of the document by the specified analyzer.
+         * The option is a <code>java.io.File</code> type.
+         * @group producer
          */
         public T indexDir(File indexDir) {
             this.properties.put("indexDir", indexDir);
@@ -100,8 +109,9 @@ public interface LuceneEndpointBuilder {
         }
         /**
          * A file system directory in which index files are created upon
-         * analysis of the document by the specified analyzer. The option will
-         * be converted to a <code>java.io.File</code> type.
+         * analysis of the document by the specified analyzer.
+         * The option will be converted to a <code>java.io.File</code> type.
+         * @group producer
          */
         public T indexDir(String indexDir) {
             this.properties.put("indexDir", indexDir);
@@ -110,6 +120,7 @@ public interface LuceneEndpointBuilder {
         /**
          * An integer value that limits the result set of the search operation.
          * The option is a <code>int</code> type.
+         * @group producer
          */
         public T maxHits(int maxHits) {
             this.properties.put("maxHits", maxHits);
@@ -118,6 +129,7 @@ public interface LuceneEndpointBuilder {
         /**
          * An integer value that limits the result set of the search operation.
          * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T maxHits(String maxHits) {
             this.properties.put("maxHits", maxHits);
@@ -125,8 +137,9 @@ public interface LuceneEndpointBuilder {
         }
         /**
          * An optional directory containing files to be used to be analyzed and
-         * added to the index at producer startup. The option is a
-         * <code>java.io.File</code> type.
+         * added to the index at producer startup.
+         * The option is a <code>java.io.File</code> type.
+         * @group producer
          */
         public T srcDir(File srcDir) {
             this.properties.put("srcDir", srcDir);
@@ -134,8 +147,9 @@ public interface LuceneEndpointBuilder {
         }
         /**
          * An optional directory containing files to be used to be analyzed and
-         * added to the index at producer startup. The option will be converted
-         * to a <code>java.io.File</code> type.
+         * added to the index at producer startup.
+         * The option will be converted to a <code>java.io.File</code> type.
+         * @group producer
          */
         public T srcDir(String srcDir) {
             this.properties.put("srcDir", srcDir);
@@ -143,8 +157,9 @@ public interface LuceneEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -152,8 +167,9 @@ public interface LuceneEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -161,8 +177,9 @@ public interface LuceneEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -170,8 +187,9 @@ public interface LuceneEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

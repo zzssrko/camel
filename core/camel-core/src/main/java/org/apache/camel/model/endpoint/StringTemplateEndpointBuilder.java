@@ -45,54 +45,63 @@ public interface StringTemplateEndpointBuilder {
          * protocols (classpath is default). ref will lookup the resource in the
          * registry. bean will call a method on a bean to be used as the
          * resource. For bean you can specify the method name after dot, eg
-         * bean:myBean.myMethod. The option is a <code>java.lang.String</code>
-         * type.
+         * bean:myBean.myMethod.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
         /**
-         * Sets whether to use resource content cache or not. The option is a
-         * <code>boolean</code> type.
+         * Sets whether to use resource content cache or not.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(boolean contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
         /**
-         * Sets whether to use resource content cache or not. The option will be
-         * converted to a <code>boolean</code> type.
+         * Sets whether to use resource content cache or not.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(String contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
         /**
-         * The variable start delimiter. The option is a <code>char</code> type.
+         * The variable start delimiter.
+         * The option is a <code>char</code> type.
+         * @group producer
          */
         public T delimiterStart(char delimiterStart) {
             this.properties.put("delimiterStart", delimiterStart);
             return (T) this;
         }
         /**
-         * The variable start delimiter. The option will be converted to a
-         * <code>char</code> type.
+         * The variable start delimiter.
+         * The option will be converted to a <code>char</code> type.
+         * @group producer
          */
         public T delimiterStart(String delimiterStart) {
             this.properties.put("delimiterStart", delimiterStart);
             return (T) this;
         }
         /**
-         * The variable end delimiter. The option is a <code>char</code> type.
+         * The variable end delimiter.
+         * The option is a <code>char</code> type.
+         * @group producer
          */
         public T delimiterStop(char delimiterStop) {
             this.properties.put("delimiterStop", delimiterStop);
             return (T) this;
         }
         /**
-         * The variable end delimiter. The option will be converted to a
-         * <code>char</code> type.
+         * The variable end delimiter.
+         * The option will be converted to a <code>char</code> type.
+         * @group producer
          */
         public T delimiterStop(String delimiterStop) {
             this.properties.put("delimiterStop", delimiterStop);
@@ -100,8 +109,9 @@ public interface StringTemplateEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -109,8 +119,9 @@ public interface StringTemplateEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -118,8 +129,9 @@ public interface StringTemplateEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -127,8 +139,9 @@ public interface StringTemplateEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

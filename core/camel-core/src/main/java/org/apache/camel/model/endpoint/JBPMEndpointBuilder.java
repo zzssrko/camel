@@ -46,64 +46,72 @@ public interface JBPMEndpointBuilder {
             super("jbpm", path);
         }
         /**
-         * The URL to the jBPM server. The option is a <code>java.net.URL</code>
-         * type.
+         * The URL to the jBPM server.
+         * The option is a <code>java.net.URL</code> type.
+         * @group common
          */
         public T connectionURL(URL connectionURL) {
             this.properties.put("connectionURL", connectionURL);
             return (T) this;
         }
         /**
-         * The URL to the jBPM server. The option will be converted to a
-         * <code>java.net.URL</code> type.
+         * The URL to the jBPM server.
+         * The option will be converted to a <code>java.net.URL</code> type.
+         * @group common
          */
         public T connectionURL(String connectionURL) {
             this.properties.put("connectionURL", connectionURL);
             return (T) this;
         }
         /**
-         * Sets the event listener type to attach to. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the event listener type to attach to.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T eventListenerType(String eventListenerType) {
             this.properties.put("eventListenerType", eventListenerType);
             return (T) this;
         }
         /**
-         * attachId to use when retrieving attachments. The option is a
-         * <code>java.lang.Long</code> type.
+         * attachId to use when retrieving attachments.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T attachmentId(Long attachmentId) {
             this.properties.put("attachmentId", attachmentId);
             return (T) this;
         }
         /**
-         * attachId to use when retrieving attachments. The option will be
-         * converted to a <code>java.lang.Long</code> type.
+         * attachId to use when retrieving attachments.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T attachmentId(String attachmentId) {
             this.properties.put("attachmentId", attachmentId);
             return (T) this;
         }
         /**
-         * contentId to use when retrieving attachments. The option is a
-         * <code>java.lang.Long</code> type.
+         * contentId to use when retrieving attachments.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T contentId(Long contentId) {
             this.properties.put("contentId", contentId);
             return (T) this;
         }
         /**
-         * contentId to use when retrieving attachments. The option will be
-         * converted to a <code>java.lang.Long</code> type.
+         * contentId to use when retrieving attachments.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T contentId(String contentId) {
             this.properties.put("contentId", contentId);
             return (T) this;
         }
         /**
-         * The id of the deployment. The option is a
-         * <code>java.lang.String</code> type.
+         * The id of the deployment.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T deploymentId(String deploymentId) {
             this.properties.put("deploymentId", deploymentId);
@@ -111,8 +119,9 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * Sets if event produced by emitter should be sent as single items or
-         * complete collection. The option is a <code>java.lang.Boolean</code>
-         * type.
+         * complete collection.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group common
          */
         public T emitterSendItems(Boolean emitterSendItems) {
             this.properties.put("emitterSendItems", emitterSendItems);
@@ -120,8 +129,10 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * Sets if event produced by emitter should be sent as single items or
-         * complete collection. The option will be converted to a
-         * <code>java.lang.Boolean</code> type.
+         * complete collection.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group common
          */
         public T emitterSendItems(String emitterSendItems) {
             this.properties.put("emitterSendItems", emitterSendItems);
@@ -129,7 +140,9 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * the data associated with this event when signalEvent operation is
-         * performed. The option is a <code>java.lang.Object</code> type.
+         * performed.
+         * The option is a <code>java.lang.Object</code> type.
+         * @group common
          */
         public T event(Object event) {
             this.properties.put("event", event);
@@ -137,190 +150,221 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * the data associated with this event when signalEvent operation is
-         * performed. The option will be converted to a
-         * <code>java.lang.Object</code> type.
+         * performed.
+         * The option will be converted to a <code>java.lang.Object</code> type.
+         * @group common
          */
         public T event(String event) {
             this.properties.put("event", event);
             return (T) this;
         }
         /**
-         * the type of event to use when signalEvent operation is performed. The
-         * option is a <code>java.lang.String</code> type.
+         * the type of event to use when signalEvent operation is performed.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T eventType(String eventType) {
             this.properties.put("eventType", eventType);
             return (T) this;
         }
         /**
-         * identifier the global identifier. The option is a
-         * <code>java.lang.String</code> type.
+         * identifier the global identifier.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T identifier(String identifier) {
             this.properties.put("identifier", identifier);
             return (T) this;
         }
         /**
-         * the maximum number of rules that should be fired. The option is a
-         * <code>java.lang.Integer</code> type.
+         * the maximum number of rules that should be fired.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T maxNumber(Integer maxNumber) {
             this.properties.put("maxNumber", maxNumber);
             return (T) this;
         }
         /**
-         * the maximum number of rules that should be fired. The option will be
-         * converted to a <code>java.lang.Integer</code> type.
+         * the maximum number of rules that should be fired.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T maxNumber(String maxNumber) {
             this.properties.put("maxNumber", maxNumber);
             return (T) this;
         }
         /**
-         * The page to use when retrieving user tasks. The option is a
-         * <code>java.lang.Integer</code> type.
+         * The page to use when retrieving user tasks.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T page(Integer page) {
             this.properties.put("page", page);
             return (T) this;
         }
         /**
-         * The page to use when retrieving user tasks. The option will be
-         * converted to a <code>java.lang.Integer</code> type.
+         * The page to use when retrieving user tasks.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T page(String page) {
             this.properties.put("page", page);
             return (T) this;
         }
         /**
-         * The page size to use when retrieving user tasks. The option is a
-         * <code>java.lang.Integer</code> type.
+         * The page size to use when retrieving user tasks.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T pageSize(Integer pageSize) {
             this.properties.put("pageSize", pageSize);
             return (T) this;
         }
         /**
-         * The page size to use when retrieving user tasks. The option will be
-         * converted to a <code>java.lang.Integer</code> type.
+         * The page size to use when retrieving user tasks.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T pageSize(String pageSize) {
             this.properties.put("pageSize", pageSize);
             return (T) this;
         }
         /**
-         * the id of the process that should be acted upon. The option is a
-         * <code>java.lang.String</code> type.
+         * the id of the process that should be acted upon.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T processId(String processId) {
             this.properties.put("processId", processId);
             return (T) this;
         }
         /**
-         * the id of the process instance. The option is a
-         * <code>java.lang.Long</code> type.
+         * the id of the process instance.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T processInstanceId(Long processInstanceId) {
             this.properties.put("processInstanceId", processInstanceId);
             return (T) this;
         }
         /**
-         * the id of the process instance. The option will be converted to a
-         * <code>java.lang.Long</code> type.
+         * the id of the process instance.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T processInstanceId(String processInstanceId) {
             this.properties.put("processInstanceId", processInstanceId);
             return (T) this;
         }
         /**
-         * The targetUserId used when delegating a task. The option is a
-         * <code>java.lang.String</code> type.
+         * The targetUserId used when delegating a task.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T targetUserId(String targetUserId) {
             this.properties.put("targetUserId", targetUserId);
             return (T) this;
         }
         /**
-         * The task instance to use with task operations. The option is a
-         * <code>org.kie.api.task.model.Task</code> type.
+         * The task instance to use with task operations.
+         * The option is a <code>org.kie.api.task.model.Task</code> type.
+         * @group common
          */
         public T task(Object task) {
             this.properties.put("task", task);
             return (T) this;
         }
         /**
-         * The task instance to use with task operations. The option will be
-         * converted to a <code>org.kie.api.task.model.Task</code> type.
+         * The task instance to use with task operations.
+         * The option will be converted to a
+         * <code>org.kie.api.task.model.Task</code> type.
+         * @group common
          */
         public T task(String task) {
             this.properties.put("task", task);
             return (T) this;
         }
         /**
-         * the id of the task. The option is a <code>java.lang.Long</code> type.
+         * the id of the task.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T taskId(Long taskId) {
             this.properties.put("taskId", taskId);
             return (T) this;
         }
         /**
-         * the id of the task. The option will be converted to a
-         * <code>java.lang.Long</code> type.
+         * the id of the task.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T taskId(String taskId) {
             this.properties.put("taskId", taskId);
             return (T) this;
         }
         /**
-         * A timeout value. The option is a <code>java.lang.Integer</code> type.
+         * A timeout value.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T timeout(Integer timeout) {
             this.properties.put("timeout", timeout);
             return (T) this;
         }
         /**
-         * A timeout value. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * A timeout value.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T timeout(String timeout) {
             this.properties.put("timeout", timeout);
             return (T) this;
         }
         /**
-         * userId to use with task operations. The option is a
-         * <code>java.lang.String</code> type.
+         * userId to use with task operations.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T userId(String userId) {
             this.properties.put("userId", userId);
             return (T) this;
         }
         /**
-         * the value to assign to the global identifier. The option is a
-         * <code>java.lang.Object</code> type.
+         * the value to assign to the global identifier.
+         * The option is a <code>java.lang.Object</code> type.
+         * @group common
          */
         public T value(Object value) {
             this.properties.put("value", value);
             return (T) this;
         }
         /**
-         * the value to assign to the global identifier. The option will be
-         * converted to a <code>java.lang.Object</code> type.
+         * the value to assign to the global identifier.
+         * The option will be converted to a <code>java.lang.Object</code> type.
+         * @group common
          */
         public T value(String value) {
             this.properties.put("value", value);
             return (T) this;
         }
         /**
-         * the id of the work item. The option is a <code>java.lang.Long</code>
-         * type.
+         * the id of the work item.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T workItemId(Long workItemId) {
             this.properties.put("workItemId", workItemId);
             return (T) this;
         }
         /**
-         * the id of the work item. The option will be converted to a
-         * <code>java.lang.Long</code> type.
+         * the id of the work item.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T workItemId(String workItemId) {
             this.properties.put("workItemId", workItemId);
@@ -328,8 +372,9 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -337,59 +382,69 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
         /**
-         * The potentialOwners when nominateTask operation is performed. The
-         * option is a <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * The potentialOwners when nominateTask operation is performed.
+         * The option is a <code>java.util.List&lt;java.lang.String&gt;</code>
+         * type.
+         * @group advanced
          */
         public T entities(List<String> entities) {
             this.properties.put("entities", entities);
             return (T) this;
         }
         /**
-         * The potentialOwners when nominateTask operation is performed. The
-         * option will be converted to a
+         * The potentialOwners when nominateTask operation is performed.
+         * The option will be converted to a
          * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * @group advanced
          */
         public T entities(String entities) {
             this.properties.put("entities", entities);
             return (T) this;
         }
         /**
-         * To load additional classes when working with XML. The option is a
-         * <code>java.lang.Class[]</code> type.
+         * To load additional classes when working with XML.
+         * The option is a <code>java.lang.Class[]</code> type.
+         * @group advanced
          */
         public T extraJaxbClasses(Class[] extraJaxbClasses) {
             this.properties.put("extraJaxbClasses", extraJaxbClasses);
             return (T) this;
         }
         /**
-         * To load additional classes when working with XML. The option will be
-         * converted to a <code>java.lang.Class[]</code> type.
+         * To load additional classes when working with XML.
+         * The option will be converted to a <code>java.lang.Class[]</code>
+         * type.
+         * @group advanced
          */
         public T extraJaxbClasses(String extraJaxbClasses) {
             this.properties.put("extraJaxbClasses", extraJaxbClasses);
             return (T) this;
         }
         /**
-         * the variables that should be set for various operations. The option
-         * is a <code>java.util.Map&lt;java.lang.String,
+         * the variables that should be set for various operations.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
          * java.lang.Object&gt;</code> type.
+         * @group advanced
          */
         public T parameters(Map<String, Object> parameters) {
             this.properties.put("parameters", parameters);
             return (T) this;
         }
         /**
-         * the variables that should be set for various operations. The option
-         * will be converted to a <code>java.util.Map&lt;java.lang.String,
-         * java.lang.Object&gt;</code> type.
+         * the variables that should be set for various operations.
+         * The option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
+         * @group advanced
          */
         public T parameters(String parameters) {
             this.properties.put("parameters", parameters);
@@ -397,8 +452,9 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -406,41 +462,47 @@ public interface JBPMEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * The list of status to use when filtering tasks. The option is a
-         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * The list of status to use when filtering tasks.
+         * The option is a <code>java.util.List&lt;java.lang.String&gt;</code>
+         * type.
+         * @group filter
          */
         public T statuses(List<String> statuses) {
             this.properties.put("statuses", statuses);
             return (T) this;
         }
         /**
-         * The list of status to use when filtering tasks. The option will be
-         * converted to a <code>java.util.List&lt;java.lang.String&gt;</code>
-         * type.
+         * The list of status to use when filtering tasks.
+         * The option will be converted to a
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * @group filter
          */
         public T statuses(String statuses) {
             this.properties.put("statuses", statuses);
             return (T) this;
         }
         /**
-         * Password for authentication. The option is a
-         * <code>java.lang.String</code> type.
+         * Password for authentication.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * Username for authentication. The option is a
-         * <code>java.lang.String</code> type.
+         * Username for authentication.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T userName(String userName) {
             this.properties.put("userName", userName);
@@ -466,7 +528,9 @@ public interface JBPMEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public JBPMConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -479,7 +543,9 @@ public interface JBPMEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public JBPMConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -489,8 +555,10 @@ public interface JBPMEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public JBPMConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -501,17 +569,19 @@ public interface JBPMEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public JBPMConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (JBPMConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public JBPMConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -519,9 +589,10 @@ public interface JBPMEndpointBuilder {
             return (JBPMConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public JBPMConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -541,8 +612,9 @@ public interface JBPMEndpointBuilder {
             super(path);
         }
         /**
-         * The operation to perform. The option is a
-         * <code>java.lang.String</code> type.
+         * The operation to perform.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public JBPMProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);

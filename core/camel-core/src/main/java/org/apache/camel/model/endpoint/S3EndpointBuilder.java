@@ -49,8 +49,9 @@ public interface S3EndpointBuilder {
             super("aws-s3", path);
         }
         /**
-         * Bucket name or ARN. The option is a <code>java.lang.String</code>
-         * type.
+         * Bucket name or ARN.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T bucketNameOrArn(String bucketNameOrArn) {
             this.properties.put("bucketNameOrArn", bucketNameOrArn);
@@ -58,8 +59,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * Reference to a com.amazonaws.services.s3.AmazonS3 in the
-         * link:registry.htmlRegistry. The option is a
-         * <code>com.amazonaws.services.s3.AmazonS3</code> type.
+         * link:registry.htmlRegistry.
+         * The option is a <code>com.amazonaws.services.s3.AmazonS3</code> type.
+         * @group common
          */
         public T amazonS3Client(Object amazonS3Client) {
             this.properties.put("amazonS3Client", amazonS3Client);
@@ -67,40 +69,46 @@ public interface S3EndpointBuilder {
         }
         /**
          * Reference to a com.amazonaws.services.s3.AmazonS3 in the
-         * link:registry.htmlRegistry. The option will be converted to a
+         * link:registry.htmlRegistry.
+         * The option will be converted to a
          * <code>com.amazonaws.services.s3.AmazonS3</code> type.
+         * @group common
          */
         public T amazonS3Client(String amazonS3Client) {
             this.properties.put("amazonS3Client", amazonS3Client);
             return (T) this;
         }
         /**
-         * Setting the autocreation of the bucket. The option is a
-         * <code>boolean</code> type.
+         * Setting the autocreation of the bucket.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T autoCreateBucket(boolean autoCreateBucket) {
             this.properties.put("autoCreateBucket", autoCreateBucket);
             return (T) this;
         }
         /**
-         * Setting the autocreation of the bucket. The option will be converted
-         * to a <code>boolean</code> type.
+         * Setting the autocreation of the bucket.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T autoCreateBucket(String autoCreateBucket) {
             this.properties.put("autoCreateBucket", autoCreateBucket);
             return (T) this;
         }
         /**
-         * Whether or not the S3 client should use path style access. The option
-         * is a <code>boolean</code> type.
+         * Whether or not the S3 client should use path style access.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T pathStyleAccess(boolean pathStyleAccess) {
             this.properties.put("pathStyleAccess", pathStyleAccess);
             return (T) this;
         }
         /**
-         * Whether or not the S3 client should use path style access. The option
-         * will be converted to a <code>boolean</code> type.
+         * Whether or not the S3 client should use path style access.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T pathStyleAccess(String pathStyleAccess) {
             this.properties.put("pathStyleAccess", pathStyleAccess);
@@ -108,40 +116,46 @@ public interface S3EndpointBuilder {
         }
         /**
          * The policy for this queue to set in the
-         * com.amazonaws.services.s3.AmazonS3#setBucketPolicy() method. The
-         * option is a <code>java.lang.String</code> type.
+         * com.amazonaws.services.s3.AmazonS3#setBucketPolicy() method.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T policy(String policy) {
             this.properties.put("policy", policy);
             return (T) this;
         }
         /**
-         * To define a proxy host when instantiating the SQS client. The option
-         * is a <code>java.lang.String</code> type.
+         * To define a proxy host when instantiating the SQS client.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * Specify a proxy port to be used inside the client definition. The
-         * option is a <code>java.lang.Integer</code> type.
+         * Specify a proxy port to be used inside the client definition.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * Specify a proxy port to be used inside the client definition. The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * Specify a proxy port to be used inside the client definition.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * The region in which S3 client needs to work. The option is a
-         * <code>java.lang.String</code> type.
+         * The region in which S3 client needs to work.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -149,8 +163,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * Set whether the S3 client should expect to load credentials on an EC2
-         * instance or to expect static credentials to be passed in. The option
-         * is a <code>boolean</code> type.
+         * instance or to expect static credentials to be passed in.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T useIAMCredentials(boolean useIAMCredentials) {
             this.properties.put("useIAMCredentials", useIAMCredentials);
@@ -158,8 +173,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * Set whether the S3 client should expect to load credentials on an EC2
-         * instance or to expect static credentials to be passed in. The option
-         * will be converted to a <code>boolean</code> type.
+         * instance or to expect static credentials to be passed in.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T useIAMCredentials(String useIAMCredentials) {
             this.properties.put("useIAMCredentials", useIAMCredentials);
@@ -167,9 +183,11 @@ public interface S3EndpointBuilder {
         }
         /**
          * The encryption materials to use in case of Symmetric/Asymmetric
-         * client usage. The option is a
+         * client usage.
+         * The option is a
          * <code>com.amazonaws.services.s3.model.EncryptionMaterials</code>
          * type.
+         * @group common (advanced)
          */
         public T encryptionMaterials(Object encryptionMaterials) {
             this.properties.put("encryptionMaterials", encryptionMaterials);
@@ -177,25 +195,29 @@ public interface S3EndpointBuilder {
         }
         /**
          * The encryption materials to use in case of Symmetric/Asymmetric
-         * client usage. The option will be converted to a
+         * client usage.
+         * The option will be converted to a
          * <code>com.amazonaws.services.s3.model.EncryptionMaterials</code>
          * type.
+         * @group common (advanced)
          */
         public T encryptionMaterials(String encryptionMaterials) {
             this.properties.put("encryptionMaterials", encryptionMaterials);
             return (T) this;
         }
         /**
-         * Define if encryption must be used or not. The option is a
-         * <code>boolean</code> type.
+         * Define if encryption must be used or not.
+         * The option is a <code>boolean</code> type.
+         * @group common (advanced)
          */
         public T useEncryption(boolean useEncryption) {
             this.properties.put("useEncryption", useEncryption);
             return (T) this;
         }
         /**
-         * Define if encryption must be used or not. The option will be
-         * converted to a <code>boolean</code> type.
+         * Define if encryption must be used or not.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common (advanced)
          */
         public T useEncryption(String useEncryption) {
             this.properties.put("useEncryption", useEncryption);
@@ -203,8 +225,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -212,8 +235,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -221,8 +245,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -230,64 +255,72 @@ public interface S3EndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Define if Accelerate Mode enabled is true or false. The option is a
-         * <code>boolean</code> type.
+         * Define if Accelerate Mode enabled is true or false.
+         * The option is a <code>boolean</code> type.
+         * @group  advanced
          */
         public T accelerateModeEnabled(boolean accelerateModeEnabled) {
             this.properties.put("accelerateModeEnabled", accelerateModeEnabled);
             return (T) this;
         }
         /**
-         * Define if Accelerate Mode enabled is true or false. The option will
-         * be converted to a <code>boolean</code> type.
+         * Define if Accelerate Mode enabled is true or false.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group  advanced
          */
         public T accelerateModeEnabled(String accelerateModeEnabled) {
             this.properties.put("accelerateModeEnabled", accelerateModeEnabled);
             return (T) this;
         }
         /**
-         * Define if disabled Chunked Encoding is true or false. The option is a
-         * <code>boolean</code> type.
+         * Define if disabled Chunked Encoding is true or false.
+         * The option is a <code>boolean</code> type.
+         * @group  advanced
          */
         public T chunkedEncodingDisabled(boolean chunkedEncodingDisabled) {
             this.properties.put("chunkedEncodingDisabled", chunkedEncodingDisabled);
             return (T) this;
         }
         /**
-         * Define if disabled Chunked Encoding is true or false. The option will
-         * be converted to a <code>boolean</code> type.
+         * Define if disabled Chunked Encoding is true or false.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group  advanced
          */
         public T chunkedEncodingDisabled(String chunkedEncodingDisabled) {
             this.properties.put("chunkedEncodingDisabled", chunkedEncodingDisabled);
             return (T) this;
         }
         /**
-         * Define if Dualstack enabled is true or false. The option is a
-         * <code>boolean</code> type.
+         * Define if Dualstack enabled is true or false.
+         * The option is a <code>boolean</code> type.
+         * @group  advanced
          */
         public T dualstackEnabled(boolean dualstackEnabled) {
             this.properties.put("dualstackEnabled", dualstackEnabled);
             return (T) this;
         }
         /**
-         * Define if Dualstack enabled is true or false. The option will be
-         * converted to a <code>boolean</code> type.
+         * Define if Dualstack enabled is true or false.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group  advanced
          */
         public T dualstackEnabled(String dualstackEnabled) {
             this.properties.put("dualstackEnabled", dualstackEnabled);
             return (T) this;
         }
         /**
-         * Define if Force Global Bucket Access enabled is true or false. The
-         * option is a <code>boolean</code> type.
+         * Define if Force Global Bucket Access enabled is true or false.
+         * The option is a <code>boolean</code> type.
+         * @group  advanced
          */
         public T forceGlobalBucketAccessEnabled(
                 boolean forceGlobalBucketAccessEnabled) {
@@ -295,8 +328,9 @@ public interface S3EndpointBuilder {
             return (T) this;
         }
         /**
-         * Define if Force Global Bucket Access enabled is true or false. The
-         * option will be converted to a <code>boolean</code> type.
+         * Define if Force Global Bucket Access enabled is true or false.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group  advanced
          */
         public T forceGlobalBucketAccessEnabled(
                 String forceGlobalBucketAccessEnabled) {
@@ -304,32 +338,36 @@ public interface S3EndpointBuilder {
             return (T) this;
         }
         /**
-         * Define if Payload Signing enabled is true or false. The option is a
-         * <code>boolean</code> type.
+         * Define if Payload Signing enabled is true or false.
+         * The option is a <code>boolean</code> type.
+         * @group  advanced
          */
         public T payloadSigningEnabled(boolean payloadSigningEnabled) {
             this.properties.put("payloadSigningEnabled", payloadSigningEnabled);
             return (T) this;
         }
         /**
-         * Define if Payload Signing enabled is true or false. The option will
-         * be converted to a <code>boolean</code> type.
+         * Define if Payload Signing enabled is true or false.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group  advanced
          */
         public T payloadSigningEnabled(String payloadSigningEnabled) {
             this.properties.put("payloadSigningEnabled", payloadSigningEnabled);
             return (T) this;
         }
         /**
-         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Access Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (T) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Secret Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);
@@ -355,7 +393,9 @@ public interface S3EndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -368,7 +408,9 @@ public interface S3EndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -381,8 +423,9 @@ public interface S3EndpointBuilder {
          * objects will be retrieve over and over again on the polls. Therefore
          * you need to use the Idempotent Consumer EIP in the route to filter
          * out duplicates. You can filter using the S3Constants#BUCKET_NAME and
-         * S3Constants#KEY headers, or only the S3Constants#KEY header. The
-         * option is a <code>boolean</code> type.
+         * S3Constants#KEY headers, or only the S3Constants#KEY header.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder deleteAfterRead(boolean deleteAfterRead) {
             this.properties.put("deleteAfterRead", deleteAfterRead);
@@ -395,8 +438,9 @@ public interface S3EndpointBuilder {
          * objects will be retrieve over and over again on the polls. Therefore
          * you need to use the Idempotent Consumer EIP in the route to filter
          * out duplicates. You can filter using the S3Constants#BUCKET_NAME and
-         * S3Constants#KEY headers, or only the S3Constants#KEY header. The
-         * option will be converted to a <code>boolean</code> type.
+         * S3Constants#KEY headers, or only the S3Constants#KEY header.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder deleteAfterRead(String deleteAfterRead) {
             this.properties.put("deleteAfterRead", deleteAfterRead);
@@ -405,16 +449,18 @@ public interface S3EndpointBuilder {
         /**
          * The delimiter which is used in the
          * com.amazonaws.services.s3.model.ListObjectsRequest to only consume
-         * objects we are interested in. The option is a
-         * <code>java.lang.String</code> type.
+         * objects we are interested in.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder delimiter(String delimiter) {
             this.properties.put("delimiter", delimiter);
             return (S3ConsumerBuilder) this;
         }
         /**
-         * To get the object from the bucket with the given file name. The
-         * option is a <code>java.lang.String</code> type.
+         * To get the object from the bucket with the given file name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder fileName(String fileName) {
             this.properties.put("fileName", fileName);
@@ -427,8 +473,9 @@ public interface S3EndpointBuilder {
          * related to autocloseBody option. In case of setting includeBody to
          * true and autocloseBody to false, it will be up to the caller to close
          * the S3Object stream. Setting autocloseBody to true, will close the
-         * S3Object stream automatically. The option is a <code>boolean</code>
-         * type.
+         * S3Object stream automatically.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder includeBody(boolean includeBody) {
             this.properties.put("includeBody", includeBody);
@@ -441,24 +488,27 @@ public interface S3EndpointBuilder {
          * related to autocloseBody option. In case of setting includeBody to
          * true and autocloseBody to false, it will be up to the caller to close
          * the S3Object stream. Setting autocloseBody to true, will close the
-         * S3Object stream automatically. The option will be converted to a
-         * <code>boolean</code> type.
+         * S3Object stream automatically.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder includeBody(String includeBody) {
             this.properties.put("includeBody", includeBody);
             return (S3ConsumerBuilder) this;
         }
         /**
-         * Set the maxConnections parameter in the S3 client configuration. The
-         * option is a <code>int</code> type.
+         * Set the maxConnections parameter in the S3 client configuration.
+         * The option is a <code>int</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder maxConnections(int maxConnections) {
             this.properties.put("maxConnections", maxConnections);
             return (S3ConsumerBuilder) this;
         }
         /**
-         * Set the maxConnections parameter in the S3 client configuration. The
-         * option will be converted to a <code>int</code> type.
+         * Set the maxConnections parameter in the S3 client configuration.
+         * The option will be converted to a <code>int</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder maxConnections(String maxConnections) {
             this.properties.put("maxConnections", maxConnections);
@@ -467,7 +517,9 @@ public interface S3EndpointBuilder {
         /**
          * Gets the maximum number of messages as a limit to poll at each
          * polling. Is default unlimited, but use 0 or negative number to
-         * disable it as unlimited. The option is a <code>int</code> type.
+         * disable it as unlimited.
+         * The option is a <code>int</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder maxMessagesPerPoll(int maxMessagesPerPoll) {
             this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
@@ -476,8 +528,9 @@ public interface S3EndpointBuilder {
         /**
          * Gets the maximum number of messages as a limit to poll at each
          * polling. Is default unlimited, but use 0 or negative number to
-         * disable it as unlimited. The option will be converted to a
-         * <code>int</code> type.
+         * disable it as unlimited.
+         * The option will be converted to a <code>int</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder maxMessagesPerPoll(String maxMessagesPerPoll) {
             this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
@@ -486,8 +539,9 @@ public interface S3EndpointBuilder {
         /**
          * The prefix which is used in the
          * com.amazonaws.services.s3.model.ListObjectsRequest to only consume
-         * objects we are interested in. The option is a
-         * <code>java.lang.String</code> type.
+         * objects we are interested in.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder prefix(String prefix) {
             this.properties.put("prefix", prefix);
@@ -495,8 +549,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option is a
-         * <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -505,8 +560,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option will be
-         * converted to a <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public S3ConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -519,8 +575,9 @@ public interface S3EndpointBuilder {
          * option is strongly related to includeBody option. In case of setting
          * includeBody to true and autocloseBody to false, it will be up to the
          * caller to close the S3Object stream. Setting autocloseBody to true,
-         * will close the S3Object stream automatically. The option is a
-         * <code>boolean</code> type.
+         * will close the S3Object stream automatically.
+         * The option is a <code>boolean</code> type.
+         * @group consumer (advanced)
          */
         public S3ConsumerBuilder autocloseBody(boolean autocloseBody) {
             this.properties.put("autocloseBody", autocloseBody);
@@ -532,8 +589,9 @@ public interface S3EndpointBuilder {
          * option is strongly related to includeBody option. In case of setting
          * includeBody to true and autocloseBody to false, it will be up to the
          * caller to close the S3Object stream. Setting autocloseBody to true,
-         * will close the S3Object stream automatically. The option will be
-         * converted to a <code>boolean</code> type.
+         * will close the S3Object stream automatically.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer (advanced)
          */
         public S3ConsumerBuilder autocloseBody(String autocloseBody) {
             this.properties.put("autocloseBody", autocloseBody);
@@ -543,8 +601,10 @@ public interface S3EndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public S3ConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -555,26 +615,29 @@ public interface S3EndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public S3ConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (S3ConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public S3ConsumerBuilder exchangePattern(ExchangePattern exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
             return (S3ConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public S3ConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -584,8 +647,10 @@ public interface S3EndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option is a
+         * been created and being routed in Camel.
+         * The option is a
          * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public S3ConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -596,9 +661,10 @@ public interface S3EndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option will be converted
-         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
-         * type.
+         * been created and being routed in Camel.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public S3ConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -606,8 +672,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * is a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder backoffErrorThreshold(int backoffErrorThreshold) {
             this.properties.put("backoffErrorThreshold", backoffErrorThreshold);
@@ -615,8 +682,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -625,8 +693,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a <code>int</code>
-         * type.
+         * backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder backoffIdleThreshold(int backoffIdleThreshold) {
             this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
@@ -634,8 +703,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option will be converted to a
-         * <code>int</code> type.
+         * backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -648,7 +718,9 @@ public interface S3EndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a <code>int</code> type.
+         * configured.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -660,7 +732,9 @@ public interface S3EndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a <code>int</code> type.
+         * configured.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -669,7 +743,9 @@ public interface S3EndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -678,8 +754,9 @@ public interface S3EndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -687,8 +764,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option is a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -696,8 +774,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -706,7 +785,9 @@ public interface S3EndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -715,8 +796,9 @@ public interface S3EndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -724,8 +806,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * is a <code>org.apache.camel.LoggingLevel</code> type.
+         * option allows you to configure the logging level for that.
+         * The option is a <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder runLoggingLevel(LoggingLevel runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -733,9 +816,10 @@ public interface S3EndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
-         * type.
+         * option allows you to configure the logging level for that.
+         * The option will be converted to a
+         * <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -744,8 +828,10 @@ public interface S3EndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a
+         * pool.
+         * The option is a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -755,8 +841,10 @@ public interface S3EndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option will be converted to a
+         * pool.
+         * The option will be converted to a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -765,9 +853,11 @@ public interface S3EndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option is a
+         * component.
+         * The option is a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public S3ConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -776,9 +866,11 @@ public interface S3EndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option will be converted to a
+         * component.
+         * The option will be converted to a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public S3ConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -786,9 +878,10 @@ public interface S3EndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
-         * type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -797,41 +890,48 @@ public interface S3EndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map&lt;java.lang.String,
-         * java.lang.Object&gt;</code> type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
+         * @group scheduler
          */
         public S3ConsumerBuilder schedulerProperties(String schedulerProperties) {
             this.properties.put("schedulerProperties", schedulerProperties);
             return (S3ConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a
-         * <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (S3ConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option will be
-         * converted to a <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (S3ConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option is a
-         * <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option is a <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
             return (S3ConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option will be
-         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option will be converted to a
+         * <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -839,8 +939,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a
-         * <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -848,8 +949,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public S3ConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -869,16 +971,18 @@ public interface S3EndpointBuilder {
             super(path);
         }
         /**
-         * Delete file object after the S3 file has been uploaded. The option is
-         * a <code>boolean</code> type.
+         * Delete file object after the S3 file has been uploaded.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public S3ProducerBuilder deleteAfterWrite(boolean deleteAfterWrite) {
             this.properties.put("deleteAfterWrite", deleteAfterWrite);
             return (S3ProducerBuilder) this;
         }
         /**
-         * Delete file object after the S3 file has been uploaded. The option
-         * will be converted to a <code>boolean</code> type.
+         * Delete file object after the S3 file has been uploaded.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public S3ProducerBuilder deleteAfterWrite(String deleteAfterWrite) {
             this.properties.put("deleteAfterWrite", deleteAfterWrite);
@@ -886,8 +990,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * If it is true, camel will upload the file with multi part format, the
-         * part size is decided by the option of partSize. The option is a
-         * <code>boolean</code> type.
+         * part size is decided by the option of partSize.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public S3ProducerBuilder multiPartUpload(boolean multiPartUpload) {
             this.properties.put("multiPartUpload", multiPartUpload);
@@ -895,8 +1000,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * If it is true, camel will upload the file with multi part format, the
-         * part size is decided by the option of partSize. The option will be
-         * converted to a <code>boolean</code> type.
+         * part size is decided by the option of partSize.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public S3ProducerBuilder multiPartUpload(String multiPartUpload) {
             this.properties.put("multiPartUpload", multiPartUpload);
@@ -906,6 +1012,7 @@ public interface S3EndpointBuilder {
          * The operation to do in case the user don't want to do only an upload.
          * The option is a
          * <code>org.apache.camel.component.aws.s3.S3Operations</code> type.
+         * @group producer
          */
         public S3ProducerBuilder operation(S3Operations operation) {
             this.properties.put("operation", operation);
@@ -915,6 +1022,7 @@ public interface S3EndpointBuilder {
          * The operation to do in case the user don't want to do only an upload.
          * The option will be converted to a
          * <code>org.apache.camel.component.aws.s3.S3Operations</code> type.
+         * @group producer
          */
         public S3ProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
@@ -922,7 +1030,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * Setup the partSize which is used in multi part upload, the default
-         * size is 25M. The option is a <code>long</code> type.
+         * size is 25M.
+         * The option is a <code>long</code> type.
+         * @group producer
          */
         public S3ProducerBuilder partSize(long partSize) {
             this.properties.put("partSize", partSize);
@@ -930,8 +1040,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * Setup the partSize which is used in multi part upload, the default
-         * size is 25M. The option will be converted to a <code>long</code>
-         * type.
+         * size is 25M.
+         * The option will be converted to a <code>long</code> type.
+         * @group producer
          */
         public S3ProducerBuilder partSize(String partSize) {
             this.properties.put("partSize", partSize);
@@ -939,8 +1050,9 @@ public interface S3EndpointBuilder {
         }
         /**
          * Sets the server-side encryption algorithm when encrypting the object
-         * using AWS-managed keys. For example use AES256. The option is a
-         * <code>java.lang.String</code> type.
+         * using AWS-managed keys. For example use AES256.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public S3ProducerBuilder serverSideEncryption(
                 String serverSideEncryption) {
@@ -949,32 +1061,36 @@ public interface S3EndpointBuilder {
         }
         /**
          * The storage class to set in the
-         * com.amazonaws.services.s3.model.PutObjectRequest request. The option
-         * is a <code>java.lang.String</code> type.
+         * com.amazonaws.services.s3.model.PutObjectRequest request.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public S3ProducerBuilder storageClass(String storageClass) {
             this.properties.put("storageClass", storageClass);
             return (S3ProducerBuilder) this;
         }
         /**
-         * Define the id of KMS key to use in case KMS is enabled. The option is
-         * a <code>java.lang.String</code> type.
+         * Define the id of KMS key to use in case KMS is enabled.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer (advanced)
          */
         public S3ProducerBuilder awsKMSKeyId(String awsKMSKeyId) {
             this.properties.put("awsKMSKeyId", awsKMSKeyId);
             return (S3ProducerBuilder) this;
         }
         /**
-         * Define if KMS must be used or not. The option is a
-         * <code>boolean</code> type.
+         * Define if KMS must be used or not.
+         * The option is a <code>boolean</code> type.
+         * @group producer (advanced)
          */
         public S3ProducerBuilder useAwsKMS(boolean useAwsKMS) {
             this.properties.put("useAwsKMS", useAwsKMS);
             return (S3ProducerBuilder) this;
         }
         /**
-         * Define if KMS must be used or not. The option will be converted to a
-         * <code>boolean</code> type.
+         * Define if KMS must be used or not.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer (advanced)
          */
         public S3ProducerBuilder useAwsKMS(String useAwsKMS) {
             this.properties.put("useAwsKMS", useAwsKMS);

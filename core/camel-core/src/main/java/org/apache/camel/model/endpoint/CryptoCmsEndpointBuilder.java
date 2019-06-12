@@ -46,9 +46,11 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * Set the Crypto operation from that supplied after the crypto scheme
          * in the endpoint uri e.g. crypto-cms:sign sets sign as the operation.
-         * Possible values: sign, verify, encrypt, or decrypt. The option is a
+         * Possible values: sign, verify, encrypt, or decrypt.
+         * The option is a
          * <code>org.apache.camel.component.crypto.cms.CryptoOperation</code>
          * type.
+         * @group producer
          */
         public T cryptoOperation(CryptoOperation cryptoOperation) {
             this.properties.put("cryptoOperation", cryptoOperation);
@@ -57,10 +59,11 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * Set the Crypto operation from that supplied after the crypto scheme
          * in the endpoint uri e.g. crypto-cms:sign sets sign as the operation.
-         * Possible values: sign, verify, encrypt, or decrypt. The option will
-         * be converted to a
+         * Possible values: sign, verify, encrypt, or decrypt.
+         * The option will be converted to a
          * <code>org.apache.camel.component.crypto.cms.CryptoOperation</code>
          * type.
+         * @group producer
          */
         public T cryptoOperation(String cryptoOperation) {
             this.properties.put("cryptoOperation", cryptoOperation);
@@ -69,8 +72,9 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * The name part in the URI can be chosen by the user to distinguish
          * between different signer/verifier/encryptor/decryptor endpoints
-         * within the camel context. The option is a
-         * <code>java.lang.String</code> type.
+         * within the camel context.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T name(String name) {
             this.properties.put("name", name);
@@ -80,8 +84,9 @@ public interface CryptoCmsEndpointBuilder {
          * Keystore which contains signer private keys, verifier public keys,
          * encryptor public keys, decryptor private keys depending on the
          * operation. Use either this parameter or the parameter
-         * 'keyStoreParameters'. The option is a
-         * <code>java.security.KeyStore</code> type.
+         * 'keyStoreParameters'.
+         * The option is a <code>java.security.KeyStore</code> type.
+         * @group common
          */
         public T keyStore(KeyStore keyStore) {
             this.properties.put("keyStore", keyStore);
@@ -91,8 +96,10 @@ public interface CryptoCmsEndpointBuilder {
          * Keystore which contains signer private keys, verifier public keys,
          * encryptor public keys, decryptor private keys depending on the
          * operation. Use either this parameter or the parameter
-         * 'keyStoreParameters'. The option will be converted to a
-         * <code>java.security.KeyStore</code> type.
+         * 'keyStoreParameters'.
+         * The option will be converted to a <code>java.security.KeyStore</code>
+         * type.
+         * @group common
          */
         public T keyStore(String keyStore) {
             this.properties.put("keyStore", keyStore);
@@ -101,9 +108,10 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * Keystore containing signer private keys, verifier public keys,
          * encryptor public keys, decryptor private keys depending on the
-         * operation. Use either this parameter or the parameter 'keystore'. The
-         * option is a
+         * operation. Use either this parameter or the parameter 'keystore'.
+         * The option is a
          * <code>org.apache.camel.support.jsse.KeyStoreParameters</code> type.
+         * @group common
          */
         public T keyStoreParameters(Object keyStoreParameters) {
             this.properties.put("keyStoreParameters", keyStoreParameters);
@@ -112,9 +120,10 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * Keystore containing signer private keys, verifier public keys,
          * encryptor public keys, decryptor private keys depending on the
-         * operation. Use either this parameter or the parameter 'keystore'. The
-         * option will be converted to a
+         * operation. Use either this parameter or the parameter 'keystore'.
+         * The option will be converted to a
          * <code>org.apache.camel.support.jsse.KeyStoreParameters</code> type.
+         * @group common
          */
         public T keyStoreParameters(String keyStoreParameters) {
             this.properties.put("keyStoreParameters", keyStoreParameters);
@@ -122,8 +131,9 @@ public interface CryptoCmsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -131,8 +141,9 @@ public interface CryptoCmsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -140,8 +151,9 @@ public interface CryptoCmsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -149,8 +161,9 @@ public interface CryptoCmsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -160,8 +173,9 @@ public interface CryptoCmsEndpointBuilder {
          * Sets the password of the private keys. It is assumed that all private
          * keys in the keystore have the same password. If not set then it is
          * assumed that the password of the private keys is given by the
-         * keystore password given in the KeyStoreParameters. The option is a
-         * <code>char[]</code> type.
+         * keystore password given in the KeyStoreParameters.
+         * The option is a <code>char[]</code> type.
+         * @group decrypt
          */
         public T password(Character[] password) {
             this.properties.put("password", password);
@@ -171,8 +185,9 @@ public interface CryptoCmsEndpointBuilder {
          * Sets the password of the private keys. It is assumed that all private
          * keys in the keystore have the same password. If not set then it is
          * assumed that the password of the private keys is given by the
-         * keystore password given in the KeyStoreParameters. The option will be
-         * converted to a <code>char[]</code> type.
+         * keystore password given in the KeyStoreParameters.
+         * The option will be converted to a <code>char[]</code> type.
+         * @group decrypt
          */
         public T password(String password) {
             this.properties.put("password", password);
@@ -180,8 +195,9 @@ public interface CryptoCmsEndpointBuilder {
         }
         /**
          * If true then the CMS message is base 64 encoded and must be decoded
-         * during the processing. Default value is false. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * during the processing. Default value is false.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group decrypt_verify
          */
         public T fromBase64(Boolean fromBase64) {
             this.properties.put("fromBase64", fromBase64);
@@ -189,8 +205,10 @@ public interface CryptoCmsEndpointBuilder {
         }
         /**
          * If true then the CMS message is base 64 encoded and must be decoded
-         * during the processing. Default value is false. The option will be
-         * converted to a <code>java.lang.Boolean</code> type.
+         * during the processing. Default value is false.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group decrypt_verify
          */
         public T fromBase64(String fromBase64) {
             this.properties.put("fromBase64", fromBase64);
@@ -199,8 +217,9 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * Encryption algorithm, for example DESede/CBC/PKCS5Padding. Further
          * possible values: DESede/CBC/PKCS5Padding, AES/CBC/PKCS5Padding,
-         * Camellia/CBC/PKCS5Padding, CAST5/CBC/PKCS5Padding. The option is a
-         * <code>java.lang.String</code> type.
+         * Camellia/CBC/PKCS5Padding, CAST5/CBC/PKCS5Padding.
+         * The option is a <code>java.lang.String</code> type.
+         * @group encrypt
          */
         public T contentEncryptionAlgorithm(String contentEncryptionAlgorithm) {
             this.properties.put("contentEncryptionAlgorithm", contentEncryptionAlgorithm);
@@ -209,8 +228,10 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * Provider for the originator info. See
          * https://tools.ietf.org/html/rfc5652#section-6.1. The default value is
-         * null. The option is a
+         * null.
+         * The option is a
          * <code>org.apache.camel.component.crypto.cms.common.OriginatorInformationProvider</code> type.
+         * @group encrypt
          */
         public T originatorInformationProvider(
                 Object originatorInformationProvider) {
@@ -220,8 +241,10 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * Provider for the originator info. See
          * https://tools.ietf.org/html/rfc5652#section-6.1. The default value is
-         * null. The option will be converted to a
+         * null.
+         * The option will be converted to a
          * <code>org.apache.camel.component.crypto.cms.common.OriginatorInformationProvider</code> type.
+         * @group encrypt
          */
         public T originatorInformationProvider(
                 String originatorInformationProvider) {
@@ -230,9 +253,10 @@ public interface CryptoCmsEndpointBuilder {
         }
         /**
          * Recipient Info: reference to a bean which implements the interface
-         * org.apache.camel.component.crypto.cms.api.TransRecipientInfo. The
-         * option is a
+         * org.apache.camel.component.crypto.cms.api.TransRecipientInfo.
+         * The option is a
          * <code>java.util.List&lt;org.apache.camel.component.crypto.cms.crypt.RecipientInfo&gt;</code> type.
+         * @group encrypt
          */
         public T recipient(List<Object> recipient) {
             this.properties.put("recipient", recipient);
@@ -240,9 +264,10 @@ public interface CryptoCmsEndpointBuilder {
         }
         /**
          * Recipient Info: reference to a bean which implements the interface
-         * org.apache.camel.component.crypto.cms.api.TransRecipientInfo. The
-         * option will be converted to a
+         * org.apache.camel.component.crypto.cms.api.TransRecipientInfo.
+         * The option will be converted to a
          * <code>java.util.List&lt;org.apache.camel.component.crypto.cms.crypt.RecipientInfo&gt;</code> type.
+         * @group encrypt
          */
         public T recipient(String recipient) {
             this.properties.put("recipient", recipient);
@@ -257,7 +282,9 @@ public interface CryptoCmsEndpointBuilder {
          * contentEncryptionAlgorithm=DESede/CBC/PKCS5Padding then 192, 128; if
          * strong encryption is enabled then for AES/CBC/PKCS5Padding and
          * Camellia/CBC/PKCS5Padding also the key lengths 192 and 256 are
-         * possible. The option is a <code>int</code> type.
+         * possible.
+         * The option is a <code>int</code> type.
+         * @group encrypt
          */
         public T secretKeyLength(int secretKeyLength) {
             this.properties.put("secretKeyLength", secretKeyLength);
@@ -272,7 +299,9 @@ public interface CryptoCmsEndpointBuilder {
          * contentEncryptionAlgorithm=DESede/CBC/PKCS5Padding then 192, 128; if
          * strong encryption is enabled then for AES/CBC/PKCS5Padding and
          * Camellia/CBC/PKCS5Padding also the key lengths 192 and 256 are
-         * possible. The option will be converted to a <code>int</code> type.
+         * possible.
+         * The option will be converted to a <code>int</code> type.
+         * @group encrypt
          */
         public T secretKeyLength(String secretKeyLength) {
             this.properties.put("secretKeyLength", secretKeyLength);
@@ -282,8 +311,10 @@ public interface CryptoCmsEndpointBuilder {
          * Provider of the generator for the unprotected attributes. The default
          * value is null which means no unprotected attribute is added to the
          * Enveloped Data object. See
-         * https://tools.ietf.org/html/rfc5652#section-6.1. The option is a
+         * https://tools.ietf.org/html/rfc5652#section-6.1.
+         * The option is a
          * <code>org.apache.camel.component.crypto.cms.common.AttributesGeneratorProvider</code> type.
+         * @group encrypt
          */
         public T unprotectedAttributesGeneratorProvider(
                 Object unprotectedAttributesGeneratorProvider) {
@@ -294,9 +325,10 @@ public interface CryptoCmsEndpointBuilder {
          * Provider of the generator for the unprotected attributes. The default
          * value is null which means no unprotected attribute is added to the
          * Enveloped Data object. See
-         * https://tools.ietf.org/html/rfc5652#section-6.1. The option will be
-         * converted to a
+         * https://tools.ietf.org/html/rfc5652#section-6.1.
+         * The option will be converted to a
          * <code>org.apache.camel.component.crypto.cms.common.AttributesGeneratorProvider</code> type.
+         * @group encrypt
          */
         public T unprotectedAttributesGeneratorProvider(
                 String unprotectedAttributesGeneratorProvider) {
@@ -305,8 +337,9 @@ public interface CryptoCmsEndpointBuilder {
         }
         /**
          * Indicates whether the Signed Data or Enveloped Data instance shall be
-         * base 64 encoded. Default value is false. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * base 64 encoded. Default value is false.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group encrypt_sign
          */
         public T toBase64(Boolean toBase64) {
             this.properties.put("toBase64", toBase64);
@@ -314,8 +347,10 @@ public interface CryptoCmsEndpointBuilder {
         }
         /**
          * Indicates whether the Signed Data or Enveloped Data instance shall be
-         * base 64 encoded. Default value is false. The option will be converted
-         * to a <code>java.lang.Boolean</code> type.
+         * base 64 encoded. Default value is false.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group encrypt_sign
          */
         public T toBase64(String toBase64) {
             this.properties.put("toBase64", toBase64);
@@ -324,8 +359,9 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * Indicates whether the signed content should be included into the
          * Signed Data instance. If false then a detached Signed Data instance
-         * is created in the header CamelCryptoCmsSignedData. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * is created in the header CamelCryptoCmsSignedData.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group sign
          */
         public T includeContent(Boolean includeContent) {
             this.properties.put("includeContent", includeContent);
@@ -334,8 +370,10 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * Indicates whether the signed content should be included into the
          * Signed Data instance. If false then a detached Signed Data instance
-         * is created in the header CamelCryptoCmsSignedData. The option will be
-         * converted to a <code>java.lang.Boolean</code> type.
+         * is created in the header CamelCryptoCmsSignedData.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group sign
          */
         public T includeContent(String includeContent) {
             this.properties.put("includeContent", includeContent);
@@ -344,8 +382,10 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * Signer information: reference to bean(s) which implements
          * org.apache.camel.component.crypto.cms.api.SignerInfo. Multiple values
-         * can be separated by comma. The option is a
+         * can be separated by comma.
+         * The option is a
          * <code>java.util.List&lt;org.apache.camel.component.crypto.cms.sig.SignerInfo&gt;</code> type.
+         * @group sign
          */
         public T signer(List<Object> signer) {
             this.properties.put("signer", signer);
@@ -354,8 +394,10 @@ public interface CryptoCmsEndpointBuilder {
         /**
          * Signer information: reference to bean(s) which implements
          * org.apache.camel.component.crypto.cms.api.SignerInfo. Multiple values
-         * can be separated by comma. The option will be converted to a
+         * can be separated by comma.
+         * The option will be converted to a
          * <code>java.util.List&lt;org.apache.camel.component.crypto.cms.sig.SignerInfo&gt;</code> type.
+         * @group sign
          */
         public T signer(String signer) {
             this.properties.put("signer", signer);
@@ -365,8 +407,9 @@ public interface CryptoCmsEndpointBuilder {
          * Indicates whether the value in the header CamelCryptoCmsSignedData is
          * base64 encoded. Default value is false. Only relevant for detached
          * signatures. In the detached signature case, the header contains the
-         * Signed Data object. The option is a <code>java.lang.Boolean</code>
-         * type.
+         * Signed Data object.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group verify
          */
         public T signedDataHeaderBase64(Boolean signedDataHeaderBase64) {
             this.properties.put("signedDataHeaderBase64", signedDataHeaderBase64);
@@ -376,8 +419,10 @@ public interface CryptoCmsEndpointBuilder {
          * Indicates whether the value in the header CamelCryptoCmsSignedData is
          * base64 encoded. Default value is false. Only relevant for detached
          * signatures. In the detached signature case, the header contains the
-         * Signed Data object. The option will be converted to a
-         * <code>java.lang.Boolean</code> type.
+         * Signed Data object.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group verify
          */
         public T signedDataHeaderBase64(String signedDataHeaderBase64) {
             this.properties.put("signedDataHeaderBase64", signedDataHeaderBase64);
@@ -387,8 +432,9 @@ public interface CryptoCmsEndpointBuilder {
          * If true then the signatures of all signers contained in the Signed
          * Data object are verified. If false then only one signature whose
          * signer info matches with one of the specified certificates is
-         * verified. Default value is true. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * verified. Default value is true.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group verify
          */
         public T verifySignaturesOfAllSigners(
                 Boolean verifySignaturesOfAllSigners) {
@@ -399,8 +445,10 @@ public interface CryptoCmsEndpointBuilder {
          * If true then the signatures of all signers contained in the Signed
          * Data object are verified. If false then only one signature whose
          * signer info matches with one of the specified certificates is
-         * verified. Default value is true. The option will be converted to a
-         * <code>java.lang.Boolean</code> type.
+         * verified. Default value is true.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group verify
          */
         public T verifySignaturesOfAllSigners(
                 String verifySignaturesOfAllSigners) {

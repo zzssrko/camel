@@ -41,8 +41,9 @@ public interface LambdaEndpointBuilder {
             super("aws-lambda", path);
         }
         /**
-         * Name of the Lambda function. The option is a
-         * <code>java.lang.String</code> type.
+         * Name of the Lambda function.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T function(String function) {
             this.properties.put("function", function);
@@ -50,9 +51,11 @@ public interface LambdaEndpointBuilder {
         }
         /**
          * The operation to perform. It can be listFunctions, getFunction,
-         * createFunction, deleteFunction or invokeFunction. The option is a
+         * createFunction, deleteFunction or invokeFunction.
+         * The option is a
          * <code>org.apache.camel.component.aws.lambda.LambdaOperations</code>
          * type.
+         * @group producer
          */
         public T operation(LambdaOperations operation) {
             this.properties.put("operation", operation);
@@ -60,27 +63,31 @@ public interface LambdaEndpointBuilder {
         }
         /**
          * The operation to perform. It can be listFunctions, getFunction,
-         * createFunction, deleteFunction or invokeFunction. The option will be
-         * converted to a
+         * createFunction, deleteFunction or invokeFunction.
+         * The option will be converted to a
          * <code>org.apache.camel.component.aws.lambda.LambdaOperations</code>
          * type.
+         * @group producer
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * To use a existing configured AwsLambdaClient as client. The option is
-         * a <code>com.amazonaws.services.lambda.AWSLambda</code> type.
+         * To use a existing configured AwsLambdaClient as client.
+         * The option is a <code>com.amazonaws.services.lambda.AWSLambda</code>
+         * type.
+         * @group advanced
          */
         public T awsLambdaClient(Object awsLambdaClient) {
             this.properties.put("awsLambdaClient", awsLambdaClient);
             return (T) this;
         }
         /**
-         * To use a existing configured AwsLambdaClient as client. The option
-         * will be converted to a
+         * To use a existing configured AwsLambdaClient as client.
+         * The option will be converted to a
          * <code>com.amazonaws.services.lambda.AWSLambda</code> type.
+         * @group advanced
          */
         public T awsLambdaClient(String awsLambdaClient) {
             this.properties.put("awsLambdaClient", awsLambdaClient);
@@ -88,8 +95,9 @@ public interface LambdaEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -97,8 +105,9 @@ public interface LambdaEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -106,8 +115,9 @@ public interface LambdaEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -115,48 +125,55 @@ public interface LambdaEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * To define a proxy host when instantiating the Lambda client. The
-         * option is a <code>java.lang.String</code> type.
+         * To define a proxy host when instantiating the Lambda client.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the Lambda client. The
-         * option is a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the Lambda client.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group proxy
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the Lambda client. The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the Lambda client.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group proxy
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Access Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (T) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Secret Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);
@@ -176,8 +193,9 @@ public interface LambdaEndpointBuilder {
             super(path);
         }
         /**
-         * Amazon AWS Region. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Region.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public LambdaProducerBuilder region(String region) {
             this.properties.put("region", region);

@@ -45,6 +45,7 @@ public interface JGroupsRaftEndpointBuilder {
         /**
          * The name of the JGroupsraft cluster the component should connect to.
          * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T clusterName(String clusterName) {
             this.properties.put("clusterName", clusterName);
@@ -52,8 +53,9 @@ public interface JGroupsRaftEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -61,8 +63,9 @@ public interface JGroupsRaftEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -70,8 +73,9 @@ public interface JGroupsRaftEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -79,8 +83,9 @@ public interface JGroupsRaftEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -106,7 +111,9 @@ public interface JGroupsRaftEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public JGroupsRaftConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -120,7 +127,9 @@ public interface JGroupsRaftEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public JGroupsRaftConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -130,8 +139,9 @@ public interface JGroupsRaftEndpointBuilder {
         /**
          * If set to true, the consumer endpoint will receive roleChange event
          * as well (not just connecting and/or using the state machine). By
-         * default it is set to false. The option is a <code>boolean</code>
-         * type.
+         * default it is set to false.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public JGroupsRaftConsumerBuilder enableRoleChangeEvents(
                 boolean enableRoleChangeEvents) {
@@ -141,8 +151,9 @@ public interface JGroupsRaftEndpointBuilder {
         /**
          * If set to true, the consumer endpoint will receive roleChange event
          * as well (not just connecting and/or using the state machine). By
-         * default it is set to false. The option will be converted to a
-         * <code>boolean</code> type.
+         * default it is set to false.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public JGroupsRaftConsumerBuilder enableRoleChangeEvents(
                 String enableRoleChangeEvents) {
@@ -153,8 +164,10 @@ public interface JGroupsRaftEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public JGroupsRaftConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -165,9 +178,10 @@ public interface JGroupsRaftEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public JGroupsRaftConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -175,8 +189,9 @@ public interface JGroupsRaftEndpointBuilder {
             return (JGroupsRaftConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public JGroupsRaftConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -184,9 +199,10 @@ public interface JGroupsRaftEndpointBuilder {
             return (JGroupsRaftConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public JGroupsRaftConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

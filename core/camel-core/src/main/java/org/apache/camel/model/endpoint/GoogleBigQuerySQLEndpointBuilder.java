@@ -40,16 +40,18 @@ public interface GoogleBigQuerySQLEndpointBuilder {
             super("google-bigquery-sql", path);
         }
         /**
-         * Google Cloud Project Id. The option is a
-         * <code>java.lang.String</code> type.
+         * Google Cloud Project Id.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T projectId(String projectId) {
             this.properties.put("projectId", projectId);
             return (T) this;
         }
         /**
-         * BigQuery standard SQL query. The option is a
-         * <code>java.lang.String</code> type.
+         * BigQuery standard SQL query.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T query(String query) {
             this.properties.put("query", query);
@@ -57,8 +59,10 @@ public interface GoogleBigQuerySQLEndpointBuilder {
         }
         /**
          * ConnectionFactory to obtain connection to Bigquery Service. If non
-         * provided the default will be used. The option is a
+         * provided the default will be used.
+         * The option is a
          * <code>org.apache.camel.component.google.bigquery.GoogleBigQueryConnectionFactory</code> type.
+         * @group producer
          */
         public T connectionFactory(Object connectionFactory) {
             this.properties.put("connectionFactory", connectionFactory);
@@ -66,8 +70,10 @@ public interface GoogleBigQuerySQLEndpointBuilder {
         }
         /**
          * ConnectionFactory to obtain connection to Bigquery Service. If non
-         * provided the default will be used. The option will be converted to a
+         * provided the default will be used.
+         * The option will be converted to a
          * <code>org.apache.camel.component.google.bigquery.GoogleBigQueryConnectionFactory</code> type.
+         * @group producer
          */
         public T connectionFactory(String connectionFactory) {
             this.properties.put("connectionFactory", connectionFactory);
@@ -75,8 +81,9 @@ public interface GoogleBigQuerySQLEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -84,8 +91,9 @@ public interface GoogleBigQuerySQLEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -93,8 +101,9 @@ public interface GoogleBigQuerySQLEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -102,8 +111,9 @@ public interface GoogleBigQuerySQLEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

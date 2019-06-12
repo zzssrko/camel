@@ -41,56 +41,64 @@ public interface SqlStoredEndpointBuilder {
             super("sql-stored", path);
         }
         /**
-         * Sets the StoredProcedure template to perform. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the StoredProcedure template to perform.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T template(String template) {
             this.properties.put("template", template);
             return (T) this;
         }
         /**
-         * Enables or disables batch mode. The option is a <code>boolean</code>
-         * type.
+         * Enables or disables batch mode.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T batch(boolean batch) {
             this.properties.put("batch", batch);
             return (T) this;
         }
         /**
-         * Enables or disables batch mode. The option will be converted to a
-         * <code>boolean</code> type.
+         * Enables or disables batch mode.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T batch(String batch) {
             this.properties.put("batch", batch);
             return (T) this;
         }
         /**
-         * Sets the DataSource to use to communicate with the database. The
-         * option is a <code>javax.sql.DataSource</code> type.
+         * Sets the DataSource to use to communicate with the database.
+         * The option is a <code>javax.sql.DataSource</code> type.
+         * @group producer
          */
         public T dataSource(Object dataSource) {
             this.properties.put("dataSource", dataSource);
             return (T) this;
         }
         /**
-         * Sets the DataSource to use to communicate with the database. The
-         * option will be converted to a <code>javax.sql.DataSource</code> type.
+         * Sets the DataSource to use to communicate with the database.
+         * The option will be converted to a <code>javax.sql.DataSource</code>
+         * type.
+         * @group producer
          */
         public T dataSource(String dataSource) {
             this.properties.put("dataSource", dataSource);
             return (T) this;
         }
         /**
-         * Whether this call is for a function. The option is a
-         * <code>boolean</code> type.
+         * Whether this call is for a function.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T function(boolean function) {
             this.properties.put("function", function);
             return (T) this;
         }
         /**
-         * Whether this call is for a function. The option will be converted to
-         * a <code>boolean</code> type.
+         * Whether this call is for a function.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T function(String function) {
             this.properties.put("function", function);
@@ -98,8 +106,9 @@ public interface SqlStoredEndpointBuilder {
         }
         /**
          * If set, will ignore the results of the template and use the existing
-         * IN message as the OUT message for the continuation of processing. The
-         * option is a <code>boolean</code> type.
+         * IN message as the OUT message for the continuation of processing.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T noop(boolean noop) {
             this.properties.put("noop", noop);
@@ -107,8 +116,9 @@ public interface SqlStoredEndpointBuilder {
         }
         /**
          * If set, will ignore the results of the template and use the existing
-         * IN message as the OUT message for the continuation of processing. The
-         * option will be converted to a <code>boolean</code> type.
+         * IN message as the OUT message for the continuation of processing.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T noop(String noop) {
             this.properties.put("noop", noop);
@@ -120,7 +130,9 @@ public interface SqlStoredEndpointBuilder {
          * the message body, any existing content in the message body is
          * discarded. If outputHeader is set, the value is used as the name of
          * the header to store the template result and the original message body
-         * is preserved. The option is a <code>java.lang.String</code> type.
+         * is preserved.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T outputHeader(String outputHeader) {
             this.properties.put("outputHeader", outputHeader);
@@ -129,7 +141,9 @@ public interface SqlStoredEndpointBuilder {
         /**
          * Whether to use the message body as the template and then headers for
          * parameters. If this option is enabled then the template in the uri is
-         * not used. The option is a <code>boolean</code> type.
+         * not used.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T useMessageBodyForTemplate(boolean useMessageBodyForTemplate) {
             this.properties.put("useMessageBodyForTemplate", useMessageBodyForTemplate);
@@ -138,8 +152,9 @@ public interface SqlStoredEndpointBuilder {
         /**
          * Whether to use the message body as the template and then headers for
          * parameters. If this option is enabled then the template in the uri is
-         * not used. The option will be converted to a <code>boolean</code>
-         * type.
+         * not used.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T useMessageBodyForTemplate(String useMessageBodyForTemplate) {
             this.properties.put("useMessageBodyForTemplate", useMessageBodyForTemplate);
@@ -147,8 +162,9 @@ public interface SqlStoredEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -156,8 +172,9 @@ public interface SqlStoredEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -165,8 +182,9 @@ public interface SqlStoredEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -174,8 +192,9 @@ public interface SqlStoredEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

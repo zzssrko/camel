@@ -44,24 +44,27 @@ public interface StompEndpointBuilder {
             super("stomp", path);
         }
         /**
-         * Name of the queue. The option is a <code>java.lang.String</code>
-         * type.
+         * Name of the queue.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T destination(String destination) {
             this.properties.put("destination", destination);
             return (T) this;
         }
         /**
-         * The URI of the Stomp broker to connect to. The option is a
-         * <code>java.lang.String</code> type.
+         * The URI of the Stomp broker to connect to.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T brokerURL(String brokerURL) {
             this.properties.put("brokerURL", brokerURL);
             return (T) this;
         }
         /**
-         * The virtual host name. The option is a <code>java.lang.String</code>
-         * type.
+         * The virtual host name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T host(String host) {
             this.properties.put("host", host);
@@ -69,8 +72,9 @@ public interface StompEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -78,8 +82,9 @@ public interface StompEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -87,8 +92,10 @@ public interface StompEndpointBuilder {
         }
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
-         * Camel message. The option is a
+         * Camel message.
+         * The option is a
          * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
+         * @group advanced
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -96,8 +103,10 @@ public interface StompEndpointBuilder {
         }
         /**
          * To use a custom HeaderFilterStrategy to filter header to and from
-         * Camel message. The option will be converted to a
+         * Camel message.
+         * The option will be converted to a
          * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
+         * @group advanced
          */
         public T headerFilterStrategy(String headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -105,8 +114,9 @@ public interface StompEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -114,39 +124,47 @@ public interface StompEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * The username. The option is a <code>java.lang.String</code> type.
+         * The username.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T login(String login) {
             this.properties.put("login", login);
             return (T) this;
         }
         /**
-         * The password. The option is a <code>java.lang.String</code> type.
+         * The password.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T passcode(String passcode) {
             this.properties.put("passcode", passcode);
             return (T) this;
         }
         /**
-         * To configure security using SSLContextParameters. The option is a
+         * To configure security using SSLContextParameters.
+         * The option is a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group security
          */
         public T sslContextParameters(Object sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
         /**
-         * To configure security using SSLContextParameters. The option will be
-         * converted to a
+         * To configure security using SSLContextParameters.
+         * The option will be converted to a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group security
          */
         public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -172,7 +190,9 @@ public interface StompEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public StompConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -186,7 +206,9 @@ public interface StompEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public StompConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -196,8 +218,10 @@ public interface StompEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public StompConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -208,17 +232,19 @@ public interface StompEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public StompConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (StompConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public StompConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -226,9 +252,10 @@ public interface StompEndpointBuilder {
             return (StompConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public StompConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

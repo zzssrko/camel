@@ -47,78 +47,92 @@ public interface FacebookEndpointBuilder {
             super("facebook", path);
         }
         /**
-         * What operation to perform. The option is a
-         * <code>java.lang.String</code> type.
+         * What operation to perform.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T methodName(String methodName) {
             this.properties.put("methodName", methodName);
             return (T) this;
         }
         /**
-         * The unique URL of the achievement. The option is a
-         * <code>java.net.URL</code> type.
+         * The unique URL of the achievement.
+         * The option is a <code>java.net.URL</code> type.
+         * @group common
          */
         public T achievementURL(URL achievementURL) {
             this.properties.put("achievementURL", achievementURL);
             return (T) this;
         }
         /**
-         * The unique URL of the achievement. The option will be converted to a
-         * <code>java.net.URL</code> type.
+         * The unique URL of the achievement.
+         * The option will be converted to a <code>java.net.URL</code> type.
+         * @group common
          */
         public T achievementURL(String achievementURL) {
             this.properties.put("achievementURL", achievementURL);
             return (T) this;
         }
         /**
-         * The album ID. The option is a <code>java.lang.String</code> type.
+         * The album ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T albumId(String albumId) {
             this.properties.put("albumId", albumId);
             return (T) this;
         }
         /**
-         * The facebook Album to be created or updated. The option is a
-         * <code>facebook4j.AlbumUpdate</code> type.
+         * The facebook Album to be created or updated.
+         * The option is a <code>facebook4j.AlbumUpdate</code> type.
+         * @group common
          */
         public T albumUpdate(Object albumUpdate) {
             this.properties.put("albumUpdate", albumUpdate);
             return (T) this;
         }
         /**
-         * The facebook Album to be created or updated. The option will be
-         * converted to a <code>facebook4j.AlbumUpdate</code> type.
+         * The facebook Album to be created or updated.
+         * The option will be converted to a <code>facebook4j.AlbumUpdate</code>
+         * type.
+         * @group common
          */
         public T albumUpdate(String albumUpdate) {
             this.properties.put("albumUpdate", albumUpdate);
             return (T) this;
         }
         /**
-         * The ID of the Facebook Application. The option is a
-         * <code>java.lang.String</code> type.
+         * The ID of the Facebook Application.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T appId(String appId) {
             this.properties.put("appId", appId);
             return (T) this;
         }
         /**
-         * Location latitude and longitude. The option is a
-         * <code>facebook4j.GeoLocation</code> type.
+         * Location latitude and longitude.
+         * The option is a <code>facebook4j.GeoLocation</code> type.
+         * @group common
          */
         public T center(Object center) {
             this.properties.put("center", center);
             return (T) this;
         }
         /**
-         * Location latitude and longitude. The option will be converted to a
-         * <code>facebook4j.GeoLocation</code> type.
+         * Location latitude and longitude.
+         * The option will be converted to a <code>facebook4j.GeoLocation</code>
+         * type.
+         * @group common
          */
         public T center(String center) {
             this.properties.put("center", center);
             return (T) this;
         }
         /**
-         * The checkin ID. The option is a <code>java.lang.String</code> type.
+         * The checkin ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T checkinId(String checkinId) {
             this.properties.put("checkinId", checkinId);
@@ -126,8 +140,9 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * The checkin to be created. Deprecated, instead create a Post with an
-         * attached location. The option is a
-         * <code>facebook4j.CheckinUpdate</code> type.
+         * attached location.
+         * The option is a <code>facebook4j.CheckinUpdate</code> type.
+         * @group common
          */
         @Deprecated
         public T checkinUpdate(Object checkinUpdate) {
@@ -136,8 +151,10 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * The checkin to be created. Deprecated, instead create a Post with an
-         * attached location. The option will be converted to a
+         * attached location.
+         * The option will be converted to a
          * <code>facebook4j.CheckinUpdate</code> type.
+         * @group common
          */
         @Deprecated
         public T checkinUpdate(String checkinUpdate) {
@@ -145,314 +162,376 @@ public interface FacebookEndpointBuilder {
             return (T) this;
         }
         /**
-         * Facebook4J API client URL. The option is a
-         * <code>java.lang.String</code> type.
+         * Facebook4J API client URL.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T clientURL(String clientURL) {
             this.properties.put("clientURL", clientURL);
             return (T) this;
         }
         /**
-         * Facebook4J client API version. The option is a
-         * <code>java.lang.String</code> type.
+         * Facebook4J client API version.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T clientVersion(String clientVersion) {
             this.properties.put("clientVersion", clientVersion);
             return (T) this;
         }
         /**
-         * The comment ID. The option is a <code>java.lang.String</code> type.
+         * The comment ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T commentId(String commentId) {
             this.properties.put("commentId", commentId);
             return (T) this;
         }
         /**
-         * The facebook Comment to be created or updated. The option is a
-         * <code>facebook4j.CommentUpdate</code> type.
+         * The facebook Comment to be created or updated.
+         * The option is a <code>facebook4j.CommentUpdate</code> type.
+         * @group common
          */
         public T commentUpdate(Object commentUpdate) {
             this.properties.put("commentUpdate", commentUpdate);
             return (T) this;
         }
         /**
-         * The facebook Comment to be created or updated. The option will be
-         * converted to a <code>facebook4j.CommentUpdate</code> type.
+         * The facebook Comment to be created or updated.
+         * The option will be converted to a
+         * <code>facebook4j.CommentUpdate</code> type.
+         * @group common
          */
         public T commentUpdate(String commentUpdate) {
             this.properties.put("commentUpdate", commentUpdate);
             return (T) this;
         }
         /**
-         * Enables deubg output. Effective only with the embedded logger. The
-         * option is a <code>java.lang.Boolean</code> type.
+         * Enables deubg output. Effective only with the embedded logger.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group common
          */
         public T debugEnabled(Boolean debugEnabled) {
             this.properties.put("debugEnabled", debugEnabled);
             return (T) this;
         }
         /**
-         * Enables deubg output. Effective only with the embedded logger. The
-         * option will be converted to a <code>java.lang.Boolean</code> type.
+         * Enables deubg output. Effective only with the embedded logger.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group common
          */
         public T debugEnabled(String debugEnabled) {
             this.properties.put("debugEnabled", debugEnabled);
             return (T) this;
         }
         /**
-         * The description text. The option is a <code>java.lang.String</code>
-         * type.
+         * The description text.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T description(String description) {
             this.properties.put("description", description);
             return (T) this;
         }
         /**
-         * Distance in meters. The option is a <code>java.lang.Integer</code>
-         * type.
+         * Distance in meters.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T distance(Integer distance) {
             this.properties.put("distance", distance);
             return (T) this;
         }
         /**
-         * Distance in meters. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * Distance in meters.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T distance(String distance) {
             this.properties.put("distance", distance);
             return (T) this;
         }
         /**
-         * The domain ID. The option is a <code>java.lang.String</code> type.
+         * The domain ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T domainId(String domainId) {
             this.properties.put("domainId", domainId);
             return (T) this;
         }
         /**
-         * The domain name. The option is a <code>java.lang.String</code> type.
+         * The domain name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T domainName(String domainName) {
             this.properties.put("domainName", domainName);
             return (T) this;
         }
         /**
-         * The domain names. The option is a
-         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * The domain names.
+         * The option is a <code>java.util.List&lt;java.lang.String&gt;</code>
+         * type.
+         * @group common
          */
         public T domainNames(List<String> domainNames) {
             this.properties.put("domainNames", domainNames);
             return (T) this;
         }
         /**
-         * The domain names. The option will be converted to a
+         * The domain names.
+         * The option will be converted to a
          * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * @group common
          */
         public T domainNames(String domainNames) {
             this.properties.put("domainNames", domainNames);
             return (T) this;
         }
         /**
-         * The event ID. The option is a <code>java.lang.String</code> type.
+         * The event ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T eventId(String eventId) {
             this.properties.put("eventId", eventId);
             return (T) this;
         }
         /**
-         * The event to be created or updated. The option is a
-         * <code>facebook4j.EventUpdate</code> type.
+         * The event to be created or updated.
+         * The option is a <code>facebook4j.EventUpdate</code> type.
+         * @group common
          */
         public T eventUpdate(Object eventUpdate) {
             this.properties.put("eventUpdate", eventUpdate);
             return (T) this;
         }
         /**
-         * The event to be created or updated. The option will be converted to a
-         * <code>facebook4j.EventUpdate</code> type.
+         * The event to be created or updated.
+         * The option will be converted to a <code>facebook4j.EventUpdate</code>
+         * type.
+         * @group common
          */
         public T eventUpdate(String eventUpdate) {
             this.properties.put("eventUpdate", eventUpdate);
             return (T) this;
         }
         /**
-         * The friend ID. The option is a <code>java.lang.String</code> type.
+         * The friend ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T friendId(String friendId) {
             this.properties.put("friendId", friendId);
             return (T) this;
         }
         /**
-         * The friend list ID. The option is a <code>java.lang.String</code>
-         * type.
+         * The friend list ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T friendlistId(String friendlistId) {
             this.properties.put("friendlistId", friendlistId);
             return (T) this;
         }
         /**
-         * The friend list Name. The option is a <code>java.lang.String</code>
-         * type.
+         * The friend list Name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T friendlistName(String friendlistName) {
             this.properties.put("friendlistName", friendlistName);
             return (T) this;
         }
         /**
-         * The friend user ID. The option is a <code>java.lang.String</code>
-         * type.
+         * The friend user ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T friendUserId(String friendUserId) {
             this.properties.put("friendUserId", friendUserId);
             return (T) this;
         }
         /**
-         * The group ID. The option is a <code>java.lang.String</code> type.
+         * The group ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T groupId(String groupId) {
             this.properties.put("groupId", groupId);
             return (T) this;
         }
         /**
-         * Use Facebook GZIP encoding. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * Use Facebook GZIP encoding.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group common
          */
         public T gzipEnabled(Boolean gzipEnabled) {
             this.properties.put("gzipEnabled", gzipEnabled);
             return (T) this;
         }
         /**
-         * Use Facebook GZIP encoding. The option will be converted to a
-         * <code>java.lang.Boolean</code> type.
+         * Use Facebook GZIP encoding.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group common
          */
         public T gzipEnabled(String gzipEnabled) {
             this.properties.put("gzipEnabled", gzipEnabled);
             return (T) this;
         }
         /**
-         * Http connection timeout in milliseconds. The option is a
-         * <code>java.lang.Integer</code> type.
+         * Http connection timeout in milliseconds.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T httpConnectionTimeout(Integer httpConnectionTimeout) {
             this.properties.put("httpConnectionTimeout", httpConnectionTimeout);
             return (T) this;
         }
         /**
-         * Http connection timeout in milliseconds. The option will be converted
-         * to a <code>java.lang.Integer</code> type.
+         * Http connection timeout in milliseconds.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T httpConnectionTimeout(String httpConnectionTimeout) {
             this.properties.put("httpConnectionTimeout", httpConnectionTimeout);
             return (T) this;
         }
         /**
-         * HTTP maximum connections per route. The option is a
-         * <code>java.lang.Integer</code> type.
+         * HTTP maximum connections per route.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T httpDefaultMaxPerRoute(Integer httpDefaultMaxPerRoute) {
             this.properties.put("httpDefaultMaxPerRoute", httpDefaultMaxPerRoute);
             return (T) this;
         }
         /**
-         * HTTP maximum connections per route. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * HTTP maximum connections per route.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T httpDefaultMaxPerRoute(String httpDefaultMaxPerRoute) {
             this.properties.put("httpDefaultMaxPerRoute", httpDefaultMaxPerRoute);
             return (T) this;
         }
         /**
-         * HTTP maximum total connections. The option is a
-         * <code>java.lang.Integer</code> type.
+         * HTTP maximum total connections.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T httpMaxTotalConnections(Integer httpMaxTotalConnections) {
             this.properties.put("httpMaxTotalConnections", httpMaxTotalConnections);
             return (T) this;
         }
         /**
-         * HTTP maximum total connections. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * HTTP maximum total connections.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T httpMaxTotalConnections(String httpMaxTotalConnections) {
             this.properties.put("httpMaxTotalConnections", httpMaxTotalConnections);
             return (T) this;
         }
         /**
-         * Http read timeout in milliseconds. The option is a
-         * <code>java.lang.Integer</code> type.
+         * Http read timeout in milliseconds.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T httpReadTimeout(Integer httpReadTimeout) {
             this.properties.put("httpReadTimeout", httpReadTimeout);
             return (T) this;
         }
         /**
-         * Http read timeout in milliseconds. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * Http read timeout in milliseconds.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T httpReadTimeout(String httpReadTimeout) {
             this.properties.put("httpReadTimeout", httpReadTimeout);
             return (T) this;
         }
         /**
-         * Number of HTTP retries. The option is a
-         * <code>java.lang.Integer</code> type.
+         * Number of HTTP retries.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T httpRetryCount(Integer httpRetryCount) {
             this.properties.put("httpRetryCount", httpRetryCount);
             return (T) this;
         }
         /**
-         * Number of HTTP retries. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * Number of HTTP retries.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T httpRetryCount(String httpRetryCount) {
             this.properties.put("httpRetryCount", httpRetryCount);
             return (T) this;
         }
         /**
-         * HTTP retry interval in seconds. The option is a
-         * <code>java.lang.Integer</code> type.
+         * HTTP retry interval in seconds.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T httpRetryIntervalSeconds(Integer httpRetryIntervalSeconds) {
             this.properties.put("httpRetryIntervalSeconds", httpRetryIntervalSeconds);
             return (T) this;
         }
         /**
-         * HTTP retry interval in seconds. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * HTTP retry interval in seconds.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T httpRetryIntervalSeconds(String httpRetryIntervalSeconds) {
             this.properties.put("httpRetryIntervalSeconds", httpRetryIntervalSeconds);
             return (T) this;
         }
         /**
-         * HTTP streaming read timeout in milliseconds. The option is a
-         * <code>java.lang.Integer</code> type.
+         * HTTP streaming read timeout in milliseconds.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T httpStreamingReadTimeout(Integer httpStreamingReadTimeout) {
             this.properties.put("httpStreamingReadTimeout", httpStreamingReadTimeout);
             return (T) this;
         }
         /**
-         * HTTP streaming read timeout in milliseconds. The option will be
-         * converted to a <code>java.lang.Integer</code> type.
+         * HTTP streaming read timeout in milliseconds.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T httpStreamingReadTimeout(String httpStreamingReadTimeout) {
             this.properties.put("httpStreamingReadTimeout", httpStreamingReadTimeout);
             return (T) this;
         }
         /**
-         * The ids of users. The option is a
-         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * The ids of users.
+         * The option is a <code>java.util.List&lt;java.lang.String&gt;</code>
+         * type.
+         * @group common
          */
         public T ids(List<String> ids) {
             this.properties.put("ids", ids);
             return (T) this;
         }
         /**
-         * The ids of users. The option will be converted to a
+         * The ids of users.
+         * The option will be converted to a
          * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * @group common
          */
         public T ids(String ids) {
             this.properties.put("ids", ids);
@@ -461,6 +540,7 @@ public interface FacebookEndpointBuilder {
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T inBody(String inBody) {
             this.properties.put("inBody", inBody);
@@ -468,7 +548,9 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * Enables notifications that the user has already read in addition to
-         * unread ones. The option is a <code>java.lang.Boolean</code> type.
+         * unread ones.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group common
          */
         public T includeRead(Boolean includeRead) {
             this.properties.put("includeRead", includeRead);
@@ -476,23 +558,29 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * Enables notifications that the user has already read in addition to
-         * unread ones. The option will be converted to a
-         * <code>java.lang.Boolean</code> type.
+         * unread ones.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group common
          */
         public T includeRead(String includeRead) {
             this.properties.put("includeRead", includeRead);
             return (T) this;
         }
         /**
-         * Whether hidden. The option is a <code>java.lang.Boolean</code> type.
+         * Whether hidden.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group common
          */
         public T isHidden(Boolean isHidden) {
             this.properties.put("isHidden", isHidden);
             return (T) this;
         }
         /**
-         * Whether hidden. The option will be converted to a
-         * <code>java.lang.Boolean</code> type.
+         * Whether hidden.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group common
          */
         public T isHidden(String isHidden) {
             this.properties.put("isHidden", isHidden);
@@ -501,6 +589,7 @@ public interface FacebookEndpointBuilder {
         /**
          * If set to true, raw JSON forms will be stored in DataObjectFactory.
          * The option is a <code>java.lang.Boolean</code> type.
+         * @group common
          */
         public T jsonStoreEnabled(Boolean jsonStoreEnabled) {
             this.properties.put("jsonStoreEnabled", jsonStoreEnabled);
@@ -510,361 +599,436 @@ public interface FacebookEndpointBuilder {
          * If set to true, raw JSON forms will be stored in DataObjectFactory.
          * The option will be converted to a <code>java.lang.Boolean</code>
          * type.
+         * @group common
          */
         public T jsonStoreEnabled(String jsonStoreEnabled) {
             this.properties.put("jsonStoreEnabled", jsonStoreEnabled);
             return (T) this;
         }
         /**
-         * Link URL. The option is a <code>java.net.URL</code> type.
+         * Link URL.
+         * The option is a <code>java.net.URL</code> type.
+         * @group common
          */
         public T link(URL link) {
             this.properties.put("link", link);
             return (T) this;
         }
         /**
-         * Link URL. The option will be converted to a <code>java.net.URL</code>
-         * type.
+         * Link URL.
+         * The option will be converted to a <code>java.net.URL</code> type.
+         * @group common
          */
         public T link(String link) {
             this.properties.put("link", link);
             return (T) this;
         }
         /**
-         * Link ID. The option is a <code>java.lang.String</code> type.
+         * Link ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T linkId(String linkId) {
             this.properties.put("linkId", linkId);
             return (T) this;
         }
         /**
-         * Desired FQL locale. The option is a <code>java.util.Locale</code>
-         * type.
+         * Desired FQL locale.
+         * The option is a <code>java.util.Locale</code> type.
+         * @group common
          */
         public T locale(Locale locale) {
             this.properties.put("locale", locale);
             return (T) this;
         }
         /**
-         * Desired FQL locale. The option will be converted to a
-         * <code>java.util.Locale</code> type.
+         * Desired FQL locale.
+         * The option will be converted to a <code>java.util.Locale</code> type.
+         * @group common
          */
         public T locale(String locale) {
             this.properties.put("locale", locale);
             return (T) this;
         }
         /**
-         * If set to true, Facebook4J mbean will be registerd. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * If set to true, Facebook4J mbean will be registerd.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group common
          */
         public T mbeanEnabled(Boolean mbeanEnabled) {
             this.properties.put("mbeanEnabled", mbeanEnabled);
             return (T) this;
         }
         /**
-         * If set to true, Facebook4J mbean will be registerd. The option will
-         * be converted to a <code>java.lang.Boolean</code> type.
+         * If set to true, Facebook4J mbean will be registerd.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group common
          */
         public T mbeanEnabled(String mbeanEnabled) {
             this.properties.put("mbeanEnabled", mbeanEnabled);
             return (T) this;
         }
         /**
-         * The message text. The option is a <code>java.lang.String</code> type.
+         * The message text.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T message(String message) {
             this.properties.put("message", message);
             return (T) this;
         }
         /**
-         * The message ID. The option is a <code>java.lang.String</code> type.
+         * The message ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T messageId(String messageId) {
             this.properties.put("messageId", messageId);
             return (T) this;
         }
         /**
-         * The metric name. The option is a <code>java.lang.String</code> type.
+         * The metric name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T metric(String metric) {
             this.properties.put("metric", metric);
             return (T) this;
         }
         /**
-         * The milestone id. The option is a <code>java.lang.String</code> type.
+         * The milestone id.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T milestoneId(String milestoneId) {
             this.properties.put("milestoneId", milestoneId);
             return (T) this;
         }
         /**
-         * Test user name, must be of the form 'first last'. The option is a
-         * <code>java.lang.String</code> type.
+         * Test user name, must be of the form 'first last'.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T name(String name) {
             this.properties.put("name", name);
             return (T) this;
         }
         /**
-         * The note ID. The option is a <code>java.lang.String</code> type.
+         * The note ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T noteId(String noteId) {
             this.properties.put("noteId", noteId);
             return (T) this;
         }
         /**
-         * The notification ID. The option is a <code>java.lang.String</code>
-         * type.
+         * The notification ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T notificationId(String notificationId) {
             this.properties.put("notificationId", notificationId);
             return (T) this;
         }
         /**
-         * The insight object ID. The option is a <code>java.lang.String</code>
-         * type.
+         * The insight object ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T objectId(String objectId) {
             this.properties.put("objectId", objectId);
             return (T) this;
         }
         /**
-         * The offer id. The option is a <code>java.lang.String</code> type.
+         * The offer id.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T offerId(String offerId) {
             this.properties.put("offerId", offerId);
             return (T) this;
         }
         /**
-         * The question's answer option description. The option is a
-         * <code>java.lang.String</code> type.
+         * The question's answer option description.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T optionDescription(String optionDescription) {
             this.properties.put("optionDescription", optionDescription);
             return (T) this;
         }
         /**
-         * The page id. The option is a <code>java.lang.String</code> type.
+         * The page id.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T pageId(String pageId) {
             this.properties.put("pageId", pageId);
             return (T) this;
         }
         /**
-         * The permission name. The option is a <code>java.lang.String</code>
-         * type.
+         * The permission name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T permissionName(String permissionName) {
             this.properties.put("permissionName", permissionName);
             return (T) this;
         }
         /**
-         * Test user permissions in the format perm1,perm2,... The option is a
-         * <code>java.lang.String</code> type.
+         * Test user permissions in the format perm1,perm2,...
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T permissions(String permissions) {
             this.properties.put("permissions", permissions);
             return (T) this;
         }
         /**
-         * The photo ID. The option is a <code>java.lang.String</code> type.
+         * The photo ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T photoId(String photoId) {
             this.properties.put("photoId", photoId);
             return (T) this;
         }
         /**
-         * The picture id. The option is a <code>java.lang.Integer</code> type.
+         * The picture id.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T pictureId(Integer pictureId) {
             this.properties.put("pictureId", pictureId);
             return (T) this;
         }
         /**
-         * The picture id. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * The picture id.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T pictureId(String pictureId) {
             this.properties.put("pictureId", pictureId);
             return (T) this;
         }
         /**
-         * The picture2 id. The option is a <code>java.lang.Integer</code> type.
+         * The picture2 id.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T pictureId2(Integer pictureId2) {
             this.properties.put("pictureId2", pictureId2);
             return (T) this;
         }
         /**
-         * The picture2 id. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * The picture2 id.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T pictureId2(String pictureId2) {
             this.properties.put("pictureId2", pictureId2);
             return (T) this;
         }
         /**
-         * The picture size. The option is a <code>facebook4j.PictureSize</code>
-         * type.
+         * The picture size.
+         * The option is a <code>facebook4j.PictureSize</code> type.
+         * @group common
          */
         public T pictureSize(PictureSize pictureSize) {
             this.properties.put("pictureSize", pictureSize);
             return (T) this;
         }
         /**
-         * The picture size. The option will be converted to a
-         * <code>facebook4j.PictureSize</code> type.
+         * The picture size.
+         * The option will be converted to a <code>facebook4j.PictureSize</code>
+         * type.
+         * @group common
          */
         public T pictureSize(String pictureSize) {
             this.properties.put("pictureSize", pictureSize);
             return (T) this;
         }
         /**
-         * The place ID. The option is a <code>java.lang.String</code> type.
+         * The place ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T placeId(String placeId) {
             this.properties.put("placeId", placeId);
             return (T) this;
         }
         /**
-         * The post ID. The option is a <code>java.lang.String</code> type.
+         * The post ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T postId(String postId) {
             this.properties.put("postId", postId);
             return (T) this;
         }
         /**
-         * The post to create or update. The option is a
-         * <code>facebook4j.PostUpdate</code> type.
+         * The post to create or update.
+         * The option is a <code>facebook4j.PostUpdate</code> type.
+         * @group common
          */
         public T postUpdate(Object postUpdate) {
             this.properties.put("postUpdate", postUpdate);
             return (T) this;
         }
         /**
-         * The post to create or update. The option will be converted to a
-         * <code>facebook4j.PostUpdate</code> type.
+         * The post to create or update.
+         * The option will be converted to a <code>facebook4j.PostUpdate</code>
+         * type.
+         * @group common
          */
         public T postUpdate(String postUpdate) {
             this.properties.put("postUpdate", postUpdate);
             return (T) this;
         }
         /**
-         * Prettify JSON debug output if set to true. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * Prettify JSON debug output if set to true.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group common
          */
         public T prettyDebugEnabled(Boolean prettyDebugEnabled) {
             this.properties.put("prettyDebugEnabled", prettyDebugEnabled);
             return (T) this;
         }
         /**
-         * Prettify JSON debug output if set to true. The option will be
-         * converted to a <code>java.lang.Boolean</code> type.
+         * Prettify JSON debug output if set to true.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group common
          */
         public T prettyDebugEnabled(String prettyDebugEnabled) {
             this.properties.put("prettyDebugEnabled", prettyDebugEnabled);
             return (T) this;
         }
         /**
-         * FQL queries. The option is a <code>java.util.Map&lt;java.lang.String,
+         * FQL queries.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
          * java.lang.String&gt;</code> type.
+         * @group common
          */
         public T queries(Map<String, String> queries) {
             this.properties.put("queries", queries);
             return (T) this;
         }
         /**
-         * FQL queries. The option will be converted to a
+         * FQL queries.
+         * The option will be converted to a
          * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
          * type.
+         * @group common
          */
         public T queries(String queries) {
             this.properties.put("queries", queries);
             return (T) this;
         }
         /**
-         * FQL query or search terms for search endpoints. The option is a
-         * <code>java.lang.String</code> type.
+         * FQL query or search terms for search endpoints.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T query(String query) {
             this.properties.put("query", query);
             return (T) this;
         }
         /**
-         * The question id. The option is a <code>java.lang.String</code> type.
+         * The question id.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T questionId(String questionId) {
             this.properties.put("questionId", questionId);
             return (T) this;
         }
         /**
-         * Optional reading parameters. See Reading Options(#reading). The
-         * option is a <code>facebook4j.Reading</code> type.
+         * Optional reading parameters. See Reading Options(#reading).
+         * The option is a <code>facebook4j.Reading</code> type.
+         * @group common
          */
         public T reading(Object reading) {
             this.properties.put("reading", reading);
             return (T) this;
         }
         /**
-         * Optional reading parameters. See Reading Options(#reading). The
-         * option will be converted to a <code>facebook4j.Reading</code> type.
+         * Optional reading parameters. See Reading Options(#reading).
+         * The option will be converted to a <code>facebook4j.Reading</code>
+         * type.
+         * @group common
          */
         public T reading(String reading) {
             this.properties.put("reading", reading);
             return (T) this;
         }
         /**
-         * To configure Reading using key/value pairs from the Map. The option
-         * is a <code>java.util.Map&lt;java.lang.String,
+         * To configure Reading using key/value pairs from the Map.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
          * java.lang.Object&gt;</code> type.
+         * @group common
          */
         public T readingOptions(Map<String, Object> readingOptions) {
             this.properties.put("readingOptions", readingOptions);
             return (T) this;
         }
         /**
-         * To configure Reading using key/value pairs from the Map. The option
-         * will be converted to a <code>java.util.Map&lt;java.lang.String,
-         * java.lang.Object&gt;</code> type.
+         * To configure Reading using key/value pairs from the Map.
+         * The option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
+         * @group common
          */
         public T readingOptions(String readingOptions) {
             this.properties.put("readingOptions", readingOptions);
             return (T) this;
         }
         /**
-         * API base URL. The option is a <code>java.lang.String</code> type.
+         * API base URL.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T restBaseURL(String restBaseURL) {
             this.properties.put("restBaseURL", restBaseURL);
             return (T) this;
         }
         /**
-         * The numeric score with value. The option is a
-         * <code>java.lang.Integer</code> type.
+         * The numeric score with value.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T scoreValue(Integer scoreValue) {
             this.properties.put("scoreValue", scoreValue);
             return (T) this;
         }
         /**
-         * The numeric score with value. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * The numeric score with value.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T scoreValue(String scoreValue) {
             this.properties.put("scoreValue", scoreValue);
             return (T) this;
         }
         /**
-         * The picture size, one of large, normal, small or square. The option
-         * is a <code>facebook4j.PictureSize</code> type.
+         * The picture size, one of large, normal, small or square.
+         * The option is a <code>facebook4j.PictureSize</code> type.
+         * @group common
          */
         public T size(PictureSize size) {
             this.properties.put("size", size);
             return (T) this;
         }
         /**
-         * The picture size, one of large, normal, small or square. The option
-         * will be converted to a <code>facebook4j.PictureSize</code> type.
+         * The picture size, one of large, normal, small or square.
+         * The option will be converted to a <code>facebook4j.PictureSize</code>
+         * type.
+         * @group common
          */
         public T size(String size) {
             this.properties.put("size", size);
@@ -873,6 +1037,7 @@ public interface FacebookEndpointBuilder {
         /**
          * The media content from either a java.io.File or java.io.Inputstream.
          * The option is a <code>facebook4j.Media</code> type.
+         * @group common
          */
         public T source(Object source) {
             this.properties.put("source", source);
@@ -881,184 +1046,222 @@ public interface FacebookEndpointBuilder {
         /**
          * The media content from either a java.io.File or java.io.Inputstream.
          * The option will be converted to a <code>facebook4j.Media</code> type.
+         * @group common
          */
         public T source(String source) {
             this.properties.put("source", source);
             return (T) this;
         }
         /**
-         * The note of the subject. The option is a
-         * <code>java.lang.String</code> type.
+         * The note of the subject.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T subject(String subject) {
             this.properties.put("subject", subject);
             return (T) this;
         }
         /**
-         * The tab id. The option is a <code>java.lang.String</code> type.
+         * The tab id.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T tabId(String tabId) {
             this.properties.put("tabId", tabId);
             return (T) this;
         }
         /**
-         * Photo tag information. The option is a
-         * <code>facebook4j.TagUpdate</code> type.
+         * Photo tag information.
+         * The option is a <code>facebook4j.TagUpdate</code> type.
+         * @group common
          */
         public T tagUpdate(Object tagUpdate) {
             this.properties.put("tagUpdate", tagUpdate);
             return (T) this;
         }
         /**
-         * Photo tag information. The option will be converted to a
-         * <code>facebook4j.TagUpdate</code> type.
+         * Photo tag information.
+         * The option will be converted to a <code>facebook4j.TagUpdate</code>
+         * type.
+         * @group common
          */
         public T tagUpdate(String tagUpdate) {
             this.properties.put("tagUpdate", tagUpdate);
             return (T) this;
         }
         /**
-         * Test user 1. The option is a <code>facebook4j.TestUser</code> type.
+         * Test user 1.
+         * The option is a <code>facebook4j.TestUser</code> type.
+         * @group common
          */
         public T testUser1(Object testUser1) {
             this.properties.put("testUser1", testUser1);
             return (T) this;
         }
         /**
-         * Test user 1. The option will be converted to a
-         * <code>facebook4j.TestUser</code> type.
+         * Test user 1.
+         * The option will be converted to a <code>facebook4j.TestUser</code>
+         * type.
+         * @group common
          */
         public T testUser1(String testUser1) {
             this.properties.put("testUser1", testUser1);
             return (T) this;
         }
         /**
-         * Test user 2. The option is a <code>facebook4j.TestUser</code> type.
+         * Test user 2.
+         * The option is a <code>facebook4j.TestUser</code> type.
+         * @group common
          */
         public T testUser2(Object testUser2) {
             this.properties.put("testUser2", testUser2);
             return (T) this;
         }
         /**
-         * Test user 2. The option will be converted to a
-         * <code>facebook4j.TestUser</code> type.
+         * Test user 2.
+         * The option will be converted to a <code>facebook4j.TestUser</code>
+         * type.
+         * @group common
          */
         public T testUser2(String testUser2) {
             this.properties.put("testUser2", testUser2);
             return (T) this;
         }
         /**
-         * The ID of the test user. The option is a
-         * <code>java.lang.String</code> type.
+         * The ID of the test user.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T testUserId(String testUserId) {
             this.properties.put("testUserId", testUserId);
             return (T) this;
         }
         /**
-         * The title text. The option is a <code>java.lang.String</code> type.
+         * The title text.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T title(String title) {
             this.properties.put("title", title);
             return (T) this;
         }
         /**
-         * The ID of the user to tag. The option is a
-         * <code>java.lang.String</code> type.
+         * The ID of the user to tag.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T toUserId(String toUserId) {
             this.properties.put("toUserId", toUserId);
             return (T) this;
         }
         /**
-         * The IDs of the users to tag. The option is a
-         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * The IDs of the users to tag.
+         * The option is a <code>java.util.List&lt;java.lang.String&gt;</code>
+         * type.
+         * @group common
          */
         public T toUserIds(List<String> toUserIds) {
             this.properties.put("toUserIds", toUserIds);
             return (T) this;
         }
         /**
-         * The IDs of the users to tag. The option will be converted to a
+         * The IDs of the users to tag.
+         * The option will be converted to a
          * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * @group common
          */
         public T toUserIds(String toUserIds) {
             this.properties.put("toUserIds", toUserIds);
             return (T) this;
         }
         /**
-         * The Facebook user ID. The option is a <code>java.lang.String</code>
-         * type.
+         * The Facebook user ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T userId(String userId) {
             this.properties.put("userId", userId);
             return (T) this;
         }
         /**
-         * The ID of a user 1. The option is a <code>java.lang.String</code>
-         * type.
+         * The ID of a user 1.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T userId1(String userId1) {
             this.properties.put("userId1", userId1);
             return (T) this;
         }
         /**
-         * The ID of a user 2. The option is a <code>java.lang.String</code>
-         * type.
+         * The ID of a user 2.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T userId2(String userId2) {
             this.properties.put("userId2", userId2);
             return (T) this;
         }
         /**
-         * The IDs of users to invite to event. The option is a
-         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * The IDs of users to invite to event.
+         * The option is a <code>java.util.List&lt;java.lang.String&gt;</code>
+         * type.
+         * @group common
          */
         public T userIds(List<String> userIds) {
             this.properties.put("userIds", userIds);
             return (T) this;
         }
         /**
-         * The IDs of users to invite to event. The option will be converted to
-         * a <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * The IDs of users to invite to event.
+         * The option will be converted to a
+         * <code>java.util.List&lt;java.lang.String&gt;</code> type.
+         * @group common
          */
         public T userIds(String userIds) {
             this.properties.put("userIds", userIds);
             return (T) this;
         }
         /**
-         * The test user locale. The option is a <code>java.lang.String</code>
-         * type.
+         * The test user locale.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T userLocale(String userLocale) {
             this.properties.put("userLocale", userLocale);
             return (T) this;
         }
         /**
-         * Use SSL. The option is a <code>java.lang.Boolean</code> type.
+         * Use SSL.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group common
          */
         public T useSSL(Boolean useSSL) {
             this.properties.put("useSSL", useSSL);
             return (T) this;
         }
         /**
-         * Use SSL. The option will be converted to a
-         * <code>java.lang.Boolean</code> type.
+         * Use SSL.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group common
          */
         public T useSSL(String useSSL) {
             this.properties.put("useSSL", useSSL);
             return (T) this;
         }
         /**
-         * Video API base URL. The option is a <code>java.lang.String</code>
-         * type.
+         * Video API base URL.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T videoBaseURL(String videoBaseURL) {
             this.properties.put("videoBaseURL", videoBaseURL);
             return (T) this;
         }
         /**
-         * The video ID. The option is a <code>java.lang.String</code> type.
+         * The video ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T videoId(String videoId) {
             this.properties.put("videoId", videoId);
@@ -1066,8 +1269,9 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -1075,8 +1279,9 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -1084,8 +1289,9 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -1093,88 +1299,100 @@ public interface FacebookEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * HTTP proxy server host name. The option is a
-         * <code>java.lang.String</code> type.
+         * HTTP proxy server host name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T httpProxyHost(String httpProxyHost) {
             this.properties.put("httpProxyHost", httpProxyHost);
             return (T) this;
         }
         /**
-         * HTTP proxy server password. The option is a
-         * <code>java.lang.String</code> type.
+         * HTTP proxy server password.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T httpProxyPassword(String httpProxyPassword) {
             this.properties.put("httpProxyPassword", httpProxyPassword);
             return (T) this;
         }
         /**
-         * HTTP proxy server port. The option is a
-         * <code>java.lang.Integer</code> type.
+         * HTTP proxy server port.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group proxy
          */
         public T httpProxyPort(Integer httpProxyPort) {
             this.properties.put("httpProxyPort", httpProxyPort);
             return (T) this;
         }
         /**
-         * HTTP proxy server port. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * HTTP proxy server port.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group proxy
          */
         public T httpProxyPort(String httpProxyPort) {
             this.properties.put("httpProxyPort", httpProxyPort);
             return (T) this;
         }
         /**
-         * HTTP proxy server user name. The option is a
-         * <code>java.lang.String</code> type.
+         * HTTP proxy server user name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T httpProxyUser(String httpProxyUser) {
             this.properties.put("httpProxyUser", httpProxyUser);
             return (T) this;
         }
         /**
-         * The user access token. The option is a <code>java.lang.String</code>
-         * type.
+         * The user access token.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T oAuthAccessToken(String oAuthAccessToken) {
             this.properties.put("oAuthAccessToken", oAuthAccessToken);
             return (T) this;
         }
         /**
-         * OAuth access token URL. The option is a <code>java.lang.String</code>
-         * type.
+         * OAuth access token URL.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T oAuthAccessTokenURL(String oAuthAccessTokenURL) {
             this.properties.put("oAuthAccessTokenURL", oAuthAccessTokenURL);
             return (T) this;
         }
         /**
-         * The application Id. The option is a <code>java.lang.String</code>
-         * type.
+         * The application Id.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T oAuthAppId(String oAuthAppId) {
             this.properties.put("oAuthAppId", oAuthAppId);
             return (T) this;
         }
         /**
-         * The application Secret. The option is a <code>java.lang.String</code>
-         * type.
+         * The application Secret.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T oAuthAppSecret(String oAuthAppSecret) {
             this.properties.put("oAuthAppSecret", oAuthAppSecret);
             return (T) this;
         }
         /**
-         * OAuth authorization URL. The option is a
-         * <code>java.lang.String</code> type.
+         * OAuth authorization URL.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T oAuthAuthorizationURL(String oAuthAuthorizationURL) {
             this.properties.put("oAuthAuthorizationURL", oAuthAuthorizationURL);
@@ -1183,7 +1401,9 @@ public interface FacebookEndpointBuilder {
         /**
          * Default OAuth permissions. Comma separated permission names. See
          * https://developers.facebook.com/docs/reference/login/#permissions for
-         * the detail. The option is a <code>java.lang.String</code> type.
+         * the detail.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T oAuthPermissions(String oAuthPermissions) {
             this.properties.put("oAuthPermissions", oAuthPermissions);
@@ -1209,7 +1429,9 @@ public interface FacebookEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public FacebookConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -1223,7 +1445,9 @@ public interface FacebookEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public FacebookConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -1234,8 +1458,10 @@ public interface FacebookEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public FacebookConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -1246,17 +1472,19 @@ public interface FacebookEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public FacebookConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (FacebookConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public FacebookConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -1264,9 +1492,10 @@ public interface FacebookEndpointBuilder {
             return (FacebookConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public FacebookConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

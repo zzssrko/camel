@@ -50,48 +50,56 @@ public interface SqsEndpointBuilder {
             super("aws-sqs", path);
         }
         /**
-         * Queue name or ARN. The option is a <code>java.lang.String</code>
-         * type.
+         * Queue name or ARN.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T queueNameOrArn(String queueNameOrArn) {
             this.properties.put("queueNameOrArn", queueNameOrArn);
             return (T) this;
         }
         /**
-         * The hostname of the Amazon AWS cloud. The option is a
-         * <code>java.lang.String</code> type.
+         * The hostname of the Amazon AWS cloud.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T amazonAWSHost(String amazonAWSHost) {
             this.properties.put("amazonAWSHost", amazonAWSHost);
             return (T) this;
         }
         /**
-         * To use the AmazonSQS as client. The option is a
-         * <code>com.amazonaws.services.sqs.AmazonSQS</code> type.
+         * To use the AmazonSQS as client.
+         * The option is a <code>com.amazonaws.services.sqs.AmazonSQS</code>
+         * type.
+         * @group common
          */
         public T amazonSQSClient(Object amazonSQSClient) {
             this.properties.put("amazonSQSClient", amazonSQSClient);
             return (T) this;
         }
         /**
-         * To use the AmazonSQS as client. The option will be converted to a
+         * To use the AmazonSQS as client.
+         * The option will be converted to a
          * <code>com.amazonaws.services.sqs.AmazonSQS</code> type.
+         * @group common
          */
         public T amazonSQSClient(String amazonSQSClient) {
             this.properties.put("amazonSQSClient", amazonSQSClient);
             return (T) this;
         }
         /**
-         * Setting the autocreation of the queue. The option is a
-         * <code>boolean</code> type.
+         * Setting the autocreation of the queue.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T autoCreateQueue(boolean autoCreateQueue) {
             this.properties.put("autoCreateQueue", autoCreateQueue);
             return (T) this;
         }
         /**
-         * Setting the autocreation of the queue. The option will be converted
-         * to a <code>boolean</code> type.
+         * Setting the autocreation of the queue.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T autoCreateQueue(String autoCreateQueue) {
             this.properties.put("autoCreateQueue", autoCreateQueue);
@@ -101,6 +109,7 @@ public interface SqsEndpointBuilder {
          * To use a custom HeaderFilterStrategy to map headers to/from Camel.
          * The option is a
          * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
+         * @group common
          */
         public T headerFilterStrategy(HeaderFilterStrategy headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -110,6 +119,7 @@ public interface SqsEndpointBuilder {
          * To use a custom HeaderFilterStrategy to map headers to/from Camel.
          * The option will be converted to a
          * <code>org.apache.camel.spi.HeaderFilterStrategy</code> type.
+         * @group common
          */
         public T headerFilterStrategy(String headerFilterStrategy) {
             this.properties.put("headerFilterStrategy", headerFilterStrategy);
@@ -117,8 +127,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Specify the queue owner aws account id when you need to connect the
-         * queue with different account owner. The option is a
-         * <code>java.lang.String</code> type.
+         * queue with different account owner.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T queueOwnerAWSAccountId(String queueOwnerAWSAccountId) {
             this.properties.put("queueOwnerAWSAccountId", queueOwnerAWSAccountId);
@@ -126,8 +137,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Specify the queue region which could be used with
-         * queueOwnerAWSAccountId to build the service URL. The option is a
-         * <code>java.lang.String</code> type.
+         * queueOwnerAWSAccountId to build the service URL.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -135,8 +147,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -144,8 +157,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -153,7 +167,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Define if you want to apply delaySeconds option to the queue or on
-         * single messages. The option is a <code>boolean</code> type.
+         * single messages.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T delayQueue(boolean delayQueue) {
             this.properties.put("delayQueue", delayQueue);
@@ -161,8 +177,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Define if you want to apply delaySeconds option to the queue or on
-         * single messages. The option will be converted to a
-         * <code>boolean</code> type.
+         * single messages.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T delayQueue(String delayQueue) {
             this.properties.put("delayQueue", delayQueue);
@@ -172,7 +189,9 @@ public interface SqsEndpointBuilder {
          * To define the queueUrl explicitly. All other parameters, which would
          * influence the queueUrl, are ignored. This parameter is intended to be
          * used, to connect to a mock implementation of SQS, for testing
-         * purposes. The option is a <code>java.lang.String</code> type.
+         * purposes.
+         * The option is a <code>java.lang.String</code> type.
+         * @group advanced
          */
         public T queueUrl(String queueUrl) {
             this.properties.put("queueUrl", queueUrl);
@@ -180,8 +199,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -189,32 +209,37 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * To define a proxy host when instantiating the SQS client. The option
-         * is a <code>java.lang.String</code> type.
+         * To define a proxy host when instantiating the SQS client.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the SQS client. The option
-         * is a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the SQS client.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group proxy
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the SQS client. The option
-         * will be converted to a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the SQS client.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group proxy
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
@@ -222,7 +247,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The maximumMessageSize (in bytes) an SQS message can contain for this
-         * queue. The option is a <code>java.lang.Integer</code> type.
+         * queue.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group queue
          */
         public T maximumMessageSize(Integer maximumMessageSize) {
             this.properties.put("maximumMessageSize", maximumMessageSize);
@@ -230,8 +257,10 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The maximumMessageSize (in bytes) an SQS message can contain for this
-         * queue. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * queue.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group queue
          */
         public T maximumMessageSize(String maximumMessageSize) {
             this.properties.put("maximumMessageSize", maximumMessageSize);
@@ -239,8 +268,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The messageRetentionPeriod (in seconds) a message will be retained by
-         * SQS for this queue. The option is a <code>java.lang.Integer</code>
-         * type.
+         * SQS for this queue.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group queue
          */
         public T messageRetentionPeriod(Integer messageRetentionPeriod) {
             this.properties.put("messageRetentionPeriod", messageRetentionPeriod);
@@ -248,16 +278,19 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The messageRetentionPeriod (in seconds) a message will be retained by
-         * SQS for this queue. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * SQS for this queue.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group queue
          */
         public T messageRetentionPeriod(String messageRetentionPeriod) {
             this.properties.put("messageRetentionPeriod", messageRetentionPeriod);
             return (T) this;
         }
         /**
-         * The policy for this queue. The option is a
-         * <code>java.lang.String</code> type.
+         * The policy for this queue.
+         * The option is a <code>java.lang.String</code> type.
+         * @group queue
          */
         public T policy(String policy) {
             this.properties.put("policy", policy);
@@ -266,7 +299,9 @@ public interface SqsEndpointBuilder {
         /**
          * If you do not specify WaitTimeSeconds in the request, the queue
          * attribute ReceiveMessageWaitTimeSeconds is used to determine how long
-         * to wait. The option is a <code>java.lang.Integer</code> type.
+         * to wait.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group queue
          */
         public T receiveMessageWaitTimeSeconds(
                 Integer receiveMessageWaitTimeSeconds) {
@@ -276,8 +311,10 @@ public interface SqsEndpointBuilder {
         /**
          * If you do not specify WaitTimeSeconds in the request, the queue
          * attribute ReceiveMessageWaitTimeSeconds is used to determine how long
-         * to wait. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * to wait.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group queue
          */
         public T receiveMessageWaitTimeSeconds(
                 String receiveMessageWaitTimeSeconds) {
@@ -286,23 +323,27 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Specify the policy that send message to DeadLetter queue. See detail
-         * at Amazon docs. The option is a <code>java.lang.String</code> type.
+         * at Amazon docs.
+         * The option is a <code>java.lang.String</code> type.
+         * @group queue
          */
         public T redrivePolicy(String redrivePolicy) {
             this.properties.put("redrivePolicy", redrivePolicy);
             return (T) this;
         }
         /**
-         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Access Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (T) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Secret Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);
@@ -324,8 +365,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * A list of attribute names to receive when consuming. Multiple names
-         * can be separated by comma. The option is a
-         * <code>java.lang.String</code> type.
+         * can be separated by comma.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder attributeNames(String attributeNames) {
             this.properties.put("attributeNames", attributeNames);
@@ -338,7 +380,9 @@ public interface SqsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -351,7 +395,9 @@ public interface SqsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -359,7 +405,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Allows you to use multiple threads to poll the sqs queue to increase
-         * throughput. The option is a <code>int</code> type.
+         * throughput.
+         * The option is a <code>int</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder concurrentConsumers(int concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
@@ -367,15 +415,18 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Allows you to use multiple threads to poll the sqs queue to increase
-         * throughput. The option will be converted to a <code>int</code> type.
+         * throughput.
+         * The option will be converted to a <code>int</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder concurrentConsumers(String concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
             return (SqsConsumerBuilder) this;
         }
         /**
-         * The default visibility timeout (in seconds). The option is a
-         * <code>java.lang.Integer</code> type.
+         * The default visibility timeout (in seconds).
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder defaultVisibilityTimeout(
                 Integer defaultVisibilityTimeout) {
@@ -383,8 +434,10 @@ public interface SqsEndpointBuilder {
             return (SqsConsumerBuilder) this;
         }
         /**
-         * The default visibility timeout (in seconds). The option will be
-         * converted to a <code>java.lang.Integer</code> type.
+         * The default visibility timeout (in seconds).
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group consumer
          */
         public SqsConsumerBuilder defaultVisibilityTimeout(
                 String defaultVisibilityTimeout) {
@@ -392,16 +445,18 @@ public interface SqsEndpointBuilder {
             return (SqsConsumerBuilder) this;
         }
         /**
-         * Delete message from SQS after it has been read. The option is a
-         * <code>boolean</code> type.
+         * Delete message from SQS after it has been read.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder deleteAfterRead(boolean deleteAfterRead) {
             this.properties.put("deleteAfterRead", deleteAfterRead);
             return (SqsConsumerBuilder) this;
         }
         /**
-         * Delete message from SQS after it has been read. The option will be
-         * converted to a <code>boolean</code> type.
+         * Delete message from SQS after it has been read.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder deleteAfterRead(String deleteAfterRead) {
             this.properties.put("deleteAfterRead", deleteAfterRead);
@@ -411,7 +466,9 @@ public interface SqsEndpointBuilder {
          * Whether or not to send the DeleteMessage to the SQS queue if an
          * exchange fails to get through a filter. If 'false' and exchange does
          * not make it through a Camel filter upstream in the route, then don't
-         * send DeleteMessage. The option is a <code>boolean</code> type.
+         * send DeleteMessage.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder deleteIfFiltered(boolean deleteIfFiltered) {
             this.properties.put("deleteIfFiltered", deleteIfFiltered);
@@ -421,8 +478,9 @@ public interface SqsEndpointBuilder {
          * Whether or not to send the DeleteMessage to the SQS queue if an
          * exchange fails to get through a filter. If 'false' and exchange does
          * not make it through a Camel filter upstream in the route, then don't
-         * send DeleteMessage. The option will be converted to a
-         * <code>boolean</code> type.
+         * send DeleteMessage.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder deleteIfFiltered(String deleteIfFiltered) {
             this.properties.put("deleteIfFiltered", deleteIfFiltered);
@@ -432,8 +490,9 @@ public interface SqsEndpointBuilder {
          * If enabled then a scheduled background task will keep extending the
          * message visibility on SQS. This is needed if it takes a long time to
          * process the message. If set to true defaultVisibilityTimeout must be
-         * set. See details at Amazon docs. The option is a <code>boolean</code>
-         * type.
+         * set. See details at Amazon docs.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder extendMessageVisibility(
                 boolean extendMessageVisibility) {
@@ -444,8 +503,9 @@ public interface SqsEndpointBuilder {
          * If enabled then a scheduled background task will keep extending the
          * message visibility on SQS. This is needed if it takes a long time to
          * process the message. If set to true defaultVisibilityTimeout must be
-         * set. See details at Amazon docs. The option will be converted to a
-         * <code>boolean</code> type.
+         * set. See details at Amazon docs.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder extendMessageVisibility(
                 String extendMessageVisibility) {
@@ -456,8 +516,9 @@ public interface SqsEndpointBuilder {
          * The length of time, in seconds, for which Amazon SQS can reuse a data
          * key to encrypt or decrypt messages before calling AWS KMS again. An
          * integer representing seconds, between 60 seconds (1 minute) and
-         * 86,400 seconds (24 hours). Default: 300 (5 minutes). The option is a
-         * <code>java.lang.Integer</code> type.
+         * 86,400 seconds (24 hours). Default: 300 (5 minutes).
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder kmsDataKeyReusePeriodSeconds(
                 Integer kmsDataKeyReusePeriodSeconds) {
@@ -468,8 +529,10 @@ public interface SqsEndpointBuilder {
          * The length of time, in seconds, for which Amazon SQS can reuse a data
          * key to encrypt or decrypt messages before calling AWS KMS again. An
          * integer representing seconds, between 60 seconds (1 minute) and
-         * 86,400 seconds (24 hours). Default: 300 (5 minutes). The option will
-         * be converted to a <code>java.lang.Integer</code> type.
+         * 86,400 seconds (24 hours). Default: 300 (5 minutes).
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group consumer
          */
         public SqsConsumerBuilder kmsDataKeyReusePeriodSeconds(
                 String kmsDataKeyReusePeriodSeconds) {
@@ -478,7 +541,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The ID of an AWS-managed customer master key (CMK) for Amazon SQS or
-         * a custom CMK. The option is a <code>java.lang.String</code> type.
+         * a custom CMK.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder kmsMasterKeyId(String kmsMasterKeyId) {
             this.properties.put("kmsMasterKeyId", kmsMasterKeyId);
@@ -487,7 +552,9 @@ public interface SqsEndpointBuilder {
         /**
          * Gets the maximum number of messages as a limit to poll at each
          * polling. Is default unlimited, but use 0 or negative number to
-         * disable it as unlimited. The option is a <code>int</code> type.
+         * disable it as unlimited.
+         * The option is a <code>int</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder maxMessagesPerPoll(int maxMessagesPerPoll) {
             this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
@@ -496,8 +563,9 @@ public interface SqsEndpointBuilder {
         /**
          * Gets the maximum number of messages as a limit to poll at each
          * polling. Is default unlimited, but use 0 or negative number to
-         * disable it as unlimited. The option will be converted to a
-         * <code>int</code> type.
+         * disable it as unlimited.
+         * The option will be converted to a <code>int</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder maxMessagesPerPoll(String maxMessagesPerPoll) {
             this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
@@ -505,8 +573,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * A list of message attribute names to receive when consuming. Multiple
-         * names can be separated by comma. The option is a
-         * <code>java.lang.String</code> type.
+         * names can be separated by comma.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder messageAttributeNames(
                 String messageAttributeNames) {
@@ -515,8 +584,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option is a
-         * <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -525,8 +595,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option will be
-         * converted to a <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -534,8 +605,9 @@ public interface SqsEndpointBuilder {
             return (SqsConsumerBuilder) this;
         }
         /**
-         * Define if Server Side Encryption is enabled or not on the queue. The
-         * option is a <code>boolean</code> type.
+         * Define if Server Side Encryption is enabled or not on the queue.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder serverSideEncryptionEnabled(
                 boolean serverSideEncryptionEnabled) {
@@ -543,8 +615,9 @@ public interface SqsEndpointBuilder {
             return (SqsConsumerBuilder) this;
         }
         /**
-         * Define if Server Side Encryption is enabled or not on the queue. The
-         * option will be converted to a <code>boolean</code> type.
+         * Define if Server Side Encryption is enabled or not on the queue.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder serverSideEncryptionEnabled(
                 String serverSideEncryptionEnabled) {
@@ -557,8 +630,9 @@ public interface SqsEndpointBuilder {
          * ReceiveMessage request to set in the
          * com.amazonaws.services.sqs.model.SetQueueAttributesRequest. This only
          * make sense if its different from defaultVisibilityTimeout. It changes
-         * the queue visibility timeout attribute permanently. The option is a
-         * <code>java.lang.Integer</code> type.
+         * the queue visibility timeout attribute permanently.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder visibilityTimeout(Integer visibilityTimeout) {
             this.properties.put("visibilityTimeout", visibilityTimeout);
@@ -570,8 +644,10 @@ public interface SqsEndpointBuilder {
          * ReceiveMessage request to set in the
          * com.amazonaws.services.sqs.model.SetQueueAttributesRequest. This only
          * make sense if its different from defaultVisibilityTimeout. It changes
-         * the queue visibility timeout attribute permanently. The option will
-         * be converted to a <code>java.lang.Integer</code> type.
+         * the queue visibility timeout attribute permanently.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group consumer
          */
         public SqsConsumerBuilder visibilityTimeout(String visibilityTimeout) {
             this.properties.put("visibilityTimeout", visibilityTimeout);
@@ -581,6 +657,7 @@ public interface SqsEndpointBuilder {
          * Duration in seconds (0 to 20) that the ReceiveMessage action call
          * will wait until a message is in the queue to include in the response.
          * The option is a <code>java.lang.Integer</code> type.
+         * @group consumer
          */
         public SqsConsumerBuilder waitTimeSeconds(Integer waitTimeSeconds) {
             this.properties.put("waitTimeSeconds", waitTimeSeconds);
@@ -591,6 +668,7 @@ public interface SqsEndpointBuilder {
          * will wait until a message is in the queue to include in the response.
          * The option will be converted to a <code>java.lang.Integer</code>
          * type.
+         * @group consumer
          */
         public SqsConsumerBuilder waitTimeSeconds(String waitTimeSeconds) {
             this.properties.put("waitTimeSeconds", waitTimeSeconds);
@@ -600,8 +678,10 @@ public interface SqsEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public SqsConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -612,17 +692,19 @@ public interface SqsEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public SqsConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (SqsConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public SqsConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -630,9 +712,10 @@ public interface SqsEndpointBuilder {
             return (SqsConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public SqsConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -642,8 +725,10 @@ public interface SqsEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option is a
+         * been created and being routed in Camel.
+         * The option is a
          * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public SqsConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -654,9 +739,10 @@ public interface SqsEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option will be converted
-         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
-         * type.
+         * been created and being routed in Camel.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public SqsConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -664,8 +750,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * is a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -674,8 +761,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -684,8 +772,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a <code>int</code>
-         * type.
+         * backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder backoffIdleThreshold(int backoffIdleThreshold) {
             this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
@@ -693,8 +782,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option will be converted to a
-         * <code>int</code> type.
+         * backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -707,7 +797,9 @@ public interface SqsEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a <code>int</code> type.
+         * configured.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -719,7 +811,9 @@ public interface SqsEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a <code>int</code> type.
+         * configured.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -728,7 +822,9 @@ public interface SqsEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -737,8 +833,9 @@ public interface SqsEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -746,8 +843,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option is a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -755,8 +853,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -765,7 +864,9 @@ public interface SqsEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -774,8 +875,9 @@ public interface SqsEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -783,8 +885,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * is a <code>org.apache.camel.LoggingLevel</code> type.
+         * option allows you to configure the logging level for that.
+         * The option is a <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder runLoggingLevel(LoggingLevel runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -792,9 +895,10 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
-         * type.
+         * option allows you to configure the logging level for that.
+         * The option will be converted to a
+         * <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -803,8 +907,10 @@ public interface SqsEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a
+         * pool.
+         * The option is a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -814,8 +920,10 @@ public interface SqsEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option will be converted to a
+         * pool.
+         * The option will be converted to a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -824,9 +932,11 @@ public interface SqsEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option is a
+         * component.
+         * The option is a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public SqsConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -835,9 +945,11 @@ public interface SqsEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option will be converted to a
+         * component.
+         * The option will be converted to a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public SqsConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -845,9 +957,10 @@ public interface SqsEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
-         * type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -856,41 +969,48 @@ public interface SqsEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map&lt;java.lang.String,
-         * java.lang.Object&gt;</code> type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
+         * @group scheduler
          */
         public SqsConsumerBuilder schedulerProperties(String schedulerProperties) {
             this.properties.put("schedulerProperties", schedulerProperties);
             return (SqsConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a
-         * <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (SqsConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option will be
-         * converted to a <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (SqsConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option is a
-         * <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option is a <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
             return (SqsConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option will be
-         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option will be converted to a
+         * <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -898,8 +1018,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a
-         * <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -907,8 +1028,9 @@ public interface SqsEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public SqsConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -929,16 +1051,19 @@ public interface SqsEndpointBuilder {
             super(path);
         }
         /**
-         * Delay sending messages for a number of seconds. The option is a
-         * <code>java.lang.Integer</code> type.
+         * Delay sending messages for a number of seconds.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public SqsProducerBuilder delaySeconds(Integer delaySeconds) {
             this.properties.put("delaySeconds", delaySeconds);
             return (SqsProducerBuilder) this;
         }
         /**
-         * Delay sending messages for a number of seconds. The option will be
-         * converted to a <code>java.lang.Integer</code> type.
+         * Delay sending messages for a number of seconds.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public SqsProducerBuilder delaySeconds(String delaySeconds) {
             this.properties.put("delaySeconds", delaySeconds);
@@ -948,9 +1073,10 @@ public interface SqsEndpointBuilder {
          * Only for FIFO queues. Strategy for setting the messageDeduplicationId
          * on the message. Can be one of the following options: useExchangeId,
          * useContentBasedDeduplication. For the useContentBasedDeduplication
-         * option, no messageDeduplicationId will be set on the message. The
-         * option is a
+         * option, no messageDeduplicationId will be set on the message.
+         * The option is a
          * <code>org.apache.camel.component.aws.sqs.MessageDeduplicationIdStrategy</code> type.
+         * @group producer
          */
         public SqsProducerBuilder messageDeduplicationIdStrategy(
                 Object messageDeduplicationIdStrategy) {
@@ -961,9 +1087,10 @@ public interface SqsEndpointBuilder {
          * Only for FIFO queues. Strategy for setting the messageDeduplicationId
          * on the message. Can be one of the following options: useExchangeId,
          * useContentBasedDeduplication. For the useContentBasedDeduplication
-         * option, no messageDeduplicationId will be set on the message. The
-         * option will be converted to a
+         * option, no messageDeduplicationId will be set on the message.
+         * The option will be converted to a
          * <code>org.apache.camel.component.aws.sqs.MessageDeduplicationIdStrategy</code> type.
+         * @group producer
          */
         public SqsProducerBuilder messageDeduplicationIdStrategy(
                 String messageDeduplicationIdStrategy) {
@@ -974,9 +1101,10 @@ public interface SqsEndpointBuilder {
          * Only for FIFO queues. Strategy for setting the messageGroupId on the
          * message. Can be one of the following options: useConstant,
          * useExchangeId, usePropertyValue. For the usePropertyValue option, the
-         * value of property CamelAwsMessageGroupId will be used. The option is
-         * a
+         * value of property CamelAwsMessageGroupId will be used.
+         * The option is a
          * <code>org.apache.camel.component.aws.sqs.MessageGroupIdStrategy</code> type.
+         * @group producer
          */
         public SqsProducerBuilder messageGroupIdStrategy(
                 Object messageGroupIdStrategy) {
@@ -987,9 +1115,10 @@ public interface SqsEndpointBuilder {
          * Only for FIFO queues. Strategy for setting the messageGroupId on the
          * message. Can be one of the following options: useConstant,
          * useExchangeId, usePropertyValue. For the usePropertyValue option, the
-         * value of property CamelAwsMessageGroupId will be used. The option
-         * will be converted to a
+         * value of property CamelAwsMessageGroupId will be used.
+         * The option will be converted to a
          * <code>org.apache.camel.component.aws.sqs.MessageGroupIdStrategy</code> type.
+         * @group producer
          */
         public SqsProducerBuilder messageGroupIdStrategy(
                 String messageGroupIdStrategy) {
@@ -998,8 +1127,10 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The operation to do in case the user don't want to send only a
-         * message. The option is a
+         * message.
+         * The option is a
          * <code>org.apache.camel.component.aws.sqs.SqsOperations</code> type.
+         * @group producer
          */
         public SqsProducerBuilder operation(SqsOperations operation) {
             this.properties.put("operation", operation);
@@ -1007,8 +1138,10 @@ public interface SqsEndpointBuilder {
         }
         /**
          * The operation to do in case the user don't want to send only a
-         * message. The option will be converted to a
+         * message.
+         * The option will be converted to a
          * <code>org.apache.camel.component.aws.sqs.SqsOperations</code> type.
+         * @group producer
          */
         public SqsProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);

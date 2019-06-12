@@ -45,40 +45,45 @@ public interface JsonValidatorEndpointBuilder {
          * protocols (classpath is default). ref will lookup the resource in the
          * registry. bean will call a method on a bean to be used as the
          * resource. For bean you can specify the method name after dot, eg
-         * bean:myBean.myMethod. The option is a <code>java.lang.String</code>
-         * type.
+         * bean:myBean.myMethod.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
         /**
-         * Sets whether to use resource content cache or not. The option is a
-         * <code>boolean</code> type.
+         * Sets whether to use resource content cache or not.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(boolean contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
         /**
-         * Sets whether to use resource content cache or not. The option will be
-         * converted to a <code>boolean</code> type.
+         * Sets whether to use resource content cache or not.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(String contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
         /**
-         * Whether to fail if no body exists. The option is a
-         * <code>boolean</code> type.
+         * Whether to fail if no body exists.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T failOnNullBody(boolean failOnNullBody) {
             this.properties.put("failOnNullBody", failOnNullBody);
             return (T) this;
         }
         /**
-         * Whether to fail if no body exists. The option will be converted to a
-         * <code>boolean</code> type.
+         * Whether to fail if no body exists.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T failOnNullBody(String failOnNullBody) {
             this.properties.put("failOnNullBody", failOnNullBody);
@@ -87,6 +92,7 @@ public interface JsonValidatorEndpointBuilder {
         /**
          * Whether to fail if no header exists when validating against a header.
          * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T failOnNullHeader(boolean failOnNullHeader) {
             this.properties.put("failOnNullHeader", failOnNullHeader);
@@ -95,14 +101,16 @@ public interface JsonValidatorEndpointBuilder {
         /**
          * Whether to fail if no header exists when validating against a header.
          * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T failOnNullHeader(String failOnNullHeader) {
             this.properties.put("failOnNullHeader", failOnNullHeader);
             return (T) this;
         }
         /**
-         * To validate against a header instead of the message body. The option
-         * is a <code>java.lang.String</code> type.
+         * To validate against a header instead of the message body.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T headerName(String headerName) {
             this.properties.put("headerName", headerName);
@@ -110,8 +118,9 @@ public interface JsonValidatorEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -119,8 +128,9 @@ public interface JsonValidatorEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -128,8 +138,10 @@ public interface JsonValidatorEndpointBuilder {
         }
         /**
          * To use a custom ValidatorErrorHandler. The default error handler
-         * captures the errors and throws an exception. The option is a
+         * captures the errors and throws an exception.
+         * The option is a
          * <code>org.apache.camel.component.jsonvalidator.JsonValidatorErrorHandler</code> type.
+         * @group advanced
          */
         public T errorHandler(Object errorHandler) {
             this.properties.put("errorHandler", errorHandler);
@@ -137,9 +149,10 @@ public interface JsonValidatorEndpointBuilder {
         }
         /**
          * To use a custom ValidatorErrorHandler. The default error handler
-         * captures the errors and throws an exception. The option will be
-         * converted to a
+         * captures the errors and throws an exception.
+         * The option will be converted to a
          * <code>org.apache.camel.component.jsonvalidator.JsonValidatorErrorHandler</code> type.
+         * @group advanced
          */
         public T errorHandler(String errorHandler) {
             this.properties.put("errorHandler", errorHandler);
@@ -148,8 +161,10 @@ public interface JsonValidatorEndpointBuilder {
         /**
          * To use a custom schema loader allowing for adding custom format
          * validation. The default implementation will create a schema loader
-         * with draft v4 support. The option is a
+         * with draft v4 support.
+         * The option is a
          * <code>org.apache.camel.component.jsonvalidator.JsonSchemaLoader</code> type.
+         * @group advanced
          */
         public T schemaLoader(Object schemaLoader) {
             this.properties.put("schemaLoader", schemaLoader);
@@ -158,8 +173,10 @@ public interface JsonValidatorEndpointBuilder {
         /**
          * To use a custom schema loader allowing for adding custom format
          * validation. The default implementation will create a schema loader
-         * with draft v4 support. The option will be converted to a
+         * with draft v4 support.
+         * The option will be converted to a
          * <code>org.apache.camel.component.jsonvalidator.JsonSchemaLoader</code> type.
+         * @group advanced
          */
         public T schemaLoader(String schemaLoader) {
             this.properties.put("schemaLoader", schemaLoader);
@@ -167,8 +184,9 @@ public interface JsonValidatorEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -176,8 +194,9 @@ public interface JsonValidatorEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

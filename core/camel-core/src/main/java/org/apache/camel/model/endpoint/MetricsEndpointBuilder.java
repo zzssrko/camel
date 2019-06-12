@@ -41,121 +41,141 @@ public interface MetricsEndpointBuilder {
             super("metrics", path);
         }
         /**
-         * Type of metrics. The option is a
+         * Type of metrics.
+         * The option is a
          * <code>org.apache.camel.component.metrics.MetricsType</code> type.
+         * @group producer
          */
         public T metricsType(MetricsType metricsType) {
             this.properties.put("metricsType", metricsType);
             return (T) this;
         }
         /**
-         * Type of metrics. The option will be converted to a
+         * Type of metrics.
+         * The option will be converted to a
          * <code>org.apache.camel.component.metrics.MetricsType</code> type.
+         * @group producer
          */
         public T metricsType(String metricsType) {
             this.properties.put("metricsType", metricsType);
             return (T) this;
         }
         /**
-         * Name of metrics. The option is a <code>java.lang.String</code> type.
+         * Name of metrics.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T metricsName(String metricsName) {
             this.properties.put("metricsName", metricsName);
             return (T) this;
         }
         /**
-         * Action when using timer type. The option is a
+         * Action when using timer type.
+         * The option is a
          * <code>org.apache.camel.component.metrics.MetricsTimerAction</code>
          * type.
+         * @group producer
          */
         public T action(MetricsTimerAction action) {
             this.properties.put("action", action);
             return (T) this;
         }
         /**
-         * Action when using timer type. The option will be converted to a
+         * Action when using timer type.
+         * The option will be converted to a
          * <code>org.apache.camel.component.metrics.MetricsTimerAction</code>
          * type.
+         * @group producer
          */
         public T action(String action) {
             this.properties.put("action", action);
             return (T) this;
         }
         /**
-         * Decrement value when using counter type. The option is a
-         * <code>java.lang.Long</code> type.
+         * Decrement value when using counter type.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group producer
          */
         public T decrement(Long decrement) {
             this.properties.put("decrement", decrement);
             return (T) this;
         }
         /**
-         * Decrement value when using counter type. The option will be converted
-         * to a <code>java.lang.Long</code> type.
+         * Decrement value when using counter type.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group producer
          */
         public T decrement(String decrement) {
             this.properties.put("decrement", decrement);
             return (T) this;
         }
         /**
-         * Increment value when using counter type. The option is a
-         * <code>java.lang.Long</code> type.
+         * Increment value when using counter type.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group producer
          */
         public T increment(Long increment) {
             this.properties.put("increment", increment);
             return (T) this;
         }
         /**
-         * Increment value when using counter type. The option will be converted
-         * to a <code>java.lang.Long</code> type.
+         * Increment value when using counter type.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group producer
          */
         public T increment(String increment) {
             this.properties.put("increment", increment);
             return (T) this;
         }
         /**
-         * Mark when using meter type. The option is a
-         * <code>java.lang.Long</code> type.
+         * Mark when using meter type.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group producer
          */
         public T mark(Long mark) {
             this.properties.put("mark", mark);
             return (T) this;
         }
         /**
-         * Mark when using meter type. The option will be converted to a
-         * <code>java.lang.Long</code> type.
+         * Mark when using meter type.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group producer
          */
         public T mark(String mark) {
             this.properties.put("mark", mark);
             return (T) this;
         }
         /**
-         * Subject value when using gauge type. The option is a
-         * <code>java.lang.Object</code> type.
+         * Subject value when using gauge type.
+         * The option is a <code>java.lang.Object</code> type.
+         * @group producer
          */
         public T subject(Object subject) {
             this.properties.put("subject", subject);
             return (T) this;
         }
         /**
-         * Subject value when using gauge type. The option will be converted to
-         * a <code>java.lang.Object</code> type.
+         * Subject value when using gauge type.
+         * The option will be converted to a <code>java.lang.Object</code> type.
+         * @group producer
          */
         public T subject(String subject) {
             this.properties.put("subject", subject);
             return (T) this;
         }
         /**
-         * Value value when using histogram type. The option is a
-         * <code>java.lang.Long</code> type.
+         * Value value when using histogram type.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group producer
          */
         public T value(Long value) {
             this.properties.put("value", value);
             return (T) this;
         }
         /**
-         * Value value when using histogram type. The option will be converted
-         * to a <code>java.lang.Long</code> type.
+         * Value value when using histogram type.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group producer
          */
         public T value(String value) {
             this.properties.put("value", value);
@@ -163,8 +183,9 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -172,8 +193,9 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -181,8 +203,9 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -190,8 +213,9 @@ public interface MetricsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

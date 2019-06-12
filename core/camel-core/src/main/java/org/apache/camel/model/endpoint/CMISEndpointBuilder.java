@@ -43,24 +43,27 @@ public interface CMISEndpointBuilder {
             super("cmis", path);
         }
         /**
-         * URL to the cmis repository. The option is a
-         * <code>java.lang.String</code> type.
+         * URL to the cmis repository.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T cmsUrl(String cmsUrl) {
             this.properties.put("cmsUrl", cmsUrl);
             return (T) this;
         }
         /**
-         * Number of nodes to retrieve per page. The option is a
-         * <code>int</code> type.
+         * Number of nodes to retrieve per page.
+         * The option is a <code>int</code> type.
+         * @group common
          */
         public T pageSize(int pageSize) {
             this.properties.put("pageSize", pageSize);
             return (T) this;
         }
         /**
-         * Number of nodes to retrieve per page. The option will be converted to
-         * a <code>int</code> type.
+         * Number of nodes to retrieve per page.
+         * The option will be converted to a <code>int</code> type.
+         * @group common
          */
         public T pageSize(String pageSize) {
             this.properties.put("pageSize", pageSize);
@@ -68,8 +71,9 @@ public interface CMISEndpointBuilder {
         }
         /**
          * If set to true, the content of document node will be retrieved in
-         * addition to the properties. The option is a <code>boolean</code>
-         * type.
+         * addition to the properties.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T readContent(boolean readContent) {
             this.properties.put("readContent", readContent);
@@ -77,23 +81,27 @@ public interface CMISEndpointBuilder {
         }
         /**
          * If set to true, the content of document node will be retrieved in
-         * addition to the properties. The option will be converted to a
-         * <code>boolean</code> type.
+         * addition to the properties.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T readContent(String readContent) {
             this.properties.put("readContent", readContent);
             return (T) this;
         }
         /**
-         * Max number of nodes to read. The option is a <code>int</code> type.
+         * Max number of nodes to read.
+         * The option is a <code>int</code> type.
+         * @group common
          */
         public T readCount(int readCount) {
             this.properties.put("readCount", readCount);
             return (T) this;
         }
         /**
-         * Max number of nodes to read. The option will be converted to a
-         * <code>int</code> type.
+         * Max number of nodes to read.
+         * The option will be converted to a <code>int</code> type.
+         * @group common
          */
         public T readCount(String readCount) {
             this.properties.put("readCount", readCount);
@@ -101,8 +109,9 @@ public interface CMISEndpointBuilder {
         }
         /**
          * The Id of the repository to use. If not specified the first available
-         * repository is used. The option is a <code>java.lang.String</code>
-         * type.
+         * repository is used.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T repositoryId(String repositoryId) {
             this.properties.put("repositoryId", repositoryId);
@@ -110,8 +119,9 @@ public interface CMISEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -119,8 +129,9 @@ public interface CMISEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -128,9 +139,11 @@ public interface CMISEndpointBuilder {
         }
         /**
          * To use a custom CMISSessionFacadeFactory to create the
-         * CMISSessionFacade instances. The option is a
+         * CMISSessionFacade instances.
+         * The option is a
          * <code>org.apache.camel.component.cmis.CMISSessionFacadeFactory</code>
          * type.
+         * @group advanced
          */
         public T sessionFacadeFactory(Object sessionFacadeFactory) {
             this.properties.put("sessionFacadeFactory", sessionFacadeFactory);
@@ -138,9 +151,11 @@ public interface CMISEndpointBuilder {
         }
         /**
          * To use a custom CMISSessionFacadeFactory to create the
-         * CMISSessionFacade instances. The option will be converted to a
+         * CMISSessionFacade instances.
+         * The option will be converted to a
          * <code>org.apache.camel.component.cmis.CMISSessionFacadeFactory</code>
          * type.
+         * @group advanced
          */
         public T sessionFacadeFactory(String sessionFacadeFactory) {
             this.properties.put("sessionFacadeFactory", sessionFacadeFactory);
@@ -148,8 +163,9 @@ public interface CMISEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -157,24 +173,27 @@ public interface CMISEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Password for the cmis repository. The option is a
-         * <code>java.lang.String</code> type.
+         * Password for the cmis repository.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * Username for the cmis repository. The option is a
-         * <code>java.lang.String</code> type.
+         * Username for the cmis repository.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -200,7 +219,9 @@ public interface CMISEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public CMISConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -213,7 +234,9 @@ public interface CMISEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public CMISConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -222,8 +245,9 @@ public interface CMISEndpointBuilder {
         /**
          * The cmis query to execute against the repository. If not specified,
          * the consumer will retrieve every node from the content repository by
-         * iterating the content tree recursively. The option is a
-         * <code>java.lang.String</code> type.
+         * iterating the content tree recursively.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public CMISConsumerBuilder query(String query) {
             this.properties.put("query", query);
@@ -233,8 +257,10 @@ public interface CMISEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public CMISConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -245,17 +271,19 @@ public interface CMISEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public CMISConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (CMISConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public CMISConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -263,9 +291,10 @@ public interface CMISEndpointBuilder {
             return (CMISConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public CMISConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -286,8 +315,9 @@ public interface CMISEndpointBuilder {
         }
         /**
          * If true, will execute the cmis query from the message body and return
-         * result, otherwise will create a node in the cmis repository. The
-         * option is a <code>boolean</code> type.
+         * result, otherwise will create a node in the cmis repository.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public CMISProducerBuilder queryMode(boolean queryMode) {
             this.properties.put("queryMode", queryMode);
@@ -295,8 +325,9 @@ public interface CMISEndpointBuilder {
         }
         /**
          * If true, will execute the cmis query from the message body and return
-         * result, otherwise will create a node in the cmis repository. The
-         * option will be converted to a <code>boolean</code> type.
+         * result, otherwise will create a node in the cmis repository.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public CMISProducerBuilder queryMode(String queryMode) {
             this.properties.put("queryMode", queryMode);

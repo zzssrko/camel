@@ -49,18 +49,22 @@ public interface TwitterStreamingEndpointBuilder {
             super("twitter-streaming", path);
         }
         /**
-         * The streaming type to consume. The option is a
+         * The streaming type to consume.
+         * The option is a
          * <code>org.apache.camel.component.twitter.data.StreamingType</code>
          * type.
+         * @group consumer
          */
         public T streamingType(StreamingType streamingType) {
             this.properties.put("streamingType", streamingType);
             return (T) this;
         }
         /**
-         * The streaming type to consume. The option will be converted to a
+         * The streaming type to consume.
+         * The option will be converted to a
          * <code>org.apache.camel.component.twitter.data.StreamingType</code>
          * type.
+         * @group consumer
          */
         public T streamingType(String streamingType) {
             this.properties.put("streamingType", streamingType);
@@ -68,8 +72,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -77,8 +82,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -86,8 +92,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -95,8 +102,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -104,8 +112,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The http proxy host which can be used for the camel-twitter. Can also
-         * be configured on the TwitterComponent level instead. The option is a
-         * <code>java.lang.String</code> type.
+         * be configured on the TwitterComponent level instead.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T httpProxyHost(String httpProxyHost) {
             this.properties.put("httpProxyHost", httpProxyHost);
@@ -113,8 +122,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The http proxy password which can be used for the camel-twitter. Can
-         * also be configured on the TwitterComponent level instead. The option
-         * is a <code>java.lang.String</code> type.
+         * also be configured on the TwitterComponent level instead.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T httpProxyPassword(String httpProxyPassword) {
             this.properties.put("httpProxyPassword", httpProxyPassword);
@@ -122,8 +132,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The http proxy port which can be used for the camel-twitter. Can also
-         * be configured on the TwitterComponent level instead. The option is a
-         * <code>java.lang.Integer</code> type.
+         * be configured on the TwitterComponent level instead.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group proxy
          */
         public T httpProxyPort(Integer httpProxyPort) {
             this.properties.put("httpProxyPort", httpProxyPort);
@@ -131,8 +142,10 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The http proxy port which can be used for the camel-twitter. Can also
-         * be configured on the TwitterComponent level instead. The option will
-         * be converted to a <code>java.lang.Integer</code> type.
+         * be configured on the TwitterComponent level instead.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group proxy
          */
         public T httpProxyPort(String httpProxyPort) {
             this.properties.put("httpProxyPort", httpProxyPort);
@@ -140,8 +153,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The http proxy user which can be used for the camel-twitter. Can also
-         * be configured on the TwitterComponent level instead. The option is a
-         * <code>java.lang.String</code> type.
+         * be configured on the TwitterComponent level instead.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T httpProxyUser(String httpProxyUser) {
             this.properties.put("httpProxyUser", httpProxyUser);
@@ -149,7 +163,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The access token. Can also be configured on the TwitterComponent
-         * level instead. The option is a <code>java.lang.String</code> type.
+         * level instead.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T accessToken(String accessToken) {
             this.properties.put("accessToken", accessToken);
@@ -157,7 +173,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The access secret. Can also be configured on the TwitterComponent
-         * level instead. The option is a <code>java.lang.String</code> type.
+         * level instead.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T accessTokenSecret(String accessTokenSecret) {
             this.properties.put("accessTokenSecret", accessTokenSecret);
@@ -165,7 +183,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The consumer key. Can also be configured on the TwitterComponent
-         * level instead. The option is a <code>java.lang.String</code> type.
+         * level instead.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T consumerKey(String consumerKey) {
             this.properties.put("consumerKey", consumerKey);
@@ -173,7 +193,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The consumer secret. Can also be configured on the TwitterComponent
-         * level instead. The option is a <code>java.lang.String</code> type.
+         * level instead.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T consumerSecret(String consumerSecret) {
             this.properties.put("consumerSecret", consumerSecret);
@@ -199,7 +221,9 @@ public interface TwitterStreamingEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public TwitterStreamingConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -213,7 +237,9 @@ public interface TwitterStreamingEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public TwitterStreamingConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -222,8 +248,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option is a
-         * <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public TwitterStreamingConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -232,8 +259,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option will be
-         * converted to a <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public TwitterStreamingConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -241,20 +269,22 @@ public interface TwitterStreamingEndpointBuilder {
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Endpoint type to use. Only streaming supports event type. The option
-         * is a
+         * Endpoint type to use. Only streaming supports event type.
+         * The option is a
          * <code>org.apache.camel.component.twitter.data.EndpointType</code>
          * type.
+         * @group consumer
          */
         public TwitterStreamingConsumerBuilder type(EndpointType type) {
             this.properties.put("type", type);
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Endpoint type to use. Only streaming supports event type. The option
-         * will be converted to a
+         * Endpoint type to use. Only streaming supports event type.
+         * The option will be converted to a
          * <code>org.apache.camel.component.twitter.data.EndpointType</code>
          * type.
+         * @group consumer
          */
         public TwitterStreamingConsumerBuilder type(String type) {
             this.properties.put("type", type);
@@ -264,8 +294,9 @@ public interface TwitterStreamingEndpointBuilder {
          * Used by the non-stream geography search, to search by radius using
          * the configured metrics. The unit can either be mi for miles, or km
          * for kilometers. You need to configure all the following options:
-         * longitude, latitude, radius, and distanceMetric. The option is a
-         * <code>java.lang.String</code> type.
+         * longitude, latitude, radius, and distanceMetric.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder distanceMetric(
                 String distanceMetric) {
@@ -276,8 +307,10 @@ public interface TwitterStreamingEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -288,9 +321,10 @@ public interface TwitterStreamingEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -298,8 +332,9 @@ public interface TwitterStreamingEndpointBuilder {
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -307,9 +342,10 @@ public interface TwitterStreamingEndpointBuilder {
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder exchangePattern(
                 String exchangePattern) {
@@ -318,8 +354,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * Used for enabling full text from twitter (eg receive tweets that
-         * contains more than 140 characters). The option is a
-         * <code>boolean</code> type.
+         * contains more than 140 characters).
+         * The option is a <code>boolean</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder extendedMode(boolean extendedMode) {
             this.properties.put("extendedMode", extendedMode);
@@ -327,8 +364,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * Used for enabling full text from twitter (eg receive tweets that
-         * contains more than 140 characters). The option will be converted to a
-         * <code>boolean</code> type.
+         * contains more than 140 characters).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder extendedMode(String extendedMode) {
             this.properties.put("extendedMode", extendedMode);
@@ -337,8 +375,9 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * Used by the non-stream geography search to search by latitude. You
          * need to configure all the following options: longitude, latitude,
-         * radius, and distanceMetric. The option is a
-         * <code>java.lang.Double</code> type.
+         * radius, and distanceMetric.
+         * The option is a <code>java.lang.Double</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder latitude(Double latitude) {
             this.properties.put("latitude", latitude);
@@ -347,8 +386,9 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * Used by the non-stream geography search to search by latitude. You
          * need to configure all the following options: longitude, latitude,
-         * radius, and distanceMetric. The option will be converted to a
-         * <code>java.lang.Double</code> type.
+         * radius, and distanceMetric.
+         * The option will be converted to a <code>java.lang.Double</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder latitude(String latitude) {
             this.properties.put("latitude", latitude);
@@ -357,8 +397,9 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * Bounding boxes, created by pairs of lat/lons. Can be used for
          * streaming/filter. A pair is defined as lat,lon. And multiple paris
-         * can be separated by semi colon. The option is a
-         * <code>java.lang.String</code> type.
+         * can be separated by semi colon.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder locations(String locations) {
             this.properties.put("locations", locations);
@@ -367,8 +408,9 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * Used by the non-stream geography search to search by longitude. You
          * need to configure all the following options: longitude, latitude,
-         * radius, and distanceMetric. The option is a
-         * <code>java.lang.Double</code> type.
+         * radius, and distanceMetric.
+         * The option is a <code>java.lang.Double</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder longitude(Double longitude) {
             this.properties.put("longitude", longitude);
@@ -377,8 +419,9 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * Used by the non-stream geography search to search by longitude. You
          * need to configure all the following options: longitude, latitude,
-         * radius, and distanceMetric. The option will be converted to a
-         * <code>java.lang.Double</code> type.
+         * radius, and distanceMetric.
+         * The option will be converted to a <code>java.lang.Double</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder longitude(String longitude) {
             this.properties.put("longitude", longitude);
@@ -388,8 +431,10 @@ public interface TwitterStreamingEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option is a
+         * been created and being routed in Camel.
+         * The option is a
          * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -400,9 +445,10 @@ public interface TwitterStreamingEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option will be converted
-         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
-         * type.
+         * been created and being routed in Camel.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -411,8 +457,9 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * Used by the non-stream geography search to search by radius. You need
          * to configure all the following options: longitude, latitude, radius,
-         * and distanceMetric. The option is a <code>java.lang.Double</code>
-         * type.
+         * and distanceMetric.
+         * The option is a <code>java.lang.Double</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder radius(Double radius) {
             this.properties.put("radius", radius);
@@ -421,16 +468,18 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * Used by the non-stream geography search to search by radius. You need
          * to configure all the following options: longitude, latitude, radius,
-         * and distanceMetric. The option will be converted to a
-         * <code>java.lang.Double</code> type.
+         * and distanceMetric.
+         * The option will be converted to a <code>java.lang.Double</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder radius(String radius) {
             this.properties.put("radius", radius);
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * To use a custom instance of TwitterStream. The option is a
-         * <code>twitter4j.TwitterStream</code> type.
+         * To use a custom instance of TwitterStream.
+         * The option is a <code>twitter4j.TwitterStream</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder twitterStream(
                 Object twitterStream) {
@@ -438,8 +487,10 @@ public interface TwitterStreamingEndpointBuilder {
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * To use a custom instance of TwitterStream. The option will be
-         * converted to a <code>twitter4j.TwitterStream</code> type.
+         * To use a custom instance of TwitterStream.
+         * The option will be converted to a
+         * <code>twitter4j.TwitterStream</code> type.
+         * @group consumer (advanced)
          */
         public TwitterStreamingConsumerBuilder twitterStream(
                 String twitterStream) {
@@ -447,16 +498,19 @@ public interface TwitterStreamingEndpointBuilder {
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Limiting number of results per page. The option is a
-         * <code>java.lang.Integer</code> type.
+         * Limiting number of results per page.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group filter
          */
         public TwitterStreamingConsumerBuilder count(Integer count) {
             this.properties.put("count", count);
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Limiting number of results per page. The option will be converted to
-         * a <code>java.lang.Integer</code> type.
+         * Limiting number of results per page.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group filter
          */
         public TwitterStreamingConsumerBuilder count(String count) {
             this.properties.put("count", count);
@@ -464,8 +518,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * Filter out old tweets, that has previously been polled. This state is
-         * stored in memory only, and based on last tweet id. The option is a
-         * <code>boolean</code> type.
+         * stored in memory only, and based on last tweet id.
+         * The option is a <code>boolean</code> type.
+         * @group filter
          */
         public TwitterStreamingConsumerBuilder filterOld(boolean filterOld) {
             this.properties.put("filterOld", filterOld);
@@ -473,8 +528,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * Filter out old tweets, that has previously been polled. This state is
-         * stored in memory only, and based on last tweet id. The option will be
-         * converted to a <code>boolean</code> type.
+         * stored in memory only, and based on last tweet id.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group filter
          */
         public TwitterStreamingConsumerBuilder filterOld(String filterOld) {
             this.properties.put("filterOld", filterOld);
@@ -482,15 +538,18 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * Can be used for a streaming filter. Multiple values can be separated
-         * with comma. The option is a <code>java.lang.String</code> type.
+         * with comma.
+         * The option is a <code>java.lang.String</code> type.
+         * @group filter
          */
         public TwitterStreamingConsumerBuilder keywords(String keywords) {
             this.properties.put("keywords", keywords);
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * The lang string ISO_639-1 which will be used for searching. The
-         * option is a <code>java.lang.String</code> type.
+         * The lang string ISO_639-1 which will be used for searching.
+         * The option is a <code>java.lang.String</code> type.
+         * @group filter
          */
         public TwitterStreamingConsumerBuilder lang(String lang) {
             this.properties.put("lang", lang);
@@ -499,6 +558,7 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * The number of pages result which you want camel-twitter to consume.
          * The option is a <code>java.lang.Integer</code> type.
+         * @group filter
          */
         public TwitterStreamingConsumerBuilder numberOfPages(
                 Integer numberOfPages) {
@@ -509,6 +569,7 @@ public interface TwitterStreamingEndpointBuilder {
          * The number of pages result which you want camel-twitter to consume.
          * The option will be converted to a <code>java.lang.Integer</code>
          * type.
+         * @group filter
          */
         public TwitterStreamingConsumerBuilder numberOfPages(
                 String numberOfPages) {
@@ -517,8 +578,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The last tweet id which will be used for pulling the tweets. It is
-         * useful when the camel route is restarted after a long running. The
-         * option is a <code>long</code> type.
+         * useful when the camel route is restarted after a long running.
+         * The option is a <code>long</code> type.
+         * @group filter
          */
         public TwitterStreamingConsumerBuilder sinceId(long sinceId) {
             this.properties.put("sinceId", sinceId);
@@ -526,8 +588,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The last tweet id which will be used for pulling the tweets. It is
-         * useful when the camel route is restarted after a long running. The
-         * option will be converted to a <code>long</code> type.
+         * useful when the camel route is restarted after a long running.
+         * The option will be converted to a <code>long</code> type.
+         * @group filter
          */
         public TwitterStreamingConsumerBuilder sinceId(String sinceId) {
             this.properties.put("sinceId", sinceId);
@@ -535,8 +598,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * To filter by user ids for streaming/filter. Multiple values can be
-         * separated by comma. The option is a <code>java.lang.String</code>
-         * type.
+         * separated by comma.
+         * The option is a <code>java.lang.String</code> type.
+         * @group filter
          */
         public TwitterStreamingConsumerBuilder userIds(String userIds) {
             this.properties.put("userIds", userIds);
@@ -544,8 +608,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * is a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -554,8 +619,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -564,8 +630,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a <code>int</code>
-         * type.
+         * backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -574,8 +641,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option will be converted to a
-         * <code>int</code> type.
+         * backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -588,7 +656,9 @@ public interface TwitterStreamingEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a <code>int</code> type.
+         * configured.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder backoffMultiplier(
                 int backoffMultiplier) {
@@ -601,7 +671,9 @@ public interface TwitterStreamingEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a <code>int</code> type.
+         * configured.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder backoffMultiplier(
                 String backoffMultiplier) {
@@ -609,16 +681,18 @@ public interface TwitterStreamingEndpointBuilder {
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Milliseconds before the next poll. The option is a <code>long</code>
-         * type.
+         * Milliseconds before the next poll.
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Milliseconds before the next poll. The option will be converted to a
-         * <code>long</code> type.
+         * Milliseconds before the next poll.
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -626,8 +700,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option is a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -635,8 +710,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -645,7 +721,9 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -654,8 +732,9 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -663,8 +742,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * is a <code>org.apache.camel.LoggingLevel</code> type.
+         * option allows you to configure the logging level for that.
+         * The option is a <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -673,9 +753,10 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
-         * type.
+         * option allows you to configure the logging level for that.
+         * The option will be converted to a
+         * <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder runLoggingLevel(
                 String runLoggingLevel) {
@@ -685,8 +766,10 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a
+         * pool.
+         * The option is a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -696,8 +779,10 @@ public interface TwitterStreamingEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option will be converted to a
+         * pool.
+         * The option will be converted to a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -706,9 +791,11 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option is a
+         * component.
+         * The option is a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -717,9 +804,11 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option will be converted to a
+         * component.
+         * The option will be converted to a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -727,9 +816,10 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
-         * type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -738,9 +828,11 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map&lt;java.lang.String,
-         * java.lang.Object&gt;</code> type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -748,8 +840,9 @@ public interface TwitterStreamingEndpointBuilder {
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a
-         * <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder startScheduler(
                 boolean startScheduler) {
@@ -757,8 +850,9 @@ public interface TwitterStreamingEndpointBuilder {
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option will be
-         * converted to a <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder startScheduler(
                 String startScheduler) {
@@ -766,16 +860,19 @@ public interface TwitterStreamingEndpointBuilder {
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option is a
-         * <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option is a <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option will be
-         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option will be converted to a
+         * <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -783,8 +880,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a
-         * <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder useFixedDelay(
                 boolean useFixedDelay) {
@@ -793,8 +891,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public TwitterStreamingConsumerBuilder useFixedDelay(
                 String useFixedDelay) {
@@ -802,16 +901,18 @@ public interface TwitterStreamingEndpointBuilder {
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Sorts by id, so the oldest are first, and newest last. The option is
-         * a <code>boolean</code> type.
+         * Sorts by id, so the oldest are first, and newest last.
+         * The option is a <code>boolean</code> type.
+         * @group sort
          */
         public TwitterStreamingConsumerBuilder sortById(boolean sortById) {
             this.properties.put("sortById", sortById);
             return (TwitterStreamingConsumerBuilder) this;
         }
         /**
-         * Sorts by id, so the oldest are first, and newest last. The option
-         * will be converted to a <code>boolean</code> type.
+         * Sorts by id, so the oldest are first, and newest last.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group sort
          */
         public TwitterStreamingConsumerBuilder sortById(String sortById) {
             this.properties.put("sortById", sortById);

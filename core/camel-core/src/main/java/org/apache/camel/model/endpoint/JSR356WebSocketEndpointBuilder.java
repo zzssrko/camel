@@ -43,16 +43,18 @@ public interface JSR356WebSocketEndpointBuilder {
         }
         /**
          * If a path (/foo) it will deploy locally the endpoint, if an uri it
-         * will connect to the corresponding server. The option is a
-         * <code>java.lang.String</code> type.
+         * will connect to the corresponding server.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T websocketPathOrUri(String websocketPathOrUri) {
             this.properties.put("websocketPathOrUri", websocketPathOrUri);
             return (T) this;
         }
         /**
-         * the servlet context to use (represented by its path). The option is a
-         * <code>java.lang.String</code> type.
+         * the servlet context to use (represented by its path).
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T context(String context) {
             this.properties.put("context", context);
@@ -60,7 +62,9 @@ public interface JSR356WebSocketEndpointBuilder {
         }
         /**
          * Used when the endpoint is in client mode to populate a pool of
-         * sessions. The option is a <code>int</code> type.
+         * sessions.
+         * The option is a <code>int</code> type.
+         * @group common
          */
         public T sessionCount(int sessionCount) {
             this.properties.put("sessionCount", sessionCount);
@@ -68,7 +72,9 @@ public interface JSR356WebSocketEndpointBuilder {
         }
         /**
          * Used when the endpoint is in client mode to populate a pool of
-         * sessions. The option will be converted to a <code>int</code> type.
+         * sessions.
+         * The option will be converted to a <code>int</code> type.
+         * @group common
          */
         public T sessionCount(String sessionCount) {
             this.properties.put("sessionCount", sessionCount);
@@ -76,8 +82,9 @@ public interface JSR356WebSocketEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -85,8 +92,9 @@ public interface JSR356WebSocketEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -94,8 +102,9 @@ public interface JSR356WebSocketEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -103,8 +112,9 @@ public interface JSR356WebSocketEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -130,7 +140,9 @@ public interface JSR356WebSocketEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public JSR356WebSocketConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -144,7 +156,9 @@ public interface JSR356WebSocketEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public JSR356WebSocketConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -155,8 +169,10 @@ public interface JSR356WebSocketEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public JSR356WebSocketConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -167,9 +183,10 @@ public interface JSR356WebSocketEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public JSR356WebSocketConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -177,8 +194,9 @@ public interface JSR356WebSocketEndpointBuilder {
             return (JSR356WebSocketConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public JSR356WebSocketConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -186,9 +204,10 @@ public interface JSR356WebSocketEndpointBuilder {
             return (JSR356WebSocketConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public JSR356WebSocketConsumerBuilder exchangePattern(
                 String exchangePattern) {

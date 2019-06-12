@@ -43,16 +43,18 @@ public interface SparkEndpointBuilder {
             super("spark-rest", path);
         }
         /**
-         * get, post, put, patch, delete, head, trace, connect, or options. The
-         * option is a <code>java.lang.String</code> type.
+         * get, post, put, patch, delete, head, trace, connect, or options.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T verb(String verb) {
             this.properties.put("verb", verb);
             return (T) this;
         }
         /**
-         * The content path which support Spark syntax. The option is a
-         * <code>java.lang.String</code> type.
+         * The content path which support Spark syntax.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T path(String path) {
             this.properties.put("path", path);
@@ -60,8 +62,9 @@ public interface SparkEndpointBuilder {
         }
         /**
          * Accept type such as: 'text/xml', or 'application/json'. By default we
-         * accept all kinds of types. The option is a
-         * <code>java.lang.String</code> type.
+         * accept all kinds of types.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T accept(String accept) {
             this.properties.put("accept", accept);
@@ -78,7 +81,9 @@ public interface SparkEndpointBuilder {
          * other persistent store. Mind that if you enable this option, then you
          * cannot read the Netty stream multiple times out of the box, and you
          * would need manually to reset the reader index on the Spark raw
-         * stream. The option is a <code>boolean</code> type.
+         * stream.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public T disableStreamCache(boolean disableStreamCache) {
             this.properties.put("disableStreamCache", disableStreamCache);
@@ -95,7 +100,9 @@ public interface SparkEndpointBuilder {
          * other persistent store. Mind that if you enable this option, then you
          * cannot read the Netty stream multiple times out of the box, and you
          * would need manually to reset the reader index on the Spark raw
-         * stream. The option will be converted to a <code>boolean</code> type.
+         * stream.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public T disableStreamCache(String disableStreamCache) {
             this.properties.put("disableStreamCache", disableStreamCache);
@@ -107,8 +114,9 @@ public interface SparkEndpointBuilder {
          * to the Camel Message as well). You can turn off this option to
          * disable this. The headers can still be accessed from the
          * org.apache.camel.component.sparkrest.SparkMessage message with the
-         * method getRequest() that returns the Spark HTTP request instance. The
-         * option is a <code>boolean</code> type.
+         * method getRequest() that returns the Spark HTTP request instance.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public T mapHeaders(boolean mapHeaders) {
             this.properties.put("mapHeaders", mapHeaders);
@@ -120,8 +128,9 @@ public interface SparkEndpointBuilder {
          * to the Camel Message as well). You can turn off this option to
          * disable this. The headers can still be accessed from the
          * org.apache.camel.component.sparkrest.SparkMessage message with the
-         * method getRequest() that returns the Spark HTTP request instance. The
-         * option will be converted to a <code>boolean</code> type.
+         * method getRequest() that returns the Spark HTTP request instance.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public T mapHeaders(String mapHeaders) {
             this.properties.put("mapHeaders", mapHeaders);
@@ -133,8 +142,9 @@ public interface SparkEndpointBuilder {
          * as a application/x-java-serialized-object content type. This is by
          * default turned off. If you enable this then be aware that Java will
          * deserialize the incoming data from the request to Java and that can
-         * be a potential security risk. The option is a <code>boolean</code>
-         * type.
+         * be a potential security risk.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public T transferException(boolean transferException) {
             this.properties.put("transferException", transferException);
@@ -146,8 +156,9 @@ public interface SparkEndpointBuilder {
          * as a application/x-java-serialized-object content type. This is by
          * default turned off. If you enable this then be aware that Java will
          * deserialize the incoming data from the request to Java and that can
-         * be a potential security risk. The option will be converted to a
-         * <code>boolean</code> type.
+         * be a potential security risk.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public T transferException(String transferException) {
             this.properties.put("transferException", transferException);
@@ -156,7 +167,9 @@ public interface SparkEndpointBuilder {
         /**
          * If this option is enabled, then during binding from Spark to Camel
          * Message then the header values will be URL decoded (eg %20 will be a
-         * space character.). The option is a <code>boolean</code> type.
+         * space character.).
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public T urlDecodeHeaders(boolean urlDecodeHeaders) {
             this.properties.put("urlDecodeHeaders", urlDecodeHeaders);
@@ -165,8 +178,9 @@ public interface SparkEndpointBuilder {
         /**
          * If this option is enabled, then during binding from Spark to Camel
          * Message then the header values will be URL decoded (eg %20 will be a
-         * space character.). The option will be converted to a
-         * <code>boolean</code> type.
+         * space character.).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public T urlDecodeHeaders(String urlDecodeHeaders) {
             this.properties.put("urlDecodeHeaders", urlDecodeHeaders);
@@ -174,8 +188,9 @@ public interface SparkEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -183,8 +198,9 @@ public interface SparkEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -192,8 +208,9 @@ public interface SparkEndpointBuilder {
         }
         /**
          * Whether or not the consumer should try to find a target consumer by
-         * matching the URI prefix if no exact match is found. The option is a
-         * <code>boolean</code> type.
+         * matching the URI prefix if no exact match is found.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T matchOnUriPrefix(boolean matchOnUriPrefix) {
             this.properties.put("matchOnUriPrefix", matchOnUriPrefix);
@@ -201,26 +218,29 @@ public interface SparkEndpointBuilder {
         }
         /**
          * Whether or not the consumer should try to find a target consumer by
-         * matching the URI prefix if no exact match is found. The option will
-         * be converted to a <code>boolean</code> type.
+         * matching the URI prefix if no exact match is found.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T matchOnUriPrefix(String matchOnUriPrefix) {
             this.properties.put("matchOnUriPrefix", matchOnUriPrefix);
             return (T) this;
         }
         /**
-         * To use a custom SparkBinding to map to/from Camel message. The option
-         * is a <code>org.apache.camel.component.sparkrest.SparkBinding</code>
-         * type.
+         * To use a custom SparkBinding to map to/from Camel message.
+         * The option is a
+         * <code>org.apache.camel.component.sparkrest.SparkBinding</code> type.
+         * @group advanced
          */
         public T sparkBinding(Object sparkBinding) {
             this.properties.put("sparkBinding", sparkBinding);
             return (T) this;
         }
         /**
-         * To use a custom SparkBinding to map to/from Camel message. The option
-         * will be converted to a
+         * To use a custom SparkBinding to map to/from Camel message.
+         * The option will be converted to a
          * <code>org.apache.camel.component.sparkrest.SparkBinding</code> type.
+         * @group advanced
          */
         public T sparkBinding(String sparkBinding) {
             this.properties.put("sparkBinding", sparkBinding);
@@ -228,8 +248,9 @@ public interface SparkEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -237,8 +258,9 @@ public interface SparkEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -264,7 +286,9 @@ public interface SparkEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public SparkConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -278,7 +302,9 @@ public interface SparkEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public SparkConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -288,8 +314,10 @@ public interface SparkEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public SparkConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -300,17 +328,19 @@ public interface SparkEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public SparkConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (SparkConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public SparkConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -318,9 +348,10 @@ public interface SparkEndpointBuilder {
             return (SparkConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public SparkConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

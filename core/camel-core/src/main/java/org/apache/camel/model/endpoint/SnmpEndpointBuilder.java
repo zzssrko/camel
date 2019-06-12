@@ -49,24 +49,28 @@ public interface SnmpEndpointBuilder {
             super("snmp", path);
         }
         /**
-         * Hostname of the SNMP enabled device. The option is a
-         * <code>java.lang.String</code> type.
+         * Hostname of the SNMP enabled device.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * Port number of the SNMP enabled device. The option is a
-         * <code>java.lang.Integer</code> type.
+         * Port number of the SNMP enabled device.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group consumer
          */
         public T port(Integer port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Port number of the SNMP enabled device. The option will be converted
-         * to a <code>java.lang.Integer</code> type.
+         * Port number of the SNMP enabled device.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group consumer
          */
         public T port(String port) {
             this.properties.put("port", port);
@@ -76,7 +80,10 @@ public interface SnmpEndpointBuilder {
          * Defines which values you are interested in. Please have a look at the
          * Wikipedia to get a better understanding. You may provide a single OID
          * or a coma separated list of OIDs. Example:
-         * oids=1.3.6.1.2.1.1.3.0,1.3.6.1.2.1.25.3.2.1.5.1,1.3.6.1.2.1.25.3.5.1.1.1,1.3.6.1.2.1.43.5.1.1.11.1. The option is a <code>org.apache.camel.component.snmp.OIDList</code> type.
+         * oids=1.3.6.1.2.1.1.3.0,1.3.6.1.2.1.25.3.2.1.5.1,1.3.6.1.2.1.25.3.5.1.1.1,1.3.6.1.2.1.43.5.1.1.11.1.
+         * The option is a <code>org.apache.camel.component.snmp.OIDList</code>
+         * type.
+         * @group consumer
          */
         public T oids(Object oids) {
             this.properties.put("oids", oids);
@@ -86,7 +93,10 @@ public interface SnmpEndpointBuilder {
          * Defines which values you are interested in. Please have a look at the
          * Wikipedia to get a better understanding. You may provide a single OID
          * or a coma separated list of OIDs. Example:
-         * oids=1.3.6.1.2.1.1.3.0,1.3.6.1.2.1.25.3.2.1.5.1,1.3.6.1.2.1.25.3.5.1.1.1,1.3.6.1.2.1.43.5.1.1.11.1. The option will be converted to a <code>org.apache.camel.component.snmp.OIDList</code> type.
+         * oids=1.3.6.1.2.1.1.3.0,1.3.6.1.2.1.25.3.2.1.5.1,1.3.6.1.2.1.25.3.5.1.1.1,1.3.6.1.2.1.43.5.1.1.11.1.
+         * The option will be converted to a
+         * <code>org.apache.camel.component.snmp.OIDList</code> type.
+         * @group consumer
          */
         public T oids(String oids) {
             this.properties.put("oids", oids);
@@ -94,47 +104,54 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Here you can select which protocol to use. You can use either udp or
-         * tcp. The option is a <code>java.lang.String</code> type.
+         * tcp.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T protocol(String protocol) {
             this.properties.put("protocol", protocol);
             return (T) this;
         }
         /**
-         * Defines how often a retry is made before canceling the request. The
-         * option is a <code>int</code> type.
+         * Defines how often a retry is made before canceling the request.
+         * The option is a <code>int</code> type.
+         * @group consumer
          */
         public T retries(int retries) {
             this.properties.put("retries", retries);
             return (T) this;
         }
         /**
-         * Defines how often a retry is made before canceling the request. The
-         * option will be converted to a <code>int</code> type.
+         * Defines how often a retry is made before canceling the request.
+         * The option will be converted to a <code>int</code> type.
+         * @group consumer
          */
         public T retries(String retries) {
             this.properties.put("retries", retries);
             return (T) this;
         }
         /**
-         * Sets the community octet string for the snmp request. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the community octet string for the snmp request.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T snmpCommunity(String snmpCommunity) {
             this.properties.put("snmpCommunity", snmpCommunity);
             return (T) this;
         }
         /**
-         * Sets the context engine ID field of the scoped PDU. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the context engine ID field of the scoped PDU.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T snmpContextEngineId(String snmpContextEngineId) {
             this.properties.put("snmpContextEngineId", snmpContextEngineId);
             return (T) this;
         }
         /**
-         * Sets the context name field of this scoped PDU. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the context name field of this scoped PDU.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T snmpContextName(String snmpContextName) {
             this.properties.put("snmpContextName", snmpContextName);
@@ -142,8 +159,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Sets the snmp version for the request. The value 0 means SNMPv1, 1
-         * means SNMPv2c, and the value 3 means SNMPv3. The option is a
-         * <code>int</code> type.
+         * means SNMPv2c, and the value 3 means SNMPv3.
+         * The option is a <code>int</code> type.
+         * @group consumer
          */
         public T snmpVersion(int snmpVersion) {
             this.properties.put("snmpVersion", snmpVersion);
@@ -151,41 +169,47 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Sets the snmp version for the request. The value 0 means SNMPv1, 1
-         * means SNMPv2c, and the value 3 means SNMPv3. The option will be
-         * converted to a <code>int</code> type.
+         * means SNMPv2c, and the value 3 means SNMPv3.
+         * The option will be converted to a <code>int</code> type.
+         * @group consumer
          */
         public T snmpVersion(String snmpVersion) {
             this.properties.put("snmpVersion", snmpVersion);
             return (T) this;
         }
         /**
-         * Sets the timeout value for the request in millis. The option is a
-         * <code>int</code> type.
+         * Sets the timeout value for the request in millis.
+         * The option is a <code>int</code> type.
+         * @group consumer
          */
         public T timeout(int timeout) {
             this.properties.put("timeout", timeout);
             return (T) this;
         }
         /**
-         * Sets the timeout value for the request in millis. The option will be
-         * converted to a <code>int</code> type.
+         * Sets the timeout value for the request in millis.
+         * The option will be converted to a <code>int</code> type.
+         * @group consumer
          */
         public T timeout(String timeout) {
             this.properties.put("timeout", timeout);
             return (T) this;
         }
         /**
-         * Which operation to perform such as poll, trap, etc. The option is a
+         * Which operation to perform such as poll, trap, etc.
+         * The option is a
          * <code>org.apache.camel.component.snmp.SnmpActionType</code> type.
+         * @group consumer
          */
         public T type(SnmpActionType type) {
             this.properties.put("type", type);
             return (T) this;
         }
         /**
-         * Which operation to perform such as poll, trap, etc. The option will
-         * be converted to a
+         * Which operation to perform such as poll, trap, etc.
+         * The option will be converted to a
          * <code>org.apache.camel.component.snmp.SnmpActionType</code> type.
+         * @group consumer
          */
         public T type(String type) {
             this.properties.put("type", type);
@@ -193,8 +217,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -202,8 +227,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -211,8 +237,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -220,8 +247,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -231,8 +259,9 @@ public interface SnmpEndpointBuilder {
          * The authentication passphrase. If not null, authenticationProtocol
          * must also be not null. RFC3414 11.2 requires passphrases to have a
          * minimum length of 8 bytes. If the length of authenticationPassphrase
-         * is less than 8 bytes an IllegalArgumentException is thrown. The
-         * option is a <code>java.lang.String</code> type.
+         * is less than 8 bytes an IllegalArgumentException is thrown.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T authenticationPassphrase(String authenticationPassphrase) {
             this.properties.put("authenticationPassphrase", authenticationPassphrase);
@@ -240,8 +269,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Authentication protocol to use if security level is set to enable
-         * authentication The possible values are: MD5, SHA1. The option is a
-         * <code>java.lang.String</code> type.
+         * authentication The possible values are: MD5, SHA1.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T authenticationProtocol(String authenticationProtocol) {
             this.properties.put("authenticationProtocol", authenticationProtocol);
@@ -251,8 +281,9 @@ public interface SnmpEndpointBuilder {
          * The privacy passphrase. If not null, privacyProtocol must also be not
          * null. RFC3414 11.2 requires passphrases to have a minimum length of 8
          * bytes. If the length of authenticationPassphrase is less than 8 bytes
-         * an IllegalArgumentException is thrown. The option is a
-         * <code>java.lang.String</code> type.
+         * an IllegalArgumentException is thrown.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T privacyPassphrase(String privacyPassphrase) {
             this.properties.put("privacyPassphrase", privacyPassphrase);
@@ -260,8 +291,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * The privacy protocol ID to be associated with this user. If set to
-         * null, this user only supports unencrypted messages. The option is a
-         * <code>java.lang.String</code> type.
+         * null, this user only supports unencrypted messages.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T privacyProtocol(String privacyProtocol) {
             this.properties.put("privacyProtocol", privacyProtocol);
@@ -279,7 +311,9 @@ public interface SnmpEndpointBuilder {
          * Authentication and encryption. Only the one with the right
          * authentication key can create messages with this security level, and
          * only the one with the right encryption/decryption key can read the
-         * contents of the message. The option is a <code>int</code> type.
+         * contents of the message.
+         * The option is a <code>int</code> type.
+         * @group security
          */
         public T securityLevel(int securityLevel) {
             this.properties.put("securityLevel", securityLevel);
@@ -297,16 +331,18 @@ public interface SnmpEndpointBuilder {
          * Authentication and encryption. Only the one with the right
          * authentication key can create messages with this security level, and
          * only the one with the right encryption/decryption key can read the
-         * contents of the message. The option will be converted to a
-         * <code>int</code> type.
+         * contents of the message.
+         * The option will be converted to a <code>int</code> type.
+         * @group security
          */
         public T securityLevel(String securityLevel) {
             this.properties.put("securityLevel", securityLevel);
             return (T) this;
         }
         /**
-         * Sets the security name to be used with this target. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the security name to be used with this target.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T securityName(String securityName) {
             this.properties.put("securityName", securityName);
@@ -332,7 +368,9 @@ public interface SnmpEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public SnmpConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -345,22 +383,27 @@ public interface SnmpEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public SnmpConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
             return (SnmpConsumerBuilder) this;
         }
         /**
-         * Sets update rate in seconds. The option is a <code>long</code> type.
+         * Sets update rate in seconds.
+         * The option is a <code>long</code> type.
+         * @group consumer
          */
         public SnmpConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
             return (SnmpConsumerBuilder) this;
         }
         /**
-         * Sets update rate in seconds. The option will be converted to a
-         * <code>long</code> type.
+         * Sets update rate in seconds.
+         * The option will be converted to a <code>long</code> type.
+         * @group consumer
          */
         public SnmpConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -368,8 +411,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option is a
-         * <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public SnmpConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -378,8 +422,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option will be
-         * converted to a <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public SnmpConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -388,8 +433,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Sets the flag whether the scoped PDU will be displayed as the list if
-         * it has child elements in its tree. The option is a
-         * <code>boolean</code> type.
+         * it has child elements in its tree.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public SnmpConsumerBuilder treeList(boolean treeList) {
             this.properties.put("treeList", treeList);
@@ -397,8 +443,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Sets the flag whether the scoped PDU will be displayed as the list if
-         * it has child elements in its tree. The option will be converted to a
-         * <code>boolean</code> type.
+         * it has child elements in its tree.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public SnmpConsumerBuilder treeList(String treeList) {
             this.properties.put("treeList", treeList);
@@ -408,8 +455,10 @@ public interface SnmpEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public SnmpConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -420,17 +469,19 @@ public interface SnmpEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public SnmpConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (SnmpConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public SnmpConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -438,9 +489,10 @@ public interface SnmpEndpointBuilder {
             return (SnmpConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public SnmpConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -450,8 +502,10 @@ public interface SnmpEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option is a
+         * been created and being routed in Camel.
+         * The option is a
          * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public SnmpConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -462,9 +516,10 @@ public interface SnmpEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option will be converted
-         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
-         * type.
+         * been created and being routed in Camel.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public SnmpConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -472,8 +527,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * is a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -482,8 +538,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -492,8 +549,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a <code>int</code>
-         * type.
+         * backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder backoffIdleThreshold(int backoffIdleThreshold) {
             this.properties.put("backoffIdleThreshold", backoffIdleThreshold);
@@ -501,8 +559,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option will be converted to a
-         * <code>int</code> type.
+         * backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -515,7 +574,9 @@ public interface SnmpEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a <code>int</code> type.
+         * configured.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -527,7 +588,9 @@ public interface SnmpEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a <code>int</code> type.
+         * configured.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder backoffMultiplier(String backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -535,8 +598,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option is a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -544,8 +608,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -554,7 +619,9 @@ public interface SnmpEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -563,8 +630,9 @@ public interface SnmpEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -572,8 +640,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * is a <code>org.apache.camel.LoggingLevel</code> type.
+         * option allows you to configure the logging level for that.
+         * The option is a <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder runLoggingLevel(LoggingLevel runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -581,9 +650,10 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
-         * type.
+         * option allows you to configure the logging level for that.
+         * The option will be converted to a
+         * <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -592,8 +662,10 @@ public interface SnmpEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a
+         * pool.
+         * The option is a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -603,8 +675,10 @@ public interface SnmpEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option will be converted to a
+         * pool.
+         * The option will be converted to a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -613,9 +687,11 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option is a
+         * component.
+         * The option is a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -624,9 +700,11 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option will be converted to a
+         * component.
+         * The option will be converted to a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -634,9 +712,10 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
-         * type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -645,9 +724,11 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map&lt;java.lang.String,
-         * java.lang.Object&gt;</code> type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -655,32 +736,37 @@ public interface SnmpEndpointBuilder {
             return (SnmpConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a
-         * <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (SnmpConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option will be
-         * converted to a <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (SnmpConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option is a
-         * <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option is a <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
             return (SnmpConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option will be
-         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option will be converted to a
+         * <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -688,8 +774,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a
-         * <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -697,8 +784,9 @@ public interface SnmpEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public SnmpConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);

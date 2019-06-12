@@ -42,8 +42,9 @@ public interface ZendeskEndpointBuilder {
             super("zendesk", path);
         }
         /**
-         * What operation to use. The option is a <code>java.lang.String</code>
-         * type.
+         * What operation to use.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T methodName(String methodName) {
             this.properties.put("methodName", methodName);
@@ -52,14 +53,16 @@ public interface ZendeskEndpointBuilder {
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T inBody(String inBody) {
             this.properties.put("inBody", inBody);
             return (T) this;
         }
         /**
-         * The server URL to connect. The option is a
-         * <code>java.lang.String</code> type.
+         * The server URL to connect.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T serverUrl(String serverUrl) {
             this.properties.put("serverUrl", serverUrl);
@@ -67,8 +70,9 @@ public interface ZendeskEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -76,8 +80,9 @@ public interface ZendeskEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -85,8 +90,9 @@ public interface ZendeskEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -94,37 +100,45 @@ public interface ZendeskEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * The OAuth token. The option is a <code>java.lang.String</code> type.
+         * The OAuth token.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T oauthToken(String oauthToken) {
             this.properties.put("oauthToken", oauthToken);
             return (T) this;
         }
         /**
-         * The password. The option is a <code>java.lang.String</code> type.
+         * The password.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * The security token. The option is a <code>java.lang.String</code>
-         * type.
+         * The security token.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T token(String token) {
             this.properties.put("token", token);
             return (T) this;
         }
         /**
-         * The user name. The option is a <code>java.lang.String</code> type.
+         * The user name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -150,7 +164,9 @@ public interface ZendeskEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public ZendeskConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -164,7 +180,9 @@ public interface ZendeskEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public ZendeskConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -175,8 +193,10 @@ public interface ZendeskEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public ZendeskConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -187,17 +207,19 @@ public interface ZendeskEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public ZendeskConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (ZendeskConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public ZendeskConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -205,9 +227,10 @@ public interface ZendeskEndpointBuilder {
             return (ZendeskConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public ZendeskConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

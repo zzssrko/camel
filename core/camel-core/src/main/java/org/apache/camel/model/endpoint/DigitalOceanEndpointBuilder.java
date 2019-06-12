@@ -41,33 +41,39 @@ public interface DigitalOceanEndpointBuilder {
             super("digitalocean", path);
         }
         /**
-         * The operation to perform to the given resource. The option is a
+         * The operation to perform to the given resource.
+         * The option is a
          * <code>org.apache.camel.component.digitalocean.constants.DigitalOceanOperations</code> type.
+         * @group producer
          */
         public T operation(DigitalOceanOperations operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * The operation to perform to the given resource. The option will be
-         * converted to a
+         * The operation to perform to the given resource.
+         * The option will be converted to a
          * <code>org.apache.camel.component.digitalocean.constants.DigitalOceanOperations</code> type.
+         * @group producer
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * Use for pagination. Force the page number. The option is a
-         * <code>java.lang.Integer</code> type.
+         * Use for pagination. Force the page number.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public T page(Integer page) {
             this.properties.put("page", page);
             return (T) this;
         }
         /**
-         * Use for pagination. Force the page number. The option will be
-         * converted to a <code>java.lang.Integer</code> type.
+         * Use for pagination. Force the page number.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public T page(String page) {
             this.properties.put("page", page);
@@ -75,8 +81,9 @@ public interface DigitalOceanEndpointBuilder {
         }
         /**
          * Use for pagination. Set the number of item per request. The maximum
-         * number of results per page is 200. The option is a
-         * <code>java.lang.Integer</code> type.
+         * number of results per page is 200.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public T perPage(Integer perPage) {
             this.properties.put("perPage", perPage);
@@ -84,26 +91,30 @@ public interface DigitalOceanEndpointBuilder {
         }
         /**
          * Use for pagination. Set the number of item per request. The maximum
-         * number of results per page is 200. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * number of results per page is 200.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public T perPage(String perPage) {
             this.properties.put("perPage", perPage);
             return (T) this;
         }
         /**
-         * The DigitalOcean resource type on which perform the operation. The
-         * option is a
+         * The DigitalOcean resource type on which perform the operation.
+         * The option is a
          * <code>org.apache.camel.component.digitalocean.constants.DigitalOceanResources</code> type.
+         * @group producer
          */
         public T resource(DigitalOceanResources resource) {
             this.properties.put("resource", resource);
             return (T) this;
         }
         /**
-         * The DigitalOcean resource type on which perform the operation. The
-         * option will be converted to a
+         * The DigitalOcean resource type on which perform the operation.
+         * The option will be converted to a
          * <code>org.apache.camel.component.digitalocean.constants.DigitalOceanResources</code> type.
+         * @group producer
          */
         public T resource(String resource) {
             this.properties.put("resource", resource);
@@ -111,8 +122,9 @@ public interface DigitalOceanEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -120,26 +132,29 @@ public interface DigitalOceanEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
         /**
-         * To use a existing configured DigitalOceanClient as client. The option
-         * is a <code>com.myjeeva.digitalocean.impl.DigitalOceanClient</code>
-         * type.
+         * To use a existing configured DigitalOceanClient as client.
+         * The option is a
+         * <code>com.myjeeva.digitalocean.impl.DigitalOceanClient</code> type.
+         * @group advanced
          */
         public T digitalOceanClient(Object digitalOceanClient) {
             this.properties.put("digitalOceanClient", digitalOceanClient);
             return (T) this;
         }
         /**
-         * To use a existing configured DigitalOceanClient as client. The option
-         * will be converted to a
+         * To use a existing configured DigitalOceanClient as client.
+         * The option will be converted to a
          * <code>com.myjeeva.digitalocean.impl.DigitalOceanClient</code> type.
+         * @group advanced
          */
         public T digitalOceanClient(String digitalOceanClient) {
             this.properties.put("digitalOceanClient", digitalOceanClient);
@@ -147,8 +162,9 @@ public interface DigitalOceanEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -156,56 +172,64 @@ public interface DigitalOceanEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Set a proxy host if needed. The option is a
-         * <code>java.lang.String</code> type.
+         * Set a proxy host if needed.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T httpProxyHost(String httpProxyHost) {
             this.properties.put("httpProxyHost", httpProxyHost);
             return (T) this;
         }
         /**
-         * Set a proxy password if needed. The option is a
-         * <code>java.lang.String</code> type.
+         * Set a proxy password if needed.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T httpProxyPassword(String httpProxyPassword) {
             this.properties.put("httpProxyPassword", httpProxyPassword);
             return (T) this;
         }
         /**
-         * Set a proxy port if needed. The option is a
-         * <code>java.lang.Integer</code> type.
+         * Set a proxy port if needed.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group proxy
          */
         public T httpProxyPort(Integer httpProxyPort) {
             this.properties.put("httpProxyPort", httpProxyPort);
             return (T) this;
         }
         /**
-         * Set a proxy port if needed. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * Set a proxy port if needed.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group proxy
          */
         public T httpProxyPort(String httpProxyPort) {
             this.properties.put("httpProxyPort", httpProxyPort);
             return (T) this;
         }
         /**
-         * Set a proxy host if needed. The option is a
-         * <code>java.lang.String</code> type.
+         * Set a proxy host if needed.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T httpProxyUser(String httpProxyUser) {
             this.properties.put("httpProxyUser", httpProxyUser);
             return (T) this;
         }
         /**
-         * DigitalOcean OAuth Token. The option is a
-         * <code>java.lang.String</code> type.
+         * DigitalOcean OAuth Token.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T oAuthToken(String oAuthToken) {
             this.properties.put("oAuthToken", oAuthToken);

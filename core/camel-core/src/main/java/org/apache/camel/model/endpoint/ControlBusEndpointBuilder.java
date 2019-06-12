@@ -43,8 +43,9 @@ public interface ControlBusEndpointBuilder {
             super("controlbus", path);
         }
         /**
-         * Command can be either route or language. The option is a
-         * <code>java.lang.String</code> type.
+         * Command can be either route or language.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T command(String command) {
             this.properties.put("command", command);
@@ -53,8 +54,9 @@ public interface ControlBusEndpointBuilder {
         /**
          * Allows you to specify the name of a Language to use for evaluating
          * the message body. If there is any result from the evaluation, then
-         * the result is put in the message body. The option is a
-         * <code>org.apache.camel.spi.Language</code> type.
+         * the result is put in the message body.
+         * The option is a <code>org.apache.camel.spi.Language</code> type.
+         * @group producer
          */
         public T language(Language language) {
             this.properties.put("language", language);
@@ -63,8 +65,10 @@ public interface ControlBusEndpointBuilder {
         /**
          * Allows you to specify the name of a Language to use for evaluating
          * the message body. If there is any result from the evaluation, then
-         * the result is put in the message body. The option will be converted
-         * to a <code>org.apache.camel.spi.Language</code> type.
+         * the result is put in the message body.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.Language</code> type.
+         * @group producer
          */
         public T language(String language) {
             this.properties.put("language", language);
@@ -79,8 +83,9 @@ public interface ControlBusEndpointBuilder {
          * in XML format; the routeId option can be used to define which route
          * to get the performance stats for, if routeId is not defined, then you
          * get statistics for the entire CamelContext. The restart action will
-         * restart the route. The option is a <code>java.lang.String</code>
-         * type.
+         * restart the route.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T action(String action) {
             this.properties.put("action", action);
@@ -91,6 +96,7 @@ public interface ControlBusEndpointBuilder {
          * this option is enabled, then any result from the task is not set on
          * the Exchange. This is only possible if executing tasks synchronously.
          * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T async(boolean async) {
             this.properties.put("async", async);
@@ -101,6 +107,7 @@ public interface ControlBusEndpointBuilder {
          * this option is enabled, then any result from the task is not set on
          * the Exchange. This is only possible if executing tasks synchronously.
          * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T async(String async) {
             this.properties.put("async", async);
@@ -108,8 +115,9 @@ public interface ControlBusEndpointBuilder {
         }
         /**
          * Logging level used for logging when task is done, or if any
-         * exceptions occurred during processing the task. The option is a
-         * <code>org.apache.camel.LoggingLevel</code> type.
+         * exceptions occurred during processing the task.
+         * The option is a <code>org.apache.camel.LoggingLevel</code> type.
+         * @group producer
          */
         public T loggingLevel(LoggingLevel loggingLevel) {
             this.properties.put("loggingLevel", loggingLevel);
@@ -117,24 +125,28 @@ public interface ControlBusEndpointBuilder {
         }
         /**
          * Logging level used for logging when task is done, or if any
-         * exceptions occurred during processing the task. The option will be
-         * converted to a <code>org.apache.camel.LoggingLevel</code> type.
+         * exceptions occurred during processing the task.
+         * The option will be converted to a
+         * <code>org.apache.camel.LoggingLevel</code> type.
+         * @group producer
          */
         public T loggingLevel(String loggingLevel) {
             this.properties.put("loggingLevel", loggingLevel);
             return (T) this;
         }
         /**
-         * The delay in millis to use when restarting a route. The option is a
-         * <code>int</code> type.
+         * The delay in millis to use when restarting a route.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T restartDelay(int restartDelay) {
             this.properties.put("restartDelay", restartDelay);
             return (T) this;
         }
         /**
-         * The delay in millis to use when restarting a route. The option will
-         * be converted to a <code>int</code> type.
+         * The delay in millis to use when restarting a route.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T restartDelay(String restartDelay) {
             this.properties.put("restartDelay", restartDelay);
@@ -142,8 +154,9 @@ public interface ControlBusEndpointBuilder {
         }
         /**
          * To specify a route by its id. The special keyword current indicates
-         * the current route. The option is a <code>java.lang.String</code>
-         * type.
+         * the current route.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T routeId(String routeId) {
             this.properties.put("routeId", routeId);
@@ -151,8 +164,9 @@ public interface ControlBusEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -160,8 +174,9 @@ public interface ControlBusEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -169,8 +184,9 @@ public interface ControlBusEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -178,8 +194,9 @@ public interface ControlBusEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

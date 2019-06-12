@@ -46,16 +46,18 @@ public interface CoAPEndpointBuilder {
             super("coap", path);
         }
         /**
-         * The URI for the CoAP endpoint. The option is a
-         * <code>java.net.URI</code> type.
+         * The URI for the CoAP endpoint.
+         * The option is a <code>java.net.URI</code> type.
+         * @group common
          */
         public T uri(URI uri) {
             this.properties.put("uri", uri);
             return (T) this;
         }
         /**
-         * The URI for the CoAP endpoint. The option will be converted to a
-         * <code>java.net.URI</code> type.
+         * The URI for the CoAP endpoint.
+         * The option will be converted to a <code>java.net.URI</code> type.
+         * @group common
          */
         public T uri(String uri) {
             this.properties.put("uri", uri);
@@ -69,8 +71,9 @@ public interface CoAPEndpointBuilder {
          * parameter is not specified then the default behavior is to use the
          * first alias in the keystore that contains a key entry. This
          * configuration parameter does not apply to configuring TLS via a Raw
-         * Public Key or a Pre-Shared Key. The option is a
-         * <code>java.lang.String</code> type.
+         * Public Key or a Pre-Shared Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T alias(String alias) {
             this.properties.put("alias", alias);
@@ -79,8 +82,9 @@ public interface CoAPEndpointBuilder {
         /**
          * Sets the cipherSuites String. This is a comma separated String of
          * ciphersuites to configure. If it is not specified, then it falls back
-         * to getting the ciphersuites from the sslContextParameters object. The
-         * option is a <code>java.lang.String</code> type.
+         * to getting the ciphersuites from the sslContextParameters object.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T cipherSuites(String cipherSuites) {
             this.properties.put("cipherSuites", cipherSuites);
@@ -91,59 +95,69 @@ public interface CoAPEndpointBuilder {
          * requirements. The value must be one of NONE, WANT, REQUIRE. If this
          * value is not specified, then it falls back to checking the
          * sslContextParameters.getServerParameters().getClientAuthentication()
-         * value. The option is a <code>java.lang.String</code> type.
+         * value.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T clientAuthentication(String clientAuthentication) {
             this.properties.put("clientAuthentication", clientAuthentication);
             return (T) this;
         }
         /**
-         * Set the configured private key for use with Raw Public Key. The
-         * option is a <code>java.security.PrivateKey</code> type.
+         * Set the configured private key for use with Raw Public Key.
+         * The option is a <code>java.security.PrivateKey</code> type.
+         * @group common
          */
         public T privateKey(PrivateKey privateKey) {
             this.properties.put("privateKey", privateKey);
             return (T) this;
         }
         /**
-         * Set the configured private key for use with Raw Public Key. The
-         * option will be converted to a <code>java.security.PrivateKey</code>
-         * type.
+         * Set the configured private key for use with Raw Public Key.
+         * The option will be converted to a
+         * <code>java.security.PrivateKey</code> type.
+         * @group common
          */
         public T privateKey(String privateKey) {
             this.properties.put("privateKey", privateKey);
             return (T) this;
         }
         /**
-         * Set the PskStore to use for pre-shared key. The option is a
+         * Set the PskStore to use for pre-shared key.
+         * The option is a
          * <code>org.eclipse.californium.scandium.dtls.pskstore.PskStore</code>
          * type.
+         * @group common
          */
         public T pskStore(Object pskStore) {
             this.properties.put("pskStore", pskStore);
             return (T) this;
         }
         /**
-         * Set the PskStore to use for pre-shared key. The option will be
-         * converted to a
+         * Set the PskStore to use for pre-shared key.
+         * The option will be converted to a
          * <code>org.eclipse.californium.scandium.dtls.pskstore.PskStore</code>
          * type.
+         * @group common
          */
         public T pskStore(String pskStore) {
             this.properties.put("pskStore", pskStore);
             return (T) this;
         }
         /**
-         * Set the configured public key for use with Raw Public Key. The option
-         * is a <code>java.security.PublicKey</code> type.
+         * Set the configured public key for use with Raw Public Key.
+         * The option is a <code>java.security.PublicKey</code> type.
+         * @group common
          */
         public T publicKey(PublicKey publicKey) {
             this.properties.put("publicKey", publicKey);
             return (T) this;
         }
         /**
-         * Set the configured public key for use with Raw Public Key. The option
-         * will be converted to a <code>java.security.PublicKey</code> type.
+         * Set the configured public key for use with Raw Public Key.
+         * The option will be converted to a
+         * <code>java.security.PublicKey</code> type.
+         * @group common
          */
         public T publicKey(String publicKey) {
             this.properties.put("publicKey", publicKey);
@@ -152,8 +166,10 @@ public interface CoAPEndpointBuilder {
         /**
          * Set the SSLContextParameters object for setting up TLS. This is
          * required for coapstcp, and for coaps when we are using certificates
-         * for TLS (as opposed to RPK or PKS). The option is a
+         * for TLS (as opposed to RPK or PKS).
+         * The option is a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group common
          */
         public T sslContextParameters(Object sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -162,8 +178,10 @@ public interface CoAPEndpointBuilder {
         /**
          * Set the SSLContextParameters object for setting up TLS. This is
          * required for coapstcp, and for coaps when we are using certificates
-         * for TLS (as opposed to RPK or PKS). The option will be converted to a
+         * for TLS (as opposed to RPK or PKS).
+         * The option will be converted to a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group common
          */
         public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -173,6 +191,7 @@ public interface CoAPEndpointBuilder {
          * Set the TrustedRpkStore to use to determine trust in raw public keys.
          * The option is a
          * <code>org.eclipse.californium.scandium.dtls.rpkstore.TrustedRpkStore</code> type.
+         * @group common
          */
         public T trustedRpkStore(Object trustedRpkStore) {
             this.properties.put("trustedRpkStore", trustedRpkStore);
@@ -182,6 +201,7 @@ public interface CoAPEndpointBuilder {
          * Set the TrustedRpkStore to use to determine trust in raw public keys.
          * The option will be converted to a
          * <code>org.eclipse.californium.scandium.dtls.rpkstore.TrustedRpkStore</code> type.
+         * @group common
          */
         public T trustedRpkStore(String trustedRpkStore) {
             this.properties.put("trustedRpkStore", trustedRpkStore);
@@ -189,8 +209,9 @@ public interface CoAPEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -198,8 +219,9 @@ public interface CoAPEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -207,8 +229,9 @@ public interface CoAPEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -216,8 +239,9 @@ public interface CoAPEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -243,7 +267,9 @@ public interface CoAPEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public CoAPConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -256,7 +282,9 @@ public interface CoAPEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public CoAPConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -264,8 +292,9 @@ public interface CoAPEndpointBuilder {
         }
         /**
          * Comma separated list of methods that the CoAP consumer will bind to.
-         * The default is to bind to all methods (DELETE, GET, POST, PUT). The
-         * option is a <code>java.lang.String</code> type.
+         * The default is to bind to all methods (DELETE, GET, POST, PUT).
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public CoAPConsumerBuilder coapMethodRestrict(String coapMethodRestrict) {
             this.properties.put("coapMethodRestrict", coapMethodRestrict);
@@ -275,8 +304,10 @@ public interface CoAPEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public CoAPConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -287,17 +318,19 @@ public interface CoAPEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public CoAPConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (CoAPConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public CoAPConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -305,9 +338,10 @@ public interface CoAPEndpointBuilder {
             return (CoAPConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public CoAPConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

@@ -40,8 +40,9 @@ public interface SolrEndpointBuilder {
             super("solr", path);
         }
         /**
-         * Hostname and port for the solr server. The option is a
-         * <code>java.lang.String</code> type.
+         * Hostname and port for the solr server.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T url(String url) {
             this.properties.put("url", url);
@@ -50,6 +51,7 @@ public interface SolrEndpointBuilder {
         /**
          * Server side must support gzip or deflate for this to have any effect.
          * The option is a <code>java.lang.Boolean</code> type.
+         * @group producer
          */
         public T allowCompression(Boolean allowCompression) {
             this.properties.put("allowCompression", allowCompression);
@@ -59,30 +61,35 @@ public interface SolrEndpointBuilder {
          * Server side must support gzip or deflate for this to have any effect.
          * The option will be converted to a <code>java.lang.Boolean</code>
          * type.
+         * @group producer
          */
         public T allowCompression(String allowCompression) {
             this.properties.put("allowCompression", allowCompression);
             return (T) this;
         }
         /**
-         * connectionTimeout on the underlying HttpConnectionManager. The option
-         * is a <code>java.lang.Integer</code> type.
+         * connectionTimeout on the underlying HttpConnectionManager.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public T connectionTimeout(Integer connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
         /**
-         * connectionTimeout on the underlying HttpConnectionManager. The option
-         * will be converted to a <code>java.lang.Integer</code> type.
+         * connectionTimeout on the underlying HttpConnectionManager.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public T connectionTimeout(String connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
         /**
-         * maxConnectionsPerHost on the underlying HttpConnectionManager. The
-         * option is a <code>java.lang.Integer</code> type.
+         * maxConnectionsPerHost on the underlying HttpConnectionManager.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public T defaultMaxConnectionsPerHost(
                 Integer defaultMaxConnectionsPerHost) {
@@ -90,8 +97,10 @@ public interface SolrEndpointBuilder {
             return (T) this;
         }
         /**
-         * maxConnectionsPerHost on the underlying HttpConnectionManager. The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * maxConnectionsPerHost on the underlying HttpConnectionManager.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public T defaultMaxConnectionsPerHost(
                 String defaultMaxConnectionsPerHost) {
@@ -99,16 +108,19 @@ public interface SolrEndpointBuilder {
             return (T) this;
         }
         /**
-         * indicates whether redirects are used to get to the Solr server. The
-         * option is a <code>java.lang.Boolean</code> type.
+         * indicates whether redirects are used to get to the Solr server.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group producer
          */
         public T followRedirects(Boolean followRedirects) {
             this.properties.put("followRedirects", followRedirects);
             return (T) this;
         }
         /**
-         * indicates whether redirects are used to get to the Solr server. The
-         * option will be converted to a <code>java.lang.Boolean</code> type.
+         * indicates whether redirects are used to get to the Solr server.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group producer
          */
         public T followRedirects(String followRedirects) {
             this.properties.put("followRedirects", followRedirects);
@@ -116,7 +128,9 @@ public interface SolrEndpointBuilder {
         }
         /**
          * Maximum number of retries to attempt in the event of transient
-         * errors. The option is a <code>java.lang.Integer</code> type.
+         * errors.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public T maxRetries(Integer maxRetries) {
             this.properties.put("maxRetries", maxRetries);
@@ -124,32 +138,38 @@ public interface SolrEndpointBuilder {
         }
         /**
          * Maximum number of retries to attempt in the event of transient
-         * errors. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * errors.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public T maxRetries(String maxRetries) {
             this.properties.put("maxRetries", maxRetries);
             return (T) this;
         }
         /**
-         * maxTotalConnection on the underlying HttpConnectionManager. The
-         * option is a <code>java.lang.Integer</code> type.
+         * maxTotalConnection on the underlying HttpConnectionManager.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public T maxTotalConnections(Integer maxTotalConnections) {
             this.properties.put("maxTotalConnections", maxTotalConnections);
             return (T) this;
         }
         /**
-         * maxTotalConnection on the underlying HttpConnectionManager. The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * maxTotalConnection on the underlying HttpConnectionManager.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public T maxTotalConnections(String maxTotalConnections) {
             this.properties.put("maxTotalConnections", maxTotalConnections);
             return (T) this;
         }
         /**
-         * Set the request handler to be used. The option is a
-         * <code>java.lang.String</code> type.
+         * Set the request handler to be used.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T requestHandler(String requestHandler) {
             this.properties.put("requestHandler", requestHandler);
@@ -157,8 +177,9 @@ public interface SolrEndpointBuilder {
         }
         /**
          * Read timeout on the underlying HttpConnectionManager. This is
-         * desirable for queries, but probably not for indexing. The option is a
-         * <code>java.lang.Integer</code> type.
+         * desirable for queries, but probably not for indexing.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public T soTimeout(Integer soTimeout) {
             this.properties.put("soTimeout", soTimeout);
@@ -166,40 +187,46 @@ public interface SolrEndpointBuilder {
         }
         /**
          * Read timeout on the underlying HttpConnectionManager. This is
-         * desirable for queries, but probably not for indexing. The option will
-         * be converted to a <code>java.lang.Integer</code> type.
+         * desirable for queries, but probably not for indexing.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public T soTimeout(String soTimeout) {
             this.properties.put("soTimeout", soTimeout);
             return (T) this;
         }
         /**
-         * Set the queue size for the StreamingUpdateSolrServer. The option is a
-         * <code>int</code> type.
+         * Set the queue size for the StreamingUpdateSolrServer.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T streamingQueueSize(int streamingQueueSize) {
             this.properties.put("streamingQueueSize", streamingQueueSize);
             return (T) this;
         }
         /**
-         * Set the queue size for the StreamingUpdateSolrServer. The option will
-         * be converted to a <code>int</code> type.
+         * Set the queue size for the StreamingUpdateSolrServer.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T streamingQueueSize(String streamingQueueSize) {
             this.properties.put("streamingQueueSize", streamingQueueSize);
             return (T) this;
         }
         /**
-         * Set the number of threads for the StreamingUpdateSolrServer. The
-         * option is a <code>int</code> type.
+         * Set the number of threads for the StreamingUpdateSolrServer.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T streamingThreadCount(int streamingThreadCount) {
             this.properties.put("streamingThreadCount", streamingThreadCount);
             return (T) this;
         }
         /**
-         * Set the number of threads for the StreamingUpdateSolrServer. The
-         * option will be converted to a <code>int</code> type.
+         * Set the number of threads for the StreamingUpdateSolrServer.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T streamingThreadCount(String streamingThreadCount) {
             this.properties.put("streamingThreadCount", streamingThreadCount);
@@ -207,8 +234,9 @@ public interface SolrEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -216,8 +244,9 @@ public interface SolrEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -225,8 +254,9 @@ public interface SolrEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -234,16 +264,18 @@ public interface SolrEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Set the collection name which the solrCloud server could use. The
-         * option is a <code>java.lang.String</code> type.
+         * Set the collection name which the solrCloud server could use.
+         * The option is a <code>java.lang.String</code> type.
+         * @group solrCloud
          */
         public T collection(String collection) {
             this.properties.put("collection", collection);
@@ -251,8 +283,9 @@ public interface SolrEndpointBuilder {
         }
         /**
          * Set the ZooKeeper host information which the solrCloud could use,
-         * such as zkhost=localhost:8123. The option is a
-         * <code>java.lang.String</code> type.
+         * such as zkhost=localhost:8123.
+         * The option is a <code>java.lang.String</code> type.
+         * @group solrCloud
          */
         public T zkHost(String zkHost) {
             this.properties.put("zkHost", zkHost);

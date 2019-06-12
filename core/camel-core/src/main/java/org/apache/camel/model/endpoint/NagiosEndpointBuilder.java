@@ -42,36 +42,43 @@ public interface NagiosEndpointBuilder {
         /**
          * This is the address of the Nagios host where checks should be send.
          * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * The port number of the host. The option is a <code>int</code> type.
+         * The port number of the host.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T port(int port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * The port number of the host. The option will be converted to a
-         * <code>int</code> type.
+         * The port number of the host.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T port(String port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Connection timeout in millis. The option is a <code>int</code> type.
+         * Connection timeout in millis.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T connectionTimeout(int connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
         /**
-         * Connection timeout in millis. The option will be converted to a
-         * <code>int</code> type.
+         * Connection timeout in millis.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T connectionTimeout(String connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
@@ -80,8 +87,9 @@ public interface NagiosEndpointBuilder {
         /**
          * Whether or not to use synchronous when sending a passive check.
          * Setting it to false will allow Camel to continue routing the message
-         * and the passive check message will be send asynchronously. The option
-         * is a <code>boolean</code> type.
+         * and the passive check message will be send asynchronously.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T sendSync(boolean sendSync) {
             this.properties.put("sendSync", sendSync);
@@ -90,23 +98,27 @@ public interface NagiosEndpointBuilder {
         /**
          * Whether or not to use synchronous when sending a passive check.
          * Setting it to false will allow Camel to continue routing the message
-         * and the passive check message will be send asynchronously. The option
-         * will be converted to a <code>boolean</code> type.
+         * and the passive check message will be send asynchronously.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T sendSync(String sendSync) {
             this.properties.put("sendSync", sendSync);
             return (T) this;
         }
         /**
-         * Sending timeout in millis. The option is a <code>int</code> type.
+         * Sending timeout in millis.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T timeout(int timeout) {
             this.properties.put("timeout", timeout);
             return (T) this;
         }
         /**
-         * Sending timeout in millis. The option will be converted to a
-         * <code>int</code> type.
+         * Sending timeout in millis.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T timeout(String timeout) {
             this.properties.put("timeout", timeout);
@@ -114,8 +126,9 @@ public interface NagiosEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -123,8 +136,9 @@ public interface NagiosEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -132,8 +146,9 @@ public interface NagiosEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -141,33 +156,40 @@ public interface NagiosEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * To specify an encryption method. The option is a
+         * To specify an encryption method.
+         * The option is a
          * <code>com.googlecode.jsendnsca.encryption.Encryption</code> type.
+         * @group security
          */
         public T encryption(Encryption encryption) {
             this.properties.put("encryption", encryption);
             return (T) this;
         }
         /**
-         * To specify an encryption method. The option will be converted to a
+         * To specify an encryption method.
+         * The option will be converted to a
          * <code>com.googlecode.jsendnsca.encryption.Encryption</code> type.
+         * @group security
          */
         public T encryption(String encryption) {
             this.properties.put("encryption", encryption);
             return (T) this;
         }
         /**
-         * To specify an encryption method. The option is a
+         * To specify an encryption method.
+         * The option is a
          * <code>org.apache.camel.component.nagios.NagiosEncryptionMethod</code>
          * type.
+         * @group security
          */
         @Deprecated
         public T encryptionMethod(NagiosEncryptionMethod encryptionMethod) {
@@ -175,9 +197,11 @@ public interface NagiosEndpointBuilder {
             return (T) this;
         }
         /**
-         * To specify an encryption method. The option will be converted to a
+         * To specify an encryption method.
+         * The option will be converted to a
          * <code>org.apache.camel.component.nagios.NagiosEncryptionMethod</code>
          * type.
+         * @group security
          */
         @Deprecated
         public T encryptionMethod(String encryptionMethod) {
@@ -185,8 +209,9 @@ public interface NagiosEndpointBuilder {
             return (T) this;
         }
         /**
-         * Password to be authenticated when sending checks to Nagios. The
-         * option is a <code>java.lang.String</code> type.
+         * Password to be authenticated when sending checks to Nagios.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T password(String password) {
             this.properties.put("password", password);

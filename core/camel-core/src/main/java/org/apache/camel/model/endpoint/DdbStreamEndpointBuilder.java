@@ -48,32 +48,37 @@ public interface DdbStreamEndpointBuilder {
             super("aws-ddbstream", path);
         }
         /**
-         * To define a proxy host when instantiating the DDBStreams client. The
-         * option is a <code>java.lang.String</code> type.
+         * To define a proxy host when instantiating the DDBStreams client.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the DDBStreams client. The
-         * option is a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the DDBStreams client.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group consumer
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the DDBStreams client. The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the DDBStreams client.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group consumer
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * The region in which DDBStreams client needs to work. The option is a
-         * <code>java.lang.String</code> type.
+         * The region in which DDBStreams client needs to work.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -81,8 +86,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -90,8 +96,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -99,8 +106,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -108,24 +116,27 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Access Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (T) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Secret Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);
@@ -145,18 +156,20 @@ public interface DdbStreamEndpointBuilder {
             super(path);
         }
         /**
-         * Name of the dynamodb table. The option is a
-         * <code>java.lang.String</code> type.
+         * Name of the dynamodb table.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder tableName(String tableName) {
             this.properties.put("tableName", tableName);
             return (DdbStreamConsumerBuilder) this;
         }
         /**
-         * Amazon DynamoDB client to use for all requests for this endpoint. The
-         * option is a
+         * Amazon DynamoDB client to use for all requests for this endpoint.
+         * The option is a
          * <code>com.amazonaws.services.dynamodbv2.AmazonDynamoDBStreams</code>
          * type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder amazonDynamoDbStreamsClient(
                 Object amazonDynamoDbStreamsClient) {
@@ -164,10 +177,11 @@ public interface DdbStreamEndpointBuilder {
             return (DdbStreamConsumerBuilder) this;
         }
         /**
-         * Amazon DynamoDB client to use for all requests for this endpoint. The
-         * option will be converted to a
+         * Amazon DynamoDB client to use for all requests for this endpoint.
+         * The option will be converted to a
          * <code>com.amazonaws.services.dynamodbv2.AmazonDynamoDBStreams</code>
          * type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder amazonDynamoDbStreamsClient(
                 String amazonDynamoDbStreamsClient) {
@@ -181,7 +195,9 @@ public interface DdbStreamEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -195,7 +211,9 @@ public interface DdbStreamEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -206,8 +224,10 @@ public interface DdbStreamEndpointBuilder {
          * Defines where in the DynaboDB stream to start getting records. Note
          * that using TRIM_HORIZON can cause a significant delay before the
          * stream has caught up to real-time. if {AT,AFTER}_SEQUENCE_NUMBER are
-         * used, then a sequenceNumberProvider MUST be supplied. The option is a
+         * used, then a sequenceNumberProvider MUST be supplied.
+         * The option is a
          * <code>com.amazonaws.services.dynamodbv2.model.ShardIteratorType</code> type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder iteratorType(
                 ShardIteratorType iteratorType) {
@@ -218,17 +238,19 @@ public interface DdbStreamEndpointBuilder {
          * Defines where in the DynaboDB stream to start getting records. Note
          * that using TRIM_HORIZON can cause a significant delay before the
          * stream has caught up to real-time. if {AT,AFTER}_SEQUENCE_NUMBER are
-         * used, then a sequenceNumberProvider MUST be supplied. The option will
-         * be converted to a
+         * used, then a sequenceNumberProvider MUST be supplied.
+         * The option will be converted to a
          * <code>com.amazonaws.services.dynamodbv2.model.ShardIteratorType</code> type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder iteratorType(String iteratorType) {
             this.properties.put("iteratorType", iteratorType);
             return (DdbStreamConsumerBuilder) this;
         }
         /**
-         * Maximum number of records that will be fetched in each poll. The
-         * option is a <code>int</code> type.
+         * Maximum number of records that will be fetched in each poll.
+         * The option is a <code>int</code> type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder maxResultsPerRequest(
                 int maxResultsPerRequest) {
@@ -236,8 +258,9 @@ public interface DdbStreamEndpointBuilder {
             return (DdbStreamConsumerBuilder) this;
         }
         /**
-         * Maximum number of records that will be fetched in each poll. The
-         * option will be converted to a <code>int</code> type.
+         * Maximum number of records that will be fetched in each poll.
+         * The option will be converted to a <code>int</code> type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder maxResultsPerRequest(
                 String maxResultsPerRequest) {
@@ -246,8 +269,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option is a
-         * <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -256,8 +280,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option will be
-         * converted to a <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -267,8 +292,10 @@ public interface DdbStreamEndpointBuilder {
         /**
          * Provider for the sequence number when using one of the two
          * ShardIteratorType.{AT,AFTER}_SEQUENCE_NUMBER iterator types. Can be a
-         * registry reference or a literal sequence number. The option is a
+         * registry reference or a literal sequence number.
+         * The option is a
          * <code>org.apache.camel.component.aws.ddbstream.SequenceNumberProvider</code> type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder sequenceNumberProvider(
                 Object sequenceNumberProvider) {
@@ -278,9 +305,10 @@ public interface DdbStreamEndpointBuilder {
         /**
          * Provider for the sequence number when using one of the two
          * ShardIteratorType.{AT,AFTER}_SEQUENCE_NUMBER iterator types. Can be a
-         * registry reference or a literal sequence number. The option will be
-         * converted to a
+         * registry reference or a literal sequence number.
+         * The option will be converted to a
          * <code>org.apache.camel.component.aws.ddbstream.SequenceNumberProvider</code> type.
+         * @group consumer
          */
         public DdbStreamConsumerBuilder sequenceNumberProvider(
                 String sequenceNumberProvider) {
@@ -291,8 +319,10 @@ public interface DdbStreamEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public DdbStreamConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -303,17 +333,19 @@ public interface DdbStreamEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public DdbStreamConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (DdbStreamConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public DdbStreamConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -321,9 +353,10 @@ public interface DdbStreamEndpointBuilder {
             return (DdbStreamConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public DdbStreamConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -333,8 +366,10 @@ public interface DdbStreamEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option is a
+         * been created and being routed in Camel.
+         * The option is a
          * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public DdbStreamConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -345,9 +380,10 @@ public interface DdbStreamEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option will be converted
-         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
-         * type.
+         * been created and being routed in Camel.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public DdbStreamConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -355,8 +391,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * is a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -365,8 +402,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -375,8 +413,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a <code>int</code>
-         * type.
+         * backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -385,8 +424,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option will be converted to a
-         * <code>int</code> type.
+         * backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -399,7 +439,9 @@ public interface DdbStreamEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a <code>int</code> type.
+         * configured.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -411,7 +453,9 @@ public interface DdbStreamEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a <code>int</code> type.
+         * configured.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder backoffMultiplier(
                 String backoffMultiplier) {
@@ -421,7 +465,9 @@ public interface DdbStreamEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -430,8 +476,9 @@ public interface DdbStreamEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -439,8 +486,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option is a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -448,8 +496,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -458,7 +507,9 @@ public interface DdbStreamEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -467,8 +518,9 @@ public interface DdbStreamEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -476,8 +528,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * is a <code>org.apache.camel.LoggingLevel</code> type.
+         * option allows you to configure the logging level for that.
+         * The option is a <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -486,9 +539,10 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
-         * type.
+         * option allows you to configure the logging level for that.
+         * The option will be converted to a
+         * <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -497,8 +551,10 @@ public interface DdbStreamEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a
+         * pool.
+         * The option is a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -508,8 +564,10 @@ public interface DdbStreamEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option will be converted to a
+         * pool.
+         * The option will be converted to a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -518,9 +576,11 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option is a
+         * component.
+         * The option is a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -529,9 +589,11 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option will be converted to a
+         * component.
+         * The option will be converted to a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -539,9 +601,10 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
-         * type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -550,9 +613,11 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map&lt;java.lang.String,
-         * java.lang.Object&gt;</code> type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -560,32 +625,37 @@ public interface DdbStreamEndpointBuilder {
             return (DdbStreamConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a
-         * <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (DdbStreamConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option will be
-         * converted to a <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (DdbStreamConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option is a
-         * <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option is a <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
             return (DdbStreamConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option will be
-         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option will be converted to a
+         * <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -593,8 +663,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a
-         * <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -602,8 +673,9 @@ public interface DdbStreamEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public DdbStreamConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);

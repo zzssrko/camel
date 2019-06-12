@@ -43,16 +43,18 @@ public interface ZooKeeperMasterEndpointBuilder {
             super("zookeeper-master", path);
         }
         /**
-         * The name of the cluster group to use. The option is a
-         * <code>java.lang.String</code> type.
+         * The name of the cluster group to use.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T groupName(String groupName) {
             this.properties.put("groupName", groupName);
             return (T) this;
         }
         /**
-         * The consumer endpoint to use in master/slave mode. The option is a
-         * <code>java.lang.String</code> type.
+         * The consumer endpoint to use in master/slave mode.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T consumerEndpointUri(String consumerEndpointUri) {
             this.properties.put("consumerEndpointUri", consumerEndpointUri);
@@ -60,8 +62,9 @@ public interface ZooKeeperMasterEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -69,8 +72,9 @@ public interface ZooKeeperMasterEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -78,8 +82,9 @@ public interface ZooKeeperMasterEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -87,8 +92,9 @@ public interface ZooKeeperMasterEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -114,7 +120,9 @@ public interface ZooKeeperMasterEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public ZooKeeperMasterConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -128,7 +136,9 @@ public interface ZooKeeperMasterEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public ZooKeeperMasterConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -139,8 +149,10 @@ public interface ZooKeeperMasterEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public ZooKeeperMasterConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -151,9 +163,10 @@ public interface ZooKeeperMasterEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public ZooKeeperMasterConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -161,8 +174,9 @@ public interface ZooKeeperMasterEndpointBuilder {
             return (ZooKeeperMasterConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public ZooKeeperMasterConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -170,9 +184,10 @@ public interface ZooKeeperMasterEndpointBuilder {
             return (ZooKeeperMasterConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public ZooKeeperMasterConsumerBuilder exchangePattern(
                 String exchangePattern) {

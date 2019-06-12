@@ -43,8 +43,9 @@ public interface JGroupsEndpointBuilder {
             super("jgroups", path);
         }
         /**
-         * The name of the JGroups cluster the component should connect to. The
-         * option is a <code>java.lang.String</code> type.
+         * The name of the JGroups cluster the component should connect to.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T clusterName(String clusterName) {
             this.properties.put("clusterName", clusterName);
@@ -52,7 +53,9 @@ public interface JGroupsEndpointBuilder {
         }
         /**
          * Specifies configuration properties of the JChannel used by the
-         * endpoint. The option is a <code>java.lang.String</code> type.
+         * endpoint.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T channelProperties(String channelProperties) {
             this.properties.put("channelProperties", channelProperties);
@@ -60,8 +63,9 @@ public interface JGroupsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -69,8 +73,9 @@ public interface JGroupsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -78,8 +83,9 @@ public interface JGroupsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -87,8 +93,9 @@ public interface JGroupsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -114,7 +121,9 @@ public interface JGroupsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public JGroupsConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -128,7 +137,9 @@ public interface JGroupsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public JGroupsConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -138,8 +149,9 @@ public interface JGroupsEndpointBuilder {
         /**
          * If set to true, the consumer endpoint will receive org.jgroups.View
          * messages as well (not only org.jgroups.Message instances). By default
-         * only regular messages are consumed by the endpoint. The option is a
-         * <code>boolean</code> type.
+         * only regular messages are consumed by the endpoint.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public JGroupsConsumerBuilder enableViewMessages(
                 boolean enableViewMessages) {
@@ -149,8 +161,9 @@ public interface JGroupsEndpointBuilder {
         /**
          * If set to true, the consumer endpoint will receive org.jgroups.View
          * messages as well (not only org.jgroups.Message instances). By default
-         * only regular messages are consumed by the endpoint. The option will
-         * be converted to a <code>boolean</code> type.
+         * only regular messages are consumed by the endpoint.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public JGroupsConsumerBuilder enableViewMessages(
                 String enableViewMessages) {
@@ -161,8 +174,10 @@ public interface JGroupsEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public JGroupsConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -173,17 +188,19 @@ public interface JGroupsEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public JGroupsConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (JGroupsConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public JGroupsConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -191,9 +208,10 @@ public interface JGroupsEndpointBuilder {
             return (JGroupsConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public JGroupsConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

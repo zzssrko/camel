@@ -40,15 +40,18 @@ public interface EC2EndpointBuilder {
             super("aws-ec2", path);
         }
         /**
-         * Logical name. The option is a <code>java.lang.String</code> type.
+         * Logical name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T label(String label) {
             this.properties.put("label", label);
             return (T) this;
         }
         /**
-         * The region in which EC2 client needs to work. The option is a
-         * <code>java.lang.String</code> type.
+         * The region in which EC2 client needs to work.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -56,8 +59,9 @@ public interface EC2EndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -65,8 +69,9 @@ public interface EC2EndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -74,8 +79,9 @@ public interface EC2EndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -83,8 +89,9 @@ public interface EC2EndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -104,25 +111,29 @@ public interface EC2EndpointBuilder {
             super(path);
         }
         /**
-         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Access Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public EC2ProducerBuilder accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (EC2ProducerBuilder) this;
         }
         /**
-         * To use a existing configured AmazonEC2Client as client. The option is
-         * a <code>com.amazonaws.services.ec2.AmazonEC2</code> type.
+         * To use a existing configured AmazonEC2Client as client.
+         * The option is a <code>com.amazonaws.services.ec2.AmazonEC2</code>
+         * type.
+         * @group producer
          */
         public EC2ProducerBuilder amazonEc2Client(Object amazonEc2Client) {
             this.properties.put("amazonEc2Client", amazonEc2Client);
             return (EC2ProducerBuilder) this;
         }
         /**
-         * To use a existing configured AmazonEC2Client as client. The option
-         * will be converted to a
+         * To use a existing configured AmazonEC2Client as client.
+         * The option will be converted to a
          * <code>com.amazonaws.services.ec2.AmazonEC2</code> type.
+         * @group producer
          */
         public EC2ProducerBuilder amazonEc2Client(String amazonEc2Client) {
             this.properties.put("amazonEc2Client", amazonEc2Client);
@@ -132,8 +143,10 @@ public interface EC2EndpointBuilder {
          * The operation to perform. It can be createAndRunInstances,
          * startInstances, stopInstances, terminateInstances, describeInstances,
          * describeInstancesStatus, rebootInstances, monitorInstances,
-         * unmonitorInstances, createTags or deleteTags. The option is a
+         * unmonitorInstances, createTags or deleteTags.
+         * The option is a
          * <code>org.apache.camel.component.aws.ec2.EC2Operations</code> type.
+         * @group producer
          */
         public EC2ProducerBuilder operation(EC2Operations operation) {
             this.properties.put("operation", operation);
@@ -143,41 +156,47 @@ public interface EC2EndpointBuilder {
          * The operation to perform. It can be createAndRunInstances,
          * startInstances, stopInstances, terminateInstances, describeInstances,
          * describeInstancesStatus, rebootInstances, monitorInstances,
-         * unmonitorInstances, createTags or deleteTags. The option will be
-         * converted to a
+         * unmonitorInstances, createTags or deleteTags.
+         * The option will be converted to a
          * <code>org.apache.camel.component.aws.ec2.EC2Operations</code> type.
+         * @group producer
          */
         public EC2ProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (EC2ProducerBuilder) this;
         }
         /**
-         * To define a proxy host when instantiating the EC2 client. The option
-         * is a <code>java.lang.String</code> type.
+         * To define a proxy host when instantiating the EC2 client.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public EC2ProducerBuilder proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (EC2ProducerBuilder) this;
         }
         /**
-         * To define a proxy port when instantiating the EC2 client. The option
-         * is a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the EC2 client.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public EC2ProducerBuilder proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (EC2ProducerBuilder) this;
         }
         /**
-         * To define a proxy port when instantiating the EC2 client. The option
-         * will be converted to a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the EC2 client.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public EC2ProducerBuilder proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (EC2ProducerBuilder) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Secret Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public EC2ProducerBuilder secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);

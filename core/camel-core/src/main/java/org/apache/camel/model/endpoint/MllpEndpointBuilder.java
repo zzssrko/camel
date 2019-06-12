@@ -44,24 +44,27 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Hostname or IP for connection for the TCP connection. The default
-         * value is null, which means any local IP address. The option is a
-         * <code>java.lang.String</code> type.
+         * value is null, which means any local IP address.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T hostname(String hostname) {
             this.properties.put("hostname", hostname);
             return (T) this;
         }
         /**
-         * Port number for the TCP connection. The option is a <code>int</code>
-         * type.
+         * Port number for the TCP connection.
+         * The option is a <code>int</code> type.
+         * @group common
          */
         public T port(int port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Port number for the TCP connection. The option will be converted to a
-         * <code>int</code> type.
+         * Port number for the TCP connection.
+         * The option will be converted to a <code>int</code> type.
+         * @group common
          */
         public T port(String port) {
             this.properties.put("port", port);
@@ -69,7 +72,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Enable/Disable the automatic generation of a MLLP Acknowledgement
-         * MLLP Consumers only. The option is a <code>boolean</code> type.
+         * MLLP Consumers only.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T autoAck(boolean autoAck) {
             this.properties.put("autoAck", autoAck);
@@ -77,8 +82,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Enable/Disable the automatic generation of a MLLP Acknowledgement
-         * MLLP Consumers only. The option will be converted to a
-         * <code>boolean</code> type.
+         * MLLP Consumers only.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T autoAck(String autoAck) {
             this.properties.put("autoAck", autoAck);
@@ -86,7 +92,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Enable/Disable the buffering of HL7 payloads before writing to the
-         * socket. The option is a <code>boolean</code> type.
+         * socket.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         @Deprecated
         public T bufferWrites(boolean bufferWrites) {
@@ -95,7 +103,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Enable/Disable the buffering of HL7 payloads before writing to the
-         * socket. The option will be converted to a <code>boolean</code> type.
+         * socket.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         @Deprecated
         public T bufferWrites(String bufferWrites) {
@@ -104,8 +114,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Enable/Disable the automatic generation of message headers from the
-         * HL7 Message MLLP Consumers only. The option is a <code>boolean</code>
-         * type.
+         * HL7 Message MLLP Consumers only.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T hl7Headers(boolean hl7Headers) {
             this.properties.put("hl7Headers", hl7Headers);
@@ -113,8 +124,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Enable/Disable the automatic generation of message headers from the
-         * HL7 Message MLLP Consumers only. The option will be converted to a
-         * <code>boolean</code> type.
+         * HL7 Message MLLP Consumers only.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T hl7Headers(String hl7Headers) {
             this.properties.put("hl7Headers", hl7Headers);
@@ -125,7 +137,9 @@ public interface MllpEndpointBuilder {
          * standard specifies START_OF_BLOCKhl7 payloadEND_OF_BLOCKEND_OF_DATA,
          * however, some systems do not send the final END_OF_DATA byte. This
          * setting controls whether or not the final END_OF_DATA byte is
-         * required or optional. The option is a <code>boolean</code> type.
+         * required or optional.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T requireEndOfData(boolean requireEndOfData) {
             this.properties.put("requireEndOfData", requireEndOfData);
@@ -136,8 +150,9 @@ public interface MllpEndpointBuilder {
          * standard specifies START_OF_BLOCKhl7 payloadEND_OF_BLOCKEND_OF_DATA,
          * however, some systems do not send the final END_OF_DATA byte. This
          * setting controls whether or not the final END_OF_DATA byte is
-         * required or optional. The option will be converted to a
-         * <code>boolean</code> type.
+         * required or optional.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T requireEndOfData(String requireEndOfData) {
             this.properties.put("requireEndOfData", requireEndOfData);
@@ -150,7 +165,9 @@ public interface MllpEndpointBuilder {
          * will be used for the conversion. If the charsetName property is not
          * set, the value of MSH-18 will be used to determine th appropriate
          * character set. If MSH-18 is not set, then the default ISO-8859-1
-         * character set will be use. The option is a <code>boolean</code> type.
+         * character set will be use.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T stringPayload(boolean stringPayload) {
             this.properties.put("stringPayload", stringPayload);
@@ -163,8 +180,9 @@ public interface MllpEndpointBuilder {
          * will be used for the conversion. If the charsetName property is not
          * set, the value of MSH-18 will be used to determine th appropriate
          * character set. If MSH-18 is not set, then the default ISO-8859-1
-         * character set will be use. The option will be converted to a
-         * <code>boolean</code> type.
+         * character set will be use.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T stringPayload(String stringPayload) {
             this.properties.put("stringPayload", stringPayload);
@@ -176,8 +194,9 @@ public interface MllpEndpointBuilder {
          * Hl7Util.generateInvalidPayloadExceptionMessage for details on the
          * validation). If and invalid payload is detected, a
          * MllpInvalidMessageException (for consumers) or a
-         * MllpInvalidAcknowledgementException will be thrown. The option is a
-         * <code>boolean</code> type.
+         * MllpInvalidAcknowledgementException will be thrown.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T validatePayload(boolean validatePayload) {
             this.properties.put("validatePayload", validatePayload);
@@ -189,8 +208,9 @@ public interface MllpEndpointBuilder {
          * Hl7Util.generateInvalidPayloadExceptionMessage for details on the
          * validation). If and invalid payload is detected, a
          * MllpInvalidMessageException (for consumers) or a
-         * MllpInvalidAcknowledgementException will be thrown. The option will
-         * be converted to a <code>boolean</code> type.
+         * MllpInvalidAcknowledgementException will be thrown.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T validatePayload(String validatePayload) {
             this.properties.put("validatePayload", validatePayload);
@@ -198,8 +218,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -207,8 +228,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -216,8 +238,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used (this
-         * component only supports synchronous operations). The option is a
-         * <code>boolean</code> type.
+         * component only supports synchronous operations).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -225,8 +248,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used (this
-         * component only supports synchronous operations). The option will be
-         * converted to a <code>boolean</code> type.
+         * component only supports synchronous operations).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -235,8 +259,9 @@ public interface MllpEndpointBuilder {
         /**
          * The approximate idle time allowed before the Client TCP Connection
          * will be reset. A null value or a value less than or equal to zero
-         * will disable the idle timeout. The option is a
-         * <code>java.lang.Integer</code> type.
+         * will disable the idle timeout.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group timeout
          */
         public T idleTimeout(Integer idleTimeout) {
             this.properties.put("idleTimeout", idleTimeout);
@@ -245,40 +270,48 @@ public interface MllpEndpointBuilder {
         /**
          * The approximate idle time allowed before the Client TCP Connection
          * will be reset. A null value or a value less than or equal to zero
-         * will disable the idle timeout. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * will disable the idle timeout.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group timeout
          */
         public T idleTimeout(String idleTimeout) {
             this.properties.put("idleTimeout", idleTimeout);
             return (T) this;
         }
         /**
-         * Sets the SO_RCVBUF option to the specified value (in bytes). The
-         * option is a <code>java.lang.Integer</code> type.
+         * Sets the SO_RCVBUF option to the specified value (in bytes).
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group tcp
          */
         public T receiveBufferSize(Integer receiveBufferSize) {
             this.properties.put("receiveBufferSize", receiveBufferSize);
             return (T) this;
         }
         /**
-         * Sets the SO_RCVBUF option to the specified value (in bytes). The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * Sets the SO_RCVBUF option to the specified value (in bytes).
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group tcp
          */
         public T receiveBufferSize(String receiveBufferSize) {
             this.properties.put("receiveBufferSize", receiveBufferSize);
             return (T) this;
         }
         /**
-         * Sets the SO_SNDBUF option to the specified value (in bytes). The
-         * option is a <code>java.lang.Integer</code> type.
+         * Sets the SO_SNDBUF option to the specified value (in bytes).
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group tcp
          */
         public T sendBufferSize(Integer sendBufferSize) {
             this.properties.put("sendBufferSize", sendBufferSize);
             return (T) this;
         }
         /**
-         * Sets the SO_SNDBUF option to the specified value (in bytes). The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * Sets the SO_SNDBUF option to the specified value (in bytes).
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group tcp
          */
         public T sendBufferSize(String sendBufferSize) {
             this.properties.put("sendBufferSize", sendBufferSize);
@@ -286,7 +319,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * The SO_TIMEOUT value (in milliseconds) used after the start of an
-         * MLLP frame has been received. The option is a <code>int</code> type.
+         * MLLP frame has been received.
+         * The option is a <code>int</code> type.
+         * @group timeout
          */
         public T readTimeout(int readTimeout) {
             this.properties.put("readTimeout", readTimeout);
@@ -294,8 +329,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * The SO_TIMEOUT value (in milliseconds) used after the start of an
-         * MLLP frame has been received. The option will be converted to a
-         * <code>int</code> type.
+         * MLLP frame has been received.
+         * The option will be converted to a <code>int</code> type.
+         * @group timeout
          */
         public T readTimeout(String readTimeout) {
             this.properties.put("readTimeout", readTimeout);
@@ -303,7 +339,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * The SO_TIMEOUT value (in milliseconds) used when waiting for the
-         * start of an MLLP frame. The option is a <code>int</code> type.
+         * start of an MLLP frame.
+         * The option is a <code>int</code> type.
+         * @group timeout
          */
         public T receiveTimeout(int receiveTimeout) {
             this.properties.put("receiveTimeout", receiveTimeout);
@@ -311,16 +349,18 @@ public interface MllpEndpointBuilder {
         }
         /**
          * The SO_TIMEOUT value (in milliseconds) used when waiting for the
-         * start of an MLLP frame. The option will be converted to a
-         * <code>int</code> type.
+         * start of an MLLP frame.
+         * The option will be converted to a <code>int</code> type.
+         * @group timeout
          */
         public T receiveTimeout(String receiveTimeout) {
             this.properties.put("receiveTimeout", receiveTimeout);
             return (T) this;
         }
         /**
-         * Set the CamelCharsetName property on the exchange. The option is a
-         * <code>java.lang.String</code> type.
+         * Set the CamelCharsetName property on the exchange.
+         * The option is a <code>java.lang.String</code> type.
+         * @group codec
          */
         public T charsetName(String charsetName) {
             this.properties.put("charsetName", charsetName);
@@ -347,6 +387,7 @@ public interface MllpEndpointBuilder {
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions by logging them at WARN or ERROR level and ignored.
          * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public MllpConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -360,6 +401,7 @@ public interface MllpEndpointBuilder {
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions by logging them at WARN or ERROR level and ignored.
          * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public MllpConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -369,8 +411,10 @@ public interface MllpEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public MllpConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -381,17 +425,19 @@ public interface MllpEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public MllpConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (MllpConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public MllpConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -399,9 +445,10 @@ public interface MllpEndpointBuilder {
             return (MllpConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public MllpConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -412,6 +459,7 @@ public interface MllpEndpointBuilder {
          * request to connect) is set to the backlog parameter. If a connection
          * indication arrives when the queue is full, the connection is refused.
          * The option is a <code>java.lang.Integer</code> type.
+         * @group tcp
          */
         public MllpConsumerBuilder backlog(Integer backlog) {
             this.properties.put("backlog", backlog);
@@ -423,6 +471,7 @@ public interface MllpEndpointBuilder {
          * indication arrives when the queue is full, the connection is refused.
          * The option will be converted to a <code>java.lang.Integer</code>
          * type.
+         * @group tcp
          */
         public MllpConsumerBuilder backlog(String backlog) {
             this.properties.put("backlog", backlog);
@@ -431,8 +480,9 @@ public interface MllpEndpointBuilder {
         /**
          * TCP Server Only - Allow the endpoint to start before the TCP
          * ServerSocket is bound. In some environments, it may be desirable to
-         * allow the endpoint to start before the TCP ServerSocket is bound. The
-         * option is a <code>boolean</code> type.
+         * allow the endpoint to start before the TCP ServerSocket is bound.
+         * The option is a <code>boolean</code> type.
+         * @group tcp
          */
         public MllpConsumerBuilder lenientBind(boolean lenientBind) {
             this.properties.put("lenientBind", lenientBind);
@@ -441,8 +491,9 @@ public interface MllpEndpointBuilder {
         /**
          * TCP Server Only - Allow the endpoint to start before the TCP
          * ServerSocket is bound. In some environments, it may be desirable to
-         * allow the endpoint to start before the TCP ServerSocket is bound. The
-         * option will be converted to a <code>boolean</code> type.
+         * allow the endpoint to start before the TCP ServerSocket is bound.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group tcp
          */
         public MllpConsumerBuilder lenientBind(String lenientBind) {
             this.properties.put("lenientBind", lenientBind);
@@ -452,7 +503,9 @@ public interface MllpEndpointBuilder {
          * The maximum number of concurrent MLLP Consumer connections that will
          * be allowed. If a new connection is received and the maximum is number
          * are already established, the new connection will be reset
-         * immediately. The option is a <code>int</code> type.
+         * immediately.
+         * The option is a <code>int</code> type.
+         * @group tcp
          */
         public MllpConsumerBuilder maxConcurrentConsumers(
                 int maxConcurrentConsumers) {
@@ -463,7 +516,9 @@ public interface MllpEndpointBuilder {
          * The maximum number of concurrent MLLP Consumer connections that will
          * be allowed. If a new connection is received and the maximum is number
          * are already established, the new connection will be reset
-         * immediately. The option will be converted to a <code>int</code> type.
+         * immediately.
+         * The option will be converted to a <code>int</code> type.
+         * @group tcp
          */
         public MllpConsumerBuilder maxConcurrentConsumers(
                 String maxConcurrentConsumers) {
@@ -471,16 +526,19 @@ public interface MllpEndpointBuilder {
             return (MllpConsumerBuilder) this;
         }
         /**
-         * Enable/disable the SO_REUSEADDR socket option. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * Enable/disable the SO_REUSEADDR socket option.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group tcp
          */
         public MllpConsumerBuilder reuseAddress(Boolean reuseAddress) {
             this.properties.put("reuseAddress", reuseAddress);
             return (MllpConsumerBuilder) this;
         }
         /**
-         * Enable/disable the SO_REUSEADDR socket option. The option will be
-         * converted to a <code>java.lang.Boolean</code> type.
+         * Enable/disable the SO_REUSEADDR socket option.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group tcp
          */
         public MllpConsumerBuilder reuseAddress(String reuseAddress) {
             this.properties.put("reuseAddress", reuseAddress);
@@ -488,7 +546,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Timeout (in milliseconds) while waiting for a TCP connection TCP
-         * Server Only. The option is a <code>int</code> type.
+         * Server Only.
+         * The option is a <code>int</code> type.
+         * @group timeout
          */
         public MllpConsumerBuilder acceptTimeout(int acceptTimeout) {
             this.properties.put("acceptTimeout", acceptTimeout);
@@ -496,7 +556,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Timeout (in milliseconds) while waiting for a TCP connection TCP
-         * Server Only. The option will be converted to a <code>int</code> type.
+         * Server Only.
+         * The option will be converted to a <code>int</code> type.
+         * @group timeout
          */
         public MllpConsumerBuilder acceptTimeout(String acceptTimeout) {
             this.properties.put("acceptTimeout", acceptTimeout);
@@ -504,7 +566,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * TCP Server Only - The number of milliseconds to wait between bind
-         * attempts. The option is a <code>int</code> type.
+         * attempts.
+         * The option is a <code>int</code> type.
+         * @group timeout
          */
         public MllpConsumerBuilder bindRetryInterval(int bindRetryInterval) {
             this.properties.put("bindRetryInterval", bindRetryInterval);
@@ -512,7 +576,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * TCP Server Only - The number of milliseconds to wait between bind
-         * attempts. The option will be converted to a <code>int</code> type.
+         * attempts.
+         * The option will be converted to a <code>int</code> type.
+         * @group timeout
          */
         public MllpConsumerBuilder bindRetryInterval(String bindRetryInterval) {
             this.properties.put("bindRetryInterval", bindRetryInterval);
@@ -520,7 +586,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * TCP Server Only - The number of milliseconds to retry binding to a
-         * server port. The option is a <code>int</code> type.
+         * server port.
+         * The option is a <code>int</code> type.
+         * @group timeout
          */
         public MllpConsumerBuilder bindTimeout(int bindTimeout) {
             this.properties.put("bindTimeout", bindTimeout);
@@ -528,7 +596,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * TCP Server Only - The number of milliseconds to retry binding to a
-         * server port. The option will be converted to a <code>int</code> type.
+         * server port.
+         * The option will be converted to a <code>int</code> type.
+         * @group timeout
          */
         public MllpConsumerBuilder bindTimeout(String bindTimeout) {
             this.properties.put("bindTimeout", bindTimeout);
@@ -536,8 +606,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * The maximum number of timeouts (specified by receiveTimeout) allowed
-         * before the TCP Connection will be reset. The option is a
-         * <code>java.lang.Integer</code> type.
+         * before the TCP Connection will be reset.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group timeout
          */
         @Deprecated
         public MllpConsumerBuilder maxReceiveTimeouts(Integer maxReceiveTimeouts) {
@@ -546,8 +617,10 @@ public interface MllpEndpointBuilder {
         }
         /**
          * The maximum number of timeouts (specified by receiveTimeout) allowed
-         * before the TCP Connection will be reset. The option will be converted
-         * to a <code>java.lang.Integer</code> type.
+         * before the TCP Connection will be reset.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group timeout
          */
         @Deprecated
         public MllpConsumerBuilder maxReceiveTimeouts(String maxReceiveTimeouts) {
@@ -569,7 +642,9 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Timeout (in milliseconds) for establishing for a TCP connection TCP
-         * Client only. The option is a <code>int</code> type.
+         * Client only.
+         * The option is a <code>int</code> type.
+         * @group timeout
          */
         public MllpProducerBuilder connectTimeout(int connectTimeout) {
             this.properties.put("connectTimeout", connectTimeout);
@@ -577,39 +652,47 @@ public interface MllpEndpointBuilder {
         }
         /**
          * Timeout (in milliseconds) for establishing for a TCP connection TCP
-         * Client only. The option will be converted to a <code>int</code> type.
+         * Client only.
+         * The option will be converted to a <code>int</code> type.
+         * @group timeout
          */
         public MllpProducerBuilder connectTimeout(String connectTimeout) {
             this.properties.put("connectTimeout", connectTimeout);
             return (MllpProducerBuilder) this;
         }
         /**
-         * Enable/disable the SO_KEEPALIVE socket option. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * Enable/disable the SO_KEEPALIVE socket option.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group tcp
          */
         public MllpProducerBuilder keepAlive(Boolean keepAlive) {
             this.properties.put("keepAlive", keepAlive);
             return (MllpProducerBuilder) this;
         }
         /**
-         * Enable/disable the SO_KEEPALIVE socket option. The option will be
-         * converted to a <code>java.lang.Boolean</code> type.
+         * Enable/disable the SO_KEEPALIVE socket option.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group tcp
          */
         public MllpProducerBuilder keepAlive(String keepAlive) {
             this.properties.put("keepAlive", keepAlive);
             return (MllpProducerBuilder) this;
         }
         /**
-         * Enable/disable the TCP_NODELAY socket option. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * Enable/disable the TCP_NODELAY socket option.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group tcp
          */
         public MllpProducerBuilder tcpNoDelay(Boolean tcpNoDelay) {
             this.properties.put("tcpNoDelay", tcpNoDelay);
             return (MllpProducerBuilder) this;
         }
         /**
-         * Enable/disable the TCP_NODELAY socket option. The option will be
-         * converted to a <code>java.lang.Boolean</code> type.
+         * Enable/disable the TCP_NODELAY socket option.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group tcp
          */
         public MllpProducerBuilder tcpNoDelay(String tcpNoDelay) {
             this.properties.put("tcpNoDelay", tcpNoDelay);

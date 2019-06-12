@@ -41,71 +41,83 @@ public interface KeystoneEndpointBuilder {
             super("openstack-keystone", path);
         }
         /**
-         * OpenStack host url. The option is a <code>java.lang.String</code>
-         * type.
+         * OpenStack host url.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * OpenStack configuration. The option is a
-         * <code>org.openstack4j.core.transport.Config</code> type.
+         * OpenStack configuration.
+         * The option is a <code>org.openstack4j.core.transport.Config</code>
+         * type.
+         * @group producer
          */
         public T config(Object config) {
             this.properties.put("config", config);
             return (T) this;
         }
         /**
-         * OpenStack configuration. The option will be converted to a
+         * OpenStack configuration.
+         * The option will be converted to a
          * <code>org.openstack4j.core.transport.Config</code> type.
+         * @group producer
          */
         public T config(String config) {
             this.properties.put("config", config);
             return (T) this;
         }
         /**
-         * Authentication domain. The option is a <code>java.lang.String</code>
-         * type.
+         * Authentication domain.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T domain(String domain) {
             this.properties.put("domain", domain);
             return (T) this;
         }
         /**
-         * The operation to do. The option is a <code>java.lang.String</code>
-         * type.
+         * The operation to do.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * OpenStack password. The option is a <code>java.lang.String</code>
-         * type.
+         * OpenStack password.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * The project ID. The option is a <code>java.lang.String</code> type.
+         * The project ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T project(String project) {
             this.properties.put("project", project);
             return (T) this;
         }
         /**
-         * OpenStack Keystone subsystem. The option is a
-         * <code>java.lang.String</code> type.
+         * OpenStack Keystone subsystem.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T subsystem(String subsystem) {
             this.properties.put("subsystem", subsystem);
             return (T) this;
         }
         /**
-         * OpenStack username. The option is a <code>java.lang.String</code>
-         * type.
+         * OpenStack username.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -113,8 +125,9 @@ public interface KeystoneEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -122,8 +135,9 @@ public interface KeystoneEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -131,8 +145,9 @@ public interface KeystoneEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -140,8 +155,9 @@ public interface KeystoneEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

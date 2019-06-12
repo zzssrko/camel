@@ -42,16 +42,20 @@ public interface GitHubEndpointBuilder {
             super("github", path);
         }
         /**
-         * What git operation to execute. The option is a
+         * What git operation to execute.
+         * The option is a
          * <code>org.apache.camel.component.github.GitHubType</code> type.
+         * @group common
          */
         public T type(GitHubType type) {
             this.properties.put("type", type);
             return (T) this;
         }
         /**
-         * What git operation to execute. The option will be converted to a
+         * What git operation to execute.
+         * The option will be converted to a
          * <code>org.apache.camel.component.github.GitHubType</code> type.
+         * @group common
          */
         public T type(String type) {
             this.properties.put("type", type);
@@ -60,38 +64,43 @@ public interface GitHubEndpointBuilder {
         /**
          * GitHub OAuth token, required unless username & password are provided.
          * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T oauthToken(String oauthToken) {
             this.properties.put("oauthToken", oauthToken);
             return (T) this;
         }
         /**
-         * GitHub password, required unless oauthToken is provided. The option
-         * is a <code>java.lang.String</code> type.
+         * GitHub password, required unless oauthToken is provided.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * GitHub repository name. The option is a <code>java.lang.String</code>
-         * type.
+         * GitHub repository name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T repoName(String repoName) {
             this.properties.put("repoName", repoName);
             return (T) this;
         }
         /**
-         * GitHub repository owner (organization). The option is a
-         * <code>java.lang.String</code> type.
+         * GitHub repository owner (organization).
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T repoOwner(String repoOwner) {
             this.properties.put("repoOwner", repoOwner);
             return (T) this;
         }
         /**
-         * GitHub username, required unless oauthToken is provided. The option
-         * is a <code>java.lang.String</code> type.
+         * GitHub username, required unless oauthToken is provided.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -99,8 +108,9 @@ public interface GitHubEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -108,8 +118,9 @@ public interface GitHubEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -117,8 +128,9 @@ public interface GitHubEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -126,8 +138,9 @@ public interface GitHubEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -147,7 +160,9 @@ public interface GitHubEndpointBuilder {
             super(path);
         }
         /**
-         * Name of branch. The option is a <code>java.lang.String</code> type.
+         * Name of branch.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public GitHubConsumerBuilder branchName(String branchName) {
             this.properties.put("branchName", branchName);
@@ -160,7 +175,9 @@ public interface GitHubEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public GitHubConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -174,7 +191,9 @@ public interface GitHubEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public GitHubConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -185,8 +204,10 @@ public interface GitHubEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public GitHubConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -197,17 +218,19 @@ public interface GitHubEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public GitHubConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (GitHubConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public GitHubConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -215,9 +238,10 @@ public interface GitHubEndpointBuilder {
             return (GitHubConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public GitHubConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -237,24 +261,27 @@ public interface GitHubEndpointBuilder {
             super(path);
         }
         /**
-         * To use the given encoding when getting a git commit file. The option
-         * is a <code>java.lang.String</code> type.
+         * To use the given encoding when getting a git commit file.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public GitHubProducerBuilder encoding(String encoding) {
             this.properties.put("encoding", encoding);
             return (GitHubProducerBuilder) this;
         }
         /**
-         * To set git commit status state. The option is a
-         * <code>java.lang.String</code> type.
+         * To set git commit status state.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public GitHubProducerBuilder state(String state) {
             this.properties.put("state", state);
             return (GitHubProducerBuilder) this;
         }
         /**
-         * To set git commit status target url. The option is a
-         * <code>java.lang.String</code> type.
+         * To set git commit status target url.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public GitHubProducerBuilder targetUrl(String targetUrl) {
             this.properties.put("targetUrl", targetUrl);

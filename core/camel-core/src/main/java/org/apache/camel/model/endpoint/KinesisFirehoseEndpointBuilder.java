@@ -41,8 +41,9 @@ public interface KinesisFirehoseEndpointBuilder {
             super("aws-kinesis-firehose", path);
         }
         /**
-         * Name of the stream. The option is a <code>java.lang.String</code>
-         * type.
+         * Name of the stream.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T streamName(String streamName) {
             this.properties.put("streamName", streamName);
@@ -50,8 +51,10 @@ public interface KinesisFirehoseEndpointBuilder {
         }
         /**
          * Amazon Kinesis Firehose client to use for all requests for this
-         * endpoint. The option is a
+         * endpoint.
+         * The option is a
          * <code>com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehose</code> type.
+         * @group producer
          */
         public T amazonKinesisFirehoseClient(Object amazonKinesisFirehoseClient) {
             this.properties.put("amazonKinesisFirehoseClient", amazonKinesisFirehoseClient);
@@ -59,40 +62,47 @@ public interface KinesisFirehoseEndpointBuilder {
         }
         /**
          * Amazon Kinesis Firehose client to use for all requests for this
-         * endpoint. The option will be converted to a
+         * endpoint.
+         * The option will be converted to a
          * <code>com.amazonaws.services.kinesisfirehose.AmazonKinesisFirehose</code> type.
+         * @group producer
          */
         public T amazonKinesisFirehoseClient(String amazonKinesisFirehoseClient) {
             this.properties.put("amazonKinesisFirehoseClient", amazonKinesisFirehoseClient);
             return (T) this;
         }
         /**
-         * To define a proxy host when instantiating the DDBStreams client. The
-         * option is a <code>java.lang.String</code> type.
+         * To define a proxy host when instantiating the DDBStreams client.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the DDBStreams client. The
-         * option is a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the DDBStreams client.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * To define a proxy port when instantiating the DDBStreams client. The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * To define a proxy port when instantiating the DDBStreams client.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * The region in which Kinesis client needs to work. The option is a
-         * <code>java.lang.String</code> type.
+         * The region in which Kinesis client needs to work.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T region(String region) {
             this.properties.put("region", region);
@@ -100,8 +110,9 @@ public interface KinesisFirehoseEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -109,8 +120,9 @@ public interface KinesisFirehoseEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -118,8 +130,9 @@ public interface KinesisFirehoseEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -127,24 +140,27 @@ public interface KinesisFirehoseEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Amazon AWS Access Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Access Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T accessKey(String accessKey) {
             this.properties.put("accessKey", accessKey);
             return (T) this;
         }
         /**
-         * Amazon AWS Secret Key. The option is a <code>java.lang.String</code>
-         * type.
+         * Amazon AWS Secret Key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T secretKey(String secretKey) {
             this.properties.put("secretKey", secretKey);

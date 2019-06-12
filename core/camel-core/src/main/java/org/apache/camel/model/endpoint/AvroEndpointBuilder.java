@@ -42,79 +42,93 @@ public interface AvroEndpointBuilder {
             super("avro", path);
         }
         /**
-         * Transport to use, can be either http or netty. The option is a
+         * Transport to use, can be either http or netty.
+         * The option is a
          * <code>org.apache.camel.component.avro.AvroTransport</code> type.
+         * @group common
          */
         public T transport(AvroTransport transport) {
             this.properties.put("transport", transport);
             return (T) this;
         }
         /**
-         * Transport to use, can be either http or netty. The option will be
-         * converted to a
+         * Transport to use, can be either http or netty.
+         * The option will be converted to a
          * <code>org.apache.camel.component.avro.AvroTransport</code> type.
+         * @group common
          */
         public T transport(String transport) {
             this.properties.put("transport", transport);
             return (T) this;
         }
         /**
-         * Port number to use. The option is a <code>int</code> type.
+         * Port number to use.
+         * The option is a <code>int</code> type.
+         * @group common
          */
         public T port(int port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Port number to use. The option will be converted to a
-         * <code>int</code> type.
+         * Port number to use.
+         * The option will be converted to a <code>int</code> type.
+         * @group common
          */
         public T port(String port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Hostname to use. The option is a <code>java.lang.String</code> type.
+         * Hostname to use.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * The name of the message to send. The option is a
-         * <code>java.lang.String</code> type.
+         * The name of the message to send.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T messageName(String messageName) {
             this.properties.put("messageName", messageName);
             return (T) this;
         }
         /**
-         * Avro protocol to use. The option is a
-         * <code>org.apache.avro.Protocol</code> type.
+         * Avro protocol to use.
+         * The option is a <code>org.apache.avro.Protocol</code> type.
+         * @group common
          */
         public T protocol(Object protocol) {
             this.properties.put("protocol", protocol);
             return (T) this;
         }
         /**
-         * Avro protocol to use. The option will be converted to a
+         * Avro protocol to use.
+         * The option will be converted to a
          * <code>org.apache.avro.Protocol</code> type.
+         * @group common
          */
         public T protocol(String protocol) {
             this.properties.put("protocol", protocol);
             return (T) this;
         }
         /**
-         * Avro protocol to use defined by the FQN class name. The option is a
-         * <code>java.lang.String</code> type.
+         * Avro protocol to use defined by the FQN class name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T protocolClassName(String protocolClassName) {
             this.properties.put("protocolClassName", protocolClassName);
             return (T) this;
         }
         /**
-         * Avro protocol location. The option is a <code>java.lang.String</code>
-         * type.
+         * Avro protocol location.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T protocolLocation(String protocolLocation) {
             this.properties.put("protocolLocation", protocolLocation);
@@ -123,8 +137,9 @@ public interface AvroEndpointBuilder {
         /**
          * If protocol object provided is reflection protocol. Should be used
          * only with protocol parameter because for protocolClassName protocol
-         * type will be auto detected. The option is a <code>boolean</code>
-         * type.
+         * type will be auto detected.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T reflectionProtocol(boolean reflectionProtocol) {
             this.properties.put("reflectionProtocol", reflectionProtocol);
@@ -133,8 +148,9 @@ public interface AvroEndpointBuilder {
         /**
          * If protocol object provided is reflection protocol. Should be used
          * only with protocol parameter because for protocolClassName protocol
-         * type will be auto detected. The option will be converted to a
-         * <code>boolean</code> type.
+         * type will be auto detected.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T reflectionProtocol(String reflectionProtocol) {
             this.properties.put("reflectionProtocol", reflectionProtocol);
@@ -142,8 +158,9 @@ public interface AvroEndpointBuilder {
         }
         /**
          * If true, consumer parameter won't be wrapped into array. Will fail if
-         * protocol specifies more then 1 parameter for the message. The option
-         * is a <code>boolean</code> type.
+         * protocol specifies more then 1 parameter for the message.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T singleParameter(boolean singleParameter) {
             this.properties.put("singleParameter", singleParameter);
@@ -151,16 +168,18 @@ public interface AvroEndpointBuilder {
         }
         /**
          * If true, consumer parameter won't be wrapped into array. Will fail if
-         * protocol specifies more then 1 parameter for the message. The option
-         * will be converted to a <code>boolean</code> type.
+         * protocol specifies more then 1 parameter for the message.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T singleParameter(String singleParameter) {
             this.properties.put("singleParameter", singleParameter);
             return (T) this;
         }
         /**
-         * Authority to use (username and password). The option is a
-         * <code>java.lang.String</code> type.
+         * Authority to use (username and password).
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T uriAuthority(String uriAuthority) {
             this.properties.put("uriAuthority", uriAuthority);
@@ -168,8 +187,9 @@ public interface AvroEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -177,8 +197,9 @@ public interface AvroEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -186,8 +207,9 @@ public interface AvroEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -195,8 +217,9 @@ public interface AvroEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -222,7 +245,9 @@ public interface AvroEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public AvroConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -235,7 +260,9 @@ public interface AvroEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public AvroConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -245,8 +272,10 @@ public interface AvroEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public AvroConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -257,17 +286,19 @@ public interface AvroEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public AvroConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (AvroConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public AvroConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -275,9 +306,10 @@ public interface AvroEndpointBuilder {
             return (AvroConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public AvroConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

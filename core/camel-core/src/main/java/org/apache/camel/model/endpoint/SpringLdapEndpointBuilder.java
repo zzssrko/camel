@@ -41,34 +41,40 @@ public interface SpringLdapEndpointBuilder {
             super("spring-ldap", path);
         }
         /**
-         * Name of the Spring LDAP Template bean. The option is a
-         * <code>java.lang.String</code> type.
+         * Name of the Spring LDAP Template bean.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T templateName(String templateName) {
             this.properties.put("templateName", templateName);
             return (T) this;
         }
         /**
-         * The LDAP operation to be performed. The option is a
+         * The LDAP operation to be performed.
+         * The option is a
          * <code>org.apache.camel.component.springldap.LdapOperation</code>
          * type.
+         * @group producer
          */
         public T operation(LdapOperation operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * The LDAP operation to be performed. The option will be converted to a
+         * The LDAP operation to be performed.
+         * The option will be converted to a
          * <code>org.apache.camel.component.springldap.LdapOperation</code>
          * type.
+         * @group producer
          */
         public T operation(String operation) {
             this.properties.put("operation", operation);
             return (T) this;
         }
         /**
-         * The scope of the search operation. The option is a
-         * <code>java.lang.String</code> type.
+         * The scope of the search operation.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T scope(String scope) {
             this.properties.put("scope", scope);
@@ -76,8 +82,9 @@ public interface SpringLdapEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -85,8 +92,9 @@ public interface SpringLdapEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -94,8 +102,9 @@ public interface SpringLdapEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -103,8 +112,9 @@ public interface SpringLdapEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

@@ -40,16 +40,18 @@ public interface CMEndpointBuilder {
             super("cm-sms", path);
         }
         /**
-         * SMS Provider HOST with scheme. The option is a
-         * <code>java.lang.String</code> type.
+         * SMS Provider HOST with scheme.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T host(String host) {
             this.properties.put("host", host);
             return (T) this;
         }
         /**
-         * This is the sender name. The maximum length is 11 characters. The
-         * option is a <code>java.lang.String</code> type.
+         * This is the sender name. The maximum length is 11 characters.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T defaultFrom(String defaultFrom) {
             this.properties.put("defaultFrom", defaultFrom);
@@ -59,8 +61,9 @@ public interface CMEndpointBuilder {
          * If it is a multipart message forces the max number. Message can be
          * truncated. Technically the gateway will first check if a message is
          * larger than 160 characters, if so, the message will be cut into
-         * multiple 153 characters parts limited by these parameters. The option
-         * is a <code>int</code> type.
+         * multiple 153 characters parts limited by these parameters.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T defaultMaxNumberOfParts(int defaultMaxNumberOfParts) {
             this.properties.put("defaultMaxNumberOfParts", defaultMaxNumberOfParts);
@@ -70,32 +73,36 @@ public interface CMEndpointBuilder {
          * If it is a multipart message forces the max number. Message can be
          * truncated. Technically the gateway will first check if a message is
          * larger than 160 characters, if so, the message will be cut into
-         * multiple 153 characters parts limited by these parameters. The option
-         * will be converted to a <code>int</code> type.
+         * multiple 153 characters parts limited by these parameters.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T defaultMaxNumberOfParts(String defaultMaxNumberOfParts) {
             this.properties.put("defaultMaxNumberOfParts", defaultMaxNumberOfParts);
             return (T) this;
         }
         /**
-         * The unique token to use. The option is a
-         * <code>java.lang.String</code> type.
+         * The unique token to use.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T productToken(String productToken) {
             this.properties.put("productToken", productToken);
             return (T) this;
         }
         /**
-         * Whether to test the connection to the SMS Gateway on startup. The
-         * option is a <code>boolean</code> type.
+         * Whether to test the connection to the SMS Gateway on startup.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T testConnectionOnStartup(boolean testConnectionOnStartup) {
             this.properties.put("testConnectionOnStartup", testConnectionOnStartup);
             return (T) this;
         }
         /**
-         * Whether to test the connection to the SMS Gateway on startup. The
-         * option will be converted to a <code>boolean</code> type.
+         * Whether to test the connection to the SMS Gateway on startup.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T testConnectionOnStartup(String testConnectionOnStartup) {
             this.properties.put("testConnectionOnStartup", testConnectionOnStartup);
@@ -103,8 +110,9 @@ public interface CMEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -112,8 +120,9 @@ public interface CMEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -121,8 +130,9 @@ public interface CMEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -130,8 +140,9 @@ public interface CMEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

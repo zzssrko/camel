@@ -42,8 +42,9 @@ public interface DrillEndpointBuilder {
         }
         /**
          * ZooKeeper host name or IP address. Use local instead of a host name
-         * or IP address to connect to the local Drillbit. The option is a
-         * <code>java.lang.String</code> type.
+         * or IP address to connect to the local Drillbit.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T host(String host) {
             this.properties.put("host", host);
@@ -51,15 +52,18 @@ public interface DrillEndpointBuilder {
         }
         /**
          * Cluster ID
-         * https://drill.apache.org/docs/using-the-jdbc-driver/#determining-the-cluster-id. The option is a <code>java.lang.String</code> type.
+         * https://drill.apache.org/docs/using-the-jdbc-driver/#determining-the-cluster-id.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T clusterId(String clusterId) {
             this.properties.put("clusterId", clusterId);
             return (T) this;
         }
         /**
-         * Drill directory in ZooKeeper. The option is a
-         * <code>java.lang.String</code> type.
+         * Drill directory in ZooKeeper.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T directory(String directory) {
             this.properties.put("directory", directory);
@@ -67,9 +71,11 @@ public interface DrillEndpointBuilder {
         }
         /**
          * Connection mode: zk: Zookeeper drillbit: Drillbit direct connection
-         * https://drill.apache.org/docs/using-the-jdbc-driver/. The option is a
+         * https://drill.apache.org/docs/using-the-jdbc-driver/.
+         * The option is a
          * <code>org.apache.camel.component.drill.DrillConnectionMode</code>
          * type.
+         * @group producer
          */
         public T mode(DrillConnectionMode mode) {
             this.properties.put("mode", mode);
@@ -77,26 +83,30 @@ public interface DrillEndpointBuilder {
         }
         /**
          * Connection mode: zk: Zookeeper drillbit: Drillbit direct connection
-         * https://drill.apache.org/docs/using-the-jdbc-driver/. The option will
-         * be converted to a
+         * https://drill.apache.org/docs/using-the-jdbc-driver/.
+         * The option will be converted to a
          * <code>org.apache.camel.component.drill.DrillConnectionMode</code>
          * type.
+         * @group producer
          */
         public T mode(String mode) {
             this.properties.put("mode", mode);
             return (T) this;
         }
         /**
-         * ZooKeeper port number. The option is a <code>java.lang.Integer</code>
-         * type.
+         * ZooKeeper port number.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public T port(Integer port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * ZooKeeper port number. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * ZooKeeper port number.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public T port(String port) {
             this.properties.put("port", port);
@@ -104,8 +114,9 @@ public interface DrillEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -113,8 +124,9 @@ public interface DrillEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -122,8 +134,9 @@ public interface DrillEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -131,8 +144,9 @@ public interface DrillEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

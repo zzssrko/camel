@@ -44,24 +44,29 @@ public interface LinkedInEndpointBuilder {
             super("linkedin", path);
         }
         /**
-         * What kind of operation to perform. The option is a
+         * What kind of operation to perform.
+         * The option is a
          * <code>org.apache.camel.component.linkedin.internal.LinkedInApiName</code> type.
+         * @group common
          */
         public T apiName(LinkedInApiName apiName) {
             this.properties.put("apiName", apiName);
             return (T) this;
         }
         /**
-         * What kind of operation to perform. The option will be converted to a
+         * What kind of operation to perform.
+         * The option will be converted to a
          * <code>org.apache.camel.component.linkedin.internal.LinkedInApiName</code> type.
+         * @group common
          */
         public T apiName(String apiName) {
             this.properties.put("apiName", apiName);
             return (T) this;
         }
         /**
-         * What sub operation to use for the selected operation. The option is a
-         * <code>java.lang.String</code> type.
+         * What sub operation to use for the selected operation.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T methodName(String methodName) {
             this.properties.put("methodName", methodName);
@@ -85,24 +90,27 @@ public interface LinkedInEndpointBuilder {
          * The LinkedIn component cannot refresh the access token. You must
          * manually obtain a new access token each time an access token expires.
          * When you update the access token you must restart the application so
-         * that it uses the new token. The option is a
-         * <code>java.lang.String</code> type.
+         * that it uses the new token.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T accessToken(String accessToken) {
             this.properties.put("accessToken", accessToken);
             return (T) this;
         }
         /**
-         * LinkedIn application client ID. The option is a
-         * <code>java.lang.String</code> type.
+         * LinkedIn application client ID.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T clientId(String clientId) {
             this.properties.put("clientId", clientId);
             return (T) this;
         }
         /**
-         * LinkedIn application client secret. The option is a
-         * <code>java.lang.String</code> type.
+         * LinkedIn application client secret.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T clientSecret(String clientSecret) {
             this.properties.put("clientSecret", clientSecret);
@@ -111,8 +119,9 @@ public interface LinkedInEndpointBuilder {
         /**
          * A number of milliseconds since the UNIX Epoch. The default is 60
          * days. A LinkedIn access token expires when this amount of time
-         * elapses after the token is in use. The option is a
-         * <code>java.lang.Long</code> type.
+         * elapses after the token is in use.
+         * The option is a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T expiryTime(Long expiryTime) {
             this.properties.put("expiryTime", expiryTime);
@@ -121,8 +130,9 @@ public interface LinkedInEndpointBuilder {
         /**
          * A number of milliseconds since the UNIX Epoch. The default is 60
          * days. A LinkedIn access token expires when this amount of time
-         * elapses after the token is in use. The option will be converted to a
-         * <code>java.lang.Long</code> type.
+         * elapses after the token is in use.
+         * The option will be converted to a <code>java.lang.Long</code> type.
+         * @group common
          */
         public T expiryTime(String expiryTime) {
             this.properties.put("expiryTime", expiryTime);
@@ -130,9 +140,10 @@ public interface LinkedInEndpointBuilder {
         }
         /**
          * Custom HTTP parameters, for example, proxy host and port. Use
-         * constants from AllClientPNames. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
-         * type.
+         * constants from AllClientPNames.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
+         * @group common
          */
         public T httpParams(Map<String, Object> httpParams) {
             this.properties.put("httpParams", httpParams);
@@ -140,9 +151,11 @@ public interface LinkedInEndpointBuilder {
         }
         /**
          * Custom HTTP parameters, for example, proxy host and port. Use
-         * constants from AllClientPNames. The option will be converted to a
+         * constants from AllClientPNames.
+         * The option will be converted to a
          * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
          * type.
+         * @group common
          */
         public T httpParams(String httpParams) {
             this.properties.put("httpParams", httpParams);
@@ -151,6 +164,7 @@ public interface LinkedInEndpointBuilder {
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T inBody(String inBody) {
             this.properties.put("inBody", inBody);
@@ -159,7 +173,9 @@ public interface LinkedInEndpointBuilder {
         /**
          * Flag to enable/disable lazy OAuth, default is true. When enabled,
          * OAuth token retrieval or generation is not done until the first REST
-         * call. The option is a <code>boolean</code> type.
+         * call.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T lazyAuth(boolean lazyAuth) {
             this.properties.put("lazyAuth", lazyAuth);
@@ -168,7 +184,9 @@ public interface LinkedInEndpointBuilder {
         /**
          * Flag to enable/disable lazy OAuth, default is true. When enabled,
          * OAuth token retrieval or generation is not done until the first REST
-         * call. The option will be converted to a <code>boolean</code> type.
+         * call.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T lazyAuth(String lazyAuth) {
             this.properties.put("lazyAuth", lazyAuth);
@@ -177,8 +195,9 @@ public interface LinkedInEndpointBuilder {
         /**
          * Application redirect URI, although the component never redirects to
          * this page to avoid having to have a functioning redirect server. For
-         * testing, one could use https://localhost. The option is a
-         * <code>java.lang.String</code> type.
+         * testing, one could use https://localhost.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T redirectUri(String redirectUri) {
             this.properties.put("redirectUri", redirectUri);
@@ -186,10 +205,11 @@ public interface LinkedInEndpointBuilder {
         }
         /**
          * List of LinkedIn scopes as specified at
-         * https://developer.linkedin.com/documents/authentication#granting. The
-         * option is a
+         * https://developer.linkedin.com/documents/authentication#granting.
+         * The option is a
          * <code>org.apache.camel.component.linkedin.api.OAuthScope[]</code>
          * type.
+         * @group common
          */
         public T scopes(OAuthScope[] scopes) {
             this.properties.put("scopes", scopes);
@@ -197,10 +217,11 @@ public interface LinkedInEndpointBuilder {
         }
         /**
          * List of LinkedIn scopes as specified at
-         * https://developer.linkedin.com/documents/authentication#granting. The
-         * option will be converted to a
+         * https://developer.linkedin.com/documents/authentication#granting.
+         * The option will be converted to a
          * <code>org.apache.camel.component.linkedin.api.OAuthScope[]</code>
          * type.
+         * @group common
          */
         public T scopes(String scopes) {
             this.properties.put("scopes", scopes);
@@ -211,8 +232,10 @@ public interface LinkedInEndpointBuilder {
          * generated by the component. The callback should return null on the
          * first call and then save the created token in the saveToken()
          * callback. If the callback returns null the first time, a userPassword
-         * MUST be provided. The option is a
+         * MUST be provided.
+         * The option is a
          * <code>org.apache.camel.component.linkedin.api.OAuthSecureStorage</code> type.
+         * @group common
          */
         public T secureStorage(Object secureStorage) {
             this.properties.put("secureStorage", secureStorage);
@@ -223,24 +246,28 @@ public interface LinkedInEndpointBuilder {
          * generated by the component. The callback should return null on the
          * first call and then save the created token in the saveToken()
          * callback. If the callback returns null the first time, a userPassword
-         * MUST be provided. The option will be converted to a
+         * MUST be provided.
+         * The option will be converted to a
          * <code>org.apache.camel.component.linkedin.api.OAuthSecureStorage</code> type.
+         * @group common
          */
         public T secureStorage(String secureStorage) {
             this.properties.put("secureStorage", secureStorage);
             return (T) this;
         }
         /**
-         * LinkedIn user account name, MUST be provided. The option is a
-         * <code>java.lang.String</code> type.
+         * LinkedIn user account name, MUST be provided.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T userName(String userName) {
             this.properties.put("userName", userName);
             return (T) this;
         }
         /**
-         * LinkedIn account password. The option is a
-         * <code>java.lang.String</code> type.
+         * LinkedIn account password.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T userPassword(String userPassword) {
             this.properties.put("userPassword", userPassword);
@@ -248,8 +275,9 @@ public interface LinkedInEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -257,8 +285,9 @@ public interface LinkedInEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -266,8 +295,9 @@ public interface LinkedInEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -275,8 +305,9 @@ public interface LinkedInEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -302,7 +333,9 @@ public interface LinkedInEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public LinkedInConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -316,7 +349,9 @@ public interface LinkedInEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public LinkedInConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -327,8 +362,10 @@ public interface LinkedInEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public LinkedInConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -339,17 +376,19 @@ public interface LinkedInEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public LinkedInConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (LinkedInConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public LinkedInConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -357,9 +396,10 @@ public interface LinkedInEndpointBuilder {
             return (LinkedInConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public LinkedInConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

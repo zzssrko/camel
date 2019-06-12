@@ -46,6 +46,7 @@ public interface WebhookEndpointBuilder {
         /**
          * The delegate uri. Must belong to a component that supports webhooks.
          * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public T endpointUri(String endpointUri) {
             this.properties.put("endpointUri", endpointUri);
@@ -53,7 +54,9 @@ public interface WebhookEndpointBuilder {
         }
         /**
          * Automatically register the webhook at startup and unregister it on
-         * shutdown. The option is a <code>boolean</code> type.
+         * shutdown.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T webhookAutoRegister(boolean webhookAutoRegister) {
             this.properties.put("webhookAutoRegister", webhookAutoRegister);
@@ -61,8 +64,9 @@ public interface WebhookEndpointBuilder {
         }
         /**
          * Automatically register the webhook at startup and unregister it on
-         * shutdown. The option will be converted to a <code>boolean</code>
-         * type.
+         * shutdown.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T webhookAutoRegister(String webhookAutoRegister) {
             this.properties.put("webhookAutoRegister", webhookAutoRegister);
@@ -71,8 +75,9 @@ public interface WebhookEndpointBuilder {
         /**
          * The first (base) path element where the webhook will be exposed. It's
          * a good practice to set it to a random string, so that it cannot be
-         * guessed by unauthorized parties. The option is a
-         * <code>java.lang.String</code> type.
+         * guessed by unauthorized parties.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T webhookBasePath(String webhookBasePath) {
             this.properties.put("webhookBasePath", webhookBasePath);
@@ -80,15 +85,18 @@ public interface WebhookEndpointBuilder {
         }
         /**
          * The Camel Rest component to use for the REST transport, such as
-         * netty4-http. The option is a <code>java.lang.String</code> type.
+         * netty4-http.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T webhookComponentName(String webhookComponentName) {
             this.properties.put("webhookComponentName", webhookComponentName);
             return (T) this;
         }
         /**
-         * The URL of the current service as seen by the webhook provider. The
-         * option is a <code>java.lang.String</code> type.
+         * The URL of the current service as seen by the webhook provider.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T webhookExternalUrl(String webhookExternalUrl) {
             this.properties.put("webhookExternalUrl", webhookExternalUrl);
@@ -96,8 +104,9 @@ public interface WebhookEndpointBuilder {
         }
         /**
          * The path where the webhook endpoint will be exposed (relative to
-         * basePath, if any). The option is a <code>java.lang.String</code>
-         * type.
+         * basePath, if any).
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T webhookPath(String webhookPath) {
             this.properties.put("webhookPath", webhookPath);
@@ -105,8 +114,9 @@ public interface WebhookEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -114,8 +124,9 @@ public interface WebhookEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -123,8 +134,9 @@ public interface WebhookEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -132,8 +144,9 @@ public interface WebhookEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -159,7 +172,9 @@ public interface WebhookEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public WebhookConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -173,7 +188,9 @@ public interface WebhookEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public WebhookConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -184,8 +201,10 @@ public interface WebhookEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public WebhookConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -196,17 +215,19 @@ public interface WebhookEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public WebhookConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (WebhookConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public WebhookConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -214,9 +235,10 @@ public interface WebhookEndpointBuilder {
             return (WebhookConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public WebhookConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

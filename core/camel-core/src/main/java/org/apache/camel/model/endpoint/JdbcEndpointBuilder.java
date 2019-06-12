@@ -45,24 +45,27 @@ public interface JdbcEndpointBuilder {
          * Name of DataSource to lookup in the Registry. If the name is
          * dataSource or default, then Camel will attempt to lookup a default
          * DataSource from the registry, meaning if there is a only one instance
-         * of DataSource found, then this DataSource will be used. The option is
-         * a <code>java.lang.String</code> type.
+         * of DataSource found, then this DataSource will be used.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T dataSourceName(String dataSourceName) {
             this.properties.put("dataSourceName", dataSourceName);
             return (T) this;
         }
         /**
-         * Whether to allow using named parameters in the queries. The option is
-         * a <code>boolean</code> type.
+         * Whether to allow using named parameters in the queries.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T allowNamedParameters(boolean allowNamedParameters) {
             this.properties.put("allowNamedParameters", allowNamedParameters);
             return (T) this;
         }
         /**
-         * Whether to allow using named parameters in the queries. The option
-         * will be converted to a <code>boolean</code> type.
+         * Whether to allow using named parameters in the queries.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T allowNamedParameters(String allowNamedParameters) {
             this.properties.put("allowNamedParameters", allowNamedParameters);
@@ -70,25 +73,29 @@ public interface JdbcEndpointBuilder {
         }
         /**
          * Specify the full package and class name to use as conversion when
-         * outputType=SelectOne or SelectList. The option is a
-         * <code>java.lang.String</code> type.
+         * outputType=SelectOne or SelectList.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T outputClass(String outputClass) {
             this.properties.put("outputClass", outputClass);
             return (T) this;
         }
         /**
-         * Determines the output the producer should use. The option is a
+         * Determines the output the producer should use.
+         * The option is a
          * <code>org.apache.camel.component.jdbc.JdbcOutputType</code> type.
+         * @group producer
          */
         public T outputType(JdbcOutputType outputType) {
             this.properties.put("outputType", outputType);
             return (T) this;
         }
         /**
-         * Determines the output the producer should use. The option will be
-         * converted to a
+         * Determines the output the producer should use.
+         * The option will be converted to a
          * <code>org.apache.camel.component.jdbc.JdbcOutputType</code> type.
+         * @group producer
          */
         public T outputType(String outputType) {
             this.properties.put("outputType", outputType);
@@ -96,9 +103,10 @@ public interface JdbcEndpointBuilder {
         }
         /**
          * Optional parameters to the java.sql.Statement. For example to set
-         * maxRows, fetchSize etc. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
-         * type.
+         * maxRows, fetchSize etc.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
+         * @group producer
          */
         public T parameters(Map<String, Object> parameters) {
             this.properties.put("parameters", parameters);
@@ -106,9 +114,11 @@ public interface JdbcEndpointBuilder {
         }
         /**
          * Optional parameters to the java.sql.Statement. For example to set
-         * maxRows, fetchSize etc. The option will be converted to a
+         * maxRows, fetchSize etc.
+         * The option will be converted to a
          * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
          * type.
+         * @group producer
          */
         public T parameters(String parameters) {
             this.properties.put("parameters", parameters);
@@ -116,7 +126,9 @@ public interface JdbcEndpointBuilder {
         }
         /**
          * The default maximum number of rows that can be read by a polling
-         * query. The default value is 0. The option is a <code>int</code> type.
+         * query. The default value is 0.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T readSize(int readSize) {
             this.properties.put("readSize", readSize);
@@ -124,8 +136,9 @@ public interface JdbcEndpointBuilder {
         }
         /**
          * The default maximum number of rows that can be read by a polling
-         * query. The default value is 0. The option will be converted to a
-         * <code>int</code> type.
+         * query. The default value is 0.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T readSize(String readSize) {
             this.properties.put("readSize", readSize);
@@ -139,8 +152,9 @@ public interface JdbcEndpointBuilder {
          * autoCommit flag, you can set the resetAutoCommit flag to be false,
          * and Camel will not try to reset the autoCommit flag. When used with
          * XA transactions you most likely need to set it to false so that the
-         * transaction manager is in charge of committing this tx. The option is
-         * a <code>boolean</code> type.
+         * transaction manager is in charge of committing this tx.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T resetAutoCommit(boolean resetAutoCommit) {
             this.properties.put("resetAutoCommit", resetAutoCommit);
@@ -154,24 +168,27 @@ public interface JdbcEndpointBuilder {
          * autoCommit flag, you can set the resetAutoCommit flag to be false,
          * and Camel will not try to reset the autoCommit flag. When used with
          * XA transactions you most likely need to set it to false so that the
-         * transaction manager is in charge of committing this tx. The option
-         * will be converted to a <code>boolean</code> type.
+         * transaction manager is in charge of committing this tx.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T resetAutoCommit(String resetAutoCommit) {
             this.properties.put("resetAutoCommit", resetAutoCommit);
             return (T) this;
         }
         /**
-         * Whether transactions are in use. The option is a <code>boolean</code>
-         * type.
+         * Whether transactions are in use.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T transacted(boolean transacted) {
             this.properties.put("transacted", transacted);
             return (T) this;
         }
         /**
-         * Whether transactions are in use. The option will be converted to a
-         * <code>boolean</code> type.
+         * Whether transactions are in use.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T transacted(String transacted) {
             this.properties.put("transacted", transacted);
@@ -180,7 +197,9 @@ public interface JdbcEndpointBuilder {
         /**
          * To read BLOB columns as bytes instead of string data. This may be
          * needed for certain databases such as Oracle where you must read BLOB
-         * columns as bytes. The option is a <code>boolean</code> type.
+         * columns as bytes.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T useGetBytesForBlob(boolean useGetBytesForBlob) {
             this.properties.put("useGetBytesForBlob", useGetBytesForBlob);
@@ -189,8 +208,9 @@ public interface JdbcEndpointBuilder {
         /**
          * To read BLOB columns as bytes instead of string data. This may be
          * needed for certain databases such as Oracle where you must read BLOB
-         * columns as bytes. The option will be converted to a
-         * <code>boolean</code> type.
+         * columns as bytes.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T useGetBytesForBlob(String useGetBytesForBlob) {
             this.properties.put("useGetBytesForBlob", useGetBytesForBlob);
@@ -200,7 +220,9 @@ public interface JdbcEndpointBuilder {
          * Set this option to true to use the prepareStatementStrategy with
          * named parameters. This allows to define queries with named
          * placeholders, and use headers with the dynamic values for the query
-         * placeholders. The option is a <code>boolean</code> type.
+         * placeholders.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T useHeadersAsParameters(boolean useHeadersAsParameters) {
             this.properties.put("useHeadersAsParameters", useHeadersAsParameters);
@@ -210,8 +232,9 @@ public interface JdbcEndpointBuilder {
          * Set this option to true to use the prepareStatementStrategy with
          * named parameters. This allows to define queries with named
          * placeholders, and use headers with the dynamic values for the query
-         * placeholders. The option will be converted to a <code>boolean</code>
-         * type.
+         * placeholders.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T useHeadersAsParameters(String useHeadersAsParameters) {
             this.properties.put("useHeadersAsParameters", useHeadersAsParameters);
@@ -223,8 +246,9 @@ public interface JdbcEndpointBuilder {
          * name where as JDBC 3.0 uses both columnName or columnLabel.
          * Unfortunately JDBC drivers behave differently so you can use this
          * option to work out issues around your JDBC driver if you get problem
-         * using this component This option is default true. The option is a
-         * <code>boolean</code> type.
+         * using this component This option is default true.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T useJDBC4ColumnNameAndLabelSemantics(
                 boolean useJDBC4ColumnNameAndLabelSemantics) {
@@ -237,8 +261,9 @@ public interface JdbcEndpointBuilder {
          * name where as JDBC 3.0 uses both columnName or columnLabel.
          * Unfortunately JDBC drivers behave differently so you can use this
          * option to work out issues around your JDBC driver if you get problem
-         * using this component This option is default true. The option will be
-         * converted to a <code>boolean</code> type.
+         * using this component This option is default true.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T useJDBC4ColumnNameAndLabelSemantics(
                 String useJDBC4ColumnNameAndLabelSemantics) {
@@ -247,8 +272,9 @@ public interface JdbcEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -256,8 +282,9 @@ public interface JdbcEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -267,8 +294,10 @@ public interface JdbcEndpointBuilder {
          * To use a custom org.apache.camel.component.jdbc.BeanRowMapper when
          * using outputClass. The default implementation will lower case the row
          * names and skip underscores, and dashes. For example CUST_ID is mapped
-         * as custId. The option is a
+         * as custId.
+         * The option is a
          * <code>org.apache.camel.component.jdbc.BeanRowMapper</code> type.
+         * @group advanced
          */
         public T beanRowMapper(Object beanRowMapper) {
             this.properties.put("beanRowMapper", beanRowMapper);
@@ -278,8 +307,10 @@ public interface JdbcEndpointBuilder {
          * To use a custom org.apache.camel.component.jdbc.BeanRowMapper when
          * using outputClass. The default implementation will lower case the row
          * names and skip underscores, and dashes. For example CUST_ID is mapped
-         * as custId. The option will be converted to a
+         * as custId.
+         * The option will be converted to a
          * <code>org.apache.camel.component.jdbc.BeanRowMapper</code> type.
+         * @group advanced
          */
         public T beanRowMapper(String beanRowMapper) {
             this.properties.put("beanRowMapper", beanRowMapper);
@@ -288,9 +319,10 @@ public interface JdbcEndpointBuilder {
         /**
          * Allows to plugin to use a custom
          * org.apache.camel.component.jdbc.JdbcPrepareStatementStrategy to
-         * control preparation of the query and prepared statement. The option
-         * is a
+         * control preparation of the query and prepared statement.
+         * The option is a
          * <code>org.apache.camel.component.jdbc.JdbcPrepareStatementStrategy</code> type.
+         * @group advanced
          */
         public T prepareStatementStrategy(Object prepareStatementStrategy) {
             this.properties.put("prepareStatementStrategy", prepareStatementStrategy);
@@ -299,9 +331,10 @@ public interface JdbcEndpointBuilder {
         /**
          * Allows to plugin to use a custom
          * org.apache.camel.component.jdbc.JdbcPrepareStatementStrategy to
-         * control preparation of the query and prepared statement. The option
-         * will be converted to a
+         * control preparation of the query and prepared statement.
+         * The option will be converted to a
          * <code>org.apache.camel.component.jdbc.JdbcPrepareStatementStrategy</code> type.
+         * @group advanced
          */
         public T prepareStatementStrategy(String prepareStatementStrategy) {
             this.properties.put("prepareStatementStrategy", prepareStatementStrategy);
@@ -309,8 +342,9 @@ public interface JdbcEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -318,8 +352,9 @@ public interface JdbcEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

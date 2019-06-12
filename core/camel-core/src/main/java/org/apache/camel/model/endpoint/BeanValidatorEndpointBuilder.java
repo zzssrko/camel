@@ -41,82 +41,98 @@ public interface BeanValidatorEndpointBuilder {
             super("bean-validator", path);
         }
         /**
-         * Where label is an arbitrary text value describing the endpoint. The
-         * option is a <code>java.lang.String</code> type.
+         * Where label is an arbitrary text value describing the endpoint.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T label(String label) {
             this.properties.put("label", label);
             return (T) this;
         }
         /**
-         * To use a custom ConstraintValidatorFactory. The option is a
+         * To use a custom ConstraintValidatorFactory.
+         * The option is a
          * <code>javax.validation.ConstraintValidatorFactory</code> type.
+         * @group producer
          */
         public T constraintValidatorFactory(Object constraintValidatorFactory) {
             this.properties.put("constraintValidatorFactory", constraintValidatorFactory);
             return (T) this;
         }
         /**
-         * To use a custom ConstraintValidatorFactory. The option will be
-         * converted to a
+         * To use a custom ConstraintValidatorFactory.
+         * The option will be converted to a
          * <code>javax.validation.ConstraintValidatorFactory</code> type.
+         * @group producer
          */
         public T constraintValidatorFactory(String constraintValidatorFactory) {
             this.properties.put("constraintValidatorFactory", constraintValidatorFactory);
             return (T) this;
         }
         /**
-         * To use a custom validation group. The option is a
-         * <code>java.lang.String</code> type.
+         * To use a custom validation group.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T group(String group) {
             this.properties.put("group", group);
             return (T) this;
         }
         /**
-         * To use a custom MessageInterpolator. The option is a
-         * <code>javax.validation.MessageInterpolator</code> type.
+         * To use a custom MessageInterpolator.
+         * The option is a <code>javax.validation.MessageInterpolator</code>
+         * type.
+         * @group producer
          */
         public T messageInterpolator(Object messageInterpolator) {
             this.properties.put("messageInterpolator", messageInterpolator);
             return (T) this;
         }
         /**
-         * To use a custom MessageInterpolator. The option will be converted to
-         * a <code>javax.validation.MessageInterpolator</code> type.
+         * To use a custom MessageInterpolator.
+         * The option will be converted to a
+         * <code>javax.validation.MessageInterpolator</code> type.
+         * @group producer
          */
         public T messageInterpolator(String messageInterpolator) {
             this.properties.put("messageInterpolator", messageInterpolator);
             return (T) this;
         }
         /**
-         * To use a custom TraversableResolver. The option is a
-         * <code>javax.validation.TraversableResolver</code> type.
+         * To use a custom TraversableResolver.
+         * The option is a <code>javax.validation.TraversableResolver</code>
+         * type.
+         * @group producer
          */
         public T traversableResolver(Object traversableResolver) {
             this.properties.put("traversableResolver", traversableResolver);
             return (T) this;
         }
         /**
-         * To use a custom TraversableResolver. The option will be converted to
-         * a <code>javax.validation.TraversableResolver</code> type.
+         * To use a custom TraversableResolver.
+         * The option will be converted to a
+         * <code>javax.validation.TraversableResolver</code> type.
+         * @group producer
          */
         public T traversableResolver(String traversableResolver) {
             this.properties.put("traversableResolver", traversableResolver);
             return (T) this;
         }
         /**
-         * To use a a custom ValidationProviderResolver. The option is a
+         * To use a a custom ValidationProviderResolver.
+         * The option is a
          * <code>javax.validation.ValidationProviderResolver</code> type.
+         * @group producer
          */
         public T validationProviderResolver(Object validationProviderResolver) {
             this.properties.put("validationProviderResolver", validationProviderResolver);
             return (T) this;
         }
         /**
-         * To use a a custom ValidationProviderResolver. The option will be
-         * converted to a
+         * To use a a custom ValidationProviderResolver.
+         * The option will be converted to a
          * <code>javax.validation.ValidationProviderResolver</code> type.
+         * @group producer
          */
         public T validationProviderResolver(String validationProviderResolver) {
             this.properties.put("validationProviderResolver", validationProviderResolver);
@@ -124,8 +140,9 @@ public interface BeanValidatorEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -133,8 +150,9 @@ public interface BeanValidatorEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -142,8 +160,9 @@ public interface BeanValidatorEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -151,8 +170,9 @@ public interface BeanValidatorEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

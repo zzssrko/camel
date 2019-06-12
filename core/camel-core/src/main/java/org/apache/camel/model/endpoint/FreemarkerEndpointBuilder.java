@@ -45,48 +45,55 @@ public interface FreemarkerEndpointBuilder {
          * protocols (classpath is default). ref will lookup the resource in the
          * registry. bean will call a method on a bean to be used as the
          * resource. For bean you can specify the method name after dot, eg
-         * bean:myBean.myMethod. The option is a <code>java.lang.String</code>
-         * type.
+         * bean:myBean.myMethod.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
         /**
-         * Sets the Freemarker configuration to use. The option is a
-         * <code>freemarker.template.Configuration</code> type.
+         * Sets the Freemarker configuration to use.
+         * The option is a <code>freemarker.template.Configuration</code> type.
+         * @group producer
          */
         public T configuration(Object configuration) {
             this.properties.put("configuration", configuration);
             return (T) this;
         }
         /**
-         * Sets the Freemarker configuration to use. The option will be
-         * converted to a <code>freemarker.template.Configuration</code> type.
+         * Sets the Freemarker configuration to use.
+         * The option will be converted to a
+         * <code>freemarker.template.Configuration</code> type.
+         * @group producer
          */
         public T configuration(String configuration) {
             this.properties.put("configuration", configuration);
             return (T) this;
         }
         /**
-         * Sets whether to use resource content cache or not. The option is a
-         * <code>boolean</code> type.
+         * Sets whether to use resource content cache or not.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(boolean contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
         /**
-         * Sets whether to use resource content cache or not. The option will be
-         * converted to a <code>boolean</code> type.
+         * Sets whether to use resource content cache or not.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(String contentCache) {
             this.properties.put("contentCache", contentCache);
             return (T) this;
         }
         /**
-         * Sets the encoding to be used for loading the template file. The
-         * option is a <code>java.lang.String</code> type.
+         * Sets the encoding to be used for loading the template file.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T encoding(String encoding) {
             this.properties.put("encoding", encoding);
@@ -94,7 +101,9 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Number of seconds the loaded template resource will remain in the
-         * cache. The option is a <code>int</code> type.
+         * cache.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T templateUpdateDelay(int templateUpdateDelay) {
             this.properties.put("templateUpdateDelay", templateUpdateDelay);
@@ -102,7 +111,9 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Number of seconds the loaded template resource will remain in the
-         * cache. The option will be converted to a <code>int</code> type.
+         * cache.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T templateUpdateDelay(String templateUpdateDelay) {
             this.properties.put("templateUpdateDelay", templateUpdateDelay);
@@ -110,8 +121,9 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -119,8 +131,9 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -128,8 +141,9 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -137,8 +151,9 @@ public interface FreemarkerEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

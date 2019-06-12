@@ -42,24 +42,27 @@ public interface MsvEndpointBuilder {
         /**
          * URL to a local resource on the classpath,or a reference to lookup a
          * bean in the Registry, or a full URL to a remote resource or resource
-         * on the file system which contains the XSD to validate against. The
-         * option is a <code>java.lang.String</code> type.
+         * on the file system which contains the XSD to validate against.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
         /**
-         * Whether to fail if no body exists. The option is a
-         * <code>boolean</code> type.
+         * Whether to fail if no body exists.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T failOnNullBody(boolean failOnNullBody) {
             this.properties.put("failOnNullBody", failOnNullBody);
             return (T) this;
         }
         /**
-         * Whether to fail if no body exists. The option will be converted to a
-         * <code>boolean</code> type.
+         * Whether to fail if no body exists.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T failOnNullBody(String failOnNullBody) {
             this.properties.put("failOnNullBody", failOnNullBody);
@@ -68,6 +71,7 @@ public interface MsvEndpointBuilder {
         /**
          * Whether to fail if no header exists when validating against a header.
          * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T failOnNullHeader(boolean failOnNullHeader) {
             this.properties.put("failOnNullHeader", failOnNullHeader);
@@ -76,14 +80,16 @@ public interface MsvEndpointBuilder {
         /**
          * Whether to fail if no header exists when validating against a header.
          * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T failOnNullHeader(String failOnNullHeader) {
             this.properties.put("failOnNullHeader", failOnNullHeader);
             return (T) this;
         }
         /**
-         * To validate against a header instead of the message body. The option
-         * is a <code>java.lang.String</code> type.
+         * To validate against a header instead of the message body.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T headerName(String headerName) {
             this.properties.put("headerName", headerName);
@@ -91,8 +97,9 @@ public interface MsvEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -100,8 +107,9 @@ public interface MsvEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -113,6 +121,7 @@ public interface MsvEndpointBuilder {
          * default error handler captures the errors and throws an exception.
          * The option is a
          * <code>org.apache.camel.support.processor.validation.ValidatorErrorHandler</code> type.
+         * @group advanced
          */
         public T errorHandler(Object errorHandler) {
             this.properties.put("errorHandler", errorHandler);
@@ -124,6 +133,7 @@ public interface MsvEndpointBuilder {
          * default error handler captures the errors and throws an exception.
          * The option will be converted to a
          * <code>org.apache.camel.support.processor.validation.ValidatorErrorHandler</code> type.
+         * @group advanced
          */
         public T errorHandler(String errorHandler) {
             this.properties.put("errorHandler", errorHandler);
@@ -131,8 +141,9 @@ public interface MsvEndpointBuilder {
         }
         /**
          * To use a custom LSResourceResolver. See also
-         * setResourceResolverFactory(ValidatorResourceResolverFactory). The
-         * option is a <code>org.w3c.dom.ls.LSResourceResolver</code> type.
+         * setResourceResolverFactory(ValidatorResourceResolverFactory).
+         * The option is a <code>org.w3c.dom.ls.LSResourceResolver</code> type.
+         * @group advanced
          */
         public T resourceResolver(Object resourceResolver) {
             this.properties.put("resourceResolver", resourceResolver);
@@ -140,9 +151,10 @@ public interface MsvEndpointBuilder {
         }
         /**
          * To use a custom LSResourceResolver. See also
-         * setResourceResolverFactory(ValidatorResourceResolverFactory). The
-         * option will be converted to a
+         * setResourceResolverFactory(ValidatorResourceResolverFactory).
+         * The option will be converted to a
          * <code>org.w3c.dom.ls.LSResourceResolver</code> type.
+         * @group advanced
          */
         public T resourceResolver(String resourceResolver) {
             this.properties.put("resourceResolver", resourceResolver);
@@ -152,8 +164,10 @@ public interface MsvEndpointBuilder {
          * For creating a resource resolver which depends on the endpoint
          * resource URI. Must not be used in combination with method
          * setResourceResolver(LSResourceResolver). If not set then
-         * DefaultValidatorResourceResolverFactory is used. The option is a
+         * DefaultValidatorResourceResolverFactory is used.
+         * The option is a
          * <code>org.apache.camel.component.validator.ValidatorResourceResolverFactory</code> type.
+         * @group advanced
          */
         public T resourceResolverFactory(Object resourceResolverFactory) {
             this.properties.put("resourceResolverFactory", resourceResolverFactory);
@@ -163,34 +177,38 @@ public interface MsvEndpointBuilder {
          * For creating a resource resolver which depends on the endpoint
          * resource URI. Must not be used in combination with method
          * setResourceResolver(LSResourceResolver). If not set then
-         * DefaultValidatorResourceResolverFactory is used. The option will be
-         * converted to a
+         * DefaultValidatorResourceResolverFactory is used.
+         * The option will be converted to a
          * <code>org.apache.camel.component.validator.ValidatorResourceResolverFactory</code> type.
+         * @group advanced
          */
         public T resourceResolverFactory(String resourceResolverFactory) {
             this.properties.put("resourceResolverFactory", resourceResolverFactory);
             return (T) this;
         }
         /**
-         * To use a custom javax.xml.validation.SchemaFactory. The option is a
-         * <code>javax.xml.validation.SchemaFactory</code> type.
+         * To use a custom javax.xml.validation.SchemaFactory.
+         * The option is a <code>javax.xml.validation.SchemaFactory</code> type.
+         * @group advanced
          */
         public T schemaFactory(Object schemaFactory) {
             this.properties.put("schemaFactory", schemaFactory);
             return (T) this;
         }
         /**
-         * To use a custom javax.xml.validation.SchemaFactory. The option will
-         * be converted to a <code>javax.xml.validation.SchemaFactory</code>
-         * type.
+         * To use a custom javax.xml.validation.SchemaFactory.
+         * The option will be converted to a
+         * <code>javax.xml.validation.SchemaFactory</code> type.
+         * @group advanced
          */
         public T schemaFactory(String schemaFactory) {
             this.properties.put("schemaFactory", schemaFactory);
             return (T) this;
         }
         /**
-         * Configures the W3C XML Schema Namespace URI. The option is a
-         * <code>java.lang.String</code> type.
+         * Configures the W3C XML Schema Namespace URI.
+         * The option is a <code>java.lang.String</code> type.
+         * @group advanced
          */
         public T schemaLanguage(String schemaLanguage) {
             this.properties.put("schemaLanguage", schemaLanguage);
@@ -198,8 +216,9 @@ public interface MsvEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -207,8 +226,9 @@ public interface MsvEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -217,7 +237,9 @@ public interface MsvEndpointBuilder {
         /**
          * Whether the Schema instance should be shared or not. This option is
          * introduced to work around a JDK 1.6.x bug. Xerces should not have
-         * this issue. The option is a <code>boolean</code> type.
+         * this issue.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T useSharedSchema(boolean useSharedSchema) {
             this.properties.put("useSharedSchema", useSharedSchema);
@@ -226,8 +248,9 @@ public interface MsvEndpointBuilder {
         /**
          * Whether the Schema instance should be shared or not. This option is
          * introduced to work around a JDK 1.6.x bug. Xerces should not have
-         * this issue. The option will be converted to a <code>boolean</code>
-         * type.
+         * this issue.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T useSharedSchema(String useSharedSchema) {
             this.properties.put("useSharedSchema", useSharedSchema);

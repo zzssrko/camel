@@ -40,16 +40,20 @@ public interface DnsEndpointBuilder {
             super("dns", path);
         }
         /**
-         * The type of the lookup. The option is a
-         * <code>org.apache.camel.component.dns.DnsType</code> type.
+         * The type of the lookup.
+         * The option is a <code>org.apache.camel.component.dns.DnsType</code>
+         * type.
+         * @group producer
          */
         public T dnsType(DnsType dnsType) {
             this.properties.put("dnsType", dnsType);
             return (T) this;
         }
         /**
-         * The type of the lookup. The option will be converted to a
+         * The type of the lookup.
+         * The option will be converted to a
          * <code>org.apache.camel.component.dns.DnsType</code> type.
+         * @group producer
          */
         public T dnsType(String dnsType) {
             this.properties.put("dnsType", dnsType);
@@ -57,8 +61,9 @@ public interface DnsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -66,8 +71,9 @@ public interface DnsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -75,8 +81,9 @@ public interface DnsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -84,8 +91,9 @@ public interface DnsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

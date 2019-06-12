@@ -42,58 +42,70 @@ public interface FhirEndpointBuilder {
             super("fhir", path);
         }
         /**
-         * What kind of operation to perform. The option is a
+         * What kind of operation to perform.
+         * The option is a
          * <code>org.apache.camel.component.fhir.internal.FhirApiName</code>
          * type.
+         * @group common
          */
         public T apiName(FhirApiName apiName) {
             this.properties.put("apiName", apiName);
             return (T) this;
         }
         /**
-         * What kind of operation to perform. The option will be converted to a
+         * What kind of operation to perform.
+         * The option will be converted to a
          * <code>org.apache.camel.component.fhir.internal.FhirApiName</code>
          * type.
+         * @group common
          */
         public T apiName(String apiName) {
             this.properties.put("apiName", apiName);
             return (T) this;
         }
         /**
-         * What sub operation to use for the selected operation. The option is a
-         * <code>java.lang.String</code> type.
+         * What sub operation to use for the selected operation.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T methodName(String methodName) {
             this.properties.put("methodName", methodName);
             return (T) this;
         }
         /**
-         * Encoding to use for all request. The option is a
-         * <code>ca.uhn.fhir.rest.api.EncodingEnum</code> type.
+         * Encoding to use for all request.
+         * The option is a <code>ca.uhn.fhir.rest.api.EncodingEnum</code> type.
+         * @group common
          */
         public T encoding(EncodingEnum encoding) {
             this.properties.put("encoding", encoding);
             return (T) this;
         }
         /**
-         * Encoding to use for all request. The option will be converted to a
+         * Encoding to use for all request.
+         * The option will be converted to a
          * <code>ca.uhn.fhir.rest.api.EncodingEnum</code> type.
+         * @group common
          */
         public T encoding(String encoding) {
             this.properties.put("encoding", encoding);
             return (T) this;
         }
         /**
-         * The FHIR Version to use. The option is a
-         * <code>ca.uhn.fhir.context.FhirVersionEnum</code> type.
+         * The FHIR Version to use.
+         * The option is a <code>ca.uhn.fhir.context.FhirVersionEnum</code>
+         * type.
+         * @group common
          */
         public T fhirVersion(FhirVersionEnum fhirVersion) {
             this.properties.put("fhirVersion", fhirVersion);
             return (T) this;
         }
         /**
-         * The FHIR Version to use. The option will be converted to a
+         * The FHIR Version to use.
+         * The option will be converted to a
          * <code>ca.uhn.fhir.context.FhirVersionEnum</code> type.
+         * @group common
          */
         public T fhirVersion(String fhirVersion) {
             this.properties.put("fhirVersion", fhirVersion);
@@ -102,45 +114,52 @@ public interface FhirEndpointBuilder {
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T inBody(String inBody) {
             this.properties.put("inBody", inBody);
             return (T) this;
         }
         /**
-         * Will log every requests and responses. The option is a
-         * <code>boolean</code> type.
+         * Will log every requests and responses.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T log(boolean log) {
             this.properties.put("log", log);
             return (T) this;
         }
         /**
-         * Will log every requests and responses. The option will be converted
-         * to a <code>boolean</code> type.
+         * Will log every requests and responses.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T log(String log) {
             this.properties.put("log", log);
             return (T) this;
         }
         /**
-         * Pretty print all request. The option is a <code>boolean</code> type.
+         * Pretty print all request.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T prettyPrint(boolean prettyPrint) {
             this.properties.put("prettyPrint", prettyPrint);
             return (T) this;
         }
         /**
-         * Pretty print all request. The option will be converted to a
-         * <code>boolean</code> type.
+         * Pretty print all request.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T prettyPrint(String prettyPrint) {
             this.properties.put("prettyPrint", prettyPrint);
             return (T) this;
         }
         /**
-         * The FHIR server base URL. The option is a
-         * <code>java.lang.String</code> type.
+         * The FHIR server base URL.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T serverUrl(String serverUrl) {
             this.properties.put("serverUrl", serverUrl);
@@ -148,8 +167,9 @@ public interface FhirEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -157,40 +177,46 @@ public interface FhirEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
             return (T) this;
         }
         /**
-         * Compresses outgoing (POST/PUT) contents to the GZIP format. The
-         * option is a <code>boolean</code> type.
+         * Compresses outgoing (POST/PUT) contents to the GZIP format.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T compress(boolean compress) {
             this.properties.put("compress", compress);
             return (T) this;
         }
         /**
-         * Compresses outgoing (POST/PUT) contents to the GZIP format. The
-         * option will be converted to a <code>boolean</code> type.
+         * Compresses outgoing (POST/PUT) contents to the GZIP format.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T compress(String compress) {
             this.properties.put("compress", compress);
             return (T) this;
         }
         /**
-         * How long to try and establish the initial TCP connection (in ms). The
-         * option is a <code>java.lang.Integer</code> type.
+         * How long to try and establish the initial TCP connection (in ms).
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group advanced
          */
         public T connectionTimeout(Integer connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
             return (T) this;
         }
         /**
-         * How long to try and establish the initial TCP connection (in ms). The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * How long to try and establish the initial TCP connection (in ms).
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group advanced
          */
         public T connectionTimeout(String connectionTimeout) {
             this.properties.put("connectionTimeout", connectionTimeout);
@@ -199,7 +225,9 @@ public interface FhirEndpointBuilder {
         /**
          * When this option is set, model classes will not be scanned for
          * children until the child list for the given type is actually
-         * accessed. The option is a <code>boolean</code> type.
+         * accessed.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T deferModelScanning(boolean deferModelScanning) {
             this.properties.put("deferModelScanning", deferModelScanning);
@@ -208,8 +236,9 @@ public interface FhirEndpointBuilder {
         /**
          * When this option is set, model classes will not be scanned for
          * children until the child list for the given type is actually
-         * accessed. The option will be converted to a <code>boolean</code>
-         * type.
+         * accessed.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T deferModelScanning(String deferModelScanning) {
             this.properties.put("deferModelScanning", deferModelScanning);
@@ -217,8 +246,9 @@ public interface FhirEndpointBuilder {
         }
         /**
          * FhirContext is an expensive object to create. To avoid creating
-         * multiple instances, it can be set directly. The option is a
-         * <code>ca.uhn.fhir.context.FhirContext</code> type.
+         * multiple instances, it can be set directly.
+         * The option is a <code>ca.uhn.fhir.context.FhirContext</code> type.
+         * @group advanced
          */
         public T fhirContext(Object fhirContext) {
             this.properties.put("fhirContext", fhirContext);
@@ -226,47 +256,56 @@ public interface FhirEndpointBuilder {
         }
         /**
          * FhirContext is an expensive object to create. To avoid creating
-         * multiple instances, it can be set directly. The option will be
-         * converted to a <code>ca.uhn.fhir.context.FhirContext</code> type.
+         * multiple instances, it can be set directly.
+         * The option will be converted to a
+         * <code>ca.uhn.fhir.context.FhirContext</code> type.
+         * @group advanced
          */
         public T fhirContext(String fhirContext) {
             this.properties.put("fhirContext", fhirContext);
             return (T) this;
         }
         /**
-         * Force conformance check. The option is a <code>boolean</code> type.
+         * Force conformance check.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T forceConformanceCheck(boolean forceConformanceCheck) {
             this.properties.put("forceConformanceCheck", forceConformanceCheck);
             return (T) this;
         }
         /**
-         * Force conformance check. The option will be converted to a
-         * <code>boolean</code> type.
+         * Force conformance check.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T forceConformanceCheck(String forceConformanceCheck) {
             this.properties.put("forceConformanceCheck", forceConformanceCheck);
             return (T) this;
         }
         /**
-         * HTTP session cookie to add to every request. The option is a
-         * <code>java.lang.String</code> type.
+         * HTTP session cookie to add to every request.
+         * The option is a <code>java.lang.String</code> type.
+         * @group advanced
          */
         public T sessionCookie(String sessionCookie) {
             this.properties.put("sessionCookie", sessionCookie);
             return (T) this;
         }
         /**
-         * How long to block for individual read/write operations (in ms). The
-         * option is a <code>java.lang.Integer</code> type.
+         * How long to block for individual read/write operations (in ms).
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group advanced
          */
         public T socketTimeout(Integer socketTimeout) {
             this.properties.put("socketTimeout", socketTimeout);
             return (T) this;
         }
         /**
-         * How long to block for individual read/write operations (in ms). The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * How long to block for individual read/write operations (in ms).
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group advanced
          */
         public T socketTimeout(String socketTimeout) {
             this.properties.put("socketTimeout", socketTimeout);
@@ -275,6 +314,7 @@ public interface FhirEndpointBuilder {
         /**
          * Request that the server modify the response using the _summary param.
          * The option is a <code>ca.uhn.fhir.rest.api.SummaryEnum</code> type.
+         * @group advanced
          */
         public T summary(SummaryEnum summary) {
             this.properties.put("summary", summary);
@@ -284,6 +324,7 @@ public interface FhirEndpointBuilder {
          * Request that the server modify the response using the _summary param.
          * The option will be converted to a
          * <code>ca.uhn.fhir.rest.api.SummaryEnum</code> type.
+         * @group advanced
          */
         public T summary(String summary) {
             this.properties.put("summary", summary);
@@ -291,8 +332,9 @@ public interface FhirEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -300,8 +342,9 @@ public interface FhirEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -312,6 +355,7 @@ public interface FhirEndpointBuilder {
          * The option is a
          * <code>ca.uhn.fhir.rest.client.api.ServerValidationModeEnum</code>
          * type.
+         * @group advanced
          */
         public T validationMode(ServerValidationModeEnum validationMode) {
             this.properties.put("validationMode", validationMode);
@@ -322,68 +366,80 @@ public interface FhirEndpointBuilder {
          * The option will be converted to a
          * <code>ca.uhn.fhir.rest.client.api.ServerValidationModeEnum</code>
          * type.
+         * @group advanced
          */
         public T validationMode(String validationMode) {
             this.properties.put("validationMode", validationMode);
             return (T) this;
         }
         /**
-         * The proxy host. The option is a <code>java.lang.String</code> type.
+         * The proxy host.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * The proxy password. The option is a <code>java.lang.String</code>
-         * type.
+         * The proxy password.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T proxyPassword(String proxyPassword) {
             this.properties.put("proxyPassword", proxyPassword);
             return (T) this;
         }
         /**
-         * The proxy port. The option is a <code>java.lang.Integer</code> type.
+         * The proxy port.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group proxy
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * The proxy port. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * The proxy port.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group proxy
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * The proxy username. The option is a <code>java.lang.String</code>
-         * type.
+         * The proxy username.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T proxyUser(String proxyUser) {
             this.properties.put("proxyUser", proxyUser);
             return (T) this;
         }
         /**
-         * OAuth access token. The option is a <code>java.lang.String</code>
-         * type.
+         * OAuth access token.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T accessToken(String accessToken) {
             this.properties.put("accessToken", accessToken);
             return (T) this;
         }
         /**
-         * Username to use for basic authentication. The option is a
-         * <code>java.lang.String</code> type.
+         * Username to use for basic authentication.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * Username to use for basic authentication. The option is a
-         * <code>java.lang.String</code> type.
+         * Username to use for basic authentication.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T username(String username) {
             this.properties.put("username", username);
@@ -409,7 +465,9 @@ public interface FhirEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public FhirConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -422,7 +480,9 @@ public interface FhirEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public FhirConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -432,8 +492,10 @@ public interface FhirEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public FhirConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -444,17 +506,19 @@ public interface FhirEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public FhirConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (FhirConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public FhirConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -462,9 +526,10 @@ public interface FhirEndpointBuilder {
             return (FhirConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public FhirConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

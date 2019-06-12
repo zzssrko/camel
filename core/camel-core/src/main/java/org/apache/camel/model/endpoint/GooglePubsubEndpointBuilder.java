@@ -42,14 +42,18 @@ public interface GooglePubsubEndpointBuilder {
             super("google-pubsub", path);
         }
         /**
-         * Project Id. The option is a <code>java.lang.String</code> type.
+         * Project Id.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T projectId(String projectId) {
             this.properties.put("projectId", projectId);
             return (T) this;
         }
         /**
-         * Destination Name. The option is a <code>java.lang.String</code> type.
+         * Destination Name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T destinationName(String destinationName) {
             this.properties.put("destinationName", destinationName);
@@ -57,8 +61,10 @@ public interface GooglePubsubEndpointBuilder {
         }
         /**
          * AUTO = exchange gets ack'ed/nack'ed on completion. NONE = downstream
-         * process has to ack/nack explicitly. The option is a
+         * process has to ack/nack explicitly.
+         * The option is a
          * <code>org.apache.camel.component.google.pubsub.GooglePubsubConstants$AckMode</code> type.
+         * @group common
          */
         public T ackMode(AckMode ackMode) {
             this.properties.put("ackMode", ackMode);
@@ -66,24 +72,29 @@ public interface GooglePubsubEndpointBuilder {
         }
         /**
          * AUTO = exchange gets ack'ed/nack'ed on completion. NONE = downstream
-         * process has to ack/nack explicitly. The option will be converted to a
+         * process has to ack/nack explicitly.
+         * The option will be converted to a
          * <code>org.apache.camel.component.google.pubsub.GooglePubsubConstants$AckMode</code> type.
+         * @group common
          */
         public T ackMode(String ackMode) {
             this.properties.put("ackMode", ackMode);
             return (T) this;
         }
         /**
-         * The number of parallel streams consuming from the subscription. The
-         * option is a <code>java.lang.Integer</code> type.
+         * The number of parallel streams consuming from the subscription.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T concurrentConsumers(Integer concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
             return (T) this;
         }
         /**
-         * The number of parallel streams consuming from the subscription. The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * The number of parallel streams consuming from the subscription.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T concurrentConsumers(String concurrentConsumers) {
             this.properties.put("concurrentConsumers", concurrentConsumers);
@@ -91,8 +102,10 @@ public interface GooglePubsubEndpointBuilder {
         }
         /**
          * ConnectionFactory to obtain connection to PubSub Service. If non
-         * provided the default will be used. The option is a
+         * provided the default will be used.
+         * The option is a
          * <code>org.apache.camel.component.google.pubsub.GooglePubsubConnectionFactory</code> type.
+         * @group common
          */
         public T connectionFactory(Object connectionFactory) {
             this.properties.put("connectionFactory", connectionFactory);
@@ -100,16 +113,19 @@ public interface GooglePubsubEndpointBuilder {
         }
         /**
          * ConnectionFactory to obtain connection to PubSub Service. If non
-         * provided the default will be used. The option will be converted to a
+         * provided the default will be used.
+         * The option will be converted to a
          * <code>org.apache.camel.component.google.pubsub.GooglePubsubConnectionFactory</code> type.
+         * @group common
          */
         public T connectionFactory(String connectionFactory) {
             this.properties.put("connectionFactory", connectionFactory);
             return (T) this;
         }
         /**
-         * Logger ID to use when a match to the parent route required. The
-         * option is a <code>java.lang.String</code> type.
+         * Logger ID to use when a match to the parent route required.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T loggerId(String loggerId) {
             this.properties.put("loggerId", loggerId);
@@ -117,7 +133,9 @@ public interface GooglePubsubEndpointBuilder {
         }
         /**
          * The max number of messages to receive from the server in a single API
-         * call. The option is a <code>java.lang.Integer</code> type.
+         * call.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T maxMessagesPerPoll(Integer maxMessagesPerPoll) {
             this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
@@ -125,8 +143,10 @@ public interface GooglePubsubEndpointBuilder {
         }
         /**
          * The max number of messages to receive from the server in a single API
-         * call. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * call.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T maxMessagesPerPoll(String maxMessagesPerPoll) {
             this.properties.put("maxMessagesPerPoll", maxMessagesPerPoll);
@@ -134,8 +154,9 @@ public interface GooglePubsubEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -143,8 +164,9 @@ public interface GooglePubsubEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -152,8 +174,9 @@ public interface GooglePubsubEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -161,8 +184,9 @@ public interface GooglePubsubEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -188,7 +212,9 @@ public interface GooglePubsubEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public GooglePubsubConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -202,7 +228,9 @@ public interface GooglePubsubEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public GooglePubsubConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -213,8 +241,10 @@ public interface GooglePubsubEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public GooglePubsubConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -225,9 +255,10 @@ public interface GooglePubsubEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public GooglePubsubConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -235,8 +266,9 @@ public interface GooglePubsubEndpointBuilder {
             return (GooglePubsubConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public GooglePubsubConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -244,9 +276,10 @@ public interface GooglePubsubEndpointBuilder {
             return (GooglePubsubConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public GooglePubsubConsumerBuilder exchangePattern(
                 String exchangePattern) {

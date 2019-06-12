@@ -41,8 +41,9 @@ public interface GeoCoderEndpointBuilder {
             super("geocoder", path);
         }
         /**
-         * The geo address which should be prefixed with address:. The option is
-         * a <code>java.lang.String</code> type.
+         * The geo address which should be prefixed with address:.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T address(String address) {
             this.properties.put("address", address);
@@ -51,6 +52,7 @@ public interface GeoCoderEndpointBuilder {
         /**
          * The geo latitude and longitude which should be prefixed with latlng:.
          * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T latlng(String latlng) {
             this.properties.put("latlng", latlng);
@@ -58,7 +60,9 @@ public interface GeoCoderEndpointBuilder {
         }
         /**
          * Whether to only enrich the Exchange with headers, and leave the body
-         * as-is. The option is a <code>boolean</code> type.
+         * as-is.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T headersOnly(boolean headersOnly) {
             this.properties.put("headersOnly", headersOnly);
@@ -66,15 +70,18 @@ public interface GeoCoderEndpointBuilder {
         }
         /**
          * Whether to only enrich the Exchange with headers, and leave the body
-         * as-is. The option will be converted to a <code>boolean</code> type.
+         * as-is.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T headersOnly(String headersOnly) {
             this.properties.put("headersOnly", headersOnly);
             return (T) this;
         }
         /**
-         * The language to use. The option is a <code>java.lang.String</code>
-         * type.
+         * The language to use.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T language(String language) {
             this.properties.put("language", language);
@@ -82,8 +89,9 @@ public interface GeoCoderEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -91,8 +99,9 @@ public interface GeoCoderEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -100,8 +109,9 @@ public interface GeoCoderEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -109,96 +119,109 @@ public interface GeoCoderEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * Domain for proxy NTML authentication. The option is a
-         * <code>java.lang.String</code> type.
+         * Domain for proxy NTML authentication.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T proxyAuthDomain(String proxyAuthDomain) {
             this.properties.put("proxyAuthDomain", proxyAuthDomain);
             return (T) this;
         }
         /**
-         * Optional host for proxy NTML authentication. The option is a
-         * <code>java.lang.String</code> type.
+         * Optional host for proxy NTML authentication.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T proxyAuthHost(String proxyAuthHost) {
             this.properties.put("proxyAuthHost", proxyAuthHost);
             return (T) this;
         }
         /**
-         * Authentication method for proxy, either as Basic, Digest or NTLM. The
-         * option is a <code>java.lang.String</code> type.
+         * Authentication method for proxy, either as Basic, Digest or NTLM.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T proxyAuthMethod(String proxyAuthMethod) {
             this.properties.put("proxyAuthMethod", proxyAuthMethod);
             return (T) this;
         }
         /**
-         * Password for proxy authentication. The option is a
-         * <code>java.lang.String</code> type.
+         * Password for proxy authentication.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T proxyAuthPassword(String proxyAuthPassword) {
             this.properties.put("proxyAuthPassword", proxyAuthPassword);
             return (T) this;
         }
         /**
-         * Username for proxy authentication. The option is a
-         * <code>java.lang.String</code> type.
+         * Username for proxy authentication.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T proxyAuthUsername(String proxyAuthUsername) {
             this.properties.put("proxyAuthUsername", proxyAuthUsername);
             return (T) this;
         }
         /**
-         * The proxy host name. The option is a <code>java.lang.String</code>
-         * type.
+         * The proxy host name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group proxy
          */
         public T proxyHost(String proxyHost) {
             this.properties.put("proxyHost", proxyHost);
             return (T) this;
         }
         /**
-         * The proxy port number. The option is a <code>java.lang.Integer</code>
-         * type.
+         * The proxy port number.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group proxy
          */
         public T proxyPort(Integer proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * The proxy port number. The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * The proxy port number.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group proxy
          */
         public T proxyPort(String proxyPort) {
             this.properties.put("proxyPort", proxyPort);
             return (T) this;
         }
         /**
-         * To use google apiKey. The option is a <code>java.lang.String</code>
-         * type.
+         * To use google apiKey.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T apiKey(String apiKey) {
             this.properties.put("apiKey", apiKey);
             return (T) this;
         }
         /**
-         * To use google premium with this client id. The option is a
-         * <code>java.lang.String</code> type.
+         * To use google premium with this client id.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T clientId(String clientId) {
             this.properties.put("clientId", clientId);
             return (T) this;
         }
         /**
-         * To use google premium with this client key. The option is a
-         * <code>java.lang.String</code> type.
+         * To use google premium with this client key.
+         * The option is a <code>java.lang.String</code> type.
+         * @group security
          */
         public T clientKey(String clientKey) {
             this.properties.put("clientKey", clientKey);

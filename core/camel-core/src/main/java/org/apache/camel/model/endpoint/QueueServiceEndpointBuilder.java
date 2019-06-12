@@ -43,41 +43,49 @@ public interface QueueServiceEndpointBuilder {
             super("azure-queue", path);
         }
         /**
-         * Container Queue compact Uri. The option is a
-         * <code>java.lang.String</code> type.
+         * Container Queue compact Uri.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T containerAndQueueUri(String containerAndQueueUri) {
             this.properties.put("containerAndQueueUri", containerAndQueueUri);
             return (T) this;
         }
         /**
-         * The queue service client. The option is a
+         * The queue service client.
+         * The option is a
          * <code>com.microsoft.azure.storage.queue.CloudQueue</code> type.
+         * @group common
          */
         public T azureQueueClient(Object azureQueueClient) {
             this.properties.put("azureQueueClient", azureQueueClient);
             return (T) this;
         }
         /**
-         * The queue service client. The option will be converted to a
+         * The queue service client.
+         * The option will be converted to a
          * <code>com.microsoft.azure.storage.queue.CloudQueue</code> type.
+         * @group common
          */
         public T azureQueueClient(String azureQueueClient) {
             this.properties.put("azureQueueClient", azureQueueClient);
             return (T) this;
         }
         /**
-         * Set the storage credentials, required in most cases. The option is a
+         * Set the storage credentials, required in most cases.
+         * The option is a
          * <code>com.microsoft.azure.storage.StorageCredentials</code> type.
+         * @group common
          */
         public T credentials(Object credentials) {
             this.properties.put("credentials", credentials);
             return (T) this;
         }
         /**
-         * Set the storage credentials, required in most cases. The option will
-         * be converted to a
+         * Set the storage credentials, required in most cases.
+         * The option will be converted to a
          * <code>com.microsoft.azure.storage.StorageCredentials</code> type.
+         * @group common
          */
         public T credentials(String credentials) {
             this.properties.put("credentials", credentials);
@@ -85,8 +93,9 @@ public interface QueueServiceEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -94,8 +103,9 @@ public interface QueueServiceEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -103,8 +113,9 @@ public interface QueueServiceEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -112,8 +123,9 @@ public interface QueueServiceEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -140,7 +152,9 @@ public interface QueueServiceEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public QueueServiceConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -154,7 +168,9 @@ public interface QueueServiceEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public QueueServiceConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -165,8 +181,10 @@ public interface QueueServiceEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public QueueServiceConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -177,9 +195,10 @@ public interface QueueServiceEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public QueueServiceConsumerBuilder exceptionHandler(
                 String exceptionHandler) {
@@ -187,8 +206,9 @@ public interface QueueServiceEndpointBuilder {
             return (QueueServiceConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public QueueServiceConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -196,9 +216,10 @@ public interface QueueServiceEndpointBuilder {
             return (QueueServiceConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public QueueServiceConsumerBuilder exchangePattern(
                 String exchangePattern) {
@@ -220,8 +241,9 @@ public interface QueueServiceEndpointBuilder {
             super(path);
         }
         /**
-         * Message Time To Live in seconds. The option is a <code>int</code>
-         * type.
+         * Message Time To Live in seconds.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public QueueServiceProducerBuilder messageTimeToLive(
                 int messageTimeToLive) {
@@ -229,8 +251,9 @@ public interface QueueServiceEndpointBuilder {
             return (QueueServiceProducerBuilder) this;
         }
         /**
-         * Message Time To Live in seconds. The option will be converted to a
-         * <code>int</code> type.
+         * Message Time To Live in seconds.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public QueueServiceProducerBuilder messageTimeToLive(
                 String messageTimeToLive) {
@@ -238,8 +261,9 @@ public interface QueueServiceEndpointBuilder {
             return (QueueServiceProducerBuilder) this;
         }
         /**
-         * Message Visibility Delay in seconds. The option is a <code>int</code>
-         * type.
+         * Message Visibility Delay in seconds.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public QueueServiceProducerBuilder messageVisibilityDelay(
                 int messageVisibilityDelay) {
@@ -247,8 +271,9 @@ public interface QueueServiceEndpointBuilder {
             return (QueueServiceProducerBuilder) this;
         }
         /**
-         * Message Visibility Delay in seconds. The option will be converted to
-         * a <code>int</code> type.
+         * Message Visibility Delay in seconds.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public QueueServiceProducerBuilder messageVisibilityDelay(
                 String messageVisibilityDelay) {
@@ -256,8 +281,10 @@ public interface QueueServiceEndpointBuilder {
             return (QueueServiceProducerBuilder) this;
         }
         /**
-         * Queue service operation hint to the producer. The option is a
+         * Queue service operation hint to the producer.
+         * The option is a
          * <code>org.apache.camel.component.azure.queue.QueueServiceOperations</code> type.
+         * @group producer
          */
         public QueueServiceProducerBuilder operation(
                 QueueServiceOperations operation) {
@@ -265,17 +292,19 @@ public interface QueueServiceEndpointBuilder {
             return (QueueServiceProducerBuilder) this;
         }
         /**
-         * Queue service operation hint to the producer. The option will be
-         * converted to a
+         * Queue service operation hint to the producer.
+         * The option will be converted to a
          * <code>org.apache.camel.component.azure.queue.QueueServiceOperations</code> type.
+         * @group producer
          */
         public QueueServiceProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);
             return (QueueServiceProducerBuilder) this;
         }
         /**
-         * Set a prefix which can be used for listing the queues. The option is
-         * a <code>java.lang.String</code> type.
+         * Set a prefix which can be used for listing the queues.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public QueueServiceProducerBuilder queuePrefix(String queuePrefix) {
             this.properties.put("queuePrefix", queuePrefix);

@@ -42,8 +42,9 @@ public interface GridFsEndpointBuilder {
             super("mongodb-gridfs", path);
         }
         /**
-         * Name of com.mongodb.Mongo to use. The option is a
-         * <code>java.lang.String</code> type.
+         * Name of com.mongodb.Mongo to use.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T connectionBean(String connectionBean) {
             this.properties.put("connectionBean", connectionBean);
@@ -51,15 +52,18 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * Sets the name of the GridFS bucket within the database. Default is
-         * fs. The option is a <code>java.lang.String</code> type.
+         * fs.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T bucket(String bucket) {
             this.properties.put("bucket", bucket);
             return (T) this;
         }
         /**
-         * Sets the name of the MongoDB database to target. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the name of the MongoDB database to target.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T database(String database) {
             this.properties.put("database", database);
@@ -71,7 +75,9 @@ public interface GridFsEndpointBuilder {
          * setting. The com.mongodb.ReadPreference#valueOf(String) utility
          * method is used to resolve the passed readPreference value. Some
          * examples for the possible values are nearest, primary or secondary
-         * etc. The option is a <code>com.mongodb.ReadPreference</code> type.
+         * etc.
+         * The option is a <code>com.mongodb.ReadPreference</code> type.
+         * @group common
          */
         public T readPreference(Object readPreference) {
             this.properties.put("readPreference", readPreference);
@@ -83,8 +89,10 @@ public interface GridFsEndpointBuilder {
          * setting. The com.mongodb.ReadPreference#valueOf(String) utility
          * method is used to resolve the passed readPreference value. Some
          * examples for the possible values are nearest, primary or secondary
-         * etc. The option will be converted to a
+         * etc.
+         * The option will be converted to a
          * <code>com.mongodb.ReadPreference</code> type.
+         * @group common
          */
         public T readPreference(String readPreference) {
             this.properties.put("readPreference", readPreference);
@@ -93,8 +101,9 @@ public interface GridFsEndpointBuilder {
         /**
          * Set the WriteConcern for write operations on MongoDB using the
          * standard ones. Resolved from the fields of the WriteConcern class by
-         * calling the WriteConcern#valueOf(String) method. The option is a
-         * <code>com.mongodb.WriteConcern</code> type.
+         * calling the WriteConcern#valueOf(String) method.
+         * The option is a <code>com.mongodb.WriteConcern</code> type.
+         * @group common
          */
         public T writeConcern(Object writeConcern) {
             this.properties.put("writeConcern", writeConcern);
@@ -103,8 +112,10 @@ public interface GridFsEndpointBuilder {
         /**
          * Set the WriteConcern for write operations on MongoDB using the
          * standard ones. Resolved from the fields of the WriteConcern class by
-         * calling the WriteConcern#valueOf(String) method. The option will be
-         * converted to a <code>com.mongodb.WriteConcern</code> type.
+         * calling the WriteConcern#valueOf(String) method.
+         * The option will be converted to a
+         * <code>com.mongodb.WriteConcern</code> type.
+         * @group common
          */
         public T writeConcern(String writeConcern) {
             this.properties.put("writeConcern", writeConcern);
@@ -114,8 +125,9 @@ public interface GridFsEndpointBuilder {
          * Set the WriteConcern for write operations on MongoDB, passing in the
          * bean ref to a custom WriteConcern which exists in the Registry. You
          * can also use standard WriteConcerns by passing in their key. See the
-         * {link #setWriteConcern(String) setWriteConcern} method. The option is
-         * a <code>com.mongodb.WriteConcern</code> type.
+         * {link #setWriteConcern(String) setWriteConcern} method.
+         * The option is a <code>com.mongodb.WriteConcern</code> type.
+         * @group common
          */
         public T writeConcernRef(Object writeConcernRef) {
             this.properties.put("writeConcernRef", writeConcernRef);
@@ -125,8 +137,10 @@ public interface GridFsEndpointBuilder {
          * Set the WriteConcern for write operations on MongoDB, passing in the
          * bean ref to a custom WriteConcern which exists in the Registry. You
          * can also use standard WriteConcerns by passing in their key. See the
-         * {link #setWriteConcern(String) setWriteConcern} method. The option
-         * will be converted to a <code>com.mongodb.WriteConcern</code> type.
+         * {link #setWriteConcern(String) setWriteConcern} method.
+         * The option will be converted to a
+         * <code>com.mongodb.WriteConcern</code> type.
+         * @group common
          */
         public T writeConcernRef(String writeConcernRef) {
             this.properties.put("writeConcernRef", writeConcernRef);
@@ -134,8 +148,9 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -143,8 +158,9 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -152,8 +168,9 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -161,8 +178,9 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -188,7 +206,9 @@ public interface GridFsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public GridFsConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -202,7 +222,9 @@ public interface GridFsEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public GridFsConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -212,6 +234,7 @@ public interface GridFsEndpointBuilder {
         /**
          * Sets the delay between polls within the Consumer. Default is 500ms.
          * The option is a <code>long</code> type.
+         * @group consumer
          */
         public GridFsConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -220,6 +243,7 @@ public interface GridFsEndpointBuilder {
         /**
          * Sets the delay between polls within the Consumer. Default is 500ms.
          * The option will be converted to a <code>long</code> type.
+         * @group consumer
          */
         public GridFsConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -227,8 +251,9 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * If the QueryType uses a FileAttribute, this sets the name of the
-         * attribute that is used. Default is camel-processed. The option is a
-         * <code>java.lang.String</code> type.
+         * attribute that is used. Default is camel-processed.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public GridFsConsumerBuilder fileAttributeName(String fileAttributeName) {
             this.properties.put("fileAttributeName", fileAttributeName);
@@ -236,7 +261,9 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * Sets the initialDelay before the consumer will start polling. Default
-         * is 1000ms. The option is a <code>long</code> type.
+         * is 1000ms.
+         * The option is a <code>long</code> type.
+         * @group consumer
          */
         public GridFsConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -244,7 +271,9 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * Sets the initialDelay before the consumer will start polling. Default
-         * is 1000ms. The option will be converted to a <code>long</code> type.
+         * is 1000ms.
+         * The option will be converted to a <code>long</code> type.
+         * @group consumer
          */
         public GridFsConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -252,8 +281,9 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * If the QueryType uses a persistent timestamp, this sets the name of
-         * the collection within the DB to store the timestamp. The option is a
-         * <code>java.lang.String</code> type.
+         * the collection within the DB to store the timestamp.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public GridFsConsumerBuilder persistentTSCollection(
                 String persistentTSCollection) {
@@ -262,8 +292,9 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * If the QueryType uses a persistent timestamp, this is the ID of the
-         * object in the collection to store the timestamp. The option is a
-         * <code>java.lang.String</code> type.
+         * object in the collection to store the timestamp.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public GridFsConsumerBuilder persistentTSObject(
                 String persistentTSObject) {
@@ -272,8 +303,9 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * Additional query parameters (in JSON) that are used to configure the
-         * query used for finding files in the GridFsConsumer. The option is a
-         * <code>java.lang.String</code> type.
+         * query used for finding files in the GridFsConsumer.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public GridFsConsumerBuilder query(String query) {
             this.properties.put("query", query);
@@ -281,9 +313,11 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * Sets the QueryStrategy that is used for polling for new files.
-         * Default is Timestamp. The option is a
+         * Default is Timestamp.
+         * The option is a
          * <code>org.apache.camel.component.mongodb.gridfs.QueryStrategy</code>
          * type.
+         * @group consumer
          */
         public GridFsConsumerBuilder queryStrategy(QueryStrategy queryStrategy) {
             this.properties.put("queryStrategy", queryStrategy);
@@ -291,9 +325,11 @@ public interface GridFsEndpointBuilder {
         }
         /**
          * Sets the QueryStrategy that is used for polling for new files.
-         * Default is Timestamp. The option will be converted to a
+         * Default is Timestamp.
+         * The option will be converted to a
          * <code>org.apache.camel.component.mongodb.gridfs.QueryStrategy</code>
          * type.
+         * @group consumer
          */
         public GridFsConsumerBuilder queryStrategy(String queryStrategy) {
             this.properties.put("queryStrategy", queryStrategy);
@@ -303,8 +339,10 @@ public interface GridFsEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public GridFsConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -315,17 +353,19 @@ public interface GridFsEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public GridFsConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (GridFsConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public GridFsConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -333,9 +373,10 @@ public interface GridFsEndpointBuilder {
             return (GridFsConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public GridFsConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -355,8 +396,9 @@ public interface GridFsEndpointBuilder {
             super(path);
         }
         /**
-         * Sets the operation this endpoint will execute against GridRS. The
-         * option is a <code>java.lang.String</code> type.
+         * Sets the operation this endpoint will execute against GridRS.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public GridFsProducerBuilder operation(String operation) {
             this.properties.put("operation", operation);

@@ -40,70 +40,82 @@ public interface PrinterEndpointBuilder {
             super("lpr", path);
         }
         /**
-         * Hostname of the printer. The option is a
-         * <code>java.lang.String</code> type.
+         * Hostname of the printer.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T hostname(String hostname) {
             this.properties.put("hostname", hostname);
             return (T) this;
         }
         /**
-         * Port number of the printer. The option is a <code>int</code> type.
+         * Port number of the printer.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T port(int port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Port number of the printer. The option will be converted to a
-         * <code>int</code> type.
+         * Port number of the printer.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T port(String port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Name of the printer. The option is a <code>java.lang.String</code>
-         * type.
+         * Name of the printer.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T printername(String printername) {
             this.properties.put("printername", printername);
             return (T) this;
         }
         /**
-         * Number of copies to print. The option is a <code>int</code> type.
+         * Number of copies to print.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T copies(int copies) {
             this.properties.put("copies", copies);
             return (T) this;
         }
         /**
-         * Number of copies to print. The option will be converted to a
-         * <code>int</code> type.
+         * Number of copies to print.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T copies(String copies) {
             this.properties.put("copies", copies);
             return (T) this;
         }
         /**
-         * Sets DocFlavor to use. The option is a
-         * <code>javax.print.DocFlavor</code> type.
+         * Sets DocFlavor to use.
+         * The option is a <code>javax.print.DocFlavor</code> type.
+         * @group producer
          */
         public T docFlavor(Object docFlavor) {
             this.properties.put("docFlavor", docFlavor);
             return (T) this;
         }
         /**
-         * Sets DocFlavor to use. The option will be converted to a
-         * <code>javax.print.DocFlavor</code> type.
+         * Sets DocFlavor to use.
+         * The option will be converted to a <code>javax.print.DocFlavor</code>
+         * type.
+         * @group producer
          */
         public T docFlavor(String docFlavor) {
             this.properties.put("docFlavor", docFlavor);
             return (T) this;
         }
         /**
-         * Sets DocFlavor to use. The option is a <code>java.lang.String</code>
-         * type.
+         * Sets DocFlavor to use.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T flavor(String flavor) {
             this.properties.put("flavor", flavor);
@@ -113,8 +125,9 @@ public interface PrinterEndpointBuilder {
          * Sets the stationary as defined by enumeration names in the
          * javax.print.attribute.standard.MediaSizeName API. The default setting
          * is to use North American Letter sized stationary. The value's case is
-         * ignored, e.g. values of iso_a4 and ISO_A4 may be used. The option is
-         * a <code>java.lang.String</code> type.
+         * ignored, e.g. values of iso_a4 and ISO_A4 may be used.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T mediaSize(String mediaSize) {
             this.properties.put("mediaSize", mediaSize);
@@ -122,24 +135,27 @@ public interface PrinterEndpointBuilder {
         }
         /**
          * Sets MediaTray supported by the javax.print.DocFlavor API, for
-         * example upper,middle etc. The option is a
-         * <code>java.lang.String</code> type.
+         * example upper,middle etc.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T mediaTray(String mediaTray) {
             this.properties.put("mediaTray", mediaTray);
             return (T) this;
         }
         /**
-         * Sets mimeTypes supported by the javax.print.DocFlavor API. The option
-         * is a <code>java.lang.String</code> type.
+         * Sets mimeTypes supported by the javax.print.DocFlavor API.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T mimeType(String mimeType) {
             this.properties.put("mimeType", mimeType);
             return (T) this;
         }
         /**
-         * Sets the page orientation. The option is a
-         * <code>java.lang.String</code> type.
+         * Sets the page orientation.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T orientation(String orientation) {
             this.properties.put("orientation", orientation);
@@ -147,8 +163,9 @@ public interface PrinterEndpointBuilder {
         }
         /**
          * Sets the prefix name of the printer, it is useful when the printer
-         * name does not start with //hostname/printer. The option is a
-         * <code>java.lang.String</code> type.
+         * name does not start with //hostname/printer.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T printerPrefix(String printerPrefix) {
             this.properties.put("printerPrefix", printerPrefix);
@@ -156,7 +173,9 @@ public interface PrinterEndpointBuilder {
         }
         /**
          * etting this option to false prevents sending of the print data to the
-         * printer. The option is a <code>boolean</code> type.
+         * printer.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T sendToPrinter(boolean sendToPrinter) {
             this.properties.put("sendToPrinter", sendToPrinter);
@@ -164,7 +183,9 @@ public interface PrinterEndpointBuilder {
         }
         /**
          * etting this option to false prevents sending of the print data to the
-         * printer. The option will be converted to a <code>boolean</code> type.
+         * printer.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T sendToPrinter(String sendToPrinter) {
             this.properties.put("sendToPrinter", sendToPrinter);
@@ -172,8 +193,9 @@ public interface PrinterEndpointBuilder {
         }
         /**
          * Sets one sided or two sided printing based on the
-         * javax.print.attribute.standard.Sides API. The option is a
-         * <code>java.lang.String</code> type.
+         * javax.print.attribute.standard.Sides API.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T sides(String sides) {
             this.properties.put("sides", sides);
@@ -181,8 +203,9 @@ public interface PrinterEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -190,8 +213,9 @@ public interface PrinterEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -199,8 +223,9 @@ public interface PrinterEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -208,8 +233,9 @@ public interface PrinterEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

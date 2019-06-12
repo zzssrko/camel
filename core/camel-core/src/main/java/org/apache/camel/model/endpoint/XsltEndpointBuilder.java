@@ -47,24 +47,27 @@ public interface XsltEndpointBuilder {
          * protocols (classpath is default). ref will lookup the resource in the
          * registry. bean will call a method on a bean to be used as the
          * resource. For bean you can specify the method name after dot, eg
-         * bean:myBean.myMethod. The option is a <code>java.lang.String</code>
-         * type.
+         * bean:myBean.myMethod.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
             return (T) this;
         }
         /**
-         * Whether to allow using StAX as the javax.xml.transform.Source. The
-         * option is a <code>boolean</code> type.
+         * Whether to allow using StAX as the javax.xml.transform.Source.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T allowStAX(boolean allowStAX) {
             this.properties.put("allowStAX", allowStAX);
             return (T) this;
         }
         /**
-         * Whether to allow using StAX as the javax.xml.transform.Source. The
-         * option will be converted to a <code>boolean</code> type.
+         * Whether to allow using StAX as the javax.xml.transform.Source.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T allowStAX(String allowStAX) {
             this.properties.put("allowStAX", allowStAX);
@@ -75,8 +78,9 @@ public interface XsltEndpointBuilder {
          * loaded. If set to false Camel will reload the stylesheet file on each
          * message processing. This is good for development. A cached stylesheet
          * can be forced to reload at runtime via JMX using the
-         * clearCachedStylesheet operation. The option is a <code>boolean</code>
-         * type.
+         * clearCachedStylesheet operation.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(boolean contentCache) {
             this.properties.put("contentCache", contentCache);
@@ -87,8 +91,9 @@ public interface XsltEndpointBuilder {
          * loaded. If set to false Camel will reload the stylesheet file on each
          * message processing. This is good for development. A cached stylesheet
          * can be forced to reload at runtime via JMX using the
-         * clearCachedStylesheet operation. The option will be converted to a
-         * <code>boolean</code> type.
+         * clearCachedStylesheet operation.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T contentCache(String contentCache) {
             this.properties.put("contentCache", contentCache);
@@ -98,8 +103,9 @@ public interface XsltEndpointBuilder {
          * If you have output=file then this option dictates whether or not the
          * output file should be deleted when the Exchange is done processing.
          * For example suppose the output file is a temporary file, then it can
-         * be a good idea to delete it after use. The option is a
-         * <code>boolean</code> type.
+         * be a good idea to delete it after use.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T deleteOutputFile(boolean deleteOutputFile) {
             this.properties.put("deleteOutputFile", deleteOutputFile);
@@ -109,24 +115,27 @@ public interface XsltEndpointBuilder {
          * If you have output=file then this option dictates whether or not the
          * output file should be deleted when the Exchange is done processing.
          * For example suppose the output file is a temporary file, then it can
-         * be a good idea to delete it after use. The option will be converted
-         * to a <code>boolean</code> type.
+         * be a good idea to delete it after use.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T deleteOutputFile(String deleteOutputFile) {
             this.properties.put("deleteOutputFile", deleteOutputFile);
             return (T) this;
         }
         /**
-         * Whether or not to throw an exception if the input body is null. The
-         * option is a <code>boolean</code> type.
+         * Whether or not to throw an exception if the input body is null.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T failOnNullBody(boolean failOnNullBody) {
             this.properties.put("failOnNullBody", failOnNullBody);
             return (T) this;
         }
         /**
-         * Whether or not to throw an exception if the input body is null. The
-         * option will be converted to a <code>boolean</code> type.
+         * Whether or not to throw an exception if the input body is null.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T failOnNullBody(String failOnNullBody) {
             this.properties.put("failOnNullBody", failOnNullBody);
@@ -139,8 +148,10 @@ public interface XsltEndpointBuilder {
          * you must specify the filename in the IN header with the key
          * Exchange.XSLT_FILE_NAME which is also CamelXsltFileName. Also any
          * paths leading to the filename must be created beforehand, otherwise
-         * an exception is thrown at runtime. The option is a
+         * an exception is thrown at runtime.
+         * The option is a
          * <code>org.apache.camel.component.xslt.XsltOutput</code> type.
+         * @group producer
          */
         public T output(XsltOutput output) {
             this.properties.put("output", output);
@@ -153,8 +164,10 @@ public interface XsltEndpointBuilder {
          * you must specify the filename in the IN header with the key
          * Exchange.XSLT_FILE_NAME which is also CamelXsltFileName. Also any
          * paths leading to the filename must be created beforehand, otherwise
-         * an exception is thrown at runtime. The option will be converted to a
+         * an exception is thrown at runtime.
+         * The option will be converted to a
          * <code>org.apache.camel.component.xslt.XsltOutput</code> type.
+         * @group producer
          */
         public T output(String output) {
             this.properties.put("output", output);
@@ -163,7 +176,9 @@ public interface XsltEndpointBuilder {
         /**
          * Whether to use Saxon as the transformerFactoryClass. If enabled then
          * the class net.sf.saxon.TransformerFactoryImpl. You would need to add
-         * Saxon to the classpath. The option is a <code>boolean</code> type.
+         * Saxon to the classpath.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T saxon(boolean saxon) {
             this.properties.put("saxon", saxon);
@@ -172,8 +187,9 @@ public interface XsltEndpointBuilder {
         /**
          * Whether to use Saxon as the transformerFactoryClass. If enabled then
          * the class net.sf.saxon.TransformerFactoryImpl. You would need to add
-         * Saxon to the classpath. The option will be converted to a
-         * <code>boolean</code> type.
+         * Saxon to the classpath.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T saxon(String saxon) {
             this.properties.put("saxon", saxon);
@@ -181,8 +197,9 @@ public interface XsltEndpointBuilder {
         }
         /**
          * The number of javax.xml.transform.Transformer object that are cached
-         * for reuse to avoid calls to Template.newTransformer(). The option is
-         * a <code>int</code> type.
+         * for reuse to avoid calls to Template.newTransformer().
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public T transformerCacheSize(int transformerCacheSize) {
             this.properties.put("transformerCacheSize", transformerCacheSize);
@@ -190,8 +207,9 @@ public interface XsltEndpointBuilder {
         }
         /**
          * The number of javax.xml.transform.Transformer object that are cached
-         * for reuse to avoid calls to Template.newTransformer(). The option
-         * will be converted to a <code>int</code> type.
+         * for reuse to avoid calls to Template.newTransformer().
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public T transformerCacheSize(String transformerCacheSize) {
             this.properties.put("transformerCacheSize", transformerCacheSize);
@@ -199,8 +217,9 @@ public interface XsltEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -208,8 +227,9 @@ public interface XsltEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -217,8 +237,9 @@ public interface XsltEndpointBuilder {
         }
         /**
          * To use a custom org.xml.sax.EntityResolver with
-         * javax.xml.transform.sax.SAXSource. The option is a
-         * <code>org.xml.sax.EntityResolver</code> type.
+         * javax.xml.transform.sax.SAXSource.
+         * The option is a <code>org.xml.sax.EntityResolver</code> type.
+         * @group advanced
          */
         public T entityResolver(Object entityResolver) {
             this.properties.put("entityResolver", entityResolver);
@@ -226,8 +247,10 @@ public interface XsltEndpointBuilder {
         }
         /**
          * To use a custom org.xml.sax.EntityResolver with
-         * javax.xml.transform.sax.SAXSource. The option will be converted to a
+         * javax.xml.transform.sax.SAXSource.
+         * The option will be converted to a
          * <code>org.xml.sax.EntityResolver</code> type.
+         * @group advanced
          */
         public T entityResolver(String entityResolver) {
             this.properties.put("entityResolver", entityResolver);
@@ -238,8 +261,9 @@ public interface XsltEndpointBuilder {
          * javax.xml.transform.ErrorListener. Beware when doing this then the
          * default error listener which captures any errors or fatal errors and
          * store information on the Exchange as properties is not in use. So
-         * only use this option for special use-cases. The option is a
-         * <code>javax.xml.transform.ErrorListener</code> type.
+         * only use this option for special use-cases.
+         * The option is a <code>javax.xml.transform.ErrorListener</code> type.
+         * @group advanced
          */
         public T errorListener(Object errorListener) {
             this.properties.put("errorListener", errorListener);
@@ -250,8 +274,10 @@ public interface XsltEndpointBuilder {
          * javax.xml.transform.ErrorListener. Beware when doing this then the
          * default error listener which captures any errors or fatal errors and
          * store information on the Exchange as properties is not in use. So
-         * only use this option for special use-cases. The option will be
-         * converted to a <code>javax.xml.transform.ErrorListener</code> type.
+         * only use this option for special use-cases.
+         * The option will be converted to a
+         * <code>javax.xml.transform.ErrorListener</code> type.
+         * @group advanced
          */
         public T errorListener(String errorListener) {
             this.properties.put("errorListener", errorListener);
@@ -260,10 +286,11 @@ public interface XsltEndpointBuilder {
         /**
          * Allows you to use a custom
          * org.apache.camel.builder.xml.ResultHandlerFactory which is capable of
-         * using custom org.apache.camel.builder.xml.ResultHandler types. The
-         * option is a
+         * using custom org.apache.camel.builder.xml.ResultHandler types.
+         * The option is a
          * <code>org.apache.camel.component.xslt.ResultHandlerFactory</code>
          * type.
+         * @group advanced
          */
         public T resultHandlerFactory(Object resultHandlerFactory) {
             this.properties.put("resultHandlerFactory", resultHandlerFactory);
@@ -272,26 +299,29 @@ public interface XsltEndpointBuilder {
         /**
          * Allows you to use a custom
          * org.apache.camel.builder.xml.ResultHandlerFactory which is capable of
-         * using custom org.apache.camel.builder.xml.ResultHandler types. The
-         * option will be converted to a
+         * using custom org.apache.camel.builder.xml.ResultHandler types.
+         * The option will be converted to a
          * <code>org.apache.camel.component.xslt.ResultHandlerFactory</code>
          * type.
+         * @group advanced
          */
         public T resultHandlerFactory(String resultHandlerFactory) {
             this.properties.put("resultHandlerFactory", resultHandlerFactory);
             return (T) this;
         }
         /**
-         * To use a custom Saxon configuration. The option is a
-         * <code>java.lang.Object</code> type.
+         * To use a custom Saxon configuration.
+         * The option is a <code>java.lang.Object</code> type.
+         * @group advanced
          */
         public T saxonConfiguration(Object saxonConfiguration) {
             this.properties.put("saxonConfiguration", saxonConfiguration);
             return (T) this;
         }
         /**
-         * To use a custom Saxon configuration. The option will be converted to
-         * a <code>java.lang.Object</code> type.
+         * To use a custom Saxon configuration.
+         * The option will be converted to a <code>java.lang.Object</code> type.
+         * @group advanced
          */
         public T saxonConfiguration(String saxonConfiguration) {
             this.properties.put("saxonConfiguration", saxonConfiguration);
@@ -304,6 +334,7 @@ public interface XsltEndpointBuilder {
          * registry, where you can comma to separate multiple values to lookup.
          * The option is a <code>java.util.List&lt;java.lang.Object&gt;</code>
          * type.
+         * @group advanced
          */
         public T saxonExtensionFunctions(List<Object> saxonExtensionFunctions) {
             this.properties.put("saxonExtensionFunctions", saxonExtensionFunctions);
@@ -316,6 +347,7 @@ public interface XsltEndpointBuilder {
          * registry, where you can comma to separate multiple values to lookup.
          * The option will be converted to a
          * <code>java.util.List&lt;java.lang.Object&gt;</code> type.
+         * @group advanced
          */
         public T saxonExtensionFunctions(String saxonExtensionFunctions) {
             this.properties.put("saxonExtensionFunctions", saxonExtensionFunctions);
@@ -323,8 +355,9 @@ public interface XsltEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -332,25 +365,29 @@ public interface XsltEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * To use a custom XSLT transformer factory. The option is a
-         * <code>javax.xml.transform.TransformerFactory</code> type.
+         * To use a custom XSLT transformer factory.
+         * The option is a <code>javax.xml.transform.TransformerFactory</code>
+         * type.
+         * @group advanced
          */
         public T transformerFactory(Object transformerFactory) {
             this.properties.put("transformerFactory", transformerFactory);
             return (T) this;
         }
         /**
-         * To use a custom XSLT transformer factory. The option will be
-         * converted to a <code>javax.xml.transform.TransformerFactory</code>
-         * type.
+         * To use a custom XSLT transformer factory.
+         * The option will be converted to a
+         * <code>javax.xml.transform.TransformerFactory</code> type.
+         * @group advanced
          */
         public T transformerFactory(String transformerFactory) {
             this.properties.put("transformerFactory", transformerFactory);
@@ -358,23 +395,28 @@ public interface XsltEndpointBuilder {
         }
         /**
          * To use a custom XSLT transformer factory, specified as a FQN class
-         * name. The option is a <code>java.lang.String</code> type.
+         * name.
+         * The option is a <code>java.lang.String</code> type.
+         * @group advanced
          */
         public T transformerFactoryClass(String transformerFactoryClass) {
             this.properties.put("transformerFactoryClass", transformerFactoryClass);
             return (T) this;
         }
         /**
-         * To use a custom javax.xml.transform.URIResolver. The option is a
-         * <code>javax.xml.transform.URIResolver</code> type.
+         * To use a custom javax.xml.transform.URIResolver.
+         * The option is a <code>javax.xml.transform.URIResolver</code> type.
+         * @group advanced
          */
         public T uriResolver(Object uriResolver) {
             this.properties.put("uriResolver", uriResolver);
             return (T) this;
         }
         /**
-         * To use a custom javax.xml.transform.URIResolver. The option will be
-         * converted to a <code>javax.xml.transform.URIResolver</code> type.
+         * To use a custom javax.xml.transform.URIResolver.
+         * The option will be converted to a
+         * <code>javax.xml.transform.URIResolver</code> type.
+         * @group advanced
          */
         public T uriResolver(String uriResolver) {
             this.properties.put("uriResolver", uriResolver);

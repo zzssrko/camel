@@ -43,24 +43,29 @@ public interface Olingo4EndpointBuilder {
             super("olingo4", path);
         }
         /**
-         * What kind of operation to perform. The option is a
+         * What kind of operation to perform.
+         * The option is a
          * <code>org.apache.camel.component.olingo4.internal.Olingo4ApiName</code> type.
+         * @group common
          */
         public T apiName(Olingo4ApiName apiName) {
             this.properties.put("apiName", apiName);
             return (T) this;
         }
         /**
-         * What kind of operation to perform. The option will be converted to a
+         * What kind of operation to perform.
+         * The option will be converted to a
          * <code>org.apache.camel.component.olingo4.internal.Olingo4ApiName</code> type.
+         * @group common
          */
         public T apiName(String apiName) {
             this.properties.put("apiName", apiName);
             return (T) this;
         }
         /**
-         * What sub operation to use for the selected operation. The option is a
-         * <code>java.lang.String</code> type.
+         * What sub operation to use for the selected operation.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T methodName(String methodName) {
             this.properties.put("methodName", methodName);
@@ -68,7 +73,9 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * HTTP connection creation timeout in milliseconds, defaults to 30,000
-         * (30 seconds). The option is a <code>int</code> type.
+         * (30 seconds).
+         * The option is a <code>int</code> type.
+         * @group common
          */
         public T connectTimeout(int connectTimeout) {
             this.properties.put("connectTimeout", connectTimeout);
@@ -76,8 +83,9 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * HTTP connection creation timeout in milliseconds, defaults to 30,000
-         * (30 seconds). The option will be converted to a <code>int</code>
-         * type.
+         * (30 seconds).
+         * The option will be converted to a <code>int</code> type.
+         * @group common
          */
         public T connectTimeout(String connectTimeout) {
             this.properties.put("connectTimeout", connectTimeout);
@@ -85,8 +93,9 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * Content-Type header value can be used to specify JSON or XML message
-         * format, defaults to application/json;charset=utf-8. The option is a
-         * <code>java.lang.String</code> type.
+         * format, defaults to application/json;charset=utf-8.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T contentType(String contentType) {
             this.properties.put("contentType", contentType);
@@ -94,8 +103,9 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * Set this to true to filter out results that have already been
-         * communicated by this component. The option is a <code>boolean</code>
-         * type.
+         * communicated by this component.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T filterAlreadySeen(boolean filterAlreadySeen) {
             this.properties.put("filterAlreadySeen", filterAlreadySeen);
@@ -103,8 +113,9 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * Set this to true to filter out results that have already been
-         * communicated by this component. The option will be converted to a
-         * <code>boolean</code> type.
+         * communicated by this component.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T filterAlreadySeen(String filterAlreadySeen) {
             this.properties.put("filterAlreadySeen", filterAlreadySeen);
@@ -114,10 +125,11 @@ public interface Olingo4EndpointBuilder {
          * Custom HTTP async client builder for more complex HTTP client
          * configuration, overrides connectionTimeout, socketTimeout, proxy and
          * sslContext. Note that a socketTimeout MUST be specified in the
-         * builder, otherwise OData requests could block indefinitely. The
-         * option is a
+         * builder, otherwise OData requests could block indefinitely.
+         * The option is a
          * <code>org.apache.http.impl.nio.client.HttpAsyncClientBuilder</code>
          * type.
+         * @group common
          */
         public T httpAsyncClientBuilder(Object httpAsyncClientBuilder) {
             this.properties.put("httpAsyncClientBuilder", httpAsyncClientBuilder);
@@ -127,10 +139,11 @@ public interface Olingo4EndpointBuilder {
          * Custom HTTP async client builder for more complex HTTP client
          * configuration, overrides connectionTimeout, socketTimeout, proxy and
          * sslContext. Note that a socketTimeout MUST be specified in the
-         * builder, otherwise OData requests could block indefinitely. The
-         * option will be converted to a
+         * builder, otherwise OData requests could block indefinitely.
+         * The option will be converted to a
          * <code>org.apache.http.impl.nio.client.HttpAsyncClientBuilder</code>
          * type.
+         * @group common
          */
         public T httpAsyncClientBuilder(String httpAsyncClientBuilder) {
             this.properties.put("httpAsyncClientBuilder", httpAsyncClientBuilder);
@@ -140,9 +153,10 @@ public interface Olingo4EndpointBuilder {
          * Custom HTTP client builder for more complex HTTP client
          * configuration, overrides connectionTimeout, socketTimeout, proxy and
          * sslContext. Note that a socketTimeout MUST be specified in the
-         * builder, otherwise OData requests could block indefinitely. The
-         * option is a
+         * builder, otherwise OData requests could block indefinitely.
+         * The option is a
          * <code>org.apache.http.impl.client.HttpClientBuilder</code> type.
+         * @group common
          */
         public T httpClientBuilder(Object httpClientBuilder) {
             this.properties.put("httpClientBuilder", httpClientBuilder);
@@ -152,9 +166,10 @@ public interface Olingo4EndpointBuilder {
          * Custom HTTP client builder for more complex HTTP client
          * configuration, overrides connectionTimeout, socketTimeout, proxy and
          * sslContext. Note that a socketTimeout MUST be specified in the
-         * builder, otherwise OData requests could block indefinitely. The
-         * option will be converted to a
+         * builder, otherwise OData requests could block indefinitely.
+         * The option will be converted to a
          * <code>org.apache.http.impl.client.HttpClientBuilder</code> type.
+         * @group common
          */
         public T httpClientBuilder(String httpClientBuilder) {
             this.properties.put("httpClientBuilder", httpClientBuilder);
@@ -162,9 +177,10 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * Custom HTTP headers to inject into every request, this could include
-         * OAuth tokens, etc. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
-         * type.
+         * OAuth tokens, etc.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.String&gt;</code> type.
+         * @group common
          */
         public T httpHeaders(Map<String, String> httpHeaders) {
             this.properties.put("httpHeaders", httpHeaders);
@@ -172,9 +188,11 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * Custom HTTP headers to inject into every request, this could include
-         * OAuth tokens, etc. The option will be converted to a
+         * OAuth tokens, etc.
+         * The option will be converted to a
          * <code>java.util.Map&lt;java.lang.String, java.lang.String&gt;</code>
          * type.
+         * @group common
          */
         public T httpHeaders(String httpHeaders) {
             this.properties.put("httpHeaders", httpHeaders);
@@ -183,22 +201,26 @@ public interface Olingo4EndpointBuilder {
         /**
          * Sets the name of a parameter to be passed in the exchange In Body.
          * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T inBody(String inBody) {
             this.properties.put("inBody", inBody);
             return (T) this;
         }
         /**
-         * HTTP proxy server configuration. The option is a
-         * <code>org.apache.http.HttpHost</code> type.
+         * HTTP proxy server configuration.
+         * The option is a <code>org.apache.http.HttpHost</code> type.
+         * @group common
          */
         public T proxy(Object proxy) {
             this.properties.put("proxy", proxy);
             return (T) this;
         }
         /**
-         * HTTP proxy server configuration. The option will be converted to a
+         * HTTP proxy server configuration.
+         * The option will be converted to a
          * <code>org.apache.http.HttpHost</code> type.
+         * @group common
          */
         public T proxy(String proxy) {
             this.properties.put("proxy", proxy);
@@ -206,8 +228,9 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * Target OData service base URI, e.g.
-         * http://services.odata.org/OData/OData.svc. The option is a
-         * <code>java.lang.String</code> type.
+         * http://services.odata.org/OData/OData.svc.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T serviceUri(String serviceUri) {
             this.properties.put("serviceUri", serviceUri);
@@ -215,7 +238,9 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * HTTP request timeout in milliseconds, defaults to 30,000 (30
-         * seconds). The option is a <code>int</code> type.
+         * seconds).
+         * The option is a <code>int</code> type.
+         * @group common
          */
         public T socketTimeout(int socketTimeout) {
             this.properties.put("socketTimeout", socketTimeout);
@@ -223,24 +248,29 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * HTTP request timeout in milliseconds, defaults to 30,000 (30
-         * seconds). The option will be converted to a <code>int</code> type.
+         * seconds).
+         * The option will be converted to a <code>int</code> type.
+         * @group common
          */
         public T socketTimeout(String socketTimeout) {
             this.properties.put("socketTimeout", socketTimeout);
             return (T) this;
         }
         /**
-         * To configure security using SSLContextParameters. The option is a
+         * To configure security using SSLContextParameters.
+         * The option is a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group common
          */
         public T sslContextParameters(Object sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
         /**
-         * To configure security using SSLContextParameters. The option will be
-         * converted to a
+         * To configure security using SSLContextParameters.
+         * The option will be converted to a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group common
          */
         public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -248,8 +278,9 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -257,8 +288,9 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -266,8 +298,9 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -275,8 +308,9 @@ public interface Olingo4EndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -302,7 +336,9 @@ public interface Olingo4EndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public Olingo4ConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -316,7 +352,9 @@ public interface Olingo4EndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public Olingo4ConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -327,8 +365,10 @@ public interface Olingo4EndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public Olingo4ConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -339,17 +379,19 @@ public interface Olingo4EndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public Olingo4ConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (Olingo4ConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public Olingo4ConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -357,9 +399,10 @@ public interface Olingo4EndpointBuilder {
             return (Olingo4ConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public Olingo4ConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

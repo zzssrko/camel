@@ -44,8 +44,9 @@ public interface StreamEndpointBuilder {
             super("stream", path);
         }
         /**
-         * Kind of stream to use such as System.in or System.out. The option is
-         * a <code>java.lang.String</code> type.
+         * Kind of stream to use such as System.in or System.out.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T kind(String kind) {
             this.properties.put("kind", kind);
@@ -54,8 +55,9 @@ public interface StreamEndpointBuilder {
         /**
          * You can configure the encoding (is a charset name) to use text-based
          * streams (for example, message body is a String object). If not
-         * provided, Camel uses the JVM default Charset. The option is a
-         * <code>java.lang.String</code> type.
+         * provided, Camel uses the JVM default Charset.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T encoding(String encoding) {
             this.properties.put("encoding", encoding);
@@ -63,8 +65,9 @@ public interface StreamEndpointBuilder {
         }
         /**
          * When using the stream:file URI format, this option specifies the
-         * filename to stream to/from. The option is a
-         * <code>java.lang.String</code> type.
+         * filename to stream to/from.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T fileName(String fileName) {
             this.properties.put("fileName", fileName);
@@ -73,8 +76,9 @@ public interface StreamEndpointBuilder {
         /**
          * When using the stream:url URI format, this option specifies the URL
          * to stream to/from. The input/output stream will be opened using the
-         * JDK URLConnection facility. The option is a
-         * <code>java.lang.String</code> type.
+         * JDK URLConnection facility.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T url(String url) {
             this.properties.put("url", url);
@@ -82,8 +86,9 @@ public interface StreamEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -91,8 +96,9 @@ public interface StreamEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -103,8 +109,9 @@ public interface StreamEndpointBuilder {
          * opening a communications link to the resource referenced by this
          * URLConnection. If the timeout expires before the connection can be
          * established, a java.net.SocketTimeoutException is raised. A timeout
-         * of zero is interpreted as an infinite timeout. The option is a
-         * <code>int</code> type.
+         * of zero is interpreted as an infinite timeout.
+         * The option is a <code>int</code> type.
+         * @group advanced
          */
         public T connectTimeout(int connectTimeout) {
             this.properties.put("connectTimeout", connectTimeout);
@@ -115,27 +122,30 @@ public interface StreamEndpointBuilder {
          * opening a communications link to the resource referenced by this
          * URLConnection. If the timeout expires before the connection can be
          * established, a java.net.SocketTimeoutException is raised. A timeout
-         * of zero is interpreted as an infinite timeout. The option will be
-         * converted to a <code>int</code> type.
+         * of zero is interpreted as an infinite timeout.
+         * The option will be converted to a <code>int</code> type.
+         * @group advanced
          */
         public T connectTimeout(String connectTimeout) {
             this.properties.put("connectTimeout", connectTimeout);
             return (T) this;
         }
         /**
-         * Optional http headers to use in request when using HTTP URL. The
-         * option is a <code>java.util.Map&lt;java.lang.String,
+         * Optional http headers to use in request when using HTTP URL.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
          * java.lang.Object&gt;</code> type.
+         * @group advanced
          */
         public T httpHeaders(Map<String, Object> httpHeaders) {
             this.properties.put("httpHeaders", httpHeaders);
             return (T) this;
         }
         /**
-         * Optional http headers to use in request when using HTTP URL. The
-         * option will be converted to a
+         * Optional http headers to use in request when using HTTP URL.
+         * The option will be converted to a
          * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
          * type.
+         * @group advanced
          */
         public T httpHeaders(String httpHeaders) {
             this.properties.put("httpHeaders", httpHeaders);
@@ -147,8 +157,9 @@ public interface StreamEndpointBuilder {
          * when a connection is established to a resource. If the timeout
          * expires before there is data available for read, a
          * java.net.SocketTimeoutException is raised. A timeout of zero is
-         * interpreted as an infinite timeout. The option is a <code>int</code>
-         * type.
+         * interpreted as an infinite timeout.
+         * The option is a <code>int</code> type.
+         * @group advanced
          */
         public T readTimeout(int readTimeout) {
             this.properties.put("readTimeout", readTimeout);
@@ -160,8 +171,9 @@ public interface StreamEndpointBuilder {
          * when a connection is established to a resource. If the timeout
          * expires before there is data available for read, a
          * java.net.SocketTimeoutException is raised. A timeout of zero is
-         * interpreted as an infinite timeout. The option will be converted to a
-         * <code>int</code> type.
+         * interpreted as an infinite timeout.
+         * The option will be converted to a <code>int</code> type.
+         * @group advanced
          */
         public T readTimeout(String readTimeout) {
             this.properties.put("readTimeout", readTimeout);
@@ -169,8 +181,9 @@ public interface StreamEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -178,8 +191,9 @@ public interface StreamEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -205,7 +219,9 @@ public interface StreamEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -219,7 +235,9 @@ public interface StreamEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -230,6 +248,7 @@ public interface StreamEndpointBuilder {
          * To use JVM file watcher to listen for file change events to support
          * re-loading files that may be overwritten, somewhat like tail --retry.
          * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder fileWatcher(boolean fileWatcher) {
             this.properties.put("fileWatcher", fileWatcher);
@@ -239,6 +258,7 @@ public interface StreamEndpointBuilder {
          * To use JVM file watcher to listen for file change events to support
          * re-loading files that may be overwritten, somewhat like tail --retry.
          * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder fileWatcher(String fileWatcher) {
             this.properties.put("fileWatcher", fileWatcher);
@@ -247,7 +267,9 @@ public interface StreamEndpointBuilder {
         /**
          * To group X number of lines in the consumer. For example to group 10
          * lines and therefore only spit out an Exchange with 10 lines, instead
-         * of 1 Exchange per line. The option is a <code>int</code> type.
+         * of 1 Exchange per line.
+         * The option is a <code>int</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder groupLines(int groupLines) {
             this.properties.put("groupLines", groupLines);
@@ -256,8 +278,9 @@ public interface StreamEndpointBuilder {
         /**
          * To group X number of lines in the consumer. For example to group 10
          * lines and therefore only spit out an Exchange with 10 lines, instead
-         * of 1 Exchange per line. The option will be converted to a
-         * <code>int</code> type.
+         * of 1 Exchange per line.
+         * The option will be converted to a <code>int</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder groupLines(String groupLines) {
             this.properties.put("groupLines", groupLines);
@@ -267,6 +290,7 @@ public interface StreamEndpointBuilder {
          * Allows to use a custom GroupStrategy to control how to group lines.
          * The option is a
          * <code>org.apache.camel.component.stream.GroupStrategy</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder groupStrategy(Object groupStrategy) {
             this.properties.put("groupStrategy", groupStrategy);
@@ -276,6 +300,7 @@ public interface StreamEndpointBuilder {
          * Allows to use a custom GroupStrategy to control how to group lines.
          * The option will be converted to a
          * <code>org.apache.camel.component.stream.GroupStrategy</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder groupStrategy(String groupStrategy) {
             this.properties.put("groupStrategy", groupStrategy);
@@ -285,7 +310,9 @@ public interface StreamEndpointBuilder {
          * Initial delay in milliseconds before showing the message prompt. This
          * delay occurs only once. Can be used during system startup to avoid
          * message prompts being written while other logging is done to the
-         * system out. The option is a <code>long</code> type.
+         * system out.
+         * The option is a <code>long</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder initialPromptDelay(long initialPromptDelay) {
             this.properties.put("initialPromptDelay", initialPromptDelay);
@@ -295,7 +322,9 @@ public interface StreamEndpointBuilder {
          * Initial delay in milliseconds before showing the message prompt. This
          * delay occurs only once. Can be used during system startup to avoid
          * message prompts being written while other logging is done to the
-         * system out. The option will be converted to a <code>long</code> type.
+         * system out.
+         * The option will be converted to a <code>long</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder initialPromptDelay(
                 String initialPromptDelay) {
@@ -303,16 +332,18 @@ public interface StreamEndpointBuilder {
             return (StreamConsumerBuilder) this;
         }
         /**
-         * Optional delay in milliseconds before showing the message prompt. The
-         * option is a <code>long</code> type.
+         * Optional delay in milliseconds before showing the message prompt.
+         * The option is a <code>long</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder promptDelay(long promptDelay) {
             this.properties.put("promptDelay", promptDelay);
             return (StreamConsumerBuilder) this;
         }
         /**
-         * Optional delay in milliseconds before showing the message prompt. The
-         * option will be converted to a <code>long</code> type.
+         * Optional delay in milliseconds before showing the message prompt.
+         * The option will be converted to a <code>long</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder promptDelay(String promptDelay) {
             this.properties.put("promptDelay", promptDelay);
@@ -320,8 +351,9 @@ public interface StreamEndpointBuilder {
         }
         /**
          * Message prompt to use when reading from stream:in; for example, you
-         * could set this to Enter a command:. The option is a
-         * <code>java.lang.String</code> type.
+         * could set this to Enter a command:.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder promptMessage(String promptMessage) {
             this.properties.put("promptMessage", promptMessage);
@@ -330,8 +362,9 @@ public interface StreamEndpointBuilder {
         /**
          * Will retry opening the stream if it's overwritten, somewhat like tail
          * --retry If reading from files then you should also enable the
-         * fileWatcher option, to make it work reliable. The option is a
-         * <code>boolean</code> type.
+         * fileWatcher option, to make it work reliable.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder retry(boolean retry) {
             this.properties.put("retry", retry);
@@ -340,8 +373,9 @@ public interface StreamEndpointBuilder {
         /**
          * Will retry opening the stream if it's overwritten, somewhat like tail
          * --retry If reading from files then you should also enable the
-         * fileWatcher option, to make it work reliable. The option will be
-         * converted to a <code>boolean</code> type.
+         * fileWatcher option, to make it work reliable.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder retry(String retry) {
             this.properties.put("retry", retry);
@@ -349,7 +383,9 @@ public interface StreamEndpointBuilder {
         }
         /**
          * To be used for continuously reading a stream such as the unix tail
-         * command. The option is a <code>boolean</code> type.
+         * command.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder scanStream(boolean scanStream) {
             this.properties.put("scanStream", scanStream);
@@ -357,7 +393,9 @@ public interface StreamEndpointBuilder {
         }
         /**
          * To be used for continuously reading a stream such as the unix tail
-         * command. The option will be converted to a <code>boolean</code> type.
+         * command.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder scanStream(String scanStream) {
             this.properties.put("scanStream", scanStream);
@@ -366,6 +404,7 @@ public interface StreamEndpointBuilder {
         /**
          * Delay in milliseconds between read attempts when using scanStream.
          * The option is a <code>long</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder scanStreamDelay(long scanStreamDelay) {
             this.properties.put("scanStreamDelay", scanStreamDelay);
@@ -374,6 +413,7 @@ public interface StreamEndpointBuilder {
         /**
          * Delay in milliseconds between read attempts when using scanStream.
          * The option will be converted to a <code>long</code> type.
+         * @group consumer
          */
         public StreamConsumerBuilder scanStreamDelay(String scanStreamDelay) {
             this.properties.put("scanStreamDelay", scanStreamDelay);
@@ -383,8 +423,10 @@ public interface StreamEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public StreamConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -395,17 +437,19 @@ public interface StreamEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public StreamConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (StreamConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public StreamConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -413,9 +457,10 @@ public interface StreamEndpointBuilder {
             return (StreamConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public StreamConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -438,7 +483,9 @@ public interface StreamEndpointBuilder {
          * Number of messages to process before closing stream on Producer side.
          * Never close stream by default (only when Producer is stopped). If
          * more messages are sent, the stream is reopened for another
-         * autoCloseCount batch. The option is a <code>int</code> type.
+         * autoCloseCount batch.
+         * The option is a <code>int</code> type.
+         * @group producer
          */
         public StreamProducerBuilder autoCloseCount(int autoCloseCount) {
             this.properties.put("autoCloseCount", autoCloseCount);
@@ -448,8 +495,9 @@ public interface StreamEndpointBuilder {
          * Number of messages to process before closing stream on Producer side.
          * Never close stream by default (only when Producer is stopped). If
          * more messages are sent, the stream is reopened for another
-         * autoCloseCount batch. The option will be converted to a
-         * <code>int</code> type.
+         * autoCloseCount batch.
+         * The option will be converted to a <code>int</code> type.
+         * @group producer
          */
         public StreamProducerBuilder autoCloseCount(String autoCloseCount) {
             this.properties.put("autoCloseCount", autoCloseCount);
@@ -459,8 +507,9 @@ public interface StreamEndpointBuilder {
          * This option is used in combination with Splitter and streaming to the
          * same file. The idea is to keep the stream open and only close when
          * the Splitter is done, to improve performance. Mind this requires that
-         * you only stream to the same file, and not 2 or more files. The option
-         * is a <code>boolean</code> type.
+         * you only stream to the same file, and not 2 or more files.
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public StreamProducerBuilder closeOnDone(boolean closeOnDone) {
             this.properties.put("closeOnDone", closeOnDone);
@@ -470,24 +519,27 @@ public interface StreamEndpointBuilder {
          * This option is used in combination with Splitter and streaming to the
          * same file. The idea is to keep the stream open and only close when
          * the Splitter is done, to improve performance. Mind this requires that
-         * you only stream to the same file, and not 2 or more files. The option
-         * will be converted to a <code>boolean</code> type.
+         * you only stream to the same file, and not 2 or more files.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public StreamProducerBuilder closeOnDone(String closeOnDone) {
             this.properties.put("closeOnDone", closeOnDone);
             return (StreamProducerBuilder) this;
         }
         /**
-         * Initial delay in milliseconds before producing the stream. The option
-         * is a <code>long</code> type.
+         * Initial delay in milliseconds before producing the stream.
+         * The option is a <code>long</code> type.
+         * @group producer
          */
         public StreamProducerBuilder delay(long delay) {
             this.properties.put("delay", delay);
             return (StreamProducerBuilder) this;
         }
         /**
-         * Initial delay in milliseconds before producing the stream. The option
-         * will be converted to a <code>long</code> type.
+         * Initial delay in milliseconds before producing the stream.
+         * The option will be converted to a <code>long</code> type.
+         * @group producer
          */
         public StreamProducerBuilder delay(String delay) {
             this.properties.put("delay", delay);

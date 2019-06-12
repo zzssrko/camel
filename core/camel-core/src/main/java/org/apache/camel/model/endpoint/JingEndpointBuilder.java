@@ -42,7 +42,9 @@ public interface JingEndpointBuilder {
         /**
          * URL to a local resource on the classpath or a full URL to a remote
          * resource or resource on the file system which contains the schema to
-         * validate against. The option is a <code>java.lang.String</code> type.
+         * validate against.
+         * The option is a <code>java.lang.String</code> type.
+         * @group producer
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
@@ -51,8 +53,9 @@ public interface JingEndpointBuilder {
         /**
          * Whether to validate using RelaxNG compact syntax or not. By default
          * this is false for using RelaxNG XML Syntax (rng) And true is for
-         * using RelaxNG Compact Syntax (rnc). The option is a
-         * <code>boolean</code> type.
+         * using RelaxNG Compact Syntax (rnc).
+         * The option is a <code>boolean</code> type.
+         * @group producer
          */
         public T compactSyntax(boolean compactSyntax) {
             this.properties.put("compactSyntax", compactSyntax);
@@ -61,8 +64,9 @@ public interface JingEndpointBuilder {
         /**
          * Whether to validate using RelaxNG compact syntax or not. By default
          * this is false for using RelaxNG XML Syntax (rng) And true is for
-         * using RelaxNG Compact Syntax (rnc). The option will be converted to a
-         * <code>boolean</code> type.
+         * using RelaxNG Compact Syntax (rnc).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group producer
          */
         public T compactSyntax(String compactSyntax) {
             this.properties.put("compactSyntax", compactSyntax);
@@ -70,8 +74,9 @@ public interface JingEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -79,8 +84,9 @@ public interface JingEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -88,8 +94,9 @@ public interface JingEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -97,8 +104,9 @@ public interface JingEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);

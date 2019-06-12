@@ -43,8 +43,9 @@ public interface PahoEndpointBuilder {
             super("paho", path);
         }
         /**
-         * Name of the topic. The option is a <code>java.lang.String</code>
-         * type.
+         * Name of the topic.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T topic(String topic) {
             this.properties.put("topic", topic);
@@ -52,7 +53,9 @@ public interface PahoEndpointBuilder {
         }
         /**
          * Client will automatically attempt to reconnect to the server if the
-         * connection is lost. The option is a <code>boolean</code> type.
+         * connection is lost.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T autoReconnect(boolean autoReconnect) {
             this.properties.put("autoReconnect", autoReconnect);
@@ -60,89 +63,103 @@ public interface PahoEndpointBuilder {
         }
         /**
          * Client will automatically attempt to reconnect to the server if the
-         * connection is lost. The option will be converted to a
-         * <code>boolean</code> type.
+         * connection is lost.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T autoReconnect(String autoReconnect) {
             this.properties.put("autoReconnect", autoReconnect);
             return (T) this;
         }
         /**
-         * The URL of the MQTT broker. The option is a
-         * <code>java.lang.String</code> type.
+         * The URL of the MQTT broker.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T brokerUrl(String brokerUrl) {
             this.properties.put("brokerUrl", brokerUrl);
             return (T) this;
         }
         /**
-         * MQTT client identifier. The option is a <code>java.lang.String</code>
-         * type.
+         * MQTT client identifier.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T clientId(String clientId) {
             this.properties.put("clientId", clientId);
             return (T) this;
         }
         /**
-         * Client connection options. The option is a
+         * Client connection options.
+         * The option is a
          * <code>org.eclipse.paho.client.mqttv3.MqttConnectOptions</code> type.
+         * @group common
          */
         public T connectOptions(Object connectOptions) {
             this.properties.put("connectOptions", connectOptions);
             return (T) this;
         }
         /**
-         * Client connection options. The option will be converted to a
+         * Client connection options.
+         * The option will be converted to a
          * <code>org.eclipse.paho.client.mqttv3.MqttConnectOptions</code> type.
+         * @group common
          */
         public T connectOptions(String connectOptions) {
             this.properties.put("connectOptions", connectOptions);
             return (T) this;
         }
         /**
-         * Base directory used by the file persistence provider. The option is a
-         * <code>java.lang.String</code> type.
+         * Base directory used by the file persistence provider.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T filePersistenceDirectory(String filePersistenceDirectory) {
             this.properties.put("filePersistenceDirectory", filePersistenceDirectory);
             return (T) this;
         }
         /**
-         * Password to be used for authentication against the MQTT broker. The
-         * option is a <code>java.lang.String</code> type.
+         * Password to be used for authentication against the MQTT broker.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T password(String password) {
             this.properties.put("password", password);
             return (T) this;
         }
         /**
-         * Client persistence to be used - memory or file. The option is a
+         * Client persistence to be used - memory or file.
+         * The option is a
          * <code>org.apache.camel.component.paho.PahoPersistence</code> type.
+         * @group common
          */
         public T persistence(PahoPersistence persistence) {
             this.properties.put("persistence", persistence);
             return (T) this;
         }
         /**
-         * Client persistence to be used - memory or file. The option will be
-         * converted to a
+         * Client persistence to be used - memory or file.
+         * The option will be converted to a
          * <code>org.apache.camel.component.paho.PahoPersistence</code> type.
+         * @group common
          */
         public T persistence(String persistence) {
             this.properties.put("persistence", persistence);
             return (T) this;
         }
         /**
-         * Client quality of service level (0-2). The option is a
-         * <code>int</code> type.
+         * Client quality of service level (0-2).
+         * The option is a <code>int</code> type.
+         * @group common
          */
         public T qos(int qos) {
             this.properties.put("qos", qos);
             return (T) this;
         }
         /**
-         * Client quality of service level (0-2). The option will be converted
-         * to a <code>int</code> type.
+         * Client quality of service level (0-2).
+         * The option will be converted to a <code>int</code> type.
+         * @group common
          */
         public T qos(String qos) {
             this.properties.put("qos", qos);
@@ -150,7 +167,9 @@ public interface PahoEndpointBuilder {
         }
         /**
          * Define if you don't want to resolve the MQTT Connect Options from
-         * registry. The option is a <code>boolean</code> type.
+         * registry.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T resolveMqttConnectOptions(boolean resolveMqttConnectOptions) {
             this.properties.put("resolveMqttConnectOptions", resolveMqttConnectOptions);
@@ -158,31 +177,36 @@ public interface PahoEndpointBuilder {
         }
         /**
          * Define if you don't want to resolve the MQTT Connect Options from
-         * registry. The option will be converted to a <code>boolean</code>
-         * type.
+         * registry.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T resolveMqttConnectOptions(String resolveMqttConnectOptions) {
             this.properties.put("resolveMqttConnectOptions", resolveMqttConnectOptions);
             return (T) this;
         }
         /**
-         * Retain option. The option is a <code>boolean</code> type.
+         * Retain option.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T retained(boolean retained) {
             this.properties.put("retained", retained);
             return (T) this;
         }
         /**
-         * Retain option. The option will be converted to a <code>boolean</code>
-         * type.
+         * Retain option.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T retained(String retained) {
             this.properties.put("retained", retained);
             return (T) this;
         }
         /**
-         * Username to be used for authentication against the MQTT broker. The
-         * option is a <code>java.lang.String</code> type.
+         * Username to be used for authentication against the MQTT broker.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T userName(String userName) {
             this.properties.put("userName", userName);
@@ -190,8 +214,9 @@ public interface PahoEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -199,8 +224,9 @@ public interface PahoEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -208,8 +234,9 @@ public interface PahoEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -217,8 +244,9 @@ public interface PahoEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -244,7 +272,9 @@ public interface PahoEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public PahoConsumerBuilder bridgeErrorHandler(boolean bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -257,7 +287,9 @@ public interface PahoEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public PahoConsumerBuilder bridgeErrorHandler(String bridgeErrorHandler) {
             this.properties.put("bridgeErrorHandler", bridgeErrorHandler);
@@ -267,8 +299,10 @@ public interface PahoEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public PahoConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -279,17 +313,19 @@ public interface PahoEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public PahoConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (PahoConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public PahoConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -297,9 +333,10 @@ public interface PahoEndpointBuilder {
             return (PahoConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public PahoConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);

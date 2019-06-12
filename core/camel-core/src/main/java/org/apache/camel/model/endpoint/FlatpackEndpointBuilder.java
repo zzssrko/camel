@@ -49,16 +49,20 @@ public interface FlatpackEndpointBuilder {
             super("flatpack", path);
         }
         /**
-         * Whether to use fixed or delimiter. The option is a
+         * Whether to use fixed or delimiter.
+         * The option is a
          * <code>org.apache.camel.component.flatpack.FlatpackType</code> type.
+         * @group common
          */
         public T type(FlatpackType type) {
             this.properties.put("type", type);
             return (T) this;
         }
         /**
-         * Whether to use fixed or delimiter. The option will be converted to a
+         * Whether to use fixed or delimiter.
+         * The option will be converted to a
          * <code>org.apache.camel.component.flatpack.FlatpackType</code> type.
+         * @group common
          */
         public T type(String type) {
             this.properties.put("type", type);
@@ -66,7 +70,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * URL for loading the flatpack mapping file from classpath or file
-         * system. The option is a <code>java.lang.String</code> type.
+         * system.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
@@ -74,7 +80,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Allows for lines to be shorter than expected and ignores the extra
-         * characters. The option is a <code>boolean</code> type.
+         * characters.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T allowShortLines(boolean allowShortLines) {
             this.properties.put("allowShortLines", allowShortLines);
@@ -82,24 +90,27 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Allows for lines to be shorter than expected and ignores the extra
-         * characters. The option will be converted to a <code>boolean</code>
-         * type.
+         * characters.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T allowShortLines(String allowShortLines) {
             this.properties.put("allowShortLines", allowShortLines);
             return (T) this;
         }
         /**
-         * The default character delimiter for delimited files. The option is a
-         * <code>char</code> type.
+         * The default character delimiter for delimited files.
+         * The option is a <code>char</code> type.
+         * @group common
          */
         public T delimiter(char delimiter) {
             this.properties.put("delimiter", delimiter);
             return (T) this;
         }
         /**
-         * The default character delimiter for delimited files. The option will
-         * be converted to a <code>char</code> type.
+         * The default character delimiter for delimited files.
+         * The option will be converted to a <code>char</code> type.
+         * @group common
          */
         public T delimiter(String delimiter) {
             this.properties.put("delimiter", delimiter);
@@ -107,7 +118,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Allows for lines to be longer than expected and ignores the extra
-         * characters. The option is a <code>boolean</code> type.
+         * characters.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T ignoreExtraColumns(boolean ignoreExtraColumns) {
             this.properties.put("ignoreExtraColumns", ignoreExtraColumns);
@@ -115,8 +128,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Allows for lines to be longer than expected and ignores the extra
-         * characters. The option will be converted to a <code>boolean</code>
-         * type.
+         * characters.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T ignoreExtraColumns(String ignoreExtraColumns) {
             this.properties.put("ignoreExtraColumns", ignoreExtraColumns);
@@ -124,7 +138,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Whether the first line is ignored for delimited files (for the column
-         * headers). The option is a <code>boolean</code> type.
+         * headers).
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T ignoreFirstRecord(boolean ignoreFirstRecord) {
             this.properties.put("ignoreFirstRecord", ignoreFirstRecord);
@@ -132,8 +148,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Whether the first line is ignored for delimited files (for the column
-         * headers). The option will be converted to a <code>boolean</code>
-         * type.
+         * headers).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T ignoreFirstRecord(String ignoreFirstRecord) {
             this.properties.put("ignoreFirstRecord", ignoreFirstRecord);
@@ -141,7 +158,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Sets the Component to send each row as a separate exchange once
-         * parsed. The option is a <code>boolean</code> type.
+         * parsed.
+         * The option is a <code>boolean</code> type.
+         * @group common
          */
         public T splitRows(boolean splitRows) {
             this.properties.put("splitRows", splitRows);
@@ -149,23 +168,27 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Sets the Component to send each row as a separate exchange once
-         * parsed. The option will be converted to a <code>boolean</code> type.
+         * parsed.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group common
          */
         public T splitRows(String splitRows) {
             this.properties.put("splitRows", splitRows);
             return (T) this;
         }
         /**
-         * The text qualifier for delimited files. The option is a
-         * <code>char</code> type.
+         * The text qualifier for delimited files.
+         * The option is a <code>char</code> type.
+         * @group common
          */
         public T textQualifier(char textQualifier) {
             this.properties.put("textQualifier", textQualifier);
             return (T) this;
         }
         /**
-         * The text qualifier for delimited files. The option will be converted
-         * to a <code>char</code> type.
+         * The text qualifier for delimited files.
+         * The option will be converted to a <code>char</code> type.
+         * @group common
          */
         public T textQualifier(String textQualifier) {
             this.properties.put("textQualifier", textQualifier);
@@ -173,8 +196,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -182,8 +206,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -191,8 +216,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -200,8 +226,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -227,7 +254,9 @@ public interface FlatpackEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public FlatpackConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -241,7 +270,9 @@ public interface FlatpackEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public FlatpackConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -250,8 +281,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option is a
-         * <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public FlatpackConsumerBuilder sendEmptyMessageWhenIdle(
                 boolean sendEmptyMessageWhenIdle) {
@@ -260,8 +292,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * If the polling consumer did not poll any files, you can enable this
-         * option to send an empty message (no body) instead. The option will be
-         * converted to a <code>boolean</code> type.
+         * option to send an empty message (no body) instead.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public FlatpackConsumerBuilder sendEmptyMessageWhenIdle(
                 String sendEmptyMessageWhenIdle) {
@@ -272,8 +305,10 @@ public interface FlatpackEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public FlatpackConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -284,17 +319,19 @@ public interface FlatpackEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public FlatpackConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (FlatpackConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public FlatpackConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -302,9 +339,10 @@ public interface FlatpackEndpointBuilder {
             return (FlatpackConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public FlatpackConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -314,8 +352,10 @@ public interface FlatpackEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option is a
+         * been created and being routed in Camel.
+         * The option is a
          * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public FlatpackConsumerBuilder pollStrategy(
                 PollingConsumerPollStrategy pollStrategy) {
@@ -326,9 +366,10 @@ public interface FlatpackEndpointBuilder {
          * A pluggable org.apache.camel.PollingConsumerPollingStrategy allowing
          * you to provide your custom implementation to control error handling
          * usually occurred during the poll operation before an Exchange have
-         * been created and being routed in Camel. The option will be converted
-         * to a <code>org.apache.camel.spi.PollingConsumerPollStrategy</code>
-         * type.
+         * been created and being routed in Camel.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.PollingConsumerPollStrategy</code> type.
+         * @group consumer (advanced)
          */
         public FlatpackConsumerBuilder pollStrategy(String pollStrategy) {
             this.properties.put("pollStrategy", pollStrategy);
@@ -336,8 +377,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * is a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder backoffErrorThreshold(
                 int backoffErrorThreshold) {
@@ -346,8 +388,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * The number of subsequent error polls (failed due some error) that
-         * should happen before the backoffMultipler should kick-in. The option
-         * will be converted to a <code>int</code> type.
+         * should happen before the backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder backoffErrorThreshold(
                 String backoffErrorThreshold) {
@@ -356,8 +399,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option is a <code>int</code>
-         * type.
+         * backoffMultipler should kick-in.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder backoffIdleThreshold(
                 int backoffIdleThreshold) {
@@ -366,8 +410,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * The number of subsequent idle polls that should happen before the
-         * backoffMultipler should kick-in. The option will be converted to a
-         * <code>int</code> type.
+         * backoffMultipler should kick-in.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder backoffIdleThreshold(
                 String backoffIdleThreshold) {
@@ -380,7 +425,9 @@ public interface FlatpackEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option is a <code>int</code> type.
+         * configured.
+         * The option is a <code>int</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder backoffMultiplier(int backoffMultiplier) {
             this.properties.put("backoffMultiplier", backoffMultiplier);
@@ -392,7 +439,9 @@ public interface FlatpackEndpointBuilder {
          * the number of polls that will be skipped before the next actual
          * attempt is happening again. When this option is in use then
          * backoffIdleThreshold and/or backoffErrorThreshold must also be
-         * configured. The option will be converted to a <code>int</code> type.
+         * configured.
+         * The option will be converted to a <code>int</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder backoffMultiplier(
                 String backoffMultiplier) {
@@ -402,7 +451,9 @@ public interface FlatpackEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder delay(long delay) {
             this.properties.put("delay", delay);
@@ -411,8 +462,9 @@ public interface FlatpackEndpointBuilder {
         /**
          * Milliseconds before the next poll. You can also specify time values
          * using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder delay(String delay) {
             this.properties.put("delay", delay);
@@ -420,8 +472,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option is a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder greedy(boolean greedy) {
             this.properties.put("greedy", greedy);
@@ -429,8 +482,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * If greedy is enabled, then the ScheduledPollConsumer will run
-         * immediately again, if the previous run polled 1 or more messages. The
-         * option will be converted to a <code>boolean</code> type.
+         * immediately again, if the previous run polled 1 or more messages.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder greedy(String greedy) {
             this.properties.put("greedy", greedy);
@@ -439,7 +493,9 @@ public interface FlatpackEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option is a <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option is a <code>long</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder initialDelay(long initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -448,8 +504,9 @@ public interface FlatpackEndpointBuilder {
         /**
          * Milliseconds before the first poll starts. You can also specify time
          * values using units, such as 60s (60 seconds), 5m30s (5 minutes and 30
-         * seconds), and 1h (1 hour). The option will be converted to a
-         * <code>long</code> type.
+         * seconds), and 1h (1 hour).
+         * The option will be converted to a <code>long</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder initialDelay(String initialDelay) {
             this.properties.put("initialDelay", initialDelay);
@@ -457,8 +514,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * is a <code>org.apache.camel.LoggingLevel</code> type.
+         * option allows you to configure the logging level for that.
+         * The option is a <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder runLoggingLevel(
                 LoggingLevel runLoggingLevel) {
@@ -467,9 +525,10 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * The consumer logs a start/complete log line when it polls. This
-         * option allows you to configure the logging level for that. The option
-         * will be converted to a <code>org.apache.camel.LoggingLevel</code>
-         * type.
+         * option allows you to configure the logging level for that.
+         * The option will be converted to a
+         * <code>org.apache.camel.LoggingLevel</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder runLoggingLevel(String runLoggingLevel) {
             this.properties.put("runLoggingLevel", runLoggingLevel);
@@ -478,8 +537,10 @@ public interface FlatpackEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option is a
+         * pool.
+         * The option is a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder scheduledExecutorService(
                 ScheduledExecutorService scheduledExecutorService) {
@@ -489,8 +550,10 @@ public interface FlatpackEndpointBuilder {
         /**
          * Allows for configuring a custom/shared thread pool to use for the
          * consumer. By default each consumer has its own single threaded thread
-         * pool. The option will be converted to a
+         * pool.
+         * The option will be converted to a
          * <code>java.util.concurrent.ScheduledExecutorService</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder scheduledExecutorService(
                 String scheduledExecutorService) {
@@ -499,9 +562,11 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option is a
+         * component.
+         * The option is a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder scheduler(
                 ScheduledPollConsumerScheduler scheduler) {
@@ -510,9 +575,11 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * To use a cron scheduler from either camel-spring or camel-quartz2
-         * component. The option will be converted to a
+         * component.
+         * The option will be converted to a
          * <code>org.apache.camel.spi.ScheduledPollConsumerScheduler</code>
          * type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder scheduler(String scheduler) {
             this.properties.put("scheduler", scheduler);
@@ -520,9 +587,10 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option is a
-         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
-         * type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option is a <code>java.util.Map&lt;java.lang.String,
+         * java.lang.Object&gt;</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder schedulerProperties(
                 Map<String, Object> schedulerProperties) {
@@ -531,9 +599,11 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * To configure additional properties when using a custom scheduler or
-         * any of the Quartz2, Spring based scheduler. The option will be
-         * converted to a <code>java.util.Map&lt;java.lang.String,
-         * java.lang.Object&gt;</code> type.
+         * any of the Quartz2, Spring based scheduler.
+         * The option will be converted to a
+         * <code>java.util.Map&lt;java.lang.String, java.lang.Object&gt;</code>
+         * type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder schedulerProperties(
                 String schedulerProperties) {
@@ -541,32 +611,37 @@ public interface FlatpackEndpointBuilder {
             return (FlatpackConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option is a
-         * <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder startScheduler(boolean startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (FlatpackConsumerBuilder) this;
         }
         /**
-         * Whether the scheduler should be auto started. The option will be
-         * converted to a <code>boolean</code> type.
+         * Whether the scheduler should be auto started.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder startScheduler(String startScheduler) {
             this.properties.put("startScheduler", startScheduler);
             return (FlatpackConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option is a
-         * <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option is a <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder timeUnit(TimeUnit timeUnit) {
             this.properties.put("timeUnit", timeUnit);
             return (FlatpackConsumerBuilder) this;
         }
         /**
-         * Time unit for initialDelay and delay options. The option will be
-         * converted to a <code>java.util.concurrent.TimeUnit</code> type.
+         * Time unit for initialDelay and delay options.
+         * The option will be converted to a
+         * <code>java.util.concurrent.TimeUnit</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder timeUnit(String timeUnit) {
             this.properties.put("timeUnit", timeUnit);
@@ -574,8 +649,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option is a
-         * <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option is a <code>boolean</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder useFixedDelay(boolean useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);
@@ -583,8 +659,9 @@ public interface FlatpackEndpointBuilder {
         }
         /**
          * Controls if fixed delay or fixed rate is used. See
-         * ScheduledExecutorService in JDK for details. The option will be
-         * converted to a <code>boolean</code> type.
+         * ScheduledExecutorService in JDK for details.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group scheduler
          */
         public FlatpackConsumerBuilder useFixedDelay(String useFixedDelay) {
             this.properties.put("useFixedDelay", useFixedDelay);

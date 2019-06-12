@@ -44,8 +44,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * The hostname. The default value is 0.0.0.0. Setting this option on
-         * the component will use the component configured value as default. The
-         * option is a <code>java.lang.String</code> type.
+         * the component will use the component configured value as default.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T host(String host) {
             this.properties.put("host", host);
@@ -53,8 +54,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * The port number. The default value is 9292. Setting this option on
-         * the component will use the component configured value as default. The
-         * option is a <code>java.lang.Integer</code> type.
+         * the component will use the component configured value as default.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T port(Integer port) {
             this.properties.put("port", port);
@@ -62,16 +64,19 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * The port number. The default value is 9292. Setting this option on
-         * the component will use the component configured value as default. The
-         * option will be converted to a <code>java.lang.Integer</code> type.
+         * the component will use the component configured value as default.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T port(String port) {
             this.properties.put("port", port);
             return (T) this;
         }
         /**
-         * Name of the websocket channel to use. The option is a
-         * <code>java.lang.String</code> type.
+         * Name of the websocket channel to use.
+         * The option is a <code>java.lang.String</code> type.
+         * @group common
          */
         public T resourceUri(String resourceUri) {
             this.properties.put("resourceUri", resourceUri);
@@ -80,7 +85,9 @@ public interface WebsocketEndpointBuilder {
         /**
          * Can be used to set the size in bytes that the websocket created by
          * the websocketServlet may be accept before closing. (Default is -1 -
-         * or unlimited). The option is a <code>java.lang.Integer</code> type.
+         * or unlimited).
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group common
          */
         public T maxBinaryMessageSize(Integer maxBinaryMessageSize) {
             this.properties.put("maxBinaryMessageSize", maxBinaryMessageSize);
@@ -89,8 +96,10 @@ public interface WebsocketEndpointBuilder {
         /**
          * Can be used to set the size in bytes that the websocket created by
          * the websocketServlet may be accept before closing. (Default is -1 -
-         * or unlimited). The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * or unlimited).
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group common
          */
         public T maxBinaryMessageSize(String maxBinaryMessageSize) {
             this.properties.put("maxBinaryMessageSize", maxBinaryMessageSize);
@@ -98,8 +107,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * is a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(boolean basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -107,8 +117,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Whether the endpoint should use basic property binding (Camel 2.x) or
-         * the newer property binding with additional capabilities. The option
-         * will be converted to a <code>boolean</code> type.
+         * the newer property binding with additional capabilities.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T basicPropertyBinding(String basicPropertyBinding) {
             this.properties.put("basicPropertyBinding", basicPropertyBinding);
@@ -116,8 +127,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Set the buffer size of the websocketServlet, which is also the max
-         * frame byte size (default 8192). The option is a
-         * <code>java.lang.Integer</code> type.
+         * frame byte size (default 8192).
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group advanced
          */
         public T bufferSize(Integer bufferSize) {
             this.properties.put("bufferSize", bufferSize);
@@ -125,8 +137,10 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Set the buffer size of the websocketServlet, which is also the max
-         * frame byte size (default 8192). The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * frame byte size (default 8192).
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group advanced
          */
         public T bufferSize(String bufferSize) {
             this.properties.put("bufferSize", bufferSize);
@@ -134,8 +148,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Set the time in ms that the websocket created by the websocketServlet
-         * may be idle before closing. (default is 300000). The option is a
-         * <code>java.lang.Integer</code> type.
+         * may be idle before closing. (default is 300000).
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group advanced
          */
         public T maxIdleTime(Integer maxIdleTime) {
             this.properties.put("maxIdleTime", maxIdleTime);
@@ -143,8 +158,10 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Set the time in ms that the websocket created by the websocketServlet
-         * may be idle before closing. (default is 300000). The option will be
-         * converted to a <code>java.lang.Integer</code> type.
+         * may be idle before closing. (default is 300000).
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group advanced
          */
         public T maxIdleTime(String maxIdleTime) {
             this.properties.put("maxIdleTime", maxIdleTime);
@@ -152,8 +169,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Can be used to set the size in characters that the websocket created
-         * by the websocketServlet may be accept before closing. The option is a
-         * <code>java.lang.Integer</code> type.
+         * by the websocketServlet may be accept before closing.
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group advanced
          */
         public T maxTextMessageSize(Integer maxTextMessageSize) {
             this.properties.put("maxTextMessageSize", maxTextMessageSize);
@@ -161,8 +179,10 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Can be used to set the size in characters that the websocket created
-         * by the websocketServlet may be accept before closing. The option will
-         * be converted to a <code>java.lang.Integer</code> type.
+         * by the websocketServlet may be accept before closing.
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group advanced
          */
         public T maxTextMessageSize(String maxTextMessageSize) {
             this.properties.put("maxTextMessageSize", maxTextMessageSize);
@@ -170,8 +190,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Can be used to set the minimum protocol version accepted for the
-         * websocketServlet. (Default 13 - the RFC6455 version). The option is a
-         * <code>java.lang.Integer</code> type.
+         * websocketServlet. (Default 13 - the RFC6455 version).
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group advanced
          */
         public T minVersion(Integer minVersion) {
             this.properties.put("minVersion", minVersion);
@@ -179,8 +200,10 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Can be used to set the minimum protocol version accepted for the
-         * websocketServlet. (Default 13 - the RFC6455 version). The option will
-         * be converted to a <code>java.lang.Integer</code> type.
+         * websocketServlet. (Default 13 - the RFC6455 version).
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group advanced
          */
         public T minVersion(String minVersion) {
             this.properties.put("minVersion", minVersion);
@@ -188,8 +211,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * is a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option is a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(boolean synchronous) {
             this.properties.put("synchronous", synchronous);
@@ -197,39 +221,45 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Sets whether synchronous processing should be strictly used, or Camel
-         * is allowed to use asynchronous processing (if supported). The option
-         * will be converted to a <code>boolean</code> type.
+         * is allowed to use asynchronous processing (if supported).
+         * The option will be converted to a <code>boolean</code> type.
+         * @group advanced
          */
         public T synchronous(String synchronous) {
             this.properties.put("synchronous", synchronous);
             return (T) this;
         }
         /**
-         * The CORS allowed origins. Use to allow all. The option is a
-         * <code>java.lang.String</code> type.
+         * The CORS allowed origins. Use to allow all.
+         * The option is a <code>java.lang.String</code> type.
+         * @group cors
          */
         public T allowedOrigins(String allowedOrigins) {
             this.properties.put("allowedOrigins", allowedOrigins);
             return (T) this;
         }
         /**
-         * Whether to enable CORS. The option is a <code>boolean</code> type.
+         * Whether to enable CORS.
+         * The option is a <code>boolean</code> type.
+         * @group cors
          */
         public T crossOriginFilterOn(boolean crossOriginFilterOn) {
             this.properties.put("crossOriginFilterOn", crossOriginFilterOn);
             return (T) this;
         }
         /**
-         * Whether to enable CORS. The option will be converted to a
-         * <code>boolean</code> type.
+         * Whether to enable CORS.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group cors
          */
         public T crossOriginFilterOn(String crossOriginFilterOn) {
             this.properties.put("crossOriginFilterOn", crossOriginFilterOn);
             return (T) this;
         }
         /**
-         * Context path for filtering CORS. The option is a
-         * <code>java.lang.String</code> type.
+         * Context path for filtering CORS.
+         * The option is a <code>java.lang.String</code> type.
+         * @group cors
          */
         public T filterPath(String filterPath) {
             this.properties.put("filterPath", filterPath);
@@ -237,8 +267,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * If this option is true, Jetty JMX support will be enabled for this
-         * endpoint. See Jetty JMX support for more details. The option is a
-         * <code>boolean</code> type.
+         * endpoint. See Jetty JMX support for more details.
+         * The option is a <code>boolean</code> type.
+         * @group monitoring
          */
         public T enableJmx(boolean enableJmx) {
             this.properties.put("enableJmx", enableJmx);
@@ -246,25 +277,29 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * If this option is true, Jetty JMX support will be enabled for this
-         * endpoint. See Jetty JMX support for more details. The option will be
-         * converted to a <code>boolean</code> type.
+         * endpoint. See Jetty JMX support for more details.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group monitoring
          */
         public T enableJmx(String enableJmx) {
             this.properties.put("enableJmx", enableJmx);
             return (T) this;
         }
         /**
-         * To configure security using SSLContextParameters. The option is a
+         * To configure security using SSLContextParameters.
+         * The option is a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group security
          */
         public T sslContextParameters(Object sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
             return (T) this;
         }
         /**
-         * To configure security using SSLContextParameters. The option will be
-         * converted to a
+         * To configure security using SSLContextParameters.
+         * The option will be converted to a
          * <code>org.apache.camel.support.jsse.SSLContextParameters</code> type.
+         * @group security
          */
         public T sslContextParameters(String sslContextParameters) {
             this.properties.put("sslContextParameters", sslContextParameters);
@@ -290,7 +325,9 @@ public interface WebsocketEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option is a <code>boolean</code> type.
+         * ignored.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public WebsocketConsumerBuilder bridgeErrorHandler(
                 boolean bridgeErrorHandler) {
@@ -304,7 +341,9 @@ public interface WebsocketEndpointBuilder {
          * message and handled by the routing Error Handler. By default the
          * consumer will use the org.apache.camel.spi.ExceptionHandler to deal
          * with exceptions, that will be logged at WARN or ERROR level and
-         * ignored. The option will be converted to a <code>boolean</code> type.
+         * ignored.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public WebsocketConsumerBuilder bridgeErrorHandler(
                 String bridgeErrorHandler) {
@@ -313,7 +352,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Whether to enable session support which enables HttpSession for each
-         * http request. The option is a <code>boolean</code> type.
+         * http request.
+         * The option is a <code>boolean</code> type.
+         * @group consumer
          */
         public WebsocketConsumerBuilder sessionSupport(boolean sessionSupport) {
             this.properties.put("sessionSupport", sessionSupport);
@@ -321,8 +362,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Whether to enable session support which enables HttpSession for each
-         * http request. The option will be converted to a <code>boolean</code>
-         * type.
+         * http request.
+         * The option will be converted to a <code>boolean</code> type.
+         * @group consumer
          */
         public WebsocketConsumerBuilder sessionSupport(String sessionSupport) {
             this.properties.put("sessionSupport", sessionSupport);
@@ -334,8 +376,9 @@ public interface WebsocketEndpointBuilder {
          * classpath:, otherwise the resources is loaded from file system or
          * from JAR files. For example to load from root classpath use
          * classpath:., or classpath:WEB-INF/static If not configured (eg null)
-         * then no static resource is in use. The option is a
-         * <code>java.lang.String</code> type.
+         * then no static resource is in use.
+         * The option is a <code>java.lang.String</code> type.
+         * @group consumer
          */
         public WebsocketConsumerBuilder staticResources(String staticResources) {
             this.properties.put("staticResources", staticResources);
@@ -345,8 +388,10 @@ public interface WebsocketEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option is a
-         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * logged at WARN or ERROR level and ignored.
+         * The option is a <code>org.apache.camel.spi.ExceptionHandler</code>
+         * type.
+         * @group consumer (advanced)
          */
         public WebsocketConsumerBuilder exceptionHandler(
                 ExceptionHandler exceptionHandler) {
@@ -357,17 +402,19 @@ public interface WebsocketEndpointBuilder {
          * To let the consumer use a custom ExceptionHandler. Notice if the
          * option bridgeErrorHandler is enabled then this option is not in use.
          * By default the consumer will deal with exceptions, that will be
-         * logged at WARN or ERROR level and ignored. The option will be
-         * converted to a <code>org.apache.camel.spi.ExceptionHandler</code>
-         * type.
+         * logged at WARN or ERROR level and ignored.
+         * The option will be converted to a
+         * <code>org.apache.camel.spi.ExceptionHandler</code> type.
+         * @group consumer (advanced)
          */
         public WebsocketConsumerBuilder exceptionHandler(String exceptionHandler) {
             this.properties.put("exceptionHandler", exceptionHandler);
             return (WebsocketConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option is a <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public WebsocketConsumerBuilder exchangePattern(
                 ExchangePattern exchangePattern) {
@@ -375,9 +422,10 @@ public interface WebsocketEndpointBuilder {
             return (WebsocketConsumerBuilder) this;
         }
         /**
-         * Sets the exchange pattern when the consumer creates an exchange. The
-         * option will be converted to a
+         * Sets the exchange pattern when the consumer creates an exchange.
+         * The option will be converted to a
          * <code>org.apache.camel.ExchangePattern</code> type.
+         * @group consumer (advanced)
          */
         public WebsocketConsumerBuilder exchangePattern(String exchangePattern) {
             this.properties.put("exchangePattern", exchangePattern);
@@ -398,8 +446,9 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Timeout in millis when sending to a websocket channel. The default
-         * timeout is 30000 (30 seconds). The option is a
-         * <code>java.lang.Integer</code> type.
+         * timeout is 30000 (30 seconds).
+         * The option is a <code>java.lang.Integer</code> type.
+         * @group producer
          */
         public WebsocketProducerBuilder sendTimeout(Integer sendTimeout) {
             this.properties.put("sendTimeout", sendTimeout);
@@ -407,8 +456,10 @@ public interface WebsocketEndpointBuilder {
         }
         /**
          * Timeout in millis when sending to a websocket channel. The default
-         * timeout is 30000 (30 seconds). The option will be converted to a
-         * <code>java.lang.Integer</code> type.
+         * timeout is 30000 (30 seconds).
+         * The option will be converted to a <code>java.lang.Integer</code>
+         * type.
+         * @group producer
          */
         public WebsocketProducerBuilder sendTimeout(String sendTimeout) {
             this.properties.put("sendTimeout", sendTimeout);
@@ -417,8 +468,9 @@ public interface WebsocketEndpointBuilder {
         /**
          * To send to all websocket subscribers. Can be used to configure on
          * endpoint level, instead of having to use the
-         * WebsocketConstants.SEND_TO_ALL header on the message. The option is a
-         * <code>java.lang.Boolean</code> type.
+         * WebsocketConstants.SEND_TO_ALL header on the message.
+         * The option is a <code>java.lang.Boolean</code> type.
+         * @group producer
          */
         public WebsocketProducerBuilder sendToAll(Boolean sendToAll) {
             this.properties.put("sendToAll", sendToAll);
@@ -427,8 +479,10 @@ public interface WebsocketEndpointBuilder {
         /**
          * To send to all websocket subscribers. Can be used to configure on
          * endpoint level, instead of having to use the
-         * WebsocketConstants.SEND_TO_ALL header on the message. The option will
-         * be converted to a <code>java.lang.Boolean</code> type.
+         * WebsocketConstants.SEND_TO_ALL header on the message.
+         * The option will be converted to a <code>java.lang.Boolean</code>
+         * type.
+         * @group producer
          */
         public WebsocketProducerBuilder sendToAll(String sendToAll) {
             this.properties.put("sendToAll", sendToAll);

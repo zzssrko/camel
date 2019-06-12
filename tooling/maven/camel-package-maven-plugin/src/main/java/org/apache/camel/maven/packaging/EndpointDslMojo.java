@@ -307,11 +307,12 @@ public class EndpointDslMojo extends AbstractMojo {
             if (!Strings.isBlank(option.getDescription())) {
                 String desc = option.getDescription();
                 if (!desc.endsWith(".")) {
-                    desc = desc + ".";
+                    desc += ".";
                 }
-                desc = desc + " The option is a <code>" + ogtype.toString()
+                desc += "\nThe option is a <code>" + ogtype.toString()
                         .replaceAll("<", "&lt;")
                         .replaceAll(">", "&gt;") + "</code> type.";
+                desc += "\n@group " + option.getGroup();
                 fluent.getJavaDoc().setFullText(desc);
             }
 
@@ -327,11 +328,12 @@ public class EndpointDslMojo extends AbstractMojo {
                 if (!Strings.isBlank(option.getDescription())) {
                     String desc = option.getDescription();
                     if (!desc.endsWith(".")) {
-                        desc = desc + ".";
+                        desc += ".";
                     }
-                    desc = desc + " The option will be converted to a <code>" + ogtype.toString()
+                    desc+= "\nThe option will be converted to a <code>" + ogtype.toString()
                             .replaceAll("<", "&lt;")
                             .replaceAll(">", "&gt;") + "</code> type.";
+                    desc += "\n@group " + option.getGroup();
                     fluent.getJavaDoc().setFullText(desc);
                 }
             }
