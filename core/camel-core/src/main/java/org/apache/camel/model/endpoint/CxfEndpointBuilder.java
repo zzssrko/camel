@@ -34,6 +34,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface CxfEndpointBuilder {
 
 
+    /**
+     * Base class for the CXF component builders.
+     */
     public static class CxfCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -475,6 +478,9 @@ public interface CxfEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the CXF component.
+     */
     public static class CxfConsumerBuilder
             extends
                 CxfCommonBuilder<CxfConsumerBuilder>
@@ -553,6 +559,9 @@ public interface CxfEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the CXF component.
+     */
     public static class CxfProducerBuilder
             extends
                 CxfCommonBuilder<CxfProducerBuilder>
@@ -655,12 +664,24 @@ public interface CxfEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.cxf.DataFormat</code>
+     * enum.
+     */
     public static enum DataFormat {
         PAYLOAD, RAW, MESSAGE, CXF_MESSAGE, POJO;
     }
+    /**
+     * The cxf component is used for SOAP WebServices using Apache CXF. Creates
+     * a builder to build a consumer endpoint for the CXF component.
+     */
     public default CxfConsumerBuilder fromCxf(String path) {
         return new CxfConsumerBuilder(path);
     }
+    /**
+     * The cxf component is used for SOAP WebServices using Apache CXF. Creates
+     * a builder to build a producer endpoint for the CXF component.
+     */
     public default CxfProducerBuilder toCxf(String path) {
         return new CxfProducerBuilder(path);
     }

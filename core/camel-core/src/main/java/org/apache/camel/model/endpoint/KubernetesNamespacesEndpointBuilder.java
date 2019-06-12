@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface KubernetesNamespacesEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes Namespaces component builders.
+     */
     public static class KubernetesNamespacesCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -253,6 +256,9 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Kubernetes Namespaces component.
+     */
     public static class KubernetesNamespacesConsumerBuilder
             extends
                 KubernetesNamespacesCommonBuilder<KubernetesNamespacesConsumerBuilder>
@@ -382,6 +388,9 @@ public interface KubernetesNamespacesEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes Namespaces component.
+     */
     public static class KubernetesNamespacesProducerBuilder
             extends
                 KubernetesNamespacesCommonBuilder<KubernetesNamespacesProducerBuilder>
@@ -399,10 +408,22 @@ public interface KubernetesNamespacesEndpointBuilder {
             return (KubernetesNamespacesProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Namespaces component provides a producer to execute
+     * kubernetes namespace operations and a consumer to consume namespace
+     * events. Creates a builder to build a consumer endpoint for the Kubernetes
+     * Namespaces component.
+     */
     public default KubernetesNamespacesConsumerBuilder fromKubernetesNamespaces(
             String path) {
         return new KubernetesNamespacesConsumerBuilder(path);
     }
+    /**
+     * The Kubernetes Namespaces component provides a producer to execute
+     * kubernetes namespace operations and a consumer to consume namespace
+     * events. Creates a builder to build a producer endpoint for the Kubernetes
+     * Namespaces component.
+     */
     public default KubernetesNamespacesProducerBuilder toKubernetesNamespaces(
             String path) {
         return new KubernetesNamespacesProducerBuilder(path);

@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface JGroupsRaftEndpointBuilder {
 
 
+    /**
+     * Base class for the JGroups raft component builders.
+     */
     public static class JGroupsRaftCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -85,6 +88,9 @@ public interface JGroupsRaftEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the JGroups raft component.
+     */
     public static class JGroupsRaftConsumerBuilder
             extends
                 JGroupsRaftCommonBuilder<JGroupsRaftConsumerBuilder>
@@ -188,6 +194,9 @@ public interface JGroupsRaftEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JGroups raft component.
+     */
     public static class JGroupsRaftProducerBuilder
             extends
                 JGroupsRaftCommonBuilder<JGroupsRaftProducerBuilder>
@@ -197,9 +206,19 @@ public interface JGroupsRaftEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The jgroups component provides exchange of messages between Camel and
+     * JGroups clusters. Creates a builder to build a consumer endpoint for the
+     * JGroups raft component.
+     */
     public default JGroupsRaftConsumerBuilder fromJGroupsRaft(String path) {
         return new JGroupsRaftConsumerBuilder(path);
     }
+    /**
+     * The jgroups component provides exchange of messages between Camel and
+     * JGroups clusters. Creates a builder to build a producer endpoint for the
+     * JGroups raft component.
+     */
     public default JGroupsRaftProducerBuilder toJGroupsRaft(String path) {
         return new JGroupsRaftProducerBuilder(path);
     }

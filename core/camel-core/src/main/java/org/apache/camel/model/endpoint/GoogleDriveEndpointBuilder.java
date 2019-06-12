@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface GoogleDriveEndpointBuilder {
 
 
+    /**
+     * Base class for the Google Drive component builders.
+     */
     public static class GoogleDriveCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -195,6 +198,9 @@ public interface GoogleDriveEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Google Drive component.
+     */
     public static class GoogleDriveConsumerBuilder
             extends
                 GoogleDriveCommonBuilder<GoogleDriveConsumerBuilder>
@@ -276,6 +282,9 @@ public interface GoogleDriveEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Google Drive component.
+     */
     public static class GoogleDriveProducerBuilder
             extends
                 GoogleDriveCommonBuilder<GoogleDriveProducerBuilder>
@@ -286,12 +295,26 @@ public interface GoogleDriveEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.google.drive.internal.GoogleDriveApiName</code> enum.
+     */
     public static enum GoogleDriveApiName {
         DRIVE_ABOUT, DRIVE_APPS, DRIVE_CHANGES, DRIVE_CHANNELS, DRIVE_CHILDREN, DRIVE_COMMENTS, DRIVE_FILES, DRIVE_PARENTS, DRIVE_PERMISSIONS, DRIVE_PROPERTIES, DRIVE_REALTIME, DRIVE_REPLIES, DRIVE_REVISIONS;
     }
+    /**
+     * The google-drive component provides access to Google Drive file storage
+     * service. Creates a builder to build a consumer endpoint for the Google
+     * Drive component.
+     */
     public default GoogleDriveConsumerBuilder fromGoogleDrive(String path) {
         return new GoogleDriveConsumerBuilder(path);
     }
+    /**
+     * The google-drive component provides access to Google Drive file storage
+     * service. Creates a builder to build a producer endpoint for the Google
+     * Drive component.
+     */
     public default GoogleDriveProducerBuilder toGoogleDrive(String path) {
         return new GoogleDriveProducerBuilder(path);
     }

@@ -33,6 +33,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface IgniteComputeEndpointBuilder {
 
 
+    /**
+     * Base class for the Ignite Compute component builders.
+     */
     public static class IgniteComputeCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -125,6 +128,9 @@ public interface IgniteComputeEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Ignite Compute component.
+     */
     public static class IgniteComputeProducerBuilder
             extends
                 IgniteComputeCommonBuilder<IgniteComputeProducerBuilder>
@@ -216,9 +222,20 @@ public interface IgniteComputeEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.ignite.compute.IgniteComputeExecutionType</code> enum.
+     */
     public static enum IgniteComputeExecutionType {
         CALL, BROADCAST, APPLY, EXECUTE, RUN, AFFINITY_CALL, AFFINITY_RUN;
     }
+    /**
+     * The Ignite Compute endpoint is one of camel-ignite endpoints which allows
+     * you to run compute operations on the cluster by passing in an
+     * IgniteCallable, an IgniteRunnable, an IgniteClosure, or collections of
+     * them, along with their parameters if necessary. Creates a builder to
+     * build a producer endpoint for the Ignite Compute component.
+     */
     public default IgniteComputeProducerBuilder toIgniteCompute(String path) {
         return new IgniteComputeProducerBuilder(path);
     }

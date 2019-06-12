@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface KubernetesServicesEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes Services component builders.
+     */
     public static class KubernetesServicesCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -253,6 +256,9 @@ public interface KubernetesServicesEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Kubernetes Services component.
+     */
     public static class KubernetesServicesConsumerBuilder
             extends
                 KubernetesServicesCommonBuilder<KubernetesServicesConsumerBuilder>
@@ -382,6 +388,9 @@ public interface KubernetesServicesEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes Services component.
+     */
     public static class KubernetesServicesProducerBuilder
             extends
                 KubernetesServicesCommonBuilder<KubernetesServicesProducerBuilder>
@@ -399,10 +408,22 @@ public interface KubernetesServicesEndpointBuilder {
             return (KubernetesServicesProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Service Accounts component provides a producer to execute
+     * service operations and a consumer to consume service events. Creates a
+     * builder to build a consumer endpoint for the Kubernetes Services
+     * component.
+     */
     public default KubernetesServicesConsumerBuilder fromKubernetesServices(
             String path) {
         return new KubernetesServicesConsumerBuilder(path);
     }
+    /**
+     * The Kubernetes Service Accounts component provides a producer to execute
+     * service operations and a consumer to consume service events. Creates a
+     * builder to build a producer endpoint for the Kubernetes Services
+     * component.
+     */
     public default KubernetesServicesProducerBuilder toKubernetesServices(
             String path) {
         return new KubernetesServicesProducerBuilder(path);

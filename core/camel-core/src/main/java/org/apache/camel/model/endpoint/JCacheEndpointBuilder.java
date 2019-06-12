@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface JCacheEndpointBuilder {
 
 
+    /**
+     * Base class for the JCache component builders.
+     */
     public static class JCacheCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -284,6 +287,9 @@ public interface JCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the JCache component.
+     */
     public static class JCacheConsumerBuilder
             extends
                 JCacheCommonBuilder<JCacheConsumerBuilder>
@@ -433,6 +439,9 @@ public interface JCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JCache component.
+     */
     public static class JCacheProducerBuilder
             extends
                 JCacheCommonBuilder<JCacheProducerBuilder>
@@ -452,12 +461,25 @@ public interface JCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>javax.cache.event.EventType</code> enum.
+     */
     public static enum EventType {
         CREATED, UPDATED, REMOVED, EXPIRED;
     }
+    /**
+     * The jcache component enables you to perform caching operations using
+     * JSR107/JCache as cache implementation. Creates a builder to build a
+     * consumer endpoint for the JCache component.
+     */
     public default JCacheConsumerBuilder fromJCache(String path) {
         return new JCacheConsumerBuilder(path);
     }
+    /**
+     * The jcache component enables you to perform caching operations using
+     * JSR107/JCache as cache implementation. Creates a builder to build a
+     * producer endpoint for the JCache component.
+     */
     public default JCacheProducerBuilder toJCache(String path) {
         return new JCacheProducerBuilder(path);
     }

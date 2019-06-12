@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface CometdEndpointBuilder {
 
 
+    /**
+     * Base class for the CometD component builders.
+     */
     public static class CometdCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -256,6 +259,9 @@ public interface CometdEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the CometD component.
+     */
     public static class CometdConsumerBuilder
             extends
                 CometdCommonBuilder<CometdConsumerBuilder>
@@ -356,6 +362,9 @@ public interface CometdEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the CometD component.
+     */
     public static class CometdProducerBuilder
             extends
                 CometdCommonBuilder<CometdProducerBuilder>
@@ -387,9 +396,19 @@ public interface CometdEndpointBuilder {
             return (CometdProducerBuilder) this;
         }
     }
+    /**
+     * The cometd component is a transport for working with the Jetty
+     * implementation of the cometd/bayeux protocol. Creates a builder to build
+     * a consumer endpoint for the CometD component.
+     */
     public default CometdConsumerBuilder fromCometd(String path) {
         return new CometdConsumerBuilder(path);
     }
+    /**
+     * The cometd component is a transport for working with the Jetty
+     * implementation of the cometd/bayeux protocol. Creates a builder to build
+     * a producer endpoint for the CometD component.
+     */
     public default CometdProducerBuilder toCometd(String path) {
         return new CometdProducerBuilder(path);
     }

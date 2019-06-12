@@ -35,6 +35,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface Sjms2EndpointBuilder {
 
 
+    /**
+     * Base class for the Simple JMS2 component builders.
+     */
     public static class Sjms2CommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -393,6 +396,9 @@ public interface Sjms2EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Simple JMS2 component.
+     */
     public static class Sjms2ConsumerBuilder
             extends
                 Sjms2CommonBuilder<Sjms2ConsumerBuilder>
@@ -656,6 +662,9 @@ public interface Sjms2EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Simple JMS2 component.
+     */
     public static class Sjms2ProducerBuilder
             extends
                 Sjms2CommonBuilder<Sjms2ProducerBuilder>
@@ -776,12 +785,26 @@ public interface Sjms2EndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.sjms.jms.SessionAcknowledgementType</code> enum.
+     */
     public static enum SessionAcknowledgementType {
         AUTO_ACKNOWLEDGE, CLIENT_ACKNOWLEDGE, DUPS_OK_ACKNOWLEDGE, SESSION_TRANSACTED;
     }
+    /**
+     * The sjms2 component (simple jms) allows messages to be sent to (or
+     * consumed from) a JMS Queue or Topic (uses JMS 2.x API). Creates a builder
+     * to build a consumer endpoint for the Simple JMS2 component.
+     */
     public default Sjms2ConsumerBuilder fromSjms2(String path) {
         return new Sjms2ConsumerBuilder(path);
     }
+    /**
+     * The sjms2 component (simple jms) allows messages to be sent to (or
+     * consumed from) a JMS Queue or Topic (uses JMS 2.x API). Creates a builder
+     * to build a producer endpoint for the Simple JMS2 component.
+     */
     public default Sjms2ProducerBuilder toSjms2(String path) {
         return new Sjms2ProducerBuilder(path);
     }

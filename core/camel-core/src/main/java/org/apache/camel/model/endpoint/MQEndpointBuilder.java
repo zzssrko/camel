@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface MQEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS MQ component builders.
+     */
     public static class MQCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -89,6 +92,9 @@ public interface MQEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS MQ component.
+     */
     public static class MQProducerBuilder
             extends
                 MQCommonBuilder<MQProducerBuilder>
@@ -175,9 +181,17 @@ public interface MQEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.mq.MQOperations</code> enum.
+     */
     public static enum MQOperations {
         listBrokers, createBroker, deleteBroker, rebootBroker, updateBroker, describeBroker;
     }
+    /**
+     * The aws-mq is used for managing Amazon MQ instances. Creates a builder to
+     * build a producer endpoint for the AWS MQ component.
+     */
     public default MQProducerBuilder toMQ(String path) {
         return new MQProducerBuilder(path);
     }

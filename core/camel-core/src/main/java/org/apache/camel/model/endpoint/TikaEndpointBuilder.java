@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface TikaEndpointBuilder {
 
 
+    /**
+     * Base class for the Tika component builders.
+     */
     public static class TikaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -150,6 +153,9 @@ public interface TikaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Tika component.
+     */
     public static class TikaProducerBuilder
             extends
                 TikaCommonBuilder<TikaProducerBuilder>
@@ -160,13 +166,26 @@ public interface TikaEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.tika.TikaOperation</code>
+     * enum.
+     */
     public static enum TikaOperation {
         parse, detect;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.tika.TikaParseOutputFormat</code> enum.
+     */
     public static enum TikaParseOutputFormat {
         xml, html, text, textMain;
     }
+    /**
+     * This component integrates with Apache Tika to extract content and
+     * metadata from thousands of file types. Creates a builder to build a
+     * producer endpoint for the Tika component.
+     */
     public default TikaProducerBuilder toTika(String path) {
         return new TikaProducerBuilder(path);
     }

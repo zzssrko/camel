@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface SchedulerEndpointBuilder {
 
 
+    /**
+     * Base class for the Scheduler component builders.
+     */
     public static class SchedulerCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -108,6 +111,9 @@ public interface SchedulerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Scheduler component.
+     */
     public static class SchedulerConsumerBuilder
             extends
                 SchedulerCommonBuilder<SchedulerConsumerBuilder>
@@ -487,6 +493,11 @@ public interface SchedulerEndpointBuilder {
             return (SchedulerConsumerBuilder) this;
         }
     }
+    /**
+     * The scheduler component is used for generating message exchanges when a
+     * scheduler fires. Creates a builder to build a consumer endpoint for the
+     * Scheduler component.
+     */
     public default SchedulerConsumerBuilder fromScheduler(String path) {
         return new SchedulerConsumerBuilder(path);
     }

@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface PulsarEndpointBuilder {
 
 
+    /**
+     * Base class for the Apache Pulsar component builders.
+     */
     public static class PulsarCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -76,6 +79,9 @@ public interface PulsarEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Apache Pulsar component.
+     */
     public static class PulsarConsumerBuilder
             extends
                 PulsarCommonBuilder<PulsarConsumerBuilder>
@@ -233,6 +239,9 @@ public interface PulsarEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Apache Pulsar component.
+     */
     public static class PulsarProducerBuilder
             extends
                 PulsarCommonBuilder<PulsarProducerBuilder>
@@ -259,12 +268,24 @@ public interface PulsarEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.pulsar.utils.consumers.SubscriptionType</code> enum.
+     */
     public static enum SubscriptionType {
         EXCLUSIVE, SHARED, FAILOVER;
     }
+    /**
+     * Camel Apache Pulsar Component Creates a builder to build a consumer
+     * endpoint for the Apache Pulsar component.
+     */
     public default PulsarConsumerBuilder fromPulsar(String path) {
         return new PulsarConsumerBuilder(path);
     }
+    /**
+     * Camel Apache Pulsar Component Creates a builder to build a producer
+     * endpoint for the Apache Pulsar component.
+     */
     public default PulsarProducerBuilder toPulsar(String path) {
         return new PulsarProducerBuilder(path);
     }

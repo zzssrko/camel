@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface MvelEndpointBuilder {
 
 
+    /**
+     * Base class for the MVEL component builders.
+     */
     public static class MvelCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -111,6 +114,9 @@ public interface MvelEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the MVEL component.
+     */
     public static class MvelProducerBuilder
             extends
                 MvelCommonBuilder<MvelProducerBuilder>
@@ -120,6 +126,10 @@ public interface MvelEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Transforms the message using a MVEL template. Creates a builder to build
+     * a producer endpoint for the MVEL component.
+     */
     public default MvelProducerBuilder toMvel(String path) {
         return new MvelProducerBuilder(path);
     }

@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface PrinterEndpointBuilder {
 
 
+    /**
+     * Base class for the Printer component builders.
+     */
     public static class PrinterCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -214,6 +217,9 @@ public interface PrinterEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Printer component.
+     */
     public static class PrinterProducerBuilder
             extends
                 PrinterCommonBuilder<PrinterProducerBuilder>
@@ -223,6 +229,11 @@ public interface PrinterEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The printer component is used for sending messages to printers as print
+     * jobs. Creates a builder to build a producer endpoint for the Printer
+     * component.
+     */
     public default PrinterProducerBuilder toPrinter(String path) {
         return new PrinterProducerBuilder(path);
     }

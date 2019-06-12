@@ -38,6 +38,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface SqlEndpointBuilder {
 
 
+    /**
+     * Base class for the SQL component builders.
+     */
     public static class SqlCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -327,6 +330,9 @@ public interface SqlEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the SQL component.
+     */
     public static class SqlConsumerBuilder
             extends
                 SqlCommonBuilder<SqlConsumerBuilder>
@@ -860,6 +866,9 @@ public interface SqlEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the SQL component.
+     */
     public static class SqlProducerBuilder
             extends
                 SqlCommonBuilder<SqlProducerBuilder>
@@ -924,12 +933,26 @@ public interface SqlEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.sql.SqlOutputType</code>
+     * enum.
+     */
     public static enum SqlOutputType {
         SelectOne, SelectList, StreamList;
     }
+    /**
+     * The sql component allows you to work with databases using JDBC SQL
+     * queries. Creates a builder to build a consumer endpoint for the SQL
+     * component.
+     */
     public default SqlConsumerBuilder fromSql(String path) {
         return new SqlConsumerBuilder(path);
     }
+    /**
+     * The sql component allows you to work with databases using JDBC SQL
+     * queries. Creates a builder to build a producer endpoint for the SQL
+     * component.
+     */
     public default SqlProducerBuilder toSql(String path) {
         return new SqlProducerBuilder(path);
     }

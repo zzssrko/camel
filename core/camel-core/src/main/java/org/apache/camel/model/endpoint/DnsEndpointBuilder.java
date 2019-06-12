@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface DnsEndpointBuilder {
 
 
+    /**
+     * Base class for the DNS component builders.
+     */
     public static class DnsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -90,6 +93,9 @@ public interface DnsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the DNS component.
+     */
     public static class DnsProducerBuilder
             extends
                 DnsCommonBuilder<DnsProducerBuilder>
@@ -100,9 +106,16 @@ public interface DnsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.dns.DnsType</code> enum.
+     */
     public static enum DnsType {
         dig, ip, lookup, wikipedia;
     }
+    /**
+     * To lookup domain information and run DNS queries using DNSJava. Creates a
+     * builder to build a producer endpoint for the DNS component.
+     */
     public default DnsProducerBuilder toDns(String path) {
         return new DnsProducerBuilder(path);
     }

@@ -38,6 +38,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface SplunkEndpointBuilder {
 
 
+    /**
+     * Base class for the Splunk component builders.
+     */
     public static class SplunkCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -200,6 +203,9 @@ public interface SplunkEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Splunk component.
+     */
     public static class SplunkConsumerBuilder
             extends
                 SplunkCommonBuilder<SplunkConsumerBuilder>
@@ -653,6 +659,9 @@ public interface SplunkEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Splunk component.
+     */
     public static class SplunkProducerBuilder
             extends
                 SplunkCommonBuilder<SplunkProducerBuilder>
@@ -726,12 +735,23 @@ public interface SplunkEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>com.splunk.SSLSecurityProtocol</code> enum.
+     */
     public static enum SSLSecurityProtocol {
         TLSv1_2, TLSv1_1, TLSv1, SSLv3;
     }
+    /**
+     * The splunk component allows to publish or search for events in Splunk.
+     * Creates a builder to build a consumer endpoint for the Splunk component.
+     */
     public default SplunkConsumerBuilder fromSplunk(String path) {
         return new SplunkConsumerBuilder(path);
     }
+    /**
+     * The splunk component allows to publish or search for events in Splunk.
+     * Creates a builder to build a producer endpoint for the Splunk component.
+     */
     public default SplunkProducerBuilder toSplunk(String path) {
         return new SplunkProducerBuilder(path);
     }

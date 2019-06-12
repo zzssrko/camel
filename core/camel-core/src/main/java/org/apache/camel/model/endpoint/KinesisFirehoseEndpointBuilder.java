@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface KinesisFirehoseEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS Kinesis Firehose component builders.
+     */
     public static class KinesisFirehoseCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -149,6 +152,9 @@ public interface KinesisFirehoseEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS Kinesis Firehose component.
+     */
     public static class KinesisFirehoseProducerBuilder
             extends
                 KinesisFirehoseCommonBuilder<KinesisFirehoseProducerBuilder>
@@ -158,6 +164,11 @@ public interface KinesisFirehoseEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The aws-kinesis-firehose component is used for producing Amazon's Kinesis
+     * Firehose streams. Creates a builder to build a producer endpoint for the
+     * AWS Kinesis Firehose component.
+     */
     public default KinesisFirehoseProducerBuilder toKinesisFirehose(String path) {
         return new KinesisFirehoseProducerBuilder(path);
     }

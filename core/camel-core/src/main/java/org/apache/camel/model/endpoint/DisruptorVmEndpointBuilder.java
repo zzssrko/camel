@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface DisruptorVmEndpointBuilder {
 
 
+    /**
+     * Base class for the Disruptor VM component builders.
+     */
     public static class DisruptorVmCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -110,6 +113,9 @@ public interface DisruptorVmEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Disruptor VM component.
+     */
     public static class DisruptorVmConsumerBuilder
             extends
                 DisruptorVmCommonBuilder<DisruptorVmConsumerBuilder>
@@ -255,6 +261,9 @@ public interface DisruptorVmEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Disruptor VM component.
+     */
     public static class DisruptorVmProducerBuilder
             extends
                 DisruptorVmCommonBuilder<DisruptorVmProducerBuilder>
@@ -358,16 +367,36 @@ public interface DisruptorVmEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.disruptor.DisruptorWaitStrategy</code>
+     * enum.
+     */
     public static enum DisruptorWaitStrategy {
         Blocking, Sleeping, BusySpin, Yielding;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.disruptor.DisruptorProducerType</code>
+     * enum.
+     */
     public static enum DisruptorProducerType {
         Single, Multi;
     }
+    /**
+     * The disruptor component provides asynchronous SEDA behavior using LMAX
+     * Disruptor. Creates a builder to build a consumer endpoint for the
+     * Disruptor VM component.
+     */
     public default DisruptorVmConsumerBuilder fromDisruptorVm(String path) {
         return new DisruptorVmConsumerBuilder(path);
     }
+    /**
+     * The disruptor component provides asynchronous SEDA behavior using LMAX
+     * Disruptor. Creates a builder to build a producer endpoint for the
+     * Disruptor VM component.
+     */
     public default DisruptorVmProducerBuilder toDisruptorVm(String path) {
         return new DisruptorVmProducerBuilder(path);
     }

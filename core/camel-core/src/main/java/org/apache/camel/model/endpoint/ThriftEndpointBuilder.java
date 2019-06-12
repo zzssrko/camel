@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface ThriftEndpointBuilder {
 
 
+    /**
+     * Base class for the Thrift component builders.
+     */
     public static class ThriftCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -184,6 +187,9 @@ public interface ThriftEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Thrift component.
+     */
     public static class ThriftConsumerBuilder
             extends
                 ThriftCommonBuilder<ThriftConsumerBuilder>
@@ -311,6 +317,9 @@ public interface ThriftEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Thrift component.
+     */
     public static class ThriftProducerBuilder
             extends
                 ThriftCommonBuilder<ThriftProducerBuilder>
@@ -329,20 +338,45 @@ public interface ThriftEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.thrift.ThriftCompressionType</code>
+     * enum.
+     */
     public static enum ThriftCompressionType {
         NONE, ZLIB;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.thrift.ThriftExchangeProtocol</code>
+     * enum.
+     */
     public static enum ThriftExchangeProtocol {
         BINARY, JSON, SJSON, COMPACT;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.thrift.ThriftNegotiationType</code>
+     * enum.
+     */
     public static enum ThriftNegotiationType {
         PLAINTEXT, SSL, SASL;
     }
+    /**
+     * The Thrift component allows to call and expose remote procedures (RPC)
+     * with Apache Thrift data format and serialization mechanism Creates a
+     * builder to build a consumer endpoint for the Thrift component.
+     */
     public default ThriftConsumerBuilder fromThrift(String path) {
         return new ThriftConsumerBuilder(path);
     }
+    /**
+     * The Thrift component allows to call and expose remote procedures (RPC)
+     * with Apache Thrift data format and serialization mechanism Creates a
+     * builder to build a producer endpoint for the Thrift component.
+     */
     public default ThriftProducerBuilder toThrift(String path) {
         return new ThriftProducerBuilder(path);
     }

@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface FlinkEndpointBuilder {
 
 
+    /**
+     * Base class for the Apache Flink component builders.
+     */
     public static class FlinkCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -177,6 +180,9 @@ public interface FlinkEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Apache Flink component.
+     */
     public static class FlinkProducerBuilder
             extends
                 FlinkCommonBuilder<FlinkProducerBuilder>
@@ -187,9 +193,18 @@ public interface FlinkEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.flink.EndpointType</code>
+     * enum.
+     */
     public static enum EndpointType {
         dataset, datastream;
     }
+    /**
+     * The flink component can be used to send DataSet jobs to Apache Flink
+     * cluster. Creates a builder to build a producer endpoint for the Apache
+     * Flink component.
+     */
     public default FlinkProducerBuilder toFlink(String path) {
         return new FlinkProducerBuilder(path);
     }

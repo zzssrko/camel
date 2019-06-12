@@ -33,6 +33,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface XmppEndpointBuilder {
 
 
+    /**
+     * Base class for the XMPP component builders.
+     */
     public static class XmppCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -280,6 +283,9 @@ public interface XmppEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the XMPP component.
+     */
     public static class XmppConsumerBuilder
             extends
                 XmppCommonBuilder<XmppConsumerBuilder>
@@ -400,6 +406,9 @@ public interface XmppEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the XMPP component.
+     */
     public static class XmppProducerBuilder
             extends
                 XmppCommonBuilder<XmppProducerBuilder>
@@ -409,9 +418,17 @@ public interface XmppEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * To send and receive messages from a XMPP (chat) server. Creates a builder
+     * to build a consumer endpoint for the XMPP component.
+     */
     public default XmppConsumerBuilder fromXmpp(String path) {
         return new XmppConsumerBuilder(path);
     }
+    /**
+     * To send and receive messages from a XMPP (chat) server. Creates a builder
+     * to build a producer endpoint for the XMPP component.
+     */
     public default XmppProducerBuilder toXmpp(String path) {
         return new XmppProducerBuilder(path);
     }

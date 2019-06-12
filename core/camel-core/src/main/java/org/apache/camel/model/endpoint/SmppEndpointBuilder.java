@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface SmppEndpointBuilder {
 
 
+    /**
+     * Base class for the SMPP component builders.
+     */
     public static class SmppCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -403,6 +406,9 @@ public interface SmppEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the SMPP component.
+     */
     public static class SmppConsumerBuilder
             extends
                 SmppCommonBuilder<SmppConsumerBuilder>
@@ -492,6 +498,9 @@ public interface SmppEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the SMPP component.
+     */
     public static class SmppProducerBuilder
             extends
                 SmppCommonBuilder<SmppProducerBuilder>
@@ -783,12 +792,24 @@ public interface SmppEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.smpp.SmppSplittingPolicy</code> enum.
+     */
     public static enum SmppSplittingPolicy {
         ALLOW, REJECT, TRUNCATE;
     }
+    /**
+     * To send and receive SMS using a SMSC (Short Message Service Center).
+     * Creates a builder to build a consumer endpoint for the SMPP component.
+     */
     public default SmppConsumerBuilder fromSmpp(String path) {
         return new SmppConsumerBuilder(path);
     }
+    /**
+     * To send and receive SMS using a SMSC (Short Message Service Center).
+     * Creates a builder to build a producer endpoint for the SMPP component.
+     */
     public default SmppProducerBuilder toSmpp(String path) {
         return new SmppProducerBuilder(path);
     }

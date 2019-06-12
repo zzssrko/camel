@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface KubernetesPersistentVolumesEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes Persistent Volume component builders.
+     */
     public static class KubernetesPersistentVolumesCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -251,6 +254,10 @@ public interface KubernetesPersistentVolumesEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes Persistent Volume
+     * component.
+     */
     public static class KubernetesPersistentVolumesProducerBuilder
             extends
                 KubernetesPersistentVolumesCommonBuilder<KubernetesPersistentVolumesProducerBuilder>
@@ -269,6 +276,11 @@ public interface KubernetesPersistentVolumesEndpointBuilder {
             return (KubernetesPersistentVolumesProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Persistent Volumes component provides a producer to
+     * execute kubernetes persistent volume operations. Creates a builder to
+     * build a producer endpoint for the Kubernetes Persistent Volume component.
+     */
     public default KubernetesPersistentVolumesProducerBuilder toKubernetesPersistentVolumes(
             String path) {
         return new KubernetesPersistentVolumesProducerBuilder(path);

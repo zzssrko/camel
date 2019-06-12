@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface JMXEndpointBuilder {
 
 
+    /**
+     * Base class for the JMX component builders.
+     */
     public static class JMXCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -440,6 +443,9 @@ public interface JMXEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the JMX component.
+     */
     public static class JMXConsumerBuilder
             extends
                 JMXCommonBuilder<JMXConsumerBuilder>
@@ -571,6 +577,10 @@ public interface JMXEndpointBuilder {
             return (JMXConsumerBuilder) this;
         }
     }
+    /**
+     * The jmx component allows to receive JMX notifications. Creates a builder
+     * to build a consumer endpoint for the JMX component.
+     */
     public default JMXConsumerBuilder fromJMX(String path) {
         return new JMXConsumerBuilder(path);
     }

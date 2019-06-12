@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface GrapeEndpointBuilder {
 
 
+    /**
+     * Base class for the Grape component builders.
+     */
     public static class GrapeCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -83,6 +86,9 @@ public interface GrapeEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Grape component.
+     */
     public static class GrapeProducerBuilder
             extends
                 GrapeCommonBuilder<GrapeProducerBuilder>
@@ -92,6 +98,11 @@ public interface GrapeEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The grape component allows you to fetch, load and manage additional jars
+     * when CamelContext is running. Creates a builder to build a producer
+     * endpoint for the Grape component.
+     */
     public default GrapeProducerBuilder toGrape(String path) {
         return new GrapeProducerBuilder(path);
     }

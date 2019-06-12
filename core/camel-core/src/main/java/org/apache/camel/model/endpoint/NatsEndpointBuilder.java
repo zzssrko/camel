@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface NatsEndpointBuilder {
 
 
+    /**
+     * Base class for the Nats component builders.
+     */
     public static class NatsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -356,6 +359,9 @@ public interface NatsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Nats component.
+     */
     public static class NatsConsumerBuilder
             extends
                 NatsCommonBuilder<NatsConsumerBuilder>
@@ -465,6 +471,9 @@ public interface NatsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Nats component.
+     */
     public static class NatsProducerBuilder
             extends
                 NatsCommonBuilder<NatsProducerBuilder>
@@ -482,9 +491,17 @@ public interface NatsEndpointBuilder {
             return (NatsProducerBuilder) this;
         }
     }
+    /**
+     * The nats component allows you produce and consume messages from NATS.
+     * Creates a builder to build a consumer endpoint for the Nats component.
+     */
     public default NatsConsumerBuilder fromNats(String path) {
         return new NatsConsumerBuilder(path);
     }
+    /**
+     * The nats component allows you produce and consume messages from NATS.
+     * Creates a builder to build a producer endpoint for the Nats component.
+     */
     public default NatsProducerBuilder toNats(String path) {
         return new NatsProducerBuilder(path);
     }

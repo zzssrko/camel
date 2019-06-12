@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface VertxEndpointBuilder {
 
 
+    /**
+     * Base class for the Vert.x component builders.
+     */
     public static class VertxCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -103,6 +106,9 @@ public interface VertxEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Vert.x component.
+     */
     public static class VertxConsumerBuilder
             extends
                 VertxCommonBuilder<VertxConsumerBuilder>
@@ -182,6 +188,9 @@ public interface VertxEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Vert.x component.
+     */
     public static class VertxProducerBuilder
             extends
                 VertxCommonBuilder<VertxProducerBuilder>
@@ -191,9 +200,19 @@ public interface VertxEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The vertx component is used for sending and receive messages from a vertx
+     * event bus. Creates a builder to build a consumer endpoint for the Vert.x
+     * component.
+     */
     public default VertxConsumerBuilder fromVertx(String path) {
         return new VertxConsumerBuilder(path);
     }
+    /**
+     * The vertx component is used for sending and receive messages from a vertx
+     * event bus. Creates a builder to build a producer endpoint for the Vert.x
+     * component.
+     */
     public default VertxProducerBuilder toVertx(String path) {
         return new VertxProducerBuilder(path);
     }

@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface GlanceEndpointBuilder {
 
 
+    /**
+     * Base class for the OpenStack Glance component builders.
+     */
     public static class GlanceCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -146,6 +149,9 @@ public interface GlanceEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the OpenStack Glance component.
+     */
     public static class GlanceProducerBuilder
             extends
                 GlanceCommonBuilder<GlanceProducerBuilder>
@@ -155,6 +161,11 @@ public interface GlanceEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The openstack-glance component allows messages to be sent to an OpenStack
+     * image services. Creates a builder to build a producer endpoint for the
+     * OpenStack Glance component.
+     */
     public default GlanceProducerBuilder toGlance(String path) {
         return new GlanceProducerBuilder(path);
     }

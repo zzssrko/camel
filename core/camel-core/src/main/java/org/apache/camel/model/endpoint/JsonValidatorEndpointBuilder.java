@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface JsonValidatorEndpointBuilder {
 
 
+    /**
+     * Base class for the JSON Schema Validator component builders.
+     */
     public static class JsonValidatorCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -182,6 +185,9 @@ public interface JsonValidatorEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JSON Schema Validator component.
+     */
     public static class JsonValidatorProducerBuilder
             extends
                 JsonValidatorCommonBuilder<JsonValidatorProducerBuilder>
@@ -191,6 +197,11 @@ public interface JsonValidatorEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Validates the payload of a message using NetworkNT JSON Schema library.
+     * Creates a builder to build a producer endpoint for the JSON Schema
+     * Validator component.
+     */
     public default JsonValidatorProducerBuilder toJsonValidator(String path) {
         return new JsonValidatorProducerBuilder(path);
     }

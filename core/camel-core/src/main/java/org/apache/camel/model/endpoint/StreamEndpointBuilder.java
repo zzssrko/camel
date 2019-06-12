@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface StreamEndpointBuilder {
 
 
+    /**
+     * Base class for the Stream component builders.
+     */
     public static class StreamCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -184,6 +187,9 @@ public interface StreamEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Stream component.
+     */
     public static class StreamConsumerBuilder
             extends
                 StreamCommonBuilder<StreamConsumerBuilder>
@@ -417,6 +423,9 @@ public interface StreamEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Stream component.
+     */
     public static class StreamProducerBuilder
             extends
                 StreamCommonBuilder<StreamProducerBuilder>
@@ -485,9 +494,19 @@ public interface StreamEndpointBuilder {
             return (StreamProducerBuilder) this;
         }
     }
+    /**
+     * The stream: component provides access to the system-in, system-out and
+     * system-err streams as well as allowing streaming of file and URL. Creates
+     * a builder to build a consumer endpoint for the Stream component.
+     */
     public default StreamConsumerBuilder fromStream(String path) {
         return new StreamConsumerBuilder(path);
     }
+    /**
+     * The stream: component provides access to the system-in, system-out and
+     * system-err streams as well as allowing streaming of file and URL. Creates
+     * a builder to build a producer endpoint for the Stream component.
+     */
     public default StreamProducerBuilder toStream(String path) {
         return new StreamProducerBuilder(path);
     }

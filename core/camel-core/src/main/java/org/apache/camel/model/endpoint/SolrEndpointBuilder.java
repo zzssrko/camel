@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface SolrEndpointBuilder {
 
 
+    /**
+     * Base class for the Solr component builders.
+     */
     public static class SolrCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -257,6 +260,9 @@ public interface SolrEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Solr component.
+     */
     public static class SolrProducerBuilder
             extends
                 SolrCommonBuilder<SolrProducerBuilder>
@@ -266,6 +272,11 @@ public interface SolrEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The solr component allows you to interface with an Apache Lucene Solr
+     * server. Creates a builder to build a producer endpoint for the Solr
+     * component.
+     */
     public default SolrProducerBuilder toSolr(String path) {
         return new SolrProducerBuilder(path);
     }

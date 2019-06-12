@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface CaffeineCacheEndpointBuilder {
 
 
+    /**
+     * Base class for the Caffeine Cache component builders.
+     */
     public static class CaffeineCacheCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -134,6 +137,9 @@ public interface CaffeineCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Caffeine Cache component.
+     */
     public static class CaffeineCacheConsumerBuilder
             extends
                 CaffeineCacheCommonBuilder<CaffeineCacheConsumerBuilder>
@@ -216,6 +222,9 @@ public interface CaffeineCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Caffeine Cache component.
+     */
     public static class CaffeineCacheProducerBuilder
             extends
                 CaffeineCacheCommonBuilder<CaffeineCacheProducerBuilder>
@@ -427,12 +436,26 @@ public interface CaffeineCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.caffeine.EvictionType</code> enum.
+     */
     public static enum EvictionType {
         size_based, time_based;
     }
+    /**
+     * The caffeine-cache component is used for integration with Caffeine Cache.
+     * Creates a builder to build a consumer endpoint for the Caffeine Cache
+     * component.
+     */
     public default CaffeineCacheConsumerBuilder fromCaffeineCache(String path) {
         return new CaffeineCacheConsumerBuilder(path);
     }
+    /**
+     * The caffeine-cache component is used for integration with Caffeine Cache.
+     * Creates a builder to build a producer endpoint for the Caffeine Cache
+     * component.
+     */
     public default CaffeineCacheProducerBuilder toCaffeineCache(String path) {
         return new CaffeineCacheProducerBuilder(path);
     }

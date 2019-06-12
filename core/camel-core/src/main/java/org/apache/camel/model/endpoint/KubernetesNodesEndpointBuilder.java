@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface KubernetesNodesEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes Nodes component builders.
+     */
     public static class KubernetesNodesCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -253,6 +256,9 @@ public interface KubernetesNodesEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Kubernetes Nodes component.
+     */
     public static class KubernetesNodesConsumerBuilder
             extends
                 KubernetesNodesCommonBuilder<KubernetesNodesConsumerBuilder>
@@ -381,6 +387,9 @@ public interface KubernetesNodesEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes Nodes component.
+     */
     public static class KubernetesNodesProducerBuilder
             extends
                 KubernetesNodesCommonBuilder<KubernetesNodesProducerBuilder>
@@ -398,10 +407,20 @@ public interface KubernetesNodesEndpointBuilder {
             return (KubernetesNodesProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Nodes component provides a producer to execute kubernetes
+     * node operations and a consumer to consume node events. Creates a builder
+     * to build a consumer endpoint for the Kubernetes Nodes component.
+     */
     public default KubernetesNodesConsumerBuilder fromKubernetesNodes(
             String path) {
         return new KubernetesNodesConsumerBuilder(path);
     }
+    /**
+     * The Kubernetes Nodes component provides a producer to execute kubernetes
+     * node operations and a consumer to consume node events. Creates a builder
+     * to build a producer endpoint for the Kubernetes Nodes component.
+     */
     public default KubernetesNodesProducerBuilder toKubernetesNodes(String path) {
         return new KubernetesNodesProducerBuilder(path);
     }

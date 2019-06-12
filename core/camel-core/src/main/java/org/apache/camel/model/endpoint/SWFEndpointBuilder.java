@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface SWFEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS Simple Workflow component builders.
+     */
     public static class SWFCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -235,6 +238,9 @@ public interface SWFEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the AWS Simple Workflow component.
+     */
     public static class SWFConsumerBuilder
             extends
                 SWFCommonBuilder<SWFConsumerBuilder>
@@ -401,6 +407,9 @@ public interface SWFEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS Simple Workflow component.
+     */
     public static class SWFProducerBuilder
             extends
                 SWFCommonBuilder<SWFProducerBuilder>
@@ -494,9 +503,19 @@ public interface SWFEndpointBuilder {
             return (SWFProducerBuilder) this;
         }
     }
+    /**
+     * The aws-swf component is used for managing workflows from Amazon Simple
+     * Workflow. Creates a builder to build a consumer endpoint for the AWS
+     * Simple Workflow component.
+     */
     public default SWFConsumerBuilder fromSWF(String path) {
         return new SWFConsumerBuilder(path);
     }
+    /**
+     * The aws-swf component is used for managing workflows from Amazon Simple
+     * Workflow. Creates a builder to build a producer endpoint for the AWS
+     * Simple Workflow component.
+     */
     public default SWFProducerBuilder toSWF(String path) {
         return new SWFProducerBuilder(path);
     }

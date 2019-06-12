@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface JingEndpointBuilder {
 
 
+    /**
+     * Base class for the Jing component builders.
+     */
     public static class JingCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -103,6 +106,9 @@ public interface JingEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Jing component.
+     */
     public static class JingProducerBuilder
             extends
                 JingCommonBuilder<JingProducerBuilder>
@@ -112,6 +118,11 @@ public interface JingEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Validates the payload of a message using RelaxNG Syntax using Jing
+     * library. Creates a builder to build a producer endpoint for the Jing
+     * component.
+     */
     public default JingProducerBuilder toJing(String path) {
         return new JingProducerBuilder(path);
     }

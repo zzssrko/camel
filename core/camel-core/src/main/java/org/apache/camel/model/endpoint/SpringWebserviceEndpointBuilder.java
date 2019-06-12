@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface SpringWebserviceEndpointBuilder {
 
 
+    /**
+     * Base class for the Spring WebService component builders.
+     */
     public static class SpringWebserviceCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -114,6 +117,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Spring WebService component.
+     */
     public static class SpringWebserviceConsumerBuilder
             extends
                 SpringWebserviceCommonBuilder<SpringWebserviceConsumerBuilder>
@@ -310,6 +316,9 @@ public interface SpringWebserviceEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Spring WebService component.
+     */
     public static class SpringWebserviceProducerBuilder
             extends
                 SpringWebserviceCommonBuilder<SpringWebserviceProducerBuilder>
@@ -610,13 +619,27 @@ public interface SpringWebserviceEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.spring.ws.type.EndpointMappingType</code> enum.
+     */
     public static enum EndpointMappingType {
         ROOT_QNAME, ACTION, TO, SOAP_ACTION, XPATHRESULT, URI, URI_PATH, BEANNAME;
     }
+    /**
+     * The spring-ws component is used for SOAP WebServices using Spring
+     * WebServices. Creates a builder to build a consumer endpoint for the
+     * Spring WebService component.
+     */
     public default SpringWebserviceConsumerBuilder fromSpringWebservice(
             String path) {
         return new SpringWebserviceConsumerBuilder(path);
     }
+    /**
+     * The spring-ws component is used for SOAP WebServices using Spring
+     * WebServices. Creates a builder to build a producer endpoint for the
+     * Spring WebService component.
+     */
     public default SpringWebserviceProducerBuilder toSpringWebservice(
             String path) {
         return new SpringWebserviceProducerBuilder(path);

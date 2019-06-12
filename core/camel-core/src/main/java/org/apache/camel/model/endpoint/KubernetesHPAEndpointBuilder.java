@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface KubernetesHPAEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes HPA component builders.
+     */
     public static class KubernetesHPACommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -253,6 +256,9 @@ public interface KubernetesHPAEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Kubernetes HPA component.
+     */
     public static class KubernetesHPAConsumerBuilder
             extends
                 KubernetesHPACommonBuilder<KubernetesHPAConsumerBuilder>
@@ -381,6 +387,9 @@ public interface KubernetesHPAEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes HPA component.
+     */
     public static class KubernetesHPAProducerBuilder
             extends
                 KubernetesHPACommonBuilder<KubernetesHPAProducerBuilder>
@@ -398,9 +407,19 @@ public interface KubernetesHPAEndpointBuilder {
             return (KubernetesHPAProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes HPA component provides a producer to execute kubernetes
+     * hpa operations and a consumer to consume HPA events. Creates a builder to
+     * build a consumer endpoint for the Kubernetes HPA component.
+     */
     public default KubernetesHPAConsumerBuilder fromKubernetesHPA(String path) {
         return new KubernetesHPAConsumerBuilder(path);
     }
+    /**
+     * The Kubernetes HPA component provides a producer to execute kubernetes
+     * hpa operations and a consumer to consume HPA events. Creates a builder to
+     * build a producer endpoint for the Kubernetes HPA component.
+     */
     public default KubernetesHPAProducerBuilder toKubernetesHPA(String path) {
         return new KubernetesHPAProducerBuilder(path);
     }

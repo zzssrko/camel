@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface DockerEndpointBuilder {
 
 
+    /**
+     * Base class for the Docker component builders.
+     */
     public static class DockerCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -288,6 +291,9 @@ public interface DockerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Docker component.
+     */
     public static class DockerConsumerBuilder
             extends
                 DockerCommonBuilder<DockerConsumerBuilder>
@@ -368,6 +374,9 @@ public interface DockerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Docker component.
+     */
     public static class DockerProducerBuilder
             extends
                 DockerCommonBuilder<DockerProducerBuilder>
@@ -378,12 +387,24 @@ public interface DockerEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.docker.DockerOperation</code> enum.
+     */
     public static enum DockerOperation {
         events, stats, auth, info, ping, version, imagebuild, imagecreate, imageinspect, imagelist, imagepull, imagepush, imageremove, imagesearch, imagetag, containerattach, containercommit, containercopyfile, containercreate, containerdiff, inspectcontainer, containerkill, containerlist, containerlog, containerpause, containerrestart, containerremove, containerstart, containerstop, containertop, containerunpause, networkcreate, networkremove, networkconnect, containerwait, execcreate, execstart;
     }
+    /**
+     * The docker component is used for managing Docker containers. Creates a
+     * builder to build a consumer endpoint for the Docker component.
+     */
     public default DockerConsumerBuilder fromDocker(String path) {
         return new DockerConsumerBuilder(path);
     }
+    /**
+     * The docker component is used for managing Docker containers. Creates a
+     * builder to build a producer endpoint for the Docker component.
+     */
     public default DockerProducerBuilder toDocker(String path) {
         return new DockerProducerBuilder(path);
     }

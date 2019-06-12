@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface AtomixSetEndpointBuilder {
 
 
+    /**
+     * Base class for the Atomix Set component builders.
+     */
     public static class AtomixSetCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -287,6 +290,9 @@ public interface AtomixSetEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Atomix Set component.
+     */
     public static class AtomixSetConsumerBuilder
             extends
                 AtomixSetCommonBuilder<AtomixSetConsumerBuilder>
@@ -367,6 +373,9 @@ public interface AtomixSetEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Atomix Set component.
+     */
     public static class AtomixSetProducerBuilder
             extends
                 AtomixSetCommonBuilder<AtomixSetProducerBuilder>
@@ -377,16 +386,33 @@ public interface AtomixSetEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.atomix.client.set.AtomixSet$Action</code> enum.
+     */
     public static enum Action {
         ADD, CLEAR, CONTAINS, IS_EMPTY, REMOVE, SIZE;
     }
 
+    /**
+     * Proxy enum for <code>io.atomix.resource.ReadConsistency</code> enum.
+     */
     public static enum ReadConsistency {
         ATOMIC, ATOMIC_LEASE, SEQUENTIAL, LOCAL;
     }
+    /**
+     * The atomix-set component is used to access Atomix's distributed set.
+     * Creates a builder to build a consumer endpoint for the Atomix Set
+     * component.
+     */
     public default AtomixSetConsumerBuilder fromAtomixSet(String path) {
         return new AtomixSetConsumerBuilder(path);
     }
+    /**
+     * The atomix-set component is used to access Atomix's distributed set.
+     * Creates a builder to build a producer endpoint for the Atomix Set
+     * component.
+     */
     public default AtomixSetProducerBuilder toAtomixSet(String path) {
         return new AtomixSetProducerBuilder(path);
     }

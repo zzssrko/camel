@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface SnmpEndpointBuilder {
 
 
+    /**
+     * Base class for the SNMP component builders.
+     */
     public static class SnmpCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -311,6 +314,9 @@ public interface SnmpEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the SNMP component.
+     */
     public static class SnmpConsumerBuilder
             extends
                 SnmpCommonBuilder<SnmpConsumerBuilder>
@@ -700,9 +706,18 @@ public interface SnmpEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.snmp.SnmpActionType</code> enum.
+     */
     public static enum SnmpActionType {
         TRAP, POLL, GET_NEXT;
     }
+    /**
+     * The snmp component gives you the ability to poll SNMP capable devices or
+     * receiving traps. Creates a builder to build a consumer endpoint for the
+     * SNMP component.
+     */
     public default SnmpConsumerBuilder fromSnmp(String path) {
         return new SnmpConsumerBuilder(path);
     }

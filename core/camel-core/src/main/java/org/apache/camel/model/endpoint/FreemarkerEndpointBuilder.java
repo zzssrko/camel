@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface FreemarkerEndpointBuilder {
 
 
+    /**
+     * Base class for the Freemarker component builders.
+     */
     public static class FreemarkerCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -143,6 +146,9 @@ public interface FreemarkerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Freemarker component.
+     */
     public static class FreemarkerProducerBuilder
             extends
                 FreemarkerCommonBuilder<FreemarkerProducerBuilder>
@@ -152,6 +158,10 @@ public interface FreemarkerEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Transforms the message using a FreeMarker template. Creates a builder to
+     * build a producer endpoint for the Freemarker component.
+     */
     public default FreemarkerProducerBuilder toFreemarker(String path) {
         return new FreemarkerProducerBuilder(path);
     }

@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface CouchbaseEndpointBuilder {
 
 
+    /**
+     * Base class for the Couchbase component builders.
+     */
     public static class CouchbaseCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -279,6 +282,9 @@ public interface CouchbaseEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Couchbase component.
+     */
     public static class CouchbaseConsumerBuilder
             extends
                 CouchbaseCommonBuilder<CouchbaseConsumerBuilder>
@@ -747,6 +753,9 @@ public interface CouchbaseEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Couchbase component.
+     */
     public static class CouchbaseProducerBuilder
             extends
                 CouchbaseCommonBuilder<CouchbaseProducerBuilder>
@@ -867,9 +876,19 @@ public interface CouchbaseEndpointBuilder {
             return (CouchbaseProducerBuilder) this;
         }
     }
+    /**
+     * Represents a Couchbase endpoint that can query Views with a Poll strategy
+     * and/or produce various type of operations. Creates a builder to build a
+     * consumer endpoint for the Couchbase component.
+     */
     public default CouchbaseConsumerBuilder fromCouchbase(String path) {
         return new CouchbaseConsumerBuilder(path);
     }
+    /**
+     * Represents a Couchbase endpoint that can query Views with a Poll strategy
+     * and/or produce various type of operations. Creates a builder to build a
+     * producer endpoint for the Couchbase component.
+     */
     public default CouchbaseProducerBuilder toCouchbase(String path) {
         return new CouchbaseProducerBuilder(path);
     }

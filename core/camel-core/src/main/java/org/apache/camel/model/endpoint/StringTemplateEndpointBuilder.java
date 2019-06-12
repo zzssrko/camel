@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface StringTemplateEndpointBuilder {
 
 
+    /**
+     * Base class for the String Template component builders.
+     */
     public static class StringTemplateCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -133,6 +136,9 @@ public interface StringTemplateEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the String Template component.
+     */
     public static class StringTemplateProducerBuilder
             extends
                 StringTemplateCommonBuilder<StringTemplateProducerBuilder>
@@ -142,6 +148,10 @@ public interface StringTemplateEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Transforms the message using a String template. Creates a builder to
+     * build a producer endpoint for the String Template component.
+     */
     public default StringTemplateProducerBuilder toStringTemplate(String path) {
         return new StringTemplateProducerBuilder(path);
     }

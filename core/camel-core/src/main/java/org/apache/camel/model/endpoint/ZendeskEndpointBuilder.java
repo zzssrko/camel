@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface ZendeskEndpointBuilder {
 
 
+    /**
+     * Base class for the Zendesk component builders.
+     */
     public static class ZendeskCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -129,6 +132,9 @@ public interface ZendeskEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Zendesk component.
+     */
     public static class ZendeskConsumerBuilder
             extends
                 ZendeskCommonBuilder<ZendeskConsumerBuilder>
@@ -209,6 +215,9 @@ public interface ZendeskEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Zendesk component.
+     */
     public static class ZendeskProducerBuilder
             extends
                 ZendeskCommonBuilder<ZendeskProducerBuilder>
@@ -218,9 +227,19 @@ public interface ZendeskEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Allows producing messages to manage Zendesk ticket, user, organization,
+     * etc. Creates a builder to build a consumer endpoint for the Zendesk
+     * component.
+     */
     public default ZendeskConsumerBuilder fromZendesk(String path) {
         return new ZendeskConsumerBuilder(path);
     }
+    /**
+     * Allows producing messages to manage Zendesk ticket, user, organization,
+     * etc. Creates a builder to build a producer endpoint for the Zendesk
+     * component.
+     */
     public default ZendeskProducerBuilder toZendesk(String path) {
         return new ZendeskProducerBuilder(path);
     }

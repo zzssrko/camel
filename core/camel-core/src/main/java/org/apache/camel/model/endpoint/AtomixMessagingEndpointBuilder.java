@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface AtomixMessagingEndpointBuilder {
 
 
+    /**
+     * Base class for the Atomix Messaging component builders.
+     */
     public static class AtomixMessagingCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -304,6 +307,9 @@ public interface AtomixMessagingEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Atomix Messaging component.
+     */
     public static class AtomixMessagingConsumerBuilder
             extends
                 AtomixMessagingCommonBuilder<AtomixMessagingConsumerBuilder>
@@ -386,6 +392,9 @@ public interface AtomixMessagingEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Atomix Messaging component.
+     */
     public static class AtomixMessagingProducerBuilder
             extends
                 AtomixMessagingCommonBuilder<AtomixMessagingProducerBuilder>
@@ -396,21 +405,42 @@ public interface AtomixMessagingEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.atomix.client.messaging.AtomixMessaging$BroadcastType</code> enum.
+     */
     public static enum BroadcastType {
         ALL, RANDOM;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.atomix.client.messaging.AtomixMessaging$Action</code> enum.
+     */
     public static enum Action {
         DIRECT, BROADCAST;
     }
 
+    /**
+     * Proxy enum for <code>io.atomix.resource.ReadConsistency</code> enum.
+     */
     public static enum ReadConsistency {
         ATOMIC, ATOMIC_LEASE, SEQUENTIAL, LOCAL;
     }
+    /**
+     * The atomix-messaging component is used to access Atomix's group
+     * messaging. Creates a builder to build a consumer endpoint for the Atomix
+     * Messaging component.
+     */
     public default AtomixMessagingConsumerBuilder fromAtomixMessaging(
             String path) {
         return new AtomixMessagingConsumerBuilder(path);
     }
+    /**
+     * The atomix-messaging component is used to access Atomix's group
+     * messaging. Creates a builder to build a producer endpoint for the Atomix
+     * Messaging component.
+     */
     public default AtomixMessagingProducerBuilder toAtomixMessaging(String path) {
         return new AtomixMessagingProducerBuilder(path);
     }

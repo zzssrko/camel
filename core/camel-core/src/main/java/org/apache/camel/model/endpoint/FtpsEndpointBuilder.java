@@ -44,6 +44,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface FtpsEndpointBuilder {
 
 
+    /**
+     * Base class for the FTPS component builders.
+     */
     public static class FtpsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -784,6 +787,9 @@ public interface FtpsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the FTPS component.
+     */
     public static class FtpsConsumerBuilder
             extends
                 FtpsCommonBuilder<FtpsConsumerBuilder>
@@ -2324,6 +2330,9 @@ public interface FtpsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the FTPS component.
+     */
     public static class FtpsProducerBuilder
             extends
                 FtpsCommonBuilder<FtpsProducerBuilder>
@@ -2672,16 +2681,34 @@ public interface FtpsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.file.remote.RemoteFileConfiguration$PathSeparator</code> enum.
+     */
     public static enum PathSeparator {
         UNIX, Windows, Auto;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.file.GenericFileExist</code> enum.
+     */
     public static enum GenericFileExist {
         Override, Append, Fail, Ignore, Move, TryRename;
     }
+    /**
+     * The ftps (FTP secure SSL/TLS) component is used for uploading or
+     * downloading files from FTP servers. Creates a builder to build a consumer
+     * endpoint for the FTPS component.
+     */
     public default FtpsConsumerBuilder fromFtps(String path) {
         return new FtpsConsumerBuilder(path);
     }
+    /**
+     * The ftps (FTP secure SSL/TLS) component is used for uploading or
+     * downloading files from FTP servers. Creates a builder to build a producer
+     * endpoint for the FTPS component.
+     */
     public default FtpsProducerBuilder toFtps(String path) {
         return new FtpsProducerBuilder(path);
     }

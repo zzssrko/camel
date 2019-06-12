@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface HazelcastQueueEndpointBuilder {
 
 
+    /**
+     * Base class for the Hazelcast Queue component builders.
+     */
     public static class HazelcastQueueCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -239,6 +242,9 @@ public interface HazelcastQueueEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Hazelcast Queue component.
+     */
     public static class HazelcastQueueConsumerBuilder
             extends
                 HazelcastQueueCommonBuilder<HazelcastQueueConsumerBuilder>
@@ -373,6 +379,9 @@ public interface HazelcastQueueEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Hazelcast Queue component.
+     */
     public static class HazelcastQueueProducerBuilder
             extends
                 HazelcastQueueCommonBuilder<HazelcastQueueProducerBuilder>
@@ -383,16 +392,35 @@ public interface HazelcastQueueEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+     * enum.
+     */
     public static enum HazelcastOperation {
         put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode</code> enum.
+     */
     public static enum HazelcastQueueConsumerMode {
         listen, poll;
     }
+    /**
+     * The hazelcast-queue component is used to access Hazelcast distributed
+     * queue. Creates a builder to build a consumer endpoint for the Hazelcast
+     * Queue component.
+     */
     public default HazelcastQueueConsumerBuilder fromHazelcastQueue(String path) {
         return new HazelcastQueueConsumerBuilder(path);
     }
+    /**
+     * The hazelcast-queue component is used to access Hazelcast distributed
+     * queue. Creates a builder to build a producer endpoint for the Hazelcast
+     * Queue component.
+     */
     public default HazelcastQueueProducerBuilder toHazelcastQueue(String path) {
         return new HazelcastQueueProducerBuilder(path);
     }

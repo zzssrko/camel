@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface BeanstalkEndpointBuilder {
 
 
+    /**
+     * Base class for the Beanstalk component builders.
+     */
     public static class BeanstalkCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -171,6 +174,9 @@ public interface BeanstalkEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Beanstalk component.
+     */
     public static class BeanstalkConsumerBuilder
             extends
                 BeanstalkCommonBuilder<BeanstalkConsumerBuilder>
@@ -602,6 +608,9 @@ public interface BeanstalkEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Beanstalk component.
+     */
     public static class BeanstalkProducerBuilder
             extends
                 BeanstalkCommonBuilder<BeanstalkProducerBuilder>
@@ -612,12 +621,26 @@ public interface BeanstalkEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.beanstalk.BeanstalkCommand</code> enum.
+     */
     public static enum BeanstalkCommand {
         bury, release, put, touch, delete, kick;
     }
+    /**
+     * The beanstalk component is used for job retrieval and post-processing of
+     * Beanstalk jobs. Creates a builder to build a consumer endpoint for the
+     * Beanstalk component.
+     */
     public default BeanstalkConsumerBuilder fromBeanstalk(String path) {
         return new BeanstalkConsumerBuilder(path);
     }
+    /**
+     * The beanstalk component is used for job retrieval and post-processing of
+     * Beanstalk jobs. Creates a builder to build a producer endpoint for the
+     * Beanstalk component.
+     */
     public default BeanstalkProducerBuilder toBeanstalk(String path) {
         return new BeanstalkProducerBuilder(path);
     }

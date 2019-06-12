@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface DozerEndpointBuilder {
 
 
+    /**
+     * Base class for the Dozer component builders.
+     */
     public static class DozerCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -155,6 +158,9 @@ public interface DozerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Dozer component.
+     */
     public static class DozerProducerBuilder
             extends
                 DozerCommonBuilder<DozerProducerBuilder>
@@ -164,6 +170,11 @@ public interface DozerEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The dozer component provides the ability to map between Java beans using
+     * the Dozer mapping library. Creates a builder to build a producer endpoint
+     * for the Dozer component.
+     */
     public default DozerProducerBuilder toDozer(String path) {
         return new DozerProducerBuilder(path);
     }

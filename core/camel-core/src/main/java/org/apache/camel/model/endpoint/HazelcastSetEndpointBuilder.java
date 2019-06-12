@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface HazelcastSetEndpointBuilder {
 
 
+    /**
+     * Base class for the Hazelcast Set component builders.
+     */
     public static class HazelcastSetCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -239,6 +242,9 @@ public interface HazelcastSetEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Hazelcast Set component.
+     */
     public static class HazelcastSetConsumerBuilder
             extends
                 HazelcastSetCommonBuilder<HazelcastSetConsumerBuilder>
@@ -372,6 +378,9 @@ public interface HazelcastSetEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Hazelcast Set component.
+     */
     public static class HazelcastSetProducerBuilder
             extends
                 HazelcastSetCommonBuilder<HazelcastSetProducerBuilder>
@@ -382,16 +391,33 @@ public interface HazelcastSetEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+     * enum.
+     */
     public static enum HazelcastOperation {
         put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode</code> enum.
+     */
     public static enum HazelcastQueueConsumerMode {
         listen, poll;
     }
+    /**
+     * The camel Endpoint to access Hazelcast distributed set. Creates a builder
+     * to build a consumer endpoint for the Hazelcast Set component.
+     */
     public default HazelcastSetConsumerBuilder fromHazelcastSet(String path) {
         return new HazelcastSetConsumerBuilder(path);
     }
+    /**
+     * The camel Endpoint to access Hazelcast distributed set. Creates a builder
+     * to build a producer endpoint for the Hazelcast Set component.
+     */
     public default HazelcastSetProducerBuilder toHazelcastSet(String path) {
         return new HazelcastSetProducerBuilder(path);
     }

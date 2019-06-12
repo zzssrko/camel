@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface NetWeaverEndpointBuilder {
 
 
+    /**
+     * Base class for the SAP NetWeaver component builders.
+     */
     public static class NetWeaverCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -151,6 +154,9 @@ public interface NetWeaverEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the SAP NetWeaver component.
+     */
     public static class NetWeaverProducerBuilder
             extends
                 NetWeaverCommonBuilder<NetWeaverProducerBuilder>
@@ -160,6 +166,11 @@ public interface NetWeaverEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The sap-netweaver component integrates with the SAP NetWeaver Gateway
+     * using HTTP transports. Creates a builder to build a producer endpoint for
+     * the SAP NetWeaver component.
+     */
     public default NetWeaverProducerBuilder toNetWeaver(String path) {
         return new NetWeaverProducerBuilder(path);
     }

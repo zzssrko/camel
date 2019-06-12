@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface CassandraEndpointBuilder {
 
 
+    /**
+     * Base class for the Cassandra CQL component builders.
+     */
     public static class CassandraCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -247,6 +250,9 @@ public interface CassandraEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Cassandra CQL component.
+     */
     public static class CassandraConsumerBuilder
             extends
                 CassandraCommonBuilder<CassandraConsumerBuilder>
@@ -627,6 +633,9 @@ public interface CassandraEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Cassandra CQL component.
+     */
     public static class CassandraProducerBuilder
             extends
                 CassandraCommonBuilder<CassandraProducerBuilder>
@@ -637,12 +646,26 @@ public interface CassandraEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>com.datastax.driver.core.ConsistencyLevel</code>
+     * enum.
+     */
     public static enum ConsistencyLevel {
         ANY, ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, SERIAL, LOCAL_SERIAL, LOCAL_ONE;
     }
+    /**
+     * The cql component aims at integrating Cassandra 2.0 using the CQL3 API
+     * (not the Thrift API). Creates a builder to build a consumer endpoint for
+     * the Cassandra CQL component.
+     */
     public default CassandraConsumerBuilder fromCassandra(String path) {
         return new CassandraConsumerBuilder(path);
     }
+    /**
+     * The cql component aims at integrating Cassandra 2.0 using the CQL3 API
+     * (not the Thrift API). Creates a builder to build a producer endpoint for
+     * the Cassandra CQL component.
+     */
     public default CassandraProducerBuilder toCassandra(String path) {
         return new CassandraProducerBuilder(path);
     }

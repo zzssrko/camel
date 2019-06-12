@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface ConsulEndpointBuilder {
 
 
+    /**
+     * Base class for the Consul component builders.
+     */
     public static class ConsulCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -85,6 +88,9 @@ public interface ConsulEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Consul component.
+     */
     public static class ConsulConsumerBuilder
             extends
                 ConsulCommonBuilder<ConsulConsumerBuilder>
@@ -165,6 +171,9 @@ public interface ConsulEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Consul component.
+     */
     public static class ConsulProducerBuilder
             extends
                 ConsulCommonBuilder<ConsulProducerBuilder>
@@ -174,9 +183,21 @@ public interface ConsulEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The camel consul component allows you to work with Consul, a distributed,
+     * highly available, datacenter-aware, service discovery and configuration
+     * system. Creates a builder to build a consumer endpoint for the Consul
+     * component.
+     */
     public default ConsulConsumerBuilder fromConsul(String path) {
         return new ConsulConsumerBuilder(path);
     }
+    /**
+     * The camel consul component allows you to work with Consul, a distributed,
+     * highly available, datacenter-aware, service discovery and configuration
+     * system. Creates a builder to build a producer endpoint for the Consul
+     * component.
+     */
     public default ConsulProducerBuilder toConsul(String path) {
         return new ConsulProducerBuilder(path);
     }

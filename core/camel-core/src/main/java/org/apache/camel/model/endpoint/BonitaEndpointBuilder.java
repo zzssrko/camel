@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface BonitaEndpointBuilder {
 
 
+    /**
+     * Base class for the Bonita component builders.
+     */
     public static class BonitaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -134,6 +137,9 @@ public interface BonitaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Bonita component.
+     */
     public static class BonitaConsumerBuilder
             extends
                 BonitaCommonBuilder<BonitaConsumerBuilder>
@@ -214,9 +220,17 @@ public interface BonitaEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.bonita.util.BonitaOperation</code> enum.
+     */
     public static enum BonitaOperation {
         startCase;
     }
+    /**
+     * Used for communicating with a remote Bonita BPM process engine. Creates a
+     * builder to build a consumer endpoint for the Bonita component.
+     */
     public default BonitaConsumerBuilder fromBonita(String path) {
         return new BonitaConsumerBuilder(path);
     }

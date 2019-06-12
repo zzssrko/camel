@@ -34,6 +34,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface ServletEndpointBuilder {
 
 
+    /**
+     * Base class for the Servlet component builders.
+     */
     public static class ServletCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -267,6 +270,9 @@ public interface ServletEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Servlet component.
+     */
     public static class ServletConsumerBuilder
             extends
                 ServletCommonBuilder<ServletConsumerBuilder>
@@ -520,6 +526,11 @@ public interface ServletEndpointBuilder {
             return (ServletConsumerBuilder) this;
         }
     }
+    /**
+     * To use a HTTP Servlet as entry for Camel routes when running in a servlet
+     * container. Creates a builder to build a consumer endpoint for the Servlet
+     * component.
+     */
     public default ServletConsumerBuilder fromServlet(String path) {
         return new ServletConsumerBuilder(path);
     }

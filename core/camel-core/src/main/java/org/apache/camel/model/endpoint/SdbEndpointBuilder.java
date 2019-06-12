@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface SdbEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS SimpleDB component builders.
+     */
     public static class SdbCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -198,6 +201,9 @@ public interface SdbEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS SimpleDB component.
+     */
     public static class SdbProducerBuilder
             extends
                 SdbCommonBuilder<SdbProducerBuilder>
@@ -208,9 +214,18 @@ public interface SdbEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.sdb.SdbOperations</code> enum.
+     */
     public static enum SdbOperations {
         BatchDeleteAttributes, BatchPutAttributes, DeleteAttributes, DeleteDomain, DomainMetadata, GetAttributes, ListDomains, PutAttributes, Select;
     }
+    /**
+     * The aws-sdb component is for storing and retrieving data from/to Amazon's
+     * SDB service. Creates a builder to build a producer endpoint for the AWS
+     * SimpleDB component.
+     */
     public default SdbProducerBuilder toSdb(String path) {
         return new SdbProducerBuilder(path);
     }

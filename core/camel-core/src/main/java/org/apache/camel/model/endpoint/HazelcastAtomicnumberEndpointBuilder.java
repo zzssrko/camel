@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface HazelcastAtomicnumberEndpointBuilder {
 
 
+    /**
+     * Base class for the Hazelcast Atomic Number component builders.
+     */
     public static class HazelcastAtomicnumberCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -238,6 +241,9 @@ public interface HazelcastAtomicnumberEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Hazelcast Atomic Number component.
+     */
     public static class HazelcastAtomicnumberProducerBuilder
             extends
                 HazelcastAtomicnumberCommonBuilder<HazelcastAtomicnumberProducerBuilder>
@@ -248,9 +254,20 @@ public interface HazelcastAtomicnumberEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+     * enum.
+     */
     public static enum HazelcastOperation {
         put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
+    /**
+     * The hazelcast-atomicvalue component is used to access Hazelcast atomic
+     * number, which is an object that simply provides a grid wide number
+     * (long). Creates a builder to build a producer endpoint for the Hazelcast
+     * Atomic Number component.
+     */
     public default HazelcastAtomicnumberProducerBuilder toHazelcastAtomicnumber(
             String path) {
         return new HazelcastAtomicnumberProducerBuilder(path);

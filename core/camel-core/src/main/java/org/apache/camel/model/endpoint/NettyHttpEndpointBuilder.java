@@ -37,6 +37,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface NettyHttpEndpointBuilder {
 
 
+    /**
+     * Base class for the Netty4 HTTP component builders.
+     */
     public static class NettyHttpCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -865,6 +868,9 @@ public interface NettyHttpEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Netty4 HTTP component.
+     */
     public static class NettyHttpConsumerBuilder
             extends
                 NettyHttpCommonBuilder<NettyHttpConsumerBuilder>
@@ -1413,6 +1419,9 @@ public interface NettyHttpEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Netty4 HTTP component.
+     */
     public static class NettyHttpProducerBuilder
             extends
                 NettyHttpCommonBuilder<NettyHttpProducerBuilder>
@@ -1687,9 +1696,17 @@ public interface NettyHttpEndpointBuilder {
             return (NettyHttpProducerBuilder) this;
         }
     }
+    /**
+     * Netty HTTP server and client using the Netty 4.x library. Creates a
+     * builder to build a consumer endpoint for the Netty4 HTTP component.
+     */
     public default NettyHttpConsumerBuilder fromNettyHttp(String path) {
         return new NettyHttpConsumerBuilder(path);
     }
+    /**
+     * Netty HTTP server and client using the Netty 4.x library. Creates a
+     * builder to build a producer endpoint for the Netty4 HTTP component.
+     */
     public default NettyHttpProducerBuilder toNettyHttp(String path) {
         return new NettyHttpProducerBuilder(path);
     }

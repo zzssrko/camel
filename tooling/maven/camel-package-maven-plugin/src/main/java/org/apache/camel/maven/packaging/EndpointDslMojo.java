@@ -202,6 +202,7 @@ public class EndpointDslMojo extends AbstractMojo {
                 .addParameter(String.class, "path")
                 .setBody("super(\"" + model.getScheme() + "\", path);");
         generateDummyClass(commonClass.getCanonicalName());
+        commonClass.getJavaDoc().setText("Base class for the " + model.getTitle() + " component builders.");
 
         JavaClass consumerClass;
         if (realEndpointClass.getAnnotation(UriEndpoint.class).producerOnly()) {
@@ -217,13 +218,17 @@ public class EndpointDslMojo extends AbstractMojo {
                     .addParameter(String.class, "path")
                     .setBody("super(path);");
             generateDummyClass(consumerClass.getCanonicalName());
+            consumerClass.getJavaDoc().setText("Builder for endpoint consumers for the " + model.getTitle() + " component.");
 
-            javaClass.addMethod()
+            Method method = javaClass.addMethod()
                     .setPublic().setDefault()
                     .setName("from" + endpointName.replace("EndpointBuilder", ""))
                     .addParameter(String.class, "path")
                     .setReturnType(new GenericType(loadClass(consumerClass.getCanonicalName())))
                     .setBody("return new " + consumerClass.getName() + "(path);");
+            method.getJavaDoc().setText(
+                    (StringHelper.isEmpty(model.getDescription()) ? "" : model.getDescription() + " ")
+                            + "Creates a builder to build a consumer endpoint for the " + model.getTitle() + " component.");
         }
 
         JavaClass producerClass;
@@ -240,13 +245,17 @@ public class EndpointDslMojo extends AbstractMojo {
                     .addParameter(String.class, "path")
                     .setBody("super(path);");
             generateDummyClass(producerClass.getCanonicalName());
+            producerClass.getJavaDoc().setText("Builder for endpoint producers for the " + model.getTitle() + " component.");
 
-            javaClass.addMethod()
+            Method method = javaClass.addMethod()
                     .setPublic().setDefault()
                     .setName("to" + endpointName.replace("EndpointBuilder", ""))
                     .addParameter(String.class, "path")
                     .setReturnType(new GenericType(loadClass(producerClass.getCanonicalName())))
                     .setBody("return new " + producerClass.getName() + "(path);");
+            method.getJavaDoc().setText(
+                    (StringHelper.isEmpty(model.getDescription()) ? "" : model.getDescription() + " ")
+                            + "Creates a builder to build a producer endpoint for the " + model.getTitle() + " component.");
         }
 
         generateDummyClass(packageName + ".T");
@@ -481,6 +490,7 @@ public class EndpointDslMojo extends AbstractMojo {
             if (enumClass == null) {
                 enumClass = javaClass.addNestedType().setPublic().setStatic(true)
                                 .setName(enumClassName).setEnum(true);
+                enumClass.getJavaDoc().setText("Proxy enum for <code>" + type + "</code> enum.");
                 enumClasses.put(enumClassName, enumClass);
                 for (Object value : loadClass(type).getEnumConstants()) {
                     enumClass.addValue(value.toString()

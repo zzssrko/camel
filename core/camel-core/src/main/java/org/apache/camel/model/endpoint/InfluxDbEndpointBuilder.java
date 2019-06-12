@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface InfluxDbEndpointBuilder {
 
 
+    /**
+     * Base class for the InfluxDB component builders.
+     */
     public static class InfluxDbCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -131,6 +134,9 @@ public interface InfluxDbEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the InfluxDB component.
+     */
     public static class InfluxDbProducerBuilder
             extends
                 InfluxDbCommonBuilder<InfluxDbProducerBuilder>
@@ -140,6 +146,11 @@ public interface InfluxDbEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The influxdb component allows you to interact with InfluxDB, a time
+     * series database. Creates a builder to build a producer endpoint for the
+     * InfluxDB component.
+     */
     public default InfluxDbProducerBuilder toInfluxDb(String path) {
         return new InfluxDbProducerBuilder(path);
     }

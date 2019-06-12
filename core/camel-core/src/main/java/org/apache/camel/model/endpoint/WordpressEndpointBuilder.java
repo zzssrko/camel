@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface WordpressEndpointBuilder {
 
 
+    /**
+     * Base class for the Wordpress component builders.
+     */
     public static class WordpressCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -195,6 +198,9 @@ public interface WordpressEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Wordpress component.
+     */
     public static class WordpressConsumerBuilder
             extends
                 WordpressCommonBuilder<WordpressConsumerBuilder>
@@ -275,6 +281,9 @@ public interface WordpressEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Wordpress component.
+     */
     public static class WordpressProducerBuilder
             extends
                 WordpressCommonBuilder<WordpressProducerBuilder>
@@ -284,9 +293,17 @@ public interface WordpressEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Integrates Camel with Wordpress. Creates a builder to build a consumer
+     * endpoint for the Wordpress component.
+     */
     public default WordpressConsumerBuilder fromWordpress(String path) {
         return new WordpressConsumerBuilder(path);
     }
+    /**
+     * Integrates Camel with Wordpress. Creates a builder to build a producer
+     * endpoint for the Wordpress component.
+     */
     public default WordpressProducerBuilder toWordpress(String path) {
         return new WordpressProducerBuilder(path);
     }

@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface JooqEndpointBuilder {
 
 
+    /**
+     * Base class for the JOOQ component builders.
+     */
     public static class JooqCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -99,6 +102,9 @@ public interface JooqEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the JOOQ component.
+     */
     public static class JooqConsumerBuilder
             extends
                 JooqCommonBuilder<JooqConsumerBuilder>
@@ -490,6 +496,9 @@ public interface JooqEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JOOQ component.
+     */
     public static class JooqProducerBuilder
             extends
                 JooqCommonBuilder<JooqProducerBuilder>
@@ -524,12 +533,26 @@ public interface JooqEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jooq.JooqOperation</code>
+     * enum.
+     */
     public static enum JooqOperation {
         EXECUTE, FETCH, NONE;
     }
+    /**
+     * The jooq component enables you to store and retrieve entities from
+     * databases using JOOQ Creates a builder to build a consumer endpoint for
+     * the JOOQ component.
+     */
     public default JooqConsumerBuilder fromJooq(String path) {
         return new JooqConsumerBuilder(path);
     }
+    /**
+     * The jooq component enables you to store and retrieve entities from
+     * databases using JOOQ Creates a builder to build a producer endpoint for
+     * the JOOQ component.
+     */
     public default JooqProducerBuilder toJooq(String path) {
         return new JooqProducerBuilder(path);
     }

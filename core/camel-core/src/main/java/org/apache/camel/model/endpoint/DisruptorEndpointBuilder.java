@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface DisruptorEndpointBuilder {
 
 
+    /**
+     * Base class for the Disruptor component builders.
+     */
     public static class DisruptorCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -110,6 +113,9 @@ public interface DisruptorEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Disruptor component.
+     */
     public static class DisruptorConsumerBuilder
             extends
                 DisruptorCommonBuilder<DisruptorConsumerBuilder>
@@ -254,6 +260,9 @@ public interface DisruptorEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Disruptor component.
+     */
     public static class DisruptorProducerBuilder
             extends
                 DisruptorCommonBuilder<DisruptorProducerBuilder>
@@ -357,16 +366,36 @@ public interface DisruptorEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.disruptor.DisruptorWaitStrategy</code>
+     * enum.
+     */
     public static enum DisruptorWaitStrategy {
         Blocking, Sleeping, BusySpin, Yielding;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.disruptor.DisruptorProducerType</code>
+     * enum.
+     */
     public static enum DisruptorProducerType {
         Single, Multi;
     }
+    /**
+     * The disruptor component provides asynchronous SEDA behavior using LMAX
+     * Disruptor. Creates a builder to build a consumer endpoint for the
+     * Disruptor component.
+     */
     public default DisruptorConsumerBuilder fromDisruptor(String path) {
         return new DisruptorConsumerBuilder(path);
     }
+    /**
+     * The disruptor component provides asynchronous SEDA behavior using LMAX
+     * Disruptor. Creates a builder to build a producer endpoint for the
+     * Disruptor component.
+     */
     public default DisruptorProducerBuilder toDisruptor(String path) {
         return new DisruptorProducerBuilder(path);
     }

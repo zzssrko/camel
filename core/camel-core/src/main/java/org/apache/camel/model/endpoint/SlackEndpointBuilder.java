@@ -38,6 +38,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface SlackEndpointBuilder {
 
 
+    /**
+     * Base class for the Slack component builders.
+     */
     public static class SlackCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -91,6 +94,9 @@ public interface SlackEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Slack component.
+     */
     public static class SlackConsumerBuilder
             extends
                 SlackCommonBuilder<SlackConsumerBuilder>
@@ -491,6 +497,9 @@ public interface SlackEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Slack component.
+     */
     public static class SlackProducerBuilder
             extends
                 SlackCommonBuilder<SlackProducerBuilder>
@@ -533,9 +542,17 @@ public interface SlackEndpointBuilder {
             return (SlackProducerBuilder) this;
         }
     }
+    /**
+     * The slack component allows you to send messages to Slack. Creates a
+     * builder to build a consumer endpoint for the Slack component.
+     */
     public default SlackConsumerBuilder fromSlack(String path) {
         return new SlackConsumerBuilder(path);
     }
+    /**
+     * The slack component allows you to send messages to Slack. Creates a
+     * builder to build a producer endpoint for the Slack component.
+     */
     public default SlackProducerBuilder toSlack(String path) {
         return new SlackProducerBuilder(path);
     }

@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface CMEndpointBuilder {
 
 
+    /**
+     * Base class for the CM SMS Gateway component builders.
+     */
     public static class CMCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -136,6 +139,9 @@ public interface CMEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the CM SMS Gateway component.
+     */
     public static class CMProducerBuilder
             extends
                 CMCommonBuilder<CMProducerBuilder>
@@ -145,6 +151,10 @@ public interface CMEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The cm-sms component allows to integrate with CM SMS Gateway. Creates a
+     * builder to build a producer endpoint for the CM SMS Gateway component.
+     */
     public default CMProducerBuilder toCM(String path) {
         return new CMProducerBuilder(path);
     }

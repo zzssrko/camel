@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface AtomEndpointBuilder {
 
 
+    /**
+     * Base class for the Atom component builders.
+     */
     public static class AtomCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -212,6 +215,9 @@ public interface AtomEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Atom component.
+     */
     public static class AtomConsumerBuilder
             extends
                 AtomCommonBuilder<AtomConsumerBuilder>
@@ -586,6 +592,10 @@ public interface AtomEndpointBuilder {
             return (AtomConsumerBuilder) this;
         }
     }
+    /**
+     * The atom component is used for consuming Atom RSS feeds. Creates a
+     * builder to build a consumer endpoint for the Atom component.
+     */
     public default AtomConsumerBuilder fromAtom(String path) {
         return new AtomConsumerBuilder(path);
     }

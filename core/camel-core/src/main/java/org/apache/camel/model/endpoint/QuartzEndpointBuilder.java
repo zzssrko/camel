@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface QuartzEndpointBuilder {
 
 
+    /**
+     * Base class for the Quartz2 component builders.
+     */
     public static class QuartzCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -360,6 +363,9 @@ public interface QuartzEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Quartz2 component.
+     */
     public static class QuartzConsumerBuilder
             extends
                 QuartzCommonBuilder<QuartzConsumerBuilder>
@@ -439,6 +445,10 @@ public interface QuartzEndpointBuilder {
             return (QuartzConsumerBuilder) this;
         }
     }
+    /**
+     * Provides a scheduled delivery of messages using the Quartz 2.x scheduler.
+     * Creates a builder to build a consumer endpoint for the Quartz2 component.
+     */
     public default QuartzConsumerBuilder fromQuartz(String path) {
         return new QuartzConsumerBuilder(path);
     }

@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface SpringIntegrationEndpointBuilder {
 
 
+    /**
+     * Base class for the Spring Integration component builders.
+     */
     public static class SpringIntegrationCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -107,6 +110,9 @@ public interface SpringIntegrationEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Spring Integration component.
+     */
     public static class SpringIntegrationConsumerBuilder
             extends
                 SpringIntegrationCommonBuilder<SpringIntegrationConsumerBuilder>
@@ -198,6 +204,9 @@ public interface SpringIntegrationEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Spring Integration component.
+     */
     public static class SpringIntegrationProducerBuilder
             extends
                 SpringIntegrationCommonBuilder<SpringIntegrationProducerBuilder>
@@ -217,10 +226,18 @@ public interface SpringIntegrationEndpointBuilder {
             return (SpringIntegrationProducerBuilder) this;
         }
     }
+    /**
+     * Bridges Camel with Spring Integration. Creates a builder to build a
+     * consumer endpoint for the Spring Integration component.
+     */
     public default SpringIntegrationConsumerBuilder fromSpringIntegration(
             String path) {
         return new SpringIntegrationConsumerBuilder(path);
     }
+    /**
+     * Bridges Camel with Spring Integration. Creates a builder to build a
+     * producer endpoint for the Spring Integration component.
+     */
     public default SpringIntegrationProducerBuilder toSpringIntegration(
             String path) {
         return new SpringIntegrationProducerBuilder(path);

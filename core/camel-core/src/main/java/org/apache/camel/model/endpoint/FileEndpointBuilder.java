@@ -44,6 +44,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface FileEndpointBuilder {
 
 
+    /**
+     * Base class for the File component builders.
+     */
     public static class FileCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -262,6 +265,9 @@ public interface FileEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the File component.
+     */
     public static class FileConsumerBuilder
             extends
                 FileCommonBuilder<FileConsumerBuilder>
@@ -1737,6 +1743,9 @@ public interface FileEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the File component.
+     */
     public static class FileProducerBuilder
             extends
                 FileCommonBuilder<FileProducerBuilder>
@@ -2073,12 +2082,24 @@ public interface FileEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.file.GenericFileExist</code> enum.
+     */
     public static enum GenericFileExist {
         Override, Append, Fail, Ignore, Move, TryRename;
     }
+    /**
+     * The file component is used for reading or writing files. Creates a
+     * builder to build a consumer endpoint for the File component.
+     */
     public default FileConsumerBuilder fromFile(String path) {
         return new FileConsumerBuilder(path);
     }
+    /**
+     * The file component is used for reading or writing files. Creates a
+     * builder to build a producer endpoint for the File component.
+     */
     public default FileProducerBuilder toFile(String path) {
         return new FileProducerBuilder(path);
     }

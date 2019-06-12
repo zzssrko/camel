@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface DataSetEndpointBuilder {
 
 
+    /**
+     * Base class for the Dataset component builders.
+     */
     public static class DataSetCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -105,6 +108,9 @@ public interface DataSetEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Dataset component.
+     */
     public static class DataSetConsumerBuilder
             extends
                 DataSetCommonBuilder<DataSetConsumerBuilder>
@@ -182,6 +188,9 @@ public interface DataSetEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Dataset component.
+     */
     public static class DataSetProducerBuilder
             extends
                 DataSetCommonBuilder<DataSetProducerBuilder>
@@ -449,9 +458,19 @@ public interface DataSetEndpointBuilder {
             return (DataSetProducerBuilder) this;
         }
     }
+    /**
+     * The dataset component provides a mechanism to easily perform load & soak
+     * testing of your system. Creates a builder to build a consumer endpoint
+     * for the Dataset component.
+     */
     public default DataSetConsumerBuilder fromDataSet(String path) {
         return new DataSetConsumerBuilder(path);
     }
+    /**
+     * The dataset component provides a mechanism to easily perform load & soak
+     * testing of your system. Creates a builder to build a producer endpoint
+     * for the Dataset component.
+     */
     public default DataSetProducerBuilder toDataSet(String path) {
         return new DataSetProducerBuilder(path);
     }

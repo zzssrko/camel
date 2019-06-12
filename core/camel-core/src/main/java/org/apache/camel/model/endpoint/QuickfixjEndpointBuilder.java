@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface QuickfixjEndpointBuilder {
 
 
+    /**
+     * Base class for the QuickFix component builders.
+     */
     public static class QuickfixjCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -129,6 +132,9 @@ public interface QuickfixjEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the QuickFix component.
+     */
     public static class QuickfixjConsumerBuilder
             extends
                 QuickfixjCommonBuilder<QuickfixjConsumerBuilder>
@@ -209,6 +215,9 @@ public interface QuickfixjEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the QuickFix component.
+     */
     public static class QuickfixjProducerBuilder
             extends
                 QuickfixjCommonBuilder<QuickfixjProducerBuilder>
@@ -218,9 +227,19 @@ public interface QuickfixjEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The quickfix component allows to send Financial Interchange (FIX)
+     * messages to the QuickFix engine. Creates a builder to build a consumer
+     * endpoint for the QuickFix component.
+     */
     public default QuickfixjConsumerBuilder fromQuickfixj(String path) {
         return new QuickfixjConsumerBuilder(path);
     }
+    /**
+     * The quickfix component allows to send Financial Interchange (FIX)
+     * messages to the QuickFix engine. Creates a builder to build a producer
+     * endpoint for the QuickFix component.
+     */
     public default QuickfixjProducerBuilder toQuickfixj(String path) {
         return new QuickfixjProducerBuilder(path);
     }

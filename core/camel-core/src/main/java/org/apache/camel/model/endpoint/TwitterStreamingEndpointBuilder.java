@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface TwitterStreamingEndpointBuilder {
 
 
+    /**
+     * Base class for the Twitter Streaming component builders.
+     */
     public static class TwitterStreamingCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -178,6 +181,9 @@ public interface TwitterStreamingEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Twitter Streaming component.
+     */
     public static class TwitterStreamingConsumerBuilder
             extends
                 TwitterStreamingCommonBuilder<TwitterStreamingConsumerBuilder>
@@ -813,13 +819,26 @@ public interface TwitterStreamingEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.twitter.data.StreamingType</code> enum.
+     */
     public static enum StreamingType {
         SAMPLE, FILTER, USER, UNKNOWN;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.twitter.data.EndpointType</code> enum.
+     */
     public static enum EndpointType {
         POLLING, DIRECT, EVENT;
     }
+    /**
+     * The Twitter Streaming component consumes twitter statuses using Streaming
+     * API. Creates a builder to build a consumer endpoint for the Twitter
+     * Streaming component.
+     */
     public default TwitterStreamingConsumerBuilder fromTwitterStreaming(
             String path) {
         return new TwitterStreamingConsumerBuilder(path);

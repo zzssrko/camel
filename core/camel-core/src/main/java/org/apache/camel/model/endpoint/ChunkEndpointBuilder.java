@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface ChunkEndpointBuilder {
 
 
+    /**
+     * Base class for the Chunk component builders.
+     */
     public static class ChunkCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -143,6 +146,9 @@ public interface ChunkEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Chunk component.
+     */
     public static class ChunkProducerBuilder
             extends
                 ChunkCommonBuilder<ChunkProducerBuilder>
@@ -152,6 +158,10 @@ public interface ChunkEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Transforms the message using a Chunk template. Creates a builder to build
+     * a producer endpoint for the Chunk component.
+     */
     public default ChunkProducerBuilder toChunk(String path) {
         return new ChunkProducerBuilder(path);
     }

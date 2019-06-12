@@ -34,6 +34,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface CryptoCmsEndpointBuilder {
 
 
+    /**
+     * Base class for the Crypto CMS component builders.
+     */
     public static class CryptoCmsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -406,6 +409,9 @@ public interface CryptoCmsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Crypto CMS component.
+     */
     public static class CryptoCmsProducerBuilder
             extends
                 CryptoCmsCommonBuilder<CryptoCmsProducerBuilder>
@@ -416,9 +422,19 @@ public interface CryptoCmsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.crypto.cms.CryptoOperation</code> enum.
+     */
     public static enum CryptoOperation {
         sign, verify, encrypt, decrypt;
     }
+    /**
+     * The crypto cms component is used for encrypting data in CMS Enveloped
+     * Data format, decrypting CMS Enveloped Data, signing data in CMS Signed
+     * Data format, and verifying CMS Signed Data. Creates a builder to build a
+     * producer endpoint for the Crypto CMS component.
+     */
     public default CryptoCmsProducerBuilder toCryptoCms(String path) {
         return new CryptoCmsProducerBuilder(path);
     }

@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface ChatScriptEndpointBuilder {
 
 
+    /**
+     * Base class for the ChatScript component builders.
+     */
     public static class ChatScriptCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -131,6 +134,9 @@ public interface ChatScriptEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the ChatScript component.
+     */
     public static class ChatScriptProducerBuilder
             extends
                 ChatScriptCommonBuilder<ChatScriptProducerBuilder>
@@ -140,6 +146,10 @@ public interface ChatScriptEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Represents a ChatScript endpoint. Creates a builder to build a producer
+     * endpoint for the ChatScript component.
+     */
     public default ChatScriptProducerBuilder toChatScript(String path) {
         return new ChatScriptProducerBuilder(path);
     }

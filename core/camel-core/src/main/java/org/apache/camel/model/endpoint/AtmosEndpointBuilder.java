@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface AtmosEndpointBuilder {
 
 
+    /**
+     * Base class for the Atmos component builders.
+     */
     public static class AtmosCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -172,6 +175,9 @@ public interface AtmosEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Atmos component.
+     */
     public static class AtmosConsumerBuilder
             extends
                 AtmosCommonBuilder<AtmosConsumerBuilder>
@@ -251,6 +257,9 @@ public interface AtmosEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Atmos component.
+     */
     public static class AtmosProducerBuilder
             extends
                 AtmosCommonBuilder<AtmosProducerBuilder>
@@ -261,12 +270,24 @@ public interface AtmosEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.atmos.util.AtmosOperation</code> enum.
+     */
     public static enum AtmosOperation {
         put, del, search, get, move;
     }
+    /**
+     * The atmos component is used for integrating with EMC's Atomos Storage.
+     * Creates a builder to build a consumer endpoint for the Atmos component.
+     */
     public default AtmosConsumerBuilder fromAtmos(String path) {
         return new AtmosConsumerBuilder(path);
     }
+    /**
+     * The atmos component is used for integrating with EMC's Atomos Storage.
+     * Creates a builder to build a producer endpoint for the Atmos component.
+     */
     public default AtmosProducerBuilder toAtmos(String path) {
         return new AtmosProducerBuilder(path);
     }

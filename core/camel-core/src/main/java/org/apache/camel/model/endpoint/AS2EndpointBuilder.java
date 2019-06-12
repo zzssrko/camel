@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface AS2EndpointBuilder {
 
 
+    /**
+     * Base class for the AS2 component builders.
+     */
     public static class AS2CommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -439,6 +442,9 @@ public interface AS2EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the AS2 component.
+     */
     public static class AS2ConsumerBuilder
             extends
                 AS2CommonBuilder<AS2ConsumerBuilder>
@@ -517,6 +523,9 @@ public interface AS2EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AS2 component.
+     */
     public static class AS2ProducerBuilder
             extends
                 AS2CommonBuilder<AS2ProducerBuilder>
@@ -527,28 +536,61 @@ public interface AS2EndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.as2.internal.AS2ApiName</code> enum.
+     */
     public static enum AS2ApiName {
         CLIENT, SERVER;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.as2.api.AS2MessageStructure</code> enum.
+     */
     public static enum AS2MessageStructure {
         PLAIN, SIGNED, ENCRYPTED, SIGNED_ENCRYPTED, PLAIN_COMPRESSED, SIGNED_COMPRESSED, ENCRYPTED_COMPRESSED, ENCRYPTED_COMPRESSED_SIGNED;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.as2.api.AS2CompressionAlgorithm</code>
+     * enum.
+     */
     public static enum AS2CompressionAlgorithm {
         ZLIB;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.as2.api.AS2EncryptionAlgorithm</code>
+     * enum.
+     */
     public static enum AS2EncryptionAlgorithm {
         AES128_CBC, AES192_CBC, AES256_CBC, AES128_CCM, AES192_CCM, AES256_CCM, AES128_GCM, AES192_GCM, AES256_GCM, CAMELLIA128_CBC, CAMELLIA192_CBC, CAMELLIA256_CBC, CAST5_CBC, DES_CBC, DES_EDE3_CBC, GOST28147_GCFB, IDEA_CBC, RC2_CBC, RC4, SEED_CBC;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.as2.api.AS2SignatureAlgorithm</code>
+     * enum.
+     */
     public static enum AS2SignatureAlgorithm {
         SHA3_224WITHRSA, SHA3_256WITHRSA, SHA3_384withRSA, SHA3_512WITHRSA, MD5WITHRSA, SHA1WITHRSA, MD2WITHRSA, SHA224WITHRSA, SHA256WITHRSA, SHA384WITHRSA, SHA512WITHRSA, RIPEMD128WITHRSA, RIPEMD160WITHRSA, RIPEMD256WITHRSA, SHA224WITHDSA, SHA256WITHDSA, SHA384WITHDSA, SHA512WITHDSA, SHA3_224WITHDSA, SHA3_256WITHDSA, SHA3_384WITHDSA, SHA3_512WITHDSA, SHA1WITHDSA, SHA3_224WITHECDSA, SHA3_256WITHECDSA, SHA3_384WITHECDSA, SHA3_512WITHECDSA, SHA1WITHECDSA, SHA224WITHECDSA, SHA256WITHECDSA, SHA384WITHECDSA, SHA512WITHECDSA, SHA1WITHPLAIN_ECDSA, SHA224WITHPLAIN_ECDSA, SHA256WITHPLAIN_ECDSA, SHA384WITHPLAIN_ECDSA, SHA512WITHPLAIN_ECDSA, RIPEMD160WITHPLAIN_ECDSA, SHA1WITHRSAANDMGF1, SHA224WITHRSAANDMGF1, SHA256WITHRSAANDMGF1, SHA384WITHRSAANDMGF1, SHA512WITHRSAANDMGF1, SHA3_224WITHRSAANDMGF1, SHA3_256WITHRSAANDMGF1, SHA3_384WITHRSAANDMGF1, SHA3_512WITHRSAANDMGF1;
     }
+    /**
+     * Component used for transferring data secure and reliable over the
+     * internet using the AS2 protocol. Creates a builder to build a consumer
+     * endpoint for the AS2 component.
+     */
     public default AS2ConsumerBuilder fromAS2(String path) {
         return new AS2ConsumerBuilder(path);
     }
+    /**
+     * Component used for transferring data secure and reliable over the
+     * internet using the AS2 protocol. Creates a builder to build a producer
+     * endpoint for the AS2 component.
+     */
     public default AS2ProducerBuilder toAS2(String path) {
         return new AS2ProducerBuilder(path);
     }

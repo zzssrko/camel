@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface IOTAEndpointBuilder {
 
 
+    /**
+     * Base class for the IOTA component builders.
+     */
     public static class IOTACommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -158,6 +161,9 @@ public interface IOTAEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the IOTA component.
+     */
     public static class IOTAConsumerBuilder
             extends
                 IOTACommonBuilder<IOTAConsumerBuilder>
@@ -236,6 +242,9 @@ public interface IOTAEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the IOTA component.
+     */
     public static class IOTAProducerBuilder
             extends
                 IOTACommonBuilder<IOTAProducerBuilder>
@@ -245,9 +254,17 @@ public interface IOTAEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Component for integrate IOTA DLT Creates a builder to build a consumer
+     * endpoint for the IOTA component.
+     */
     public default IOTAConsumerBuilder fromIOTA(String path) {
         return new IOTAConsumerBuilder(path);
     }
+    /**
+     * Component for integrate IOTA DLT Creates a builder to build a producer
+     * endpoint for the IOTA component.
+     */
     public default IOTAProducerBuilder toIOTA(String path) {
         return new IOTAProducerBuilder(path);
     }

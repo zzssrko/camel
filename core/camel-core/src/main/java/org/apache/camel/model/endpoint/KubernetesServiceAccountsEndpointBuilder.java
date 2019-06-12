@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface KubernetesServiceAccountsEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes Service Account component builders.
+     */
     public static class KubernetesServiceAccountsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -251,6 +254,10 @@ public interface KubernetesServiceAccountsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes Service Account
+     * component.
+     */
     public static class KubernetesServiceAccountsProducerBuilder
             extends
                 KubernetesServiceAccountsCommonBuilder<KubernetesServiceAccountsProducerBuilder>
@@ -269,6 +276,11 @@ public interface KubernetesServiceAccountsEndpointBuilder {
             return (KubernetesServiceAccountsProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Service Accounts component provides a producer to execute
+     * service account operations. Creates a builder to build a producer
+     * endpoint for the Kubernetes Service Account component.
+     */
     public default KubernetesServiceAccountsProducerBuilder toKubernetesServiceAccounts(
             String path) {
         return new KubernetesServiceAccountsProducerBuilder(path);

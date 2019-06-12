@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface MllpEndpointBuilder {
 
 
+    /**
+     * Base class for the MLLP component builders.
+     */
     public static class MllpCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -325,6 +328,9 @@ public interface MllpEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the MLLP component.
+     */
     public static class MllpConsumerBuilder
             extends
                 MllpCommonBuilder<MllpConsumerBuilder>
@@ -550,6 +556,9 @@ public interface MllpEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the MLLP component.
+     */
     public static class MllpProducerBuilder
             extends
                 MllpCommonBuilder<MllpProducerBuilder>
@@ -607,9 +616,19 @@ public interface MllpEndpointBuilder {
             return (MllpProducerBuilder) this;
         }
     }
+    /**
+     * Provides functionality required by Healthcare providers to communicate
+     * with other systems using the MLLP protocol. Creates a builder to build a
+     * consumer endpoint for the MLLP component.
+     */
     public default MllpConsumerBuilder fromMllp(String path) {
         return new MllpConsumerBuilder(path);
     }
+    /**
+     * Provides functionality required by Healthcare providers to communicate
+     * with other systems using the MLLP protocol. Creates a builder to build a
+     * producer endpoint for the MLLP component.
+     */
     public default MllpProducerBuilder toMllp(String path) {
         return new MllpProducerBuilder(path);
     }

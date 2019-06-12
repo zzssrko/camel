@@ -32,6 +32,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface SnsEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS Simple Notification System component builders.
+     */
     public static class SnsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -271,6 +274,10 @@ public interface SnsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS Simple Notification System
+     * component.
+     */
     public static class SnsProducerBuilder
             extends
                 SnsCommonBuilder<SnsProducerBuilder>
@@ -280,6 +287,11 @@ public interface SnsEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The aws-sns component is used for sending messages to an Amazon Simple
+     * Notification Topic. Creates a builder to build a producer endpoint for
+     * the AWS Simple Notification System component.
+     */
     public default SnsProducerBuilder toSns(String path) {
         return new SnsProducerBuilder(path);
     }

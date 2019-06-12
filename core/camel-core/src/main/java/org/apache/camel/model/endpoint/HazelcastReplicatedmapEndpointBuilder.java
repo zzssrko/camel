@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface HazelcastReplicatedmapEndpointBuilder {
 
 
+    /**
+     * Base class for the Hazelcast Replicated Map component builders.
+     */
     public static class HazelcastReplicatedmapCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -240,6 +243,10 @@ public interface HazelcastReplicatedmapEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Hazelcast Replicated Map
+     * component.
+     */
     public static class HazelcastReplicatedmapConsumerBuilder
             extends
                 HazelcastReplicatedmapCommonBuilder<HazelcastReplicatedmapConsumerBuilder>
@@ -375,6 +382,10 @@ public interface HazelcastReplicatedmapEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Hazelcast Replicated Map
+     * component.
+     */
     public static class HazelcastReplicatedmapProducerBuilder
             extends
                 HazelcastReplicatedmapCommonBuilder<HazelcastReplicatedmapProducerBuilder>
@@ -385,17 +396,36 @@ public interface HazelcastReplicatedmapEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+     * enum.
+     */
     public static enum HazelcastOperation {
         put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode</code> enum.
+     */
     public static enum HazelcastQueueConsumerMode {
         listen, poll;
     }
+    /**
+     * The hazelcast-replicatedmap component is used to access Hazelcast
+     * replicated map. Creates a builder to build a consumer endpoint for the
+     * Hazelcast Replicated Map component.
+     */
     public default HazelcastReplicatedmapConsumerBuilder fromHazelcastReplicatedmap(
             String path) {
         return new HazelcastReplicatedmapConsumerBuilder(path);
     }
+    /**
+     * The hazelcast-replicatedmap component is used to access Hazelcast
+     * replicated map. Creates a builder to build a producer endpoint for the
+     * Hazelcast Replicated Map component.
+     */
     public default HazelcastReplicatedmapProducerBuilder toHazelcastReplicatedmap(
             String path) {
         return new HazelcastReplicatedmapProducerBuilder(path);

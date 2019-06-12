@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface S3EndpointBuilder {
 
 
+    /**
+     * Base class for the AWS S3 Storage Service component builders.
+     */
     public static class S3CommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -334,6 +337,9 @@ public interface S3EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the AWS S3 Storage Service component.
+     */
     public static class S3ConsumerBuilder
             extends
                 S3CommonBuilder<S3ConsumerBuilder>
@@ -851,6 +857,9 @@ public interface S3EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS S3 Storage Service component.
+     */
     public static class S3ProducerBuilder
             extends
                 S3CommonBuilder<S3ProducerBuilder>
@@ -973,12 +982,26 @@ public interface S3EndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.s3.S3Operations</code> enum.
+     */
     public static enum S3Operations {
         copyObject, listObjects, deleteObject, deleteBucket, listBuckets, downloadLink, getObject;
     }
+    /**
+     * The aws-s3 component is used for storing and retrieving objecct from
+     * Amazon S3 Storage Service. Creates a builder to build a consumer endpoint
+     * for the AWS S3 Storage Service component.
+     */
     public default S3ConsumerBuilder fromS3(String path) {
         return new S3ConsumerBuilder(path);
     }
+    /**
+     * The aws-s3 component is used for storing and retrieving objecct from
+     * Amazon S3 Storage Service. Creates a builder to build a producer endpoint
+     * for the AWS S3 Storage Service component.
+     */
     public default S3ProducerBuilder toS3(String path) {
         return new S3ProducerBuilder(path);
     }

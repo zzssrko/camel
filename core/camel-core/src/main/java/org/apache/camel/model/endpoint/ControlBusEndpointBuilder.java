@@ -33,6 +33,9 @@ import org.apache.camel.spi.Language;
 public interface ControlBusEndpointBuilder {
 
 
+    /**
+     * Base class for the Control Bus component builders.
+     */
     public static class ControlBusCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -184,6 +187,9 @@ public interface ControlBusEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Control Bus component.
+     */
     public static class ControlBusProducerBuilder
             extends
                 ControlBusCommonBuilder<ControlBusProducerBuilder>
@@ -193,6 +199,11 @@ public interface ControlBusEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The controlbus component provides easy management of Camel applications
+     * based on the Control Bus EIP pattern. Creates a builder to build a
+     * producer endpoint for the Control Bus component.
+     */
     public default ControlBusProducerBuilder toControlBus(String path) {
         return new ControlBusProducerBuilder(path);
     }

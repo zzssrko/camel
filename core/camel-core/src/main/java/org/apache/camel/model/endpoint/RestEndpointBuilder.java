@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface RestEndpointBuilder {
 
 
+    /**
+     * Base class for the REST component builders.
+     */
     public static class RestCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -152,6 +155,9 @@ public interface RestEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the REST component.
+     */
     public static class RestConsumerBuilder
             extends
                 RestCommonBuilder<RestConsumerBuilder>
@@ -238,6 +244,9 @@ public interface RestEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the REST component.
+     */
     public static class RestProducerBuilder
             extends
                 RestCommonBuilder<RestProducerBuilder>
@@ -297,12 +306,26 @@ public interface RestEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.spi.RestConfiguration$RestBindingMode</code> enum.
+     */
     public static enum RestBindingMode {
         auto, off, json, xml, json_xml;
     }
+    /**
+     * The rest component is used for either hosting REST services (consumer) or
+     * calling external REST services (producer). Creates a builder to build a
+     * consumer endpoint for the REST component.
+     */
     public default RestConsumerBuilder fromRest(String path) {
         return new RestConsumerBuilder(path);
     }
+    /**
+     * The rest component is used for either hosting REST services (consumer) or
+     * calling external REST services (producer). Creates a builder to build a
+     * producer endpoint for the REST component.
+     */
     public default RestProducerBuilder toRest(String path) {
         return new RestProducerBuilder(path);
     }

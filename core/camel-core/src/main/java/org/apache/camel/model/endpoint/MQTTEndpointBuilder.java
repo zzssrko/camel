@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface MQTTEndpointBuilder {
 
 
+    /**
+     * Base class for the MQTT component builders.
+     */
     public static class MQTTCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -608,6 +611,9 @@ public interface MQTTEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the MQTT component.
+     */
     public static class MQTTConsumerBuilder
             extends
                 MQTTCommonBuilder<MQTTConsumerBuilder>
@@ -686,6 +692,9 @@ public interface MQTTEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the MQTT component.
+     */
     public static class MQTTProducerBuilder
             extends
                 MQTTCommonBuilder<MQTTProducerBuilder>
@@ -716,12 +725,25 @@ public interface MQTTEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.fusesource.mqtt.client.QoS</code> enum.
+     */
     public static enum QoS {
         AT_MOST_ONCE, AT_LEAST_ONCE, EXACTLY_ONCE;
     }
+    /**
+     * Component for communicating with MQTT M2M message brokers using
+     * FuseSource MQTT Client. Creates a builder to build a consumer endpoint
+     * for the MQTT component.
+     */
     public default MQTTConsumerBuilder fromMQTT(String path) {
         return new MQTTConsumerBuilder(path);
     }
+    /**
+     * Component for communicating with MQTT M2M message brokers using
+     * FuseSource MQTT Client. Creates a builder to build a producer endpoint
+     * for the MQTT component.
+     */
     public default MQTTProducerBuilder toMQTT(String path) {
         return new MQTTProducerBuilder(path);
     }

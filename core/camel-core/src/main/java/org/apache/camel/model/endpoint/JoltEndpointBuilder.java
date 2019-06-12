@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface JoltEndpointBuilder {
 
 
+    /**
+     * Base class for the JOLT component builders.
+     */
     public static class JoltCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -161,6 +164,9 @@ public interface JoltEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JOLT component.
+     */
     public static class JoltProducerBuilder
             extends
                 JoltCommonBuilder<JoltProducerBuilder>
@@ -171,13 +177,26 @@ public interface JoltEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.jolt.JoltInputOutputType</code> enum.
+     */
     public static enum JoltInputOutputType {
         Hydrated, JsonString;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.jolt.JoltTransformType</code> enum.
+     */
     public static enum JoltTransformType {
         Chainr, Shiftr, Defaultr, Removr, Sortr;
     }
+    /**
+     * The jolt component allows you to process a JSON messages using an JOLT
+     * specification (such as JSON-JSON transformation). Creates a builder to
+     * build a producer endpoint for the JOLT component.
+     */
     public default JoltProducerBuilder toJolt(String path) {
         return new JoltProducerBuilder(path);
     }

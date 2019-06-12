@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface IgniteSetEndpointBuilder {
 
 
+    /**
+     * Base class for the Ignite Sets component builders.
+     */
     public static class IgniteSetCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -122,6 +125,9 @@ public interface IgniteSetEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Ignite Sets component.
+     */
     public static class IgniteSetProducerBuilder
             extends
                 IgniteSetCommonBuilder<IgniteSetProducerBuilder>
@@ -179,9 +185,19 @@ public interface IgniteSetEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.ignite.set.IgniteSetOperation</code>
+     * enum.
+     */
     public static enum IgniteSetOperation {
         CONTAINS, ADD, SIZE, REMOVE, ITERATOR, CLEAR, RETAIN_ALL, ARRAY;
     }
+    /**
+     * The Ignite Sets endpoint is one of camel-ignite endpoints which allows
+     * you to interact with Ignite Set data structures. Creates a builder to
+     * build a producer endpoint for the Ignite Sets component.
+     */
     public default IgniteSetProducerBuilder toIgniteSet(String path) {
         return new IgniteSetProducerBuilder(path);
     }

@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface MyBatisEndpointBuilder {
 
 
+    /**
+     * Base class for the MyBatis component builders.
+     */
     public static class MyBatisCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -92,6 +95,9 @@ public interface MyBatisEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the MyBatis component.
+     */
     public static class MyBatisConsumerBuilder
             extends
                 MyBatisCommonBuilder<MyBatisConsumerBuilder>
@@ -579,6 +585,9 @@ public interface MyBatisEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the MyBatis component.
+     */
     public static class MyBatisProducerBuilder
             extends
                 MyBatisCommonBuilder<MyBatisProducerBuilder>
@@ -654,16 +663,33 @@ public interface MyBatisEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.ibatis.session.ExecutorType</code> enum.
+     */
     public static enum ExecutorType {
         SIMPLE, REUSE, BATCH;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.mybatis.StatementType</code> enum.
+     */
     public static enum StatementType {
         SelectOne, SelectList, Insert, InsertList, Update, UpdateList, Delete, DeleteList;
     }
+    /**
+     * Performs a query, poll, insert, update or delete in a relational database
+     * using MyBatis. Creates a builder to build a consumer endpoint for the
+     * MyBatis component.
+     */
     public default MyBatisConsumerBuilder fromMyBatis(String path) {
         return new MyBatisConsumerBuilder(path);
     }
+    /**
+     * Performs a query, poll, insert, update or delete in a relational database
+     * using MyBatis. Creates a builder to build a producer endpoint for the
+     * MyBatis component.
+     */
     public default MyBatisProducerBuilder toMyBatis(String path) {
         return new MyBatisProducerBuilder(path);
     }

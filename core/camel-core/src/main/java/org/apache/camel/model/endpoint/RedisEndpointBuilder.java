@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface RedisEndpointBuilder {
 
 
+    /**
+     * Base class for the Spring Redis component builders.
+     */
     public static class RedisCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -183,6 +186,9 @@ public interface RedisEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Spring Redis component.
+     */
     public static class RedisConsumerBuilder
             extends
                 RedisCommonBuilder<RedisConsumerBuilder>
@@ -280,6 +286,9 @@ public interface RedisEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Spring Redis component.
+     */
     public static class RedisProducerBuilder
             extends
                 RedisCommonBuilder<RedisProducerBuilder>
@@ -290,12 +299,26 @@ public interface RedisEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.redis.Command</code>
+     * enum.
+     */
     public static enum Command {
         PING, SET, GET, QUIT, EXISTS, DEL, TYPE, FLUSHDB, KEYS, RANDOMKEY, RENAME, RENAMENX, RENAMEX, DBSIZE, EXPIRE, EXPIREAT, TTL, SELECT, MOVE, FLUSHALL, GETSET, MGET, SETNX, SETEX, MSET, MSETNX, DECRBY, DECR, INCRBY, INCR, APPEND, SUBSTR, HSET, HGET, HSETNX, HMSET, HMGET, HINCRBY, HEXISTS, HDEL, HLEN, HKEYS, HVALS, HGETALL, RPUSH, LPUSH, LLEN, LRANGE, LTRIM, LINDEX, LSET, LREM, LPOP, RPOP, RPOPLPUSH, SADD, SMEMBERS, SREM, SPOP, SMOVE, SCARD, SISMEMBER, SINTER, SINTERSTORE, SUNION, SUNIONSTORE, SDIFF, SDIFFSTORE, SRANDMEMBER, ZADD, ZRANGE, ZREM, ZINCRBY, ZRANK, ZREVRANK, ZREVRANGE, ZCARD, ZSCORE, MULTI, DISCARD, EXEC, WATCH, UNWATCH, SORT, BLPOP, BRPOP, AUTH, SUBSCRIBE, PUBLISH, UNSUBSCRIBE, PSUBSCRIBE, PUNSUBSCRIBE, ZCOUNT, ZRANGEBYSCORE, ZREVRANGEBYSCORE, ZREMRANGEBYRANK, ZREMRANGEBYSCORE, ZUNIONSTORE, ZINTERSTORE, SAVE, BGSAVE, BGREWRITEAOF, LASTSAVE, SHUTDOWN, INFO, MONITOR, SLAVEOF, CONFIG, STRLEN, SYNC, LPUSHX, PERSIST, RPUSHX, ECHO, LINSERT, DEBUG, BRPOPLPUSH, SETBIT, GETBIT, SETRANGE, GETRANGE, PEXPIRE, PEXPIREAT, GEOADD, GEODIST, GEOHASH, GEOPOS, GEORADIUS, GEORADIUSBYMEMBER;
     }
+    /**
+     * The spring-redis component allows sending and receiving messages from
+     * Redis. Creates a builder to build a consumer endpoint for the Spring
+     * Redis component.
+     */
     public default RedisConsumerBuilder fromRedis(String path) {
         return new RedisConsumerBuilder(path);
     }
+    /**
+     * The spring-redis component allows sending and receiving messages from
+     * Redis. Creates a builder to build a producer endpoint for the Spring
+     * Redis component.
+     */
     public default RedisProducerBuilder toRedis(String path) {
         return new RedisProducerBuilder(path);
     }

@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface GoogleSheetsEndpointBuilder {
 
 
+    /**
+     * Base class for the Google Sheets component builders.
+     */
     public static class GoogleSheetsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -152,6 +155,9 @@ public interface GoogleSheetsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Google Sheets component.
+     */
     public static class GoogleSheetsConsumerBuilder
             extends
                 GoogleSheetsCommonBuilder<GoogleSheetsConsumerBuilder>
@@ -234,6 +240,9 @@ public interface GoogleSheetsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Google Sheets component.
+     */
     public static class GoogleSheetsProducerBuilder
             extends
                 GoogleSheetsCommonBuilder<GoogleSheetsProducerBuilder>
@@ -244,12 +253,24 @@ public interface GoogleSheetsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.google.sheets.internal.GoogleSheetsApiName</code> enum.
+     */
     public static enum GoogleSheetsApiName {
         SPREADSHEETS, DATA;
     }
+    /**
+     * The google-sheets component provides access to Google Sheets. Creates a
+     * builder to build a consumer endpoint for the Google Sheets component.
+     */
     public default GoogleSheetsConsumerBuilder fromGoogleSheets(String path) {
         return new GoogleSheetsConsumerBuilder(path);
     }
+    /**
+     * The google-sheets component provides access to Google Sheets. Creates a
+     * builder to build a producer endpoint for the Google Sheets component.
+     */
     public default GoogleSheetsProducerBuilder toGoogleSheets(String path) {
         return new GoogleSheetsProducerBuilder(path);
     }

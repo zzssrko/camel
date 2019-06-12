@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface MyBatisBeanEndpointBuilder {
 
 
+    /**
+     * Base class for the MyBatis Bean component builders.
+     */
     public static class MyBatisBeanCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -92,6 +95,9 @@ public interface MyBatisBeanEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the MyBatis Bean component.
+     */
     public static class MyBatisBeanProducerBuilder
             extends
                 MyBatisBeanCommonBuilder<MyBatisBeanProducerBuilder>
@@ -149,9 +155,17 @@ public interface MyBatisBeanEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.ibatis.session.ExecutorType</code> enum.
+     */
     public static enum ExecutorType {
         SIMPLE, REUSE, BATCH;
     }
+    /**
+     * Performs a query, insert, update or delete in a relational database using
+     * MyBatis. Creates a builder to build a producer endpoint for the MyBatis
+     * Bean component.
+     */
     public default MyBatisBeanProducerBuilder toMyBatisBean(String path) {
         return new MyBatisBeanProducerBuilder(path);
     }

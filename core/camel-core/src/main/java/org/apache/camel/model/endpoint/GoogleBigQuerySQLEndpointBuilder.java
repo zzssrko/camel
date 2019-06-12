@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface GoogleBigQuerySQLEndpointBuilder {
 
 
+    /**
+     * Base class for the Google BigQuery Standard SQL component builders.
+     */
     public static class GoogleBigQuerySQLCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -108,6 +111,10 @@ public interface GoogleBigQuerySQLEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Google BigQuery Standard SQL
+     * component.
+     */
     public static class GoogleBigQuerySQLProducerBuilder
             extends
                 GoogleBigQuerySQLCommonBuilder<GoogleBigQuerySQLProducerBuilder>
@@ -117,6 +124,11 @@ public interface GoogleBigQuerySQLEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Google BigQuery data warehouse for analytics (using SQL queries). Creates
+     * a builder to build a producer endpoint for the Google BigQuery Standard
+     * SQL component.
+     */
     public default GoogleBigQuerySQLProducerBuilder toGoogleBigQuerySQL(
             String path) {
         return new GoogleBigQuerySQLProducerBuilder(path);

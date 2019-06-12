@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface HazelcastMapEndpointBuilder {
 
 
+    /**
+     * Base class for the Hazelcast Map component builders.
+     */
     public static class HazelcastMapCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -239,6 +242,9 @@ public interface HazelcastMapEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Hazelcast Map component.
+     */
     public static class HazelcastMapConsumerBuilder
             extends
                 HazelcastMapCommonBuilder<HazelcastMapConsumerBuilder>
@@ -372,6 +378,9 @@ public interface HazelcastMapEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Hazelcast Map component.
+     */
     public static class HazelcastMapProducerBuilder
             extends
                 HazelcastMapCommonBuilder<HazelcastMapProducerBuilder>
@@ -382,16 +391,35 @@ public interface HazelcastMapEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+     * enum.
+     */
     public static enum HazelcastOperation {
         put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode</code> enum.
+     */
     public static enum HazelcastQueueConsumerMode {
         listen, poll;
     }
+    /**
+     * The hazelcast-map component is used to access Hazelcast distributed map.
+     * Creates a builder to build a consumer endpoint for the Hazelcast Map
+     * component.
+     */
     public default HazelcastMapConsumerBuilder fromHazelcastMap(String path) {
         return new HazelcastMapConsumerBuilder(path);
     }
+    /**
+     * The hazelcast-map component is used to access Hazelcast distributed map.
+     * Creates a builder to build a producer endpoint for the Hazelcast Map
+     * component.
+     */
     public default HazelcastMapProducerBuilder toHazelcastMap(String path) {
         return new HazelcastMapProducerBuilder(path);
     }

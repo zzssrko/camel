@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface IgniteMessagingEndpointBuilder {
 
 
+    /**
+     * Base class for the Ignite Messaging component builders.
+     */
     public static class IgniteMessagingCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -124,6 +127,9 @@ public interface IgniteMessagingEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Ignite Messaging component.
+     */
     public static class IgniteMessagingConsumerBuilder
             extends
                 IgniteMessagingCommonBuilder<IgniteMessagingConsumerBuilder>
@@ -206,6 +212,9 @@ public interface IgniteMessagingEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Ignite Messaging component.
+     */
     public static class IgniteMessagingProducerBuilder
             extends
                 IgniteMessagingCommonBuilder<IgniteMessagingProducerBuilder>
@@ -271,13 +280,27 @@ public interface IgniteMessagingEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.ignite.messaging.IgniteMessagingSendMode</code> enum.
+     */
     public static enum IgniteMessagingSendMode {
         ORDERED, UNORDERED;
     }
+    /**
+     * The Ignite Messaging endpoint is one of camel-ignite endpoints which
+     * allows you to send and consume messages from an Ignite topic. Creates a
+     * builder to build a consumer endpoint for the Ignite Messaging component.
+     */
     public default IgniteMessagingConsumerBuilder fromIgniteMessaging(
             String path) {
         return new IgniteMessagingConsumerBuilder(path);
     }
+    /**
+     * The Ignite Messaging endpoint is one of camel-ignite endpoints which
+     * allows you to send and consume messages from an Ignite topic. Creates a
+     * builder to build a producer endpoint for the Ignite Messaging component.
+     */
     public default IgniteMessagingProducerBuilder toIgniteMessaging(String path) {
         return new IgniteMessagingProducerBuilder(path);
     }

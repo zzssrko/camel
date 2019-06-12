@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface StAXEndpointBuilder {
 
 
+    /**
+     * Base class for the StAX component builders.
+     */
     public static class StAXCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -83,6 +86,9 @@ public interface StAXEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the StAX component.
+     */
     public static class StAXProducerBuilder
             extends
                 StAXCommonBuilder<StAXProducerBuilder>
@@ -92,6 +98,11 @@ public interface StAXEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The stax component allows messages to be process through a SAX
+     * ContentHandler. Creates a builder to build a producer endpoint for the
+     * StAX component.
+     */
     public default StAXProducerBuilder toStAX(String path) {
         return new StAXProducerBuilder(path);
     }

@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface CinderEndpointBuilder {
 
 
+    /**
+     * Base class for the OpenStack Cinder component builders.
+     */
     public static class CinderCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -154,6 +157,9 @@ public interface CinderEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the OpenStack Cinder component.
+     */
     public static class CinderProducerBuilder
             extends
                 CinderCommonBuilder<CinderProducerBuilder>
@@ -163,6 +169,11 @@ public interface CinderEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The openstack-cinder component allows messages to be sent to an OpenStack
+     * block storage services. Creates a builder to build a producer endpoint
+     * for the OpenStack Cinder component.
+     */
     public default CinderProducerBuilder toCinder(String path) {
         return new CinderProducerBuilder(path);
     }

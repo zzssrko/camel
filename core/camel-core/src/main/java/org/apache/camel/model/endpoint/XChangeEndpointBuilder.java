@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface XChangeEndpointBuilder {
 
 
+    /**
+     * Base class for the XChange component builders.
+     */
     public static class XChangeCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -147,6 +150,9 @@ public interface XChangeEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the XChange component.
+     */
     public static class XChangeProducerBuilder
             extends
                 XChangeCommonBuilder<XChangeProducerBuilder>
@@ -157,13 +163,26 @@ public interface XChangeEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.xchange.XChangeConfiguration$XChangeMethod</code> enum.
+     */
     public static enum XChangeMethod {
         balances, fundingHistory, wallets, currencies, currencyMetaData, currencyPairs, currencyPairMetaData, ticker;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.xchange.XChangeConfiguration$XChangeService</code> enum.
+     */
     public static enum XChangeService {
         marketdata, metadata, account;
     }
+    /**
+     * The camel-xchange component provide access to many bitcoin and altcoin
+     * exchanges for trading and accessing market data. Creates a builder to
+     * build a producer endpoint for the XChange component.
+     */
     public default XChangeProducerBuilder toXChange(String path) {
         return new XChangeProducerBuilder(path);
     }

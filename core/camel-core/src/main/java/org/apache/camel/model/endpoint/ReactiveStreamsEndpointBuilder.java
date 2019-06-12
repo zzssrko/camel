@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface ReactiveStreamsEndpointBuilder {
 
 
+    /**
+     * Base class for the Reactive Streams component builders.
+     */
     public static class ReactiveStreamsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -84,6 +87,9 @@ public interface ReactiveStreamsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Reactive Streams component.
+     */
     public static class ReactiveStreamsConsumerBuilder
             extends
                 ReactiveStreamsCommonBuilder<ReactiveStreamsConsumerBuilder>
@@ -277,6 +283,9 @@ public interface ReactiveStreamsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Reactive Streams component.
+     */
     public static class ReactiveStreamsProducerBuilder
             extends
                 ReactiveStreamsCommonBuilder<ReactiveStreamsProducerBuilder>
@@ -307,13 +316,25 @@ public interface ReactiveStreamsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.reactive.streams.ReactiveStreamsBackpressureStrategy</code> enum.
+     */
     public static enum ReactiveStreamsBackpressureStrategy {
         BUFFER, OLDEST, LATEST;
     }
+    /**
+     * Reactive Camel using reactive streams Creates a builder to build a
+     * consumer endpoint for the Reactive Streams component.
+     */
     public default ReactiveStreamsConsumerBuilder fromReactiveStreams(
             String path) {
         return new ReactiveStreamsConsumerBuilder(path);
     }
+    /**
+     * Reactive Camel using reactive streams Creates a builder to build a
+     * producer endpoint for the Reactive Streams component.
+     */
     public default ReactiveStreamsProducerBuilder toReactiveStreams(String path) {
         return new ReactiveStreamsProducerBuilder(path);
     }

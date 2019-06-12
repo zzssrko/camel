@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface EventEndpointBuilder {
 
 
+    /**
+     * Base class for the Spring Event component builders.
+     */
     public static class EventCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -83,6 +86,9 @@ public interface EventEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Spring Event component.
+     */
     public static class EventConsumerBuilder
             extends
                 EventCommonBuilder<EventConsumerBuilder>
@@ -162,6 +168,9 @@ public interface EventEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Spring Event component.
+     */
     public static class EventProducerBuilder
             extends
                 EventCommonBuilder<EventProducerBuilder>
@@ -171,9 +180,19 @@ public interface EventEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The spring-event component allows to listen for Spring Application
+     * Events. Creates a builder to build a consumer endpoint for the Spring
+     * Event component.
+     */
     public default EventConsumerBuilder fromEvent(String path) {
         return new EventConsumerBuilder(path);
     }
+    /**
+     * The spring-event component allows to listen for Spring Application
+     * Events. Creates a builder to build a producer endpoint for the Spring
+     * Event component.
+     */
     public default EventProducerBuilder toEvent(String path) {
         return new EventProducerBuilder(path);
     }

@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface XQueryEndpointBuilder {
 
 
+    /**
+     * Base class for the XQuery component builders.
+     */
     public static class XQueryCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -286,6 +289,9 @@ public interface XQueryEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the XQuery component.
+     */
     public static class XQueryConsumerBuilder
             extends
                 XQueryCommonBuilder<XQueryConsumerBuilder>
@@ -665,6 +671,9 @@ public interface XQueryEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the XQuery component.
+     */
     public static class XQueryProducerBuilder
             extends
                 XQueryCommonBuilder<XQueryProducerBuilder>
@@ -675,12 +684,24 @@ public interface XQueryEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.xquery.ResultFormat</code> enum.
+     */
     public static enum ResultFormat {
         Bytes, BytesSource, DOM, DOMSource, List, String, StringSource;
     }
+    /**
+     * Transforms the message using a XQuery template using Saxon. Creates a
+     * builder to build a consumer endpoint for the XQuery component.
+     */
     public default XQueryConsumerBuilder fromXQuery(String path) {
         return new XQueryConsumerBuilder(path);
     }
+    /**
+     * Transforms the message using a XQuery template using Saxon. Creates a
+     * builder to build a producer endpoint for the XQuery component.
+     */
     public default XQueryProducerBuilder toXQuery(String path) {
         return new XQueryProducerBuilder(path);
     }

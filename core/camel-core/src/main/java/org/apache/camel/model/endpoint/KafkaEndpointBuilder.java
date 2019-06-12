@@ -36,6 +36,9 @@ import org.apache.camel.spi.StateRepository;
 public interface KafkaEndpointBuilder {
 
 
+    /**
+     * Base class for the Kafka component builders.
+     */
     public static class KafkaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -397,6 +400,9 @@ public interface KafkaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Kafka component.
+     */
     public static class KafkaConsumerBuilder
             extends
                 KafkaCommonBuilder<KafkaConsumerBuilder>
@@ -1005,6 +1011,9 @@ public interface KafkaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kafka component.
+     */
     public static class KafkaProducerBuilder
             extends
                 KafkaCommonBuilder<KafkaProducerBuilder>
@@ -1758,9 +1767,19 @@ public interface KafkaEndpointBuilder {
             return (KafkaProducerBuilder) this;
         }
     }
+    /**
+     * The kafka component allows messages to be sent to (or consumed from)
+     * Apache Kafka brokers. Creates a builder to build a consumer endpoint for
+     * the Kafka component.
+     */
     public default KafkaConsumerBuilder fromKafka(String path) {
         return new KafkaConsumerBuilder(path);
     }
+    /**
+     * The kafka component allows messages to be sent to (or consumed from)
+     * Apache Kafka brokers. Creates a builder to build a producer endpoint for
+     * the Kafka component.
+     */
     public default KafkaProducerBuilder toKafka(String path) {
         return new KafkaProducerBuilder(path);
     }

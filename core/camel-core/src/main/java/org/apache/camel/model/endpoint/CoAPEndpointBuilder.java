@@ -36,6 +36,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface CoAPEndpointBuilder {
 
 
+    /**
+     * Base class for the CoAP component builders.
+     */
     public static class CoAPCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -222,6 +225,9 @@ public interface CoAPEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the CoAP component.
+     */
     public static class CoAPConsumerBuilder
             extends
                 CoAPCommonBuilder<CoAPConsumerBuilder>
@@ -309,6 +315,9 @@ public interface CoAPEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the CoAP component.
+     */
     public static class CoAPProducerBuilder
             extends
                 CoAPCommonBuilder<CoAPProducerBuilder>
@@ -318,9 +327,19 @@ public interface CoAPEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The coap component is used for sending and receiving messages from COAP
+     * capable devices. Creates a builder to build a consumer endpoint for the
+     * CoAP component.
+     */
     public default CoAPConsumerBuilder fromCoAP(String path) {
         return new CoAPConsumerBuilder(path);
     }
+    /**
+     * The coap component is used for sending and receiving messages from COAP
+     * capable devices. Creates a builder to build a producer endpoint for the
+     * CoAP component.
+     */
     public default CoAPProducerBuilder toCoAP(String path) {
         return new CoAPProducerBuilder(path);
     }

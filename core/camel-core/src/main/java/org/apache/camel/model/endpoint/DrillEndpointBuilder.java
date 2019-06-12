@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface DrillEndpointBuilder {
 
 
+    /**
+     * Base class for the Drill component builders.
+     */
     public static class DrillCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -137,6 +140,9 @@ public interface DrillEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Drill component.
+     */
     public static class DrillProducerBuilder
             extends
                 DrillCommonBuilder<DrillProducerBuilder>
@@ -147,9 +153,18 @@ public interface DrillEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.drill.DrillConnectionMode</code> enum.
+     */
     public static enum DrillConnectionMode {
         ZK, DRILLBIT;
     }
+    /**
+     * The drill component gives you the ability to quering into apache drill
+     * cluster. Creates a builder to build a producer endpoint for the Drill
+     * component.
+     */
     public default DrillProducerBuilder toDrill(String path) {
         return new DrillProducerBuilder(path);
     }

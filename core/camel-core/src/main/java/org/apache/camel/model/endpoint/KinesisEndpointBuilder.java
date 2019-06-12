@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface KinesisEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS Kinesis component builders.
+     */
     public static class KinesisCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -157,6 +160,9 @@ public interface KinesisEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the AWS Kinesis component.
+     */
     public static class KinesisConsumerBuilder
             extends
                 KinesisCommonBuilder<KinesisConsumerBuilder>
@@ -619,6 +625,9 @@ public interface KinesisEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS Kinesis component.
+     */
     public static class KinesisProducerBuilder
             extends
                 KinesisCommonBuilder<KinesisProducerBuilder>
@@ -629,16 +638,34 @@ public interface KinesisEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>com.amazonaws.services.kinesis.model.ShardIteratorType</code> enum.
+     */
     public static enum ShardIteratorType {
         AT_SEQUENCE_NUMBER, AFTER_SEQUENCE_NUMBER, TRIM_HORIZON, LATEST, AT_TIMESTAMP;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.kinesis.KinesisShardClosedStrategyEnum</code> enum.
+     */
     public static enum KinesisShardClosedStrategyEnum {
         ignore, fail, silent;
     }
+    /**
+     * The aws-kinesis component is for consuming and producing records from
+     * Amazon Kinesis Streams. Creates a builder to build a consumer endpoint
+     * for the AWS Kinesis component.
+     */
     public default KinesisConsumerBuilder fromKinesis(String path) {
         return new KinesisConsumerBuilder(path);
     }
+    /**
+     * The aws-kinesis component is for consuming and producing records from
+     * Amazon Kinesis Streams. Creates a builder to build a producer endpoint
+     * for the AWS Kinesis component.
+     */
     public default KinesisProducerBuilder toKinesis(String path) {
         return new KinesisProducerBuilder(path);
     }

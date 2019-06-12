@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface NagiosEndpointBuilder {
 
 
+    /**
+     * Base class for the Nagios component builders.
+     */
     public static class NagiosCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -191,6 +194,9 @@ public interface NagiosEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Nagios component.
+     */
     public static class NagiosProducerBuilder
             extends
                 NagiosCommonBuilder<NagiosProducerBuilder>
@@ -201,13 +207,26 @@ public interface NagiosEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>com.googlecode.jsendnsca.encryption.Encryption</code> enum.
+     */
     public static enum Encryption {
         NONE, TRIPLE_DES, XOR, RIJNDAEL128, RIJNDAEL192, RIJNDAEL256, BLOWFISH;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.nagios.NagiosEncryptionMethod</code>
+     * enum.
+     */
     public static enum NagiosEncryptionMethod {
         No, Xor, TripleDes;
     }
+    /**
+     * To send passive checks to Nagios using JSendNSCA. Creates a builder to
+     * build a producer endpoint for the Nagios component.
+     */
     public default NagiosProducerBuilder toNagios(String path) {
         return new NagiosProducerBuilder(path);
     }

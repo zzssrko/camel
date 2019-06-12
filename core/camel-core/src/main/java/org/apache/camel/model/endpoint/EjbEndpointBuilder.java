@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface EjbEndpointBuilder {
 
 
+    /**
+     * Base class for the EJB component builders.
+     */
     public static class EjbCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -129,6 +132,9 @@ public interface EjbEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the EJB component.
+     */
     public static class EjbProducerBuilder
             extends
                 EjbCommonBuilder<EjbProducerBuilder>
@@ -138,6 +144,10 @@ public interface EjbEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The ejb component is for invoking EJB Java beans from Camel. Creates a
+     * builder to build a producer endpoint for the EJB component.
+     */
     public default EjbProducerBuilder toEjb(String path) {
         return new EjbProducerBuilder(path);
     }

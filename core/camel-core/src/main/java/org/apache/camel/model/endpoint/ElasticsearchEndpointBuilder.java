@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface ElasticsearchEndpointBuilder {
 
 
+    /**
+     * Base class for the Elastichsearch Rest component builders.
+     */
     public static class ElasticsearchCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -248,6 +251,9 @@ public interface ElasticsearchEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Elastichsearch Rest component.
+     */
     public static class ElasticsearchProducerBuilder
             extends
                 ElasticsearchCommonBuilder<ElasticsearchProducerBuilder>
@@ -258,9 +264,18 @@ public interface ElasticsearchEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.elasticsearch.ElasticsearchOperation</code> enum.
+     */
     public static enum ElasticsearchOperation {
         Index, Update, Bulk, BulkIndex, GetById, MultiGet, MultiSearch, Delete, DeleteIndex, Search, Exists, Ping, Info;
     }
+    /**
+     * The elasticsearch component is used for interfacing with ElasticSearch
+     * server using REST API. Creates a builder to build a producer endpoint for
+     * the Elastichsearch Rest component.
+     */
     public default ElasticsearchProducerBuilder toElasticsearch(String path) {
         return new ElasticsearchProducerBuilder(path);
     }

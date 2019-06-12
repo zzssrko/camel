@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface WeatherEndpointBuilder {
 
 
+    /**
+     * Base class for the Weather component builders.
+     */
     public static class WeatherCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -399,6 +402,9 @@ public interface WeatherEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Weather component.
+     */
     public static class WeatherConsumerBuilder
             extends
                 WeatherCommonBuilder<WeatherConsumerBuilder>
@@ -778,6 +784,9 @@ public interface WeatherEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Weather component.
+     */
     public static class WeatherProducerBuilder
             extends
                 WeatherCommonBuilder<WeatherProducerBuilder>
@@ -788,24 +797,48 @@ public interface WeatherEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.weather.WeatherLanguage</code> enum.
+     */
     public static enum WeatherLanguage {
         en, ru, it, es, sp, uk, ua, de, pt, ro, pl, fi, nl, fr, bg, sv, se, zh_tw, zh, zh_cn, tr, hr, ca;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.weather.WeatherMode</code> enum.
+     */
     public static enum WeatherMode {
         HTML, JSON, XML;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.weather.WeatherUnits</code> enum.
+     */
     public static enum WeatherUnits {
         IMPERIAL, METRIC;
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.weather.WeatherApi</code>
+     * enum.
+     */
     public static enum WeatherApi {
         Current, Station, Hourly, Daily;
     }
+    /**
+     * Polls the weather information from Open Weather Map. Creates a builder to
+     * build a consumer endpoint for the Weather component.
+     */
     public default WeatherConsumerBuilder fromWeather(String path) {
         return new WeatherConsumerBuilder(path);
     }
+    /**
+     * Polls the weather information from Open Weather Map. Creates a builder to
+     * build a producer endpoint for the Weather component.
+     */
     public default WeatherProducerBuilder toWeather(String path) {
         return new WeatherProducerBuilder(path);
     }

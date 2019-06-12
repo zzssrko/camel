@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface SalesforceEndpointBuilder {
 
 
+    /**
+     * Base class for the Salesforce component builders.
+     */
     public static class SalesforceCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -606,6 +609,9 @@ public interface SalesforceEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Salesforce component.
+     */
     public static class SalesforceConsumerBuilder
             extends
                 SalesforceCommonBuilder<SalesforceConsumerBuilder>
@@ -711,6 +717,9 @@ public interface SalesforceEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Salesforce component.
+     */
     public static class SalesforceProducerBuilder
             extends
                 SalesforceCommonBuilder<SalesforceProducerBuilder>
@@ -738,32 +747,69 @@ public interface SalesforceEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.salesforce.internal.OperationName</code>
+     * enum.
+     */
     public static enum OperationName {
         GET_VERSIONS, GET_RESOURCES, GET_GLOBAL_OBJECTS, GET_BASIC_INFO, GET_DESCRIPTION, GET_SOBJECT, CREATE_SOBJECT, UPDATE_SOBJECT, DELETE_SOBJECT, GET_SOBJECT_WITH_ID, UPSERT_SOBJECT, DELETE_SOBJECT_WITH_ID, GET_BLOB_FIELD, QUERY, QUERY_MORE, QUERY_ALL, SEARCH, APEX_CALL, RECENT, CREATE_JOB, GET_JOB, CLOSE_JOB, ABORT_JOB, CREATE_BATCH, GET_BATCH, GET_ALL_BATCHES, GET_REQUEST, GET_RESULTS, CREATE_BATCH_QUERY, GET_QUERY_RESULT_IDS, GET_QUERY_RESULT, GET_RECENT_REPORTS, GET_REPORT_DESCRIPTION, EXECUTE_SYNCREPORT, EXECUTE_ASYNCREPORT, GET_REPORT_INSTANCES, GET_REPORT_RESULTS, LIMITS, APPROVAL, APPROVALS, COMPOSITE_TREE, COMPOSITE_BATCH, COMPOSITE;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.salesforce.api.dto.bulk.ContentType</code> enum.
+     */
     public static enum ContentType {
         XML, CSV, JSON, ZIP_XML, ZIP_CSV, ZIP_JSON;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.salesforce.internal.PayloadFormat</code>
+     * enum.
+     */
     public static enum PayloadFormat {
         JSON, XML;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.salesforce.NotFoundBehaviour</code>
+     * enum.
+     */
     public static enum NotFoundBehaviour {
         EXCEPTION, NULL;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.salesforce.internal.dto.NotifyForFieldsEnum</code> enum.
+     */
     public static enum NotifyForFieldsEnum {
         ALL, REFERENCED, SELECT, WHERE;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.salesforce.internal.dto.NotifyForOperationsEnum</code> enum.
+     */
     public static enum NotifyForOperationsEnum {
         ALL, CREATE, EXTENDED, UPDATE;
     }
+    /**
+     * The salesforce component is used for integrating Camel with the massive
+     * Salesforce API. Creates a builder to build a consumer endpoint for the
+     * Salesforce component.
+     */
     public default SalesforceConsumerBuilder fromSalesforce(String path) {
         return new SalesforceConsumerBuilder(path);
     }
+    /**
+     * The salesforce component is used for integrating Camel with the massive
+     * Salesforce API. Creates a builder to build a producer endpoint for the
+     * Salesforce component.
+     */
     public default SalesforceProducerBuilder toSalesforce(String path) {
         return new SalesforceProducerBuilder(path);
     }

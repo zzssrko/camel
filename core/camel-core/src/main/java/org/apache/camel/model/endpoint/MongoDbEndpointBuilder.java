@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface MongoDbEndpointBuilder {
 
 
+    /**
+     * Base class for the MongoDB component builders.
+     */
     public static class MongoDbCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -315,6 +318,9 @@ public interface MongoDbEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the MongoDB component.
+     */
     public static class MongoDbConsumerBuilder
             extends
                 MongoDbCommonBuilder<MongoDbConsumerBuilder>
@@ -395,6 +401,9 @@ public interface MongoDbEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the MongoDB component.
+     */
     public static class MongoDbProducerBuilder
             extends
                 MongoDbCommonBuilder<MongoDbProducerBuilder>
@@ -405,16 +414,32 @@ public interface MongoDbEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.mongodb3.MongoDbOperation</code> enum.
+     */
     public static enum MongoDbOperation {
         findById, findOneByQuery, findAll, findDistinct, insert, save, update, remove, bulkWrite, aggregate, getDbStats, getColStats, count, command;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.mongodb3.MongoDbOutputType</code> enum.
+     */
     public static enum MongoDbOutputType {
         DocumentList, Document, MongoIterable;
     }
+    /**
+     * Component for working with documents stored in MongoDB database. Creates
+     * a builder to build a consumer endpoint for the MongoDB component.
+     */
     public default MongoDbConsumerBuilder fromMongoDb(String path) {
         return new MongoDbConsumerBuilder(path);
     }
+    /**
+     * Component for working with documents stored in MongoDB database. Creates
+     * a builder to build a producer endpoint for the MongoDB component.
+     */
     public default MongoDbProducerBuilder toMongoDb(String path) {
         return new MongoDbProducerBuilder(path);
     }

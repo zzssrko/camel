@@ -35,6 +35,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface SjmsEndpointBuilder {
 
 
+    /**
+     * Base class for the Simple JMS component builders.
+     */
     public static class SjmsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -393,6 +396,9 @@ public interface SjmsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Simple JMS component.
+     */
     public static class SjmsConsumerBuilder
             extends
                 SjmsCommonBuilder<SjmsConsumerBuilder>
@@ -615,6 +621,9 @@ public interface SjmsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Simple JMS component.
+     */
     public static class SjmsProducerBuilder
             extends
                 SjmsCommonBuilder<SjmsProducerBuilder>
@@ -735,12 +744,26 @@ public interface SjmsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.sjms.jms.SessionAcknowledgementType</code> enum.
+     */
     public static enum SessionAcknowledgementType {
         AUTO_ACKNOWLEDGE, CLIENT_ACKNOWLEDGE, DUPS_OK_ACKNOWLEDGE, SESSION_TRANSACTED;
     }
+    /**
+     * The sjms component (simple jms) allows messages to be sent to (or
+     * consumed from) a JMS Queue or Topic (uses JMS 1.x API). Creates a builder
+     * to build a consumer endpoint for the Simple JMS component.
+     */
     public default SjmsConsumerBuilder fromSjms(String path) {
         return new SjmsConsumerBuilder(path);
     }
+    /**
+     * The sjms component (simple jms) allows messages to be sent to (or
+     * consumed from) a JMS Queue or Topic (uses JMS 1.x API). Creates a builder
+     * to build a producer endpoint for the Simple JMS component.
+     */
     public default SjmsProducerBuilder toSjms(String path) {
         return new SjmsProducerBuilder(path);
     }

@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface DataSetTestEndpointBuilder {
 
 
+    /**
+     * Base class for the DataSet Test component builders.
+     */
     public static class DataSetTestCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -147,6 +150,9 @@ public interface DataSetTestEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the DataSet Test component.
+     */
     public static class DataSetTestProducerBuilder
             extends
                 DataSetTestCommonBuilder<DataSetTestProducerBuilder>
@@ -398,6 +404,12 @@ public interface DataSetTestEndpointBuilder {
             return (DataSetTestProducerBuilder) this;
         }
     }
+    /**
+     * The dataset-test component extends the mock component by on startup to
+     * pull messages from another endpoint to set the expected message bodies.
+     * Creates a builder to build a producer endpoint for the DataSet Test
+     * component.
+     */
     public default DataSetTestProducerBuilder toDataSetTest(String path) {
         return new DataSetTestProducerBuilder(path);
     }

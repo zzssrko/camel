@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface GooglePubsubEndpointBuilder {
 
 
+    /**
+     * Base class for the Google Pubsub component builders.
+     */
     public static class GooglePubsubCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -167,6 +170,9 @@ public interface GooglePubsubEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Google Pubsub component.
+     */
     public static class GooglePubsubConsumerBuilder
             extends
                 GooglePubsubCommonBuilder<GooglePubsubConsumerBuilder>
@@ -249,6 +255,9 @@ public interface GooglePubsubEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Google Pubsub component.
+     */
     public static class GooglePubsubProducerBuilder
             extends
                 GooglePubsubCommonBuilder<GooglePubsubProducerBuilder>
@@ -259,12 +268,24 @@ public interface GooglePubsubEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.google.pubsub.GooglePubsubConstants$AckMode</code> enum.
+     */
     public static enum AckMode {
         AUTO, NONE;
     }
+    /**
+     * Messaging client for Google Cloud Platform PubSub Service Creates a
+     * builder to build a consumer endpoint for the Google Pubsub component.
+     */
     public default GooglePubsubConsumerBuilder fromGooglePubsub(String path) {
         return new GooglePubsubConsumerBuilder(path);
     }
+    /**
+     * Messaging client for Google Cloud Platform PubSub Service Creates a
+     * builder to build a producer endpoint for the Google Pubsub component.
+     */
     public default GooglePubsubProducerBuilder toGooglePubsub(String path) {
         return new GooglePubsubProducerBuilder(path);
     }

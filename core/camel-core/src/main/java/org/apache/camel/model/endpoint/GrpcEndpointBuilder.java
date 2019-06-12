@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface GrpcEndpointBuilder {
 
 
+    /**
+     * Base class for the gRPC component builders.
+     */
     public static class GrpcCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -263,6 +266,9 @@ public interface GrpcEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the gRPC component.
+     */
     public static class GrpcConsumerBuilder
             extends
                 GrpcCommonBuilder<GrpcConsumerBuilder>
@@ -425,6 +431,9 @@ public interface GrpcEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the gRPC component.
+     */
     public static class GrpcProducerBuilder
             extends
                 GrpcCommonBuilder<GrpcProducerBuilder>
@@ -486,28 +495,57 @@ public interface GrpcEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.grpc.GrpcConsumerStrategy</code> enum.
+     */
     public static enum GrpcConsumerStrategy {
         AGGREGATION, PROPAGATION;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.grpc.GrpcProducerStrategy</code> enum.
+     */
     public static enum GrpcProducerStrategy {
         SIMPLE, STREAMING;
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.grpc.GrpcAuthType</code>
+     * enum.
+     */
     public static enum GrpcAuthType {
         NONE, GOOGLE, JWT;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.grpc.auth.jwt.JwtAlgorithm</code> enum.
+     */
     public static enum JwtAlgorithm {
         HMAC256, HMAC384, HMAC512;
     }
 
+    /**
+     * Proxy enum for <code>io.grpc.netty.NegotiationType</code> enum.
+     */
     public static enum NegotiationType {
         TLS, PLAINTEXT_UPGRADE, PLAINTEXT;
     }
+    /**
+     * The gRPC component allows to call and expose remote procedures via HTTP/2
+     * with protobuf dataformat Creates a builder to build a consumer endpoint
+     * for the gRPC component.
+     */
     public default GrpcConsumerBuilder fromGrpc(String path) {
         return new GrpcConsumerBuilder(path);
     }
+    /**
+     * The gRPC component allows to call and expose remote procedures via HTTP/2
+     * with protobuf dataformat Creates a builder to build a producer endpoint
+     * for the gRPC component.
+     */
     public default GrpcProducerBuilder toGrpc(String path) {
         return new GrpcProducerBuilder(path);
     }

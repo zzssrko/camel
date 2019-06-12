@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface PubNubEndpointBuilder {
 
 
+    /**
+     * Base class for the PubNub component builders.
+     */
     public static class PubNubCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -168,6 +171,9 @@ public interface PubNubEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the PubNub component.
+     */
     public static class PubNubConsumerBuilder
             extends
                 PubNubCommonBuilder<PubNubConsumerBuilder>
@@ -264,6 +270,9 @@ public interface PubNubEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the PubNub component.
+     */
     public static class PubNubProducerBuilder
             extends
                 PubNubCommonBuilder<PubNubProducerBuilder>
@@ -292,9 +301,19 @@ public interface PubNubEndpointBuilder {
             return (PubNubProducerBuilder) this;
         }
     }
+    /**
+     * To send and receive messages to PubNub data stream network for connected
+     * devices. Creates a builder to build a consumer endpoint for the PubNub
+     * component.
+     */
     public default PubNubConsumerBuilder fromPubNub(String path) {
         return new PubNubConsumerBuilder(path);
     }
+    /**
+     * To send and receive messages to PubNub data stream network for connected
+     * devices. Creates a builder to build a producer endpoint for the PubNub
+     * component.
+     */
     public default PubNubProducerBuilder toPubNub(String path) {
         return new PubNubProducerBuilder(path);
     }

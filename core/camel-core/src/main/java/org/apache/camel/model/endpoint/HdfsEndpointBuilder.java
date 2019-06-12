@@ -38,6 +38,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface HdfsEndpointBuilder {
 
 
+    /**
+     * Base class for the HDFS2 component builders.
+     */
     public static class HdfsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -372,6 +375,9 @@ public interface HdfsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the HDFS2 component.
+     */
     public static class HdfsConsumerBuilder
             extends
                 HdfsCommonBuilder<HdfsConsumerBuilder>
@@ -755,6 +761,9 @@ public interface HdfsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the HDFS2 component.
+     */
     public static class HdfsProducerBuilder
             extends
                 HdfsCommonBuilder<HdfsProducerBuilder>
@@ -798,28 +807,56 @@ public interface HdfsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hdfs2.HdfsFileSystemType</code> enum.
+     */
     public static enum HdfsFileSystemType {
         LOCAL, HDFS;
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.hdfs2.HdfsFileType</code>
+     * enum.
+     */
     public static enum HdfsFileType {
         NORMAL_FILE, SEQUENCE_FILE, MAP_FILE, BLOOMMAP_FILE, ARRAY_FILE;
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.hdfs2.WritableType</code>
+     * enum.
+     */
     public static enum WritableType {
         NULL, BOOLEAN, BYTE, INT, FLOAT, LONG, DOUBLE, TEXT, BYTES;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hdfs2.HdfsCompressionCodec</code> enum.
+     */
     public static enum HdfsCompressionCodec {
         DEFAULT, GZIP, BZIP2;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.hadoop.io.SequenceFile$CompressionType</code> enum.
+     */
     public static enum CompressionType {
         NONE, RECORD, BLOCK;
     }
+    /**
+     * For reading/writing from/to an HDFS filesystem using Hadoop 2.x. Creates
+     * a builder to build a consumer endpoint for the HDFS2 component.
+     */
     public default HdfsConsumerBuilder fromHdfs(String path) {
         return new HdfsConsumerBuilder(path);
     }
+    /**
+     * For reading/writing from/to an HDFS filesystem using Hadoop 2.x. Creates
+     * a builder to build a producer endpoint for the HDFS2 component.
+     */
     public default HdfsProducerBuilder toHdfs(String path) {
         return new HdfsProducerBuilder(path);
     }

@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface RestSwaggerEndpointBuilder {
 
 
+    /**
+     * Base class for the REST Swagger component builders.
+     */
     public static class RestSwaggerCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -75,6 +78,9 @@ public interface RestSwaggerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the REST Swagger component.
+     */
     public static class RestSwaggerProducerBuilder
             extends
                 RestSwaggerCommonBuilder<RestSwaggerProducerBuilder>
@@ -192,6 +198,10 @@ public interface RestSwaggerEndpointBuilder {
             return (RestSwaggerProducerBuilder) this;
         }
     }
+    /**
+     * An awesome REST endpoint backed by Swagger specifications. Creates a
+     * builder to build a producer endpoint for the REST Swagger component.
+     */
     public default RestSwaggerProducerBuilder toRestSwagger(String path) {
         return new RestSwaggerProducerBuilder(path);
     }

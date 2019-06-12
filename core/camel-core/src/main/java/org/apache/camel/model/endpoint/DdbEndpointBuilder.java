@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface DdbEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS DynamoDB component builders.
+     */
     public static class DdbCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -231,6 +234,9 @@ public interface DdbEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS DynamoDB component.
+     */
     public static class DdbProducerBuilder
             extends
                 DdbCommonBuilder<DdbProducerBuilder>
@@ -241,9 +247,18 @@ public interface DdbEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.ddb.DdbOperations</code> enum.
+     */
     public static enum DdbOperations {
         BatchGetItems, DeleteItem, DeleteTable, DescribeTable, GetItem, PutItem, Query, Scan, UpdateItem, UpdateTable;
     }
+    /**
+     * The aws-ddb component is used for storing and retrieving data from
+     * Amazon's DynamoDB service. Creates a builder to build a producer endpoint
+     * for the AWS DynamoDB component.
+     */
     public default DdbProducerBuilder toDdb(String path) {
         return new DdbProducerBuilder(path);
     }

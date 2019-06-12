@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface EhcacheEndpointBuilder {
 
 
+    /**
+     * Base class for the Ehcache component builders.
+     */
     public static class EhcacheCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -217,6 +220,9 @@ public interface EhcacheEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Ehcache component.
+     */
     public static class EhcacheConsumerBuilder
             extends
                 EhcacheCommonBuilder<EhcacheConsumerBuilder>
@@ -345,6 +351,9 @@ public interface EhcacheEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Ehcache component.
+     */
     public static class EhcacheProducerBuilder
             extends
                 EhcacheCommonBuilder<EhcacheProducerBuilder>
@@ -382,20 +391,39 @@ public interface EhcacheEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.ehcache.event.EventFiring</code> enum.
+     */
     public static enum EventFiring {
         ASYNCHRONOUS, SYNCHRONOUS;
     }
 
+    /**
+     * Proxy enum for <code>org.ehcache.event.EventOrdering</code> enum.
+     */
     public static enum EventOrdering {
         UNORDERED, ORDERED;
     }
 
+    /**
+     * Proxy enum for <code>org.ehcache.event.EventType</code> enum.
+     */
     public static enum EventType {
         EVICTED, EXPIRED, REMOVED, CREATED, UPDATED;
     }
+    /**
+     * The ehcache component enables you to perform caching operations using
+     * Ehcache as cache implementation. Creates a builder to build a consumer
+     * endpoint for the Ehcache component.
+     */
     public default EhcacheConsumerBuilder fromEhcache(String path) {
         return new EhcacheConsumerBuilder(path);
     }
+    /**
+     * The ehcache component enables you to perform caching operations using
+     * Ehcache as cache implementation. Creates a builder to build a producer
+     * endpoint for the Ehcache component.
+     */
     public default EhcacheProducerBuilder toEhcache(String path) {
         return new EhcacheProducerBuilder(path);
     }

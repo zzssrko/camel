@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface SwiftEndpointBuilder {
 
 
+    /**
+     * Base class for the OpenStack Swift component builders.
+     */
     public static class SwiftCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -154,6 +157,9 @@ public interface SwiftEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the OpenStack Swift component.
+     */
     public static class SwiftProducerBuilder
             extends
                 SwiftCommonBuilder<SwiftProducerBuilder>
@@ -163,6 +169,11 @@ public interface SwiftEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The openstack-swift component allows messages to be sent to an OpenStack
+     * object storage services. Creates a builder to build a producer endpoint
+     * for the OpenStack Swift component.
+     */
     public default SwiftProducerBuilder toSwift(String path) {
         return new SwiftProducerBuilder(path);
     }

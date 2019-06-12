@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface JcloudsEndpointBuilder {
 
 
+    /**
+     * Base class for the JClouds component builders.
+     */
     public static class JcloudsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -110,6 +113,9 @@ public interface JcloudsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the JClouds component.
+     */
     public static class JcloudsConsumerBuilder
             extends
                 JcloudsCommonBuilder<JcloudsConsumerBuilder>
@@ -198,6 +204,9 @@ public interface JcloudsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JClouds component.
+     */
     public static class JcloudsProducerBuilder
             extends
                 JcloudsCommonBuilder<JcloudsProducerBuilder>
@@ -284,12 +293,24 @@ public interface JcloudsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.jclouds.JcloudsCommand</code> enum.
+     */
     public static enum JcloudsCommand {
         blobstore, compute;
     }
+    /**
+     * For interacting with cloud compute & blobstore service via jclouds.
+     * Creates a builder to build a consumer endpoint for the JClouds component.
+     */
     public default JcloudsConsumerBuilder fromJclouds(String path) {
         return new JcloudsConsumerBuilder(path);
     }
+    /**
+     * For interacting with cloud compute & blobstore service via jclouds.
+     * Creates a builder to build a producer endpoint for the JClouds component.
+     */
     public default JcloudsProducerBuilder toJclouds(String path) {
         return new JcloudsProducerBuilder(path);
     }

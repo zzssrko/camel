@@ -33,6 +33,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface WsEndpointBuilder {
 
 
+    /**
+     * Base class for the AHC Websocket component builders.
+     */
     public static class WsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -306,6 +309,9 @@ public interface WsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the AHC Websocket component.
+     */
     public static class WsConsumerBuilder
             extends
                 WsCommonBuilder<WsConsumerBuilder>
@@ -332,6 +338,9 @@ public interface WsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AHC Websocket component.
+     */
     public static class WsProducerBuilder
             extends
                 WsCommonBuilder<WsProducerBuilder>
@@ -393,9 +402,19 @@ public interface WsEndpointBuilder {
             return (WsProducerBuilder) this;
         }
     }
+    /**
+     * To exchange data with external Websocket servers using Async Http Client.
+     * Creates a builder to build a consumer endpoint for the AHC Websocket
+     * component.
+     */
     public default WsConsumerBuilder fromWs(String path) {
         return new WsConsumerBuilder(path);
     }
+    /**
+     * To exchange data with external Websocket servers using Async Http Client.
+     * Creates a builder to build a producer endpoint for the AHC Websocket
+     * component.
+     */
     public default WsProducerBuilder toWs(String path) {
         return new WsProducerBuilder(path);
     }

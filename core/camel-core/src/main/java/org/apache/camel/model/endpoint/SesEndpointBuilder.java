@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface SesEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS Simple Email Service component builders.
+     */
     public static class SesCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -201,6 +204,10 @@ public interface SesEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS Simple Email Service
+     * component.
+     */
     public static class SesProducerBuilder
             extends
                 SesCommonBuilder<SesProducerBuilder>
@@ -210,6 +217,11 @@ public interface SesEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The aws-ses component is used for sending emails with Amazon's SES
+     * service. Creates a builder to build a producer endpoint for the AWS
+     * Simple Email Service component.
+     */
     public default SesProducerBuilder toSes(String path) {
         return new SesProducerBuilder(path);
     }

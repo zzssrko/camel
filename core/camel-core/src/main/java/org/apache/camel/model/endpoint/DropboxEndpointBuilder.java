@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface DropboxEndpointBuilder {
 
 
+    /**
+     * Base class for the Dropbox component builders.
+     */
     public static class DropboxCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -188,6 +191,9 @@ public interface DropboxEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Dropbox component.
+     */
     public static class DropboxConsumerBuilder
             extends
                 DropboxCommonBuilder<DropboxConsumerBuilder>
@@ -268,6 +274,9 @@ public interface DropboxEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Dropbox component.
+     */
     public static class DropboxProducerBuilder
             extends
                 DropboxCommonBuilder<DropboxProducerBuilder>
@@ -278,16 +287,36 @@ public interface DropboxEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.dropbox.util.DropboxOperation</code>
+     * enum.
+     */
     public static enum DropboxOperation {
         put, del, search, get, move;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.dropbox.util.DropboxUploadMode</code>
+     * enum.
+     */
     public static enum DropboxUploadMode {
         add, force;
     }
+    /**
+     * For uploading, downloading and managing files, folders, groups,
+     * collaborations, etc on dropbox DOT com. Creates a builder to build a
+     * consumer endpoint for the Dropbox component.
+     */
     public default DropboxConsumerBuilder fromDropbox(String path) {
         return new DropboxConsumerBuilder(path);
     }
+    /**
+     * For uploading, downloading and managing files, folders, groups,
+     * collaborations, etc on dropbox DOT com. Creates a builder to build a
+     * producer endpoint for the Dropbox component.
+     */
     public default DropboxProducerBuilder toDropbox(String path) {
         return new DropboxProducerBuilder(path);
     }

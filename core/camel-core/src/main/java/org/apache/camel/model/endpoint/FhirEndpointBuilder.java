@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface FhirEndpointBuilder {
 
 
+    /**
+     * Base class for the FHIR component builders.
+     */
     public static class FhirCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -388,6 +391,9 @@ public interface FhirEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the FHIR component.
+     */
     public static class FhirConsumerBuilder
             extends
                 FhirCommonBuilder<FhirConsumerBuilder>
@@ -466,6 +472,9 @@ public interface FhirEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the FHIR component.
+     */
     public static class FhirProducerBuilder
             extends
                 FhirCommonBuilder<FhirProducerBuilder>
@@ -476,28 +485,55 @@ public interface FhirEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.fhir.internal.FhirApiName</code> enum.
+     */
     public static enum FhirApiName {
         CAPABILITIES, CREATE, DELETE, HISTORY, LOAD_PAGE, META, OPERATION, PATCH, READ, SEARCH, TRANSACTION, UPDATE, VALIDATE;
     }
 
+    /**
+     * Proxy enum for <code>ca.uhn.fhir.rest.api.EncodingEnum</code> enum.
+     */
     public static enum EncodingEnum {
         JSON, XML;
     }
 
+    /**
+     * Proxy enum for <code>ca.uhn.fhir.context.FhirVersionEnum</code> enum.
+     */
     public static enum FhirVersionEnum {
         DSTU2, DSTU2_HL7ORG, DSTU2_1, DSTU3, R4;
     }
 
+    /**
+     * Proxy enum for <code>ca.uhn.fhir.rest.api.SummaryEnum</code> enum.
+     */
     public static enum SummaryEnum {
         COUNT, TEXT, DATA, TRUE, FALSE;
     }
 
+    /**
+     * Proxy enum for
+     * <code>ca.uhn.fhir.rest.client.api.ServerValidationModeEnum</code> enum.
+     */
     public static enum ServerValidationModeEnum {
         NEVER, ONCE;
     }
+    /**
+     * The fhir component is used for working with the FHIR protocol (health
+     * care). Creates a builder to build a consumer endpoint for the FHIR
+     * component.
+     */
     public default FhirConsumerBuilder fromFhir(String path) {
         return new FhirConsumerBuilder(path);
     }
+    /**
+     * The fhir component is used for working with the FHIR protocol (health
+     * care). Creates a builder to build a producer endpoint for the FHIR
+     * component.
+     */
     public default FhirProducerBuilder toFhir(String path) {
         return new FhirProducerBuilder(path);
     }

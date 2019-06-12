@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface KubernetesJobEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes Job component builders.
+     */
     public static class KubernetesJobCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -253,6 +256,9 @@ public interface KubernetesJobEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Kubernetes Job component.
+     */
     public static class KubernetesJobConsumerBuilder
             extends
                 KubernetesJobCommonBuilder<KubernetesJobConsumerBuilder>
@@ -381,6 +387,9 @@ public interface KubernetesJobEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes Job component.
+     */
     public static class KubernetesJobProducerBuilder
             extends
                 KubernetesJobCommonBuilder<KubernetesJobProducerBuilder>
@@ -398,9 +407,19 @@ public interface KubernetesJobEndpointBuilder {
             return (KubernetesJobProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Jobs component provides a producer to execute kubernetes
+     * job operations Creates a builder to build a consumer endpoint for the
+     * Kubernetes Job component.
+     */
     public default KubernetesJobConsumerBuilder fromKubernetesJob(String path) {
         return new KubernetesJobConsumerBuilder(path);
     }
+    /**
+     * The Kubernetes Jobs component provides a producer to execute kubernetes
+     * job operations Creates a builder to build a producer endpoint for the
+     * Kubernetes Job component.
+     */
     public default KubernetesJobProducerBuilder toKubernetesJob(String path) {
         return new KubernetesJobProducerBuilder(path);
     }

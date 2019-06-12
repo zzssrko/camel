@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface AsteriskEndpointBuilder {
 
 
+    /**
+     * Base class for the Asterisk component builders.
+     */
     public static class AsteriskCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -105,6 +108,9 @@ public interface AsteriskEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Asterisk component.
+     */
     public static class AsteriskConsumerBuilder
             extends
                 AsteriskCommonBuilder<AsteriskConsumerBuilder>
@@ -185,6 +191,9 @@ public interface AsteriskEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Asterisk component.
+     */
     public static class AsteriskProducerBuilder
             extends
                 AsteriskCommonBuilder<AsteriskProducerBuilder>
@@ -213,12 +222,26 @@ public interface AsteriskEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.asterisk.AsteriskAction</code> enum.
+     */
     public static enum AsteriskAction {
         QUEUE_STATUS, SIP_PEERS, EXTENSION_STATE;
     }
+    /**
+     * The asterisk component is used to interact with Asterisk PBX Server.
+     * Creates a builder to build a consumer endpoint for the Asterisk
+     * component.
+     */
     public default AsteriskConsumerBuilder fromAsterisk(String path) {
         return new AsteriskConsumerBuilder(path);
     }
+    /**
+     * The asterisk component is used to interact with Asterisk PBX Server.
+     * Creates a builder to build a producer endpoint for the Asterisk
+     * component.
+     */
     public default AsteriskProducerBuilder toAsterisk(String path) {
         return new AsteriskProducerBuilder(path);
     }

@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface NeutronEndpointBuilder {
 
 
+    /**
+     * Base class for the OpenStack Neutron component builders.
+     */
     public static class NeutronCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -154,6 +157,9 @@ public interface NeutronEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the OpenStack Neutron component.
+     */
     public static class NeutronProducerBuilder
             extends
                 NeutronCommonBuilder<NeutronProducerBuilder>
@@ -163,6 +169,11 @@ public interface NeutronEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The openstack-neutron component allows messages to be sent to an
+     * OpenStack network services. Creates a builder to build a producer
+     * endpoint for the OpenStack Neutron component.
+     */
     public default NeutronProducerBuilder toNeutron(String path) {
         return new NeutronProducerBuilder(path);
     }

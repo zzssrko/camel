@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface Olingo2EndpointBuilder {
 
 
+    /**
+     * Base class for the Olingo2 component builders.
+     */
     public static class Olingo2CommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -281,6 +284,9 @@ public interface Olingo2EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Olingo2 component.
+     */
     public static class Olingo2ConsumerBuilder
             extends
                 Olingo2CommonBuilder<Olingo2ConsumerBuilder>
@@ -361,6 +367,9 @@ public interface Olingo2EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Olingo2 component.
+     */
     public static class Olingo2ProducerBuilder
             extends
                 Olingo2CommonBuilder<Olingo2ProducerBuilder>
@@ -371,12 +380,25 @@ public interface Olingo2EndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.olingo2.internal.Olingo2ApiName</code>
+     * enum.
+     */
     public static enum Olingo2ApiName {
         DEFAULT;
     }
+    /**
+     * Communicates with OData 2.0 services using Apache Olingo. Creates a
+     * builder to build a consumer endpoint for the Olingo2 component.
+     */
     public default Olingo2ConsumerBuilder fromOlingo2(String path) {
         return new Olingo2ConsumerBuilder(path);
     }
+    /**
+     * Communicates with OData 2.0 services using Apache Olingo. Creates a
+     * builder to build a producer endpoint for the Olingo2 component.
+     */
     public default Olingo2ProducerBuilder toOlingo2(String path) {
         return new Olingo2ProducerBuilder(path);
     }

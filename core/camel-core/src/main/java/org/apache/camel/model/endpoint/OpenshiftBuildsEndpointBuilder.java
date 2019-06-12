@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface OpenshiftBuildsEndpointBuilder {
 
 
+    /**
+     * Base class for the Openshift Builds component builders.
+     */
     public static class OpenshiftBuildsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -251,6 +254,9 @@ public interface OpenshiftBuildsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Openshift Builds component.
+     */
     public static class OpenshiftBuildsProducerBuilder
             extends
                 OpenshiftBuildsCommonBuilder<OpenshiftBuildsProducerBuilder>
@@ -268,6 +274,11 @@ public interface OpenshiftBuildsEndpointBuilder {
             return (OpenshiftBuildsProducerBuilder) this;
         }
     }
+    /**
+     * The Openshift Builds component provides a producer to execute openshift
+     * build operations. Creates a builder to build a producer endpoint for the
+     * Openshift Builds component.
+     */
     public default OpenshiftBuildsProducerBuilder toOpenshiftBuilds(String path) {
         return new OpenshiftBuildsProducerBuilder(path);
     }

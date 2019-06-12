@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface BraintreeEndpointBuilder {
 
 
+    /**
+     * Base class for the Braintree component builders.
+     */
     public static class BraintreeCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -207,6 +210,9 @@ public interface BraintreeEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Braintree component.
+     */
     public static class BraintreeConsumerBuilder
             extends
                 BraintreeCommonBuilder<BraintreeConsumerBuilder>
@@ -287,6 +293,9 @@ public interface BraintreeEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Braintree component.
+     */
     public static class BraintreeProducerBuilder
             extends
                 BraintreeCommonBuilder<BraintreeProducerBuilder>
@@ -297,12 +306,26 @@ public interface BraintreeEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.braintree.internal.BraintreeApiName</code> enum.
+     */
     public static enum BraintreeApiName {
         ADDON, ADDRESS, CLIENTTOKEN, CREDITCARDVERIFICATION, CUSTOMER, DISCOUNT, DISPUTE, DOCUMENTUPLOAD, MERCHANTACCOUNT, PAYMENTMETHOD, PAYMENTMETHODNONCE, PLAN, REPORT, SETTLEMENTBATCHSUMMARY, SUBSCRIPTION, TRANSACTION, WEBHOOKNOTIFICATION;
     }
+    /**
+     * The braintree component is used for integrating with the Braintree
+     * Payment System. Creates a builder to build a consumer endpoint for the
+     * Braintree component.
+     */
     public default BraintreeConsumerBuilder fromBraintree(String path) {
         return new BraintreeConsumerBuilder(path);
     }
+    /**
+     * The braintree component is used for integrating with the Braintree
+     * Payment System. Creates a builder to build a producer endpoint for the
+     * Braintree component.
+     */
     public default BraintreeProducerBuilder toBraintree(String path) {
         return new BraintreeProducerBuilder(path);
     }

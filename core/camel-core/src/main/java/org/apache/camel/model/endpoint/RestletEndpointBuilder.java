@@ -34,6 +34,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface RestletEndpointBuilder {
 
 
+    /**
+     * Base class for the Restlet component builders.
+     */
     public static class RestletCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -209,6 +212,9 @@ public interface RestletEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Restlet component.
+     */
     public static class RestletConsumerBuilder
             extends
                 RestletCommonBuilder<RestletConsumerBuilder>
@@ -350,6 +356,9 @@ public interface RestletEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Restlet component.
+     */
     public static class RestletProducerBuilder
             extends
                 RestletCommonBuilder<RestletProducerBuilder>
@@ -492,9 +501,17 @@ public interface RestletEndpointBuilder {
             return (RestletProducerBuilder) this;
         }
     }
+    /**
+     * Component for consuming and producing Restful resources using Restlet.
+     * Creates a builder to build a consumer endpoint for the Restlet component.
+     */
     public default RestletConsumerBuilder fromRestlet(String path) {
         return new RestletConsumerBuilder(path);
     }
+    /**
+     * Component for consuming and producing Restful resources using Restlet.
+     * Creates a builder to build a producer endpoint for the Restlet component.
+     */
     public default RestletProducerBuilder toRestlet(String path) {
         return new RestletProducerBuilder(path);
     }

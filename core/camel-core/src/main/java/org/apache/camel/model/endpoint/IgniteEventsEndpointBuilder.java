@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface IgniteEventsEndpointBuilder {
 
 
+    /**
+     * Base class for the Ignite Events component builders.
+     */
     public static class IgniteEventsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -126,6 +129,9 @@ public interface IgniteEventsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Ignite Events component.
+     */
     public static class IgniteEventsConsumerBuilder
             extends
                 IgniteEventsCommonBuilder<IgniteEventsConsumerBuilder>
@@ -246,6 +252,12 @@ public interface IgniteEventsEndpointBuilder {
             return (IgniteEventsConsumerBuilder) this;
         }
     }
+    /**
+     * The Ignite Events endpoint is one of camel-ignite endpoints which allows
+     * you to receive events from the Ignite cluster by creating a local event
+     * listener. Creates a builder to build a consumer endpoint for the Ignite
+     * Events component.
+     */
     public default IgniteEventsConsumerBuilder fromIgniteEvents(String path) {
         return new IgniteEventsConsumerBuilder(path);
     }

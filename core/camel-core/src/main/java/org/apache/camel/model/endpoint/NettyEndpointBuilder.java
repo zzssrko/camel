@@ -36,6 +36,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface NettyEndpointBuilder {
 
 
+    /**
+     * Base class for the Netty4 component builders.
+     */
     public static class NettyCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -815,6 +818,9 @@ public interface NettyEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Netty4 component.
+     */
     public static class NettyConsumerBuilder
             extends
                 NettyCommonBuilder<NettyConsumerBuilder>
@@ -1192,6 +1198,9 @@ public interface NettyEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Netty4 component.
+     */
     public static class NettyProducerBuilder
             extends
                 NettyCommonBuilder<NettyProducerBuilder>
@@ -1478,12 +1487,24 @@ public interface NettyEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.netty4.TextLineDelimiter</code> enum.
+     */
     public static enum TextLineDelimiter {
         LINE, NULL;
     }
+    /**
+     * Socket level networking using TCP or UDP with the Netty 4.x library.
+     * Creates a builder to build a consumer endpoint for the Netty4 component.
+     */
     public default NettyConsumerBuilder fromNetty(String path) {
         return new NettyConsumerBuilder(path);
     }
+    /**
+     * Socket level networking using TCP or UDP with the Netty 4.x library.
+     * Creates a builder to build a producer endpoint for the Netty4 component.
+     */
     public default NettyProducerBuilder toNetty(String path) {
         return new NettyProducerBuilder(path);
     }

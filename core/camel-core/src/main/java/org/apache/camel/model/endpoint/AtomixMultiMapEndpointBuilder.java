@@ -36,6 +36,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface AtomixMultiMapEndpointBuilder {
 
 
+    /**
+     * Base class for the Atomix MultiMap component builders.
+     */
     public static class AtomixMultiMapCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -306,6 +309,9 @@ public interface AtomixMultiMapEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Atomix MultiMap component.
+     */
     public static class AtomixMultiMapConsumerBuilder
             extends
                 AtomixMultiMapCommonBuilder<AtomixMultiMapConsumerBuilder>
@@ -388,13 +394,25 @@ public interface AtomixMultiMapEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.atomix.client.multimap.AtomixMultiMap$Action</code> enum.
+     */
     public static enum Action {
         PUT, GET, CLEAR, SIZE, CONTAINS_KEY, IS_EMPTY, REMOVE, REMOVE_VALUE;
     }
 
+    /**
+     * Proxy enum for <code>io.atomix.resource.ReadConsistency</code> enum.
+     */
     public static enum ReadConsistency {
         ATOMIC, ATOMIC_LEASE, SEQUENTIAL, LOCAL;
     }
+    /**
+     * The atomix-multimap component is used to access Atomix's distributed
+     * multi map. Creates a builder to build a consumer endpoint for the Atomix
+     * MultiMap component.
+     */
     public default AtomixMultiMapConsumerBuilder fromAtomixMultiMap(String path) {
         return new AtomixMultiMapConsumerBuilder(path);
     }

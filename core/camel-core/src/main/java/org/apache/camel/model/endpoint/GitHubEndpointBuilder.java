@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface GitHubEndpointBuilder {
 
 
+    /**
+     * Base class for the GitHub component builders.
+     */
     public static class GitHubCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -132,6 +135,9 @@ public interface GitHubEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the GitHub component.
+     */
     public static class GitHubConsumerBuilder
             extends
                 GitHubCommonBuilder<GitHubConsumerBuilder>
@@ -219,6 +225,9 @@ public interface GitHubEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the GitHub component.
+     */
     public static class GitHubProducerBuilder
             extends
                 GitHubCommonBuilder<GitHubProducerBuilder>
@@ -253,12 +262,24 @@ public interface GitHubEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.github.GitHubType</code>
+     * enum.
+     */
     public static enum GitHubType {
         CLOSEPULLREQUEST, PULLREQUESTCOMMENT, COMMIT, PULLREQUEST, TAG, PULLREQUESTSTATE, PULLREQUESTFILES, GETCOMMITFILE, CREATEISSUE;
     }
+    /**
+     * The github component is used for integrating Camel with github. Creates a
+     * builder to build a consumer endpoint for the GitHub component.
+     */
     public default GitHubConsumerBuilder fromGitHub(String path) {
         return new GitHubConsumerBuilder(path);
     }
+    /**
+     * The github component is used for integrating Camel with github. Creates a
+     * builder to build a producer endpoint for the GitHub component.
+     */
     public default GitHubProducerBuilder toGitHub(String path) {
         return new GitHubProducerBuilder(path);
     }

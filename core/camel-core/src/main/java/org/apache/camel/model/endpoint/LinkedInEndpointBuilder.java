@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface LinkedInEndpointBuilder {
 
 
+    /**
+     * Base class for the Linkedin component builders.
+     */
     public static class LinkedInCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -281,6 +284,9 @@ public interface LinkedInEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Linkedin component.
+     */
     public static class LinkedInConsumerBuilder
             extends
                 LinkedInCommonBuilder<LinkedInConsumerBuilder>
@@ -361,6 +367,9 @@ public interface LinkedInEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Linkedin component.
+     */
     public static class LinkedInProducerBuilder
             extends
                 LinkedInCommonBuilder<LinkedInProducerBuilder>
@@ -371,16 +380,35 @@ public interface LinkedInEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.linkedin.internal.LinkedInApiName</code>
+     * enum.
+     */
     public static enum LinkedInApiName {
         COMMENTS, COMPANIES, GROUPS, JOBS, PEOPLE, POSTS, SEARCH;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.linkedin.api.OAuthScope</code> enum.
+     */
     public static enum OAuthScope {
         R_BASICPROFILE, R_FULLPROFILE, R_EMAILADDRESS, R_NETWORK, R_CONTACTINFO, RW_NUS, RW_COMPANY_ADMIN, RW_GROUPS, W_MESSAGES, W_SHARE;
     }
+    /**
+     * The linkedin component is used for retrieving LinkedIn user profiles,
+     * connections, companies, groups, posts, etc. Creates a builder to build a
+     * consumer endpoint for the Linkedin component.
+     */
     public default LinkedInConsumerBuilder fromLinkedIn(String path) {
         return new LinkedInConsumerBuilder(path);
     }
+    /**
+     * The linkedin component is used for retrieving LinkedIn user profiles,
+     * connections, companies, groups, posts, etc. Creates a builder to build a
+     * producer endpoint for the Linkedin component.
+     */
     public default LinkedInProducerBuilder toLinkedIn(String path) {
         return new LinkedInProducerBuilder(path);
     }

@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface HazelcastInstanceEndpointBuilder {
 
 
+    /**
+     * Base class for the Hazelcast Instance component builders.
+     */
     public static class HazelcastInstanceCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -240,6 +243,9 @@ public interface HazelcastInstanceEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Hazelcast Instance component.
+     */
     public static class HazelcastInstanceConsumerBuilder
             extends
                 HazelcastInstanceCommonBuilder<HazelcastInstanceConsumerBuilder>
@@ -375,13 +381,27 @@ public interface HazelcastInstanceEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+     * enum.
+     */
     public static enum HazelcastOperation {
         put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode</code> enum.
+     */
     public static enum HazelcastQueueConsumerMode {
         listen, poll;
     }
+    /**
+     * The hazelcast-instance component is used to consume join/leave events of
+     * the cache instance in the cluster. Creates a builder to build a consumer
+     * endpoint for the Hazelcast Instance component.
+     */
     public default HazelcastInstanceConsumerBuilder fromHazelcastInstance(
             String path) {
         return new HazelcastInstanceConsumerBuilder(path);

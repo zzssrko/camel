@@ -33,6 +33,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface AhcEndpointBuilder {
 
 
+    /**
+     * Base class for the AHC component builders.
+     */
     public static class AhcCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -306,6 +309,9 @@ public interface AhcEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AHC component.
+     */
     public static class AhcProducerBuilder
             extends
                 AhcCommonBuilder<AhcProducerBuilder>
@@ -351,6 +357,10 @@ public interface AhcEndpointBuilder {
             return (AhcProducerBuilder) this;
         }
     }
+    /**
+     * To call external HTTP services using Async Http Client. Creates a builder
+     * to build a producer endpoint for the AHC component.
+     */
     public default AhcProducerBuilder toAhc(String path) {
         return new AhcProducerBuilder(path);
     }

@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface XsltEndpointBuilder {
 
 
+    /**
+     * Base class for the XSLT component builders.
+     */
     public static class XsltCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -379,6 +382,9 @@ public interface XsltEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the XSLT component.
+     */
     public static class XsltProducerBuilder
             extends
                 XsltCommonBuilder<XsltProducerBuilder>
@@ -389,9 +395,17 @@ public interface XsltEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.xslt.XsltOutput</code>
+     * enum.
+     */
     public static enum XsltOutput {
         string, bytes, DOM, file;
     }
+    /**
+     * Transforms the message using a XSLT template. Creates a builder to build
+     * a producer endpoint for the XSLT component.
+     */
     public default XsltProducerBuilder toXslt(String path) {
         return new XsltProducerBuilder(path);
     }

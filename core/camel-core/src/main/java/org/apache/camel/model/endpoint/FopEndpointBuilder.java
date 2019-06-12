@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface FopEndpointBuilder {
 
 
+    /**
+     * Base class for the FOP component builders.
+     */
     public static class FopCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -120,6 +123,9 @@ public interface FopEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the FOP component.
+     */
     public static class FopProducerBuilder
             extends
                 FopCommonBuilder<FopProducerBuilder>
@@ -130,9 +136,18 @@ public interface FopEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.fop.FopOutputType</code>
+     * enum.
+     */
     public static enum FopOutputType {
         pdf, ps, pcl, png, jpeg, svg, xml, mif, rtf, txt;
     }
+    /**
+     * The fop component allows you to render a message into different output
+     * formats using Apache FOP. Creates a builder to build a producer endpoint
+     * for the FOP component.
+     */
     public default FopProducerBuilder toFop(String path) {
         return new FopProducerBuilder(path);
     }

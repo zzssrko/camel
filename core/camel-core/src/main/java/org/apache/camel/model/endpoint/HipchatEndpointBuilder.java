@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface HipchatEndpointBuilder {
 
 
+    /**
+     * Base class for the Hipchat component builders.
+     */
     public static class HipchatCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -150,6 +153,9 @@ public interface HipchatEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Hipchat component.
+     */
     public static class HipchatConsumerBuilder
             extends
                 HipchatCommonBuilder<HipchatConsumerBuilder>
@@ -529,6 +535,9 @@ public interface HipchatEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Hipchat component.
+     */
     public static class HipchatProducerBuilder
             extends
                 HipchatCommonBuilder<HipchatProducerBuilder>
@@ -538,9 +547,19 @@ public interface HipchatEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The hipchat component supports producing and consuming messages from/to
+     * Hipchat service. Creates a builder to build a consumer endpoint for the
+     * Hipchat component.
+     */
     public default HipchatConsumerBuilder fromHipchat(String path) {
         return new HipchatConsumerBuilder(path);
     }
+    /**
+     * The hipchat component supports producing and consuming messages from/to
+     * Hipchat service. Creates a builder to build a producer endpoint for the
+     * Hipchat component.
+     */
     public default HipchatProducerBuilder toHipchat(String path) {
         return new HipchatProducerBuilder(path);
     }

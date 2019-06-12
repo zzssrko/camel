@@ -45,6 +45,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface SftpEndpointBuilder {
 
 
+    /**
+     * Base class for the SFTP component builders.
+     */
     public static class SftpCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -718,6 +721,9 @@ public interface SftpEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the SFTP component.
+     */
     public static class SftpConsumerBuilder
             extends
                 SftpCommonBuilder<SftpConsumerBuilder>
@@ -2192,6 +2198,9 @@ public interface SftpEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the SFTP component.
+     */
     public static class SftpProducerBuilder
             extends
                 SftpCommonBuilder<SftpProducerBuilder>
@@ -2540,16 +2549,34 @@ public interface SftpEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.file.remote.RemoteFileConfiguration$PathSeparator</code> enum.
+     */
     public static enum PathSeparator {
         UNIX, Windows, Auto;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.file.GenericFileExist</code> enum.
+     */
     public static enum GenericFileExist {
         Override, Append, Fail, Ignore, Move, TryRename;
     }
+    /**
+     * The sftp (FTP over SSH) component is used for uploading or downloading
+     * files from SFTP servers. Creates a builder to build a consumer endpoint
+     * for the SFTP component.
+     */
     public default SftpConsumerBuilder fromSftp(String path) {
         return new SftpConsumerBuilder(path);
     }
+    /**
+     * The sftp (FTP over SSH) component is used for uploading or downloading
+     * files from SFTP servers. Creates a builder to build a producer endpoint
+     * for the SFTP component.
+     */
     public default SftpProducerBuilder toSftp(String path) {
         return new SftpProducerBuilder(path);
     }

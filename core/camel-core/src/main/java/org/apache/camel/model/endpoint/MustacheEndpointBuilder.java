@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface MustacheEndpointBuilder {
 
 
+    /**
+     * Base class for the Mustache component builders.
+     */
     public static class MustacheCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -127,6 +130,9 @@ public interface MustacheEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Mustache component.
+     */
     public static class MustacheProducerBuilder
             extends
                 MustacheCommonBuilder<MustacheProducerBuilder>
@@ -136,6 +142,10 @@ public interface MustacheEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Transforms the message using a Mustache template. Creates a builder to
+     * build a producer endpoint for the Mustache component.
+     */
     public default MustacheProducerBuilder toMustache(String path) {
         return new MustacheProducerBuilder(path);
     }

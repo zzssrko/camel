@@ -38,6 +38,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface ApnsEndpointBuilder {
 
 
+    /**
+     * Base class for the APNS component builders.
+     */
     public static class ApnsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -99,6 +102,9 @@ public interface ApnsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the APNS component.
+     */
     public static class ApnsConsumerBuilder
             extends
                 ApnsCommonBuilder<ApnsConsumerBuilder>
@@ -474,6 +480,9 @@ public interface ApnsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the APNS component.
+     */
     public static class ApnsProducerBuilder
             extends
                 ApnsCommonBuilder<ApnsProducerBuilder>
@@ -483,9 +492,17 @@ public interface ApnsEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * For sending notifications to Apple iOS devices. Creates a builder to
+     * build a consumer endpoint for the APNS component.
+     */
     public default ApnsConsumerBuilder fromApns(String path) {
         return new ApnsConsumerBuilder(path);
     }
+    /**
+     * For sending notifications to Apple iOS devices. Creates a builder to
+     * build a producer endpoint for the APNS component.
+     */
     public default ApnsProducerBuilder toApns(String path) {
         return new ApnsProducerBuilder(path);
     }

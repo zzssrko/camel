@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface ZooKeeperEndpointBuilder {
 
 
+    /**
+     * Base class for the ZooKeeper component builders.
+     */
     public static class ZooKeeperCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -141,6 +144,9 @@ public interface ZooKeeperEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the ZooKeeper component.
+     */
     public static class ZooKeeperConsumerBuilder
             extends
                 ZooKeeperCommonBuilder<ZooKeeperConsumerBuilder>
@@ -272,6 +278,9 @@ public interface ZooKeeperEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the ZooKeeper component.
+     */
     public static class ZooKeeperProducerBuilder
             extends
                 ZooKeeperCommonBuilder<ZooKeeperProducerBuilder>
@@ -305,9 +314,19 @@ public interface ZooKeeperEndpointBuilder {
             return (ZooKeeperProducerBuilder) this;
         }
     }
+    /**
+     * The zookeeper component allows interaction with a ZooKeeper cluster.
+     * Creates a builder to build a consumer endpoint for the ZooKeeper
+     * component.
+     */
     public default ZooKeeperConsumerBuilder fromZooKeeper(String path) {
         return new ZooKeeperConsumerBuilder(path);
     }
+    /**
+     * The zookeeper component allows interaction with a ZooKeeper cluster.
+     * Creates a builder to build a producer endpoint for the ZooKeeper
+     * component.
+     */
     public default ZooKeeperProducerBuilder toZooKeeper(String path) {
         return new ZooKeeperProducerBuilder(path);
     }

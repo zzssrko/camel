@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface MockEndpointBuilder {
 
 
+    /**
+     * Base class for the Mock component builders.
+     */
     public static class MockCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -83,6 +86,9 @@ public interface MockEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Mock component.
+     */
     public static class MockProducerBuilder
             extends
                 MockCommonBuilder<MockProducerBuilder>
@@ -332,6 +338,11 @@ public interface MockEndpointBuilder {
             return (MockProducerBuilder) this;
         }
     }
+    /**
+     * The mock component is used for testing routes and mediation rules using
+     * mocks. Creates a builder to build a producer endpoint for the Mock
+     * component.
+     */
     public default MockProducerBuilder toMock(String path) {
         return new MockProducerBuilder(path);
     }

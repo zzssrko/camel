@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface JGroupsEndpointBuilder {
 
 
+    /**
+     * Base class for the JGroups component builders.
+     */
     public static class JGroupsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -93,6 +96,9 @@ public interface JGroupsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the JGroups component.
+     */
     public static class JGroupsConsumerBuilder
             extends
                 JGroupsCommonBuilder<JGroupsConsumerBuilder>
@@ -195,6 +201,9 @@ public interface JGroupsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JGroups component.
+     */
     public static class JGroupsProducerBuilder
             extends
                 JGroupsCommonBuilder<JGroupsProducerBuilder>
@@ -204,9 +213,19 @@ public interface JGroupsEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The jgroups component provides exchange of messages between Camel and
+     * JGroups clusters. Creates a builder to build a consumer endpoint for the
+     * JGroups component.
+     */
     public default JGroupsConsumerBuilder fromJGroups(String path) {
         return new JGroupsConsumerBuilder(path);
     }
+    /**
+     * The jgroups component provides exchange of messages between Camel and
+     * JGroups clusters. Creates a builder to build a producer endpoint for the
+     * JGroups component.
+     */
     public default JGroupsProducerBuilder toJGroups(String path) {
         return new JGroupsProducerBuilder(path);
     }

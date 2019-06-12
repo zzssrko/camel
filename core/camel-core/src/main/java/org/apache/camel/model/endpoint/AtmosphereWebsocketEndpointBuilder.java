@@ -33,6 +33,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface AtmosphereWebsocketEndpointBuilder {
 
 
+    /**
+     * Base class for the Atmosphere Websocket component builders.
+     */
     public static class AtmosphereWebsocketCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -306,6 +309,9 @@ public interface AtmosphereWebsocketEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Atmosphere Websocket component.
+     */
     public static class AtmosphereWebsocketConsumerBuilder
             extends
                 AtmosphereWebsocketCommonBuilder<AtmosphereWebsocketConsumerBuilder>
@@ -560,6 +566,9 @@ public interface AtmosphereWebsocketEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Atmosphere Websocket component.
+     */
     public static class AtmosphereWebsocketProducerBuilder
             extends
                 AtmosphereWebsocketCommonBuilder<AtmosphereWebsocketProducerBuilder>
@@ -569,10 +578,20 @@ public interface AtmosphereWebsocketEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * To exchange data with external Websocket clients using Atmosphere.
+     * Creates a builder to build a consumer endpoint for the Atmosphere
+     * Websocket component.
+     */
     public default AtmosphereWebsocketConsumerBuilder fromAtmosphereWebsocket(
             String path) {
         return new AtmosphereWebsocketConsumerBuilder(path);
     }
+    /**
+     * To exchange data with external Websocket clients using Atmosphere.
+     * Creates a builder to build a producer endpoint for the Atmosphere
+     * Websocket component.
+     */
     public default AtmosphereWebsocketProducerBuilder toAtmosphereWebsocket(
             String path) {
         return new AtmosphereWebsocketProducerBuilder(path);

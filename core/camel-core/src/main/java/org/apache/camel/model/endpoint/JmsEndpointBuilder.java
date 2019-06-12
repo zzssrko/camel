@@ -35,6 +35,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface JmsEndpointBuilder {
 
 
+    /**
+     * Base class for the JMS component builders.
+     */
     public static class JmsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -954,6 +957,9 @@ public interface JmsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the JMS component.
+     */
     public static class JmsConsumerBuilder
             extends
                 JmsCommonBuilder<JmsConsumerBuilder>
@@ -1544,6 +1550,9 @@ public interface JmsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JMS component.
+     */
     public static class JmsProducerBuilder
             extends
                 JmsCommonBuilder<JmsProducerBuilder>
@@ -2046,24 +2055,50 @@ public interface JmsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jms.JmsMessageType</code>
+     * enum.
+     */
     public static enum JmsMessageType {
         Bytes, Map, Object, Stream, Text, Blob;
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jms.ConsumerType</code>
+     * enum.
+     */
     public static enum ConsumerType {
         Simple, Default, Custom;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.jms.DefaultTaskExecutorType</code> enum.
+     */
     public static enum DefaultTaskExecutorType {
         ThreadPool, SimpleAsync;
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jms.ReplyToType</code>
+     * enum.
+     */
     public static enum ReplyToType {
         Temporary, Shared, Exclusive;
     }
+    /**
+     * The jms component allows messages to be sent to (or consumed from) a JMS
+     * Queue or Topic. Creates a builder to build a consumer endpoint for the
+     * JMS component.
+     */
     public default JmsConsumerBuilder fromJms(String path) {
         return new JmsConsumerBuilder(path);
     }
+    /**
+     * The jms component allows messages to be sent to (or consumed from) a JMS
+     * Queue or Topic. Creates a builder to build a producer endpoint for the
+     * JMS component.
+     */
     public default JmsProducerBuilder toJms(String path) {
         return new JmsProducerBuilder(path);
     }

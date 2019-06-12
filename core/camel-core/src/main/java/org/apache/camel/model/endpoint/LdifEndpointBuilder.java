@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface LdifEndpointBuilder {
 
 
+    /**
+     * Base class for the LDIF component builders.
+     */
     public static class LdifCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -85,6 +88,9 @@ public interface LdifEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the LDIF component.
+     */
     public static class LdifProducerBuilder
             extends
                 LdifCommonBuilder<LdifProducerBuilder>
@@ -94,6 +100,11 @@ public interface LdifEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The ldif component allows you to do updates on an LDAP server from a LDIF
+     * body content. Creates a builder to build a producer endpoint for the LDIF
+     * component.
+     */
     public default LdifProducerBuilder toLdif(String path) {
         return new LdifProducerBuilder(path);
     }

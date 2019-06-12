@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface AtomixMapEndpointBuilder {
 
 
+    /**
+     * Base class for the Atomix Map component builders.
+     */
     public static class AtomixMapCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -305,6 +308,9 @@ public interface AtomixMapEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Atomix Map component.
+     */
     public static class AtomixMapConsumerBuilder
             extends
                 AtomixMapCommonBuilder<AtomixMapConsumerBuilder>
@@ -385,6 +391,9 @@ public interface AtomixMapEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Atomix Map component.
+     */
     public static class AtomixMapProducerBuilder
             extends
                 AtomixMapCommonBuilder<AtomixMapProducerBuilder>
@@ -395,16 +404,33 @@ public interface AtomixMapEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.atomix.client.map.AtomixMap$Action</code> enum.
+     */
     public static enum Action {
         PUT, PUT_IF_ABSENT, GET, CLEAR, SIZE, CONTAINS_KEY, CONTAINS_VALUE, IS_EMPTY, ENTRY_SET, REMOVE, REPLACE, VALUES;
     }
 
+    /**
+     * Proxy enum for <code>io.atomix.resource.ReadConsistency</code> enum.
+     */
     public static enum ReadConsistency {
         ATOMIC, ATOMIC_LEASE, SEQUENTIAL, LOCAL;
     }
+    /**
+     * The atomix-map component is used to access Atomix's distributed map.
+     * Creates a builder to build a consumer endpoint for the Atomix Map
+     * component.
+     */
     public default AtomixMapConsumerBuilder fromAtomixMap(String path) {
         return new AtomixMapConsumerBuilder(path);
     }
+    /**
+     * The atomix-map component is used to access Atomix's distributed map.
+     * Creates a builder to build a producer endpoint for the Atomix Map
+     * component.
+     */
     public default AtomixMapProducerBuilder toAtomixMap(String path) {
         return new AtomixMapProducerBuilder(path);
     }

@@ -32,6 +32,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface ServiceNowEndpointBuilder {
 
 
+    /**
+     * Base class for the ServiceNow component builders.
+     */
     public static class ServiceNowCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -681,6 +684,9 @@ public interface ServiceNowEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the ServiceNow component.
+     */
     public static class ServiceNowProducerBuilder
             extends
                 ServiceNowCommonBuilder<ServiceNowProducerBuilder>
@@ -691,9 +697,19 @@ public interface ServiceNowEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.servicenow.ServiceNowRelease</code>
+     * enum.
+     */
     public static enum ServiceNowRelease {
         FUJI, GENEVA, HELSINKI;
     }
+    /**
+     * The servicenow component is used to integrate Camel with ServiceNow cloud
+     * services. Creates a builder to build a producer endpoint for the
+     * ServiceNow component.
+     */
     public default ServiceNowProducerBuilder toServiceNow(String path) {
         return new ServiceNowProducerBuilder(path);
     }

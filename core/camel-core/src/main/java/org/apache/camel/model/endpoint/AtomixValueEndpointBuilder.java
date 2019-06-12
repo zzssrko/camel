@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface AtomixValueEndpointBuilder {
 
 
+    /**
+     * Base class for the Atomix Value component builders.
+     */
     public static class AtomixValueCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -287,6 +290,9 @@ public interface AtomixValueEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Atomix Value component.
+     */
     public static class AtomixValueConsumerBuilder
             extends
                 AtomixValueCommonBuilder<AtomixValueConsumerBuilder>
@@ -368,6 +374,9 @@ public interface AtomixValueEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Atomix Value component.
+     */
     public static class AtomixValueProducerBuilder
             extends
                 AtomixValueCommonBuilder<AtomixValueProducerBuilder>
@@ -378,16 +387,33 @@ public interface AtomixValueEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.atomix.client.value.AtomixValue$Action</code> enum.
+     */
     public static enum Action {
         SET, GET, GET_AND_SET, COMPARE_AND_SET;
     }
 
+    /**
+     * Proxy enum for <code>io.atomix.resource.ReadConsistency</code> enum.
+     */
     public static enum ReadConsistency {
         ATOMIC, ATOMIC_LEASE, SEQUENTIAL, LOCAL;
     }
+    /**
+     * The atomix-value component is used to access Atomix's distributed value.
+     * Creates a builder to build a consumer endpoint for the Atomix Value
+     * component.
+     */
     public default AtomixValueConsumerBuilder fromAtomixValue(String path) {
         return new AtomixValueConsumerBuilder(path);
     }
+    /**
+     * The atomix-value component is used to access Atomix's distributed value.
+     * Creates a builder to build a producer endpoint for the Atomix Value
+     * component.
+     */
     public default AtomixValueProducerBuilder toAtomixValue(String path) {
         return new AtomixValueProducerBuilder(path);
     }

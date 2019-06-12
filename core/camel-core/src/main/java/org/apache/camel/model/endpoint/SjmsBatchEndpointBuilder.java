@@ -37,6 +37,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface SjmsBatchEndpointBuilder {
 
 
+    /**
+     * Base class for the Simple JMS Batch component builders.
+     */
     public static class SjmsBatchCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -513,6 +516,9 @@ public interface SjmsBatchEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Simple JMS Batch component.
+     */
     public static class SjmsBatchConsumerBuilder
             extends
                 SjmsBatchCommonBuilder<SjmsBatchConsumerBuilder>
@@ -592,6 +598,11 @@ public interface SjmsBatchEndpointBuilder {
             return (SjmsBatchConsumerBuilder) this;
         }
     }
+    /**
+     * The sjms-batch component is a specialized for highly performant,
+     * transactional batch consumption from a JMS queue. Creates a builder to
+     * build a consumer endpoint for the Simple JMS Batch component.
+     */
     public default SjmsBatchConsumerBuilder fromSjmsBatch(String path) {
         return new SjmsBatchConsumerBuilder(path);
     }

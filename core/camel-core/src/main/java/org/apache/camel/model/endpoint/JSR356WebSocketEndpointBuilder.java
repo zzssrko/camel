@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface JSR356WebSocketEndpointBuilder {
 
 
+    /**
+     * Base class for the Javax Websocket component builders.
+     */
     public static class JSR356WebSocketCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -109,6 +112,9 @@ public interface JSR356WebSocketEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Javax Websocket component.
+     */
     public static class JSR356WebSocketConsumerBuilder
             extends
                 JSR356WebSocketCommonBuilder<JSR356WebSocketConsumerBuilder>
@@ -191,6 +197,9 @@ public interface JSR356WebSocketEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Javax Websocket component.
+     */
     public static class JSR356WebSocketProducerBuilder
             extends
                 JSR356WebSocketCommonBuilder<JSR356WebSocketProducerBuilder>
@@ -200,10 +209,18 @@ public interface JSR356WebSocketEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Camel WebSocket using JSR356 (javax) Creates a builder to build a
+     * consumer endpoint for the Javax Websocket component.
+     */
     public default JSR356WebSocketConsumerBuilder fromJSR356WebSocket(
             String path) {
         return new JSR356WebSocketConsumerBuilder(path);
     }
+    /**
+     * Camel WebSocket using JSR356 (javax) Creates a builder to build a
+     * producer endpoint for the Javax Websocket component.
+     */
     public default JSR356WebSocketProducerBuilder toJSR356WebSocket(String path) {
         return new JSR356WebSocketProducerBuilder(path);
     }

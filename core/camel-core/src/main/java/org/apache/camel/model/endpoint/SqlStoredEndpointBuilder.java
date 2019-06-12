@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface SqlStoredEndpointBuilder {
 
 
+    /**
+     * Base class for the SQL Stored Procedure component builders.
+     */
     public static class SqlStoredCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -180,6 +183,9 @@ public interface SqlStoredEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the SQL Stored Procedure component.
+     */
     public static class SqlStoredProducerBuilder
             extends
                 SqlStoredCommonBuilder<SqlStoredProducerBuilder>
@@ -189,6 +195,11 @@ public interface SqlStoredEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The sql component allows you to work with databases using JDBC Stored
+     * Procedure queries. Creates a builder to build a producer endpoint for the
+     * SQL Stored Procedure component.
+     */
     public default SqlStoredProducerBuilder toSqlStored(String path) {
         return new SqlStoredProducerBuilder(path);
     }

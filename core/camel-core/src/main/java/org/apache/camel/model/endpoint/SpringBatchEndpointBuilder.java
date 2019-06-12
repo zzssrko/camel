@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface SpringBatchEndpointBuilder {
 
 
+    /**
+     * Base class for the Spring Batch component builders.
+     */
     public static class SpringBatchCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -136,6 +139,9 @@ public interface SpringBatchEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Spring Batch component.
+     */
     public static class SpringBatchProducerBuilder
             extends
                 SpringBatchCommonBuilder<SpringBatchProducerBuilder>
@@ -145,6 +151,11 @@ public interface SpringBatchEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The spring-batch component allows to send messages to Spring Batch for
+     * further processing. Creates a builder to build a producer endpoint for
+     * the Spring Batch component.
+     */
     public default SpringBatchProducerBuilder toSpringBatch(String path) {
         return new SpringBatchProducerBuilder(path);
     }

@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface CouchDbEndpointBuilder {
 
 
+    /**
+     * Base class for the CouchDB component builders.
+     */
     public static class CouchDbCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -148,6 +151,9 @@ public interface CouchDbEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the CouchDB component.
+     */
     public static class CouchDbConsumerBuilder
             extends
                 CouchDbCommonBuilder<CouchDbConsumerBuilder>
@@ -296,6 +302,9 @@ public interface CouchDbEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the CouchDB component.
+     */
     public static class CouchDbProducerBuilder
             extends
                 CouchDbCommonBuilder<CouchDbProducerBuilder>
@@ -305,9 +314,17 @@ public interface CouchDbEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The couchdb component is used for integrate with CouchDB databases.
+     * Creates a builder to build a consumer endpoint for the CouchDB component.
+     */
     public default CouchDbConsumerBuilder fromCouchDb(String path) {
         return new CouchDbConsumerBuilder(path);
     }
+    /**
+     * The couchdb component is used for integrate with CouchDB databases.
+     * Creates a builder to build a producer endpoint for the CouchDB component.
+     */
     public default CouchDbProducerBuilder toCouchDb(String path) {
         return new CouchDbProducerBuilder(path);
     }

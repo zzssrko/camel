@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface TwitterDirectMessageEndpointBuilder {
 
 
+    /**
+     * Base class for the Twitter Direct Message component builders.
+     */
     public static class TwitterDirectMessageCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -168,6 +171,9 @@ public interface TwitterDirectMessageEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Twitter Direct Message component.
+     */
     public static class TwitterDirectMessageConsumerBuilder
             extends
                 TwitterDirectMessageCommonBuilder<TwitterDirectMessageConsumerBuilder>
@@ -800,6 +806,9 @@ public interface TwitterDirectMessageEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Twitter Direct Message component.
+     */
     public static class TwitterDirectMessageProducerBuilder
             extends
                 TwitterDirectMessageCommonBuilder<TwitterDirectMessageProducerBuilder>
@@ -810,13 +819,27 @@ public interface TwitterDirectMessageEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.twitter.data.EndpointType</code> enum.
+     */
     public static enum EndpointType {
         POLLING, DIRECT, EVENT;
     }
+    /**
+     * The Twitter Direct Message Component consumes/produces user's direct
+     * messages. Creates a builder to build a consumer endpoint for the Twitter
+     * Direct Message component.
+     */
     public default TwitterDirectMessageConsumerBuilder fromTwitterDirectMessage(
             String path) {
         return new TwitterDirectMessageConsumerBuilder(path);
     }
+    /**
+     * The Twitter Direct Message Component consumes/produces user's direct
+     * messages. Creates a builder to build a producer endpoint for the Twitter
+     * Direct Message component.
+     */
     public default TwitterDirectMessageProducerBuilder toTwitterDirectMessage(
             String path) {
         return new TwitterDirectMessageProducerBuilder(path);

@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface JcrEndpointBuilder {
 
 
+    /**
+     * Base class for the JCR component builders.
+     */
     public static class JcrCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -232,6 +235,9 @@ public interface JcrEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the JCR component.
+     */
     public static class JcrConsumerBuilder
             extends
                 JcrCommonBuilder<JcrConsumerBuilder>
@@ -310,6 +316,9 @@ public interface JcrEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JCR component.
+     */
     public static class JcrProducerBuilder
             extends
                 JcrCommonBuilder<JcrProducerBuilder>
@@ -319,9 +328,19 @@ public interface JcrEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The jcr component allows you to add/read nodes to/from a JCR compliant
+     * content repository. Creates a builder to build a consumer endpoint for
+     * the JCR component.
+     */
     public default JcrConsumerBuilder fromJcr(String path) {
         return new JcrConsumerBuilder(path);
     }
+    /**
+     * The jcr component allows you to add/read nodes to/from a JCR compliant
+     * content repository. Creates a builder to build a producer endpoint for
+     * the JCR component.
+     */
     public default JcrProducerBuilder toJcr(String path) {
         return new JcrProducerBuilder(path);
     }

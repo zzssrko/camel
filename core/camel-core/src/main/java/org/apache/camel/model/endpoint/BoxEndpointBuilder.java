@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface BoxEndpointBuilder {
 
 
+    /**
+     * Base class for the Box component builders.
+     */
     public static class BoxCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -279,6 +282,9 @@ public interface BoxEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Box component.
+     */
     public static class BoxConsumerBuilder
             extends
                 BoxCommonBuilder<BoxConsumerBuilder>
@@ -357,6 +363,9 @@ public interface BoxEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Box component.
+     */
     public static class BoxProducerBuilder
             extends
                 BoxCommonBuilder<BoxProducerBuilder>
@@ -367,16 +376,33 @@ public interface BoxEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.box.internal.BoxApiName</code> enum.
+     */
     public static enum BoxApiName {
         COLLABORATIONS, COMMENTS, EVENT_LOGS, FILES, FOLDERS, GROUPS, EVENTS, SEARCH, TASKS, USERS;
     }
 
+    /**
+     * Proxy enum for <code>com.box.sdk.EncryptionAlgorithm</code> enum.
+     */
     public static enum EncryptionAlgorithm {
         RSA_SHA_256, RSA_SHA_384, RSA_SHA_512;
     }
+    /**
+     * For uploading downloading and managing files folders groups
+     * collaborations etc on box DOT com. Creates a builder to build a consumer
+     * endpoint for the Box component.
+     */
     public default BoxConsumerBuilder fromBox(String path) {
         return new BoxConsumerBuilder(path);
     }
+    /**
+     * For uploading downloading and managing files folders groups
+     * collaborations etc on box DOT com. Creates a builder to build a producer
+     * endpoint for the Box component.
+     */
     public default BoxProducerBuilder toBox(String path) {
         return new BoxProducerBuilder(path);
     }

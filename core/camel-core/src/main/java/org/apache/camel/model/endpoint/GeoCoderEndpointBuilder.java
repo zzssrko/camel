@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface GeoCoderEndpointBuilder {
 
 
+    /**
+     * Base class for the Geocoder component builders.
+     */
     public static class GeoCoderCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -203,6 +206,9 @@ public interface GeoCoderEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Geocoder component.
+     */
     public static class GeoCoderProducerBuilder
             extends
                 GeoCoderCommonBuilder<GeoCoderProducerBuilder>
@@ -212,6 +218,11 @@ public interface GeoCoderEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The geocoder component is used for looking up geocodes (latitude and
+     * longitude) for a given address, or reverse lookup. Creates a builder to
+     * build a producer endpoint for the Geocoder component.
+     */
     public default GeoCoderProducerBuilder toGeoCoder(String path) {
         return new GeoCoderProducerBuilder(path);
     }

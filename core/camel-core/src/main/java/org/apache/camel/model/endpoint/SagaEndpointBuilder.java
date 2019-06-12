@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface SagaEndpointBuilder {
 
 
+    /**
+     * Base class for the Saga component builders.
+     */
     public static class SagaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -92,6 +95,9 @@ public interface SagaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Saga component.
+     */
     public static class SagaProducerBuilder
             extends
                 SagaCommonBuilder<SagaProducerBuilder>
@@ -102,9 +108,18 @@ public interface SagaEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.saga.SagaEndpoint$SagaEndpointAction</code> enum.
+     */
     public static enum SagaEndpointAction {
         COMPLETE, COMPENSATE;
     }
+    /**
+     * The saga component provides access to advanced options for managing the
+     * flow in the Saga EIP. Creates a builder to build a producer endpoint for
+     * the Saga component.
+     */
     public default SagaProducerBuilder toSaga(String path) {
         return new SagaProducerBuilder(path);
     }

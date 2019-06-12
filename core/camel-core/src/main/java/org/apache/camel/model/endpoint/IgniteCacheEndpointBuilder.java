@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface IgniteCacheEndpointBuilder {
 
 
+    /**
+     * Base class for the Ignite Cache component builders.
+     */
     public static class IgniteCacheCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -124,6 +127,9 @@ public interface IgniteCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Ignite Cache component.
+     */
     public static class IgniteCacheConsumerBuilder
             extends
                 IgniteCacheCommonBuilder<IgniteCacheConsumerBuilder>
@@ -313,6 +319,9 @@ public interface IgniteCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Ignite Cache component.
+     */
     public static class IgniteCacheProducerBuilder
             extends
                 IgniteCacheCommonBuilder<IgniteCacheProducerBuilder>
@@ -397,16 +406,34 @@ public interface IgniteCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.ignite.cache.CachePeekMode</code> enum.
+     */
     public static enum CachePeekMode {
         ALL, NEAR, PRIMARY, BACKUP, ONHEAP, OFFHEAP;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.ignite.cache.IgniteCacheOperation</code>
+     * enum.
+     */
     public static enum IgniteCacheOperation {
         GET, PUT, REMOVE, SIZE, REBALANCE, QUERY, CLEAR;
     }
+    /**
+     * The Ignite Cache endpoint is one of camel-ignite endpoints which allows
+     * you to interact with an Ignite Cache. Creates a builder to build a
+     * consumer endpoint for the Ignite Cache component.
+     */
     public default IgniteCacheConsumerBuilder fromIgniteCache(String path) {
         return new IgniteCacheConsumerBuilder(path);
     }
+    /**
+     * The Ignite Cache endpoint is one of camel-ignite endpoints which allows
+     * you to interact with an Ignite Cache. Creates a builder to build a
+     * producer endpoint for the Ignite Cache component.
+     */
     public default IgniteCacheProducerBuilder toIgniteCache(String path) {
         return new IgniteCacheProducerBuilder(path);
     }

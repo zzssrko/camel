@@ -34,6 +34,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface DirectVmEndpointBuilder {
 
 
+    /**
+     * Base class for the Direct VM component builders.
+     */
     public static class DirectVmCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -104,6 +107,9 @@ public interface DirectVmEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Direct VM component.
+     */
     public static class DirectVmConsumerBuilder
             extends
                 DirectVmCommonBuilder<DirectVmConsumerBuilder>
@@ -184,6 +190,9 @@ public interface DirectVmEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Direct VM component.
+     */
     public static class DirectVmProducerBuilder
             extends
                 DirectVmCommonBuilder<DirectVmProducerBuilder>
@@ -270,9 +279,19 @@ public interface DirectVmEndpointBuilder {
             return (DirectVmProducerBuilder) this;
         }
     }
+    /**
+     * The direct-vm component provides direct, synchronous call to another
+     * endpoint from any CamelContext in the same JVM. Creates a builder to
+     * build a consumer endpoint for the Direct VM component.
+     */
     public default DirectVmConsumerBuilder fromDirectVm(String path) {
         return new DirectVmConsumerBuilder(path);
     }
+    /**
+     * The direct-vm component provides direct, synchronous call to another
+     * endpoint from any CamelContext in the same JVM. Creates a builder to
+     * build a producer endpoint for the Direct VM component.
+     */
     public default DirectVmProducerBuilder toDirectVm(String path) {
         return new DirectVmProducerBuilder(path);
     }

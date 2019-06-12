@@ -36,6 +36,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface UndertowEndpointBuilder {
 
 
+    /**
+     * Base class for the Undertow component builders.
+     */
     public static class UndertowCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -151,6 +154,9 @@ public interface UndertowEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Undertow component.
+     */
     public static class UndertowConsumerBuilder
             extends
                 UndertowCommonBuilder<UndertowConsumerBuilder>
@@ -321,6 +327,9 @@ public interface UndertowEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Undertow component.
+     */
     public static class UndertowProducerBuilder
             extends
                 UndertowCommonBuilder<UndertowProducerBuilder>
@@ -512,9 +521,19 @@ public interface UndertowEndpointBuilder {
             return (UndertowProducerBuilder) this;
         }
     }
+    /**
+     * The undertow component provides HTTP and WebSocket based endpoints for
+     * consuming and producing HTTP/WebSocket requests. Creates a builder to
+     * build a consumer endpoint for the Undertow component.
+     */
     public default UndertowConsumerBuilder fromUndertow(String path) {
         return new UndertowConsumerBuilder(path);
     }
+    /**
+     * The undertow component provides HTTP and WebSocket based endpoints for
+     * consuming and producing HTTP/WebSocket requests. Creates a builder to
+     * build a producer endpoint for the Undertow component.
+     */
     public default UndertowProducerBuilder toUndertow(String path) {
         return new UndertowProducerBuilder(path);
     }

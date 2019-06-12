@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface SparkEndpointBuilder {
 
 
+    /**
+     * Base class for the Spark Rest component builders.
+     */
     public static class SparkCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -243,6 +246,9 @@ public interface SparkEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Spark Rest component.
+     */
     public static class SparkConsumerBuilder
             extends
                 SparkCommonBuilder<SparkConsumerBuilder>
@@ -321,6 +327,11 @@ public interface SparkEndpointBuilder {
             return (SparkConsumerBuilder) this;
         }
     }
+    /**
+     * The spark-rest component is used for hosting REST services which has been
+     * defined using Camel rest-dsl. Creates a builder to build a consumer
+     * endpoint for the Spark Rest component.
+     */
     public default SparkConsumerBuilder fromSpark(String path) {
         return new SparkConsumerBuilder(path);
     }

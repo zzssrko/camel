@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface SshEndpointBuilder {
 
 
+    /**
+     * Base class for the SSH component builders.
+     */
     public static class SshCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -243,6 +246,9 @@ public interface SshEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the SSH component.
+     */
     public static class SshConsumerBuilder
             extends
                 SshCommonBuilder<SshConsumerBuilder>
@@ -628,6 +634,9 @@ public interface SshEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the SSH component.
+     */
     public static class SshProducerBuilder
             extends
                 SshCommonBuilder<SshProducerBuilder>
@@ -637,9 +646,19 @@ public interface SshEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The ssh component enables access to SSH servers such that you can send an
+     * SSH command, and process the response. Creates a builder to build a
+     * consumer endpoint for the SSH component.
+     */
     public default SshConsumerBuilder fromSsh(String path) {
         return new SshConsumerBuilder(path);
     }
+    /**
+     * The ssh component enables access to SSH servers such that you can send an
+     * SSH command, and process the response. Creates a builder to build a
+     * producer endpoint for the SSH component.
+     */
     public default SshProducerBuilder toSsh(String path) {
         return new SshProducerBuilder(path);
     }

@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface KubernetesPodsEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes Pods component builders.
+     */
     public static class KubernetesPodsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -253,6 +256,9 @@ public interface KubernetesPodsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Kubernetes Pods component.
+     */
     public static class KubernetesPodsConsumerBuilder
             extends
                 KubernetesPodsCommonBuilder<KubernetesPodsConsumerBuilder>
@@ -381,6 +387,9 @@ public interface KubernetesPodsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes Pods component.
+     */
     public static class KubernetesPodsProducerBuilder
             extends
                 KubernetesPodsCommonBuilder<KubernetesPodsProducerBuilder>
@@ -398,9 +407,19 @@ public interface KubernetesPodsEndpointBuilder {
             return (KubernetesPodsProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Pods component provides a producer to execute kubernetes
+     * pod operations and a consumer to consume pod events. Creates a builder to
+     * build a consumer endpoint for the Kubernetes Pods component.
+     */
     public default KubernetesPodsConsumerBuilder fromKubernetesPods(String path) {
         return new KubernetesPodsConsumerBuilder(path);
     }
+    /**
+     * The Kubernetes Pods component provides a producer to execute kubernetes
+     * pod operations and a consumer to consume pod events. Creates a builder to
+     * build a producer endpoint for the Kubernetes Pods component.
+     */
     public default KubernetesPodsProducerBuilder toKubernetesPods(String path) {
         return new KubernetesPodsProducerBuilder(path);
     }

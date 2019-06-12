@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface LambdaEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS Lambda component builders.
+     */
     public static class LambdaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -161,6 +164,9 @@ public interface LambdaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS Lambda component.
+     */
     public static class LambdaProducerBuilder
             extends
                 LambdaCommonBuilder<LambdaProducerBuilder>
@@ -179,9 +185,18 @@ public interface LambdaEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.lambda.LambdaOperations</code> enum.
+     */
     public static enum LambdaOperations {
         listFunctions, getFunction, createFunction, deleteFunction, invokeFunction, updateFunction, createEventSourceMapping, deleteEventSourceMapping, listEventSourceMapping, listTags, tagResource, untagResource, publishVersion, listVersions;
     }
+    /**
+     * The aws-lambda is used for managing and invoking functions from Amazon
+     * Lambda. Creates a builder to build a producer endpoint for the AWS Lambda
+     * component.
+     */
     public default LambdaProducerBuilder toLambda(String path) {
         return new LambdaProducerBuilder(path);
     }

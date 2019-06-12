@@ -40,6 +40,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface SqsEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS Simple Queue Service component builders.
+     */
     public static class SqsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -307,6 +310,10 @@ public interface SqsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the AWS Simple Queue Service
+     * component.
+     */
     public static class SqsConsumerBuilder
             extends
                 SqsCommonBuilder<SqsConsumerBuilder>
@@ -909,6 +916,10 @@ public interface SqsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS Simple Queue Service
+     * component.
+     */
     public static class SqsProducerBuilder
             extends
                 SqsCommonBuilder<SqsProducerBuilder>
@@ -1005,12 +1016,26 @@ public interface SqsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.sqs.SqsOperations</code> enum.
+     */
     public static enum SqsOperations {
         sendBatchMessage, deleteMessage, listQueues;
     }
+    /**
+     * The aws-sqs component is used for sending and receiving messages to
+     * Amazon's SQS service. Creates a builder to build a consumer endpoint for
+     * the AWS Simple Queue Service component.
+     */
     public default SqsConsumerBuilder fromSqs(String path) {
         return new SqsConsumerBuilder(path);
     }
+    /**
+     * The aws-sqs component is used for sending and receiving messages to
+     * Amazon's SQS service. Creates a builder to build a producer endpoint for
+     * the AWS Simple Queue Service component.
+     */
     public default SqsProducerBuilder toSqs(String path) {
         return new SqsProducerBuilder(path);
     }

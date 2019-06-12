@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface IgniteIdGenEndpointBuilder {
 
 
+    /**
+     * Base class for the Ignite ID Generator component builders.
+     */
     public static class IgniteIdGenCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -123,6 +126,9 @@ public interface IgniteIdGenEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Ignite ID Generator component.
+     */
     public static class IgniteIdGenProducerBuilder
             extends
                 IgniteIdGenCommonBuilder<IgniteIdGenProducerBuilder>
@@ -186,9 +192,20 @@ public interface IgniteIdGenEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.ignite.idgen.IgniteIdGenOperation</code>
+     * enum.
+     */
     public static enum IgniteIdGenOperation {
         ADD_AND_GET, GET, GET_AND_ADD, GET_AND_INCREMENT, INCREMENT_AND_GET;
     }
+    /**
+     * The Ignite ID Generator endpoint is one of camel-ignite endpoints which
+     * allows you to interact with Ignite Atomic Sequences and ID Generators.
+     * Creates a builder to build a producer endpoint for the Ignite ID
+     * Generator component.
+     */
     public default IgniteIdGenProducerBuilder toIgniteIdGen(String path) {
         return new IgniteIdGenProducerBuilder(path);
     }

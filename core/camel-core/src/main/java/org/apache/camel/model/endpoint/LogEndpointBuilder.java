@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface LogEndpointBuilder {
 
 
+    /**
+     * Base class for the Log component builders.
+     */
     public static class LogCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -493,6 +496,9 @@ public interface LogEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Log component.
+     */
     public static class LogProducerBuilder
             extends
                 LogCommonBuilder<LogProducerBuilder>
@@ -503,9 +509,18 @@ public interface LogEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.support.processor.DefaultExchangeFormatter$OutputStyle</code> enum.
+     */
     public static enum OutputStyle {
         Default, Tab, Fixed;
     }
+    /**
+     * The log component logs message exchanges to the underlying logging
+     * mechanism. Creates a builder to build a producer endpoint for the Log
+     * component.
+     */
     public default LogProducerBuilder toLog(String path) {
         return new LogProducerBuilder(path);
     }

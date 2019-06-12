@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface RestApiEndpointBuilder {
 
 
+    /**
+     * Base class for the REST API component builders.
+     */
     public static class RestApiCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -114,6 +117,9 @@ public interface RestApiEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the REST API component.
+     */
     public static class RestApiConsumerBuilder
             extends
                 RestApiCommonBuilder<RestApiConsumerBuilder>
@@ -193,6 +199,11 @@ public interface RestApiEndpointBuilder {
             return (RestApiConsumerBuilder) this;
         }
     }
+    /**
+     * The rest-api component is used for providing Swagger API of the REST
+     * services which has been defined using the rest-dsl in Camel. Creates a
+     * builder to build a consumer endpoint for the REST API component.
+     */
     public default RestApiConsumerBuilder fromRestApi(String path) {
         return new RestApiConsumerBuilder(path);
     }

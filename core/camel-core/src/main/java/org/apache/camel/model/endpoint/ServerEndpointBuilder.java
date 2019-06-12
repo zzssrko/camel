@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface ServerEndpointBuilder {
 
 
+    /**
+     * Base class for the IEC 60870 Server component builders.
+     */
     public static class ServerCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -353,6 +356,9 @@ public interface ServerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the IEC 60870 Server component.
+     */
     public static class ServerConsumerBuilder
             extends
                 ServerCommonBuilder<ServerConsumerBuilder>
@@ -433,6 +439,9 @@ public interface ServerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the IEC 60870 Server component.
+     */
     public static class ServerProducerBuilder
             extends
                 ServerCommonBuilder<ServerProducerBuilder>
@@ -443,20 +452,44 @@ public interface ServerEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.eclipse.neoscada.protocol.iec60870.ASDUAddressType</code> enum.
+     */
     public static enum ASDUAddressType {
         SIZE_1, SIZE_2;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.eclipse.neoscada.protocol.iec60870.CauseOfTransmissionType</code> enum.
+     */
     public static enum CauseOfTransmissionType {
         SIZE_1, SIZE_2;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.eclipse.neoscada.protocol.iec60870.InformationObjectAddressType</code> enum.
+     */
     public static enum InformationObjectAddressType {
         SIZE_1, SIZE_2, SIZE_3;
     }
+    /**
+     * IEC 60870 component used for telecontrol (supervisory control and data
+     * acquisition) such as controlling electric power transmission grids and
+     * other geographically widespread control systems. Creates a builder to
+     * build a consumer endpoint for the IEC 60870 Server component.
+     */
     public default ServerConsumerBuilder fromServer(String path) {
         return new ServerConsumerBuilder(path);
     }
+    /**
+     * IEC 60870 component used for telecontrol (supervisory control and data
+     * acquisition) such as controlling electric power transmission grids and
+     * other geographically widespread control systems. Creates a builder to
+     * build a producer endpoint for the IEC 60870 Server component.
+     */
     public default ServerProducerBuilder toServer(String path) {
         return new ServerProducerBuilder(path);
     }

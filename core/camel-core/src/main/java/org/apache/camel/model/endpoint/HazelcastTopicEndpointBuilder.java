@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface HazelcastTopicEndpointBuilder {
 
 
+    /**
+     * Base class for the Hazelcast Topic component builders.
+     */
     public static class HazelcastTopicCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -239,6 +242,9 @@ public interface HazelcastTopicEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Hazelcast Topic component.
+     */
     public static class HazelcastTopicConsumerBuilder
             extends
                 HazelcastTopicCommonBuilder<HazelcastTopicConsumerBuilder>
@@ -373,6 +379,9 @@ public interface HazelcastTopicEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Hazelcast Topic component.
+     */
     public static class HazelcastTopicProducerBuilder
             extends
                 HazelcastTopicCommonBuilder<HazelcastTopicProducerBuilder>
@@ -383,16 +392,35 @@ public interface HazelcastTopicEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+     * enum.
+     */
     public static enum HazelcastOperation {
         put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode</code> enum.
+     */
     public static enum HazelcastQueueConsumerMode {
         listen, poll;
     }
+    /**
+     * The hazelcast-topic component is used to access Hazelcast distributed
+     * topic. Creates a builder to build a consumer endpoint for the Hazelcast
+     * Topic component.
+     */
     public default HazelcastTopicConsumerBuilder fromHazelcastTopic(String path) {
         return new HazelcastTopicConsumerBuilder(path);
     }
+    /**
+     * The hazelcast-topic component is used to access Hazelcast distributed
+     * topic. Creates a builder to build a producer endpoint for the Hazelcast
+     * Topic component.
+     */
     public default HazelcastTopicProducerBuilder toHazelcastTopic(String path) {
         return new HazelcastTopicProducerBuilder(path);
     }

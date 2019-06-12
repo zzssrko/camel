@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface PaxLoggingEndpointBuilder {
 
 
+    /**
+     * Base class for the OSGi PAX Logging component builders.
+     */
     public static class PaxLoggingCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -86,6 +89,9 @@ public interface PaxLoggingEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the OSGi PAX Logging component.
+     */
     public static class PaxLoggingConsumerBuilder
             extends
                 PaxLoggingCommonBuilder<PaxLoggingConsumerBuilder>
@@ -166,6 +172,11 @@ public interface PaxLoggingEndpointBuilder {
             return (PaxLoggingConsumerBuilder) this;
         }
     }
+    /**
+     * The paxlogging component can be used in an OSGi environment to receive
+     * PaxLogging events and process them. Creates a builder to build a consumer
+     * endpoint for the OSGi PAX Logging component.
+     */
     public default PaxLoggingConsumerBuilder fromPaxLogging(String path) {
         return new PaxLoggingConsumerBuilder(path);
     }

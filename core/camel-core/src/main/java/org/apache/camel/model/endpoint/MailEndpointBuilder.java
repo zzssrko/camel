@@ -41,6 +41,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface MailEndpointBuilder {
 
 
+    /**
+     * Base class for the IMAP component builders.
+     */
     public static class MailCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -396,6 +399,9 @@ public interface MailEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the IMAP component.
+     */
     public static class MailConsumerBuilder
             extends
                 MailCommonBuilder<MailConsumerBuilder>
@@ -1164,6 +1170,9 @@ public interface MailEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the IMAP component.
+     */
     public static class MailProducerBuilder
             extends
                 MailCommonBuilder<MailProducerBuilder>
@@ -1241,9 +1250,17 @@ public interface MailEndpointBuilder {
             return (MailProducerBuilder) this;
         }
     }
+    /**
+     * To send or receive emails using imap/pop3 or smtp protocols. Creates a
+     * builder to build a consumer endpoint for the IMAP component.
+     */
     public default MailConsumerBuilder fromMail(String path) {
         return new MailConsumerBuilder(path);
     }
+    /**
+     * To send or receive emails using imap/pop3 or smtp protocols. Creates a
+     * builder to build a producer endpoint for the IMAP component.
+     */
     public default MailProducerBuilder toMail(String path) {
         return new MailProducerBuilder(path);
     }

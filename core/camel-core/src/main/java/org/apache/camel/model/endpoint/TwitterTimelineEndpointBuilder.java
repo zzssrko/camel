@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface TwitterTimelineEndpointBuilder {
 
 
+    /**
+     * Base class for the Twitter Timeline component builders.
+     */
     public static class TwitterTimelineCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -186,6 +189,9 @@ public interface TwitterTimelineEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Twitter Timeline component.
+     */
     public static class TwitterTimelineConsumerBuilder
             extends
                 TwitterTimelineCommonBuilder<TwitterTimelineConsumerBuilder>
@@ -809,6 +815,9 @@ public interface TwitterTimelineEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Twitter Timeline component.
+     */
     public static class TwitterTimelineProducerBuilder
             extends
                 TwitterTimelineCommonBuilder<TwitterTimelineProducerBuilder>
@@ -819,17 +828,35 @@ public interface TwitterTimelineEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.twitter.data.TimelineType</code> enum.
+     */
     public static enum TimelineType {
         PUBLIC, HOME, USER, MENTIONS, RETWEETSOFME, UNKNOWN;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.twitter.data.EndpointType</code> enum.
+     */
     public static enum EndpointType {
         POLLING, DIRECT, EVENT;
     }
+    /**
+     * The Twitter Timeline component consumes twitter timeline or update the
+     * status of specific user. Creates a builder to build a consumer endpoint
+     * for the Twitter Timeline component.
+     */
     public default TwitterTimelineConsumerBuilder fromTwitterTimeline(
             String path) {
         return new TwitterTimelineConsumerBuilder(path);
     }
+    /**
+     * The Twitter Timeline component consumes twitter timeline or update the
+     * status of specific user. Creates a builder to build a producer endpoint
+     * for the Twitter Timeline component.
+     */
     public default TwitterTimelineProducerBuilder toTwitterTimeline(String path) {
         return new TwitterTimelineProducerBuilder(path);
     }

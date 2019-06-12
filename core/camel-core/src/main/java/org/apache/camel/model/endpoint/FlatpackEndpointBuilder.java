@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface FlatpackEndpointBuilder {
 
 
+    /**
+     * Base class for the Flatpack component builders.
+     */
     public static class FlatpackCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -206,6 +209,9 @@ public interface FlatpackEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Flatpack component.
+     */
     public static class FlatpackConsumerBuilder
             extends
                 FlatpackCommonBuilder<FlatpackConsumerBuilder>
@@ -586,6 +592,9 @@ public interface FlatpackEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Flatpack component.
+     */
     public static class FlatpackProducerBuilder
             extends
                 FlatpackCommonBuilder<FlatpackProducerBuilder>
@@ -596,12 +605,26 @@ public interface FlatpackEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.flatpack.FlatpackType</code> enum.
+     */
     public static enum FlatpackType {
         fixed, delim;
     }
+    /**
+     * The flatpack component supports fixed width and delimited file parsing
+     * via the FlatPack library. Creates a builder to build a consumer endpoint
+     * for the Flatpack component.
+     */
     public default FlatpackConsumerBuilder fromFlatpack(String path) {
         return new FlatpackConsumerBuilder(path);
     }
+    /**
+     * The flatpack component supports fixed width and delimited file parsing
+     * via the FlatPack library. Creates a builder to build a producer endpoint
+     * for the Flatpack component.
+     */
     public default FlatpackProducerBuilder toFlatpack(String path) {
         return new FlatpackProducerBuilder(path);
     }

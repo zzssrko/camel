@@ -38,6 +38,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface GoogleMailStreamEndpointBuilder {
 
 
+    /**
+     * Base class for the Google Mail Stream component builders.
+     */
     public static class GoogleMailStreamCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -180,6 +183,9 @@ public interface GoogleMailStreamEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Google Mail Stream component.
+     */
     public static class GoogleMailStreamConsumerBuilder
             extends
                 GoogleMailStreamCommonBuilder<GoogleMailStreamConsumerBuilder>
@@ -567,6 +573,11 @@ public interface GoogleMailStreamEndpointBuilder {
             return (GoogleMailStreamConsumerBuilder) this;
         }
     }
+    /**
+     * The google-mail component provides access to Google Mail. Creates a
+     * builder to build a consumer endpoint for the Google Mail Stream
+     * component.
+     */
     public default GoogleMailStreamConsumerBuilder fromGoogleMailStream(
             String path) {
         return new GoogleMailStreamConsumerBuilder(path);

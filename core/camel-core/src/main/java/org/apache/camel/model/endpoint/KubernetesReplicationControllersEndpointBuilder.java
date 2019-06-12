@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface KubernetesReplicationControllersEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes Replication Controller component builders.
+     */
     public static class KubernetesReplicationControllersCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -254,6 +257,10 @@ public interface KubernetesReplicationControllersEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Kubernetes Replication Controller
+     * component.
+     */
     public static class KubernetesReplicationControllersConsumerBuilder
             extends
                 KubernetesReplicationControllersCommonBuilder<KubernetesReplicationControllersConsumerBuilder>
@@ -388,6 +395,10 @@ public interface KubernetesReplicationControllersEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes Replication Controller
+     * component.
+     */
     public static class KubernetesReplicationControllersProducerBuilder
             extends
                 KubernetesReplicationControllersCommonBuilder<KubernetesReplicationControllersProducerBuilder>
@@ -406,10 +417,22 @@ public interface KubernetesReplicationControllersEndpointBuilder {
             return (KubernetesReplicationControllersProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Replication Controllers component provides a producer to
+     * execute kubernetes replication controller operations and a consumer to
+     * consume replication controller events. Creates a builder to build a
+     * consumer endpoint for the Kubernetes Replication Controller component.
+     */
     public default KubernetesReplicationControllersConsumerBuilder fromKubernetesReplicationControllers(
             String path) {
         return new KubernetesReplicationControllersConsumerBuilder(path);
     }
+    /**
+     * The Kubernetes Replication Controllers component provides a producer to
+     * execute kubernetes replication controller operations and a consumer to
+     * consume replication controller events. Creates a builder to build a
+     * producer endpoint for the Kubernetes Replication Controller component.
+     */
     public default KubernetesReplicationControllersProducerBuilder toKubernetesReplicationControllers(
             String path) {
         return new KubernetesReplicationControllersProducerBuilder(path);

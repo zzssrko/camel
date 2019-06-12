@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface PgEventEndpointBuilder {
 
 
+    /**
+     * Base class for the PostgresSQL Event component builders.
+     */
     public static class PgEventCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -150,6 +153,9 @@ public interface PgEventEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the PostgresSQL Event component.
+     */
     public static class PgEventConsumerBuilder
             extends
                 PgEventCommonBuilder<PgEventConsumerBuilder>
@@ -230,6 +236,9 @@ public interface PgEventEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the PostgresSQL Event component.
+     */
     public static class PgEventProducerBuilder
             extends
                 PgEventCommonBuilder<PgEventProducerBuilder>
@@ -239,9 +248,19 @@ public interface PgEventEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The pgevent component allows for producing/consuming PostgreSQL events
+     * related to the listen/notify commands. Creates a builder to build a
+     * consumer endpoint for the PostgresSQL Event component.
+     */
     public default PgEventConsumerBuilder fromPgEvent(String path) {
         return new PgEventConsumerBuilder(path);
     }
+    /**
+     * The pgevent component allows for producing/consuming PostgreSQL events
+     * related to the listen/notify commands. Creates a builder to build a
+     * producer endpoint for the PostgresSQL Event component.
+     */
     public default PgEventProducerBuilder toPgEvent(String path) {
         return new PgEventProducerBuilder(path);
     }

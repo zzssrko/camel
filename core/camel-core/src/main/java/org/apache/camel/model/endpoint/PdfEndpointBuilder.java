@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface PdfEndpointBuilder {
 
 
+    /**
+     * Base class for the PDF component builders.
+     */
     public static class PdfCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -229,6 +232,9 @@ public interface PdfEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the PDF component.
+     */
     public static class PdfProducerBuilder
             extends
                 PdfCommonBuilder<PdfProducerBuilder>
@@ -239,13 +245,26 @@ public interface PdfEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.pdf.PdfOperation</code>
+     * enum.
+     */
     public static enum PdfOperation {
         create, append, extractText;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.pdf.TextProcessingFactory</code> enum.
+     */
     public static enum TextProcessingFactory {
         autoFormatting, lineTermination;
     }
+    /**
+     * The pdf components provides the ability to create, modify or extract
+     * content from PDF documents. Creates a builder to build a producer
+     * endpoint for the PDF component.
+     */
     public default PdfProducerBuilder toPdf(String path) {
         return new PdfProducerBuilder(path);
     }

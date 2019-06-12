@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface QueueServiceEndpointBuilder {
 
 
+    /**
+     * Base class for the Azure Storage Queue Service component builders.
+     */
     public static class QueueServiceCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -118,6 +121,10 @@ public interface QueueServiceEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Azure Storage Queue Service
+     * component.
+     */
     public static class QueueServiceConsumerBuilder
             extends
                 QueueServiceCommonBuilder<QueueServiceConsumerBuilder>
@@ -200,6 +207,10 @@ public interface QueueServiceEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Azure Storage Queue Service
+     * component.
+     */
     public static class QueueServiceProducerBuilder
             extends
                 QueueServiceCommonBuilder<QueueServiceProducerBuilder>
@@ -272,12 +283,26 @@ public interface QueueServiceEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.azure.queue.QueueServiceOperations</code> enum.
+     */
     public static enum QueueServiceOperations {
         listQueues, createQueue, deleteQueue, addMessage, retrieveMessage, peekMessage, updateMessage, deleteMessage;
     }
+    /**
+     * The azure-queue component is used for storing and retrieving messages
+     * from Azure Storage Queue Service. Creates a builder to build a consumer
+     * endpoint for the Azure Storage Queue Service component.
+     */
     public default QueueServiceConsumerBuilder fromQueueService(String path) {
         return new QueueServiceConsumerBuilder(path);
     }
+    /**
+     * The azure-queue component is used for storing and retrieving messages
+     * from Azure Storage Queue Service. Creates a builder to build a producer
+     * endpoint for the Azure Storage Queue Service component.
+     */
     public default QueueServiceProducerBuilder toQueueService(String path) {
         return new QueueServiceProducerBuilder(path);
     }

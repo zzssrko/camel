@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface IAMEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS IAM component builders.
+     */
     public static class IAMCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -89,6 +92,9 @@ public interface IAMEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS IAM component.
+     */
     public static class IAMProducerBuilder
             extends
                 IAMCommonBuilder<IAMProducerBuilder>
@@ -172,9 +178,17 @@ public interface IAMEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.iam.IAMOperations</code> enum.
+     */
     public static enum IAMOperations {
         listAccessKeys, createUser, deleteUser, getUser, listUsers, createAccessKey, deleteAccessKey, updateAccessKey, createGroup, deleteGroup, listGroups, addUserToGroup, removeUserFromGroup;
     }
+    /**
+     * The aws-iam is used for managing Amazon IAM Creates a builder to build a
+     * producer endpoint for the AWS IAM component.
+     */
     public default IAMProducerBuilder toIAM(String path) {
         return new IAMProducerBuilder(path);
     }

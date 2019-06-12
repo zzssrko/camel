@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface NsqEndpointBuilder {
 
 
+    /**
+     * Base class for the NSQ component builders.
+     */
     public static class NsqCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -134,6 +137,9 @@ public interface NsqEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the NSQ component.
+     */
     public static class NsqConsumerBuilder
             extends
                 NsqCommonBuilder<NsqConsumerBuilder>
@@ -315,6 +321,9 @@ public interface NsqEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the NSQ component.
+     */
     public static class NsqProducerBuilder
             extends
                 NsqCommonBuilder<NsqProducerBuilder>
@@ -339,9 +348,17 @@ public interface NsqEndpointBuilder {
             return (NsqProducerBuilder) this;
         }
     }
+    /**
+     * Represents a nsq endpoint. Creates a builder to build a consumer endpoint
+     * for the NSQ component.
+     */
     public default NsqConsumerBuilder fromNsq(String path) {
         return new NsqConsumerBuilder(path);
     }
+    /**
+     * Represents a nsq endpoint. Creates a builder to build a producer endpoint
+     * for the NSQ component.
+     */
     public default NsqProducerBuilder toNsq(String path) {
         return new NsqProducerBuilder(path);
     }

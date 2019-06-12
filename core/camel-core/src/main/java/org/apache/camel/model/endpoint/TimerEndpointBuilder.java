@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface TimerEndpointBuilder {
 
 
+    /**
+     * Base class for the Timer component builders.
+     */
     public static class TimerCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -231,6 +234,9 @@ public interface TimerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Timer component.
+     */
     public static class TimerConsumerBuilder
             extends
                 TimerCommonBuilder<TimerConsumerBuilder>
@@ -309,6 +315,11 @@ public interface TimerEndpointBuilder {
             return (TimerConsumerBuilder) this;
         }
     }
+    /**
+     * The timer component is used for generating message exchanges when a timer
+     * fires. Creates a builder to build a consumer endpoint for the Timer
+     * component.
+     */
     public default TimerConsumerBuilder fromTimer(String path) {
         return new TimerConsumerBuilder(path);
     }

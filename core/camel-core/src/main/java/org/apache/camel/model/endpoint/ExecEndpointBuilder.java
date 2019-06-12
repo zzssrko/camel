@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface ExecEndpointBuilder {
 
 
+    /**
+     * Base class for the Exec component builders.
+     */
     public static class ExecCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -191,6 +194,9 @@ public interface ExecEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Exec component.
+     */
     public static class ExecProducerBuilder
             extends
                 ExecCommonBuilder<ExecProducerBuilder>
@@ -200,6 +206,10 @@ public interface ExecEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The exec component can be used to execute OS system commands. Creates a
+     * builder to build a producer endpoint for the Exec component.
+     */
     public default ExecProducerBuilder toExec(String path) {
         return new ExecProducerBuilder(path);
     }

@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface OptaPlannerEndpointBuilder {
 
 
+    /**
+     * Base class for the OptaPlanner component builders.
+     */
     public static class OptaPlannerCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -92,6 +95,9 @@ public interface OptaPlannerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the OptaPlanner component.
+     */
     public static class OptaPlannerConsumerBuilder
             extends
                 OptaPlannerCommonBuilder<OptaPlannerConsumerBuilder>
@@ -173,6 +179,9 @@ public interface OptaPlannerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the OptaPlanner component.
+     */
     public static class OptaPlannerProducerBuilder
             extends
                 OptaPlannerCommonBuilder<OptaPlannerProducerBuilder>
@@ -214,9 +223,19 @@ public interface OptaPlannerEndpointBuilder {
             return (OptaPlannerProducerBuilder) this;
         }
     }
+    /**
+     * Solves the planning problem contained in a message with OptaPlanner.
+     * Creates a builder to build a consumer endpoint for the OptaPlanner
+     * component.
+     */
     public default OptaPlannerConsumerBuilder fromOptaPlanner(String path) {
         return new OptaPlannerConsumerBuilder(path);
     }
+    /**
+     * Solves the planning problem contained in a message with OptaPlanner.
+     * Creates a builder to build a producer endpoint for the OptaPlanner
+     * component.
+     */
     public default OptaPlannerProducerBuilder toOptaPlanner(String path) {
         return new OptaPlannerProducerBuilder(path);
     }

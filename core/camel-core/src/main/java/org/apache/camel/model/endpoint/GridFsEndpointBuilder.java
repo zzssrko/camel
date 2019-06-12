@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface GridFsEndpointBuilder {
 
 
+    /**
+     * Base class for the MongoDB GridFS component builders.
+     */
     public static class GridFsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -167,6 +170,9 @@ public interface GridFsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the MongoDB GridFS component.
+     */
     public static class GridFsConsumerBuilder
             extends
                 GridFsCommonBuilder<GridFsConsumerBuilder>
@@ -337,6 +343,9 @@ public interface GridFsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the MongoDB GridFS component.
+     */
     public static class GridFsProducerBuilder
             extends
                 GridFsCommonBuilder<GridFsProducerBuilder>
@@ -355,12 +364,25 @@ public interface GridFsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.mongodb.gridfs.QueryStrategy</code>
+     * enum.
+     */
     public static enum QueryStrategy {
         TimeStamp, PersistentTimestamp, FileAttribute, TimeStampAndFileAttribute, PersistentTimestampAndFileAttribute;
     }
+    /**
+     * Component for working with MongoDB GridFS. Creates a builder to build a
+     * consumer endpoint for the MongoDB GridFS component.
+     */
     public default GridFsConsumerBuilder fromGridFs(String path) {
         return new GridFsConsumerBuilder(path);
     }
+    /**
+     * Component for working with MongoDB GridFS. Creates a builder to build a
+     * producer endpoint for the MongoDB GridFS component.
+     */
     public default GridFsProducerBuilder toGridFs(String path) {
         return new GridFsProducerBuilder(path);
     }

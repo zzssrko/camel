@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface GangliaEndpointBuilder {
 
 
+    /**
+     * Base class for the Ganglia component builders.
+     */
     public static class GangliaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -264,6 +267,9 @@ public interface GangliaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Ganglia component.
+     */
     public static class GangliaProducerBuilder
             extends
                 GangliaCommonBuilder<GangliaProducerBuilder>
@@ -274,17 +280,35 @@ public interface GangliaEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>info.ganglia.gmetric4j.gmetric.GMetric$UDPAddressingMode</code>
+     * enum.
+     */
     public static enum UDPAddressingMode {
         MULTICAST, UNICAST;
     }
 
+    /**
+     * Proxy enum for <code>info.ganglia.gmetric4j.gmetric.GMetricSlope</code>
+     * enum.
+     */
     public static enum GMetricSlope {
         ZERO, POSITIVE, NEGATIVE, BOTH;
     }
 
+    /**
+     * Proxy enum for <code>info.ganglia.gmetric4j.gmetric.GMetricType</code>
+     * enum.
+     */
     public static enum GMetricType {
         STRING, INT8, UINT8, INT16, UINT16, INT32, UINT32, FLOAT, DOUBLE;
     }
+    /**
+     * The ganglia component is used for sending metrics to the Ganglia
+     * monitoring system. Creates a builder to build a producer endpoint for the
+     * Ganglia component.
+     */
     public default GangliaProducerBuilder toGanglia(String path) {
         return new GangliaProducerBuilder(path);
     }

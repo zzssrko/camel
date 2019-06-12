@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface SedaEndpointBuilder {
 
 
+    /**
+     * Base class for the SEDA component builders.
+     */
     public static class SedaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -124,6 +127,9 @@ public interface SedaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the SEDA component.
+     */
     public static class SedaConsumerBuilder
             extends
                 SedaCommonBuilder<SedaConsumerBuilder>
@@ -304,6 +310,9 @@ public interface SedaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the SEDA component.
+     */
     public static class SedaProducerBuilder
             extends
                 SedaCommonBuilder<SedaProducerBuilder>
@@ -445,9 +454,19 @@ public interface SedaEndpointBuilder {
             return (SedaProducerBuilder) this;
         }
     }
+    /**
+     * The seda component provides asynchronous call to another endpoint from
+     * any CamelContext in the same JVM. Creates a builder to build a consumer
+     * endpoint for the SEDA component.
+     */
     public default SedaConsumerBuilder fromSeda(String path) {
         return new SedaConsumerBuilder(path);
     }
+    /**
+     * The seda component provides asynchronous call to another endpoint from
+     * any CamelContext in the same JVM. Creates a builder to build a producer
+     * endpoint for the SEDA component.
+     */
     public default SedaProducerBuilder toSeda(String path) {
         return new SedaProducerBuilder(path);
     }

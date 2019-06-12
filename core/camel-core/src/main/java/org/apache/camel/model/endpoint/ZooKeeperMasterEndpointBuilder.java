@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface ZooKeeperMasterEndpointBuilder {
 
 
+    /**
+     * Base class for the ZooKeeper Master component builders.
+     */
     public static class ZooKeeperMasterCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -93,6 +96,9 @@ public interface ZooKeeperMasterEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the ZooKeeper Master component.
+     */
     public static class ZooKeeperMasterConsumerBuilder
             extends
                 ZooKeeperMasterCommonBuilder<ZooKeeperMasterConsumerBuilder>
@@ -174,6 +180,11 @@ public interface ZooKeeperMasterEndpointBuilder {
             return (ZooKeeperMasterConsumerBuilder) this;
         }
     }
+    /**
+     * Represents an endpoint which only becomes active when it obtains the
+     * master lock Creates a builder to build a consumer endpoint for the
+     * ZooKeeper Master component.
+     */
     public default ZooKeeperMasterConsumerBuilder fromZooKeeperMaster(
             String path) {
         return new ZooKeeperMasterConsumerBuilder(path);

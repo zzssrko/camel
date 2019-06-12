@@ -40,6 +40,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface GoogleCalendarStreamEndpointBuilder {
 
 
+    /**
+     * Base class for the Google Calendar Stream component builders.
+     */
     public static class GoogleCalendarStreamCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -221,6 +224,9 @@ public interface GoogleCalendarStreamEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Google Calendar Stream component.
+     */
     public static class GoogleCalendarStreamConsumerBuilder
             extends
                 GoogleCalendarStreamCommonBuilder<GoogleCalendarStreamConsumerBuilder>
@@ -611,6 +617,11 @@ public interface GoogleCalendarStreamEndpointBuilder {
             return (GoogleCalendarStreamConsumerBuilder) this;
         }
     }
+    /**
+     * The google-calendar component provides access to Google Calendar in a
+     * streaming mode. Creates a builder to build a consumer endpoint for the
+     * Google Calendar Stream component.
+     */
     public default GoogleCalendarStreamConsumerBuilder fromGoogleCalendarStream(
             String path) {
         return new GoogleCalendarStreamConsumerBuilder(path);

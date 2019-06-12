@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface JiraEndpointBuilder {
 
 
+    /**
+     * Base class for the Jira component builders.
+     */
     public static class JiraCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -176,6 +179,9 @@ public interface JiraEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Jira component.
+     */
     public static class JiraConsumerBuilder
             extends
                 JiraCommonBuilder<JiraConsumerBuilder>
@@ -282,6 +288,9 @@ public interface JiraEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Jira component.
+     */
     public static class JiraProducerBuilder
             extends
                 JiraCommonBuilder<JiraProducerBuilder>
@@ -292,12 +301,24 @@ public interface JiraEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jira.JiraType</code>
+     * enum.
+     */
     public static enum JiraType {
         ADDCOMMENT, ADDISSUE, ATTACH, DELETEISSUE, NEWISSUES, NEWCOMMENTS, UPDATEISSUE, TRANSITIONISSUE, WATCHERS;
     }
+    /**
+     * The jira component interacts with the JIRA issue tracker. Creates a
+     * builder to build a consumer endpoint for the Jira component.
+     */
     public default JiraConsumerBuilder fromJira(String path) {
         return new JiraConsumerBuilder(path);
     }
+    /**
+     * The jira component interacts with the JIRA issue tracker. Creates a
+     * builder to build a producer endpoint for the Jira component.
+     */
     public default JiraProducerBuilder toJira(String path) {
         return new JiraProducerBuilder(path);
     }

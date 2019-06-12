@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface SoroushBotEndpointBuilder {
 
 
+    /**
+     * Base class for the Soroush component builders.
+     */
     public static class SoroushBotCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -353,6 +356,9 @@ public interface SoroushBotEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Soroush component.
+     */
     public static class SoroushBotConsumerBuilder
             extends
                 SoroushBotCommonBuilder<SoroushBotConsumerBuilder>
@@ -490,6 +496,9 @@ public interface SoroushBotEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Soroush component.
+     */
     public static class SoroushBotProducerBuilder
             extends
                 SoroushBotCommonBuilder<SoroushBotProducerBuilder>
@@ -500,12 +509,24 @@ public interface SoroushBotEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.soroushbot.models.Endpoint</code> enum.
+     */
     public static enum Endpoint {
         sendMessage, getMessage, uploadFile, downloadFile;
     }
+    /**
+     * To integrate with the Soroush chat bot. Creates a builder to build a
+     * consumer endpoint for the Soroush component.
+     */
     public default SoroushBotConsumerBuilder fromSoroushBot(String path) {
         return new SoroushBotConsumerBuilder(path);
     }
+    /**
+     * To integrate with the Soroush chat bot. Creates a builder to build a
+     * producer endpoint for the Soroush component.
+     */
     public default SoroushBotProducerBuilder toSoroushBot(String path) {
         return new SoroushBotProducerBuilder(path);
     }

@@ -44,6 +44,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface FtpEndpointBuilder {
 
 
+    /**
+     * Base class for the FTP component builders.
+     */
     public static class FtpCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -649,6 +652,9 @@ public interface FtpEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the FTP component.
+     */
     public static class FtpConsumerBuilder
             extends
                 FtpCommonBuilder<FtpConsumerBuilder>
@@ -2082,6 +2088,9 @@ public interface FtpEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the FTP component.
+     */
     public static class FtpProducerBuilder
             extends
                 FtpCommonBuilder<FtpProducerBuilder>
@@ -2430,16 +2439,34 @@ public interface FtpEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.file.remote.RemoteFileConfiguration$PathSeparator</code> enum.
+     */
     public static enum PathSeparator {
         UNIX, Windows, Auto;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.file.GenericFileExist</code> enum.
+     */
     public static enum GenericFileExist {
         Override, Append, Fail, Ignore, Move, TryRename;
     }
+    /**
+     * The ftp component is used for uploading or downloading files from FTP
+     * servers. Creates a builder to build a consumer endpoint for the FTP
+     * component.
+     */
     public default FtpConsumerBuilder fromFtp(String path) {
         return new FtpConsumerBuilder(path);
     }
+    /**
+     * The ftp component is used for uploading or downloading files from FTP
+     * servers. Creates a builder to build a producer endpoint for the FTP
+     * component.
+     */
     public default FtpProducerBuilder toFtp(String path) {
         return new FtpProducerBuilder(path);
     }

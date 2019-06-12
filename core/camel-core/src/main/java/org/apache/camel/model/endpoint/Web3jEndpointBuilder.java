@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface Web3jEndpointBuilder {
 
 
+    /**
+     * Base class for the Web3j Ethereum Blockchain component builders.
+     */
     public static class Web3jCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -260,6 +263,10 @@ public interface Web3jEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Web3j Ethereum Blockchain
+     * component.
+     */
     public static class Web3jConsumerBuilder
             extends
                 Web3jCommonBuilder<Web3jConsumerBuilder>
@@ -339,6 +346,10 @@ public interface Web3jEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Web3j Ethereum Blockchain
+     * component.
+     */
     public static class Web3jProducerBuilder
             extends
                 Web3jCommonBuilder<Web3jProducerBuilder>
@@ -601,9 +612,19 @@ public interface Web3jEndpointBuilder {
             return (Web3jProducerBuilder) this;
         }
     }
+    /**
+     * The web3j component uses the Web3j client API and allows you to add/read
+     * nodes to/from a web3j compliant content repositories. Creates a builder
+     * to build a consumer endpoint for the Web3j Ethereum Blockchain component.
+     */
     public default Web3jConsumerBuilder fromWeb3j(String path) {
         return new Web3jConsumerBuilder(path);
     }
+    /**
+     * The web3j component uses the Web3j client API and allows you to add/read
+     * nodes to/from a web3j compliant content repositories. Creates a builder
+     * to build a producer endpoint for the Web3j Ethereum Blockchain component.
+     */
     public default Web3jProducerBuilder toWeb3j(String path) {
         return new Web3jProducerBuilder(path);
     }

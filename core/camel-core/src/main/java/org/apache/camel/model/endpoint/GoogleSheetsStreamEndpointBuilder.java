@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface GoogleSheetsStreamEndpointBuilder {
 
 
+    /**
+     * Base class for the Google Sheets Stream component builders.
+     */
     public static class GoogleSheetsStreamCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -224,6 +227,9 @@ public interface GoogleSheetsStreamEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Google Sheets Stream component.
+     */
     public static class GoogleSheetsStreamConsumerBuilder
             extends
                 GoogleSheetsStreamCommonBuilder<GoogleSheetsStreamConsumerBuilder>
@@ -613,6 +619,11 @@ public interface GoogleSheetsStreamEndpointBuilder {
             return (GoogleSheetsStreamConsumerBuilder) this;
         }
     }
+    /**
+     * The google-sheets component provides access to Google Sheets. Creates a
+     * builder to build a consumer endpoint for the Google Sheets Stream
+     * component.
+     */
     public default GoogleSheetsStreamConsumerBuilder fromGoogleSheetsStream(
             String path) {
         return new GoogleSheetsStreamConsumerBuilder(path);

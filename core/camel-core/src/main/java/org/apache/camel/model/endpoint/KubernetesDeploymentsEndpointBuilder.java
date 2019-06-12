@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface KubernetesDeploymentsEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes Deployments component builders.
+     */
     public static class KubernetesDeploymentsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -253,6 +256,9 @@ public interface KubernetesDeploymentsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Kubernetes Deployments component.
+     */
     public static class KubernetesDeploymentsConsumerBuilder
             extends
                 KubernetesDeploymentsCommonBuilder<KubernetesDeploymentsConsumerBuilder>
@@ -382,6 +388,9 @@ public interface KubernetesDeploymentsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes Deployments component.
+     */
     public static class KubernetesDeploymentsProducerBuilder
             extends
                 KubernetesDeploymentsCommonBuilder<KubernetesDeploymentsProducerBuilder>
@@ -399,10 +408,20 @@ public interface KubernetesDeploymentsEndpointBuilder {
             return (KubernetesDeploymentsProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Nodes component provides a producer to execute kubernetes
+     * node operations and a consumer to consume node events. Creates a builder
+     * to build a consumer endpoint for the Kubernetes Deployments component.
+     */
     public default KubernetesDeploymentsConsumerBuilder fromKubernetesDeployments(
             String path) {
         return new KubernetesDeploymentsConsumerBuilder(path);
     }
+    /**
+     * The Kubernetes Nodes component provides a producer to execute kubernetes
+     * node operations and a consumer to consume node events. Creates a builder
+     * to build a producer endpoint for the Kubernetes Deployments component.
+     */
     public default KubernetesDeploymentsProducerBuilder toKubernetesDeployments(
             String path) {
         return new KubernetesDeploymentsProducerBuilder(path);

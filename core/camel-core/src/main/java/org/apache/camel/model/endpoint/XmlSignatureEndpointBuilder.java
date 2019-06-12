@@ -32,6 +32,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface XmlSignatureEndpointBuilder {
 
 
+    /**
+     * Base class for the XML Security component builders.
+     */
     public static class XmlSignatureCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -782,6 +785,9 @@ public interface XmlSignatureEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the XML Security component.
+     */
     public static class XmlSignatureProducerBuilder
             extends
                 XmlSignatureCommonBuilder<XmlSignatureProducerBuilder>
@@ -792,9 +798,18 @@ public interface XmlSignatureEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.xmlsecurity.XmlCommand</code> enum.
+     */
     public static enum XmlCommand {
         sign, verify;
     }
+    /**
+     * Used to sign and verify exchanges using the XML signature specification.
+     * Creates a builder to build a producer endpoint for the XML Security
+     * component.
+     */
     public default XmlSignatureProducerBuilder toXmlSignature(String path) {
         return new XmlSignatureProducerBuilder(path);
     }

@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface GoogleCalendarEndpointBuilder {
 
 
+    /**
+     * Base class for the Google Calendar component builders.
+     */
     public static class GoogleCalendarCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -188,6 +191,9 @@ public interface GoogleCalendarEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Google Calendar component.
+     */
     public static class GoogleCalendarConsumerBuilder
             extends
                 GoogleCalendarCommonBuilder<GoogleCalendarConsumerBuilder>
@@ -270,6 +276,9 @@ public interface GoogleCalendarEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Google Calendar component.
+     */
     public static class GoogleCalendarProducerBuilder
             extends
                 GoogleCalendarCommonBuilder<GoogleCalendarProducerBuilder>
@@ -280,12 +289,24 @@ public interface GoogleCalendarEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.google.calendar.internal.GoogleCalendarApiName</code> enum.
+     */
     public static enum GoogleCalendarApiName {
         ACL, LIST, CALENDARS, CHANNELS, COLORS, FREEBUSY, EVENTS, SETTINGS;
     }
+    /**
+     * The google-calendar component provides access to Google Calendar. Creates
+     * a builder to build a consumer endpoint for the Google Calendar component.
+     */
     public default GoogleCalendarConsumerBuilder fromGoogleCalendar(String path) {
         return new GoogleCalendarConsumerBuilder(path);
     }
+    /**
+     * The google-calendar component provides access to Google Calendar. Creates
+     * a builder to build a producer endpoint for the Google Calendar component.
+     */
     public default GoogleCalendarProducerBuilder toGoogleCalendar(String path) {
         return new GoogleCalendarProducerBuilder(path);
     }

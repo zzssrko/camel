@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface ScpEndpointBuilder {
 
 
+    /**
+     * Base class for the SCP component builders.
+     */
     public static class ScpCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -352,6 +355,9 @@ public interface ScpEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the SCP component.
+     */
     public static class ScpProducerBuilder
             extends
                 ScpCommonBuilder<ScpProducerBuilder>
@@ -486,6 +492,10 @@ public interface ScpEndpointBuilder {
             return (ScpProducerBuilder) this;
         }
     }
+    /**
+     * To copy files using the secure copy protocol (SCP). Creates a builder to
+     * build a producer endpoint for the SCP component.
+     */
     public default ScpProducerBuilder toScp(String path) {
         return new ScpProducerBuilder(path);
     }

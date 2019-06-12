@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface KMSEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS KMS component builders.
+     */
     public static class KMSCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -89,6 +92,9 @@ public interface KMSEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS KMS component.
+     */
     public static class KMSProducerBuilder
             extends
                 KMSCommonBuilder<KMSProducerBuilder>
@@ -171,9 +177,17 @@ public interface KMSEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.kms.KMSOperations</code> enum.
+     */
     public static enum KMSOperations {
         listKeys, createKey, disableKey, scheduleKeyDeletion, describeKey, enableKey;
     }
+    /**
+     * The aws-kms is used for managing Amazon KMS Creates a builder to build a
+     * producer endpoint for the AWS KMS component.
+     */
     public default KMSProducerBuilder toKMS(String path) {
         return new KMSProducerBuilder(path);
     }

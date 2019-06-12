@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface GoraEndpointBuilder {
 
 
+    /**
+     * Base class for the Gora component builders.
+     */
     public static class GoraCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -124,6 +127,9 @@ public interface GoraEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Gora component.
+     */
     public static class GoraConsumerBuilder
             extends
                 GoraCommonBuilder<GoraConsumerBuilder>
@@ -385,6 +391,9 @@ public interface GoraEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Gora component.
+     */
     public static class GoraProducerBuilder
             extends
                 GoraCommonBuilder<GoraProducerBuilder>
@@ -411,9 +420,19 @@ public interface GoraEndpointBuilder {
             return (GoraProducerBuilder) this;
         }
     }
+    /**
+     * The gora component allows you to work with NoSQL databases using the
+     * Apache Gora framework. Creates a builder to build a consumer endpoint for
+     * the Gora component.
+     */
     public default GoraConsumerBuilder fromGora(String path) {
         return new GoraConsumerBuilder(path);
     }
+    /**
+     * The gora component allows you to work with NoSQL databases using the
+     * Apache Gora framework. Creates a builder to build a producer endpoint for
+     * the Gora component.
+     */
     public default GoraProducerBuilder toGora(String path) {
         return new GoraProducerBuilder(path);
     }

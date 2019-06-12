@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface StubEndpointBuilder {
 
 
+    /**
+     * Base class for the Stub component builders.
+     */
     public static class StubCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -124,6 +127,9 @@ public interface StubEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Stub component.
+     */
     public static class StubConsumerBuilder
             extends
                 StubCommonBuilder<StubConsumerBuilder>
@@ -304,6 +310,9 @@ public interface StubEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Stub component.
+     */
     public static class StubProducerBuilder
             extends
                 StubCommonBuilder<StubProducerBuilder>
@@ -445,9 +454,19 @@ public interface StubEndpointBuilder {
             return (StubProducerBuilder) this;
         }
     }
+    /**
+     * The stub component provides a simple way to stub out any physical
+     * endpoints while in development or testing. Creates a builder to build a
+     * consumer endpoint for the Stub component.
+     */
     public default StubConsumerBuilder fromStub(String path) {
         return new StubConsumerBuilder(path);
     }
+    /**
+     * The stub component provides a simple way to stub out any physical
+     * endpoints while in development or testing. Creates a builder to build a
+     * producer endpoint for the Stub component.
+     */
     public default StubProducerBuilder toStub(String path) {
         return new StubProducerBuilder(path);
     }

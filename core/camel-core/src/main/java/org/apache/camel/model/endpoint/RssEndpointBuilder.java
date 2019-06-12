@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface RssEndpointBuilder {
 
 
+    /**
+     * Base class for the RSS component builders.
+     */
     public static class RssCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -212,6 +215,9 @@ public interface RssEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the RSS component.
+     */
     public static class RssConsumerBuilder
             extends
                 RssCommonBuilder<RssConsumerBuilder>
@@ -585,6 +591,10 @@ public interface RssEndpointBuilder {
             return (RssConsumerBuilder) this;
         }
     }
+    /**
+     * The rss component is used for consuming RSS feeds. Creates a builder to
+     * build a consumer endpoint for the RSS component.
+     */
     public default RssConsumerBuilder fromRss(String path) {
         return new RssConsumerBuilder(path);
     }

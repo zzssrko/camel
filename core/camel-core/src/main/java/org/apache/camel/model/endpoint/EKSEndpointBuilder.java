@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface EKSEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS EKS component builders.
+     */
     public static class EKSCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -89,6 +92,9 @@ public interface EKSEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS EKS component.
+     */
     public static class EKSProducerBuilder
             extends
                 EKSCommonBuilder<EKSProducerBuilder>
@@ -172,9 +178,17 @@ public interface EKSEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.eks.EKSOperations</code> enum.
+     */
     public static enum EKSOperations {
         listClusters, describeCluster, createCluster, deleteCluster;
     }
+    /**
+     * The aws-kms is used for managing Amazon EKS Creates a builder to build a
+     * producer endpoint for the AWS EKS component.
+     */
     public default EKSProducerBuilder toEKS(String path) {
         return new EKSProducerBuilder(path);
     }

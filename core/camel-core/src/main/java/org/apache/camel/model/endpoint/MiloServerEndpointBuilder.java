@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface MiloServerEndpointBuilder {
 
 
+    /**
+     * Base class for the OPC UA Server component builders.
+     */
     public static class MiloServerCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -83,6 +86,9 @@ public interface MiloServerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the OPC UA Server component.
+     */
     public static class MiloServerConsumerBuilder
             extends
                 MiloServerCommonBuilder<MiloServerConsumerBuilder>
@@ -164,6 +170,9 @@ public interface MiloServerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the OPC UA Server component.
+     */
     public static class MiloServerProducerBuilder
             extends
                 MiloServerCommonBuilder<MiloServerProducerBuilder>
@@ -173,9 +182,17 @@ public interface MiloServerEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Make telemetry data available as an OPC UA server Creates a builder to
+     * build a consumer endpoint for the OPC UA Server component.
+     */
     public default MiloServerConsumerBuilder fromMiloServer(String path) {
         return new MiloServerConsumerBuilder(path);
     }
+    /**
+     * Make telemetry data available as an OPC UA server Creates a builder to
+     * build a producer endpoint for the OPC UA Server component.
+     */
     public default MiloServerProducerBuilder toMiloServer(String path) {
         return new MiloServerProducerBuilder(path);
     }

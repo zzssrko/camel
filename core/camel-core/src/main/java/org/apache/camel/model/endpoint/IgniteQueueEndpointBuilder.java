@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface IgniteQueueEndpointBuilder {
 
 
+    /**
+     * Base class for the Ignite Queues component builders.
+     */
     public static class IgniteQueueCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -122,6 +125,9 @@ public interface IgniteQueueEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Ignite Queues component.
+     */
     public static class IgniteQueueProducerBuilder
             extends
                 IgniteQueueCommonBuilder<IgniteQueueProducerBuilder>
@@ -211,9 +217,19 @@ public interface IgniteQueueEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.ignite.queue.IgniteQueueOperation</code>
+     * enum.
+     */
     public static enum IgniteQueueOperation {
         CONTAINS, ADD, SIZE, REMOVE, ITERATOR, CLEAR, RETAIN_ALL, ARRAY, DRAIN, ELEMENT, PEEK, OFFER, POLL, TAKE, PUT;
     }
+    /**
+     * The Ignite Queue endpoint is one of camel-ignite endpoints which allows
+     * you to interact with Ignite Queue data structures. Creates a builder to
+     * build a producer endpoint for the Ignite Queues component.
+     */
     public default IgniteQueueProducerBuilder toIgniteQueue(String path) {
         return new IgniteQueueProducerBuilder(path);
     }

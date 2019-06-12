@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface LdapEndpointBuilder {
 
 
+    /**
+     * Base class for the LDAP component builders.
+     */
     public static class LdapCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -138,6 +141,9 @@ public interface LdapEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the LDAP component.
+     */
     public static class LdapProducerBuilder
             extends
                 LdapCommonBuilder<LdapProducerBuilder>
@@ -147,6 +153,11 @@ public interface LdapEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The ldap component allows you to perform searches in LDAP servers using
+     * filters as the message payload. Creates a builder to build a producer
+     * endpoint for the LDAP component.
+     */
     public default LdapProducerBuilder toLdap(String path) {
         return new LdapProducerBuilder(path);
     }

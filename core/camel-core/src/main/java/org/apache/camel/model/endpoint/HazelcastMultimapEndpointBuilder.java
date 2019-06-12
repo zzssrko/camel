@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface HazelcastMultimapEndpointBuilder {
 
 
+    /**
+     * Base class for the Hazelcast Multimap component builders.
+     */
     public static class HazelcastMultimapCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -240,6 +243,9 @@ public interface HazelcastMultimapEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Hazelcast Multimap component.
+     */
     public static class HazelcastMultimapConsumerBuilder
             extends
                 HazelcastMultimapCommonBuilder<HazelcastMultimapConsumerBuilder>
@@ -375,6 +381,9 @@ public interface HazelcastMultimapEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Hazelcast Multimap component.
+     */
     public static class HazelcastMultimapProducerBuilder
             extends
                 HazelcastMultimapCommonBuilder<HazelcastMultimapProducerBuilder>
@@ -385,17 +394,36 @@ public interface HazelcastMultimapEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+     * enum.
+     */
     public static enum HazelcastOperation {
         put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode</code> enum.
+     */
     public static enum HazelcastQueueConsumerMode {
         listen, poll;
     }
+    /**
+     * The hazelcast-multimap component is used to to access Hazelcast
+     * distributed multimap. Creates a builder to build a consumer endpoint for
+     * the Hazelcast Multimap component.
+     */
     public default HazelcastMultimapConsumerBuilder fromHazelcastMultimap(
             String path) {
         return new HazelcastMultimapConsumerBuilder(path);
     }
+    /**
+     * The hazelcast-multimap component is used to to access Hazelcast
+     * distributed multimap. Creates a builder to build a producer endpoint for
+     * the Hazelcast Multimap component.
+     */
     public default HazelcastMultimapProducerBuilder toHazelcastMultimap(
             String path) {
         return new HazelcastMultimapProducerBuilder(path);

@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface EventAdminEndpointBuilder {
 
 
+    /**
+     * Base class for the OSGi EventAdmin component builders.
+     */
     public static class EventAdminCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -102,6 +105,9 @@ public interface EventAdminEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the OSGi EventAdmin component.
+     */
     public static class EventAdminConsumerBuilder
             extends
                 EventAdminCommonBuilder<EventAdminConsumerBuilder>
@@ -183,6 +189,9 @@ public interface EventAdminEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the OSGi EventAdmin component.
+     */
     public static class EventAdminProducerBuilder
             extends
                 EventAdminCommonBuilder<EventAdminProducerBuilder>
@@ -192,9 +201,19 @@ public interface EventAdminEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The eventadmin component can be used in an OSGi environment to receive
+     * OSGi EventAdmin events and process them. Creates a builder to build a
+     * consumer endpoint for the OSGi EventAdmin component.
+     */
     public default EventAdminConsumerBuilder fromEventAdmin(String path) {
         return new EventAdminConsumerBuilder(path);
     }
+    /**
+     * The eventadmin component can be used in an OSGi environment to receive
+     * OSGi EventAdmin events and process them. Creates a builder to build a
+     * producer endpoint for the OSGi EventAdmin component.
+     */
     public default EventAdminProducerBuilder toEventAdmin(String path) {
         return new EventAdminProducerBuilder(path);
     }

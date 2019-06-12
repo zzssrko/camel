@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface HazelcastListEndpointBuilder {
 
 
+    /**
+     * Base class for the Hazelcast List component builders.
+     */
     public static class HazelcastListCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -239,6 +242,9 @@ public interface HazelcastListEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Hazelcast List component.
+     */
     public static class HazelcastListConsumerBuilder
             extends
                 HazelcastListCommonBuilder<HazelcastListConsumerBuilder>
@@ -372,6 +378,9 @@ public interface HazelcastListEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Hazelcast List component.
+     */
     public static class HazelcastListProducerBuilder
             extends
                 HazelcastListCommonBuilder<HazelcastListProducerBuilder>
@@ -382,16 +391,35 @@ public interface HazelcastListEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+     * enum.
+     */
     public static enum HazelcastOperation {
         put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode</code> enum.
+     */
     public static enum HazelcastQueueConsumerMode {
         listen, poll;
     }
+    /**
+     * The hazelcast-list component is used to access Hazelcast distributed
+     * list. Creates a builder to build a consumer endpoint for the Hazelcast
+     * List component.
+     */
     public default HazelcastListConsumerBuilder fromHazelcastList(String path) {
         return new HazelcastListConsumerBuilder(path);
     }
+    /**
+     * The hazelcast-list component is used to access Hazelcast distributed
+     * list. Creates a builder to build a producer endpoint for the Hazelcast
+     * List component.
+     */
     public default HazelcastListProducerBuilder toHazelcastList(String path) {
         return new HazelcastListProducerBuilder(path);
     }

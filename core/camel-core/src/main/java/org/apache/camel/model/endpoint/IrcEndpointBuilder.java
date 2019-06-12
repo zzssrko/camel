@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface IrcEndpointBuilder {
 
 
+    /**
+     * Base class for the IRC component builders.
+     */
     public static class IrcCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -409,6 +412,9 @@ public interface IrcEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the IRC component.
+     */
     public static class IrcConsumerBuilder
             extends
                 IrcCommonBuilder<IrcConsumerBuilder>
@@ -487,6 +493,9 @@ public interface IrcEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the IRC component.
+     */
     public static class IrcProducerBuilder
             extends
                 IrcCommonBuilder<IrcProducerBuilder>
@@ -496,9 +505,17 @@ public interface IrcEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The irc component implements an IRC (Internet Relay Chat) transport.
+     * Creates a builder to build a consumer endpoint for the IRC component.
+     */
     public default IrcConsumerBuilder fromIrc(String path) {
         return new IrcConsumerBuilder(path);
     }
+    /**
+     * The irc component implements an IRC (Internet Relay Chat) transport.
+     * Creates a builder to build a producer endpoint for the IRC component.
+     */
     public default IrcProducerBuilder toIrc(String path) {
         return new IrcProducerBuilder(path);
     }

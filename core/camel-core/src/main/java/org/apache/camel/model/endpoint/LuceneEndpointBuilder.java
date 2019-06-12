@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface LuceneEndpointBuilder {
 
 
+    /**
+     * Base class for the Lucene component builders.
+     */
     public static class LuceneCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -176,6 +179,9 @@ public interface LuceneEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Lucene component.
+     */
     public static class LuceneProducerBuilder
             extends
                 LuceneCommonBuilder<LuceneProducerBuilder>
@@ -186,9 +192,17 @@ public interface LuceneEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.lucene.LuceneOperation</code> enum.
+     */
     public static enum LuceneOperation {
         insert, query;
     }
+    /**
+     * To insert or query from Apache Lucene databases. Creates a builder to
+     * build a producer endpoint for the Lucene component.
+     */
     public default LuceneProducerBuilder toLucene(String path) {
         return new LuceneProducerBuilder(path);
     }

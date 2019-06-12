@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface EC2EndpointBuilder {
 
 
+    /**
+     * Base class for the AWS EC2 component builders.
+     */
     public static class EC2CommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -89,6 +92,9 @@ public interface EC2EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS EC2 component.
+     */
     public static class EC2ProducerBuilder
             extends
                 EC2CommonBuilder<EC2ProducerBuilder>
@@ -179,9 +185,17 @@ public interface EC2EndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.ec2.EC2Operations</code> enum.
+     */
     public static enum EC2Operations {
         createAndRunInstances, startInstances, stopInstances, terminateInstances, describeInstances, describeInstancesStatus, rebootInstances, monitorInstances, unmonitorInstances, createTags, deleteTags;
     }
+    /**
+     * The aws-ec2 is used for managing Amazon EC2 instances. Creates a builder
+     * to build a producer endpoint for the AWS EC2 component.
+     */
     public default EC2ProducerBuilder toEC2(String path) {
         return new EC2ProducerBuilder(path);
     }

@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface AtomixQueueEndpointBuilder {
 
 
+    /**
+     * Base class for the Atomix Queue component builders.
+     */
     public static class AtomixQueueCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -272,6 +275,9 @@ public interface AtomixQueueEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Atomix Queue component.
+     */
     public static class AtomixQueueConsumerBuilder
             extends
                 AtomixQueueCommonBuilder<AtomixQueueConsumerBuilder>
@@ -353,6 +359,9 @@ public interface AtomixQueueEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Atomix Queue component.
+     */
     public static class AtomixQueueProducerBuilder
             extends
                 AtomixQueueCommonBuilder<AtomixQueueProducerBuilder>
@@ -363,16 +372,33 @@ public interface AtomixQueueEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.atomix.client.queue.AtomixQueue$Action</code> enum.
+     */
     public static enum Action {
         ADD, OFFER, PEEK, POLL, CLEAR, CONTAINS, IS_EMPTY, REMOVE, SIZE;
     }
 
+    /**
+     * Proxy enum for <code>io.atomix.resource.ReadConsistency</code> enum.
+     */
     public static enum ReadConsistency {
         ATOMIC, ATOMIC_LEASE, SEQUENTIAL, LOCAL;
     }
+    /**
+     * The atomix-queue component is used to access Atomix's distributed queue.
+     * Creates a builder to build a consumer endpoint for the Atomix Queue
+     * component.
+     */
     public default AtomixQueueConsumerBuilder fromAtomixQueue(String path) {
         return new AtomixQueueConsumerBuilder(path);
     }
+    /**
+     * The atomix-queue component is used to access Atomix's distributed queue.
+     * Creates a builder to build a producer endpoint for the Atomix Queue
+     * component.
+     */
     public default AtomixQueueProducerBuilder toAtomixQueue(String path) {
         return new AtomixQueueProducerBuilder(path);
     }

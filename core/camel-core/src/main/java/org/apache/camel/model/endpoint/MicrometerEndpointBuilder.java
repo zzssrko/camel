@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface MicrometerEndpointBuilder {
 
 
+    /**
+     * Base class for the Micrometer component builders.
+     */
     public static class MicrometerCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -146,6 +149,9 @@ public interface MicrometerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Micrometer component.
+     */
     public static class MicrometerProducerBuilder
             extends
                 MicrometerCommonBuilder<MicrometerProducerBuilder>
@@ -156,9 +162,18 @@ public interface MicrometerEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>io.micrometer.core.instrument.Meter$Type</code>
+     * enum.
+     */
     public static enum Type {
         COUNTER, GAUGE, LONG_TASK_TIMER, TIMER, DISTRIBUTION_SUMMARY, OTHER;
     }
+    /**
+     * To collect various metrics directly from Camel routes using the
+     * Micrometer library. Creates a builder to build a producer endpoint for
+     * the Micrometer component.
+     */
     public default MicrometerProducerBuilder toMicrometer(String path) {
         return new MicrometerProducerBuilder(path);
     }

@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface VelocityEndpointBuilder {
 
 
+    /**
+     * Base class for the Velocity component builders.
+     */
     public static class VelocityCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -136,6 +139,9 @@ public interface VelocityEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Velocity component.
+     */
     public static class VelocityProducerBuilder
             extends
                 VelocityCommonBuilder<VelocityProducerBuilder>
@@ -145,6 +151,10 @@ public interface VelocityEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Transforms the message using a Velocity template. Creates a builder to
+     * build a producer endpoint for the Velocity component.
+     */
     public default VelocityProducerBuilder toVelocity(String path) {
         return new VelocityProducerBuilder(path);
     }

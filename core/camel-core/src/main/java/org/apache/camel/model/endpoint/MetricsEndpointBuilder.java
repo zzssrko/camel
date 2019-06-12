@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface MetricsEndpointBuilder {
 
 
+    /**
+     * Base class for the Metrics component builders.
+     */
     public static class MetricsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -196,6 +199,9 @@ public interface MetricsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Metrics component.
+     */
     public static class MetricsProducerBuilder
             extends
                 MetricsCommonBuilder<MetricsProducerBuilder>
@@ -206,13 +212,26 @@ public interface MetricsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.metrics.MetricsType</code> enum.
+     */
     public static enum MetricsType {
         gauge, counter, histogram, meter, timer;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.metrics.MetricsTimerAction</code> enum.
+     */
     public static enum MetricsTimerAction {
         start, stop;
     }
+    /**
+     * To collect various metrics directly from Camel routes using the
+     * DropWizard metrics library. Creates a builder to build a producer
+     * endpoint for the Metrics component.
+     */
     public default MetricsProducerBuilder toMetrics(String path) {
         return new MetricsProducerBuilder(path);
     }

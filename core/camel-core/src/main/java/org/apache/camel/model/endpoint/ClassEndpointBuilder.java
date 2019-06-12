@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface ClassEndpointBuilder {
 
 
+    /**
+     * Base class for the Class component builders.
+     */
     public static class ClassCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -129,6 +132,9 @@ public interface ClassEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Class component.
+     */
     public static class ClassProducerBuilder
             extends
                 ClassCommonBuilder<ClassProducerBuilder>
@@ -138,6 +144,10 @@ public interface ClassEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The class component is for invoking Java classes (Java beans) from Camel.
+     * Creates a builder to build a producer endpoint for the Class component.
+     */
     public default ClassProducerBuilder toClass(String path) {
         return new ClassProducerBuilder(path);
     }

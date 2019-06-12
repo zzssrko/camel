@@ -33,6 +33,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface HttpEndpointBuilder {
 
 
+    /**
+     * Base class for the HTTP4 component builders.
+     */
     public static class HttpCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -468,6 +471,9 @@ public interface HttpEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the HTTP4 component.
+     */
     public static class HttpProducerBuilder
             extends
                 HttpCommonBuilder<HttpProducerBuilder>
@@ -916,9 +922,17 @@ public interface HttpEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.http.common.HttpMethods</code>
+     * enum.
+     */
     public static enum HttpMethods {
         GET, POST, PUT, DELETE, HEAD, OPTIONS, TRACE, PATCH;
     }
+    /**
+     * For calling out to external HTTP servers using Apache HTTP Client 4.x.
+     * Creates a builder to build a producer endpoint for the HTTP4 component.
+     */
     public default HttpProducerBuilder toHttp(String path) {
         return new HttpProducerBuilder(path);
     }

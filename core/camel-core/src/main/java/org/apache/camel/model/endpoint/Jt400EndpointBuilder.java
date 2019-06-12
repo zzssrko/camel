@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface Jt400EndpointBuilder {
 
 
+    /**
+     * Base class for the JT400 component builders.
+     */
     public static class Jt400CommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -282,6 +285,9 @@ public interface Jt400EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the JT400 component.
+     */
     public static class Jt400ConsumerBuilder
             extends
                 Jt400CommonBuilder<Jt400ConsumerBuilder>
@@ -676,6 +682,9 @@ public interface Jt400EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JT400 component.
+     */
     public static class Jt400ProducerBuilder
             extends
                 Jt400CommonBuilder<Jt400ProducerBuilder>
@@ -686,20 +695,43 @@ public interface Jt400EndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jt400.Jt400Type</code>
+     * enum.
+     */
     public static enum Jt400Type {
         DTAQ, PGM, SRVPGM;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.jt400.Jt400Configuration$Format</code>
+     * enum.
+     */
     public static enum Format {
         text, binary;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.jt400.Jt400Configuration$SearchType</code> enum.
+     */
     public static enum SearchType {
         EQ, NE, LT, LE, GT, GE;
     }
+    /**
+     * The jt400 component allows you to exchanges messages with an AS/400
+     * system using data queues or program call. Creates a builder to build a
+     * consumer endpoint for the JT400 component.
+     */
     public default Jt400ConsumerBuilder fromJt400(String path) {
         return new Jt400ConsumerBuilder(path);
     }
+    /**
+     * The jt400 component allows you to exchanges messages with an AS/400
+     * system using data queues or program call. Creates a builder to build a
+     * producer endpoint for the JT400 component.
+     */
     public default Jt400ProducerBuilder toJt400(String path) {
         return new Jt400ProducerBuilder(path);
     }

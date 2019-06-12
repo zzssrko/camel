@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface WebsocketEndpointBuilder {
 
 
+    /**
+     * Base class for the Jetty Websocket component builders.
+     */
     public static class WebsocketCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -269,6 +272,9 @@ public interface WebsocketEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Jetty Websocket component.
+     */
     public static class WebsocketConsumerBuilder
             extends
                 WebsocketCommonBuilder<WebsocketConsumerBuilder>
@@ -379,6 +385,9 @@ public interface WebsocketEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Jetty Websocket component.
+     */
     public static class WebsocketProducerBuilder
             extends
                 WebsocketCommonBuilder<WebsocketProducerBuilder>
@@ -426,9 +435,19 @@ public interface WebsocketEndpointBuilder {
             return (WebsocketProducerBuilder) this;
         }
     }
+    /**
+     * The websocket component provides websocket endpoints with Jetty for
+     * communicating with clients using websocket. Creates a builder to build a
+     * consumer endpoint for the Jetty Websocket component.
+     */
     public default WebsocketConsumerBuilder fromWebsocket(String path) {
         return new WebsocketConsumerBuilder(path);
     }
+    /**
+     * The websocket component provides websocket endpoints with Jetty for
+     * communicating with clients using websocket. Creates a builder to build a
+     * producer endpoint for the Jetty Websocket component.
+     */
     public default WebsocketProducerBuilder toWebsocket(String path) {
         return new WebsocketProducerBuilder(path);
     }

@@ -34,6 +34,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface StompEndpointBuilder {
 
 
+    /**
+     * Base class for the Stomp component builders.
+     */
     public static class StompCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -151,6 +154,9 @@ public interface StompEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Stomp component.
+     */
     public static class StompConsumerBuilder
             extends
                 StompCommonBuilder<StompConsumerBuilder>
@@ -230,6 +236,9 @@ public interface StompEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Stomp component.
+     */
     public static class StompProducerBuilder
             extends
                 StompCommonBuilder<StompProducerBuilder>
@@ -239,9 +248,19 @@ public interface StompEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The stomp component is used for communicating with Stomp compliant
+     * message brokers. Creates a builder to build a consumer endpoint for the
+     * Stomp component.
+     */
     public default StompConsumerBuilder fromStomp(String path) {
         return new StompConsumerBuilder(path);
     }
+    /**
+     * The stomp component is used for communicating with Stomp compliant
+     * message brokers. Creates a builder to build a producer endpoint for the
+     * Stomp component.
+     */
     public default StompProducerBuilder toStomp(String path) {
         return new StompProducerBuilder(path);
     }

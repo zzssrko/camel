@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface SipEndpointBuilder {
 
 
+    /**
+     * Base class for the SIP component builders.
+     */
     public static class SipCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -646,6 +649,9 @@ public interface SipEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the SIP component.
+     */
     public static class SipConsumerBuilder
             extends
                 SipCommonBuilder<SipConsumerBuilder>
@@ -764,6 +770,9 @@ public interface SipEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the SIP component.
+     */
     public static class SipProducerBuilder
             extends
                 SipCommonBuilder<SipProducerBuilder>
@@ -773,9 +782,19 @@ public interface SipEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * To send and receive messages using the SIP protocol (used in telco and
+     * mobile). Creates a builder to build a consumer endpoint for the SIP
+     * component.
+     */
     public default SipConsumerBuilder fromSip(String path) {
         return new SipConsumerBuilder(path);
     }
+    /**
+     * To send and receive messages using the SIP protocol (used in telco and
+     * mobile). Creates a builder to build a producer endpoint for the SIP
+     * component.
+     */
     public default SipProducerBuilder toSip(String path) {
         return new SipProducerBuilder(path);
     }

@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface RabbitMQEndpointBuilder {
 
 
+    /**
+     * Base class for the RabbitMQ component builders.
+     */
     public static class RabbitMQCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -612,6 +615,9 @@ public interface RabbitMQEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the RabbitMQ component.
+     */
     public static class RabbitMQConsumerBuilder
             extends
                 RabbitMQCommonBuilder<RabbitMQConsumerBuilder>
@@ -847,6 +853,9 @@ public interface RabbitMQEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the RabbitMQ component.
+     */
     public static class RabbitMQProducerBuilder
             extends
                 RabbitMQCommonBuilder<RabbitMQProducerBuilder>
@@ -1038,9 +1047,19 @@ public interface RabbitMQEndpointBuilder {
             return (RabbitMQProducerBuilder) this;
         }
     }
+    /**
+     * The rabbitmq component allows you produce and consume messages from
+     * RabbitMQ instances. Creates a builder to build a consumer endpoint for
+     * the RabbitMQ component.
+     */
     public default RabbitMQConsumerBuilder fromRabbitMQ(String path) {
         return new RabbitMQConsumerBuilder(path);
     }
+    /**
+     * The rabbitmq component allows you produce and consume messages from
+     * RabbitMQ instances. Creates a builder to build a producer endpoint for
+     * the RabbitMQ component.
+     */
     public default RabbitMQProducerBuilder toRabbitMQ(String path) {
         return new RabbitMQProducerBuilder(path);
     }

@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface Olingo4EndpointBuilder {
 
 
+    /**
+     * Base class for the Olingo4 component builders.
+     */
     public static class Olingo4CommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -281,6 +284,9 @@ public interface Olingo4EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Olingo4 component.
+     */
     public static class Olingo4ConsumerBuilder
             extends
                 Olingo4CommonBuilder<Olingo4ConsumerBuilder>
@@ -361,6 +367,9 @@ public interface Olingo4EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Olingo4 component.
+     */
     public static class Olingo4ProducerBuilder
             extends
                 Olingo4CommonBuilder<Olingo4ProducerBuilder>
@@ -371,12 +380,25 @@ public interface Olingo4EndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.olingo4.internal.Olingo4ApiName</code>
+     * enum.
+     */
     public static enum Olingo4ApiName {
         DEFAULT;
     }
+    /**
+     * Communicates with OData 4.0 services using Apache Olingo OData API.
+     * Creates a builder to build a consumer endpoint for the Olingo4 component.
+     */
     public default Olingo4ConsumerBuilder fromOlingo4(String path) {
         return new Olingo4ConsumerBuilder(path);
     }
+    /**
+     * Communicates with OData 4.0 services using Apache Olingo OData API.
+     * Creates a builder to build a producer endpoint for the Olingo4 component.
+     */
     public default Olingo4ProducerBuilder toOlingo4(String path) {
         return new Olingo4ProducerBuilder(path);
     }

@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface EtcdEndpointBuilder {
 
 
+    /**
+     * Base class for the etcd component builders.
+     */
     public static class EtcdCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -188,6 +191,9 @@ public interface EtcdEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the etcd component.
+     */
     public static class EtcdConsumerBuilder
             extends
                 EtcdCommonBuilder<EtcdConsumerBuilder>
@@ -597,6 +603,9 @@ public interface EtcdEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the etcd component.
+     */
     public static class EtcdProducerBuilder
             extends
                 EtcdCommonBuilder<EtcdProducerBuilder>
@@ -623,12 +632,26 @@ public interface EtcdEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.etcd.EtcdNamespace</code>
+     * enum.
+     */
     public static enum EtcdNamespace {
         stats, watch, keys;
     }
+    /**
+     * The camel etcd component allows you to work with Etcd, a distributed
+     * reliable key-value store. Creates a builder to build a consumer endpoint
+     * for the etcd component.
+     */
     public default EtcdConsumerBuilder fromEtcd(String path) {
         return new EtcdConsumerBuilder(path);
     }
+    /**
+     * The camel etcd component allows you to work with Etcd, a distributed
+     * reliable key-value store. Creates a builder to build a producer endpoint
+     * for the etcd component.
+     */
     public default EtcdProducerBuilder toEtcd(String path) {
         return new EtcdProducerBuilder(path);
     }

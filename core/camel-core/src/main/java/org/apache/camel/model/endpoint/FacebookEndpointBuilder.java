@@ -37,6 +37,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface FacebookEndpointBuilder {
 
 
+    /**
+     * Base class for the Facebook component builders.
+     */
     public static class FacebookCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -1188,6 +1191,9 @@ public interface FacebookEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Facebook component.
+     */
     public static class FacebookConsumerBuilder
             extends
                 FacebookCommonBuilder<FacebookConsumerBuilder>
@@ -1268,6 +1274,9 @@ public interface FacebookEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Facebook component.
+     */
     public static class FacebookProducerBuilder
             extends
                 FacebookCommonBuilder<FacebookProducerBuilder>
@@ -1278,12 +1287,25 @@ public interface FacebookEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>facebook4j.PictureSize</code> enum.
+     */
     public static enum PictureSize {
         square, small, normal, large, thumbnail, album;
     }
+    /**
+     * The Facebook component provides access to all of the Facebook APIs
+     * accessible using Facebook4J. Creates a builder to build a consumer
+     * endpoint for the Facebook component.
+     */
     public default FacebookConsumerBuilder fromFacebook(String path) {
         return new FacebookConsumerBuilder(path);
     }
+    /**
+     * The Facebook component provides access to all of the Facebook APIs
+     * accessible using Facebook4J. Creates a builder to build a producer
+     * endpoint for the Facebook component.
+     */
     public default FacebookProducerBuilder toFacebook(String path) {
         return new FacebookProducerBuilder(path);
     }

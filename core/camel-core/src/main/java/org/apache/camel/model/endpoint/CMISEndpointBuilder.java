@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface CMISEndpointBuilder {
 
 
+    /**
+     * Base class for the CMIS component builders.
+     */
     public static class CMISCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -179,6 +182,9 @@ public interface CMISEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the CMIS component.
+     */
     public static class CMISConsumerBuilder
             extends
                 CMISCommonBuilder<CMISConsumerBuilder>
@@ -267,6 +273,9 @@ public interface CMISEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the CMIS component.
+     */
     public static class CMISProducerBuilder
             extends
                 CMISCommonBuilder<CMISProducerBuilder>
@@ -294,9 +303,19 @@ public interface CMISEndpointBuilder {
             return (CMISProducerBuilder) this;
         }
     }
+    /**
+     * The cmis component uses the Apache Chemistry client API and allows you to
+     * add/read nodes to/from a CMIS compliant content repositories. Creates a
+     * builder to build a consumer endpoint for the CMIS component.
+     */
     public default CMISConsumerBuilder fromCMIS(String path) {
         return new CMISConsumerBuilder(path);
     }
+    /**
+     * The cmis component uses the Apache Chemistry client API and allows you to
+     * add/read nodes to/from a CMIS compliant content repositories. Creates a
+     * builder to build a producer endpoint for the CMIS component.
+     */
     public default CMISProducerBuilder toCMIS(String path) {
         return new CMISProducerBuilder(path);
     }

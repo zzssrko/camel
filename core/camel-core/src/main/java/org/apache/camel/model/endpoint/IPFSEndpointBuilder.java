@@ -32,6 +32,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface IPFSEndpointBuilder {
 
 
+    /**
+     * Base class for the IPFS component builders.
+     */
     public static class IPFSCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -99,6 +102,9 @@ public interface IPFSEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the IPFS component.
+     */
     public static class IPFSProducerBuilder
             extends
                 IPFSCommonBuilder<IPFSProducerBuilder>
@@ -108,6 +114,11 @@ public interface IPFSEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The camel-ipfs component provides access to the Interplanetary File
+     * System (IPFS). Creates a builder to build a producer endpoint for the
+     * IPFS component.
+     */
     public default IPFSProducerBuilder toIPFS(String path) {
         return new IPFSProducerBuilder(path);
     }

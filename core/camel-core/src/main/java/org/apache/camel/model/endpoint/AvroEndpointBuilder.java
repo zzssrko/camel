@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface AvroEndpointBuilder {
 
 
+    /**
+     * Base class for the Avro component builders.
+     */
     public static class AvroCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -201,6 +204,9 @@ public interface AvroEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Avro component.
+     */
     public static class AvroConsumerBuilder
             extends
                 AvroCommonBuilder<AvroConsumerBuilder>
@@ -279,6 +285,9 @@ public interface AvroEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Avro component.
+     */
     public static class AvroProducerBuilder
             extends
                 AvroCommonBuilder<AvroProducerBuilder>
@@ -289,12 +298,24 @@ public interface AvroEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.avro.AvroTransport</code>
+     * enum.
+     */
     public static enum AvroTransport {
         http, netty;
     }
+    /**
+     * Working with Apache Avro for data serialization. Creates a builder to
+     * build a consumer endpoint for the Avro component.
+     */
     public default AvroConsumerBuilder fromAvro(String path) {
         return new AvroConsumerBuilder(path);
     }
+    /**
+     * Working with Apache Avro for data serialization. Creates a builder to
+     * build a producer endpoint for the Avro component.
+     */
     public default AvroProducerBuilder toAvro(String path) {
         return new AvroProducerBuilder(path);
     }

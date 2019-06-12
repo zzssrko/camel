@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface ElsqlEndpointBuilder {
 
 
+    /**
+     * Base class for the ElSQL component builders.
+     */
     public static class ElsqlCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -381,6 +384,9 @@ public interface ElsqlEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the ElSQL component.
+     */
     public static class ElsqlConsumerBuilder
             extends
                 ElsqlCommonBuilder<ElsqlConsumerBuilder>
@@ -919,6 +925,9 @@ public interface ElsqlEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the ElSQL component.
+     */
     public static class ElsqlProducerBuilder
             extends
                 ElsqlCommonBuilder<ElsqlProducerBuilder>
@@ -983,16 +992,34 @@ public interface ElsqlEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.elsql.ElSqlDatabaseVendor</code> enum.
+     */
     public static enum ElSqlDatabaseVendor {
         Default, Postgres, HSql, MySql, Oracle, SqlServer2008, Veritca;
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.sql.SqlOutputType</code>
+     * enum.
+     */
     public static enum SqlOutputType {
         SelectOne, SelectList, StreamList;
     }
+    /**
+     * The elsql component is an extension to the existing SQL Component that
+     * uses ElSql to define the SQL queries. Creates a builder to build a
+     * consumer endpoint for the ElSQL component.
+     */
     public default ElsqlConsumerBuilder fromElsql(String path) {
         return new ElsqlConsumerBuilder(path);
     }
+    /**
+     * The elsql component is an extension to the existing SQL Component that
+     * uses ElSql to define the SQL queries. Creates a builder to build a
+     * producer endpoint for the ElSQL component.
+     */
     public default ElsqlProducerBuilder toElsql(String path) {
         return new ElsqlProducerBuilder(path);
     }

@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface SpringLdapEndpointBuilder {
 
 
+    /**
+     * Base class for the Spring LDAP component builders.
+     */
     public static class SpringLdapCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -109,6 +112,9 @@ public interface SpringLdapEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Spring LDAP component.
+     */
     public static class SpringLdapProducerBuilder
             extends
                 SpringLdapCommonBuilder<SpringLdapProducerBuilder>
@@ -119,9 +125,18 @@ public interface SpringLdapEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.springldap.LdapOperation</code> enum.
+     */
     public static enum LdapOperation {
         SEARCH, BIND, UNBIND, AUTHENTICATE, MODIFY_ATTRIBUTES, FUNCTION_DRIVEN;
     }
+    /**
+     * The spring-ldap component allows you to perform searches in LDAP servers
+     * using filters as the message payload. Creates a builder to build a
+     * producer endpoint for the Spring LDAP component.
+     */
     public default SpringLdapProducerBuilder toSpringLdap(String path) {
         return new SpringLdapProducerBuilder(path);
     }

@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface MSKEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS MSK component builders.
+     */
     public static class MSKCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -89,6 +92,9 @@ public interface MSKEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS MSK component.
+     */
     public static class MSKProducerBuilder
             extends
                 MSKCommonBuilder<MSKProducerBuilder>
@@ -172,9 +178,17 @@ public interface MSKEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.aws.msk.MSKOperations</code> enum.
+     */
     public static enum MSKOperations {
         listClusters, createCluster, deleteCluster, describeCluster;
     }
+    /**
+     * The aws-kms is used for managing Amazon KMS Creates a builder to build a
+     * producer endpoint for the AWS MSK component.
+     */
     public default MSKProducerBuilder toMSK(String path) {
         return new MSKProducerBuilder(path);
     }

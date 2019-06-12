@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface ServiceEndpointBuilder {
 
 
+    /**
+     * Base class for the Service component builders.
+     */
     public static class ServiceCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -85,6 +88,9 @@ public interface ServiceEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Service component.
+     */
     public static class ServiceConsumerBuilder
             extends
                 ServiceCommonBuilder<ServiceConsumerBuilder>
@@ -164,6 +170,11 @@ public interface ServiceEndpointBuilder {
             return (ServiceConsumerBuilder) this;
         }
     }
+    /**
+     * Represents an endpoint which is registered to a Service Registry such as
+     * Consul, Etcd. Creates a builder to build a consumer endpoint for the
+     * Service component.
+     */
     public default ServiceConsumerBuilder fromService(String path) {
         return new ServiceConsumerBuilder(path);
     }

@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface DirectEndpointBuilder {
 
 
+    /**
+     * Base class for the Direct component builders.
+     */
     public static class DirectCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -85,6 +88,9 @@ public interface DirectEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Direct component.
+     */
     public static class DirectConsumerBuilder
             extends
                 DirectCommonBuilder<DirectConsumerBuilder>
@@ -165,6 +171,9 @@ public interface DirectEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Direct component.
+     */
     public static class DirectProducerBuilder
             extends
                 DirectCommonBuilder<DirectProducerBuilder>
@@ -227,9 +236,19 @@ public interface DirectEndpointBuilder {
             return (DirectProducerBuilder) this;
         }
     }
+    /**
+     * The direct component provides direct, synchronous call to another
+     * endpoint from the same CamelContext. Creates a builder to build a
+     * consumer endpoint for the Direct component.
+     */
     public default DirectConsumerBuilder fromDirect(String path) {
         return new DirectConsumerBuilder(path);
     }
+    /**
+     * The direct component provides direct, synchronous call to another
+     * endpoint from the same CamelContext. Creates a builder to build a
+     * producer endpoint for the Direct component.
+     */
     public default DirectProducerBuilder toDirect(String path) {
         return new DirectProducerBuilder(path);
     }

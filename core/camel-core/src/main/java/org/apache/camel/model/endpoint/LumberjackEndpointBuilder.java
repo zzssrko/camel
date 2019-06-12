@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface LumberjackEndpointBuilder {
 
 
+    /**
+     * Base class for the Lumberjack component builders.
+     */
     public static class LumberjackCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -117,6 +120,9 @@ public interface LumberjackEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Lumberjack component.
+     */
     public static class LumberjackConsumerBuilder
             extends
                 LumberjackCommonBuilder<LumberjackConsumerBuilder>
@@ -197,6 +203,11 @@ public interface LumberjackEndpointBuilder {
             return (LumberjackConsumerBuilder) this;
         }
     }
+    /**
+     * The lumberjack retrieves logs sent over the network using the Lumberjack
+     * protocol. Creates a builder to build a consumer endpoint for the
+     * Lumberjack component.
+     */
     public default LumberjackConsumerBuilder fromLumberjack(String path) {
         return new LumberjackConsumerBuilder(path);
     }

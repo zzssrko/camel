@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface DataFormatEndpointBuilder {
 
 
+    /**
+     * Base class for the Data Format component builders.
+     */
     public static class DataFormatCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -91,6 +94,9 @@ public interface DataFormatEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Data Format component.
+     */
     public static class DataFormatProducerBuilder
             extends
                 DataFormatCommonBuilder<DataFormatProducerBuilder>
@@ -100,6 +106,11 @@ public interface DataFormatEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The dataformat component is used for working with Data Formats as if it
+     * was a regular Component supporting Endpoints and URIs. Creates a builder
+     * to build a producer endpoint for the Data Format component.
+     */
     public default DataFormatProducerBuilder toDataFormat(String path) {
         return new DataFormatProducerBuilder(path);
     }

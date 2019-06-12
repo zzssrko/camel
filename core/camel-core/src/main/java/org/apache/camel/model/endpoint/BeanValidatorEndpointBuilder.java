@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface BeanValidatorEndpointBuilder {
 
 
+    /**
+     * Base class for the Bean Validator component builders.
+     */
     public static class BeanValidatorCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -157,6 +160,9 @@ public interface BeanValidatorEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Bean Validator component.
+     */
     public static class BeanValidatorProducerBuilder
             extends
                 BeanValidatorCommonBuilder<BeanValidatorProducerBuilder>
@@ -166,6 +172,11 @@ public interface BeanValidatorEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The Validator component performs bean validation of the message body
+     * using the Java Bean Validation API. Creates a builder to build a producer
+     * endpoint for the Bean Validator component.
+     */
     public default BeanValidatorProducerBuilder toBeanValidator(String path) {
         return new BeanValidatorProducerBuilder(path);
     }

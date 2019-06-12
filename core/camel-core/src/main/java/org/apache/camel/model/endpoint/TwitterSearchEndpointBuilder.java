@@ -38,6 +38,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface TwitterSearchEndpointBuilder {
 
 
+    /**
+     * Base class for the Twitter Search component builders.
+     */
     public static class TwitterSearchCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -167,6 +170,9 @@ public interface TwitterSearchEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Twitter Search component.
+     */
     public static class TwitterSearchConsumerBuilder
             extends
                 TwitterSearchCommonBuilder<TwitterSearchConsumerBuilder>
@@ -786,6 +792,9 @@ public interface TwitterSearchEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Twitter Search component.
+     */
     public static class TwitterSearchProducerBuilder
             extends
                 TwitterSearchCommonBuilder<TwitterSearchProducerBuilder>
@@ -796,12 +805,24 @@ public interface TwitterSearchEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.twitter.data.EndpointType</code> enum.
+     */
     public static enum EndpointType {
         POLLING, DIRECT, EVENT;
     }
+    /**
+     * The Twitter Search component consumes search results. Creates a builder
+     * to build a consumer endpoint for the Twitter Search component.
+     */
     public default TwitterSearchConsumerBuilder fromTwitterSearch(String path) {
         return new TwitterSearchConsumerBuilder(path);
     }
+    /**
+     * The Twitter Search component consumes search results. Creates a builder
+     * to build a producer endpoint for the Twitter Search component.
+     */
     public default TwitterSearchProducerBuilder toTwitterSearch(String path) {
         return new TwitterSearchProducerBuilder(path);
     }

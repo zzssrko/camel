@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface HazelcastSedaEndpointBuilder {
 
 
+    /**
+     * Base class for the Hazelcast SEDA component builders.
+     */
     public static class HazelcastSedaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -239,6 +242,9 @@ public interface HazelcastSedaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Hazelcast SEDA component.
+     */
     public static class HazelcastSedaConsumerBuilder
             extends
                 HazelcastSedaCommonBuilder<HazelcastSedaConsumerBuilder>
@@ -372,6 +378,9 @@ public interface HazelcastSedaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Hazelcast SEDA component.
+     */
     public static class HazelcastSedaProducerBuilder
             extends
                 HazelcastSedaCommonBuilder<HazelcastSedaProducerBuilder>
@@ -382,16 +391,35 @@ public interface HazelcastSedaEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+     * enum.
+     */
     public static enum HazelcastOperation {
         put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.queue.HazelcastQueueConsumerMode</code> enum.
+     */
     public static enum HazelcastQueueConsumerMode {
         listen, poll;
     }
+    /**
+     * The hazelcast-seda component is used to access Hazelcast BlockingQueue.
+     * Creates a builder to build a consumer endpoint for the Hazelcast SEDA
+     * component.
+     */
     public default HazelcastSedaConsumerBuilder fromHazelcastSeda(String path) {
         return new HazelcastSedaConsumerBuilder(path);
     }
+    /**
+     * The hazelcast-seda component is used to access Hazelcast BlockingQueue.
+     * Creates a builder to build a producer endpoint for the Hazelcast SEDA
+     * component.
+     */
     public default HazelcastSedaProducerBuilder toHazelcastSeda(String path) {
         return new HazelcastSedaProducerBuilder(path);
     }

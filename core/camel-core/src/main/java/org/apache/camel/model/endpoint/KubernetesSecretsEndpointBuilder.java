@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface KubernetesSecretsEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes Secrets component builders.
+     */
     public static class KubernetesSecretsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -251,6 +254,9 @@ public interface KubernetesSecretsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes Secrets component.
+     */
     public static class KubernetesSecretsProducerBuilder
             extends
                 KubernetesSecretsCommonBuilder<KubernetesSecretsProducerBuilder>
@@ -268,6 +274,11 @@ public interface KubernetesSecretsEndpointBuilder {
             return (KubernetesSecretsProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Secrets component provides a producer to execute
+     * kubernetes secret operations. Creates a builder to build a producer
+     * endpoint for the Kubernetes Secrets component.
+     */
     public default KubernetesSecretsProducerBuilder toKubernetesSecrets(
             String path) {
         return new KubernetesSecretsProducerBuilder(path);

@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface Mina2EndpointBuilder {
 
 
+    /**
+     * Base class for the Mina2 component builders.
+     */
     public static class Mina2CommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -435,6 +438,9 @@ public interface Mina2EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Mina2 component.
+     */
     public static class Mina2ConsumerBuilder
             extends
                 Mina2CommonBuilder<Mina2ConsumerBuilder>
@@ -570,6 +576,9 @@ public interface Mina2EndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Mina2 component.
+     */
     public static class Mina2ProducerBuilder
             extends
                 Mina2CommonBuilder<Mina2ProducerBuilder>
@@ -618,12 +627,27 @@ public interface Mina2EndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.mina2.Mina2TextLineDelimiter</code>
+     * enum.
+     */
     public static enum Mina2TextLineDelimiter {
         DEFAULT, AUTO, UNIX, WINDOWS, MAC;
     }
+    /**
+     * Socket level networking using TCP or UDP with the Apache Mina 2.x
+     * library. Creates a builder to build a consumer endpoint for the Mina2
+     * component.
+     */
     public default Mina2ConsumerBuilder fromMina2(String path) {
         return new Mina2ConsumerBuilder(path);
     }
+    /**
+     * Socket level networking using TCP or UDP with the Apache Mina 2.x
+     * library. Creates a builder to build a producer endpoint for the Mina2
+     * component.
+     */
     public default Mina2ProducerBuilder toMina2(String path) {
         return new Mina2ProducerBuilder(path);
     }

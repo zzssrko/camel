@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface KubernetesResourcesQuotaEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes Resources Quota component builders.
+     */
     public static class KubernetesResourcesQuotaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -251,6 +254,10 @@ public interface KubernetesResourcesQuotaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes Resources Quota
+     * component.
+     */
     public static class KubernetesResourcesQuotaProducerBuilder
             extends
                 KubernetesResourcesQuotaCommonBuilder<KubernetesResourcesQuotaProducerBuilder>
@@ -269,6 +276,11 @@ public interface KubernetesResourcesQuotaEndpointBuilder {
             return (KubernetesResourcesQuotaProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Resources Quota component provides a producer to execute
+     * kubernetes resources quota operations. Creates a builder to build a
+     * producer endpoint for the Kubernetes Resources Quota component.
+     */
     public default KubernetesResourcesQuotaProducerBuilder toKubernetesResourcesQuota(
             String path) {
         return new KubernetesResourcesQuotaProducerBuilder(path);

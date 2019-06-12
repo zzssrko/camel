@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface RefEndpointBuilder {
 
 
+    /**
+     * Base class for the Ref component builders.
+     */
     public static class RefCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -85,6 +88,9 @@ public interface RefEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Ref component.
+     */
     public static class RefConsumerBuilder
             extends
                 RefCommonBuilder<RefConsumerBuilder>
@@ -163,6 +169,9 @@ public interface RefEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Ref component.
+     */
     public static class RefProducerBuilder
             extends
                 RefCommonBuilder<RefProducerBuilder>
@@ -172,9 +181,19 @@ public interface RefEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The ref component is used for lookup of existing endpoints bound in the
+     * Registry. Creates a builder to build a consumer endpoint for the Ref
+     * component.
+     */
     public default RefConsumerBuilder fromRef(String path) {
         return new RefConsumerBuilder(path);
     }
+    /**
+     * The ref component is used for lookup of existing endpoints bound in the
+     * Registry. Creates a builder to build a producer endpoint for the Ref
+     * component.
+     */
     public default RefProducerBuilder toRef(String path) {
         return new RefProducerBuilder(path);
     }

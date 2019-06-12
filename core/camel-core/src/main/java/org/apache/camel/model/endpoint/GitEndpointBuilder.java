@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface GitEndpointBuilder {
 
 
+    /**
+     * Base class for the Git component builders.
+     */
     public static class GitCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -132,6 +135,9 @@ public interface GitEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Git component.
+     */
     public static class GitConsumerBuilder
             extends
                 GitCommonBuilder<GitConsumerBuilder>
@@ -226,6 +232,9 @@ public interface GitEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Git component.
+     */
     public static class GitProducerBuilder
             extends
                 GitCommonBuilder<GitProducerBuilder>
@@ -260,12 +269,24 @@ public interface GitEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.git.consumer.GitType</code> enum.
+     */
     public static enum GitType {
         COMMIT, TAG, BRANCH;
     }
+    /**
+     * The git component is used for working with git repositories. Creates a
+     * builder to build a consumer endpoint for the Git component.
+     */
     public default GitConsumerBuilder fromGit(String path) {
         return new GitConsumerBuilder(path);
     }
+    /**
+     * The git component is used for working with git repositories. Creates a
+     * builder to build a producer endpoint for the Git component.
+     */
     public default GitProducerBuilder toGit(String path) {
         return new GitProducerBuilder(path);
     }

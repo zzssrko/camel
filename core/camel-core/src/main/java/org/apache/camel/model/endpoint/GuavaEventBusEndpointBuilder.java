@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface GuavaEventBusEndpointBuilder {
 
 
+    /**
+     * Base class for the Guava EventBus component builders.
+     */
     public static class GuavaEventBusCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -137,6 +140,9 @@ public interface GuavaEventBusEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Guava EventBus component.
+     */
     public static class GuavaEventBusConsumerBuilder
             extends
                 GuavaEventBusCommonBuilder<GuavaEventBusConsumerBuilder>
@@ -219,6 +225,9 @@ public interface GuavaEventBusEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Guava EventBus component.
+     */
     public static class GuavaEventBusProducerBuilder
             extends
                 GuavaEventBusCommonBuilder<GuavaEventBusProducerBuilder>
@@ -228,9 +237,19 @@ public interface GuavaEventBusEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The guava-eventbus component provides integration bridge between Camel
+     * and Google Guava EventBus. Creates a builder to build a consumer endpoint
+     * for the Guava EventBus component.
+     */
     public default GuavaEventBusConsumerBuilder fromGuavaEventBus(String path) {
         return new GuavaEventBusConsumerBuilder(path);
     }
+    /**
+     * The guava-eventbus component provides integration bridge between Camel
+     * and Google Guava EventBus. Creates a builder to build a producer endpoint
+     * for the Guava EventBus component.
+     */
     public default GuavaEventBusProducerBuilder toGuavaEventBus(String path) {
         return new GuavaEventBusProducerBuilder(path);
     }

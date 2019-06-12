@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface HBaseEndpointBuilder {
 
 
+    /**
+     * Base class for the HBase component builders.
+     */
     public static class HBaseCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -211,6 +214,9 @@ public interface HBaseEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the HBase component.
+     */
     public static class HBaseConsumerBuilder
             extends
                 HBaseCommonBuilder<HBaseConsumerBuilder>
@@ -354,6 +360,9 @@ public interface HBaseEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the HBase component.
+     */
     public static class HBaseProducerBuilder
             extends
                 HBaseCommonBuilder<HBaseProducerBuilder>
@@ -379,9 +388,17 @@ public interface HBaseEndpointBuilder {
             return (HBaseProducerBuilder) this;
         }
     }
+    /**
+     * For reading/writing from/to an HBase store (Hadoop database). Creates a
+     * builder to build a consumer endpoint for the HBase component.
+     */
     public default HBaseConsumerBuilder fromHBase(String path) {
         return new HBaseConsumerBuilder(path);
     }
+    /**
+     * For reading/writing from/to an HBase store (Hadoop database). Creates a
+     * builder to build a producer endpoint for the HBase component.
+     */
     public default HBaseProducerBuilder toHBase(String path) {
         return new HBaseProducerBuilder(path);
     }

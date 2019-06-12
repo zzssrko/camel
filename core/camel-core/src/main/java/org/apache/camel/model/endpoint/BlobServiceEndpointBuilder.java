@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface BlobServiceEndpointBuilder {
 
 
+    /**
+     * Base class for the Azure Storage Blob Service component builders.
+     */
     public static class BlobServiceCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -227,6 +230,10 @@ public interface BlobServiceEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Azure Storage Blob Service
+     * component.
+     */
     public static class BlobServiceConsumerBuilder
             extends
                 BlobServiceCommonBuilder<BlobServiceConsumerBuilder>
@@ -308,6 +315,10 @@ public interface BlobServiceEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Azure Storage Blob Service
+     * component.
+     */
     public static class BlobServiceProducerBuilder
             extends
                 BlobServiceCommonBuilder<BlobServiceProducerBuilder>
@@ -413,16 +424,35 @@ public interface BlobServiceEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.azure.blob.BlobType</code> enum.
+     */
     public static enum BlobType {
         blockblob, appendblob, pageblob;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.azure.blob.BlobServiceOperations</code>
+     * enum.
+     */
     public static enum BlobServiceOperations {
         getBlob, deleteBlob, listBlobs, updateBlockBlob, uploadBlobBlocks, commitBlobBlockList, getBlobBlockList, createAppendBlob, updateAppendBlob, createPageBlob, updatePageBlob, resizePageBlob, clearPageBlob, getPageBlobRanges;
     }
+    /**
+     * The azure-blob component is used for storing and retrieving blobs from
+     * Azure Storage Blob Service. Creates a builder to build a consumer
+     * endpoint for the Azure Storage Blob Service component.
+     */
     public default BlobServiceConsumerBuilder fromBlobService(String path) {
         return new BlobServiceConsumerBuilder(path);
     }
+    /**
+     * The azure-blob component is used for storing and retrieving blobs from
+     * Azure Storage Blob Service. Creates a builder to build a producer
+     * endpoint for the Azure Storage Blob Service component.
+     */
     public default BlobServiceProducerBuilder toBlobService(String path) {
         return new BlobServiceProducerBuilder(path);
     }

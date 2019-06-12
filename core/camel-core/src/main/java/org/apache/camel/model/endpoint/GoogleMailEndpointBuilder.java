@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface GoogleMailEndpointBuilder {
 
 
+    /**
+     * Base class for the Google Mail component builders.
+     */
     public static class GoogleMailCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -151,6 +154,9 @@ public interface GoogleMailEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Google Mail component.
+     */
     public static class GoogleMailConsumerBuilder
             extends
                 GoogleMailCommonBuilder<GoogleMailConsumerBuilder>
@@ -232,6 +238,9 @@ public interface GoogleMailEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Google Mail component.
+     */
     public static class GoogleMailProducerBuilder
             extends
                 GoogleMailCommonBuilder<GoogleMailProducerBuilder>
@@ -242,12 +251,24 @@ public interface GoogleMailEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.google.mail.internal.GoogleMailApiName</code> enum.
+     */
     public static enum GoogleMailApiName {
         THREADS, MESSAGES, ATTACHMENTS, LABELS, HISTORY, DRAFTS, USERS;
     }
+    /**
+     * The google-mail component provides access to Google Mail. Creates a
+     * builder to build a consumer endpoint for the Google Mail component.
+     */
     public default GoogleMailConsumerBuilder fromGoogleMail(String path) {
         return new GoogleMailConsumerBuilder(path);
     }
+    /**
+     * The google-mail component provides access to Google Mail. Creates a
+     * builder to build a producer endpoint for the Google Mail component.
+     */
     public default GoogleMailProducerBuilder toGoogleMail(String path) {
         return new GoogleMailProducerBuilder(path);
     }

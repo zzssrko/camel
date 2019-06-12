@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface KeystoneEndpointBuilder {
 
 
+    /**
+     * Base class for the OpenStack Keystone component builders.
+     */
     public static class KeystoneCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -146,6 +149,9 @@ public interface KeystoneEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the OpenStack Keystone component.
+     */
     public static class KeystoneProducerBuilder
             extends
                 KeystoneCommonBuilder<KeystoneProducerBuilder>
@@ -155,6 +161,11 @@ public interface KeystoneEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The openstack-keystone component allows messages to be sent to an
+     * OpenStack identity services. Creates a builder to build a producer
+     * endpoint for the OpenStack Keystone component.
+     */
     public default KeystoneProducerBuilder toKeystone(String path) {
         return new KeystoneProducerBuilder(path);
     }

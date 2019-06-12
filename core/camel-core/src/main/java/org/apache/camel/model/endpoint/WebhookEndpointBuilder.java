@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface WebhookEndpointBuilder {
 
 
+    /**
+     * Base class for the Webhook component builders.
+     */
     public static class WebhookCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -138,6 +141,9 @@ public interface WebhookEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Webhook component.
+     */
     public static class WebhookConsumerBuilder
             extends
                 WebhookCommonBuilder<WebhookConsumerBuilder>
@@ -217,6 +223,12 @@ public interface WebhookEndpointBuilder {
             return (WebhookConsumerBuilder) this;
         }
     }
+    /**
+     * The webhook component allows other Camel components that can receive push
+     * notifications to expose webhook endpoints and automatically register them
+     * with their own webhook provider. Creates a builder to build a consumer
+     * endpoint for the Webhook component.
+     */
     public default WebhookConsumerBuilder fromWebhook(String path) {
         return new WebhookConsumerBuilder(path);
     }

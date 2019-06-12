@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface JpaEndpointBuilder {
 
 
+    /**
+     * Base class for the JPA component builders.
+     */
     public static class JpaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -266,6 +269,9 @@ public interface JpaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the JPA component.
+     */
     public static class JpaConsumerBuilder
             extends
                 JpaCommonBuilder<JpaConsumerBuilder>
@@ -787,6 +793,9 @@ public interface JpaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JPA component.
+     */
     public static class JpaProducerBuilder
             extends
                 JpaCommonBuilder<JpaProducerBuilder>
@@ -895,12 +904,25 @@ public interface JpaEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>javax.persistence.LockModeType</code> enum.
+     */
     public static enum LockModeType {
         READ, WRITE, OPTIMISTIC, OPTIMISTIC_FORCE_INCREMENT, PESSIMISTIC_READ, PESSIMISTIC_WRITE, PESSIMISTIC_FORCE_INCREMENT, NONE;
     }
+    /**
+     * The jpa component enables you to store and retrieve Java objects from
+     * databases using JPA. Creates a builder to build a consumer endpoint for
+     * the JPA component.
+     */
     public default JpaConsumerBuilder fromJpa(String path) {
         return new JpaConsumerBuilder(path);
     }
+    /**
+     * The jpa component enables you to store and retrieve Java objects from
+     * databases using JPA. Creates a builder to build a producer endpoint for
+     * the JPA component.
+     */
     public default JpaProducerBuilder toJpa(String path) {
         return new JpaProducerBuilder(path);
     }

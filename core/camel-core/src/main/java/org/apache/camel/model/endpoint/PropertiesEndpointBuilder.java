@@ -34,6 +34,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface PropertiesEndpointBuilder {
 
 
+    /**
+     * Base class for the Properties component builders.
+     */
     public static class PropertiesCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -124,6 +127,9 @@ public interface PropertiesEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Properties component.
+     */
     public static class PropertiesConsumerBuilder
             extends
                 PropertiesCommonBuilder<PropertiesConsumerBuilder>
@@ -205,6 +211,9 @@ public interface PropertiesEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Properties component.
+     */
     public static class PropertiesProducerBuilder
             extends
                 PropertiesCommonBuilder<PropertiesProducerBuilder>
@@ -214,9 +223,19 @@ public interface PropertiesEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The properties component is used for using property placeholders in
+     * endpoint uris. Creates a builder to build a consumer endpoint for the
+     * Properties component.
+     */
     public default PropertiesConsumerBuilder fromProperties(String path) {
         return new PropertiesConsumerBuilder(path);
     }
+    /**
+     * The properties component is used for using property placeholders in
+     * endpoint uris. Creates a builder to build a producer endpoint for the
+     * Properties component.
+     */
     public default PropertiesProducerBuilder toProperties(String path) {
         return new PropertiesProducerBuilder(path);
     }

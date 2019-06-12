@@ -38,6 +38,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface TelegramEndpointBuilder {
 
 
+    /**
+     * Base class for the Telegram component builders.
+     */
     public static class TelegramCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -122,6 +125,9 @@ public interface TelegramEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Telegram component.
+     */
     public static class TelegramConsumerBuilder
             extends
                 TelegramCommonBuilder<TelegramConsumerBuilder>
@@ -538,6 +544,9 @@ public interface TelegramEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Telegram component.
+     */
     public static class TelegramProducerBuilder
             extends
                 TelegramCommonBuilder<TelegramProducerBuilder>
@@ -560,9 +569,17 @@ public interface TelegramEndpointBuilder {
             return (TelegramProducerBuilder) this;
         }
     }
+    /**
+     * The telegram component provides access to the Telegram Bot API. Creates a
+     * builder to build a consumer endpoint for the Telegram component.
+     */
     public default TelegramConsumerBuilder fromTelegram(String path) {
         return new TelegramConsumerBuilder(path);
     }
+    /**
+     * The telegram component provides access to the Telegram Bot API. Creates a
+     * builder to build a producer endpoint for the Telegram component.
+     */
     public default TelegramProducerBuilder toTelegram(String path) {
         return new TelegramProducerBuilder(path);
     }

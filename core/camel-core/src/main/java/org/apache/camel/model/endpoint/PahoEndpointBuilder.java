@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface PahoEndpointBuilder {
 
 
+    /**
+     * Base class for the Paho component builders.
+     */
     public static class PahoCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -223,6 +226,9 @@ public interface PahoEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Paho component.
+     */
     public static class PahoConsumerBuilder
             extends
                 PahoCommonBuilder<PahoConsumerBuilder>
@@ -301,6 +307,9 @@ public interface PahoEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Paho component.
+     */
     public static class PahoProducerBuilder
             extends
                 PahoCommonBuilder<PahoProducerBuilder>
@@ -311,12 +320,26 @@ public interface PahoEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.paho.PahoPersistence</code> enum.
+     */
     public static enum PahoPersistence {
         FILE, MEMORY;
     }
+    /**
+     * Component for communicating with MQTT M2M message brokers using Eclipse
+     * Paho MQTT Client. Creates a builder to build a consumer endpoint for the
+     * Paho component.
+     */
     public default PahoConsumerBuilder fromPaho(String path) {
         return new PahoConsumerBuilder(path);
     }
+    /**
+     * Component for communicating with MQTT M2M message brokers using Eclipse
+     * Paho MQTT Client. Creates a builder to build a producer endpoint for the
+     * Paho component.
+     */
     public default PahoProducerBuilder toPaho(String path) {
         return new PahoProducerBuilder(path);
     }

@@ -36,6 +36,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface DigitalSignatureEndpointBuilder {
 
 
+    /**
+     * Base class for the Crypto (JCE) component builders.
+     */
     public static class DigitalSignatureCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -363,6 +366,9 @@ public interface DigitalSignatureEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Crypto (JCE) component.
+     */
     public static class DigitalSignatureProducerBuilder
             extends
                 DigitalSignatureCommonBuilder<DigitalSignatureProducerBuilder>
@@ -373,9 +379,18 @@ public interface DigitalSignatureEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.crypto.CryptoOperation</code> enum.
+     */
     public static enum CryptoOperation {
         sign, verify;
     }
+    /**
+     * The crypto component is used for signing and verifying exchanges using
+     * the Signature Service of the Java Cryptographic Extension (JCE). Creates
+     * a builder to build a producer endpoint for the Crypto (JCE) component.
+     */
     public default DigitalSignatureProducerBuilder toDigitalSignature(
             String path) {
         return new DigitalSignatureProducerBuilder(path);

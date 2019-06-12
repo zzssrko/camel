@@ -37,6 +37,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface JettyHttpEndpointBuilder9 {
 
 
+    /**
+     * Base class for the Jetty component builders.
+     */
     public static class JettyHttpCommonBuilder9<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -307,6 +310,9 @@ public interface JettyHttpEndpointBuilder9 {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Jetty component.
+     */
     public static class JettyHttpConsumerBuilder9
             extends
                 JettyHttpCommonBuilder9<JettyHttpConsumerBuilder9>
@@ -764,6 +770,9 @@ public interface JettyHttpEndpointBuilder9 {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Jetty component.
+     */
     public static class JettyHttpProducerBuilder9
             extends
                 JettyHttpCommonBuilder9<JettyHttpProducerBuilder9>
@@ -1165,12 +1174,26 @@ public interface JettyHttpEndpointBuilder9 {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.http.common.HttpMethods</code>
+     * enum.
+     */
     public static enum HttpMethods {
         GET, POST, PUT, DELETE, HEAD, OPTIONS, TRACE, PATCH;
     }
+    /**
+     * The jetty component provides HTTP-based endpoints for consuming and
+     * producing HTTP requests. Creates a builder to build a consumer endpoint
+     * for the Jetty component.
+     */
     public default JettyHttpConsumerBuilder9 fromJettyHttp9(String path) {
         return new JettyHttpConsumerBuilder9(path);
     }
+    /**
+     * The jetty component provides HTTP-based endpoints for consuming and
+     * producing HTTP requests. Creates a builder to build a producer endpoint
+     * for the Jetty component.
+     */
     public default JettyHttpProducerBuilder9 toJettyHttp9(String path) {
         return new JettyHttpProducerBuilder9(path);
     }

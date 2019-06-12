@@ -36,6 +36,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface JBPMEndpointBuilder {
 
 
+    /**
+     * Base class for the JBPM component builders.
+     */
     public static class JBPMCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -445,6 +448,9 @@ public interface JBPMEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the JBPM component.
+     */
     public static class JBPMConsumerBuilder
             extends
                 JBPMCommonBuilder<JBPMConsumerBuilder>
@@ -523,6 +529,9 @@ public interface JBPMEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the JBPM component.
+     */
     public static class JBPMProducerBuilder
             extends
                 JBPMCommonBuilder<JBPMProducerBuilder>
@@ -540,9 +549,19 @@ public interface JBPMEndpointBuilder {
             return (JBPMProducerBuilder) this;
         }
     }
+    /**
+     * The jbpm component provides integration with jBPM (Business Process
+     * Management). Creates a builder to build a consumer endpoint for the JBPM
+     * component.
+     */
     public default JBPMConsumerBuilder fromJBPM(String path) {
         return new JBPMConsumerBuilder(path);
     }
+    /**
+     * The jbpm component provides integration with jBPM (Business Process
+     * Management). Creates a builder to build a producer endpoint for the JBPM
+     * component.
+     */
     public default JBPMProducerBuilder toJBPM(String path) {
         return new JBPMProducerBuilder(path);
     }

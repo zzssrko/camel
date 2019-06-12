@@ -38,6 +38,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface DdbStreamEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS DynamoDB Streams component builders.
+     */
     public static class DdbStreamCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -130,6 +133,9 @@ public interface DdbStreamEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the AWS DynamoDB Streams component.
+     */
     public static class DdbStreamConsumerBuilder
             extends
                 DdbStreamCommonBuilder<DdbStreamConsumerBuilder>
@@ -605,9 +611,19 @@ public interface DdbStreamEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>com.amazonaws.services.dynamodbv2.model.ShardIteratorType</code>
+     * enum.
+     */
     public static enum ShardIteratorType {
         TRIM_HORIZON, LATEST, AT_SEQUENCE_NUMBER, AFTER_SEQUENCE_NUMBER;
     }
+    /**
+     * The aws-ddbstream component is used for working with Amazon DynamoDB
+     * Streams. Creates a builder to build a consumer endpoint for the AWS
+     * DynamoDB Streams component.
+     */
     public default DdbStreamConsumerBuilder fromDdbStream(String path) {
         return new DdbStreamConsumerBuilder(path);
     }

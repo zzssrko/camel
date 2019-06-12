@@ -34,6 +34,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface AMQPEndpointBuilder {
 
 
+    /**
+     * Base class for the AMQP component builders.
+     */
     public static class AMQPCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -953,6 +956,9 @@ public interface AMQPEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the AMQP component.
+     */
     public static class AMQPConsumerBuilder
             extends
                 AMQPCommonBuilder<AMQPConsumerBuilder>
@@ -1545,6 +1551,9 @@ public interface AMQPEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AMQP component.
+     */
     public static class AMQPProducerBuilder
             extends
                 AMQPCommonBuilder<AMQPProducerBuilder>
@@ -2048,24 +2057,48 @@ public interface AMQPEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jms.JmsMessageType</code>
+     * enum.
+     */
     public static enum JmsMessageType {
         Bytes, Map, Object, Stream, Text, Blob;
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jms.ConsumerType</code>
+     * enum.
+     */
     public static enum ConsumerType {
         Simple, Default, Custom;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.jms.DefaultTaskExecutorType</code> enum.
+     */
     public static enum DefaultTaskExecutorType {
         ThreadPool, SimpleAsync;
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jms.ReplyToType</code>
+     * enum.
+     */
     public static enum ReplyToType {
         Temporary, Shared, Exclusive;
     }
+    /**
+     * Messaging with AMQP protocol using Apache QPid Client. Creates a builder
+     * to build a consumer endpoint for the AMQP component.
+     */
     public default AMQPConsumerBuilder fromAMQP(String path) {
         return new AMQPConsumerBuilder(path);
     }
+    /**
+     * Messaging with AMQP protocol using Apache QPid Client. Creates a builder
+     * to build a producer endpoint for the AMQP component.
+     */
     public default AMQPProducerBuilder toAMQP(String path) {
         return new AMQPProducerBuilder(path);
     }

@@ -35,6 +35,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface ActiveMQEndpointBuilder {
 
 
+    /**
+     * Base class for the ActiveMQ component builders.
+     */
     public static class ActiveMQCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -954,6 +957,9 @@ public interface ActiveMQEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the ActiveMQ component.
+     */
     public static class ActiveMQConsumerBuilder
             extends
                 ActiveMQCommonBuilder<ActiveMQConsumerBuilder>
@@ -1551,6 +1557,9 @@ public interface ActiveMQEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the ActiveMQ component.
+     */
     public static class ActiveMQProducerBuilder
             extends
                 ActiveMQCommonBuilder<ActiveMQProducerBuilder>
@@ -2064,24 +2073,50 @@ public interface ActiveMQEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jms.JmsMessageType</code>
+     * enum.
+     */
     public static enum JmsMessageType {
         Bytes, Map, Object, Stream, Text, Blob;
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jms.ConsumerType</code>
+     * enum.
+     */
     public static enum ConsumerType {
         Simple, Default, Custom;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.jms.DefaultTaskExecutorType</code> enum.
+     */
     public static enum DefaultTaskExecutorType {
         ThreadPool, SimpleAsync;
     }
 
+    /**
+     * Proxy enum for <code>org.apache.camel.component.jms.ReplyToType</code>
+     * enum.
+     */
     public static enum ReplyToType {
         Temporary, Shared, Exclusive;
     }
+    /**
+     * The activemq component allows messages to be sent to (or consumed from)
+     * Apache ActiveMQ. This component extends the Camel JMS component. Creates
+     * a builder to build a consumer endpoint for the ActiveMQ component.
+     */
     public default ActiveMQConsumerBuilder fromActiveMQ(String path) {
         return new ActiveMQConsumerBuilder(path);
     }
+    /**
+     * The activemq component allows messages to be sent to (or consumed from)
+     * Apache ActiveMQ. This component extends the Camel JMS component. Creates
+     * a builder to build a producer endpoint for the ActiveMQ component.
+     */
     public default ActiveMQProducerBuilder toActiveMQ(String path) {
         return new ActiveMQProducerBuilder(path);
     }

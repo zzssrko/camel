@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface HazelcastRingbufferEndpointBuilder {
 
 
+    /**
+     * Base class for the Hazelcast Ringbuffer component builders.
+     */
     public static class HazelcastRingbufferCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -238,6 +241,9 @@ public interface HazelcastRingbufferEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Hazelcast Ringbuffer component.
+     */
     public static class HazelcastRingbufferProducerBuilder
             extends
                 HazelcastRingbufferCommonBuilder<HazelcastRingbufferProducerBuilder>
@@ -248,9 +254,19 @@ public interface HazelcastRingbufferEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.hazelcast.HazelcastOperation</code>
+     * enum.
+     */
     public static enum HazelcastOperation {
         put, delete, get, update, query, getAll, clear, putIfAbsent, allAll, removeAll, retainAll, evict, evictAll, valueCount, containsKey, containsValue, keySet, removevalue, increment, decrement, setvalue, destroy, compareAndSet, getAndAdd, add, offer, peek, poll, remainingCapacity, drainTo, removeIf, take, publish, readOnceHeal, readOnceTail, capacity;
     }
+    /**
+     * The hazelcast-ringbuffer component is used to access Hazelcast
+     * distributed ringbuffer. Creates a builder to build a producer endpoint
+     * for the Hazelcast Ringbuffer component.
+     */
     public default HazelcastRingbufferProducerBuilder toHazelcastRingbuffer(
             String path) {
         return new HazelcastRingbufferProducerBuilder(path);

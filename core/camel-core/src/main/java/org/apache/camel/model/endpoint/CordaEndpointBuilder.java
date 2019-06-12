@@ -32,6 +32,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface CordaEndpointBuilder {
 
 
+    /**
+     * Base class for the corda component builders.
+     */
     public static class CordaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -94,6 +97,9 @@ public interface CordaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the corda component.
+     */
     public static class CordaConsumerBuilder
             extends
                 CordaCommonBuilder<CordaConsumerBuilder>
@@ -173,6 +179,9 @@ public interface CordaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the corda component.
+     */
     public static class CordaProducerBuilder
             extends
                 CordaCommonBuilder<CordaProducerBuilder>
@@ -182,9 +191,17 @@ public interface CordaEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The corda component uses the corda-rpc to interact with corda nodes.
+     * Creates a builder to build a consumer endpoint for the corda component.
+     */
     public default CordaConsumerBuilder fromCorda(String path) {
         return new CordaConsumerBuilder(path);
     }
+    /**
+     * The corda component uses the corda-rpc to interact with corda nodes.
+     * Creates a builder to build a producer endpoint for the corda component.
+     */
     public default CordaProducerBuilder toCorda(String path) {
         return new CordaProducerBuilder(path);
     }

@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface KubernetesConfigMapsEndpointBuilder {
 
 
+    /**
+     * Base class for the Kubernetes ConfigMap component builders.
+     */
     public static class KubernetesConfigMapsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -251,6 +254,9 @@ public interface KubernetesConfigMapsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Kubernetes ConfigMap component.
+     */
     public static class KubernetesConfigMapsProducerBuilder
             extends
                 KubernetesConfigMapsCommonBuilder<KubernetesConfigMapsProducerBuilder>
@@ -268,6 +274,11 @@ public interface KubernetesConfigMapsEndpointBuilder {
             return (KubernetesConfigMapsProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Configmaps component provides a producer to execute
+     * kubernetes configmap operations. Creates a builder to build a producer
+     * endpoint for the Kubernetes ConfigMap component.
+     */
     public default KubernetesConfigMapsProducerBuilder toKubernetesConfigMaps(
             String path) {
         return new KubernetesConfigMapsProducerBuilder(path);

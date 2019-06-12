@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface BrowseEndpointBuilder {
 
 
+    /**
+     * Base class for the Browse component builders.
+     */
     public static class BrowseCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -85,6 +88,9 @@ public interface BrowseEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Browse component.
+     */
     public static class BrowseConsumerBuilder
             extends
                 BrowseCommonBuilder<BrowseConsumerBuilder>
@@ -165,6 +171,9 @@ public interface BrowseEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Browse component.
+     */
     public static class BrowseProducerBuilder
             extends
                 BrowseCommonBuilder<BrowseProducerBuilder>
@@ -174,9 +183,19 @@ public interface BrowseEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The browse component is used for viewing the messages received on
+     * endpoints that supports BrowsableEndpoint. Creates a builder to build a
+     * consumer endpoint for the Browse component.
+     */
     public default BrowseConsumerBuilder fromBrowse(String path) {
         return new BrowseConsumerBuilder(path);
     }
+    /**
+     * The browse component is used for viewing the messages received on
+     * endpoints that supports BrowsableEndpoint. Creates a builder to build a
+     * producer endpoint for the Browse component.
+     */
     public default BrowseProducerBuilder toBrowse(String path) {
         return new BrowseProducerBuilder(path);
     }

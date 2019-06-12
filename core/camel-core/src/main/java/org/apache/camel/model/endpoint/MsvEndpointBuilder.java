@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface MsvEndpointBuilder {
 
 
+    /**
+     * Base class for the MSV component builders.
+     */
     public static class MsvCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -232,6 +235,9 @@ public interface MsvEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the MSV component.
+     */
     public static class MsvProducerBuilder
             extends
                 MsvCommonBuilder<MsvProducerBuilder>
@@ -241,6 +247,10 @@ public interface MsvEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Validates the payload of a message using the MSV Library. Creates a
+     * builder to build a producer endpoint for the MSV component.
+     */
     public default MsvProducerBuilder toMsv(String path) {
         return new MsvProducerBuilder(path);
     }

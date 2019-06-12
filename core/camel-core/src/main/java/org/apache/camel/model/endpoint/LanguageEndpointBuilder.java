@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface LanguageEndpointBuilder {
 
 
+    /**
+     * Base class for the Language component builders.
+     */
     public static class LanguageCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -172,6 +175,9 @@ public interface LanguageEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Language component.
+     */
     public static class LanguageProducerBuilder
             extends
                 LanguageCommonBuilder<LanguageProducerBuilder>
@@ -181,6 +187,11 @@ public interface LanguageEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The language component allows you to send a message to an endpoint which
+     * executes a script by any of the supported Languages in Camel. Creates a
+     * builder to build a producer endpoint for the Language component.
+     */
     public default LanguageProducerBuilder toLanguage(String path) {
         return new LanguageProducerBuilder(path);
     }

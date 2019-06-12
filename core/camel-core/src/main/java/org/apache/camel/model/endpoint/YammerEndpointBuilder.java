@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface YammerEndpointBuilder {
 
 
+    /**
+     * Base class for the Yammer component builders.
+     */
     public static class YammerCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -139,6 +142,9 @@ public interface YammerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Yammer component.
+     */
     public static class YammerConsumerBuilder
             extends
                 YammerCommonBuilder<YammerConsumerBuilder>
@@ -599,6 +605,9 @@ public interface YammerEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Yammer component.
+     */
     public static class YammerProducerBuilder
             extends
                 YammerCommonBuilder<YammerProducerBuilder>
@@ -609,12 +618,26 @@ public interface YammerEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.yammer.YammerFunctionType</code> enum.
+     */
     public static enum YammerFunctionType {
         MESSAGES, MY_FEED, ALGO, FOLLOWING, SENT, PRIVATE, RECEIVED, USERS, CURRENT;
     }
+    /**
+     * The yammer component allows you to interact with the Yammer enterprise
+     * social network. Creates a builder to build a consumer endpoint for the
+     * Yammer component.
+     */
     public default YammerConsumerBuilder fromYammer(String path) {
         return new YammerConsumerBuilder(path);
     }
+    /**
+     * The yammer component allows you to interact with the Yammer enterprise
+     * social network. Creates a builder to build a producer endpoint for the
+     * Yammer component.
+     */
     public default YammerProducerBuilder toYammer(String path) {
         return new YammerProducerBuilder(path);
     }

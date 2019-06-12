@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface ValidatorEndpointBuilder {
 
 
+    /**
+     * Base class for the Validator component builders.
+     */
     public static class ValidatorCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -232,6 +235,9 @@ public interface ValidatorEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Validator component.
+     */
     public static class ValidatorProducerBuilder
             extends
                 ValidatorCommonBuilder<ValidatorProducerBuilder>
@@ -241,6 +247,11 @@ public interface ValidatorEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Validates the payload of a message using XML Schema and JAXP Validation.
+     * Creates a builder to build a producer endpoint for the Validator
+     * component.
+     */
     public default ValidatorProducerBuilder toValidator(String path) {
         return new ValidatorProducerBuilder(path);
     }

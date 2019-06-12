@@ -39,6 +39,9 @@ import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 public interface IronMQEndpointBuilder {
 
 
+    /**
+     * Base class for the IronMQ component builders.
+     */
     public static class IronMQCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -152,6 +155,9 @@ public interface IronMQEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the IronMQ component.
+     */
     public static class IronMQConsumerBuilder
             extends
                 IronMQCommonBuilder<IronMQConsumerBuilder>
@@ -621,6 +627,9 @@ public interface IronMQEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the IronMQ component.
+     */
     public static class IronMQProducerBuilder
             extends
                 IronMQCommonBuilder<IronMQProducerBuilder>
@@ -648,9 +657,19 @@ public interface IronMQEndpointBuilder {
             return (IronMQProducerBuilder) this;
         }
     }
+    /**
+     * The ironmq provides integration with IronMQ an elastic and durable hosted
+     * message queue as a service. Creates a builder to build a consumer
+     * endpoint for the IronMQ component.
+     */
     public default IronMQConsumerBuilder fromIronMQ(String path) {
         return new IronMQConsumerBuilder(path);
     }
+    /**
+     * The ironmq provides integration with IronMQ an elastic and durable hosted
+     * message queue as a service. Creates a builder to build a producer
+     * endpoint for the IronMQ component.
+     */
     public default IronMQProducerBuilder toIronMQ(String path) {
         return new IronMQProducerBuilder(path);
     }

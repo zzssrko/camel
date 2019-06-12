@@ -30,6 +30,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface SchematronEndpointBuilder {
 
 
+    /**
+     * Base class for the Schematron component builders.
+     */
     public static class SchematronCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -134,6 +137,9 @@ public interface SchematronEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Schematron component.
+     */
     public static class SchematronProducerBuilder
             extends
                 SchematronCommonBuilder<SchematronProducerBuilder>
@@ -143,6 +149,10 @@ public interface SchematronEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * Validates the payload of a message using the Schematron Library. Creates
+     * a builder to build a producer endpoint for the Schematron component.
+     */
     public default SchematronProducerBuilder toSchematron(String path) {
         return new SchematronProducerBuilder(path);
     }

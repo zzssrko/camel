@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface CwEndpointBuilder {
 
 
+    /**
+     * Base class for the AWS CloudWatch component builders.
+     */
     public static class CwCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -193,6 +196,9 @@ public interface CwEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the AWS CloudWatch component.
+     */
     public static class CwProducerBuilder
             extends
                 CwCommonBuilder<CwProducerBuilder>
@@ -202,6 +208,11 @@ public interface CwEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The aws-cw component is used for sending metrics to an Amazon CloudWatch.
+     * Creates a builder to build a producer endpoint for the AWS CloudWatch
+     * component.
+     */
     public default CwProducerBuilder toCw(String path) {
         return new CwProducerBuilder(path);
     }

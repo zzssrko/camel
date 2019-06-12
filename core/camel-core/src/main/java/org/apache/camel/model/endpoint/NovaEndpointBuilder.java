@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface NovaEndpointBuilder {
 
 
+    /**
+     * Base class for the OpenStack Nova component builders.
+     */
     public static class NovaCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -154,6 +157,9 @@ public interface NovaEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the OpenStack Nova component.
+     */
     public static class NovaProducerBuilder
             extends
                 NovaCommonBuilder<NovaProducerBuilder>
@@ -163,6 +169,11 @@ public interface NovaEndpointBuilder {
             super(path);
         }
     }
+    /**
+     * The openstack-nova component allows messages to be sent to an OpenStack
+     * compute services. Creates a builder to build a producer endpoint for the
+     * OpenStack Nova component.
+     */
     public default NovaProducerBuilder toNova(String path) {
         return new NovaProducerBuilder(path);
     }

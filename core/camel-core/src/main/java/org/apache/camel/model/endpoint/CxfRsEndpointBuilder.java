@@ -34,6 +34,9 @@ import org.apache.camel.spi.HeaderFilterStrategy;
 public interface CxfRsEndpointBuilder {
 
 
+    /**
+     * Base class for the CXF-RS component builders.
+     */
     public static class CxfRsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -387,6 +390,9 @@ public interface CxfRsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the CXF-RS component.
+     */
     public static class CxfRsConsumerBuilder
             extends
                 CxfRsCommonBuilder<CxfRsConsumerBuilder>
@@ -538,6 +544,9 @@ public interface CxfRsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the CXF-RS component.
+     */
     public static class CxfRsProducerBuilder
             extends
                 CxfRsCommonBuilder<CxfRsProducerBuilder>
@@ -683,12 +692,24 @@ public interface CxfRsEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.cxf.jaxrs.BindingStyle</code> enum.
+     */
     public static enum BindingStyle {
         SimpleConsumer, Default, Custom;
     }
+    /**
+     * The cxfrs component is used for JAX-RS REST services using Apache CXF.
+     * Creates a builder to build a consumer endpoint for the CXF-RS component.
+     */
     public default CxfRsConsumerBuilder fromCxfRs(String path) {
         return new CxfRsConsumerBuilder(path);
     }
+    /**
+     * The cxfrs component is used for JAX-RS REST services using Apache CXF.
+     * Creates a builder to build a producer endpoint for the CXF-RS component.
+     */
     public default CxfRsProducerBuilder toCxfRs(String path) {
         return new CxfRsProducerBuilder(path);
     }

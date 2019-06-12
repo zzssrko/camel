@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface OpenshiftBuildConfigsEndpointBuilder {
 
 
+    /**
+     * Base class for the Openshift Build Config component builders.
+     */
     public static class OpenshiftBuildConfigsCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -251,6 +254,9 @@ public interface OpenshiftBuildConfigsEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Openshift Build Config component.
+     */
     public static class OpenshiftBuildConfigsProducerBuilder
             extends
                 OpenshiftBuildConfigsCommonBuilder<OpenshiftBuildConfigsProducerBuilder>
@@ -268,6 +274,11 @@ public interface OpenshiftBuildConfigsEndpointBuilder {
             return (OpenshiftBuildConfigsProducerBuilder) this;
         }
     }
+    /**
+     * The Kubernetes Build Config component provides a producer to execute
+     * kubernetes build config operations. Creates a builder to build a producer
+     * endpoint for the Openshift Build Config component.
+     */
     public default OpenshiftBuildConfigsProducerBuilder toOpenshiftBuildConfigs(
             String path) {
         return new OpenshiftBuildConfigsProducerBuilder(path);

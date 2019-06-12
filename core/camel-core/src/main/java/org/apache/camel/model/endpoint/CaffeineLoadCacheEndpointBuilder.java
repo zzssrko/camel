@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface CaffeineLoadCacheEndpointBuilder {
 
 
+    /**
+     * Base class for the Caffeine LoadCache component builders.
+     */
     public static class CaffeineLoadCacheCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -135,6 +138,9 @@ public interface CaffeineLoadCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Caffeine LoadCache component.
+     */
     public static class CaffeineLoadCacheConsumerBuilder
             extends
                 CaffeineLoadCacheCommonBuilder<CaffeineLoadCacheConsumerBuilder>
@@ -217,6 +223,9 @@ public interface CaffeineLoadCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the Caffeine LoadCache component.
+     */
     public static class CaffeineLoadCacheProducerBuilder
             extends
                 CaffeineLoadCacheCommonBuilder<CaffeineLoadCacheProducerBuilder>
@@ -430,13 +439,27 @@ public interface CaffeineLoadCacheEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.caffeine.EvictionType</code> enum.
+     */
     public static enum EvictionType {
         size_based, time_based;
     }
+    /**
+     * The caffeine-loadcache component is used for integration with Caffeine
+     * Load Cache. Creates a builder to build a consumer endpoint for the
+     * Caffeine LoadCache component.
+     */
     public default CaffeineLoadCacheConsumerBuilder fromCaffeineLoadCache(
             String path) {
         return new CaffeineLoadCacheConsumerBuilder(path);
     }
+    /**
+     * The caffeine-loadcache component is used for integration with Caffeine
+     * Load Cache. Creates a builder to build a producer endpoint for the
+     * Caffeine LoadCache component.
+     */
     public default CaffeineLoadCacheProducerBuilder toCaffeineLoadCache(
             String path) {
         return new CaffeineLoadCacheProducerBuilder(path);

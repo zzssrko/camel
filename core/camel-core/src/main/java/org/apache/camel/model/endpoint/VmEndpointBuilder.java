@@ -35,6 +35,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface VmEndpointBuilder {
 
 
+    /**
+     * Base class for the VM component builders.
+     */
     public static class VmCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -124,6 +127,9 @@ public interface VmEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the VM component.
+     */
     public static class VmConsumerBuilder
             extends
                 VmCommonBuilder<VmConsumerBuilder>
@@ -302,6 +308,9 @@ public interface VmEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the VM component.
+     */
     public static class VmProducerBuilder
             extends
                 VmCommonBuilder<VmProducerBuilder>
@@ -443,9 +452,19 @@ public interface VmEndpointBuilder {
             return (VmProducerBuilder) this;
         }
     }
+    /**
+     * The vm component provides asynchronous call to another endpoint from the
+     * same CamelContext. Creates a builder to build a consumer endpoint for the
+     * VM component.
+     */
     public default VmConsumerBuilder fromVm(String path) {
         return new VmConsumerBuilder(path);
     }
+    /**
+     * The vm component provides asynchronous call to another endpoint from the
+     * same CamelContext. Creates a builder to build a producer endpoint for the
+     * VM component.
+     */
     public default VmProducerBuilder toVm(String path) {
         return new VmProducerBuilder(path);
     }

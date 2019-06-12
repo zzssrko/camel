@@ -31,6 +31,9 @@ import org.apache.camel.model.EndpointProducerBuilder;
 public interface DigitalOceanEndpointBuilder {
 
 
+    /**
+     * Base class for the DigitalOcean component builders.
+     */
     public static class DigitalOceanCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -210,6 +213,9 @@ public interface DigitalOceanEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint producers for the DigitalOcean component.
+     */
     public static class DigitalOceanProducerBuilder
             extends
                 DigitalOceanCommonBuilder<DigitalOceanProducerBuilder>
@@ -220,13 +226,26 @@ public interface DigitalOceanEndpointBuilder {
         }
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.digitalocean.constants.DigitalOceanOperations</code> enum.
+     */
     public static enum DigitalOceanOperations {
         create, update, delete, list, ownList, get, listBackups, listActions, listNeighbors, listSnapshots, listKernels, listAllNeighbors, enableBackups, disableBackups, reboot, powerCycle, shutdown, powerOn, powerOff, restore, resetPassword, resize, rebuild, rename, changeKernel, enableIpv6, enablePrivateNetworking, takeSnapshot, transfer, convert, attach, detach, assign, unassign, tag, untag;
     }
 
+    /**
+     * Proxy enum for
+     * <code>org.apache.camel.component.digitalocean.constants.DigitalOceanResources</code> enum.
+     */
     public static enum DigitalOceanResources {
         account, actions, blockStorages, droplets, images, snapshots, keys, regions, sizes, floatingIPs, tags;
     }
+    /**
+     * The DigitalOcean component allows you to manage Droplets and resources
+     * within the DigitalOcean cloud. Creates a builder to build a producer
+     * endpoint for the DigitalOcean component.
+     */
     public default DigitalOceanProducerBuilder toDigitalOcean(String path) {
         return new DigitalOceanProducerBuilder(path);
     }

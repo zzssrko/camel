@@ -33,6 +33,9 @@ import org.apache.camel.spi.ExceptionHandler;
 public interface MasterEndpointBuilder {
 
 
+    /**
+     * Base class for the Master component builders.
+     */
     public static class MasterCommonBuilder<T extends AbstractEndpointBuilder>
             extends
                 AbstractEndpointBuilder<T> {
@@ -93,6 +96,9 @@ public interface MasterEndpointBuilder {
         }
     }
 
+    /**
+     * Builder for endpoint consumers for the Master component.
+     */
     public static class MasterConsumerBuilder
             extends
                 MasterCommonBuilder<MasterConsumerBuilder>
@@ -172,6 +178,11 @@ public interface MasterEndpointBuilder {
             return (MasterConsumerBuilder) this;
         }
     }
+    /**
+     * Represents an endpoint which only becomes active when the
+     * CamelClusterView has the leadership. Creates a builder to build a
+     * consumer endpoint for the Master component.
+     */
     public default MasterConsumerBuilder fromMaster(String path) {
         return new MasterConsumerBuilder(path);
     }
