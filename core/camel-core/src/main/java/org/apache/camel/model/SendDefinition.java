@@ -46,10 +46,13 @@ public abstract class SendDefinition<Type extends ProcessorDefinition<Type>> ext
 
     @Override
     public String getEndpointUri() {
-        if (uri != null) {
+        if (endpointProducerBuilder != null) {
+            return endpointProducerBuilder.getUri();
+        } else if (endpoint != null) {
+            return endpoint.getEndpointUri();
+        } else {
             return uri;
         }
-        return null;
     }
 
     public String getUri() {
@@ -62,14 +65,15 @@ public abstract class SendDefinition<Type extends ProcessorDefinition<Type>> ext
      * @param uri the uri of the endpoint
      */
     public void setUri(String uri) {
+        clear();
         this.uri = uri;
     }
 
     /**
-     * Gets tne endpoint if an {@link Endpoint} instance was set.
+     * Gets the endpoint if an {@link Endpoint} instance was set.
      * <p/>
      * This implementation may return <tt>null</tt> which means you need to use
-     * {@link #getUri()} to get information about the endpoint.
+     * {@link #getEndpointUri()} to get information about the endpoint.
      *
      * @return the endpoint instance, or <tt>null</tt>
      */
@@ -78,11 +82,9 @@ public abstract class SendDefinition<Type extends ProcessorDefinition<Type>> ext
     }
 
     public void setEndpoint(Endpoint endpoint) {
+        clear();
         this.endpoint = endpoint;
-        this.uri = null;
-        if (endpoint != null) {
-            this.uri = endpoint.getEndpointUri();
-        }
+        this.uri = endpoint != null ? endpoint.getEndpointUri() : null;
     }
 
     public EndpointProducerBuilder getEndpointProducerBuilder() {
@@ -90,6 +92,7 @@ public abstract class SendDefinition<Type extends ProcessorDefinition<Type>> ext
     }
 
     public void setEndpointProducerBuilder(EndpointProducerBuilder endpointProducerBuilder) {
+        clear();
         this.endpointProducerBuilder = endpointProducerBuilder;
     }
 
@@ -99,6 +102,13 @@ public abstract class SendDefinition<Type extends ProcessorDefinition<Type>> ext
 
     @Override
     public String getLabel() {
-        return FromDefinition.description(getUri(), getEndpoint());
+        String uri = getEndpointUri();
+        return uri != null ? uri : "no uri supplied";
+    }
+
+    protected void clear() {
+        this.endpointProducerBuilder = null;
+        this.endpoint = null;
+        this.uri = null;
     }
 }

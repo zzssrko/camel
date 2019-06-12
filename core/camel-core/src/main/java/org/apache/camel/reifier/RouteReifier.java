@@ -331,7 +331,7 @@ public class RouteReifier extends ProcessorReifier<RouteDefinition> {
             if (def != null) {
                 endpoint = def.resolve(routeContext);
             } else {
-                endpoint = routeContext.resolveEndpoint(definition.getInput().getUri());
+                endpoint = routeContext.resolveEndpoint(definition.getInput().getEndpointUri());
             }
         }
         routeContext.setEndpoint(endpoint);

@@ -24,4 +24,6 @@ public interface EndpointConsumerBuilder {
 
     Endpoint resolve(RouteContext context) throws NoSuchEndpointException;
 
+    String getUri();
+
 }

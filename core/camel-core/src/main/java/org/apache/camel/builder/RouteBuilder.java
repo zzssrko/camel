@@ -487,7 +487,7 @@ public abstract class RouteBuilder extends BuilderSupport implements RoutesBuild
                 boolean hasRestApi = false;
                 for (RouteDefinition route : camelContext.getExtension(Model.class).getRouteDefinitions()) {
                     FromDefinition from = route.getInput();
-                    if (from.getUri() != null && from.getUri().startsWith("rest-api:")) {
+                    if (from.getEndpointUri() != null && from.getEndpointUri().startsWith("rest-api:")) {
                         hasRestApi = true;
                     }
                 }

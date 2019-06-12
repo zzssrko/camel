@@ -38,7 +38,15 @@ public class AbstractEndpointBuilder<T extends AbstractEndpointBuilder> {
     }
 
     public Endpoint resolve(RouteContext context) throws NoSuchEndpointException {
-        return context.resolveEndpoint(scheme + ":" + path, properties);
+        return context.resolveEndpoint(getUri(), properties);
+    }
+
+    public String getUri() {
+        return scheme + ":" + path;
+    }
+
+    public String toString() {
+        return getUri();
     }
 
 }
