@@ -27,6 +27,9 @@ import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sns.AmazonSNS;
+import com.amazonaws.services.sns.AmazonSNSAsync;
+import com.amazonaws.services.sns.AmazonSNSAsyncClient;
+import com.amazonaws.services.sns.AmazonSNSAsyncClientBuilder;
 import com.amazonaws.services.sns.AmazonSNSClientBuilder;
 import com.amazonaws.services.sns.model.CreateTopicRequest;
 import com.amazonaws.services.sns.model.CreateTopicResult;
@@ -55,7 +58,7 @@ import org.apache.camel.util.ObjectHelper;
     producerOnly = true, label = "cloud,mobile,messaging")
 public class SnsEndpoint extends DefaultEndpoint implements HeaderFilterStrategyAware {
 
-    private AmazonSNS snsClient;
+    private AmazonSNSAsync snsClient;
 
     @UriPath(description = "Topic name or ARN")
     @Metadata(required = true)
@@ -178,11 +181,11 @@ public class SnsEndpoint extends DefaultEndpoint implements HeaderFilterStrategy
         this.configuration = configuration;
     }
     
-    public void setSNSClient(AmazonSNS snsClient) {
+    public void setSNSClient(AmazonSNSAsync snsClient) {
         this.snsClient = snsClient;
     }
     
-    public AmazonSNS getSNSClient() {
+    public AmazonSNSAsync getSNSClient() {
         return snsClient;
     }
 
@@ -191,9 +194,9 @@ public class SnsEndpoint extends DefaultEndpoint implements HeaderFilterStrategy
      *
      * @return AmazonSNSClient
      */
-    AmazonSNS createSNSClient() {
-        AmazonSNS client = null;
-        AmazonSNSClientBuilder clientBuilder = null;
+    AmazonSNSAsync createSNSClient() {
+        AmazonSNSAsync client;
+        AmazonSNSAsyncClientBuilder clientBuilder;
         ClientConfiguration clientConfiguration = null;
         boolean isClientConfigFound = false;
         if (ObjectHelper.isNotEmpty(configuration.getProxyHost()) && ObjectHelper.isNotEmpty(configuration.getProxyPort())) {
@@ -206,15 +209,15 @@ public class SnsEndpoint extends DefaultEndpoint implements HeaderFilterStrategy
             AWSCredentials credentials = new BasicAWSCredentials(configuration.getAccessKey(), configuration.getSecretKey());
             AWSCredentialsProvider credentialsProvider = new AWSStaticCredentialsProvider(credentials);
             if (isClientConfigFound) {
-                clientBuilder = AmazonSNSClientBuilder.standard().withClientConfiguration(clientConfiguration).withCredentials(credentialsProvider);
+                clientBuilder = AmazonSNSAsyncClientBuilder.standard().withClientConfiguration(clientConfiguration).withCredentials(credentialsProvider);
             } else {
-                clientBuilder = AmazonSNSClientBuilder.standard().withCredentials(credentialsProvider);
+                clientBuilder = AmazonSNSAsyncClientBuilder.standard().withCredentials(credentialsProvider);
             }
         } else {
             if (isClientConfigFound) {
-                clientBuilder = AmazonSNSClientBuilder.standard();
+                clientBuilder = AmazonSNSAsyncClientBuilder.standard();
             } else {
-                clientBuilder = AmazonSNSClientBuilder.standard().withClientConfiguration(clientConfiguration);
+                clientBuilder = AmazonSNSAsyncClientBuilder.standard().withClientConfiguration(clientConfiguration);
             }
         }
         if (ObjectHelper.isNotEmpty(configuration.getRegion())) {

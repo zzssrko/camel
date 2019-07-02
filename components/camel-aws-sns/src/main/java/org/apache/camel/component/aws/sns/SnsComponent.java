@@ -22,6 +22,7 @@ import java.util.Set;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sns.AmazonSNS;
 
+import com.amazonaws.services.sns.AmazonSNSAsync;
 import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
 import org.apache.camel.spi.Metadata;
@@ -133,7 +134,7 @@ public class SnsComponent extends DefaultComponent {
     }
     
     private void checkAndSetRegistryClient(SnsConfiguration configuration) {
-        Set<AmazonSNS> clients = getCamelContext().getRegistry().findByType(AmazonSNS.class);
+        Set<AmazonSNSAsync> clients = getCamelContext().getRegistry().findByType(AmazonSNSAsync.class);
         if (clients.size() == 1) {
             configuration.setAmazonSNSClient(clients.stream().findFirst().get());
         }

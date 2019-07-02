@@ -22,22 +22,22 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.amazonaws.handlers.AsyncHandler;
 import com.amazonaws.services.sns.model.MessageAttributeValue;
 import com.amazonaws.services.sns.model.PublishRequest;
 import com.amazonaws.services.sns.model.PublishResult;
+import org.apache.camel.AsyncCallback;
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
-import org.apache.camel.Message;
 import org.apache.camel.spi.HeaderFilterStrategy;
-import org.apache.camel.support.DefaultProducer;
+import org.apache.camel.support.DefaultAsyncProducer;
 import org.apache.camel.util.URISupport;
-
 
 /**
  * A Producer which sends messages to the Amazon Web Service Simple Notification Service
  * <a href="http://aws.amazon.com/sns/">AWS SNS</a>
  */
-public class SnsProducer extends DefaultProducer {
+public class SnsProducer extends DefaultAsyncProducer {
 
     private transient String snsProducerToString;
 
@@ -45,23 +45,39 @@ public class SnsProducer extends DefaultProducer {
         super(endpoint);
     }
 
-    public void process(Exchange exchange) throws Exception {
+    @Override
+    public boolean process(final Exchange exchange, final AsyncCallback callback) {
         PublishRequest request = new PublishRequest();
-
-        request.setTopicArn(getConfiguration().getTopicArn());
-        request.setSubject(determineSubject(exchange));
-        request.setMessageStructure(determineMessageStructure(exchange));
-        request.setMessage(exchange.getIn().getBody(String.class));
-        request.setMessageAttributes(this.translateAttributes(exchange.getIn().getHeaders(), exchange));
+        try {
+            request.setTopicArn(getConfiguration().getTopicArn());
+            request.setSubject(determineSubject(exchange));
+            request.setMessageStructure(determineMessageStructure(exchange));
+            request.setMessage(exchange.getIn().getBody(String.class));
+            request.setMessageAttributes(this.translateAttributes(exchange.getIn().getHeaders(), exchange));
+        } catch (Exception e) {
+            exchange.setException(e);
+            callback.done(true);
+            return true;
+        }
 
         log.trace("Sending request [{}] from exchange [{}]...", request, exchange);
+        getEndpoint().getSNSClient().publishAsync(request, new AsyncHandler<PublishRequest, PublishResult>() {
+            @Override
+            public void onError(Exception e) {
+                log.trace("Received error", e);
+                exchange.setException(e);
+                callback.done(false);
+            }
 
-        PublishResult result = getEndpoint().getSNSClient().publish(request);
+            @Override
+            public void onSuccess(PublishRequest request, PublishResult result) {
+                log.trace("Received result [{}]", result);
+                exchange.getMessage().setHeader(SnsConstants.MESSAGE_ID, result.getMessageId());
+                callback.done(false);
+            }
+        });
 
-        log.trace("Received result [{}]", result);
-
-        Message message = getMessageForResponse(exchange);
-        message.setHeader(SnsConstants.MESSAGE_ID, result.getMessageId());
+        return false;
     }
 
     private String determineSubject(Exchange exchange) {
@@ -130,12 +146,4 @@ public class SnsProducer extends DefaultProducer {
         return (SnsEndpoint) super.getEndpoint();
     }
 
-    public static Message getMessageForResponse(final Exchange exchange) {
-        if (exchange.getPattern().isOutCapable()) {
-            Message out = exchange.getOut();
-            out.copyFrom(exchange.getIn());
-            return out;
-        }
-        return exchange.getIn();
-    }
 }

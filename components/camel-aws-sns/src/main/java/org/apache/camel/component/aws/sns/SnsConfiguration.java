@@ -17,6 +17,9 @@
 package org.apache.camel.component.aws.sns;
 
 import com.amazonaws.services.sns.AmazonSNS;
+import com.amazonaws.services.sns.AmazonSNSAsync;
+import com.amazonaws.services.sns.AmazonSNSAsyncClient;
+import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sqs.AmazonSQS;
 
 import org.apache.camel.RuntimeCamelException;
@@ -31,7 +34,7 @@ public class SnsConfiguration implements Cloneable {
     // Common properties
     private String topicName;
     @UriParam
-    private AmazonSNS amazonSNSClient;
+    private AmazonSNSAsync amazonSNSClient;
     @UriParam(label = "security", secret = true)
     private String accessKey;
     @UriParam(label = "security", secret = true)
@@ -108,14 +111,14 @@ public class SnsConfiguration implements Cloneable {
         this.secretKey = secretKey;
     }
 
-    public AmazonSNS getAmazonSNSClient() {
+    public AmazonSNSAsync getAmazonSNSClient() {
         return amazonSNSClient;
     }
 
     /**
      * To use the AmazonSNS as the client
      */
-    public void setAmazonSNSClient(AmazonSNS amazonSNSClient) {
+    public void setAmazonSNSClient(AmazonSNSAsync amazonSNSClient) {
         this.amazonSNSClient = amazonSNSClient;
     }
 
