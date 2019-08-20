@@ -35,6 +35,16 @@ public abstract class EndpointPropertyConfigurerSupport implements EndpointPrope
                 }
             }
         }
+
+        // special for boolean values with string values as we only want to accept "true" or "false"
+        if ((type == Boolean.class || type == boolean.class) && value instanceof String) {
+            String text = (String) value;
+            if (!text.equalsIgnoreCase("true") && !text.equalsIgnoreCase("false")) {
+                throw new IllegalArgumentException("Cannot convert the String value: " + value + " to type: " + type
+                        + " as the value is not true or false");
+            }
+        }
+
         return camelContext.getTypeConverter().convertTo(type, value);
     }
 

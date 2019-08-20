@@ -78,8 +78,8 @@ public final class EndpointPropertyConfigurerGenerator {
             for (EndpointOption option : options) {
                 String getOrSet = option.getName();
                 getOrSet = Character.toUpperCase(getOrSet.charAt(0)) + getOrSet.substring(1);
-                String getterLambda = getterLambda(getOrSet, option.getName(), option.getType());
-                String setterLambda = setterLambda(getOrSet, option.getName(), option.getType());
+                String getterLambda = getterLambda(getOrSet, option.getName(), option.getType(), option.getNestedFieldName());
+                String setterLambda = setterLambda(getOrSet, option.getName(), option.getType(), option.getNestedFieldName());
                 w.write("        readPlaceholders.put(\"" + option.getName() + "\", " + getterLambda + ");\n");
                 w.write("        writePlaceholders.put(\"" + option.getName() + "\", " + setterLambda + ");\n");
             }
@@ -106,19 +106,28 @@ public final class EndpointPropertyConfigurerGenerator {
         }
     }
 
-    private static String getterLambda(String getOrSet, String name, String type) {
+    private static String getterLambda(String getOrSet, String name, String type, String nestedFieldName) {
+        String nested = "";
+        if (nestedFieldName != null) {
+            nested = "get" + Character.toUpperCase(nestedFieldName.charAt(0)) + nestedFieldName.substring(1) + "().";
+        }
         String getPrefix = "boolean".equals(type) ? "is" : "get";
-        return "endpoint::" + getPrefix + getOrSet;
+        return "() -> endpoint." + nested + "" + getPrefix + getOrSet + "()";
     }
 
-    private static String setterLambda(String getOrSet, String name, String type) {
+    private static String setterLambda(String getOrSet, String name, String type, String nestedFieldName) {
         // type may contain generics so remove those
         if (type.indexOf('<') != -1) {
             type = type.substring(0, type.indexOf('<'));
         }
+        if (nestedFieldName != null) {
+            getOrSet = "get" + Character.toUpperCase(nestedFieldName.charAt(0)) + nestedFieldName.substring(1) + "().set" + getOrSet;
+        } else {
+            getOrSet = "set" + getOrSet;
+        }
 
         StringBuilder sb = new StringBuilder();
-        sb.append("o -> endpoint.set").append(getOrSet).append("(property(camelContext, ").append(type).append(".class, o))");
+        sb.append("o -> endpoint.").append(getOrSet).append("(property(camelContext, ").append(type).append(".class, o))");
         return sb.toString();
     }
 

@@ -714,7 +714,7 @@ public final class IntrospectionSupport {
                     } else {
                         // We need to convert it
                         // special for boolean values with string values as we only want to accept "true" or "false"
-                        if (parameterType == Boolean.class || parameterType == boolean.class && ref instanceof String) {
+                        if ((parameterType == Boolean.class || parameterType == boolean.class) && ref instanceof String) {
                             String val = (String) ref;
                             if (!val.equalsIgnoreCase("true") && !val.equalsIgnoreCase("false")) {
                                 throw new IllegalArgumentException("Cannot convert the String value: " + ref + " to type: " + parameterType

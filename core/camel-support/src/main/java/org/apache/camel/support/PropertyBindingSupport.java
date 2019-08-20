@@ -458,7 +458,7 @@ public final class PropertyBindingSupport {
         org.apache.camel.util.ObjectHelper.notNull(properties, "properties");
         boolean rc = false;
 
-        // TODO: quick and dirty to only use configurer
+        // if there is a property configurer then use it to set the properties
         if (configurer != null) {
             Map<String, Consumer<Object>> writeProperties = configurer.getWritePropertyPlaceholderOptions(camelContext);
             for (Iterator<Map.Entry<String, Object>> iter = properties.entrySet().iterator(); iter.hasNext();) {
@@ -466,7 +466,6 @@ public final class PropertyBindingSupport {
                 String key = entry.getKey();
                 Object value = entry.getValue();
                 if (writeProperties.containsKey(key)) {
-                    // TODO: that thing with boolean and from string value true|false (should be in EndpointPropertyConfigurerSupport)
                     writeProperties.get(key).accept(value);
                     if (removeParameter) {
                         iter.remove();

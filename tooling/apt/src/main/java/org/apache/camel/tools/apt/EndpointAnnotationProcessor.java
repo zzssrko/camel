@@ -168,7 +168,7 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
             findComponentClassProperties(writer, roundEnv, componentModel, componentOptions, componentClassElement, "", parentData);
         }
 
-        findClassProperties(writer, roundEnv, componentModel, endpointPaths, endpointOptions, classElement, "", uriEndpoint.excludeProperties(), parentData);
+        findClassProperties(writer, roundEnv, componentModel, endpointPaths, endpointOptions, classElement, "", uriEndpoint.excludeProperties(), parentData, null, null);
 
         String json = createParameterJsonSchema(componentModel, componentOptions, endpointPaths, endpointOptions, schemes, parentData);
         writer.println(json);
@@ -268,7 +268,7 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
 
             buffer.append(JsonSchemaHelper.toJson(entry.getName(), entry.getDisplayName(), "property", required, entry.getType(), defaultValue, doc,
                 entry.isDeprecated(), entry.getDeprecationNote(), entry.isSecret(), entry.getGroup(), entry.getLabel(), entry.isEnumType(), entry.getEnums(),
-                false, null, asPredicate, optionalPrefix, prefix, multiValue));
+                false, null, asPredicate, optionalPrefix, prefix, multiValue, null, null));
 
             parentComponentProperties.remove(entry.getName());
         }
@@ -342,7 +342,7 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
 
             buffer.append(JsonSchemaHelper.toJson(entry.getName(), entry.getDisplayName(), "path", required, entry.getType(), defaultValue, doc,
                 entry.isDeprecated(), entry.getDeprecationNote(), entry.isSecret(), entry.getGroup(), entry.getLabel(), entry.isEnumType(), entry.getEnums(),
-                false, null, asPredicate, optionalPrefix, prefix, multiValue));
+                false, null, asPredicate, optionalPrefix, prefix, multiValue, null, null));
 
             parentProperties.remove(entry.getName());
         }
@@ -390,7 +390,7 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
 
             buffer.append(JsonSchemaHelper.toJson(entry.getName(), entry.getDisplayName(), "parameter", required, entry.getType(), defaultValue,
                 doc, entry.isDeprecated(), entry.getDeprecationNote(), entry.isSecret(), entry.getGroup(), entry.getLabel(), entry.isEnumType(), entry.getEnums(),
-                false, null, asPredicate, optionalPrefix, prefix, multiValue));
+                false, null, asPredicate, optionalPrefix, prefix, multiValue, entry.getNestedTypeName(), entry.getNestedFieldName()));
 
             parentProperties.remove(entry.getName());
         }
@@ -629,7 +629,7 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
     protected void findClassProperties(PrintWriter writer, RoundEnvironment roundEnv, ComponentModel componentModel,
                                        Set<EndpointPath> endpointPaths, Set<EndpointOption> endpointOptions,
                                        TypeElement classElement, String prefix, String excludeProperties,
-                                       Map<String, Object> parentData) {
+                                       Map<String, Object> parentData, String nestedTypeName, String nestedFieldName) {
         Elements elementUtils = processingEnv.getElementUtils();
         while (true) {
             List<VariableElement> fieldElements = ElementFilter.fieldsIn(classElement.getEnclosedElements());
@@ -765,7 +765,11 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
                         if (!isNullOrEmpty(extraPrefix)) {
                             nestedPrefix += extraPrefix;
                         }
-                        findClassProperties(writer, roundEnv, componentModel, endpointPaths, endpointOptions, fieldTypeElement, nestedPrefix, excludeProperties, null);
+                        nestedTypeName = fieldTypeName;
+                        nestedFieldName = fieldElement.getSimpleName().toString();
+                        findClassProperties(writer, roundEnv, componentModel, endpointPaths, endpointOptions, fieldTypeElement, nestedPrefix, excludeProperties, null, nestedTypeName, nestedFieldName);
+                        nestedTypeName = null;
+                        nestedFieldName = null;
                     } else {
                         String docComment = findJavaDoc(elementUtils, fieldElement, fieldName, name, classElement, false);
                         if (isNullOrEmpty(docComment)) {
@@ -810,7 +814,8 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
                         boolean isSecret = secret != null && secret || param.secret();
                         String group = EndpointHelper.labelAsGroupName(label, componentModel.isConsumerOnly(), componentModel.isProducerOnly());
                         EndpointOption option = new EndpointOption(name, displayName, fieldTypeName, required, defaultValue, defaultValueNote,
-                                docComment.trim(), paramOptionalPrefix, paramPrefix, multiValue, deprecated, deprecationNote, isSecret, group, label, isEnum, enums);
+                                docComment.trim(), paramOptionalPrefix, paramPrefix, multiValue, deprecated, deprecationNote, isSecret, group, label,
+                                isEnum, enums, nestedTypeName, nestedFieldName);
                         endpointOptions.add(option);
                     }
                 }
@@ -841,22 +846,6 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
             }
         }
         return false;
-    }
-
-    private static Map<String, String> parseAsMap(String data) {
-        Map<String, String> answer = new HashMap<>();
-        String[] lines = data.split("\n");
-        for (String line : lines) {
-            if (!line.isEmpty()) {
-                int idx = line.indexOf('=');
-                String key = line.substring(0, idx);
-                String value = line.substring(idx + 1);
-                // remove ending line break for the values
-                value = value.trim().replaceAll("\n", "");
-                answer.put(key.trim(), value);
-            }
-        }
-        return answer;
     }
 
     private static boolean secureAlias(String scheme, String alias) {
