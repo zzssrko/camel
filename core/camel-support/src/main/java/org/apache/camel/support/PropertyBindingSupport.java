@@ -466,21 +466,7 @@ public final class PropertyBindingSupport {
                 String key = entry.getKey();
                 Object value = entry.getValue();
                 if (writeProperties.containsKey(key)) {
-
-                    // support reference parameters
-                    if (value instanceof String) {
-                        String text = (String) value;
-                        if (isReferenceParameter(text)) {
-                            if (text.startsWith("#bean:")) {
-                                text = text.substring(6);
-                            } else {
-                                text = text.substring(1);
-                            }
-                            value = CamelContextHelper.mandatoryLookup(camelContext, text);
-                        }
-                    }
-                    // TODO: that thing with boolean and from string value true|false
-
+                    // TODO: that thing with boolean and from string value true|false (should be in EndpointPropertyConfigurerSupport)
                     writeProperties.get(key).accept(value);
                     if (removeParameter) {
                         iter.remove();

@@ -173,17 +173,19 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
         String json = createParameterJsonSchema(componentModel, componentOptions, endpointPaths, endpointOptions, schemes, parentData);
         writer.println(json);
 
-        TypeElement parent = findTypeElement(processingEnv, roundEnv, "org.apache.camel.spi.EndpointPropertyConfigurer");
-        String fqen = classElement.getQualifiedName().toString();
-        String pn = fqen.substring(0, fqen.lastIndexOf('.'));
-        String en = classElement.getSimpleName().toString();
-        String cn = en + "Configurer";
-        String fqn = pn + "." + cn;
+        if (uriEndpoint.generateConfigurer()) {
+            TypeElement parent = findTypeElement(processingEnv, roundEnv, "org.apache.camel.support.component.EndpointPropertyConfigurerSupport");
+            String fqen = classElement.getQualifiedName().toString();
+            String pn = fqen.substring(0, fqen.lastIndexOf('.'));
+            String en = classElement.getSimpleName().toString();
+            String cn = en + "Configurer";
+            String fqn = pn + "." + cn;
 
-        // only generate this once for the first scheme
-        if (schemes == null || schemes[0].equals(scheme)) {
-            EndpointPropertyConfigurerGenerator.generatePropertyConfigurer(processingEnv, parent, pn, cn, fqn, en, fqen, endpointOptions);
-            EndpointPropertyConfigurerGenerator.generateMetaInfConfigurer(processingEnv, componentModel.getScheme() + "-endpoint", fqn);
+            // only generate this once for the first scheme
+            if (schemes == null || schemes[0].equals(scheme)) {
+                EndpointPropertyConfigurerGenerator.generatePropertyConfigurer(processingEnv, parent, pn, cn, fqn, en, fqen, endpointOptions);
+                EndpointPropertyConfigurerGenerator.generateMetaInfConfigurer(processingEnv, componentModel.getScheme() + "-endpoint", fqn);
+            }
         }
     }
 
