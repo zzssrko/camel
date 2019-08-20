@@ -181,6 +181,7 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
         String fqn = pn + "." + cn;
 
         EndpointPropertyConfigurerGenerator.generatePropertyConfigurer(processingEnv, parent, pn, cn, fqn, en, fqen, endpointPaths, endpointOptions);
+        EndpointPropertyConfigurerGenerator.generateMetaInfConfigurer(processingEnv, componentModel.getScheme() + "-endpoint", fqn);
     }
 
     public String createParameterJsonSchema(ComponentModel componentModel, Set<ComponentOption> componentOptions,

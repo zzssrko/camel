@@ -57,7 +57,7 @@ public abstract class DefaultComponent extends ServiceSupport implements Compone
      */
     private static final Pattern RAW_PATTERN = Pattern.compile("RAW[({].*&&.*[)}]");
 
-    private static final String RESOURCE_PATH = "META-INF/services/org/apache/camel/component/";
+    private static final String RESOURCE_PATH = "META-INF/services/org/apache/camel/configurer/";
 
     private volatile Class endpointPropertyConfigurerClass;
 
@@ -335,7 +335,7 @@ public abstract class DefaultComponent extends ServiceSupport implements Compone
             String name = ann.value();
             try {
                 Optional<Class<?>> clazz = getCamelContext().getExtension(ExtendedCamelContext.class).getFactoryFinder(RESOURCE_PATH)
-                        .findOptionalClass(name, "endpoint-property-configurer-");
+                        .findOptionalClass(name + "-endpoint", null);
                 clazz.ifPresent(aClass -> endpointPropertyConfigurerClass = aClass);
             } catch (NoFactoryAvailableException e) {
                 // ignore
