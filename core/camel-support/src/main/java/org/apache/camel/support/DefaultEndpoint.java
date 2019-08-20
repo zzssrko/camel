@@ -28,7 +28,6 @@ import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.PollingConsumer;
-import org.apache.camel.Producer;
 import org.apache.camel.ResolveEndpointFailedException;
 import org.apache.camel.spi.ExceptionHandler;
 import org.apache.camel.spi.HasId;
@@ -51,7 +50,7 @@ import org.apache.camel.util.URISupport;
  * model or not. The option is default <tt>false</tt> which means asynchronous
  * processing is allowed.
  */
-public abstract class DefaultEndpoint extends ServiceSupport implements Endpoint, HasId, CamelContextAware, PropertyConfigurerAware {
+public abstract class DefaultEndpoint extends ServiceSupport implements Endpoint, HasId, CamelContextAware {
 
     private final String id = EndpointHelper.createEndpointId();
     private transient String endpointUriToString;
@@ -418,17 +417,14 @@ public abstract class DefaultEndpoint extends ServiceSupport implements Endpoint
                     .bind(camelContext, bean, parameters);
         } else {
             PropertyConfigurer configurer = null;
-            if (bean instanceof PropertyConfigurerAware) {
-                configurer = ((PropertyConfigurerAware) bean).getPropertyConfigurer();
+            if (bean instanceof Endpoint) {
+                configurer = getComponent().getEndpointPropertyConfigurer(bean);
+            } else if (bean instanceof PropertyConfigurerAware) {
+                configurer = ((PropertyConfigurerAware) bean).getPropertyConfigurer(bean);
             }
             // use advanced binding
             PropertyBindingSupport.build().withConfigurer(configurer).bind(camelContext, bean, parameters);
         }
-    }
-
-    @Override
-    public PropertyConfigurer getPropertyConfigurer() {
-        return null;
     }
 
     /**

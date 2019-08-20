@@ -172,6 +172,15 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
 
         String json = createParameterJsonSchema(componentModel, componentOptions, endpointPaths, endpointOptions, schemes, parentData);
         writer.println(json);
+
+        TypeElement parent = findTypeElement(processingEnv, roundEnv, "org.apache.camel.spi.EndpointPropertyConfigurer");
+        String fqen = classElement.getQualifiedName().toString();
+        String pn = fqen.substring(0, fqen.lastIndexOf('.'));
+        String en = classElement.getSimpleName().toString();
+        String cn = en + "Configurer";
+        String fqn = pn + "." + cn;
+
+        EndpointPropertyConfigurerGenerator.generatePropertyConfigurer(processingEnv, parent, pn, cn, fqn, en, fqen, endpointPaths, endpointOptions);
     }
 
     public String createParameterJsonSchema(ComponentModel componentModel, Set<ComponentOption> componentOptions,

@@ -25,7 +25,6 @@ import org.apache.camel.spi.CamelLogger;
 import org.apache.camel.spi.ExchangeFormatter;
 import org.apache.camel.spi.MaskingFormatter;
 import org.apache.camel.spi.Metadata;
-import org.apache.camel.spi.PropertyConfigurer;
 import org.apache.camel.spi.UriEndpoint;
 import org.apache.camel.spi.UriParam;
 import org.apache.camel.spi.UriPath;
@@ -64,8 +63,9 @@ public class LogEndpoint extends ProcessorEndpoint {
     @UriParam
     private Long groupDelay;
     // we want to include the uri options of the DefaultExchangeFormatter
-    @UriParam(label = "advanced")
-    private DefaultExchangeFormatter exchangeFormatter;
+    // TODO: Make this correct instead of cheating
+    //@UriParam(label = "advanced")
+    //private DefaultExchangeFormatter exchangeFormatter;
     @UriParam
     private Boolean logMask;
 
@@ -79,11 +79,6 @@ public class LogEndpoint extends ProcessorEndpoint {
     public LogEndpoint(String endpointUri, Component component, Processor logger) {
         super(endpointUri, component);
         setLogger(logger);
-    }
-
-    @Override
-    public PropertyConfigurer getPropertyConfigurer() {
-        return new LogEndpointConfigurer(this, getCamelContext());
     }
 
     @Override
