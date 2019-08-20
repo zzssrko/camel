@@ -25,6 +25,7 @@ import org.apache.camel.spi.CamelLogger;
 import org.apache.camel.spi.ExchangeFormatter;
 import org.apache.camel.spi.MaskingFormatter;
 import org.apache.camel.spi.Metadata;
+import org.apache.camel.spi.PropertyConfigurer;
 import org.apache.camel.spi.UriEndpoint;
 import org.apache.camel.spi.UriParam;
 import org.apache.camel.spi.UriPath;
@@ -78,6 +79,11 @@ public class LogEndpoint extends ProcessorEndpoint {
     public LogEndpoint(String endpointUri, Component component, Processor logger) {
         super(endpointUri, component);
         setLogger(logger);
+    }
+
+    @Override
+    public PropertyConfigurer getPropertyConfigurer() {
+        return new LogEndpointConfigurer(this, getCamelContext());
     }
 
     @Override

@@ -25,9 +25,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.PropertyBindingException;
+import org.apache.camel.spi.PropertyConfigurer;
 import org.apache.camel.util.StringHelper;
 
 import static org.apache.camel.support.IntrospectionSupport.findSetterMethods;
@@ -73,6 +76,7 @@ public final class PropertyBindingSupport {
         private boolean allowPrivateSetter = true;
         private boolean ignoreCase;
         private String optionPrefix;
+        private PropertyConfigurer configurer;
 
         /**
          * CamelContext to be used
@@ -200,6 +204,14 @@ public final class PropertyBindingSupport {
         }
 
         /**
+         * Whether to use the configurer to configure the properties.
+         */
+        public Builder withConfigurer(PropertyConfigurer configurer) {
+            this.configurer = configurer;
+            return this;
+        }
+
+        /**
          * Binds the properties to the target object, and removes the property that was bound from properties.
          *
          * @return  true if one or more properties was bound
@@ -211,7 +223,7 @@ public final class PropertyBindingSupport {
             org.apache.camel.util.ObjectHelper.notNull(properties, "properties");
 
             return doBindProperties(camelContext, target, properties, optionPrefix, ignoreCase, removeParameters, mandatory,
-                    nesting, deepNesting, fluentBuilder, allowPrivateSetter, reference, placeholder);
+                    nesting, deepNesting, fluentBuilder, allowPrivateSetter, reference, placeholder, configurer);
         }
 
         /**
@@ -233,7 +245,7 @@ public final class PropertyBindingSupport {
             org.apache.camel.util.ObjectHelper.notNull(prop, "properties");
 
             return doBindProperties(context, obj, prop, optionPrefix, ignoreCase, removeParameters, mandatory,
-                    nesting, deepNesting, fluentBuilder, allowPrivateSetter, reference, placeholder);
+                    nesting, deepNesting, fluentBuilder, allowPrivateSetter, reference, placeholder, configurer);
         }
 
         /**
@@ -255,7 +267,7 @@ public final class PropertyBindingSupport {
             properties.put(key, value);
 
             return doBindProperties(camelContext, target, properties, optionPrefix, ignoreCase, removeParameters, mandatory,
-                    nesting, deepNesting, fluentBuilder, allowPrivateSetter, reference, placeholder);
+                    nesting, deepNesting, fluentBuilder, allowPrivateSetter, reference, placeholder, configurer);
         }
 
     }
@@ -424,7 +436,7 @@ public final class PropertyBindingSupport {
      * @param optionPrefix        the prefix used to filter properties
      * @param ignoreCase          whether to ignore case for property keys
      * @param removeParameter     whether to remove bound parameters
-     * @param madatory            whether all parameters must be bound
+     * @param mandatory           whether all parameters must be bound
      * @param nesting             whether nesting is in use
      * @param deepNesting         whether deep nesting is in use, where Camel will attempt to walk as deep as possible by creating new objects in the OGNL graph if
      *                            a property has a setter and the object can be created from a default no-arg constructor.
@@ -432,21 +444,44 @@ public final class PropertyBindingSupport {
      * @param allowPrivateSetter  whether autowiring components allows to use private setter method when setting the value
      * @param reference           whether reference parameter (syntax starts with #) is in use
      * @param placeholder         whether to use Camels property placeholder to resolve placeholders on keys and values
+     * @param configurer          to use an optional {@link org.apache.camel.spi.PropertyConfigurer} to configure the properties
      * @return                    true if one or more properties was bound
      */
     private static boolean doBindProperties(CamelContext camelContext, Object target, Map<String, Object> properties,
-                                            String optionPrefix, boolean ignoreCase, boolean removeParameter, boolean madatory,
+                                            String optionPrefix, boolean ignoreCase, boolean removeParameter, boolean mandatory,
                                             boolean nesting, boolean deepNesting, boolean fluentBuilder, boolean allowPrivateSetter,
-                                            boolean reference, boolean placeholder) {
+                                            boolean reference, boolean placeholder,
+                                            PropertyConfigurer configurer) {
         org.apache.camel.util.ObjectHelper.notNull(camelContext, "camelContext");
         org.apache.camel.util.ObjectHelper.notNull(target, "target");
         org.apache.camel.util.ObjectHelper.notNull(properties, "properties");
         boolean rc = false;
 
+        // TODO: quick and dirty to only use configurer
+        if (configurer != null) {
+            Map<String, Consumer<Object>> writeProperties = configurer.getWritePropertyPlaceholderOptions(camelContext);
+            for (Iterator<Map.Entry<String, Object>> iter = properties.entrySet().iterator(); iter.hasNext();) {
+                Map.Entry<String, Object> entry = iter.next();
+                String key = entry.getKey();
+                Object value = entry.getValue();
+                if (writeProperties.containsKey(key)) {
+
+                    // TODO: reference
+                    // TODO: o
+
+                    writeProperties.get(key).accept(value);
+                    if (removeParameter) {
+                        properties.remove(key);
+                        rc = true;
+                    }
+                }
+            };
+        }
+
         // must set reference parameters first before the other bindings
         int size = properties.size();
         setReferenceProperties(camelContext, target, properties);
-        rc = properties.size() != size;
+        rc |= properties.size() != size;
 
         String uOptionPrefix = "";
         if (ignoreCase && isNotEmpty(optionPrefix)) {
@@ -471,7 +506,7 @@ public final class PropertyBindingSupport {
                 iter.remove();
                 rc = true;
             }
-            if (madatory && !bound) {
+            if (mandatory && !bound) {
                 throw new PropertyBindingException(target, key, value);
             }
         }

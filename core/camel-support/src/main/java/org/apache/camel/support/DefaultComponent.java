@@ -34,6 +34,8 @@ import org.apache.camel.Endpoint;
 import org.apache.camel.ResolveEndpointFailedException;
 import org.apache.camel.component.extension.ComponentExtension;
 import org.apache.camel.spi.Metadata;
+import org.apache.camel.spi.PropertyConfigurer;
+import org.apache.camel.spi.PropertyConfigurerAware;
 import org.apache.camel.support.service.ServiceSupport;
 import org.apache.camel.util.ObjectHelper;
 import org.apache.camel.util.URISupport;
@@ -366,8 +368,12 @@ public abstract class DefaultComponent extends ServiceSupport implements Compone
                     .withPlaceholder(false).withNesting(false).withDeepNesting(false).withReference(false)
                     .bind(camelContext, bean, parameters);
         } else {
+            PropertyConfigurer configurer = null;
+            if (bean instanceof PropertyConfigurerAware) {
+                configurer = ((PropertyConfigurerAware) bean).getPropertyConfigurer();
+            }
             // use advanced binding
-            PropertyBindingSupport.build().bind(camelContext, bean, parameters);
+            PropertyBindingSupport.build().withConfigurer(configurer).bind(camelContext, bean, parameters);
         }
     }
 
