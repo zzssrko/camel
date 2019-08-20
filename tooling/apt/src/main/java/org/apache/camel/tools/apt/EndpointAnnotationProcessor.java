@@ -116,14 +116,14 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
                     String packageName = name.substring(0, name.lastIndexOf("."));
                     String fileName = alias + ".json";
                     processFile(processingEnv, packageName, fileName,
-                            writer -> writeJSonSchemeDocumentation(writer, roundEnv, classElement, uriEndpoint, aliasTitle, alias, extendsAlias, label, schemes));
+                            writer -> writeJSonSchemeAndPropertyConfigurer(writer, roundEnv, classElement, uriEndpoint, aliasTitle, alias, extendsAlias, label, schemes));
                 }
             }
         }
     }
 
-    protected void writeJSonSchemeDocumentation(PrintWriter writer, RoundEnvironment roundEnv, TypeElement classElement, UriEndpoint uriEndpoint,
-                                                String title, String scheme, String extendsScheme, String label, String[] schemes) {
+    protected void writeJSonSchemeAndPropertyConfigurer(PrintWriter writer, RoundEnvironment roundEnv, TypeElement classElement, UriEndpoint uriEndpoint,
+                                                        String title, String scheme, String extendsScheme, String label, String[] schemes) {
         // gather component information
         ComponentModel componentModel = findComponentProperties(roundEnv, uriEndpoint, classElement, title, scheme, extendsScheme, label);
 
@@ -180,8 +180,11 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
         String cn = en + "Configurer";
         String fqn = pn + "." + cn;
 
-        EndpointPropertyConfigurerGenerator.generatePropertyConfigurer(processingEnv, parent, pn, cn, fqn, en, fqen, endpointPaths, endpointOptions);
-        EndpointPropertyConfigurerGenerator.generateMetaInfConfigurer(processingEnv, componentModel.getScheme() + "-endpoint", fqn);
+        // only generate this once for the first scheme
+        if (schemes == null || schemes[0].equals(scheme)) {
+            EndpointPropertyConfigurerGenerator.generatePropertyConfigurer(processingEnv, parent, pn, cn, fqn, en, fqen, endpointOptions);
+            EndpointPropertyConfigurerGenerator.generateMetaInfConfigurer(processingEnv, componentModel.getScheme() + "-endpoint", fqn);
+        }
     }
 
     public String createParameterJsonSchema(ComponentModel componentModel, Set<ComponentOption> componentOptions,

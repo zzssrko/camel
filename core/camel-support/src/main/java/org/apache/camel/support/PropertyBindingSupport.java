@@ -33,6 +33,7 @@ import org.apache.camel.PropertyBindingException;
 import org.apache.camel.spi.PropertyConfigurer;
 import org.apache.camel.util.StringHelper;
 
+import static org.apache.camel.support.EndpointHelper.isReferenceParameter;
 import static org.apache.camel.support.IntrospectionSupport.findSetterMethods;
 import static org.apache.camel.util.ObjectHelper.isNotEmpty;
 
@@ -466,12 +467,23 @@ public final class PropertyBindingSupport {
                 Object value = entry.getValue();
                 if (writeProperties.containsKey(key)) {
 
-                    // TODO: reference
-                    // TODO: o
+                    // support reference parameters
+                    if (value instanceof String) {
+                        String text = (String) value;
+                        if (isReferenceParameter(text)) {
+                            if (text.startsWith("#bean:")) {
+                                text = text.substring(6);
+                            } else {
+                                text = text.substring(1);
+                            }
+                            value = CamelContextHelper.mandatoryLookup(camelContext, text);
+                        }
+                    }
+                    // TODO: that thing with boolean and from string value true|false
 
                     writeProperties.get(key).accept(value);
                     if (removeParameter) {
-                        properties.remove(key);
+                        iter.remove();
                         rc = true;
                     }
                 }

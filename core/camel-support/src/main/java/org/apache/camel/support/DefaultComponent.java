@@ -43,6 +43,7 @@ import org.apache.camel.spi.PropertyConfigurer;
 import org.apache.camel.spi.PropertyConfigurerAware;
 import org.apache.camel.support.service.ServiceSupport;
 import org.apache.camel.util.ObjectHelper;
+import org.apache.camel.util.StringHelper;
 import org.apache.camel.util.URISupport;
 import org.apache.camel.util.UnsafeUriCharactersEncoder;
 import org.apache.camel.util.function.Suppliers;
@@ -333,6 +334,10 @@ public abstract class DefaultComponent extends ServiceSupport implements Compone
         org.apache.camel.spi.annotations.Component ann = ObjectHelper.getAnnotation(this, org.apache.camel.spi.annotations.Component.class);
         if (ann != null) {
             String name = ann.value();
+            // just grab first scheme name if the component has scheme alias (eg http,https)
+            if (name.contains(",")) {
+                name = StringHelper.before(name, ",");
+            }
             try {
                 Optional<Class<?>> clazz = getCamelContext().getExtension(ExtendedCamelContext.class).getFactoryFinder(RESOURCE_PATH)
                         .findOptionalClass(name + "-endpoint", null);
