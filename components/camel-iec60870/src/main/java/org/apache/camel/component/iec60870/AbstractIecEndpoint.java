@@ -78,6 +78,8 @@ public abstract class AbstractIecEndpoint<T extends AbstractConnectionMultiplexo
         this.address = requireNonNull(address);
     }
 
+    
+
     public ObjectAddress getAddress() {
         return this.address;
     }
