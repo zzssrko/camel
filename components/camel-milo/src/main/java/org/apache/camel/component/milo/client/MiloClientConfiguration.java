@@ -277,8 +277,8 @@ public class MiloClientConfiguration implements Cloneable {
     /**
      * The URL where the key should be loaded from
      */
-    public void setKeyStoreUrl(final String keyStoreUrl) throws MalformedURLException {
-        this.keyStoreUrl = keyStoreUrl != null ? new URL(keyStoreUrl) : null;
+    public void setKeyStoreUrl(URL keyStoreUrl) {
+        this.keyStoreUrl = keyStoreUrl;
     }
 
     public URL getKeyStoreUrl() {

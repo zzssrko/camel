@@ -107,20 +107,7 @@ public interface MiloClientEndpointBuilderFactory {
         /**
          * The method definition (see Method ID).
          * 
-         * The option is a:
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
-         * 
-         * Group: common
-         */
-        default MiloClientEndpointConsumerBuilder method(Object method) {
-            setProperty("method", method);
-            return this;
-        }
-        /**
-         * The method definition (see Method ID).
-         * 
-         * The option will be converted to a
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
+         * The option is a: <code>java.lang.String</code> type.
          * 
          * Group: common
          */
@@ -131,20 +118,7 @@ public interface MiloClientEndpointBuilderFactory {
         /**
          * The node definition (see Node ID).
          * 
-         * The option is a:
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
-         * 
-         * Group: common
-         */
-        default MiloClientEndpointConsumerBuilder node(Object node) {
-            setProperty("node", node);
-            return this;
-        }
-        /**
-         * The node definition (see Node ID).
-         * 
-         * The option will be converted to a
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
+         * The option is a: <code>java.lang.String</code> type.
          * 
          * Group: common
          */
@@ -694,20 +668,7 @@ public interface MiloClientEndpointBuilderFactory {
         /**
          * The method definition (see Method ID).
          * 
-         * The option is a:
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
-         * 
-         * Group: common
-         */
-        default MiloClientEndpointProducerBuilder method(Object method) {
-            setProperty("method", method);
-            return this;
-        }
-        /**
-         * The method definition (see Method ID).
-         * 
-         * The option will be converted to a
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
+         * The option is a: <code>java.lang.String</code> type.
          * 
          * Group: common
          */
@@ -718,20 +679,7 @@ public interface MiloClientEndpointBuilderFactory {
         /**
          * The node definition (see Node ID).
          * 
-         * The option is a:
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
-         * 
-         * Group: common
-         */
-        default MiloClientEndpointProducerBuilder node(Object node) {
-            setProperty("node", node);
-            return this;
-        }
-        /**
-         * The node definition (see Node ID).
-         * 
-         * The option will be converted to a
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
+         * The option is a: <code>java.lang.String</code> type.
          * 
          * Group: common
          */
@@ -1228,20 +1176,7 @@ public interface MiloClientEndpointBuilderFactory {
         /**
          * The method definition (see Method ID).
          * 
-         * The option is a:
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
-         * 
-         * Group: common
-         */
-        default MiloClientEndpointBuilder method(Object method) {
-            setProperty("method", method);
-            return this;
-        }
-        /**
-         * The method definition (see Method ID).
-         * 
-         * The option will be converted to a
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
+         * The option is a: <code>java.lang.String</code> type.
          * 
          * Group: common
          */
@@ -1252,20 +1187,7 @@ public interface MiloClientEndpointBuilderFactory {
         /**
          * The node definition (see Node ID).
          * 
-         * The option is a:
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
-         * 
-         * Group: common
-         */
-        default MiloClientEndpointBuilder node(Object node) {
-            setProperty("node", node);
-            return this;
-        }
-        /**
-         * The node definition (see Node ID).
-         * 
-         * The option will be converted to a
-         * <code>org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeId</code> type.
+         * The option is a: <code>java.lang.String</code> type.
          * 
          * Group: common
          */
