@@ -281,11 +281,11 @@ public interface SplunkEndpointBuilderFactory {
          * Sets streaming mode. Streaming mode sends exchanges as they are
          * received, rather than in a batch.
          * 
-         * The option is a: <code>java.lang.Boolean</code> type.
+         * The option is a: <code>boolean</code> type.
          * 
          * Group: consumer
          */
-        default SplunkEndpointConsumerBuilder streaming(Boolean streaming) {
+        default SplunkEndpointConsumerBuilder streaming(boolean streaming) {
             setProperty("streaming", streaming);
             return this;
         }
@@ -293,8 +293,7 @@ public interface SplunkEndpointBuilderFactory {
          * Sets streaming mode. Streaming mode sends exchanges as they are
          * received, rather than in a batch.
          * 
-         * The option will be converted to a <code>java.lang.Boolean</code>
-         * type.
+         * The option will be converted to a <code>boolean</code> type.
          * 
          * Group: consumer
          */
