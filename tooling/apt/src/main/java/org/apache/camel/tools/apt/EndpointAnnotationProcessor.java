@@ -173,7 +173,18 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
         String json = createParameterJsonSchema(componentModel, componentOptions, endpointPaths, endpointOptions, schemes, parentData);
         writer.println(json);
 
-        if (uriEndpoint.generateConfigurer()) {
+        // special for activemq and amqp scheme which should reuse jms
+        if ("activemq".equals(scheme) || "amqp".equals(scheme)) {
+            TypeElement parent = findTypeElement(processingEnv, roundEnv, "org.apache.camel.component.jms.JmsEndpointConfigurer");
+            String fqen = classElement.getQualifiedName().toString();
+            String pn = fqen.substring(0, fqen.lastIndexOf('.'));
+            String en = classElement.getSimpleName().toString();
+            String cn = en + "Configurer";
+            String fqn = pn + "." + cn;
+
+            EndpointPropertyConfigurerGenerator.generateExtendConfigurer(processingEnv, parent, pn, cn, fqn);
+            EndpointPropertyConfigurerGenerator.generateMetaInfConfigurer(processingEnv, componentModel.getScheme() + "-endpoint", fqn);
+        } else if (uriEndpoint.generateConfigurer() && !endpointOptions.isEmpty()) {
             TypeElement parent = findTypeElement(processingEnv, roundEnv, "org.apache.camel.support.component.EndpointPropertyConfigurerSupport");
             String fqen = classElement.getQualifiedName().toString();
             String pn = fqen.substring(0, fqen.lastIndexOf('.'));
