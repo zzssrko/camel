@@ -56,16 +56,6 @@ public class LogComponent extends DefaultComponent {
                 log.info("More than one {} instance found in the registry. Falling back to creating logger from URI {}.", Logger.class.getName(), uri);
             }
         }
-        
-        LogEndpoint endpoint = new LogEndpoint(uri, this);
-        endpoint.setLevel(level.name());
-        setProperties(endpoint, parameters);
-      
-        if (providedLogger == null) {
-            endpoint.setLoggerName(remaining);
-        } else {
-            endpoint.setProvidedLogger(providedLogger);
-        }
 
         // first, try to pick up the ExchangeFormatter from the registry
         ExchangeFormatter localFormatter = getCamelContext().getRegistry().lookupByNameAndType("logFormatter", ExchangeFormatter.class);
@@ -80,7 +70,17 @@ public class LogComponent extends DefaultComponent {
             localFormatter = new DefaultExchangeFormatter();
             setProperties(localFormatter, parameters);
         }
+
+        LogEndpoint endpoint = new LogEndpoint(uri, this);
+        endpoint.setLevel(level.name());
         endpoint.setLocalFormatter(localFormatter);
+        if (providedLogger == null) {
+            endpoint.setLoggerName(remaining);
+        } else {
+            endpoint.setProvidedLogger(providedLogger);
+        }
+        setProperties(endpoint, parameters);
+
         return endpoint;
     }
 
