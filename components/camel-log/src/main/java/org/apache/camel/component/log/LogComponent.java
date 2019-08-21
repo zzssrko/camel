@@ -71,7 +71,7 @@ public class LogComponent extends DefaultComponent {
         ExchangeFormatter localFormatter = getCamelContext().getRegistry().lookupByNameAndType("logFormatter", ExchangeFormatter.class);
         if (localFormatter != null) {
             setProperties(localFormatter, parameters);
-        } else if (localFormatter == null && exchangeFormatter != null) {
+        } else if (exchangeFormatter != null) {
             // do not set properties, the exchangeFormatter is explicitly set, therefore the
             // user would have set its properties explicitly too
             localFormatter = exchangeFormatter;

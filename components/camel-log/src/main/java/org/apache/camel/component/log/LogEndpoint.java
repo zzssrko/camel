@@ -62,12 +62,11 @@ public class LogEndpoint extends ProcessorEndpoint {
     private Boolean groupActiveOnly;
     @UriParam
     private Long groupDelay;
-    // we want to include the uri options of the DefaultExchangeFormatter
-    // TODO: Make this correct instead of cheating
-    //@UriParam(label = "advanced")
-    //private DefaultExchangeFormatter exchangeFormatter;
     @UriParam
     private Boolean logMask;
+    // we want to include the uri options of the DefaultExchangeFormatter as additional configurations in the docs
+    @UriParam(label = "advanced")
+    private final DefaultExchangeFormatter formatter = new DefaultExchangeFormatter();
 
     public LogEndpoint() {
     }
@@ -79,6 +78,10 @@ public class LogEndpoint extends ProcessorEndpoint {
     public LogEndpoint(String endpointUri, Component component, Processor logger) {
         super(endpointUri, component);
         setLogger(logger);
+    }
+
+    public DefaultExchangeFormatter getFormatter() {
+        return formatter;
     }
 
     @Override
