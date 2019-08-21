@@ -45,16 +45,16 @@ public class SalesforceEndpoint extends DefaultEndpoint {
     @UriPath(label = "consumer", description = "The name of the topic/channel to use")
     private final String topicName;
     @UriParam
-    private final SalesforceEndpointConfig config;
+    private final SalesforceEndpointConfig configuration;
 
     @UriParam(label = "consumer", description = "The replayId value to use when subscribing")
     private Long replayId;
 
     public SalesforceEndpoint(String uri, SalesforceComponent salesforceComponent,
-                              SalesforceEndpointConfig config, OperationName operationName, String topicName) {
+                              SalesforceEndpointConfig configuration, OperationName operationName, String topicName) {
         super(uri, salesforceComponent);
 
-        this.config = config;
+        this.configuration = configuration;
         this.operationName = operationName;
         this.topicName = topicName;
     }
@@ -101,7 +101,7 @@ public class SalesforceEndpoint extends DefaultEndpoint {
     }
 
     public SalesforceEndpointConfig getConfiguration() {
-        return config;
+        return configuration;
     }
 
     public OperationName getOperationName() {
