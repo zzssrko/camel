@@ -390,7 +390,7 @@ public class EndpointAnnotationProcessor extends AbstractCamelAnnotationProcesso
 
             buffer.append(JsonSchemaHelper.toJson(entry.getName(), entry.getDisplayName(), "parameter", required, entry.getType(), defaultValue,
                 doc, entry.isDeprecated(), entry.getDeprecationNote(), entry.isSecret(), entry.getGroup(), entry.getLabel(), entry.isEnumType(), entry.getEnums(),
-                false, null, asPredicate, optionalPrefix, prefix, multiValue, entry.getNestedTypeName(), entry.getNestedFieldName()));
+                false, null, asPredicate, optionalPrefix, prefix, multiValue, entry.getConfigurationClass(), entry.getConfigurationField()));
 
             parentProperties.remove(entry.getName());
         }

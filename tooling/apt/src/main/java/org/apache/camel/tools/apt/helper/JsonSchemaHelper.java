@@ -43,7 +43,7 @@ public final class JsonSchemaHelper {
     public static String toJson(String name, String displayName, String kind, Boolean required, String type, String defaultValue, String description,
                                 Boolean deprecated, String deprecationNote, Boolean secret, String group, String label, boolean enumType, Set<String> enums,
                                 boolean oneOfType, Set<String> oneOffTypes, boolean asPredicate, String optionalPrefix, String prefix, boolean multiValue,
-                                String nestedTypeName, String nestedFieldName) {
+                                String configurationClass, String configurtationField) {
         String typeName = JsonSchemaHelper.getType(type, enumType);
 
         StringBuilder sb = new StringBuilder();
@@ -154,13 +154,13 @@ public final class JsonSchemaHelper {
             }
         }
 
-        if (!Strings.isNullOrEmpty(nestedTypeName)) {
-            sb.append(", \"nestedTypeName\": ");
-            sb.append(Strings.doubleQuote(nestedTypeName));
+        if (!Strings.isNullOrEmpty(configurationClass)) {
+            sb.append(", \"configurationClass\": ");
+            sb.append(Strings.doubleQuote(configurationClass));
         }
-        if (!Strings.isNullOrEmpty(nestedFieldName)) {
-            sb.append(", \"nestedFieldName\": ");
-            sb.append(Strings.doubleQuote(nestedFieldName));
+        if (!Strings.isNullOrEmpty(configurtationField)) {
+            sb.append(", \"configurationField\": ");
+            sb.append(Strings.doubleQuote(configurtationField));
         }
 
         if (!Strings.isNullOrEmpty(description)) {

@@ -39,13 +39,13 @@ public final class EndpointOption {
     private String label;
     private boolean enumType;
     private Set<String> enums;
-    private String nestedTypeName;
-    private String nestedFieldName;
+    private String configurationClass;
+    private String configurationField;
 
     public EndpointOption(String name, String displayName, String type, boolean required, String defaultValue, String defaultValueNote,
                           String documentation, String optionalPrefix, String prefix, boolean multiValue,
                           boolean deprecated, String deprecationNote, boolean secret, String group, String label,
-                          boolean enumType, Set<String> enums, String nestedTypeName, String nestedFieldName) {
+                          boolean enumType, Set<String> enums, String configurationClass, String nestedFieldName) {
         this.name = name;
         this.displayName = displayName;
         this.type = type;
@@ -63,8 +63,8 @@ public final class EndpointOption {
         this.label = label;
         this.enumType = enumType;
         this.enums = enums;
-        this.nestedTypeName = nestedTypeName;
-        this.nestedFieldName = nestedFieldName;
+        this.configurationClass = configurationClass;
+        this.configurationField = nestedFieldName;
     }
 
     public String getName() {
@@ -137,12 +137,12 @@ public final class EndpointOption {
         return enums;
     }
 
-    public String getNestedTypeName() {
-        return nestedTypeName;
+    public String getConfigurationClass() {
+        return configurationClass;
     }
 
-    public String getNestedFieldName() {
-        return nestedFieldName;
+    public String getConfigurationField() {
+        return configurationField;
     }
 
     public String getGroup() {
