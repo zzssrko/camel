@@ -1971,27 +1971,27 @@ public interface FtpsEndpointBuilderFactory {
             return this;
         }
         /**
-         * Set the security mode(Implicit/Explicit). true - Implicit Mode /
+         * Set the security mode (Implicit/Explicit). true - Implicit Mode /
          * False - Explicit Mode.
          * 
          * The option is a: <code>boolean</code> type.
          * 
          * Group: security
          */
-        default FtpsEndpointConsumerBuilder isImplicit(boolean isImplicit) {
-            setProperty("isImplicit", isImplicit);
+        default FtpsEndpointConsumerBuilder implicit(boolean implicit) {
+            setProperty("implicit", implicit);
             return this;
         }
         /**
-         * Set the security mode(Implicit/Explicit). true - Implicit Mode /
+         * Set the security mode (Implicit/Explicit). true - Implicit Mode /
          * False - Explicit Mode.
          * 
          * The option will be converted to a <code>boolean</code> type.
          * 
          * Group: security
          */
-        default FtpsEndpointConsumerBuilder isImplicit(String isImplicit) {
-            setProperty("isImplicit", isImplicit);
+        default FtpsEndpointConsumerBuilder implicit(String implicit) {
+            setProperty("implicit", implicit);
             return this;
         }
         /**
@@ -3559,27 +3559,27 @@ public interface FtpsEndpointBuilderFactory {
             return this;
         }
         /**
-         * Set the security mode(Implicit/Explicit). true - Implicit Mode /
+         * Set the security mode (Implicit/Explicit). true - Implicit Mode /
          * False - Explicit Mode.
          * 
          * The option is a: <code>boolean</code> type.
          * 
          * Group: security
          */
-        default FtpsEndpointProducerBuilder isImplicit(boolean isImplicit) {
-            setProperty("isImplicit", isImplicit);
+        default FtpsEndpointProducerBuilder implicit(boolean implicit) {
+            setProperty("implicit", implicit);
             return this;
         }
         /**
-         * Set the security mode(Implicit/Explicit). true - Implicit Mode /
+         * Set the security mode (Implicit/Explicit). true - Implicit Mode /
          * False - Explicit Mode.
          * 
          * The option will be converted to a <code>boolean</code> type.
          * 
          * Group: security
          */
-        default FtpsEndpointProducerBuilder isImplicit(String isImplicit) {
-            setProperty("isImplicit", isImplicit);
+        default FtpsEndpointProducerBuilder implicit(String implicit) {
+            setProperty("implicit", implicit);
             return this;
         }
         /**
@@ -4765,27 +4765,27 @@ public interface FtpsEndpointBuilderFactory {
             return this;
         }
         /**
-         * Set the security mode(Implicit/Explicit). true - Implicit Mode /
+         * Set the security mode (Implicit/Explicit). true - Implicit Mode /
          * False - Explicit Mode.
          * 
          * The option is a: <code>boolean</code> type.
          * 
          * Group: security
          */
-        default FtpsEndpointBuilder isImplicit(boolean isImplicit) {
-            setProperty("isImplicit", isImplicit);
+        default FtpsEndpointBuilder implicit(boolean implicit) {
+            setProperty("implicit", implicit);
             return this;
         }
         /**
-         * Set the security mode(Implicit/Explicit). true - Implicit Mode /
+         * Set the security mode (Implicit/Explicit). true - Implicit Mode /
          * False - Explicit Mode.
          * 
          * The option will be converted to a <code>boolean</code> type.
          * 
          * Group: security
          */
-        default FtpsEndpointBuilder isImplicit(String isImplicit) {
-            setProperty("isImplicit", isImplicit);
+        default FtpsEndpointBuilder implicit(String implicit) {
+            setProperty("implicit", implicit);
             return this;
         }
         /**

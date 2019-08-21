@@ -179,7 +179,7 @@ with the following path and query parameters:
 | *execProt* (security) | The exec protection level PROT command. C - Clear S - Safe(SSL protocol only) E - Confidential(SSL protocol only) P - Private |  | String
 | *ftpClientKeyStore Parameters* (security) | Set the key store parameters |  | Map
 | *ftpClientTrustStore Parameters* (security) | Set the trust store parameters |  | Map
-| *isImplicit* (security) | Set the security mode(Implicit/Explicit). true - Implicit Mode / False - Explicit Mode | false | boolean
+| *implicit* (security) | Set the security mode (Implicit/Explicit). true - Implicit Mode / False - Explicit Mode | false | boolean
 | *password* (security) | Password to use for login |  | String
 | *securityProtocol* (security) | Set the underlying security protocol. | TLSv1.2 | String
 | *sslContextParameters* (security) | Gets the JSSE configuration that overrides any settings in FtpsEndpoint#\ftpClientKeyStoreParameters, \ftpClientTrustStoreParameters, and FtpsConfiguration#getSecurityProtocol(). |  | SSLContextParameters
