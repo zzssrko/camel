@@ -178,19 +178,6 @@ public interface SpringWebserviceEndpointBuilderFactory {
             return this;
         }
         /**
-         * The XPath expression to use when option type=xpathresult. Then this
-         * option is required to be configured.
-         * 
-         * The option is a: <code>java.lang.String</code> type.
-         * 
-         * Group: consumer
-         */
-        default SpringWebserviceEndpointConsumerBuilder expression(
-                String expression) {
-            setProperty("expression", expression);
-            return this;
-        }
-        /**
          * To configure security using SSLContextParameters.
          * 
          * The option is a:
@@ -1015,7 +1002,10 @@ public interface SpringWebserviceEndpointBuilderFactory {
      * 
      * Syntax: <code>spring-ws:type:lookupKey:webServiceEndpointUri</code>
      * 
-     * Path parameter: type
+     * Path parameter: webServiceEndpointUri
+     * The default Web Service endpoint uri to use for the producer.
+     * 
+     * Path parameter: endpointMappingType
      * Endpoint mapping type if endpoint mapping is used. rootqname - Offers the
      * option to map web service requests based on the qualified name of the
      * root element contained in the message. soapaction - Used to map web
@@ -1031,11 +1021,12 @@ public interface SpringWebserviceEndpointBuilderFactory {
      * The value can be one of: ROOT_QNAME, ACTION, TO, SOAP_ACTION,
      * XPATHRESULT, URI, URI_PATH, BEANNAME
      * 
-     * Path parameter: lookupKey
+     * Path parameter: endpointMappingLookupKey
      * Endpoint mapping key if endpoint mapping is used
      * 
-     * Path parameter: webServiceEndpointUri
-     * The default Web Service endpoint uri to use for the producer.
+     * Path parameter: expression
+     * The XPath expression to use when option type=xpathresult. Then this
+     * option is required to be configured.
      */
     default SpringWebserviceEndpointBuilder springWebservice(String path) {
         class SpringWebserviceEndpointBuilderImpl extends AbstractEndpointBuilder implements SpringWebserviceEndpointBuilder, AdvancedSpringWebserviceEndpointBuilder {
