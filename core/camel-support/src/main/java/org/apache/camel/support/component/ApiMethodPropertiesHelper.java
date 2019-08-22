@@ -91,7 +91,7 @@ public abstract class ApiMethodPropertiesHelper<C> {
 
     public void getEndpointProperties(CamelContext context, Object endpointConfiguration, Map<String, Object> properties) {
         Set<String> names = null;
-        if (context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().getProperties(endpointConfiguration, properties, null, false)) {
+        if (context.adapt(ExtendedCamelContext.class).getBeanIntrospection().getProperties(endpointConfiguration, properties, null, false)) {
             names = properties.keySet();
             // remove component config properties so we only have endpoint properties
             names.removeAll(componentConfigFields);

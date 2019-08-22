@@ -108,7 +108,7 @@ public abstract class AbstractApiComponent<E extends Enum<E> & ApiName, T, S ext
         final Map<String, Object> componentProperties = new HashMap<>();
         // copy component configuration, if set
         if (configuration != null) {
-            getCamelContext().getExtension(ExtendedCamelContext.class).getBeanIntrospection().getProperties(configuration, componentProperties, null, false);
+            getCamelContext().adapt(ExtendedCamelContext.class).getBeanIntrospection().getProperties(configuration, componentProperties, null, false);
         }
 
         // create endpoint configuration with component properties

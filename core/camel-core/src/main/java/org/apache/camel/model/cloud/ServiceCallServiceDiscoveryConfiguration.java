@@ -168,7 +168,7 @@ public class ServiceCallServiceDiscoveryConfiguration extends IdentifiedType imp
 
             try {
                 Map<String, Object> parameters = new HashMap<>();
-                camelContext.getExtension(ExtendedCamelContext.class).getBeanIntrospection().getProperties(this, parameters, null, false);
+                camelContext.adapt(ExtendedCamelContext.class).getBeanIntrospection().getProperties(this, parameters, null, false);
 
                 parameters.replaceAll(
                     (k, v) -> {

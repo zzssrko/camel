@@ -1417,7 +1417,7 @@ public class ExpressionBuilder {
 
     protected static void setProperty(CamelContext camelContext, Object bean, String name, Object value) {
         try {
-            camelContext.getExtension(ExtendedCamelContext.class).getBeanIntrospection().setProperty(camelContext, bean, name, value);
+            camelContext.adapt(ExtendedCamelContext.class).getBeanIntrospection().setProperty(camelContext, bean, name, value);
         } catch (Exception e) {
             throw new IllegalArgumentException("Failed to set property " + name + " on " + bean + ". Reason: " + e, e);
         }

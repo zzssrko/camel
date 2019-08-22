@@ -338,7 +338,7 @@ public final class PropertyBindingSupport {
                                                                      boolean bindNullOnly, boolean deepNesting, OnAutowiring callback) throws Exception {
 
         Map<String, Object> properties = new LinkedHashMap<>();
-        camelContext.getExtension(ExtendedCamelContext.class).getBeanIntrospection().getProperties(target, properties, null);
+        camelContext.adapt(ExtendedCamelContext.class).getBeanIntrospection().getProperties(target, properties, null);
 
         boolean hit = false;
 
@@ -361,7 +361,7 @@ public final class PropertyBindingSupport {
                     if (lookup.size() == 1) {
                         value = lookup.iterator().next();
                         if (value != null) {
-                            hit |= camelContext.getExtension(ExtendedCamelContext.class).getBeanIntrospection().setProperty(camelContext, target, key, value);
+                            hit |= camelContext.adapt(ExtendedCamelContext.class).getBeanIntrospection().setProperty(camelContext, target, key, value);
                             if (hit && callback != null) {
                                 callback.onAutowire(target, key, type, value);
                             }
@@ -637,7 +637,7 @@ public final class PropertyBindingSupport {
             }
         }
 
-        boolean hit = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().setProperty(context, context.getTypeConverter(), target, name, value, refName, fluentBuilder, allowPrivateSetter, ignoreCase);
+        boolean hit = context.adapt(ExtendedCamelContext.class).getBeanIntrospection().setProperty(context, context.getTypeConverter(), target, name, value, refName, fluentBuilder, allowPrivateSetter, ignoreCase);
         if (!hit && mandatory) {
             // there is no setter with this given name, so lets report this as a problem
             throw new IllegalArgumentException("Cannot find setter method: " + name + " on bean: " + target + " of type: " + target.getClass().getName() + " when binding property: " + ognlPath);
@@ -656,7 +656,7 @@ public final class PropertyBindingSupport {
             key = property.substring(0, pos);
         }
 
-        Object answer = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().getOrElseProperty(target, key, defaultValue, ignoreCase);
+        Object answer = context.adapt(ExtendedCamelContext.class).getBeanIntrospection().getOrElseProperty(target, key, defaultValue, ignoreCase);
         if (answer instanceof Map && lookupKey != null) {
             Map map = (Map) answer;
             answer = map.getOrDefault(lookupKey, defaultValue);
@@ -680,14 +680,14 @@ public final class PropertyBindingSupport {
     private static Method findBestSetterMethod(CamelContext context, Class clazz, String name,
                                                boolean fluentBuilder, boolean allowPrivateSetter, boolean ignoreCase) {
         // is there a direct setter?
-        Set<Method> candidates = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().findSetterMethods(clazz, name, false, allowPrivateSetter, ignoreCase);
+        Set<Method> candidates = context.adapt(ExtendedCamelContext.class).getBeanIntrospection().findSetterMethods(clazz, name, false, allowPrivateSetter, ignoreCase);
         if (candidates.size() == 1) {
             return candidates.iterator().next();
         }
 
         // okay now try with builder pattern
         if (fluentBuilder) {
-            candidates = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().findSetterMethods(clazz, name, fluentBuilder, allowPrivateSetter, ignoreCase);
+            candidates = context.adapt(ExtendedCamelContext.class).getBeanIntrospection().findSetterMethods(clazz, name, fluentBuilder, allowPrivateSetter, ignoreCase);
             if (candidates.size() == 1) {
                 return candidates.iterator().next();
             }
@@ -699,12 +699,12 @@ public final class PropertyBindingSupport {
     private static Class getGetterType(CamelContext context, Object target, String name, boolean ignoreCase) {
         try {
             if (ignoreCase) {
-                Method getter = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().getPropertyGetter(target.getClass(), name, true);
+                Method getter = context.adapt(ExtendedCamelContext.class).getBeanIntrospection().getPropertyGetter(target.getClass(), name, true);
                 if (getter != null) {
                     return getter.getReturnType();
                 }
             } else {
-                Method getter = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().getPropertyGetter(target.getClass(), name);
+                Method getter = context.adapt(ExtendedCamelContext.class).getBeanIntrospection().getPropertyGetter(target.getClass(), name);
                 if (getter != null) {
                     return getter.getReturnType();
                 }
@@ -735,7 +735,7 @@ public final class PropertyBindingSupport {
             String value = v != null ? v.toString() : null;
             if (isReferenceParameter(value)) {
                 try {
-                    boolean hit = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().setProperty(context, context.getTypeConverter(), target, name, null, value, true);
+                    boolean hit = context.adapt(ExtendedCamelContext.class).getBeanIntrospection().setProperty(context, context.getTypeConverter(), target, name, null, value, true);
                     if (hit) {
                         // must remove as its a valid option and we could configure it
                         it.remove();

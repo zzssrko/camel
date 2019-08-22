@@ -145,10 +145,11 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value, String refName, boolean allowBuilderPattern) throws Exception {
         invoked.incrementAndGet();
         if (logger.shouldLog()) {
+            Object text = value;
             if (SECRETS.matcher(name).find()) {
-                value = "xxxxxx";
+                text = "xxxxxx";
             }
-            log("setProperty", target, name, value);
+            log("setProperty", target, name, text);
         }
         return IntrospectionSupport.setProperty(context, typeConverter, target, name, value, refName, allowBuilderPattern);
     }
@@ -157,10 +158,11 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value, String refName, boolean allowBuilderPattern, boolean allowPrivateSetter, boolean ignoreCase) throws Exception {
         invoked.incrementAndGet();
         if (logger.shouldLog()) {
+            Object text = value;
             if (SECRETS.matcher(name).find()) {
-                value = "xxxxxx";
+                text = "xxxxxx";
             }
-            log("setProperty", target, name, value);
+            log("setProperty", target, name, text);
         }
         return IntrospectionSupport.setProperty(context, typeConverter, target, name, value, refName, allowBuilderPattern, allowPrivateSetter, ignoreCase);
     }
@@ -169,10 +171,11 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     public boolean setProperty(CamelContext context, Object target, String name, Object value) throws Exception {
         invoked.incrementAndGet();
         if (logger.shouldLog()) {
+            Object text = value;
             if (SECRETS.matcher(name).find()) {
-                value = "xxxxxx";
+                text = "xxxxxx";
             }
-            log("setProperty", target, name, value);
+            log("setProperty", target, name, text);
         }
         return IntrospectionSupport.setProperty(context, target, name, value);
     }
@@ -181,10 +184,11 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     public boolean setProperty(TypeConverter typeConverter, Object target, String name, Object value) throws Exception {
         invoked.incrementAndGet();
         if (logger.shouldLog()) {
+            Object text = value;
             if (SECRETS.matcher(name).find()) {
-                value = "xxxxxx";
+                text = "xxxxxx";
             }
-            log("setProperty", target, name, value);
+            log("setProperty", target, name, text);
         }
         return IntrospectionSupport.setProperty(typeConverter, target, name, value);
     }

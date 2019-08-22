@@ -343,7 +343,7 @@ public abstract class DefaultComponent extends ServiceSupport implements Compone
                 name = StringHelper.before(name, ",");
             }
             try {
-                Optional<Class<?>> clazz = getCamelContext().getExtension(ExtendedCamelContext.class).getFactoryFinder(RESOURCE_PATH)
+                Optional<Class<?>> clazz = getCamelContext().adapt(ExtendedCamelContext.class).getFactoryFinder(RESOURCE_PATH)
                         .findOptionalClass(name + "-endpoint", null);
                 clazz.ifPresent(aClass -> endpointPropertyConfigurerClass = aClass);
             } catch (NoFactoryAvailableException e) {

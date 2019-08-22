@@ -192,7 +192,7 @@ public class MBeanInfoAssembler implements Service {
         LOG.trace("Extracting attributes and operations from class: {}", managedClass);
 
         // introspect the class, and leverage the cache to have better performance
-        BeanIntrospection.ClassInfo cache = camelContext.getExtension(ExtendedCamelContext.class).getBeanIntrospection().cacheClass(managedClass);
+        BeanIntrospection.ClassInfo cache = camelContext.adapt(ExtendedCamelContext.class).getBeanIntrospection().cacheClass(managedClass);
 
         for (BeanIntrospection.MethodInfo cacheInfo : cache.methods) {
             // must be from declaring class
