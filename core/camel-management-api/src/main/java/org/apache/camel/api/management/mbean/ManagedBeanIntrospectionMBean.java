@@ -28,7 +28,7 @@ public interface ManagedBeanIntrospectionMBean extends ManagedServiceMBean {
     Boolean isExtendedStatistics();
 
     @ManagedAttribute(description = "Whether to gather extended statistics for introspection usage")
-    void setExtendedStatistics(boolean extendedStatistics);
+    void setExtendedStatistics(Boolean extendedStatistics);
 
     @ManagedOperation(description = "Rests the statistic counters")
     void resetCounters();
