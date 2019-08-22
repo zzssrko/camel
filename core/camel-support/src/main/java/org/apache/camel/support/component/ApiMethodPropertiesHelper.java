@@ -89,8 +89,8 @@ public abstract class ApiMethodPropertiesHelper<C> {
     }
 
     public void getEndpointProperties(Object endpointConfiguration, Map<String, Object> properties) {
-
         Set<String> names = null;
+        // TODO: camel context
         if (IntrospectionSupport.getProperties(endpointConfiguration, properties, null, false)) {
             names = properties.keySet();
             // remove component config properties so we only have endpoint properties

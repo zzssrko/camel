@@ -22,6 +22,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.camel.Component;
+import org.apache.camel.ExtendedCamelContext;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.PollingConsumer;
 import org.apache.camel.ResolveEndpointFailedException;
@@ -107,7 +108,7 @@ public abstract class ScheduledPollEndpoint extends DefaultEndpoint {
     protected void configureScheduledPollConsumerProperties(Map<String, Object> options, Map<String, Object> consumerProperties) {
         // special for scheduled poll consumers as we want to allow end users to configure its options
         // from the URI parameters without the consumer. prefix
-        Map<String, Object> schedulerProperties = IntrospectionSupport.extractProperties(options, "scheduler.");
+        Map<String, Object> schedulerProperties = getCamelContext().getExtension(ExtendedCamelContext.class).getBeanIntrospection().extractProperties(options, "scheduler.");
         if (schedulerProperties != null && !schedulerProperties.isEmpty()) {
             setSchedulerProperties(schedulerProperties);
         }

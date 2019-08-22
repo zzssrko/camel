@@ -190,6 +190,7 @@ public class MBeanInfoAssembler implements Service {
         LOG.trace("Extracting attributes and operations from class: {}", managedClass);
 
         // introspect the class, and leverage the cache to have better performance
+        // TODO: get this via camel context
         IntrospectionSupport.ClassInfo cache = IntrospectionSupport.cacheClass(managedClass);
 
         for (IntrospectionSupport.MethodInfo cacheInfo : cache.methods) {

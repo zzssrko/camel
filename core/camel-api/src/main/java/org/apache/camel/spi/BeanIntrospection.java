@@ -19,6 +19,7 @@ package org.apache.camel.spi;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.TypeConverter;
@@ -164,8 +165,6 @@ public interface BeanIntrospection {
     boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value, String refName,
                                       boolean allowBuilderPattern, boolean allowPrivateSetter, boolean ignoreCase) throws Exception;
 
-    boolean isPropertyPlaceholder(CamelContext context, Object value);
-
     boolean setProperty(CamelContext context, Object target, String name, Object value) throws Exception;
 
     boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value) throws Exception;
@@ -177,5 +176,7 @@ public interface BeanIntrospection {
 
     @Deprecated
     boolean setProperty(Object target, String name, Object value) throws Exception;
+
+    Set<Method> findSetterMethods(Class<?> clazz, String name, boolean allowBuilderPattern, boolean allowPrivateSetter, boolean ignoreCase);
 
 }

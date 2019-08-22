@@ -26,15 +26,13 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.ExtendedCamelContext;
 import org.apache.camel.PropertyBindingException;
 import org.apache.camel.spi.PropertyConfigurer;
 import org.apache.camel.util.StringHelper;
 
-import static org.apache.camel.support.EndpointHelper.isReferenceParameter;
-import static org.apache.camel.support.IntrospectionSupport.findSetterMethods;
 import static org.apache.camel.util.ObjectHelper.isNotEmpty;
 
 /**
@@ -342,14 +340,14 @@ public final class PropertyBindingSupport {
                                                                      boolean bindNullOnly, boolean deepNesting, OnAutowiring callback) throws Exception {
 
         Map<String, Object> properties = new LinkedHashMap<>();
-        IntrospectionSupport.getProperties(target, properties, null);
+        camelContext.getExtension(ExtendedCamelContext.class).getBeanIntrospection().getProperties(target, properties, null);
 
         boolean hit = false;
 
         for (Map.Entry<String, Object> entry : properties.entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();
-            Class<?> type = getGetterType(target, key, false);
+            Class<?> type = getGetterType(camelContext, target, key, false);
 
             boolean skip = parents.contains(value) || value instanceof CamelContext;
             if (skip) {
@@ -365,7 +363,7 @@ public final class PropertyBindingSupport {
                     if (lookup.size() == 1) {
                         value = lookup.iterator().next();
                         if (value != null) {
-                            hit |= IntrospectionSupport.setProperty(camelContext, target, key, value);
+                            hit |= camelContext.getExtension(ExtendedCamelContext.class).getBeanIntrospection().setProperty(camelContext, target, key, value);
                             if (hit && callback != null) {
                                 callback.onAutowire(target, key, type, value);
                             }
@@ -376,7 +374,7 @@ public final class PropertyBindingSupport {
                 // attempt to create new instances to walk down the tree if its null (deepNesting option)
                 if (value == null && deepNesting) {
                     // okay is there a setter so we can create a new instance and set it automatic
-                    Method method = findBestSetterMethod(target.getClass(), key, true, true, false);
+                    Method method = findBestSetterMethod(camelContext, target.getClass(), key, true, true, false);
                     if (method != null) {
                         Class<?> parameterType = method.getParameterTypes()[0];
                         if (parameterType != null && org.apache.camel.util.ObjectHelper.hasDefaultPublicNoArgConstructor(parameterType)) {
@@ -550,14 +548,14 @@ public final class PropertyBindingSupport {
                 // we should only iterate until until 2nd last so we use -1 in the for loop
                 for (int i = 0; i < parts.length - 1; i++) {
                     String part = parts[i];
-                    Object prop = getOrElseProperty(newTarget, part, null, ignoreCase);
+                    Object prop = getOrElseProperty(context, newTarget, part, null, ignoreCase);
                     if (prop == null) {
                         if (!deepNesting) {
                             // okay we cannot go further down
                             break;
                         }
                         // okay is there a setter so we can create a new instance and set it automatic
-                        Method method = findBestSetterMethod(newClass, part, fluentBuilder, allowPrivateSetter, ignoreCase);
+                        Method method = findBestSetterMethod(context, newClass, part, fluentBuilder, allowPrivateSetter, ignoreCase);
                         if (method != null) {
                             Class<?> parameterType = method.getParameterTypes()[0];
                             Object instance = null;
@@ -620,7 +618,7 @@ public final class PropertyBindingSupport {
                 }
             } else if (value.toString().equals("#autowired")) {
                 // we should get the type from the setter
-                Method method = findBestSetterMethod(target.getClass(), name, fluentBuilder, allowPrivateSetter, ignoreCase);
+                Method method = findBestSetterMethod(context, target.getClass(), name, fluentBuilder, allowPrivateSetter, ignoreCase);
                 if (method != null) {
                     Class<?> parameterType = method.getParameterTypes()[0];
                     Set<?> types = context.getRegistry().findByType(parameterType);
@@ -641,7 +639,7 @@ public final class PropertyBindingSupport {
             }
         }
 
-        boolean hit = IntrospectionSupport.setProperty(context, context.getTypeConverter(), target, name, value, refName, fluentBuilder, allowPrivateSetter, ignoreCase);
+        boolean hit = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().setProperty(context, context.getTypeConverter(), target, name, value, refName, fluentBuilder, allowPrivateSetter, ignoreCase);
         if (!hit && mandatory) {
             // there is no setter with this given name, so lets report this as a problem
             throw new IllegalArgumentException("Cannot find setter method: " + name + " on bean: " + target + " of type: " + target.getClass().getName() + " when binding property: " + ognlPath);
@@ -649,7 +647,7 @@ public final class PropertyBindingSupport {
         return hit;
     }
 
-    private static Object getOrElseProperty(Object target, String property, Object defaultValue, boolean ignoreCase) {
+    private static Object getOrElseProperty(CamelContext context, Object target, String property, Object defaultValue, boolean ignoreCase) {
         String key = property;
         String lookupKey = null;
 
@@ -660,7 +658,7 @@ public final class PropertyBindingSupport {
             key = property.substring(0, pos);
         }
 
-        Object answer = IntrospectionSupport.getOrElseProperty(target, key, defaultValue, ignoreCase);
+        Object answer = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().getOrElseProperty(target, key, defaultValue, ignoreCase);
         if (answer instanceof Map && lookupKey != null) {
             Map map = (Map) answer;
             answer = map.getOrDefault(lookupKey, defaultValue);
@@ -681,17 +679,17 @@ public final class PropertyBindingSupport {
         return answer != null ? answer : defaultValue;
     }
 
-    private static Method findBestSetterMethod(Class clazz, String name,
+    private static Method findBestSetterMethod(CamelContext context, Class clazz, String name,
                                                boolean fluentBuilder, boolean allowPrivateSetter, boolean ignoreCase) {
         // is there a direct setter?
-        Set<Method> candidates = findSetterMethods(clazz, name, false, allowPrivateSetter, ignoreCase);
+        Set<Method> candidates = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().findSetterMethods(clazz, name, false, allowPrivateSetter, ignoreCase);
         if (candidates.size() == 1) {
             return candidates.iterator().next();
         }
 
         // okay now try with builder pattern
         if (fluentBuilder) {
-            candidates = findSetterMethods(clazz, name, fluentBuilder, allowPrivateSetter, ignoreCase);
+            candidates = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().findSetterMethods(clazz, name, fluentBuilder, allowPrivateSetter, ignoreCase);
             if (candidates.size() == 1) {
                 return candidates.iterator().next();
             }
@@ -700,15 +698,15 @@ public final class PropertyBindingSupport {
         return null;
     }
 
-    private static Class getGetterType(Object target, String name, boolean ignoreCase) {
+    private static Class getGetterType(CamelContext context, Object target, String name, boolean ignoreCase) {
         try {
             if (ignoreCase) {
-                Method getter = IntrospectionSupport.getPropertyGetter(target.getClass(), name, true);
+                Method getter = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().getPropertyGetter(target.getClass(), name, true);
                 if (getter != null) {
                     return getter.getReturnType();
                 }
             } else {
-                Method getter = IntrospectionSupport.getPropertyGetter(target.getClass(), name);
+                Method getter = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().getPropertyGetter(target.getClass(), name);
                 if (getter != null) {
                     return getter.getReturnType();
                 }
@@ -739,7 +737,7 @@ public final class PropertyBindingSupport {
             String value = v != null ? v.toString() : null;
             if (isReferenceParameter(value)) {
                 try {
-                    boolean hit = IntrospectionSupport.setProperty(context, context.getTypeConverter(), target, name, null, value, true);
+                    boolean hit = context.getExtension(ExtendedCamelContext.class).getBeanIntrospection().setProperty(context, context.getTypeConverter(), target, name, null, value, true);
                     if (hit) {
                         // must remove as its a valid option and we could configure it
                         it.remove();

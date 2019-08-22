@@ -282,7 +282,7 @@ public abstract class DefaultComponent extends ServiceSupport implements Compone
 
         Map<String, Object> param = parameters;
         if (optionPrefix != null) {
-            param = IntrospectionSupport.extractProperties(parameters, optionPrefix);
+            param = getCamelContext().getExtension(ExtendedCamelContext.class).getBeanIntrospection().extractProperties(parameters, optionPrefix);
         }
 
         if (param.size() > 0) {

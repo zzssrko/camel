@@ -57,7 +57,10 @@ import static org.apache.camel.util.ObjectHelper.isNotEmpty;
  * <p/>
  * This implementation will use a cache when the {@link #getProperties(Object, java.util.Map, String)}
  * method is being used. Also the {@link #cacheClass(Class)} method gives access to the introspect cache.
+ *
+ * @deprecated use {@link org.apache.camel.spi.BeanIntrospection}
  */
+@Deprecated
 public final class IntrospectionSupport {
 
     private static final Logger LOG = LoggerFactory.getLogger(IntrospectionSupport.class);

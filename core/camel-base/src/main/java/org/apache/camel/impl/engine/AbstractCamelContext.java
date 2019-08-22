@@ -80,6 +80,7 @@ import org.apache.camel.impl.transformer.TransformerKey;
 import org.apache.camel.impl.validator.ValidatorKey;
 import org.apache.camel.spi.AnnotationBasedProcessorFactory;
 import org.apache.camel.spi.AsyncProcessorAwaitManager;
+import org.apache.camel.spi.BeanIntrospection;
 import org.apache.camel.spi.BeanProcessorFactory;
 import org.apache.camel.spi.BeanProxyFactory;
 import org.apache.camel.spi.CamelBeanPostProcessor;
@@ -254,6 +255,7 @@ public abstract class AbstractCamelContext extends ServiceSupport implements Ext
     private volatile UnitOfWorkFactory unitOfWorkFactory;
     private volatile RouteController routeController;
     private volatile ScheduledExecutorService errorHandlerExecutorService;
+    private final BeanIntrospection beanIntrospection = new DefaultBeanIntrospection();
     private final DeferServiceFactory deferServiceFactory = new DefaultDeferServiceFactory();
     private final AnnotationBasedProcessorFactory annotationBasedProcessorFactory = new DefaultAnnotationBasedProcessorFactory();
 
@@ -2771,6 +2773,7 @@ public abstract class AbstractCamelContext extends ServiceSupport implements Ext
         forceStopLazyInitialization();
 
         // stop to clear introspection cache
+        ServiceHelper.stopService(beanIntrospection);
         IntrospectionSupport.stop();
 
         if (log.isInfoEnabled()) {
@@ -3652,6 +3655,11 @@ public abstract class AbstractCamelContext extends ServiceSupport implements Ext
     @Override
     public void setAsyncProcessorAwaitManager(AsyncProcessorAwaitManager asyncProcessorAwaitManager) {
         this.asyncProcessorAwaitManager = doAddService(asyncProcessorAwaitManager);
+    }
+
+    @Override
+    public BeanIntrospection getBeanIntrospection() {
+        return beanIntrospection;
     }
 
     @Override

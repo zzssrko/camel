@@ -27,6 +27,7 @@ import org.apache.camel.Consumer;
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.ExchangePattern;
+import org.apache.camel.ExtendedCamelContext;
 import org.apache.camel.PollingConsumer;
 import org.apache.camel.ResolveEndpointFailedException;
 import org.apache.camel.spi.ExceptionHandler;
@@ -395,7 +396,7 @@ public abstract class DefaultEndpoint extends ServiceSupport implements Endpoint
 
     @Override
     public void configureProperties(Map<String, Object> options) {
-        Map<String, Object> consumerProperties = IntrospectionSupport.extractProperties(options, "consumer.");
+        Map<String, Object> consumerProperties = getCamelContext().getExtension(ExtendedCamelContext.class).getBeanIntrospection().extractProperties(options, "consumer.");
         if (consumerProperties != null && !consumerProperties.isEmpty()) {
             setConsumerProperties(consumerProperties);
         }
