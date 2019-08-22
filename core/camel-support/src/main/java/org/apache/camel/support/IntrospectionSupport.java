@@ -469,10 +469,18 @@ public final class IntrospectionSupport {
         return setProperties(target, properties, optionPrefix, false);
     }
 
+    /**
+     * @deprecated use {@link org.apache.camel.util.PropertiesHelper}
+     */
+    @Deprecated
     public static Map<String, Object> extractProperties(Map<String, Object> properties, String optionPrefix) {
         return extractProperties(properties, optionPrefix, true);
     }
 
+    /**
+     * @deprecated use {@link org.apache.camel.util.PropertiesHelper}
+     */
+    @Deprecated
     public static Map<String, Object> extractProperties(Map<String, Object> properties, String optionPrefix, boolean remove) {
         ObjectHelper.notNull(properties, "properties");
 
@@ -495,6 +503,9 @@ public final class IntrospectionSupport {
         return rc;
     }
 
+    /**
+     * @deprecated use {@link org.apache.camel.util.PropertiesHelper}
+     */
     @Deprecated
     public static Map<String, String> extractStringProperties(Map<String, Object> properties) {
         ObjectHelper.notNull(properties, "properties");

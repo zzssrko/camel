@@ -44,6 +44,16 @@ public class ManagedBeanIntrospection extends ManagedService implements ManagedB
     }
 
     @Override
+    public Boolean isExtendedStatistics() {
+        return beanIntrospection.isExtendedStatistics();
+    }
+
+    @Override
+    public void setExtendedStatistics(boolean extendedStatistics) {
+        beanIntrospection.setExtendedStatistics(extendedStatistics);
+    }
+
+    @Override
     public void resetCounters() {
         beanIntrospection.resetCounters();
     }

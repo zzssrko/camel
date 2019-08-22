@@ -29,6 +29,7 @@ import org.apache.camel.ResolveEndpointFailedException;
 import org.apache.camel.spi.PollingConsumerPollStrategy;
 import org.apache.camel.spi.ScheduledPollConsumerScheduler;
 import org.apache.camel.spi.UriParam;
+import org.apache.camel.util.PropertiesHelper;
 
 /**
  * A base class for {@link org.apache.camel.Endpoint} which creates a {@link ScheduledPollConsumer}
@@ -108,7 +109,7 @@ public abstract class ScheduledPollEndpoint extends DefaultEndpoint {
     protected void configureScheduledPollConsumerProperties(Map<String, Object> options, Map<String, Object> consumerProperties) {
         // special for scheduled poll consumers as we want to allow end users to configure its options
         // from the URI parameters without the consumer. prefix
-        Map<String, Object> schedulerProperties = getCamelContext().getExtension(ExtendedCamelContext.class).getBeanIntrospection().extractProperties(options, "scheduler.");
+        Map<String, Object> schedulerProperties = PropertiesHelper.extractProperties(options, "scheduler.");
         if (schedulerProperties != null && !schedulerProperties.isEmpty()) {
             setSchedulerProperties(schedulerProperties);
         }

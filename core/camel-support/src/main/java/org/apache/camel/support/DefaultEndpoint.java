@@ -37,6 +37,7 @@ import org.apache.camel.spi.PropertyConfigurerAware;
 import org.apache.camel.spi.UriParam;
 import org.apache.camel.support.service.ServiceSupport;
 import org.apache.camel.util.ObjectHelper;
+import org.apache.camel.util.PropertiesHelper;
 import org.apache.camel.util.StringHelper;
 import org.apache.camel.util.URISupport;
 
@@ -396,7 +397,7 @@ public abstract class DefaultEndpoint extends ServiceSupport implements Endpoint
 
     @Override
     public void configureProperties(Map<String, Object> options) {
-        Map<String, Object> consumerProperties = getCamelContext().getExtension(ExtendedCamelContext.class).getBeanIntrospection().extractProperties(options, "consumer.");
+        Map<String, Object> consumerProperties = PropertiesHelper.extractProperties(options, "consumer.");
         if (consumerProperties != null && !consumerProperties.isEmpty()) {
             setConsumerProperties(consumerProperties);
         }

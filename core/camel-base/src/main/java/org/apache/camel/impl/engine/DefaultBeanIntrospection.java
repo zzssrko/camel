@@ -36,6 +36,7 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     private static final Logger LOG = LoggerFactory.getLogger(DefaultBeanIntrospection.class);
 
     private final AtomicLong invoked = new AtomicLong();
+    private volatile boolean extendedStatistics;
 
     @Override
     public long getInvokedCounter() {
@@ -45,6 +46,14 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Override
     public void resetCounters() {
         invoked.set(0);
+    }
+
+    public boolean isExtendedStatistics() {
+        return extendedStatistics;
+    }
+
+    public void setExtendedStatistics(boolean extendedStatistics) {
+        this.extendedStatistics = extendedStatistics;
     }
 
     @Override
@@ -154,22 +163,6 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     public boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix) throws Exception {
         invoked.incrementAndGet();
         return IntrospectionSupport.setProperties(target, properties, optionPrefix);
-    }
-
-    @Override
-    public Map<String, Object> extractProperties(Map<String, Object> properties, String optionPrefix) {
-        return IntrospectionSupport.extractProperties(properties, optionPrefix);
-    }
-
-    @Override
-    public Map<String, Object> extractProperties(Map<String, Object> properties, String optionPrefix, boolean remove) {
-        return IntrospectionSupport.extractProperties(properties, optionPrefix, remove);
-    }
-
-    @Override
-    @Deprecated
-    public Map<String, String> extractStringProperties(Map<String, Object> properties) {
-        return IntrospectionSupport.extractStringProperties(properties);
     }
 
     @Override

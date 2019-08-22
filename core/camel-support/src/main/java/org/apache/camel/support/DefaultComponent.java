@@ -43,6 +43,7 @@ import org.apache.camel.spi.PropertyConfigurer;
 import org.apache.camel.spi.PropertyConfigurerAware;
 import org.apache.camel.support.service.ServiceSupport;
 import org.apache.camel.util.ObjectHelper;
+import org.apache.camel.util.PropertiesHelper;
 import org.apache.camel.util.StringHelper;
 import org.apache.camel.util.URISupport;
 import org.apache.camel.util.UnsafeUriCharactersEncoder;
@@ -285,7 +286,7 @@ public abstract class DefaultComponent extends ServiceSupport implements Compone
 
         Map<String, Object> param = parameters;
         if (optionPrefix != null) {
-            param = getCamelContext().getExtension(ExtendedCamelContext.class).getBeanIntrospection().extractProperties(parameters, optionPrefix);
+            param = PropertiesHelper.extractProperties(parameters, optionPrefix);
         }
 
         if (param.size() > 0) {

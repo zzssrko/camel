@@ -24,6 +24,7 @@ import java.util.Set;
 import org.apache.camel.CamelContext;
 import org.apache.camel.StaticService;
 import org.apache.camel.TypeConverter;
+import org.apache.camel.meta.Experimental;
 
 // TODO: Keep only public used methods so we can remove the tech debt
 
@@ -32,7 +33,10 @@ import org.apache.camel.TypeConverter;
  * or updating one or more properties etc.
  *
  * End users should favour using org.apache.camel.support.PropertyBindingSupport instead.
+ * <p/>
+ * Notice this API is not final yet
  */
+@Experimental
 public interface BeanIntrospection extends StaticService {
 
     /**
@@ -54,6 +58,9 @@ public interface BeanIntrospection extends StaticService {
         public Boolean hasGetterAndSetter;
     }
 
+    // Statistics
+    // ----------------------------------------------------
+
     /**
      * Number of times bean introspection has been invoked
      */
@@ -63,6 +70,19 @@ public interface BeanIntrospection extends StaticService {
      * Reset the statistics counters.
      */
     void resetCounters();
+
+    /**
+     * Whether to gather extended statistics for introspection usage.
+     */
+    boolean isExtendedStatistics();
+
+    /**
+     * Whether to gather extended statistics for introspection usage.
+     */
+    void setExtendedStatistics(boolean extendedStatistics);
+
+    // Introspection
+    // ----------------------------------------------------
 
     boolean isGetter(Method method);
 
@@ -146,13 +166,6 @@ public interface BeanIntrospection extends StaticService {
      */
     @Deprecated
     boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix) throws Exception;
-
-    Map<String, Object> extractProperties(Map<String, Object> properties, String optionPrefix);
-
-    Map<String, Object> extractProperties(Map<String, Object> properties, String optionPrefix, boolean remove);
-
-    @Deprecated
-    Map<String, String> extractStringProperties(Map<String, Object> properties);
 
     /**
      * @deprecated use org.apache.camel.support.PropertyBindingSupport
