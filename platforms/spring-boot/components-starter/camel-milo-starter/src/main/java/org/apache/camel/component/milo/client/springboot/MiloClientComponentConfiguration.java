@@ -16,7 +16,6 @@
  */
 package org.apache.camel.component.milo.client.springboot;
 
-import java.net.URL;
 import java.util.Set;
 import javax.annotation.Generated;
 import org.apache.camel.spring.boot.ComponentConfigurationPropertiesCommon;
@@ -168,7 +167,7 @@ public class MiloClientComponentConfiguration
         /**
          * The URL where the key should be loaded from
          */
-        private URL keyStoreUrl;
+        private String keyStoreUrl;
         /**
          * The key store type
          */
@@ -292,11 +291,11 @@ public class MiloClientComponentConfiguration
             this.maxResponseMessageSize = maxResponseMessageSize;
         }
 
-        public URL getKeyStoreUrl() {
+        public String getKeyStoreUrl() {
             return keyStoreUrl;
         }
 
-        public void setKeyStoreUrl(URL keyStoreUrl) {
+        public void setKeyStoreUrl(String keyStoreUrl) {
             this.keyStoreUrl = keyStoreUrl;
         }
 

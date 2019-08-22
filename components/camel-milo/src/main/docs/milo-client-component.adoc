@@ -124,7 +124,7 @@ with the following path and query parameters:
 | *keyPassword* (client) | The key password |  | String
 | *keyStorePassword* (client) | The keystore password |  | String
 | *keyStoreType* (client) | The key store type |  | String
-| *keyStoreUrl* (client) | The URL where the key should be loaded from |  | URL
+| *keyStoreUrl* (client) | The URL where the key should be loaded from |  | String
 | *maxPendingPublishRequests* (client) | The maximum number of pending publish requests |  | Long
 | *maxResponseMessageSize* (client) | The maximum number of bytes a response message may have |  | Long
 | *overrideHost* (client) | Override the server reported endpoint host with the host from the endpoint URI. | false | boolean
