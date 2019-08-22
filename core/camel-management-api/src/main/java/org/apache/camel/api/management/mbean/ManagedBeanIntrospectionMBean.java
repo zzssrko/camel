@@ -17,10 +17,14 @@
 package org.apache.camel.api.management.mbean;
 
 import org.apache.camel.api.management.ManagedAttribute;
+import org.apache.camel.api.management.ManagedOperation;
 
 public interface ManagedBeanIntrospectionMBean extends ManagedServiceMBean {
 
     @ManagedAttribute(description = "Number of times bean introspection has been invoked")
     Long getInvokedCounter();
+
+    @ManagedOperation(description = "Rests the statistic counters")
+    void resetCounters();
 
 }

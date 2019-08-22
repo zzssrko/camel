@@ -42,4 +42,9 @@ public class ManagedBeanIntrospection extends ManagedService implements ManagedB
     public Long getInvokedCounter() {
         return beanIntrospection.getInvokedCounter();
     }
+
+    @Override
+    public void resetCounters() {
+        beanIntrospection.resetCounters();
+    }
 }

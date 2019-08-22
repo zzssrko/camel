@@ -43,6 +43,11 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     }
 
     @Override
+    public void resetCounters() {
+        invoked.set(0);
+    }
+
+    @Override
     public ClassInfo cacheClass(Class<?> clazz) {
         invoked.incrementAndGet();
         return IntrospectionSupport.cacheClass(clazz);

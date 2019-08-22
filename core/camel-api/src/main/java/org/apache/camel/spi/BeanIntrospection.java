@@ -59,6 +59,11 @@ public interface BeanIntrospection extends StaticService {
      */
     long getInvokedCounter();
 
+    /**
+     * Reset the statistics counters.
+     */
+    void resetCounters();
+
     boolean isGetter(Method method);
 
     String getGetterShorthandName(Method method);

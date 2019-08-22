@@ -59,6 +59,9 @@ public class ManagedBeanIntrospectionTest extends ManagementTestSupport {
 
         assertNotNull("Should have found DefaultBeanIntrospection", on);
 
+        // reset counter
+        mbeanServer.invoke(on, "resetCounters", null, null);
+
         Long counter = (Long) mbeanServer.getAttribute(on, "InvokedCounter");
         assertEquals("Should not have been invoked", 0, counter.intValue());
 
