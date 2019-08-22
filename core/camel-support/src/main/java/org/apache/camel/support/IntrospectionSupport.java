@@ -333,6 +333,10 @@ public final class IntrospectionSupport {
         return answer;
     }
 
+    /**
+     * @deprecated use {@link org.apache.camel.util.PropertiesHelper}
+     */
+    @Deprecated
     public static boolean hasProperties(Map<String, Object> properties, String optionPrefix) {
         ObjectHelper.notNull(properties, "properties");
 

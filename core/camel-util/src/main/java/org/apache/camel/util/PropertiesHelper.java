@@ -66,4 +66,21 @@ public final class PropertiesHelper {
         return rc;
     }
 
+    public static boolean hasProperties(Map<String, Object> properties, String optionPrefix) {
+        ObjectHelper.notNull(properties, "properties");
+
+        if (ObjectHelper.isNotEmpty(optionPrefix)) {
+            for (Object o : properties.keySet()) {
+                String name = (String) o;
+                if (name.startsWith(optionPrefix)) {
+                    return true;
+                }
+            }
+            // no parameters with this prefix
+            return false;
+        } else {
+            return !properties.isEmpty();
+        }
+    }
+    
 }

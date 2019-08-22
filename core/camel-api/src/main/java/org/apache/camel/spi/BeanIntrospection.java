@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.StaticService;
 import org.apache.camel.TypeConverter;
 import org.apache.camel.meta.Experimental;
@@ -81,6 +82,16 @@ public interface BeanIntrospection extends StaticService {
      */
     void setExtendedStatistics(boolean extendedStatistics);
 
+    /**
+     * Logging level used for logging introspection usage. Is using DEBUG level as default.
+     */
+    LoggingLevel getLoggingLevel();
+
+    /**
+     * Logging level used for logging introspection usage. Is using DEBUG level as default.
+     */
+    void setLoggingLevel(LoggingLevel loggingLevel);
+
     // Introspection
     // ----------------------------------------------------
 
@@ -138,8 +149,6 @@ public interface BeanIntrospection extends StaticService {
      * @return the introspection result as a {@link ClassInfo} structure.
      */
     ClassInfo cacheClass(Class<?> clazz);
-
-    boolean hasProperties(Map<String, Object> properties, String optionPrefix);
 
     Object getProperty(Object target, String propertyName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException;
 

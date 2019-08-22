@@ -23,8 +23,10 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.TypeConverter;
 import org.apache.camel.spi.BeanIntrospection;
+import org.apache.camel.spi.CamelLogger;
 import org.apache.camel.support.IntrospectionSupport;
 import org.apache.camel.support.service.ServiceSupport;
 import org.slf4j.Logger;
@@ -37,6 +39,8 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
 
     private final AtomicLong invoked = new AtomicLong();
     private volatile boolean extendedStatistics;
+    private LoggingLevel loggingLevel = LoggingLevel.DEBUG;
+    private CamelLogger logger = new CamelLogger(LOG, loggingLevel);
 
     @Override
     public long getInvokedCounter() {
@@ -56,8 +60,25 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
         this.extendedStatistics = extendedStatistics;
     }
 
+    public LoggingLevel getLoggingLevel() {
+        return loggingLevel;
+    }
+
+    public void setLoggingLevel(LoggingLevel loggingLevel) {
+        this.loggingLevel = loggingLevel;
+        // recreate logger as level is changed
+        this.logger = new CamelLogger(LOG, loggingLevel);
+    }
+
+    private void log(String method, Object bean) {
+        if (logger.shouldLog()) {
+            logger.log("Invoked: " + invoked.get() + " times (overall) [Method: " + method + ", Argument: " + bean + "]");
+        }
+    }
+
     @Override
     public ClassInfo cacheClass(Class<?> clazz) {
+        log("cacheClass", clazz);
         invoked.incrementAndGet();
         return IntrospectionSupport.cacheClass(clazz);
     }
@@ -95,59 +116,63 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Override
     public boolean getProperties(Object target, Map<String, Object> properties, String optionPrefix) {
         invoked.incrementAndGet();
+        log("getProperties", target);
         return IntrospectionSupport.getProperties(target, properties, optionPrefix);
     }
 
     @Override
     public boolean getProperties(Object target, Map<String, Object> properties, String optionPrefix, boolean includeNull) {
         invoked.incrementAndGet();
+        log("getProperties", target);
         return IntrospectionSupport.getProperties(target, properties, optionPrefix, includeNull);
-    }
-
-    @Override
-    public boolean hasProperties(Map<String, Object> properties, String optionPrefix) {
-        return IntrospectionSupport.hasProperties(properties, optionPrefix);
     }
 
     @Override
     public Object getProperty(Object target, String propertyName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         invoked.incrementAndGet();
+        log("getProperty", target);
         return IntrospectionSupport.getProperty(target, propertyName);
     }
 
     @Override
     public Object getOrElseProperty(Object target, String propertyName, Object defaultValue) {
         invoked.incrementAndGet();
+        log("getOrElseProperty", target);
         return IntrospectionSupport.getOrElseProperty(target, propertyName, defaultValue);
     }
 
     @Override
     public Object getOrElseProperty(Object target, String propertyName, Object defaultValue, boolean ignoreCase) {
         invoked.incrementAndGet();
+        log("getOrElseProperty", target);
         return IntrospectionSupport.getOrElseProperty(target, propertyName, defaultValue, ignoreCase);
     }
 
     @Override
     public Method getPropertyGetter(Class<?> type, String propertyName) throws NoSuchMethodException {
         invoked.incrementAndGet();
+        log("getPropertyGetter", type);
         return IntrospectionSupport.getPropertyGetter(type, propertyName);
     }
 
     @Override
     public Method getPropertyGetter(Class<?> type, String propertyName, boolean ignoreCase) throws NoSuchMethodException {
         invoked.incrementAndGet();
+        log("getPropertyGetter", type);
         return IntrospectionSupport.getPropertyGetter(type, propertyName, ignoreCase);
     }
 
     @Override
     public Method getPropertySetter(Class<?> type, String propertyName) throws NoSuchMethodException {
         invoked.incrementAndGet();
+        log("getPropertySetter", type);
         return IntrospectionSupport.getPropertySetter(type, propertyName);
     }
 
     @Override
     public boolean isPropertyIsGetter(Class<?> type, String propertyName) {
         invoked.incrementAndGet();
+        log("isPropertyIsGetter", type);
         return IntrospectionSupport.isPropertyIsGetter(type, propertyName);
     }
 
@@ -155,6 +180,7 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Deprecated
     public boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix, boolean allowBuilderPattern) throws Exception {
         invoked.incrementAndGet();
+        log("setProperties", target);
         return IntrospectionSupport.setProperties(target, properties, optionPrefix, allowBuilderPattern);
     }
 
@@ -162,6 +188,7 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Deprecated
     public boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix) throws Exception {
         invoked.incrementAndGet();
+        log("setProperties", target);
         return IntrospectionSupport.setProperties(target, properties, optionPrefix);
     }
 
@@ -169,6 +196,7 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Deprecated
     public boolean setProperties(CamelContext context, TypeConverter typeConverter, Object target, Map<String, Object> properties) throws Exception {
         invoked.incrementAndGet();
+        log("setProperties", target);
         return IntrospectionSupport.setProperties(context, typeConverter, target, properties);
     }
 
@@ -176,6 +204,7 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Deprecated
     public boolean setProperties(TypeConverter typeConverter, Object target, Map<String, Object> properties) throws Exception {
         invoked.incrementAndGet();
+        log("setProperties", target);
         return IntrospectionSupport.setProperties(typeConverter, target, properties);
     }
 
@@ -183,36 +212,42 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Deprecated
     public boolean setProperties(Object target, Map<String, Object> properties) throws Exception {
         invoked.incrementAndGet();
+        log("setProperties", target);
         return IntrospectionSupport.setProperties(target, properties);
     }
 
     @Override
     public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value, String refName, boolean allowBuilderPattern) throws Exception {
         invoked.incrementAndGet();
+        log("setProperty", target);
         return IntrospectionSupport.setProperty(context, typeConverter, target, name, value, refName, allowBuilderPattern);
     }
 
     @Override
     public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value, String refName, boolean allowBuilderPattern, boolean allowPrivateSetter, boolean ignoreCase) throws Exception {
         invoked.incrementAndGet();
+        log("setProperty", target);
         return IntrospectionSupport.setProperty(context, typeConverter, target, name, value, refName, allowBuilderPattern, allowPrivateSetter, ignoreCase);
     }
 
     @Override
     public boolean setProperty(CamelContext context, Object target, String name, Object value) throws Exception {
         invoked.incrementAndGet();
+        log("setProperty", target);
         return IntrospectionSupport.setProperty(context, target, name, value);
     }
 
     @Override
     public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value) throws Exception {
         invoked.incrementAndGet();
+        log("setProperty", target);
         return IntrospectionSupport.setProperty(context, typeConverter, target, name, value);
     }
 
     @Override
     public boolean setProperty(TypeConverter typeConverter, Object target, String name, Object value) throws Exception {
         invoked.incrementAndGet();
+        log("setProperty", target);
         return IntrospectionSupport.setProperty(typeConverter, target, name, value);
     }
 
@@ -220,6 +255,7 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Deprecated
     public boolean setProperty(Object target, String name, Object value, boolean allowBuilderPattern) throws Exception {
         invoked.incrementAndGet();
+        log("setProperty", target);
         return IntrospectionSupport.setProperty(target, name, value, allowBuilderPattern);
     }
 
@@ -227,12 +263,14 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Deprecated
     public boolean setProperty(Object target, String name, Object value) throws Exception {
         invoked.incrementAndGet();
+        log("setProperty", target);
         return IntrospectionSupport.setProperty(target, name, value);
     }
 
     @Override
     public Set<Method> findSetterMethods(Class<?> clazz, String name, boolean allowBuilderPattern, boolean allowPrivateSetter, boolean ignoreCase) {
         invoked.incrementAndGet();
+        log("findSetterMethods", clazz);
         return IntrospectionSupport.findSetterMethods(clazz, name, allowBuilderPattern, allowPrivateSetter, ignoreCase);
     }
 
@@ -244,6 +282,10 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Override
     protected void doStop() throws Exception {
         IntrospectionSupport.stop();
-        LOG.debug("BeanIntrospection invoked: {} times", getInvokedCounter());
+        if (extendedStatistics) {
+            LOG.info("BeanIntrospection invoked: {} times", getInvokedCounter());
+        } else {
+            LOG.debug("BeanIntrospection invoked: {} times", getInvokedCounter());
+        }
     }
 }
