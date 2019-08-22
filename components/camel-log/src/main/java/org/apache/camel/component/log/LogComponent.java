@@ -65,10 +65,6 @@ public class LogComponent extends DefaultComponent {
             // do not set properties, the exchangeFormatter is explicitly set, therefore the
             // user would have set its properties explicitly too
             localFormatter = exchangeFormatter;
-        } else {
-            // if no formatter is available in the Registry, create a local one of the default type, for a single use
-            localFormatter = new DefaultExchangeFormatter();
-            setProperties(localFormatter, parameters);
         }
 
         LogEndpoint endpoint = new LogEndpoint(uri, this);
