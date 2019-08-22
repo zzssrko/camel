@@ -26,8 +26,7 @@ public class ZooKeeperEndpointTest extends CamelTestSupport {
         ZooKeeperEndpoint endpoint = context.getEndpoint("zookeeper:someserver1,someserver2:1234/zoo", ZooKeeperEndpoint.class);
         assertEquals("Get wrong number of servers", 2, endpoint.getConfiguration().getServers().size());
         assertEquals("The first server address is wrong", "someserver1", endpoint.getConfiguration().getServers().get(0));
-        assertEquals("The second server address is wrong", "someserver2:1234", endpoint.getConfiguration().getServers().get(0));
-        
+        assertEquals("The second server address is wrong", "someserver2:1234", endpoint.getConfiguration().getServers().get(1));
     }
 
 }
