@@ -38,6 +38,7 @@ import java.util.regex.Pattern;
 import org.apache.camel.CamelContext;
 import org.apache.camel.NoTypeConversionAvailableException;
 import org.apache.camel.TypeConverter;
+import org.apache.camel.spi.BeanIntrospection;
 import org.apache.camel.spi.PropertiesComponent;
 import org.apache.camel.util.ObjectHelper;
 import org.apache.camel.util.StringHelper;
@@ -69,7 +70,7 @@ public final class IntrospectionSupport {
     // use a weak cache as we dont want the cache to keep around as it reference classes
     // which could prevent classloader to unload classes if being referenced from this cache
     @SuppressWarnings("unchecked")
-    private static final Map<Class<?>, ClassInfo> CACHE = LRUCacheFactory.newLRUWeakCache(1000);
+    private static final Map<Class<?>, BeanIntrospection.ClassInfo> CACHE = LRUCacheFactory.newLRUWeakCache(1000);
     private static final Pattern SECRETS = Pattern.compile(".*(passphrase|password|secretKey).*", Pattern.CASE_INSENSITIVE);
 
     static {
@@ -99,25 +100,6 @@ public final class IntrospectionSupport {
         PRIMITIVE_CLASSES.add(long.class);
         PRIMITIVE_CLASSES.add(float.class);
         PRIMITIVE_CLASSES.add(double.class);
-    }
-
-    /**
-     * Structure of an introspected class.
-     */
-    public static final class ClassInfo {
-        public Class<?> clazz;
-        public MethodInfo[] methods;
-    }
-
-    /**
-     * Structure of an introspected method.
-     */
-    public static final class MethodInfo {
-        public Method method;
-        public Boolean isGetter;
-        public Boolean isSetter;
-        public String getterOrSetterShorthandName;
-        public Boolean hasGetterAndSetter;
     }
 
     /**
@@ -262,9 +244,9 @@ public final class IntrospectionSupport {
             optionPrefix = "";
         }
 
-        ClassInfo cache = cacheClass(target.getClass());
+        BeanIntrospection.ClassInfo cache = cacheClass(target.getClass());
 
-        for (MethodInfo info : cache.methods) {
+        for (BeanIntrospection.MethodInfo info : cache.methods) {
             Method method = info.method;
             // we can only get properties if we have both a getter and a setter
             if (info.isGetter && info.hasGetterAndSetter) {
@@ -291,10 +273,10 @@ public final class IntrospectionSupport {
      * Introspects the given class.
      *
      * @param clazz the class
-     * @return the introspection result as a {@link ClassInfo} structure.
+     * @return the introspection result as a {@link BeanIntrospection.ClassInfo} structure.
      */
-    public static ClassInfo cacheClass(Class<?> clazz) {
-        ClassInfo cache = CACHE.get(clazz);
+    public static BeanIntrospection.ClassInfo cacheClass(Class<?> clazz) {
+        BeanIntrospection.ClassInfo cache = CACHE.get(clazz);
         if (cache == null) {
             cache = doIntrospectClass(clazz);
             CACHE.put(clazz, cache);
@@ -302,22 +284,22 @@ public final class IntrospectionSupport {
         return cache;
     }
 
-    private static ClassInfo doIntrospectClass(Class<?> clazz) {
-        ClassInfo answer = new ClassInfo();
+    private static BeanIntrospection.ClassInfo doIntrospectClass(Class<?> clazz) {
+        BeanIntrospection.ClassInfo answer = new BeanIntrospection.ClassInfo();
         answer.clazz = clazz;
 
         // loop each method on the class and gather details about the method
         // especially about getter/setters
-        List<MethodInfo> found = new ArrayList<>();
+        List<BeanIntrospection.MethodInfo> found = new ArrayList<>();
         Method[] methods = clazz.getMethods();
-        Map<String, MethodInfo> getters = new HashMap<>(methods.length);
-        Map<String, MethodInfo> setters = new HashMap<>(methods.length);
+        Map<String, BeanIntrospection.MethodInfo> getters = new HashMap<>(methods.length);
+        Map<String, BeanIntrospection.MethodInfo> setters = new HashMap<>(methods.length);
         for (Method method : methods) {
             if (EXCLUDED_METHODS.contains(method)) {
                 continue;
             }
 
-            MethodInfo cache = new MethodInfo();
+            BeanIntrospection.MethodInfo cache = new BeanIntrospection.MethodInfo();
             cache.method = method;
             if (isGetter(method)) {
                 cache.isGetter = true;
@@ -338,7 +320,7 @@ public final class IntrospectionSupport {
 
         // for all getter/setter, find out if there is a corresponding getter/setter,
         // so we have a read/write bean property.
-        for (MethodInfo info : found) {
+        for (BeanIntrospection.MethodInfo info : found) {
             info.hasGetterAndSetter = false;
             if (info.isGetter) {
                 info.hasGetterAndSetter = setters.containsKey(info.getterOrSetterShorthandName);
@@ -347,7 +329,7 @@ public final class IntrospectionSupport {
             }
         }
 
-        answer.methods = found.toArray(new MethodInfo[found.size()]);
+        answer.methods = found.toArray(new BeanIntrospection.MethodInfo[found.size()]);
         return answer;
     }
 

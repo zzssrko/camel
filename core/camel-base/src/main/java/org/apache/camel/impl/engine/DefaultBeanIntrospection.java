@@ -43,6 +43,12 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     }
 
     @Override
+    public ClassInfo cacheClass(Class<?> clazz) {
+        invoked.incrementAndGet();
+        return IntrospectionSupport.cacheClass(clazz);
+    }
+
+    @Override
     public boolean isGetter(Method method) {
         return IntrospectionSupport.isGetter(method);
     }

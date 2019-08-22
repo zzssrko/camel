@@ -36,6 +36,25 @@ import org.apache.camel.TypeConverter;
 public interface BeanIntrospection extends StaticService {
 
     /**
+     * Structure of an introspected class.
+     */
+    final class ClassInfo {
+        public Class<?> clazz;
+        public MethodInfo[] methods;
+    }
+
+    /**
+     * Structure of an introspected method.
+     */
+    final class MethodInfo {
+        public Method method;
+        public Boolean isGetter;
+        public Boolean isSetter;
+        public String getterOrSetterShorthandName;
+        public Boolean hasGetterAndSetter;
+    }
+
+    /**
      * Number of times bean introspection has been invoked
      */
     long getInvokedCounter();
@@ -87,14 +106,13 @@ public interface BeanIntrospection extends StaticService {
      */
     boolean getProperties(Object target, Map<String, Object> properties, String optionPrefix, boolean includeNull);
 
-//    /**
-//     * Introspects the given class.
-//     *
-//     * @param clazz the class
-//     * @return the introspection result as a {@link ClassInfo} structure.
-//     */
-    // TODO: JMX uses this so we should find a way
-    //ClassInfo cacheClass(Class<?> clazz);
+    /**
+     * Introspects the given class.
+     *
+     * @param clazz the class
+     * @return the introspection result as a {@link ClassInfo} structure.
+     */
+    ClassInfo cacheClass(Class<?> clazz);
 
     boolean hasProperties(Map<String, Object> properties, String optionPrefix);
 
