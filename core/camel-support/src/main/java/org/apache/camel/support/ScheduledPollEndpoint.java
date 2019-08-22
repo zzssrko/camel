@@ -112,28 +112,31 @@ public abstract class ScheduledPollEndpoint extends DefaultEndpoint {
             setSchedulerProperties(schedulerProperties);
         }
 
-        if ("spring".equals(scheduler)) {
-            // special for scheduler if its "spring" or "quartz"
-            try {
-                Class<? extends ScheduledPollConsumerScheduler> clazz = getCamelContext().getClassResolver().resolveMandatoryClass(SPRING_SCHEDULER, ScheduledPollConsumerScheduler.class);
-                consumerScheduler = getCamelContext().getInjector().newInstance(clazz);
-            } catch (ClassNotFoundException e) {
-                throw new IllegalArgumentException("Cannot load " + SPRING_SCHEDULER + " from classpath. Make sure camel-spring.jar is on the classpath.", e);
+        String schedulerName = (String) options.get("scheduler");
+        if (schedulerName != null) {
+            if ("spring".equals(schedulerName)) {
+                // special for scheduler if its "spring" or "quartz"
+                try {
+                    Class<? extends ScheduledPollConsumerScheduler> clazz = getCamelContext().getClassResolver().resolveMandatoryClass(SPRING_SCHEDULER, ScheduledPollConsumerScheduler.class);
+                    consumerScheduler = getCamelContext().getInjector().newInstance(clazz);
+                } catch (ClassNotFoundException e) {
+                    throw new IllegalArgumentException("Cannot load " + SPRING_SCHEDULER + " from classpath. Make sure camel-spring.jar is on the classpath.", e);
+                }
+            } else if ("quartz".equals(schedulerName)) {
+                // special for scheduler if its "spring" or "quartz"
+                try {
+                    Class<? extends ScheduledPollConsumerScheduler> clazz = getCamelContext().getClassResolver().resolveMandatoryClass(QUARTZ_SCHEDULER, ScheduledPollConsumerScheduler.class);
+                    consumerScheduler = getCamelContext().getInjector().newInstance(clazz);
+                } catch (ClassNotFoundException e) {
+                    throw new IllegalArgumentException("Cannot load " + QUARTZ_SCHEDULER + " from classpath. Make sure camel-quartz.jar is on the classpath.", e);
+                }
+            } else if (!"none".equals(schedulerName)) {
+                // must refer to a custom scheduler by the given name
+                if (EndpointHelper.isReferenceParameter(schedulerName)) {
+                    schedulerName = schedulerName.substring(1);
+                }
+                consumerScheduler = CamelContextHelper.mandatoryLookup(getCamelContext(), schedulerName, ScheduledPollConsumerScheduler.class);
             }
-        } else if ("quartz".equals(scheduler)) {
-            // special for scheduler if its "spring" or "quartz"
-            try {
-                Class<? extends ScheduledPollConsumerScheduler> clazz = getCamelContext().getClassResolver().resolveMandatoryClass(QUARTZ_SCHEDULER, ScheduledPollConsumerScheduler.class);
-                consumerScheduler = getCamelContext().getInjector().newInstance(clazz);
-            } catch (ClassNotFoundException e) {
-                throw new IllegalArgumentException("Cannot load " + QUARTZ_SCHEDULER + " from classpath. Make sure camel-quartz.jar is on the classpath.", e);
-            }
-        } else if (!"none".equals(scheduler)) {
-            // must refer to a custom scheduler by the given name
-            if (EndpointHelper.isReferenceParameter(scheduler)) {
-                scheduler = scheduler.substring(1);
-            }
-            consumerScheduler = CamelContextHelper.mandatoryLookup(getCamelContext(), scheduler, ScheduledPollConsumerScheduler.class);
         }
     }
 
