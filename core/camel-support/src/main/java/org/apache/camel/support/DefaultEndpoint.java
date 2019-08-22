@@ -410,7 +410,12 @@ public abstract class DefaultEndpoint extends ServiceSupport implements Endpoint
      * @param parameters  properties to set
      */
     public void setProperties(Object bean, Map<String, Object> parameters) throws Exception {
-        if (basicPropertyBinding) {
+        if (parameters == null || parameters.isEmpty()) {
+            return;
+        }
+
+        boolean basic = basicPropertyBinding || "true".equals(parameters.getOrDefault("basicPropertyBinding", "false"));
+        if (basic) {
             // use basic binding
             PropertyBindingSupport.build()
                     .withPlaceholder(false).withNesting(false).withDeepNesting(false).withReference(false)

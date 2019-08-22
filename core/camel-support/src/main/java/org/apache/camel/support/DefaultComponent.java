@@ -391,7 +391,12 @@ public abstract class DefaultComponent extends ServiceSupport implements Compone
      * @param parameters    properties to set
      */
     protected void setProperties(CamelContext camelContext, Object bean, Map<String, Object> parameters) throws Exception {
-        if (basicPropertyBinding) {
+        if (parameters == null || parameters.isEmpty()) {
+            return;
+        }
+
+        boolean basic = basicPropertyBinding || "true".equals(parameters.getOrDefault("basicPropertyBinding", "false"));
+        if (basic) {
             // use basic binding
             PropertyBindingSupport.build()
                     .withPlaceholder(false).withNesting(false).withDeepNesting(false).withReference(false)
