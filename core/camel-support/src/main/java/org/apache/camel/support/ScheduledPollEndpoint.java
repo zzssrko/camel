@@ -113,7 +113,8 @@ public abstract class ScheduledPollEndpoint extends DefaultEndpoint {
             setSchedulerProperties(schedulerProperties);
         }
 
-        String schedulerName = (String) options.get("scheduler");
+        // options take precedence
+        String schedulerName = (String) options.getOrDefault("scheduler", scheduler);
         if (schedulerName != null) {
             if ("spring".equals(schedulerName)) {
                 // special for scheduler if its "spring" or "quartz"

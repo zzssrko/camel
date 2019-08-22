@@ -58,18 +58,18 @@ public class LogComponent extends DefaultComponent {
         }
 
         // first, try to pick up the ExchangeFormatter from the registry
-        ExchangeFormatter localFormatter = getCamelContext().getRegistry().lookupByNameAndType("logFormatter", ExchangeFormatter.class);
-        if (localFormatter != null) {
-            setProperties(localFormatter, parameters);
+        ExchangeFormatter logFormatter = getCamelContext().getRegistry().lookupByNameAndType("logFormatter", ExchangeFormatter.class);
+        if (logFormatter != null) {
+            setProperties(logFormatter, parameters);
         } else if (exchangeFormatter != null) {
             // do not set properties, the exchangeFormatter is explicitly set, therefore the
             // user would have set its properties explicitly too
-            localFormatter = exchangeFormatter;
+            logFormatter = exchangeFormatter;
         }
 
         LogEndpoint endpoint = new LogEndpoint(uri, this);
         endpoint.setLevel(level.name());
-        endpoint.setLocalFormatter(localFormatter);
+        endpoint.setExchangeFormatter(logFormatter);
         if (providedLogger == null) {
             endpoint.setLoggerName(remaining);
         } else {

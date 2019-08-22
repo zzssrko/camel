@@ -24,6 +24,14 @@ import java.util.Set;
 import org.apache.camel.CamelContext;
 import org.apache.camel.TypeConverter;
 
+// TODO: Keep only public used methods so we can remove the tech debt
+
+/**
+ * Used for introspecting beans properties via Java reflection; such as extracting current property values,
+ * or updating one or more properties etc.
+ *
+ * End users should favour using org.apache.camel.support.PropertyBindingSupport instead.
+ */
 public interface BeanIntrospection {
 
     boolean isGetter(Method method);
@@ -73,13 +81,13 @@ public interface BeanIntrospection {
      */
     boolean getProperties(Object target, Map<String, Object> properties, String optionPrefix, boolean includeNull);
 
-    /**
-     * Introspects the given class.
-     *
-     * @param clazz the class
-     * @return the introspection result as a {@link ClassInfo} structure.
-     */
-    // TODO:
+//    /**
+//     * Introspects the given class.
+//     *
+//     * @param clazz the class
+//     * @return the introspection result as a {@link ClassInfo} structure.
+//     */
+    // TODO: JMX uses this so we should find a way
     //ClassInfo cacheClass(Class<?> clazz);
 
     boolean hasProperties(Map<String, Object> properties, String optionPrefix);
@@ -99,13 +107,13 @@ public interface BeanIntrospection {
     boolean isPropertyIsGetter(Class<?> type, String propertyName);
 
     /**
-     * @deprecated use {@link PropertyBindingSupport}
+     * @deprecated use org.apache.camel.support.PropertyBindingSupport
      */
     @Deprecated
     boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix, boolean allowBuilderPattern) throws Exception;
 
     /**
-     * @deprecated use {@link PropertyBindingSupport}
+     * @deprecated use org.apache.camel.support.PropertyBindingSupport
      */
     @Deprecated
     boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix) throws Exception;
@@ -118,19 +126,19 @@ public interface BeanIntrospection {
     Map<String, String> extractStringProperties(Map<String, Object> properties);
 
     /**
-     * @deprecated use {@link PropertyBindingSupport}
+     * @deprecated use org.apache.camel.support.PropertyBindingSupport
      */
     @Deprecated
     boolean setProperties(CamelContext context, TypeConverter typeConverter, Object target, Map<String, Object> properties) throws Exception;
 
     /**
-     * @deprecated use {@link PropertyBindingSupport}
+     * @deprecated use org.apache.camel.support.PropertyBindingSupport
      */
     @Deprecated
     boolean setProperties(TypeConverter typeConverter, Object target, Map<String, Object> properties) throws Exception;
 
     /**
-     * @deprecated use {@link PropertyBindingSupport}
+     * @deprecated use org.apache.camel.support.PropertyBindingSupport
      */
     @Deprecated
     boolean setProperties(Object target, Map<String, Object> properties) throws Exception;

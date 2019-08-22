@@ -30,6 +30,8 @@ import org.apache.camel.support.service.ServiceSupport;
 @SuppressWarnings("deprecation")
 public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntrospection {
 
+    // TODO: Add runtime statistics so we can report how much Java reflection has been in use
+
     @Override
     public boolean isGetter(Method method) {
         return IntrospectionSupport.isGetter(method);

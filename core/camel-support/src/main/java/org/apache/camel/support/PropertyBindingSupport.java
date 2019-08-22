@@ -52,8 +52,6 @@ import static org.apache.camel.util.ObjectHelper.isNotEmpty;
  *                               then you specify the method as shown: #class:com.foo.MyClassType#myFactoryMethod</li>.
  *     <li>ignore case - Whether to ignore case for property keys<li>
  * </ul>
- * <p/>
- * This implementations reuses parts of {@link IntrospectionSupport}.
  */
 public final class PropertyBindingSupport {
 

@@ -210,7 +210,10 @@ public abstract class DefaultComponent extends ServiceSupport implements Compone
             return null;
         }
 
-        // setup whether to use basic property binding or not which must be done before we set properties 
+        // inject camel context
+        endpoint.setCamelContext(getCamelContext());
+
+        // setup whether to use basic property binding or not which must be done before we set properties
         boolean basic = getAndRemoveParameter(parameters, "basicPropertyBinding", boolean.class, basicPropertyBinding);
         if (endpoint instanceof DefaultEndpoint) {
             ((DefaultEndpoint) endpoint).setBasicPropertyBinding(basic);
