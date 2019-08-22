@@ -83,12 +83,12 @@ public interface BeanIntrospection extends StaticService {
     void setExtendedStatistics(boolean extendedStatistics);
 
     /**
-     * Logging level used for logging introspection usage. Is using DEBUG level as default.
+     * Logging level used for logging introspection usage. Is using TRACE level as default.
      */
     LoggingLevel getLoggingLevel();
 
     /**
-     * Logging level used for logging introspection usage. Is using DEBUG level as default.
+     * Logging level used for logging introspection usage. Is using TRACE level as default.
      */
     void setLoggingLevel(LoggingLevel loggingLevel);
 

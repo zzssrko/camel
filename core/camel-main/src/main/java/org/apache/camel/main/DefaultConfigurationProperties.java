@@ -698,7 +698,7 @@ public abstract class DefaultConfigurationProperties<T> {
 
     /**
      * Sets the logging level used by bean introspection, logging activity of its usage.
-     * The default is DEBUG.
+     * The default is TRACE.
      */
     public void setBeanIntrospectionLoggingLevel(LoggingLevel beanIntrospectionLoggingLevel) {
         this.beanIntrospectionLoggingLevel = beanIntrospectionLoggingLevel;

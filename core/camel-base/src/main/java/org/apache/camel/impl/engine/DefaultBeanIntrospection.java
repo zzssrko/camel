@@ -17,9 +17,11 @@
 package org.apache.camel.impl.engine;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.regex.Pattern;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.LoggingLevel;
@@ -35,10 +37,11 @@ import org.slf4j.LoggerFactory;
 public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntrospection {
 
     private static final Logger LOG = LoggerFactory.getLogger(DefaultBeanIntrospection.class);
+    private static final Pattern SECRETS = Pattern.compile(".*(passphrase|password|secretKey).*", Pattern.CASE_INSENSITIVE);
 
     private final AtomicLong invoked = new AtomicLong();
     private volatile boolean extendedStatistics;
-    private LoggingLevel loggingLevel = LoggingLevel.DEBUG;
+    private LoggingLevel loggingLevel = LoggingLevel.TRACE;
     private CamelLogger logger = new CamelLogger(LOG, loggingLevel);
 
     @Override
@@ -69,10 +72,12 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
         this.logger = new CamelLogger(LOG, loggingLevel);
     }
 
-    private void log(String method, Object bean) {
-        if (logger.shouldLog()) {
-            logger.log("Invoked: " + invoked.get() + " times (overall) [Method: " + method + ", Argument: " + bean + "]");
+    private void log(String method, Object target, Object... args) {
+        Object obj = "null";
+        if (args != null && args.length > 0) {
+            obj = Arrays.asList(args);
         }
+        logger.log("Invoked: " + invoked.get() + " times (overall) [Method: " + method + ", Target: " + target + ", Arguments: " + obj + " ]");
     }
 
     @Override
@@ -85,77 +90,111 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Override
     public boolean getProperties(Object target, Map<String, Object> properties, String optionPrefix) {
         invoked.incrementAndGet();
-        log("getProperties", target);
+        if (logger.shouldLog()) {
+            log("getProperties", target);
+        }
         return IntrospectionSupport.getProperties(target, properties, optionPrefix);
     }
 
     @Override
     public boolean getProperties(Object target, Map<String, Object> properties, String optionPrefix, boolean includeNull) {
         invoked.incrementAndGet();
-        log("getProperties", target);
+        if (logger.shouldLog()) {
+            log("getProperties", target);
+        }
         return IntrospectionSupport.getProperties(target, properties, optionPrefix, includeNull);
     }
 
     @Override
     public Object getOrElseProperty(Object target, String propertyName, Object defaultValue) {
         invoked.incrementAndGet();
-        log("getOrElseProperty", target);
+        if (logger.shouldLog()) {
+            log("getOrElseProperty", target, propertyName);
+        }
         return IntrospectionSupport.getOrElseProperty(target, propertyName, defaultValue);
     }
 
     @Override
     public Object getOrElseProperty(Object target, String propertyName, Object defaultValue, boolean ignoreCase) {
         invoked.incrementAndGet();
-        log("getOrElseProperty", target);
+        if (logger.shouldLog()) {
+            log("getOrElseProperty", target, propertyName);
+        }
         return IntrospectionSupport.getOrElseProperty(target, propertyName, defaultValue, ignoreCase);
     }
 
     @Override
     public Method getPropertyGetter(Class<?> type, String propertyName) throws NoSuchMethodException {
         invoked.incrementAndGet();
-        log("getPropertyGetter", type);
+        if (logger.shouldLog()) {
+            log("getPropertyGetter", type, propertyName);
+        }
         return IntrospectionSupport.getPropertyGetter(type, propertyName);
     }
 
     @Override
     public Method getPropertyGetter(Class<?> type, String propertyName, boolean ignoreCase) throws NoSuchMethodException {
         invoked.incrementAndGet();
-        log("getPropertyGetter", type);
+        if (logger.shouldLog()) {
+            log("getPropertyGetter", type, propertyName);
+        }
         return IntrospectionSupport.getPropertyGetter(type, propertyName, ignoreCase);
     }
 
     @Override
     public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value, String refName, boolean allowBuilderPattern) throws Exception {
         invoked.incrementAndGet();
-        log("setProperty", target);
+        if (logger.shouldLog()) {
+            if (SECRETS.matcher(name).find()) {
+                value = "xxxxxx";
+            }
+            log("setProperty", target, name, value);
+        }
         return IntrospectionSupport.setProperty(context, typeConverter, target, name, value, refName, allowBuilderPattern);
     }
 
     @Override
     public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value, String refName, boolean allowBuilderPattern, boolean allowPrivateSetter, boolean ignoreCase) throws Exception {
         invoked.incrementAndGet();
-        log("setProperty", target);
+        if (logger.shouldLog()) {
+            if (SECRETS.matcher(name).find()) {
+                value = "xxxxxx";
+            }
+            log("setProperty", target, name, value);
+        }
         return IntrospectionSupport.setProperty(context, typeConverter, target, name, value, refName, allowBuilderPattern, allowPrivateSetter, ignoreCase);
     }
 
     @Override
     public boolean setProperty(CamelContext context, Object target, String name, Object value) throws Exception {
         invoked.incrementAndGet();
-        log("setProperty", target);
+        if (logger.shouldLog()) {
+            if (SECRETS.matcher(name).find()) {
+                value = "xxxxxx";
+            }
+            log("setProperty", target, name, value);
+        }
         return IntrospectionSupport.setProperty(context, target, name, value);
     }
 
     @Override
     public boolean setProperty(TypeConverter typeConverter, Object target, String name, Object value) throws Exception {
         invoked.incrementAndGet();
-        log("setProperty", target);
+        if (logger.shouldLog()) {
+            if (SECRETS.matcher(name).find()) {
+                value = "xxxxxx";
+            }
+            log("setProperty", target, name, value);
+        }
         return IntrospectionSupport.setProperty(typeConverter, target, name, value);
     }
 
     @Override
     public Set<Method> findSetterMethods(Class<?> clazz, String name, boolean allowBuilderPattern, boolean allowPrivateSetter, boolean ignoreCase) {
         invoked.incrementAndGet();
-        log("findSetterMethods", clazz);
+        if (logger.shouldLog()) {
+            log("findSetterMethods", clazz);
+        }
         return IntrospectionSupport.findSetterMethods(clazz, name, allowBuilderPattern, allowPrivateSetter, ignoreCase);
     }
 
