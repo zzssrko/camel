@@ -1,13 +1,13 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,7 +16,6 @@
  */
 package org.apache.camel.spi;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
@@ -27,7 +26,8 @@ import org.apache.camel.StaticService;
 import org.apache.camel.TypeConverter;
 import org.apache.camel.meta.Experimental;
 
-// TODO: Keep only public used methods so we can remove the tech debt
+// TODO: Add javadoc for methods
+// TODO: Consolidate some of the methods
 
 /**
  * Used for introspecting beans properties via Java reflection; such as extracting current property values,
@@ -95,27 +95,6 @@ public interface BeanIntrospection extends StaticService {
     // Introspection
     // ----------------------------------------------------
 
-    boolean isGetter(Method method);
-
-    String getGetterShorthandName(Method method);
-
-    String getSetterShorthandName(Method method);
-
-    boolean isSetter(Method method, boolean allowBuilderPattern);
-
-    boolean isSetter(Method method);
-
-    /**
-     * Will inspect the target for properties.
-     * <p/>
-     * Notice a property must have both a getter/setter method to be included.
-     * Notice all <tt>null</tt> values won't be included.
-     *
-     * @param target         the target bean
-     * @return the map with found properties
-     */
-    Map<String, Object> getNonNullProperties(Object target);
-
     /**
      * Will inspect the target for properties.
      * <p/>
@@ -150,8 +129,6 @@ public interface BeanIntrospection extends StaticService {
      */
     ClassInfo cacheClass(Class<?> clazz);
 
-    Object getProperty(Object target, String propertyName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException;
-
     Object getOrElseProperty(Object target, String propertyName, Object defaultValue);
 
     Object getOrElseProperty(Object target, String propertyName, Object defaultValue, boolean ignoreCase);
@@ -159,40 +136,6 @@ public interface BeanIntrospection extends StaticService {
     Method getPropertyGetter(Class<?> type, String propertyName) throws NoSuchMethodException;
 
     Method getPropertyGetter(Class<?> type, String propertyName, boolean ignoreCase) throws NoSuchMethodException;
-
-    Method getPropertySetter(Class<?> type, String propertyName) throws NoSuchMethodException;
-
-    boolean isPropertyIsGetter(Class<?> type, String propertyName);
-
-    /**
-     * @deprecated use org.apache.camel.support.PropertyBindingSupport
-     */
-    @Deprecated
-    boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix, boolean allowBuilderPattern) throws Exception;
-
-    /**
-     * @deprecated use org.apache.camel.support.PropertyBindingSupport
-     */
-    @Deprecated
-    boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix) throws Exception;
-
-    /**
-     * @deprecated use org.apache.camel.support.PropertyBindingSupport
-     */
-    @Deprecated
-    boolean setProperties(CamelContext context, TypeConverter typeConverter, Object target, Map<String, Object> properties) throws Exception;
-
-    /**
-     * @deprecated use org.apache.camel.support.PropertyBindingSupport
-     */
-    @Deprecated
-    boolean setProperties(TypeConverter typeConverter, Object target, Map<String, Object> properties) throws Exception;
-
-    /**
-     * @deprecated use org.apache.camel.support.PropertyBindingSupport
-     */
-    @Deprecated
-    boolean setProperties(Object target, Map<String, Object> properties) throws Exception;
 
     /**
      * This method supports three modes to set a property:
@@ -226,15 +169,7 @@ public interface BeanIntrospection extends StaticService {
 
     boolean setProperty(CamelContext context, Object target, String name, Object value) throws Exception;
 
-    boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value) throws Exception;
-
     boolean setProperty(TypeConverter typeConverter, Object target, String name, Object value) throws Exception;
-
-    @Deprecated
-    boolean setProperty(Object target, String name, Object value, boolean allowBuilderPattern) throws Exception;
-
-    @Deprecated
-    boolean setProperty(Object target, String name, Object value) throws Exception;
 
     Set<Method> findSetterMethods(Class<?> clazz, String name, boolean allowBuilderPattern, boolean allowPrivateSetter, boolean ignoreCase);
 

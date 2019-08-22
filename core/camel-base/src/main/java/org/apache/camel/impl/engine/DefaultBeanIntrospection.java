@@ -16,7 +16,6 @@
  */
 package org.apache.camel.impl.engine;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
@@ -84,36 +83,6 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     }
 
     @Override
-    public boolean isGetter(Method method) {
-        return IntrospectionSupport.isGetter(method);
-    }
-
-    @Override
-    public String getGetterShorthandName(Method method) {
-        return IntrospectionSupport.getGetterShorthandName(method);
-    }
-
-    @Override
-    public String getSetterShorthandName(Method method) {
-        return IntrospectionSupport.getSetterShorthandName(method);
-    }
-
-    @Override
-    public boolean isSetter(Method method, boolean allowBuilderPattern) {
-        return IntrospectionSupport.isSetter(method, allowBuilderPattern);
-    }
-
-    @Override
-    public boolean isSetter(Method method) {
-        return IntrospectionSupport.isSetter(method);
-    }
-
-    @Override
-    public Map<String, Object> getNonNullProperties(Object target) {
-        return IntrospectionSupport.getNonNullProperties(target);
-    }
-
-    @Override
     public boolean getProperties(Object target, Map<String, Object> properties, String optionPrefix) {
         invoked.incrementAndGet();
         log("getProperties", target);
@@ -125,13 +94,6 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
         invoked.incrementAndGet();
         log("getProperties", target);
         return IntrospectionSupport.getProperties(target, properties, optionPrefix, includeNull);
-    }
-
-    @Override
-    public Object getProperty(Object target, String propertyName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        invoked.incrementAndGet();
-        log("getProperty", target);
-        return IntrospectionSupport.getProperty(target, propertyName);
     }
 
     @Override
@@ -163,60 +125,6 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     }
 
     @Override
-    public Method getPropertySetter(Class<?> type, String propertyName) throws NoSuchMethodException {
-        invoked.incrementAndGet();
-        log("getPropertySetter", type);
-        return IntrospectionSupport.getPropertySetter(type, propertyName);
-    }
-
-    @Override
-    public boolean isPropertyIsGetter(Class<?> type, String propertyName) {
-        invoked.incrementAndGet();
-        log("isPropertyIsGetter", type);
-        return IntrospectionSupport.isPropertyIsGetter(type, propertyName);
-    }
-
-    @Override
-    @Deprecated
-    public boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix, boolean allowBuilderPattern) throws Exception {
-        invoked.incrementAndGet();
-        log("setProperties", target);
-        return IntrospectionSupport.setProperties(target, properties, optionPrefix, allowBuilderPattern);
-    }
-
-    @Override
-    @Deprecated
-    public boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix) throws Exception {
-        invoked.incrementAndGet();
-        log("setProperties", target);
-        return IntrospectionSupport.setProperties(target, properties, optionPrefix);
-    }
-
-    @Override
-    @Deprecated
-    public boolean setProperties(CamelContext context, TypeConverter typeConverter, Object target, Map<String, Object> properties) throws Exception {
-        invoked.incrementAndGet();
-        log("setProperties", target);
-        return IntrospectionSupport.setProperties(context, typeConverter, target, properties);
-    }
-
-    @Override
-    @Deprecated
-    public boolean setProperties(TypeConverter typeConverter, Object target, Map<String, Object> properties) throws Exception {
-        invoked.incrementAndGet();
-        log("setProperties", target);
-        return IntrospectionSupport.setProperties(typeConverter, target, properties);
-    }
-
-    @Override
-    @Deprecated
-    public boolean setProperties(Object target, Map<String, Object> properties) throws Exception {
-        invoked.incrementAndGet();
-        log("setProperties", target);
-        return IntrospectionSupport.setProperties(target, properties);
-    }
-
-    @Override
     public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value, String refName, boolean allowBuilderPattern) throws Exception {
         invoked.incrementAndGet();
         log("setProperty", target);
@@ -238,33 +146,10 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     }
 
     @Override
-    public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value) throws Exception {
-        invoked.incrementAndGet();
-        log("setProperty", target);
-        return IntrospectionSupport.setProperty(context, typeConverter, target, name, value);
-    }
-
-    @Override
     public boolean setProperty(TypeConverter typeConverter, Object target, String name, Object value) throws Exception {
         invoked.incrementAndGet();
         log("setProperty", target);
         return IntrospectionSupport.setProperty(typeConverter, target, name, value);
-    }
-
-    @Override
-    @Deprecated
-    public boolean setProperty(Object target, String name, Object value, boolean allowBuilderPattern) throws Exception {
-        invoked.incrementAndGet();
-        log("setProperty", target);
-        return IntrospectionSupport.setProperty(target, name, value, allowBuilderPattern);
-    }
-
-    @Override
-    @Deprecated
-    public boolean setProperty(Object target, String name, Object value) throws Exception {
-        invoked.incrementAndGet();
-        log("setProperty", target);
-        return IntrospectionSupport.setProperty(target, name, value);
     }
 
     @Override
