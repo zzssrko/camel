@@ -1149,4 +1149,23 @@ public abstract class DefaultConfigurationProperties<T> {
         this.routeFilterExcludePattern = routeFilterExcludePattern;
         return (T) this;
     }
+
+    /**
+     * Sets whether bean introspection uses extended statistics.
+     * The default is false.
+     */
+    public T withBeanIntrospectionExtendedStatistics(boolean beanIntrospectionExtendedStatistics) {
+        this.beanIntrospectionExtendedStatistics = beanIntrospectionExtendedStatistics;
+        return (T) this;
+    }
+
+    /**
+     * Sets the logging level used by bean introspection, logging activity of its usage.
+     * The default is TRACE.
+     */
+    public T withBeanIntrospectionLoggingLevel(LoggingLevel beanIntrospectionLoggingLevel) {
+        this.beanIntrospectionLoggingLevel = beanIntrospectionLoggingLevel;
+        return (T) this;
+    }
+
 }

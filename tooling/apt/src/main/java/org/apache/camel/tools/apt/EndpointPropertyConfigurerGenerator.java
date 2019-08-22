@@ -33,15 +33,15 @@ import static org.apache.camel.tools.apt.AnnotationProcessorHelper.dumpException
 
 public final class EndpointPropertyConfigurerGenerator {
 
-    // TODO: We can omit the read properties as we only use the writes
+    // at the moment we do not need getters (read) so lets turn them off
+    private static final boolean GENERATE_READ = false;
+    private static final boolean GENERATE_WRITE = true;
 
     private EndpointPropertyConfigurerGenerator() {
     }
 
     public static void generateExtendConfigurer(ProcessingEnvironment processingEnv, TypeElement parent,
                                                 String pn, String cn, String fqn) {
-
-
 
         Writer w = null;
         try {
@@ -96,8 +96,12 @@ public final class EndpointPropertyConfigurerGenerator {
             w.write(" */\n");
             w.write("public class " + cn + " extends EndpointPropertyConfigurerSupport {\n");
             w.write("\n");
-            w.write("    private final Map<String, Supplier<Object>> readPlaceholders = new HashMap<>(" + size + ");\n");
-            w.write("    private final Map<String, Consumer<Object>> writePlaceholders = new HashMap<>(" + size + ");\n");
+            if (GENERATE_READ) {
+                w.write("    private final Map<String, Supplier<Object>> readPlaceholders = new HashMap<>(" + size + ");\n");
+            }
+            if (GENERATE_WRITE) {
+                w.write("    private final Map<String, Consumer<Object>> writePlaceholders = new HashMap<>(" + size + ");\n");
+            }
             w.write("\n");
 
             // add constructor
@@ -108,22 +112,34 @@ public final class EndpointPropertyConfigurerGenerator {
             for (EndpointOption option : options) {
                 String getOrSet = option.getName();
                 getOrSet = Character.toUpperCase(getOrSet.charAt(0)) + getOrSet.substring(1);
-                String getterLambda = getterLambda(getOrSet, option.getName(), option.getType(), option.getConfigurationField());
-                String setterLambda = setterLambda(getOrSet, option.getName(), option.getType(), option.getConfigurationField());
-                w.write("        readPlaceholders.put(\"" + option.getName() + "\", " + getterLambda + ");\n");
-                w.write("        writePlaceholders.put(\"" + option.getName() + "\", " + setterLambda + ");\n");
+                if (GENERATE_READ) {
+                    String getterLambda = getterLambda(getOrSet, option.getName(), option.getType(), option.getConfigurationField());
+                    w.write("        readPlaceholders.put(\"" + option.getName() + "\", " + getterLambda + ");\n");
+                }
+                if (GENERATE_WRITE) {
+                    String setterLambda = setterLambda(getOrSet, option.getName(), option.getType(), option.getConfigurationField());
+                    w.write("        writePlaceholders.put(\"" + option.getName() + "\", " + setterLambda + ");\n");
+                }
             }
 
             w.write("    }\n");
             w.write("\n");
             w.write("    @Override\n");
             w.write("    public Map<String, Supplier<Object>> getReadPropertyPlaceholderOptions(CamelContext camelContext) {\n");
-            w.write("        return readPlaceholders;\n");
+            if (GENERATE_READ) {
+                w.write("        return readPlaceholders;\n");
+            } else {
+                w.write("        return null;\n");
+            }
             w.write("    }\n");
             w.write("\n");
             w.write("    @Override\n");
             w.write("    public Map<String, Consumer<Object>> getWritePropertyPlaceholderOptions(CamelContext camelContext) {\n");
-            w.write("        return writePlaceholders;\n");
+            if (GENERATE_WRITE) {
+                w.write("        return writePlaceholders;\n");
+            } else {
+                w.write("        return null;\n");
+            }
             w.write("    }\n");
             w.write("\n");
             w.write("}\n");
