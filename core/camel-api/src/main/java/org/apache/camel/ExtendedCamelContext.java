@@ -339,4 +339,9 @@ public interface ExtendedCamelContext extends CamelContext {
      */
     BeanIntrospection getBeanIntrospection();
 
+    /**
+     * Sets a custom {@link BeanIntrospection}.
+     */
+    void setBeanIntrospection(BeanIntrospection beanIntrospection);
+
 }

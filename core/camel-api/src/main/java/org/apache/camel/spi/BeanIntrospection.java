@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.StaticService;
 import org.apache.camel.TypeConverter;
 
 // TODO: Keep only public used methods so we can remove the tech debt
@@ -32,7 +33,12 @@ import org.apache.camel.TypeConverter;
  *
  * End users should favour using org.apache.camel.support.PropertyBindingSupport instead.
  */
-public interface BeanIntrospection {
+public interface BeanIntrospection extends StaticService {
+
+    /**
+     * Number of times bean introspection has been invoked
+     */
+    long getInvokedCounter();
 
     boolean isGetter(Method method);
 

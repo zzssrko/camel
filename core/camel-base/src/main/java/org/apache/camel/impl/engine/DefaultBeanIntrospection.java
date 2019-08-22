@@ -20,17 +20,27 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.TypeConverter;
 import org.apache.camel.spi.BeanIntrospection;
 import org.apache.camel.support.IntrospectionSupport;
 import org.apache.camel.support.service.ServiceSupport;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("deprecation")
 public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntrospection {
 
-    // TODO: Add runtime statistics so we can report how much Java reflection has been in use
+    private static final Logger LOG = LoggerFactory.getLogger(DefaultBeanIntrospection.class);
+
+    private final AtomicLong invoked = new AtomicLong();
+
+    @Override
+    public long getInvokedCounter() {
+        return invoked.get();
+    }
 
     @Override
     public boolean isGetter(Method method) {
@@ -64,11 +74,13 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
 
     @Override
     public boolean getProperties(Object target, Map<String, Object> properties, String optionPrefix) {
+        invoked.incrementAndGet();
         return IntrospectionSupport.getProperties(target, properties, optionPrefix);
     }
 
     @Override
     public boolean getProperties(Object target, Map<String, Object> properties, String optionPrefix, boolean includeNull) {
+        invoked.incrementAndGet();
         return IntrospectionSupport.getProperties(target, properties, optionPrefix, includeNull);
     }
 
@@ -79,48 +91,57 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
 
     @Override
     public Object getProperty(Object target, String propertyName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        invoked.incrementAndGet();
         return IntrospectionSupport.getProperty(target, propertyName);
     }
 
     @Override
     public Object getOrElseProperty(Object target, String propertyName, Object defaultValue) {
+        invoked.incrementAndGet();
         return IntrospectionSupport.getOrElseProperty(target, propertyName, defaultValue);
     }
 
     @Override
     public Object getOrElseProperty(Object target, String propertyName, Object defaultValue, boolean ignoreCase) {
+        invoked.incrementAndGet();
         return IntrospectionSupport.getOrElseProperty(target, propertyName, defaultValue, ignoreCase);
     }
 
     @Override
     public Method getPropertyGetter(Class<?> type, String propertyName) throws NoSuchMethodException {
+        invoked.incrementAndGet();
         return IntrospectionSupport.getPropertyGetter(type, propertyName);
     }
 
     @Override
     public Method getPropertyGetter(Class<?> type, String propertyName, boolean ignoreCase) throws NoSuchMethodException {
+        invoked.incrementAndGet();
         return IntrospectionSupport.getPropertyGetter(type, propertyName, ignoreCase);
     }
 
     @Override
     public Method getPropertySetter(Class<?> type, String propertyName) throws NoSuchMethodException {
+        invoked.incrementAndGet();
         return IntrospectionSupport.getPropertySetter(type, propertyName);
     }
 
     @Override
     public boolean isPropertyIsGetter(Class<?> type, String propertyName) {
+        invoked.incrementAndGet();
         return IntrospectionSupport.isPropertyIsGetter(type, propertyName);
     }
 
     @Override
     @Deprecated
     public boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix, boolean allowBuilderPattern) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperties(target, properties, optionPrefix, allowBuilderPattern);
     }
 
     @Override
     @Deprecated
     public boolean setProperties(Object target, Map<String, Object> properties, String optionPrefix) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperties(target, properties, optionPrefix);
     }
 
@@ -143,60 +164,71 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Override
     @Deprecated
     public boolean setProperties(CamelContext context, TypeConverter typeConverter, Object target, Map<String, Object> properties) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperties(context, typeConverter, target, properties);
     }
 
     @Override
     @Deprecated
     public boolean setProperties(TypeConverter typeConverter, Object target, Map<String, Object> properties) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperties(typeConverter, target, properties);
     }
 
     @Override
     @Deprecated
     public boolean setProperties(Object target, Map<String, Object> properties) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperties(target, properties);
     }
 
     @Override
     public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value, String refName, boolean allowBuilderPattern) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperty(context, typeConverter, target, name, value, refName, allowBuilderPattern);
     }
 
     @Override
     public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value, String refName, boolean allowBuilderPattern, boolean allowPrivateSetter, boolean ignoreCase) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperty(context, typeConverter, target, name, value, refName, allowBuilderPattern, allowPrivateSetter, ignoreCase);
     }
 
     @Override
     public boolean setProperty(CamelContext context, Object target, String name, Object value) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperty(context, target, name, value);
     }
 
     @Override
     public boolean setProperty(CamelContext context, TypeConverter typeConverter, Object target, String name, Object value) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperty(context, typeConverter, target, name, value);
     }
 
     @Override
     public boolean setProperty(TypeConverter typeConverter, Object target, String name, Object value) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperty(typeConverter, target, name, value);
     }
 
     @Override
     @Deprecated
     public boolean setProperty(Object target, String name, Object value, boolean allowBuilderPattern) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperty(target, name, value, allowBuilderPattern);
     }
 
     @Override
     @Deprecated
     public boolean setProperty(Object target, String name, Object value) throws Exception {
+        invoked.incrementAndGet();
         return IntrospectionSupport.setProperty(target, name, value);
     }
 
     @Override
     public Set<Method> findSetterMethods(Class<?> clazz, String name, boolean allowBuilderPattern, boolean allowPrivateSetter, boolean ignoreCase) {
+        invoked.incrementAndGet();
         return IntrospectionSupport.findSetterMethods(clazz, name, allowBuilderPattern, allowPrivateSetter, ignoreCase);
     }
 
@@ -208,5 +240,6 @@ public class DefaultBeanIntrospection extends ServiceSupport implements BeanIntr
     @Override
     protected void doStop() throws Exception {
         IntrospectionSupport.stop();
+        LOG.debug("BeanIntrospection invoked: {} times", getInvokedCounter());
     }
 }
