@@ -21,6 +21,6 @@ import org.apache.camel.api.management.ManagedAttribute;
 public interface ManagedBeanIntrospectionMBean extends ManagedServiceMBean {
 
     @ManagedAttribute(description = "Number of times bean introspection has been invoked")
-    long getInvokedCounter();
+    Long getInvokedCounter();
 
 }

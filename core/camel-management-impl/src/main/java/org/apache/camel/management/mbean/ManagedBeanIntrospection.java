@@ -39,7 +39,7 @@ public class ManagedBeanIntrospection extends ManagedService implements ManagedB
     }
 
     @Override
-    public long getInvokedCounter() {
+    public Long getInvokedCounter() {
         return beanIntrospection.getInvokedCounter();
     }
 }
