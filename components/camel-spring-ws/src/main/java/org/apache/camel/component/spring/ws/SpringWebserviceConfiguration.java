@@ -77,9 +77,9 @@ public class SpringWebserviceConfiguration {
     private boolean allowResponseAttachmentOverride;
     
     /* Consumer configuration */
-    @UriPath(label = "consumer")
+    @UriPath(label = "consumer", name = "type")
     private EndpointMappingType endpointMappingType;
-    @UriPath(label = "consumer")
+    @UriPath(label = "consumer", name = "lookupKey")
     private String endpointMappingLookupKey;
     @UriPath(label = "consumer")
     private String expression;

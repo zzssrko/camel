@@ -1002,10 +1002,7 @@ public interface SpringWebserviceEndpointBuilderFactory {
      * 
      * Syntax: <code>spring-ws:type:lookupKey:webServiceEndpointUri</code>
      * 
-     * Path parameter: webServiceEndpointUri
-     * The default Web Service endpoint uri to use for the producer.
-     * 
-     * Path parameter: endpointMappingType
+     * Path parameter: type
      * Endpoint mapping type if endpoint mapping is used. rootqname - Offers the
      * option to map web service requests based on the qualified name of the
      * root element contained in the message. soapaction - Used to map web
@@ -1021,8 +1018,11 @@ public interface SpringWebserviceEndpointBuilderFactory {
      * The value can be one of: ROOT_QNAME, ACTION, TO, SOAP_ACTION,
      * XPATHRESULT, URI, URI_PATH, BEANNAME
      * 
-     * Path parameter: endpointMappingLookupKey
+     * Path parameter: lookupKey
      * Endpoint mapping key if endpoint mapping is used
+     * 
+     * Path parameter: webServiceEndpointUri
+     * The default Web Service endpoint uri to use for the producer.
      * 
      * Path parameter: expression
      * The XPath expression to use when option type=xpathresult. Then this
