@@ -124,7 +124,7 @@ with the following path and query parameters:
 | *keyPassword* (client) | The key password |  | String
 | *keyStorePassword* (client) | The keystore password |  | String
 | *keyStoreType* (client) | The key store type |  | String
-| *keyStoreUrl* (client) | The URL where the key should be loaded from |  | URL
+| *keyStoreUrl* (client) | The URL where the key should be loaded from |  | String
 | *maxPendingPublishRequests* (client) | The maximum number of pending publish requests |  | Long
 | *maxResponseMessageSize* (client) | The maximum number of bytes a response message may have |  | Long
 | *overrideHost* (client) | Override the server reported endpoint host with the host from the endpoint URI. | false | boolean
@@ -171,7 +171,7 @@ The component supports 25 options, which are listed below.
 | *camel.component.milo-client.default-configuration.key-password* | The key password |  | String
 | *camel.component.milo-client.default-configuration.key-store-password* | The keystore password |  | String
 | *camel.component.milo-client.default-configuration.key-store-type* | The key store type |  | String
-| *camel.component.milo-client.default-configuration.key-store-url* | The URL where the key should be loaded from |  | URL
+| *camel.component.milo-client.default-configuration.key-store-url* | The URL where the key should be loaded from |  | String
 | *camel.component.milo-client.default-configuration.max-pending-publish-requests* | The maximum number of pending publish requests |  | Long
 | *camel.component.milo-client.default-configuration.max-response-message-size* | The maximum number of bytes a response message may have |  | Long
 | *camel.component.milo-client.default-configuration.override-host* | Override the server reported endpoint host with the host from the endpoint URI. | false | Boolean
