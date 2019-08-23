@@ -17,8 +17,6 @@
 package org.apache.camel.support.component;
 
 import org.apache.camel.CamelContext;
-import org.apache.camel.NoTypeConversionAvailableException;
-import org.apache.camel.RuntimeCamelException;
 import org.apache.camel.spi.EndpointPropertyConfigurer;
 
 public abstract class EndpointPropertyConfigurerSupport implements EndpointPropertyConfigurer {
@@ -47,11 +45,7 @@ public abstract class EndpointPropertyConfigurerSupport implements EndpointPrope
             }
         }
 
-        try {
-            return camelContext.getTypeConverter().mandatoryConvertTo(type, value);
-        } catch (NoTypeConversionAvailableException e) {
-            throw RuntimeCamelException.wrapRuntimeException(e);
-        }
+        return camelContext.getTypeConverter().convertTo(type, value);
     }
 
 }
