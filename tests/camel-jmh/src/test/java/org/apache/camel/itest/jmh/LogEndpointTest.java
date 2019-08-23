@@ -75,7 +75,7 @@ public class LogEndpointTest {
         @Setup(Level.Trial)
         public void initialize() {
             camel = new DefaultCamelContext();
-            camel.getGlobalOptions().put(Exchange.MAXIMUM_ENDPOINT_CACHE_SIZE, "0");
+            camel.getGlobalOptions().put(Exchange.MAXIMUM_ENDPOINT_CACHE_SIZE, "1");
             counter = new AtomicInteger();
         }
 
@@ -94,8 +94,8 @@ public class LogEndpointTest {
     @Measurement(batchSize = 1000)
     public void logEndpoint(BenchmarkState state, Blackhole bh) {
         // use the legacy binding which uses reflection
-        // Endpoint out = state.camel.getEndpoint("log:foo?basicPropertyBinding=true&groupSize=" + state.counter.incrementAndGet());
-        Endpoint out = state.camel.getEndpoint("log:foo?groupSize=" + state.counter.incrementAndGet());
+        // Endpoint out = state.camel.getEndpoint("log:foo?basicPropertyBinding=true&showAll=true&groupSize=" + state.counter.incrementAndGet());
+        Endpoint out = state.camel.getEndpoint("log:foo?showAll=true&groupSize=" + state.counter.incrementAndGet());
         bh.consume(out);
     }
 
